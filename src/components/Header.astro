@@ -1,0 +1,301 @@
+---
+// Site navigation data — mega-menu structure matching live stairwaymortgage.com
+const megaMenus = [
+  {
+    label: 'How We Serve',
+    id: 'mega-serve',
+    columns: [
+      {
+        heading: 'Buying & Selling',
+        links: [
+          { label: 'Buy a Home', href: '/buy-a-house-journey/' },
+          { label: 'Sell a Home', href: '/sell-a-house-journey/' },
+          { label: 'Build a Home', href: '/build-a-house-journey/' },
+          { label: 'Renovate a Home', href: '/renovate-a-house-journey/' },
+        ],
+      },
+      {
+        heading: 'Equity & Income',
+        links: [
+          { label: 'Refinance or HELOC', href: '/refinance-or-heloc-journey/' },
+          { label: 'Reverse Mortgage', href: '/reverse-mortgage-journey/' },
+          { label: 'Find a Tenant', href: '/find-a-tenant-journey/' },
+          { label: 'Build a Wealth Plan', href: '/build-a-wealth-plan-journey/' },
+        ],
+      },
+      {
+        heading: 'Quick Quotes',
+        links: [
+          { label: 'Purchase Quote', href: '/purchase-inquiry/' },
+          { label: 'Refi or HELOC Quote', href: '/refinance-or-heloc-inquiry/' },
+          { label: 'Reverse Mortgage Quote', href: '/reverse-mortgage-inquiry/' },
+          { label: 'Same-Day Approval', href: '/same-day-approval/' },
+        ],
+      },
+    ],
+    feature: {
+      eyebrow: '300+ Lenders',
+      title: 'Backed by NEXA Mortgage',
+      desc: 'The #1 broker network in the U.S. — wholesale pricing, no bank overlays.',
+      cta: { label: 'Learn More', href: '/nexa-mortgage-partnership/' },
+    },
+  },
+  {
+    label: 'Your Journey',
+    id: 'mega-journey',
+    columns: [
+      {
+        heading: 'Starting Out',
+        links: [
+          { label: 'Smart Stewards', href: '/smart-stewards-journey/', num: '01' },
+          { label: 'First-Time Home Buyer', href: '/first-time-buyers-journey/', num: '02' },
+        ],
+      },
+      {
+        heading: 'Owning & Growing',
+        links: [
+          { label: 'Homeowner', href: '/homeowners-journey/', num: '03' },
+          { label: 'Senior Homeowner 55+', href: '/senior-homeowners-55-journey/', num: '04' },
+        ],
+      },
+      {
+        heading: 'Investing & Legacy',
+        links: [
+          { label: 'First-Time Investor', href: '/first-time-investors-journey/', num: '05' },
+          { label: 'Active Investor', href: '/active-investors-journey/', num: '06' },
+          { label: 'Passive Investor', href: '/passive-investors-journey/', num: '07' },
+          { label: 'Legacy Angel', href: '/legacy-angels-journey/', num: '08' },
+        ],
+      },
+    ],
+    feature: {
+      eyebrow: 'Free Download',
+      title: 'The Stairway Roadmap',
+      desc: 'An 8-ebook journey from age 18 to legacy. Real estate wealth, made simple.',
+      cta: { label: 'Get the Guide', href: 'https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c', external: true },
+    },
+  },
+  {
+    label: 'Tools',
+    id: 'mega-tools',
+    columns: [
+      {
+        heading: 'Learn',
+        links: [
+          { label: 'Guides', href: '/guides/' },
+          { label: 'Courses', href: '/courses/' },
+          { label: 'Case Studies', href: '/case-studies/' },
+          { label: 'Blog', href: '/blog/' },
+        ],
+      },
+      {
+        heading: 'Calculate',
+        links: [
+          { label: 'Loan Programs', href: '/loan-programs/' },
+          { label: 'Loan Calculators', href: '/loan-calculators/' },
+          { label: 'Home Value Report', href: '/home-value-report/' },
+          { label: 'Current Rates', href: '/current-rates/' },
+        ],
+      },
+      {
+        heading: 'Apply',
+        links: [
+          { label: 'Same-Day Approval', href: '/same-day-approval/' },
+          { label: 'Private Home Search', href: '/private-home-search/' },
+          { label: 'Discovery Quiz', href: '/discovery-quiz/' },
+        ],
+      },
+    ],
+    feature: {
+      eyebrow: 'White-Glove',
+      title: 'Concierge Service',
+      desc: 'Pre-approvals in as fast as 24 hours. Available 7 days a week.',
+      cta: { label: 'Get Approved', href: '/same-day-approval/' },
+    },
+  },
+  {
+    label: 'About',
+    id: 'mega-about',
+    columns: [
+      {
+        heading: 'Our Story',
+        links: [
+          { label: 'Founder & Philosophy', href: '/founder-philosophy-values/' },
+          { label: 'Certified Advisor', href: '/certified-stairway-advisor/' },
+          { label: 'NEXA Partnership', href: '/nexa-mortgage-partnership/' },
+          { label: 'Community & Causes', href: '/community-causes/' },
+          { label: 'Join Our Team', href: '/branches-careers-internships/' },
+        ],
+      },
+      {
+        heading: 'Clients We Serve',
+        links: [
+          { label: 'Medical Professionals', href: '/medical-professionals/' },
+          { label: 'Aviation Professionals', href: '/aviation-professionals/' },
+          { label: 'Corporate Executives', href: '/corporate-executives/' },
+          { label: 'Legal & Entrepreneurs', href: '/legal-business-entrepreneurs/' },
+          { label: 'Creative Earners', href: '/creative-earners/' },
+        ],
+      },
+      {
+        heading: 'Our Partners',
+        links: [
+          { label: 'Financial Planners', href: '/financial-planners/' },
+          { label: 'Tax & CPA Partners', href: '/accountants-underwriters/' },
+          { label: 'Attorneys & Title', href: '/attorneys-title-teams/' },
+          { label: 'Realtors', href: '/realtors-wholesalers/' },
+          { label: 'Insurance Brokers', href: '/insurance-brokers/' },
+        ],
+      },
+    ],
+    feature: {
+      eyebrow: 'Concierge',
+      title: 'Get a Local Introduction',
+      desc: 'Already working with a trusted advisor? We connect with your team seamlessly.',
+      cta: { label: 'Connect Us', href: '/get-a-local-introduction/' },
+    },
+  },
+];
+---
+
+<header class="site-header sticky top-0 z-50 bg-[var(--color-paper)]/85 backdrop-blur-md border-b border-[var(--color-bone)]">
+  <div class="container-page">
+    <div class="flex items-center justify-between gap-6 h-[70px]">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 shrink-0 group" aria-label="Stairway Mortgage">
+        <!-- Stair-step monogram -->
+        <svg viewBox="0 0 28 28" class="w-7 h-7" aria-hidden="true">
+          <rect x="2" y="20" width="6" height="6" fill="var(--color-ink)"/>
+          <rect x="9" y="13" width="6" height="13" fill="var(--color-ink)"/>
+          <rect x="16" y="6" width="6" height="20" fill="var(--color-blue)"/>
+        </svg>
+        <span class="font-display font-medium text-[19px] text-[var(--color-ink)] tracking-tight leading-none">
+          Stairway
+          <span class="text-[var(--color-mute)] font-normal">Mortgage</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-1 flex-1 justify-center" aria-label="Main">
+        {megaMenus.map((m) => (
+          <div class="nav-item relative">
+            <button
+              class="mega-trigger"
+              aria-controls={m.id}
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              {m.label}
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        ))}
+      </nav>
+
+      <!-- CTAs -->
+      <div class="hidden lg:flex items-center gap-2 shrink-0">
+        <a href="/contact-us/" class="btn btn-ghost text-[13.5px] py-2.5 px-4">Schedule Call</a>
+        <a href="/same-day-approval/" class="btn btn-green text-[13.5px] py-2.5 px-4">Apply Now</a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button class="mobile-toggle lg:hidden p-2 -mr-2" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mega-menu panels -->
+  {megaMenus.map((m) => (
+    <div class="mega-panel hidden lg:block" id={m.id} role="region" aria-label={m.label}>
+      <div class="container-page">
+        <div class="grid grid-cols-12 gap-8">
+          <div class="col-span-8 grid grid-cols-3 gap-8">
+            {m.columns.map((col) => (
+              <div>
+                <h3 class="eyebrow mb-4 pb-3 border-b border-[var(--color-bone)]">{col.heading}</h3>
+                <ul class="space-y-2.5">
+                  {col.links.map((link) => (
+                    <li>
+                      <a href={link.href} class="flex items-center gap-2.5 text-[15px] text-[var(--color-ink)] hover:text-[var(--color-blue)] transition-colors group">
+                        {link.num && <span class="card-step-num">{link.num}</span>}
+                        <span>{link.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div class="col-span-4">
+            <div class="bg-[var(--color-ink)] text-[var(--color-paper)] rounded-xl p-7 h-full flex flex-col">
+              <span class="eyebrow text-[var(--color-paper)]/70 mb-3" style="--tw-text-opacity:1;">
+                <span style="background:rgba(250,250,247,0.4)" class="!w-7 !h-px"></span>
+                {m.feature.eyebrow}
+              </span>
+              <h4 class="font-display text-2xl font-medium leading-snug mb-2 tracking-tight">{m.feature.title}</h4>
+              <p class="text-[14px] leading-relaxed text-[var(--color-paper)]/72 mb-6 flex-1">{m.feature.desc}</p>
+              <a
+                href={m.feature.cta.href}
+                target={m.feature.cta.external ? '_blank' : undefined}
+                rel={m.feature.cta.external ? 'noopener' : undefined}
+                class="inline-flex items-center gap-1.5 text-[14px] font-medium text-[var(--color-paper)] hover:gap-3 transition-all"
+              >
+                {m.feature.cta.label}
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu lg:hidden">
+    <nav class="container-page py-6 space-y-6">
+      {megaMenus.map((m) => (
+        <details class="border-b border-[var(--color-bone)] pb-4 last:border-0">
+          <summary class="font-display text-xl font-medium cursor-pointer py-2 list-none flex justify-between items-center">
+            {m.label}
+            <span class="text-[var(--color-mute)]">+</span>
+          </summary>
+          <div class="pt-3 pl-2 space-y-3">
+            {m.columns.flatMap(c => c.links).map(link => (
+              <a href={link.href} class="block text-[15px] text-[var(--color-ink)]">{link.label}</a>
+            ))}
+          </div>
+        </details>
+      ))}
+      <div class="flex gap-3 pt-4">
+        <a href="/contact-us/" class="btn btn-ghost flex-1">Schedule Call</a>
+        <a href="/same-day-approval/" class="btn btn-green flex-1">Apply Now</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-paper);
+    z-index: 40;
+    overflow-y: auto;
+  }
+  .mobile-menu.open { display: block; }
+  body.menu-open { overflow: hidden; }
+
+  .mega-panel .mega-promo-eyebrow::before {
+    background: rgba(250, 250, 247, 0.4);
+  }
+</style>

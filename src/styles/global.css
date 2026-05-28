@@ -1,0 +1,451 @@
+/* ==========================================
+   STAIRWAY MORTGAGE — Editorial Financial Design System
+   Aesthetic: Stripe-clean + editorial gravitas + financial precision
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* ----- Color tokens — warm, deliberate, NOT generic ----- */
+  --color-ink: #0A0E1A;          /* near-black with warm undertone */
+  --color-ink-light: #1A1F2E;
+  --color-paper: #FAFAF7;        /* warm off-white, not sterile */
+  --color-paper-tint: #F4F2EC;
+  --color-bone: #EAE7DE;         /* warm divider tone */
+
+  --color-blue: #1845D6;         /* electric trust blue */
+  --color-blue-deep: #0F2B8E;
+  --color-blue-tint: #E8EDFC;
+
+  --color-rust: #8B2C2C;         /* editorial accent — testimonials, callouts */
+  --color-rust-tint: #F4E8E6;
+
+  --color-green: #2E9E2E;        /* preserved brand CTA — Apply Now */
+  --color-green-deep: #1F6E20;
+
+  --color-mute: #6B7280;
+  --color-mute-light: #9CA3AF;
+
+  /* ----- Typography ----- */
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  /* ----- Spacing rhythm (8px grid) ----- */
+  --spacing-section: clamp(4rem, 9vw, 8rem);
+  --container-max: 1320px;
+  --container-prose: 720px;
+}
+
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 17px;
+  letter-spacing: -0.005em;
+  background: var(--color-paper);
+}
+
+/* ==========================================
+   DISPLAY TYPOGRAPHY (Fraunces)
+   Designed for editorial impact — never timid
+   ========================================== */
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144;
+  font-feature-settings: "ss01", "ss02";
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144;
+  font-weight: 400;
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--color-ink);
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 96;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.display-sm {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 48;
+  font-weight: 500;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  line-height: 1.25;
+  letter-spacing: -0.014em;
+}
+
+/* ==========================================
+   EDITORIAL NUMBERS — for stats, rates, KPIs
+   The defining "wow" element across the site
+   ========================================== */
+.editorial-number {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144;
+  font-weight: 300;
+  font-size: clamp(4rem, 11vw, 9rem);
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  color: var(--color-ink);
+  font-feature-settings: "lnum", "ss01";
+}
+
+.editorial-number-sm {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 96;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* Mono for precise data — rates, dates, NMLS numbers */
+.mono { font-family: var(--font-mono); font-feature-settings: "tnum", "lnum"; }
+
+/* ==========================================
+   EYEBROW — small editorial labels
+   ========================================== */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-mute);
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--color-ink);
+}
+
+.eyebrow-blue { color: var(--color-blue); }
+.eyebrow-blue::before { background: var(--color-blue); }
+
+.eyebrow-rust { color: var(--color-rust); }
+.eyebrow-rust::before { background: var(--color-rust); }
+
+/* ==========================================
+   BODY TEXT
+   ========================================== */
+.lede {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.55;
+  letter-spacing: -0.008em;
+  color: var(--color-ink-light);
+}
+
+.prose-editorial p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.prose-editorial p:last-child { margin-bottom: 0; }
+
+/* ==========================================
+   BUTTONS — refined, deliberate, not generic
+   ========================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  border-radius: 8px;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn-primary {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border-color: var(--color-ink);
+}
+.btn-primary:hover {
+  background: var(--color-ink-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px -8px rgba(10, 14, 26, 0.35);
+}
+
+.btn-green {
+  background: var(--color-green);
+  color: white;
+  border-color: var(--color-green);
+}
+.btn-green:hover {
+  background: var(--color-green-deep);
+  border-color: var(--color-green-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px -8px rgba(46, 158, 46, 0.45);
+}
+
+.btn-blue {
+  background: var(--color-blue);
+  color: white;
+  border-color: var(--color-blue);
+}
+.btn-blue:hover {
+  background: var(--color-blue-deep);
+  border-color: var(--color-blue-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px -8px rgba(24, 69, 214, 0.45);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+.btn-ghost:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.btn-link {
+  background: transparent;
+  color: var(--color-ink);
+  border: none;
+  padding: 0.5rem 0;
+  position: relative;
+}
+.btn-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--color-ink);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+.btn-link:hover::after {
+  transform-origin: left;
+  transform: scaleX(1.05);
+}
+
+.btn-arrow {
+  position: relative;
+  padding-right: 2rem;
+}
+.btn-arrow::after {
+  content: '→';
+  position: absolute;
+  right: 1.25rem;
+  transition: transform 0.2s;
+}
+.btn-arrow:hover::after { transform: translateX(3px); }
+
+/* ==========================================
+   CARDS — refined, editorial, not bubbly
+   ========================================== */
+.card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-bone);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  border-color: var(--color-ink);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -16px rgba(10, 14, 26, 0.18);
+}
+
+.card-step-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-mute);
+}
+
+/* ==========================================
+   LINKS — refined underline animation
+   ========================================== */
+.link-editorial {
+  color: var(--color-ink);
+  position: relative;
+  text-decoration: none;
+  background-image: linear-gradient(var(--color-ink), var(--color-ink));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.3s ease;
+}
+.link-editorial:hover {
+  background-size: 0% 1px;
+  background-position: 100% 100%;
+}
+
+/* ==========================================
+   SCROLL REVEAL — restrained, staggered
+   ========================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+   SECTIONS / CONTAINERS
+   ========================================== */
+.section { padding-block: var(--spacing-section); }
+.section-tight { padding-block: clamp(3rem, 6vw, 5rem); }
+
+.container-page {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.container-prose {
+  max-width: var(--container-prose);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* ==========================================
+   DIVIDERS — refined hairlines
+   ========================================== */
+.hairline { height: 1px; background: var(--color-bone); border: none; }
+.hairline-ink { background: var(--color-ink); height: 1px; border: none; }
+
+/* ==========================================
+   THEME — DARK SECTION
+   ========================================== */
+.section-dark {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.section-dark .eyebrow { color: var(--color-paper); opacity: 0.7; }
+.section-dark .eyebrow::before { background: var(--color-paper); opacity: 0.5; }
+.section-dark .lede { color: rgba(250, 250, 247, 0.78); }
+
+/* ==========================================
+   MEGA-MENU
+   ========================================== */
+.mega-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.65rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: -0.005em;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.mega-trigger:hover, .mega-trigger[aria-expanded="true"] {
+  background: var(--color-paper-tint);
+}
+.mega-trigger svg { transition: transform 0.2s; }
+.mega-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+.mega-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-bone);
+  box-shadow: 0 24px 48px -24px rgba(10, 14, 26, 0.12);
+  padding: 2.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  z-index: 60;
+}
+.mega-panel.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 1024px) {
+  .display-xl { font-size: clamp(2.5rem, 11vw, 4.5rem); }
+  .editorial-number { font-size: clamp(3rem, 14vw, 6rem); }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .section { padding-block: 3.5rem; }
+}
+
+/* ==========================================
+   UTILITIES
+   ========================================== */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* Reduce motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}

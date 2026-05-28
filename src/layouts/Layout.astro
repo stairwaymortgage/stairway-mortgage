@@ -1,0 +1,204 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Florida's #1 trusted mortgage broker with 300+ lenders. Leverage wisely. Grow wealthy.",
+  canonical,
+  ogImage = '/og-default.jpg'
+} = Astro.props;
+
+const siteUrl = 'https://stairwaymortgage.com';
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="Stairway Mortgage" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:creator" content="@mortgagemanjim" />
+
+  <!-- Font preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- GA4 (preserved from WP snippet 46878) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKZV58GRQK"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JKZV58GRQK');
+  </script>
+
+  <!-- Schema.org LocalBusiness for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MortgageBroker",
+    "name": "Stairway Mortgage",
+    "alternateName": "Jim Blackburn Mortgage",
+    "url": "https://stairwaymortgage.com",
+    "logo": "https://stairwaymortgage.com/logo.svg",
+    "description": "Florida's #1 trusted mortgage broker with 300+ lenders. Division of NEXA Mortgage LLC.",
+    "telephone": "+1-954-255-6680",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "5559 S Sossaman Rd, Bldg #1 Ste #101",
+      "addressLocality": "Mesa",
+      "addressRegion": "AZ",
+      "postalCode": "85212",
+      "addressCountry": "US"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Jim Blackburn"
+    },
+    "areaServed": "United States",
+    "slogan": "Leverage wisely. Grow wealthy."
+  })} />
+</head>
+<body>
+  <Header />
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <Footer />
+
+  <!-- Lead Router — GHL LO attribution (preserved verbatim from WP snippet 46136) -->
+  <script is:inline>
+    (function() {
+      function qs(name){ return new URLSearchParams(window.location.search).get(name); }
+      function setCookie(n,v,d){ var e=""; if(d){ var t=new Date(); t.setTime(t.getTime()+d*24*60*60*1000); e="; expires="+t.toUTCString(); } document.cookie=n+"="+(v||"")+e+"; path=/"; }
+      function getCookie(n){ var ne=n+"="; var ca=document.cookie.split(';'); for(var i=0;i<ca.length;i++){ var c=ca[i].trim(); if(c.indexOf(ne)===0) return c.substring(ne.length,c.length); } return null; }
+      var loFromUrl = qs('lo_id');
+      var loFromDom = (function(){ var el = document.getElementById('lo-meta'); return el && el.dataset ? el.dataset.loId : null; })();
+      var loId = loFromUrl || loFromDom || getCookie('lo_id');
+      if (loId) setCookie('lo_id', loId, 180);
+
+      function appendParamsToGhlForms(){
+        var landing = window.location.href;
+        var scripts = document.querySelectorAll('script[src*="leadconnectorhq.com/widget"], script[src*="forms.stairwaymortgage.com/widget"], iframe[src*="forms.stairwaymortgage.com/widget"]');
+        scripts.forEach(function(s){
+          try {
+            var u = new URL(s.src);
+            if (loId) u.searchParams.set('lo_id', loId);
+            u.searchParams.set('landing_page', landing);
+            if (s.src !== u.toString()) s.src = u.toString();
+          } catch(e) {}
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', appendParamsToGhlForms);
+      } else { appendParamsToGhlForms(); }
+    })();
+  </script>
+
+  <!-- Scroll reveal observer (restrained, performant) -->
+  <script is:inline>
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+    }
+  </script>
+
+  <!-- Mega-menu interaction -->
+  <script is:inline>
+    document.querySelectorAll('.mega-trigger').forEach(trigger => {
+      const panel = document.getElementById(trigger.getAttribute('aria-controls'));
+      let timeout;
+      const wrap = trigger.closest('.nav-item');
+
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const open = trigger.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.mega-trigger').forEach(t => {
+          t.setAttribute('aria-expanded', 'false');
+          const p = document.getElementById(t.getAttribute('aria-controls'));
+          if (p) p.classList.remove('open');
+        });
+        if (!open) {
+          trigger.setAttribute('aria-expanded', 'true');
+          panel?.classList.add('open');
+        }
+      });
+
+      wrap?.addEventListener('mouseenter', () => {
+        clearTimeout(timeout);
+        if (window.innerWidth < 1024) return;
+        document.querySelectorAll('.mega-trigger').forEach(t => {
+          if (t !== trigger) {
+            t.setAttribute('aria-expanded', 'false');
+            const p = document.getElementById(t.getAttribute('aria-controls'));
+            if (p) p.classList.remove('open');
+          }
+        });
+        trigger.setAttribute('aria-expanded', 'true');
+        panel?.classList.add('open');
+      });
+      wrap?.addEventListener('mouseleave', () => {
+        timeout = setTimeout(() => {
+          trigger.setAttribute('aria-expanded', 'false');
+          panel?.classList.remove('open');
+        }, 220);
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item')) {
+        document.querySelectorAll('.mega-trigger').forEach(t => {
+          t.setAttribute('aria-expanded', 'false');
+          const p = document.getElementById(t.getAttribute('aria-controls'));
+          if (p) p.classList.remove('open');
+        });
+      }
+    });
+
+    // Mobile menu
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    mobileToggle?.addEventListener('click', () => {
+      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', !expanded);
+      document.querySelector('.mobile-menu')?.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
+    });
+  </script>
+</body>
+</html>

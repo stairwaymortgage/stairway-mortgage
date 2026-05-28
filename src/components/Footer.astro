@@ -1,0 +1,159 @@
+---
+const year = new Date().getFullYear();
+
+const legal = [
+  { label: 'Privacy Policy', href: '/privacy/' },
+  { label: 'California Privacy', href: '/california-privacy/' },
+  { label: 'Oregon Privacy', href: '/oregon-privacy/' },
+  { label: 'Terms of Use', href: '/terms/' },
+  { label: 'State Licensing', href: '/state-licensing/' },
+  { label: 'Texas Disclosure', href: '/texas-disclosure/' },
+];
+
+const quickLinks = [
+  { label: 'Loan Programs', href: '/loan-programs/' },
+  { label: 'Calculators', href: '/loan-calculators/' },
+  { label: 'Case Studies', href: '/case-studies/' },
+  { label: 'Current Rates', href: '/current-rates/' },
+  { label: 'Home Value Report', href: '/home-value-report/' },
+  { label: 'Contact', href: '/contact-us/' },
+];
+
+const story = [
+  { label: 'Founder & Philosophy', href: '/founder-philosophy-values/' },
+  { label: 'NEXA Partnership', href: '/nexa-mortgage-partnership/' },
+  { label: 'Certified Advisor', href: '/certified-stairway-advisor/' },
+  { label: 'Community & Causes', href: '/community-causes/' },
+  { label: 'Careers', href: '/branches-careers-internships/' },
+  { label: 'Get a Local Intro', href: '/get-a-local-introduction/' },
+];
+---
+
+<!-- Pre-footer CTA bar -->
+<section class="section-tight border-t border-[var(--color-bone)] bg-[var(--color-paper-tint)]">
+  <div class="container-page">
+    <div class="grid md:grid-cols-[1.6fr_1fr] gap-10 items-end">
+      <div class="reveal">
+        <span class="eyebrow mb-5">An 8-ebook journey · from 18 to legacy</span>
+        <h2 class="display-lg mb-3">
+          Download <em class="italic font-light">The Stairway Roadmap.</em>
+        </h2>
+        <p class="lede max-w-xl">
+          Map your real estate journey from age 18 through legacy — one ebook for every chapter. Free.
+        </p>
+      </div>
+      <div class="reveal flex md:justify-end">
+        <a
+          href="https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary btn-arrow text-base"
+        >
+          Get the Guide
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="section-dark">
+  <div class="container-page section-tight">
+    <div class="grid grid-cols-12 gap-10">
+
+      <!-- Brand / Address -->
+      <div class="col-span-12 md:col-span-5 lg:col-span-4">
+        <div class="flex items-center gap-2 mb-5">
+          <svg viewBox="0 0 28 28" class="w-8 h-8" aria-hidden="true">
+            <rect x="2" y="20" width="6" height="6" fill="var(--color-paper)"/>
+            <rect x="9" y="13" width="6" height="13" fill="var(--color-paper)"/>
+            <rect x="16" y="6" width="6" height="20" fill="var(--color-blue)"/>
+          </svg>
+          <span class="font-display font-medium text-2xl text-[var(--color-paper)] tracking-tight">
+            Stairway <span class="opacity-60 font-normal">Mortgage</span>
+          </span>
+        </div>
+
+        <p class="display-sm mb-6 text-[var(--color-paper)]">
+          <em class="font-light italic">Leverage wisely. <br/>Grow wealthy.</em>
+        </p>
+
+        <div class="text-[14px] leading-relaxed opacity-72 space-y-3">
+          <p class="font-medium text-[var(--color-paper)] not-italic">Corporate HQ</p>
+          <p>
+            NEXA Mortgage LLC, dba Stairway Mortgage<br/>
+            5559 S Sossaman Rd, Bldg #1 Ste #101<br/>
+            Mesa, AZ 85212<br/>
+            <span class="mono text-[13px] opacity-80">NMLS #1660690 · AZMB-0944059</span>
+          </p>
+          <p>
+            <a href="tel:+19542556680" class="hover:underline text-[var(--color-paper)] mono text-[15px]">
+              (954) 255-6680
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-span-6 md:col-span-3 lg:col-span-2">
+        <h5 class="eyebrow mb-5">Quick Links</h5>
+        <ul class="space-y-2.5">
+          {quickLinks.map(l => (
+            <li><a href={l.href} class="text-[14.5px] opacity-72 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Our Story -->
+      <div class="col-span-6 md:col-span-4 lg:col-span-3">
+        <h5 class="eyebrow mb-5">Our Story</h5>
+        <ul class="space-y-2.5">
+          {story.map(l => (
+            <li><a href={l.href} class="text-[14.5px] opacity-72 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Legal + Social -->
+      <div class="col-span-12 md:col-span-12 lg:col-span-3">
+        <h5 class="eyebrow mb-5">Legal</h5>
+        <ul class="space-y-2.5 mb-8">
+          {legal.map(l => (
+            <li><a href={l.href} class="text-[14.5px] opacity-72 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+
+        <h5 class="eyebrow mb-4">Connect</h5>
+        <div class="flex gap-2">
+          <a href="https://www.facebook.com/mortgagemanjim" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9.1 22.7v-8H6.6V11h2.5V9.4c0-4.1 1.8-6 5.8-6 .4 0 1 .04 1.5.1.5.06.9.15 1.1.2v3.3a8.6 8.6 0 0 0-.7-.04 26.8 26.8 0 0 0-.7 0c-.7 0-1.3.1-1.7.3-.3.16-.5.36-.7.6-.3.5-.4 1-.4 1.8V11h3.9l-.4 2.1-.3 1.6h-3.2v8.2c5.2-.6 9.3-5 9.3-10.2C24 5.4 18.6 0 12 0S0 5.4 0 12c0 5.6 3.9 10.3 9.1 11.6z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/jimblackburn" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.5h-3.6V15c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V20.5h-3.6V9h3.4v1.6h.05a3.74 3.74 0 0 1 3.4-1.85c3.6 0 4.3 2.4 4.3 5.45zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13H3.6V9H7zM22.2 0H1.77C.8 0 0 .77 0 1.7v20.6C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.93-.8-1.7-1.8-1.7z"/></svg>
+          </a>
+          <a href="https://twitter.com/mortgagemanjim" target="_blank" rel="noopener" aria-label="X" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2.25h3.3l-7.2 8.26 8.5 11.24h-6.65L11 14.93 4.99 21.75H1.68l7.7-8.84L1.25 2.25H8.1l4.7 6.23zM17 19.77h1.8L7.1 4.1H5.1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/stairwaymortgage" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 3.3.15 4.8 1.7 4.9 4.9.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.9 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.2 15.6 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.23 1.66-4.77 4.92-4.92C8.42 2.16 8.8 2.15 12 2.15zm0-2.15C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84c-3.4 0-6.16 2.76-6.16 6.16s2.76 6.16 6.16 6.16 6.16-2.76 6.16-6.16C18.16 8.6 15.4 5.84 12 5.84zm0 10.16c-2.21 0-4-1.79-4-4s1.8-4 4-4 4 1.79 4 4-1.79 4-4 4zM18.4 4.15c-.8 0-1.44.65-1.44 1.44s.65 1.44 1.44 1.44a1.44 1.44 0 0 0 0-2.88z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@stairwaymortgage" target="_blank" rel="noopener" aria-label="YouTube" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.13C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.07 0 12 0 12s0 3.93.5 5.8a3 3 0 0 0 2.1 2.13c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.13C24 15.93 24 12 24 12s0-3.93-.5-5.8zm-14 9.36V8.44L15.8 12z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom strip -->
+  <div class="border-t border-[var(--color-paper)]/10">
+    <div class="container-page py-7">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 text-[12.5px] opacity-55">
+        <p class="leading-relaxed">
+          © {year} Stairway Mortgage · A division of NEXA Mortgage LLC · Licensed in 48 states ·
+          <a href="/state-licensing/" class="underline hover:opacity-100">View licensing</a> · Equal Housing Lender
+        </p>
+        <p class="mono">@mortgagemanjim</p>
+      </div>
+    </div>
+  </div>
+</footer>
