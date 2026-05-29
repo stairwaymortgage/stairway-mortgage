@@ -7,7 +7,7 @@ const trustNumbers = [
   { value: 624,   suffix: '',   label: 'Verified reviews' },
   { value: 300,   suffix: '+',  label: 'Lender network' },
   { value: 48,    suffix: '',   label: 'States (NEXA)' },
-  { value: 19,    suffix: '',   label: 'Day fastest close' },
+  { value: 19,    suffix: '',   label: 'Days — fastest close' },
 ];
 
 const steps = [
@@ -44,12 +44,14 @@ const steps = [
 ];
 
 const programs = [
-  { id: 'fha',    name: 'FHA',              line: 'Low down, flexible credit',      income: ['w2','self','mixed'], down: ['low'],       goal: ['live'] },
-  { id: 'va',     name: 'VA',               line: 'Zero down for veterans',         income: ['w2'],               down: ['low','20'],   goal: ['live'] },
-  { id: 'usda',   name: 'USDA',             line: 'Zero down, rural & suburban',    income: ['w2'],               down: ['low'],        goal: ['live'] },
-  { id: 'conv',   name: 'Conventional',     line: 'Standard rates, flexible terms', income: ['w2','mixed'],       down: ['20'],         goal: ['live','invest'] },
-  { id: 'jumbo',  name: 'Jumbo',            line: 'High-value properties',          income: ['w2','self','mixed'],down: ['20'],          goal: ['live','invest'] },
-  { id: 'flex',   name: 'Flexible Income',  line: 'Bank statements, assets, 1099',  income: ['self','mixed'],     down: ['low','20'],   goal: ['live','invest'] },
+  { id: 'fha',    name: 'FHA',              line: 'Low down, flexible credit',       income: ['w2'],          down: ['low'],      goal: ['live'],          prop: ['existing','new','reno'] },
+  { id: 'va',     name: 'VA',               line: 'Zero down for veterans',          income: ['w2'],          down: ['low','20'], goal: ['live'],          prop: ['existing','new','reno'] },
+  { id: 'usda',   name: 'USDA',             line: 'Zero down, rural & suburban',     income: ['w2'],          down: ['low'],      goal: ['live'],          prop: ['existing','new'] },
+  { id: 'conv',   name: 'Conventional',     line: 'Standard rates, flexible terms',  income: ['w2'],          down: ['low','20'], goal: ['live','invest'], prop: ['existing','new','reno'] },
+  { id: 'jumbo',  name: 'Jumbo',            line: 'High-value properties',           income: ['w2'],          down: ['20'],       goal: ['live','invest'], prop: ['existing','new'] },
+  { id: 'doctor', name: 'Doctor Loan',      line: 'For physicians, low or zero down',income: ['w2'],          down: ['low','20'], goal: ['live'],          prop: ['existing','new'] },
+  { id: 'flex',   name: 'Flexible Income',  line: 'Bank statements, assets, 1099',   income: ['self','mixed'],down: ['low','20'], goal: ['live','invest'], prop: ['existing','new','reno'] },
+  { id: 'construction', name: 'Construction', line: 'One loan, lot through move-in', income: ['w2','self','mixed'], down: ['20'], goal: ['live'],          prop: ['new'] },
 ];
 
 const mistakes = [
@@ -105,8 +107,8 @@ const reviews = [
         </h1>
 
         <div class="flex flex-wrap gap-3 justify-center mb-12">
-          <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-6 py-3.5">See My Options</a>
-          <a href="/contact-us/" class="btn btn-ghost text-base px-6 py-3.5">Talk to Jim</a>
+          <a href="/contact-us/" class="btn btn-primary btn-arrow text-base px-6 py-3.5">Talk to Jim</a>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
         </div>
       </div>
 
@@ -324,6 +326,14 @@ const reviews = [
             <button class="matcher-pill" data-val="invest">Invest</button>
           </div>
         </div>
+        <div class="matcher-filter">
+          <label class="matcher-filter__label">Property</label>
+          <div class="matcher-filter__options" data-filter="prop">
+            <button class="matcher-pill is-active" data-val="existing">Existing home</button>
+            <button class="matcher-pill" data-val="new">New construction</button>
+            <button class="matcher-pill" data-val="reno">Renovation</button>
+          </div>
+        </div>
       </div>
 
       <!-- Program cards -->
@@ -332,7 +342,8 @@ const reviews = [
           <div class="matcher-card card reveal" data-program={p.id}
             data-income={JSON.stringify(p.income)}
             data-down={JSON.stringify(p.down)}
-            data-goal={JSON.stringify(p.goal)}>
+            data-goal={JSON.stringify(p.goal)}
+            data-prop={JSON.stringify(p.prop)}>
             <h4 class="font-display text-xl font-medium mb-1">{p.name}</h4>
             <p class="text-[14px] text-[var(--color-mute)]">{p.line}</p>
             <div class="matcher-card__match" aria-hidden="true">Match</div>
@@ -369,7 +380,7 @@ const reviews = [
           <span class="stat-band__label">Loans closed</span>
         </div>
         <div class="stat-band__item">
-          <span class="stat-band__num font-display" data-countup="19" data-suffix="-day">0</span>
+          <span class="stat-band__num font-display" data-countup="19" data-suffix=" days">0</span>
           <span class="stat-band__label">Fastest close</span>
         </div>
         <div class="stat-band__item">
@@ -756,8 +767,19 @@ const reviews = [
   }
   .stepper__num { font-size: 11px; opacity: 0.6; }
   .stepper__title { font-size: 15px; font-weight: 500; }
-  .stepper__panel { display: none; }
-  .stepper__panel.is-active { display: block; }
+  .stepper__panel {
+    display: none;
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .stepper__panel.is-active {
+    display: block;
+    animation: stepperFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes stepperFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
   .stepper__panel-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1020,6 +1042,7 @@ const reviews = [
     .hero-strike { text-decoration: line-through; text-decoration-color: var(--color-rust); opacity: 0.4; }
     .hero-typed { opacity: 1; transform: none; }
     .stepper__pulse { animation: none; }
+    .stepper__panel.is-active { animation: none; opacity: 1; transform: none; }
     .q-chart__bar { transition: none; }
     .stairway-step__bar { transition: none; }
     .donut-seg { transition: none; }
@@ -1320,15 +1343,15 @@ const reviews = [
 
   /* ── Stepper — auto-advance ── */
   var stepper = document.getElementById('stepper');
-  var panels = document.getElementById('stepper-panels');
+  var panelsWrap = document.getElementById('stepper-panels');
   var fill = document.getElementById('stepper-fill');
-  if (stepper && panels) {
+  if (stepper && panelsWrap) {
     var tabs = stepper.querySelectorAll('.stepper__tab');
-    var panelEls = panels.querySelectorAll('.stepper__panel');
+    var panelEls = panelsWrap.querySelectorAll('.stepper__panel');
     var current = 0;
     var total = tabs.length;
-    var interval = 5000;
-    var timer;
+    var stepInterval = 6500;
+    var stepTimer = null;
 
     function goTo(i) {
       current = i;
@@ -1343,43 +1366,47 @@ const reviews = [
     }
 
     function advance() { goTo((current + 1) % total); }
-    function startTimer() { timer = setInterval(advance, interval); }
-    function stopTimer() { clearInterval(timer); }
+    function startTimer() { if (stepTimer) clearInterval(stepTimer); stepTimer = setInterval(advance, stepInterval); }
+    function stopTimer() { if (stepTimer) { clearInterval(stepTimer); stepTimer = null; } }
 
     tabs.forEach(function(t, i) {
       t.addEventListener('click', function() { stopTimer(); goTo(i); startTimer(); });
     });
 
     stepper.addEventListener('mouseenter', stopTimer);
-    stepper.addEventListener('mouseleave', startTimer);
+    stepper.addEventListener('mouseleave', function() { if (!prefersReduced) startTimer(); });
     if (!prefersReduced) startTimer();
   }
 
   /* ── Program matcher ── */
-  var filters = document.getElementById('matcher-filters');
-  var grid = document.getElementById('matcher-grid');
-  if (filters && grid) {
-    var state = { income: 'w2', down: 'low', goal: 'live' };
+  var matcherFilters = document.getElementById('matcher-filters');
+  var matcherGrid = document.getElementById('matcher-grid');
+  if (matcherFilters && matcherGrid) {
+    var mState = { income: 'w2', down: 'low', goal: 'live', prop: 'existing' };
 
     function updateMatcher() {
-      var cards = grid.querySelectorAll('.matcher-card');
+      var cards = matcherGrid.querySelectorAll('.matcher-card');
       cards.forEach(function(card) {
         var incomeList = JSON.parse(card.dataset.income);
         var downList = JSON.parse(card.dataset.down);
         var goalList = JSON.parse(card.dataset.goal);
-        var match = incomeList.includes(state.income) && downList.includes(state.down) && goalList.includes(state.goal);
+        var propList = JSON.parse(card.dataset.prop || '["existing","new","reno"]');
+        var match = incomeList.includes(mState.income)
+          && downList.includes(mState.down)
+          && goalList.includes(mState.goal)
+          && propList.includes(mState.prop);
         card.classList.toggle('is-dimmed', !match);
       });
     }
 
-    filters.addEventListener('click', function(e) {
+    matcherFilters.addEventListener('click', function(e) {
       var pill = e.target.closest('.matcher-pill');
       if (!pill) return;
       var filterGroup = pill.parentElement;
       var filterType = filterGroup.dataset.filter;
       filterGroup.querySelectorAll('.matcher-pill').forEach(function(p) { p.classList.remove('is-active'); });
       pill.classList.add('is-active');
-      state[filterType] = pill.dataset.val;
+      mState[filterType] = pill.dataset.val;
       updateMatcher();
     });
 
