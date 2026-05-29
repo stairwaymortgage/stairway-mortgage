@@ -1,16 +1,1134 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+/* ── Data ─────────────────────────────────────────────────── */
+const trustNumbers = [
+  { value: 5.0,   suffix: '★',  label: 'Client rating' },
+  { value: 624,   suffix: '',   label: 'Verified reviews' },
+  { value: 300,   suffix: '+',  label: 'Lender network' },
+  { value: 48,    suffix: '',   label: 'States (NEXA)' },
+  { value: 19,    suffix: '',   label: 'Days — fastest close' },
+];
+
+const mistakes = [
+  { front: 'Chasing rate alone',               back: 'Break-even matters more than the number' },
+  { front: 'Ignoring the break-even point',     back: 'We calculate it before you decide' },
+  { front: 'Resetting to 30 years',             back: 'We show 15, 20, and 25-year options too' },
+  { front: 'Skipping the total-cost math',      back: 'Lower payment does not mean lower lifetime cost' },
+  { front: 'Not comparing enough lenders',      back: '300+ lenders compete for your rate' },
+];
+
+const reviews = [
+  { text: "Had a great experience working with Jim and team on a refi. Was able to do virtually everything by email and text. When an issue arose, Jim made sure it got escalated and handled properly.", name: 'Christopher Tragasz', title: 'Senior Branch Manager, JP Morgan Chase', loc: 'Illinois', source: 'Angi' },
+  { text: "Jim worked with us to secure the best rate — not only reducing our 30 to a 15, but taking cash out for a home renovation and consolidating our first and second mortgage into one. He provided many options balancing cash-out limits with the best rates.", name: 'Brian Robertson', title: 'President, Circadia Group', loc: 'New Jersey', source: 'Zillow' },
+  { text: "We had a difficult jumbo loan scenario that most mortgage lenders were unable to close. Not only did Jim Blackburn's mortgage team close our refinance, but now we are able to pursue the purchase of our dream home in the Florida Keys.", name: 'Chad Brocato', title: 'Jumbo/Complex Refi', loc: 'Florida', source: 'Google' },
+  { text: "Had a great experience working with Jim and team on a refi. Was able to do virtually everything by email and text.", name: 'Ashwin Pandith', title: 'Director, Bank of America', loc: 'New York', source: 'Google' },
+];
 ---
-<Layout title="Refinance or HELOC — Stairway Mortgage" description="Lower your rate or unlock your home equity with 300+ lenders competing.">
-  <section class="section">
-    <div class="container-page text-center max-w-2xl mx-auto">
-      <span class="eyebrow eyebrow-blue mb-5">How We Serve</span>
-      <h1 class="display-lg mt-5 mb-6">Refinance or HELOC</h1>
-      <p class="lede mb-10">This page is being built. Talk to Jim to get started today.</p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
-        <a href="/contact-us/" class="btn btn-ghost">Talk to Jim</a>
+
+<Layout title="Refinance or HELOC — Stairway Mortgage" description="Lower your rate or unlock your home equity. 300+ lenders competing for your loan. Break-even calculated before you decide.">
+
+  <!-- ═══════════════════════════════════════════════════════
+       1. HERO — The Reframe
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section relative overflow-hidden hero-wash" data-climb-section>
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">How We Serve · Refinance or HELOC</span>
+
+        <h1 class="display-xl mt-6 mb-8">
+          The question isn't <em>can</em> you refinance — it's <em class="italic text-[var(--color-blue)]">should</em> you, and <em class="italic text-[var(--color-blue)]">when</em>.
+        </h1>
+
+        <div class="flex flex-wrap gap-3 justify-center mb-12">
+          <a href="/same-day-approval/" class="btn btn-primary btn-arrow text-base px-6 py-3.5">See My Options</a>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
+        </div>
+      </div>
+
+      <!-- Trust ribbon with count-up -->
+      <div class="trust-ribbon reveal" style="transition-delay:200ms;">
+        {trustNumbers.map((t) => (
+          <div class="trust-ribbon__item">
+            <span class="trust-ribbon__num font-display" data-countup={t.value} data-suffix={t.suffix}>0{t.suffix}</span>
+            <span class="trust-ribbon__label">{t.label}</span>
+          </div>
+        ))}
+        <div class="trust-ribbon__nmls">
+          <span class="mono">NMLS #1072866</span>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       2. TWO-PATH SPLIT
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section-tight bg-[var(--color-paper-tint)]" data-climb-section>
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">Choose your path</span>
+        <h2 class="display-lg mt-5">What's your goal?</h2>
+      </div>
+
+      <div class="path-toggle reveal" id="path-toggle" style="transition-delay:100ms;">
+        <button class="path-card is-active" data-path="refi" aria-pressed="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0v-6a1 1 0 011-1h2a1 1 0 011 1v6m-6 0h6"/>
+          </svg>
+          <span class="path-card__title font-display">Lower my payment</span>
+          <span class="path-card__desc">Reduce your rate, shorten your term, or both.</span>
+        </button>
+        <button class="path-card" data-path="heloc" aria-pressed="false">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="path-card__title font-display">Tap my equity</span>
+          <span class="path-card__desc">Access what your home has earned — renovate, consolidate, invest.</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       3. SIGNATURE TOOL — Break-even / Equity Calculator
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section section-dark" data-climb-section>
+    <div class="container-page">
+
+      <!-- Refi Calculator -->
+      <div class="refi-calc" id="refi-calc">
+        <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+          <span class="eyebrow eyebrow-rust mb-5 text-[var(--color-paper)]">Break-even calculator</span>
+          <h2 class="display-lg mt-5 text-[var(--color-paper)]">See if a lower rate <em class="italic font-light">actually saves</em>.</h2>
+        </div>
+
+        <div class="calc-grid reveal" style="transition-delay:100ms;">
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <label class="calc-label" for="refi-balance">Current balance</label>
+              <input class="calc-input" id="refi-balance" type="text" value="$350,000" inputmode="numeric" />
+            </div>
+            <div class="calc-field">
+              <label class="calc-label" for="refi-current-rate">Current rate</label>
+              <input class="calc-input" id="refi-current-rate" type="text" value="7.25%" inputmode="decimal" />
+            </div>
+            <div class="calc-field">
+              <label class="calc-label" for="refi-new-rate">New rate</label>
+              <input class="calc-input" id="refi-new-rate" type="text" value="6.25%" inputmode="decimal" />
+            </div>
+            <button class="btn btn-blue btn-arrow calc-btn" id="refi-calc-btn" type="button">Calculate</button>
+          </div>
+          <div class="calc-outputs">
+            <div class="calc-card">
+              <span class="calc-card__num font-display" id="refi-monthly">$241</span>
+              <span class="calc-card__label">Monthly savings</span>
+            </div>
+            <div class="calc-card">
+              <span class="calc-card__num font-display" id="refi-breakeven">25</span>
+              <span class="calc-card__label">Months to break even</span>
+            </div>
+            <div class="calc-card">
+              <span class="calc-card__num font-display" id="refi-total">$66,108</span>
+              <span class="calc-card__label">Total savings (remaining term)</span>
+            </div>
+          </div>
+        </div>
+        <p class="calc-disclaimer mono">Estimate only. Not a commitment to lend. Assumes 30-year term, $6,000 closing costs.</p>
+      </div>
+
+      <!-- HELOC / Equity Calculator -->
+      <div class="refi-calc" id="heloc-calc" style="display:none;">
+        <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+          <span class="eyebrow eyebrow-rust mb-5 text-[var(--color-paper)]">Equity calculator</span>
+          <h2 class="display-lg mt-5 text-[var(--color-paper)]">See what you can <em class="italic font-light">access</em>.</h2>
+        </div>
+
+        <div class="calc-grid reveal" style="transition-delay:100ms;">
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <label class="calc-label" for="heloc-value">Home value</label>
+              <input class="calc-input" id="heloc-value" type="text" value="$550,000" inputmode="numeric" />
+            </div>
+            <div class="calc-field">
+              <label class="calc-label" for="heloc-balance">Current balance</label>
+              <input class="calc-input" id="heloc-balance" type="text" value="$320,000" inputmode="numeric" />
+            </div>
+            <button class="btn btn-blue btn-arrow calc-btn" id="heloc-calc-btn" type="button">Calculate</button>
+          </div>
+          <div class="calc-outputs">
+            <div class="calc-card">
+              <span class="calc-card__num font-display" id="heloc-equity">$230,000</span>
+              <span class="calc-card__label">Total equity</span>
+            </div>
+            <div class="calc-card">
+              <span class="calc-card__num font-display" id="heloc-available">$120,000</span>
+              <span class="calc-card__label">Available to access</span>
+            </div>
+          </div>
+          <!-- Equity bar -->
+          <div class="equity-bar-wrap reveal" style="transition-delay:200ms;">
+            <div class="equity-bar">
+              <div class="equity-bar__mortgage" id="eq-mortgage" style="width:58.2%">
+                <span class="equity-bar__text">Mortgage</span>
+              </div>
+              <div class="equity-bar__available" id="eq-available" style="width:21.8%">
+                <span class="equity-bar__text">Available</span>
+              </div>
+              <div class="equity-bar__reserved" id="eq-reserved" style="width:20%">
+                <span class="equity-bar__text">20% reserve</span>
+              </div>
+            </div>
+            <div class="equity-bar__legend">
+              <span><i style="background:var(--color-mute)"></i> Mortgage owed</span>
+              <span><i style="background:var(--color-blue)"></i> Available to access</span>
+              <span><i style="background:var(--color-bone)"></i> 20% equity reserve</span>
+            </div>
+          </div>
+        </div>
+        <p class="calc-disclaimer mono">Estimate only. Not a commitment to lend. Based on 80% loan-to-value.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       4. THREE QUESTIONS — Mini infographics
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section-tight bg-[var(--color-paper)]" data-climb-section>
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">Three questions to ask first</span>
+        <h2 class="display-lg mt-5">Before you refinance — <em class="italic font-light">think this through</em>.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-px bg-[var(--color-bone)] rounded-2xl overflow-hidden border border-[var(--color-bone)]">
+
+        <!-- Q1: How long will you stay? -->
+        <div class="bg-[var(--color-paper)] p-8 lg:p-10 reveal">
+          <span class="eyebrow mb-6">Question 01</span>
+          <h3 class="display-sm mt-4 mb-6">How long will you stay?</h3>
+          <div class="breakeven-viz" aria-label="Break-even timeline — savings start after month 25">
+            <div class="breakeven-viz__bar-wrap">
+              <div class="breakeven-viz__bar breakeven-viz__bar--cost" style="width:35%">
+                <span class="breakeven-viz__label">Costs</span>
+              </div>
+            </div>
+            <div class="breakeven-viz__bar-wrap">
+              <div class="breakeven-viz__bar breakeven-viz__bar--save" style="width:75%">
+                <span class="breakeven-viz__label">Savings over 5 years</span>
+              </div>
+            </div>
+            <div class="breakeven-viz__marker" style="left:35%">
+              <span class="breakeven-viz__tag mono">Break even</span>
+            </div>
+          </div>
+          <p class="text-[13px] text-[var(--color-mute)] mt-4">Stay past break-even and savings grow every month.</p>
+        </div>
+
+        <!-- Q2: What's your equity doing? -->
+        <div class="bg-[var(--color-paper)] p-8 lg:p-10 reveal" style="transition-delay:80ms;">
+          <span class="eyebrow mb-6">Question 02</span>
+          <h3 class="display-sm mt-4 mb-6">What's your equity doing right now?</h3>
+          <div class="idle-equity" aria-label="Idle equity vs. working equity comparison">
+            <div class="idle-equity__row">
+              <div class="idle-equity__bar idle-equity__bar--idle" style="width:100%"></div>
+              <span class="idle-equity__text">Sitting idle <strong class="font-display">$0/yr</strong></span>
+            </div>
+            <div class="idle-equity__row">
+              <div class="idle-equity__bar idle-equity__bar--work" style="width:100%"></div>
+              <span class="idle-equity__text">Working for you <strong class="font-display text-[var(--color-green)]">$8K+/yr</strong></span>
+            </div>
+          </div>
+          <p class="text-[13px] text-[var(--color-mute)] mt-4">Equity can fund renovations, pay off debt, or invest.</p>
+        </div>
+
+        <!-- Q3: Rate vs. total cost -->
+        <div class="bg-[var(--color-paper)] p-8 lg:p-10 reveal" style="transition-delay:160ms;">
+          <span class="eyebrow mb-6">Question 03</span>
+          <h3 class="display-sm mt-4 mb-6">Rate vs. total cost?</h3>
+          <div class="rate-vs-cost" aria-label="Lower rate does not always mean lower total cost">
+            <div class="rate-vs-cost__col">
+              <div class="rate-vs-cost__bar rate-vs-cost__bar--a" style="height:120px">
+                <span class="rate-vs-cost__val font-display">6.25%</span>
+              </div>
+              <span class="rate-vs-cost__sub">30-yr refi</span>
+              <span class="rate-vs-cost__total font-display">$426K</span>
+            </div>
+            <div class="rate-vs-cost__col">
+              <div class="rate-vs-cost__bar rate-vs-cost__bar--b" style="height:80px">
+                <span class="rate-vs-cost__val font-display">6.50%</span>
+              </div>
+              <span class="rate-vs-cost__sub">20-yr refi</span>
+              <span class="rate-vs-cost__total font-display text-[var(--color-green)]">$318K</span>
+            </div>
+          </div>
+          <p class="text-[13px] text-[var(--color-mute)] mt-4">A slightly higher rate on a shorter term often costs less overall.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       5. STATS BAND
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section-tight bg-gradient-to-b from-[var(--color-blue-tint)] to-[var(--color-paper)] stat-band-blue" data-climb-section>
+    <div class="container-page">
+      <div class="stat-band reveal">
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="500" data-suffix="M+" data-prefix="$">$0</span>
+          <span class="stat-band__label">Loans closed</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="19" data-suffix=" days">0</span>
+          <span class="stat-band__label">Fastest close</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="300" data-suffix="+">0</span>
+          <span class="stat-band__label">Lenders</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="48">0</span>
+          <span class="stat-band__label">States (NEXA)</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="5.0" data-suffix="★" data-decimals="1">0</span>
+          <span class="stat-band__label">624 reviews</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       6. MISTAKES — Flip Cards
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section bg-[var(--color-paper-tint)]" data-climb-section>
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow mb-5">Learn from others</span>
+        <h2 class="display-lg mt-5">Five mistakes refinancers make.</h2>
+      </div>
+
+      <div class="flip-grid">
+        {mistakes.map((m, i) => (
+          <div class="flip-card reveal" style={`transition-delay:${i * 80}ms;`} tabindex="0"
+               role="button" aria-label={`Mistake: ${m.front}. Prevention: ${m.back}`}>
+            <div class="flip-card__inner">
+              <div class="flip-card__front">
+                <span class="flip-card__num mono">0{i + 1}</span>
+                <p class="font-display text-lg leading-snug">{m.front}</p>
+              </div>
+              <div class="flip-card__back">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg>
+                <p class="font-display text-lg leading-snug">{m.back}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       7. REVIEWS — Carousel
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section-dark section" data-climb-section>
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="eyebrow mb-5">The receipts</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">Real refinances. <em class="italic font-light">Real results.</em></h2>
+      </div>
+
+      <div class="reviews-scroll no-scrollbar" id="reviews-scroll">
+        <div class="reviews-track" id="reviews-track">
+          {reviews.map((r) => (
+            <figure class="review-card">
+              <div class="review-card__avatar" aria-hidden="true">
+                <span class="review-card__initials">{r.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
+              <blockquote class="review-card__text font-display">{r.text}</blockquote>
+              <figcaption class="review-card__meta">
+                <strong>{r.name}</strong>
+                <span>{r.loc}</span>
+                <span class="review-card__source mono">{r.source}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       8. SUMMIT CTA
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section section-dark" data-climb-section>
+    <div class="container-page">
+      <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
+        <div class="summit-glow" aria-hidden="true">
+          <div class="summit-glow__blob summit-glow__blob--blue"></div>
+          <div class="summit-glow__blob summit-glow__blob--rust"></div>
+        </div>
+        <div class="relative reveal">
+          <h2 class="display-lg text-[var(--color-paper)] mb-4">
+            See if refinancing makes sense <em class="italic font-light text-[var(--color-blue-tint)]">for you</em>.
+          </h2>
+          <div class="flex flex-wrap gap-3 justify-center mt-8">
+            <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Talk to Our Team</a>
+            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call now · (954) 993-1625</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
+
+<!-- Mobile sticky bottom CTA -->
+<div class="mobile-cta-bar" id="mobile-cta-bar" aria-hidden="true">
+  <a href="/contact-us/" class="mobile-cta-bar__btn btn btn-blue">Talk to Our Team</a>
+  <a href="tel:+19549931625" class="mobile-cta-bar__phone mono">(954) 993-1625</a>
+  <button class="mobile-cta-bar__close" id="mobile-cta-close" aria-label="Dismiss">&times;</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE-SCOPED STYLES
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+  /* ── Hero gradient wash ── */
+  .hero-wash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, var(--color-blue-tint) 0%, transparent 100%);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Trust ribbon ── */
+  .trust-ribbon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--color-paper-tint);
+    border: 1px solid var(--color-bone);
+    border-radius: 16px;
+    position: relative;
+  }
+  .trust-ribbon__item { text-align: center; }
+  .trust-ribbon__num {
+    display: block;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+  .trust-ribbon__label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-mute);
+    margin-top: 0.3rem;
+  }
+  .trust-ribbon__nmls {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--color-mute);
+    white-space: nowrap;
+  }
+
+  /* ── Path toggle ── */
+  .path-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  @media (max-width: 480px) {
+    .path-toggle { grid-template-columns: 1fr; }
+  }
+  .path-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2rem 1.5rem;
+    background: var(--color-paper);
+    border: 2px solid var(--color-bone);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    color: var(--color-ink);
+  }
+  .path-card:hover { border-color: var(--color-blue); }
+  .path-card.is-active {
+    border-color: var(--color-blue);
+    background: var(--color-blue-tint);
+    box-shadow: 0 0 0 3px rgba(24, 69, 214, 0.12);
+  }
+  .path-card__title { font-size: 1.25rem; font-weight: 500; }
+  .path-card__desc { font-size: 13px; color: var(--color-mute); line-height: 1.4; }
+
+  /* ── Calculator ── */
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  @media (max-width: 768px) {
+    .calc-grid { grid-template-columns: 1fr; }
+  }
+  .calc-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .calc-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .calc-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(250, 250, 247, 0.5);
+  }
+  .calc-input {
+    padding: 0.75rem 1rem;
+    background: rgba(250, 250, 247, 0.08);
+    border: 1px solid rgba(250, 250, 247, 0.15);
+    border-radius: 10px;
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 16px;
+  }
+  .calc-input:focus {
+    outline: none;
+    border-color: var(--color-blue);
+    box-shadow: 0 0 0 3px rgba(24, 69, 214, 0.2);
+  }
+  .calc-btn {
+    margin-top: 0.5rem;
+    align-self: flex-start;
+  }
+  .calc-outputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .calc-card {
+    background: rgba(250, 250, 247, 0.06);
+    border: 1px solid rgba(250, 250, 247, 0.1);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+  }
+  .calc-card__num {
+    display: block;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-paper);
+  }
+  .calc-card__label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(250, 250, 247, 0.5);
+    margin-top: 0.4rem;
+  }
+  .calc-disclaimer {
+    text-align: center;
+    font-size: 11px;
+    color: rgba(250, 250, 247, 0.35);
+    margin-top: 2rem;
+  }
+
+  /* ── Equity bar ── */
+  .equity-bar-wrap {
+    grid-column: 1 / -1;
+    margin-top: 1.5rem;
+  }
+  .equity-bar {
+    display: flex;
+    height: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+  }
+  .equity-bar__mortgage {
+    background: var(--color-mute);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.5s;
+  }
+  .equity-bar__available {
+    background: var(--color-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.5s;
+  }
+  .equity-bar__reserved {
+    background: var(--color-bone);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.5s;
+  }
+  .equity-bar__text {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.5rem;
+  }
+  .equity-bar__mortgage .equity-bar__text { color: var(--color-paper); }
+  .equity-bar__available .equity-bar__text { color: var(--color-paper); }
+  .equity-bar__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    justify-content: center;
+    margin-top: 0.75rem;
+    font-size: 11.5px;
+    color: rgba(250, 250, 247, 0.5);
+  }
+  .equity-bar__legend i {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  /* ── Q1: Break-even viz ── */
+  .breakeven-viz {
+    position: relative;
+    padding-bottom: 1.5rem;
+  }
+  .breakeven-viz__bar-wrap {
+    margin-bottom: 0.5rem;
+  }
+  .breakeven-viz__bar {
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+  }
+  .breakeven-viz__bar--cost {
+    background: var(--color-rust);
+  }
+  .breakeven-viz__bar--save {
+    background: var(--color-green);
+  }
+  .breakeven-viz__label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-paper);
+    white-space: nowrap;
+  }
+  .breakeven-viz__marker {
+    position: absolute;
+    bottom: 0;
+    border-left: 2px dashed var(--color-mute);
+    height: calc(100% - 1.5rem);
+    pointer-events: none;
+  }
+  .breakeven-viz__tag {
+    position: absolute;
+    bottom: -1.25rem;
+    left: -0.5rem;
+    font-size: 10px;
+    color: var(--color-mute);
+    white-space: nowrap;
+  }
+
+  /* ── Q2: Idle equity ── */
+  .idle-equity {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .idle-equity__row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .idle-equity__bar {
+    height: 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .idle-equity__bar--idle { width: 30%; background: var(--color-bone); }
+  .idle-equity__bar--work { width: 70%; background: var(--color-green); }
+  .idle-equity__text { font-size: 13px; color: var(--color-ink); }
+
+  /* ── Q3: Rate vs total cost ── */
+  .rate-vs-cost {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+    height: 180px;
+    justify-content: center;
+  }
+  .rate-vs-cost__col { text-align: center; width: 90px; }
+  .rate-vs-cost__bar {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 0.5rem;
+  }
+  .rate-vs-cost__bar--a { background: var(--color-bone); }
+  .rate-vs-cost__bar--b { background: var(--color-blue); }
+  .rate-vs-cost__val { font-size: 14px; font-weight: 500; color: var(--color-ink); }
+  .rate-vs-cost__bar--b .rate-vs-cost__val { color: var(--color-paper); }
+  .rate-vs-cost__sub {
+    display: block;
+    font-size: 11px;
+    color: var(--color-mute);
+    margin-top: 0.4rem;
+  }
+  .rate-vs-cost__total {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+
+  /* ── Stat band ── */
+  .stat-band {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .stat-band__item { text-align: center; flex: 1; min-width: 120px; }
+  .stat-band__num {
+    display: block;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--color-paper);
+  }
+  .stat-band__label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    margin-top: 0.4rem;
+  }
+
+  /* ── Blue-wash stat band overrides ── */
+  .stat-band-blue .stat-band__num { color: var(--color-ink); }
+  .stat-band-blue .stat-band__label { color: var(--color-mute); opacity: 1; }
+
+  /* ── Flip cards ── */
+  .flip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .flip-card {
+    perspective: 600px;
+    cursor: pointer;
+    height: 180px;
+  }
+  .flip-card__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card__inner,
+  .flip-card:focus .flip-card__inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card__front,
+  .flip-card__back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border: 1px solid var(--color-bone);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .flip-card__front { background: var(--color-paper); }
+  .flip-card__back {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    transform: rotateY(180deg);
+    gap: 0.5rem;
+    align-items: center;
+    text-align: center;
+  }
+  .flip-card__num {
+    font-size: 11px;
+    color: var(--color-rust);
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── Reviews carousel ── */
+  .reviews-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+  }
+  .reviews-track {
+    display: flex;
+    gap: 1.25rem;
+    animation: scroll-reviews 40s linear infinite;
+    width: max-content;
+  }
+  @keyframes scroll-reviews {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .reviews-track:hover { animation-play-state: paused; }
+  .review-card {
+    flex-shrink: 0;
+    width: 380px;
+    border: 1px solid rgba(250, 250, 247, 0.15);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .review-card__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-blue-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .review-card__initials {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-paper);
+  }
+  .review-card__text {
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--color-paper);
+    font-weight: 400;
+    flex: 1;
+  }
+  .review-card__meta {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(250, 250, 247, 0.6);
+  }
+  .review-card__meta strong { color: var(--color-paper); font-weight: 500; }
+  .review-card__source {
+    margin-left: auto;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+  }
+
+  /* ── Summit glow ── */
+  .summit-glow {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .summit-glow__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+  .summit-glow__blob--blue {
+    width: 200px;
+    height: 200px;
+    background: var(--color-blue);
+    opacity: 0.2;
+    bottom: -40px;
+    right: 10%;
+  }
+  .summit-glow__blob--rust {
+    width: 160px;
+    height: 160px;
+    background: var(--color-rust);
+    opacity: 0.15;
+    top: -20px;
+    left: 15%;
+  }
+
+  /* ── Mobile sticky CTA bar ── */
+  .mobile-cta-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-ink);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 45;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 -4px 20px rgba(10, 14, 26, 0.3);
+  }
+  .mobile-cta-bar.is-visible { transform: translateY(0); }
+  @media (min-width: 980px) { .mobile-cta-bar { display: none !important; } }
+  .mobile-cta-bar__btn { flex: 1; text-align: center; font-size: 14px !important; padding: 0.6rem 1rem !important; }
+  .mobile-cta-bar__phone {
+    color: var(--color-paper);
+    text-decoration: none;
+    font-size: 12px;
+    opacity: 0.7;
+    white-space: nowrap;
+  }
+  .mobile-cta-bar__close {
+    color: var(--color-paper);
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+    padding: 4px;
+  }
+
+  /* ── Mobile headline weight fix ── */
+  @media (max-width: 640px) {
+    .display-xl, .display-lg, .display-md {
+      font-weight: 500;
+      font-variation-settings: "opsz" 48;
+    }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .reviews-track { animation: none; }
+    .flip-card__inner { transition: none; }
+    .equity-bar__mortgage,
+    .equity-bar__available,
+    .equity-bar__reserved { transition: none; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE SCRIPT — calculator, path toggle, reviews, count-up
+     ═══════════════════════════════════════════════════════════ -->
+<script is:inline>
+(function() {
+  'use strict';
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Count-up on scroll ── */
+  function countUp(el) {
+    var target = parseFloat(el.dataset.countup);
+    var suffix = el.dataset.suffix || '';
+    var prefix = el.dataset.prefix || '';
+    var decimals = parseInt(el.dataset.decimals) || 0;
+    var duration = 1200;
+    var start = performance.now();
+
+    function tick(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      var current = ease * target;
+      el.textContent = prefix + (decimals ? current.toFixed(decimals) : Math.round(current)) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    if (prefersReduced) {
+      el.textContent = prefix + (decimals ? target.toFixed(decimals) : target) + suffix;
+    } else {
+      requestAnimationFrame(tick);
+    }
+  }
+
+  /* ── Scroll observer for reveals + count-ups ── */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+        e.target.querySelectorAll('[data-countup]').forEach(countUp);
+        if (e.target.dataset && e.target.dataset.countup) countUp(e.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .trust-ribbon, .stat-band').forEach(function(el) {
+      io.observe(el);
+    });
+  }
+
+  /* ── Path toggle ── */
+  var pathToggle = document.getElementById('path-toggle');
+  var refiCalc = document.getElementById('refi-calc');
+  var helocCalc = document.getElementById('heloc-calc');
+
+  if (pathToggle) {
+    var pathCards = pathToggle.querySelectorAll('.path-card');
+    pathCards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        pathCards.forEach(function(c) {
+          c.classList.remove('is-active');
+          c.setAttribute('aria-pressed', 'false');
+        });
+        card.classList.add('is-active');
+        card.setAttribute('aria-pressed', 'true');
+
+        var path = card.dataset.path;
+        if (path === 'refi') {
+          refiCalc.style.display = '';
+          helocCalc.style.display = 'none';
+        } else {
+          refiCalc.style.display = 'none';
+          helocCalc.style.display = '';
+        }
+      });
+    });
+  }
+
+  /* ── Helpers ── */
+  function parseCurrency(str) {
+    return parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+  }
+  function parseRate(str) {
+    return parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+  }
+  function formatCurrency(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  /* ── Refi Calculator ── */
+  var refiBtn = document.getElementById('refi-calc-btn');
+  if (refiBtn) {
+    refiBtn.addEventListener('click', function() {
+      var balance = parseCurrency(document.getElementById('refi-balance').value);
+      var currentRate = parseRate(document.getElementById('refi-current-rate').value) / 100 / 12;
+      var newRate = parseRate(document.getElementById('refi-new-rate').value) / 100 / 12;
+      var n = 360; // 30-year
+      var closingCosts = 6000;
+
+      if (balance <= 0 || currentRate <= 0 || newRate <= 0) return;
+
+      var currentPayment = balance * (currentRate * Math.pow(1 + currentRate, n)) / (Math.pow(1 + currentRate, n) - 1);
+      var newPayment = balance * (newRate * Math.pow(1 + newRate, n)) / (Math.pow(1 + newRate, n) - 1);
+      var monthlySavings = currentPayment - newPayment;
+
+      if (monthlySavings <= 0) {
+        document.getElementById('refi-monthly').textContent = '$0';
+        document.getElementById('refi-breakeven').textContent = 'N/A';
+        document.getElementById('refi-total').textContent = '$0';
+        return;
+      }
+
+      var breakeven = Math.ceil(closingCosts / monthlySavings);
+      var totalSavings = (monthlySavings * n) - closingCosts;
+
+      document.getElementById('refi-monthly').textContent = formatCurrency(monthlySavings);
+      document.getElementById('refi-breakeven').textContent = breakeven;
+      document.getElementById('refi-total').textContent = formatCurrency(Math.max(0, totalSavings));
+    });
+  }
+
+  /* ── HELOC / Equity Calculator ── */
+  var helocBtn = document.getElementById('heloc-calc-btn');
+  if (helocBtn) {
+    helocBtn.addEventListener('click', function() {
+      var value = parseCurrency(document.getElementById('heloc-value').value);
+      var balance = parseCurrency(document.getElementById('heloc-balance').value);
+
+      if (value <= 0) return;
+
+      var equity = value - balance;
+      var maxLoan = value * 0.8;
+      var available = Math.max(0, maxLoan - balance);
+      var reserve = value * 0.2;
+
+      document.getElementById('heloc-equity').textContent = formatCurrency(Math.max(0, equity));
+      document.getElementById('heloc-available').textContent = formatCurrency(available);
+
+      // Update bar
+      var mortPct = Math.min(100, (balance / value) * 100);
+      var availPct = Math.min(100 - mortPct, (available / value) * 100);
+      var reservePct = Math.max(0, 100 - mortPct - availPct);
+
+      document.getElementById('eq-mortgage').style.width = mortPct + '%';
+      document.getElementById('eq-available').style.width = availPct + '%';
+      document.getElementById('eq-reserved').style.width = reservePct + '%';
+    });
+  }
+
+  /* ── Reviews: duplicate track for infinite scroll ── */
+  var track = document.getElementById('reviews-track');
+  if (track && !prefersReduced) {
+    var clone = track.innerHTML;
+    track.innerHTML += clone;
+  }
+
+  /* ── Mobile sticky CTA bar ── */
+  var mobileBar = document.getElementById('mobile-cta-bar');
+  var mobileClose = document.getElementById('mobile-cta-close');
+  var mobileDismissed = false;
+
+  if (mobileBar) {
+    window.addEventListener('scroll', function() {
+      if (mobileDismissed) return;
+      var scrollH = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = scrollH > 0 ? (window.scrollY / scrollH) : 0;
+      if (progress > 0.6) {
+        mobileBar.classList.add('is-visible');
+        mobileBar.setAttribute('aria-hidden', 'false');
+      }
+    }, { passive: true });
+
+    if (mobileClose) {
+      mobileClose.addEventListener('click', function() {
+        mobileDismissed = true;
+        mobileBar.classList.remove('is-visible');
+        mobileBar.setAttribute('aria-hidden', 'true');
+      });
+    }
+  }
+})();
+</script>
