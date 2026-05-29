@@ -144,19 +144,19 @@ const reviews = [
           <!-- Mini bar chart: now vs future -->
           <div class="q-chart" aria-label="Home values tend to rise over time">
             <div class="q-chart__bar-wrap">
-              <div class="q-chart__bar q-chart__bar--now" data-grow="52" style="height:0%">
-                <span class="q-chart__val font-display">$420K</span>
+              <div class="q-chart__bar q-chart__bar--now" data-grow="58" style="height:0%">
+                <span class="q-chart__val font-display">$550K</span>
               </div>
               <span class="q-chart__label">Today</span>
             </div>
             <div class="q-chart__bar-wrap">
-              <div class="q-chart__bar q-chart__bar--future" data-grow="88" style="height:0%">
-                <span class="q-chart__val font-display">$510K</span>
+              <div class="q-chart__bar q-chart__bar--future" data-grow="92" style="height:0%">
+                <span class="q-chart__val font-display">$660K</span>
               </div>
               <span class="q-chart__label">5 years</span>
             </div>
           </div>
-          <p class="text-[13px] text-[var(--color-mute)] mt-4">Based on ~4% avg. annual appreciation</p>
+          <p class="text-[13px] text-[var(--color-mute)] mt-4">Based on ~3.7% avg. annual appreciation</p>
         </div>
 
         <!-- Q2: Credits & incentives -->
@@ -630,7 +630,7 @@ const reviews = [
     height: 160px;
     justify-content: center;
   }
-  .q-chart__bar-wrap { text-align: center; width: 70px; }
+  .q-chart__bar-wrap { text-align: center; width: 80px; }
   .q-chart__bar {
     width: 100%;
     border-radius: 8px 8px 0 0;
@@ -639,7 +639,6 @@ const reviews = [
     align-items: flex-start;
     justify-content: center;
     padding-top: 0.5rem;
-    min-height: 30px;
   }
   .q-chart__bar--now { background: var(--color-bone); }
   .q-chart__bar--future { background: var(--color-blue); }
