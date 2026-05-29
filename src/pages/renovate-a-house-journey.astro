@@ -1,16 +1,408 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const trustNumbers = [
+  { value: 5.0,   suffix: '★',  label: 'Client rating' },
+  { value: 624,   suffix: '',   label: 'Verified reviews' },
+  { value: 300,   suffix: '+',  label: 'Lender network' },
+  { value: 48,    suffix: '',   label: 'States (NEXA)' },
+  { value: 19,    suffix: '',   label: 'Days — fastest close' },
+];
+
+const programs = [
+  { title: 'FHA 203(k)',                desc: 'Finance the purchase + renovation in one loan.' },
+  { title: 'HomeStyle Renovation',      desc: 'Conventional loan that covers improvements.' },
+  { title: 'Cash-Out Refinance',        desc: 'Use existing equity to fund renovations.' },
+  { title: 'HELOC',                     desc: 'Draw funds as you need them during the project.' },
+  { title: 'Flexible Income Renovation',desc: 'Bank statements, assets — no tax returns needed.' },
+];
+
+const mistakes = [
+  { front: 'Starting without knowing the after-repair value', back: 'We estimate value before you spend a dollar' },
+  { front: 'Underestimating the budget by 20%',               back: 'We build in a contingency cushion' },
+  { front: 'Choosing the wrong loan for the project',         back: 'We match the loan to the scope' },
+  { front: 'Not checking contractor licensing',               back: 'Our network includes vetted builders' },
+  { front: 'Forgetting permits affect the appraisal',         back: 'Permitted work protects your investment' },
+];
+
+const reviews = [
+  { text: "Jim worked with us to secure the best rate — not only reducing our 30 to a 15, but taking cash out for a home renovation and consolidating our first and second mortgage into one. He provided many options balancing cash-out limits with the best rates.", name: 'Brian Robertson', title: 'President, Circadia Group', loc: 'New Jersey', source: 'Zillow' },
+  { text: "Had a great experience working with Jim and team on a refi. Was able to do virtually everything by email and text. When an issue arose, Jim made sure it got escalated and handled properly.", name: 'Christopher Tragasz', title: 'Senior Branch Manager, JP Morgan Chase', loc: 'Illinois', source: 'Angi' },
+  { text: "This is the second loan I am doing with Jim and once again he and his team have exceeded my expectations. This time it was a multi-family unit. I can attest he provides the best possible service and gets the job done.", name: 'Syed Saqib', title: 'Chief Investment Officer, Zstep Capital', loc: 'Illinois', source: 'Zillow' },
+];
 ---
-<Layout title="Renovate a Home — Stairway Mortgage" description="Fund improvements or fix-and-flip with renovation loan programs.">
-  <section class="section">
-    <div class="container-page text-center max-w-2xl mx-auto">
-      <span class="eyebrow eyebrow-blue mb-5">How We Serve</span>
-      <h1 class="display-lg mt-5 mb-6">Renovate a Home</h1>
-      <p class="lede mb-10">This page is being built. Talk to Jim to get started today.</p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
-        <a href="/contact-us/" class="btn btn-ghost">Talk to Jim</a>
+
+<Layout title="Renovate a Home — Stairway Mortgage" description="Finance your renovation against your home's future value. 300+ lenders competing for your project.">
+
+  <!-- 1. HERO -->
+  <section class="section relative overflow-hidden reno-hero-wash">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">How We Serve · Renovate a Home</span>
+        <h1 class="display-xl mt-6 mb-8">
+          See the home it <em class="italic text-[var(--color-blue)]">could be</em> — and finance <em class="italic text-[var(--color-blue)]">that</em>.
+        </h1>
+        <div class="flex flex-wrap gap-3 justify-center mb-12">
+          <a href="/same-day-approval/" class="btn btn-primary btn-arrow text-base px-6 py-3.5">See My Options</a>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
+        </div>
+      </div>
+      <div class="trust-ribbon reveal" style="transition-delay:200ms;">
+        {trustNumbers.map((t) => (
+          <div class="trust-ribbon__item">
+            <span class="trust-ribbon__num font-display" data-countup={t.value} data-suffix={t.suffix}>0{t.suffix}</span>
+            <span class="trust-ribbon__label">{t.label}</span>
+          </div>
+        ))}
+        <div class="trust-ribbon__nmls"><span class="mono">NMLS #1072866</span></div>
       </div>
     </div>
   </section>
+
+  <!-- 2. RENOVATION VALUE CALCULATOR (DARK) -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-rust mb-5 text-[var(--color-paper)]">Renovation value calculator</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">See what your renovation <em class="italic font-light">creates</em>.</h2>
+      </div>
+      <div class="reno-calc reveal" style="transition-delay:100ms;">
+        <div class="reno-calc__inputs">
+          <div class="reno-field">
+            <label class="reno-label" for="reno-value">Current home value</label>
+            <input class="reno-input" id="reno-value" type="text" value="$400,000" inputmode="numeric" />
+          </div>
+          <div class="reno-field">
+            <label class="reno-label" for="reno-budget">Renovation budget</label>
+            <input class="reno-input" id="reno-budget" type="text" value="$75,000" inputmode="numeric" />
+          </div>
+          <button class="btn btn-blue btn-arrow reno-btn" id="reno-calc-btn" type="button">Calculate</button>
+        </div>
+        <div class="reno-calc__output">
+          <div class="reno-bars">
+            <div class="reno-bar-wrap">
+              <div class="reno-bar reno-bar--before" style="height:152px">
+                <span class="reno-bar__val font-display">$400K</span>
+              </div>
+              <span class="reno-bar__label">Before</span>
+            </div>
+            <div class="reno-bar-wrap">
+              <div class="reno-bar reno-bar--after" style="height:200px">
+                <span class="reno-bar__val font-display" id="reno-arv-display">$490K</span>
+              </div>
+              <span class="reno-bar__label">After renovation</span>
+            </div>
+          </div>
+          <div class="reno-results">
+            <div class="reno-result">
+              <span class="reno-result__num font-display" id="reno-arv">$490,000</span>
+              <span class="reno-result__label">After-repair value</span>
+            </div>
+            <div class="reno-result">
+              <span class="reno-result__num font-display text-[var(--color-green)]" id="reno-equity">$15,000</span>
+              <span class="reno-result__label">Equity created</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-[12px] text-center opacity-50 mt-6 text-[var(--color-paper)]">Illustrative estimate. Actual after-repair value depends on market, scope, and appraisal. Not a guarantee of future value.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. THREE QUESTIONS (paper) -->
+  <section class="section">
+    <div class="container-page">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="reno-q-card reveal">
+          <span class="eyebrow mb-4">Question 01</span>
+          <h3 class="display-sm mt-3 mb-5">Renovate or move?</h3>
+          <div class="reno-compare">
+            <div class="reno-compare__col">
+              <span class="reno-compare__label font-display">Renovate</span>
+              <span class="reno-compare__val font-display">~$75K</span>
+            </div>
+            <div class="reno-compare__vs mono">vs</div>
+            <div class="reno-compare__col">
+              <span class="reno-compare__label font-display">Move</span>
+              <span class="reno-compare__val font-display">~$45K+</span>
+              <span class="reno-compare__sub">Agent fees, closing, moving, adjusting</span>
+            </div>
+          </div>
+        </div>
+        <div class="reno-q-card reveal" style="transition-delay:80ms;">
+          <span class="eyebrow mb-4">Question 02</span>
+          <h3 class="display-sm mt-3 mb-5">Will the reno pay for itself?</h3>
+          <div class="reno-roi">
+            <div class="reno-roi__row">
+              <span class="reno-roi__label">Kitchen</span>
+              <div class="reno-roi__bar-bg"><div class="reno-roi__bar" style="width:75%"></div></div>
+              <span class="reno-roi__pct mono">75%</span>
+            </div>
+            <div class="reno-roi__row">
+              <span class="reno-roi__label">Bathroom</span>
+              <div class="reno-roi__bar-bg"><div class="reno-roi__bar" style="width:70%"></div></div>
+              <span class="reno-roi__pct mono">70%</span>
+            </div>
+            <div class="reno-roi__row">
+              <span class="reno-roi__label">Roof</span>
+              <div class="reno-roi__bar-bg"><div class="reno-roi__bar" style="width:65%"></div></div>
+              <span class="reno-roi__pct mono">65%</span>
+            </div>
+          </div>
+          <p class="text-[12px] text-[var(--color-mute)] mt-3">Avg. cost-recoup at resale (Remodeling Magazine)</p>
+        </div>
+        <div class="reno-q-card reveal" style="transition-delay:160ms;">
+          <span class="eyebrow mb-4">Question 03</span>
+          <h3 class="display-sm mt-3 mb-5">Live-in reno or flip?</h3>
+          <div class="reno-paths">
+            <div class="reno-path">
+              <span class="reno-path__title font-display">Live in it</span>
+              <span class="reno-path__desc">Longer timeline, lower borrowing</span>
+            </div>
+            <div class="reno-path">
+              <span class="reno-path__title font-display">Flip it</span>
+              <span class="reno-path__desc">Fast timeline, higher borrowing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PROGRAMS (tint) -->
+  <section class="section-tight bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">Renovation loans</span>
+        <h2 class="display-lg mt-5">Five ways to <em class="italic font-light">finance it</em>.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {programs.map((p, i) => (
+          <div class="card reveal" style={`transition-delay:${i * 60}ms;`}>
+            <h4 class="font-display text-xl font-medium mb-1">{p.title}</h4>
+            <p class="text-[14px] text-[var(--color-mute)]">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. STATS BAND (blue-wash) -->
+  <section class="section-tight bg-gradient-to-b from-[var(--color-blue-tint)] to-[var(--color-paper)]">
+    <div class="container-page">
+      <div class="stat-band reveal">
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="500" data-suffix="M+" data-prefix="$">$0</span><span class="stat-band__label">Loans closed</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="19" data-suffix=" days">0</span><span class="stat-band__label">Fastest close</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="300" data-suffix="+">0</span><span class="stat-band__label">Lenders</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="48">0</span><span class="stat-band__label">States (NEXA)</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="5.0" data-suffix="★" data-decimals="1">0</span><span class="stat-band__label">624 reviews</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MISTAKES (tint) -->
+  <section class="section bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow mb-5">Learn from others</span>
+        <h2 class="display-lg mt-5">Five renovation mistakes.</h2>
+      </div>
+      <div class="flip-grid">
+        {mistakes.map((m, i) => (
+          <div class="flip-card reveal" style={`transition-delay:${i * 80}ms;`} tabindex="0"
+               role="button" aria-label={`Mistake: ${m.front}. Prevention: ${m.back}`}>
+            <div class="flip-card__inner">
+              <div class="flip-card__front">
+                <span class="flip-card__num mono">0{i + 1}</span>
+                <p class="font-display text-lg leading-snug">{m.front}</p>
+              </div>
+              <div class="flip-card__back">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg>
+                <p class="font-display text-lg leading-snug">{m.back}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. REVIEWS (DARK) -->
+  <section class="section-dark section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="eyebrow mb-5">The receipts</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">Real renovations. <em class="italic font-light">Real results.</em></h2>
+      </div>
+      <div class="reviews-scroll no-scrollbar" id="reviews-scroll">
+        <div class="reviews-track" id="reviews-track">
+          {reviews.map((r) => (
+            <figure class="review-card">
+              <div class="review-card__avatar" aria-hidden="true">
+                <span class="review-card__initials">{r.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
+              <blockquote class="review-card__text font-display">{r.text}</blockquote>
+              <figcaption class="review-card__meta">
+                <strong>{r.name}</strong><span>{r.loc}</span>
+                <span class="review-card__source mono">{r.source}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. SUMMIT CTA (DARK+glow) -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
+        <div class="summit-glow" aria-hidden="true">
+          <div class="summit-glow__blob summit-glow__blob--blue"></div>
+          <div class="summit-glow__blob summit-glow__blob--rust"></div>
+        </div>
+        <div class="relative reveal">
+          <h2 class="display-lg text-[var(--color-paper)] mb-4">
+            Your home's best version is <em class="italic font-light text-[var(--color-blue-tint)]">one loan away</em>.
+          </h2>
+          <div class="flex flex-wrap gap-3 justify-center mt-8">
+            <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Talk to Our Team</a>
+            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call now · (954) 993-1625</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
+
+<style>
+  .reno-hero-wash { position: relative; }
+  .reno-hero-wash::before { content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0; }
+  .trust-ribbon { display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;padding:1.5rem 2rem;background:var(--color-paper-tint);border:1px solid var(--color-bone);border-radius:16px;position:relative; }
+  .trust-ribbon__item { text-align:center; }
+  .trust-ribbon__num { display:block;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:400;line-height:1;letter-spacing:-0.02em;color:var(--color-ink); }
+  .trust-ribbon__label { display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-mute);margin-top:0.3rem; }
+  .trust-ribbon__nmls { position:absolute;bottom:-1.5rem;left:50%;transform:translateX(-50%);font-size:11px;color:var(--color-mute);white-space:nowrap; }
+  .reno-calc { max-width:800px;margin:0 auto; }
+  .reno-calc__inputs { display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2rem; }
+  .reno-field { flex:1;min-width:180px; }
+  .reno-label { display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:rgba(250,250,247,0.5);margin-bottom:0.4rem; }
+  .reno-input { width:100%;padding:0.7rem 1rem;background:rgba(250,250,247,0.08);border:1px solid rgba(250,250,247,0.15);border-radius:8px;color:var(--color-paper);font-family:var(--font-mono);font-size:16px; }
+  .reno-input:focus { outline:none;border-color:var(--color-blue); }
+  .reno-btn { margin-top:0.5rem; }
+  .reno-calc__output { text-align:center; }
+  .reno-bars { display:flex;align-items:flex-end;gap:2rem;height:200px;justify-content:center;margin-bottom:1.5rem; }
+  .reno-bar-wrap { text-align:center;width:100px; }
+  .reno-bar { width:100%;border-radius:8px 8px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:0.5rem; }
+  .reno-bar--before { background:var(--color-bone);opacity:0.5; }
+  .reno-bar--after { background:var(--color-blue); }
+  .reno-bar__val { font-size:15px;font-weight:500;color:var(--color-paper); }
+  .reno-bar--before .reno-bar__val { opacity:0.7; }
+  .reno-bar__label { display:block;font-size:12px;color:rgba(250,250,247,0.5);margin-top:0.4rem; }
+  .reno-results { display:flex;gap:2rem;justify-content:center; }
+  .reno-result { text-align:center; }
+  .reno-result__num { display:block;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:400;line-height:1;color:var(--color-paper); }
+  .reno-result__label { display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(250,250,247,0.5);margin-top:0.3rem; }
+  .reno-q-card { background:var(--color-paper);border:1px solid var(--color-bone);border-radius:12px;padding:1.75rem; }
+  .reno-compare { display:flex;align-items:center;gap:1rem;justify-content:center; }
+  .reno-compare__col { text-align:center; }
+  .reno-compare__label { display:block;font-size:16px;font-weight:500; }
+  .reno-compare__val { display:block;font-size:24px;font-weight:400;color:var(--color-ink); }
+  .reno-compare__sub { display:block;font-size:11px;color:var(--color-mute);max-width:120px;margin:0.3rem auto 0; }
+  .reno-compare__vs { font-size:12px;color:var(--color-mute);text-transform:uppercase;letter-spacing:0.1em; }
+  .reno-roi { display:flex;flex-direction:column;gap:0.75rem; }
+  .reno-roi__row { display:flex;align-items:center;gap:0.5rem; }
+  .reno-roi__label { font-size:13px;width:70px;flex-shrink:0; }
+  .reno-roi__bar-bg { flex:1;height:10px;background:var(--color-bone);border-radius:5px;overflow:hidden; }
+  .reno-roi__bar { height:100%;background:var(--color-blue);border-radius:5px; }
+  .reno-roi__pct { font-size:12px;width:35px;text-align:right; }
+  .reno-paths { display:flex;gap:1rem; }
+  .reno-path { flex:1;text-align:center;padding:1rem;background:var(--color-paper-tint);border-radius:10px; }
+  .reno-path__title { display:block;font-size:15px;font-weight:500;margin-bottom:0.25rem; }
+  .reno-path__desc { display:block;font-size:12px;color:var(--color-mute); }
+  .stat-band { display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem; }
+  .stat-band__item { text-align:center;flex:1;min-width:120px; }
+  .stat-band__num { display:block;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1;letter-spacing:-0.03em;color:var(--color-ink); }
+  .stat-band__label { display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-mute);margin-top:0.4rem; }
+  .flip-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem; }
+  .flip-card { perspective:600px;cursor:pointer;height:180px; }
+  .flip-card__inner { position:relative;width:100%;height:100%;transition:transform 0.5s;transform-style:preserve-3d; }
+  .flip-card:hover .flip-card__inner,.flip-card:focus .flip-card__inner { transform:rotateY(180deg); }
+  .flip-card__front,.flip-card__back { position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--color-bone);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;justify-content:center; }
+  .flip-card__front { background:var(--color-paper); }
+  .flip-card__back { background:var(--color-ink);color:var(--color-paper);transform:rotateY(180deg);gap:0.5rem;align-items:center;text-align:center; }
+  .flip-card__num { font-size:11px;color:var(--color-rust);margin-bottom:0.5rem; }
+  .reviews-scroll { overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:1rem; }
+  .reviews-track { display:flex;gap:1.25rem;animation:scroll-reviews 30s linear infinite;width:max-content; }
+  @keyframes scroll-reviews { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  .reviews-track:hover { animation-play-state:paused; }
+  .review-card { flex-shrink:0;width:340px;border:1px solid rgba(250,250,247,0.15);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:0.75rem; }
+  .review-card__avatar { width:40px;height:40px;border-radius:50%;background:var(--color-blue-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .review-card__initials { font-size:14px;font-weight:600;color:var(--color-paper); }
+  .review-card__text { font-size:15px;line-height:1.45;color:var(--color-paper);font-weight:400;flex:1; }
+  .review-card__meta { display:flex;gap:0.5rem;align-items:center;font-size:12px;color:rgba(250,250,247,0.6); }
+  .review-card__meta strong { color:var(--color-paper);font-weight:500; }
+  .review-card__source { margin-left:auto;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;opacity:0.5; }
+  .summit-glow { position:absolute;inset:0;overflow:hidden;pointer-events:none; }
+  .summit-glow__blob { position:absolute;border-radius:50%;filter:blur(60px); }
+  .summit-glow__blob--blue { width:200px;height:200px;background:var(--color-blue);opacity:0.2;bottom:-40px;right:10%; }
+  .summit-glow__blob--rust { width:160px;height:160px;background:var(--color-rust);opacity:0.15;top:-20px;left:15%; }
+  @media (prefers-reduced-motion:reduce) { .reviews-track { animation:none; } }
+  @media (max-width:640px) { .reno-compare{flex-direction:column;} .reno-paths{flex-direction:column;} }
+</style>
+
+<script is:inline>
+(function() {
+  'use strict';
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function countUp(el) {
+    var target = parseFloat(el.dataset.countup);
+    var suffix = el.dataset.suffix || '';
+    var prefix = el.dataset.prefix || '';
+    var decimals = parseInt(el.dataset.decimals) || 0;
+    var duration = 1200, start = performance.now();
+    function tick(now) {
+      var p = Math.min((now - start) / duration, 1);
+      var v = (1 - Math.pow(1 - p, 3)) * target;
+      el.textContent = prefix + (decimals ? v.toFixed(decimals) : Math.round(v)) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    if (prefersReduced) el.textContent = prefix + (decimals ? target.toFixed(decimals) : target) + suffix;
+    else requestAnimationFrame(tick);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+        e.target.querySelectorAll('[data-countup]').forEach(countUp);
+        if (e.target.dataset.countup) countUp(e.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .trust-ribbon, .stat-band').forEach(function(el) { io.observe(el); });
+  }
+
+  var calcBtn = document.getElementById('reno-calc-btn');
+  if (calcBtn) {
+    calcBtn.addEventListener('click', function() {
+      var val = parseFloat((document.getElementById('reno-value').value || '').replace(/[^0-9.]/g, '')) || 400000;
+      var bud = parseFloat((document.getElementById('reno-budget').value || '').replace(/[^0-9.]/g, '')) || 75000;
+      var arv = Math.round(val + bud * 1.2);
+      var equity = Math.round(arv - val - bud);
+      document.getElementById('reno-arv').textContent = '$' + arv.toLocaleString();
+      document.getElementById('reno-arv-display').textContent = '$' + Math.round(arv / 1000) + 'K';
+      document.getElementById('reno-equity').textContent = '$' + equity.toLocaleString();
+      var bBar = document.querySelector('.reno-bar--before');
+      var aBar = document.querySelector('.reno-bar--after');
+      if (bBar && aBar) { bBar.style.height = Math.round(val / arv * 200) + 'px'; aBar.style.height = '200px'; }
+    });
+  }
+
+  var track = document.getElementById('reviews-track');
+  if (track && !prefersReduced) track.innerHTML += track.innerHTML;
+})();
+</script>
