@@ -140,65 +140,6 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString(
     }
   </script>
 
-  <!-- Mega-menu interaction -->
-  <script is:inline>
-    document.querySelectorAll('.mega-trigger').forEach(trigger => {
-      const panel = document.getElementById(trigger.getAttribute('aria-controls'));
-      let timeout;
-      const wrap = trigger.closest('.nav-item');
-
-      trigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        const open = trigger.getAttribute('aria-expanded') === 'true';
-        document.querySelectorAll('.mega-trigger').forEach(t => {
-          t.setAttribute('aria-expanded', 'false');
-          const p = document.getElementById(t.getAttribute('aria-controls'));
-          if (p) p.classList.remove('open');
-        });
-        if (!open) {
-          trigger.setAttribute('aria-expanded', 'true');
-          panel?.classList.add('open');
-        }
-      });
-
-      wrap?.addEventListener('mouseenter', () => {
-        clearTimeout(timeout);
-        if (window.innerWidth < 1024) return;
-        document.querySelectorAll('.mega-trigger').forEach(t => {
-          if (t !== trigger) {
-            t.setAttribute('aria-expanded', 'false');
-            const p = document.getElementById(t.getAttribute('aria-controls'));
-            if (p) p.classList.remove('open');
-          }
-        });
-        trigger.setAttribute('aria-expanded', 'true');
-        panel?.classList.add('open');
-      });
-      wrap?.addEventListener('mouseleave', () => {
-        timeout = setTimeout(() => {
-          trigger.setAttribute('aria-expanded', 'false');
-          panel?.classList.remove('open');
-        }, 220);
-      });
-    });
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.nav-item')) {
-        document.querySelectorAll('.mega-trigger').forEach(t => {
-          t.setAttribute('aria-expanded', 'false');
-          const p = document.getElementById(t.getAttribute('aria-controls'));
-          if (p) p.classList.remove('open');
-        });
-      }
-    });
-
-    // Mobile menu
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    mobileToggle?.addEventListener('click', () => {
-      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-      mobileToggle.setAttribute('aria-expanded', !expanded);
-      document.querySelector('.mobile-menu')?.classList.toggle('open');
-      document.body.classList.toggle('menu-open');
-    });
-  </script>
+  <!-- Header interaction is self-contained in Header.astro -->
 </body>
 </html>

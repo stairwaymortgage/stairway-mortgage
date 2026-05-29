@@ -1,193 +1,178 @@
 ---
-// Site navigation data — mega-menu structure matching live stairwaymortgage.com
-const megaMenus = [
+/*  Stairway Mortgage — Conversion-focused header
+    3 layers: trust strip · main bar with 3 mega-menus · sticky condensed on scroll
+    Self-contained: styles + script bundled in component                          */
+
+/* ── Menu data ───────────────────────────────────────────────── */
+const menus = [
   {
-    label: 'How We Serve',
-    id: 'mega-serve',
+    id: 'mega-mortgage',
+    label: 'Get a Mortgage',
     columns: [
       {
-        heading: 'Buying & Selling',
+        heading: 'Most Popular',
         links: [
-          { label: 'Buy a Home', href: '/buy-a-house-journey/' },
-          { label: 'Sell a Home', href: '/sell-a-house-journey/' },
-          { label: 'Build a Home', href: '/build-a-house-journey/' },
-          { label: 'Renovate a Home', href: '/renovate-a-house-journey/' },
+          { icon: 'home',    title: 'Buy a Home',          desc: 'Purchase your next property',        href: '/buy-a-house-journey/' },
+          { icon: 'refresh', title: 'Refinance or HELOC',  desc: 'Lower your rate or tap equity',      href: '/refinance-or-heloc-journey/' },
+          { icon: 'hammer',  title: 'Build a Home',        desc: 'Construction-to-permanent loans',    href: '/build-a-house-journey/' },
         ],
       },
       {
-        heading: 'Equity & Income',
+        heading: 'More Paths',
         links: [
-          { label: 'Refinance or HELOC', href: '/refinance-or-heloc-journey/' },
-          { label: 'Reverse Mortgage', href: '/reverse-mortgage-journey/' },
-          { label: 'Find a Tenant', href: '/find-a-tenant-journey/' },
-          { label: 'Build a Wealth Plan', href: '/build-a-wealth-plan-journey/' },
-        ],
-      },
-      {
-        heading: 'Quick Quotes',
-        links: [
-          { label: 'Purchase Quote', href: '/purchase-inquiry/' },
-          { label: 'Refi or HELOC Quote', href: '/refinance-or-heloc-inquiry/' },
-          { label: 'Reverse Mortgage Quote', href: '/reverse-mortgage-inquiry/' },
-          { label: 'Same-Day Approval', href: '/same-day-approval/' },
+          { icon: 'wrench',   title: 'Renovate',            desc: 'Fund improvements or fix-and-flip',  href: '/renovate-a-house-journey/' },
+          { icon: 'heart',    title: 'Reverse Mortgage',    desc: 'Income from your home, 55+',         href: '/reverse-mortgage-journey/' },
+          { icon: 'tag',      title: 'Sell a Home',         desc: 'Bridge loans & seller strategies',   href: '/sell-a-house-journey/' },
+          { icon: 'chart',    title: 'Build a Wealth Plan', desc: 'Real estate as a wealth engine',     href: '/build-a-wealth-plan-journey/' },
         ],
       },
     ],
     feature: {
-      eyebrow: '300+ Lenders',
-      title: 'Backed by NEXA Mortgage',
-      desc: 'The #1 broker network in the U.S. — wholesale pricing, no bank overlays.',
-      cta: { label: 'Learn More', href: '/nexa-mortgage-partnership/' },
+      title: 'See your options in about a minute',
+      cta: { label: 'See My Options', href: '/same-day-approval/' },
     },
+    quickQuotes: [
+      { label: 'Purchase',      href: '/purchase-inquiry/' },
+      { label: 'Refi / HELOC',  href: '/refinance-or-heloc-inquiry/' },
+      { label: 'Reverse',       href: '/reverse-mortgage-inquiry/' },
+      { label: 'Same-Day',      href: '/same-day-approval/' },
+    ],
   },
   {
-    label: 'Your Journey',
-    id: 'mega-journey',
+    id: 'mega-situation',
+    label: 'Your Situation',
     columns: [
       {
-        heading: 'Starting Out',
+        heading: "Where you're at",
         links: [
-          { label: 'Smart Stewards', href: '/smart-stewards-journey/', num: '01' },
-          { label: 'First-Time Home Buyer', href: '/first-time-buyers-journey/', num: '02' },
+          { icon: 'key',     title: 'First-Time Buyer',     desc: 'Buying your very first home',        href: '/first-time-buyers-journey/' },
+          { icon: 'home',    title: 'Current Homeowner',     desc: 'Refinance, renovate, or leverage',   href: '/homeowners-journey/' },
+          { icon: 'heart',   title: 'Homeowner 55+',        desc: 'Retirement income & downsizing',     href: '/senior-homeowners-55-journey/' },
+          { icon: 'chart',   title: 'Real-Estate Investor', desc: 'Scale your rental portfolio',        href: '/active-investors-journey/' },
         ],
       },
       {
-        heading: 'Owning & Growing',
+        heading: 'Your profession',
         links: [
-          { label: 'Homeowner', href: '/homeowners-journey/', num: '03' },
-          { label: 'Senior Homeowner 55+', href: '/senior-homeowners-55-journey/', num: '04' },
-        ],
-      },
-      {
-        heading: 'Investing & Legacy',
-        links: [
-          { label: 'First-Time Investor', href: '/first-time-investors-journey/', num: '05' },
-          { label: 'Active Investor', href: '/active-investors-journey/', num: '06' },
-          { label: 'Passive Investor', href: '/passive-investors-journey/', num: '07' },
-          { label: 'Legacy Angel', href: '/legacy-angels-journey/', num: '08' },
+          { icon: 'medical', title: 'Medical',              desc: 'Physician & nurse loan programs',    href: '/medical-professionals/' },
+          { icon: 'plane',   title: 'Aviation',             desc: 'Pilot & crew specialist lending',    href: '/aviation-professionals/' },
+          { icon: 'brief',   title: 'Corporate Executives', desc: 'Stock-comp & RSU-friendly loans',    href: '/corporate-executives/' },
+          { icon: 'user',    title: 'Self-Employed & Owners', desc: 'Bank-statement & asset programs',  href: '/legal-business-entrepreneurs/' },
+          { icon: 'pen',     title: 'Creative & Variable',  desc: 'Flexible income documentation',      href: '/creative-earners/' },
         ],
       },
     ],
     feature: {
-      eyebrow: 'Free Download',
-      title: 'The Stairway Roadmap',
-      desc: 'An 8-ebook journey from age 18 to legacy. Real estate wealth, made simple.',
-      cta: { label: 'Get the Guide', href: 'https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c', external: true },
+      title: "Let's build a plan around your situation",
+      cta: { label: 'Build My Plan', href: '/discovery-quiz/' },
     },
   },
   {
-    label: 'Tools',
     id: 'mega-tools',
+    label: 'Free Tools & Rates',
     columns: [
       {
-        heading: 'Learn',
+        heading: 'Tools & rates',
         links: [
-          { label: 'Guides', href: '/guides/' },
-          { label: 'Courses', href: '/courses/' },
-          { label: 'Case Studies', href: '/case-studies/' },
-          { label: 'Blog', href: '/blog/' },
+          { icon: 'calc',    title: 'Loan Calculators',     desc: 'Run the numbers yourself',           href: '/loan-calculators/' },
+          { icon: 'trend',   title: "Today's Rates",        desc: 'Live wholesale rate check',          href: '/current-rates/' },
+          { icon: 'home',    title: 'Home Value Report',    desc: 'Instant property valuation',         href: '/home-value-report/' },
+          { icon: 'search',  title: 'Private Home Search',  desc: 'MLS access, no spam',                href: '/private-home-search/' },
         ],
       },
       {
-        heading: 'Calculate',
+        heading: 'Learn & proof',
         links: [
-          { label: 'Loan Programs', href: '/loan-programs/' },
-          { label: 'Loan Calculators', href: '/loan-calculators/' },
-          { label: 'Home Value Report', href: '/home-value-report/' },
-          { label: 'Current Rates', href: '/current-rates/' },
-        ],
-      },
-      {
-        heading: 'Apply',
-        links: [
-          { label: 'Same-Day Approval', href: '/same-day-approval/' },
-          { label: 'Private Home Search', href: '/private-home-search/' },
-          { label: 'Discovery Quiz', href: '/discovery-quiz/' },
+          { icon: 'file',    title: 'Case Studies',         desc: 'Real clients, real numbers',         href: '/case-studies/' },
+          { icon: 'pen',     title: 'Blog',                 desc: 'Market updates & tips',              href: '/blog/' },
+          { icon: 'book',    title: 'Free Guides',          desc: 'Step-by-step ebooks',                href: '/guides/' },
+          { icon: 'grad',    title: 'Courses',              desc: 'Video learning library',             href: '/courses/' },
         ],
       },
     ],
     feature: {
-      eyebrow: 'White-Glove',
-      title: 'Concierge Service',
-      desc: 'Pre-approvals in as fast as 24 hours. Available 7 days a week.',
-      cta: { label: 'Get Approved', href: '/same-day-approval/' },
-    },
-  },
-  {
-    label: 'About',
-    id: 'mega-about',
-    columns: [
-      {
-        heading: 'Our Story',
-        links: [
-          { label: 'Founder & Philosophy', href: '/founder-philosophy-values/' },
-          { label: 'Certified Advisor', href: '/certified-stairway-advisor/' },
-          { label: 'NEXA Partnership', href: '/nexa-mortgage-partnership/' },
-          { label: 'Community & Causes', href: '/community-causes/' },
-          { label: 'Join Our Team', href: '/branches-careers-internships/' },
-        ],
-      },
-      {
-        heading: 'Clients We Serve',
-        links: [
-          { label: 'Medical Professionals', href: '/medical-professionals/' },
-          { label: 'Aviation Professionals', href: '/aviation-professionals/' },
-          { label: 'Corporate Executives', href: '/corporate-executives/' },
-          { label: 'Legal & Entrepreneurs', href: '/legal-business-entrepreneurs/' },
-          { label: 'Creative Earners', href: '/creative-earners/' },
-        ],
-      },
-      {
-        heading: 'Our Partners',
-        links: [
-          { label: 'Financial Planners', href: '/financial-planners/' },
-          { label: 'Tax & CPA Partners', href: '/accountants-underwriters/' },
-          { label: 'Attorneys & Title', href: '/attorneys-title-teams/' },
-          { label: 'Realtors', href: '/realtors-wholesalers/' },
-          { label: 'Insurance Brokers', href: '/insurance-brokers/' },
-        ],
-      },
-    ],
-    feature: {
-      eyebrow: 'Concierge',
-      title: 'Get a Local Introduction',
-      desc: 'Already working with a trusted advisor? We connect with your team seamlessly.',
-      cta: { label: 'Connect Us', href: '/get-a-local-introduction/' },
+      title: 'Find your top financial priorities',
+      cta: { label: 'Discovery Quiz', href: '/discovery-quiz/' },
     },
   },
 ];
+
+/* ── Icon SVG paths (16×16 viewBox) ──────────────────────── */
+const icons: Record<string, string> = {
+  home:    'M8 1L1 7v8h5v-4h4v4h5V7L8 1z',
+  refresh: 'M2 8a6 6 0 0110.3-4.2M14 8a6 6 0 01-10.3 4.2',
+  hammer:  'M10 2L6 6l4 4 4-4-4-4zM6 6L1 11l2 2 5-5',
+  wrench:  'M5 3a4 4 0 015.6 5.6l4 4-1.4 1.4-4-4A4 4 0 015 3z',
+  heart:   'M8 14s-5.5-3.5-5.5-7A3 3 0 018 4.5 3 3 0 0113.5 7C13.5 10.5 8 14 8 14z',
+  tag:     'M1 1h6l7 7-6 6-7-7V1zm3 3a1 1 0 100-2 1 1 0 000 2z',
+  chart:   'M1 14h14M3 10v4M7 6v8M11 8v6',
+  key:     'M12 7a3 3 0 11-6 0 3 3 0 016 0zm-3 3v4m-2 0h4',
+  medical: 'M6 1v4H2v4h4v4h4V9h4V5h-4V1H6z',
+  plane:   'M8 2L3 8h3v6h4V8h3L8 2z',
+  brief:   'M2 5h12v9H2V5zm4-3h4v3H6V2z',
+  user:    'M8 8a3 3 0 100-6 3 3 0 000 6zm-5 6a5 5 0 0110 0H3z',
+  pen:     'M12 2l2 2-9 9H3v-2l9-9z',
+  calc:    'M3 1h10v14H3V1zm2 3h6m-6 3h3m3 0h0m-6 3h3m3 0h0',
+  trend:   'M1 12l4-4 3 2 7-8',
+  search:  'M11 11l3 3m-4-2a5 5 0 110-10 5 5 0 010 10z',
+  file:    'M4 1h6l4 4v10H4V1zm6 0v4h4',
+  book:    'M2 2h5v12H2V2zm7 0h5v12H9V2z',
+  grad:    'M8 1L1 5l7 4 7-4-7-4zM3 7v4l5 3 5-3V7',
+};
 ---
 
-<header class="site-header sticky top-0 z-50 bg-[var(--color-paper)]/85 backdrop-blur-md border-b border-[var(--color-bone)]">
+<!-- ═══════════════════════════════════════════════════════════
+     LAYER 1 — Trust Strip
+     ═══════════════════════════════════════════════════════════ -->
+<div class="hdr-trust" aria-label="Trust signals">
   <div class="container-page">
-    <div class="flex items-center justify-between gap-6 h-[70px]">
+    <div class="hdr-trust__inner">
+      <div class="hdr-trust__left">
+        <span class="hdr-trust__item">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+          5.0 · 624 reviews
+        </span>
+        <span class="hdr-trust__sep">·</span>
+        <span class="hdr-trust__item">Licensed in 48 states</span>
+        <span class="hdr-trust__sep">·</span>
+        <span class="hdr-trust__item">Jim Blackburn · <span class="mono">NMLS #1072866</span></span>
+      </div>
+      <span class="hdr-trust__right">Equal Housing Lender</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LAYER 2 — Main Navigation Bar
+     ═══════════════════════════════════════════════════════════ -->
+<header class="hdr-main" id="hdr-main">
+  <div class="container-page">
+    <div class="hdr-main__inner">
 
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 shrink-0 group" aria-label="Stairway Mortgage">
-        <!-- Stair-step monogram -->
-        <svg viewBox="0 0 28 28" class="w-7 h-7" aria-hidden="true">
+      <a href="/" class="hdr-logo" aria-label="Stairway Mortgage — home">
+        <svg viewBox="0 0 28 28" class="hdr-logo__mark" aria-hidden="true">
           <rect x="2" y="20" width="6" height="6" fill="var(--color-ink)"/>
           <rect x="9" y="13" width="6" height="13" fill="var(--color-ink)"/>
           <rect x="16" y="6" width="6" height="20" fill="var(--color-blue)"/>
         </svg>
-        <span class="font-display font-medium text-[19px] text-[var(--color-ink)] tracking-tight leading-none">
-          Stairway
-          <span class="text-[var(--color-mute)] font-normal">Mortgage</span>
+        <span class="hdr-logo__text font-display">
+          Stairway <span class="hdr-logo__mute">Mortgage</span>
         </span>
       </a>
 
-      <!-- Desktop nav -->
-      <nav class="hidden lg:flex items-center gap-1 flex-1 justify-center" aria-label="Main">
-        {megaMenus.map((m) => (
-          <div class="nav-item relative">
+      <!-- Desktop mega-menu triggers -->
+      <nav class="hdr-nav" aria-label="Main navigation">
+        {menus.map((m) => (
+          <div class="hdr-nav__item" data-menu-wrap>
             <button
-              class="mega-trigger"
+              class="hdr-nav__trigger"
               aria-controls={m.id}
               aria-expanded="false"
               aria-haspopup="true"
             >
               {m.label}
-              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="hdr-nav__chevron">
                 <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
@@ -195,36 +180,50 @@ const megaMenus = [
         ))}
       </nav>
 
-      <!-- CTAs -->
-      <div class="hidden lg:flex items-center gap-2 shrink-0">
-        <a href="/contact-us/" class="btn btn-ghost text-[13.5px] py-2.5 px-4">Schedule Call</a>
-        <a href="/same-day-approval/" class="btn btn-green text-[13.5px] py-2.5 px-4">Apply Now</a>
+      <!-- Right: phone + CTA -->
+      <div class="hdr-actions">
+        <a href="tel:+19542556680" class="hdr-phone" aria-label="Call (954) 255-6680">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 3l-1.4-.7c-.5-.3-1.2-.1-1.5.3L2 4.2c-.4.6-.3 1.5.2 2C4 8.3 7.7 12 9.8 13.8c.5.4 1.3.5 1.9.1l1.6-1.1c.5-.3.6-1 .3-1.5L13 10l-2.5-.3-1.2 1.2c-.8-.5-2.5-2.2-3-3l1.2-1.2L6 3z"/></svg>
+          <span class="hdr-phone__number mono">(954) 255-6680</span>
+        </a>
+        <div class="hdr-cta-wrap">
+          <a href="/same-day-approval/" class="btn btn-blue hdr-cta">See My Options</a>
+          <span class="hdr-cta-sub">60-sec match · no credit pull</span>
+        </div>
       </div>
 
-      <!-- Mobile toggle -->
-      <button class="mobile-toggle lg:hidden p-2 -mr-2" aria-label="Menu" aria-expanded="false">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
-        </svg>
+      <!-- Mobile hamburger -->
+      <button class="hdr-burger" aria-label="Open menu" aria-expanded="false" id="hdr-burger">
+        <span class="hdr-burger__line"></span>
+        <span class="hdr-burger__line"></span>
+        <span class="hdr-burger__line"></span>
       </button>
     </div>
   </div>
 
-  <!-- Mega-menu panels -->
-  {megaMenus.map((m) => (
-    <div class="mega-panel hidden lg:block" id={m.id} role="region" aria-label={m.label}>
+  <!-- ── Mega-menu panels (desktop) ── -->
+  {menus.map((m) => (
+    <div class="mega" id={m.id} role="region" aria-label={m.label + ' menu'}>
       <div class="container-page">
-        <div class="grid grid-cols-12 gap-8">
-          <div class="col-span-8 grid grid-cols-3 gap-8">
+        <div class="mega__grid">
+          <!-- Link columns -->
+          <div class="mega__cols">
             {m.columns.map((col) => (
-              <div>
-                <h3 class="eyebrow mb-4 pb-3 border-b border-[var(--color-bone)]">{col.heading}</h3>
-                <ul class="space-y-2.5">
+              <div class="mega__col">
+                <h3 class="mega__heading">{col.heading}</h3>
+                <ul class="mega__list">
                   {col.links.map((link) => (
                     <li>
-                      <a href={link.href} class="flex items-center gap-2.5 text-[15px] text-[var(--color-ink)] hover:text-[var(--color-blue)] transition-colors group">
-                        {link.num && <span class="card-step-num">{link.num}</span>}
-                        <span>{link.label}</span>
+                      <a href={link.href} class="mega__link">
+                        <span class="mega__icon" aria-hidden="true">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d={icons[link.icon] || icons.home}/>
+                          </svg>
+                        </span>
+                        <span class="mega__link-text">
+                          <strong>{link.title}</strong>
+                          <span>{link.desc}</span>
+                        </span>
                       </a>
                     </li>
                   ))}
@@ -232,70 +231,656 @@ const megaMenus = [
               </div>
             ))}
           </div>
-          <div class="col-span-4">
-            <div class="bg-[var(--color-ink)] text-[var(--color-paper)] rounded-xl p-7 h-full flex flex-col">
-              <span class="eyebrow text-[var(--color-paper)]/70 mb-3" style="--tw-text-opacity:1;">
-                <span style="background:rgba(250,250,247,0.4)" class="!w-7 !h-px"></span>
-                {m.feature.eyebrow}
-              </span>
-              <h4 class="font-display text-2xl font-medium leading-snug mb-2 tracking-tight">{m.feature.title}</h4>
-              <p class="text-[14px] leading-relaxed text-[var(--color-paper)]/72 mb-6 flex-1">{m.feature.desc}</p>
-              <a
-                href={m.feature.cta.href}
-                target={m.feature.cta.external ? '_blank' : undefined}
-                rel={m.feature.cta.external ? 'noopener' : undefined}
-                class="inline-flex items-center gap-1.5 text-[14px] font-medium text-[var(--color-paper)] hover:gap-3 transition-all"
-              >
-                {m.feature.cta.label}
-                <span>→</span>
-              </a>
+          <!-- Feature card -->
+          <div class="mega__feature">
+            <div class="mega__feature-card">
+              <p class="mega__feature-title font-display">{m.feature.title}</p>
+              <a href={m.feature.cta.href} class="btn btn-blue mega__feature-btn">{m.feature.cta.label}</a>
             </div>
           </div>
         </div>
+        {/* Quick-quote chips (only on Get a Mortgage) */}
+        {m.quickQuotes && (
+          <div class="mega__quotes">
+            <span class="mega__quotes-label">Quick quotes:</span>
+            {m.quickQuotes.map((q) => (
+              <a href={q.href} class="mega__quote-chip">{q.label}</a>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   ))}
-
-  <!-- Mobile menu -->
-  <div class="mobile-menu lg:hidden">
-    <nav class="container-page py-6 space-y-6">
-      {megaMenus.map((m) => (
-        <details class="border-b border-[var(--color-bone)] pb-4 last:border-0">
-          <summary class="font-display text-xl font-medium cursor-pointer py-2 list-none flex justify-between items-center">
-            {m.label}
-            <span class="text-[var(--color-mute)]">+</span>
-          </summary>
-          <div class="pt-3 pl-2 space-y-3">
-            {m.columns.flatMap(c => c.links).map(link => (
-              <a href={link.href} class="block text-[15px] text-[var(--color-ink)]">{link.label}</a>
-            ))}
-          </div>
-        </details>
-      ))}
-      <div class="flex gap-3 pt-4">
-        <a href="/contact-us/" class="btn btn-ghost flex-1">Schedule Call</a>
-        <a href="/same-day-approval/" class="btn btn-green flex-1">Apply Now</a>
-      </div>
-    </nav>
-  </div>
 </header>
 
+<!-- ═══════════════════════════════════════════════════════════
+     LAYER 3 — Sticky Condensed Bar (appears on scroll)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="hdr-sticky" id="hdr-sticky" aria-hidden="true">
+  <div class="container-page">
+    <div class="hdr-sticky__inner">
+      <a href="/" class="hdr-logo hdr-logo--sm" aria-label="Home">
+        <svg viewBox="0 0 28 28" class="hdr-logo__mark" aria-hidden="true">
+          <rect x="2" y="20" width="6" height="6" fill="var(--color-ink)"/>
+          <rect x="9" y="13" width="6" height="13" fill="var(--color-ink)"/>
+          <rect x="16" y="6" width="6" height="20" fill="var(--color-blue)"/>
+        </svg>
+        <span class="hdr-logo__text font-display">Stairway</span>
+      </a>
+      <div class="hdr-sticky__right">
+        <a href="tel:+19542556680" class="hdr-phone hdr-phone--sm" aria-label="Call">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 3l-1.4-.7c-.5-.3-1.2-.1-1.5.3L2 4.2c-.4.6-.3 1.5.2 2C4 8.3 7.7 12 9.8 13.8c.5.4 1.3.5 1.9.1l1.6-1.1c.5-.3.6-1 .3-1.5L13 10l-2.5-.3-1.2 1.2c-.8-.5-2.5-2.2-3-3l1.2-1.2L6 3z"/></svg>
+          <span class="mono">(954) 255-6680</span>
+        </a>
+        <a href="/same-day-approval/" class="btn btn-blue hdr-cta hdr-cta--sm">See My Options</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MOBILE DRAWER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="hdr-drawer" id="hdr-drawer" aria-hidden="true">
+  <div class="hdr-drawer__top">
+    <a href="/same-day-approval/" class="btn btn-blue hdr-drawer__cta">See My Options</a>
+    <p class="hdr-drawer__cta-sub">60-sec match · no credit pull</p>
+  </div>
+  <nav class="hdr-drawer__nav" aria-label="Mobile navigation">
+    {menus.map((m) => (
+      <details class="hdr-drawer__section">
+        <summary class="hdr-drawer__summary font-display">
+          {m.label}
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="hdr-drawer__plus" aria-hidden="true">
+            <path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </summary>
+        <div class="hdr-drawer__links">
+          {m.columns.flatMap(c => c.links).map(link => (
+            <a href={link.href} class="hdr-drawer__link">{link.title}</a>
+          ))}
+        </div>
+      </details>
+    ))}
+  </nav>
+  <div class="hdr-drawer__bottom">
+    <a href="tel:+19542556680" class="btn btn-ghost hdr-drawer__call">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 3l-1.4-.7c-.5-.3-1.2-.1-1.5.3L2 4.2c-.4.6-.3 1.5.2 2C4 8.3 7.7 12 9.8 13.8c.5.4 1.3.5 1.9.1l1.6-1.1c.5-.3.6-1 .3-1.5L13 10l-2.5-.3-1.2 1.2c-.8-.5-2.5-2.2-3-3l1.2-1.2L6 3z"/></svg>
+      Call (954) 255-6680
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCOPED STYLES
+     ═══════════════════════════════════════════════════════════ -->
 <style>
-  .mobile-menu {
+  /* ── Trust strip ── */
+  .hdr-trust {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-size: 11.5px;
+    letter-spacing: 0.01em;
+    line-height: 34px;
+    height: 34px;
+    overflow: hidden;
+    position: relative;
+    z-index: 52;
+  }
+  .hdr-trust__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hdr-trust__left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .hdr-trust__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+    opacity: 0.85;
+  }
+  .hdr-trust__sep { opacity: 0.3; }
+  .hdr-trust__right {
+    white-space: nowrap;
+    opacity: 0.6;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── Main bar ── */
+  .hdr-main {
+    position: sticky;
+    top: 0;
+    z-index: 51;
+    background: rgba(250, 250, 247, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-bone);
+  }
+  .hdr-main__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 64px;
+  }
+
+  /* ── Logo ── */
+  .hdr-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .hdr-logo__mark { width: 26px; height: 26px; }
+  .hdr-logo__text {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-ink);
+    letter-spacing: -0.015em;
+    line-height: 1;
+  }
+  .hdr-logo__mute { color: var(--color-mute); font-weight: 400; }
+  .hdr-logo--sm .hdr-logo__mark { width: 22px; height: 22px; }
+  .hdr-logo--sm .hdr-logo__text { font-size: 16px; }
+
+  /* ── Nav triggers ── */
+  .hdr-nav {
     display: none;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    justify-content: center;
+  }
+  @media (min-width: 980px) { .hdr-nav { display: flex; } }
+  .hdr-nav__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.55rem 0.9rem;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-ink);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.15s;
+    letter-spacing: -0.005em;
+  }
+  .hdr-nav__trigger:hover,
+  .hdr-nav__trigger[aria-expanded="true"] {
+    background: var(--color-paper-tint);
+  }
+  .hdr-nav__chevron { transition: transform 0.2s; }
+  .hdr-nav__trigger[aria-expanded="true"] .hdr-nav__chevron {
+    transform: rotate(180deg);
+  }
+
+  /* ── Actions (phone + CTA) ── */
+  .hdr-actions {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+  @media (min-width: 980px) { .hdr-actions { display: flex; } }
+  .hdr-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: color 0.15s;
+  }
+  .hdr-phone:hover { color: var(--color-blue); }
+  .hdr-phone__number { font-size: 13.5px; }
+  .hdr-cta-wrap { text-align: center; }
+  .hdr-cta { font-size: 13.5px !important; padding: 0.6rem 1.1rem !important; }
+  .hdr-cta-sub {
+    display: block;
+    font-size: 10px;
+    color: var(--color-mute);
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Hamburger ── */
+  .hdr-burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    margin-right: -8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  @media (min-width: 980px) { .hdr-burger { display: none; } }
+  .hdr-burger__line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-ink);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .hdr-burger.is-open .hdr-burger__line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hdr-burger.is-open .hdr-burger__line:nth-child(2) { opacity: 0; }
+  .hdr-burger.is-open .hdr-burger__line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── Mega-menu panels ── */
+  .mega {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-paper);
+    border-top: 1px solid var(--color-bone);
+    box-shadow: 0 24px 48px -24px rgba(10, 14, 26, 0.12);
+    padding: 2rem 0 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    z-index: 60;
+    display: none;
+  }
+  @media (min-width: 980px) { .mega { display: block; } }
+  .mega.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .mega__grid {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 2rem;
+  }
+  .mega__cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .mega__heading {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--color-bone);
+  }
+  .mega__list { list-style: none; padding: 0; margin: 0; }
+  .mega__list li + li { margin-top: 2px; }
+  .mega__link {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.5rem 0.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: background 0.15s;
+  }
+  .mega__link:hover { background: var(--color-paper-tint); }
+  .mega__icon {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-paper-tint);
+    border-radius: 8px;
+    flex-shrink: 0;
+    color: var(--color-blue);
+    margin-top: 1px;
+  }
+  .mega__link:hover .mega__icon {
+    background: var(--color-blue-tint);
+  }
+  .mega__link-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .mega__link-text strong {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .mega__link-text span:last-child {
+    font-size: 12.5px;
+    color: var(--color-mute);
+    line-height: 1.35;
+  }
+  .mega__feature-card {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-radius: 14px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    min-height: 200px;
+  }
+  .mega__feature-title {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.25rem;
+  }
+  .mega__feature-btn {
+    width: 100%;
+    text-align: center;
+    font-size: 14px !important;
+    padding: 0.7rem 1rem !important;
+  }
+
+  /* Quick-quote chips */
+  .mega__quotes {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--color-bone);
+  }
+  .mega__quotes-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    white-space: nowrap;
+  }
+  .mega__quote-chip {
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--color-bone);
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .mega__quote-chip:hover {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+    background: var(--color-blue-tint);
+  }
+
+  /* ── Sticky condensed bar ── */
+  .hdr-sticky {
     position: fixed;
-    top: 70px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 55;
+    background: rgba(250, 250, 247, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-bone);
+    transform: translateY(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 52px;
+  }
+  .hdr-sticky.is-visible { transform: translateY(0); }
+  .hdr-sticky__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+  .hdr-sticky__right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hdr-phone--sm { font-size: 12.5px; }
+  .hdr-cta--sm {
+    font-size: 12.5px !important;
+    padding: 0.45rem 0.9rem !important;
+  }
+
+  /* ── Mobile drawer ── */
+  .hdr-drawer {
+    position: fixed;
+    top: 98px; /* trust strip 34 + main bar 64 */
     left: 0;
     right: 0;
     bottom: 0;
     background: var(--color-paper);
-    z-index: 40;
+    z-index: 50;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
   }
-  .mobile-menu.open { display: block; }
-  body.menu-open { overflow: hidden; }
+  @media (min-width: 980px) { .hdr-drawer { display: none !important; } }
+  .hdr-drawer.is-open { transform: translateX(0); }
+  .hdr-drawer__top {
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-bone);
+  }
+  .hdr-drawer__cta {
+    width: 100%;
+    font-size: 16px !important;
+    padding: 0.85rem 1.5rem !important;
+  }
+  .hdr-drawer__cta-sub {
+    font-size: 11px;
+    color: var(--color-mute);
+    margin-top: 0.4rem;
+  }
+  .hdr-drawer__nav {
+    flex: 1;
+    padding: 1rem 1.25rem;
+  }
+  .hdr-drawer__section {
+    border-bottom: 1px solid var(--color-bone);
+  }
+  .hdr-drawer__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+  }
+  .hdr-drawer__summary::-webkit-details-marker { display: none; }
+  .hdr-drawer__plus { transition: transform 0.2s; }
+  details[open] > .hdr-drawer__summary .hdr-drawer__plus {
+    transform: rotate(45deg);
+  }
+  .hdr-drawer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-bottom: 1rem;
+  }
+  .hdr-drawer__link {
+    display: block;
+    padding: 0.55rem 0.5rem;
+    font-size: 15px;
+    color: var(--color-ink);
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  .hdr-drawer__link:hover { background: var(--color-paper-tint); }
+  .hdr-drawer__bottom {
+    padding: 1.25rem;
+    border-top: 1px solid var(--color-bone);
+  }
+  .hdr-drawer__call {
+    width: 100%;
+    font-size: 15px;
+    justify-content: center;
+  }
 
-  .mega-panel .mega-promo-eyebrow::before {
-    background: rgba(250, 250, 247, 0.4);
+  /* ── Body lock when drawer open ── */
+  :global(body.menu-open) { overflow: hidden; }
+
+  /* ── Hide elements on mobile / desktop ── */
+  @media (max-width: 979px) {
+    .hdr-trust__right { display: none; }
+    .hdr-trust__sep:last-of-type,
+    .hdr-trust__item:last-child { display: none; }
+    .hdr-phone--sm span { display: none; }
+  }
+  @media (max-width: 600px) {
+    .hdr-trust__sep,
+    .hdr-trust__item:nth-child(n+2) { display: none; }
+    .hdr-trust__item:first-child { display: inline-flex; }
   }
 </style>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SELF-CONTAINED SCRIPT
+     ═══════════════════════════════════════════════════════════ -->
+<script is:inline>
+(function() {
+  'use strict';
+
+  /* ── Mega-menu (desktop) ── */
+  var triggers = document.querySelectorAll('.hdr-nav__trigger');
+  var timeouts = {};
+
+  function closeAll(except) {
+    triggers.forEach(function(t) {
+      if (t === except) return;
+      t.setAttribute('aria-expanded', 'false');
+      var p = document.getElementById(t.getAttribute('aria-controls'));
+      if (p) p.classList.remove('is-open');
+    });
+  }
+
+  function toggle(trigger) {
+    var open = trigger.getAttribute('aria-expanded') === 'true';
+    closeAll(open ? null : trigger);
+    trigger.setAttribute('aria-expanded', open ? 'false' : 'true');
+    var panel = document.getElementById(trigger.getAttribute('aria-controls'));
+    if (panel) panel.classList.toggle('is-open', !open);
+  }
+
+  triggers.forEach(function(trigger) {
+    var id = trigger.getAttribute('aria-controls');
+    var wrap = trigger.closest('[data-menu-wrap]');
+
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      toggle(trigger);
+    });
+
+    if (wrap) {
+      wrap.addEventListener('mouseenter', function() {
+        if (window.innerWidth < 980) return;
+        clearTimeout(timeouts[id]);
+        closeAll(trigger);
+        trigger.setAttribute('aria-expanded', 'true');
+        var panel = document.getElementById(id);
+        if (panel) panel.classList.add('is-open');
+      });
+      wrap.addEventListener('mouseleave', function() {
+        timeouts[id] = setTimeout(function() {
+          trigger.setAttribute('aria-expanded', 'false');
+          var panel = document.getElementById(id);
+          if (panel) panel.classList.remove('is-open');
+        }, 200);
+      });
+    }
+  });
+
+  /* Close on outside click */
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('[data-menu-wrap]') && !e.target.closest('.mega')) {
+      closeAll();
+    }
+  });
+
+  /* Close on Escape */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeAll();
+      // Also close mobile drawer
+      var drawer = document.getElementById('hdr-drawer');
+      var burger = document.getElementById('hdr-burger');
+      if (drawer && drawer.classList.contains('is-open')) {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        burger.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+      }
+    }
+  });
+
+  /* ── Mobile drawer ── */
+  var burger = document.getElementById('hdr-burger');
+  var drawer = document.getElementById('hdr-drawer');
+
+  if (burger && drawer) {
+    burger.addEventListener('click', function() {
+      var open = burger.classList.toggle('is-open');
+      drawer.classList.toggle('is-open', open);
+      drawer.setAttribute('aria-hidden', !open);
+      burger.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('menu-open', open);
+    });
+  }
+
+  /* ── Sticky condensed bar ── */
+  var sticky = document.getElementById('hdr-sticky');
+  var mainBar = document.getElementById('hdr-main');
+  var threshold = 240;
+  var lastY = 0;
+  var ticking = false;
+
+  function onScroll() {
+    var y = window.scrollY || window.pageYOffset;
+    if (y > threshold) {
+      sticky.classList.add('is-visible');
+      sticky.setAttribute('aria-hidden', 'false');
+    } else {
+      sticky.classList.remove('is-visible');
+      sticky.setAttribute('aria-hidden', 'true');
+    }
+    lastY = y;
+    ticking = false;
+  }
+
+  if (sticky) {
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+})();
+</script>
