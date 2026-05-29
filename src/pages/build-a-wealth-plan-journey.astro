@@ -1,16 +1,169 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const trustNumbers = [
+  { value: 5.0, suffix: '★', label: 'Client rating' },
+  { value: 624, suffix: '', label: 'Verified reviews' },
+  { value: 300, suffix: '+', label: 'Lender network' },
+  { value: 48, suffix: '', label: 'States (NEXA)' },
+  { value: 19, suffix: '', label: 'Days — fastest close' },
+];
+const mistakes = [
+  { front: 'Waiting until you can pay cash',           back: 'Leverage lets $100K control $400K today' },
+  { front: 'Buying only where you live',               back: 'The best rental markets may be elsewhere' },
+  { front: 'Ignoring cash flow for appreciation only', back: 'Cash flow pays the bills — appreciation is a bonus' },
+  { front: 'Overleveraging on the first deal',         back: 'Conservative leverage builds lasting wealth' },
+  { front: 'Not treating real estate as a business',   back: 'A plan beats a hunch every time' },
+];
+const reviews = [
+  { text: "This is the second loan I am doing with Jim and once again he and his team have exceeded my expectations. This time it was a multi-family unit. I can attest he provides the best possible service and gets the job done.", name: 'Syed Saqib', title: 'Chief Investment Officer, Zstep Capital', loc: 'Illinois', source: 'Zillow' },
+  { text: "I'm an RE investor. Had multiple loan officers but one really stands out — JIM BLACKBURN. I have tons of properties and live in China with unique income (he made it work!). He called me in China at 1 AM to get information to close the deal.", name: 'Dennis Nikolaev', title: 'RE Investor, Studio Leader', loc: 'China', source: 'Facebook' },
+  { text: "I have now completed five mortgages with Jim. He and his team are true professionals that you can count on. Numbers always spot on, accurate, and on time. I would never even consider looking elsewhere for any of my mortgage needs.", name: 'Gary Koval', title: 'Regional Manager, Hyundai', loc: 'Colorado', source: 'Google' },
+];
 ---
-<Layout title="Build a Wealth Plan — Stairway Mortgage" description="Use real estate as a wealth engine. Strategic planning from first property to legacy.">
+<Layout title="Build a Wealth Plan — Stairway Mortgage" description="Use real estate as a wealth engine. Strategic leverage, rental income, and portfolio planning with 300+ lenders.">
+
+  <section class="section relative overflow-hidden wealth-hero-wash">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">How We Serve · Build a Wealth Plan</span>
+        <h1 class="display-xl mt-6 mb-8">A house is shelter. A plan is <em class="italic text-[var(--color-blue)]">wealth</em>.</h1>
+        <div class="flex flex-wrap gap-3 justify-center mb-12">
+          <a href="/same-day-approval/" class="btn btn-primary btn-arrow text-base px-6 py-3.5">See My Options</a>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
+        </div>
+      </div>
+      <div class="trust-ribbon reveal" style="transition-delay:200ms;">
+        {trustNumbers.map((t) => (<div class="trust-ribbon__item"><span class="trust-ribbon__num font-display" data-countup={t.value} data-suffix={t.suffix}>0{t.suffix}</span><span class="trust-ribbon__label">{t.label}</span></div>))}
+        <div class="trust-ribbon__nmls"><span class="mono">NMLS #1072866</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEVERAGE REVEAL (DARK) -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-rust mb-5 text-[var(--color-paper)]">The leverage reveal</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">See how cash controls <em class="italic font-light">4x its value</em>.</h2>
+      </div>
+      <div class="leverage-visual reveal" style="transition-delay:100ms;">
+        <div class="leverage-step">
+          <span class="leverage-label mono">Your cash</span>
+          <span class="leverage-num font-display">$100,000</span>
+        </div>
+        <span class="leverage-arrow">↓ controls</span>
+        <div class="leverage-step">
+          <span class="leverage-label mono">A property worth</span>
+          <span class="leverage-num font-display text-[var(--color-blue)]">$400,000</span>
+        </div>
+        <span class="leverage-arrow">↓ after 10 years</span>
+        <div class="leverage-step leverage-step--result">
+          <span class="leverage-label mono">Your equity</span>
+          <span class="leverage-num font-display text-[var(--color-green)]">$305,000</span>
+          <span class="leverage-detail">Tenant pays down + market appreciates</span>
+        </div>
+      </div>
+      <p class="text-[12px] text-center opacity-40 mt-6 text-[var(--color-paper)]">Illustrative. Assumes 25% down, 3% annual appreciation, tenant-paid mortgage. Not a guarantee. Past performance does not predict future results.</p>
+    </div>
+  </section>
+
+  <!-- QUESTIONS -->
   <section class="section">
-    <div class="container-page text-center max-w-2xl mx-auto">
-      <span class="eyebrow eyebrow-blue mb-5">How We Serve</span>
-      <h1 class="display-lg mt-5 mb-6">Build a Wealth Plan</h1>
-      <p class="lede mb-10">This page is being built. Talk to Jim to get started today.</p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
-        <a href="/contact-us/" class="btn btn-ghost">Talk to Jim</a>
+    <div class="container-page">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="wealth-q reveal"><span class="eyebrow mb-4">Question 01</span><h3 class="display-sm mt-3 mb-4">Buy to live or buy to build?</h3><p class="text-[14px] text-[var(--color-mute)]">Your primary home grows equity. A rental generates income + equity. Both can be part of the plan.</p></div>
+        <div class="wealth-q reveal" style="transition-delay:80ms;"><span class="eyebrow mb-4">Question 02</span><h3 class="display-sm mt-3 mb-4">What is leverage actually doing?</h3><p class="text-[14px] text-[var(--color-mute)]">$100K in cash earns 4-5% in a bank. Deployed into real estate, it controls $400K and earns on the full asset.</p></div>
+        <div class="wealth-q reveal" style="transition-delay:160ms;"><span class="eyebrow mb-4">Question 03</span><h3 class="display-sm mt-3 mb-4">First rental to portfolio?</h3><p class="text-[14px] text-[var(--color-mute)]">Start with one property. Let the equity compound. Use it to fund the next. Repeat.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTOR PROGRAMS (tint) -->
+  <section class="section-tight bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">Investor loans</span>
+        <h2 class="display-lg mt-5">Programs built for <em class="italic font-light">investors</em>.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="card reveal"><h4 class="font-display text-xl font-medium mb-1">Rental-Income Loan</h4><p class="text-[14px] text-[var(--color-mute)]">Qualify on the property's rental income, not yours.</p></div>
+        <div class="card reveal" style="transition-delay:60ms;"><h4 class="font-display text-xl font-medium mb-1">Conventional Investment</h4><p class="text-[14px] text-[var(--color-mute)]">Standard rates for 1-4 unit investment properties.</p></div>
+        <div class="card reveal" style="transition-delay:120ms;"><h4 class="font-display text-xl font-medium mb-1">Flexible Income</h4><p class="text-[14px] text-[var(--color-mute)]">Bank statements, assets — no tax returns needed.</p></div>
+        <div class="card reveal" style="transition-delay:180ms;"><h4 class="font-display text-xl font-medium mb-1">Portfolio / Blanket Loan</h4><p class="text-[14px] text-[var(--color-mute)]">One loan across multiple properties.</p></div>
+        <div class="card reveal" style="transition-delay:240ms;"><h4 class="font-display text-xl font-medium mb-1">Fix-and-Flip</h4><p class="text-[14px] text-[var(--color-mute)]">Short-term financing for purchase + rehab.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section-tight bg-gradient-to-b from-[var(--color-blue-tint)] to-[var(--color-paper)]">
+    <div class="container-page"><div class="stat-band reveal">
+      <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="500" data-suffix="M+" data-prefix="$">$0</span><span class="stat-band__label">Loans closed</span></div>
+      <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="19" data-suffix=" days">0</span><span class="stat-band__label">Fastest close</span></div>
+      <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="300" data-suffix="+">0</span><span class="stat-band__label">Lenders</span></div>
+      <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="48">0</span><span class="stat-band__label">States (NEXA)</span></div>
+      <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="5.0" data-suffix="★" data-decimals="1">0</span><span class="stat-band__label">624 reviews</span></div>
+    </div></div>
+  </section>
+
+  <!-- MISTAKES -->
+  <section class="section bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal"><span class="eyebrow mb-5">Learn from others</span><h2 class="display-lg mt-5">Five wealth-building mistakes.</h2></div>
+      <div class="flip-grid">
+        {mistakes.map((m, i) => (
+          <div class="flip-card reveal" style={`transition-delay:${i*80}ms;`} tabindex="0" role="button" aria-label={`Mistake: ${m.front}. Fix: ${m.back}`}>
+            <div class="flip-card__inner">
+              <div class="flip-card__front"><span class="flip-card__num mono">0{i+1}</span><p class="font-display text-lg leading-snug">{m.front}</p></div>
+              <div class="flip-card__back"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-green)"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg><p class="font-display text-lg leading-snug">{m.back}</p></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section-dark section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal"><span class="eyebrow mb-5">The receipts</span><h2 class="display-lg mt-5 text-[var(--color-paper)]">Real investors. <em class="italic font-light">Real results.</em></h2></div>
+      <div class="reviews-scroll no-scrollbar" id="reviews-scroll"><div class="reviews-track" id="reviews-track">
+        {reviews.map((r) => (
+          <figure class="review-card"><div class="review-card__avatar"><span class="review-card__initials">{r.name.split(' ').map(n=>n[0]).join('')}</span></div><blockquote class="review-card__text font-display">{r.text}</blockquote><figcaption class="review-card__meta"><strong>{r.name}</strong><span>{r.loc}</span><span class="review-card__source mono">{r.source}</span></figcaption></figure>
+        ))}
+      </div></div>
+    </div>
+  </section>
+
+  <!-- SUMMIT -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
+        <div class="summit-glow" aria-hidden="true"><div class="summit-glow__blob summit-glow__blob--blue"></div><div class="summit-glow__blob summit-glow__blob--rust"></div></div>
+        <div class="relative reveal">
+          <h2 class="display-lg text-[var(--color-paper)] mb-4">Your wealth plan starts with <em class="italic font-light text-[var(--color-blue-tint)]">one conversation</em>.</h2>
+          <div class="flex flex-wrap gap-3 justify-center mt-8">
+            <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Talk to Our Team</a>
+            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call now · (954) 993-1625</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  .wealth-hero-wash{position:relative;}.wealth-hero-wash::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}
+  .trust-ribbon{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;padding:1.5rem 2rem;background:var(--color-paper-tint);border:1px solid var(--color-bone);border-radius:16px;position:relative;}.trust-ribbon__item{text-align:center;}.trust-ribbon__num{display:block;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:400;line-height:1;letter-spacing:-0.02em;color:var(--color-ink);}.trust-ribbon__label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-mute);margin-top:0.3rem;}.trust-ribbon__nmls{position:absolute;bottom:-1.5rem;left:50%;transform:translateX(-50%);font-size:11px;color:var(--color-mute);white-space:nowrap;}
+  .leverage-visual{display:flex;flex-direction:column;align-items:center;gap:0.75rem;max-width:400px;margin:0 auto;}.leverage-step{text-align:center;padding:1.25rem 2rem;background:rgba(250,250,247,0.06);border:1px solid rgba(250,250,247,0.12);border-radius:12px;width:100%;}.leverage-step--result{border-color:var(--color-green);background:rgba(46,158,46,0.08);}.leverage-label{display:block;font-size:11px;color:rgba(250,250,247,0.5);margin-bottom:0.3rem;}.leverage-num{display:block;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:400;color:var(--color-paper);}.leverage-detail{display:block;font-size:12px;color:rgba(250,250,247,0.4);margin-top:0.3rem;}.leverage-arrow{font-size:14px;color:rgba(250,250,247,0.3);font-family:var(--font-mono);}
+  .wealth-q{background:var(--color-paper);border:1px solid var(--color-bone);border-radius:12px;padding:1.75rem;}
+  .stat-band{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;}.stat-band__item{text-align:center;flex:1;min-width:120px;}.stat-band__num{display:block;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1;letter-spacing:-0.03em;color:var(--color-ink);}.stat-band__label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-mute);margin-top:0.4rem;}
+  .flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}.flip-card{perspective:600px;cursor:pointer;height:180px;}.flip-card__inner{position:relative;width:100%;height:100%;transition:transform 0.5s;transform-style:preserve-3d;}.flip-card:hover .flip-card__inner,.flip-card:focus .flip-card__inner{transform:rotateY(180deg);}.flip-card__front,.flip-card__back{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--color-bone);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;justify-content:center;}.flip-card__front{background:var(--color-paper);}.flip-card__back{background:var(--color-ink);color:var(--color-paper);transform:rotateY(180deg);gap:0.5rem;align-items:center;text-align:center;}.flip-card__num{font-size:11px;color:var(--color-rust);margin-bottom:0.5rem;}
+  .reviews-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:1rem;}.reviews-track{display:flex;gap:1.25rem;animation:scroll-reviews 30s linear infinite;width:max-content;}@keyframes scroll-reviews{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.reviews-track:hover{animation-play-state:paused;}.review-card{flex-shrink:0;width:340px;border:1px solid rgba(250,250,247,0.15);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:0.75rem;}.review-card__avatar{width:40px;height:40px;border-radius:50%;background:var(--color-blue-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0;}.review-card__initials{font-size:14px;font-weight:600;color:var(--color-paper);}.review-card__text{font-size:15px;line-height:1.45;color:var(--color-paper);font-weight:400;flex:1;}.review-card__meta{display:flex;gap:0.5rem;align-items:center;font-size:12px;color:rgba(250,250,247,0.6);}.review-card__meta strong{color:var(--color-paper);font-weight:500;}.review-card__source{margin-left:auto;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;opacity:0.5;}
+  .summit-glow{position:absolute;inset:0;overflow:hidden;pointer-events:none;}.summit-glow__blob{position:absolute;border-radius:50%;filter:blur(60px);}.summit-glow__blob--blue{width:200px;height:200px;background:var(--color-blue);opacity:0.2;bottom:-40px;right:10%;}.summit-glow__blob--rust{width:160px;height:160px;background:var(--color-rust);opacity:0.15;top:-20px;left:15%;}
+  @media(prefers-reduced-motion:reduce){.reviews-track{animation:none;}}
+</style>
+<script is:inline>
+(function(){var r=window.matchMedia('(prefers-reduced-motion:reduce)').matches;function c(e){var t=parseFloat(e.dataset.countup),s=e.dataset.suffix||'',p=e.dataset.prefix||'',d=parseInt(e.dataset.decimals)||0,D=1200,S=performance.now();function k(n){var pr=Math.min((n-S)/D,1),v=(1-Math.pow(1-pr,3))*t;e.textContent=p+(d?v.toFixed(d):Math.round(v))+s;if(pr<1)requestAnimationFrame(k);}if(r)e.textContent=p+(d?t.toFixed(d):t)+s;else requestAnimationFrame(k);}if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add('in-view');io.unobserve(e.target);e.target.querySelectorAll('[data-countup]').forEach(c);if(e.target.dataset.countup)c(e.target);});},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal,.trust-ribbon,.stat-band').forEach(function(e){io.observe(e);});}var tr=document.getElementById('reviews-track');if(tr&&!r)tr.innerHTML+=tr.innerHTML;})();
+</script>

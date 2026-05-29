@@ -1,16 +1,135 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const steps = [
+  { num: '01', title: 'Tell us about your property', desc: 'Location, bedrooms, target rent. Takes 60 seconds.' },
+  { num: '02', title: 'We market and screen', desc: 'Professional listing, background checks, credit review — all handled.' },
+  { num: '03', title: 'Tenant placed, you relax', desc: 'Signed lease, move-in coordinated. Your property starts earning.' },
+];
+
+const reviews = [
+  { text: "This is the second loan I am doing with Jim and once again he and his team have exceeded my expectations. This time it was a multi-family unit. I can attest he provides the best possible service and gets the job done.", name: 'Syed Saqib', title: 'Chief Investment Officer, Zstep Capital', loc: 'Illinois', source: 'Zillow' },
+  { text: "I'm an RE investor. Had multiple loan officers but one really stands out — JIM BLACKBURN. I have tons of properties and live in China with unique income (he made it work!). He called me in China at 1 AM to get information to close the deal.", name: 'Dennis Nikolaev', title: 'RE Investor, Studio Leader', loc: 'China', source: 'Facebook' },
+];
 ---
-<Layout title="Find a Tenant — Stairway Mortgage" description="Investment property financing and tenant-finding strategies.">
+<Layout title="Find a Tenant — Stairway Mortgage" description="We help you find a quality tenant — free. Property owners get expert screening, marketing, and placement at no cost.">
+
+  <!-- HERO -->
+  <section class="section relative overflow-hidden tenant-hero-wash">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">For Property Owners</span>
+        <h1 class="display-xl mt-6 mb-6">
+          We'll help you find a great tenant — <em class="italic text-[var(--color-blue)]">free</em>.
+        </h1>
+        <p class="lede max-w-xl mx-auto mb-10">No fees, no contracts. Just a quality tenant in your property — and a team you'll remember when it's time to finance the next one.</p>
+        <div class="flex flex-wrap gap-3 justify-center mb-8">
+          <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-6 py-3.5">Get Started — Free</a>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS (paper-tint) -->
+  <section class="section-tight bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-rust mb-5">How it works</span>
+        <h2 class="display-lg mt-5">Three steps. <em class="italic font-light">Zero cost.</em></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {steps.map((s, i) => (
+          <div class="card reveal" style={`transition-delay:${i * 80}ms;`}>
+            <span class="card-step-num mono mb-4 block">{s.num}</span>
+            <h3 class="font-display text-xl font-medium mb-2">{s.title}</h3>
+            <p class="text-[14px] text-[var(--color-mute)]">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET (paper) -->
   <section class="section">
-    <div class="container-page text-center max-w-2xl mx-auto">
-      <span class="eyebrow eyebrow-blue mb-5">How We Serve</span>
-      <h1 class="display-lg mt-5 mb-6">Find a Tenant</h1>
-      <p class="lede mb-10">This page is being built. Talk to Jim to get started today.</p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
-        <a href="/contact-us/" class="btn btn-ghost">Talk to Jim</a>
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">What you get</span>
+        <h2 class="display-lg mt-5">Full-service placement. <em class="italic font-light">No strings.</em></h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="card reveal"><h4 class="font-display text-lg font-medium mb-1">Professional listing</h4><p class="text-[14px] text-[var(--color-mute)]">Photos, description, syndicated to top rental platforms.</p></div>
+        <div class="card reveal" style="transition-delay:60ms;"><h4 class="font-display text-lg font-medium mb-1">Background & credit screening</h4><p class="text-[14px] text-[var(--color-mute)]">Thorough checks so you lease with confidence.</p></div>
+        <div class="card reveal" style="transition-delay:120ms;"><h4 class="font-display text-lg font-medium mb-1">Income verification</h4><p class="text-[14px] text-[var(--color-mute)]">We confirm employment and income-to-rent ratios.</p></div>
+        <div class="card reveal" style="transition-delay:180ms;"><h4 class="font-display text-lg font-medium mb-1">Lease coordination</h4><p class="text-[14px] text-[var(--color-mute)]">Move-in, security deposit, and lease signing — handled.</p></div>
+        <div class="card reveal" style="transition-delay:240ms;"><h4 class="font-display text-lg font-medium mb-1">Market rent guidance</h4><p class="text-[14px] text-[var(--color-mute)]">Data-driven pricing so your property rents fast and fairly.</p></div>
+        <div class="card reveal" style="transition-delay:300ms;"><h4 class="font-display text-lg font-medium mb-1">Ongoing support</h4><p class="text-[14px] text-[var(--color-mute)]">Questions after placement? We're still here.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOFT BRIDGE (dark) -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="max-w-2xl mx-auto text-center reveal">
+        <span class="eyebrow mb-5 text-[var(--color-paper)]">When you're ready</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)] mb-6">Your next investment property? <em class="italic font-light">We're already your team.</em></h2>
+        <p class="text-[15px] text-[rgba(250,250,247,0.65)] mb-8 max-w-lg mx-auto">Every landlord eventually thinks about the next deal. When you do, you'll already know a team with 300+ lenders and $500M+ in closed loans. No pressure — just a head start.</p>
+        <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See Investor Loan Options</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="eyebrow mb-5">From fellow investors</span>
+        <h2 class="display-lg mt-5">Trusted by landlords and <em class="italic font-light">investors</em>.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {reviews.map((r, i) => (
+          <figure class="card reveal" style={`transition-delay:${i * 80}ms;`}>
+            <blockquote class="font-display text-lg leading-snug mb-4">{r.text}</blockquote>
+            <figcaption class="flex items-center justify-between text-[13px] text-[var(--color-mute)]">
+              <strong class="text-[var(--color-ink)]">{r.name}</strong>
+              <span class="mono text-[11px]">{r.source}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMIT -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
+        <div class="summit-glow" aria-hidden="true"><div class="summit-glow__blob summit-glow__blob--blue"></div><div class="summit-glow__blob summit-glow__blob--rust"></div></div>
+        <div class="relative reveal">
+          <h2 class="display-lg text-[var(--color-paper)] mb-4">Have a vacancy? <em class="italic font-light text-[var(--color-blue-tint)]">Let us fill it — free.</em></h2>
+          <div class="flex flex-wrap gap-3 justify-center mt-8">
+            <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Get Started — Free</a>
+            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call (954) 993-1625</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  .tenant-hero-wash{position:relative;}.tenant-hero-wash::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}
+  .summit-glow{position:absolute;inset:0;overflow:hidden;pointer-events:none;}.summit-glow__blob{position:absolute;border-radius:50%;filter:blur(60px);}.summit-glow__blob--blue{width:200px;height:200px;background:var(--color-blue);opacity:0.2;bottom:-40px;right:10%;}.summit-glow__blob--rust{width:160px;height:160px;background:var(--color-rust);opacity:0.15;top:-20px;left:15%;}
+</style>
+
+<script is:inline>
+(function(){
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  }
+})();
+</script>

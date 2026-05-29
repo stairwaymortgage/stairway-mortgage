@@ -1,16 +1,144 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const trustNumbers = [
+  { value: 5.0, suffix: '★', label: 'Client rating' },
+  { value: 624, suffix: '', label: 'Verified reviews' },
+  { value: 300, suffix: '+', label: 'Lender network' },
+  { value: 48, suffix: '', label: 'States (NEXA)' },
+  { value: 19, suffix: '', label: 'Days — fastest close' },
+];
+const mistakes = [
+  { front: 'Selling before knowing your next loan terms', back: 'We pre-approve your next purchase first' },
+  { front: 'Underpricing to sell fast', back: 'We show your real equity so you price with confidence' },
+  { front: 'Not using a bridge loan when timing is tight', back: 'We structure bridge financing to cover the gap' },
+  { front: 'Forgetting capital gains on investment properties', back: 'Our team coordinates with your tax advisor' },
+  { front: 'Assuming you need 20% down on the next home', back: 'Low-down and zero-down programs may apply' },
+];
+const reviews = [
+  { text: "We closed our loan within 19 days. Just in time for Thanksgiving! We initially had gone with a different loan office and the rate and down payment was ridiculous. Since our transaction, we've been referring Jim to anyone we know.", name: 'Elizabeth Torres', loc: 'Illinois', source: 'Google' },
+  { text: "I have now completed five mortgages with Jim. He and his team are true professionals that you can count on. Numbers always spot on, accurate, and on time.", name: 'Gary Koval', title: 'Regional Manager, Hyundai', loc: 'Colorado', source: 'Google' },
+  { text: "We were blessed to buy a wonderful home because Jim and his team made it happen — in record timing! But for Jim, I would have missed an opportunity to lower my rate by a full 1%.", name: 'Peter & Maria Brin', loc: 'New Jersey', source: 'Google' },
+];
 ---
-<Layout title="Sell a Home — Stairway Mortgage" description="Bridge loans and seller strategies to maximize your next move.">
+<Layout title="Sell a Home — Stairway Mortgage" description="Sell smart — and land your next home without the gap. Bridge loans, timing strategy, and 300+ lenders.">
+  <section class="section relative overflow-hidden sell-hero-wash">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">How We Serve · Sell a Home</span>
+        <h1 class="display-xl mt-6 mb-8">Sell smart — and land your next home <em class="italic text-[var(--color-blue)]">without the gap</em>.</h1>
+        <div class="flex flex-wrap gap-3 justify-center mb-12">
+          <a href="/same-day-approval/" class="btn btn-primary btn-arrow text-base px-6 py-3.5">See My Options</a>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
+        </div>
+      </div>
+      <div class="trust-ribbon reveal" style="transition-delay:200ms;">
+        {trustNumbers.map((t) => (<div class="trust-ribbon__item"><span class="trust-ribbon__num font-display" data-countup={t.value} data-suffix={t.suffix}>0{t.suffix}</span><span class="trust-ribbon__label">{t.label}</span></div>))}
+        <div class="trust-ribbon__nmls"><span class="mono">NMLS #1072866</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NET PROCEEDS VISUAL (DARK) -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-rust mb-5 text-[var(--color-paper)]">Net proceeds</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">What will you <em class="italic font-light">actually walk away with</em>?</h2>
+      </div>
+      <div class="sell-flow reveal" style="transition-delay:100ms;">
+        <div class="sell-flow__step"><span class="sell-flow__label mono">Sale price</span><span class="sell-flow__val font-display">$550,000</span></div>
+        <span class="sell-flow__arrow">→</span>
+        <div class="sell-flow__step"><span class="sell-flow__label mono">− Costs & payoff</span><span class="sell-flow__val font-display text-[var(--color-rust)]">−$365,000</span></div>
+        <span class="sell-flow__arrow">→</span>
+        <div class="sell-flow__step sell-flow__step--result"><span class="sell-flow__label mono">Net proceeds</span><span class="sell-flow__val font-display text-[var(--color-green)]">$185,000</span></div>
+        <span class="sell-flow__arrow">→</span>
+        <div class="sell-flow__step"><span class="sell-flow__label mono">Down payment on next home</span><span class="sell-flow__val font-display">$185,000</span></div>
+      </div>
+      <p class="text-[12px] text-center opacity-40 mt-6 text-[var(--color-paper)]">Illustrative. Costs include agent fees (~6%), closing (~2%), mortgage payoff. Actual proceeds vary.</p>
+    </div>
+  </section>
+
+  <!-- QUESTIONS -->
   <section class="section">
-    <div class="container-page text-center max-w-2xl mx-auto">
-      <span class="eyebrow eyebrow-blue mb-5">How We Serve</span>
-      <h1 class="display-lg mt-5 mb-6">Sell a Home</h1>
-      <p class="lede mb-10">This page is being built. Talk to Jim to get started today.</p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
-        <a href="/contact-us/" class="btn btn-ghost">Talk to Jim</a>
+    <div class="container-page">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="sell-q reveal"><span class="eyebrow mb-4">Question 01</span><h3 class="display-sm mt-3 mb-4">Sell first or buy first?</h3><p class="text-[14px] text-[var(--color-mute)]">A bridge loan lets you buy before you sell — no gap, no temporary housing.</p></div>
+        <div class="sell-q reveal" style="transition-delay:80ms;"><span class="eyebrow mb-4">Question 02</span><h3 class="display-sm mt-3 mb-4">What will I actually net?</h3><p class="text-[14px] text-[var(--color-mute)]">Agent fees, closing costs, and your payoff balance all reduce the check. We map every dollar.</p></div>
+        <div class="sell-q reveal" style="transition-delay:160ms;"><span class="eyebrow mb-4">Question 03</span><h3 class="display-sm mt-3 mb-4">Can my equity fund the next purchase?</h3><p class="text-[14px] text-[var(--color-mute)]">In most cases, your proceeds become the down payment — often enough for 20%+ on the next home.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section-tight bg-gradient-to-b from-[var(--color-blue-tint)] to-[var(--color-paper)]">
+    <div class="container-page"><div class="stat-band reveal">
+      <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="500" data-suffix="M+" data-prefix="$">$0</span><span class="stat-band__label">Loans closed</span></div>
+      <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="19" data-suffix=" days">0</span><span class="stat-band__label">Fastest close</span></div>
+      <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="300" data-suffix="+">0</span><span class="stat-band__label">Lenders</span></div>
+      <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="48">0</span><span class="stat-band__label">States (NEXA)</span></div>
+      <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="5.0" data-suffix="★" data-decimals="1">0</span><span class="stat-band__label">624 reviews</span></div>
+    </div></div>
+  </section>
+
+  <!-- MISTAKES -->
+  <section class="section bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal"><span class="eyebrow mb-5">Learn from others</span><h2 class="display-lg mt-5">Five seller mistakes.</h2></div>
+      <div class="flip-grid">
+        {mistakes.map((m, i) => (
+          <div class="flip-card reveal" style={`transition-delay:${i*80}ms;`} tabindex="0" role="button" aria-label={`Mistake: ${m.front}. Fix: ${m.back}`}>
+            <div class="flip-card__inner">
+              <div class="flip-card__front"><span class="flip-card__num mono">0{i+1}</span><p class="font-display text-lg leading-snug">{m.front}</p></div>
+              <div class="flip-card__back"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-green)"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg><p class="font-display text-lg leading-snug">{m.back}</p></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section-dark section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal"><span class="eyebrow mb-5">The receipts</span><h2 class="display-lg mt-5 text-[var(--color-paper)]">Smooth transitions. <em class="italic font-light">Real closings.</em></h2></div>
+      <div class="reviews-scroll no-scrollbar" id="reviews-scroll"><div class="reviews-track" id="reviews-track">
+        {reviews.map((r) => (
+          <figure class="review-card"><div class="review-card__avatar"><span class="review-card__initials">{r.name.split(' ').map(n=>n[0]).join('')}</span></div><blockquote class="review-card__text font-display">{r.text}</blockquote><figcaption class="review-card__meta"><strong>{r.name}</strong><span>{r.loc}</span><span class="review-card__source mono">{r.source}</span></figcaption></figure>
+        ))}
+      </div></div>
+    </div>
+  </section>
+
+  <!-- SUMMIT -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
+        <div class="summit-glow" aria-hidden="true"><div class="summit-glow__blob summit-glow__blob--blue"></div><div class="summit-glow__blob summit-glow__blob--rust"></div></div>
+        <div class="relative reveal">
+          <h2 class="display-lg text-[var(--color-paper)] mb-4">Selling + buying in one <em class="italic font-light text-[var(--color-blue-tint)]">seamless move</em>.</h2>
+          <div class="flex flex-wrap gap-3 justify-center mt-8">
+            <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Talk to Our Team</a>
+            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call now · (954) 993-1625</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  .sell-hero-wash{position:relative;}.sell-hero-wash::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}
+  .trust-ribbon{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;padding:1.5rem 2rem;background:var(--color-paper-tint);border:1px solid var(--color-bone);border-radius:16px;position:relative;}.trust-ribbon__item{text-align:center;}.trust-ribbon__num{display:block;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:400;line-height:1;letter-spacing:-0.02em;color:var(--color-ink);}.trust-ribbon__label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-mute);margin-top:0.3rem;}.trust-ribbon__nmls{position:absolute;bottom:-1.5rem;left:50%;transform:translateX(-50%);font-size:11px;color:var(--color-mute);white-space:nowrap;}
+  .sell-flow{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;max-width:900px;margin:0 auto;}.sell-flow__step{text-align:center;padding:1.25rem;background:rgba(250,250,247,0.06);border:1px solid rgba(250,250,247,0.12);border-radius:12px;min-width:140px;}.sell-flow__step--result{border-color:var(--color-green);background:rgba(46,158,46,0.08);}.sell-flow__label{display:block;font-size:11px;color:rgba(250,250,247,0.5);margin-bottom:0.4rem;}.sell-flow__val{display:block;font-size:clamp(1.25rem,2.5vw,1.75rem);font-weight:400;color:var(--color-paper);}.sell-flow__arrow{font-size:20px;color:rgba(250,250,247,0.3);}
+  @media(max-width:768px){.sell-flow{flex-direction:column;}.sell-flow__arrow{transform:rotate(90deg);}}
+  .sell-q{background:var(--color-paper);border:1px solid var(--color-bone);border-radius:12px;padding:1.75rem;}
+  .stat-band{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;}.stat-band__item{text-align:center;flex:1;min-width:120px;}.stat-band__num{display:block;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1;letter-spacing:-0.03em;color:var(--color-ink);}.stat-band__label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-mute);margin-top:0.4rem;}
+  .flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;}.flip-card{perspective:600px;cursor:pointer;height:180px;}.flip-card__inner{position:relative;width:100%;height:100%;transition:transform 0.5s;transform-style:preserve-3d;}.flip-card:hover .flip-card__inner,.flip-card:focus .flip-card__inner{transform:rotateY(180deg);}.flip-card__front,.flip-card__back{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--color-bone);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;justify-content:center;}.flip-card__front{background:var(--color-paper);}.flip-card__back{background:var(--color-ink);color:var(--color-paper);transform:rotateY(180deg);gap:0.5rem;align-items:center;text-align:center;}.flip-card__num{font-size:11px;color:var(--color-rust);margin-bottom:0.5rem;}
+  .reviews-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:1rem;}.reviews-track{display:flex;gap:1.25rem;animation:scroll-reviews 30s linear infinite;width:max-content;}@keyframes scroll-reviews{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.reviews-track:hover{animation-play-state:paused;}.review-card{flex-shrink:0;width:340px;border:1px solid rgba(250,250,247,0.15);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:0.75rem;}.review-card__avatar{width:40px;height:40px;border-radius:50%;background:var(--color-blue-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0;}.review-card__initials{font-size:14px;font-weight:600;color:var(--color-paper);}.review-card__text{font-size:15px;line-height:1.45;color:var(--color-paper);font-weight:400;flex:1;}.review-card__meta{display:flex;gap:0.5rem;align-items:center;font-size:12px;color:rgba(250,250,247,0.6);}.review-card__meta strong{color:var(--color-paper);font-weight:500;}.review-card__source{margin-left:auto;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;opacity:0.5;}
+  .summit-glow{position:absolute;inset:0;overflow:hidden;pointer-events:none;}.summit-glow__blob{position:absolute;border-radius:50%;filter:blur(60px);}.summit-glow__blob--blue{width:200px;height:200px;background:var(--color-blue);opacity:0.2;bottom:-40px;right:10%;}.summit-glow__blob--rust{width:160px;height:160px;background:var(--color-rust);opacity:0.15;top:-20px;left:15%;}
+  @media(prefers-reduced-motion:reduce){.reviews-track{animation:none;}}
+</style>
+<script is:inline>
+(function(){var r=window.matchMedia('(prefers-reduced-motion:reduce)').matches;function c(e){var t=parseFloat(e.dataset.countup),s=e.dataset.suffix||'',p=e.dataset.prefix||'',d=parseInt(e.dataset.decimals)||0,D=1200,S=performance.now();function k(n){var pr=Math.min((n-S)/D,1),v=(1-Math.pow(1-pr,3))*t;e.textContent=p+(d?v.toFixed(d):Math.round(v))+s;if(pr<1)requestAnimationFrame(k);}if(r)e.textContent=p+(d?t.toFixed(d):t)+s;else requestAnimationFrame(k);}if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add('in-view');io.unobserve(e.target);e.target.querySelectorAll('[data-countup]').forEach(c);if(e.target.dataset.countup)c(e.target);});},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal,.trust-ribbon,.stat-band').forEach(function(e){io.observe(e);});}var tr=document.getElementById('reviews-track');if(tr&&!r)tr.innerHTML+=tr.innerHTML;})();
+</script>

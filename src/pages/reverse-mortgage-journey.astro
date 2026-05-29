@@ -1,16 +1,308 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const trustNumbers = [
+  { value: 5.0,   suffix: '★',  label: 'Client rating' },
+  { value: 624,   suffix: '',   label: 'Verified reviews' },
+  { value: 300,   suffix: '+',  label: 'Lender network' },
+  { value: 48,    suffix: '',   label: 'States (NEXA)' },
+  { value: 19,    suffix: '',   label: 'Days — fastest close' },
+];
+
+const mistakes = [
+  { front: 'Believing you lose ownership of your home',   back: 'You retain full title — always' },
+  { front: 'Thinking heirs get nothing',                  back: 'Heirs inherit the home and any remaining equity' },
+  { front: 'Assuming any age qualifies',                  back: 'HECM requires 62+; some proprietary programs start at 55+' },
+  { front: 'Forgetting ongoing obligations',              back: 'You still pay property taxes, insurance, and maintenance' },
+  { front: 'Not comparing reverse mortgage programs',     back: '300+ lenders means more options and better terms' },
+];
+
+const reviews = [
+  { text: "Can't say enough good things about Jim and Olga. They are a powerhouse couple: smart, organized, and TENACIOUS. His team contacted me about the amazing rates available. Every expectation I had was exceeded.", name: 'Michael Copenhafer', title: 'Retired Fire Chief & Public Speaker', loc: 'Florida', source: 'Google' },
+  { text: "All aspects of the loan process went well and smoothly. I would highly recommend the Jim Blackburn Team to get the best deal and save money on a loan.", name: 'Jim Elliott', title: 'Mathematics Teacher', loc: 'Illinois', source: 'Google' },
+  { text: "I have now completed five mortgages with Jim. He and his team are true professionals that you can count on. Numbers always spot on, accurate, and on time. I would never even consider looking elsewhere for any of my mortgage needs.", name: 'Gary Koval', title: 'Regional Manager, Hyundai', loc: 'Colorado', source: 'Google' },
+];
 ---
-<Layout title="Reverse Mortgage — Stairway Mortgage" description="Turn your home equity into retirement income. For homeowners 55+.">
-  <section class="section">
-    <div class="container-page text-center max-w-2xl mx-auto">
-      <span class="eyebrow eyebrow-blue mb-5">How We Serve</span>
-      <h1 class="display-lg mt-5 mb-6">Reverse Mortgage</h1>
-      <p class="lede mb-10">This page is being built. Talk to Jim to get started today.</p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
-        <a href="/contact-us/" class="btn btn-ghost">Talk to Jim</a>
+
+<Layout title="Reverse Mortgage — Stairway Mortgage" description="Turn your home equity into retirement income. For homeowners 55+. Understand your options with no pressure.">
+
+  <!-- 1. HERO -->
+  <section class="section relative overflow-hidden rev-hero-wash">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">How We Serve · Reverse Mortgage</span>
+        <h1 class="display-xl mt-6 mb-8">
+          Your home spent decades paying you back. Now it can <em class="italic text-[var(--color-blue)]">keep paying</em>.
+        </h1>
+        <div class="flex flex-wrap gap-3 justify-center mb-12">
+          <a href="/contact-us/" class="btn btn-primary btn-arrow text-base px-6 py-3.5">Talk to Our Team</a>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
+        </div>
+      </div>
+      <div class="trust-ribbon reveal" style="transition-delay:200ms;">
+        {trustNumbers.map((t) => (
+          <div class="trust-ribbon__item">
+            <span class="trust-ribbon__num font-display" data-countup={t.value} data-suffix={t.suffix}>0{t.suffix}</span>
+            <span class="trust-ribbon__label">{t.label}</span>
+          </div>
+        ))}
+        <div class="trust-ribbon__nmls"><span class="mono">NMLS #1072866</span></div>
       </div>
     </div>
   </section>
+
+  <!-- 2. TWO DOORS (DARK) -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-rust mb-5 text-[var(--color-paper)]">Two paths at 55+</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">Two doors. <em class="italic font-light">One decision.</em></h2>
+      </div>
+      <div class="rev-doors reveal" style="transition-delay:100ms;">
+        <div class="rev-door">
+          <span class="rev-door__num mono">Door 1</span>
+          <h3 class="rev-door__title font-display">Stay & eliminate your payment</h3>
+          <p class="rev-door__desc">A reverse mortgage eliminates your monthly mortgage payment for as long as you live in the home.</p>
+          <div class="rev-door__stat">
+            <span class="rev-door__stat-num font-display">$2,400</span>
+            <span class="rev-door__stat-label">/mo payment eliminated</span>
+          </div>
+          <a href="/contact-us/" class="btn btn-blue rev-door__cta">Explore Door 1</a>
+        </div>
+        <div class="rev-door">
+          <span class="rev-door__num mono">Door 2</span>
+          <h3 class="rev-door__title font-display">Downsize & pocket the difference</h3>
+          <p class="rev-door__desc">Sell your home, buy smaller, and walk away with cash for the next chapter.</p>
+          <div class="rev-door__stat">
+            <span class="rev-door__stat-num font-display">$180,000</span>
+            <span class="rev-door__stat-label">cash in your pocket</span>
+          </div>
+          <a href="/contact-us/" class="btn btn-blue rev-door__cta">Explore Door 2</a>
+        </div>
+      </div>
+      <div class="rev-compliance reveal" style="transition-delay:200ms;">
+        <p>Reverse mortgages require continued payment of property taxes, insurance, and home maintenance. The loan balance grows over time as interest accrues. Eligibility depends on age (62+ for HECM, 55+ for some proprietary programs), equity, occupancy as primary residence, and program guidelines. Borrower must maintain the home. This is an illustrative scenario, not a loan commitment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. THREE QUESTIONS (paper) -->
+  <section class="section">
+    <div class="container-page">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="rev-q-card reveal">
+          <span class="eyebrow mb-4">Question 01</span>
+          <h3 class="display-sm mt-3 mb-5">What could your equity fund?</h3>
+          <div class="rev-uses">
+            <span class="rev-use">Retirement income</span>
+            <span class="rev-use">Healthcare costs</span>
+            <span class="rev-use">Home modifications</span>
+            <span class="rev-use">Pay off existing mortgage</span>
+            <span class="rev-use">Help family</span>
+          </div>
+        </div>
+        <div class="rev-q-card reveal" style="transition-delay:80ms;">
+          <span class="eyebrow mb-4">Question 02</span>
+          <h3 class="display-sm mt-3 mb-5">Do you still own the home?</h3>
+          <div class="rev-answer">
+            <span class="rev-answer__yes font-display">Yes.</span>
+            <p class="rev-answer__detail">You retain full title. You live in the home. You make no monthly mortgage payments. The loan is repaid when you sell or move.</p>
+          </div>
+        </div>
+        <div class="rev-q-card reveal" style="transition-delay:160ms;">
+          <span class="eyebrow mb-4">Question 03</span>
+          <h3 class="display-sm mt-3 mb-5">What do heirs receive?</h3>
+          <div class="rev-answer">
+            <span class="rev-answer__yes font-display">The home + remaining equity.</span>
+            <p class="rev-answer__detail">Heirs inherit the property. If the home is worth more than the loan balance, they keep the difference. FHA insurance protects against owing more than the home is worth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ELIGIBILITY (tint) -->
+  <section class="section-tight bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">Eligibility</span>
+        <h2 class="display-lg mt-5">Who <em class="italic font-light">qualifies</em>?</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="card reveal"><h4 class="font-display text-xl font-medium mb-1">Age 62+</h4><p class="text-[14px] text-[var(--color-mute)]">HECM (FHA-insured) reverse mortgage</p></div>
+        <div class="card reveal" style="transition-delay:60ms;"><h4 class="font-display text-xl font-medium mb-1">Age 55+</h4><p class="text-[14px] text-[var(--color-mute)]">Some proprietary (non-HECM) programs</p></div>
+        <div class="card reveal" style="transition-delay:120ms;"><h4 class="font-display text-xl font-medium mb-1">Primary residence</h4><p class="text-[14px] text-[var(--color-mute)]">Must be your main home</p></div>
+        <div class="card reveal" style="transition-delay:180ms;"><h4 class="font-display text-xl font-medium mb-1">Sufficient equity</h4><p class="text-[14px] text-[var(--color-mute)]">Typically 50%+ equity in the home</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. STATS BAND (blue-wash) -->
+  <section class="section-tight bg-gradient-to-b from-[var(--color-blue-tint)] to-[var(--color-paper)]">
+    <div class="container-page">
+      <div class="stat-band reveal">
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="500" data-suffix="M+" data-prefix="$">$0</span><span class="stat-band__label">Loans closed</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="19" data-suffix=" days">0</span><span class="stat-band__label">Fastest close</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="300" data-suffix="+">0</span><span class="stat-band__label">Lenders</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="48">0</span><span class="stat-band__label">States (NEXA)</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="5.0" data-suffix="★" data-decimals="1">0</span><span class="stat-band__label">624 reviews</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MISTAKES (tint) -->
+  <section class="section bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow mb-5">Common misconceptions</span>
+        <h2 class="display-lg mt-5">Five myths about reverse mortgages.</h2>
+      </div>
+      <div class="flip-grid">
+        {mistakes.map((m, i) => (
+          <div class="flip-card reveal" style={`transition-delay:${i * 80}ms;`} tabindex="0"
+               role="button" aria-label={`Myth: ${m.front}. Truth: ${m.back}`}>
+            <div class="flip-card__inner">
+              <div class="flip-card__front">
+                <span class="flip-card__num mono">0{i + 1}</span>
+                <p class="font-display text-lg leading-snug">{m.front}</p>
+              </div>
+              <div class="flip-card__back">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg>
+                <p class="font-display text-lg leading-snug">{m.back}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. REVIEWS (DARK) -->
+  <section class="section-dark section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="eyebrow mb-5">The receipts</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">Trusted by homeowners <em class="italic font-light">at every stage</em>.</h2>
+      </div>
+      <div class="reviews-scroll no-scrollbar" id="reviews-scroll">
+        <div class="reviews-track" id="reviews-track">
+          {reviews.map((r) => (
+            <figure class="review-card">
+              <div class="review-card__avatar" aria-hidden="true">
+                <span class="review-card__initials">{r.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
+              <blockquote class="review-card__text font-display">{r.text}</blockquote>
+              <figcaption class="review-card__meta">
+                <strong>{r.name}</strong><span>{r.loc}</span>
+                <span class="review-card__source mono">{r.source}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. SUMMIT CTA (DARK+glow) -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
+        <div class="summit-glow" aria-hidden="true">
+          <div class="summit-glow__blob summit-glow__blob--blue"></div>
+          <div class="summit-glow__blob summit-glow__blob--rust"></div>
+        </div>
+        <div class="relative reveal">
+          <h2 class="display-lg text-[var(--color-paper)] mb-4">
+            Talk it through — <em class="italic font-light text-[var(--color-blue-tint)]">no pressure, no rush</em>.
+          </h2>
+          <p class="text-[15px] opacity-70 mb-8 max-w-lg mx-auto">A reverse mortgage is a big decision. Our team will walk you through every option, answer every question, and never push.</p>
+          <div class="flex flex-wrap gap-3 justify-center">
+            <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Talk to Our Team</a>
+            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call now · (954) 993-1625</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
+
+<style>
+  .rev-hero-wash { position:relative; }
+  .rev-hero-wash::before { content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0; }
+  .trust-ribbon { display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;padding:1.5rem 2rem;background:var(--color-paper-tint);border:1px solid var(--color-bone);border-radius:16px;position:relative; }
+  .trust-ribbon__item { text-align:center; }
+  .trust-ribbon__num { display:block;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:400;line-height:1;letter-spacing:-0.02em;color:var(--color-ink); }
+  .trust-ribbon__label { display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-mute);margin-top:0.3rem; }
+  .trust-ribbon__nmls { position:absolute;bottom:-1.5rem;left:50%;transform:translateX(-50%);font-size:11px;color:var(--color-mute);white-space:nowrap; }
+
+  .rev-doors { display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:800px;margin:0 auto; }
+  @media (max-width:640px) { .rev-doors { grid-template-columns:1fr; } }
+  .rev-door { background:rgba(250,250,247,0.06);border:1px solid rgba(250,250,247,0.12);border-radius:16px;padding:2rem;text-align:center; }
+  .rev-door__num { font-size:11px;color:var(--color-blue);display:block;margin-bottom:0.75rem; }
+  .rev-door__title { font-size:20px;font-weight:500;color:var(--color-paper);margin-bottom:0.75rem; }
+  .rev-door__desc { font-size:14px;color:rgba(250,250,247,0.6);margin-bottom:1.25rem;line-height:1.5; }
+  .rev-door__stat { margin-bottom:1.25rem; }
+  .rev-door__stat-num { font-size:clamp(1.75rem,3vw,2.5rem);font-weight:400;color:var(--color-paper);display:block; }
+  .rev-door__stat-label { font-size:12px;color:rgba(250,250,247,0.5);text-transform:uppercase;letter-spacing:0.08em; }
+  .rev-door__cta { width:100%;text-align:center; }
+  .rev-compliance { max-width:700px;margin:2rem auto 0;padding:1.25rem;background:rgba(250,250,247,0.04);border:1px solid rgba(250,250,247,0.08);border-radius:10px; }
+  .rev-compliance p { font-size:11.5px;color:rgba(250,250,247,0.45);line-height:1.6; }
+
+  .rev-q-card { background:var(--color-paper);border:1px solid var(--color-bone);border-radius:12px;padding:1.75rem; }
+  .rev-uses { display:flex;flex-wrap:wrap;gap:0.5rem; }
+  .rev-use { display:inline-block;padding:0.4rem 0.8rem;background:var(--color-paper-tint);border:1px solid var(--color-bone);border-radius:20px;font-size:13px;color:var(--color-ink); }
+  .rev-answer__yes { display:block;font-size:28px;font-weight:500;color:var(--color-green);margin-bottom:0.5rem; }
+  .rev-answer__detail { font-size:14px;color:var(--color-mute);line-height:1.5; }
+
+  .stat-band { display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem; }
+  .stat-band__item { text-align:center;flex:1;min-width:120px; }
+  .stat-band__num { display:block;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1;letter-spacing:-0.03em;color:var(--color-ink); }
+  .stat-band__label { display:block;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-mute);margin-top:0.4rem; }
+
+  .flip-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem; }
+  .flip-card { perspective:600px;cursor:pointer;height:180px; }
+  .flip-card__inner { position:relative;width:100%;height:100%;transition:transform 0.5s;transform-style:preserve-3d; }
+  .flip-card:hover .flip-card__inner,.flip-card:focus .flip-card__inner { transform:rotateY(180deg); }
+  .flip-card__front,.flip-card__back { position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--color-bone);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;justify-content:center; }
+  .flip-card__front { background:var(--color-paper); }
+  .flip-card__back { background:var(--color-ink);color:var(--color-paper);transform:rotateY(180deg);gap:0.5rem;align-items:center;text-align:center; }
+  .flip-card__num { font-size:11px;color:var(--color-rust);margin-bottom:0.5rem; }
+
+  .reviews-scroll { overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:1rem; }
+  .reviews-track { display:flex;gap:1.25rem;animation:scroll-reviews 30s linear infinite;width:max-content; }
+  @keyframes scroll-reviews { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  .reviews-track:hover { animation-play-state:paused; }
+  .review-card { flex-shrink:0;width:340px;border:1px solid rgba(250,250,247,0.15);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:0.75rem; }
+  .review-card__avatar { width:40px;height:40px;border-radius:50%;background:var(--color-blue-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .review-card__initials { font-size:14px;font-weight:600;color:var(--color-paper); }
+  .review-card__text { font-size:15px;line-height:1.45;color:var(--color-paper);font-weight:400;flex:1; }
+  .review-card__meta { display:flex;gap:0.5rem;align-items:center;font-size:12px;color:rgba(250,250,247,0.6); }
+  .review-card__meta strong { color:var(--color-paper);font-weight:500; }
+  .review-card__source { margin-left:auto;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;opacity:0.5; }
+
+  .summit-glow { position:absolute;inset:0;overflow:hidden;pointer-events:none; }
+  .summit-glow__blob { position:absolute;border-radius:50%;filter:blur(60px); }
+  .summit-glow__blob--blue { width:200px;height:200px;background:var(--color-blue);opacity:0.2;bottom:-40px;right:10%; }
+  .summit-glow__blob--rust { width:160px;height:160px;background:var(--color-rust);opacity:0.15;top:-20px;left:15%; }
+
+  @media (prefers-reduced-motion:reduce) { .reviews-track { animation:none; } }
+</style>
+
+<script is:inline>
+(function() {
+  'use strict';
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function countUp(el) {
+    var target = parseFloat(el.dataset.countup), suffix = el.dataset.suffix || '', prefix = el.dataset.prefix || '', decimals = parseInt(el.dataset.decimals) || 0, duration = 1200, start = performance.now();
+    function tick(now) { var p = Math.min((now-start)/duration,1), v = (1-Math.pow(1-p,3))*target; el.textContent = prefix+(decimals?v.toFixed(decimals):Math.round(v))+suffix; if(p<1) requestAnimationFrame(tick); }
+    if (prefersReduced) el.textContent = prefix+(decimals?target.toFixed(decimals):target)+suffix; else requestAnimationFrame(tick);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if(!e.isIntersecting) return; e.target.classList.add('in-view'); io.unobserve(e.target); e.target.querySelectorAll('[data-countup]').forEach(countUp); if(e.target.dataset.countup) countUp(e.target); }); }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .trust-ribbon, .stat-band').forEach(function(el) { io.observe(el); });
+  }
+  var track = document.getElementById('reviews-track');
+  if (track && !prefersReduced) track.innerHTML += track.innerHTML;
+})();
+</script>
