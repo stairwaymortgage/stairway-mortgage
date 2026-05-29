@@ -141,19 +141,19 @@ const reviews = [
         <div class="bg-[var(--color-paper)] p-8 lg:p-10 reveal">
           <span class="eyebrow mb-6">Question 01</span>
           <h3 class="display-sm mt-4 mb-6">Today, or five years from now?</h3>
-          <!-- Mini bar chart: now vs future -->
+          <!-- Mini bar chart: now vs future — heights proportional to value -->
           <div class="q-chart" aria-label="Home values tend to rise over time">
             <div class="q-chart__bar-wrap">
-              <div class="q-chart__bar q-chart__bar--now" data-grow="58" style="height:0%">
+              <div class="q-chart__bar q-chart__bar--now" style="height:166px">
                 <span class="q-chart__val font-display">$550K</span>
               </div>
               <span class="q-chart__label">Today</span>
             </div>
             <div class="q-chart__bar-wrap">
-              <div class="q-chart__bar q-chart__bar--future" data-grow="92" style="height:0%">
+              <div class="q-chart__bar q-chart__bar--future" style="height:200px">
                 <span class="q-chart__val font-display">$660K</span>
               </div>
-              <span class="q-chart__label">5 years</span>
+              <span class="q-chart__label">In 5 years</span>
             </div>
           </div>
           <p class="text-[13px] text-[var(--color-mute)] mt-4">Based on ~3.7% avg. annual appreciation</p>
@@ -622,19 +622,18 @@ const reviews = [
     white-space: nowrap;
   }
 
-  /* ── Q1: Bar chart ── */
+  /* ── Q1: Bar chart — fixed 200px container, heights set inline ── */
   .q-chart {
     display: flex;
     align-items: flex-end;
     gap: 1.5rem;
-    height: 160px;
+    height: 200px;
     justify-content: center;
   }
   .q-chart__bar-wrap { text-align: center; width: 80px; }
   .q-chart__bar {
     width: 100%;
     border-radius: 8px 8px 0 0;
-    transition: height 1s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -1050,7 +1049,6 @@ const reviews = [
     .hero-typed { opacity: 1; transform: none; }
     .stepper__pulse { animation: none; }
     .stepper__panel.is-active { animation: none; opacity: 1; transform: none; }
-    .q-chart__bar { transition: none; }
     .stairway-step__bar { transition: none; }
     .donut-seg { transition: none; }
   }
@@ -1322,11 +1320,6 @@ const reviews = [
         e.target.querySelectorAll('[data-countup]').forEach(countUp);
         if (e.target.dataset.countup) countUp(e.target);
 
-        // Bar chart grow
-        e.target.querySelectorAll('[data-grow]').forEach(function(bar) {
-          bar.style.height = bar.dataset.grow + '%';
-        });
-
         // Donut segments
         e.target.querySelectorAll('[data-donut]').forEach(function(seg) {
           seg.style.strokeDashoffset = 314 - parseInt(seg.dataset.donut);
@@ -1334,11 +1327,9 @@ const reviews = [
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.reveal, .reveal-right, .trust-ribbon, .stat-band, .stairway-graphic, .q-chart, .donut-wrap').forEach(function(el) {
+    document.querySelectorAll('.reveal, .reveal-right, .trust-ribbon, .stat-band, .stairway-graphic, .donut-wrap').forEach(function(el) {
       io.observe(el);
     });
-    // Observe individual parent containers for the donut and chart
-    document.querySelectorAll('.q-chart__bar-wrap').forEach(function(el) { io.observe(el); });
   }
 
   /* ── Hero reframe ── */
@@ -1349,7 +1340,7 @@ const reviews = [
     setTimeout(function() { heroNew.classList.add('show'); heroNew.setAttribute('aria-hidden', 'false'); }, 1600);
   }
 
-  /* ── Stepper — scroll-driven ── */
+  /* ── Stepper — click-only (static, no auto/scroll advance) ── */
   var stepper = document.getElementById('stepper');
   var panelsWrap = document.getElementById('stepper-panels');
   var fill = document.getElementById('stepper-fill');
@@ -1358,10 +1349,8 @@ const reviews = [
     var panelEls = panelsWrap.querySelectorAll('.stepper__panel');
     var currentStep = 0;
     var totalSteps = tabs.length;
-    var stepperSection = stepper.closest('section');
 
     function goToStep(i) {
-      if (i === currentStep) return;
       currentStep = i;
       tabs.forEach(function(t, idx) {
         t.classList.toggle('is-active', idx === i);
@@ -1373,32 +1362,9 @@ const reviews = [
       fill.style.width = ((i + 1) / totalSteps * 100) + '%';
     }
 
-    /* Manual tab click */
     tabs.forEach(function(t, i) {
       t.addEventListener('click', function() { goToStep(i); });
     });
-
-    /* Scroll-driven: map section scroll progress to step index */
-    if (stepperSection) {
-      var stepperTicking = false;
-      function onStepperScroll() {
-        var rect = stepperSection.getBoundingClientRect();
-        var sectionH = stepperSection.offsetHeight;
-        var viewH = window.innerHeight;
-        /* progress: 0 when section top enters viewport, 1 when section bottom leaves */
-        var progress = (viewH - rect.top) / (sectionH + viewH);
-        progress = Math.max(0, Math.min(1, progress));
-        var step = Math.min(totalSteps - 1, Math.floor(progress * totalSteps));
-        goToStep(step);
-        stepperTicking = false;
-      }
-      window.addEventListener('scroll', function() {
-        if (!stepperTicking) {
-          requestAnimationFrame(onStepperScroll);
-          stepperTicking = true;
-        }
-      }, { passive: true });
-    }
   }
 
   /* ── Program matcher ── */
