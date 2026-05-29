@@ -1,16 +1,1091 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+/* ── Data ─────────────────────────────────────────────────── */
+const trustNumbers = [
+  { value: 5.0,   suffix: '★',  label: 'Client rating' },
+  { value: 624,   suffix: '',   label: 'Verified reviews' },
+  { value: 300,   suffix: '+',  label: 'Lender network' },
+  { value: 48,    suffix: '',   label: 'States licensed' },
+  { value: 19,    suffix: '',   label: 'Day fastest close' },
+];
+
+const steps = [
+  {
+    num: '01',
+    title: 'Get pre-approved',
+    line: '60 seconds online, answer in 24 hours.',
+    review: { text: '"Got my approval letter same day."', name: 'Raman S.', loc: 'NJ' },
+  },
+  {
+    num: '02',
+    title: 'Explore your options',
+    line: '300+ lenders bid — you pick the best fit.',
+    review: { text: '"Jim found a rate nobody else could."', name: 'Holly F.', loc: 'MI' },
+  },
+  {
+    num: '03',
+    title: 'Partner up',
+    line: 'We connect you with agents, inspectors, title.',
+    review: { text: '"The whole team was coordinated perfectly."', name: 'Syed S.', loc: 'IL' },
+  },
+  {
+    num: '04',
+    title: 'Offer & inspect',
+    line: 'Cash-backed offers that win bidding wars.',
+    review: { text: '"We closed in under 30 days."', name: 'Andreea G.', loc: 'IL' },
+  },
+  {
+    num: '05',
+    title: 'Close & plan ahead',
+    line: "Keys in hand — plus a roadmap for what\u2019s next.",
+    review: { text: '"Already planning our second property."', name: 'Dwayne L.', loc: 'IL' },
+  },
+];
+
+const programs = [
+  { id: 'fha',    name: 'FHA',              line: 'Low down, flexible credit',      income: ['w2','self','mixed'], down: ['low'],       goal: ['live'] },
+  { id: 'va',     name: 'VA',               line: 'Zero down for veterans',         income: ['w2'],               down: ['low','20'],   goal: ['live'] },
+  { id: 'usda',   name: 'USDA',             line: 'Zero down, rural & suburban',    income: ['w2'],               down: ['low'],        goal: ['live'] },
+  { id: 'conv',   name: 'Conventional',     line: 'Standard rates, flexible terms', income: ['w2','mixed'],       down: ['20'],         goal: ['live','invest'] },
+  { id: 'jumbo',  name: 'Jumbo',            line: 'High-value properties',          income: ['w2','self','mixed'],down: ['20'],          goal: ['live','invest'] },
+  { id: 'flex',   name: 'Flexible Income',  line: 'Bank statements, assets, 1099',  income: ['self','mixed'],     down: ['low','20'],   goal: ['live','invest'] },
+];
+
+const mistakes = [
+  { front: 'Not getting pre-approved first',      back: 'Jim gets you approved before you shop' },
+  { front: 'Only talking to one lender',           back: '300+ lenders compete for your rate' },
+  { front: 'Ignoring the total monthly cost',      back: 'We show taxes, insurance, and upkeep upfront' },
+  { front: 'Waiving the home inspection',          back: 'Our team coordinates fast, thorough inspections' },
+  { front: 'Forgetting about closing costs',       back: 'We map every dollar before you sign' },
+];
+
+const reviews = [
+  { text: "Raman and his wife were first-time buyers in New Jersey. Jim's team got them pre-approved the same day and found a rate that beat three other lenders.", name: 'Raman Sawhney', loc: 'New Jersey', source: 'Google', img: '/testimonials/raman-sawhney.jpg' },
+  { text: "Holly bought her first home in Michigan. The portal was intuitive, the team proactive, and the whole process was wrapped up in under three weeks.", name: 'Holly Fontyn', loc: 'Michigan', source: 'Google', img: '/testimonials/holly-fontyn.jpg' },
+  { text: "Syed closed on a multi-family in Illinois. Jim's knowledge of investor-friendly loans helped him structure the deal with maximum leverage.", name: 'Syed Saqib', loc: 'Illinois', source: 'Zillow', img: '/testimonials/syed-saqib.jpg' },
+  { text: "Andreea needed to close fast — under 30 days. Jim's team delivered ahead of schedule, coordinating title, appraisal, and insurance seamlessly.", name: 'Andreea Grigorie', loc: 'Illinois', source: 'Google', img: '/testimonials/andreea-grigorie.jpg' },
+  { text: "Dwayne has used Jim three times. Each transaction was smoother than the last. He now refers every friend and colleague to Stairway.", name: 'Dwayne Lee', loc: 'Illinois', source: 'Facebook', img: '/testimonials/dwayne-lee.jpg' },
+  { text: "Carolina did a purchase and a refi within the same year. Jim found savings on both that added up to over $400/month.", name: 'Carolina Forsyth', loc: 'New Jersey', source: 'Google', img: '/testimonials/carolina-forsyth.jpg' },
+];
 ---
-<Layout title="Buy a Home — Stairway Mortgage" description="Your path to buying a home wisely. First-time or move-up — 300+ lenders competing for your loan.">
-  <section class="section">
-    <div class="container-page text-center max-w-2xl mx-auto">
-      <span class="eyebrow eyebrow-blue mb-5">How We Serve</span>
-      <h1 class="display-lg mt-5 mb-6">Buy a Home</h1>
-      <p class="lede mb-10">This page is being built. Talk to Jim to get started today.</p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
-        <a href="/contact-us/" class="btn btn-ghost">Talk to Jim</a>
+
+<Layout title="Buy a Home — Stairway Mortgage" description="Your path to buying a home wisely. 300+ lenders competing for your loan. Pre-approved in as fast as 24 hours.">
+
+  <!-- ═══════════════════════════════════════════════════════
+       1. HERO — The Reframe
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section relative overflow-hidden">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">How We Serve · Buy a Home</span>
+
+        <!-- Animated reframe -->
+        <h1 class="display-xl mt-6 mb-8" aria-label="How can I buy wisely?">
+          <span class="hero-strike" id="hero-old">Can I buy a house?</span>
+          <span class="hero-typed" id="hero-new" aria-hidden="true">
+            How can I buy <em class="italic text-[var(--color-blue)]">wisely</em>?
+          </span>
+        </h1>
+
+        <div class="flex flex-wrap gap-3 justify-center mb-12">
+          <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-6 py-3.5">See My Options</a>
+          <a href="/contact-us/" class="btn btn-ghost text-base px-6 py-3.5">Talk to Jim</a>
+        </div>
+      </div>
+
+      <!-- Trust ribbon with count-up -->
+      <div class="trust-ribbon reveal" style="transition-delay:200ms;">
+        {trustNumbers.map((t) => (
+          <div class="trust-ribbon__item">
+            <span class="trust-ribbon__num font-display" data-countup={t.value} data-suffix={t.suffix}>0{t.suffix}</span>
+            <span class="trust-ribbon__label">{t.label}</span>
+          </div>
+        ))}
+        <div class="trust-ribbon__nmls">
+          <span class="mono">Jim Blackburn · NMLS #1072866</span>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       2. THREE QUESTIONS — Mini infographics
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section-tight border-y border-[var(--color-bone)]">
+    <div class="container-page">
+      <div class="grid md:grid-cols-3 gap-px bg-[var(--color-bone)] rounded-2xl overflow-hidden border border-[var(--color-bone)]">
+
+        <!-- Q1: Now vs. future value -->
+        <div class="bg-[var(--color-paper)] p-8 lg:p-10 reveal">
+          <span class="eyebrow mb-6">Question 01</span>
+          <h3 class="display-sm mt-4 mb-6">Today, or five years from now?</h3>
+          <!-- Mini bar chart: now vs future -->
+          <div class="q-chart" aria-label="Home values tend to rise over time">
+            <div class="q-chart__bar-wrap">
+              <div class="q-chart__bar q-chart__bar--now" data-grow="62" style="height:0%">
+                <span class="q-chart__val font-display">$350K</span>
+              </div>
+              <span class="q-chart__label">Today</span>
+            </div>
+            <div class="q-chart__bar-wrap">
+              <div class="q-chart__bar q-chart__bar--future" data-grow="88" style="height:0%">
+                <span class="q-chart__val font-display">$497K</span>
+              </div>
+              <span class="q-chart__label">5 years</span>
+            </div>
+          </div>
+          <p class="text-[13px] text-[var(--color-mute)] mt-4">National median, CoreLogic projection</p>
+        </div>
+
+        <!-- Q2: Credits & incentives -->
+        <div class="bg-[var(--color-paper)] p-8 lg:p-10 reveal" style="transition-delay:80ms;">
+          <span class="eyebrow mb-6">Question 02</span>
+          <h3 class="display-sm mt-4 mb-6">Leaving money on the table?</h3>
+          <!-- Stacked coins infographic -->
+          <div class="coins-stack" aria-label="Credits and incentives can add up">
+            <div class="coins-stack__row reveal-right" style="transition-delay:200ms;">
+              <span class="coins-stack__bar coins-stack__bar--1"></span>
+              <span class="coins-stack__text">Seller concessions <strong class="font-display">$8K</strong></span>
+            </div>
+            <div class="coins-stack__row reveal-right" style="transition-delay:300ms;">
+              <span class="coins-stack__bar coins-stack__bar--2"></span>
+              <span class="coins-stack__text">Lender credits <strong class="font-display">$4K</strong></span>
+            </div>
+            <div class="coins-stack__row reveal-right" style="transition-delay:400ms;">
+              <span class="coins-stack__bar coins-stack__bar--3"></span>
+              <span class="coins-stack__text">First-time buyer grants <strong class="font-display">$10K</strong></span>
+            </div>
+            <div class="coins-stack__total">
+              <span class="font-display text-2xl text-[var(--color-green)]">Up to $22K</span>
+              <span class="text-[13px] text-[var(--color-mute)]">in potential savings</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3: True cost donut -->
+        <div class="bg-[var(--color-paper)] p-8 lg:p-10 reveal" style="transition-delay:160ms;">
+          <span class="eyebrow mb-6">Question 03</span>
+          <h3 class="display-sm mt-4 mb-6">The whole cost — not just the mortgage?</h3>
+          <!-- Animated donut chart -->
+          <div class="donut-wrap" aria-label="Monthly payment breakdown">
+            <svg viewBox="0 0 120 120" class="donut-svg">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-bone)" stroke-width="14"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-blue)" stroke-width="14"
+                stroke-dasharray="314" stroke-dashoffset="314" data-donut="157" class="donut-seg donut-seg--pi"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-blue-deep)" stroke-width="14"
+                stroke-dasharray="314" stroke-dashoffset="314" data-donut="78" class="donut-seg donut-seg--tax"
+                transform="rotate(180 60 60)"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-rust)" stroke-width="14"
+                stroke-dasharray="314" stroke-dashoffset="314" data-donut="47" class="donut-seg donut-seg--ins"
+                transform="rotate(270 60 60)"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-mute)" stroke-width="14"
+                stroke-dasharray="314" stroke-dashoffset="314" data-donut="32" class="donut-seg donut-seg--upk"
+                transform="rotate(324 60 60)"/>
+            </svg>
+            <div class="donut-center font-display">
+              <span class="text-2xl">$2,847</span>
+              <span class="text-[11px] text-[var(--color-mute)]">/month</span>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <span><i style="background:var(--color-blue)"></i> Principal & interest</span>
+            <span><i style="background:var(--color-blue-deep)"></i> Taxes</span>
+            <span><i style="background:var(--color-rust)"></i> Insurance</span>
+            <span><i style="background:var(--color-mute)"></i> Upkeep</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       3. STEPPER — Application to Keys
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="eyebrow eyebrow-rust mb-5">From application to keys</span>
+        <h2 class="display-lg mt-5">Five steps. <em class="italic font-light">One team.</em></h2>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="stepper-progress reveal" style="transition-delay:100ms;">
+        <div class="stepper-progress__fill" id="stepper-fill" style="width:20%"></div>
+      </div>
+
+      <!-- Steps -->
+      <div class="stepper" id="stepper" role="tablist">
+        {steps.map((s, i) => (
+          <button
+            class={`stepper__tab ${i === 0 ? 'is-active' : ''}`}
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            data-step={i}
+          >
+            <span class="stepper__num mono">{s.num}</span>
+            <span class="stepper__title font-display">{s.title}</span>
+          </button>
+        ))}
+      </div>
+
+      <div class="stepper-panels" id="stepper-panels">
+        {steps.map((s, i) => (
+          <div
+            class={`stepper__panel ${i === 0 ? 'is-active' : ''}`}
+            role="tabpanel"
+            data-panel={i}
+          >
+            <div class="stepper__panel-inner">
+              <div class="stepper__content">
+                <div class="stepper__pulse" aria-hidden="true"></div>
+                <h3 class="display-md mb-3">{s.title}</h3>
+                <p class="lede">{s.line}</p>
+              </div>
+              <div class="stepper__review card">
+                <svg width="20" height="16" viewBox="0 0 32 24" class="text-[var(--color-blue)]/30 mb-3" aria-hidden="true">
+                  <path fill="currentColor" d="M0 24V12.8C0 5.4 4.2 0 12 0v4.8c-3.6 0-6 2.4-6 6h6V24H0zm20 0V12.8C20 5.4 24.2 0 32 0v4.8c-3.6 0-6 2.4-6 6h6V24H20z"/>
+                </svg>
+                <p class="font-display text-lg leading-snug mb-3">{s.review.text}</p>
+                <p class="text-[13px] text-[var(--color-mute)]">{s.review.name} · {s.review.loc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       4. MATCH ME — Program Picker
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">Find your fit</span>
+        <h2 class="display-lg mt-5">Which loan is <em class="italic font-light">yours</em>?</h2>
+      </div>
+
+      <!-- Toggle filters -->
+      <div class="matcher-filters reveal" style="transition-delay:100ms;" id="matcher-filters">
+        <div class="matcher-filter">
+          <label class="matcher-filter__label">Income</label>
+          <div class="matcher-filter__options" data-filter="income">
+            <button class="matcher-pill is-active" data-val="w2">W-2</button>
+            <button class="matcher-pill" data-val="self">Self-employed</button>
+            <button class="matcher-pill" data-val="mixed">Mixed</button>
+          </div>
+        </div>
+        <div class="matcher-filter">
+          <label class="matcher-filter__label">Down payment</label>
+          <div class="matcher-filter__options" data-filter="down">
+            <button class="matcher-pill is-active" data-val="low">Low / zero</button>
+            <button class="matcher-pill" data-val="20">20%+</button>
+          </div>
+        </div>
+        <div class="matcher-filter">
+          <label class="matcher-filter__label">Goal</label>
+          <div class="matcher-filter__options" data-filter="goal">
+            <button class="matcher-pill is-active" data-val="live">Live in it</button>
+            <button class="matcher-pill" data-val="invest">Invest</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Program cards -->
+      <div class="matcher-grid" id="matcher-grid">
+        {programs.map((p) => (
+          <div class="matcher-card card reveal" data-program={p.id}
+            data-income={JSON.stringify(p.income)}
+            data-down={JSON.stringify(p.down)}
+            data-goal={JSON.stringify(p.goal)}>
+            <h4 class="font-display text-xl font-medium mb-1">{p.name}</h4>
+            <p class="text-[14px] text-[var(--color-mute)]">{p.line}</p>
+            <div class="matcher-card__match" aria-hidden="true">Match</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10 reveal">
+        <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       5. BY THE NUMBERS — Stat Band
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section-dark section-tight">
+    <div class="container-page">
+      <div class="stat-band reveal">
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="350" data-suffix="M+" data-prefix="$">$0</span>
+          <span class="stat-band__label">Loans closed</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="19" data-suffix="-day">0</span>
+          <span class="stat-band__label">Fastest close</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="300" data-suffix="+">0</span>
+          <span class="stat-band__label">Lenders</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="48">0</span>
+          <span class="stat-band__label">States</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="5.0" data-suffix="★" data-decimals="1">0</span>
+          <span class="stat-band__label">624 reviews</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       6. TOP 5 MISTAKES — Flip Cards
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow mb-5">Learn from others</span>
+        <h2 class="display-lg mt-5">Five mistakes buyers make.</h2>
+      </div>
+
+      <div class="flip-grid">
+        {mistakes.map((m, i) => (
+          <div class="flip-card reveal" style={`transition-delay:${i * 80}ms;`} tabindex="0"
+               role="button" aria-label={`Mistake: ${m.front}. Prevention: ${m.back}`}>
+            <div class="flip-card__inner">
+              <div class="flip-card__front">
+                <span class="flip-card__num mono">0{i + 1}</span>
+                <p class="font-display text-lg leading-snug">{m.front}</p>
+              </div>
+              <div class="flip-card__back">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg>
+                <p class="font-display text-lg leading-snug">{m.back}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       7. LIFE AFTER CLOSING — Stairway Graphic
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-rust mb-5">Life after closing</span>
+        <h2 class="display-lg mt-5 mb-12">Closing day is step one.</h2>
+      </div>
+
+      <div class="stairway-graphic reveal" style="transition-delay:150ms;">
+        <div class="stairway-step stairway-step--1">
+          <div class="stairway-step__bar"></div>
+          <span class="stairway-step__label font-display">Buy</span>
+          <span class="stairway-step__sub">Keys in hand</span>
+        </div>
+        <div class="stairway-step stairway-step--2">
+          <div class="stairway-step__bar"></div>
+          <span class="stairway-step__label font-display">Build equity</span>
+          <span class="stairway-step__sub">Grow your wealth</span>
+        </div>
+        <div class="stairway-step stairway-step--3">
+          <div class="stairway-step__bar"></div>
+          <span class="stairway-step__label font-display">Next move</span>
+          <span class="stairway-step__sub">Invest or upgrade</span>
+        </div>
+      </div>
+
+      <p class="text-center mt-10 font-display text-2xl italic font-light text-[var(--color-mute)] reveal" style="transition-delay:300ms;">
+        Leverage wisely. Grow wealthy.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       8. THE RECEIPTS — Reviews Carousel
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section-dark section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="eyebrow mb-5">The receipts</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">Real buyers. <em class="italic font-light">Real closings.</em></h2>
+      </div>
+
+      <div class="reviews-scroll no-scrollbar" id="reviews-scroll">
+        <div class="reviews-track" id="reviews-track">
+          {reviews.map((r) => (
+            <figure class="review-card">
+              <div class="review-card__avatar" aria-hidden="true">
+                <span class="review-card__initials">{r.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
+              <blockquote class="review-card__text font-display">{r.text}</blockquote>
+              <figcaption class="review-card__meta">
+                <strong>{r.name}</strong>
+                <span>{r.loc}</span>
+                <span class="review-card__source mono">{r.source}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       9. FINAL CTA
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container-page">
+      <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
+        <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none" aria-hidden="true">
+          <div class="absolute bottom-10 right-10 w-40 h-40 bg-[var(--color-blue)] blur-3xl rounded-full"></div>
+        </div>
+        <div class="relative reveal">
+          <h2 class="display-lg text-[var(--color-paper)] mb-4">
+            Ready to buy <em class="italic font-light text-[var(--color-blue-tint)]">wisely</em>?
+          </h2>
+          <div class="flex flex-wrap gap-3 justify-center mt-8">
+            <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">See My Options</a>
+            <a href="/contact-us/" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Talk to Jim</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE-SCOPED STYLES
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+  /* ── Hero reframe animation ── */
+  .hero-strike {
+    display: block;
+    position: relative;
+    color: var(--color-mute);
+    transition: opacity 0.6s 1s;
+  }
+  .hero-strike.done {
+    text-decoration: line-through;
+    text-decoration-color: var(--color-rust);
+    text-decoration-thickness: 3px;
+    opacity: 0.4;
+  }
+  .hero-typed {
+    display: block;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  .hero-typed.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Trust ribbon ── */
+  .trust-ribbon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--color-paper-tint);
+    border: 1px solid var(--color-bone);
+    border-radius: 16px;
+    position: relative;
+  }
+  .trust-ribbon__item { text-align: center; }
+  .trust-ribbon__num {
+    display: block;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+  .trust-ribbon__label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-mute);
+    margin-top: 0.3rem;
+  }
+  .trust-ribbon__nmls {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--color-mute);
+    white-space: nowrap;
+  }
+
+  /* ── Q1: Bar chart ── */
+  .q-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+    height: 160px;
+    justify-content: center;
+  }
+  .q-chart__bar-wrap { text-align: center; width: 70px; }
+  .q-chart__bar {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    transition: height 1s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 0.5rem;
+    min-height: 30px;
+  }
+  .q-chart__bar--now { background: var(--color-bone); }
+  .q-chart__bar--future { background: var(--color-blue); }
+  .q-chart__val {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .q-chart__bar--future .q-chart__val { color: var(--color-paper); }
+  .q-chart__label {
+    display: block;
+    font-size: 12px;
+    color: var(--color-mute);
+    margin-top: 0.4rem;
+  }
+
+  /* ── Q2: Coins stack ── */
+  .coins-stack { display: flex; flex-direction: column; gap: 0.75rem; }
+  .coins-stack__row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .coins-stack__bar {
+    height: 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .coins-stack__bar--1 { width: 50%; background: var(--color-blue); }
+  .coins-stack__bar--2 { width: 30%; background: var(--color-blue-deep); }
+  .coins-stack__bar--3 { width: 65%; background: var(--color-green); }
+  .coins-stack__text { font-size: 13px; color: var(--color-ink); }
+  .coins-stack__total {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-bone);
+    margin-top: 0.5rem;
+  }
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-right.in-view { opacity: 1; transform: translateX(0); }
+
+  /* ── Q3: Donut ── */
+  .donut-wrap {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+  }
+  .donut-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .donut-seg {
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .donut-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: 11.5px;
+    color: var(--color-mute);
+  }
+  .donut-legend i {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  /* ── Stepper ── */
+  .stepper-progress {
+    height: 3px;
+    background: var(--color-bone);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .stepper-progress__fill {
+    height: 100%;
+    background: var(--color-blue);
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .stepper {
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    margin-bottom: 2rem;
+  }
+  .stepper__tab {
+    flex: 1;
+    min-width: 140px;
+    padding: 1rem;
+    background: var(--color-paper-tint);
+    border: 1px solid var(--color-bone);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .stepper__tab.is-active {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-color: var(--color-ink);
+  }
+  .stepper__tab:not(.is-active):hover {
+    border-color: var(--color-ink);
+  }
+  .stepper__num { font-size: 11px; opacity: 0.6; }
+  .stepper__title { font-size: 15px; font-weight: 500; }
+  .stepper__panel { display: none; }
+  .stepper__panel.is-active { display: block; }
+  .stepper__panel-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    .stepper__panel-inner { grid-template-columns: 1fr; }
+  }
+  .stepper__content { padding: 2rem 0; }
+  .stepper__pulse {
+    width: 12px;
+    height: 12px;
+    background: var(--color-green);
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(46, 158, 46, 0.5); }
+    50% { box-shadow: 0 0 0 10px rgba(46, 158, 46, 0); }
+  }
+  .stepper__review {
+    padding: 1.5rem !important;
+  }
+
+  /* ── Matcher / Program picker ── */
+  .matcher-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .matcher-filter { text-align: center; }
+  .matcher-filter__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-mute);
+    margin-bottom: 0.5rem;
+  }
+  .matcher-filter__options { display: flex; gap: 4px; }
+  .matcher-pill {
+    padding: 0.4rem 0.9rem;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--color-bone);
+    border-radius: 20px;
+    background: var(--color-paper);
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--color-ink);
+  }
+  .matcher-pill.is-active {
+    background: var(--color-blue);
+    border-color: var(--color-blue);
+    color: white;
+  }
+  .matcher-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .matcher-card {
+    position: relative;
+    transition: all 0.3s;
+  }
+  .matcher-card.is-dimmed {
+    opacity: 0.35;
+    transform: scale(0.97);
+  }
+  .matcher-card__match {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-green);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .matcher-card:not(.is-dimmed) .matcher-card__match { opacity: 1; }
+
+  /* ── Stat band ── */
+  .stat-band {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .stat-band__item { text-align: center; flex: 1; min-width: 120px; }
+  .stat-band__num {
+    display: block;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--color-paper);
+  }
+  .stat-band__label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    margin-top: 0.4rem;
+  }
+
+  /* ── Flip cards ── */
+  .flip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .flip-card {
+    perspective: 600px;
+    cursor: pointer;
+    height: 180px;
+  }
+  .flip-card__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card__inner,
+  .flip-card:focus .flip-card__inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card__front,
+  .flip-card__back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border: 1px solid var(--color-bone);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .flip-card__front { background: var(--color-paper); }
+  .flip-card__back {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    transform: rotateY(180deg);
+    gap: 0.5rem;
+    align-items: center;
+    text-align: center;
+  }
+  .flip-card__num {
+    font-size: 11px;
+    color: var(--color-rust);
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── Stairway graphic ── */
+  .stairway-graphic {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1.5rem;
+    height: 220px;
+  }
+  .stairway-step {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .stairway-step__bar {
+    width: 80px;
+    border-radius: 10px 10px 0 0;
+    transition: height 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .stairway-step--1 .stairway-step__bar { height: 0; background: var(--color-bone); }
+  .stairway-step--2 .stairway-step__bar { height: 0; background: var(--color-blue); }
+  .stairway-step--3 .stairway-step__bar { height: 0; background: var(--color-ink); }
+  .stairway-graphic.in-view .stairway-step--1 .stairway-step__bar { height: 80px; }
+  .stairway-graphic.in-view .stairway-step--2 .stairway-step__bar { height: 130px; }
+  .stairway-graphic.in-view .stairway-step--3 .stairway-step__bar { height: 180px; }
+  .stairway-step__label { font-size: 16px; font-weight: 500; }
+  .stairway-step__sub { font-size: 12px; color: var(--color-mute); }
+
+  /* ── Reviews carousel ── */
+  .reviews-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+  }
+  .reviews-track {
+    display: flex;
+    gap: 1.25rem;
+    animation: scroll-reviews 30s linear infinite;
+    width: max-content;
+  }
+  @keyframes scroll-reviews {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .reviews-track:hover { animation-play-state: paused; }
+  .review-card {
+    flex-shrink: 0;
+    width: 340px;
+    border: 1px solid rgba(250, 250, 247, 0.15);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .review-card__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-blue-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .review-card__initials {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-paper);
+  }
+  .review-card__text {
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--color-paper);
+    font-weight: 400;
+    flex: 1;
+  }
+  .review-card__meta {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(250, 250, 247, 0.6);
+  }
+  .review-card__meta strong { color: var(--color-paper); font-weight: 500; }
+  .review-card__source {
+    margin-left: auto;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .reviews-track { animation: none; }
+    .hero-strike { text-decoration: line-through; text-decoration-color: var(--color-rust); opacity: 0.4; }
+    .hero-typed { opacity: 1; transform: none; }
+    .stepper__pulse { animation: none; }
+    .q-chart__bar { transition: none; }
+    .stairway-step__bar { transition: none; }
+    .donut-seg { transition: none; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE SCRIPT — animations, stepper, matcher
+     ═══════════════════════════════════════════════════════════ -->
+<script is:inline>
+(function() {
+  'use strict';
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Count-up on scroll ── */
+  function countUp(el) {
+    var target = parseFloat(el.dataset.countup);
+    var suffix = el.dataset.suffix || '';
+    var prefix = el.dataset.prefix || '';
+    var decimals = parseInt(el.dataset.decimals) || 0;
+    var duration = 1200;
+    var start = performance.now();
+
+    function tick(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      var current = ease * target;
+      el.textContent = prefix + (decimals ? current.toFixed(decimals) : Math.round(current)) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    if (prefersReduced) {
+      el.textContent = prefix + (decimals ? target.toFixed(decimals) : target) + suffix;
+    } else {
+      requestAnimationFrame(tick);
+    }
+  }
+
+  /* ── Scroll observer for everything ── */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+
+        // Count-ups
+        e.target.querySelectorAll('[data-countup]').forEach(countUp);
+        if (e.target.dataset.countup) countUp(e.target);
+
+        // Bar chart grow
+        e.target.querySelectorAll('[data-grow]').forEach(function(bar) {
+          bar.style.height = bar.dataset.grow + '%';
+        });
+
+        // Donut segments
+        e.target.querySelectorAll('[data-donut]').forEach(function(seg) {
+          seg.style.strokeDashoffset = 314 - parseInt(seg.dataset.donut);
+        });
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-right, .trust-ribbon, .stat-band, .stairway-graphic, .q-chart, .donut-wrap').forEach(function(el) {
+      io.observe(el);
+    });
+    // Observe individual parent containers for the donut and chart
+    document.querySelectorAll('.q-chart__bar-wrap').forEach(function(el) { io.observe(el); });
+  }
+
+  /* ── Hero reframe ── */
+  var heroOld = document.getElementById('hero-old');
+  var heroNew = document.getElementById('hero-new');
+  if (heroOld && heroNew) {
+    setTimeout(function() { heroOld.classList.add('done'); }, 800);
+    setTimeout(function() { heroNew.classList.add('show'); heroNew.setAttribute('aria-hidden', 'false'); }, 1600);
+  }
+
+  /* ── Stepper — auto-advance ── */
+  var stepper = document.getElementById('stepper');
+  var panels = document.getElementById('stepper-panels');
+  var fill = document.getElementById('stepper-fill');
+  if (stepper && panels) {
+    var tabs = stepper.querySelectorAll('.stepper__tab');
+    var panelEls = panels.querySelectorAll('.stepper__panel');
+    var current = 0;
+    var total = tabs.length;
+    var interval = 5000;
+    var timer;
+
+    function goTo(i) {
+      current = i;
+      tabs.forEach(function(t, idx) {
+        t.classList.toggle('is-active', idx === i);
+        t.setAttribute('aria-selected', idx === i ? 'true' : 'false');
+      });
+      panelEls.forEach(function(p, idx) {
+        p.classList.toggle('is-active', idx === i);
+      });
+      fill.style.width = ((i + 1) / total * 100) + '%';
+    }
+
+    function advance() { goTo((current + 1) % total); }
+    function startTimer() { timer = setInterval(advance, interval); }
+    function stopTimer() { clearInterval(timer); }
+
+    tabs.forEach(function(t, i) {
+      t.addEventListener('click', function() { stopTimer(); goTo(i); startTimer(); });
+    });
+
+    stepper.addEventListener('mouseenter', stopTimer);
+    stepper.addEventListener('mouseleave', startTimer);
+    if (!prefersReduced) startTimer();
+  }
+
+  /* ── Program matcher ── */
+  var filters = document.getElementById('matcher-filters');
+  var grid = document.getElementById('matcher-grid');
+  if (filters && grid) {
+    var state = { income: 'w2', down: 'low', goal: 'live' };
+
+    function updateMatcher() {
+      var cards = grid.querySelectorAll('.matcher-card');
+      cards.forEach(function(card) {
+        var incomeList = JSON.parse(card.dataset.income);
+        var downList = JSON.parse(card.dataset.down);
+        var goalList = JSON.parse(card.dataset.goal);
+        var match = incomeList.includes(state.income) && downList.includes(state.down) && goalList.includes(state.goal);
+        card.classList.toggle('is-dimmed', !match);
+      });
+    }
+
+    filters.addEventListener('click', function(e) {
+      var pill = e.target.closest('.matcher-pill');
+      if (!pill) return;
+      var filterGroup = pill.parentElement;
+      var filterType = filterGroup.dataset.filter;
+      filterGroup.querySelectorAll('.matcher-pill').forEach(function(p) { p.classList.remove('is-active'); });
+      pill.classList.add('is-active');
+      state[filterType] = pill.dataset.val;
+      updateMatcher();
+    });
+
+    updateMatcher();
+  }
+
+  /* ── Reviews: duplicate track for infinite scroll ── */
+  var track = document.getElementById('reviews-track');
+  if (track && !prefersReduced) {
+    var clone = track.innerHTML;
+    track.innerHTML += clone;
+  }
+})();
+</script>
