@@ -55,7 +55,7 @@ const programs = [
 ];
 
 const mistakes = [
-  { front: 'Not getting pre-approved first',      back: 'Jim gets you approved before you shop' },
+  { front: 'Not getting pre-approved first',      back: 'Our team gets you approved before you shop' },
   { front: 'Only talking to one lender',           back: '300+ lenders compete for your rate' },
   { front: 'Ignoring the total monthly cost',      back: 'We show taxes, insurance, and upkeep upfront' },
   { front: 'Waiving the home inspection',          back: 'Our team coordinates fast, thorough inspections' },
@@ -107,7 +107,7 @@ const reviews = [
         </h1>
 
         <div class="flex flex-wrap gap-3 justify-center mb-12">
-          <a href="/contact-us/" class="btn btn-primary btn-arrow text-base px-6 py-3.5">Talk to Jim</a>
+          <a href="/contact-us/" class="btn btn-primary btn-arrow text-base px-6 py-3.5">Talk to Our Team</a>
           <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
         </div>
       </div>
@@ -144,19 +144,19 @@ const reviews = [
           <!-- Mini bar chart: now vs future -->
           <div class="q-chart" aria-label="Home values tend to rise over time">
             <div class="q-chart__bar-wrap">
-              <div class="q-chart__bar q-chart__bar--now" data-grow="62" style="height:0%">
-                <span class="q-chart__val font-display">$350K</span>
+              <div class="q-chart__bar q-chart__bar--now" data-grow="52" style="height:0%">
+                <span class="q-chart__val font-display">$420K</span>
               </div>
               <span class="q-chart__label">Today</span>
             </div>
             <div class="q-chart__bar-wrap">
               <div class="q-chart__bar q-chart__bar--future" data-grow="88" style="height:0%">
-                <span class="q-chart__val font-display">$497K</span>
+                <span class="q-chart__val font-display">$510K</span>
               </div>
               <span class="q-chart__label">5 years</span>
             </div>
           </div>
-          <p class="text-[13px] text-[var(--color-mute)] mt-4">National median, CoreLogic projection</p>
+          <p class="text-[13px] text-[var(--color-mute)] mt-4">Based on ~4% avg. annual appreciation</p>
         </div>
 
         <!-- Q2: Credits & incentives -->
@@ -431,7 +431,7 @@ const reviews = [
       </div>
     </div>
     <div class="handhold reveal">
-      <span class="handhold__text mono">Dodge those, and you hear things like this about Jim ↑</span>
+      <span class="handhold__text mono">Dodge those, and you hear things like this from real clients ↑</span>
     </div>
   </section>
 
@@ -539,7 +539,7 @@ const reviews = [
           </h2>
           <div class="flex flex-wrap gap-3 justify-center mt-8">
             <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Book the Call</a>
-            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call Jim now · (954) 993-1625</a>
+            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call now · (954) 993-1625</a>
           </div>
         </div>
       </div>
@@ -1036,6 +1036,14 @@ const reviews = [
     opacity: 0.5;
   }
 
+  /* ── Mobile headline weight fix ── */
+  @media (max-width: 640px) {
+    .display-xl, .display-lg, .display-md {
+      font-weight: 500;
+      font-variation-settings: "opsz" 48;
+    }
+  }
+
   /* ── Reduced motion ── */
   @media (prefers-reduced-motion: reduce) {
     .reviews-track { animation: none; }
@@ -1048,7 +1056,7 @@ const reviews = [
     .donut-seg { transition: none; }
   }
 
-  /* ── The Climb (progress rail) ── */
+  /* ── The Climb (progress rail — stops at summit) ── */
   .climb {
     position: fixed;
     left: calc(6vw - 1px);
@@ -1058,6 +1066,7 @@ const reviews = [
     z-index: 30;
     pointer-events: none;
     display: none;
+    transition: opacity 0.3s;
   }
   @media (min-width: 768px) { .climb { display: block; } }
   .climb__rail {
@@ -1341,20 +1350,20 @@ const reviews = [
     setTimeout(function() { heroNew.classList.add('show'); heroNew.setAttribute('aria-hidden', 'false'); }, 1600);
   }
 
-  /* ── Stepper — auto-advance ── */
+  /* ── Stepper — scroll-driven ── */
   var stepper = document.getElementById('stepper');
   var panelsWrap = document.getElementById('stepper-panels');
   var fill = document.getElementById('stepper-fill');
   if (stepper && panelsWrap) {
     var tabs = stepper.querySelectorAll('.stepper__tab');
     var panelEls = panelsWrap.querySelectorAll('.stepper__panel');
-    var current = 0;
-    var total = tabs.length;
-    var stepInterval = 6500;
-    var stepTimer = null;
+    var currentStep = 0;
+    var totalSteps = tabs.length;
+    var stepperSection = stepper.closest('section');
 
-    function goTo(i) {
-      current = i;
+    function goToStep(i) {
+      if (i === currentStep) return;
+      currentStep = i;
       tabs.forEach(function(t, idx) {
         t.classList.toggle('is-active', idx === i);
         t.setAttribute('aria-selected', idx === i ? 'true' : 'false');
@@ -1362,20 +1371,35 @@ const reviews = [
       panelEls.forEach(function(p, idx) {
         p.classList.toggle('is-active', idx === i);
       });
-      fill.style.width = ((i + 1) / total * 100) + '%';
+      fill.style.width = ((i + 1) / totalSteps * 100) + '%';
     }
 
-    function advance() { goTo((current + 1) % total); }
-    function startTimer() { if (stepTimer) clearInterval(stepTimer); stepTimer = setInterval(advance, stepInterval); }
-    function stopTimer() { if (stepTimer) { clearInterval(stepTimer); stepTimer = null; } }
-
+    /* Manual tab click */
     tabs.forEach(function(t, i) {
-      t.addEventListener('click', function() { stopTimer(); goTo(i); startTimer(); });
+      t.addEventListener('click', function() { goToStep(i); });
     });
 
-    stepper.addEventListener('mouseenter', stopTimer);
-    stepper.addEventListener('mouseleave', function() { if (!prefersReduced) startTimer(); });
-    if (!prefersReduced) startTimer();
+    /* Scroll-driven: map section scroll progress to step index */
+    if (stepperSection) {
+      var stepperTicking = false;
+      function onStepperScroll() {
+        var rect = stepperSection.getBoundingClientRect();
+        var sectionH = stepperSection.offsetHeight;
+        var viewH = window.innerHeight;
+        /* progress: 0 when section top enters viewport, 1 when section bottom leaves */
+        var progress = (viewH - rect.top) / (sectionH + viewH);
+        progress = Math.max(0, Math.min(1, progress));
+        var step = Math.min(totalSteps - 1, Math.floor(progress * totalSteps));
+        goToStep(step);
+        stepperTicking = false;
+      }
+      window.addEventListener('scroll', function() {
+        if (!stepperTicking) {
+          requestAnimationFrame(onStepperScroll);
+          stepperTicking = true;
+        }
+      }, { passive: true });
+    }
   }
 
   /* ── Program matcher ── */
@@ -1420,17 +1444,32 @@ const reviews = [
     track.innerHTML += clone;
   }
 
-  /* ── The Climb ── */
+  /* ── The Climb (stops at summit, never enters footer) ── */
+  var climbEl = document.querySelector('.climb');
   var climbNode = document.getElementById('climb-node');
   var climbFill = document.getElementById('climb-fill');
   var climbTicks = document.querySelectorAll('.climb__tick');
   var climbSections = document.querySelectorAll('[data-climb-section]');
   var climbTicking = false;
+  var climbEnd = 0; /* absolute Y of the last section's bottom */
+
+  function calcClimbBounds() {
+    var lastSec = climbSections[climbSections.length - 1];
+    if (lastSec) {
+      climbEnd = lastSec.offsetTop + lastSec.offsetHeight;
+    }
+  }
 
   function updateClimb() {
-    var scrollH = document.documentElement.scrollHeight - window.innerHeight;
-    var progress = scrollH > 0 ? (window.scrollY / scrollH) : 0;
+    var scrollY = window.scrollY || window.pageYOffset;
+    /* progress scoped to content above footer */
+    var maxScroll = Math.max(1, climbEnd - window.innerHeight);
+    var progress = Math.min(1, Math.max(0, scrollY / maxScroll));
     var viewH = window.innerHeight;
+
+    /* Hide climb once we scroll past the summit into footer */
+    var pastSummit = scrollY > climbEnd;
+    if (climbEl) climbEl.style.opacity = pastSummit ? '0' : '1';
 
     if (climbNode) {
       climbNode.style.transform = 'translateY(' + (progress * viewH * 0.85 + viewH * 0.05) + 'px)';
@@ -1439,7 +1478,6 @@ const reviews = [
       climbFill.style.height = (progress * 100) + '%';
     }
 
-    // Update ticks
     climbTicks.forEach(function(tick) {
       var tickPos = parseFloat(tick.dataset.pos || 0);
       tick.classList.toggle('is-passed', progress >= tickPos);
@@ -1449,15 +1487,14 @@ const reviews = [
   }
 
   if (climbNode) {
-    // Calculate tick positions from sections
     function calcTicks() {
-      var scrollH = document.documentElement.scrollHeight - window.innerHeight;
+      calcClimbBounds();
+      var maxScroll = Math.max(1, climbEnd - window.innerHeight);
       climbSections.forEach(function(sec, i) {
-        var rect = sec.getBoundingClientRect();
-        var pos = (rect.top + window.scrollY) / (scrollH || 1);
+        var pos = sec.offsetTop / maxScroll;
         if (climbTicks[i]) {
-          climbTicks[i].dataset.pos = pos;
-          climbTicks[i].style.top = (pos * 100) + '%';
+          climbTicks[i].dataset.pos = Math.min(1, pos);
+          climbTicks[i].style.top = (Math.min(1, pos) * 100) + '%';
         }
       });
     }
