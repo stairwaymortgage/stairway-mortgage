@@ -72,10 +72,26 @@ const reviews = [
 
 <Layout title="Buy a Home — Stairway Mortgage" description="Your path to buying a home wisely. 300+ lenders competing for your loan. Pre-approved in as fast as 24 hours.">
 
+  <!-- ── The Climb — Progress Rail ── -->
+  <div class="climb" aria-hidden="true">
+    <div class="climb__rail"></div>
+    <div class="climb__fill" id="climb-fill"></div>
+    <div class="climb__tick" data-tick="0"></div>
+    <div class="climb__tick" data-tick="1"></div>
+    <div class="climb__tick" data-tick="2"></div>
+    <div class="climb__tick" data-tick="3"></div>
+    <div class="climb__tick" data-tick="4"></div>
+    <div class="climb__tick" data-tick="5"></div>
+    <div class="climb__tick" data-tick="6"></div>
+    <div class="climb__tick" data-tick="7"></div>
+    <div class="climb__tick" data-tick="8"></div>
+    <div class="climb__node" id="climb-node"></div>
+  </div>
+
   <!-- ═══════════════════════════════════════════════════════
        1. HERO — The Reframe
        ═══════════════════════════════════════════════════════ -->
-  <section class="section relative overflow-hidden">
+  <section class="section relative overflow-hidden hero-wash" data-climb-section>
     <div class="container-page">
       <div class="max-w-3xl mx-auto text-center reveal">
         <span class="eyebrow eyebrow-blue mb-6">How We Serve · Buy a Home</span>
@@ -107,12 +123,15 @@ const reviews = [
         </div>
       </div>
     </div>
+    <div class="handhold reveal">
+      <span class="handhold__text mono">You've got questions. The answers are visual — and one step up ↑</span>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
        2. THREE QUESTIONS — Mini infographics
        ═══════════════════════════════════════════════════════ -->
-  <section class="section-tight border-y border-[var(--color-bone)]">
+  <section class="section-tight bg-[var(--color-paper-tint)]" data-climb-section>
     <div class="container-page">
       <div class="grid md:grid-cols-3 gap-px bg-[var(--color-bone)] rounded-2xl overflow-hidden border border-[var(--color-bone)]">
 
@@ -197,16 +216,28 @@ const reviews = [
         </div>
       </div>
     </div>
+    <div class="handhold reveal">
+      <span class="handhold__text mono">Three answers change everything. Here's exactly how it works, step by step ↑</span>
+    </div>
   </section>
+
+  <!-- Proof Dart 1 -->
+  <div class="proof-dart proof-dart--left reveal" style="transition-delay:100ms;">
+    <blockquote class="proof-dart__quote font-display italic">"They secured a loan for me — nobody else would — and closed in under 30 days."</blockquote>
+    <div class="proof-dart__meta">
+      <span class="proof-dart__name">Andreea Grigorie · Illinois</span>
+      <a href="/contact-us/" class="proof-dart__cta">Book the call ↗</a>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════════════════
        3. STEPPER — Application to Keys
        ═══════════════════════════════════════════════════════ -->
-  <section class="section">
+  <section class="section section-dark stepper-dark" data-climb-section>
     <div class="container-page">
       <div class="text-center max-w-2xl mx-auto mb-14 reveal">
-        <span class="eyebrow eyebrow-rust mb-5">From application to keys</span>
-        <h2 class="display-lg mt-5">Five steps. <em class="italic font-light">One team.</em></h2>
+        <span class="eyebrow eyebrow-rust mb-5 text-[var(--color-paper)]">From application to keys</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">Five steps. <em class="italic font-light">One team.</em></h2>
       </div>
 
       <!-- Progress bar -->
@@ -239,8 +270,8 @@ const reviews = [
             <div class="stepper__panel-inner">
               <div class="stepper__content">
                 <div class="stepper__pulse" aria-hidden="true"></div>
-                <h3 class="display-md mb-3">{s.title}</h3>
-                <p class="lede">{s.line}</p>
+                <h3 class="display-md mb-3 text-[var(--color-paper)]">{s.title}</h3>
+                <p class="lede text-[var(--color-paper)]">{s.line}</p>
               </div>
               <div class="stepper__review card">
                 <svg width="20" height="16" viewBox="0 0 32 24" class="text-[var(--color-blue)]/30 mb-3" aria-hidden="true">
@@ -254,12 +285,15 @@ const reviews = [
         ))}
       </div>
     </div>
+    <div class="handhold reveal">
+      <span class="handhold__text mono">Five steps. Now — which loan fits your life? ↑</span>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
        4. MATCH ME — Program Picker
        ═══════════════════════════════════════════════════════ -->
-  <section class="section bg-[var(--color-paper-tint)]">
+  <section class="section bg-[var(--color-paper)]" data-climb-section>
     <div class="container-page">
       <div class="text-center max-w-2xl mx-auto mb-12 reveal">
         <span class="eyebrow eyebrow-blue mb-5">Find your fit</span>
@@ -310,12 +344,24 @@ const reviews = [
         <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
       </div>
     </div>
+    <div class="handhold reveal">
+      <span class="handhold__text mono">Found your fit. Now — the 5 things that quietly kill good deals ↑</span>
+    </div>
   </section>
+
+  <!-- Proof Dart 2 -->
+  <div class="proof-dart proof-dart--right reveal" style="transition-delay:100ms;">
+    <blockquote class="proof-dart__quote font-display italic">"Five mortgages with Jim. I would never consider looking elsewhere."</blockquote>
+    <div class="proof-dart__meta">
+      <span class="proof-dart__name">Gary Koval · Colorado</span>
+      <a href="/contact-us/" class="proof-dart__cta">Book the call ↗</a>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════════════════
        5. BY THE NUMBERS — Stat Band
        ═══════════════════════════════════════════════════════ -->
-  <section class="section-dark section-tight">
+  <section class="section-tight bg-gradient-to-b from-[var(--color-blue-tint)] to-[var(--color-paper)] stat-band-blue" data-climb-section>
     <div class="container-page">
       <div class="stat-band reveal">
         <div class="stat-band__item">
@@ -340,12 +386,15 @@ const reviews = [
         </div>
       </div>
     </div>
+    <div class="handhold reveal">
+      <span class="handhold__text mono">The numbers speak. But what do real buyers say? ↑</span>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
        6. TOP 5 MISTAKES — Flip Cards
        ═══════════════════════════════════════════════════════ -->
-  <section class="section">
+  <section class="section bg-[var(--color-paper-tint)]" data-climb-section>
     <div class="container-page">
       <div class="text-center max-w-2xl mx-auto mb-12 reveal">
         <span class="eyebrow mb-5">Learn from others</span>
@@ -370,12 +419,24 @@ const reviews = [
         ))}
       </div>
     </div>
+    <div class="handhold reveal">
+      <span class="handhold__text mono">Dodge those, and you hear things like this about Jim ↑</span>
+    </div>
   </section>
+
+  <!-- Proof Dart 3 -->
+  <div class="proof-dart proof-dart--left reveal" style="transition-delay:100ms;">
+    <blockquote class="proof-dart__quote font-display italic">"He called me in China at 1 AM to close the deal."</blockquote>
+    <div class="proof-dart__meta">
+      <span class="proof-dart__name">Dennis Nikolaev</span>
+      <a href="/contact-us/" class="proof-dart__cta">Book the call ↗</a>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════════════════
        7. LIFE AFTER CLOSING — Stairway Graphic
        ═══════════════════════════════════════════════════════ -->
-  <section class="section bg-[var(--color-paper-tint)]">
+  <section class="section bg-[var(--color-paper)]" data-climb-section>
     <div class="container-page">
       <div class="max-w-3xl mx-auto text-center reveal">
         <span class="eyebrow eyebrow-rust mb-5">Life after closing</span>
@@ -404,12 +465,24 @@ const reviews = [
         Leverage wisely. Grow wealthy.
       </p>
     </div>
+    <div class="handhold reveal">
+      <span class="handhold__text mono">Their results started with one call ↑</span>
+    </div>
   </section>
+
+  <!-- Proof Dart 4 -->
+  <div class="proof-dart proof-dart--right reveal" style="transition-delay:100ms;">
+    <blockquote class="proof-dart__quote font-display italic">"Jim found savings that added up to over $400/month."</blockquote>
+    <div class="proof-dart__meta">
+      <span class="proof-dart__name">Carolina Forsyth · New Jersey</span>
+      <a href="/contact-us/" class="proof-dart__cta">Book the call ↗</a>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════════════════
        8. THE RECEIPTS — Reviews Carousel
        ═══════════════════════════════════════════════════════ -->
-  <section class="section-dark section">
+  <section class="section-dark section" data-climb-section>
     <div class="container-page">
       <div class="text-center max-w-2xl mx-auto mb-14 reveal">
         <span class="eyebrow mb-5">The receipts</span>
@@ -434,24 +507,28 @@ const reviews = [
         </div>
       </div>
     </div>
+    <div class="handhold reveal">
+      <span class="handhold__text mono">You've climbed this far. One step left ↑</span>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
-       9. FINAL CTA
+       9. FINAL CTA — Summit
        ═══════════════════════════════════════════════════════ -->
-  <section class="section">
+  <section class="section section-dark" data-climb-section>
     <div class="container-page">
       <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
-        <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none" aria-hidden="true">
-          <div class="absolute bottom-10 right-10 w-40 h-40 bg-[var(--color-blue)] blur-3xl rounded-full"></div>
+        <div class="summit-glow" aria-hidden="true">
+          <div class="summit-glow__blob summit-glow__blob--blue"></div>
+          <div class="summit-glow__blob summit-glow__blob--rust"></div>
         </div>
         <div class="relative reveal">
           <h2 class="display-lg text-[var(--color-paper)] mb-4">
-            Ready to buy <em class="italic font-light text-[var(--color-blue-tint)]">wisely</em>?
+            You've climbed this far — let's get <em class="italic font-light text-[var(--color-blue-tint)]">your number</em>.
           </h2>
           <div class="flex flex-wrap gap-3 justify-center mt-8">
-            <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">See My Options</a>
-            <a href="/contact-us/" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Talk to Jim</a>
+            <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Book the Call</a>
+            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call Jim now · (954) 993-1625</a>
           </div>
         </div>
       </div>
@@ -459,6 +536,13 @@ const reviews = [
   </section>
 
 </Layout>
+
+<!-- Mobile sticky bottom CTA -->
+<div class="mobile-cta-bar" id="mobile-cta-bar" aria-hidden="true">
+  <a href="/contact-us/" class="mobile-cta-bar__btn btn btn-blue">Book the Call</a>
+  <a href="tel:+19549931625" class="mobile-cta-bar__phone mono">(954) 993-1625</a>
+  <button class="mobile-cta-bar__close" id="mobile-cta-close" aria-label="Dismiss">&times;</button>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════
      PAGE-SCOPED STYLES
@@ -940,6 +1024,227 @@ const reviews = [
     .stairway-step__bar { transition: none; }
     .donut-seg { transition: none; }
   }
+
+  /* ── The Climb (progress rail) ── */
+  .climb {
+    position: fixed;
+    left: calc(6vw - 1px);
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    z-index: 30;
+    pointer-events: none;
+    display: none;
+  }
+  @media (min-width: 768px) { .climb { display: block; } }
+  .climb__rail {
+    position: absolute;
+    inset: 0;
+    width: 2px;
+    background: var(--color-bone);
+  }
+  .climb__fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 0%;
+    background: var(--color-blue);
+    opacity: 0.4;
+    transition: height 0.1s linear;
+  }
+  .climb__node {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
+    margin-top: -5px;
+    border-radius: 50%;
+    background: var(--color-blue);
+    box-shadow: 0 0 12px 4px rgba(24, 69, 214, 0.4);
+    transform: translateY(0);
+    will-change: transform;
+    z-index: 1;
+  }
+  .climb__tick {
+    position: absolute;
+    left: -3px;
+    width: 8px;
+    height: 2px;
+    background: var(--color-bone);
+    transition: background 0.3s;
+  }
+  .climb__tick.is-passed { background: var(--color-blue); }
+  @media (max-width: 767px) {
+    .climb { display: block; left: 0; width: 2px; }
+    .climb__node { width: 6px; height: 6px; margin-left: -3px; margin-top: -3px; box-shadow: 0 0 6px 2px rgba(24,69,214,0.3); }
+    .climb__tick { display: none; }
+  }
+  @keyframes node-pulse {
+    0%, 100% { box-shadow: 0 0 12px 4px rgba(24, 69, 214, 0.4); }
+    50% { box-shadow: 0 0 20px 8px rgba(24, 69, 214, 0.2); }
+  }
+  .climb__node { animation: node-pulse 2.5s ease infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .climb__node { animation: none; box-shadow: 0 0 8px 2px rgba(24, 69, 214, 0.3); }
+  }
+
+  /* ── Handholds ── */
+  .handhold {
+    text-align: center;
+    padding: 2rem 1rem 0.5rem;
+  }
+  .handhold__text {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--color-mute);
+    opacity: 0.7;
+  }
+  .section-dark .handhold__text { color: var(--color-paper); opacity: 0.4; }
+
+  /* ── Proof Darts ── */
+  .proof-dart {
+    max-width: 320px;
+    margin: -1rem auto 0;
+    padding: 1.5rem 2rem;
+    position: relative;
+    z-index: 5;
+  }
+  .proof-dart--left { margin-left: 8%; margin-right: auto; }
+  .proof-dart--right { margin-right: 8%; margin-left: auto; }
+  @media (max-width: 768px) {
+    .proof-dart { margin: 0 auto; max-width: 90%; }
+  }
+  .proof-dart__quote {
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--color-ink);
+    margin-bottom: 0.5rem;
+  }
+  .proof-dart__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .proof-dart__name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-mute);
+  }
+  .proof-dart__cta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-blue);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .proof-dart__cta:hover { text-decoration: underline; }
+
+  /* ── Mobile sticky CTA bar ── */
+  .mobile-cta-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-ink);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 45;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 -4px 20px rgba(10, 14, 26, 0.3);
+  }
+  .mobile-cta-bar.is-visible { transform: translateY(0); }
+  @media (min-width: 980px) { .mobile-cta-bar { display: none !important; } }
+  .mobile-cta-bar__btn { flex: 1; text-align: center; font-size: 14px !important; padding: 0.6rem 1rem !important; }
+  .mobile-cta-bar__phone {
+    color: var(--color-paper);
+    text-decoration: none;
+    font-size: 12px;
+    opacity: 0.7;
+    white-space: nowrap;
+  }
+  .mobile-cta-bar__close {
+    color: var(--color-paper);
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+    padding: 4px;
+  }
+
+  /* ── Hero gradient wash ── */
+  .hero-wash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, var(--color-blue-tint) 0%, transparent 100%);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Stepper dark overrides ── */
+  .stepper-dark .stepper__tab {
+    background: rgba(250, 250, 247, 0.08);
+    border-color: rgba(250, 250, 247, 0.12);
+    color: var(--color-paper);
+  }
+  .stepper-dark .stepper__tab.is-active {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    border-color: var(--color-paper);
+  }
+  .stepper-dark .stepper__tab:not(.is-active):hover {
+    border-color: rgba(250, 250, 247, 0.3);
+  }
+  .stepper-dark .stepper-progress { background: rgba(250, 250, 247, 0.15); }
+  .stepper-dark .stepper__review { background: rgba(250, 250, 247, 0.06); border-color: rgba(250, 250, 247, 0.1); }
+  .stepper-dark .stepper__review p { color: var(--color-paper); }
+  .stepper-dark .stepper__review .text-\[13px\] { color: rgba(250, 250, 247, 0.5); }
+
+  /* ── Blue-wash stat band overrides ── */
+  .stat-band-blue .stat-band__num { color: var(--color-ink); }
+  .stat-band-blue .stat-band__label { color: var(--color-mute); opacity: 1; }
+
+  /* ── Summit glow ── */
+  .summit-glow {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .summit-glow__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+  .summit-glow__blob--blue {
+    width: 200px;
+    height: 200px;
+    background: var(--color-blue);
+    opacity: 0.2;
+    bottom: -40px;
+    right: 10%;
+  }
+  .summit-glow__blob--rust {
+    width: 160px;
+    height: 160px;
+    background: var(--color-rust);
+    opacity: 0.15;
+    top: -20px;
+    left: 15%;
+  }
 </style>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -1086,6 +1391,84 @@ const reviews = [
   if (track && !prefersReduced) {
     var clone = track.innerHTML;
     track.innerHTML += clone;
+  }
+
+  /* ── The Climb ── */
+  var climbNode = document.getElementById('climb-node');
+  var climbFill = document.getElementById('climb-fill');
+  var climbTicks = document.querySelectorAll('.climb__tick');
+  var climbSections = document.querySelectorAll('[data-climb-section]');
+  var climbTicking = false;
+
+  function updateClimb() {
+    var scrollH = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = scrollH > 0 ? (window.scrollY / scrollH) : 0;
+    var viewH = window.innerHeight;
+
+    if (climbNode) {
+      climbNode.style.transform = 'translateY(' + (progress * viewH * 0.85 + viewH * 0.05) + 'px)';
+    }
+    if (climbFill) {
+      climbFill.style.height = (progress * 100) + '%';
+    }
+
+    // Update ticks
+    climbTicks.forEach(function(tick) {
+      var tickPos = parseFloat(tick.dataset.pos || 0);
+      tick.classList.toggle('is-passed', progress >= tickPos);
+    });
+
+    climbTicking = false;
+  }
+
+  if (climbNode) {
+    // Calculate tick positions from sections
+    function calcTicks() {
+      var scrollH = document.documentElement.scrollHeight - window.innerHeight;
+      climbSections.forEach(function(sec, i) {
+        var rect = sec.getBoundingClientRect();
+        var pos = (rect.top + window.scrollY) / (scrollH || 1);
+        if (climbTicks[i]) {
+          climbTicks[i].dataset.pos = pos;
+          climbTicks[i].style.top = (pos * 100) + '%';
+        }
+      });
+    }
+    calcTicks();
+    window.addEventListener('resize', calcTicks);
+
+    window.addEventListener('scroll', function() {
+      if (!climbTicking) {
+        requestAnimationFrame(updateClimb);
+        climbTicking = true;
+      }
+    }, { passive: true });
+    updateClimb();
+  }
+
+  /* ── Mobile sticky CTA bar ── */
+  var mobileBar = document.getElementById('mobile-cta-bar');
+  var mobileClose = document.getElementById('mobile-cta-close');
+  var mobileDismissed = false;
+
+  if (mobileBar) {
+    window.addEventListener('scroll', function() {
+      if (mobileDismissed) return;
+      var scrollH = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = scrollH > 0 ? (window.scrollY / scrollH) : 0;
+      if (progress > 0.6) {
+        mobileBar.classList.add('is-visible');
+        mobileBar.setAttribute('aria-hidden', 'false');
+      }
+    }, { passive: true });
+
+    if (mobileClose) {
+      mobileClose.addEventListener('click', function() {
+        mobileDismissed = true;
+        mobileBar.classList.remove('is-visible');
+        mobileBar.setAttribute('aria-hidden', 'true');
+      });
+    }
   }
 })();
 </script>
