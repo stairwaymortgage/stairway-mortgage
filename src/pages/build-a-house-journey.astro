@@ -1,16 +1,1015 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+/* ── Data ─────────────────────────────────────────────────── */
+const trustNumbers = [
+  { value: 5.0,   suffix: '★',  label: 'Client rating' },
+  { value: 624,   suffix: '',   label: 'Verified reviews' },
+  { value: 300,   suffix: '+',  label: 'Lender network' },
+  { value: 48,    suffix: '',   label: 'States (NEXA)' },
+  { value: 19,    suffix: '',   label: 'Days — fastest close' },
+];
+
+const phases = [
+  { id: 'land',       num: '01', title: 'Land & permits',       desc: 'Secure your lot, pull permits, and finalize site plans. Your construction loan funds this first draw.' },
+  { id: 'foundation', num: '02', title: 'Foundation',            desc: 'Excavation, footings, and slab or basement pour. The lender inspects before releasing the next draw.' },
+  { id: 'framing',    num: '03', title: 'Framing & systems',     desc: 'Walls go up, roof goes on, then plumbing, electrical, and HVAC rough-in. Largest draw of the build.' },
+  { id: 'finishes',   num: '04', title: 'Finishes',              desc: 'Drywall, flooring, cabinets, fixtures, paint. Your home starts looking like a home.' },
+  { id: 'movein',     num: '05', title: 'Move in',               desc: 'Final inspection, certificate of occupancy, and your construction loan converts to a permanent mortgage. One close — done.' },
+];
+
+const budgetItems = [
+  { icon: '🏗️', label: 'Land acquisition' },
+  { icon: '📋', label: 'Permits & fees' },
+  { icon: '📐', label: 'Architecture & design' },
+  { icon: '🌳', label: 'Landscaping' },
+  { icon: '🏠', label: 'Appliances' },
+  { icon: '🛣️', label: 'Driveways & utilities' },
+];
+
+const programs = [
+  { title: 'FHA Construction',              desc: 'Low down payment, flexible credit requirements.' },
+  { title: 'VA Construction',               desc: 'Zero down for eligible veterans and active duty.' },
+  { title: 'Conventional Construction',      desc: 'Standard rates, broad builder eligibility.' },
+  { title: 'Jumbo Construction',             desc: 'High-value custom builds beyond conforming limits.' },
+  { title: 'Flexible Income Construction',   desc: 'Bank statements or asset-based qualification.' },
+];
+
+const mistakes = [
+  { front: 'Choosing a builder before financing',  back: 'Pre-approval sets your real budget first' },
+  { front: 'Not locking the rate early enough',     back: 'We lock before ground breaks' },
+  { front: 'Underestimating the timeline',          back: 'We build in buffer for weather and permits' },
+  { front: 'Skipping the draw schedule review',     back: 'We walk you through every disbursement' },
+  { front: 'Two separate closings',                 back: 'Our one-close loan saves thousands' },
+];
+
+const reviews = [
+  { text: "Run, don't walk to work with Jim. He helped us get financing when it seemed impossible — a home purchase 2000 miles away, an extremely competitive market, and being self-employed. He went above and beyond so financing wasn't a barrier to our dream house.", name: 'David Livermore', title: 'Founder, Cultural Intelligence Center', loc: 'California', source: 'Facebook', tag: 'Complex financing' },
+  { text: "These guys are amazing! Jim's team took a chance on me although my situation was almost hopeless. They secured a loan for me (nobody else would do it) and they closed in less than 30 days!", name: 'Andreea Grigorie', title: 'Complex financing', loc: 'Illinois', source: 'Facebook', tag: 'Complex financing' },
+  { text: "We had a difficult jumbo loan scenario that most mortgage lenders were unable to close. Not only did Jim Blackburn's mortgage team close our refinance, but now we are able to pursue the purchase of our dream home in the Florida Keys.", name: 'Chad Brocato', title: 'Jumbo/Complex', loc: 'Florida', source: 'Google', tag: 'Complex financing' },
+];
 ---
-<Layout title="Build a Home — Stairway Mortgage" description="Construction-to-permanent financing. One close, one team, one plan.">
-  <section class="section">
-    <div class="container-page text-center max-w-2xl mx-auto">
-      <span class="eyebrow eyebrow-blue mb-5">How We Serve</span>
-      <h1 class="display-lg mt-5 mb-6">Build a Home</h1>
-      <p class="lede mb-10">This page is being built. Talk to Jim to get started today.</p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
-        <a href="/contact-us/" class="btn btn-ghost">Talk to Jim</a>
+
+<Layout title="Build a Home — Stairway Mortgage" description="Construction-to-permanent financing. One close, one loan, one team. 300+ lenders competing for your build.">
+
+  <!-- ═══════════════════════════════════════════════════════
+       1. HERO
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section relative overflow-hidden hero-wash" data-climb-section>
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">How We Serve · Build a Home</span>
+
+        <h1 class="display-xl mt-6 mb-8">
+          Building isn't just a loan. It's a <em class="italic text-[var(--color-blue)]">timeline</em>.
+        </h1>
+
+        <div class="flex flex-wrap gap-3 justify-center mb-12">
+          <a href="/same-day-approval/" class="btn btn-primary btn-arrow text-base px-6 py-3.5">See My Options</a>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
+        </div>
+      </div>
+
+      <!-- Trust ribbon with count-up -->
+      <div class="trust-ribbon reveal" style="transition-delay:200ms;">
+        {trustNumbers.map((t) => (
+          <div class="trust-ribbon__item">
+            <span class="trust-ribbon__num font-display" data-countup={t.value} data-suffix={t.suffix}>0{t.suffix}</span>
+            <span class="trust-ribbon__label">{t.label}</span>
+          </div>
+        ))}
+        <div class="trust-ribbon__nmls">
+          <span class="mono">NMLS #1072866</span>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       2. SIGNATURE TOOL — Construction Timeline (DARK)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section section-dark" data-climb-section>
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-rust mb-5 text-[var(--color-paper)]">Construction timeline</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">One close. One loan. <em class="italic font-light">One team.</em></h2>
+      </div>
+
+      <!-- Timeline stepper -->
+      <div class="timeline-stepper reveal" style="transition-delay:100ms;" id="timeline-stepper">
+        <div class="timeline-line" aria-hidden="true">
+          <div class="timeline-line__fill" id="timeline-fill" style="width:0%"></div>
+        </div>
+        <div class="timeline-nodes">
+          {phases.map((p, i) => (
+            <button
+              class={`timeline-node ${i === 0 ? 'is-active' : ''}`}
+              data-phase={i}
+              aria-pressed={i === 0 ? 'true' : 'false'}
+              aria-label={`Phase ${p.num}: ${p.title}`}
+            >
+              <span class="timeline-node__dot">{p.num}</span>
+              <span class="timeline-node__label">{p.title}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Phase descriptions — phase 1 visible by default (no JS needed) -->
+      <div class="timeline-panels reveal" style="transition-delay:200ms;" id="timeline-panels">
+        {phases.map((p, i) => (
+          <div
+            class={`timeline-panel ${i === 0 ? 'is-active' : ''}`}
+            id={`panel-${p.id}`}
+            data-panel={i}
+            style={i === 0 ? '' : 'display:none;'}
+          >
+            <span class="timeline-panel__num mono">{p.num}</span>
+            <h3 class="font-display text-xl text-[var(--color-paper)] mb-2">{p.title}</h3>
+            <p class="text-[rgba(250,250,247,0.65)] text-[15px] leading-relaxed max-w-lg mx-auto">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- One loan vs. two comparison -->
+      <div class="compare-grid reveal" style="transition-delay:300ms;">
+        <div class="compare-col compare-col--good">
+          <h4 class="font-display text-lg text-[var(--color-paper)] mb-4">One-close loan</h4>
+          <ul class="compare-list">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg> 1 closing</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg> 1 set of fees</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg> Rate locked from day one</li>
+          </ul>
+        </div>
+        <div class="compare-col compare-col--bad">
+          <h4 class="font-display text-lg text-[rgba(250,250,247,0.5)] mb-4">Two-close loan</h4>
+          <ul class="compare-list compare-list--muted">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-rust)" aria-hidden="true"><path d="M4.5 3.1L3.1 4.5 6.6 8l-3.5 3.5 1.4 1.4L8 9.4l3.5 3.5 1.4-1.4L9.4 8l3.5-3.5-1.4-1.4L8 6.6z"/></svg> 2 closings</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-rust)" aria-hidden="true"><path d="M4.5 3.1L3.1 4.5 6.6 8l-3.5 3.5 1.4 1.4L8 9.4l3.5 3.5 1.4-1.4L9.4 8l3.5-3.5-1.4-1.4L8 6.6z"/></svg> 2x the fees</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-rust)" aria-hidden="true"><path d="M4.5 3.1L3.1 4.5 6.6 8l-3.5 3.5 1.4 1.4L8 9.4l3.5 3.5 1.4-1.4L9.4 8l3.5-3.5-1.4-1.4L8 6.6z"/></svg> Rate risk at conversion</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       3. THREE QUESTIONS (paper bg)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section-tight bg-[var(--color-paper)]" data-climb-section>
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">Three questions builders ask</span>
+        <h2 class="display-lg mt-5">Before you break ground — <em class="italic font-light">know this</em>.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-px bg-[var(--color-bone)] rounded-2xl overflow-hidden border border-[var(--color-bone)]">
+
+        <!-- Q1: One loan or two? -->
+        <div class="bg-[var(--color-paper)] p-8 lg:p-10 reveal">
+          <span class="eyebrow mb-6">Question 01</span>
+          <h3 class="display-sm mt-4 mb-6">One loan or two?</h3>
+          <div class="oneloan-viz" aria-label="One-close saves money and complexity">
+            <div class="oneloan-viz__row">
+              <div class="oneloan-viz__bar oneloan-viz__bar--one" style="width:50%">
+                <span class="oneloan-viz__label">1 close</span>
+              </div>
+              <span class="oneloan-viz__val font-display text-[var(--color-green)]">Save $5K+</span>
+            </div>
+            <div class="oneloan-viz__row">
+              <div class="oneloan-viz__bar oneloan-viz__bar--two" style="width:100%">
+                <span class="oneloan-viz__label">2 closes</span>
+              </div>
+              <span class="oneloan-viz__val font-display">2x fees</span>
+            </div>
+          </div>
+          <p class="text-[13px] text-[var(--color-mute)] mt-4">One-close means one set of fees and no rate risk at conversion.</p>
+        </div>
+
+        <!-- Q2: What can I build into the budget? -->
+        <div class="bg-[var(--color-paper)] p-8 lg:p-10 reveal" style="transition-delay:80ms;">
+          <span class="eyebrow mb-6">Question 02</span>
+          <h3 class="display-sm mt-4 mb-6">What can I build into the budget?</h3>
+          <div class="budget-list" aria-label="Items that can be included in your construction loan">
+            {budgetItems.map((item) => (
+              <div class="budget-list__item">
+                <span class="budget-list__icon" aria-hidden="true">{item.icon}</span>
+                <span class="budget-list__text">{item.label}</span>
+              </div>
+            ))}
+          </div>
+          <p class="text-[13px] text-[var(--color-mute)] mt-4">Most of these can be rolled into a single construction loan.</p>
+        </div>
+
+        <!-- Q3: Already have a lot? -->
+        <div class="bg-[var(--color-paper)] p-8 lg:p-10 reveal" style="transition-delay:160ms;">
+          <span class="eyebrow mb-6">Question 03</span>
+          <h3 class="display-sm mt-4 mb-6">Already have a lot?</h3>
+          <div class="lot-viz" aria-label="Owning a lot simplifies the process">
+            <div class="lot-viz__path lot-viz__path--yes">
+              <span class="lot-viz__badge lot-viz__badge--green">Yes</span>
+              <span class="lot-viz__text">Skip land acquisition — simpler, faster close.</span>
+            </div>
+            <div class="lot-viz__path lot-viz__path--no">
+              <span class="lot-viz__badge lot-viz__badge--neutral">No</span>
+              <span class="lot-viz__text">We finance the lot purchase too — all in one loan.</span>
+            </div>
+          </div>
+          <p class="text-[13px] text-[var(--color-mute)] mt-4">Either way, we handle it in a single construction-to-permanent loan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       4. PROGRAMS (paper-tint bg)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section bg-[var(--color-paper-tint)]" data-climb-section>
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">Programs</span>
+        <h2 class="display-lg mt-5">Construction loans built for <em class="italic font-light">how you qualify</em>.</h2>
+      </div>
+
+      <div class="program-grid reveal" style="transition-delay:100ms;">
+        {programs.map((p, i) => (
+          <div class="program-card" style={`transition-delay:${i * 60}ms;`}>
+            <h3 class="font-display text-lg mb-1">{p.title}</h3>
+            <p class="text-[13px] text-[var(--color-mute)] leading-relaxed">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       5. STATS BAND (blue-wash)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section-tight bg-gradient-to-b from-[var(--color-blue-tint)] to-[var(--color-paper)] stat-band-blue" data-climb-section>
+    <div class="container-page">
+      <div class="stat-band reveal">
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="500" data-suffix="M+" data-prefix="$">$0</span>
+          <span class="stat-band__label">Loans closed</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="19" data-suffix=" days">0</span>
+          <span class="stat-band__label">Fastest close</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="300" data-suffix="+">0</span>
+          <span class="stat-band__label">Lenders</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="48">0</span>
+          <span class="stat-band__label">States (NEXA)</span>
+        </div>
+        <div class="stat-band__item">
+          <span class="stat-band__num font-display" data-countup="5.0" data-suffix="★" data-decimals="1">0</span>
+          <span class="stat-band__label">624 reviews</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       6. MISTAKES — Flip Cards (paper-tint bg)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section bg-[var(--color-paper-tint)]" data-climb-section>
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow mb-5">Learn from others</span>
+        <h2 class="display-lg mt-5">Five mistakes builders make.</h2>
+      </div>
+
+      <div class="flip-grid">
+        {mistakes.map((m, i) => (
+          <div class="flip-card reveal" style={`transition-delay:${i * 80}ms;`} tabindex="0"
+               role="button" aria-label={`Mistake: ${m.front}. Prevention: ${m.back}`}>
+            <div class="flip-card__inner">
+              <div class="flip-card__front">
+                <span class="flip-card__num mono">0{i + 1}</span>
+                <p class="font-display text-lg leading-snug">{m.front}</p>
+              </div>
+              <div class="flip-card__back">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M6.5 12L2 7.5l1.4-1.4L6.5 9.2l6.1-6.1L14 4.5z"/></svg>
+                <p class="font-display text-lg leading-snug">{m.back}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       7. REVIEWS (DARK)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section-dark section" data-climb-section>
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="eyebrow mb-5">The receipts</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">Complex builds. <em class="italic font-light">Real closings.</em></h2>
+      </div>
+
+      <div class="reviews-scroll no-scrollbar" id="reviews-scroll">
+        <div class="reviews-track" id="reviews-track">
+          {reviews.map((r) => (
+            <figure class="review-card">
+              <div class="review-card__avatar" aria-hidden="true">
+                <span class="review-card__initials">{r.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
+              <span class="review-card__tag mono">{r.tag}</span>
+              <blockquote class="review-card__text font-display">{r.text}</blockquote>
+              <figcaption class="review-card__meta">
+                <strong>{r.name}</strong>
+                <span>{r.loc}</span>
+                <span class="review-card__source mono">{r.source}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       8. SUMMIT CTA (DARK + glow)
+       ═══════════════════════════════════════════════════════ -->
+  <section class="section section-dark" data-climb-section>
+    <div class="container-page">
+      <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
+        <div class="summit-glow" aria-hidden="true">
+          <div class="summit-glow__blob summit-glow__blob--blue"></div>
+          <div class="summit-glow__blob summit-glow__blob--rust"></div>
+        </div>
+        <div class="relative reveal">
+          <h2 class="display-lg text-[var(--color-paper)] mb-4">
+            Your blueprint deserves the right <em class="italic font-light text-[var(--color-blue-tint)]">financing</em>.
+          </h2>
+          <div class="flex flex-wrap gap-3 justify-center mt-8">
+            <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Talk to Our Team</a>
+            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call now · (954) 993-1625</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
+
+<!-- Mobile sticky bottom CTA -->
+<div class="mobile-cta-bar" id="mobile-cta-bar" aria-hidden="true">
+  <a href="/contact-us/" class="mobile-cta-bar__btn btn btn-blue">Talk to Our Team</a>
+  <a href="tel:+19549931625" class="mobile-cta-bar__phone mono">(954) 993-1625</a>
+  <button class="mobile-cta-bar__close" id="mobile-cta-close" aria-label="Dismiss">&times;</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE-SCOPED STYLES
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+  /* ── Hero gradient wash ── */
+  .hero-wash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, var(--color-blue-tint) 0%, transparent 100%);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Trust ribbon ── */
+  .trust-ribbon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--color-paper-tint);
+    border: 1px solid var(--color-bone);
+    border-radius: 16px;
+    position: relative;
+  }
+  .trust-ribbon__item { text-align: center; }
+  .trust-ribbon__num {
+    display: block;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+  .trust-ribbon__label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-mute);
+    margin-top: 0.3rem;
+  }
+  .trust-ribbon__nmls {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--color-mute);
+    white-space: nowrap;
+  }
+
+  /* ── Timeline stepper ── */
+  .timeline-stepper {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    padding: 0 1rem;
+  }
+  .timeline-line {
+    position: absolute;
+    top: 18px;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: rgba(250, 250, 247, 0.12);
+    border-radius: 2px;
+    z-index: 0;
+  }
+  .timeline-line__fill {
+    height: 100%;
+    background: var(--color-blue);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .timeline-nodes {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+  .timeline-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: rgba(250, 250, 247, 0.4);
+    transition: color 0.3s;
+  }
+  .timeline-node:hover { color: rgba(250, 250, 247, 0.8); }
+  .timeline-node.is-active { color: var(--color-paper); }
+  .timeline-node__dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid rgba(250, 250, 247, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--color-ink);
+    transition: all 0.3s;
+  }
+  .timeline-node.is-active .timeline-node__dot {
+    border-color: var(--color-blue);
+    background: var(--color-blue);
+    color: var(--color-paper);
+  }
+  .timeline-node__label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    max-width: 90px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  @media (max-width: 600px) {
+    .timeline-node__label { font-size: 9px; max-width: 60px; }
+    .timeline-node__dot { width: 30px; height: 30px; font-size: 10px; }
+  }
+
+  /* ── Timeline panels ── */
+  .timeline-panels {
+    text-align: center;
+    min-height: 100px;
+    margin-bottom: 3rem;
+  }
+  .timeline-panel {
+    padding: 1.5rem;
+  }
+  .timeline-panel__num {
+    display: block;
+    font-size: 11px;
+    color: var(--color-blue);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── One vs Two comparison ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  @media (max-width: 480px) {
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+  .compare-col {
+    padding: 1.5rem;
+    border-radius: 14px;
+    border: 1px solid rgba(250, 250, 247, 0.1);
+  }
+  .compare-col--good {
+    background: rgba(250, 250, 247, 0.06);
+    border-color: var(--color-blue);
+  }
+  .compare-col--bad {
+    background: rgba(250, 250, 247, 0.02);
+  }
+  .compare-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .compare-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    color: var(--color-paper);
+  }
+  .compare-list--muted li {
+    color: rgba(250, 250, 247, 0.45);
+  }
+
+  /* ── Q1: One-loan viz ── */
+  .oneloan-viz {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .oneloan-viz__row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .oneloan-viz__bar {
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+  }
+  .oneloan-viz__bar--one { background: var(--color-green); }
+  .oneloan-viz__bar--two { background: var(--color-bone); }
+  .oneloan-viz__label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .oneloan-viz__bar--one .oneloan-viz__label { color: var(--color-paper); }
+  .oneloan-viz__val { font-size: 14px; white-space: nowrap; }
+
+  /* ── Q2: Budget list ── */
+  .budget-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .budget-list__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 13px;
+    color: var(--color-ink);
+    padding: 0.35rem 0.5rem;
+    background: var(--color-paper-tint);
+    border-radius: 6px;
+  }
+  .budget-list__icon { font-size: 16px; flex-shrink: 0; }
+
+  /* ── Q3: Lot-owned viz ── */
+  .lot-viz {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .lot-viz__path {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    background: var(--color-paper-tint);
+  }
+  .lot-viz__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 24px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .lot-viz__badge--green {
+    background: var(--color-green);
+    color: var(--color-paper);
+  }
+  .lot-viz__badge--neutral {
+    background: var(--color-bone);
+    color: var(--color-ink);
+  }
+  .lot-viz__text { font-size: 13px; color: var(--color-ink); line-height: 1.3; }
+
+  /* ── Program cards ── */
+  .program-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .program-card {
+    padding: 1.5rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-bone);
+    border-radius: 14px;
+    transition: border-color 0.2s;
+  }
+  .program-card:hover { border-color: var(--color-blue); }
+
+  /* ── Stat band ── */
+  .stat-band {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .stat-band__item { text-align: center; flex: 1; min-width: 120px; }
+  .stat-band__num {
+    display: block;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--color-paper);
+  }
+  .stat-band__label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    margin-top: 0.4rem;
+  }
+  .stat-band-blue .stat-band__num { color: var(--color-ink); }
+  .stat-band-blue .stat-band__label { color: var(--color-mute); opacity: 1; }
+
+  /* ── Flip cards ── */
+  .flip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .flip-card {
+    perspective: 600px;
+    cursor: pointer;
+    height: 180px;
+  }
+  .flip-card__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card__inner,
+  .flip-card:focus .flip-card__inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card__front,
+  .flip-card__back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border: 1px solid var(--color-bone);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .flip-card__front { background: var(--color-paper); }
+  .flip-card__back {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    transform: rotateY(180deg);
+    gap: 0.5rem;
+    align-items: center;
+    text-align: center;
+  }
+  .flip-card__num {
+    font-size: 11px;
+    color: var(--color-rust);
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── Reviews carousel ── */
+  .reviews-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+  }
+  .reviews-track {
+    display: flex;
+    gap: 1.25rem;
+    animation: scroll-reviews 40s linear infinite;
+    width: max-content;
+  }
+  @keyframes scroll-reviews {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .reviews-track:hover { animation-play-state: paused; }
+  .review-card {
+    flex-shrink: 0;
+    width: 380px;
+    border: 1px solid rgba(250, 250, 247, 0.15);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .review-card__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-blue-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .review-card__initials {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-paper);
+  }
+  .review-card__tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-blue);
+    padding: 2px 8px;
+    background: rgba(24, 69, 214, 0.12);
+    border-radius: 4px;
+    align-self: flex-start;
+  }
+  .review-card__text {
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--color-paper);
+    font-weight: 400;
+    flex: 1;
+  }
+  .review-card__meta {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(250, 250, 247, 0.6);
+  }
+  .review-card__meta strong { color: var(--color-paper); font-weight: 500; }
+  .review-card__source {
+    margin-left: auto;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+  }
+
+  /* ── Summit glow ── */
+  .summit-glow {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .summit-glow__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+  .summit-glow__blob--blue {
+    width: 200px;
+    height: 200px;
+    background: var(--color-blue);
+    opacity: 0.2;
+    bottom: -40px;
+    right: 10%;
+  }
+  .summit-glow__blob--rust {
+    width: 160px;
+    height: 160px;
+    background: var(--color-rust);
+    opacity: 0.15;
+    top: -20px;
+    left: 15%;
+  }
+
+  /* ── Mobile sticky CTA bar ── */
+  .mobile-cta-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-ink);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 45;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 -4px 20px rgba(10, 14, 26, 0.3);
+  }
+  .mobile-cta-bar.is-visible { transform: translateY(0); }
+  @media (min-width: 980px) { .mobile-cta-bar { display: none !important; } }
+  .mobile-cta-bar__btn { flex: 1; text-align: center; font-size: 14px !important; padding: 0.6rem 1rem !important; }
+  .mobile-cta-bar__phone {
+    color: var(--color-paper);
+    text-decoration: none;
+    font-size: 12px;
+    opacity: 0.7;
+    white-space: nowrap;
+  }
+  .mobile-cta-bar__close {
+    color: var(--color-paper);
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+    padding: 4px;
+  }
+
+  /* ── Mobile headline weight fix ── */
+  @media (max-width: 640px) {
+    .display-xl, .display-lg, .display-md {
+      font-weight: 500;
+      font-variation-settings: "opsz" 48;
+    }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .reviews-track { animation: none; }
+    .flip-card__inner { transition: none; }
+    .timeline-line__fill { transition: none; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE SCRIPT — timeline, reviews, count-up, mobile CTA
+     ═══════════════════════════════════════════════════════════ -->
+<script is:inline>
+(function() {
+  'use strict';
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Count-up on scroll ── */
+  function countUp(el) {
+    var target = parseFloat(el.dataset.countup);
+    var suffix = el.dataset.suffix || '';
+    var prefix = el.dataset.prefix || '';
+    var decimals = parseInt(el.dataset.decimals) || 0;
+    var duration = 1200;
+    var start = performance.now();
+
+    function tick(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      var current = ease * target;
+      el.textContent = prefix + (decimals ? current.toFixed(decimals) : Math.round(current)) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    if (prefersReduced) {
+      el.textContent = prefix + (decimals ? target.toFixed(decimals) : target) + suffix;
+    } else {
+      requestAnimationFrame(tick);
+    }
+  }
+
+  /* ── Scroll observer for reveals + count-ups ── */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+        e.target.querySelectorAll('[data-countup]').forEach(countUp);
+        if (e.target.dataset && e.target.dataset.countup) countUp(e.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .trust-ribbon, .stat-band').forEach(function(el) {
+      io.observe(el);
+    });
+  }
+
+  /* ── Timeline click handler ── */
+  var stepper = document.getElementById('timeline-stepper');
+  var panels = document.getElementById('timeline-panels');
+  var fill = document.getElementById('timeline-fill');
+
+  if (stepper && panels) {
+    var nodes = stepper.querySelectorAll('.timeline-node');
+    var allPanels = panels.querySelectorAll('.timeline-panel');
+    var totalNodes = nodes.length;
+
+    nodes.forEach(function(node) {
+      node.addEventListener('click', function() {
+        var idx = parseInt(node.dataset.phase);
+
+        // Update nodes
+        nodes.forEach(function(n, i) {
+          if (i <= idx) {
+            n.classList.add('is-active');
+          } else {
+            n.classList.remove('is-active');
+          }
+          n.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+        });
+
+        // Update panels
+        allPanels.forEach(function(p, i) {
+          if (i === idx) {
+            p.style.display = '';
+            p.classList.add('is-active');
+          } else {
+            p.style.display = 'none';
+            p.classList.remove('is-active');
+          }
+        });
+
+        // Update fill line
+        if (fill) {
+          var pct = totalNodes > 1 ? (idx / (totalNodes - 1)) * 100 : 0;
+          fill.style.width = pct + '%';
+        }
+      });
+    });
+  }
+
+  /* ── Reviews: duplicate track for infinite scroll ── */
+  var track = document.getElementById('reviews-track');
+  if (track && !prefersReduced) {
+    var clone = track.innerHTML;
+    track.innerHTML += clone;
+  }
+
+  /* ── Mobile sticky CTA bar ── */
+  var mobileBar = document.getElementById('mobile-cta-bar');
+  var mobileClose = document.getElementById('mobile-cta-close');
+  var mobileDismissed = false;
+
+  if (mobileBar) {
+    window.addEventListener('scroll', function() {
+      if (mobileDismissed) return;
+      var scrollH = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = scrollH > 0 ? (window.scrollY / scrollH) : 0;
+      if (progress > 0.6) {
+        mobileBar.classList.add('is-visible');
+        mobileBar.setAttribute('aria-hidden', 'false');
+      }
+    }, { passive: true });
+
+    if (mobileClose) {
+      mobileClose.addEventListener('click', function() {
+        mobileDismissed = true;
+        mobileBar.classList.remove('is-visible');
+        mobileBar.setAttribute('aria-hidden', 'true');
+      });
+    }
+  }
+})();
+</script>
