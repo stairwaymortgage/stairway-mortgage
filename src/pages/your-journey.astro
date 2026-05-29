@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const stages = [
+  { num: '01', title: 'Smart Steward',       desc: 'Building credit and financial foundation.', color: '#7B61FF', href: '/smart-stewards-journey/' },
+  { num: '02', title: 'First-Time Buyer',    desc: 'Buying your first home with confidence.',   color: '#1845D6', href: '/first-time-buyers-journey/' },
+  { num: '03', title: 'Homeowner',           desc: 'Leveraging equity, renovating, growing.',   color: '#2E9E2E', href: '/homeowners-journey/' },
+  { num: '04', title: 'Senior 55+',          desc: 'Retirement income and downsizing options.', color: '#D4A547', href: '/senior-homeowners-55-journey/' },
+  { num: '05', title: 'First-Time Investor', desc: 'Your first rental property, demystified.',  color: '#0EA5A4', href: '/first-time-investors-journey/' },
+  { num: '06', title: 'Active Investor',     desc: 'Scaling your portfolio with leverage.',     color: '#8B2C2C', href: '/active-investors-journey/' },
+  { num: '07', title: 'Passive Investor',    desc: 'Real estate income without the hassle.',    color: '#64748B', href: '/passive-investors-journey/' },
+  { num: '08', title: 'Legacy Angel',        desc: 'Turning wealth into lasting impact.',       color: '#4F46E5', href: '/legacy-angels-journey/' },
+];
+
+const reviews = [
+  { text: "Most lenders do not take the time to sit down and chat over the phone for hours like Jim does. After I applied for pre-qualification, he called and walked me through the entire process. As a first-time buyer, you get confidence knowing your lender is always accessible.", name: 'Abhii Sundaram', title: 'Senior Software Engineer', loc: 'California', source: 'Google' },
+  { text: "I have now completed five mortgages with Jim. He and his team are true professionals that you can count on.", name: 'Gary Koval', title: 'Regional Manager, Hyundai', loc: 'Colorado', source: 'Google' },
+  { text: "This is the second loan I am doing with Jim and once again he and his team have exceeded my expectations. This time it was a multi-family unit.", name: 'Syed Saqib', title: 'Chief Investment Officer', loc: 'Illinois', source: 'Zillow' },
+  { text: "We were blessed to buy a wonderful home because Jim and his team made it happen — in record timing!", name: 'Peter & Maria Brin', loc: 'New Jersey', source: 'Google' },
+];
+---
+<Layout title="The 8-Step Journey — Stairway Mortgage" description="From first credit card to lasting legacy. Find your stage on the Stairway Journey and see exactly what's possible.">
+
+  <!-- HERO -->
+  <section class="section relative overflow-hidden journey-hero-wash">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">The Stairway Journey</span>
+        <h1 class="display-xl mt-6 mb-6">
+          Wherever you are on the climb, there's a <em class="italic text-[var(--color-blue)]">next step</em>.
+        </h1>
+        <p class="lede max-w-xl mx-auto mb-10">Eight stages. One path. From building credit at 18 to building legacy at 80 — find yours.</p>
+        <div class="flex flex-wrap gap-3 justify-center mb-8">
+          <a href="/same-day-approval/" class="btn btn-primary btn-arrow text-base px-6 py-3.5">See My Options</a>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE 8 STAGES -->
+  <section class="section bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="eyebrow eyebrow-rust mb-5">Find your stage</span>
+        <h2 class="display-lg mt-5">Eight chapters of a <em class="italic font-light">real estate life</em>.</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+        {stages.map((s, i) => (
+          <a href={s.href} class="journey-card card group reveal" style={`transition-delay:${i * 60}ms; --stage-color:${s.color};`}>
+            <div class="flex items-start justify-between mb-6">
+              <span class="card-step-num mono">{s.num}</span>
+              <span class="w-7 h-7 rounded-full inline-flex items-center justify-center text-[var(--color-mute)] group-hover:text-[var(--color-paper)] transition-colors" style={`background:${s.color}20;`}>
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.4"/></svg>
+              </span>
+            </div>
+            <h3 class="font-display text-xl font-medium leading-tight mb-2">{s.title}</h3>
+            <p class="text-[14px] text-[var(--color-mute)] leading-relaxed">{s.desc}</p>
+            <div class="mt-4 pt-3 border-t border-[var(--color-bone)]">
+              <span class="text-[12px] font-medium" style={`color:${s.color};`}>Explore this stage →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- THE CLIMB VISUAL -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow mb-5 text-[var(--color-paper)]">The climb</span>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)] mb-8">Every step builds on the last.</h2>
+      </div>
+      <div class="stairway-visual reveal" style="transition-delay:150ms;">
+        {stages.map((s, i) => (
+          <div class="stairway-bar" style={`height:${30 + i * 22}px; background:${s.color};`}>
+            <span class="stairway-bar__label">{s.num}</span>
+          </div>
+        ))}
+      </div>
+      <p class="text-center mt-8 font-display text-2xl italic font-light text-[rgba(250,250,247,0.5)] reveal" style="transition-delay:300ms;">
+        Leverage wisely. Grow wealthy.
+      </p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="eyebrow mb-5">From every stage</span>
+        <h2 class="display-lg mt-5">Real clients. <em class="italic font-light">Every chapter.</em></h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {reviews.map((r, i) => (
+          <figure class="card reveal" style={`transition-delay:${i * 80}ms;`}>
+            <blockquote class="font-display text-lg leading-snug mb-4">{r.text}</blockquote>
+            <figcaption class="flex items-center justify-between text-[13px] text-[var(--color-mute)]">
+              <strong class="text-[var(--color-ink)]">{r.name}</strong>
+              <span class="mono text-[11px]">{r.source}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMIT -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
+        <div class="summit-glow" aria-hidden="true"><div class="summit-glow__blob summit-glow__blob--blue"></div><div class="summit-glow__blob summit-glow__blob--rust"></div></div>
+        <div class="relative reveal">
+          <h2 class="display-lg text-[var(--color-paper)] mb-4">Find your stage. <em class="italic font-light text-[var(--color-blue-tint)]">Start climbing.</em></h2>
+          <div class="flex flex-wrap gap-3 justify-center mt-8">
+            <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">See My Options</a>
+            <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call (954) 993-1625</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .journey-hero-wash{position:relative;}.journey-hero-wash::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}
+  .journey-card{text-decoration:none;display:flex;flex-direction:column;}
+  .journey-card:hover{border-color:var(--stage-color,var(--color-ink));}
+  .stairway-visual{display:flex;align-items:flex-end;justify-content:center;gap:0.5rem;height:220px;}
+  .stairway-bar{width:clamp(30px,8vw,60px);border-radius:8px 8px 0 0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:0.4rem;opacity:0.85;}
+  .stairway-bar__label{font-family:var(--font-mono);font-size:10px;color:var(--color-paper);opacity:0.8;}
+  .summit-glow{position:absolute;inset:0;overflow:hidden;pointer-events:none;}.summit-glow__blob{position:absolute;border-radius:50%;filter:blur(60px);}.summit-glow__blob--blue{width:200px;height:200px;background:var(--color-blue);opacity:0.2;bottom:-40px;right:10%;}.summit-glow__blob--rust{width:160px;height:160px;background:var(--color-rust);opacity:0.15;top:-20px;left:15%;}
+</style>
+
+<script is:inline>
+(function(){
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  }
+})();
+</script>

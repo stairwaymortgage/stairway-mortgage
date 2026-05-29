@@ -205,6 +205,16 @@ const icons: Record<string, string> = {
   {menus.map((m) => (
     <div class="mega" id={m.id} role="region" aria-label={m.label + ' menu'}>
       <div class="container-page">
+        {m.id === 'mega-situation' && (
+          <a href="/your-journey/" class="mega__journey-cta">
+            <span class="mega__journey-icon" aria-hidden="true">&#x2302;</span>
+            <span class="mega__journey-text">
+              <strong>Not sure where you fit?</strong>
+              <span>See the 8-step Stairway Journey</span>
+            </span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="mega__journey-arrow"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.4"/></svg>
+          </a>
+        )}
         <div class="mega__grid">
           <!-- Link columns -->
           <div class="mega__cols">
@@ -604,6 +614,38 @@ const icons: Record<string, string> = {
     font-size: 14px !important;
     padding: 0.7rem 1rem !important;
   }
+
+  /* Journey CTA in Your Situation menu */
+  .mega__journey-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+    background: var(--color-blue-tint);
+    border: 1px solid var(--color-blue);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: background 0.15s, transform 0.15s;
+  }
+  .mega__journey-cta:hover {
+    background: var(--color-blue);
+    color: var(--color-paper);
+    transform: translateY(-1px);
+  }
+  .mega__journey-icon { font-size: 20px; flex-shrink: 0; }
+  .mega__journey-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+  }
+  .mega__journey-text strong { font-size: 14px; font-weight: 600; }
+  .mega__journey-text span:last-child { font-size: 12px; color: var(--color-mute); }
+  .mega__journey-cta:hover .mega__journey-text span:last-child { color: rgba(250,250,247,0.7); }
+  .mega__journey-arrow { flex-shrink: 0; opacity: 0.5; transition: opacity 0.15s; }
+  .mega__journey-cta:hover .mega__journey-arrow { opacity: 1; }
 
   /* Quick-quote chips */
   .mega__quotes {
