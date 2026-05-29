@@ -507,6 +507,15 @@ const icons: Record<string, string> = {
     visibility: visible;
     transform: translateY(0);
   }
+  /* Invisible bridge: covers the gap between trigger bar and panel */
+  .mega::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: 0;
+    right: 0;
+    height: 16px;
+  }
   .mega__grid {
     display: grid;
     grid-template-columns: 1fr 260px;
@@ -788,9 +797,23 @@ const icons: Record<string, string> = {
     if (panel) panel.classList.toggle('is-open', !open);
   }
 
+  function scheduleClose(id, trigger) {
+    clearTimeout(timeouts[id]);
+    timeouts[id] = setTimeout(function() {
+      trigger.setAttribute('aria-expanded', 'false');
+      var panel = document.getElementById(id);
+      if (panel) panel.classList.remove('is-open');
+    }, 180);
+  }
+
+  function cancelClose(id) {
+    clearTimeout(timeouts[id]);
+  }
+
   triggers.forEach(function(trigger) {
     var id = trigger.getAttribute('aria-controls');
     var wrap = trigger.closest('[data-menu-wrap]');
+    var panel = document.getElementById(id);
 
     trigger.addEventListener('click', function(e) {
       e.preventDefault();
@@ -800,18 +823,26 @@ const icons: Record<string, string> = {
     if (wrap) {
       wrap.addEventListener('mouseenter', function() {
         if (window.innerWidth < 980) return;
-        clearTimeout(timeouts[id]);
+        cancelClose(id);
         closeAll(trigger);
         trigger.setAttribute('aria-expanded', 'true');
-        var panel = document.getElementById(id);
         if (panel) panel.classList.add('is-open');
       });
       wrap.addEventListener('mouseleave', function() {
-        timeouts[id] = setTimeout(function() {
-          trigger.setAttribute('aria-expanded', 'false');
-          var panel = document.getElementById(id);
-          if (panel) panel.classList.remove('is-open');
-        }, 200);
+        if (window.innerWidth < 980) return;
+        scheduleClose(id, trigger);
+      });
+    }
+
+    /* Panel hover: cancel close when cursor enters panel, schedule close when it leaves */
+    if (panel) {
+      panel.addEventListener('mouseenter', function() {
+        if (window.innerWidth < 980) return;
+        cancelClose(id);
+      });
+      panel.addEventListener('mouseleave', function() {
+        if (window.innerWidth < 980) return;
+        scheduleClose(id, trigger);
       });
     }
   });
