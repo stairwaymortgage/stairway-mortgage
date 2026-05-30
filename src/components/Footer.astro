@@ -1,6 +1,69 @@
 ---
 const year = new Date().getFullYear();
 
+const services = [
+  { label: 'Buy a Home', href: '/buy-a-house-journey/' },
+  { label: 'Refinance or HELOC', href: '/refinance-or-heloc-journey/' },
+  { label: 'Build a Home', href: '/build-a-house-journey/' },
+  { label: 'Renovate a Home', href: '/renovate-a-house-journey/' },
+  { label: 'Reverse Mortgage', href: '/reverse-mortgage-journey/' },
+  { label: 'Sell a Home', href: '/sell-a-house-journey/' },
+  { label: 'Build a Wealth Plan', href: '/build-a-wealth-plan-journey/' },
+  { label: 'Find a Tenant', href: '/find-a-tenant-journey/' },
+];
+
+const journey = [
+  { label: 'The 8-Step Journey', href: '/your-journey/' },
+  { label: 'First-Time Buyer', href: '/first-time-buyers-journey/' },
+  { label: 'Homeowner', href: '/homeowners-journey/' },
+  { label: 'Senior 55+', href: '/senior-homeowners-55-journey/' },
+  { label: 'First-Time Investor', href: '/first-time-investors-journey/' },
+  { label: 'Active Investor', href: '/active-investors-journey/' },
+];
+
+const professions = [
+  { label: 'Medical Professionals', href: '/medical-professionals/' },
+  { label: 'Aviation Professionals', href: '/aviation-professionals/' },
+  { label: 'Corporate Executives', href: '/corporate-executives/' },
+  { label: 'Self-Employed & Owners', href: '/legal-business-entrepreneurs/' },
+  { label: 'Creative & Variable', href: '/creative-earners/' },
+];
+
+const tools = [
+  { label: 'Loan Calculators', href: '/loan-calculators/' },
+  { label: 'Current Rates', href: '/current-rates/' },
+  { label: 'Home Value Report', href: '/home-value-report/' },
+  { label: 'Private Home Search', href: '/private-home-search/' },
+  { label: 'Loan Programs', href: '/loan-programs/' },
+  { label: 'Same-Day Approval', href: '/same-day-approval/' },
+  { label: 'Discovery Quiz', href: '/discovery-quiz/' },
+];
+
+const learn = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Free Guides', href: '/guides/' },
+  { label: 'Courses', href: '/courses/' },
+  { label: 'Case Studies', href: '/case-studies/' },
+];
+
+const company = [
+  { label: 'Founder & Philosophy', href: '/founder-philosophy-values/' },
+  { label: 'NEXA Partnership', href: '/nexa-mortgage-partnership/' },
+  { label: 'Certified Advisor', href: '/certified-stairway-advisor/' },
+  { label: 'Community & Causes', href: '/community-causes/' },
+  { label: 'Careers', href: '/branches-careers-internships/' },
+  { label: 'Contact', href: '/contact-us/' },
+  { label: 'Get a Local Intro', href: '/get-a-local-introduction/' },
+];
+
+const partners = [
+  { label: 'Realtors', href: '/realtors-wholesalers/' },
+  { label: 'Attorneys & Title', href: '/attorneys-title-teams/' },
+  { label: 'Financial Planners', href: '/financial-planners/' },
+  { label: 'Tax & CPA Partners', href: '/accountants-underwriters/' },
+  { label: 'Insurance Brokers', href: '/insurance-brokers/' },
+];
+
 const legal = [
   { label: 'Privacy Policy', href: '/privacy/' },
   { label: 'California Privacy', href: '/california-privacy/' },
@@ -8,24 +71,6 @@ const legal = [
   { label: 'Terms of Use', href: '/terms/' },
   { label: 'State Licensing', href: '/state-licensing/' },
   { label: 'Texas Disclosure', href: '/texas-disclosure/' },
-];
-
-const quickLinks = [
-  { label: 'Loan Programs', href: '/loan-programs/' },
-  { label: 'Calculators', href: '/loan-calculators/' },
-  { label: 'Case Studies', href: '/case-studies/' },
-  { label: 'Current Rates', href: '/current-rates/' },
-  { label: 'Home Value Report', href: '/home-value-report/' },
-  { label: 'Contact', href: '/contact-us/' },
-];
-
-const story = [
-  { label: 'Founder & Philosophy', href: '/founder-philosophy-values/' },
-  { label: 'NEXA Partnership', href: '/nexa-mortgage-partnership/' },
-  { label: 'Certified Advisor', href: '/certified-stairway-advisor/' },
-  { label: 'Community & Causes', href: '/community-causes/' },
-  { label: 'Careers', href: '/branches-careers-internships/' },
-  { label: 'Get a Local Intro', href: '/get-a-local-introduction/' },
 ];
 ---
 
@@ -58,10 +103,10 @@ const story = [
 
 <footer class="section-dark">
   <div class="container-page section-tight">
-    <div class="grid grid-cols-12 gap-10">
+    <div class="grid grid-cols-12 gap-x-6 gap-y-10">
 
       <!-- Brand / Address -->
-      <div class="col-span-12 md:col-span-5 lg:col-span-4">
+      <div class="col-span-12 lg:col-span-4">
         <div class="flex items-center gap-2 mb-5">
           <svg viewBox="0 0 28 28" class="w-8 h-8" aria-hidden="true">
             <rect x="2" y="20" width="6" height="6" fill="var(--color-paper)"/>
@@ -91,39 +136,8 @@ const story = [
             </a>
           </p>
         </div>
-      </div>
 
-      <!-- Quick Links -->
-      <div class="col-span-6 md:col-span-3 lg:col-span-2">
-        <h5 class="eyebrow mb-5">Quick Links</h5>
-        <ul class="space-y-2.5">
-          {quickLinks.map(l => (
-            <li><a href={l.href} class="text-[14.5px] opacity-72 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Our Story -->
-      <div class="col-span-6 md:col-span-4 lg:col-span-3">
-        <h5 class="eyebrow mb-5">Our Story</h5>
-        <ul class="space-y-2.5">
-          {story.map(l => (
-            <li><a href={l.href} class="text-[14.5px] opacity-72 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Legal + Social -->
-      <div class="col-span-12 md:col-span-12 lg:col-span-3">
-        <h5 class="eyebrow mb-5">Legal</h5>
-        <ul class="space-y-2.5 mb-8">
-          {legal.map(l => (
-            <li><a href={l.href} class="text-[14.5px] opacity-72 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
-          ))}
-        </ul>
-
-        <h5 class="eyebrow mb-4">Connect</h5>
-        <div class="flex gap-2">
+        <div class="flex gap-2 mt-6">
           <a href="https://www.facebook.com/mortgagemanjim" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9.1 22.7v-8H6.6V11h2.5V9.4c0-4.1 1.8-6 5.8-6 .4 0 1 .04 1.5.1.5.06.9.15 1.1.2v3.3a8.6 8.6 0 0 0-.7-.04 26.8 26.8 0 0 0-.7 0c-.7 0-1.3.1-1.7.3-.3.16-.5.36-.7.6-.3.5-.4 1-.4 1.8V11h3.9l-.4 2.1-.3 1.6h-3.2v8.2c5.2-.6 9.3-5 9.3-10.2C24 5.4 18.6 0 12 0S0 5.4 0 12c0 5.6 3.9 10.3 9.1 11.6z"/></svg>
           </a>
@@ -141,6 +155,70 @@ const story = [
           </a>
         </div>
       </div>
+
+      <!-- How We Serve -->
+      <div class="col-span-6 sm:col-span-4 lg:col-span-2">
+        <h5 class="eyebrow mb-5">How We Serve</h5>
+        <ul class="space-y-2">
+          {services.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Tools & Learn -->
+      <div class="col-span-6 sm:col-span-4 lg:col-span-2">
+        <h5 class="eyebrow mb-5">Tools & Rates</h5>
+        <ul class="space-y-2 mb-6">
+          {tools.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+        <h5 class="eyebrow mb-4">Learn</h5>
+        <ul class="space-y-2">
+          {learn.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company + Partners -->
+      <div class="col-span-6 sm:col-span-4 lg:col-span-2">
+        <h5 class="eyebrow mb-5">Company</h5>
+        <ul class="space-y-2 mb-6">
+          {company.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+        <h5 class="eyebrow mb-4">Partner With Us</h5>
+        <ul class="space-y-2">
+          {partners.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Your Journey + Professions + Legal -->
+      <div class="col-span-6 sm:col-span-12 lg:col-span-2">
+        <h5 class="eyebrow mb-5">Your Journey</h5>
+        <ul class="space-y-2 mb-6">
+          {journey.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+        <h5 class="eyebrow mb-4">By Profession</h5>
+        <ul class="space-y-2 mb-6">
+          {professions.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+        <h5 class="eyebrow mb-4">Legal</h5>
+        <ul class="space-y-2">
+          {legal.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -152,7 +230,7 @@ const story = [
           © {year} Stairway Mortgage · A division of NEXA Mortgage LLC · NEXA licensed in 48 states ·
           <a href="/state-licensing/" class="underline hover:opacity-100">View licensing</a> · Equal Housing Lender
         </p>
-        <p class="mono">@mortgagemanjim</p>
+        <p class="mono">@stairwaymortgage</p>
       </div>
     </div>
   </div>
