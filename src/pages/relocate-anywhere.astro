@@ -1,0 +1,405 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Relocate Anywhere™ — Stairway Mortgage" description="Relocating? Trusted agents in all 50 states. Pre-approval first, then we connect you.">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="aurora"><span class="orb orb-1"></span><span class="orb orb-2"></span><span class="orb orb-3"></span></div>
+  <div class="container-page hero-inner">
+    <span class="eyebrow" style="color:var(--teal);opacity:.9">Tools &amp; Resources &middot; Relocate Anywhere&trade;</span>
+    <h1 class="display-lg">Relocating? We have <em>trusted agents</em> waiting in all 50 states.</h1>
+    <p class="lead">Before we introduce you to a local real estate professional, we get your financing lined up. Pre-approval first, then we connect you with experienced agents anywhere in the country &mdash; the brands you already know and trust.</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="n">355+</div><div class="l">Brokerage Brands</div></div>
+      <div class="hstat"><div class="n">122,000+</div><div class="l">Agents Nationwide</div></div>
+      <div class="hstat"><div class="n">49</div><div class="l">States Covered</div></div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#start" class="btn-primary">Get pre-approved &amp; speak with a Specialist &rarr;</a>
+      <a href="#network" class="btn-ghost">Find an agent in my area</a>
+    </div>
+    <div class="trust-line">
+      <span>Jim Blackburn</span><span class="dot">&middot;</span><span>NMLS #1072866</span><span class="dot">&middot;</span><span>NEXA Mortgage licensed in 48 states</span><span class="dot">&middot;</span><span>(954) 993-1625</span>
+    </div>
+  </div>
+</header>
+
+<!-- FUNNEL BANNER -->
+<div class="funnel">
+  <div class="container-page funnel-inner">
+    <p><strong>Step one is always financing.</strong> &nbsp;Getting pre-approved first means your offer is taken seriously the moment you find the right home &mdash; and we match you to the right agent the moment you&rsquo;re ready.</p>
+    <a href="#start" class="btn-primary" style="background:rgba(255,255,255,.16);white-space:nowrap">Start with pre-approval &rarr;</a>
+  </div>
+</div>
+
+<!-- 1-2-3 -->
+<section class="section">
+  <div class="container-page">
+    <div class="sec-head">
+      <span class="eyebrow-blue">The Stairway Method</span>
+      <h2 class="display-md">Relocation, made as easy as 1&ndash;2&ndash;3</h2>
+      <p class="lead">You focus on your family, your friends, and your life&rsquo;s purpose. We handle the logistics that usually make a long-distance move overwhelming.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div><span class="tag">Start Here</span>
+        <h3>Get pre-approved &amp; prepare your home</h3>
+        <p>We line up your new-home financing and prepare your current home &mdash; whether you&rsquo;re selling or converting it to a rental.</p>
+        <ul><li>Pre-approval before you travel</li><li>Prep your home for sale or rent</li><li>Advance planning of your equity transfer</li></ul>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div><span class="tag">We Match You</span>
+        <h3>The right local agent, vetted</h3>
+        <p>Once you&rsquo;re prepared, we connect you with an experienced agent in your destination &mdash; from a network of brands you already recognize.</p>
+        <ul><li>Vetted, top-producing local agents</li><li>An exclusive relocation credit where available</li><li>Trusted national brokerage brands</li></ul>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div><span class="tag">We Handle The Rest</span>
+        <h3>A local concierge on the ground</h3>
+        <p>Your local bridge handles the move itself &mdash; so the small stuff is already done when you arrive.</p>
+        <ul><li>Coordinated moving help</li><li>Utilities switched and set up</li><li>Everything handled, so you don&rsquo;t have to</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NATIONWIDE NETWORK (centerpiece) -->
+<section class="section section-tint" id="network">
+  <div class="container-page">
+    <div class="sec-head network-intro">
+      <span class="eyebrow-blue">Nationwide Real Estate Referral Network</span>
+      <h2 class="display-md">Power and name recognition, coast to coast</h2>
+      <p>Before introducing you to a local real estate professional, we help buyers understand their financing options and obtain a mortgage pre-approval whenever appropriate. Once prepared, we can connect clients with experienced real estate professionals throughout the United States.</p><p>The brokerages shown below are examples of companies whose agents have participated in referral transactions with our team or may receive referrals based on a client's location, property type, goals, and specific needs. We are not limited to any single brokerage network and strive to identify the best local real estate professional for each individual situation.</p>
+    </div>
+
+    <div class="finder">
+      <div class="finder-row">
+        <div class="finder-field">
+          <label>Where are you moving to?</label>
+          <select id="stateSelect"><option value="">Select your destination state&hellip;</option></select>
+        </div>
+        <a href="#start" class="btn-primary" style="white-space:nowrap">Get pre-approved first &rarr;</a>
+      </div>
+    </div>
+
+    <div class="network-result" id="networkResult">
+      <p class="empty-note">Select a destination state above to see the trusted brokerages our clients get referred to in your area.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATORS -->
+<section class="section">
+  <div class="container-page">
+    <div class="sec-head">
+      <span class="eyebrow-blue">Interactive</span>
+      <h2 class="display-md">See what relocating with us is worth</h2>
+    </div>
+    <div class="calc-grid">
+      <div class="calc">
+        <span class="eyebrow">Calculator 01</span>
+        <h3>Your relocation credit</h3>
+        <p class="calc-sub">Enter your estimated list price to see your potential relocation credit through the Stairway network. Estimated; available to eligible clients.</p>
+        <div class="field"><label>Estimated list price</label><input type="text" id="listPrice" inputmode="numeric" placeholder="$650,000"></div>
+        <div class="result" id="savingsResult">
+          <div class="cap">Your estimated relocation credit</div>
+          <div class="big" id="savingsBig">$0</div>
+          <div class="sub">estimated credit through the Stairway network &middot; eligibility applies</div>
+        </div>
+        <p class="calc-cta">Ready to make it real? <a href="#start">Start with pre-approval &rarr;</a></p>
+      </div>
+      <div class="calc">
+        <span class="eyebrow">Calculator 02</span>
+        <h3>How far is your move?</h3>
+        <p class="calc-sub">Tell us where you&rsquo;re moving from and to. We&rsquo;ll show the distance &mdash; and you can explore the network waiting on the other side.</p>
+        <div class="row2">
+          <div class="field"><label>Moving from</label><input type="text" id="fromCity" placeholder="Chicago, IL"></div>
+          <div class="field"><label>Moving to</label><input type="text" id="toCity" placeholder="Austin, TX"></div>
+        </div>
+        <button onclick="runDistance()" style="width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-weight:600;cursor:pointer">Calculate distance &rarr;</button>
+        <div class="result" id="distResult" style="margin-top:20px">
+          <div class="cap">Approximate distance</div>
+          <div class="dist-badge" id="distBig">&mdash;</div>
+          <div class="sub" id="distSub"></div>
+        </div>
+        <p class="muted" id="distMuted"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCIERGE -->
+<section class="section section-tint">
+  <div class="container-page">
+    <div class="sec-head">
+      <span class="eyebrow-blue">Step Three, In Detail</span>
+      <h2 class="display-md">We handle the move so you can handle what matters</h2>
+      <p class="lead">By the time you arrive, financing is closed, your old home is sold or rented, and your local team has the rest covered.</p>
+    </div>
+    <div class="concierge-grid">
+      <div class="svc"><span class="ico">&#9632;</span><div><h4>Moving coordination</h4><p>We help organize and schedule your move end to end.</p></div></div>
+      <div class="svc"><span class="ico">&#9632;</span><div><h4>Utilities switched</h4><p>Power, water, internet &mdash; transferred and ready before you walk in.</p></div></div>
+      <div class="svc"><span class="ico">&#9632;</span><div><h4>Equity transfer planned</h4><p>Your sale proceeds are timed to fund your new purchase smoothly.</p></div></div>
+      <div class="svc"><span class="ico">&#9632;</span><div><h4>A local bridge</h4><p>A trusted point person in your new city, ready the day you land.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD CAPTURE -->
+<section class="section lead-sec" id="start">
+  <div class="aurora"><span class="orb orb-1"></span><span class="orb orb-2"></span></div>
+  <div class="container-page lead-wrap">
+    <div class="lead-copy">
+      <span class="eyebrow" style="color:var(--teal);opacity:.9">Your First Step</span>
+      <h2 class="display-md">Get pre-approved &amp; meet your Specialist</h2>
+      <p class="lead">Tell us about your move. A Relocate Anywhere&trade; Specialist will start your pre-approval and line up a trusted local agent in your destination.</p>
+      <span class="pre-badge">&#9679; Pre-approval is always step one</span>
+    </div>
+    <div class="lead-form" id="leadForm">
+      <div class="row2">
+        <div class="field"><label>First name</label><input type="text" id="fName" placeholder="First"></div>
+        <div class="field"><label>Last name</label><input type="text" id="lName" placeholder="Last"></div>
+      </div>
+      <div class="field"><label>Email</label><input type="email" id="email" placeholder="you@email.com"></div>
+      <div class="field"><label>Phone</label><input type="tel" id="phone" placeholder="(555) 000-0000"></div>
+      <div class="row2">
+        <div class="field"><label>Moving from</label><input type="text" id="lfFrom" placeholder="City, State"></div>
+        <div class="field"><label>Moving to</label><input type="text" id="lfTo" placeholder="City, State"></div>
+      </div>
+      <button onclick="submitLead()">Connect me with a Specialist &rarr;</button>
+      <p class="form-note">No obligation. This is not a commitment to lend.</p>
+    </div>
+    <div class="lead-form lead-success" id="leadSuccess">
+      <div class="big">You&rsquo;re all set.</div>
+      <p style="opacity:.85">A Relocate Anywhere&trade; Specialist will be in touch shortly to start your pre-approval. Prefer to talk now? Call <strong>(954)&nbsp;993-1625</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLOSURE (Jim's exact language) -->
+<section class="disclosure">
+  <div class="container-page">
+    <h4>Important Disclosure</h4>
+    <p>Brokerage names, trademarks, service marks, and logos are the property of their respective owners and are displayed solely for identification and informational purposes. References to any brokerage do not imply ownership, sponsorship, endorsement, approval, agency relationship, joint venture, exclusive affiliation, or partnership with Stairway Mortgage, the Blackburn Real Estate Team, Jim Blackburn, Olga Blackburn, The Keyes Company, or any affiliated entity unless expressly stated.</p><p>The appearance of a brokerage logo on this website does not constitute a recommendation of one brokerage over another and is intended only to illustrate the broad range of real estate professionals and companies to which clients may be referred.</p><p>If you represent a brokerage displayed on this website and would prefer that your company's logo not be shown, please contact us and we will promptly review and address your request.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+</Layout>
+
+<style>
+
+
+
+
+
+.container-page{max-width:1180px;margin:0 auto;padding:0 28px}
+.eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--color-ink);opacity:.55;font-weight:500}
+.eyebrow-blue{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--color-blue);font-weight:600}
+.display-lg{font-family:var(--font-display);font-weight:400;font-size:clamp(2.8rem,6vw,5rem);line-height:1.02;letter-spacing:-.01em}
+.display-md{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,4vw,3.2rem);line-height:1.08}
+.lead{font-size:1.18rem;line-height:1.62;opacity:.82;font-weight:300}
+
+.hero{position:relative;overflow:hidden;padding:120px 0 96px;background:var(--color-ink);color:var(--color-paper)}
+.aurora{position:absolute;inset:0;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;mix-blend-mode:screen}
+.orb-1{width:520px;height:520px;background:var(--color-blue);top:-120px;left:-80px;animation:drift1 24s ease-in-out infinite}
+.orb-2{width:440px;height:440px;background:var(--teal);bottom:-140px;right:-60px;animation:drift2 28s ease-in-out infinite}
+.orb-3{width:380px;height:380px;background:var(--peri);top:30%;left:55%;animation:drift3 33s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,40px) scale(1.1)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-50px,-30px) scale(1.08)}}
+@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,50px) scale(.92)}}
+.hero-inner{position:relative;z-index:1;max-width:860px}
+.hero h1{margin:22px 0 24px}
+.hero h1 em{font-style:italic;color:var(--teal)}
+.hero .lead{opacity:.88;max-width:640px}
+.hero-stats{display:flex;gap:36px;margin-top:40px;flex-wrap:wrap}
+.hstat .n{font-family:var(--font-display);font-size:2.6rem;line-height:1;color:var(--teal)}
+.hstat .l{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:6px}
+.hero-ctas{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--color-blue);color:#fff;padding:15px 30px;border-radius:6px;font-weight:600;font-size:.98rem;text-decoration:none;transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;font-family:var(--font-body)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(24,69,214,.4)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--color-paper);padding:15px 26px;border-radius:6px;font-weight:600;font-size:.98rem;text-decoration:none;border:1.5px solid rgba(255,255,255,.25);transition:border-color .2s,background .2s}
+.btn-ghost:hover{border-color:var(--teal);background:rgba(255,255,255,.05)}
+.trust-line{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.04em;margin-top:34px;opacity:.55;display:flex;gap:10px;flex-wrap:wrap}
+.trust-line .dot{opacity:.4}
+
+.section{padding:96px 0}
+.section-tint{background:var(--color-paper-tint)}
+.sec-head{max-width:720px;margin-bottom:54px}
+.sec-head h2{margin:16px 0 18px}
+
+/* funnel banner */
+.funnel{background:linear-gradient(100deg,var(--color-blue),var(--peri));color:#fff;padding:30px 0}
+.funnel-inner{display:flex;align-items:center;gap:24px;justify-content:space-between;flex-wrap:wrap}
+.funnel p{font-size:1.05rem;font-weight:500;max-width:680px}
+.funnel strong{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:1.2rem}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.step{background:var(--color-paper);border:1px solid var(--color-bone);border-radius:12px;padding:34px 30px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.step:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(10,14,26,.09)}
+.step::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent)}
+.step:nth-child(1){--accent:var(--color-blue)}.step:nth-child(2){--accent:var(--teal)}.step:nth-child(3){--accent:var(--color-rust)}
+.step-num{font-family:var(--font-display);font-size:3.4rem;line-height:1;color:var(--accent)}
+.step .tag{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-top:6px;display:block}
+.step h3{font-family:var(--font-display);font-weight:400;font-size:1.5rem;margin:6px 0 12px;line-height:1.12}
+.step p{font-size:.96rem;opacity:.78}
+.step ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.step li{font-size:.88rem;opacity:.74;padding-left:20px;position:relative}
+.step li::before{content:'';position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+/* NETWORK / find-an-agent centerpiece */
+.network-intro p{font-size:1.05rem;opacity:.82;max-width:760px;margin-bottom:16px;font-weight:300}
+.finder{background:var(--color-paper);border:1px solid var(--color-bone);border-radius:16px;padding:34px;margin-top:36px;box-shadow:0 14px 40px rgba(10,14,26,.06)}
+.finder-row{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap}
+.finder-field{flex:1;min-width:200px}
+.finder-field label{display:block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
+.finder-field select,.finder-field input{width:100%;padding:14px 16px;border:1.5px solid var(--color-bone);border-radius:8px;font-family:var(--font-body);font-size:1.02rem;background:var(--color-paper);color:var(--color-ink)}
+.finder-field select:focus,.finder-field input:focus{outline:none;border-color:var(--color-blue)}
+
+.network-result{margin-top:40px}
+.nr-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.nr-head h3{font-family:var(--font-display);font-weight:400;font-size:1.8rem}
+.nr-head .count{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;opacity:.6}
+.logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.logo-card{background:var(--color-paper);border:1px solid var(--color-bone);border-radius:10px;padding:22px 20px;min-height:104px;display:flex;flex-direction:column;justify-content:center;gap:6px;transition:transform .2s,box-shadow .2s,border-color .2s;animation:fadeUp .4s both}
+.logo-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(10,14,26,.1);border-color:var(--color-blue)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* the brand wordmark - styled placeholder, logo-ready */
+.logo-card .logo-img{max-width:100%;max-height:52px;width:auto;object-fit:contain;align-self:flex-start}
+.logo-card .wordmark{font-family:var(--font-display);font-size:1.18rem;line-height:1.15;color:var(--color-ink);display:none}
+.logo-card.has-text .wordmark{display:block}
+.logo-card .meta{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;opacity:.55;text-transform:uppercase}
+.logo-card .state-tag{font-family:var(--font-mono);font-size:.64rem;opacity:.45;letter-spacing:.08em}
+.empty-note{opacity:.6;font-style:italic;padding:30px 0}
+
+/* calculators */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.calc{background:var(--color-paper);border:1px solid var(--color-bone);border-radius:14px;padding:38px 34px}
+.calc h3{font-family:var(--font-display);font-weight:400;font-size:1.7rem;margin:14px 0 6px}
+.calc .calc-sub{font-size:.94rem;opacity:.7;margin-bottom:26px}
+.field{margin-bottom:20px}
+.field label{display:block;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
+.field input,.field select{width:100%;padding:14px 16px;border:1.5px solid var(--color-bone);border-radius:8px;font-family:var(--font-body);font-size:1.02rem;background:var(--color-paper);color:var(--color-ink)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--color-blue)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.result{margin-top:8px;padding:24px;border-radius:10px;background:var(--color-ink);color:var(--color-paper);text-align:center;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}
+.result.show{opacity:1;transform:none}
+.result .big{font-family:var(--font-display);font-size:3.2rem;line-height:1;color:var(--teal);margin:6px 0}
+.result .cap{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
+.result .sub{font-size:.92rem;opacity:.8;margin-top:10px}
+.dist-badge{font-family:var(--font-display);font-size:2.6rem;color:var(--teal);line-height:1}
+.muted{font-size:.84rem;opacity:.55;margin-top:14px;line-height:1.5}
+.calc-cta{margin-top:18px;font-size:.9rem;opacity:.8;text-align:center}
+.calc-cta a{color:var(--color-blue);font-weight:600;text-decoration:none}
+
+/* concierge */
+.concierge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px}
+.svc{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;background:var(--color-paper);border:1px solid var(--color-bone);border-radius:10px}
+.svc .ico{font-family:var(--font-display);font-size:1.5rem;color:var(--color-blue)}
+.svc h4{font-size:1.02rem;margin-bottom:4px}
+.svc p{font-size:.9rem;opacity:.72}
+
+/* lead capture */
+.lead-sec{background:var(--color-ink);color:var(--color-paper);position:relative;overflow:hidden}
+.lead-sec .aurora .orb{opacity:.4}
+.lead-wrap{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.lead-copy h2{color:var(--color-paper);margin:16px 0 18px}
+.lead-copy .lead{opacity:.85}
+.lead-copy .pre-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(13,191,177,.14);border:1px solid rgba(13,191,177,.4);color:var(--teal);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border-radius:40px;margin-top:18px}
+.lead-form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:36px 32px;backdrop-filter:blur(8px)}
+.lead-form .field label{color:var(--color-paper);opacity:.7}
+.lead-form .field input,.lead-form .field select{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:var(--color-paper)}
+.lead-form .field input::placeholder{color:rgba(255,255,255,.4)}
+.lead-form button{width:100%;padding:16px;background:var(--color-blue);color:#fff;border:none;border-radius:8px;font-family:var(--font-body);font-weight:600;font-size:1.02rem;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:6px}
+.lead-form button:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(24,69,214,.45)}
+.form-note{font-size:.78rem;opacity:.55;margin-top:16px;text-align:center}
+.lead-success{display:none;text-align:center;padding:40px 10px}
+.lead-success.show{display:block}
+.lead-success .big{font-family:var(--font-display);font-size:2.2rem;color:var(--teal);margin-bottom:10px}
+
+/* disclosure */
+.disclosure{padding:60px 0;background:var(--color-paper-tint);border-top:1px solid var(--color-bone)}
+.disclosure h4{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:18px}
+.disclosure p{font-size:.84rem;opacity:.62;line-height:1.7;max-width:920px;margin-bottom:14px}
+
+
+</style>
+
+<script is:inline>
+const PARTNERS = {"Illinois": {"total": 11, "region": "Midwest", "brands": [{"n": "@properties Christie’s International Real Estate", "a": 2274}, {"n": "Baird & Warner", "a": 764}, {"n": "Jim Maloof/Realtor®", "a": 268}, {"n": "john greene Realtor", "a": 204}, {"n": "McColly Real Estate", "a": 124}, {"n": "Mel Foster Co.", "a": 109}, {"n": "Gambino REALTORS", "a": 70}, {"n": "Strano & Associates", "a": 51}, {"n": "Premier Living Properties", "a": 37}, {"n": "Wooff, Inc.", "a": 7}, {"n": "Joel Ward Homes, Inc.", "a": 4}]}, "Indiana": {"total": 13, "region": "Midwest", "brands": [{"n": "F.C. Tucker Company", "a": 868}, {"n": "McColly Real Estate", "a": 743}, {"n": "Carpenter Realtors", "a": 438}, {"n": "@properties Indianapolis", "a": 247}, {"n": "Mike Thomas Associates", "a": 199}, {"n": "@properties Christie’s International Real Estate", "a": 177}, {"n": "Cressy & Everett Real Estate", "a": 168}, {"n": "The Hardie Group", "a": 83}, {"n": "Howard Hanna Real Estate Services", "a": 29}, {"n": "Comey & Shepherd REALTORS", "a": 26}, {"n": "Semonin Realtors", "a": 19}, {"n": "HUFF Realty", "a": 17}, {"n": "Sibcy Cline Realtors", "a": 16}]}, "Michigan": {"total": 12, "region": "Midwest", "brands": [{"n": "Real Estate One, Inc.", "a": 1218}, {"n": "Howard Hanna Real Estate Services", "a": 356}, {"n": "Jaqua Realtors", "a": 336}, {"n": "Greenridge Realty, Inc.", "a": 300}, {"n": "Max Broock Realtors", "a": 220}, {"n": "Reinhart Realtors", "a": 154}, {"n": "@properties Christie’s International Real Estate", "a": 145}, {"n": "Cressy & Everett Real Estate", "a": 81}, {"n": "@properties Christie's International Real Estate Michigan", "a": 80}, {"n": "Preferred, Realtors LTD", "a": 57}, {"n": "Ayre/Rhinehart Bay Realtors", "a": null}, {"n": "Ayre/Rhinehart Realtors", "a": null}]}, "Wisconsin": {"total": 9, "region": "Midwest", "brands": [{"n": "Shorewest, REALTORS®", "a": 799}, {"n": "First Weber, Inc.", "a": 567}, {"n": "Stark Company Realtors", "a": 413}, {"n": "Edina Realty Home Services", "a": 192}, {"n": "Resource One Realty, LLC", "a": 118}, {"n": "@properties Christie’s International Real Estate", "a": 68}, {"n": "Acre Realty, LTD", "a": 57}, {"n": "Beckman Properties", "a": 30}, {"n": "Beiser Realty", "a": 28}]}, "Maine": {"total": 8, "region": "Northeast", "brands": [{"n": "Realty of Maine", "a": 258}, {"n": "Portside Real Estate Group", "a": 171}, {"n": "Sprague & Curtis Real Estate", "a": 43}, {"n": "Meservier & Associates", "a": 20}, {"n": "Aland Realty", "a": 15}, {"n": "Town & Shore Real Estate", "a": 12}, {"n": "Badger Peabody & Smith Realty, Inc.", "a": 7}, {"n": "William Raveis Real Estate", "a": null}]}, "New Hampshire": {"total": 4, "region": "Northeast", "brands": [{"n": "Badger Peabody & Smith Realty, Inc.", "a": 117}, {"n": "Aland Realty", "a": 28}, {"n": "Lamacchia Realty", "a": 9}, {"n": "DiPietro Group Real Estate", "a": 9}]}, "North Carolina": {"total": 31, "region": "Mid-Atlantic & South", "brands": [{"n": "Allen Tate/Beverly-Hanks Realtors", "a": 1158}, {"n": "Allen Tate Company - Charlotte", "a": 633}, {"n": "Allen Tate Company - Greensboro/Winston-Salem/High Point", "a": 597}, {"n": "Intracoastal Realty Corporation", "a": 556}, {"n": "Long & Foster Real Estate Inc.", "a": 308}, {"n": "Howard Hanna Real Estate Services", "a": 179}, {"n": "Allen Tate Company - Raleigh/Durham/Chapel Hill", "a": 179}, {"n": "Fonville Morisey / Long & Foster Real Estate - North Carolina Region", "a": 173}, {"n": "Lake Norman Realty, Inc.", "a": 128}, {"n": "Allen Tate Company - Blowing Rock/Boone", "a": 110}, {"n": "Silver Creek Real Estate Group", "a": 109}, {"n": "Dickens Mitchener", "a": 105}, {"n": "PROACTIVE Real Estate", "a": 85}, {"n": "Leonard Ryden Burr Real Estate", "a": 75}, {"n": "Tyler Redhead & McAlister Real Estate", "a": 75}, {"n": "St. James Properties, LLC", "a": 74}, {"n": "Townsend Real Estate", "a": 71}, {"n": "Allen Tate Company - Pat Allen Realty Group", "a": 70}, {"n": "Appalachian Land Company", "a": 69}, {"n": "WEICHERT, REALTORS®", "a": 68}, {"n": "WEICHERT, REALTORS® - Team Metro", "a": 64}, {"n": "Margaret Rudd & Associates, Inc. Realtors", "a": 54}, {"n": "Wendy Wilmot Properties", "a": 50}, {"n": "Allen Tate Company - Ashe High Country Realty", "a": 46}, {"n": "Boone, Hill, Allen & Ricks", "a": 45}, {"n": "Cottingham Chalk", "a": 45}, {"n": "Bluewater Real Estate", "a": 34}, {"n": "Preferred Properties of Asheville", "a": 20}, {"n": "Neuse Realty, Inc.", "a": 19}, {"n": "First Wilson Properties", "a": 13}, {"n": "Fore Properties Realty, Inc.", "a": 5}]}, "Virginia": {"total": 14, "region": "Mid-Atlantic & South", "brands": [{"n": "Long & Foster Real Estate Inc.", "a": 1800}, {"n": "Howard Hanna Real Estate Services", "a": 556}, {"n": "MKB, REALTORS", "a": 194}, {"n": "Liz Moore & Associates", "a": 178}, {"n": "Howard Hanna | Roy Wheeler Realty Company", "a": 162}, {"n": "Old Dominion Realty", "a": 127}, {"n": "WEICHERT, REALTORS®", "a": 117}, {"n": "Joyner Fine Properties", "a": 82}, {"n": "Kline May Realty", "a": 74}, {"n": "Washington Fine Properties, LLC", "a": 49}, {"n": "John Stewart Walker, Inc.", "a": 32}, {"n": "RLAH @properties", "a": 30}, {"n": "Montague, Miller & Co. Realtors", "a": 28}, {"n": "Allen Tate Company - Ashe High Country Realty", "a": 2}]}, "South Carolina": {"total": 20, "region": "Mid-Atlantic & South", "brands": [{"n": "Carolina One Real Estate", "a": 1253}, {"n": "Meybohm Real Estate", "a": 406}, {"n": "Charter One Realty", "a": 273}, {"n": "The Litchfield Company", "a": 256}, {"n": "Allen Tate Company - Charlotte", "a": 238}, {"n": "Allen Tate Company - Greenville/Spartanburg", "a": 232}, {"n": "WEICHERT, REALTORS® - Coastal Properties", "a": 158}, {"n": "Rinehart Realty Corporation", "a": 74}, {"n": "Garden City Realty", "a": 68}, {"n": "Wilson Associates", "a": 66}, {"n": "Weichert, REALTORS - Southern Coast", "a": 63}, {"n": "Lowcountry Real Estate", "a": 60}, {"n": "Greenwood Realty", "a": 50}, {"n": "Dunes Real Estate", "a": 41}, {"n": "Carriage Properties", "a": 32}, {"n": "Blanchard & Calhoun Real Estate", "a": 26}, {"n": "Home Advantage Realty, LLC", "a": 24}, {"n": "The Moore Group - A Division of the Litchfield Company", "a": 10}, {"n": "Dickens Mitchener", "a": 6}, {"n": "William Raveis Real Estate - SC", "a": null}]}, "Georgia": {"total": 19, "region": "Mid-Atlantic & South", "brands": [{"n": "Harry Norman, Realtors®", "a": 824}, {"n": "Ansley Real Estate - Christie’s International Real Estate", "a": 701}, {"n": "Meybohm Real Estate", "a": 265}, {"n": "The Norton Agency", "a": 257}, {"n": "Blanchard & Calhoun Real Estate", "a": 207}, {"n": "Dorsey Alston", "a": 155}, {"n": "The Herndon Company Real Estate", "a": 136}, {"n": "Fickling & Company", "a": 115}, {"n": "Hardy Realty", "a": 95}, {"n": "Signature Properties Group, Inc", "a": 38}, {"n": "Sea Island Properties", "a": 35}, {"n": "Bickerstaff Parham Real Estate", "a": 34}, {"n": "Luxury Lake Oconee Real Estate Group", "a": 29}, {"n": "Watson Realty Corp.", "a": 8}, {"n": "Appalachian Land Company", "a": 2}, {"n": "Allen Tate Company - Greenville/Spartanburg", "a": 1}, {"n": "CRYE-LEIKE, Realtors of Chattanooga, Inc.", "a": null}, {"n": "CRYE-LEIKE, Realtors of Atlanta, Inc.", "a": null}, {"n": "Fickling & Company, Inc. - Warner Robins Branch", "a": null}]}, "Tennessee": {"total": 12, "region": "Mid-Atlantic & South", "brands": [{"n": "CRYE-LEIKE, Realtors", "a": 2790}, {"n": "Wallace Real Estate", "a": 614}, {"n": "WEICHERT, REALTORS®", "a": 56}, {"n": "Bender Realty", "a": 47}, {"n": "Marx-Bensdorf Realtors", "a": 45}, {"n": "Ferguson Realtors", "a": 43}, {"n": "Premier Homes & Properties", "a": 19}, {"n": "Appalachian Land Company", "a": 1}, {"n": "CRYE-LEIKE, Realtors of Chattanooga, Inc.", "a": null}, {"n": "CRYE-LEIKE, Realtors of Nashville, Inc.", "a": null}, {"n": "Fletcher Bright Realty", "a": null}, {"n": "WEICHERT, REALTORS® - Joe Orr & Associates", "a": null}]}, "Vermont": {"total": 3, "region": "Northeast", "brands": [{"n": "William Raveis Real Estate", "a": 95}, {"n": "Pall Spera Company Realtors, LLC", "a": 37}, {"n": "Badger Peabody & Smith Realty, Inc.", "a": 3}]}, "Alabama": {"total": 15, "region": "Mid-Atlantic & South", "brands": [{"n": "RealtySouth", "a": 980}, {"n": "ARC Realty", "a": 861}, {"n": "Roberts Brothers Inc.", "a": 518}, {"n": "Bellator Real Estate", "a": 347}, {"n": "Capstone Realty – an ARC Realty Company", "a": 298}, {"n": "Hamner Real Estate, LLC", "a": 100}, {"n": "Lan Darty Real Estate & Development", "a": 96}, {"n": "WEICHERT, REALTORS®", "a": 80}, {"n": "Susie Weems Real Estate, LLC", "a": 63}, {"n": "LLB&B, Inc. Real Estate", "a": 30}, {"n": "Averbuch Realty", "a": 17}, {"n": "Levin Rinke Realty", "a": 3}, {"n": "Bickerstaff Parham Real Estate", "a": 1}, {"n": "CRYE-LEIKE, Realtors of Chattanooga, Inc.", "a": null}, {"n": "WEICHERT, REALTORS® - The Space Place", "a": null}]}, "Connecticut": {"total": 5, "region": "Northeast", "brands": [{"n": "William Raveis Real Estate", "a": 2526}, {"n": "Brown Harris Stevens - NY/NJ/CT/The Hamptons", "a": 94}, {"n": "Houlihan Lawrence Real Estate", "a": 87}, {"n": "Houlihan Lawrence Wareck D'Ostilio", "a": 55}, {"n": "Howard Hanna Real Estate Services", "a": 7}]}, "New Jersey": {"total": 18, "region": "Northeast", "brands": [{"n": "WEICHERT, REALTORS®", "a": 1759}, {"n": "Diane Turton, Realtors", "a": 228}, {"n": "Long & Foster Real Estate Inc.", "a": 223}, {"n": "Terrie O'Connor Realtors", "a": 65}, {"n": "Howard Hanna Real Estate Services", "a": 60}, {"n": "Brown Harris Stevens - NY/NJ/CT/The Hamptons", "a": 50}, {"n": "Resources Real Estate", "a": 36}, {"n": "Howard Hanna | Rand Realty", "a": 35}, {"n": "Davis Realtors", "a": 26}, {"n": "Gloria Zastko Realtors", "a": 25}, {"n": "Turpin Real Estate, Inc.", "a": 24}, {"n": "The Van Dyk Group", "a": 19}, {"n": "Hallmark Realtors", "a": 8}, {"n": "Tarvin Realtors", "a": 6}, {"n": "Coccia Real Estate Group", "a": 3}, {"n": "Davis R. Chant Realtors", "a": 1}, {"n": "Lois Schneider Realtor", "a": 1}, {"n": "Crossroads Realty, Inc.", "a": null}]}, "New York": {"total": 19, "region": "Northeast", "brands": [{"n": "Brown Harris Stevens - NY/NJ/CT/The Hamptons", "a": 3576}, {"n": "Howard Hanna Real Estate Services", "a": 2334}, {"n": "Houlihan Lawrence Real Estate", "a": 520}, {"n": "William Raveis Real Estate", "a": 351}, {"n": "Howard Hanna | Coach Real Estate Associates, Inc.", "a": 290}, {"n": "Howard Hanna | Rand Realty", "a": 287}, {"n": "Netter Real Estate", "a": 209}, {"n": "Laffey Real Estate", "a": 135}, {"n": "Curasi Realty", "a": 77}, {"n": "WEICHERT, REALTORS®", "a": 48}, {"n": "Halter Associates Realty", "a": 31}, {"n": "Wright Bros. Real Estate", "a": 19}, {"n": "Miranda Real Estate Group, Inc.", "a": 17}, {"n": "Stone House Properties", "a": 13}, {"n": "Shea & Sanders Real Estate", "a": 3}, {"n": "Terrie O'Connor Realtors", "a": 2}, {"n": "Davis R. Chant Realtors", "a": 1}, {"n": "Salmon Real Estate", "a": null}, {"n": "Sari Kingsley Real Estate, LTD", "a": null}]}, "California": {"total": 33, "region": "Mountain & West", "brands": [{"n": "Bennion Deville Homes", "a": 1233}, {"n": "First Team Real Estate", "a": 932}, {"n": "Intero Real Estate Services, Inc.", "a": 738}, {"n": "Pinnacle Estate Properties, Inc.", "a": 724}, {"n": "Realty Concepts, Ltd.", "a": 568}, {"n": "PMZ Real Estate", "a": 417}, {"n": "Estate Properties", "a": 357}, {"n": "Seven Gables Real Estate", "a": 229}, {"n": "W Real Estate", "a": 223}, {"n": "Vanguard Properties", "a": 217}, {"n": "London Properties, Ltd.", "a": 196}, {"n": "Christie’s International Real Estate Sereno", "a": 190}, {"n": "Chase International", "a": 180}, {"n": "Watson Realty", "a": 165}, {"n": "Nourmand & Associates Realtors", "a": 88}, {"n": "Willis Allen Real Estate", "a": 86}, {"n": "Village Properties", "a": 85}, {"n": "Intero Real Estate Services - East Bay", "a": 76}, {"n": "Dudum Real Estate Group", "a": 72}, {"n": "Hilton & Hyland Real Estate", "a": 46}, {"n": "Strand Hill Properties", "a": 46}, {"n": "Red Oak Realty", "a": 41}, {"n": "The Grubb Company", "a": 40}, {"n": "Parkway Real Estate", "a": 39}, {"n": "Bailey Properties", "a": 33}, {"n": "John L. Scott Real Estate - WA/ID", "a": 22}, {"n": "Grounded Real Estate", "a": 11}, {"n": "Farrell Smyth, Inc.", "a": 10}, {"n": "Dickson Realty", "a": 4}, {"n": "Stumbaugh Realty Advisors", "a": 4}, {"n": "John L. Scott Real Estate - OR/CA", "a": null}, {"n": "Christie's International Real Estate | Southern California", "a": null}, {"n": "Windermere Signature Properties", "a": null}]}, "Nevada": {"total": 5, "region": "Mountain & West", "brands": [{"n": "Huntington & Ellis, A Real Estate Agency", "a": 288}, {"n": "Chase International", "a": 175}, {"n": "Intero Real Estate Services, Inc.", "a": 131}, {"n": "Wardley Real Estate", "a": 85}, {"n": "Dickson Realty", "a": 46}]}, "Ohio": {"total": 8, "region": "Midwest", "brands": [{"n": "Comey & Shepherd REALTORS", "a": 451}, {"n": "Cutler Real Estate - NE Ohio/Central Ohio", "a": 244}, {"n": "HUFF Realty", "a": 190}, {"n": "Haring Realty Inc.", "a": 36}, {"n": "Galbreath REALTORS", "a": 33}, {"n": "Burgan Real Estate", "a": 32}, {"n": "CamTaylor Realtors", "a": 14}, {"n": "Howard Hanna Real Estate Services", "a": null}]}, "Arkansas": {"total": 7, "region": "South Central", "brands": [{"n": "CRYE-LEIKE, Realtors", "a": 912}, {"n": "iRealty Arkansas", "a": 237}, {"n": "WEICHERT, REALTORS® - The Griffin Company", "a": 197}, {"n": "The Janet Jones Company REALTORS", "a": 104}, {"n": "O'Neal Real Estate, LLC", "a": 65}, {"n": "ReeceNichols Real Estate", "a": 7}, {"n": "CRYE-LEIKE, Realtors of Arkansas, Inc.", "a": null}]}, "Florida": {"total": 41, "region": "Mid-Atlantic & South", "brands": [{"n": "The Keyes Company", "a": 4456}, {"n": "John R. Wood Christie’s International Real Estate", "a": 2153}, {"n": "Illustrated Properties Real Estate, Inc.", "a": 1194}, {"n": "William Raveis Real Estate", "a": 1038}, {"n": "Royal Shell Real Estate", "a": 929}, {"n": "Dale Sorensen Real Estate, Inc.", "a": 865}, {"n": "Levin Rinke Realty", "a": 827}, {"n": "Coastal Properties Group International Forbes Global Properties", "a": 704}, {"n": "Adams, Cameron & Co. Realtors & Auctioneers", "a": 596}, {"n": "Smith & Associates Real Estate", "a": 537}, {"n": "Cervera Real Estate, Inc.", "a": 528}, {"n": "Michael Saunders & Company", "a": 478}, {"n": "Watson Realty Corp.", "a": 413}, {"n": "WEICHERT, REALTORS® - Hallmark Properties", "a": 382}, {"n": "Counts Real Estate Group, Inc.", "a": 342}, {"n": "Wagner Realty", "a": 275}, {"n": "Five Star Realty of Charlotte County, Inc.", "a": 273}, {"n": "The Premier Property Group", "a": 270}, {"n": "Balistreri Real Estate", "a": 242}, {"n": "Florida Executive Realty", "a": 185}, {"n": "VIP Realty Group, Inc.", "a": 184}, {"n": "Bosshardt Realty Services", "a": 161}, {"n": "Premier Estate Properties, Inc.", "a": 157}, {"n": "Denovo Realty", "a": 144}, {"n": "Coastal Realty Group", "a": 135}, {"n": "Dennis Realty & Investments Corp.", "a": 135}, {"n": "Billero & Billero Properties", "a": 128}, {"n": "Brown Harris Stevens - Palm Beach", "a": 128}, {"n": "Castelli Real Estate Services", "a": 111}, {"n": "Roberts Real Estate, Inc.", "a": 105}, {"n": "DJ & Lindsey Real Estate", "a": 90}, {"n": "Fannie Hillman + Associates, Inc.", "a": 83}, {"n": "Truman & Co., Inc.", "a": 65}, {"n": "Premier Realty Group", "a": 64}, {"n": "Sand Key Realty", "a": 64}, {"n": "Armor Realty, Inc.", "a": 50}, {"n": "Matchmaker Realty of Alachua County, Inc.", "a": 45}, {"n": "Amelia Island Real Estate Services", "a": 29}, {"n": "CRYE-LEIKE, Realtors", "a": 11}, {"n": "Coastal Realty of the Florida Keys", "a": 8}, {"n": "Lost Tree Realty", "a": 6}]}, "Mississippi": {"total": 2, "region": "Mid-Atlantic & South", "brands": [{"n": "CRYE-LEIKE, Realtors", "a": 633}, {"n": "McIntosh & Assoc.", "a": 15}]}, "Oklahoma": {"total": 6, "region": "South Central", "brands": [{"n": "Chinowth and Cohen Realtors", "a": 777}, {"n": "O'Neal Real Estate, LLC", "a": 109}, {"n": "Parks Jones Realty Co., Inc.", "a": 29}, {"n": "Crossland Real Estate", "a": 14}, {"n": "ReeceNichols Real Estate", "a": 1}, {"n": "CRYE-LEIKE, Realtors of Arkansas, Inc.", "a": null}]}, "Kentucky": {"total": 11, "region": "Mid-Atlantic & South", "brands": [{"n": "WEICHERT, REALTORS® - Ford Brothers", "a": 480}, {"n": "Christie’s International Real Estate Bluegrass", "a": 292}, {"n": "HUFF Realty", "a": 243}, {"n": "Crye*Leike Executive Realty", "a": 207}, {"n": "Semonin Realtors", "a": 192}, {"n": "Homepage Realty", "a": 115}, {"n": "Rector Hayden Realtors", "a": 106}, {"n": "Sibcy Cline Realtors", "a": 59}, {"n": "Sallie Davidson Realtors", "a": 29}, {"n": "Howard Hanna Real Estate Services", "a": 20}, {"n": "CRYE-LEIKE, Realtors of Nashville, Inc.", "a": null}]}, "Pennsylvania": {"total": 13, "region": "Northeast", "brands": [{"n": "Howard Hanna Real Estate Services", "a": 2527}, {"n": "Long & Foster Real Estate Inc.", "a": 520}, {"n": "Davis R. Chant Realtors", "a": 314}, {"n": "Elfant Wissahickon Realtors", "a": 195}, {"n": "Lewith & Freeman Real Estate", "a": 188}, {"n": "WEICHERT, REALTORS®", "a": 164}, {"n": "Classic Properties", "a": 122}, {"n": "Villager Realty, Inc.", "a": 116}, {"n": "FISH Real Estate", "a": 42}, {"n": "Patterson-Schwartz Real Estate", "a": 15}, {"n": "Duffy Real Estate", "a": 8}, {"n": "Mackintosh, Inc., Realtors", "a": 2}, {"n": "The Keyes Company", "a": 1}]}, "Minnesota": {"total": 2, "region": "Midwest", "brands": [{"n": "Edina Realty Home Services", "a": 2269}, {"n": "Fazendin Realtors", "a": 21}]}, "Maryland": {"total": 7, "region": "Mid-Atlantic & South", "brands": [{"n": "Long & Foster Real Estate Inc.", "a": 1687}, {"n": "RLAH @properties", "a": 91}, {"n": "WEICHERT, REALTORS®", "a": 82}, {"n": "Washington Fine Properties, LLC", "a": 52}, {"n": "Mackintosh, Inc., Realtors", "a": 40}, {"n": "Patterson-Schwartz Real Estate", "a": 29}, {"n": "Howard Hanna Real Estate Services", "a": 2}]}, "West Virginia": {"total": 6, "region": "Mid-Atlantic & South", "brands": [{"n": "Howard Hanna Real Estate Services", "a": 148}, {"n": "Long & Foster Real Estate Inc.", "a": 44}, {"n": "Old Dominion Realty", "a": 15}, {"n": "Mackintosh, Inc., Realtors", "a": 3}, {"n": "WEICHERT, REALTORS®", "a": 1}, {"n": "nan", "a": null}]}, "Oregon": {"total": 5, "region": "Mountain & West", "brands": [{"n": "Windermere Real Estate - Seattle", "a": 1228}, {"n": "John L. Scott Real Estate - WA/ID", "a": 1028}, {"n": "Martek Real Estate", "a": 50}, {"n": "John L. Scott Real Estate - OR/CA", "a": null}, {"n": "Windermere Real Estate - Oregon", "a": null}]}, "Idaho": {"total": 4, "region": "Mountain & West", "brands": [{"n": "Windermere Real Estate - Mountain West", "a": 362}, {"n": "Amherst Madison Real Estate Advisors", "a": 251}, {"n": "PureWest Real Estate", "a": 58}, {"n": "John L. Scott Real Estate - WA/ID", "a": 37}]}, "Washington": {"total": 3, "region": "Mountain & West", "brands": [{"n": "Windermere Real Estate - Seattle", "a": 3693}, {"n": "John L. Scott Real Estate - WA/ID", "a": 2210}, {"n": "Windermere Real Estate - Mountain West", "a": 1214}]}, "Massachusetts": {"total": 12, "region": "Northeast", "brands": [{"n": "William Raveis Real Estate", "a": 1552}, {"n": "Lamacchia Realty", "a": 278}, {"n": "Jack Conway", "a": 138}, {"n": "J. Barrett & Company, LLC", "a": 31}, {"n": "Stone House Properties", "a": 27}, {"n": "Advisors Living", "a": 25}, {"n": "Lillian Montalto Signature Properties", "a": 25}, {"n": "Churchill Properties", "a": 23}, {"n": "Andrew Abu Inc. REALTORS", "a": 12}, {"n": "Sandpiper Realty", "a": 7}, {"n": "Christopher J. Barrett, Realtors", "a": 4}, {"n": "Landmark, REALTORS", "a": null}]}, "Delaware": {"total": 2, "region": "Mid-Atlantic & South", "brands": [{"n": "Long & Foster Real Estate Inc.", "a": 489}, {"n": "Patterson-Schwartz Real Estate", "a": 252}]}, "District of Columbia": {"total": 4, "region": "Mid-Atlantic & South", "brands": [{"n": "Long & Foster Real Estate Inc.", "a": 316}, {"n": "Washington Fine Properties, LLC", "a": 132}, {"n": "RLAH @properties", "a": 120}, {"n": "WEICHERT, REALTORS®", "a": 13}]}, "Iowa": {"total": 6, "region": "Midwest", "brands": [{"n": "Iowa Realty", "a": 746}, {"n": "Skogman Realty", "a": 431}, {"n": "Mel Foster Co.", "a": 123}, {"n": "NP Dodge Real Estate", "a": 74}, {"n": "United Real Estate Solutions", "a": 74}, {"n": "Hunziker & Associates, Realtors", "a": 56}]}, "Nebraska": {"total": 2, "region": "Midwest", "brands": [{"n": "NP Dodge Real Estate", "a": 374}, {"n": "United Real Estate Solutions", "a": 13}]}, "Montana": {"total": 3, "region": "Mountain & West", "brands": [{"n": "PureWest Real Estate", "a": 540}, {"n": "Windermere Real Estate - Mountain West", "a": 135}, {"n": "Dahlquist Realtors", "a": 43}]}, "Kansas": {"total": 5, "region": "Midwest", "brands": [{"n": "ReeceNichols Real Estate", "a": 819}, {"n": "McGrew Real Estate", "a": 73}, {"n": "Kirk & Cobb Realtors", "a": 20}, {"n": "J.P. Weigand & Sons, Inc.", "a": 17}, {"n": "Weichert Realtors, Welch & Company", "a": null}]}, "Missouri": {"total": 8, "region": "Midwest", "brands": [{"n": "ReeceNichols Real Estate", "a": 1926}, {"n": "Murney Associates, Realtors", "a": 907}, {"n": "Edge Realty", "a": 208}, {"n": "RedKey Realty Leaders St. Louis", "a": 108}, {"n": "WEICHERT, REALTORS® - The Griffin Company", "a": 51}, {"n": "Janet McAfee Real Estate", "a": 38}, {"n": "Weichert Realtors, Welch & Company", "a": null}, {"n": "ReeceNichols Real Estate - Southern Missouri", "a": null}]}, "Colorado": {"total": 12, "region": "Mountain & West", "brands": [{"n": "Slifer Smith & Frampton Real Estate", "a": 753}, {"n": "The Group Real Estate", "a": 559}, {"n": "Kentwood Real Estate", "a": 278}, {"n": "Bray Real Estate", "a": 269}, {"n": "The Wells Group of Durango, LLC", "a": 186}, {"n": "Platinum Group, REALTORS", "a": 149}, {"n": "Bluebird Real Estate", "a": 87}, {"n": "Galles Properties", "a": 87}, {"n": "WK Real Estate", "a": 83}, {"n": "PorchLight Real Estate Group", "a": 68}, {"n": "Breckenridge Associates Real Estate", "a": 56}, {"n": "The Keyes Company", "a": 1}]}, "South Dakota": {"total": 1, "region": "Midwest", "brands": [{"n": "United Real Estate Solutions", "a": 11}]}, "Texas": {"total": 23, "region": "South Central", "brands": [{"n": "Ebby Halliday Companies", "a": 1847}, {"n": "Nan & Co Properties", "a": 828}, {"n": "JBGoodwin, REALTORS", "a": 664}, {"n": "Dave Perry Miller, an Ebby Halliday Company", "a": 547}, {"n": "Allie Beth Allman & Associates", "a": 544}, {"n": "Phyllis Browning Company", "a": 426}, {"n": "ClearView Realty, LLC", "a": 400}, {"n": "Moreland Properties", "a": 390}, {"n": "Williams Trew, an Ebby Halliday Company", "a": 257}, {"n": "Greenwood King Properties", "a": 204}, {"n": "Mayben Realty", "a": 197}, {"n": "Spyglass Realty", "a": 150}, {"n": "Kelly, Realtors", "a": 138}, {"n": "AG Real Estate & Associates", "a": 119}, {"n": "WestMark, Realtors®", "a": 113}, {"n": "WEICHERT, REALTORS® - The Murray Group", "a": 83}, {"n": "Group One Real Estate", "a": 60}, {"n": "Bishop Realtor Group", "a": 56}, {"n": "Bayou Realtors", "a": 54}, {"n": "WEICHERT, REALTORS®", "a": 21}, {"n": "Cloud Real Estate", "a": 19}, {"n": "Edmonson & Associates Inc., Realtors", "a": 8}, {"n": "JBGoodwin, Realtors - San Antonio", "a": null}]}, "Rhode Island": {"total": 3, "region": "Northeast", "brands": [{"n": "Residential Properties Ltd.", "a": 132}, {"n": "William Raveis Real Estate", "a": 76}, {"n": "Hogan Associates Christie's International Real Estate", "a": 70}]}, "Arizona": {"total": 2, "region": "Mountain & West", "brands": [{"n": "Long Realty Company - Arizona", "a": 1411}, {"n": "Arizona Best Real Estate", "a": 62}]}, "Louisiana": {"total": 5, "region": "South Central", "brands": [{"n": "Reve | Realtors", "a": 383}, {"n": "Flavin Realty", "a": 221}, {"n": "Diamond Realty & Associates", "a": 220}, {"n": "Burns and Company, Inc., Realtors", "a": 62}, {"n": "PINO & Associates", "a": null}]}, "Utah": {"total": 2, "region": "Mountain & West", "brands": [{"n": "Windermere Real Estate - Southwest", "a": 76}, {"n": "Chapman-Richards & Associates, Inc.", "a": 25}]}, "Hawaii": {"total": 2, "region": "Mountain & West", "brands": [{"n": "Hawaii Life Real Estate Brokers", "a": 237}, {"n": "Locations, LLC", "a": 212}]}, "New Mexico": {"total": 3, "region": "Mountain & West", "brands": [{"n": "Santa Fe Properties", "a": 103}, {"n": "Vista Encantada REALTORS, LLC", "a": 34}, {"n": "High Country Real Estate Services", "a": 6}]}, "Alaska": {"total": 1, "region": "Mountain & West", "brands": [{"n": "Jack White Real Estate", "a": 392}]}};
+
+const stateSel=document.getElementById('stateSelect');
+const states=Object.keys(PARTNERS).sort();
+states.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;stateSel.appendChild(o);});
+
+stateSel.addEventListener('change',()=>{if(stateSel.value)renderState(stateSel.value);});
+
+const LOGO_BASE='/logos/';            // repo public/logos/  -> served at /logos/
+const LOGO_EXT=['jpg','png','webp','svg']; // try in this order, mixed formats OK
+function slugify(name){
+  return name.toLowerCase()
+    .replace(/&/g,'and')
+    .replace(/[\u2019\u2018']/g,'')
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'');
+}
+// img cascades through extensions on error; when all fail it removes itself,
+// revealing the styled text wordmark underneath. Page never shows a broken image.
+function logoCard(brand,state,i){
+  const meta = brand.a ? brand.a.toLocaleString('en-US')+' agents' : 'Network partner';
+  const st = state ? '<div class="state-tag">'+state+'</div>' : '';
+  const slug = slugify(brand.n);
+  const first = LOGO_BASE+slug+'.'+LOGO_EXT[0];
+  const onerr = "var x=this,e=JSON.parse(x.dataset.ext),n=++x.dataset.i|0;"
+              + "if(n<e.length){x.src='"+LOGO_BASE+slug+".'+e[n];}else{x.parentNode.classList.add('has-text');x.remove();}";
+  const img = '<img class="logo-img" src="'+first+'" alt="'+brand.n+' logo" '
+            + 'data-ext='+"'"+JSON.stringify(LOGO_EXT)+"'"+' data-i="0" '
+            + 'onerror="'+onerr+'">';
+  return '<div class="logo-card" style="animation-delay:'+(i*0.03)+'s">'
+       + img
+       + '<div class="wordmark">'+brand.n+'</div>'
+       + '<div class="meta">'+meta+'</div>'+st+'</div>';
+}
+function renderState(state){
+  const d=PARTNERS[state];const box=document.getElementById('networkResult');
+  let h='<div class="nr-head"><h3>Trusted brokerages in '+state+'</h3><span class="count">'+d.total+' brokerage'+(d.total!==1?'s':'')+' in our network</span></div>';
+  h+='<div class="logo-grid">'+d.brands.map((b,i)=>logoCard(b,'',i)).join('')+'</div>';
+  box.innerHTML=h;
+}
+
+// Calc A
+const lp=document.getElementById('listPrice'),sRes=document.getElementById('savingsResult'),sBig=document.getElementById('savingsBig');
+lp.addEventListener('input',()=>{
+  let raw=lp.value.replace(/[^0-9]/g,'');
+  lp.value=raw?'$'+parseInt(raw,10).toLocaleString('en-US'):'';
+  const v=parseInt(raw||'0',10);
+  if(v>0){sBig.textContent='$'+Math.round(v*0.005).toLocaleString('en-US');sRes.classList.add('show');}else{sRes.classList.remove('show');}
+});
+
+// Calc B
+async function geocode(q){const u='https://nominatim.openstreetmap.org/search?format=json&limit=1&q='+encodeURIComponent(q);const r=await fetch(u,{headers:{'Accept':'application/json'}});const j=await r.json();return j.length?{lat:parseFloat(j[0].lat),lon:parseFloat(j[0].lon)}:null;}
+function haversine(a,b){const R=3958.8,t=x=>x*Math.PI/180;const dLat=t(b.lat-a.lat),dLon=t(b.lon-a.lon);const h=Math.sin(dLat/2)**2+Math.cos(t(a.lat))*Math.cos(t(b.lat))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+async function runDistance(){
+  const from=document.getElementById('fromCity').value.trim(),to=document.getElementById('toCity').value.trim();
+  const dRes=document.getElementById('distResult'),dBig=document.getElementById('distBig'),dSub=document.getElementById('distSub');
+  if(!from||!to){return;}
+  dBig.textContent='Calculating…';dRes.classList.add('show');dSub.textContent='';
+  try{const[a,b]=await Promise.all([geocode(from),geocode(to)]);
+    if(a&&b){const mi=haversine(a,b);dBig.innerHTML=Math.round(mi).toLocaleString('en-US')+' <span style="font-size:1.1rem">miles</span>';dSub.textContent='straight-line distance from '+from+' to '+to;}
+    else{dBig.textContent='—';dSub.textContent='Couldn’t locate one of those cities — check spelling.';}
+  }catch(e){dBig.textContent='—';dSub.textContent='Distance lookup unavailable right now.';}
+}
+
+// Lead
+function submitLead(){
+  const f=document.getElementById('fName').value.trim(),email=document.getElementById('email').value.trim();
+  if(!f||!email){alert('Please add at least your first name and email.');return;}
+  document.getElementById('leadForm').style.display='none';
+  document.getElementById('leadSuccess').classList.add('show');
+}
+</script>
