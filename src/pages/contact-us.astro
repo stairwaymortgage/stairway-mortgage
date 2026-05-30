@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Contact Us — Stairway Mortgage" description="Talk to our team. Schedule a call or reach us at (954) 993-1625.">
+  <section class="section relative overflow-hidden">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">Get in Touch</span>
+        <h1 class="display-xl mt-6 mb-6">Talk to <em class="italic text-[var(--color-blue)]">our team</em>.</h1>
+        <p class="lede max-w-xl mx-auto mb-8">Schedule a call, ask a question, or start your pre-approval. Available 7 days a week.</p>
+        <div class="card max-w-lg mx-auto p-8">
+          <div class="mb-4"><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" placeholder="First" class="w-full p-3 border border-[var(--color-bone)] rounded-lg" /></div>
+          <div class="mb-4"><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" placeholder="you@email.com" class="w-full p-3 border border-[var(--color-bone)] rounded-lg" /></div>
+          <div class="mb-4"><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">How can we help?</label><textarea placeholder="Tell us about your situation..." class="w-full p-3 border border-[var(--color-bone)] rounded-lg h-24"></textarea></div>
+          <button class="btn btn-blue w-full text-center" type="button">Send Message</button>
+          <p class="text-[11px] text-[var(--color-mute)] mt-3 text-center">Or call: <a href="tel:+19549931625" class="text-[var(--color-blue)] font-semibold">(954) 993-1625</a> <!-- TODO: Wire to /api/lead --></p>
+        </div>
+        <p class="mono text-[11px] text-[var(--color-mute)] mt-6">NMLS #1072866</p>
+        <div class="flex flex-wrap gap-3 justify-center mt-10">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
