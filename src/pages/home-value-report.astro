@@ -1,20 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Home Value Report — Stairway Mortgage" description="See what your home is worth today. Instant property valuation.">
-  <section class="section relative overflow-hidden">
+<Layout title="Home Value Report — Stairway Mortgage" description="See what your home is worth today. Free equity report from our team — no obligation.">
+
+  <section class="section relative overflow-hidden hvr-hero">
     <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Tools · Home Value Report</span>
-        <h1 class="display-xl mt-6 mb-6">What is your home <em class="italic text-[var(--color-blue)]">worth</em>?</h1>
-        <p class="lede max-w-xl mx-auto mb-8">Get an estimate of your home value — then talk to our team about what you can do with that equity.</p>
-        <div class="card max-w-lg mx-auto p-8 text-center">
-          <p class="text-[14px] text-[var(--color-mute)]"><!-- TODO: Wire to valuation API --> Talk to our team for a free equity review.</p>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <span class="eyebrow eyebrow-blue mb-6">Tools · Home Value</span>
+          <h1 class="display-lg mt-5 mb-5">What is your home <em class="italic text-[var(--color-blue)]">worth today</em>?</h1>
+          <p class="lede max-w-xl mb-8">Get a free equity report from our team. We analyze comparable sales, market trends, and your specific property — then show you what you can do with that equity.</p>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Comparable sales analysis for your area</span></div>
+            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">How much equity you can access</span></div>
+            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Refinance, HELOC, and cash-out options</span></div>
+          </div>
+          <p class="mono text-[11px] text-[var(--color-mute)]">NMLS #1072866 · Free, no obligation</p>
         </div>
-        <div class="flex flex-wrap gap-3 justify-center mt-10">
-          <a href="/contact-us/" class="btn btn-ghost text-base px-6 py-3.5">Talk to Our Team</a>
+        <div class="reveal" style="transition-delay:100ms;">
+          <div class="card p-8 lg:p-10" id="hvr-wrap">
+            <h2 class="font-display text-xl mb-1">Request your free report</h2>
+            <p class="text-[14px] text-[var(--color-mute)] mb-6">Our team will prepare a personalized equity analysis.</p>
+            <div class="space-y-4" id="hvr-form">
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" id="hvr-name" placeholder="First" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" id="hvr-email" placeholder="you@email.com" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Property address</label><input type="text" id="hvr-address" placeholder="123 Main St, City, State" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <button class="btn btn-blue w-full text-center text-base py-3.5" type="button" id="hvr-submit">Get My Report</button>
+              <p class="text-[11px] text-[var(--color-mute)] text-center">Free, no obligation. We do not sell your information.</p>
+            </div>
+            <div class="text-center py-10" id="hvr-success" style="display:none;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <p class="font-display text-xl mb-2">Request received.</p>
+              <p class="text-[14px] text-[var(--color-mute)]">Our team will prepare your equity report and reach out within 24 hours.</p>
+            </div>
+            <!-- TODO: Wire to /api/lead -->
+          </div>
         </div>
       </div>
     </div>
   </section>
+
 </Layout>
+
+<style>.hvr-hero{position:relative;}.hvr-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}</style>
+
+<script is:inline>
+(function(){var b=document.getElementById('hvr-submit');if(!b)return;b.addEventListener('click',function(){var n=document.getElementById('hvr-name').value.trim(),e=document.getElementById('hvr-email').value.trim();if(!n||!e){alert('Please enter your name and email.');return;}document.getElementById('hvr-form').style.display='none';document.getElementById('hvr-success').style.display='block';});})();
+</script>

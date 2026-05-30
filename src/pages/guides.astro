@@ -1,17 +1,76 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const guides = [
+  { num: '01', title: 'Smart Stewards', desc: 'Credit building, education planning, and financial foundation.', stage: 'College Planning' },
+  { num: '02', title: 'First-Time Home Buyer', desc: 'Pre-approval, offers, closing — from nervous to confident.', stage: 'The First Door' },
+  { num: '03', title: 'Homeowner', desc: 'Equity strategies, refinancing, and making your home work.', stage: 'Equity at Work' },
+  { num: '04', title: 'Senior Homeowner 55+', desc: 'Reverse mortgages, downsizing, retirement equity.', stage: 'The Bridge' },
+  { num: '05', title: 'First-Time Investor', desc: 'Cash flow, financing, and your first rental property.', stage: 'Consumer to Owner' },
+  { num: '06', title: 'Active Investor', desc: 'Leverage, scaling, and portfolio optimization.', stage: 'Scaling' },
+  { num: '07', title: 'Passive Investor', desc: 'Passive income, syndications, and hands-off strategies.', stage: 'Allocator' },
+  { num: '08', title: 'Legacy Angel', desc: 'Philanthropy, wealth transfer, and generational giving.', stage: 'The Summit' },
+];
 ---
-<Layout title="Free Guides — Stairway Mortgage" description="Step-by-step ebooks for every stage of your real estate journey.">
-  <section class="section relative overflow-hidden">
+<Layout title="Free Guides — Stairway Mortgage" description="The 8-ebook Stairway Roadmap. From first credit card to lasting legacy — one guide for every stage. Free.">
+
+  <section class="section relative overflow-hidden guides-hero">
     <div class="container-page">
       <div class="max-w-3xl mx-auto text-center reveal">
         <span class="eyebrow eyebrow-blue mb-6">Learn · Free Guides</span>
-        <h1 class="display-xl mt-6 mb-6">Free guides for <em class="italic text-[var(--color-blue)]">every stage</em>.</h1>
-        <p class="lede max-w-xl mx-auto mb-8">The 8-ebook Stairway Roadmap — from first credit card to lasting legacy. Free.</p>
-        <div class="flex flex-wrap gap-3 justify-center mt-10">
-          <a href="https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c" target="_blank" rel="noopener" class="btn btn-blue btn-arrow text-base px-6 py-3.5">Get the Stairway Roadmap</a>
-        </div>
+        <h1 class="display-lg mt-6 mb-4">The Stairway <em class="italic text-[var(--color-blue)]">Roadmap</em>.</h1>
+        <p class="lede max-w-xl mx-auto mb-10">Eight ebooks. One journey. From building credit at 18 to building legacy — each guide walks you through a complete stage. All free.</p>
+        <a href="https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c" target="_blank" rel="noopener" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Download the Roadmap — Free</a>
       </div>
     </div>
   </section>
+
+  <section class="section-tight bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow eyebrow-rust mb-5">8 Guides, 8 Stages</span>
+        <h2 class="display-md mt-5">One guide for <em class="italic font-light">every stage</em>.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {guides.map((g, i) => (
+          <div class="card reveal" style={`transition-delay:${i * 60}ms;`}>
+            <span class="card-step-num mono block mb-3">{g.num}</span>
+            <h3 class="font-display text-lg font-medium mb-1">{g.title}</h3>
+            <span class="mono text-[10px] text-[var(--color-rust)] uppercase tracking-wider block mb-2">{g.stage}</span>
+            <p class="text-[13px] text-[var(--color-mute)]">{g.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10 reveal">
+        <a href="https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c" target="_blank" rel="noopener" class="btn btn-primary btn-arrow text-base px-7 py-3.5">Get All 8 Guides — Free</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark text-center">
+    <div class="container-page reveal">
+      <h2 class="display-md text-[var(--color-paper)] mb-4">Ready to start <em class="italic font-light text-[var(--color-blue-tint)]">climbing</em>?</h2>
+      <div class="flex flex-wrap gap-3 justify-center mt-8">
+        <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">See My Options</a>
+        <a href="/contact-us/" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Talk to Our Team</a>
+      </div>
+      <p class="mono text-[11px] text-[rgba(250,250,247,.4)] mt-8">NMLS #1072866</p>
+    </div>
+  </section>
+
 </Layout>
+
+<style>
+  .guides-hero{position:relative;}.guides-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}
+</style>
+
+<script is:inline>
+(function(){
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  }
+})();
+</script>

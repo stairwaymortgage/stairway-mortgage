@@ -1,22 +1,135 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Discovery Quiz — Stairway Mortgage" description="Find your top financial priorities. Quick quiz to match you with the right path.">
-  <section class="section relative overflow-hidden">
+<Layout title="Discovery Quiz — Stairway Mortgage" description="Find your top financial priorities. 5 quick questions to match you with the right mortgage path, programs, and next step.">
+
+  <section class="section relative overflow-hidden dq-hero">
     <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Tools</span>
-        <h1 class="display-xl mt-6 mb-6">Find your <em class="italic text-[var(--color-blue)]">path</em>.</h1>
-        <p class="lede max-w-xl mx-auto mb-8">Answer a few quick questions and we match you with the right mortgage path.</p>
-        <div class="card max-w-lg mx-auto p-8 text-center">
-          <p class="font-display text-xl mb-4">Quiz launching soon</p>
-          <p class="text-[14px] text-[var(--color-mute)]"><!-- TODO: Build interactive quiz --></p>
+      <div class="max-w-2xl mx-auto text-center">
+        <span class="eyebrow eyebrow-blue mb-6">Find Your Path</span>
+        <h1 class="display-lg mt-6 mb-4">Which step is <em class="italic text-[var(--color-blue)]">yours</em>?</h1>
+        <p class="lede max-w-xl mx-auto mb-10">5 quick questions. No login. We match you with the right path, programs, and next step.</p>
+      </div>
+
+      <div class="dq-card" id="dq-card">
+        <div class="dq-progress"><div class="dq-progress__fill" id="dq-fill" style="width:20%"></div></div>
+
+        <div class="dq-step is-active" data-q="1">
+          <p class="dq-q font-display">What is your main goal right now?</p>
+          <div class="dq-opts">
+            <button class="dq-opt" data-val="buy">Buy my first home</button>
+            <button class="dq-opt" data-val="refi">Lower my rate or tap equity</button>
+            <button class="dq-opt" data-val="invest">Buy an investment property</button>
+            <button class="dq-opt" data-val="build">Build or renovate a home</button>
+            <button class="dq-opt" data-val="plan">Plan for retirement (55+)</button>
+          </div>
         </div>
-        <div class="flex flex-wrap gap-3 justify-center mt-10">
-          <a href="/the-8-steps/" class="btn btn-blue btn-arrow text-base px-6 py-3.5">See the 8 Steps</a>
-          <a href="/contact-us/" class="btn btn-ghost text-base px-6 py-3.5">Talk to Our Team</a>
+
+        <div class="dq-step" data-q="2">
+          <p class="dq-q font-display">What is your timeline?</p>
+          <div class="dq-opts">
+            <button class="dq-opt" data-val="now">Ready now (0-3 months)</button>
+            <button class="dq-opt" data-val="soon">Soon (3-6 months)</button>
+            <button class="dq-opt" data-val="exploring">Just exploring (6+ months)</button>
+          </div>
+        </div>
+
+        <div class="dq-step" data-q="3">
+          <p class="dq-q font-display">How would you describe your income?</p>
+          <div class="dq-opts">
+            <button class="dq-opt" data-val="w2">W-2 employee</button>
+            <button class="dq-opt" data-val="self">Self-employed or business owner</button>
+            <button class="dq-opt" data-val="mixed">Mixed (W-2 + side income)</button>
+            <button class="dq-opt" data-val="retired">Retired or fixed income</button>
+          </div>
+        </div>
+
+        <div class="dq-step" data-q="4">
+          <p class="dq-q font-display">What matters most to you?</p>
+          <div class="dq-opts">
+            <button class="dq-opt" data-val="rate">The lowest possible rate</button>
+            <button class="dq-opt" data-val="speed">Speed — I need to move fast</button>
+            <button class="dq-opt" data-val="payment">The lowest monthly payment</button>
+            <button class="dq-opt" data-val="guidance">Expert guidance — I have questions</button>
+          </div>
+        </div>
+
+        <div class="dq-step" data-q="5">
+          <p class="dq-q font-display">Have you been pre-approved yet?</p>
+          <div class="dq-opts">
+            <button class="dq-opt" data-val="yes">Yes, I have a pre-approval</button>
+            <button class="dq-opt" data-val="no">Not yet</button>
+            <button class="dq-opt" data-val="expired">I had one but it expired</button>
+          </div>
+        </div>
+
+        <div class="dq-step dq-result" data-q="result">
+          <div class="dq-result__icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <p class="dq-result__title font-display" id="dq-title">Your recommended path</p>
+          <p class="dq-result__desc" id="dq-desc">Based on your answers, here is your best next step.</p>
+          <div class="dq-result__tags" id="dq-tags"></div>
+          <div class="dq-result__ctas">
+            <a id="dq-cta" href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">See My Options</a>
+            <a href="/contact-us/" class="btn btn-ghost text-base px-6 py-3.5">Talk to Our Team</a>
+            <a href="tel:+19549931625" class="dq-phone mono">Or call (954) 993-1625</a>
+          </div>
+          <button class="dq-restart mono" id="dq-restart">Take the quiz again</button>
         </div>
       </div>
+
+      <p class="mono text-[11px] text-[var(--color-mute)] text-center mt-8">NMLS #1072866</p>
     </div>
   </section>
+
 </Layout>
+
+<style>
+  .dq-hero{position:relative;}.dq-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}
+  .dq-card{max-width:640px;margin:0 auto;background:var(--color-paper);border:1px solid var(--color-bone);border-radius:20px;padding:clamp(24px,5vw,48px);box-shadow:0 20px 60px -20px rgba(10,14,26,0.1);}
+  .dq-progress{height:4px;background:var(--color-bone);border-radius:2px;margin-bottom:2rem;overflow:hidden;}
+  .dq-progress__fill{height:100%;background:var(--color-blue);border-radius:2px;transition:width 0.4s cubic-bezier(0.4,0,0.2,1);}
+  .dq-step{display:none;}.dq-step.is-active{display:block;}
+  .dq-q{font-size:clamp(20px,3vw,28px);font-weight:400;line-height:1.2;margin-bottom:1.5rem;text-align:center;}
+  .dq-opts{display:flex;flex-direction:column;gap:10px;}
+  .dq-opt{width:100%;padding:16px 20px;background:var(--color-paper-tint);border:1.5px solid var(--color-bone);border-radius:12px;font-family:var(--font-body);font-size:15px;font-weight:500;color:var(--color-ink);cursor:pointer;text-align:left;transition:all 0.15s;}
+  .dq-opt:hover{border-color:var(--color-blue);background:var(--color-blue-tint);transform:translateY(-1px);}
+  .dq-result{text-align:center;}
+  .dq-result__icon{margin-bottom:1rem;}
+  .dq-result__title{font-size:clamp(22px,3.5vw,32px);margin-bottom:0.5rem;}
+  .dq-result__desc{font-size:15px;color:var(--color-mute);margin-bottom:1.5rem;max-width:480px;margin-left:auto;margin-right:auto;}
+  .dq-result__tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:2rem;}
+  .dq-result__tags span{display:inline-block;padding:6px 14px;background:var(--color-blue-tint);border:1px solid var(--color-blue);border-radius:20px;font-size:13px;font-weight:500;color:var(--color-blue);}
+  .dq-result__ctas{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .dq-phone{font-size:12px;color:var(--color-mute);text-decoration:none;margin-top:4px;}.dq-phone:hover{color:var(--color-blue);}
+  .dq-restart{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-mute);background:none;border:none;cursor:pointer;margin-top:1.5rem;padding:8px;}.dq-restart:hover{color:var(--color-blue);}
+  @media(prefers-reduced-motion:reduce){.dq-progress__fill{transition:none;}.dq-opt{transition:none;}}
+</style>
+
+<script is:inline>
+(function(){
+  var card=document.getElementById('dq-card');if(!card)return;
+  var steps=card.querySelectorAll('.dq-step'),fill=document.getElementById('dq-fill'),ans={},total=5;
+  function show(q){steps.forEach(function(s){s.classList.remove('is-active');});var t=card.querySelector('[data-q="'+q+'"]');if(t)t.classList.add('is-active');fill.style.width=(q==='result'?'100':Math.round(parseInt(q)/total*100))+'%';}
+  card.addEventListener('click',function(e){var o=e.target.closest('.dq-opt');if(!o)return;var s=o.closest('.dq-step'),n=parseInt(s.dataset.q);ans['q'+n]=o.dataset.val;if(n<total)show(n+1);else{compute();show('result');}});
+  document.getElementById('dq-restart').addEventListener('click',function(){ans={};show(1);});
+  function compute(){
+    var g=ans.q1||'buy',tl=ans.q2||'exploring',inc=ans.q3||'w2',pri=ans.q4||'guidance',pre=ans.q5||'no';
+    var title='',desc='',tags=[],cl='See My Options',ch='/same-day-approval/';
+    if(g==='buy'){title='You are ready to buy.';desc='Get pre-approved so your offer is taken seriously the moment you find the right home.';cl='Get Pre-Approved';ch='/same-day-approval/';tags.push('Home purchase');}
+    else if(g==='refi'){title='Refinancing could save you money.';desc='Let us run the break-even math and show you exactly how much.';cl='See Refi Options';ch='/refinance-or-heloc-journey/';tags.push('Refinance / HELOC');}
+    else if(g==='invest'){title='Your investor path is ready.';desc='Rental-income loans and portfolio strategies built for how investors operate.';cl='See Investor Loans';ch='/build-a-wealth-plan-journey/';tags.push('Investment property');}
+    else if(g==='build'){title='Your build or renovation, financed.';desc='Construction-to-permanent and renovation programs — one close, one team.';cl='See Build Options';ch='/build-a-house-journey/';tags.push('Construction / renovation');}
+    else if(g==='plan'){title='Your equity can fund the next chapter.';desc='Reverse mortgages, downsizing, and retirement equity strategies.';cl='See 55+ Options';ch='/reverse-mortgage-journey/';tags.push('Retirement planning');}
+    if(inc==='self')tags.push('Flexible-income programs');else if(inc==='mixed')tags.push('Mixed-income qualification');else if(inc==='retired')tags.push('Fixed-income friendly');
+    if(tl==='now')tags.push('Ready now');else if(tl==='soon')tags.push('3-6 month timeline');
+    if(pri==='rate')tags.push('Rate-focused');else if(pri==='speed')tags.push('Fast close');else if(pri==='payment')tags.push('Payment-focused');
+    if(pre==='no'||pre==='expired')tags.push('Pre-approval needed');
+    document.getElementById('dq-title').textContent=title;
+    document.getElementById('dq-desc').textContent=desc;
+    document.getElementById('dq-tags').innerHTML=tags.map(function(t){return '<span>'+t+'</span>';}).join('');
+    var cta=document.getElementById('dq-cta');cta.textContent=cl;cta.href=ch;
+  }
+})();
+</script>

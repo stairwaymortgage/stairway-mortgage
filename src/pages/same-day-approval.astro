@@ -1,25 +1,69 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Same-Day Approval — Stairway Mortgage" description="Pre-approved in as fast as 24 hours. 300+ lenders. No credit pull to start.">
-  <section class="section relative overflow-hidden">
+<Layout title="Same-Day Approval — Stairway Mortgage" description="Pre-approved in as fast as 24 hours. 300+ lenders competing for your rate. No credit pull to start.">
+
+  <!-- HERO -->
+  <section class="section relative overflow-hidden sda-hero">
     <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Get Started</span>
-        <h1 class="display-xl mt-6 mb-6">See your options in <em class="italic text-[var(--color-blue)]">about a minute</em>.</h1>
-        <p class="lede max-w-xl mx-auto mb-8">Answer a few questions and our team matches you with the best programs from 300+ lenders.</p>
-        <div class="card max-w-lg mx-auto p-8">
-          <div class="mb-4"><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" placeholder="First" class="w-full p-3 border border-[var(--color-bone)] rounded-lg" /></div>
-          <div class="mb-4"><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" placeholder="you@email.com" class="w-full p-3 border border-[var(--color-bone)] rounded-lg" /></div>
-          <div class="mb-4"><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Phone</label><input type="tel" placeholder="(555) 000-0000" class="w-full p-3 border border-[var(--color-bone)] rounded-lg" /></div>
-          <button class="btn btn-blue w-full text-center" type="button">Get Pre-Approved</button>
-          <p class="text-[11px] text-[var(--color-mute)] mt-3 text-center">No obligation. Not a commitment to lend. <!-- TODO: Wire to /api/lead --></p>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <span class="eyebrow eyebrow-blue mb-6">Get Pre-Approved</span>
+          <h1 class="display-lg mt-5 mb-5">See your options in <em class="italic text-[var(--color-blue)]">about a minute</em>.</h1>
+          <p class="lede max-w-xl mb-8">Answer a few questions and our team matches you with the best programs from 300+ lenders. Pre-approval as fast as 24 hours.</p>
+          <div class="grid grid-cols-3 gap-4 mb-8">
+            <div><p class="font-display text-2xl leading-none mb-1">300+</p><p class="text-[11px] uppercase tracking-wider text-[var(--color-mute)]">Lenders</p></div>
+            <div><p class="font-display text-2xl leading-none mb-1">24hr</p><p class="text-[11px] uppercase tracking-wider text-[var(--color-mute)]">Approval</p></div>
+            <div><p class="font-display text-2xl leading-none mb-1">$0</p><p class="text-[11px] uppercase tracking-wider text-[var(--color-mute)]">Credit pull to start</p></div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Cash-backed offers that win bidding wars</span></div>
+            <div class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Available 7 days a week, including evenings</span></div>
+            <div class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">One application, 300+ lenders competing</span></div>
+          </div>
+          <p class="mono text-[11px] text-[var(--color-mute)] mt-6">NMLS #1072866</p>
         </div>
-        <p class="mono text-[11px] text-[var(--color-mute)] mt-6">NMLS #1072866</p>
-        <div class="flex flex-wrap gap-3 justify-center mt-10">
-          
+
+        <!-- FORM -->
+        <div class="reveal" style="transition-delay:100ms;">
+          <div class="card p-8 lg:p-10" id="sda-form-wrap">
+            <h2 class="font-display text-xl mb-1">Start your pre-approval</h2>
+            <p class="text-[14px] text-[var(--color-mute)] mb-6">Takes about 60 seconds. No credit pull.</p>
+            <div class="space-y-4" id="sda-form">
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" id="sda-name" placeholder="First" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" id="sda-email" placeholder="you@email.com" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Phone</label><input type="tel" id="sda-phone" placeholder="(555) 000-0000" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <button class="btn btn-blue w-full text-center text-base py-3.5" type="button" id="sda-submit">Get Pre-Approved</button>
+              <p class="text-[11px] text-[var(--color-mute)] text-center">No obligation. Not a commitment to lend.</p>
+            </div>
+            <div class="text-center py-10" id="sda-success" style="display:none;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <p class="font-display text-xl mb-2">You are all set.</p>
+              <p class="text-[14px] text-[var(--color-mute)]">Our team will reach out within 24 hours. Prefer to talk now?</p>
+              <a href="tel:+19549931625" class="btn btn-ghost mt-4 text-base">Call (954) 993-1625</a>
+            </div>
+            <!-- TODO: Wire to /api/lead → HubSpot/Supabase -->
+          </div>
         </div>
       </div>
     </div>
   </section>
+
 </Layout>
+
+<style>
+  .sda-hero{position:relative;}.sda-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}
+</style>
+
+<script is:inline>
+(function(){
+  var btn=document.getElementById('sda-submit');if(!btn)return;
+  btn.addEventListener('click',function(){
+    var n=document.getElementById('sda-name').value.trim();
+    var e=document.getElementById('sda-email').value.trim();
+    if(!n||!e){alert('Please enter your name and email.');return;}
+    document.getElementById('sda-form').style.display='none';
+    document.getElementById('sda-success').style.display='block';
+  });
+})();
+</script>

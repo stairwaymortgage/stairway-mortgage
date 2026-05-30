@@ -1,20 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Private Home Search — Stairway Mortgage" description="MLS access, no spam. Search homes privately.">
-  <section class="section relative overflow-hidden">
+<Layout title="Private Home Search — Stairway Mortgage" description="Search homes privately. No spam, no lead-selling. Full MLS access with pre-approval ready.">
+
+  <section class="section relative overflow-hidden phs-hero">
     <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Tools · Private Home Search</span>
-        <h1 class="display-xl mt-6 mb-6">Search homes <em class="italic text-[var(--color-blue)]">privately</em>.</h1>
-        <p class="lede max-w-xl mx-auto mb-8">Full MLS access without the spam. Get pre-approved so you are ready when you find the right home.</p>
-        <div class="card max-w-lg mx-auto p-8 text-center">
-          <p class="text-[14px] text-[var(--color-mute)]"><!-- TODO: Wire MLS search --> Private search coming soon. Get pre-approved in the meantime.</p>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <span class="eyebrow eyebrow-blue mb-6">Tools · Home Search</span>
+          <h1 class="display-lg mt-5 mb-5">Search homes <em class="italic text-[var(--color-blue)]">privately</em>.</h1>
+          <p class="lede max-w-xl mb-8">Full MLS access without the spam, the pop-ups, or your information sold to 10 agents. Browse listings on your terms — when you find the one, your pre-approval is already in hand.</p>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">No ads, no lead-selling, no spam calls</span></div>
+            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Real MLS data, updated daily</span></div>
+            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Get pre-approved first so you are ready to offer</span></div>
+          </div>
+          <p class="mono text-[11px] text-[var(--color-mute)]">NMLS #1072866</p>
         </div>
-        <div class="flex flex-wrap gap-3 justify-center mt-10">
-          <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-6 py-3.5">Get Pre-Approved First</a>
+        <div class="reveal" style="transition-delay:100ms;">
+          <div class="card p-8 lg:p-10" id="phs-wrap">
+            <h2 class="font-display text-xl mb-1">Get private search access</h2>
+            <p class="text-[14px] text-[var(--color-mute)] mb-6">Tell us where you are looking. We set up your private portal.</p>
+            <div class="space-y-4" id="phs-form">
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" id="phs-name" placeholder="First" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" id="phs-email" placeholder="you@email.com" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Where are you looking?</label><input type="text" id="phs-location" placeholder="City, State or ZIP" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <button class="btn btn-blue w-full text-center text-base py-3.5" type="button" id="phs-submit">Set Up My Search</button>
+              <p class="text-[11px] text-[var(--color-mute)] text-center">Free. No spam. We do not sell your data.</p>
+            </div>
+            <div class="text-center py-10" id="phs-success" style="display:none;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <p class="font-display text-xl mb-2">You are all set.</p>
+              <p class="text-[14px] text-[var(--color-mute)]">We will send your private search portal link within 24 hours.</p>
+            </div>
+            <!-- TODO: Wire to /api/lead + MLS portal setup -->
+          </div>
         </div>
       </div>
     </div>
   </section>
+
 </Layout>
+
+<style>.phs-hero{position:relative;}.phs-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}</style>
+
+<script is:inline>
+(function(){var b=document.getElementById('phs-submit');if(!b)return;b.addEventListener('click',function(){var n=document.getElementById('phs-name').value.trim(),e=document.getElementById('phs-email').value.trim();if(!n||!e){alert('Please enter your name and email.');return;}document.getElementById('phs-form').style.display='none';document.getElementById('phs-success').style.display='block';});})();
+</script>
