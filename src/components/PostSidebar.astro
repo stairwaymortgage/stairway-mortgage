@@ -1,0 +1,124 @@
+---
+/*  PostSidebar — reproduces the old WP blog sidebar natively.
+    Layers (top→bottom): blog search · newsletter · Stairway Academy e-book ·
+    Browse by Category · Advisory Topics (categories) · Top Topics (tags).
+    The three dropdowns are wired to the REAL taxonomy (11 categories / 79 tags)
+    and navigate to crawlable /category/{slug}/ and /tag/{slug}/ archives.    */
+import taxonomy from '../data/taxonomy.json';
+
+const categories = Object.entries(taxonomy.categories)
+  // strip the leading "N. " ordering prefix for display, keep slug
+  .map(([slug, name]) => ({ slug, name: name.replace(/^\d+\.\s*/, '') }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const tags = Object.entries(taxonomy.tags)
+  .map(([slug, name]) => ({ slug, name }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<aside class="post-sidebar">
+  <!-- Blog search (client-side, navigates to /blog/?q=) -->
+  <div class="ps-block">
+    <form class="ps-search" action="/blog/" method="get" role="search">
+      <input type="search" name="q" placeholder="Search blog…" aria-label="Search blog" class="ps-search__input" />
+      <button type="submit" class="btn btn-blue ps-search__btn">Search</button>
+    </form>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="ps-block ps-card">
+    <h3 class="display-sm ps-card__title">Subscribe to our newsletter</h3>
+    <p class="ps-card__sub">Get new posts and insights in your inbox.</p>
+    <form class="ps-news" action="https://forms.stairwaymortgage.com/widget/form/newsletter" method="get">
+      <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" class="ps-news__input" required />
+      <button type="submit" class="btn btn-blue ps-news__btn">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- Stairway Academy e-book promo -->
+  <a class="ps-block ps-ebook" href="https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c" target="_blank" rel="noopener">
+    <span class="ps-ebook__eyebrow mono">Download your free e-book</span>
+    <span class="ps-ebook__title font-display">Stairway Academy</span>
+    <span class="ps-ebook__cta btn btn-ghost btn-arrow">Get the guides</span>
+  </a>
+
+  <!-- Browse by Category -->
+  <div class="ps-block">
+    <label class="ps-label" for="ps-cat">Browse by Category</label>
+    <select id="ps-cat" class="ps-select" data-archive="category">
+      <option value="">Select a category</option>
+      {categories.map(c => <option value={c.slug}>{c.name}</option>)}
+    </select>
+  </div>
+
+  <!-- Advisory Topics (categories, re-skinned per Jim) -->
+  <div class="ps-block">
+    <label class="ps-label" for="ps-advisory">Advisory Topics</label>
+    <select id="ps-advisory" class="ps-select" data-archive="category">
+      <option value="">Select an advisory topic</option>
+      {categories.map(c => <option value={c.slug}>{c.name}</option>)}
+    </select>
+  </div>
+
+  <!-- Top Topics (tags, re-skinned per Jim) -->
+  <div class="ps-block">
+    <label class="ps-label" for="ps-top">Top Topics</label>
+    <select id="ps-top" class="ps-select" data-archive="tag">
+      <option value="">Select a top topic</option>
+      {tags.map(t => <option value={t.slug}>{t.name}</option>)}
+    </select>
+  </div>
+</aside>
+
+<script is:inline>
+  // Dropdowns navigate to the crawlable archive for the chosen term.
+  document.querySelectorAll('.ps-select').forEach(function (sel) {
+    sel.addEventListener('change', function () {
+      if (!this.value) return;
+      var base = this.dataset.archive === 'tag' ? '/tag/' : '/category/';
+      window.location.href = base + this.value + '/';
+    });
+  });
+</script>
+
+<style>
+  .post-sidebar { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 6rem; }
+  .ps-block { border: 1px solid var(--color-bone); border-radius: 12px; padding: 1.25rem; background: var(--color-paper); }
+
+  .ps-search { display: flex; gap: 0.5rem; }
+  .ps-search__input,
+  .ps-news__input {
+    flex: 1; min-width: 0; padding: 0.7rem 0.85rem; font-family: var(--font-body); font-size: 14px;
+    border: 1px solid var(--color-bone); border-radius: 8px; background: var(--color-paper-tint); color: var(--color-ink);
+  }
+  .ps-search__input:focus, .ps-news__input:focus { outline: none; border-color: var(--color-blue); }
+  .ps-search__btn, .ps-news__btn { padding-inline: 1rem; }
+
+  .ps-card { background: var(--color-ink); color: var(--color-paper); border-color: var(--color-ink); }
+  .ps-card__title { color: var(--color-paper); margin-bottom: 0.35rem; }
+  .ps-card__sub { font-size: 14px; opacity: 0.72; margin-bottom: 1rem; }
+  .ps-news { display: flex; flex-direction: column; gap: 0.6rem; }
+  .ps-card .ps-news__input { background: rgba(250,250,247,0.08); border-color: rgba(250,250,247,0.2); color: var(--color-paper); }
+  .ps-card .ps-news__input::placeholder { color: rgba(250,250,247,0.5); }
+
+  .ps-ebook {
+    display: flex; flex-direction: column; gap: 0.5rem; text-decoration: none;
+    background: linear-gradient(135deg, var(--color-blue-deep), var(--color-blue)); color: var(--color-paper);
+    border-radius: 12px; padding: 1.5rem; border: none;
+  }
+  .ps-ebook__eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; }
+  .ps-ebook__title { font-size: 1.75rem; line-height: 1.05; }
+  .ps-ebook__cta { margin-top: 0.5rem; background: transparent; color: var(--color-paper); border-color: rgba(250,250,247,0.4); }
+  .ps-ebook__cta:hover { background: var(--color-paper); color: var(--color-ink); }
+
+  .ps-label {
+    display: block; font-family: var(--font-body); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.02em; margin-bottom: 0.55rem; color: var(--color-ink);
+  }
+  .ps-select {
+    width: 100%; padding: 0.7rem 0.85rem; font-family: var(--font-body); font-size: 14px;
+    border: 1px solid var(--color-bone); border-radius: 8px; background: var(--color-paper-tint);
+    color: var(--color-ink); cursor: pointer;
+  }
+  .ps-select:focus { outline: none; border-color: var(--color-blue); }
+</style>

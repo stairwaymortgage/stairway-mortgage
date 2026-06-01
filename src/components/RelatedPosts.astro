@@ -1,0 +1,53 @@
+---
+/*  RelatedPosts — replaces the old [blog_box] shortcode.
+    Surfaces up to `limit` posts sharing this post's category or tags,
+    scored by overlap. Pure build-time from taxonomy.json — no JS, fully crawlable. */
+import taxonomy from '../data/taxonomy.json';
+
+interface Props {
+  currentSlug: string;
+  cats: string[];
+  tags: string[];
+  limit?: number;
+}
+const { currentSlug, cats, tags, limit = 4 } = Astro.props;
+
+const scored = taxonomy.posts
+  .filter(p => p.slug !== currentSlug)
+  .map(p => {
+    const catOverlap = p.cats.filter(c => cats.includes(c)).length;
+    const tagOverlap = p.tags.filter(t => tags.includes(t)).length;
+    return { ...p, score: catOverlap * 3 + tagOverlap };
+  })
+  .filter(p => p.score > 0)
+  .sort((a, b) => b.score - a.score)
+  .slice(0, limit);
+
+const catName = (slug: string) =>
+  (taxonomy.categories[slug] || slug).replace(/^\d+\.\s*/, '');
+---
+
+{scored.length > 0 && (
+  <section class="related section-tight">
+    <div class="container-page">
+      <span class="eyebrow eyebrow-blue mb-6">Related Posts</span>
+      <div class="related__grid">
+        {scored.map(p => (
+          <a href={p.slug} class="card related__card">
+            {p.cats[0] && <span class="related__cat mono">{catName(p.cats[0])}</span>}
+            <h3 class="display-sm related__title">{p.title}</h3>
+            <span class="related__more btn-link">Read more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .related__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+  .related__card { display: flex; flex-direction: column; gap: 0.75rem; text-decoration: none; }
+  .related__cat { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-blue); }
+  .related__title { color: var(--color-ink); }
+  .related__more { color: var(--color-ink); font-size: 14px; margin-top: auto; }
+</style>

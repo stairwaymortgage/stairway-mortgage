@@ -1,0 +1,122 @@
+---
+/*  DscrCalculator — native interactive module, Stairway design tokens.
+    Live ratio gauge + pass/fail verdict against lender thresholds (1.0 / 1.25).
+    Zero dependencies, ~3KB, fully indexable. The bespoke interactive layer
+    that sits inside DSCR-topic pages (post / loan-program / case-study).        */
+---
+
+<section class="dscr-calc reveal" aria-labelledby="dscr-calc-h">
+  <div class="dscr-calc__inner">
+    <header class="dscr-calc__head">
+      <span class="eyebrow eyebrow-blue">Interactive · Run your numbers</span>
+      <h2 id="dscr-calc-h" class="display-md">Does your property qualify?</h2>
+      <p class="dscr-calc__sub">Enter the rental income, operating expenses, and proposed mortgage payment. The gauge shows your DSCR against what lenders require.</p>
+    </header>
+
+    <div class="dscr-calc__grid">
+      <div class="dscr-field">
+        <label for="dscr-rent">Monthly rent</label>
+        <div class="dscr-input"><span>$</span><input type="number" id="dscr-rent" value="2400" min="0" step="50" inputmode="numeric" /></div>
+      </div>
+      <div class="dscr-field">
+        <label for="dscr-exp">Monthly expenses</label>
+        <div class="dscr-input"><span>$</span><input type="number" id="dscr-exp" value="500" min="0" step="25" inputmode="numeric" /></div>
+      </div>
+      <div class="dscr-field">
+        <label for="dscr-pmt">Monthly P&amp;I payment</label>
+        <div class="dscr-input"><span>$</span><input type="number" id="dscr-pmt" value="1600" min="0" step="25" inputmode="numeric" /></div>
+      </div>
+    </div>
+
+    <div class="dscr-result">
+      <div class="dscr-gauge">
+        <svg viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="DSCR ratio gauge">
+          <circle cx="80" cy="80" r="64" fill="none" stroke="var(--color-bone)" stroke-width="13" />
+          <circle id="dscr-arc" cx="80" cy="80" r="64" fill="none" stroke="var(--color-green)" stroke-width="13"
+            stroke-linecap="round" stroke-dasharray="402" stroke-dashoffset="402"
+            transform="rotate(-90 80 80)" />
+          <text id="dscr-num" x="80" y="76" text-anchor="middle" class="dscr-gauge__num">1.19</text>
+          <text x="80" y="98" text-anchor="middle" class="dscr-gauge__lbl">DSCR</text>
+        </svg>
+      </div>
+      <div class="dscr-readout">
+        <p id="dscr-verdict" class="dscr-verdict dscr-verdict--ok">Qualifies — strong cushion</p>
+        <p id="dscr-explain" class="dscr-explain">Net operating income of $1,900 covers the $1,600 payment 1.19×. Lenders require 1.0 minimum; 1.25+ unlocks the best pricing.</p>
+        <div class="dscr-zones">
+          <span class="dscr-zone dscr-zone--bad">&lt;1.0 declined</span>
+          <span class="dscr-zone dscr-zone--ok">1.0–1.24 ok</span>
+          <span class="dscr-zone dscr-zone--best">1.25+ best</span>
+        </div>
+        <a href="/same-day-approval/" class="btn btn-blue btn-arrow dscr-cta">See My Options</a>
+      </div>
+    </div>
+    <p class="dscr-disclaimer mono">Estimate only · not a commitment to lend</p>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var rent = document.getElementById('dscr-rent');
+    var exp = document.getElementById('dscr-exp');
+    var pmt = document.getElementById('dscr-pmt');
+    var arc = document.getElementById('dscr-arc');
+    var num = document.getElementById('dscr-num');
+    var verdict = document.getElementById('dscr-verdict');
+    var explain = document.getElementById('dscr-explain');
+    var C = 402;
+    function money(n) { return '$' + Math.round(n).toLocaleString(); }
+    function recompute() {
+      var r = +rent.value || 0, e = +exp.value || 0, p = +pmt.value || 0;
+      var noi = r - e;
+      var dscr = p > 0 ? noi / p : 0;
+      var frac = Math.max(0, Math.min(dscr / 1.5, 1));
+      arc.style.strokeDashoffset = (C - C * frac).toFixed(1);
+      num.textContent = dscr.toFixed(2);
+      var color, cls, label;
+      if (dscr < 1.0) { color = 'var(--color-rust)'; cls = 'dscr-verdict--bad'; label = 'Below threshold — likely declined'; }
+      else if (dscr < 1.25) { color = '#C9821A'; cls = 'dscr-verdict--warn'; label = 'Qualifies — thin cushion'; }
+      else { color = 'var(--color-green)'; cls = 'dscr-verdict--ok'; label = 'Qualifies — strong cushion'; }
+      arc.style.stroke = color;
+      verdict.textContent = label;
+      verdict.className = 'dscr-verdict ' + cls;
+      explain.textContent = 'Net operating income of ' + money(noi) + ' covers the ' + money(p) + ' payment ' + dscr.toFixed(2) + '×. Lenders require 1.0 minimum; 1.25+ unlocks the best pricing.';
+    }
+    [rent, exp, pmt].forEach(function (el) { el.addEventListener('input', recompute); });
+    recompute();
+  })();
+</script>
+
+<style>
+  .dscr-calc { margin: 3rem 0; }
+  .dscr-calc__inner { border: 1px solid var(--color-bone); border-radius: 16px; padding: clamp(1.5rem, 4vw, 2.5rem); background: var(--color-paper-tint); }
+  .dscr-calc__head { margin-bottom: 1.75rem; }
+  .dscr-calc__head .eyebrow { margin-bottom: 0.85rem; }
+  .dscr-calc__sub { font-size: 15px; color: var(--color-mute); margin-top: 0.6rem; max-width: 52ch; }
+
+  .dscr-calc__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.75rem; }
+  .dscr-field label { display: block; font-size: 13px; font-weight: 600; color: var(--color-ink); margin-bottom: 0.5rem; }
+  .dscr-input { display: flex; align-items: center; border: 1px solid var(--color-bone); border-radius: 8px; background: var(--color-paper); overflow: hidden; }
+  .dscr-input:focus-within { border-color: var(--color-blue); }
+  .dscr-input span { padding: 0 0.5rem 0 0.85rem; color: var(--color-mute); font-family: var(--font-mono); font-size: 15px; }
+  .dscr-input input { flex: 1; min-width: 0; border: none; outline: none; background: transparent; padding: 0.75rem 0.85rem 0.75rem 0; font-family: var(--font-mono); font-size: 16px; color: var(--color-ink); }
+
+  .dscr-result { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; background: var(--color-paper); border: 1px solid var(--color-bone); border-radius: 12px; padding: 1.5rem; }
+  .dscr-gauge { flex: 0 0 auto; }
+  .dscr-gauge__num { font-family: var(--font-display); font-size: 34px; font-weight: 400; fill: var(--color-ink); }
+  .dscr-gauge__lbl { font-family: var(--font-mono); font-size: 12px; fill: var(--color-mute); letter-spacing: 0.08em; }
+  #dscr-arc { transition: stroke-dashoffset 0.5s cubic-bezier(0.16,1,0.3,1), stroke 0.3s; }
+
+  .dscr-readout { flex: 1; min-width: 230px; }
+  .dscr-verdict { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; margin-bottom: 0.5rem; }
+  .dscr-verdict--ok { color: var(--color-green-deep); }
+  .dscr-verdict--warn { color: #9A6212; }
+  .dscr-verdict--bad { color: var(--color-rust); }
+  .dscr-explain { font-size: 14.5px; line-height: 1.6; color: var(--color-ink-light); margin-bottom: 1rem; }
+  .dscr-zones { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .dscr-zone { font-family: var(--font-mono); font-size: 11px; padding: 0.3rem 0.65rem; border-radius: 6px; }
+  .dscr-zone--bad { background: var(--color-rust-tint); color: var(--color-rust); }
+  .dscr-zone--ok { background: var(--color-blue-tint); color: var(--color-blue-deep); }
+  .dscr-zone--best { background: #E4F4E4; color: var(--color-green-deep); }
+  .dscr-cta { width: fit-content; }
+  .dscr-disclaimer { display: block; text-align: center; font-size: 11px; color: var(--color-mute); margin-top: 1rem; opacity: 0.8; }
+</style>
