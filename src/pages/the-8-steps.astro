@@ -259,6 +259,13 @@ const rungs = [
     .es-rung[style] { margin-left:0 !important; }
   }
 
+  /* overflow + spine mobile */
+  html,body { overflow-x:hidden; }
+  @media (max-width:480px) {
+    .es-spine { font-size:10px; line-height:1.8; }
+    .es-stair i { width:20px; }
+  }
+
   @media (prefers-reduced-motion:reduce) {
     .es-aurora span { animation:none; }
   }
