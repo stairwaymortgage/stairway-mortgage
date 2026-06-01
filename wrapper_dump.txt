@@ -1,0 +1,1754 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Florida's #1 trusted mortgage broker with 300+ lenders. Leverage wisely. Grow wealthy.",
+  canonical,
+  ogImage = '/og-default.svg'
+} = Astro.props;
+
+const siteUrl = 'https://stairwaymortgage.com';
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:site_name" content="Stairway Mortgage" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:creator" content="@mortgagemanjim" />
+
+  <!-- Font preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- GA4 (preserved from WP snippet 46878) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKZV58GRQK"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JKZV58GRQK');
+  </script>
+
+  <!-- Schema.org LocalBusiness for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MortgageBroker",
+    "name": "Stairway Mortgage",
+    "alternateName": "Jim Blackburn Mortgage",
+    "url": "https://stairwaymortgage.com",
+    "logo": "https://stairwaymortgage.com/logo.svg",
+    "description": "Florida's #1 trusted mortgage broker with 300+ lenders. Division of NEXA Mortgage LLC.",
+    "telephone": "+1-954-993-1625",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "5559 S Sossaman Rd, Bldg #1 Ste #101",
+      "addressLocality": "Mesa",
+      "addressRegion": "AZ",
+      "postalCode": "85212",
+      "addressCountry": "US"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Jim Blackburn"
+    },
+    "areaServed": "United States",
+    "slogan": "Leverage wisely. Grow wealthy."
+  })} />
+</head>
+<body>
+  <Header />
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <Footer />
+
+  <!-- Lead Router — GHL LO attribution (preserved verbatim from WP snippet 46136) -->
+  <script is:inline>
+    (function() {
+      function qs(name){ return new URLSearchParams(window.location.search).get(name); }
+      function setCookie(n,v,d){ var e=""; if(d){ var t=new Date(); t.setTime(t.getTime()+d*24*60*60*1000); e="; expires="+t.toUTCString(); } document.cookie=n+"="+(v||"")+e+"; path=/"; }
+      function getCookie(n){ var ne=n+"="; var ca=document.cookie.split(';'); for(var i=0;i<ca.length;i++){ var c=ca[i].trim(); if(c.indexOf(ne)===0) return c.substring(ne.length,c.length); } return null; }
+      var loFromUrl = qs('lo_id');
+      var loFromDom = (function(){ var el = document.getElementById('lo-meta'); return el && el.dataset ? el.dataset.loId : null; })();
+      var loId = loFromUrl || loFromDom || getCookie('lo_id');
+      if (loId) setCookie('lo_id', loId, 180);
+
+      function appendParamsToGhlForms(){
+        var landing = window.location.href;
+        var scripts = document.querySelectorAll('script[src*="leadconnectorhq.com/widget"], script[src*="forms.stairwaymortgage.com/widget"], iframe[src*="forms.stairwaymortgage.com/widget"]');
+        scripts.forEach(function(s){
+          try {
+            var u = new URL(s.src);
+            if (loId) u.searchParams.set('lo_id', loId);
+            u.searchParams.set('landing_page', landing);
+            if (s.src !== u.toString()) s.src = u.toString();
+          } catch(e) {}
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', appendParamsToGhlForms);
+      } else { appendParamsToGhlForms(); }
+    })();
+  </script>
+
+  <!-- Scroll reveal observer (restrained, performant) -->
+  <script is:inline>
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+    }
+  </script>
+
+  <!-- Header interaction is self-contained in Header.astro -->
+</body>
+</html>
+---
+/*  Stairway Mortgage — Conversion-focused header
+    3 layers: trust strip · main bar with 3 mega-menus · sticky condensed on scroll
+    Self-contained: styles + script bundled in component                          */
+
+/* ── Menu data ───────────────────────────────────────────────── */
+const menus = [
+  {
+    id: 'mega-mortgage',
+    label: 'Get a Mortgage',
+    columns: [
+      {
+        heading: 'Most Popular',
+        links: [
+          { icon: 'home',    title: 'Buy a Home',          desc: 'Purchase your next property',        href: '/buy-a-house-journey/' },
+          { icon: 'refresh', title: 'Refinance or HELOC',  desc: 'Lower your rate or tap equity',      href: '/refinance-or-heloc-journey/' },
+          { icon: 'hammer',  title: 'Build a Home',        desc: 'Construction-to-permanent loans',    href: '/build-a-house-journey/' },
+        ],
+      },
+      {
+        heading: 'More Paths',
+        links: [
+          { icon: 'wrench',   title: 'Renovate',            desc: 'Fund improvements or fix-and-flip',  href: '/renovate-a-house-journey/' },
+          { icon: 'heart',    title: 'Reverse Mortgage',    desc: 'Income from your home, 55+',         href: '/reverse-mortgage-journey/' },
+          { icon: 'tag',      title: 'Sell a Home',         desc: 'Bridge loans & seller strategies',   href: '/sell-a-house-journey/' },
+          { icon: 'chart',    title: 'Build a Wealth Plan', desc: 'Real estate as a wealth engine',     href: '/build-a-wealth-plan-journey/' },
+        ],
+      },
+    ],
+    feature: {
+      title: 'See your options in about a minute',
+      cta: { label: 'See My Options', href: '/same-day-approval/' },
+    },
+    quickQuotes: [
+      { label: 'Purchase',      href: '/purchase-inquiry/' },
+      { label: 'Refi / HELOC',  href: '/refinance-or-heloc-inquiry/' },
+      { label: 'Reverse',       href: '/reverse-mortgage-inquiry/' },
+      { label: 'Same-Day',      href: '/same-day-approval/' },
+    ],
+  },
+  {
+    id: 'mega-situation',
+    label: 'Your Situation',
+    columns: [
+      {
+        heading: "Where you're at",
+        links: [
+          { icon: 'plane',   title: 'Relocate Anywhere™',    desc: 'Agents in all 50 states',            href: '/relocate-anywhere/' },
+          { icon: 'key',     title: 'First-Time Buyer',     desc: 'Buying your very first home',        href: '/first-time-buyers-journey/' },
+          { icon: 'home',    title: 'Current Homeowner',     desc: 'Refinance, renovate, or leverage',   href: '/homeowners-journey/' },
+          { icon: 'heart',   title: 'Homeowner 55+',        desc: 'Retirement income & downsizing',     href: '/senior-homeowners-55-journey/' },
+          { icon: 'chart',   title: 'Real-Estate Investor', desc: 'Scale your rental portfolio',        href: '/active-investors-journey/' },
+        ],
+      },
+      {
+        heading: 'Your profession',
+        links: [
+          { icon: 'medical', title: 'Medical',              desc: 'Physician & nurse loan programs',    href: '/medical-professionals/' },
+          { icon: 'plane',   title: 'Aviation',             desc: 'Pilot & crew specialist lending',    href: '/aviation-professionals/' },
+          { icon: 'brief',   title: 'Corporate Executives', desc: 'Stock-comp & RSU-friendly loans',    href: '/corporate-executives/' },
+          { icon: 'user',    title: 'Self-Employed & Owners', desc: 'Bank-statement & asset programs',  href: '/legal-business-entrepreneurs/' },
+          { icon: 'pen',     title: 'Creative & Variable',  desc: 'Flexible income documentation',      href: '/creative-earners/' },
+        ],
+      },
+    ],
+    feature: {
+      title: "Let's build a plan around your situation",
+      cta: { label: 'Build My Plan', href: '/discovery-quiz/' },
+    },
+  },
+  {
+    id: 'mega-tools',
+    label: 'Free Tools & Rates',
+    columns: [
+      {
+        heading: 'Tools & rates',
+        links: [
+          { icon: 'grad',    title: 'The 8 Steps™',          desc: 'The Stairway Client System',         href: '/the-8-steps/' },
+          { icon: 'calc',    title: 'Loan Calculators',     desc: 'Run the numbers yourself',           href: '/loan-calculators/' },
+          { icon: 'trend',   title: "Today's Rates",        desc: 'Live wholesale rate check',          href: '/current-rates/' },
+          { icon: 'home',    title: 'Home Value Report',    desc: 'Instant property valuation',         href: '/home-value-report/' },
+          { icon: 'search',  title: 'Private Home Search',  desc: 'MLS access, no spam',                href: '/private-home-search/' },
+        ],
+      },
+      {
+        heading: 'Learn & proof',
+        links: [
+          { icon: 'file',    title: 'Case Studies',         desc: 'Real clients, real numbers',         href: '/case-studies/' },
+          { icon: 'pen',     title: 'Blog',                 desc: 'Market updates & tips',              href: '/blog/' },
+          { icon: 'book',    title: 'Free Guides',          desc: 'Step-by-step ebooks',                href: '/guides/' },
+          { icon: 'grad',    title: 'Courses',              desc: 'Video learning library',             href: '/courses/' },
+        ],
+      },
+    ],
+    feature: {
+      title: 'Find your top financial priorities',
+      cta: { label: 'Discovery Quiz', href: '/discovery-quiz/' },
+    },
+  },
+];
+
+/* ── Icon SVG paths (16×16 viewBox) ──────────────────────── */
+const icons: Record<string, string> = {
+  home:    'M8 1L1 7v8h5v-4h4v4h5V7L8 1z',
+  refresh: 'M2 8a6 6 0 0110.3-4.2M14 8a6 6 0 01-10.3 4.2',
+  hammer:  'M10 2L6 6l4 4 4-4-4-4zM6 6L1 11l2 2 5-5',
+  wrench:  'M5 3a4 4 0 015.6 5.6l4 4-1.4 1.4-4-4A4 4 0 015 3z',
+  heart:   'M8 14s-5.5-3.5-5.5-7A3 3 0 018 4.5 3 3 0 0113.5 7C13.5 10.5 8 14 8 14z',
+  tag:     'M1 1h6l7 7-6 6-7-7V1zm3 3a1 1 0 100-2 1 1 0 000 2z',
+  chart:   'M1 14h14M3 10v4M7 6v8M11 8v6',
+  key:     'M12 7a3 3 0 11-6 0 3 3 0 016 0zm-3 3v4m-2 0h4',
+  medical: 'M6 1v4H2v4h4v4h4V9h4V5h-4V1H6z',
+  plane:   'M8 2L3 8h3v6h4V8h3L8 2z',
+  brief:   'M2 5h12v9H2V5zm4-3h4v3H6V2z',
+  user:    'M8 8a3 3 0 100-6 3 3 0 000 6zm-5 6a5 5 0 0110 0H3z',
+  pen:     'M12 2l2 2-9 9H3v-2l9-9z',
+  calc:    'M3 1h10v14H3V1zm2 3h6m-6 3h3m3 0h0m-6 3h3m3 0h0',
+  trend:   'M1 12l4-4 3 2 7-8',
+  search:  'M11 11l3 3m-4-2a5 5 0 110-10 5 5 0 010 10z',
+  file:    'M4 1h6l4 4v10H4V1zm6 0v4h4',
+  book:    'M2 2h5v12H2V2zm7 0h5v12H9V2z',
+  grad:    'M8 1L1 5l7 4 7-4-7-4zM3 7v4l5 3 5-3V7',
+};
+---
+
+<!-- ═══════════════════════════════════════════════════════════
+     LAYER 1 — Trust Strip
+     ═══════════════════════════════════════════════════════════ -->
+<div class="hdr-trust" aria-label="Trust signals">
+  <div class="container-page">
+    <div class="hdr-trust__inner">
+      <div class="hdr-trust__left">
+        <span class="hdr-trust__item">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+          5.0 · 624 reviews
+        </span>
+        <span class="hdr-trust__sep">·</span>
+        <span class="hdr-trust__item">NEXA licensed in 48 states</span>
+        <span class="hdr-trust__sep">·</span>
+        <span class="hdr-trust__item">Jim Blackburn · <span class="mono">NMLS #1072866</span></span>
+      </div>
+      <span class="hdr-trust__right">Equal Housing Lender</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LAYER 2 — Main Navigation Bar
+     ═══════════════════════════════════════════════════════════ -->
+<header class="hdr-main" id="hdr-main">
+  <div class="container-page">
+    <div class="hdr-main__inner">
+
+      <!-- Logo -->
+      <a href="/" class="hdr-logo" aria-label="Stairway Mortgage — home">
+        <svg viewBox="0 0 28 28" class="hdr-logo__mark" aria-hidden="true">
+          <rect x="2" y="20" width="6" height="6" fill="var(--color-ink)"/>
+          <rect x="9" y="13" width="6" height="13" fill="var(--color-ink)"/>
+          <rect x="16" y="6" width="6" height="20" fill="var(--color-blue)"/>
+        </svg>
+        <span class="hdr-logo__text font-display">
+          Stairway <span class="hdr-logo__mute">Mortgage</span>
+        </span>
+      </a>
+
+      <!-- Desktop mega-menu triggers -->
+      <nav class="hdr-nav" aria-label="Main navigation">
+        {menus.map((m) => (
+          <div class="hdr-nav__item" data-menu-wrap>
+            <button
+              class="hdr-nav__trigger"
+              aria-controls={m.id}
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              {m.label}
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="hdr-nav__chevron">
+                <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        ))}
+      </nav>
+
+      <!-- Right: phone + CTA -->
+      <div class="hdr-actions">
+        <a href="tel:+19549931625" class="hdr-phone" aria-label="Call (954) 993-1625">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 3l-1.4-.7c-.5-.3-1.2-.1-1.5.3L2 4.2c-.4.6-.3 1.5.2 2C4 8.3 7.7 12 9.8 13.8c.5.4 1.3.5 1.9.1l1.6-1.1c.5-.3.6-1 .3-1.5L13 10l-2.5-.3-1.2 1.2c-.8-.5-2.5-2.2-3-3l1.2-1.2L6 3z"/></svg>
+          <span class="hdr-phone__number mono">(954) 993-1625</span>
+        </a>
+        <div class="hdr-cta-wrap">
+          <a href="/same-day-approval/" class="btn btn-blue hdr-cta">See My Options</a>
+          <span class="hdr-cta-sub">60-sec match · no credit pull</span>
+        </div>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="hdr-burger" aria-label="Open menu" aria-expanded="false" id="hdr-burger">
+        <span class="hdr-burger__line"></span>
+        <span class="hdr-burger__line"></span>
+        <span class="hdr-burger__line"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Mega-menu panels (desktop) ── -->
+  {menus.map((m) => (
+    <div class="mega" id={m.id} role="region" aria-label={m.label + ' menu'}>
+      <div class="container-page">
+        {m.id === 'mega-situation' && (
+          <a href="/your-journey/" class="mega__journey-cta">
+            <span class="mega__journey-icon" aria-hidden="true">&#x2302;</span>
+            <span class="mega__journey-text">
+              <strong>Not sure where you fit?</strong>
+              <span>See the 8-step Stairway Journey</span>
+            </span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="mega__journey-arrow"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.4"/></svg>
+          </a>
+        )}
+        <div class="mega__grid">
+          <!-- Link columns -->
+          <div class="mega__cols">
+            {m.columns.map((col) => (
+              <div class="mega__col">
+                <h3 class="mega__heading">{col.heading}</h3>
+                <ul class="mega__list">
+                  {col.links.map((link) => (
+                    <li>
+                      <a href={link.href} class="mega__link">
+                        <span class="mega__icon" aria-hidden="true">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d={icons[link.icon] || icons.home}/>
+                          </svg>
+                        </span>
+                        <span class="mega__link-text">
+                          <strong>{link.title}</strong>
+                          <span>{link.desc}</span>
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <!-- Feature card -->
+          <div class="mega__feature">
+            <div class="mega__feature-card">
+              <p class="mega__feature-title font-display">{m.feature.title}</p>
+              <a href={m.feature.cta.href} class="btn btn-blue mega__feature-btn">{m.feature.cta.label}</a>
+            </div>
+          </div>
+        </div>
+        {/* Quick-quote chips (only on Get a Mortgage) */}
+        {m.quickQuotes && (
+          <div class="mega__quotes">
+            <span class="mega__quotes-label">Quick quotes:</span>
+            {m.quickQuotes.map((q) => (
+              <a href={q.href} class="mega__quote-chip">{q.label}</a>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  ))}
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LAYER 3 — Sticky Condensed Bar (appears on scroll)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="hdr-sticky" id="hdr-sticky" aria-hidden="true">
+  <div class="container-page">
+    <div class="hdr-sticky__inner">
+      <a href="/" class="hdr-logo hdr-logo--sm" aria-label="Home">
+        <svg viewBox="0 0 28 28" class="hdr-logo__mark" aria-hidden="true">
+          <rect x="2" y="20" width="6" height="6" fill="var(--color-ink)"/>
+          <rect x="9" y="13" width="6" height="13" fill="var(--color-ink)"/>
+          <rect x="16" y="6" width="6" height="20" fill="var(--color-blue)"/>
+        </svg>
+        <span class="hdr-logo__text font-display">Stairway</span>
+      </a>
+      <div class="hdr-sticky__right">
+        <a href="tel:+19549931625" class="hdr-phone hdr-phone--sm" aria-label="Call">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 3l-1.4-.7c-.5-.3-1.2-.1-1.5.3L2 4.2c-.4.6-.3 1.5.2 2C4 8.3 7.7 12 9.8 13.8c.5.4 1.3.5 1.9.1l1.6-1.1c.5-.3.6-1 .3-1.5L13 10l-2.5-.3-1.2 1.2c-.8-.5-2.5-2.2-3-3l1.2-1.2L6 3z"/></svg>
+          <span class="mono">(954) 993-1625</span>
+        </a>
+        <a href="/same-day-approval/" class="btn btn-blue hdr-cta hdr-cta--sm">See My Options</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MOBILE DRAWER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="hdr-drawer" id="hdr-drawer" aria-hidden="true">
+  <div class="hdr-drawer__top">
+    <a href="/same-day-approval/" class="btn btn-blue hdr-drawer__cta">See My Options</a>
+    <p class="hdr-drawer__cta-sub">60-sec match · no credit pull</p>
+  </div>
+  <nav class="hdr-drawer__nav" aria-label="Mobile navigation">
+    {menus.map((m) => (
+      <details class="hdr-drawer__section">
+        <summary class="hdr-drawer__summary font-display">
+          {m.label}
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="hdr-drawer__plus" aria-hidden="true">
+            <path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </summary>
+        <div class="hdr-drawer__links">
+          {m.columns.flatMap(c => c.links).map(link => (
+            <a href={link.href} class="hdr-drawer__link">{link.title}</a>
+          ))}
+        </div>
+      </details>
+    ))}
+  </nav>
+  <div class="hdr-drawer__bottom">
+    <a href="tel:+19549931625" class="btn btn-ghost hdr-drawer__call">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 3l-1.4-.7c-.5-.3-1.2-.1-1.5.3L2 4.2c-.4.6-.3 1.5.2 2C4 8.3 7.7 12 9.8 13.8c.5.4 1.3.5 1.9.1l1.6-1.1c.5-.3.6-1 .3-1.5L13 10l-2.5-.3-1.2 1.2c-.8-.5-2.5-2.2-3-3l1.2-1.2L6 3z"/></svg>
+      Call (954) 993-1625
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCOPED STYLES
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+  /* ── Trust strip ── */
+  .hdr-trust {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-size: 11.5px;
+    letter-spacing: 0.01em;
+    line-height: 34px;
+    height: 34px;
+    overflow: hidden;
+    position: relative;
+    z-index: 52;
+  }
+  .hdr-trust__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hdr-trust__left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+  .hdr-trust__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+    opacity: 0.85;
+  }
+  .hdr-trust__sep { opacity: 0.3; }
+  .hdr-trust__right {
+    white-space: nowrap;
+    opacity: 0.6;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── Main bar ── */
+  .hdr-main {
+    position: sticky;
+    top: 0;
+    z-index: 51;
+    background: rgba(250, 250, 247, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-bone);
+  }
+  .hdr-main__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 64px;
+  }
+
+  /* ── Logo ── */
+  .hdr-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .hdr-logo__mark { width: 26px; height: 26px; }
+  .hdr-logo__text {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-ink);
+    letter-spacing: -0.015em;
+    line-height: 1;
+  }
+  .hdr-logo__mute { color: var(--color-mute); font-weight: 400; }
+  .hdr-logo--sm .hdr-logo__mark { width: 22px; height: 22px; }
+  .hdr-logo--sm .hdr-logo__text { font-size: 16px; }
+
+  /* ── Nav triggers ── */
+  .hdr-nav {
+    display: none;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    justify-content: center;
+  }
+  @media (min-width: 980px) { .hdr-nav { display: flex; } }
+  .hdr-nav__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.55rem 0.9rem;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-ink);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.15s;
+    letter-spacing: -0.005em;
+  }
+  .hdr-nav__trigger:hover,
+  .hdr-nav__trigger[aria-expanded="true"] {
+    background: var(--color-paper-tint);
+  }
+  .hdr-nav__chevron { transition: transform 0.2s; }
+  .hdr-nav__trigger[aria-expanded="true"] .hdr-nav__chevron {
+    transform: rotate(180deg);
+  }
+
+  /* ── Actions (phone + CTA) ── */
+  .hdr-actions {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+  @media (min-width: 980px) { .hdr-actions { display: flex; } }
+  .hdr-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: color 0.15s;
+  }
+  .hdr-phone:hover { color: var(--color-blue); }
+  .hdr-phone__number { font-size: 13.5px; }
+  .hdr-cta-wrap { text-align: center; }
+  .hdr-cta { font-size: 13.5px !important; padding: 0.6rem 1.1rem !important; }
+  .hdr-cta-sub {
+    display: block;
+    font-size: 10px;
+    color: var(--color-mute);
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Hamburger ── */
+  .hdr-burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    margin-right: -8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  @media (min-width: 980px) { .hdr-burger { display: none; } }
+  .hdr-burger__line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-ink);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .hdr-burger.is-open .hdr-burger__line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hdr-burger.is-open .hdr-burger__line:nth-child(2) { opacity: 0; }
+  .hdr-burger.is-open .hdr-burger__line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── Mega-menu panels ── */
+  .mega {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-paper);
+    border-top: 1px solid var(--color-bone);
+    box-shadow: 0 24px 48px -24px rgba(10, 14, 26, 0.12);
+    padding: 2rem 0 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    z-index: 60;
+    display: none;
+  }
+  @media (min-width: 980px) { .mega { display: block; } }
+  .mega.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  /* Invisible bridge: covers the gap between trigger bar and panel */
+  .mega::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: 0;
+    right: 0;
+    height: 16px;
+  }
+  .mega__grid {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 2rem;
+  }
+  .mega__cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .mega__heading {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--color-bone);
+  }
+  .mega__list { list-style: none; padding: 0; margin: 0; }
+  .mega__list li + li { margin-top: 2px; }
+  .mega__link {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.5rem 0.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: background 0.15s;
+  }
+  .mega__link:hover { background: var(--color-paper-tint); }
+  .mega__icon {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-paper-tint);
+    border-radius: 8px;
+    flex-shrink: 0;
+    color: var(--color-blue);
+    margin-top: 1px;
+  }
+  .mega__link:hover .mega__icon {
+    background: var(--color-blue-tint);
+  }
+  .mega__link-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .mega__link-text strong {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .mega__link-text span:last-child {
+    font-size: 12.5px;
+    color: var(--color-mute);
+    line-height: 1.35;
+  }
+  .mega__feature-card {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-radius: 14px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    min-height: 200px;
+  }
+  .mega__feature-title {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.25rem;
+  }
+  .mega__feature-btn {
+    width: 100%;
+    text-align: center;
+    font-size: 14px !important;
+    padding: 0.7rem 1rem !important;
+  }
+
+  /* Journey CTA in Your Situation menu */
+  .mega__journey-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+    background: var(--color-blue-tint);
+    border: 1px solid var(--color-blue);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: background 0.15s, transform 0.15s;
+  }
+  .mega__journey-cta:hover {
+    background: var(--color-blue);
+    color: var(--color-paper);
+    transform: translateY(-1px);
+  }
+  .mega__journey-icon { font-size: 20px; flex-shrink: 0; }
+  .mega__journey-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+  }
+  .mega__journey-text strong { font-size: 14px; font-weight: 600; }
+  .mega__journey-text span:last-child { font-size: 12px; color: var(--color-mute); }
+  .mega__journey-cta:hover .mega__journey-text span:last-child { color: rgba(250,250,247,0.7); }
+  .mega__journey-arrow { flex-shrink: 0; opacity: 0.5; transition: opacity 0.15s; }
+  .mega__journey-cta:hover .mega__journey-arrow { opacity: 1; }
+
+  /* Quick-quote chips */
+  .mega__quotes {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--color-bone);
+  }
+  .mega__quotes-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    white-space: nowrap;
+  }
+  .mega__quote-chip {
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--color-bone);
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .mega__quote-chip:hover {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+    background: var(--color-blue-tint);
+  }
+
+  /* ── Sticky condensed bar ── */
+  .hdr-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 55;
+    background: rgba(250, 250, 247, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-bone);
+    transform: translateY(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 52px;
+  }
+  .hdr-sticky.is-visible { transform: translateY(0); }
+  .hdr-sticky__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+  .hdr-sticky__right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hdr-phone--sm { font-size: 12.5px; }
+  .hdr-cta--sm {
+    font-size: 12.5px !important;
+    padding: 0.45rem 0.9rem !important;
+  }
+
+  /* ── Mobile drawer ── */
+  .hdr-drawer {
+    position: fixed;
+    top: 98px; /* trust strip 34 + main bar 64 */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-paper);
+    z-index: 50;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+  }
+  @media (min-width: 980px) { .hdr-drawer { display: none !important; } }
+  .hdr-drawer.is-open { transform: translateX(0); }
+  .hdr-drawer__top {
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-bone);
+  }
+  .hdr-drawer__cta {
+    width: 100%;
+    font-size: 16px !important;
+    padding: 0.85rem 1.5rem !important;
+  }
+  .hdr-drawer__cta-sub {
+    font-size: 11px;
+    color: var(--color-mute);
+    margin-top: 0.4rem;
+  }
+  .hdr-drawer__nav {
+    flex: 1;
+    padding: 1rem 1.25rem;
+  }
+  .hdr-drawer__section {
+    border-bottom: 1px solid var(--color-bone);
+  }
+  .hdr-drawer__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+  }
+  .hdr-drawer__summary::-webkit-details-marker { display: none; }
+  .hdr-drawer__plus { transition: transform 0.2s; }
+  details[open] > .hdr-drawer__summary .hdr-drawer__plus {
+    transform: rotate(45deg);
+  }
+  .hdr-drawer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-bottom: 1rem;
+  }
+  .hdr-drawer__link {
+    display: block;
+    padding: 0.55rem 0.5rem;
+    font-size: 15px;
+    color: var(--color-ink);
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  .hdr-drawer__link:hover { background: var(--color-paper-tint); }
+  .hdr-drawer__bottom {
+    padding: 1.25rem;
+    border-top: 1px solid var(--color-bone);
+  }
+  .hdr-drawer__call {
+    width: 100%;
+    font-size: 15px;
+    justify-content: center;
+  }
+
+  /* ── Body lock when drawer open ── */
+  :global(body.menu-open) { overflow: hidden; }
+
+  /* ── Hide elements on mobile / desktop ── */
+  @media (max-width: 979px) {
+    .hdr-trust__right { display: none; }
+    .hdr-trust__sep:last-of-type,
+    .hdr-trust__item:last-child { display: none; }
+    .hdr-phone--sm span { display: none; }
+  }
+  @media (max-width: 600px) {
+    .hdr-trust__sep,
+    .hdr-trust__item:nth-child(n+2) { display: none; }
+    .hdr-trust__item:first-child { display: inline-flex; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SELF-CONTAINED SCRIPT
+     ═══════════════════════════════════════════════════════════ -->
+<script is:inline>
+(function() {
+  'use strict';
+
+  /* ── Mega-menu (desktop) ── */
+  var triggers = document.querySelectorAll('.hdr-nav__trigger');
+  var timeouts = {};
+
+  function closeAll(except) {
+    triggers.forEach(function(t) {
+      if (t === except) return;
+      t.setAttribute('aria-expanded', 'false');
+      var p = document.getElementById(t.getAttribute('aria-controls'));
+      if (p) p.classList.remove('is-open');
+    });
+  }
+
+  function toggle(trigger) {
+    var open = trigger.getAttribute('aria-expanded') === 'true';
+    closeAll(open ? null : trigger);
+    trigger.setAttribute('aria-expanded', open ? 'false' : 'true');
+    var panel = document.getElementById(trigger.getAttribute('aria-controls'));
+    if (panel) panel.classList.toggle('is-open', !open);
+  }
+
+  function scheduleClose(id, trigger) {
+    clearTimeout(timeouts[id]);
+    timeouts[id] = setTimeout(function() {
+      trigger.setAttribute('aria-expanded', 'false');
+      var panel = document.getElementById(id);
+      if (panel) panel.classList.remove('is-open');
+    }, 180);
+  }
+
+  function cancelClose(id) {
+    clearTimeout(timeouts[id]);
+  }
+
+  triggers.forEach(function(trigger) {
+    var id = trigger.getAttribute('aria-controls');
+    var wrap = trigger.closest('[data-menu-wrap]');
+    var panel = document.getElementById(id);
+
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      toggle(trigger);
+    });
+
+    if (wrap) {
+      wrap.addEventListener('mouseenter', function() {
+        if (window.innerWidth < 980) return;
+        cancelClose(id);
+        closeAll(trigger);
+        trigger.setAttribute('aria-expanded', 'true');
+        if (panel) panel.classList.add('is-open');
+      });
+      wrap.addEventListener('mouseleave', function() {
+        if (window.innerWidth < 980) return;
+        scheduleClose(id, trigger);
+      });
+    }
+
+    /* Panel hover: cancel close when cursor enters panel, schedule close when it leaves */
+    if (panel) {
+      panel.addEventListener('mouseenter', function() {
+        if (window.innerWidth < 980) return;
+        cancelClose(id);
+      });
+      panel.addEventListener('mouseleave', function() {
+        if (window.innerWidth < 980) return;
+        scheduleClose(id, trigger);
+      });
+    }
+  });
+
+  /* Close on outside click */
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('[data-menu-wrap]') && !e.target.closest('.mega')) {
+      closeAll();
+    }
+  });
+
+  /* Close on Escape */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeAll();
+      // Also close mobile drawer
+      var drawer = document.getElementById('hdr-drawer');
+      var burger = document.getElementById('hdr-burger');
+      if (drawer && drawer.classList.contains('is-open')) {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        burger.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+      }
+    }
+  });
+
+  /* ── Mobile drawer ── */
+  var burger = document.getElementById('hdr-burger');
+  var drawer = document.getElementById('hdr-drawer');
+
+  if (burger && drawer) {
+    burger.addEventListener('click', function() {
+      var open = burger.classList.toggle('is-open');
+      drawer.classList.toggle('is-open', open);
+      drawer.setAttribute('aria-hidden', !open);
+      burger.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('menu-open', open);
+    });
+  }
+
+  /* ── Sticky condensed bar ── */
+  var sticky = document.getElementById('hdr-sticky');
+  var mainBar = document.getElementById('hdr-main');
+  var threshold = 240;
+  var lastY = 0;
+  var ticking = false;
+
+  function onScroll() {
+    var y = window.scrollY || window.pageYOffset;
+    if (y > threshold) {
+      sticky.classList.add('is-visible');
+      sticky.setAttribute('aria-hidden', 'false');
+    } else {
+      sticky.classList.remove('is-visible');
+      sticky.setAttribute('aria-hidden', 'true');
+    }
+    lastY = y;
+    ticking = false;
+  }
+
+  if (sticky) {
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+})();
+</script>
+---
+const year = new Date().getFullYear();
+
+const services = [
+  { label: 'Buy a Home', href: '/buy-a-house-journey/' },
+  { label: 'Refinance or HELOC', href: '/refinance-or-heloc-journey/' },
+  { label: 'Build a Home', href: '/build-a-house-journey/' },
+  { label: 'Renovate a Home', href: '/renovate-a-house-journey/' },
+  { label: 'Reverse Mortgage', href: '/reverse-mortgage-journey/' },
+  { label: 'Sell a Home', href: '/sell-a-house-journey/' },
+  { label: 'Build a Wealth Plan', href: '/build-a-wealth-plan-journey/' },
+  { label: 'Find a Tenant', href: '/find-a-tenant-journey/' },
+];
+
+const journey = [
+  { label: 'The 8 Steps™', href: '/the-8-steps/', bold: true },
+  { label: 'Smart Stewards', href: '/the-8-steps/smart-stewards/' },
+  { label: 'First-Time Home Buyer', href: '/the-8-steps/first-time-home-buyer/' },
+  { label: 'Homeowner', href: '/the-8-steps/homeowner/' },
+  { label: 'Senior Homeowner', href: '/the-8-steps/senior-homeowner/' },
+  { label: 'First-Time Investor', href: '/the-8-steps/first-time-investor/' },
+  { label: 'Active Investor', href: '/the-8-steps/active-investor/' },
+  { label: 'Passive Investor', href: '/the-8-steps/passive-investor/' },
+  { label: 'Legacy Angel', href: '/the-8-steps/legacy-angel/' },
+];
+
+const professions = [
+  { label: 'Medical Professionals', href: '/medical-professionals/' },
+  { label: 'Aviation Professionals', href: '/aviation-professionals/' },
+  { label: 'Corporate Executives', href: '/corporate-executives/' },
+  { label: 'Self-Employed & Owners', href: '/legal-business-entrepreneurs/' },
+  { label: 'Creative & Variable', href: '/creative-earners/' },
+];
+
+const tools = [
+  { label: 'Loan Calculators', href: '/loan-calculators/' },
+  { label: 'Current Rates', href: '/current-rates/' },
+  { label: 'Home Value Report', href: '/home-value-report/' },
+  { label: 'Private Home Search', href: '/private-home-search/' },
+  { label: 'Loan Programs', href: '/loan-programs/' },
+  { label: 'Same-Day Approval', href: '/same-day-approval/' },
+  { label: 'Discovery Quiz', href: '/discovery-quiz/' },
+  { label: 'Relocate Anywhere™', href: '/relocate-anywhere/' },
+];
+
+const learn = [
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Free Guides', href: '/guides/' },
+  { label: 'Courses', href: '/courses/' },
+  { label: 'Case Studies', href: '/case-studies/' },
+];
+
+const company = [
+  { label: 'Founder & Philosophy', href: '/founder-philosophy-values/' },
+  { label: 'NEXA Partnership', href: '/nexa-mortgage-partnership/' },
+  { label: 'Certified Advisor', href: '/certified-stairway-advisor/' },
+  { label: 'Community & Causes', href: '/community-causes/' },
+  { label: 'Careers', href: '/branches-careers-internships/' },
+  { label: 'Contact', href: '/contact-us/' },
+  { label: 'Get a Local Intro', href: '/get-a-local-introduction/' },
+];
+
+const partners = [
+  { label: 'Financial Planners', href: '/financial-planners/' },
+  { label: 'Tax & CPA Partners', href: '/accountants-underwriters/' },
+  { label: 'Builders & Contractors', href: '/builders-contractors/' },
+  { label: 'Architects & Designers', href: '/architects-designers/' },
+  { label: 'Attorney Title Teams', href: '/attorneys-title-teams/' },
+  { label: 'Realtors & Wholesalers', href: '/realtors-wholesalers/' },
+  { label: 'Insurance Brokers', href: '/insurance-brokers/' },
+];
+
+const legal = [
+  { label: 'Privacy Policy', href: '/privacy/' },
+  { label: 'California Privacy', href: '/california-privacy/' },
+  { label: 'Oregon Privacy', href: '/oregon-privacy/' },
+  { label: 'Terms of Use', href: '/terms/' },
+  { label: 'State Licensing', href: '/state-licensing/' },
+  { label: 'Texas Disclosure', href: '/texas-disclosure/' },
+];
+---
+
+<!-- Pre-footer CTA bar -->
+<section class="section-tight border-t border-[var(--color-bone)] bg-[var(--color-paper-tint)]">
+  <div class="container-page">
+    <div class="grid md:grid-cols-[1.6fr_1fr] gap-10 items-end">
+      <div class="reveal">
+        <span class="eyebrow mb-5">An 8-ebook journey · from 18 to legacy</span>
+        <h2 class="display-lg mb-3">
+          Download <em class="italic font-light">The Stairway Roadmap.</em>
+        </h2>
+        <p class="lede max-w-xl">
+          Map your real estate journey from age 18 through legacy — one ebook for every chapter. Free.
+        </p>
+      </div>
+      <div class="reveal flex md:justify-end">
+        <a
+          href="https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary btn-arrow text-base"
+        >
+          Get the Guide
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="section-dark">
+  <div class="container-page section-tight">
+    <div class="grid grid-cols-12 gap-x-6 gap-y-10">
+
+      <!-- Brand / Address -->
+      <div class="col-span-12 lg:col-span-4">
+        <div class="flex items-center gap-2 mb-5">
+          <svg viewBox="0 0 28 28" class="w-8 h-8" aria-hidden="true">
+            <rect x="2" y="20" width="6" height="6" fill="var(--color-paper)"/>
+            <rect x="9" y="13" width="6" height="13" fill="var(--color-paper)"/>
+            <rect x="16" y="6" width="6" height="20" fill="var(--color-blue)"/>
+          </svg>
+          <span class="font-display font-medium text-2xl text-[var(--color-paper)] tracking-tight">
+            Stairway <span class="opacity-60 font-normal">Mortgage</span>
+          </span>
+        </div>
+
+        <p class="display-sm mb-6 text-[var(--color-paper)]">
+          <em class="font-light italic">Leverage wisely. <br/>Grow wealthy.</em>
+        </p>
+
+        <div class="text-[14px] leading-relaxed opacity-72 space-y-3">
+          <p class="font-medium text-[var(--color-paper)] not-italic">Corporate HQ</p>
+          <p>
+            NEXA Mortgage LLC, dba Stairway Mortgage<br/>
+            5559 S Sossaman Rd, Bldg #1 Ste #101<br/>
+            Mesa, AZ 85212<br/>
+            <span class="mono text-[13px] opacity-80">NMLS #1660690 · AZMB-0944059</span>
+          </p>
+          <p>
+            <a href="tel:+19549931625" class="hover:underline text-[var(--color-paper)] mono text-[15px]">
+              (954) 993-1625
+            </a>
+          </p>
+        </div>
+
+        <div class="flex gap-2 mt-6">
+          <a href="https://www.facebook.com/mortgagemanjim" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9.1 22.7v-8H6.6V11h2.5V9.4c0-4.1 1.8-6 5.8-6 .4 0 1 .04 1.5.1.5.06.9.15 1.1.2v3.3a8.6 8.6 0 0 0-.7-.04 26.8 26.8 0 0 0-.7 0c-.7 0-1.3.1-1.7.3-.3.16-.5.36-.7.6-.3.5-.4 1-.4 1.8V11h3.9l-.4 2.1-.3 1.6h-3.2v8.2c5.2-.6 9.3-5 9.3-10.2C24 5.4 18.6 0 12 0S0 5.4 0 12c0 5.6 3.9 10.3 9.1 11.6z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/jimblackburn" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.5h-3.6V15c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V20.5h-3.6V9h3.4v1.6h.05a3.74 3.74 0 0 1 3.4-1.85c3.6 0 4.3 2.4 4.3 5.45zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13H3.6V9H7zM22.2 0H1.77C.8 0 0 .77 0 1.7v20.6C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.93-.8-1.7-1.8-1.7z"/></svg>
+          </a>
+          <a href="https://twitter.com/mortgagemanjim" target="_blank" rel="noopener" aria-label="X" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2.25h3.3l-7.2 8.26 8.5 11.24h-6.65L11 14.93 4.99 21.75H1.68l7.7-8.84L1.25 2.25H8.1l4.7 6.23zM17 19.77h1.8L7.1 4.1H5.1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/stairwaymortgage" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 3.3.15 4.8 1.7 4.9 4.9.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.9 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.2 15.6 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.23 1.66-4.77 4.92-4.92C8.42 2.16 8.8 2.15 12 2.15zm0-2.15C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84c-3.4 0-6.16 2.76-6.16 6.16s2.76 6.16 6.16 6.16 6.16-2.76 6.16-6.16C18.16 8.6 15.4 5.84 12 5.84zm0 10.16c-2.21 0-4-1.79-4-4s1.8-4 4-4 4 1.79 4 4-1.79 4-4 4zM18.4 4.15c-.8 0-1.44.65-1.44 1.44s.65 1.44 1.44 1.44a1.44 1.44 0 0 0 0-2.88z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@stairwaymortgage" target="_blank" rel="noopener" aria-label="YouTube" class="w-10 h-10 inline-flex items-center justify-center border border-[var(--color-paper)]/20 rounded-full hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.13C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.07 0 12 0 12s0 3.93.5 5.8a3 3 0 0 0 2.1 2.13c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.13C24 15.93 24 12 24 12s0-3.93-.5-5.8zm-14 9.36V8.44L15.8 12z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- How We Serve -->
+      <div class="col-span-6 sm:col-span-4 lg:col-span-2">
+        <h5 class="eyebrow mb-5">How We Serve</h5>
+        <ul class="space-y-2">
+          {services.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Tools & Learn -->
+      <div class="col-span-6 sm:col-span-4 lg:col-span-2">
+        <h5 class="eyebrow mb-5">Tools & Rates</h5>
+        <ul class="space-y-2 mb-6">
+          {tools.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+        <h5 class="eyebrow mb-4">Learn</h5>
+        <ul class="space-y-2">
+          {learn.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company + Partners -->
+      <div class="col-span-6 sm:col-span-4 lg:col-span-2">
+        <h5 class="eyebrow mb-5">Company</h5>
+        <ul class="space-y-2 mb-6">
+          {company.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+        <h5 class="eyebrow mb-4">Partner With Us</h5>
+        <ul class="space-y-2">
+          {partners.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Your Journey + Professions + Legal -->
+      <div class="col-span-6 sm:col-span-12 lg:col-span-2">
+        <h5 class="eyebrow mb-5">Your Journey</h5>
+        <ul class="space-y-2 mb-6">
+          {journey.map(l => (
+            <li style={l.bold ? '' : 'padding-left:0.75rem;'}><a href={l.href} class={`text-[13.5px] hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity ${l.bold ? 'opacity-85 font-medium' : 'opacity-55'}`}>{l.label}</a></li>
+          ))}
+        </ul>
+        <h5 class="eyebrow mb-4">By Profession</h5>
+        <ul class="space-y-2 mb-6">
+          {professions.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+        <h5 class="eyebrow mb-4">Legal</h5>
+        <ul class="space-y-2">
+          {legal.map(l => (
+            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom strip -->
+  <div class="border-t border-[var(--color-paper)]/10">
+    <div class="container-page py-7">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 text-[12.5px] opacity-55">
+        <p class="leading-relaxed">
+          © {year} Stairway Mortgage · A division of NEXA Mortgage LLC · NEXA licensed in 48 states ·
+          <a href="/state-licensing/" class="underline hover:opacity-100">View licensing</a> · Equal Housing Lender
+        </p>
+        <p class="mono">@stairwaymortgage</p>
+      </div>
+    </div>
+  </div>
+</footer>
+/* ==========================================
+   STAIRWAY MORTGAGE — Editorial Financial Design System
+   Aesthetic: Stripe-clean + editorial gravitas + financial precision
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* ----- Color tokens — warm, deliberate, NOT generic ----- */
+  --color-ink: #0A0E1A;          /* near-black with warm undertone */
+  --color-ink-light: #1A1F2E;
+  --color-paper: #FAFAF7;        /* warm off-white, not sterile */
+  --color-paper-tint: #F4F2EC;
+  --color-bone: #EAE7DE;         /* warm divider tone */
+
+  --color-blue: #1845D6;         /* electric trust blue */
+  --color-blue-deep: #0F2B8E;
+  --color-blue-tint: #E8EDFC;
+
+  --color-rust: #8B2C2C;         /* editorial accent — testimonials, callouts */
+  --color-rust-tint: #F4E8E6;
+
+  --color-green: #2E9E2E;        /* preserved brand CTA — Apply Now */
+  --color-green-deep: #1F6E20;
+
+  --color-mute: #6B7280;
+  --color-mute-light: #9CA3AF;
+
+  /* ----- Typography ----- */
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  /* ----- Spacing rhythm (8px grid) ----- */
+  --spacing-section: clamp(4rem, 9vw, 8rem);
+  --container-max: 1320px;
+  --container-prose: 720px;
+}
+
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 17px;
+  letter-spacing: -0.005em;
+  background: var(--color-paper);
+}
+
+/* ==========================================
+   DISPLAY TYPOGRAPHY (Fraunces)
+   Designed for editorial impact — never timid
+   ========================================== */
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144;
+  font-feature-settings: "ss01", "ss02";
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144;
+  font-weight: 400;
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--color-ink);
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 96;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.display-sm {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 48;
+  font-weight: 500;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  line-height: 1.25;
+  letter-spacing: -0.014em;
+}
+
+/* ==========================================
+   EDITORIAL NUMBERS — for stats, rates, KPIs
+   The defining "wow" element across the site
+   ========================================== */
+.editorial-number {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144;
+  font-weight: 300;
+  font-size: clamp(4rem, 11vw, 9rem);
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  color: var(--color-ink);
+  font-feature-settings: "lnum", "ss01";
+}
+
+.editorial-number-sm {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 96;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* Mono for precise data — rates, dates, NMLS numbers */
+.mono { font-family: var(--font-mono); font-feature-settings: "tnum", "lnum"; }
+
+/* ==========================================
+   EYEBROW — small editorial labels
+   ========================================== */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-mute);
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--color-ink);
+}
+
+.eyebrow-blue { color: var(--color-blue); }
+.eyebrow-blue::before { background: var(--color-blue); }
+
+.eyebrow-rust { color: var(--color-rust); }
+.eyebrow-rust::before { background: var(--color-rust); }
+
+/* ==========================================
+   BODY TEXT
+   ========================================== */
+.lede {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.55;
+  letter-spacing: -0.008em;
+  color: var(--color-ink-light);
+}
+
+.prose-editorial p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.prose-editorial p:last-child { margin-bottom: 0; }
+
+/* ==========================================
+   BUTTONS — refined, deliberate, not generic
+   ========================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  border-radius: 8px;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn-primary {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border-color: var(--color-ink);
+}
+.btn-primary:hover {
+  background: var(--color-ink-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px -8px rgba(10, 14, 26, 0.35);
+}
+
+.btn-green {
+  background: var(--color-green);
+  color: white;
+  border-color: var(--color-green);
+}
+.btn-green:hover {
+  background: var(--color-green-deep);
+  border-color: var(--color-green-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px -8px rgba(46, 158, 46, 0.45);
+}
+
+.btn-blue {
+  background: var(--color-blue);
+  color: white;
+  border-color: var(--color-blue);
+}
+.btn-blue:hover {
+  background: var(--color-blue-deep);
+  border-color: var(--color-blue-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px -8px rgba(24, 69, 214, 0.45);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+.btn-ghost:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.btn-link {
+  background: transparent;
+  color: var(--color-ink);
+  border: none;
+  padding: 0.5rem 0;
+  position: relative;
+}
+.btn-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--color-ink);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+.btn-link:hover::after {
+  transform-origin: left;
+  transform: scaleX(1.05);
+}
+
+.btn-arrow {
+  position: relative;
+  padding-right: 2rem;
+}
+.btn-arrow::after {
+  content: '→';
+  position: absolute;
+  right: 1.25rem;
+  transition: transform 0.2s;
+}
+.btn-arrow:hover::after { transform: translateX(3px); }
+
+/* ==========================================
+   CARDS — refined, editorial, not bubbly
+   ========================================== */
+.card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-bone);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.card:hover {
+  border-color: var(--color-ink);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -16px rgba(10, 14, 26, 0.18);
+}
+
+.card-step-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-mute);
+}
+
+/* ==========================================
+   LINKS — refined underline animation
+   ========================================== */
+.link-editorial {
+  color: var(--color-ink);
+  position: relative;
+  text-decoration: none;
+  background-image: linear-gradient(var(--color-ink), var(--color-ink));
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.3s ease;
+}
+.link-editorial:hover {
+  background-size: 0% 1px;
+  background-position: 100% 100%;
+}
+
+/* ==========================================
+   SCROLL REVEAL — restrained, staggered
+   ========================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+   SECTIONS / CONTAINERS
+   ========================================== */
+.section { padding-block: var(--spacing-section); }
+.section-tight { padding-block: clamp(3rem, 6vw, 5rem); }
+
+.container-page {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.container-prose {
+  max-width: var(--container-prose);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* ==========================================
+   DIVIDERS — refined hairlines
+   ========================================== */
+.hairline { height: 1px; background: var(--color-bone); border: none; }
+.hairline-ink { background: var(--color-ink); height: 1px; border: none; }
+
+/* ==========================================
+   THEME — DARK SECTION
+   ========================================== */
+.section-dark {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.section-dark .eyebrow { color: var(--color-paper); opacity: 0.7; }
+.section-dark .eyebrow::before { background: var(--color-paper); opacity: 0.5; }
+.section-dark .lede { color: rgba(250, 250, 247, 0.78); }
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 1024px) {
+  .display-xl { font-size: clamp(2.5rem, 11vw, 4.5rem); }
+  .editorial-number { font-size: clamp(3rem, 14vw, 6rem); }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .section { padding-block: 3.5rem; }
+}
+
+/* ==========================================
+   UTILITIES
+   ========================================== */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* Reduce motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}

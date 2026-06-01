@@ -13,4 +13,7 @@ export default defineConfig({
     inlineStylesheets: 'auto',
   },
   compressHTML: true,
+  redirects: {
+    '/2025/11/05/dscr-loan-meaning/': '/blog/dscr-loan-meaning/',
+  },
 });
