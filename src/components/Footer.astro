@@ -13,12 +13,15 @@ const services = [
 ];
 
 const journey = [
-  { label: 'The 8-Step Journey', href: '/your-journey/' },
-  { label: 'First-Time Buyer', href: '/first-time-buyers-journey/' },
-  { label: 'Homeowner', href: '/homeowners-journey/' },
-  { label: 'Senior 55+', href: '/senior-homeowners-55-journey/' },
-  { label: 'First-Time Investor', href: '/first-time-investors-journey/' },
-  { label: 'Active Investor', href: '/active-investors-journey/' },
+  { label: 'The 8 Steps™', href: '/the-8-steps/', bold: true },
+  { label: 'Smart Stewards', href: '/the-8-steps/smart-stewards/' },
+  { label: 'First-Time Home Buyer', href: '/the-8-steps/first-time-home-buyer/' },
+  { label: 'Homeowner', href: '/the-8-steps/homeowner/' },
+  { label: 'Senior Homeowner', href: '/the-8-steps/senior-homeowner/' },
+  { label: 'First-Time Investor', href: '/the-8-steps/first-time-investor/' },
+  { label: 'Active Investor', href: '/the-8-steps/active-investor/' },
+  { label: 'Passive Investor', href: '/the-8-steps/passive-investor/' },
+  { label: 'Legacy Angel', href: '/the-8-steps/legacy-angel/' },
 ];
 
 const professions = [
@@ -37,7 +40,7 @@ const tools = [
   { label: 'Loan Programs', href: '/loan-programs/' },
   { label: 'Same-Day Approval', href: '/same-day-approval/' },
   { label: 'Discovery Quiz', href: '/discovery-quiz/' },
-  { label: 'Relocate Anywhere', href: '/relocate-anywhere/' },
+  { label: 'Relocate Anywhere™', href: '/relocate-anywhere/' },
 ];
 
 const learn = [
@@ -55,14 +58,15 @@ const company = [
   { label: 'Careers', href: '/branches-careers-internships/' },
   { label: 'Contact', href: '/contact-us/' },
   { label: 'Get a Local Intro', href: '/get-a-local-introduction/' },
-  { label: 'The 8 Steps', href: '/the-8-steps/' },
 ];
 
 const partners = [
-  { label: 'Realtors', href: '/realtors-wholesalers/' },
-  { label: 'Attorneys & Title', href: '/attorneys-title-teams/' },
   { label: 'Financial Planners', href: '/financial-planners/' },
   { label: 'Tax & CPA Partners', href: '/accountants-underwriters/' },
+  { label: 'Builders & Contractors', href: '/builders-contractors/' },
+  { label: 'Architects & Designers', href: '/architects-designers/' },
+  { label: 'Attorney Title Teams', href: '/attorneys-title-teams/' },
+  { label: 'Realtors & Wholesalers', href: '/realtors-wholesalers/' },
   { label: 'Insurance Brokers', href: '/insurance-brokers/' },
 ];
 
@@ -205,7 +209,7 @@ const legal = [
         <h5 class="eyebrow mb-5">Your Journey</h5>
         <ul class="space-y-2 mb-6">
           {journey.map(l => (
-            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+            <li style={l.bold ? '' : 'padding-left:0.75rem;'}><a href={l.href} class={`text-[13.5px] hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity ${l.bold ? 'opacity-85 font-medium' : 'opacity-55'}`}>{l.label}</a></li>
           ))}
         </ul>
         <h5 class="eyebrow mb-4">By Profession</h5>
