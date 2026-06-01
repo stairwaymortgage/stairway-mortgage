@@ -1,0 +1,175 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Programs"}]};
+const collectionSchema={"@context":"https://schema.org","@type":"CollectionPage","name":"Loan Programs","description":"Compare 44 mortgage loan programs across 9 categories.","url":"https://stairwaymortgage.com/loan-programs/"};
+---
+
+<Layout
+  title="Loan Programs: Compare 44 Mortgage Options | Stairway"
+  description="Compare 44 mortgage loan programs across 9 categories. Find your match with our 3-question finder."
+  canonical="https://stairwaymortgage.com/loan-programs/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <header class="lp-hero">
+    <div class="container-page lp-hero__inner">
+      <span class="eyebrow eyebrow-blue reveal">44 Programs · 9 Categories · 1 Match</span>
+      <h1 class="display-xl lp-hero__title reveal">Find the loan<br/>built for <em>your</em> situation.</h1>
+      <p class="lede lp-hero__lede reveal">Most brokers show you three options. We compare forty-four — then narrow to the one that fits. Guided by Jim Blackburn, <span class="mono">NMLS #1072866</span>.</p>
+      <div class="lp-hero__stats reveal">
+        <div><span class="editorial-number">44</span><small>loan programs</small></div>
+        <div><span class="editorial-number">$500M+</span><small>closed</small></div>
+        <div><span class="editorial-number">7×</span><small>Scotsman Guide</small></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="lp-finder" id="finder">
+    <div class="container-page">
+      <div class="lp-finder__card">
+        <span class="eyebrow eyebrow-rust">The 30-second finder</span>
+        <h2 class="display-md">Three questions. Your shortlist.</h2>
+        <div class="lp-finder__steps">
+          <div class="lp-q" data-dim="goal">
+            <p class="lp-q__label">1 · What is your goal?</p>
+            <div class="lp-q__opts">
+              <button data-v="buy">Buy a home</button><button data-v="refi">Refinance</button><button data-v="invest">Invest in property</button><button data-v="build">Build / renovate</button><button data-v="tap-equity">Tap my equity</button>
+            </div>
+          </div>
+          <div class="lp-q" data-dim="income">
+            <p class="lp-q__label">2 · How is your income?</p>
+            <div class="lp-q__opts">
+              <button data-v="w2">W-2 / salaried</button><button data-v="self">Self-employed</button><button data-v="asset">Asset / no income doc</button><button data-v="any">Not sure</button>
+            </div>
+          </div>
+          <div class="lp-q" data-dim="special">
+            <p class="lp-q__label">3 · Anything special?</p>
+            <div class="lp-q__opts">
+              <button data-v="none">Nope</button><button data-v="foreign">Foreign national</button><button data-v="senior">62+ / retired</button><button data-v="pro">Doctor / lawyer / teacher</button>
+            </div>
+          </div>
+        </div>
+        <p class="lp-finder__result mono" id="finderResult">Pick your answers — matches highlight below ↓</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-catalog" id="catalog">
+    <div class="container-page">
+      <div class="lp-tabs" id="tabs">
+        <button class="lp-tab is-active" data-cat="all">All <span>44</span></button>
+        <button class="lp-tab" data-cat="Government-Backed">Government-Backed <span>11</span></button>
+        <button class="lp-tab" data-cat="Conventional">Conventional <span>2</span></button>
+        <button class="lp-tab" data-cat="Jumbo">Jumbo <span>2</span></button>
+        <button class="lp-tab" data-cat="Construction & Renovation">Construction & Renovation <span>2</span></button>
+        <button class="lp-tab" data-cat="Self-Employed & Alt-Income">Self-Employed & Alt-Income <span>6</span></button>
+        <button class="lp-tab" data-cat="Investor">Investor <span>8</span></button>
+        <button class="lp-tab" data-cat="Specialty & International">Specialty & International <span>6</span></button>
+        <button class="lp-tab" data-cat="Senior & Equity">Senior & Equity <span>3</span></button>
+        <button class="lp-tab" data-cat="Professional">Professional <span>4</span></button>
+      </div>
+      <div class="lp-grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="section-tight lp-cta">
+    <div class="container-prose"><div class="card lp-cta__card">
+      <h2 class="display-md">Not sure which fits?</h2>
+      <p class="lede">That is the whole point of a broker. Tell us your situation — we will match you to the right program and lender, free.</p>
+      <a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a>
+    </div></div>
+  </section>
+
+  <script type="application/json" id="lp-data" set:html={`{"tiles":[{"slug": "fha-loan", "name": "FHA Loan", "desc": "Government-backed financing with flexible qualification and low down-payment options for m", "cat": "Government-Backed", "tags": ["buy", "w2"]}, {"slug": "fha-203k-loan", "name": "FHA 203k Loan", "desc": "Combine purchase and renovation in a single FHA-insured loan, with options for light or fu", "cat": "Government-Backed", "tags": ["buy", "build", "w2"]}, {"slug": "fha-construction-loan", "name": "FHA Construction Loan", "desc": "One-time-close construction-to-permanent FHA financing with flexible credit guidelines. Ge", "cat": "Government-Backed", "tags": ["build", "w2"]}, {"slug": "fha-streamline-refinance", "name": "FHA Streamline Refinance", "desc": "Lower your rate on an existing FHA loan with reduced documentation\u2014often no appraisal requ", "cat": "Government-Backed", "tags": ["refi", "w2"]}, {"slug": "va-loan", "name": "VA Loans", "desc": "VA-backed mortgages for eligible service members, veterans, and surviving spouses\u2014no month", "cat": "Government-Backed", "tags": ["buy", "w2"]}, {"slug": "va-irrrl", "name": "VA IRRRL", "desc": "Interest Rate Reduction Refinance for existing VA loans\u2014often no appraisal and limited doc", "cat": "Government-Backed", "tags": ["refi", "w2"]}, {"slug": "va-construction-loan", "name": "VA Construction Loans", "desc": "One-time-close construction-to-permanent financing for eligible borrowers, with no monthly", "cat": "Government-Backed", "tags": ["build", "w2"]}, {"slug": "usda-loan", "name": "USDA Loan", "desc": "USDA-backed mortgages for eligible rural and some suburban properties; income and property", "cat": "Government-Backed", "tags": ["buy", "w2"]}, {"slug": "usda-construction-loan", "name": "USDA Construction Loans", "desc": "Construction-to-permanent USDA financing for eligible rural builds; income and location ru", "cat": "Government-Backed", "tags": ["build", "w2"]}, {"slug": "section-184-loan", "name": "Section 184 Loan", "desc": "HUD\u2019s Section 184 program for eligible borrowers, including homes on tribal trust land.", "cat": "Government-Backed", "tags": ["buy", "w2"]}, {"slug": "down-payment-assistance", "name": "Down Payment Assistance", "desc": "Down Payment Assistance: 7 Proven Programs to Help You Buy Your First Home New SEO Descrip", "cat": "Government-Backed", "tags": ["buy", "w2"]}, {"slug": "conventional-loan", "name": "Conventional Loan", "desc": "Competitive pricing, cancellable PMI, and flexible down-payment options for primary homes,", "cat": "Conventional", "tags": ["buy", "refi", "w2"]}, {"slug": "homestyle-renovation-loan", "name": "HomeStyle Renovation Loan", "desc": "Bundle purchase and renovations in a single conventional loan\u2014an alternative to FHA 203k.", "cat": "Conventional", "tags": ["buy", "build", "w2"]}, {"slug": "jumbo-loan", "name": "Jumbo Loan", "desc": "Financing tailored for high-value properties with flexible options for complex income and", "cat": "Jumbo", "tags": ["buy", "w2"]}, {"slug": "jumbo-construction-loan", "name": "Jumbo Construction Loan", "desc": "One-time-close construction-to-permanent financing for higher-priced homes.", "cat": "Jumbo", "tags": ["build", "w2"]}, {"slug": "construction-loan", "name": "Construction Loan", "desc": "Finance land, materials, and labor in one loan. One-time-close converts to a permanent mor", "cat": "Construction & Renovation", "tags": ["build", "w2"]}, {"slug": "home-improvement-loan", "name": "Home Improvement Loan", "desc": "Fund remodels and upgrades with options like FHA 203k, HomeStyle, HELOCs, and cash-out ref", "cat": "Construction & Renovation", "tags": ["build", "tap-equity", "w2"]}, {"slug": "bank-statement-loan", "name": "Bank Statement Loan", "desc": "Qualify using 12\u201324 months of bank deposits instead of tax returns. Designed for self-empl", "cat": "Self-Employed & Alt-Income", "tags": ["buy", "refi", "self"]}, {"slug": "1099-loan", "name": "1099 Loan", "desc": "Qualify using 1099 income instead of tax returns. Built for independent contractors with f", "cat": "Self-Employed & Alt-Income", "tags": ["buy", "self"]}, {"slug": "p-and-l-loan", "name": "P&L Loan", "desc": "Qualify using P&L instead of tax returns. Built for independent contractors with flexible", "cat": "Self-Employed & Alt-Income", "tags": ["buy", "self"]}, {"slug": "stated-income-loan", "name": "Stated Income Loan", "desc": "Stated income loans allow qualification without full tax returns. Alternative documentatio", "cat": "Self-Employed & Alt-Income", "tags": ["buy", "self"]}, {"slug": "no-doc-loan", "name": "No Doc Loan", "desc": "Minimal documentation for well-qualified, asset-strong borrowers seeking privacy.", "cat": "Self-Employed & Alt-Income", "tags": ["buy", "self", "asset"]}, {"slug": "asset-based-loan", "name": "Asset Based Loan", "desc": "Get an asset-based loan using investment portfolios instead of income. RUse investment por", "cat": "Self-Employed & Alt-Income", "tags": ["buy", "asset"]}, {"slug": "dscr-loan", "name": "DSCR Loan", "desc": "Buy rentals using property cash flow only\u2014no personal income verification. Investor-friend", "cat": "Investor", "tags": ["invest", "self"]}, {"slug": "fix-and-flip-loan", "name": "Fix and Flip Loan", "desc": "Short-term financing to acquire and renovate properties for resale, with fast closings and", "cat": "Investor", "tags": ["invest", "build"]}, {"slug": "hard-money-loan", "name": "Hard Money Loan", "desc": "Hard money loans provide quick real estate financing for investors. Close in 7-15 days on", "cat": "Investor", "tags": ["invest", "build"]}, {"slug": "portfolio-loan", "name": "Portfolio Loan", "desc": "Portfolio loans offer flexible underwriting for non-warrantable condos, unique properties,", "cat": "Investor", "tags": ["invest", "self"]}, {"slug": "bridge-loan", "name": "Bridge Loan", "desc": "Eliminate sale contingencies with short-term bridge financing. Use home equity to strength", "cat": "Investor", "tags": ["buy", "invest"]}, {"slug": "interest-only-loan", "name": "Interest Only Loan", "desc": "Learn how interest-only loans work across jumbo, DSCR & HELOC programs. Reduce monthly pay", "cat": "Investor", "tags": ["invest", "buy"]}, {"slug": "non-qm-loan", "name": "Non QM Loan", "desc": "Discover non-QM loans including bank statement, DSCR, no-doc & foreign national programs.", "cat": "Investor", "tags": ["buy", "self"]}, {"slug": "commercial-loan", "name": "Commercial Loan", "desc": "Discover commercial loan options including DSCR, hard money, bridge, construction & portfo", "cat": "Investor", "tags": ["invest"]}, {"slug": "foreign-national-loan", "name": "Foreign National Loan", "desc": "Buy U.S. property without an SSN. ITINs and alternative documentation considered.", "cat": "Specialty & International", "tags": ["buy", "foreign"]}, {"slug": "itin-loan", "name": "ITIN Loan", "desc": "Qualify using an Individual Taxpayer Identification Number. Documentation requirements app", "cat": "Specialty & International", "tags": ["buy", "foreign"]}, {"slug": "condotel-loan", "name": "Condotel Loan", "desc": "Condotel loans finance hotel-branded condo units with onsite management. Get specialized f", "cat": "Specialty & International", "tags": ["buy", "invest"]}, {"slug": "resort-condo-loan", "name": "Resort Condo Loan", "desc": "Resort condo loans finance vacation properties in ski resorts, beach destinations, and gol", "cat": "Specialty & International", "tags": ["buy", "invest"]}, {"slug": "non-warrantable-condo-loan", "name": "Non-Warrantable Condo Loan", "desc": "Options for condos that don\u2019t meet Fannie/Freddie rules, including investor and new-constr", "cat": "Specialty & International", "tags": ["buy"]}, {"slug": "manufactured-home-financing-options", "name": "Manufactured Home Financing Options", "desc": "Discover manufactured home financing through FHA, VA, USDA & conventional loans. Learn req", "cat": "Specialty & International", "tags": ["buy"]}, {"slug": "reverse-mortgage", "name": "Reverse Mortgage", "desc": "Tap home equity in retirement while keeping title; you must remain current on taxes, insur", "cat": "Senior & Equity", "tags": ["tap-equity", "senior"]}, {"slug": "heloc", "name": "HELOC", "desc": "Access a revolving line secured by your home. Draw funds as needed with flexible repayment", "cat": "Senior & Equity", "tags": ["tap-equity"]}, {"slug": "home-equity-loan", "name": "Home Equity Loan", "desc": "Lump-sum financing with fixed rates and predictable payments for renovations, debt consoli", "cat": "Senior & Equity", "tags": ["tap-equity"]}, {"slug": "physician-mortgage-loans", "name": "Physician Mortgage Loans", "desc": "Physician mortgage loans offer zero down payment, no PMI, and flexible student debt treatm", "cat": "Professional", "tags": ["buy", "pro"]}, {"slug": "attorney-mortgage", "name": "Attorney Mortgage", "desc": "Attorney mortgage programs offer flexible income documentation for partners, practice owne", "cat": "Professional", "tags": ["buy", "pro"]}, {"slug": "teacher-mortgage", "name": "Teacher Mortgage", "desc": ": Complete teacher mortgage guide covering FHA, VA, USDA loans, down payment assistance, a", "cat": "Professional", "tags": ["buy", "pro"]}, {"slug": "lot-loan", "name": "Lot Loan", "desc": "Complete lot loan guide covering land purchase loans, raw land financing, construction loa", "cat": "Professional", "tags": ["build"]}],"accent":{"Government-Backed": "var(--color-blue)", "Conventional": "var(--color-ink)", "Jumbo": "var(--color-rust)", "Construction & Renovation": "var(--color-green)", "Self-Employed & Alt-Income": "var(--color-blue)", "Investor": "var(--color-rust)", "Specialty & International": "var(--color-green)", "Senior & Equity": "var(--color-blue)", "Professional": "var(--color-ink)"}}`} />
+  <script is:inline>
+    (function(){
+      var D=JSON.parse(document.getElementById('lp-data').textContent);
+      var TILES=D.tiles, ACCENT=D.accent;
+      var grid=document.getElementById('grid'), tabs=document.getElementById('tabs'), fr=document.getElementById('finderResult');
+      var activeCat='all', pick={goal:null,income:null,special:null};
+      function match(t){
+        if(!pick.goal && !pick.income && !pick.special) return null;
+        var ok=true;
+        if(pick.goal) ok=ok && t.tags.indexOf(pick.goal)>-1;
+        if(pick.income && pick.income!=='any') ok=ok && t.tags.indexOf(pick.income)>-1;
+        if(pick.special && pick.special!=='none') ok=ok && t.tags.indexOf(pick.special)>-1;
+        return ok;
+      }
+      function render(){
+        grid.innerHTML=''; var matched=0;
+        TILES.forEach(function(t,i){
+          if(activeCat!=='all' && t.cat!==activeCat) return;
+          var m=match(t);
+          var el=document.createElement('a');
+          el.href='/loan-programs/'+t.slug+'/';
+          el.className='lp-tile'+(m===true?' is-match':'')+(m===false?' is-dim':'');
+          el.style.setProperty('--accent', ACCENT[t.cat]||'var(--color-blue)');
+          el.style.animationDelay=(Math.min(i,20)*0.03)+'s';
+          el.innerHTML='<span class="lp-tile__cat mono">'+t.cat+'</span><h3 class="lp-tile__name">'+t.name+'</h3><p class="lp-tile__desc">'+(t.desc||'')+'</p><span class="lp-tile__go">Explore &rarr;</span>'+(m===true?'<span class="lp-tile__badge">Match</span>':'');
+          grid.appendChild(el); if(m===true)matched++;
+        });
+        if(pick.goal||pick.income||pick.special){ fr.textContent = matched>0 ? (matched+' program'+(matched>1?'s':'')+' match your answers — highlighted below') : 'No exact match — talk to our team and we will find it'; }
+      }
+      tabs.addEventListener('click',function(e){
+        var b=e.target.closest('.lp-tab'); if(!b)return;
+        tabs.querySelectorAll('.lp-tab').forEach(function(x){x.classList.remove('is-active');});
+        b.classList.add('is-active'); activeCat=b.dataset.cat; render();
+      });
+      document.querySelectorAll('.lp-q').forEach(function(q){
+        q.addEventListener('click',function(e){
+          var b=e.target.closest('button'); if(!b)return;
+          q.querySelectorAll('button').forEach(function(x){x.classList.remove('is-sel');});
+          b.classList.add('is-sel'); pick[q.dataset.dim]=b.dataset.v;
+          if(activeCat!=='all'){activeCat='all';tabs.querySelectorAll('.lp-tab').forEach(function(x){x.classList.remove('is-active');});tabs.querySelector('[data-cat=all]').classList.add('is-active');}
+          render(); document.getElementById('catalog').scrollIntoView({behavior:'smooth',block:'start'});
+        });
+      });
+      render();
+    })();
+  </script>
+
+<style>
+  .lp-hero { padding: clamp(3rem,8vw,6rem) 0 clamp(2rem,5vw,4rem); background: linear-gradient(180deg, var(--color-paper-tint), var(--color-paper)); border-bottom: 1px solid var(--color-bone); }
+  .lp-hero__title { margin: 1rem 0 1.5rem; }
+  .lp-hero__title em { font-style: italic; color: var(--color-blue); }
+  .lp-hero__lede { max-width: 60ch; }
+  .lp-hero__stats { display: flex; gap: 3rem; margin-top: 2.5rem; flex-wrap: wrap; }
+  .lp-hero__stats div { display: flex; flex-direction: column; }
+  .lp-hero__stats .editorial-number { font-size: clamp(1.8rem,4vw,2.6rem); }
+  .lp-hero__stats small { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mute); }
+  .lp-finder { padding: clamp(2rem,5vw,4rem) 0; }
+  .lp-finder__card { background: var(--color-ink); color: var(--color-paper); border-radius: 20px; padding: clamp(1.75rem,4vw,3rem); }
+  .lp-finder__card .eyebrow-rust { color: #E59A9A; }
+  .lp-finder__card h2 { color: var(--color-paper); margin: 0.5rem 0 2rem; }
+  .lp-finder__steps { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 2rem; }
+  .lp-q__label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(250,250,247,0.6); margin-bottom: 0.85rem; }
+  .lp-q__opts { display: flex; flex-direction: column; gap: 0.5rem; }
+  .lp-q__opts button { text-align: left; padding: 0.65rem 0.9rem; border-radius: 9px; border: 1px solid rgba(250,250,247,0.18); background: rgba(250,250,247,0.04); color: var(--color-paper); font-family: var(--font-body); font-size: 14px; cursor: pointer; transition: all .18s; }
+  .lp-q__opts button:hover { border-color: var(--color-blue); background: rgba(24,69,214,0.18); }
+  .lp-q__opts button.is-sel { background: var(--color-blue); border-color: var(--color-blue); font-weight: 600; }
+  .lp-finder__result { margin-top: 2rem; font-size: 13px; color: #9FE0A0; letter-spacing: 0.03em; }
+  .lp-catalog { padding: clamp(2rem,5vw,3rem) 0 clamp(3rem,7vw,5rem); }
+  .lp-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+  .lp-tab { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; padding: 0.55rem 0.95rem; border-radius: 999px; border: 1px solid var(--color-bone); background: var(--color-paper); color: var(--color-ink); cursor: pointer; transition: all .18s; }
+  .lp-tab span { opacity: 0.5; margin-left: 0.3rem; }
+  .lp-tab:hover { border-color: var(--color-ink); }
+  .lp-tab.is-active { background: var(--color-ink); color: var(--color-paper); border-color: var(--color-ink); }
+  .lp-tab.is-active span { opacity: 0.7; }
+  .lp-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 1.1rem; }
+  .lp-tile { position: relative; display: flex; flex-direction: column; gap: 0.6rem; padding: 1.5rem; border: 1px solid var(--color-bone); border-radius: 14px; background: var(--color-paper); text-decoration: none; overflow: hidden; opacity: 0; transform: translateY(12px); animation: tileIn .5s cubic-bezier(.16,1,.3,1) forwards; transition: border-color .2s, transform .2s, box-shadow .2s; }
+  .lp-tile::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+  .lp-tile:hover { transform: translateY(-3px); box-shadow: 0 12px 30px -12px rgba(10,14,26,0.18); border-color: var(--accent); }
+  .lp-tile:hover::before { transform: scaleX(1); }
+  .lp-tile__cat { font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); }
+  .lp-tile__name { font-family: var(--font-display); font-weight: 500; font-size: 1.3rem; line-height: 1.15; color: var(--color-ink); }
+  .lp-tile__desc { font-size: 13.5px; line-height: 1.55; color: var(--color-mute); flex: 1; }
+  .lp-tile__go { font-family: var(--font-mono); font-size: 12px; color: var(--color-ink); margin-top: 0.4rem; }
+  .lp-tile__badge { position: absolute; top: 1rem; right: 1rem; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; background: var(--color-green); color: #fff; padding: 0.2rem 0.5rem; border-radius: 5px; }
+  .lp-tile.is-match { border-color: var(--color-green); box-shadow: 0 0 0 1px var(--color-green), 0 12px 30px -12px rgba(46,158,46,0.3); }
+  .lp-tile.is-dim { opacity: 0.32; filter: grayscale(0.4); }
+  @keyframes tileIn { to { opacity: 1; transform: translateY(0); } }
+  .lp-cta__card { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 2.5rem; }
+  @media (prefers-reduced-motion: reduce){ .lp-tile { animation: none; opacity: 1; transform: none; } }
+</style>
+</Layout>
