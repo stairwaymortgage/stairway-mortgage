@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Oregon Privacy"}]};
+---
+
+<Layout title="Oregon Privacy Rights & Data Protection | Stairway" description="Your privacy rights under Oregon state law. How we collect use and protect your personal information with full transparency." canonical="https://stairwaymortgage.com/oregon-privacy/">
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="container-page ft-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span> <span>Oregon Privacy</span>
+  </nav>
+  <header class="container-prose ft-header">
+    <span class="eyebrow eyebrow-blue mb-4">Legal</span>
+    <h1 class="display-md">Oregon Privacy</h1>
+  </header>
+  <article class="container-prose prose-editorial ft-body" set:html={`<h1>Oregon Consumer Privacy Act (OCPA) Notice &amp; Policy
+</h1>				
+		<p>At <b>Stairway Mortgage, a Division of <a href="https://stairwaymortgage.com/nexa-mortgage-partnership/"  data-wpil-monitor-id="321">NEXA Mortgage</a> LLC</b>, we are committed to <b>protecting your privacy</b> and ensuring compliance with the <b>Oregon Consumer Privacy Act (OCPA)</b>. If you are an <b>Oregon resident</b>, you have certain rights regarding how your personal data is collected, used, and shared.</p><p><b>Your Rights Under the OCPA</b></p><p>The <b>Oregon Consumer Privacy Act</b> grants Oregon residents the right to:</p><p>✔ <b>Access &amp; Obtain</b>: Request details about the personal data we collect and receive a copy.<br />✔ <b>Correct</b>: Request corrections to any inaccurate personal data.<br />✔ <b>Delete</b>: Request deletion of personal data, subject to legal exceptions.<br />✔ <b>Know Third-Party Disclosures</b>: Request a list of third parties with whom we have shared your personal data.<br />✔ <b>Opt-Out of</b>:</p><ul><li><b>Targeted advertising</b> based on personal data.</li><li><b>The sale of personal data</b> to third parties.</li></ul><p><b>Automated processing</b> of data that affects legal or significant decisions.</p>		
+					<h3>How We Use &amp; Share Your Information
+</h3>				
+		<p>We collect and process personal data to:</p><ul><li>Provide mortgage services, process applications, and manage accounts.</li><li>Offer product information, pricing, and service notifications.</li><li>Improve our website, conduct audits, and perform research.</li><li>Prevent fraud, enhance security, and comply with legal obligations.</li><li>Respond to law enforcement requests or protect our legal rights.</li></ul><p>We <b>do not sell</b> your personal data. However, we may <b>share certain information</b> with:</p><ul><li><b>Service providers</b> (e.g., analytics, marketing, legal advisors).</li><li><b>Regulatory authorities</b>, when required by law.</li></ul><p>For a full breakdown of how we handle personal data, please review our <b>Privacy Policy</b>.</p>		
+					<h3>How to Exercise Your Privacy Rights
+</h3>				
+		<p>To submit a <b>privacy request</b>, including requests to access, correct, delete, or opt out of certain data uses, please contact us directly:</p><p><b>Email:</b> info@nexamortgage.com<br /><b>Phone:</b> (602) 344-9333</p><p>We will respond to authenticated requests <b>within 45 days</b>. If your request is denied, you may <b>appeal within 14 days</b>, and we will respond within 45 days. If your appeal is denied, you may escalate concerns to the <b>Oregon Attorney General</b>.</p> 		
+					<h2>Corporate Address
+</h2>				
+		<p>Stairway Mortgage, a Division of NEXA Mortgage LLC</p><p>5559 S Sossaman Rd, Bldg 1 Ste 101 Mesa, AZ 85212<br />(602) 344-9333<br />info@nexamortgage.com</p><p>Effective Date: September 1, 2019</p>`} />
+</Layout>
+
+<style>
+  .ft-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .ft-breadcrumb a { color:var(--color-mute); text-decoration:none; } .ft-breadcrumb a:hover { color:var(--color-blue); }
+  .ft-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .ft-header { padding-top:0.5rem; padding-bottom:1rem; }
+  .ft-body { margin-top:1.5rem; padding-bottom:4rem; }
+  .ft-body :global(h2) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.4rem,2.5vw,1.9rem); margin-top:2.5rem; margin-bottom:1rem; }
+  .ft-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:1.3rem; margin-top:1.75rem; margin-bottom:0.7rem; }
+  .ft-body :global(h2 b),.ft-body :global(h3 b) { font-weight:inherit; }
+  .ft-body :global(p) { font-size:16px; line-height:1.7; margin-bottom:1.1rem; color:var(--color-ink-light); }
+  .ft-body :global(ul),.ft-body :global(ol) { margin:0 0 1.4rem 1.25rem; display:flex; flex-direction:column; gap:0.45rem; }
+  .ft-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .ft-body :global(img) { max-width:100%; height:auto; border-radius:10px; margin:1.5rem 0; }
+  .ft-body :global(table) { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:14px; }
+  .ft-body :global(th),.ft-body :global(td) { border:1px solid var(--color-bone); padding:0.6rem 0.8rem; text-align:left; }
+  .ft-body :global(th) { background:var(--color-paper-tint); font-weight:600; }
+</style>

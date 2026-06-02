@@ -18,6 +18,7 @@ for f in glob.glob(os.path.join(REPO,'src/pages/**/*.astro'), recursive=True):
 
 BLOG_FIX={'/blog/gift-money-for-down-payment/':'/blog/gift-money/','/blog/house-hacking-for-beginners/':'/blog/house-hacking/','/blog/mortgage-pre-approval/':'/blog/mortgage-preapproval/','/blog/real-estate-investing/':'/blog/real-estate-investing-for-beginners/'}
 CTA={'/schedule-a-call/':'/schedule-call/','/pre-approval/':'/same-day-approval/','/get-pre-approved/':'/same-day-approval/','/get-approved/':'/same-day-approval/'}
+LP_ALIAS={'/loan-programs/profit-and-loss-loan/':'/loan-programs/p-and-l-loan/','/loan-programs/profit-and-loss-loans/':'/loan-programs/p-and-l-loan/','/loan-programs/profit-loss-loan/':'/loan-programs/p-and-l-loan/','/loan-programs/profit-loss-loans/':'/loan-programs/p-and-l-loan/','/loan-programs/profit-loss-mortgage/':'/loan-programs/p-and-l-loan/','/loan-programs/physician-loans/':'/loan-programs/physician-mortgage-loans/','/loan-programs/renovation-loans/':'/loan-programs/homestyle-renovation-loan/','/loan-programs/renovation-loan/':'/loan-programs/homestyle-renovation-loan/'}
 
 def fix(href):
     if not href.startswith(B): return href
@@ -31,6 +32,7 @@ def fix(href):
         if cand in real: return B+cand
     if base in BLOG_FIX and BLOG_FIX[base] in real: return B+BLOG_FIX[base]
     if base in CTA and CTA[base] in real: return B+CTA[base]
+    if base in LP_ALIAS and LP_ALIAS[base] in real: return B+LP_ALIAS[base]
     # missing trailing slash
     if not base.endswith('/') and base+'/' in real: return B+base+'/'
     return href

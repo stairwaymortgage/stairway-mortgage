@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Texas Disclosure"}]};
+---
+
+<Layout title="Texas Consumer Rights & Disclosures | Stairway Mortgage" description="Required disclosures for Texas mortgage consumers. Your rights under Texas state law and important regulatory information." canonical="https://stairwaymortgage.com/texas-disclosure/">
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="container-page ft-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span> <span>Texas Disclosure</span>
+  </nav>
+  <header class="container-prose ft-header">
+    <span class="eyebrow eyebrow-blue mb-4">Legal</span>
+    <h1 class="display-md">Texas Disclosure</h1>
+  </header>
+  <article class="container-prose prose-editorial ft-body" set:html={`<h2>Texas Mortgage Company Disclosure (7 TAC §80.200(b)) </h2>				
+		<p>CONSUMERS WISHING TO FILE A COMPLAINT AGAINST A COMPANY OR A RESIDENTIAL MORTGAGE LOAN ORIGINATOR SHOULD COMPLETE AND SEND A COMPLAINT FORM TO THE TEXAS DEPARTMENT OF SAVINGS AND MORTGAGE LENDING, 2601 NORTH LAMAR, SUITE 201, AUSTIN, TEXAS 78705. COMPLAINT FORMS AND INSTRUCTIONS MAY BE OBTAINED FROM THE DEPARTMENT'S WEBSITE AT WWW.SML.TEXAS.GOV. A TOLL-FREE CONSUMER HOTLINE IS AVAILABLE AT 1-877-276-5550. THE DEPARTMENT MAINTAINS A RECOVERY FUND TO MAKE PAYMENTS OF CERTAIN ACTUAL OUT OF POCKET DAMAGES SUSTAINED BY BORROWERS CAUSED BY ACTS OF LICENSED RESIDENTIAL MORTGAGE LOAN ORIGINATORS. A WRITTEN APPLICATION FOR REIMBURSEMENT FROM THE RECOVERY FUND MUST BE FILED WITH AND INVESTIGATED BY THE DEPARTMENT PRIOR TO THE PAYMENT OF A CLAIM. FOR MORE INFORMATION ABOUT THE RECOVERY FUND, PLEASE CONSULT THE DEPARTMENT'S WEBSITE AT WWW.SML.TEXAS.GOV.</p>`} />
+</Layout>
+
+<style>
+  .ft-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .ft-breadcrumb a { color:var(--color-mute); text-decoration:none; } .ft-breadcrumb a:hover { color:var(--color-blue); }
+  .ft-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .ft-header { padding-top:0.5rem; padding-bottom:1rem; }
+  .ft-body { margin-top:1.5rem; padding-bottom:4rem; }
+  .ft-body :global(h2) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.4rem,2.5vw,1.9rem); margin-top:2.5rem; margin-bottom:1rem; }
+  .ft-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:1.3rem; margin-top:1.75rem; margin-bottom:0.7rem; }
+  .ft-body :global(h2 b),.ft-body :global(h3 b) { font-weight:inherit; }
+  .ft-body :global(p) { font-size:16px; line-height:1.7; margin-bottom:1.1rem; color:var(--color-ink-light); }
+  .ft-body :global(ul),.ft-body :global(ol) { margin:0 0 1.4rem 1.25rem; display:flex; flex-direction:column; gap:0.45rem; }
+  .ft-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .ft-body :global(img) { max-width:100%; height:auto; border-radius:10px; margin:1.5rem 0; }
+  .ft-body :global(table) { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:14px; }
+  .ft-body :global(th),.ft-body :global(td) { border:1px solid var(--color-bone); padding:0.6rem 0.8rem; text-align:left; }
+  .ft-body :global(th) { background:var(--color-paper-tint); font-weight:600; }
+</style>
