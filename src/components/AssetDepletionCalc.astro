@@ -1,0 +1,84 @@
+---
+/* AssetDepletionCalc — enter liquid assets, see calculated monthly qualifying income.
+   Mirrors how lenders compute asset-depletion income. Stairway tokens. */
+---
+<div class="adc">
+  <div class="adc__head">
+    <span class="eyebrow eyebrow-blue">Interactive · Run your numbers</span>
+    <h2 class="adc__title">What income would your assets show?</h2>
+    <p class="adc__sub">Enter your liquid assets and choose a depletion term. This estimates the monthly qualifying income an asset-depletion lender could credit you — the same math underwriting uses.</p>
+  </div>
+  <div class="adc__grid">
+    <div class="adc__inputs">
+      <label class="adc__field"><span>Checking & savings</span><div class="adc__in"><i>$</i><input type="number" id="adcCash" value="250000" min="0" step="10000"></div></label>
+      <label class="adc__field"><span>Brokerage / investment</span><div class="adc__in"><i>$</i><input type="number" id="adcBroker" value="600000" min="0" step="10000"></div></label>
+      <label class="adc__field"><span>Retirement (401k/IRA)</span><div class="adc__in"><i>$</i><input type="number" id="adcRetire" value="450000" min="0" step="10000"></div></label>
+      <label class="adc__field"><span>Are you 59½ or older?</span>
+        <div class="adc__toggle" id="adcAge">
+          <button data-v="yes" class="is-on">Yes</button><button data-v="no">No</button>
+        </div>
+      </label>
+      <label class="adc__field"><span>Depletion term</span>
+        <div class="adc__toggle" id="adcTerm">
+          <button data-v="240">240 mo (20 yr)</button><button data-v="360" class="is-on">360 mo (30 yr)</button>
+        </div>
+      </label>
+    </div>
+    <div class="adc__result">
+      <p class="adc__rlabel mono">Estimated monthly qualifying income</p>
+      <p class="adc__rvalue" id="adcOut">$0</p>
+      <div class="adc__bar"><div class="adc__barfill" id="adcBar"></div></div>
+      <p class="adc__note" id="adcNote"></p>
+      <p class="adc__disclaim mono">Estimate only · not a commitment to lend. Retirement funds counted at 70% if under 59½; eligibility and discount factors vary by lender.</p>
+    </div>
+  </div>
+</div>
+<script is:inline>
+  (function(){
+    var ids=['adcCash','adcBroker','adcRetire'].map(function(i){return document.getElementById(i);});
+    var out=document.getElementById('adcOut'), bar=document.getElementById('adcBar'), note=document.getElementById('adcNote');
+    var ageW=document.getElementById('adcAge'), termW=document.getElementById('adcTerm');
+    var age='yes', term=360;
+    function n(v){return Math.max(0, parseFloat(v||0)||0);}
+    function fmt(x){return '$'+Math.round(x).toLocaleString();}
+    function calc(){
+      var cash=n(ids[0].value), broker=n(ids[1].value), retire=n(ids[2].value);
+      var retireElig = age==='yes' ? retire : retire*0.7;
+      var pool=cash+broker+retireElig;
+      var monthly=pool/term;
+      out.textContent=fmt(monthly);
+      var pct=Math.min(100, monthly/12000*100);
+      bar.style.width=pct+'%';
+      if(monthly>=8000) note.textContent='Strong — this supports a substantial mortgage payment on assets alone.';
+      else if(monthly>=4000) note.textContent='Solid — enough qualifying income for many purchase scenarios.';
+      else note.textContent='Modest — may pair well with other income or a larger down payment.';
+    }
+    ids.forEach(function(el){el.addEventListener('input',calc);});
+    ageW.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;ageW.querySelectorAll('button').forEach(function(x){x.classList.remove('is-on');});b.classList.add('is-on');age=b.dataset.v;calc();});
+    termW.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;termW.querySelectorAll('button').forEach(function(x){x.classList.remove('is-on');});b.classList.add('is-on');term=parseInt(b.dataset.v);calc();});
+    calc();
+  })();
+</script>
+<style>
+  .adc{border:1px solid var(--color-bone);border-radius:18px;background:var(--color-paper);padding:clamp(1.5rem,4vw,2.5rem);margin:3rem 0;}
+  .adc__title{font-family:var(--font-display);font-weight:500;font-size:clamp(1.5rem,3vw,2rem);margin:.5rem 0 .75rem;}
+  .adc__sub{font-size:15px;line-height:1.6;color:var(--color-mute);max-width:60ch;margin-bottom:1.75rem;}
+  .adc__grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+  @media(max-width:760px){.adc__grid{grid-template-columns:1fr;}}
+  .adc__field{display:block;margin-bottom:1.1rem;}
+  .adc__field>span{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--color-mute);margin-bottom:.4rem;}
+  .adc__in{display:flex;align-items:center;border:1px solid var(--color-bone);border-radius:10px;overflow:hidden;background:var(--color-paper-tint);}
+  .adc__in i{padding:0 .6rem;color:var(--color-mute);font-style:normal;}
+  .adc__in input{flex:1;border:none;background:transparent;padding:.7rem .6rem .7rem 0;font-family:var(--font-mono);font-size:16px;color:var(--color-ink);width:100%;}
+  .adc__in input:focus{outline:none;}
+  .adc__toggle{display:flex;gap:.4rem;}
+  .adc__toggle button{flex:1;padding:.6rem;border:1px solid var(--color-bone);border-radius:9px;background:var(--color-paper);font-family:var(--font-body);font-size:13px;cursor:pointer;transition:all .15s;}
+  .adc__toggle button.is-on{background:var(--color-blue);color:#fff;border-color:var(--color-blue);}
+  .adc__result{background:var(--color-ink);border-radius:14px;padding:1.75rem;color:var(--color-paper);display:flex;flex-direction:column;justify-content:center;}
+  .adc__rlabel{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,250,247,.6);margin-bottom:.5rem;}
+  .adc__rvalue{font-family:var(--font-display);font-size:clamp(2.4rem,6vw,3.4rem);line-height:1;color:#fff;margin-bottom:1rem;}
+  .adc__bar{height:6px;background:rgba(250,250,247,.15);border-radius:99px;overflow:hidden;margin-bottom:1rem;}
+  .adc__barfill{height:100%;background:linear-gradient(90deg,var(--color-blue),#5B82F0);border-radius:99px;width:0;transition:width .4s cubic-bezier(.16,1,.3,1);}
+  .adc__note{font-size:14px;color:#9FE0A0;margin-bottom:1rem;min-height:1.4em;}
+  .adc__disclaim{font-size:10.5px;color:rgba(250,250,247,.45);line-height:1.5;letter-spacing:.02em;}
+</style>
