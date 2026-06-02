@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Privacy"}]};
+---
+
+<Layout title="Privacy Policy | How We Protect Your Data | Stairway" description="Our commitment to protecting your personal and financial information. Detailed privacy practices and your rights under federal and state law." canonical="https://stairwaymortgage.com/privacy/">
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="container-page ft-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span> <span>Privacy</span>
+  </nav>
+  <header class="container-prose ft-header">
+    <span class="eyebrow eyebrow-blue mb-4">Legal</span>
+    <h1 class="display-md">Privacy</h1>
+  </header>
+  <article class="container-prose prose-editorial ft-body" set:html={`<h1>TCPA Consent, Privacy &amp; SMS/Texting Policy
+</h1>				
+					<h3>Consent to Communications
+</h3>				
+		<p>By providing your contact information (phone numbers, email addresses, etc.), you consent to receive communications from Stairway Mortgage, a Division of <a href="https://stairwaymortgage.com/nexa-mortgage-partnership/"  data-wpil-monitor-id="323">NEXA Mortgage</a> LLC, and/or Jim Blackburn Mortgage Team (“we,” “us,” or “our”), as well as our agents, affiliates, and representatives. Communications may include:</p><ul><li>Phone calls (including live representatives, automated dialing systems, and AI integrated systems)</li><li>SMS/text messages (including automated messages and AI integrated systems)</li><li>Emails and electronic communications</li><li>Ringless voicemail messages (including automated messages and AI integrated systems)</li></ul><p>We may contact you using the information you provide or information reasonably associated with your account (e.g., caller ID, skip tracing).</p>		
+					<h3>Consent for SMS/Text Messaging
+</h3>				
+		<p>By providing a mobile number, you consent to receive SMS messages for:</p><ul><li>Loan application updates</li><li>Mortgage market updates and promotions</li><li>Follow-ups on mortgage reviews, holiday messages, and service referrals</li></ul><p>SMS messages may be sent through platforms such as RingCentral, SMS 360, SMS Magic, Jungo, and Salesforce. Standard carrier messaging and data rates may apply.</p>		
+					<h3>Opting Out of SMS Messages
+</h3>				
+		<p>You can opt out of SMS messages at any time by replying <b>STOP</b> to any message or calling <b>(954) 993-1625</b>. Reply <b>HELP</b> for more information. Opting out of SMS does not affect other forms of communication you have consented to receive.</p>		
+					<h3>Call Monitoring &amp; Recording
+</h3>				
+		<p>For quality assurance and compliance, phone calls may be <b>monitored or recorded</b> as permitted by law. By communicating with us, you consent to such recording and monitoring.</p>		
+					<h3>Privacy &amp; Data Protection
+</h3>				
+		<p>Your personal information is handled in accordance with our <b>Privacy Policy</b>, ensuring compliance with applicable laws. We use industry-standard security measures to protect your data from unauthorized access.</p>		
+					<h3>How We Use Your Information
+</h3>				
+		<p>We collect and use your information to:</p><ul><li>Process loan applications and manage accounts</li><li>Provide status updates and relevant market information</li><li>Conduct marketing, promotions, and service follow-ups</li><li>Comply with legal and regulatory requirements</li><li>Improve our services and user experience</li></ul>		
+					<h3>Sharing Your Information
+</h3>				
+		<p>We may share your information with:</p><ul><li><b>Affiliates, agents, and representatives</b> providing mortgage services</li><li><b>Third-party service providers</b> for communication, marketing, or data analysis</li><li><b>Regulatory authorities</b>, as required by law</li></ul><p>We do <b>not</b> sell your personal information.</p>		
+					<h3>Your Rights &amp; Opt-Out Options
+</h3>				
+		<p>Depending on your jurisdiction, you may have rights to:</p><ul><li><b>Access</b> and request a copy of your personal data</li><li><b>Correct</b> inaccurate information</li><li><b>Request deletion</b> of certain personal data (subject to legal requirements)</li><li><b>Opt out</b> of marketing communications</li></ul><p>To exercise these rights, contact us at <b>info@stairwaymortgage.com</b>.</p>		
+					<h3>Legal Disclosures
+</h3>				
+		<p>By providing your contact information, you certify that:</p><ul><li>You are at least <b>18 years old</b></li><li>You reside in the <b>United States</b></li><li>You are the <b>authorized account holder</b> of the provided contact details</li><li>You are <b>not registered on a Do Not Call list</b></li></ul><p>Your consent also applies to any past electronic communications you have received from us.</p>		
+					<h3>Automated Dialing, Prerecorded Messages, &amp; AI Calling
+</h3>				
+		<p>By consenting to communications, you agree that we may contact you using:</p><ul><li><b>Autodialed calls</b> (Automated Telephone Dialing System – ATDS)</li><li><b>Prerecorded or artificial voice messages</b></li><li><b>AI-generated call technology</b></li></ul><p>Automated messages may play when you answer the phone, and SMS messages may include loan application updates and market conditions. Your <b>wireless carrier may charge you for these messages</b>.</p>		
+					<h3>Opt-Out from Automated Calls
+</h3>				
+		<p>You can opt out of <b>automated calls</b> at any time by calling <b>(954) 993-1625</b>.</p>		
+					<h2>Corporate Address
+</h2>				
+		<p>Stairway Mortgage, a Division of NEXA Mortgage LLC</p><p>5559 S Sossaman Rd, Bldg 1 Ste 101 Mesa, AZ 85212<br />(602) 344-9333<br />info@nexamortgage.com</p><p>Effective Date: September 1, 2019</p>`} />
+</Layout>
+
+<style>
+  .ft-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .ft-breadcrumb a { color:var(--color-mute); text-decoration:none; } .ft-breadcrumb a:hover { color:var(--color-blue); }
+  .ft-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .ft-header { padding-top:0.5rem; padding-bottom:1rem; }
+  .ft-body { margin-top:1.5rem; padding-bottom:4rem; }
+  .ft-body :global(h2) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.4rem,2.5vw,1.9rem); margin-top:2.5rem; margin-bottom:1rem; }
+  .ft-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:1.3rem; margin-top:1.75rem; margin-bottom:0.7rem; }
+  .ft-body :global(h2 b),.ft-body :global(h3 b) { font-weight:inherit; }
+  .ft-body :global(p) { font-size:16px; line-height:1.7; margin-bottom:1.1rem; color:var(--color-ink-light); }
+  .ft-body :global(ul),.ft-body :global(ol) { margin:0 0 1.4rem 1.25rem; display:flex; flex-direction:column; gap:0.45rem; }
+  .ft-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .ft-body :global(img) { max-width:100%; height:auto; border-radius:10px; margin:1.5rem 0; }
+  .ft-body :global(table) { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:14px; }
+  .ft-body :global(th),.ft-body :global(td) { border:1px solid var(--color-bone); padding:0.6rem 0.8rem; text-align:left; }
+  .ft-body :global(th) { background:var(--color-paper-tint); font-weight:600; }
+</style>

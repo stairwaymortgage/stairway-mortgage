@@ -163,5 +163,6 @@ export default defineConfig({
     '/2025/11/07/construction-to-permanent-loan/': '/blog/construction-to-permanent-loan/',
     '/2025/11/11/market-cycles/': '/blog/market-cycles/',
     '/2025/11/16/nexa-mortgage-nexa-lending/': '/blog/nexa-mortgage-nexa-lending/',
+    '/2025/11/07/self-employed-mortgage/': '/blog/self-employed-mortgage/',
   },
 });

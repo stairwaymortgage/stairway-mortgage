@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Schedule a Call"}]};
+const serviceSchema={"@context":"https://schema.org","@type":"Service","name":"Free Mortgage Consultation","description":"A no-obligation 30-minute call to discuss your goals and explore your mortgage options.","provider":{"@type":"Organization","name":"Stairway Mortgage"},"areaServed":"US"};
+---
+
+<Layout
+  title="Schedule a Free Mortgage Consultation | Stairway"
+  description="Choose a convenient time to speak with a mortgage expert. No-obligation 30-minute call to discuss your goals and explore your options."
+  canonical="https://stairwaymortgage.com/schedule-call/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <section class="sc-hero">
+    <div class="container-page sc-hero__inner">
+      <div class="sc-hero__copy">
+        <span class="eyebrow eyebrow-blue">Free · 30 minutes · No obligation</span>
+        <h1 class="display-lg sc-hero__title">Let's talk through<br/>your options.</h1>
+        <p class="lede sc-hero__lede">Pick a time that works for you. We'll discuss your goals, answer your questions, and map the loan programs that actually fit your situation — no credit pull, no pressure.</p>
+        <ul class="sc-points">
+          <li><span class="sc-check" aria-hidden="true">✓</span> A real conversation with a mortgage expert, not a call center</li>
+          <li><span class="sc-check" aria-hidden="true">✓</span> Straight answers on what you can qualify for</li>
+          <li><span class="sc-check" aria-hidden="true">✓</span> Guided by Jim Blackburn · <span class="mono">NMLS #1072866</span></li>
+        </ul>
+        <div class="sc-trust">
+          <div><span class="editorial-number">5.0★</span><small>624 reviews</small></div>
+          <div><span class="editorial-number">$500M+</span><small>closed</small></div>
+          <div><span class="editorial-number">7×</span><small>Scotsman Guide</small></div>
+        </div>
+        <p class="sc-phone mono">Prefer to call now? <a href="tel:+19549931625">(954) 993-1625</a></p>
+      </div>
+
+      <div class="sc-booking">
+        <div class="sc-booking__card">
+          <p class="sc-booking__label mono">Choose your time</p>
+          <iframe
+            src="https://forms.stairwaymortgage.com/widget/booking/m4nLhwwXhgZ89EYPS65L"
+            style="width:100%;border:none;overflow:hidden;min-height:720px;"
+            scrolling="no"
+            id="WgEKA0aVe6UrWeGaWCXO_1745404984438"
+            title="Schedule a call with Stairway Mortgage"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://forms.stairwaymortgage.com/js/form_embed.js" type="text/javascript" is:inline></script>
+</Layout>
+
+<style>
+  .sc-hero { padding: clamp(2.5rem,6vw,5rem) 0 clamp(3rem,7vw,6rem); background: linear-gradient(180deg, var(--color-paper-tint), var(--color-paper)); }
+  .sc-hero__inner { display: grid; grid-template-columns: minmax(0,0.85fr) minmax(0,1fr); gap: clamp(2rem,5vw,4rem); align-items: start; }
+  @media (max-width: 920px){ .sc-hero__inner { grid-template-columns: 1fr; } }
+  .sc-hero__title { margin: 1rem 0 1.25rem; }
+  .sc-hero__lede { max-width: 48ch; margin-bottom: 1.75rem; }
+  .sc-points { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.7rem; }
+  .sc-points li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 15px; line-height: 1.5; color: var(--color-ink-light); }
+  .sc-check { color: var(--color-green); font-weight: 700; flex: 0 0 auto; }
+  .sc-trust { display: flex; gap: 2.5rem; padding: 1.5rem 0; border-top: 1px solid var(--color-bone); border-bottom: 1px solid var(--color-bone); margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .sc-trust div { display: flex; flex-direction: column; }
+  .sc-trust .editorial-number { font-size: 1.6rem; }
+  .sc-trust small { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--color-mute); }
+  .sc-phone { font-size: 13px; color: var(--color-mute); }
+  .sc-phone a { color: var(--color-blue); text-decoration: none; }
+  .sc-booking__card { background: var(--color-paper); border: 1px solid var(--color-bone); border-radius: 16px; padding: 1.25rem; box-shadow: 0 18px 44px -24px rgba(10,14,26,0.2); }
+  .sc-booking__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mute); margin-bottom: 0.85rem; padding-left: 0.25rem; }
+  .sc-booking iframe { display: block; border-radius: 10px; }
+</style>
