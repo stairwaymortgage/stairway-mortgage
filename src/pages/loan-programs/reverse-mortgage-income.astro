@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const productSchema={"@context": "https://schema.org", "@type": ["FinancialProduct", "Service"], "name": "Reverse Mortgage for Income", "description": "Supplement retirement income by converting home equity into cash flow, for those 62+.", "provider": {"@type": "Organization", "name": "Stairway Mortgage"}, "areaServed": "US"};
+const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I still own my home with a reverse mortgage?", "acceptedAnswer": {"@type": "Answer", "text": "Yes \u2014 you retain ownership and live in the home. The loan is repaid when you sell, move out permanently, or pass away."}}, {"@type": "Question", "name": "Are there monthly payments?", "acceptedAnswer": {"@type": "Answer", "text": "No required monthly mortgage payments. You remain responsible for property taxes, insurance, and maintenance."}}, {"@type": "Question", "name": "How is the income taxed?", "acceptedAnswer": {"@type": "Answer", "text": "Reverse mortgage proceeds are generally not taxed as income, but you should confirm with a tax advisor for your situation."}}]};
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Loan Programs", "item": "https://stairwaymortgage.com/loan-programs/"}, {"@type": "ListItem", "position": 3, "name": "Reverse Mortgage for Income"}]};
+---
+
+<Layout title="Reverse Mortgage for Income | Stairway" description="Supplement retirement income by converting home equity into cash flow, for those 62+." canonical="https://stairwaymortgage.com/loan-programs/reverse-mortgage-income/">
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="container-page lp-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/loan-programs/">Loan Programs</a> <span>/</span> <span>Reverse Mortgage for Income</span></nav>
+  <header class="container-prose lp-header">
+    <span class="eyebrow eyebrow-blue mb-5">Loan Program</span>
+    <h1 class="display-lg">Reverse Mortgage Income: Turn Home Equity Into Retirement Cash Flow</h1>
+    <p class="lede lp-lede">Supplement retirement income by converting home equity into cash flow, for those 62+. Guided by Jim Blackburn · <span class="mono">NMLS #1072866</span></p>
+    <div class="lp-cta-row"><a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a><a href="tel:+19549931625" class="btn btn-ghost">(954) 993-1625</a></div>
+  </header>
+  <article class="container-prose prose-editorial lp-body" set:html={`<h2><b>What a Reverse Mortgage for Income Is</b></h2><p>A reverse mortgage lets homeowners 62 and older convert home equity into income — as a lump sum, monthly payments, or a line of credit — without monthly mortgage payments, while continuing to live in the home. It's a retirement-income tool.</p><h2><b>Who It's For</b></h2><ul><li>Homeowners 62+ with substantial equity</li><li>Retirees seeking to supplement fixed income</li><li>Those who want to age in place while accessing equity</li><li>Borrowers planning a tax-efficient retirement income strategy</li></ul><h2><b>How It Works</b></h2><p>You access equity while remaining in your home, with no required monthly mortgage payments — the loan is repaid when you sell, move, or pass away. You remain responsible for taxes, insurance, and maintenance. Because reverse mortgages are complex and reduce the equity you leave behind, counseling is part of the process.</p><h2><b>Frequently Asked Questions</b></h2><h3><b>Do I still own my home with a reverse mortgage?</b></h3><p>Yes — you retain ownership and live in the home. The loan is repaid when you sell, move out permanently, or pass away.</p><h3><b>Are there monthly payments?</b></h3><p>No required monthly mortgage payments. You remain responsible for property taxes, insurance, and maintenance.</p><h3><b>How is the income taxed?</b></h3><p>Reverse mortgage proceeds are generally not taxed as income, but you should confirm with a tax advisor for your situation.</p>`} />
+  <div class="container-prose"><p class="lp-compliance mono">This page is for educational purposes and is not a commitment to lend or an offer of a specific rate. Loan terms, rates, and qualification depend on your individual circumstances and are subject to underwriting approval. Stairway Mortgage is a division of NEXA Mortgage LLC.</p></div>
+  <section class="section-tight lp-final-cta"><div class="container-prose"><div class="card lp-final-cta__card">
+    <h2 class="display-md">Ready to explore this program?</h2>
+    <p class="lede">Talk through your scenario with our team — straight answers, no credit pull to start.</p>
+    <a href="/schedule-call/" class="btn btn-blue btn-arrow">Talk to Our Team</a>
+  </div></div></section>
+</Layout>
+
+<style>
+  .lp-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .lp-breadcrumb a { color:var(--color-mute); text-decoration:none; } .lp-breadcrumb a:hover { color:var(--color-blue); }
+  .lp-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .lp-header h1 { margin-bottom:1.25rem; } .lp-lede { margin-bottom:1.5rem; }
+  .lp-cta-row { display:flex; gap:0.75rem; flex-wrap:wrap; }
+  .lp-body { margin-top:2.5rem; }
+  .lp-body :global(h2) { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(1.6rem,3vw,2.25rem); line-height:1.15; margin-top:3rem; margin-bottom:1.1rem; }
+  .lp-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.2rem,2vw,1.55rem); margin-top:2rem; margin-bottom:0.8rem; }
+  .lp-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.25rem; color:var(--color-ink-light); }
+  .lp-body :global(ul) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .lp-body :global(li) { font-size:17px; line-height:1.65; }
+  .lp-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .lp-compliance { font-size:11px; line-height:1.6; color:var(--color-mute); padding:1.5rem 0; border-top:1px solid var(--color-bone); margin-top:2rem; }
+  .lp-final-cta__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
+</style>

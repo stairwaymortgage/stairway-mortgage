@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const productSchema={"@context": "https://schema.org", "@type": ["FinancialProduct", "Service"], "name": "Second Home Loan", "description": "Financing for a second home you'll use part of the year \u2014 distinct from investment property.", "provider": {"@type": "Organization", "name": "Stairway Mortgage"}, "areaServed": "US"};
+const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How is a second home different from an investment property?", "acceptedAnswer": {"@type": "Answer", "text": "A second home is for your personal use part of the year; an investment property is rented out. Second homes usually get better rates and terms."}}, {"@type": "Question", "name": "Can I rent out my second home sometimes?", "acceptedAnswer": {"@type": "Answer", "text": "Occasional rental may be allowed, but significant rental use can reclassify it as an investment property. We'll explain how lenders view this."}}, {"@type": "Question", "name": "What down payment do second homes require?", "acceptedAnswer": {"@type": "Answer", "text": "Typically more than a primary residence but often less than an investment property. The exact amount depends on the lender and your profile."}}]};
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Loan Programs", "item": "https://stairwaymortgage.com/loan-programs/"}, {"@type": "ListItem", "position": 3, "name": "Second Home Loan"}]};
+---
+
+<Layout title="Second Home Loan | Stairway" description="Financing for a second home you'll use part of the year — distinct from investment property." canonical="https://stairwaymortgage.com/loan-programs/second-home-loans/">
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="container-page lp-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/loan-programs/">Loan Programs</a> <span>/</span> <span>Second Home Loan</span></nav>
+  <header class="container-prose lp-header">
+    <span class="eyebrow eyebrow-blue mb-5">Loan Program</span>
+    <h1 class="display-lg">Second Home Loan: Finance a Vacation or Secondary Residence</h1>
+    <p class="lede lp-lede">Financing for a second home you'll use part of the year — distinct from investment property. Guided by Jim Blackburn · <span class="mono">NMLS #1072866</span></p>
+    <div class="lp-cta-row"><a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a><a href="tel:+19549931625" class="btn btn-ghost">(954) 993-1625</a></div>
+  </header>
+  <article class="container-prose prose-editorial lp-body" set:html={`<h2><b>What a Second Home Loan Is</b></h2><p>A second home loan finances a property you'll occupy part of the year — a vacation or secondary residence — as opposed to a pure rental. Second homes often qualify for terms closer to primary-residence financing than investment loans do.</p><h2><b>Who It's For</b></h2><ul><li>Buyers of vacation or seasonal homes</li><li>Those purchasing near family or work for part-time use</li><li>Borrowers wanting better terms than investment loans</li><li>Buyers who'll personally use the property, not rent full-time</li></ul><h2><b>How It Works</b></h2><p>Lenders distinguish a second home (you use it) from an investment property (you rent it). Second homes typically must be a reasonable distance from your primary residence and suitable for year-round use, and they generally carry more favorable terms than investment-property financing.</p><h2><b>Frequently Asked Questions</b></h2><h3><b>How is a second home different from an investment property?</b></h3><p>A second home is for your personal use part of the year; an investment property is rented out. Second homes usually get better rates and terms.</p><h3><b>Can I rent out my second home sometimes?</b></h3><p>Occasional rental may be allowed, but significant rental use can reclassify it as an investment property. We'll explain how lenders view this.</p><h3><b>What down payment do second homes require?</b></h3><p>Typically more than a primary residence but often less than an investment property. The exact amount depends on the lender and your profile.</p>`} />
+  <div class="container-prose"><p class="lp-compliance mono">This page is for educational purposes and is not a commitment to lend or an offer of a specific rate. Loan terms, rates, and qualification depend on your individual circumstances and are subject to underwriting approval. Stairway Mortgage is a division of NEXA Mortgage LLC.</p></div>
+  <section class="section-tight lp-final-cta"><div class="container-prose"><div class="card lp-final-cta__card">
+    <h2 class="display-md">Ready to explore this program?</h2>
+    <p class="lede">Talk through your scenario with our team — straight answers, no credit pull to start.</p>
+    <a href="/schedule-call/" class="btn btn-blue btn-arrow">Talk to Our Team</a>
+  </div></div></section>
+</Layout>
+
+<style>
+  .lp-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .lp-breadcrumb a { color:var(--color-mute); text-decoration:none; } .lp-breadcrumb a:hover { color:var(--color-blue); }
+  .lp-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .lp-header h1 { margin-bottom:1.25rem; } .lp-lede { margin-bottom:1.5rem; }
+  .lp-cta-row { display:flex; gap:0.75rem; flex-wrap:wrap; }
+  .lp-body { margin-top:2.5rem; }
+  .lp-body :global(h2) { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(1.6rem,3vw,2.25rem); line-height:1.15; margin-top:3rem; margin-bottom:1.1rem; }
+  .lp-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.2rem,2vw,1.55rem); margin-top:2rem; margin-bottom:0.8rem; }
+  .lp-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.25rem; color:var(--color-ink-light); }
+  .lp-body :global(ul) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .lp-body :global(li) { font-size:17px; line-height:1.65; }
+  .lp-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .lp-compliance { font-size:11px; line-height:1.6; color:var(--color-mute); padding:1.5rem 0; border-top:1px solid var(--color-bone); margin-top:2rem; }
+  .lp-final-cta__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
+</style>

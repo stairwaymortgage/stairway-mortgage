@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const productSchema={"@context": "https://schema.org", "@type": ["FinancialProduct", "Service"], "name": "Business Line of Credit", "description": "Revolving capital your business can draw on as needed \u2014 for working capital, opportunities, or gaps.", "provider": {"@type": "Organization", "name": "Stairway Mortgage"}, "areaServed": "US"};
+const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How is a line of credit different from a term loan?", "acceptedAnswer": {"@type": "Answer", "text": "A term loan is a lump sum repaid on a schedule; a line of credit is revolving \u2014 draw, repay, and redraw as needed, paying interest only on what's outstanding."}}, {"@type": "Question", "name": "What do I need to qualify?", "acceptedAnswer": {"@type": "Answer", "text": "Typically business financials, time in operation, and a credit profile. Requirements vary by lender and the size of the line."}}, {"@type": "Question", "name": "Can real estate investors use this?", "acceptedAnswer": {"@type": "Answer", "text": "Yes \u2014 many investors use business lines for flexible short-term capital between deals or for renovations."}}]};
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Loan Programs", "item": "https://stairwaymortgage.com/loan-programs/"}, {"@type": "ListItem", "position": 3, "name": "Business Line of Credit"}]};
+---
+
+<Layout title="Business Line of Credit | Stairway" description="Revolving capital your business can draw on as needed — for working capital, opportunities, or gaps." canonical="https://stairwaymortgage.com/loan-programs/business-line-of-credit/">
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="container-page lp-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/loan-programs/">Loan Programs</a> <span>/</span> <span>Business Line of Credit</span></nav>
+  <header class="container-prose lp-header">
+    <span class="eyebrow eyebrow-blue mb-5">Loan Program</span>
+    <h1 class="display-lg">Business Line of Credit: Flexible Capital for Your Business</h1>
+    <p class="lede lp-lede">Revolving capital your business can draw on as needed — for working capital, opportunities, or gaps. Guided by Jim Blackburn · <span class="mono">NMLS #1072866</span></p>
+    <div class="lp-cta-row"><a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a><a href="tel:+19549931625" class="btn btn-ghost">(954) 993-1625</a></div>
+  </header>
+  <article class="container-prose prose-editorial lp-body" set:html={`<h2><b>What a Business Line of Credit Is</b></h2><p>A business line of credit gives your company a revolving pool of capital to draw from as needed, repaying and reusing it over time. It's flexible for managing cash flow, seizing opportunities, or bridging timing gaps.</p><h2><b>Who It's For</b></h2><ul><li>Business owners managing variable cash flow</li><li>Companies funding inventory, payroll, or growth</li><li>Real estate investors needing flexible short-term capital</li><li>Owners who want capital available before they need it</li></ul><h2><b>How It Works</b></h2><p>You're approved for a limit and draw against it as needed, paying interest only on the outstanding balance. As you repay, credit becomes available again. Terms depend on your business's financials, time in operation, and credit profile.</p><h2><b>Frequently Asked Questions</b></h2><h3><b>How is a line of credit different from a term loan?</b></h3><p>A term loan is a lump sum repaid on a schedule; a line of credit is revolving — draw, repay, and redraw as needed, paying interest only on what's outstanding.</p><h3><b>What do I need to qualify?</b></h3><p>Typically business financials, time in operation, and a credit profile. Requirements vary by lender and the size of the line.</p><h3><b>Can real estate investors use this?</b></h3><p>Yes — many investors use business lines for flexible short-term capital between deals or for renovations.</p>`} />
+  <div class="container-prose"><p class="lp-compliance mono">This page is for educational purposes and is not a commitment to lend or an offer of a specific rate. Loan terms, rates, and qualification depend on your individual circumstances and are subject to underwriting approval. Stairway Mortgage is a division of NEXA Mortgage LLC.</p></div>
+  <section class="section-tight lp-final-cta"><div class="container-prose"><div class="card lp-final-cta__card">
+    <h2 class="display-md">Ready to explore this program?</h2>
+    <p class="lede">Talk through your scenario with our team — straight answers, no credit pull to start.</p>
+    <a href="/schedule-call/" class="btn btn-blue btn-arrow">Talk to Our Team</a>
+  </div></div></section>
+</Layout>
+
+<style>
+  .lp-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .lp-breadcrumb a { color:var(--color-mute); text-decoration:none; } .lp-breadcrumb a:hover { color:var(--color-blue); }
+  .lp-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .lp-header h1 { margin-bottom:1.25rem; } .lp-lede { margin-bottom:1.5rem; }
+  .lp-cta-row { display:flex; gap:0.75rem; flex-wrap:wrap; }
+  .lp-body { margin-top:2.5rem; }
+  .lp-body :global(h2) { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(1.6rem,3vw,2.25rem); line-height:1.15; margin-top:3rem; margin-bottom:1.1rem; }
+  .lp-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.2rem,2vw,1.55rem); margin-top:2rem; margin-bottom:0.8rem; }
+  .lp-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.25rem; color:var(--color-ink-light); }
+  .lp-body :global(ul) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .lp-body :global(li) { font-size:17px; line-height:1.65; }
+  .lp-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .lp-compliance { font-size:11px; line-height:1.6; color:var(--color-mute); padding:1.5rem 0; border-top:1px solid var(--color-bone); margin-top:2rem; }
+  .lp-final-cta__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
+</style>

@@ -1,0 +1,80 @@
+---
+/* RefiCalc — refinance break-even + monthly savings estimator. Stairway tokens.
+   Works for rate/term and cash-out framing. */
+interface Props { mode?: string; }
+const { mode = 'rate-term' } = Astro.props;
+---
+<div class="rfc" data-mode={mode}>
+  <div class="rfc__head">
+    <span class="eyebrow eyebrow-blue">Interactive · Run your numbers</span>
+    <h2 class="rfc__title">Should you refinance? Find your break-even.</h2>
+    <p class="rfc__sub">Estimate your new payment, monthly savings, and how long until the closing costs pay for themselves. Adjust the numbers to match your scenario.</p>
+  </div>
+  <div class="rfc__grid">
+    <div class="rfc__inputs">
+      <label class="rfc__field"><span>Current loan balance</span><div class="rfc__in"><i>$</i><input type="number" id="rfcBal" value="400000" min="0" step="10000"></div></label>
+      <label class="rfc__field"><span>Current rate (%)</span><div class="rfc__in"><input type="number" id="rfcOld" value="7.25" min="0" max="20" step="0.125"><i>%</i></div></label>
+      <label class="rfc__field"><span>New rate (%)</span><div class="rfc__in"><input type="number" id="rfcNew" value="6.25" min="0" max="20" step="0.125"><i>%</i></div></label>
+      <label class="rfc__field"><span>New term (years)</span>
+        <div class="rfc__toggle" id="rfcTerm"><button data-v="30" class="is-on">30</button><button data-v="20">20</button><button data-v="15">15</button></div>
+      </label>
+      <label class="rfc__field"><span>Estimated closing costs</span><div class="rfc__in"><i>$</i><input type="number" id="rfcCost" value="6000" min="0" step="500"></div></label>
+    </div>
+    <div class="rfc__result">
+      <div class="rfc__row"><span class="rfc__rlabel mono">New monthly payment</span><span class="rfc__rval" id="rfcPay">$0</span></div>
+      <div class="rfc__row"><span class="rfc__rlabel mono">Monthly savings</span><span class="rfc__rval rfc__rval--accent" id="rfcSave">$0</span></div>
+      <div class="rfc__divider"></div>
+      <p class="rfc__be" id="rfcBE">—</p>
+      <p class="rfc__disclaim mono">Estimate only · not a commitment to lend. Principal & interest only; excludes taxes, insurance, and any cash-out. Actual rates and costs vary.</p>
+    </div>
+  </div>
+</div>
+<script is:inline>
+  (function(){
+    var bal=document.getElementById('rfcBal'),old=document.getElementById('rfcOld'),nw=document.getElementById('rfcNew'),cost=document.getElementById('rfcCost');
+    var pay=document.getElementById('rfcPay'),save=document.getElementById('rfcSave'),be=document.getElementById('rfcBE'),termW=document.getElementById('rfcTerm');
+    var term=30;
+    function n(v){return Math.max(0,parseFloat(v||0)||0);}
+    function fmt(x){return '$'+Math.round(x).toLocaleString();}
+    function pmt(p,r,months){var i=r/100/12;return i===0?p/months:p*i/(1-Math.pow(1+i,-months));}
+    function calc(){
+      var P=n(bal.value), oldP=pmt(P,n(old.value),360), newP=pmt(P,n(nw.value),term*12);
+      pay.textContent=fmt(newP);
+      var s=oldP-newP;
+      save.textContent=(s>=0?'':'-')+fmt(Math.abs(s));
+      if(s>0){
+        var months=Math.ceil(n(cost.value)/s);
+        be.innerHTML='Break-even in <b>'+months+' month'+(months!==1?'s':'')+'</b> — after that, the savings are yours. Over the loan you could save <b>'+fmt(s*term*12)+'</b> in payments.';
+      } else if(s<0){ be.innerHTML='This lowers your rate but the new payment is higher — usually due to a shorter term building equity faster, or the numbers need another look.'; }
+      else { be.textContent='Enter your numbers to see your break-even point.'; }
+    }
+    [bal,old,nw,cost].forEach(function(el){el.addEventListener('input',calc);});
+    termW.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;termW.querySelectorAll('button').forEach(function(x){x.classList.remove('is-on');});b.classList.add('is-on');term=parseInt(b.dataset.v);calc();});
+    calc();
+  })();
+</script>
+<style>
+  .rfc{border:1px solid var(--color-bone);border-radius:18px;background:var(--color-paper);padding:clamp(1.5rem,4vw,2.5rem);margin:3rem 0;}
+  .rfc__title{font-family:var(--font-display);font-weight:500;font-size:clamp(1.5rem,3vw,2rem);margin:.5rem 0 .75rem;}
+  .rfc__sub{font-size:15px;line-height:1.6;color:var(--color-mute);max-width:60ch;margin-bottom:1.75rem;}
+  .rfc__grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+  @media(max-width:760px){.rfc__grid{grid-template-columns:1fr;}}
+  .rfc__field{display:block;margin-bottom:1.1rem;}
+  .rfc__field>span{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--color-mute);margin-bottom:.4rem;}
+  .rfc__in{display:flex;align-items:center;border:1px solid var(--color-bone);border-radius:10px;overflow:hidden;background:var(--color-paper-tint);}
+  .rfc__in i{padding:0 .6rem;color:var(--color-mute);font-style:normal;}
+  .rfc__in input{flex:1;border:none;background:transparent;padding:.7rem .6rem;font-family:var(--font-mono);font-size:16px;color:var(--color-ink);width:100%;}
+  .rfc__in input:focus{outline:none;}
+  .rfc__toggle{display:flex;gap:.4rem;}
+  .rfc__toggle button{flex:1;padding:.6rem;border:1px solid var(--color-bone);border-radius:9px;background:var(--color-paper);font-family:var(--font-mono);font-size:14px;cursor:pointer;transition:all .15s;}
+  .rfc__toggle button.is-on{background:var(--color-blue);color:#fff;border-color:var(--color-blue);}
+  .rfc__result{background:var(--color-ink);border-radius:14px;padding:1.75rem;color:var(--color-paper);display:flex;flex-direction:column;justify-content:center;}
+  .rfc__row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem;}
+  .rfc__rlabel{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,250,247,.6);}
+  .rfc__rval{font-family:var(--font-display);font-size:1.8rem;color:#fff;}
+  .rfc__rval--accent{color:#9FE0A0;}
+  .rfc__divider{height:1px;background:rgba(250,250,247,.15);margin:.5rem 0 1rem;}
+  .rfc__be{font-size:14px;line-height:1.6;color:rgba(250,250,247,.92);margin-bottom:1rem;}
+  .rfc__be b{color:#fff;}
+  .rfc__disclaim{font-size:10.5px;color:rgba(250,250,247,.45);line-height:1.5;letter-spacing:.02em;}
+</style>
