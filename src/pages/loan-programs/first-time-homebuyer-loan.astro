@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const productSchema={"@context": "https://schema.org", "@type": ["FinancialProduct", "Service"], "name": "First-Time Homebuyer Loan", "description": "Loan options designed to lower the barriers to buying your first home.", "provider": {"@type": "Organization", "name": "Stairway Mortgage"}, "areaServed": "US"};
+const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which loan is best for a first-time buyer?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on your credit, income, and location. Conventional 97, HomeReady, FHA, and VA/USDA each fit different profiles \u2014 we compare them for you."}}, {"@type": "Question", "name": "How much down payment do I need?", "acceptedAnswer": {"@type": "Answer", "text": "As little as 3% on some conventional programs, 3.5% on FHA, or 0% on VA/USDA for eligible buyers. Assistance programs can lower this further."}}, {"@type": "Question", "name": "What if my credit isn't perfect?", "acceptedAnswer": {"@type": "Answer", "text": "FHA and certain programs are designed for flexible credit. We can identify which programs fit your current profile."}}]};
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Loan Programs", "item": "https://stairwaymortgage.com/loan-programs/"}, {"@type": "ListItem", "position": 3, "name": "First-Time Homebuyer Loan"}]};
+---
+
+<Layout title="First-Time Homebuyer Loan | Stairway" description="Loan options designed to lower the barriers to buying your first home." canonical="https://stairwaymortgage.com/loan-programs/first-time-homebuyer-loan/">
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="container-page lp-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/loan-programs/">Loan Programs</a> <span>/</span> <span>First-Time Homebuyer Loan</span></nav>
+  <header class="container-prose lp-header">
+    <span class="eyebrow eyebrow-blue mb-5">Loan Program</span>
+    <h1 class="display-lg">First-Time Homebuyer Loan: Low-Barrier Financing for Your First Purchase</h1>
+    <p class="lede lp-lede">Loan options designed to lower the barriers to buying your first home. Guided by Jim Blackburn · <span class="mono">NMLS #1072866</span></p>
+    <div class="lp-cta-row"><a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a><a href="tel:+19549931625" class="btn btn-ghost">(954) 993-1625</a></div>
+  </header>
+  <article class="container-prose prose-editorial lp-body" set:html={`<h2><b>What a First-Time Homebuyer Loan Is</b></h2><p>A first-time homebuyer loan is any of several programs structured to reduce barriers to a first purchase — lower down payments, flexible credit, and help with closing costs. The best choice depends on your finances and where you're buying.</p><h2><b>Who It's For</b></h2><ul><li>First-time buyers needing a low down payment</li><li>Buyers with limited credit history or moderate income</li><li>Those who qualify for down-payment or closing-cost help</li><li>Buyers who want guidance choosing among programs</li></ul><h2><b>How It Works</b></h2><p>Depending on your profile, this could be a 3%-down conventional loan, an FHA loan with flexible credit, or a VA/USDA loan if eligible — often paired with down-payment assistance. We compare options and match you to the program that gets you in on the best terms you qualify for.</p><h2><b>Frequently Asked Questions</b></h2><h3><b>Which loan is best for a first-time buyer?</b></h3><p>It depends on your credit, income, and location. Conventional 97, HomeReady, FHA, and VA/USDA each fit different profiles — we compare them for you.</p><h3><b>How much down payment do I need?</b></h3><p>As little as 3% on some conventional programs, 3.5% on FHA, or 0% on VA/USDA for eligible buyers. Assistance programs can lower this further.</p><h3><b>What if my credit isn't perfect?</b></h3><p>FHA and certain programs are designed for flexible credit. We can identify which programs fit your current profile.</p>`} />
+  <div class="container-prose"><p class="lp-compliance mono">This page is for educational purposes and is not a commitment to lend or an offer of a specific rate. Loan terms, rates, and qualification depend on your individual circumstances and are subject to underwriting approval. Stairway Mortgage is a division of NEXA Mortgage LLC.</p></div>
+  <section class="section-tight lp-final-cta"><div class="container-prose"><div class="card lp-final-cta__card">
+    <h2 class="display-md">Ready to explore this program?</h2>
+    <p class="lede">Talk through your scenario with our team — straight answers, no credit pull to start.</p>
+    <a href="/schedule-call/" class="btn btn-blue btn-arrow">Talk to Our Team</a>
+  </div></div></section>
+</Layout>
+
+<style>
+  .lp-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .lp-breadcrumb a { color:var(--color-mute); text-decoration:none; } .lp-breadcrumb a:hover { color:var(--color-blue); }
+  .lp-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .lp-header h1 { margin-bottom:1.25rem; } .lp-lede { margin-bottom:1.5rem; }
+  .lp-cta-row { display:flex; gap:0.75rem; flex-wrap:wrap; }
+  .lp-body { margin-top:2.5rem; }
+  .lp-body :global(h2) { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(1.6rem,3vw,2.25rem); line-height:1.15; margin-top:3rem; margin-bottom:1.1rem; }
+  .lp-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.2rem,2vw,1.55rem); margin-top:2rem; margin-bottom:0.8rem; }
+  .lp-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.25rem; color:var(--color-ink-light); }
+  .lp-body :global(ul) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .lp-body :global(li) { font-size:17px; line-height:1.65; }
+  .lp-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .lp-compliance { font-size:11px; line-height:1.6; color:var(--color-mute); padding:1.5rem 0; border-top:1px solid var(--color-bone); margin-top:2rem; }
+  .lp-final-cta__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
+</style>

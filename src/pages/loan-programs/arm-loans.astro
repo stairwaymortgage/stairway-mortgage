@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const productSchema={"@context": "https://schema.org", "@type": ["FinancialProduct", "Service"], "name": "Adjustable-Rate Mortgage (ARM)", "description": "Start with a lower fixed rate for an initial period, then adjust \u2014 useful for shorter-horizon plans.", "provider": {"@type": "Organization", "name": "Stairway Mortgage"}, "areaServed": "US"};
+const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When does an ARM make sense?", "acceptedAnswer": {"@type": "Answer", "text": "When you expect to sell or refinance before the fixed period ends, or expect rates to fall. You capture the lower intro rate without holding the adjustable risk long-term."}}, {"@type": "Question", "name": "How much can the rate change?", "acceptedAnswer": {"@type": "Answer", "text": "ARMs have caps limiting how much the rate can move at each adjustment and over the loan's life. We'll explain the specific caps on any ARM you consider."}}, {"@type": "Question", "name": "Can I refinance out of an ARM later?", "acceptedAnswer": {"@type": "Answer", "text": "Yes \u2014 many borrowers refinance into a fixed loan before or during the adjustable period. There's no penalty in most cases, but we'll confirm for your loan."}}]};
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Loan Programs", "item": "https://stairwaymortgage.com/loan-programs/"}, {"@type": "ListItem", "position": 3, "name": "Adjustable-Rate Mortgage (ARM)"}]};
+---
+
+<Layout title="Adjustable-Rate Mortgage (ARM) | Stairway" description="Start with a lower fixed rate for an initial period, then adjust — useful for shorter-horizon plans." canonical="https://stairwaymortgage.com/loan-programs/arm-loans/">
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="container-page lp-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/loan-programs/">Loan Programs</a> <span>/</span> <span>Adjustable-Rate Mortgage (ARM)</span></nav>
+  <header class="container-prose lp-header">
+    <span class="eyebrow eyebrow-blue mb-5">Loan Program</span>
+    <h1 class="display-lg">ARM Loans: Lower Initial Rates With a Fixed Intro Period</h1>
+    <p class="lede lp-lede">Start with a lower fixed rate for an initial period, then adjust — useful for shorter-horizon plans. Guided by Jim Blackburn · <span class="mono">NMLS #1072866</span></p>
+    <div class="lp-cta-row"><a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a><a href="tel:+19549931625" class="btn btn-ghost">(954) 993-1625</a></div>
+  </header>
+  <article class="container-prose prose-editorial lp-body" set:html={`<h2><b>What a Adjustable-Rate Mortgage (ARM) Is</b></h2><p>An adjustable-rate mortgage offers a lower fixed rate for an initial period (commonly 5, 7, or 10 years), then adjusts periodically based on market indexes. For borrowers who plan to move or refinance before the fixed period ends, an ARM can save meaningfully.</p><h2><b>Who It's For</b></h2><ul><li>Buyers planning to sell or refinance within the fixed period</li><li>Borrowers comfortable with future adjustment for a lower start</li><li>Those buying in a high-rate environment expecting declines</li><li>Higher-income borrowers with short-to-medium-term plans</li></ul><h2><b>How It Works</b></h2><p>You get a fixed rate for the intro period (e.g. 7 years on a 7/6 ARM), typically lower than a comparable 30-year fixed. After that, the rate adjusts on a schedule within caps that limit movement. The strategy works best when your time horizon fits the fixed period.</p><h2><b>Frequently Asked Questions</b></h2><h3><b>When does an ARM make sense?</b></h3><p>When you expect to sell or refinance before the fixed period ends, or expect rates to fall. You capture the lower intro rate without holding the adjustable risk long-term.</p><h3><b>How much can the rate change?</b></h3><p>ARMs have caps limiting how much the rate can move at each adjustment and over the loan's life. We'll explain the specific caps on any ARM you consider.</p><h3><b>Can I refinance out of an ARM later?</b></h3><p>Yes — many borrowers refinance into a fixed loan before or during the adjustable period. There's no penalty in most cases, but we'll confirm for your loan.</p>`} />
+  <div class="container-prose"><p class="lp-compliance mono">This page is for educational purposes and is not a commitment to lend or an offer of a specific rate. Loan terms, rates, and qualification depend on your individual circumstances and are subject to underwriting approval. Stairway Mortgage is a division of NEXA Mortgage LLC.</p></div>
+  <section class="section-tight lp-final-cta"><div class="container-prose"><div class="card lp-final-cta__card">
+    <h2 class="display-md">Ready to explore this program?</h2>
+    <p class="lede">Talk through your scenario with our team — straight answers, no credit pull to start.</p>
+    <a href="/schedule-call/" class="btn btn-blue btn-arrow">Talk to Our Team</a>
+  </div></div></section>
+</Layout>
+
+<style>
+  .lp-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .lp-breadcrumb a { color:var(--color-mute); text-decoration:none; } .lp-breadcrumb a:hover { color:var(--color-blue); }
+  .lp-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .lp-header h1 { margin-bottom:1.25rem; } .lp-lede { margin-bottom:1.5rem; }
+  .lp-cta-row { display:flex; gap:0.75rem; flex-wrap:wrap; }
+  .lp-body { margin-top:2.5rem; }
+  .lp-body :global(h2) { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(1.6rem,3vw,2.25rem); line-height:1.15; margin-top:3rem; margin-bottom:1.1rem; }
+  .lp-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.2rem,2vw,1.55rem); margin-top:2rem; margin-bottom:0.8rem; }
+  .lp-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.25rem; color:var(--color-ink-light); }
+  .lp-body :global(ul) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .lp-body :global(li) { font-size:17px; line-height:1.65; }
+  .lp-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .lp-compliance { font-size:11px; line-height:1.6; color:var(--color-mute); padding:1.5rem 0; border-top:1px solid var(--color-bone); margin-top:2rem; }
+  .lp-final-cta__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
+</style>

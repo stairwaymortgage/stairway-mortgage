@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RefiCalc from '../../components/RefiCalc.astro';
+const productSchema={"@context": "https://schema.org", "@type": ["FinancialProduct", "Service"], "name": "VA Loan Refinance", "description": "Refinance your existing mortgage using your VA benefit \u2014 for a lower rate, a shorter term, or access to your equity.", "provider": {"@type": "Organization", "name": "Stairway Mortgage"}, "areaServed": "US"};
+const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between a VA IRRRL and a VA cash-out refinance?", "acceptedAnswer": {"@type": "Answer", "text": "An IRRRL (Interest Rate Reduction Refinance Loan) streamlines lowering the rate on an existing VA loan with minimal documentation. A VA cash-out refinance lets you access equity or refinance a non-VA loan into a VA loan, with full underwriting."}}, {"@type": "Question", "name": "Do VA refinances require mortgage insurance?", "acceptedAnswer": {"@type": "Answer", "text": "No. VA loans do not carry monthly mortgage insurance, which is one of the benefit's biggest advantages. A VA funding fee may apply, though some veterans are exempt."}}, {"@type": "Question", "name": "Can I refinance a conventional loan into a VA loan?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, through a VA cash-out refinance, provided you have VA eligibility and you and the property qualify."}}, {"@type": "Question", "name": "How much equity can I access with a VA cash-out?", "acceptedAnswer": {"@type": "Answer", "text": "VA cash-out refinances can allow access up to 100% of your home's value with some lenders, though many cap lower. Terms vary, so comparing lenders matters."}}, {"@type": "Question", "name": "Am I eligible for a VA refinance?", "acceptedAnswer": {"@type": "Answer", "text": "Eligibility requires VA entitlement \u2014 generally available to qualifying veterans, active-duty service members, National Guard, Reserves, and some surviving spouses. We can help confirm your eligibility."}}]};
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Loan Programs", "item": "https://stairwaymortgage.com/loan-programs/"}, {"@type": "ListItem", "position": 3, "name": "VA Loan Refinance"}]};
+---
+
+<Layout title="VA Loan Refinance | Stairway" description="Refinance your existing mortgage using your VA benefit — for a lower rate, a shorter term, or access to your equity." canonical="https://stairwaymortgage.com/loan-programs/va-loan-refinance/">
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="container-page lp-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span> <a href="/loan-programs/">Loan Programs</a> <span>/</span> <span>VA Loan Refinance</span>
+  </nav>
+  <header class="container-prose lp-header">
+    <span class="eyebrow eyebrow-blue mb-5">Loan Program · Refinance</span>
+    <h1 class="display-lg">VA Loan Refinance: Lower Your Rate or Tap Equity as a Veteran</h1>
+    <p class="lede lp-lede">Refinance your existing mortgage using your VA benefit — for a lower rate, a shorter term, or access to your equity. Guided by Jim Blackburn · <span class="mono">NMLS #1072866</span></p>
+    <div class="lp-cta-row"><a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a><a href="tel:+19549931625" class="btn btn-ghost">(954) 993-1625</a></div>
+  </header>
+  <article class="container-prose prose-editorial lp-body" set:html={`<h2><b>What an VA Loan Refinance Is</b></h2><p>A VA loan refinance lets eligible service members, veterans, and surviving spouses refinance into a VA-backed loan. There are two main paths: a rate-and-term refinance to lower your rate or change your term, and a VA cash-out refinance to access equity — both backed by the Department of Veterans Affairs.</p><h2><b>Who It's For</b></h2><ul><li>Veterans and active service members with VA loan eligibility</li><li>Homeowners wanting to lower their rate or monthly payment</li><li>Those looking to convert a conventional or FHA loan into a VA loan</li><li>Borrowers who want to tap equity with VA backing</li></ul><h2><b>How It Works</b></h2><p>If you're lowering your rate on an existing VA loan, the VA IRRRL (streamline) is often the simplest path with limited documentation. For accessing equity or refinancing a non-VA loan into a VA loan, the VA cash-out refinance applies, allowing you to borrow against your home's value. VA loans require no monthly mortgage insurance, which often makes them highly competitive for those who qualify.</p><h2><b>Frequently Asked Questions</b></h2><h3><b>What is the difference between a VA IRRRL and a VA cash-out refinance?</b></h3><p>An IRRRL (Interest Rate Reduction Refinance Loan) streamlines lowering the rate on an existing VA loan with minimal documentation. A VA cash-out refinance lets you access equity or refinance a non-VA loan into a VA loan, with full underwriting.</p><h3><b>Do VA refinances require mortgage insurance?</b></h3><p>No. VA loans do not carry monthly mortgage insurance, which is one of the benefit's biggest advantages. A VA funding fee may apply, though some veterans are exempt.</p><h3><b>Can I refinance a conventional loan into a VA loan?</b></h3><p>Yes, through a VA cash-out refinance, provided you have VA eligibility and you and the property qualify.</p><h3><b>How much equity can I access with a VA cash-out?</b></h3><p>VA cash-out refinances can allow access up to 100% of your home's value with some lenders, though many cap lower. Terms vary, so comparing lenders matters.</p><h3><b>Am I eligible for a VA refinance?</b></h3><p>Eligibility requires VA entitlement — generally available to qualifying veterans, active-duty service members, National Guard, Reserves, and some surviving spouses. We can help confirm your eligibility.</p>`} />
+  <div class="container-prose"><RefiCalc mode="rate-term" /></div>
+  <div class="container-prose"><p class="lp-compliance mono">This page is for educational purposes and is not a commitment to lend or an offer of a specific rate. Loan terms, rates, and qualification depend on your individual circumstances and are subject to underwriting approval. Stairway Mortgage is a division of NEXA Mortgage LLC.</p></div>
+
+  <section class="section-tight lp-final-cta"><div class="container-prose"><div class="card lp-final-cta__card">
+    <h2 class="display-md">Is refinancing right for you?</h2>
+    <p class="lede">We'll run your real numbers and tell you straight whether it pencils — no credit pull to start.</p>
+    <a href="/schedule-call/" class="btn btn-blue btn-arrow">Talk to Our Team</a>
+  </div></div></section>
+</Layout>
+
+<style>
+  .lp-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .lp-breadcrumb a { color:var(--color-mute); text-decoration:none; } .lp-breadcrumb a:hover { color:var(--color-blue); }
+  .lp-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .lp-header h1 { margin-bottom:1.25rem; } .lp-lede { margin-bottom:1.5rem; }
+  .lp-cta-row { display:flex; gap:0.75rem; flex-wrap:wrap; }
+  .lp-body { margin-top:2.5rem; }
+  .lp-body :global(h2) { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(1.6rem,3vw,2.25rem); line-height:1.15; margin-top:3rem; margin-bottom:1.1rem; }
+  .lp-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.2rem,2vw,1.55rem); margin-top:2rem; margin-bottom:0.8rem; }
+  .lp-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.25rem; color:var(--color-ink-light); }
+  .lp-body :global(ul) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .lp-body :global(li) { font-size:17px; line-height:1.65; }
+  .lp-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .lp-compliance { font-size:11px; line-height:1.6; color:var(--color-mute); padding:1.5rem 0; border-top:1px solid var(--color-bone); margin-top:2rem; letter-spacing:0.01em; }
+  .lp-final-cta__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
+</style>

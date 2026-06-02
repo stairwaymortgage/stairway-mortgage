@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const productSchema={"@context": "https://schema.org", "@type": ["FinancialProduct", "Service"], "name": "Securities-Backed Line of Credit", "description": "Access liquidity using your investment portfolio as collateral \u2014 without selling assets.", "provider": {"@type": "Organization", "name": "Stairway Mortgage"}, "areaServed": "US"};
+const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much can I borrow against my portfolio?", "acceptedAnswer": {"@type": "Answer", "text": "Typically a percentage of your eligible securities' value, varying by the type of holdings and lender. Conservative holdings often allow higher borrowing percentages."}}, {"@type": "Question", "name": "What happens if the market drops?", "acceptedAnswer": {"@type": "Answer", "text": "A significant decline can trigger a maintenance call requiring you to add collateral or pay down the line. This risk is the main consideration with securities-backed borrowing."}}, {"@type": "Question", "name": "Do I have to sell my investments?", "acceptedAnswer": {"@type": "Answer", "text": "No \u2014 that's the point. You keep your portfolio invested and borrow against it, preserving potential growth and avoiding a taxable sale."}}]};
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Loan Programs", "item": "https://stairwaymortgage.com/loan-programs/"}, {"@type": "ListItem", "position": 3, "name": "Securities-Backed Line of Credit"}]};
+---
+
+<Layout title="Securities-Backed Line of Credit | Stairway" description="Access liquidity using your investment portfolio as collateral — without selling assets." canonical="https://stairwaymortgage.com/loan-programs/securities-line/">
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="container-page lp-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/loan-programs/">Loan Programs</a> <span>/</span> <span>Securities-Backed Line of Credit</span></nav>
+  <header class="container-prose lp-header">
+    <span class="eyebrow eyebrow-blue mb-5">Loan Program</span>
+    <h1 class="display-lg">Securities-Backed Line of Credit: Borrow Against Your Portfolio</h1>
+    <p class="lede lp-lede">Access liquidity using your investment portfolio as collateral — without selling assets. Guided by Jim Blackburn · <span class="mono">NMLS #1072866</span></p>
+    <div class="lp-cta-row"><a href="/same-day-approval/" class="btn btn-blue btn-arrow">See My Options</a><a href="tel:+19549931625" class="btn btn-ghost">(954) 993-1625</a></div>
+  </header>
+  <article class="container-prose prose-editorial lp-body" set:html={`<h2><b>What a Securities-Backed Line of Credit Is</b></h2><p>A securities-backed line of credit (SBLOC) lets you borrow against your investment portfolio's value without selling holdings. It can provide liquidity for a property purchase, bridge financing, or other needs while your investments stay invested.</p><h2><b>Who It's For</b></h2><ul><li>Investors wanting liquidity without selling assets</li><li>Buyers needing fast, flexible funds for a purchase</li><li>High-net-worth borrowers managing tax-efficient liquidity</li><li>Those bridging timing between transactions</li></ul><h2><b>How It Works</b></h2><p>Your eligible securities serve as collateral for a revolving line, typically at a percentage of the portfolio's value. You keep ownership of your investments and their potential growth. Because markets fluctuate, these lines carry the risk of a maintenance call if value drops — a key consideration we'll walk through.</p><h2><b>Frequently Asked Questions</b></h2><h3><b>How much can I borrow against my portfolio?</b></h3><p>Typically a percentage of your eligible securities' value, varying by the type of holdings and lender. Conservative holdings often allow higher borrowing percentages.</p><h3><b>What happens if the market drops?</b></h3><p>A significant decline can trigger a maintenance call requiring you to add collateral or pay down the line. This risk is the main consideration with securities-backed borrowing.</p><h3><b>Do I have to sell my investments?</b></h3><p>No — that's the point. You keep your portfolio invested and borrow against it, preserving potential growth and avoiding a taxable sale.</p>`} />
+  <div class="container-prose"><p class="lp-compliance mono">This page is for educational purposes and is not a commitment to lend or an offer of a specific rate. Loan terms, rates, and qualification depend on your individual circumstances and are subject to underwriting approval. Stairway Mortgage is a division of NEXA Mortgage LLC.</p></div>
+  <section class="section-tight lp-final-cta"><div class="container-prose"><div class="card lp-final-cta__card">
+    <h2 class="display-md">Ready to explore this program?</h2>
+    <p class="lede">Talk through your scenario with our team — straight answers, no credit pull to start.</p>
+    <a href="/schedule-call/" class="btn btn-blue btn-arrow">Talk to Our Team</a>
+  </div></div></section>
+</Layout>
+
+<style>
+  .lp-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .lp-breadcrumb a { color:var(--color-mute); text-decoration:none; } .lp-breadcrumb a:hover { color:var(--color-blue); }
+  .lp-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .lp-header h1 { margin-bottom:1.25rem; } .lp-lede { margin-bottom:1.5rem; }
+  .lp-cta-row { display:flex; gap:0.75rem; flex-wrap:wrap; }
+  .lp-body { margin-top:2.5rem; }
+  .lp-body :global(h2) { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(1.6rem,3vw,2.25rem); line-height:1.15; margin-top:3rem; margin-bottom:1.1rem; }
+  .lp-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.2rem,2vw,1.55rem); margin-top:2rem; margin-bottom:0.8rem; }
+  .lp-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.25rem; color:var(--color-ink-light); }
+  .lp-body :global(ul) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .lp-body :global(li) { font-size:17px; line-height:1.65; }
+  .lp-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .lp-compliance { font-size:11px; line-height:1.6; color:var(--color-mute); padding:1.5rem 0; border-top:1px solid var(--color-bone); margin-top:2rem; }
+  .lp-final-cta__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
+</style>

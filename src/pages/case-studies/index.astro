@@ -1,0 +1,610 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Case Studies"}]};
+const collectionSchema={"@context":"https://schema.org","@type":"CollectionPage","name":"Case Studies","description":"Real financing scenarios across 80+ loan programs — how Stairway structured solutions for complex borrowers.","url":"https://stairwaymortgage.com/case-studies/"};
+---
+
+<Layout
+  title="Mortgage Case Studies: Real Financing Scenarios | Stairway"
+  description="80+ real-world financing scenarios — DSCR, bank statement, jumbo, FHA, VA and more. See how Stairway structured solutions for complex borrowers."
+  canonical="https://stairwaymortgage.com/case-studies/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <header class="cs-hero">
+    <div class="container-page">
+      <span class="eyebrow eyebrow-rust">Case Studies</span>
+      <h1 class="display-xl cs-hero__title">Real scenarios.<br/>Real closings.</h1>
+      <p class="lede cs-hero__lede">Every borrower's situation is different. These are real financing scenarios — the complex, the time-sensitive, the "another lender said no" — and how we structured a path to closing. Educational examples, anonymized.</p>
+      <div class="cs-search"><input type="search" id="csSearch" placeholder="Search by loan type, scenario…" aria-label="Search case studies" autocomplete="off" /></div>
+    </div>
+  </header>
+
+  <section class="cs-catalog">
+    <div class="container-page">
+      <div class="cs-tabs" id="csTabs">
+        <button class="cs-tab is-active" data-cat="all">All <span>83</span></button>
+        <button class="cs-tab" data-cat="Other">Other <span>9</span></button>
+        <button class="cs-tab" data-cat="FHA">FHA <span>6</span></button>
+        <button class="cs-tab" data-cat="VA">VA <span>5</span></button>
+        <button class="cs-tab" data-cat="Portfolio">Portfolio <span>4</span></button>
+        <button class="cs-tab" data-cat="P&amp;L">P&amp;L <span>4</span></button>
+        <button class="cs-tab" data-cat="Home Equity">Home Equity <span>4</span></button>
+        <button class="cs-tab" data-cat="Jumbo">Jumbo <span>4</span></button>
+        <button class="cs-tab" data-cat="Reverse">Reverse <span>4</span></button>
+        <button class="cs-tab" data-cat="USDA">USDA <span>4</span></button>
+        <button class="cs-tab" data-cat="1099">1099 <span>3</span></button>
+        <button class="cs-tab" data-cat="Bank Statement">Bank Statement <span>3</span></button>
+        <button class="cs-tab" data-cat="Condotel">Condotel <span>3</span></button>
+        <button class="cs-tab" data-cat="DSCR">DSCR <span>3</span></button>
+        <button class="cs-tab" data-cat="Foreign National">Foreign National <span>3</span></button>
+        <button class="cs-tab" data-cat="Non-Warrantable">Non-Warrantable <span>3</span></button>
+        <button class="cs-tab" data-cat="Section 184">Section 184 <span>3</span></button>
+        <button class="cs-tab" data-cat="Asset-Based">Asset-Based <span>2</span></button>
+        <button class="cs-tab" data-cat="Construction">Construction <span>2</span></button>
+        <button class="cs-tab" data-cat="Conventional">Conventional <span>2</span></button>
+        <button class="cs-tab" data-cat="Hard Money">Hard Money <span>2</span></button>
+        <button class="cs-tab" data-cat="Renovation">Renovation <span>2</span></button>
+        <button class="cs-tab" data-cat="ITIN">ITIN <span>2</span></button>
+        <button class="cs-tab" data-cat="Stated Income">Stated Income <span>2</span></button>
+        <button class="cs-tab" data-cat="Bridge">Bridge <span>1</span></button>
+        <button class="cs-tab" data-cat="Down Payment">Down Payment <span>1</span></button>
+        <button class="cs-tab" data-cat="Fix &amp; Flip">Fix &amp; Flip <span>1</span></button>
+        <button class="cs-tab" data-cat="HELOC">HELOC <span>1</span></button>
+      </div>
+      <div class="cs-grid" id="csGrid">
+        <a href="/case-studies/1099-loan-cash-out-refinance/" class="cs-card" data-cat="1099" data-search="1099 loan cash-out refinance: freelance photographer accesses home equity to scale investment portfolio see how a freelance photographer used a 1099 loan cash-out refinance to access home equity for investment growth without tradition">
+          <span class="cs-card__cat mono">1099</span>
+          <h3 class="cs-card__title">1099 Loan Cash-Out Refinance: Freelance Photographer Accesses Home Equity to Scale Investment Portfolio</h3>
+          <p class="cs-card__desc">See how a freelance photographer used a 1099 loan cash-out refinance to access home equity for investment growth without tradition</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/1099-loan/" class="cs-card" data-cat="1099" data-search="1099 loan purchase: it consultant buys first investment property in under 30 days discover how an it consultant used a 1099 loan purchase to buy his first investment property in under 30 days despite tax write-of">
+          <span class="cs-card__cat mono">1099</span>
+          <h3 class="cs-card__title">1099 Loan Purchase: IT Consultant Buys First Investment Property in Under 30 Days</h3>
+          <p class="cs-card__desc">Discover how an IT consultant used a 1099 loan purchase to buy his first investment property in under 30 days despite tax write-of</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/1099-loan-refinance/" class="cs-card" data-cat="1099" data-search="1099 loan refinance: general contractor achieves significant monthly savings without tax returns see how a general contractor used a 1099 loan refinance to reduce monthly payments without traditional tax return documentation. r">
+          <span class="cs-card__cat mono">1099</span>
+          <h3 class="cs-card__title">1099 Loan Refinance: General Contractor Achieves Significant Monthly Savings Without Tax Returns</h3>
+          <p class="cs-card__desc">See how a general contractor used a 1099 loan refinance to reduce monthly payments without traditional tax return documentation. R</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/asset-based-loan/" class="cs-card" data-cat="Asset-Based" data-search="asset based loan purchase: investment banker buys luxury waterfront home using portfolio assets discover how an investment banker used an asset-based loan purchase to buy a waterfront home using investment portfolio assets ins">
+          <span class="cs-card__cat mono">Asset-Based</span>
+          <h3 class="cs-card__title">Asset Based Loan Purchase: Investment Banker Buys Luxury Waterfront Home Using Portfolio Assets</h3>
+          <p class="cs-card__desc">Discover how an investment banker used an asset-based loan purchase to buy a waterfront home using investment portfolio assets ins</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/asset-based-loan-refinance/" class="cs-card" data-cat="Asset-Based" data-search="asset based loan refinance: financial advisor lowers rate and payment in retirement with investment portfolio discover how a retired financial advisor used an asset-based loan refinance to reduce payments using investment portfolio without ">
+          <span class="cs-card__cat mono">Asset-Based</span>
+          <h3 class="cs-card__title">Asset Based Loan Refinance: Financial Advisor Lowers Rate and Payment in Retirement with Investment Portfolio</h3>
+          <p class="cs-card__desc">Discover how a retired financial advisor used an asset-based loan refinance to reduce payments using investment portfolio without </p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/asset-based-loan-cash-out-refinance/" class="cs-card" data-cat="Other" data-search="asset-based loan cash-out refinance: entrepreneur accesses substantial equity for business expansion discover how an entrepreneur used an asset-based loan cash-out refinance to access equity using investment portfolio instead of tr">
+          <span class="cs-card__cat mono">Other</span>
+          <h3 class="cs-card__title">Asset-Based Loan Cash-Out Refinance: Entrepreneur Accesses Substantial Equity for Business Expansion</h3>
+          <p class="cs-card__desc">Discover how an entrepreneur used an asset-based loan cash-out refinance to access equity using investment portfolio instead of tr</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/bank-statement-loan-cash-out-refinance/" class="cs-card" data-cat="Bank Statement" data-search="bank statement loan cash-out refinance: retail store owner accesses substantial equity for business expansion see how a retail store owner used a bank statement loan cash-out refinance to access equity using business deposits instead of tax">
+          <span class="cs-card__cat mono">Bank Statement</span>
+          <h3 class="cs-card__title">Bank Statement Loan Cash-Out Refinance: Retail Store Owner Accesses Substantial Equity for Business Expansion</h3>
+          <p class="cs-card__desc">See how a retail store owner used a bank statement loan cash-out refinance to access equity using business deposits instead of tax</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/bank-statement-loan/" class="cs-card" data-cat="Bank Statement" data-search="bank statement loan purchase: restaurant owner buys first rental property using business deposits discover how a restaurant owner used a bank statement loan purchase to buy their first rental property using business deposits wit">
+          <span class="cs-card__cat mono">Bank Statement</span>
+          <h3 class="cs-card__title">Bank Statement Loan Purchase: Restaurant Owner Buys First Rental Property Using Business Deposits</h3>
+          <p class="cs-card__desc">Discover how a restaurant owner used a bank statement loan purchase to buy their first rental property using business deposits wit</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/bank-statement-loan-refinance/" class="cs-card" data-cat="Bank Statement" data-search="bank statement loan refinance: home renovation contractor reduces monthly payment without tax returns see how a home renovation contractor used a bank statement loan refinance to lower monthly obligations using bank deposits instead">
+          <span class="cs-card__cat mono">Bank Statement</span>
+          <h3 class="cs-card__title">Bank Statement Loan Refinance: Home Renovation Contractor Reduces Monthly Payment Without Tax Returns</h3>
+          <p class="cs-card__desc">See how a home renovation contractor used a bank statement loan refinance to lower monthly obligations using bank deposits instead</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/bridge-loan/" class="cs-card" data-cat="Bridge" data-search="bridge loan: professional couple purchases dream waterfront home before selling current property discover how a professional couple used a bridge loan to purchase their waterfront dream home before selling current property. no ">
+          <span class="cs-card__cat mono">Bridge</span>
+          <h3 class="cs-card__title">Bridge Loan: Professional Couple Purchases Dream Waterfront Home Before Selling Current Property</h3>
+          <p class="cs-card__desc">Discover how a professional couple used a bridge loan to purchase their waterfront dream home before selling current property. No </p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/build-to-rent/" class="cs-card" data-cat="Portfolio" data-search="build to rent loan: real estate investor constructs custom single-family rental portfolio see how a real estate investor used a build-to-rent loan to construct custom single-family rental properties with flexible constru">
+          <span class="cs-card__cat mono">Portfolio</span>
+          <h3 class="cs-card__title">Build to Rent Loan: Real Estate Investor Constructs Custom Single-Family Rental Portfolio</h3>
+          <p class="cs-card__desc">See how a real estate investor used a build-to-rent loan to construct custom single-family rental properties with flexible constru</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/build-to-sell/" class="cs-card" data-cat="P&amp;L" data-search="build-to-sell loan: real estate developer constructs profitable spec homes for quick resale discover how a real estate developer used a build-to-sell loan to construct spec homes for quick resale with flexible draw schedul">
+          <span class="cs-card__cat mono">P&amp;L</span>
+          <h3 class="cs-card__title">Build-to-Sell Loan: Real Estate Developer Constructs Profitable Spec Homes for Quick Resale</h3>
+          <p class="cs-card__desc">Discover how a real estate developer used a build-to-sell loan to construct spec homes for quick resale with flexible draw schedul</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/condotel-loan-cash-out-refinance/" class="cs-card" data-cat="Condotel" data-search="condotel loan cash-out refinance: real estate attorney accesses equity to purchase second investment property see how a real estate attorney used a condotel loan cash-out refinance to access equity from hotel-branded condo for second invest">
+          <span class="cs-card__cat mono">Condotel</span>
+          <h3 class="cs-card__title">Condotel Loan Cash-Out Refinance: Real Estate Attorney Accesses Equity to Purchase Second Investment Property</h3>
+          <p class="cs-card__desc">See how a real estate attorney used a condotel loan cash-out refinance to access equity from hotel-branded condo for second invest</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/condotel-loan-refinance/" class="cs-card" data-cat="Condotel" data-search="condotel loan refinance: medical device sales rep achieves favorable rate on vacation investment property discover how a medical device sales rep used a condotel loan refinance to improve terms on vacation investment property with hotel">
+          <span class="cs-card__cat mono">Condotel</span>
+          <h3 class="cs-card__title">Condotel Loan Refinance: Medical Device Sales Rep Achieves Favorable Rate on Vacation Investment Property</h3>
+          <p class="cs-card__desc">Discover how a medical device sales rep used a condotel loan refinance to improve terms on vacation investment property with hotel</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/condotel-loan/" class="cs-card" data-cat="Condotel" data-search="condotel loan: investor purchases luxury hotel-branded condo for dual-use income and vacation see how an investor used a condotel loan to purchase luxury hotel-branded condo for both rental income and personal vacation use. ">
+          <span class="cs-card__cat mono">Condotel</span>
+          <h3 class="cs-card__title">Condotel Loan: Investor Purchases Luxury Hotel-Branded Condo for Dual-Use Income and Vacation</h3>
+          <p class="cs-card__desc">See how an investor used a condotel loan to purchase luxury hotel-branded condo for both rental income and personal vacation use. </p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/construction-loan/" class="cs-card" data-cat="Construction" data-search="construction loan: family builds custom dream home with single-close convenience discover how a family used a construction loan to build their custom dream home with single-close convenience and flexible draw sc">
+          <span class="cs-card__cat mono">Construction</span>
+          <h3 class="cs-card__title">Construction Loan: Family Builds Custom Dream Home with Single-Close Convenience</h3>
+          <p class="cs-card__desc">Discover how a family used a construction loan to build their custom dream home with single-close convenience and flexible draw sc</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/conventional-construction-loan/" class="cs-card" data-cat="Construction" data-search="conventional construction loan: architect builds custom family home with single-close efficiency see how an architect used a conventional construction loan to build custom family home with single-close efficiency and competitiv">
+          <span class="cs-card__cat mono">Construction</span>
+          <h3 class="cs-card__title">Conventional Construction Loan: Architect Builds Custom Family Home with Single-Close Efficiency</h3>
+          <p class="cs-card__desc">See how an architect used a conventional construction loan to build custom family home with single-close efficiency and competitiv</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/conventional-loan-cash-out-refinance/" class="cs-card" data-cat="Home Equity" data-search="conventional loan cash-out refinance: financial advisor accesses home equity to purchase first investment property discover how a financial advisor used a conventional loan cash-out refinance to access home equity for first investment property p">
+          <span class="cs-card__cat mono">Home Equity</span>
+          <h3 class="cs-card__title">Conventional Loan Cash-Out Refinance: Financial Advisor Accesses Home Equity to Purchase First Investment Property</h3>
+          <p class="cs-card__desc">Discover how a financial advisor used a conventional loan cash-out refinance to access home equity for first investment property p</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/conventional-loan-refinance/" class="cs-card" data-cat="Conventional" data-search="conventional loan refinance: nurse reduces monthly payment and saves substantially through rate reduction see how a nurse used a conventional loan refinance to reduce monthly payment through favorable rate reduction. traditional refinan">
+          <span class="cs-card__cat mono">Conventional</span>
+          <h3 class="cs-card__title">Conventional Loan Refinance: Nurse Reduces Monthly Payment and Saves Substantially Through Rate Reduction</h3>
+          <p class="cs-card__desc">See how a nurse used a conventional loan refinance to reduce monthly payment through favorable rate reduction. Traditional refinan</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/conventional-loan/" class="cs-card" data-cat="Conventional" data-search="conventional loan: physical therapist purchases first home with strong conventional financing discover how a physical therapist used a conventional loan to purchase their first home with strong traditional financing and comp">
+          <span class="cs-card__cat mono">Conventional</span>
+          <h3 class="cs-card__title">Conventional Loan: Physical Therapist Purchases First Home with Strong Conventional Financing</h3>
+          <p class="cs-card__desc">Discover how a physical therapist used a conventional loan to purchase their first home with strong traditional financing and comp</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/dscr-loan-cash-out-refinance/" class="cs-card" data-cat="DSCR" data-search="dscr loan cash-out refinance: investor accesses rental property equity to purchase fifth property discover how an investor used a dscr loan cash-out refinance to access rental property equity for fifth property purchase without ">
+          <span class="cs-card__cat mono">DSCR</span>
+          <h3 class="cs-card__title">DSCR Loan Cash-Out Refinance: Investor Accesses Rental Property Equity to Purchase Fifth Property</h3>
+          <p class="cs-card__desc">Discover how an investor used a DSCR loan cash-out refinance to access rental property equity for fifth property purchase without </p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/dscr-loan-refinance/" class="cs-card" data-cat="DSCR" data-search="dscr loan refinance: physician improves investment property terms without income documentation see how a physician used a dscr loan refinance to improve investment property terms without personal income documentation. propert">
+          <span class="cs-card__cat mono">DSCR</span>
+          <h3 class="cs-card__title">DSCR Loan Refinance: Physician Improves Investment Property Terms Without Income Documentation</h3>
+          <p class="cs-card__desc">See how a physician used a DSCR loan refinance to improve investment property terms without personal income documentation. Propert</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/dscr-loan/" class="cs-card" data-cat="DSCR" data-search="dscr loan: real estate agent purchases fourth rental property without income verification discover how a real estate agent used a dscr loan to purchase their fourth rental property without personal income documentation. ">
+          <span class="cs-card__cat mono">DSCR</span>
+          <h3 class="cs-card__title">DSCR Loan: Real Estate Agent Purchases Fourth Rental Property Without Income Verification</h3>
+          <p class="cs-card__desc">Discover how a real estate agent used a DSCR loan to purchase their fourth rental property without personal income documentation. </p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/down-payment-assistance/" class="cs-card" data-cat="Down Payment" data-search="down payment assistance: teacher purchases first home with grant funding and minimal savings see how a teacher used down payment assistance to purchase first home with grant funding and minimal savings. first-time buyer suc">
+          <span class="cs-card__cat mono">Down Payment</span>
+          <h3 class="cs-card__title">Down Payment Assistance: Teacher Purchases First Home with Grant Funding and Minimal Savings</h3>
+          <p class="cs-card__desc">See how a teacher used down payment assistance to purchase first home with grant funding and minimal savings. First-time buyer suc</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/fha-203k-loan/" class="cs-card" data-cat="FHA" data-search="fha 203k loan: medical technician transforms fixer-upper into dream home with renovation financing discover how a medical technician used an fha 203k loan to purchase and renovate a fixer-upper with single-close convenience. reno">
+          <span class="cs-card__cat mono">FHA</span>
+          <h3 class="cs-card__title">FHA 203k Loan: Medical Technician Transforms Fixer-Upper into Dream Home with Renovation Financing</h3>
+          <p class="cs-card__desc">Discover how a medical technician used an FHA 203k loan to purchase and renovate a fixer-upper with single-close convenience. Reno</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/fha-construction-loan/" class="cs-card" data-cat="FHA" data-search="fha construction loan: nurse builds dream home on family land with single-close financing discover how a nurse used an fha construction loan to build dream home on family land with single-close financing and flexible con">
+          <span class="cs-card__cat mono">FHA</span>
+          <h3 class="cs-card__title">FHA Construction Loan: Nurse Builds Dream Home on Family Land with Single-Close Financing</h3>
+          <p class="cs-card__desc">Discover how a nurse used an FHA construction loan to build dream home on family land with single-close financing and flexible con</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/fha-loan-cash-out-refinance/" class="cs-card" data-cat="FHA" data-search="fha loan cash-out refinance: medical technician accesses equity to consolidate debt and fund home improvements see how a medical technician used an fha loan cash-out refinance to access equity for debt consolidation and home improvements wit">
+          <span class="cs-card__cat mono">FHA</span>
+          <h3 class="cs-card__title">FHA Loan Cash-Out Refinance: Medical Technician Accesses Equity to Consolidate Debt and Fund Home Improvements</h3>
+          <p class="cs-card__desc">See how a medical technician used an FHA loan cash-out refinance to access equity for debt consolidation and home improvements wit</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/fha-loan-refinance/" class="cs-card" data-cat="FHA" data-search="fha loan refinance: dental hygienist switches from conventional mortgage to lower monthly obligations and improve cash flow discover how a dental hygienist used an fha loan refinance to switch from conventional mortgage and lower monthly obligations. imp">
+          <span class="cs-card__cat mono">FHA</span>
+          <h3 class="cs-card__title">FHA Loan Refinance: Dental Hygienist Switches from Conventional Mortgage to Lower Monthly Obligations and Improve Cash Flow</h3>
+          <p class="cs-card__desc">Discover how a dental hygienist used an FHA loan refinance to switch from conventional mortgage and lower monthly obligations. Imp</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/fha-loan/" class="cs-card" data-cat="FHA" data-search="fha loan: physical therapist achieves first-time homeownership with minimal down payment see how a physical therapist used an fha loan to purchase their first home with flexible down payment requirements and competitive">
+          <span class="cs-card__cat mono">FHA</span>
+          <h3 class="cs-card__title">FHA Loan: Physical Therapist Achieves First-Time Homeownership with Minimal Down Payment</h3>
+          <p class="cs-card__desc">See how a physical therapist used an FHA loan to purchase their first home with flexible down payment requirements and competitive</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/fha-streamline-refinance/" class="cs-card" data-cat="FHA" data-search="fha streamline refinance: nurse achieves dramatic monthly savings in record time with simplified process discover how a nurse used an fha streamline refinance to achieve substantial monthly savings in record time with simplified docume">
+          <span class="cs-card__cat mono">FHA</span>
+          <h3 class="cs-card__title">FHA Streamline Refinance: Nurse Achieves Dramatic Monthly Savings in Record Time with Simplified Process</h3>
+          <p class="cs-card__desc">Discover how a nurse used an FHA streamline refinance to achieve substantial monthly savings in record time with simplified docume</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/fix-and-flip-loan/" class="cs-card" data-cat="Fix &amp; Flip" data-search="fix and flip loan purchase: general contractor transforms distressed property into profitable investment in 90 days see how a general contractor used a fix and flip loan to transform distressed property into profitable investment in 90 days with ">
+          <span class="cs-card__cat mono">Fix &amp; Flip</span>
+          <h3 class="cs-card__title">Fix and Flip Loan Purchase: General Contractor Transforms Distressed Property into Profitable Investment in 90 Days</h3>
+          <p class="cs-card__desc">See how a general contractor used a fix and flip loan to transform distressed property into profitable investment in 90 days with </p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/foreign-national-loan-cash-out-refinance/" class="cs-card" data-cat="Foreign National" data-search="foreign national loan cash out refinance: uk business owner accesses u.s. property equity for business expansion discover how a uk business owner used a foreign national loan cash-out refinance to access u.s. property equity without u.s. credi">
+          <span class="cs-card__cat mono">Foreign National</span>
+          <h3 class="cs-card__title">Foreign National Loan Cash Out Refinance: UK Business Owner Accesses U.S. Property Equity for Business Expansion</h3>
+          <p class="cs-card__desc">Discover how a UK business owner used a foreign national loan cash-out refinance to access U.S. property equity without U.S. credi</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/foreign-national-loan/" class="cs-card" data-cat="Foreign National" data-search="foreign national loan purchase: canadian architect invests in florida real estate without u.s. credit history see how a canadian architect used a foreign national loan purchase to invest in florida real estate without u.s. credit history or">
+          <span class="cs-card__cat mono">Foreign National</span>
+          <h3 class="cs-card__title">Foreign National Loan Purchase: Canadian Architect Invests in Florida Real Estate Without U.S. Credit History</h3>
+          <p class="cs-card__desc">See how a Canadian architect used a foreign national loan purchase to invest in Florida real estate without U.S. credit history or</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/foreign-national-loan-refinance/" class="cs-card" data-cat="Foreign National" data-search="foreign national loan refinance: australian financial advisor reduces rate on u.s. investment property own u.s. real estate but live abroad? refinance for cashflow with a foreign national loan. no u.s. credit or income needed see you">
+          <span class="cs-card__cat mono">Foreign National</span>
+          <h3 class="cs-card__title">Foreign National Loan Refinance: Australian Financial Advisor Reduces Rate on U.S. Investment Property</h3>
+          <p class="cs-card__desc">Own U.S. real estate but live abroad? Refinance for cashflow with a foreign national loan. No U.S. credit or income needed see you</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/heloc/" class="cs-card" data-cat="HELOC" data-search="heloc: financial advisor accesses home equity to purchase first rental property see how a financial advisor used a heloc to access home equity for their first rental property purchase without refinancing existi">
+          <span class="cs-card__cat mono">HELOC</span>
+          <h3 class="cs-card__title">HELOC: Financial Advisor Accesses Home Equity to Purchase First Rental Property</h3>
+          <p class="cs-card__desc">See how a financial advisor used a HELOC to access home equity for their first rental property purchase without refinancing existi</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/hard-money-loan-cash-out-refinance/" class="cs-card" data-cat="Hard Money" data-search="hard money loan cash-out refinance: healthcare administrator rescues inherited property from foreclosure and prepares for sale see how a healthcare administrator used a hard money loan cash-out refinance to rescue inherited property from foreclosure with fa">
+          <span class="cs-card__cat mono">Hard Money</span>
+          <h3 class="cs-card__title">Hard Money Loan Cash-Out Refinance: Healthcare Administrator Rescues Inherited Property from Foreclosure and Prepares for Sale</h3>
+          <p class="cs-card__desc">See how a healthcare administrator used a hard money loan cash-out refinance to rescue inherited property from foreclosure with fa</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/hard-money-loan/" class="cs-card" data-cat="Hard Money" data-search="hard money loan purchase: real estate wholesaler closes on distressed property in 7 days discover how a real estate wholesaler used a hard money loan purchase to close on distressed property in 7 days with fast approval">
+          <span class="cs-card__cat mono">Hard Money</span>
+          <h3 class="cs-card__title">Hard Money Loan Purchase: Real Estate Wholesaler Closes on Distressed Property in 7 Days</h3>
+          <p class="cs-card__desc">Discover how a real estate wholesaler used a hard money loan purchase to close on distressed property in 7 days with fast approval</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/home-equity-loan/" class="cs-card" data-cat="Home Equity" data-search="home equity loan: dentist accesses lump-sum equity for practice expansion discover how a dentist used a home equity loan to access lump-sum equity for practice expansion without refinancing primary mortga">
+          <span class="cs-card__cat mono">Home Equity</span>
+          <h3 class="cs-card__title">Home Equity Loan: Dentist Accesses Lump-Sum Equity for Practice Expansion</h3>
+          <p class="cs-card__desc">Discover how a dentist used a home equity loan to access lump-sum equity for practice expansion without refinancing primary mortga</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/home-improvement-loan/" class="cs-card" data-cat="Other" data-search="home improvement loan: physical therapist transforms dated property into cash-flowing rental see how a physical therapist used a home improvement loan to transform dated property into cash-flowing rental with renovation fin">
+          <span class="cs-card__cat mono">Other</span>
+          <h3 class="cs-card__title">Home Improvement Loan: Physical Therapist Transforms Dated Property Into Cash-Flowing Rental</h3>
+          <p class="cs-card__desc">See how a physical therapist used a home improvement loan to transform dated property into cash-flowing rental with renovation fin</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/homestyle-renovation-loan-refinance/" class="cs-card" data-cat="Renovation" data-search="homestyle renovation loan refinance: realtor upgrades rental property while reducing monthly payment discover how a realtor used a homestyle renovation loan refinance to upgrade rental property while reducing monthly payment. combi">
+          <span class="cs-card__cat mono">Renovation</span>
+          <h3 class="cs-card__title">HomeStyle Renovation Loan Refinance: Realtor Upgrades Rental Property While Reducing Monthly Payment</h3>
+          <p class="cs-card__desc">Discover how a realtor used a HomeStyle renovation loan refinance to upgrade rental property while reducing monthly payment. Combi</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/homestyle-renovation-loan/" class="cs-card" data-cat="Renovation" data-search="homestyle renovation loan: interior designer transforms primary residence with comprehensive remodel see how an interior designer used a homestyle renovation loan to transform primary residence with comprehensive remodel and single">
+          <span class="cs-card__cat mono">Renovation</span>
+          <h3 class="cs-card__title">HomeStyle Renovation Loan: Interior Designer Transforms Primary Residence with Comprehensive Remodel</h3>
+          <p class="cs-card__desc">See how an interior designer used a HomeStyle renovation loan to transform primary residence with comprehensive remodel and single</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/itin-loan-cash-out-refinance/" class="cs-card" data-cat="Home Equity" data-search="itin loan cash-out refinance: contractor accesses home equity for business expansion without social security number discover how a contractor used an itin loan cash-out refinance to access equity for business expansion without social security num">
+          <span class="cs-card__cat mono">Home Equity</span>
+          <h3 class="cs-card__title">ITIN Loan Cash-Out Refinance: Contractor Accesses Home Equity for Business Expansion Without Social Security Number</h3>
+          <p class="cs-card__desc">Discover how a contractor used an ITIN loan cash-out refinance to access equity for business expansion without Social Security num</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/itin-loan/" class="cs-card" data-cat="ITIN" data-search="itin loan purchase: restaurant owner achieves homeownership without social security number see how a restaurant owner used an itin loan purchase to achieve homeownership without social security number. tax id financing su">
+          <span class="cs-card__cat mono">ITIN</span>
+          <h3 class="cs-card__title">ITIN Loan Purchase: Restaurant Owner Achieves Homeownership Without Social Security Number</h3>
+          <p class="cs-card__desc">See how a restaurant owner used an ITIN loan purchase to achieve homeownership without Social Security number. Tax ID financing su</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/itin-loan-refinance/" class="cs-card" data-cat="ITIN" data-search="itin loan refinance: business owner achieves significant monthly savings without social security number discover how a business owner used an itin loan refinance to achieve monthly savings without social security number. alternative i">
+          <span class="cs-card__cat mono">ITIN</span>
+          <h3 class="cs-card__title">ITIN Loan Refinance: Business Owner Achieves Significant Monthly Savings Without Social Security Number</h3>
+          <p class="cs-card__desc">Discover how a business owner used an ITIN loan refinance to achieve monthly savings without Social Security number. Alternative i</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/jumbo-construction-loan/" class="cs-card" data-cat="Jumbo" data-search="jumbo construction loan: surgeon builds multi-generational custom estate with flexible draw schedule see how a surgeon used a jumbo construction loan to build multi-generational custom estate with flexible draw schedule and high-va">
+          <span class="cs-card__cat mono">Jumbo</span>
+          <h3 class="cs-card__title">Jumbo Construction Loan: Surgeon Builds Multi-Generational Custom Estate with Flexible Draw Schedule</h3>
+          <p class="cs-card__desc">See how a surgeon used a jumbo construction loan to build multi-generational custom estate with flexible draw schedule and high-va</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/jumbo-loan-cash-out-refinance/" class="cs-card" data-cat="Jumbo" data-search="jumbo loan cash-out refinance: business owner leverages primary residence equity to acquire investment property portfolio discover how a business owner used a jumbo loan cash-out refinance to leverage primary residence equity for investment property po">
+          <span class="cs-card__cat mono">Jumbo</span>
+          <h3 class="cs-card__title">Jumbo Loan Cash-Out Refinance: Business Owner Leverages Primary Residence Equity to Acquire Investment Property Portfolio</h3>
+          <p class="cs-card__desc">Discover how a business owner used a jumbo loan cash-out refinance to leverage primary residence equity for investment property po</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/jumbo-loan-refinance/" class="cs-card" data-cat="Jumbo" data-search="jumbo loan refinance: attorney achieves substantial monthly savings and improved cash flow for future investment see how an attorney used a jumbo loan refinance to achieve substantial monthly savings and improved cash flow for future investmen">
+          <span class="cs-card__cat mono">Jumbo</span>
+          <h3 class="cs-card__title">Jumbo Loan Refinance: Attorney Achieves Substantial Monthly Savings and Improved Cash Flow for Future Investment</h3>
+          <p class="cs-card__desc">See how an attorney used a jumbo loan refinance to achieve substantial monthly savings and improved cash flow for future investmen</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/jumbo-loan/" class="cs-card" data-cat="Jumbo" data-search="jumbo loan: financial advisor purchases dream home in competitive silicon valley market discover how a financial advisor used a jumbo loan to purchase their dream home in a competitive high-cost market with financing a">
+          <span class="cs-card__cat mono">Jumbo</span>
+          <h3 class="cs-card__title">Jumbo Loan: Financial Advisor Purchases Dream Home in Competitive Silicon Valley Market</h3>
+          <p class="cs-card__desc">Discover how a financial advisor used a jumbo loan to purchase their dream home in a competitive high-cost market with financing a</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/no-doc-loan-cash-out-refinance/" class="cs-card" data-cat="Other" data-search="no-doc loan cash-out refinance: entrepreneur accesses substantial equity to fund business expansion without income verification see how an entrepreneur used a no-doc loan cash-out refinance to access equity for business expansion without income verification ">
+          <span class="cs-card__cat mono">Other</span>
+          <h3 class="cs-card__title">No-Doc Loan Cash-Out Refinance: Entrepreneur Accesses Substantial Equity to Fund Business Expansion Without Income Verification</h3>
+          <p class="cs-card__desc">See how an entrepreneur used a no-doc loan cash-out refinance to access equity for business expansion without income verification </p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/no-doc-loan-refinance/" class="cs-card" data-cat="Other" data-search="no-doc loan refinance: business owner achieves significant monthly savings without tax return documentation discover how a business owner used a no-doc loan refinance to achieve monthly savings without tax return documentation. alternativ">
+          <span class="cs-card__cat mono">Other</span>
+          <h3 class="cs-card__title">No-Doc Loan Refinance: Business Owner Achieves Significant Monthly Savings Without Tax Return Documentation</h3>
+          <p class="cs-card__desc">Discover how a business owner used a no-doc loan refinance to achieve monthly savings without tax return documentation. Alternativ</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/no-doc-loan/" class="cs-card" data-cat="Other" data-search="no-doc loan: real estate wholesaler purchases investment property without tax returns or income documentation see how a real estate wholesaler used a no-doc loan to purchase investment property without tax returns or traditional income docu">
+          <span class="cs-card__cat mono">Other</span>
+          <h3 class="cs-card__title">No-Doc Loan: Real Estate Wholesaler Purchases Investment Property Without Tax Returns or Income Documentation</h3>
+          <p class="cs-card__desc">See how a real estate wholesaler used a no-doc loan to purchase investment property without tax returns or traditional income docu</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/non-warrantable-condo-loan-cash-out-refinance/" class="cs-card" data-cat="Non-Warrantable" data-search="non-warrantable condo loan cash-out refinance: marketing consultant accesses substantial equity to fund second investment property discover how a marketing consultant used a non-warrantable condo loan cash-out refinance to access equity despite building&#x27;s ineli">
+          <span class="cs-card__cat mono">Non-Warrantable</span>
+          <h3 class="cs-card__title">Non-Warrantable Condo Loan Cash-Out Refinance: Marketing Consultant Accesses Substantial Equity to Fund Second Investment Property</h3>
+          <p class="cs-card__desc">Discover how a marketing consultant used a non-warrantable condo loan cash-out refinance to access equity despite building&#x27;s ineli</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/non-warrantable-condo-loan-refinance/" class="cs-card" data-cat="Non-Warrantable" data-search="non-warrantable condo loan refinance: nurse achieves significant monthly savings despite building&#x27;s lost warrantable status see how a nurse used a non-warrantable condo loan refinance to achieve monthly savings despite building losing conventional warran">
+          <span class="cs-card__cat mono">Non-Warrantable</span>
+          <h3 class="cs-card__title">Non-Warrantable Condo Loan Refinance: Nurse Achieves Significant Monthly Savings Despite Building&#x27;s Lost Warrantable Status</h3>
+          <p class="cs-card__desc">See how a nurse used a non-warrantable condo loan refinance to achieve monthly savings despite building losing conventional warran</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/non-warrantable-condo-loan/" class="cs-card" data-cat="Non-Warrantable" data-search="non-warrantable condo loan: financial advisor purchases miami high-rise investment despite low owner-occupancy discover how a financial advisor used a non-warrantable condo loan to purchase miami high-rise investment despite low owner-occupa">
+          <span class="cs-card__cat mono">Non-Warrantable</span>
+          <h3 class="cs-card__title">Non-Warrantable Condo Loan: Financial Advisor Purchases Miami High-Rise Investment Despite Low Owner-Occupancy</h3>
+          <p class="cs-card__desc">Discover how a financial advisor used a non-warrantable condo loan to purchase Miami high-rise investment despite low owner-occupa</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/off-market-deal/" class="cs-card" data-cat="Other" data-search="off-market deal: software developer finds first rental property $40k below market through reia networking see how a software developer used reia networking to find his first rental property $40k below market value. off-market deal succe">
+          <span class="cs-card__cat mono">Other</span>
+          <h3 class="cs-card__title">Off-Market Deal: Software Developer Finds First Rental Property $40K Below Market Through REIA Networking</h3>
+          <p class="cs-card__desc">See how a software developer used REIA networking to find his first rental property $40K below market value. Off-market deal succe</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/p-and-l-loan-cash-out-refinance/" class="cs-card" data-cat="P&amp;L" data-search="p&amp;l loan cash-out refinance: marketing consultant accesses home equity using profit and loss statements see how a marketing consultant used a p&amp;l loan cash-out refinance to access equity using profit and loss statements instead of tax">
+          <span class="cs-card__cat mono">P&amp;L</span>
+          <h3 class="cs-card__title">P&amp;L Loan Cash-Out Refinance: Marketing Consultant Accesses Home Equity Using Profit and Loss Statements</h3>
+          <p class="cs-card__desc">See how a marketing consultant used a P&amp;L loan cash-out refinance to access equity using profit and loss statements instead of tax</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/p-and-l-loan/" class="cs-card" data-cat="P&amp;L" data-search="p&amp;l loan purchase: e-commerce business owner buys first home using profit and loss statements discover how an e-commerce business owner used a p&amp;l loan purchase to buy first home using profit and loss statements instead of t">
+          <span class="cs-card__cat mono">P&amp;L</span>
+          <h3 class="cs-card__title">P&amp;L Loan Purchase: E-Commerce Business Owner Buys First Home Using Profit and Loss Statements</h3>
+          <p class="cs-card__desc">Discover how an e-commerce business owner used a P&amp;L loan purchase to buy first home using profit and loss statements instead of t</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/p-and-l-loan-refinance/" class="cs-card" data-cat="P&amp;L" data-search="p&amp;l loan refinance: restaurant owner achieves significant monthly savings without tax return verification see how a restaurant owner used a p&amp;l loan refinance to achieve monthly savings using profit and loss statements without tax retur">
+          <span class="cs-card__cat mono">P&amp;L</span>
+          <h3 class="cs-card__title">P&amp;L Loan Refinance: Restaurant Owner Achieves Significant Monthly Savings Without Tax Return Verification</h3>
+          <p class="cs-card__desc">See how a restaurant owner used a P&amp;L loan refinance to achieve monthly savings using profit and loss statements without tax retur</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/portfolio-loan-cash-out-refinance/" class="cs-card" data-cat="Portfolio" data-search="portfolio loan cash-out refinance: contractor accesses equity from unique property to purchase multi-unit investment discover how a contractor used a portfolio loan cash-out refinance to access equity from unique property for multi-unit investment">
+          <span class="cs-card__cat mono">Portfolio</span>
+          <h3 class="cs-card__title">Portfolio Loan Cash-Out Refinance: Contractor Accesses Equity from Unique Property to Purchase Multi-Unit Investment</h3>
+          <p class="cs-card__desc">Discover how a contractor used a portfolio loan cash-out refinance to access equity from unique property for multi-unit investment</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/portfolio-loan/" class="cs-card" data-cat="Portfolio" data-search="portfolio loan purchase: business owner acquires mixed-use property rejected by traditional lenders see how a business owner used a portfolio loan purchase to acquire mixed-use property rejected by traditional lenders. flexible pr">
+          <span class="cs-card__cat mono">Portfolio</span>
+          <h3 class="cs-card__title">Portfolio Loan Purchase: Business Owner Acquires Mixed-Use Property Rejected by Traditional Lenders</h3>
+          <p class="cs-card__desc">See how a business owner used a portfolio loan purchase to acquire mixed-use property rejected by traditional lenders. Flexible pr</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/portfolio-loan-refinance/" class="cs-card" data-cat="Portfolio" data-search="portfolio loan refinance: real estate investor achieves rate reduction on non-warrantable condo investment property discover how a real estate investor used a portfolio loan refinance to achieve rate reduction on non-warrantable condo investment ">
+          <span class="cs-card__cat mono">Portfolio</span>
+          <h3 class="cs-card__title">Portfolio Loan Refinance: Real Estate Investor Achieves Rate Reduction on Non-Warrantable Condo Investment Property</h3>
+          <p class="cs-card__desc">Discover how a real estate investor used a portfolio loan refinance to achieve rate reduction on non-warrantable condo investment </p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/resort-condo-loan-cash-out-refinance/" class="cs-card" data-cat="Other" data-search="resort condo loan cash-out refinance: dentist accesses equity to fund second investment property see how a dentist used a resort condo loan cash-out refinance to access vacation property equity for second investment purchase. f">
+          <span class="cs-card__cat mono">Other</span>
+          <h3 class="cs-card__title">Resort Condo Loan Cash-Out Refinance: Dentist Accesses Equity to Fund Second Investment Property</h3>
+          <p class="cs-card__desc">See how a dentist used a resort condo loan cash-out refinance to access vacation property equity for second investment purchase. F</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/resort-condo-loan/" class="cs-card" data-cat="Other" data-search="resort condo loan purchase: corporate executive acquires beachfront investment property rejected by traditional lenders discover how a corporate executive used a resort condo loan purchase to acquire beachfront investment rejected by traditional lend">
+          <span class="cs-card__cat mono">Other</span>
+          <h3 class="cs-card__title">Resort Condo Loan Purchase: Corporate Executive Acquires Beachfront Investment Property Rejected by Traditional Lenders</h3>
+          <p class="cs-card__desc">Discover how a corporate executive used a resort condo loan purchase to acquire beachfront investment rejected by traditional lend</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/resort-condo-loan-refinance/" class="cs-card" data-cat="Other" data-search="resort condo loan refinance: financial advisor achieves substantial rate reduction on florida vacation property see how a financial advisor used a resort condo loan refinance to achieve substantial rate reduction on florida vacation property.">
+          <span class="cs-card__cat mono">Other</span>
+          <h3 class="cs-card__title">Resort Condo Loan Refinance: Financial Advisor Achieves Substantial Rate Reduction on Florida Vacation Property</h3>
+          <p class="cs-card__desc">See how a financial advisor used a resort condo loan refinance to achieve substantial rate reduction on Florida vacation property.</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/reverse-mortgage-cash-out-refinance/" class="cs-card" data-cat="Reverse" data-search="reverse mortgage cash-out refinance: retired nurse accesses equity for healthcare and family support discover how a retired nurse used a reverse mortgage cash-out refinance to access equity for healthcare and family support without">
+          <span class="cs-card__cat mono">Reverse</span>
+          <h3 class="cs-card__title">Reverse Mortgage Cash-Out Refinance: Retired Nurse Accesses Equity for Healthcare and Family Support</h3>
+          <p class="cs-card__desc">Discover how a retired nurse used a reverse mortgage cash-out refinance to access equity for healthcare and family support without</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/reverse-mortgage-income/" class="cs-card" data-cat="Reverse" data-search="reverse mortgage income: retired accountant generates monthly cash flow from home equity see how a retired accountant used a reverse mortgage income option to generate monthly cash flow from home equity. age 62+ retirem">
+          <span class="cs-card__cat mono">Reverse</span>
+          <h3 class="cs-card__title">Reverse Mortgage Income: Retired Accountant Generates Monthly Cash Flow from Home Equity</h3>
+          <p class="cs-card__desc">See how a retired accountant used a reverse mortgage income option to generate monthly cash flow from home equity. Age 62+ retirem</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/reverse-mortgage-refinance/" class="cs-card" data-cat="Reverse" data-search="reverse mortgage refinance: retired pharmaceutical rep eliminates monthly mortgage payments for financial peace discover how a retired pharmaceutical rep used a reverse mortgage refinance to eliminate monthly mortgage payments for financial p">
+          <span class="cs-card__cat mono">Reverse</span>
+          <h3 class="cs-card__title">Reverse Mortgage Refinance: Retired Pharmaceutical Rep Eliminates Monthly Mortgage Payments for Financial Peace</h3>
+          <p class="cs-card__desc">Discover how a retired pharmaceutical rep used a reverse mortgage refinance to eliminate monthly mortgage payments for financial p</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/reverse-mortgage/" class="cs-card" data-cat="Reverse" data-search="reverse mortgage: retired teacher purchases dream retirement home without monthly mortgage payments see how a retired teacher used a reverse mortgage to purchase their retirement home without monthly mortgage payments. age 62+ hom">
+          <span class="cs-card__cat mono">Reverse</span>
+          <h3 class="cs-card__title">Reverse Mortgage: Retired Teacher Purchases Dream Retirement Home Without Monthly Mortgage Payments</h3>
+          <p class="cs-card__desc">See how a retired teacher used a reverse mortgage to purchase their retirement home without monthly mortgage payments. Age 62+ hom</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/section-184-loan-cash-out-refinance/" class="cs-card" data-cat="Section 184" data-search="section 184 loan cash-out refinance: native american homeowner accesses equity for major home improvements discover how a native american homeowner used a section 184 loan cash-out refinance to access equity for major home improvements o">
+          <span class="cs-card__cat mono">Section 184</span>
+          <h3 class="cs-card__title">Section 184 Loan Cash-Out Refinance: Native American Homeowner Accesses Equity for Major Home Improvements</h3>
+          <p class="cs-card__desc">Discover how a Native American homeowner used a Section 184 loan cash-out refinance to access equity for major home improvements o</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/section-184-loan-refinance/" class="cs-card" data-cat="Section 184" data-search="section 184 loan refinance: native american homeowner achieves significant monthly savings through rate reduction see how a native american homeowner used a section 184 loan refinance to achieve monthly savings through rate reduction. tribal fi">
+          <span class="cs-card__cat mono">Section 184</span>
+          <h3 class="cs-card__title">Section 184 Loan Refinance: Native American Homeowner Achieves Significant Monthly Savings Through Rate Reduction</h3>
+          <p class="cs-card__desc">See how a Native American homeowner used a Section 184 loan refinance to achieve monthly savings through rate reduction. Tribal fi</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/section-184-loan/" class="cs-card" data-cat="Section 184" data-search="section 184 loan: tribal member purchases first home on trust land with minimal down payment discover how a tribal member used a section 184 loan to purchase first home on trust land with flexible down payment. native ameri">
+          <span class="cs-card__cat mono">Section 184</span>
+          <h3 class="cs-card__title">Section 184 Loan: Tribal Member Purchases First Home on Trust Land with Minimal Down Payment</h3>
+          <p class="cs-card__desc">Discover how a tribal member used a Section 184 loan to purchase first home on trust land with flexible down payment. Native Ameri</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/stated-income-loan-cash-out-refinance/" class="cs-card" data-cat="Home Equity" data-search="stated income loan cash-out refinance: architect accesses home equity to expand firm and purchase commercial building see how an architect used a stated income loan cash-out refinance to access equity for firm expansion despite complex business inc">
+          <span class="cs-card__cat mono">Home Equity</span>
+          <h3 class="cs-card__title">Stated Income Loan Cash-Out Refinance: Architect Accesses Home Equity to Expand Firm and Purchase Commercial Building</h3>
+          <p class="cs-card__desc">See how an architect used a stated income loan cash-out refinance to access equity for firm expansion despite complex business inc</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/stated-income-loan/" class="cs-card" data-cat="Stated Income" data-search="stated income loan purchase: entrepreneur acquires investment property with complex business income structure discover how an entrepreneur used a stated income loan purchase to acquire investment property with complex business income struct">
+          <span class="cs-card__cat mono">Stated Income</span>
+          <h3 class="cs-card__title">Stated Income Loan Purchase: Entrepreneur Acquires Investment Property with Complex Business Income Structure</h3>
+          <p class="cs-card__desc">Discover how an entrepreneur used a stated income loan purchase to acquire investment property with complex business income struct</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/stated-income-loan-refinance/" class="cs-card" data-cat="Stated Income" data-search="stated income loan refinance: restaurant owner achieves substantial rate reduction despite complex income documentation see how a restaurant owner used a stated income loan refinance to achieve rate reduction despite complex income documentation. fle">
+          <span class="cs-card__cat mono">Stated Income</span>
+          <h3 class="cs-card__title">Stated Income Loan Refinance: Restaurant Owner Achieves Substantial Rate Reduction Despite Complex Income Documentation</h3>
+          <p class="cs-card__desc">See how a restaurant owner used a stated income loan refinance to achieve rate reduction despite complex income documentation. Fle</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/usda-construction-loan/" class="cs-card" data-cat="USDA" data-search="usda construction loan: general contractor builds dream home in rural florida with zero down payment discover how a general contractor used a usda construction loan to build dream home in rural florida with zero down payment. singl">
+          <span class="cs-card__cat mono">USDA</span>
+          <h3 class="cs-card__title">USDA Construction Loan: General Contractor Builds Dream Home in Rural Florida with Zero Down Payment</h3>
+          <p class="cs-card__desc">Discover how a general contractor used a USDA construction loan to build dream home in rural Florida with zero down payment. Singl</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/usda-loan-cash-out-refinance/" class="cs-card" data-cat="USDA" data-search="usda loan cash-out refinance: dental hygienist accesses equity for home improvements without losing zero-down benefits see how a dental hygienist used a usda loan cash-out refinance to access equity for home improvements while maintaining zero-down ">
+          <span class="cs-card__cat mono">USDA</span>
+          <h3 class="cs-card__title">USDA Loan Cash-Out Refinance: Dental Hygienist Accesses Equity for Home Improvements Without Losing Zero-Down Benefits</h3>
+          <p class="cs-card__desc">See how a dental hygienist used a USDA loan cash-out refinance to access equity for home improvements while maintaining zero-down </p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/usda-loan-refinance/" class="cs-card" data-cat="USDA" data-search="usda loan refinance: physical therapist achieves significant monthly savings while maintaining zero-down benefits discover how a physical therapist used a usda loan refinance to achieve monthly savings while maintaining zero-down benefits in ru">
+          <span class="cs-card__cat mono">USDA</span>
+          <h3 class="cs-card__title">USDA Loan Refinance: Physical Therapist Achieves Significant Monthly Savings While Maintaining Zero-Down Benefits</h3>
+          <p class="cs-card__desc">Discover how a physical therapist used a USDA loan refinance to achieve monthly savings while maintaining zero-down benefits in ru</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/usda-loan/" class="cs-card" data-cat="USDA" data-search="usda loan: medical technician purchases first home with zero down payment in rural florida see how a medical technician used a usda loan to purchase first home with zero down payment in rural florida. no down payment succ">
+          <span class="cs-card__cat mono">USDA</span>
+          <h3 class="cs-card__title">USDA Loan: Medical Technician Purchases First Home with Zero Down Payment in Rural Florida</h3>
+          <p class="cs-card__desc">See how a medical technician used a USDA loan to purchase first home with zero down payment in rural Florida. No down payment succ</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/va-construction-loan/" class="cs-card" data-cat="VA" data-search="va construction loan: navy veteran builds dream home without down payment discover how a navy veteran used a va construction loan to build dream home without down payment. single-close construction with v">
+          <span class="cs-card__cat mono">VA</span>
+          <h3 class="cs-card__title">VA Construction Loan: Navy Veteran Builds Dream Home Without Down Payment</h3>
+          <p class="cs-card__desc">Discover how a Navy veteran used a VA construction loan to build dream home without down payment. Single-close construction with V</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/va-irrrl/" class="cs-card" data-cat="VA" data-search="va irrrl: navy veteran achieves substantial monthly savings in under 30 days see how a navy veteran used a va irrrl to achieve substantial monthly savings in under 30 days. streamlined va refinance with simp">
+          <span class="cs-card__cat mono">VA</span>
+          <h3 class="cs-card__title">VA IRRRL: Navy Veteran Achieves Substantial Monthly Savings in Under 30 Days</h3>
+          <p class="cs-card__desc">See how a Navy veteran used a VA IRRRL to achieve substantial monthly savings in under 30 days. Streamlined VA refinance with simp</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/va-loan-cash-out-refinance/" class="cs-card" data-cat="VA" data-search="va loan cash out refinance: air force veteran accesses equity for home improvements discover how an air force veteran used a va loan cash out refinance to access home equity for improvements without down payment or">
+          <span class="cs-card__cat mono">VA</span>
+          <h3 class="cs-card__title">VA Loan Cash Out Refinance: Air Force Veteran Accesses Equity for Home Improvements</h3>
+          <p class="cs-card__desc">Discover how an Air Force veteran used a VA loan cash out refinance to access home equity for improvements without down payment or</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/va-loan-refinance/" class="cs-card" data-cat="VA" data-search="va loan refinance: coast guard veteran removes ex-spouse after divorce see how a coast guard veteran used a va loan refinance to remove ex-spouse from mortgage after divorce. va benefit preserved for f">
+          <span class="cs-card__cat mono">VA</span>
+          <h3 class="cs-card__title">VA Loan Refinance: Coast Guard Veteran Removes Ex-Spouse After Divorce</h3>
+          <p class="cs-card__desc">See how a Coast Guard veteran used a VA loan refinance to remove ex-spouse from mortgage after divorce. VA benefit preserved for f</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+        <a href="/case-studies/va-loan/" class="cs-card" data-cat="VA" data-search="va loan: marine veteran purchases first home without down payment discover how a marine veteran used a va loan to purchase their first home with zero down payment and no private mortgage insurance">
+          <span class="cs-card__cat mono">VA</span>
+          <h3 class="cs-card__title">VA Loan: Marine Veteran Purchases First Home Without Down Payment</h3>
+          <p class="cs-card__desc">Discover how a Marine veteran used a VA loan to purchase their first home with zero down payment and no private mortgage insurance</p>
+          <span class="cs-card__go mono">Read the story &rarr;</span>
+        </a>
+      </div>
+      <p class="cs-empty mono" id="csEmpty" hidden>No case studies match — try a different search or filter.</p>
+    </div>
+  </section>
+
+  <section class="section-tight cs-cta">
+    <div class="container-prose"><div class="card cs-cta__card">
+      <h2 class="display-md">Have a scenario like these?</h2>
+      <p class="lede">Bring us your situation — we'll tell you straight whether it pencils, and how we'd structure it.</p>
+      <a href="/schedule-call/" class="btn btn-blue btn-arrow">Talk to Our Team</a>
+    </div></div>
+  </section>
+
+  <script is:inline>
+    (function(){
+      var grid=document.getElementById('csGrid'), tabs=document.getElementById('csTabs'), search=document.getElementById('csSearch'), empty=document.getElementById('csEmpty');
+      var cards=Array.prototype.slice.call(grid.querySelectorAll('.cs-card'));
+      var activeCat='all', q='';
+      function render(){
+        var shown=0;
+        cards.forEach(function(c){
+          var okCat=activeCat==='all'||c.getAttribute('data-cat')===activeCat;
+          var okQ=!q||c.getAttribute('data-search').indexOf(q)>-1;
+          var show=okCat&&okQ; c.style.display=show?'':'none'; if(show)shown++;
+        });
+        empty.hidden=shown>0;
+      }
+      tabs.addEventListener('click',function(e){var b=e.target.closest('.cs-tab');if(!b)return;tabs.querySelectorAll('.cs-tab').forEach(function(x){x.classList.remove('is-active');});b.classList.add('is-active');activeCat=b.getAttribute('data-cat');render();});
+      search.addEventListener('input',function(){q=search.value.toLowerCase().trim();render();});
+    })();
+  </script>
+
+<style>
+  .cs-hero { padding: clamp(3rem,7vw,5.5rem) 0 clamp(2rem,4vw,3rem); background: linear-gradient(180deg, var(--color-paper-tint), var(--color-paper)); border-bottom: 1px solid var(--color-bone); }
+  .cs-hero__title { margin: 1rem 0 1.25rem; }
+  .cs-hero__lede { max-width: 58ch; margin-bottom: 2rem; }
+  .cs-search { max-width: 480px; }
+  .cs-search input { width: 100%; padding: 0.9rem 1.1rem; border: 1px solid var(--color-bone); border-radius: 12px; background: var(--color-paper); font-family: var(--font-body); font-size: 16px; color: var(--color-ink); transition: border-color .2s, box-shadow .2s; }
+  .cs-search input:focus { outline: none; border-color: var(--color-blue); box-shadow: 0 0 0 3px rgba(24,69,214,0.1); }
+  .cs-catalog { padding: clamp(2rem,4vw,3rem) 0 clamp(3rem,7vw,5rem); }
+  .cs-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+  .cs-tab { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; padding: 0.55rem 0.95rem; border-radius: 999px; border: 1px solid var(--color-bone); background: var(--color-paper); color: var(--color-ink); cursor: pointer; transition: all .18s; }
+  .cs-tab span { opacity: 0.5; margin-left: 0.3rem; }
+  .cs-tab:hover { border-color: var(--color-ink); }
+  .cs-tab.is-active { background: var(--color-ink); color: var(--color-paper); border-color: var(--color-ink); }
+  .cs-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.1rem; }
+  .cs-card { position: relative; display: flex; flex-direction: column; gap: 0.6rem; padding: 1.6rem; border: 1px solid var(--color-bone); border-radius: 14px; background: var(--color-paper); text-decoration: none; transition: border-color .2s, transform .2s, box-shadow .2s; }
+  .cs-card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px -16px rgba(10,14,26,0.22); border-color: var(--color-rust); }
+  .cs-card__cat { font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--color-rust); }
+  .cs-card__title { font-family: var(--font-display); font-weight: 500; font-size: 1.22rem; line-height: 1.2; color: var(--color-ink); letter-spacing: -0.01em; }
+  .cs-card__desc { font-size: 13.5px; line-height: 1.55; color: var(--color-mute); flex: 1; }
+  .cs-card__go { font-size: 11px; color: var(--color-ink); margin-top: 0.4rem; }
+  .cs-empty { text-align: center; padding: 3rem; color: var(--color-mute); }
+  .cs-cta__card { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 2.5rem; }
+</style>
+</Layout>
