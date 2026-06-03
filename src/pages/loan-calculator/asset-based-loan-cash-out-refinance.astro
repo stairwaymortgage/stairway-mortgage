@@ -1,0 +1,217 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "Asset-Based Loan Calculator for Cash Out Refinance: Estimate Your Costs, Monthly Payment & Cash Back at Close";
+const metaDescription = "Calculate cash back, new loan amount, monthly payment, and income needed for a cash-out refinance based on your home value and property type.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/asset-based-loan-cash-out-refinance/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Asset-Based Cash-Out Refinance Calculator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Asset-Based Cashout Refinance Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much cash can I take out with a cash-out refinance?","acceptedAnswer":{"@type":"Answer","text":"Cash-out is generally limited to 80% loan-to-value on a primary residence, lower for investment and multi-unit properties. Your cash back is the new loan amount minus your current balance and closing costs."}},{"@type":"Question","name":"Does a cash-out refinance replace my current mortgage?","acceptedAnswer":{"@type":"Answer","text":"Yes. A cash-out refinance pays off your existing first mortgage and replaces it with a larger loan, returning the difference to you in cash at closing."}},{"@type":"Question","name":"What income do I need to qualify?","acceptedAnswer":{"@type":"Answer","text":"As a rule of thumb, your total monthly housing expense plus HOA should be roughly half your gross monthly income."}}]};
+---
+<Layout title={metaTitle} description={metaDescription} canonical={canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+<main class="container-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span>
+    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <span aria-current="page">Asset-Based Cash-Out Refinance Calculator</span>
+  </nav>
+  <header class="calc-head">
+    <p class="eyebrow">Self-Employed · Asset-Based · Cash-Out Refinance</p>
+    <h1 class="display-lg">Asset-Based Cashout Refinance Loan Payment Calculator</h1>
+    <p class="lede">Estimate your maximum cash back, new loan amount, monthly payment, and the income you'd need to qualify for a cash-out refinance.</p>
+    <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+  </header>
+  <section class="calc" aria-label="Asset-Based Cashout Refinance Calculator">
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="field">
+          <label for="ptype">What type of home is this?</label>
+          <select id="ptype">
+            <option value="1" selected>Primary Residence (1 unit)</option>
+            <option value="2">Primary Residence (2-4 units)</option>
+            <option value="3">Second Home (1 unit)</option>
+            <option value="4">Investment Rental (1 unit)</option>
+            <option value="5">Investment Rental (2-4 units)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="home">Estimated Current Home Value</label>
+          <div class="input-money"><span>$</span><input id="home" type="number" inputmode="numeric" value="500000" min="0" step="1000" /></div>
+        </div>
+        <div class="field">
+          <label for="balance">Current Loan Balance</label>
+          <div class="input-money"><span>$</span><input id="balance" type="number" inputmode="numeric" value="300000" min="0" step="1000" /></div>
+        </div>
+        <div class="field">
+          <label for="cash">Desired Cash Back</label>
+          <div class="input-money"><span>$</span><input id="cash" type="number" inputmode="numeric" value="100000" min="0" step="1000" /></div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="tax">Monthly Property Taxes</label>
+            <div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="500" min="0" step="10" /></div>
+          </div>
+          <div class="field">
+            <label for="ins">Monthly Homeowners Insurance</label>
+            <div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="200" min="0" step="10" /></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="hoa">Monthly HOA</label>
+          <div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="10" /></div>
+        </div>
+        <div class="field">
+          <label for="rate">Estimated New Interest Rate <span class="val" id="rateVal">5.99%</span></label>
+          <input id="rate" type="range" min="3" max="12" step="0.01" value="5.99" />
+        </div>
+        <div class="field">
+          <span class="lbl">Are you thinking about buying another home with your cash out to continue your wealth journey?</span>
+          <div class="radios" role="radiogroup" aria-label="Buying another home">
+            <label><input type="radio" name="wealth" value="1" /> Yes</label>
+            <label><input type="radio" name="wealth" value="2" checked /> No</label>
+          </div>
+        </div>
+      </div>
+      <div class="calc-results" aria-live="polite">
+        <p class="summary-title">Summary</p>
+        <div class="result result--primary">
+          <span class="result-label">Maximum Estimated Cash Back</span>
+          <span class="result-value" id="rMaxCash">$88,000</span>
+          <span class="result-note">Includes 3% estimated closing costs and varies state to state. This is NOT a Loan Estimate. Always obtain an official Loan Estimate from a Licensed Mortgage Originator before making any decisions.</span>
+        </div>
+        <div class="result"><span class="result-label">Maximum Loan Amount (property type)</span><span class="result-value" id="rMaxLoan">$400,000</span><span class="result-note">Per the Fannie Mae / Freddie Mac LTV matrix and conventional conforming loan limits.</span></div>
+        <div class="result"><span class="result-label">Desired Loan Amount</span><span class="result-value" id="rDesired">$400,000</span></div>
+        <div class="result"><span class="result-label">Estimated Cash Back</span><span class="result-value" id="rEstCash">$109,000</span><span class="result-note">Includes 3% estimated closing costs and varies state to state. This is NOT a Loan Estimate.</span></div>
+        <p class="summary-sub">Payment Breakdown</p>
+        <div class="result"><span class="result-label">Principal &amp; Interest Payment</span><span class="result-value" id="rPI">$2,395.63</span></div>
+        <div class="result"><span class="result-label">Monthly Tax</span><span class="result-value" id="rTax">$500</span></div>
+        <div class="result"><span class="result-label">Monthly Insurance</span><span class="result-value" id="rIns">$200</span></div>
+        <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
+        <div class="result result--primary"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$3,095.63</span><span class="result-note">Tax and insurance escrows can be waived.</span></div>
+        <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$6,191.26</span><span class="result-note">Fannie Mae allows up to 50% DTI; Freddie Mac up to 45% with strong credit and reserves.</span></div>
+        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <p class="micro">Estimates only — not a commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+  <section class="body-content">
+    <figure class="author">
+      <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+        <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+      </a>
+      <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+    </figure>
+    <div class="cta-card">
+      <h4>Ready to Take Your First Step?</h4>
+      <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+      <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+      <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+    </div>
+    <div class="cta-card">
+      <h4>Need a Pre-Approval Letter—Fast?</h4>
+      <p>Buying a home soon? Complete our short form and we'll connect you with the best loan options for your target property and financial situation—fast.</p>
+      <ul><li>Only 2 minutes to complete</li><li>Quick turnaround on pre-approval</li><li>No credit score impact</li></ul>
+      <a href="https://stairwaymortgage.com/purchase-inquiry">Get Pre-Approved Now</a>
+    </div>
+    <div class="cta-card">
+      <h4>Got a Few Questions First?</h4>
+      <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+      <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+    </div>
+    <h2>Important Disclaimer</h2>
+    <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed mortgage advisor before making financial decisions.</p>
+    <h2>Related Posts</h2>
+    <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+  </section>
+</main>
+<script is:inline>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt0 = (n) => '$' + Math.round(n).toLocaleString('en-US');
+  const fmt2 = (n) => '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+  function ltvFactor(p){return {1:0.80,2:0.75,3:0.75,4:0.75,5:0.70}[p] || 0;}
+  function compute(){
+    const ptype=+$('ptype').value, home=+$('home').value||0, balance=+$('balance').value||0,
+          cash=+$('cash').value||0, tax=+$('tax').value||0, ins=+$('ins').value||0,
+          hoa=+$('hoa').value||0, rate=+$('rate').value||0;
+    const maxLoan = ltvFactor(ptype)*home;
+    const maxCash = maxLoan - balance - 0.03*maxLoan;
+    const desired = Math.min(balance + cash + 0.015*(balance+cash), maxLoan);
+    const estCash = ((balance + 0)*0.03 + cash + balance) - balance;
+    const r = rate/1200;
+    const pi = r>0 ? desired*r/(1-Math.pow(1+r,-360)) : desired/360;
+    const total = pi + tax + ins;
+    const income = (total + hoa)*2;
+    $('rateVal').textContent = rate.toFixed(2)+'%';
+    $('rMaxCash').textContent = fmt0(maxCash);
+    $('rMaxLoan').textContent = fmt0(maxLoan);
+    $('rDesired').textContent = fmt0(desired);
+    $('rEstCash').textContent = fmt0(estCash);
+    $('rPI').textContent = fmt2(pi);
+    $('rTax').textContent = fmt0(tax);
+    $('rIns').textContent = fmt0(ins);
+    $('rHOA').textContent = fmt0(hoa);
+    $('rTotal').textContent = fmt2(total);
+    $('rIncome').textContent = fmt2(income);
+  }
+  document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+  compute();
+})();
+</script>
+<style>
+.crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-mute);margin-bottom:28px;}
+.crumbs a{color:var(--color-mute);text-decoration:none;} .crumbs a:hover{color:var(--color-blue);} .crumbs span{margin:0 6px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--color-blue);margin:0 0 10px;}
+.display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(32px,5vw,52px);line-height:1.06;margin:0 0 18px;letter-spacing:-.01em;}
+.lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+.trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--color-mute);border-top:1px solid var(--color-bone);padding-top:14px;margin:0;}
+.calc{margin:40px 0 56px;border:1px solid var(--color-bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--color-bone),0 24px 48px -32px rgba(10,14,26,.25);}
+.calc::before{content:"";display:block;height:4px;background:var(--color-blue);}
+.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+@media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+.calc-inputs{padding:30px 30px 32px;}
+.calc-results{padding:30px;background:var(--color-ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+.summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+.summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+.field{margin-bottom:20px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+.lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+label .val{float:right;font-family:'JetBrains Mono',monospace;color:var(--color-blue);font-weight:600;}
+select{width:100%;padding:12px 14px;border:1px solid var(--color-bone);border-radius:10px;background:#fff;font-size:16px;font-family:'IBM Plex Sans',sans-serif;color:var(--color-ink);}
+select:focus{outline:0;border-color:var(--color-blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+.radios{display:flex;gap:20px;}
+.radios label{font-weight:500;color:#2b3140;display:flex;align-items:center;gap:9px;margin:0;cursor:pointer;}
+.radios input{accent-color:var(--color-blue);width:17px;height:17px;}
+.input-money{display:flex;align-items:center;border:1px solid var(--color-bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+.input-money:focus-within{border-color:var(--color-blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+.input-money span{padding:0 4px 0 14px;color:var(--color-mute);font-weight:600;}
+.input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--color-ink);width:100%;}
+input[type=range]{width:100%;accent-color:var(--color-blue);height:4px;margin:6px 0;}
+.result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+.result--primary{background:#fff;border-color:#fff;}
+.result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--color-ink);} .result--primary .result-note{color:#6B7280;}
+.result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+.result-value{font-family:'Fraunces',serif;font-weight:600;font-size:26px;letter-spacing:-.01em;color:#fff;}
+.result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+.cta-primary{display:block;text-align:center;background:var(--color-blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+.cta-primary:hover{background:#2a57e6;}
+.micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+.body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+.body-content p{color:#2b3140;}
+.author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+.author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+.author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+.author a{color:var(--color-ink);text-decoration:none;} .author a:hover{color:var(--color-blue);}
+.cta-card{background:var(--color-paper-tint);border:1px solid var(--color-bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+.cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+.cta-card p{max-width:620px;margin:0 auto 18px;}
+.cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+.cta-card a{display:inline-block;background:var(--color-ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+.cta-card a:hover{background:var(--color-blue);}
+.related-placeholder{border:1px dashed var(--color-bone);border-radius:10px;padding:20px;color:var(--color-mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+</style>
+</Layout>
