@@ -111,7 +111,6 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
         <li>And more purpose-driven impact</li>
       </ul>
       <p>He's not here for one loan—he's here for your legacy.</p>
-      <img src="/wp-content/uploads/2024/05/qute.png" alt="" loading="lazy" class="fp-mission__img" />
 
       <h2 class="display-md">More Than Business—A Life of Growth and Service</h2>
       <p><strong>Jim is a husband, father, community mentor, and devoted learner.</strong> His values flow directly into the company's mission to serve others through wisdom and love.</p>
@@ -313,13 +312,14 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   /* 4. STAIRWAY Values */
   .fp-values { padding:clamp(3rem,6vw,5rem) 0; }
   .fp-values .display-md { margin:0.5rem 0 2rem; }
-  .fp-values__list { display:flex; flex-direction:column; gap:0; max-width:640px; }
-  .fp-values__row { display:flex; align-items:baseline; gap:1.25rem; padding:1rem 0; border-bottom:1px solid var(--color-bone); font-size:16px; line-height:1.6; color:var(--color-ink-light); }
+  .fp-values__list { display:flex; flex-direction:column; gap:0; max-width:680px; }
+  .fp-values__row { display:flex; align-items:center; gap:1.5rem; padding:1.15rem 1rem; border-bottom:1px solid var(--color-bone); font-size:16px; line-height:1.6; color:var(--color-mute); border-radius:8px; transition:background .18s; }
   .fp-values__row:first-child { border-top:1px solid var(--color-bone); }
-  .fp-values__letter { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:1.8rem; line-height:1; color:var(--color-rust); flex:0 0 2.2rem; text-align:center; }
+  .fp-values__row:hover { background:var(--color-paper-tint); }
+  .fp-values__letter { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:2.5rem; line-height:1; color:var(--color-rust); flex:0 0 64px; text-align:center; }
   .fp-values__row strong { font-weight:600; color:var(--color-ink); }
   .fp-values__portrait { margin-top:3rem; max-width:480px; }
-  .fp-values__portrait img { width:100%; height:auto; border-radius:14px; border:1px solid var(--color-bone); }
+  .fp-values__portrait img { width:100%; height:auto; border-radius:14px; border:1px solid var(--color-bone); object-fit:contain; }
 
   /* 5. Mission / Leverage */
   .fp-mission { padding:clamp(3rem,6vw,5rem) 0; background:var(--color-paper-tint); border-top:1px solid var(--color-bone); border-bottom:1px solid var(--color-bone); }
@@ -335,7 +335,8 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   /* 6. Manifesto */
   .fp-manifesto { padding:clamp(4rem,8vw,7rem) 0; background:var(--color-ink); color:var(--color-paper); }
   .fp-manifesto__inner { text-align:center; display:flex; flex-direction:column; align-items:center; }
-  .fp-manifesto__quote { margin:0 0 3rem; max-width:48ch; border:none; padding:0; }
+  .fp-manifesto__quote { position:relative; margin:0 0 3rem; max-width:48ch; border:none; padding:3rem 0 0; }
+  .fp-manifesto__quote::before { content:'\201C'; position:absolute; top:-0.2em; left:50%; transform:translateX(-50%); font-family:var(--font-display); font-size:4rem; line-height:1; color:var(--color-blue); opacity:0.7; pointer-events:none; }
   .fp-manifesto__quote p { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:400; font-style:italic; font-size:clamp(1.5rem,3.5vw,2.2rem); line-height:1.35; color:var(--color-paper); margin-bottom:1rem; }
   .fp-manifesto__quote cite { font-family:var(--font-mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:rgba(250,250,247,0.6); font-style:normal; }
   .fp-manifesto__emblem { max-width:200px; height:auto; margin-bottom:3rem; opacity:0.85; }
