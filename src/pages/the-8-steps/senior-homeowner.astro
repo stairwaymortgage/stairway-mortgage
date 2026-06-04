@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does the Senior Homeowner step mean?", "acceptedAnswer": {"@type": "Answer", "text": "Step four is the bridge. For seniors, home equity can supplement retirement income, fund care, or simply provide peace of mind \u2014 through reverse mortgages, downsizing strategies, or refinancing. The goal is security and choice in retirement."}}, {"@type": "Question", "name": "Who is the Senior Homeowner step for?", "acceptedAnswer": {"@type": "Answer", "text": "It's for homeowners 55+ planning for retirement, and others making this transition. The shift is from accumulating to accessing \u2014 turning decades of equity into security and choice."}}, {"@type": "Question", "name": "How do I move to the next step?", "acceptedAnswer": {"@type": "Answer", "text": "The next rung is First-Time Investor \u2014 From Consumer to Owner. We can help you take the next step when you're ready."}}]};
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "The 8 Steps", "item": "https://stairwaymortgage.com/the-8-steps/"}, {"@type": "ListItem", "position": 3, "name": "Senior Homeowner"}]};
+---
+
+<Layout title="Senior Homeowner: Step 04 of The Stairway | Stairway Mortgage" description="For homeowners 55 and older, the home often represents decades of equity — and a bridge to a secure, dignified retirement. This rung is about using th" canonical="https://stairwaymortgage.com/the-8-steps/senior-homeowner/">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <header class="step-hero ">
+    <div class="container-page step-hero__inner">
+      <nav class="step-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/the-8-steps/">The 8 Steps</a> <span>/</span> <span>Senior Homeowner</span></nav>
+      <span class="step-num" style="color:var(--color-blue)">04</span>
+      <span class="eyebrow" style="color:var(--color-blue)">Phase 1 · Live in it · 55+ · The Bridge</span>
+      <h1 class="display-xl step-hero__title">Senior Homeowner</h1>
+      <p class="lede step-hero__lede">For homeowners 55 and older, the home often represents decades of equity — and a bridge to a secure, dignified retirement. This rung is about using that equity wisely to fund the years ahead while staying in the home you love.</p>
+      <div class="step-progress mono">Step 04 of 08 · The Senior Planner</div>
+    </div>
+  </header>
+
+  <article class="container-prose prose-editorial step-body" set:html={`<h2><b>What the Senior Homeowner step means</b></h2><p>Step four is the bridge. For seniors, home equity can supplement retirement income, fund care, or simply provide peace of mind — through reverse mortgages, downsizing strategies, or refinancing. The goal is security and choice in retirement.</p><h2><b>Who this step is for</b></h2><ul><li>Homeowners 55+ planning for retirement</li><li>Seniors with substantial equity and fixed income</li><li>Those wanting to age in place while accessing equity</li><li>Families planning a parent's financial security</li></ul><h2><b>The shift</b></h2><p>The shift is from accumulating to accessing — turning decades of equity into security and choice.</p><h2><b>How Stairway helps</b></h2><p>Reverse mortgages and senior financing are complex and deserve careful, honest counsel. We walk through the tradeoffs plainly — what it means for you and your heirs — so the decision is made with full clarity.</p><h2><b>Frequently Asked Questions</b></h2><h3><b>What does the Senior Homeowner step mean?</b></h3><p>Step four is the bridge. For seniors, home equity can supplement retirement income, fund care, or simply provide peace of mind — through reverse mortgages, downsizing strategies, or refinancing. The goal is security and choice in retirement.</p><h3><b>Who is the Senior Homeowner step for?</b></h3><p>It's for homeowners 55+ planning for retirement, and others making this transition. The shift is from accumulating to accessing — turning decades of equity into security and choice.</p><h3><b>How do I move to the next step?</b></h3><p>The next rung is First-Time Investor — From Consumer to Owner. We can help you take the next step when you're ready.</p>`} />
+
+  <div class="container-prose"><div class="step-cta-card ">
+    <h2 class="display-md">Ready for this step?</h2>
+    <p class="lede">Reverse mortgages and senior financing are complex and deserve careful, honest counsel. We walk through the tradeoffs pl</p>
+    <a href="/reverse-mortgage-journey/" class="btn btn-blue btn-arrow">Explore Reverse Mortgage</a>
+  </div></div>
+
+  <div class="container-prose"><a href="/the-8-steps/first-time-investor/" class="step-next">
+      <span class="step-next__label mono">The next rung &rarr;</span>
+      <span class="step-next__title">Step 05 · First-Time Investor</span>
+      <span class="step-next__tag mono">From Consumer to Owner</span>
+    </a></div>
+
+  <section class="res-section" style="--res-accent:var(--color-blue)">
+    <div class="container-page">
+      <span class="eyebrow" style="color:var(--color-blue)">Resources for this step</span>
+      <h2 class="display-md res-section__h">Everything you need at this stage.</h2>
+      <p class="res-section__lede">A course, a free guide, calculators, loan programs, and real case studies — curated for exactly where you are on the Stairway.</p>
+      <div class="res-feats">
+      <a href="https://academy.stairwaymortgage.com/courses/offers/0b60ae27-8d50-4798-b177-9cea2a17677f" class="res-feat res-feat--course" target="_blank" rel="noopener">
+        <span class="res-feat__kicker mono">Stairway Academy · Course</span>
+        <span class="res-feat__title">Senior Homeowners Course</span>
+        <span class="res-feat__meta mono">6 chapters · Beginner</span>
+        <span class="res-feat__cta mono">Start the course &rarr;</span>
+      </a>
+      <a href="/guides/" class="res-feat res-feat--guide">
+        <span class="res-feat__kicker mono">Free Guide</span>
+        <span class="res-feat__title">Senior Homeowners Guide</span>
+        <span class="res-feat__meta">5 Powerful Truths Every Senior Homeowner Deserves to Know</span>
+        <span class="res-feat__cta mono">Get the guide &rarr;</span>
+      </a>
+      </div>
+      <div class="res-cols">
+        <div class="res-col">
+          <h3 class="res-col__h mono">Calculators</h3>
+          <ul class="res-col__list"><li><a href="/loan-calculator/legacy-planning-calculator/">Legacy Planning Calculator: Estimate Wealth Transfer, Distributions to Heirs &amp; Honorable Causes</a></li><li><a href="/loan-calculator/reverse-mortgage-legacy/">Reverse Mortgage Legacy Calculator: Estimate Remaining Equity &amp; Inheritance for Heirs</a></li><li><a href="/loan-calculator/reverse-mortgage-income/">Reverse Mortgage Income Calculator: Estimate Your Monthly Cash Flow &amp; Lifetime Income Stream</a></li><li><a href="/loan-calculator/reverse-mortgage/">Reverse Mortgage Home Purchase Calculator: Estimate Your Costs, Monthly Payment &amp; Cash Needed to Close</a></li></ul>
+        </div>
+        <div class="res-col">
+          <h3 class="res-col__h mono">Loan Programs</h3>
+          <ul class="res-col__list"><li><a href="/loan-programs/reverse-mortgage/">Reverse Mortgage: 7 Strategies for Accessing Home Equity Without Monthly Payments</a></li></ul>
+        </div>
+        <div class="res-col">
+          <h3 class="res-col__h mono">Guides & Articles</h3>
+          <ul class="res-col__list"><li><a href="/blog/retirement-income-planning/">Retirement Income Planning: How to Use Home Equity Strategically</a></li><li><a href="/blog/downsizing-home-for-seniors/">Downsizing Home for Seniors: Strategic Guide to Rightsizing for Retirement</a></li><li><a href="/blog/aging-in-place-modifications/">Aging in Place Modifications: Financing Home Updates for Senior Safety</a></li><li><a href="/blog/is-reverse-mortgage-income-taxable/">Is Reverse Mortgage Income Taxable? Tax Treatment and Retirement Planning</a></li></ul>
+        </div>
+        <div class="res-col">
+          <h3 class="res-col__h mono">Case Studies</h3>
+          <ul class="res-col__list"><li><a href="/case-studies/reverse-mortgage-refinance/">Reverse Mortgage Refinance: Retired Pharmaceutical Rep Eliminates Monthly Mortgage Payments for Financial Peace</a></li><li><a href="/case-studies/reverse-mortgage-cash-out-refinance/">Reverse Mortgage Cash-Out Refinance: Retired Nurse Accesses Equity for Healthcare and Family Support</a></li><li><a href="/case-studies/reverse-mortgage-income/">Reverse Mortgage Income: Retired Accountant Generates Monthly Cash Flow from Home Equity</a></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-prose"><a href="/the-8-steps/" class="step-back mono">&larr; See all eight steps</a></div>
+</Layout>
+
+<style>
+  .step-hero { padding: clamp(2.5rem,6vw,5rem) 0 clamp(2rem,4vw,3rem); background: linear-gradient(180deg,var(--color-paper-tint),var(--color-paper)); border-bottom:1px solid var(--color-bone); position:relative; }
+  .step-hero--summit { background: var(--color-ink); }
+  .step-hero--summit .step-hero__title, .step-hero--summit .step-hero__lede { color: var(--color-paper); }
+  .step-hero--summit .step-breadcrumb, .step-hero--summit .step-breadcrumb a, .step-hero--summit .step-progress { color: rgba(250,250,247,0.6); }
+  .step-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); margin-bottom:1.5rem; }
+  .step-breadcrumb a { color:var(--color-mute); text-decoration:none; } .step-breadcrumb span { margin-inline:.4rem; opacity:.5; }
+  .step-num { display:block; font-family:var(--font-display); font-size:clamp(3rem,8vw,5rem); line-height:1; font-weight:500; }
+  .step-hero__title { margin:.5rem 0 1.25rem; }
+  .step-hero__lede { max-width:60ch; margin-bottom:1.5rem; }
+  .step-progress { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--color-mute); }
+  .step-body { margin-top:2.5rem; }
+  .step-body :global(h2) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.5rem,3vw,2.1rem); margin-top:2.75rem; margin-bottom:1rem; }
+  .step-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:1.3rem; margin-top:1.75rem; margin-bottom:.7rem; }
+  .step-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.2rem; color:var(--color-ink-light); }
+  .step-body :global(ul) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:.5rem; }
+  .step-body :global(li) { font-size:17px; line-height:1.6; }
+  .step-cta-card { background:var(--color-paper); border:1px solid var(--color-bone); border-radius:16px; padding:2.5rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; margin-top:2rem; }
+  .step-cta-card--summit { background:var(--color-ink); color:var(--color-paper); }
+  .step-cta-card--summit h2 { color:var(--color-paper); }
+  .step-next { display:flex; flex-direction:column; gap:.35rem; margin-top:1.5rem; padding:1.5rem 1.75rem; border:1px solid var(--color-bone); border-radius:14px; background:var(--color-paper-tint); text-decoration:none; transition:border-color .2s,transform .2s; }
+  .step-next:hover { border-color:var(--color-blue); transform:translateY(-2px); }
+  .step-next__label { font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--color-blue); }
+  .step-next__title { font-family:var(--font-display); font-size:1.4rem; color:var(--color-ink); }
+  .step-next__tag { font-size:12px; color:var(--color-mute); }
+  .step-summit-note { margin-top:1.5rem; padding:1.75rem; border:1px solid #E0A96D; border-radius:14px; background:rgba(224,169,109,0.08); }
+  .step-summit-note .mono { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#B5803F; }
+  .step-summit-note p { margin-top:.5rem; font-size:16px; color:var(--color-ink-light); }
+  .step-back { display:inline-block; margin-top:2rem; font-size:13px; color:var(--color-blue); text-decoration:none; }
+
+  .res-section { padding: clamp(2.5rem,5vw,4rem) 0; background: var(--color-paper-tint); border-top:1px solid var(--color-bone); border-bottom:1px solid var(--color-bone); margin-top:3rem; }
+  .res-section__h { margin:.5rem 0 .5rem; }
+  .res-section__lede { font-size:16px; color:var(--color-mute); max-width:60ch; margin-bottom:2rem; }
+  .res-feats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:2.5rem; }
+  @media(max-width:760px){ .res-feats{ grid-template-columns:1fr; } }
+  .res-feat { display:flex; flex-direction:column; gap:.4rem; padding:1.6rem 1.75rem; border-radius:14px; text-decoration:none; transition:transform .2s, box-shadow .2s; }
+  .res-feat:hover { transform:translateY(-3px); box-shadow:0 14px 34px -16px rgba(10,14,26,0.25); }
+  .res-feat--course { background:var(--color-ink); color:var(--color-paper); }
+  .res-feat--guide { background:var(--color-paper); border:1px solid var(--res-accent); }
+  .res-feat__kicker { font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.75; }
+  .res-feat--course .res-feat__kicker { color:var(--res-accent); }
+  .res-feat--guide .res-feat__kicker { color:var(--res-accent); }
+  .res-feat__title { font-family:var(--font-display); font-size:1.5rem; line-height:1.15; }
+  .res-feat--guide .res-feat__title { color:var(--color-ink); }
+  .res-feat__meta { font-size:13px; opacity:.8; }
+  .res-feat--guide .res-feat__meta { color:var(--color-mute); }
+  .res-feat__cta { font-size:12px; margin-top:.5rem; color:var(--res-accent); }
+  .res-cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.75rem; }
+  .res-col__h { font-size:11px; letter-spacing:.07em; text-transform:uppercase; color:var(--color-mute); margin-bottom:.75rem; padding-bottom:.5rem; border-bottom:1px solid var(--color-bone); }
+  .res-col__list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.5rem; }
+  .res-col__list a { font-size:14px; line-height:1.4; color:var(--color-ink); text-decoration:none; }
+  .res-col__list a:hover { color:var(--res-accent); text-decoration:underline; text-underline-offset:2px; }
+
+</style>

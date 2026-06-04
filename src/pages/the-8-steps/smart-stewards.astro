@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does the Smart Stewards step mean?", "acceptedAnswer": {"@type": "Answer", "text": "This first rung is about foundations. It's where families plan for college costs, teach financial literacy, and make early decisions that compound for decades. Stewardship means handling what you have with wisdom and intention \u2014 the mindset that carries through all eight steps."}}, {"@type": "Question", "name": "Who is the Smart Stewards step for?", "acceptedAnswer": {"@type": "Answer", "text": "It's for parents planning for a child's education, and others making this transition. The shift here is from spending to stewarding \u2014 from reacting to money to directing it with purpose."}}, {"@type": "Question", "name": "How do I move to the next step?", "acceptedAnswer": {"@type": "Answer", "text": "The next rung is First-Time Home Buyer \u2014 The First Door. We can help you take the next step when you're ready."}}]};
+const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "The 8 Steps", "item": "https://stairwaymortgage.com/the-8-steps/"}, {"@type": "ListItem", "position": 3, "name": "Smart Stewards"}]};
+---
+
+<Layout title="Smart Stewards: Step 01 of The Stairway | Stairway Mortgage" description="The Stairway begins before you ever own a home. Smart Stewards is about teaching the next generation — and yourself — to treat money as something to s" canonical="https://stairwaymortgage.com/the-8-steps/smart-stewards/">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <header class="step-hero ">
+    <div class="container-page step-hero__inner">
+      <nav class="step-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/the-8-steps/">The 8 Steps</a> <span>/</span> <span>Smart Stewards</span></nav>
+      <span class="step-num" style="color:var(--color-blue)">01</span>
+      <span class="eyebrow" style="color:var(--color-blue)">Phase 1 · Live in it · College Planning</span>
+      <h1 class="display-xl step-hero__title">Smart Stewards</h1>
+      <p class="lede step-hero__lede">The Stairway begins before you ever own a home. Smart Stewards is about teaching the next generation — and yourself — to treat money as something to steward wisely, not just spend. For families, it starts with college planning: funding education without derailing the wealth you're building.</p>
+      <div class="step-progress mono">Step 01 of 08 · The Student</div>
+    </div>
+  </header>
+
+  <article class="container-prose prose-editorial step-body" set:html={`<h2><b>What the Smart Stewards step means</b></h2><p>This first rung is about foundations. It's where families plan for college costs, teach financial literacy, and make early decisions that compound for decades. Stewardship means handling what you have with wisdom and intention — the mindset that carries through all eight steps.</p><h2><b>Who this step is for</b></h2><ul><li>Parents planning for a child's education</li><li>Young adults learning to handle money with intention</li><li>Families who want to fund college without sacrificing long-term wealth</li><li>Anyone laying the financial foundation before homeownership</li></ul><h2><b>The shift</b></h2><p>The shift here is from spending to stewarding — from reacting to money to directing it with purpose.</p><h2><b>How Stairway helps</b></h2><p>We help families think through college funding in the context of their whole financial picture — so paying for education doesn't come at the cost of the home and wealth steps ahead. It starts with a conversation about your goals, not a product.</p><h2><b>Frequently Asked Questions</b></h2><h3><b>What does the Smart Stewards step mean?</b></h3><p>This first rung is about foundations. It's where families plan for college costs, teach financial literacy, and make early decisions that compound for decades. Stewardship means handling what you have with wisdom and intention — the mindset that carries through all eight steps.</p><h3><b>Who is the Smart Stewards step for?</b></h3><p>It's for parents planning for a child's education, and others making this transition. The shift here is from spending to stewarding — from reacting to money to directing it with purpose.</p><h3><b>How do I move to the next step?</b></h3><p>The next rung is First-Time Home Buyer — The First Door. We can help you take the next step when you're ready.</p>`} />
+
+  <div class="container-prose"><div class="step-cta-card ">
+    <h2 class="display-md">Ready for this step?</h2>
+    <p class="lede">We help families think through college funding in the context of their whole financial picture — so paying for education</p>
+    <a href="/discovery-quiz/" class="btn btn-blue btn-arrow">Take the Discovery Quiz</a>
+  </div></div>
+
+  <div class="container-prose"><a href="/the-8-steps/first-time-home-buyer/" class="step-next">
+      <span class="step-next__label mono">The next rung &rarr;</span>
+      <span class="step-next__title">Step 02 · First-Time Home Buyer</span>
+      <span class="step-next__tag mono">The First Door</span>
+    </a></div>
+
+  <section class="res-section" style="--res-accent:var(--color-blue)">
+    <div class="container-page">
+      <span class="eyebrow" style="color:var(--color-blue)">Resources for this step</span>
+      <h2 class="display-md res-section__h">Everything you need at this stage.</h2>
+      <p class="res-section__lede">A course, a free guide, calculators, loan programs, and real case studies — curated for exactly where you are on the Stairway.</p>
+      <div class="res-feats">
+      <a href="https://academy.stairwaymortgage.com/courses/offers/c5945b87-2852-4182-a121-35a461f0e2ac" class="res-feat res-feat--course" target="_blank" rel="noopener">
+        <span class="res-feat__kicker mono">Stairway Academy · Course</span>
+        <span class="res-feat__title">Smart Stewards Course</span>
+        <span class="res-feat__meta mono">6 chapters · 4h 46m · Beginner</span>
+        <span class="res-feat__cta mono">Start the course &rarr;</span>
+      </a>
+      <a href="/guides/" class="res-feat res-feat--guide">
+        <span class="res-feat__kicker mono">Free Guide</span>
+        <span class="res-feat__title">Smart Steward&#x27;s Guide</span>
+        <span class="res-feat__meta">5 Moves That Build Wealth Before 21</span>
+        <span class="res-feat__cta mono">Get the guide &rarr;</span>
+      </a>
+      </div>
+      <div class="res-cols">
+        <div class="res-col">
+          <h3 class="res-col__h mono">Calculators</h3>
+          <ul class="res-col__list"><li><a href="/loan-calculator/fha-loan-multifamily/">FHA Multifamily Loan Calculator: Estimate Your Costs, Monthly Payment &amp; Rental Income for 2-4 Units</a></li><li><a href="/loan-calculator/college-costs-calculator/">College Costs Calculator: Compare Housing Costs vs Investment Property Wealth</a></li><li><a href="/loan-calculator/spiritual-influence-calculator/">Spiritual Influence Calculator: Estimate Kingdom Impact &amp; Eternal Compounding of Faithful Living</a></li><li><a href="/loan-calculator/compare-mortgage-rates-calculator/">Compare Mortgage Rates Calculator: Estimate Interest Savings Between Rates</a></li></ul>
+        </div>
+        <div class="res-col">
+          <h3 class="res-col__h mono">Loan Programs</h3>
+          <ul class="res-col__list"><li><a href="/loan-programs/fha-construction-loan/">FHA Construction Loan: 7 Key Steps to Build Your Dream Home with Accessible Financing</a></li><li><a href="/loan-programs/down-payment-assistance/">Down Payment Assistance: 7 Proven Programs to Help You Buy Your First Home</a></li></ul>
+        </div>
+        <div class="res-col">
+          <h3 class="res-col__h mono">Guides & Articles</h3>
+          <ul class="res-col__list"><li><a href="/blog/house-hacking/">House Hacking for Beginners: Live for Free While Building Wealth</a></li><li><a href="/blog/buying-your-first-home/">Buying Your First Home: Success Stories of Young Adults Who Did It Before 30</a></li><li><a href="/blog/first-time-home-buyer-programs/">First Time Home Buyer Programs: Escape The Renter Trap</a></li><li><a href="/blog/fha-loan-qualifications/">FHA Loan Qualifications: Your Complete Guide to Qualifying with Minimal Down Payment</a></li></ul>
+        </div>
+        <div class="res-col">
+          <h3 class="res-col__h mono">Case Studies</h3>
+          <ul class="res-col__list"><li><a href="/case-studies/down-payment-assistance/">Down Payment Assistance: Teacher Purchases First Home with Grant Funding and Minimal Savings</a></li><li><a href="/case-studies/fha-203k-loan/">FHA 203k Loan: Medical Technician Transforms Fixer-Upper into Dream Home with Renovation Financing</a></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-prose"><a href="/the-8-steps/" class="step-back mono">&larr; See all eight steps</a></div>
+</Layout>
+
+<style>
+  .step-hero { padding: clamp(2.5rem,6vw,5rem) 0 clamp(2rem,4vw,3rem); background: linear-gradient(180deg,var(--color-paper-tint),var(--color-paper)); border-bottom:1px solid var(--color-bone); position:relative; }
+  .step-hero--summit { background: var(--color-ink); }
+  .step-hero--summit .step-hero__title, .step-hero--summit .step-hero__lede { color: var(--color-paper); }
+  .step-hero--summit .step-breadcrumb, .step-hero--summit .step-breadcrumb a, .step-hero--summit .step-progress { color: rgba(250,250,247,0.6); }
+  .step-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); margin-bottom:1.5rem; }
+  .step-breadcrumb a { color:var(--color-mute); text-decoration:none; } .step-breadcrumb span { margin-inline:.4rem; opacity:.5; }
+  .step-num { display:block; font-family:var(--font-display); font-size:clamp(3rem,8vw,5rem); line-height:1; font-weight:500; }
+  .step-hero__title { margin:.5rem 0 1.25rem; }
+  .step-hero__lede { max-width:60ch; margin-bottom:1.5rem; }
+  .step-progress { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--color-mute); }
+  .step-body { margin-top:2.5rem; }
+  .step-body :global(h2) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.5rem,3vw,2.1rem); margin-top:2.75rem; margin-bottom:1rem; }
+  .step-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:1.3rem; margin-top:1.75rem; margin-bottom:.7rem; }
+  .step-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.2rem; color:var(--color-ink-light); }
+  .step-body :global(ul) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:.5rem; }
+  .step-body :global(li) { font-size:17px; line-height:1.6; }
+  .step-cta-card { background:var(--color-paper); border:1px solid var(--color-bone); border-radius:16px; padding:2.5rem; text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; margin-top:2rem; }
+  .step-cta-card--summit { background:var(--color-ink); color:var(--color-paper); }
+  .step-cta-card--summit h2 { color:var(--color-paper); }
+  .step-next { display:flex; flex-direction:column; gap:.35rem; margin-top:1.5rem; padding:1.5rem 1.75rem; border:1px solid var(--color-bone); border-radius:14px; background:var(--color-paper-tint); text-decoration:none; transition:border-color .2s,transform .2s; }
+  .step-next:hover { border-color:var(--color-blue); transform:translateY(-2px); }
+  .step-next__label { font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--color-blue); }
+  .step-next__title { font-family:var(--font-display); font-size:1.4rem; color:var(--color-ink); }
+  .step-next__tag { font-size:12px; color:var(--color-mute); }
+  .step-summit-note { margin-top:1.5rem; padding:1.75rem; border:1px solid #E0A96D; border-radius:14px; background:rgba(224,169,109,0.08); }
+  .step-summit-note .mono { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#B5803F; }
+  .step-summit-note p { margin-top:.5rem; font-size:16px; color:var(--color-ink-light); }
+  .step-back { display:inline-block; margin-top:2rem; font-size:13px; color:var(--color-blue); text-decoration:none; }
+
+  .res-section { padding: clamp(2.5rem,5vw,4rem) 0; background: var(--color-paper-tint); border-top:1px solid var(--color-bone); border-bottom:1px solid var(--color-bone); margin-top:3rem; }
+  .res-section__h { margin:.5rem 0 .5rem; }
+  .res-section__lede { font-size:16px; color:var(--color-mute); max-width:60ch; margin-bottom:2rem; }
+  .res-feats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:2.5rem; }
+  @media(max-width:760px){ .res-feats{ grid-template-columns:1fr; } }
+  .res-feat { display:flex; flex-direction:column; gap:.4rem; padding:1.6rem 1.75rem; border-radius:14px; text-decoration:none; transition:transform .2s, box-shadow .2s; }
+  .res-feat:hover { transform:translateY(-3px); box-shadow:0 14px 34px -16px rgba(10,14,26,0.25); }
+  .res-feat--course { background:var(--color-ink); color:var(--color-paper); }
+  .res-feat--guide { background:var(--color-paper); border:1px solid var(--res-accent); }
+  .res-feat__kicker { font-size:11px; letter-spacing:.06em; text-transform:uppercase; opacity:.75; }
+  .res-feat--course .res-feat__kicker { color:var(--res-accent); }
+  .res-feat--guide .res-feat__kicker { color:var(--res-accent); }
+  .res-feat__title { font-family:var(--font-display); font-size:1.5rem; line-height:1.15; }
+  .res-feat--guide .res-feat__title { color:var(--color-ink); }
+  .res-feat__meta { font-size:13px; opacity:.8; }
+  .res-feat--guide .res-feat__meta { color:var(--color-mute); }
+  .res-feat__cta { font-size:12px; margin-top:.5rem; color:var(--res-accent); }
+  .res-cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.75rem; }
+  .res-col__h { font-size:11px; letter-spacing:.07em; text-transform:uppercase; color:var(--color-mute); margin-bottom:.75rem; padding-bottom:.5rem; border-bottom:1px solid var(--color-bone); }
+  .res-col__list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.5rem; }
+  .res-col__list a { font-size:14px; line-height:1.4; color:var(--color-ink); text-decoration:none; }
+  .res-col__list a:hover { color:var(--res-accent); text-decoration:underline; text-underline-offset:2px; }
+
+</style>
