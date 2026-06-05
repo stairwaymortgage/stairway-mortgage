@@ -53,13 +53,23 @@ const menus = [
         ],
       },
       {
-        heading: 'Your profession',
+        heading: 'Clients We Serve — By Profession',
         links: [
-          { icon: 'medical', title: 'Medical',              desc: 'Physician & nurse loan programs',    href: '/medical-professionals/' },
-          { icon: 'plane',   title: 'Aviation',             desc: 'Pilot & crew specialist lending',    href: '/aviation-professionals/' },
-          { icon: 'brief',   title: 'Corporate Executives', desc: 'Stock-comp & RSU-friendly loans',    href: '/corporate-executives/' },
-          { icon: 'user',    title: 'Self-Employed & Owners', desc: 'Bank-statement & asset programs',  href: '/legal-business-entrepreneurs/' },
-          { icon: 'pen',     title: 'Creative & Variable',  desc: 'Flexible income documentation',      href: '/creative-earners/' },
+          { icon: 'plane',   title: 'Aviation Professionals', desc: 'Pilot & crew specialist lending',  href: '/aviation-professionals/', live: true,
+            subs: [
+              { title: 'Pilots',                  href: '/aviation-professionals/pilots/' },
+              { title: 'Flight Attendants',       href: '/aviation-professionals/flight-attendants/' },
+              { title: 'Aircraft Mechanics',      href: '/aviation-professionals/aircraft-mechanics/' },
+              { title: 'Air Traffic Controllers', href: '/aviation-professionals/air-traffic-controllers/' },
+            ],
+          },
+          { icon: 'medical', title: 'Medical Professionals',              desc: 'Physician & nurse loan programs',     live: false },
+          { icon: 'medical', title: 'Dental & Wellness Professionals',    desc: 'Specialized healthcare lending',      live: false },
+          { icon: 'brief',   title: 'Corporate Executives',              desc: 'Stock-comp & RSU-friendly loans',     live: false },
+          { icon: 'pen',     title: 'Creative Earners',                  desc: 'Flexible income documentation',       live: false },
+          { icon: 'user',    title: 'Professional Services',             desc: 'Legal & entrepreneurs',               live: false },
+          { icon: 'ship',    title: 'Yacht Professionals',               desc: 'Maritime industry lending',            live: false },
+          { icon: 'trend',   title: 'Sales Professionals',               desc: 'Commission-based income programs',    live: false },
         ],
       },
     ],
@@ -120,6 +130,7 @@ const icons: Record<string, string> = {
   file:    'M4 1h6l4 4v10H4V1zm6 0v4h4',
   book:    'M2 2h5v12H2V2zm7 0h5v12H9V2z',
   grad:    'M8 1L1 5l7 4 7-4-7-4zM3 7v4l5 3 5-3V7',
+  ship:    'M1 13c2 1 4 1 6 0s4-1 6 0M3 9l5-6 5 6M8 3v6',
 };
 ---
 
@@ -222,17 +233,38 @@ const icons: Record<string, string> = {
                 <ul class="mega__list">
                   {col.links.map((link) => (
                     <li>
-                      <a href={link.href} class="mega__link">
-                        <span class="mega__icon" aria-hidden="true">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d={icons[link.icon] || icons.home}/>
-                          </svg>
+                      {link.live === false ? (
+                        <span class="mega__link mega__link--soon">
+                          <span class="mega__icon mega__icon--soon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d={icons[link.icon] || icons.home}/>
+                            </svg>
+                          </span>
+                          <span class="mega__link-text">
+                            <strong>{link.title} <span class="mega__soon-badge">SOON</span></strong>
+                            <span>{link.desc}</span>
+                          </span>
                         </span>
-                        <span class="mega__link-text">
-                          <strong>{link.title}</strong>
-                          <span>{link.desc}</span>
-                        </span>
-                      </a>
+                      ) : (
+                        <a href={link.href} class="mega__link">
+                          <span class="mega__icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d={icons[link.icon] || icons.home}/>
+                            </svg>
+                          </span>
+                          <span class="mega__link-text">
+                            <strong>{link.title}</strong>
+                            <span>{link.desc}</span>
+                          </span>
+                        </a>
+                      )}
+                      {link.subs && (
+                        <ul class="mega__subs">
+                          {link.subs.map((sub) => (
+                            <li><a href={sub.href} class="mega__sub-link">{sub.title}</a></li>
+                          ))}
+                        </ul>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -301,7 +333,16 @@ const icons: Record<string, string> = {
         </summary>
         <div class="hdr-drawer__links">
           {m.columns.flatMap(c => c.links).map(link => (
-            <a href={link.href} class="hdr-drawer__link">{link.title}</a>
+            link.live === false ? (
+              <span class="hdr-drawer__link hdr-drawer__link--soon">{link.title} <span class="mega__soon-badge">SOON</span></span>
+            ) : (
+              <Fragment>
+                <a href={link.href} class="hdr-drawer__link">{link.title}</a>
+                {link.subs && link.subs.map(sub => (
+                  <a href={sub.href} class="hdr-drawer__link hdr-drawer__sub-link">{sub.title}</a>
+                ))}
+              </Fragment>
+            )
           ))}
         </div>
       </details>
@@ -607,6 +648,60 @@ const icons: Record<string, string> = {
     text-align: center;
     font-size: 14px !important;
     padding: 0.7rem 1rem !important;
+  }
+
+  /* ── Coming Soon items ── */
+  .mega__link--soon {
+    opacity: 0.45;
+    cursor: default;
+    pointer-events: none;
+  }
+  .mega__icon--soon { opacity: 0.5; }
+  .mega__soon-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    background: var(--color-paper-tint);
+    border: 1px solid var(--color-bone);
+    border-radius: 4px;
+    padding: 1px 5px;
+    margin-left: 6px;
+    vertical-align: middle;
+    line-height: 1.4;
+  }
+  /* ── Aviation sub-links ── */
+  .mega__subs {
+    list-style: none;
+    padding: 0 0 0 3.1rem;
+    margin: 2px 0 6px;
+  }
+  .mega__sub-link {
+    display: block;
+    padding: 0.3rem 0.6rem;
+    font-size: 12.5px;
+    color: var(--color-mute);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .mega__sub-link:hover {
+    background: var(--color-paper-tint);
+    color: var(--color-ink);
+  }
+  /* ── Mobile drawer coming-soon + sub-links ── */
+  .hdr-drawer__link--soon {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+  }
+  .hdr-drawer__sub-link {
+    padding-left: 1.5rem;
+    font-size: 13.5px;
+    color: var(--color-mute);
   }
 
   /* Journey CTA in Your Situation menu */
