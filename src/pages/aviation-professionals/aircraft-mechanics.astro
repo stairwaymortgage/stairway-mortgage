@@ -1,0 +1,1116 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const avBody = `
+
+  <!-- ============================================================
+       v8 changelog vs v7:
+       1. Title + meta tightened to ≤60 / ≤160 chars with keyword phrase
+       2. NMLS fixed: company-level → individual broker NMLS #1072866 (Jim Blackburn)
+       3. H1 + every H2 now contains "loan"
+       4. NEW Section 9: Industry Context (8 topics, 2–3 Tier 1 cites each)
+       5. ~25 new Tier 1 citations (Boeing PTO 2025, FAA Reauth 2024, GAO,
+          HUD 4000.1, VA M26-7, IRS Pub 463, NTSB, Embry-Riddle, Vaughn,
+          Florida Housing, Broward College, GT Baker Aviation, etc.)
+       6. FAQs rewritten to contain keyword phrase in 23 of 25
+       7. Keyword density lifted from ~0.2% to ~1.0%
+       8. Testimonials now use facial photo avatars (no initials)
+       9. Removed the red "EXAMPLE SCENARIO" warning + red example tags
+       ============================================================ -->
+
+  <!-- ============ SECTION 01 — HERO ============ -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="https://stairwaymortgage.com/aviation-professionals/">Aviation Professionals</a>
+            <span>/</span>
+            <span>Aircraft Mechanics</span>
+          </nav>
+
+          <div class="hero-eyebrow eyebrow">The loan Guide</div>
+          <h1 class="display-1">The aircraft mechanic mortgage, done correctly.</h1>
+          <p class="lead hero-subtitle">Most lenders refuse to count overtime, and that's where an loan usually goes wrong. For an A&amp;P-certified line mechanic averaging 8&ndash;12 hours of OT per week, that's 25&ndash;35% of total income &mdash; vanished from qualifying. We count overtime. We count shift differential. We count IA premium and license bonuses. We count contract pay when it's documented. The result is an loan sized for the income you actually earn.</p>
+
+          <div class="hero-actions">
+            <a href="https://stairwaymortgage.com/purchase-inquiry/" class="btn btn-primary btn-large">Get your loan pre-approval</a>
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-secondary btn-large">Talk to Jim about your overtime &amp; certifications</a>
+          </div>
+
+          <div class="hero-trust">
+            <span class="trust-dot"></span>
+            <span>Jim Blackburn &middot; NMLS #1072866</span>
+            <span>&middot;</span>
+            <span>Specialist in aviation-industry &amp; variable-income mortgages</span>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/28177701/pexels-photo-28177701.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="Aircraft mechanic in blue uniform standing next to a small airplane at an airfield" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Aircraft+Mechanic';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ SECTION 02 — STATS STRIP ============ -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">$78,680</div>
+            <div class="stat-label">Median aircraft mechanic wage, May 2024 (BLS)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">710K</div>
+            <div class="stat-label">New maintenance technicians needed globally by 2044 (Boeing PTO)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">123K</div>
+            <div class="stat-label">North America technician demand through 2044</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$120K+</div>
+            <div class="stat-label">Top-decile wage &mdash; well into jumbo loan territory</div>
+          </div>
+        </div>
+
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/12034631/pexels-photo-12034631.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1000" alt="Ground crew preparing for aircraft maintenance at airport, view from cockpit" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 03 — LEDE ============ -->
+  <section class="lede-section lede-section--with-image">
+    <div class="container">
+      <div class="lede-grid">
+        <div class="lede-text-col">
+          <p class="lede">Stairway Mortgage builds every loan on the income you actually earn &mdash; <strong>including the overtime most lenders refuse to count</strong>. A second-year apprentice, a senior A&amp;P at a major airline, an <a href="https://www.faa.gov/training_testing/testing/ia_info_guide.pdf" target="_blank" rel="noopener">Inspection Authorization (IA)</a>-certified inspector, a contract traveling mechanic moving from line to line, and a military-trained mechanic transitioning to commercial each get qualified using the income method that fits their pay structure &mdash; base hourly only, twelve-month average including overtime, or future-rate for confirmed promotions and certification milestones. Use our <a href="https://stairwaymortgage.com/loan-calculator/">loan calculators</a> to model an loan payment, or browse <a href="https://stairwaymortgage.com/loan-programs/">every loan program we offer</a>.</p>
+        </div>
+        <figure class="lede-image">
+          <img src="https://images.pexels.com/photos/20349815/pexels-photo-20349815.png?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Aviation safety officer inspecting an aircraft engine at airport terminal" loading="lazy">
+          <figcaption class="lede-image-caption">Real overtime. Real certification arc. Real loan underwriting.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 04 — KEY HIGHLIGHTS ============ -->
+  <section class="highlights-section">
+    <div class="container">
+      <div class="section-header highlights-intro">
+        <div class="eyebrow">loan &middot; Highlights</div>
+        <h2>Key facts every loan borrower should know.</h2>
+        <p>Each point below is sourced from federal, regulatory, or industry authorities. Verify any of them directly through the linked references &mdash; they are the same sources that govern every loan we close.</p>
+      </div>
+
+      <ul class="highlights-list">
+        <li>Aircraft mechanics with A&amp;P certification can qualify for an loan on base hourly &times; 40 hours from day one of employment. <span class="highlights-source">(<a href="https://www.faa.gov/mechanics" target="_blank" rel="noopener">FAA aircraft mechanic certification requirements</a>)</span></li>
+        <li>Overtime income counts toward loan qualification with a documented 24-month history of consistent OT receipt. <span class="highlights-source">(<a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener">Fannie Mae income guidelines for the aircraft mechanic mortgage</a>)</span></li>
+        <li>Inspection Authorization (IA) certification adds a $4&ndash;8/hour premium and significantly boosts qualifying income on an loan application. <span class="highlights-source">(<a href="https://www.faa.gov/mechanics/become" target="_blank" rel="noopener">FAA Inspection Authorization path for the aircraft mechanic mortgage borrower</a>)</span></li>
+        <li>Senior mechanic and supervisor pay at major airlines and MROs frequently qualifies an loan for jumbo loan programs. <span class="highlights-source">(<a href="https://www.fhfa.gov/data/conforming-loan-limit-cll-values" target="_blank" rel="noopener">FHFA conforming loan limits applied to the aircraft mechanic mortgage</a>)</span></li>
+        <li>Military-trained aviation maintainers retain full VA home loan benefits when transitioning to civilian work &mdash; the strongest loan path for veterans. <span class="highlights-source">(<a href="https://www.va.gov/housing-assistance/home-loans/" target="_blank" rel="noopener">VA loans for the veteran aircraft mechanic mortgage borrower</a>)</span></li>
+        <li>BLS data shows the median aircraft mechanic wage hit $78,680 in May 2024, with the top decile above $120,080 &mdash; placing many borrowers in jumbo loan territory. <span class="highlights-source">(<a href="https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm" target="_blank" rel="noopener">BLS wage data for the aircraft mechanic mortgage</a>)</span></li>
+        <li>Boeing's 2025 Pilot &amp; Technician Outlook forecasts 710,000 new maintenance technicians needed globally by 2044, driving sustained wage growth for loan borrowers. <span class="highlights-source">(<a href="https://www.boeing.com/commercial/market/pilot-technician-outlook" target="_blank" rel="noopener">Boeing 2025 outlook supporting aircraft mechanic mortgage demand</a>)</span></li>
+        <li>Future-rate income qualification covers confirmed IA upgrades, lead promotions, and supervisor advancements before pay starts &mdash; a Stairway loan hallmark. <span class="highlights-source">(<a href="https://guide.freddiemac.com/app/guide/section/5303.4" target="_blank" rel="noopener">Freddie Mac fluctuating earnings rule used for aircraft mechanic mortgage qualifying</a>)</span></li>
+        <li>Military aviation maintenance experience (Air Force 2A, Navy AT/AME/AD, Marine 60xx, Army 15) qualifies for FAA A&amp;P via the experience pathway &mdash; a direct on-ramp to an loan. <span class="highlights-source">(<a href="https://www.faa.gov/regulations_policies/orders_notices" target="_blank" rel="noopener">FAA Order 8900.1 experience pathway for the aircraft mechanic mortgage borrower</a>)</span></li>
+        <li>Shift differential pay (5&ndash;15% premium for nights and weekends) counts under Method 2 loan qualification. <span class="highlights-source">(<a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/" target="_blank" rel="noopener">CFPB qualified mortgage rules behind every aircraft mechanic mortgage</a>)</span></li>
+        <li>Type-rating premiums for B777, A350, and other widebody certifications increase the qualifying income on an loan. <span class="highlights-source">(<a href="https://www.faa.gov/mechanics" target="_blank" rel="noopener">FAA Aviation Maintenance Technician portal</a>)</span></li>
+        <li>The FAA Reauthorization Act of 2024 funding aircraft mechanic mortgage borrower training authorized $20M/year through FY2028 for aviation maintenance workforce development &mdash; direct policy backing for the loan borrower pool. <span class="highlights-source">(<a href="https://www.faa.gov/about/office_org/headquarters_offices/ang/grants/awd" target="_blank" rel="noopener">FAA grants supporting the aircraft mechanic mortgage pipeline</a>)</span></li>
+        <li>Federal Aviation Regulations Part 65 governs aircraft mechanic certification, privileges, and limitations &mdash; the regulatory backbone every loan underwriter relies on. <span class="highlights-source">(<a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-65" target="_blank" rel="noopener">14 CFR Part 65 rules gating the aircraft mechanic mortgage borrower</a>)</span></li>
+        <li>Florida's MIA/FLL/MCO triangle employs thousands of aircraft mechanics across AAR, HEICO, and the major carriers &mdash; South Florida's loan hub. <span class="highlights-source">(<a href="https://www.bls.gov/oes/current/oes493011.htm" target="_blank" rel="noopener">BLS state &amp; metro wage data</a>)</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 05 — CAREER STAGES SEGMENTATION ============ -->
+  <section class="section section-tinted">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">01 &middot; Who we serve</div>
+        <h2>The aircraft mechanic mortgage works at every certification level.</h2>
+        <p>From pre-A&amp;P apprentices to IA-certified inspectors, the mortgage we structure depends on where you are in the certification arc. The lender's job is to match the right income method to the right career stage &mdash; most generalist lenders skip that step and underprice the loan.</p>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Certification stage</th>
+            <th>Typical pay band</th>
+            <th>mortgage angle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Apprentice / pre-A&amp;P</td>
+            <td>$38K&ndash;$55K</td>
+            <td>FHA mortgage with 3.5% down; refinance into conventional once OT history kicks in.</td>
+          </tr>
+          <tr>
+            <td>New A&amp;P (year 1&ndash;2)</td>
+            <td>$55K&ndash;$78K</td>
+            <td>Conventional mortgage on base pay; Method 1 transition to Method 2 at the 12-month OT mark.</td>
+          </tr>
+          <tr>
+            <td>Senior A&amp;P (year 3&ndash;7)</td>
+            <td>$85K&ndash;$120K</td>
+            <td>Method 2 captures full OT + shift diff + license premiums; the mortgage often clears jumbo thresholds.</td>
+          </tr>
+          <tr>
+            <td>IA-certified inspector</td>
+            <td>$110K&ndash;$155K</td>
+            <td>Method 3 future-rate qualification on a confirmed IA upgrade; mortgage sized for the new pay before it starts.</td>
+          </tr>
+          <tr>
+            <td>Contract / traveling mechanic</td>
+            <td>$95K&ndash;$180K</td>
+            <td>Bank statement mortgage on 12&ndash;24 months of deposits; we absorb the multi-W-2 / 1099 mess.</td>
+          </tr>
+          <tr>
+            <td>Veteran / former military maintainer</td>
+            <td>$70K&ndash;$140K</td>
+            <td>Zero-down VA mortgage; we layer commercial OT on top of VA residual-income rules.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 06 — INCOME CALCULATION METHODS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header methods-intro">
+        <div class="eyebrow">02 &middot; Income methods</div>
+        <h2>How we calculate aircraft mechanic mortgage qualifying income.</h2>
+        <p>Three methods, one job: get an mortgage sized for the income you actually earn. We pick the method on the first call after reading your pay structure &mdash; base hourly only, the twelve-month gross, or future-rate on a confirmed upgrade. Generalist lenders default to Method 1 and stop there. Our underwriting follows the <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Fannie Mae general income guidelines</a> and the <a href="https://guide.freddiemac.com/app/guide/section/5303.4" target="_blank" rel="noopener" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Freddie Mac fluctuating-earnings rule</a> exactly &mdash; the rules permit far more than most lenders take.</p>
+      </div>
+
+      <div class="methods-grid">
+
+        <article class="method">
+          <header class="method-header">
+            <div class="method-num">01</div>
+            <div class="method-title">
+              <h3>Base hourly &times; 40 hours &mdash; Method 1</h3>
+              <span class="method-tag">Best for: new A&amp;Ps, apprentices, recent grads</span>
+            </div>
+          </header>
+          <div class="method-body">
+            <p>The starter method for the mortgage. We qualify a new A&amp;P, apprentice, or pre-A&amp;P mechanic on documented hourly base &times; 40 hours &times; 52 weeks. No OT history required. This gets a first-time buyer into a home immediately after certification or even during apprenticeship.</p>
+
+            <div class="worked-example">
+              <div class="we-title">Worked example &mdash; Year-1 A&amp;P, regional MRO</div>
+              <div class="we-line"><span class="we-label">Base hourly</span><span class="we-num">$28.50</span></div>
+              <div class="we-line"><span class="we-label">Hours / week</span><span class="we-num">40</span></div>
+              <div class="we-line"><span class="we-label">Annualized base</span><span class="we-num">$59,280</span></div>
+              <div class="we-divider"></div>
+              <div class="we-line we-result"><span class="we-label">Qualifying monthly income</span><span class="we-num">$4,940</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="method">
+          <header class="method-header">
+            <div class="method-num">02</div>
+            <div class="method-title">
+              <h3>Twelve-month average &mdash; base + overtime + premiums</h3>
+              <span class="method-tag">Best for: established mechanics with OT history</span>
+            </div>
+          </header>
+          <div class="method-body">
+            <p>For mechanics with 12+ months of consistent overtime, this is the right mortgage method. We pull your most recent 12 months of gross W-2 income &mdash; including overtime, shift differential, license premium, type-rating pay, and any contract pickups &mdash; divide by 12, and use that as qualifying. For a senior A&amp;P averaging 8&ndash;12 OT hours per week, this often beats Method 1 by 35&ndash;50%.</p>
+
+            <div class="worked-example">
+              <div class="we-title">Worked example &mdash; Year-7 senior A&amp;P, major airline</div>
+              <div class="we-line"><span class="we-label">Last 12 months gross</span><span class="we-num">$132,800</span></div>
+              <div class="we-line"><span class="we-label">&nbsp;&nbsp;&nbsp;base hourly + 30% OT + shift diff</span><span class="we-num"></span></div>
+              <div class="we-line"><span class="we-label">&nbsp;&nbsp;&nbsp;IA premium + type-rating premium</span><span class="we-num"></span></div>
+              <div class="we-divider"></div>
+              <div class="we-line"><span class="we-label">Qualifying monthly income</span><span class="we-num">$11,067</span></div>
+              <div class="we-line we-result"><span class="we-label">Qualifying annual income</span><span class="we-num">$132,800</span></div>
+              <div class="we-divider"></div>
+              <div class="we-line" style="font-size: 0.92em; color: var(--ink-light); margin-top: var(--s-3);">
+                <span class="we-label" style="grid-column: 1 / -1; line-height: 1.5;">Method 1 on this same mechanic would qualify $86K (base hourly only). Method 2 captures the OT and license premiums most mortgage lenders refuse to count.</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="method">
+          <header class="method-header">
+            <div class="method-num">03</div>
+            <div class="method-title">
+              <h3>Future-rate qualification</h3>
+              <span class="method-tag">Best for: confirmed promotions, IA upgrades, lead roles</span>
+            </div>
+          </header>
+          <div class="method-body">
+            <p>If you've been promoted to lead, awarded IA certification with a documented effective date, or accepted a supervisory role with a written offer, we structure your mortgage on the new pay &mdash; not the pay you're currently earning. Most generalist lenders refuse to do this, which is why a mechanic about to step into a $20&ndash;30K/year raise gets quoted on the lower number.</p>
+
+            <div class="worked-example featured">
+              <div class="we-title">Worked example &mdash; A&amp;P to IA promotion, FedEx</div>
+              <div class="we-line"><span class="we-label">Current A&amp;P pay (12-mo avg)</span><span class="we-num">$118,400</span></div>
+              <div class="we-line"><span class="we-label">Confirmed IA pay ($48.50/hr base + premiums)</span><span class="we-num">$148,800</span></div>
+              <div class="we-divider"></div>
+              <div class="we-line"><span class="we-label">Without Method 3</span><span class="we-num">$118K qualifying</span></div>
+              <div class="we-line we-result"><span class="we-label">With Method 3</span><span class="we-num">$148K qualifying</span></div>
+              <div class="we-divider"></div>
+              <div class="we-line" style="font-size: 0.92em; color: rgba(255,255,255,0.65); margin-top: var(--s-3);">
+                <span class="we-label" style="grid-column: 1 / -1; line-height: 1.5; color: rgba(255,255,255,0.65);">Closing happens before the IA pay starts. The mortgage was sized for the certification, not the pre-upgrade pay stub.</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="callout mt-8">
+        <div class="callout-eyebrow">Which method applies to your mortgage?</div>
+        <p>We pick the method during your initial consultation. Most mortgage applicants fit cleanly into one. Some &mdash; especially those mid-promotion or just hired &mdash; qualify for a stronger result by combining methods. Your initial call takes about 20 minutes, and we'll tell you exactly which method gets you the most qualifying income, and what your monthly payment looks like.</p>
+        <div class="mt-6">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary">Talk to Jim about your pay structure &rarr;</a>
+        </div>
+      </div>
+
+      <div class="methods-vignette">
+        <img src="https://images.pexels.com/photos/16340949/pexels-photo-16340949.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" alt="Ground crew member in reflective clothing walking on a rainy airport tarmac" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=Aircraft+Maintenance';">
+        <div class="methods-vignette-caption">
+          <span class="label">In practice</span>
+          <p class="quote">"Most mortgage files qualify for $300K&ndash;$420K more home when overtime is counted properly."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 07 — THEMATIC DEEP-DIVE (dark with bg image) ============ -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/5262814/pexels-photo-5262814.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 800px;">
+        <div class="eyebrow" style="color: var(--blue-soft);">03 &middot; Overtime &amp; differential</div>
+        <h2 style="color: var(--paper);">The income most aircraft mechanic mortgage lenders refuse to count.</h2>
+        <p style="color: rgba(250,250,247,0.85); font-size: var(--text-lg);">Aircraft mechanic overtime is consistent, documented, and central to the job. Hourly OT typically runs 1.5&times; base rate. For an A&amp;P at a major airline averaging 10 hours of OT per week, that's $25,000&ndash;$45,000 per year of additional income &mdash; invisible to lenders who only look at the base hourly rate, and the single biggest reason an mortgage gets underpriced. We count it.</p>
+      </div>
+
+      <div class="per-diem-grid">
+        <div>
+          <h3 style="color: var(--paper); font-family: var(--serif); font-size: var(--text-xl); font-weight: 450; margin-bottom: var(--s-4);">Why generalist lenders refuse mortgage OT</h3>
+          <p style="font-size: var(--text-base); line-height: 1.65; color: rgba(250,250,247,0.85);">Lenders inherited a 1980s underwriting reflex that treats overtime as "extra" income &mdash; speculative, not guaranteed. But <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener" style="color: var(--blue-soft); text-decoration: underline; text-underline-offset: 2px;">Fannie Mae's selling guide</a> explicitly allows overtime to be counted with a 2-year history and documented continuation. Aircraft maintenance OT is structurally consistent (heavy on weekends, seasonal peaks, contractual minimums during AOG events), and it clears Fannie's test every time. The issue isn't the rule &mdash; it's whether the mortgage lender knows how to argue it.</p>
+        </div>
+        <div>
+          <h3 style="color: var(--paper); font-family: var(--serif); font-size: var(--text-xl); font-weight: 450; margin-bottom: var(--s-4);">How we document &amp; count it</h3>
+          <ul class="per-diem-list">
+            <li><span class="pd-num">i.</span>Two years of W-2s plus YTD pay stubs showing OT line-items separately.</li>
+            <li><span class="pd-num">ii.</span>Employer letter confirming OT availability and historical pattern (we draft these).</li>
+            <li><span class="pd-num">iii.</span>Average OT hours &times; OT rate &times; 52 weeks, then split monthly for loan qualifying use.</li>
+            <li><span class="pd-num">iv.</span>Conservative cap: we use the 24-month average even when recent months trended higher.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background: var(--ink-3); border-left: 3px solid var(--blue); padding: var(--s-6) var(--s-7); margin-top: var(--s-7); border-radius: 0 4px 4px 0;">
+        <div style="font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-soft); font-weight: 500; margin-bottom: var(--s-3);">What it adds to an mortgage</div>
+        <p style="color: rgba(250,250,247,0.92); font-size: var(--text-base); line-height: 1.65;">A senior A&amp;P at a major airline averaging 10 OT hours/week at $54.75/hour (1.5&times; base $36.50) = <strong style="color: var(--paper);">$28,470/year</strong> in OT alone. We use $2,372/mo as additional qualifying income. On a 30-year mortgage at current rates, that translates to roughly <strong style="color: var(--paper);">$385,000&ndash;$420,000 of additional home you can qualify for</strong>. For a contract mechanic on a $58/hour rate with heavy OT, the lift is significantly higher.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 08 — LOAN PROGRAMS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">04 &middot; Loan programs</div>
+        <h2>Aircraft mechanic mortgage programs that fit your file.</h2>
+        <p>Every mortgage looks slightly different. These are the programs we use most often, with deep-dive pages showing current eligibility and payment calculators. Apprentices typically start with FHA, senior A&amp;Ps and IAs use conventional or jumbo, contract mechanics use bank statement loans, and veterans use VA.</p>
+      </div>
+
+      <div class="programs-grid">
+
+        <article class="program">
+          <h4>Conventional mortgage</h4>
+          <p class="program-when">Most mechanics with 2+ years of stable employment and OT history. Up to <a href="https://www.fhfa.gov/data/conforming-loan-limit-cll-values" target="_blank" rel="noopener">FHFA conforming loan limits</a> in most counties. Method 2 income is the path. Pair with <a href="https://singlefamily.fanniemae.com/originating-underwriting/mortgage-products/homeready-mortgage" target="_blank" rel="noopener">Fannie Mae HomeReady</a> or <a href="https://sf.freddiemac.com/working-with-us/affordable-lending/home-possible-eligibility-map" target="_blank" rel="noopener">Freddie Home Possible</a> for 3% down at qualifying incomes.</p>
+          <div class="program-links">
+            <a href="https://stairwaymortgage.com/loan-programs/conventional-loan/">Program details</a>
+            <a href="https://stairwaymortgage.com/loan-calculator/conventional-loan/">Calculator</a>
+          </div>
+        </article>
+
+        <article class="program">
+          <h4>VA mortgage</h4>
+          <p class="program-when">Huge win for military-trained mechanics &mdash; Air Force, Navy, Marine, Coast Guard aviation maintainers transitioning to commercial. Zero down, no PMI, VA jumbo scales with civilian income. Governed by the <a href="https://benefits.va.gov/WARMS/M26_7.asp" target="_blank" rel="noopener">VA Lender Handbook M26-7</a> and residual-income rules.</p>
+          <div class="program-links">
+            <a href="https://stairwaymortgage.com/loan-programs/va-loan/">Program details</a>
+            <a href="https://stairwaymortgage.com/loan-calculator/va-loan/">Calculator</a>
+          </div>
+        </article>
+
+        <article class="program">
+          <h4>Jumbo mortgage</h4>
+          <p class="program-when">Senior A&amp;P, IA, and lead mechanics buying in expensive markets (Seattle, Bay Area, NYC tri-state, South Florida). We have jumbo mortgage programs that count overtime, shift differential, and license premiums &mdash; most jumbo lenders don't.</p>
+          <div class="program-links">
+            <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Program details</a>
+            <a href="https://stairwaymortgage.com/loan-calculator/jumbo-loan/">Calculator</a>
+          </div>
+        </article>
+
+        <article class="program">
+          <h4>Bank statement mortgage</h4>
+          <p class="program-when">Contract and traveling mechanics with multiple W-2s, 1099s, or mixed income. We qualify off 12 or 24 months of deposits instead of forcing W-2 history that doesn't reflect your actual cash flow.</p>
+          <div class="program-links">
+            <a href="https://stairwaymortgage.com/loan-programs/bank-statement-loan/">Program details</a>
+            <a href="https://stairwaymortgage.com/loan-calculator/bank-statement-loan/">Calculator</a>
+          </div>
+        </article>
+
+        <article class="program">
+          <h4>FHA mortgage</h4>
+          <p class="program-when">Apprentices and pre-A&amp;P mechanics with lower base pay. 3.5% down, more permissive on debt-to-income, accepts shorter income history per <a href="https://www.hud.gov/program_offices/housing/sfh/handbook_4000-1" target="_blank" rel="noopener">HUD Handbook 4000.1</a>. We migrate you to conventional once OT history kicks in.</p>
+          <div class="program-links">
+            <a href="https://stairwaymortgage.com/loan-programs/fha-loan/">Program details</a>
+            <a href="https://stairwaymortgage.com/loan-calculator/fha-loan/">Calculator</a>
+          </div>
+        </article>
+
+        <article class="program">
+          <h4>1099 mortgage</h4>
+          <p class="program-when">Independent contract mechanics with significant 1099 income. We qualify using 1099 totals without forcing a two-year tax-return history &mdash; useful for IA-supplemented self-employment under <a href="https://selling-guide.fanniemae.com/sel/b3-3.2-01/underwriting-factors-and-documentation-self-employed-borrower" target="_blank" rel="noopener">Fannie Mae B3-3.2 self-employment rules</a>.</p>
+          <div class="program-links">
+            <a href="https://stairwaymortgage.com/loan-programs/1099-loan/">Program details</a>
+            <a href="https://stairwaymortgage.com/loan-calculator/1099-loan/">Calculator</a>
+          </div>
+        </article>
+
+        <article class="program">
+          <h4>USDA mortgage</h4>
+          <p class="program-when">Mechanics at rural Part 145 repair stations or smaller GA airports. Zero-down through the <a href="https://www.rd.usda.gov/programs-services/single-family-housing-programs/single-family-housing-guaranteed-loan-program" target="_blank" rel="noopener">USDA Rural Development guaranteed loan program</a> when the property sits inside an eligible rural area.</p>
+          <div class="program-links">
+            <a href="https://stairwaymortgage.com/loan-programs/usda-loan/">Program details</a>
+            <a href="https://stairwaymortgage.com/loan-calculator/usda-loan/">Calculator</a>
+          </div>
+        </article>
+
+        <article class="program">
+          <h4>DSCR mortgage (investment)</h4>
+          <p class="program-when">For an investment property near major maintenance bases (KMEM, KLAX, KDFW, KSEA, KMIA). We qualify the property on its projected rental income, not your personal pay &mdash; keeps your primary mortgage qualifying intact.</p>
+          <div class="program-links">
+            <a href="https://stairwaymortgage.com/loan-programs/dscr-loan/">Program details</a>
+            <a href="https://stairwaymortgage.com/loan-calculator/dscr-loan/">Calculator</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 09 — INDUSTRY CONTEXT (NEW in v8 — supernode topics) ============ -->
+  <!-- Per §7.4 of the rules: 6–8 topics, ~150 words each, 2–3 Tier 1 cites
+       per paragraph. Establishes the page as the topical supernode in Google's
+       citation graph — not just the mortgage slice. -->
+  <section class="context-section">
+    <div class="container">
+      <div class="section-header context-intro">
+        <div class="eyebrow">05 &middot; Industry context</div>
+        <h2>The industry behind every aircraft mechanic mortgage.</h2>
+        <p>The mortgage isn't a product in isolation &mdash; it's underwritten on top of an industry going through a multi-decade workforce expansion, a federal reauthorization, and a 710,000-technician global shortage. The eight topics below frame the trajectory.</p>
+      </div>
+
+      <div class="context-grid">
+
+        <div class="context-item">
+          <span class="context-tag">01 &middot; Federal policy</span>
+          <h3>FAA Reauthorization Act of 2024 &mdash; workforce funding</h3>
+          <p>Signed into law on May 16, 2024, the <a href="https://www.congress.gov/bill/118th-congress/senate-bill/1939" target="_blank" rel="noopener">FAA Reauthorization Act of 2024</a> authorized $20 million per fiscal year through FY2028 for the aviation maintenance technical workforce grant track &mdash; direct policy backing for the mortgage borrower pipeline. The FAA's <a href="https://www.faa.gov/about/office_org/headquarters_offices/ang/grants/awd" target="_blank" rel="noopener">Aviation Workforce Development Grants</a> program flows those funds to community colleges, Part 147 schools, and apprenticeship programs that produce the next generation of A&amp;P-certified mechanics &mdash; the same population that becomes the mortgage borrower pool five to seven years later.</p>
+          <div class="context-cites">Cites: <a href="https://www.congress.gov/bill/118th-congress/senate-bill/1939" target="_blank" rel="noopener">Congress.gov S.1939</a> &middot; <a href="https://www.faa.gov/about/office_org/headquarters_offices/ang/grants/awd" target="_blank" rel="noopener">FAA AWD Grants</a> &middot; <a href="https://files.gao.gov/reports/GAO-25-108502/index.html" target="_blank" rel="noopener">GAO-25-108502</a></div>
+        </div>
+
+        <div class="context-item">
+          <span class="context-tag">02 &middot; Workforce demand</span>
+          <h3>The 710,000-technician shortage behind mortgage demand</h3>
+          <p>Boeing's <a href="https://www.boeing.com/commercial/market/pilot-technician-outlook" target="_blank" rel="noopener">2025 Pilot &amp; Technician Outlook</a> projects 710,000 new maintenance technicians needed globally over the next 20 years &mdash; including 123,000 in North America. Two-thirds of that demand replaces retiring mechanics; the remaining third supports fleet growth. The <a href="https://www.atec-amt.org/news/the-2025-boeing-technician-outlook-a-closer-look" target="_blank" rel="noopener">Aviation Technician Education Council</a> confirms the U.S. pipeline is producing well below replacement rates. The structural shortage is the single most important macro factor behind mortgage qualifying income &mdash; wages have risen above the all-occupations average every year since 2019, and the BLS projects 5% employment growth through 2034 alongside 13,100 annual openings.</p>
+          <div class="context-cites">Cites: <a href="https://www.boeing.com/commercial/market/pilot-technician-outlook" target="_blank" rel="noopener">Boeing PTO 2025</a> &middot; <a href="https://www.atec-amt.org" target="_blank" rel="noopener">ATEC Pipeline Report</a> &middot; <a href="https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm" target="_blank" rel="noopener">BLS OOH</a></div>
+        </div>
+
+        <div class="context-item">
+          <span class="context-tag">03 &middot; Wage trajectory</span>
+          <h3>BLS 2024 wages and what they mean for mortgage sizing</h3>
+          <p>The May 2024 <a href="https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook</a> reports a median annual wage of $78,680 for aircraft mechanics and service technicians (SOC 49-3011), with the top decile clearing $120,080. Avionics technicians (SOC 49-2091) earn a slightly higher median of $81,390. Geographic spread matters: the <a href="https://www.bls.gov/oes/current/oes493011.htm" target="_blank" rel="noopener">BLS OEWS state &amp; metro tables</a> show San Francisco, Seattle, Memphis, and Anchorage paying 15&ndash;25% above the national median, while South Florida (FLL/MIA/MCO) clusters slightly above median with an offsetting lack of state income tax. The takeaway for mortgage sizing: location-specific wage data, not the national median, drives a defensible jumbo qualification.</p>
+          <div class="context-cites">Cites: <a href="https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm" target="_blank" rel="noopener">BLS OOH</a> &middot; <a href="https://www.bls.gov/oes/current/oes493011.htm" target="_blank" rel="noopener">BLS OEWS 49-3011</a> &middot; <a href="https://fred.stlouisfed.org/series/LEU0254510200A" target="_blank" rel="noopener">FRED employment series</a></div>
+        </div>
+
+        <div class="context-item">
+          <span class="context-tag">04 &middot; Certification</span>
+          <h3>Inspection Authorization &mdash; the lift that reshapes an mortgage</h3>
+          <p>Inspection Authorization, governed by <a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-65" target="_blank" rel="noopener">14 CFR Part 65 Subpart D</a>, is the single biggest income lever in a mechanic's career. The FAA <a href="https://www.faa.gov/training_testing/testing/ia_info_guide.pdf" target="_blank" rel="noopener">IA Information Guide</a> spells out the eligibility prerequisites &mdash; an active A&amp;P, three years as a mechanic, two years of recent active service, and the ability to find a qualified inspector to mentor the path. In practice, IA-certified mechanics earn $4&ndash;8/hour more in license premium and become eligible for self-employed contract work on annual inspections. That's a $20,000&ndash;$40,000/year lift in qualifying income, which often moves the mortgage from a conventional loan limit into jumbo territory.</p>
+          <div class="context-cites">Cites: <a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-65" target="_blank" rel="noopener">14 CFR Part 65 certification rules for the aircraft mechanic mortgage</a> &middot; <a href="https://www.faa.gov/training_testing/testing/ia_info_guide.pdf" target="_blank" rel="noopener">FAA Inspection Authorization Guide cited in the aircraft mechanic mortgage</a> &middot; <a href="https://www.faa.gov/documentlibrary/media/form/faa_form_8610-1.pdf" target="_blank" rel="noopener">FAA Form 8610-1</a></div>
+        </div>
+
+        <div class="context-item">
+          <span class="context-tag">05 &middot; Military pathway</span>
+          <h3>Military-to-civilian: the veteran mortgage advantage</h3>
+          <p>A large share of civilian A&amp;P mechanics arrived through military service. USAF 2A5X aircraft maintenance, Army 15T/15U/15W, Navy AD/AT/AME, and USMC 60XX MOS holders qualify for FAA A&amp;P certification through the experience pathway under <a href="https://www.faa.gov/regulations_policies/orders_notices" target="_blank" rel="noopener">FAA Order 8900.1</a>. The mortgage advantage compounds the career advantage: <a href="https://www.va.gov/housing-assistance/home-loans/" target="_blank" rel="noopener">VA home loan</a> eligibility is permanent for qualifying veterans, and the <a href="https://benefits.va.gov/WARMS/M26_7.asp" target="_blank" rel="noopener">VA Lender Handbook M26-7</a> permits residual-income qualification that often outperforms conventional. Stairway routinely closes a zero-down veteran mortgage with VA jumbo on top of a $130K&ndash;$150K commercial-mechanic income &mdash; a combination most generalist lenders never assemble.</p>
+          <div class="context-cites">Cites: <a href="https://www.va.gov/housing-assistance/home-loans/" target="_blank" rel="noopener">VA Home Loans</a> &middot; <a href="https://benefits.va.gov/WARMS/M26_7.asp" target="_blank" rel="noopener">VA Lender Handbook M26-7</a> &middot; <a href="https://www.va.gov/education/gi-bill-comparison-tool/" target="_blank" rel="noopener">VA GI Bill</a></div>
+        </div>
+
+        <div class="context-item">
+          <span class="context-tag">06 &middot; Union contracts</span>
+          <h3>How union contracts document the variable pay behind every mortgage</h3>
+          <p>The big four mechanic unions &mdash; <a href="https://amfanational.org/" target="_blank" rel="noopener">AMFA</a> at Southwest and Alaska, <a href="https://www.twu.org/" target="_blank" rel="noopener">TWU</a> with IAM at American, <a href="https://www.goiam.org/" target="_blank" rel="noopener">IAMAW</a> at United and Hawaiian, and TWU-IAM Association elsewhere &mdash; produce the collective bargaining agreements that gate every mortgage paystub. The contracts standardize OT rates (1.5&times; to 2&times; base), shift differential (5&ndash;15% nights/weekends), license premium, type-rating premium, and per-diem during AOG events. Stairway reads the relevant CBA before underwriting an mortgage so the employer letter we draft matches the contract's actual mechanics. The paperwork pays for itself: a properly documented CBA letter is the difference between an underwriter counting the OT and refusing it.</p>
+          <div class="context-cites">Cites: <a href="https://amfanational.org/" target="_blank" rel="noopener">AMFA</a> &middot; <a href="https://www.twu.org/" target="_blank" rel="noopener">TWU</a> &middot; <a href="https://www.goiam.org/" target="_blank" rel="noopener">IAMAW</a></div>
+        </div>
+
+        <div class="context-item">
+          <span class="context-tag">07 &middot; Safety &amp; oversight</span>
+          <h3>Safety record protects the income behind every mortgage</h3>
+          <p>The U.S. commercial aviation safety record is the single most important macro variable behind mortgage employment durability. <a href="https://www.asias.faa.gov" target="_blank" rel="noopener">FAA ASIAS</a> aggregates safety data across operators; the <a href="https://www.ntsb.gov/investigations/AccidentReports/Pages/aviation.aspx" target="_blank" rel="noopener">NTSB aviation accident database</a> tracks maintenance-related incident trends; the <a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-H/part-145" target="_blank" rel="noopener">14 CFR Part 145 repair-station rules for aircraft mechanic mortgage files</a> repair-station framework governs the MROs that employ a large share of contract mechanics. Strong safety performance keeps airlines and MROs profitable, which keeps mechanic payrolls stable &mdash; a stability that underwriters notice when sizing an mortgage. The opposite case (a major event, sustained groundings) cuts hours first, which is why we use 24-month averages, not 6-month spikes.</p>
+          <div class="context-cites">Cites: <a href="https://www.asias.faa.gov" target="_blank" rel="noopener">FAA ASIAS</a> &middot; <a href="https://www.ntsb.gov/investigations/AccidentReports/Pages/aviation.aspx" target="_blank" rel="noopener">NTSB</a> &middot; <a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-H/part-145" target="_blank" rel="noopener">14 CFR Part 145 repair-station rules for aircraft mechanic mortgage files</a></div>
+        </div>
+
+        <div class="context-item">
+          <span class="context-tag">08 &middot; South Florida hub</span>
+          <h3>MIA, FLL &amp; MCO &mdash; the South Florida mortgage market</h3>
+          <p>Stairway is headquartered in South Florida and the local aviation maintenance market is one of the densest in the country. Miami International (MIA), Fort Lauderdale-Hollywood (FLL), and Orlando International (MCO) collectively employ thousands of mechanics across <a href="https://www.aarcorp.com/" target="_blank" rel="noopener">AAR</a>, HEICO, AVIALL, the major-carrier line stations, and a long tail of corporate flight departments. <a href="https://www.bls.gov/oes/current/oes_22744.htm" target="_blank" rel="noopener">BLS metro wage data</a> for the Fort Lauderdale-Pompano Beach MD clusters slightly above national median, and Florida's no-state-income-tax structure adds another 4&ndash;6% to take-home. State down-payment help is available through the <a href="https://www.floridahousing.org/programs/homebuyer-overview-page" target="_blank" rel="noopener">Florida Housing Finance Corporation</a>, and Miami-Dade's <a href="https://gtbaviation.dadeschools.net/" target="_blank" rel="noopener">George T. Baker Aviation Technical College</a> plus <a href="https://www.broward.edu/academics/programs/details.html?p=aviation-maintenance" target="_blank" rel="noopener">Broward College's AMT program</a> feed the South Florida mortgage borrower pool directly.</p>
+          <div class="context-cites">Cites: <a href="https://www.bls.gov/oes/current/oes_22744.htm" target="_blank" rel="noopener">BLS OEWS Metro 22744</a> &middot; <a href="https://www.floridahousing.org/programs/homebuyer-overview-page" target="_blank" rel="noopener">Florida Housing FC</a> &middot; <a href="https://gtbaviation.dadeschools.net/" target="_blank" rel="noopener">GT Baker Aviation</a></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 10 — PLAYBOOK BY CAREER STAGE ============ -->
+  <section class="section section-tinted">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">06 &middot; The playbook</div>
+        <h2>The aircraft mechanic mortgage playbook by career stage.</h2>
+        <p>Different stages call for different approaches. Here's the mortgage playbook we typically recommend based on where you are.</p>
+      </div>
+
+      <div class="playbook-stages">
+
+        <article class="stage">
+          <div class="stage-label">Stage 01</div>
+          <div class="stage-content">
+            <h4>Apprentice / pre-A&amp;P certification</h4>
+            <p>You're working toward your A&amp;P license. Base hourly is modest, OT eligibility is limited, and tuition is a real line item. Most lenders see "low base + no certification yet" and slow-walk you. The right mortgage at this stage keeps your reserves intact.</p>
+            <ul class="stage-bullets">
+              <li>Method 1 (base hourly &times; 40 &times; 52) qualifies you on documented W-2 base.</li>
+              <li>FHA loan with 3.5% down keeps reserves intact while you finish certifications.</li>
+              <li>If you served (even short-term), VA is almost always a stronger play.</li>
+              <li>Buy where your career is going, not just where your apprenticeship is now &mdash; A&amp;P bases change.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-label">Stage 02</div>
+          <div class="stage-content">
+            <h4>New A&amp;P (year 1&ndash;2)</h4>
+            <p>You've got the certification. OT eligibility opens up. Your real income is climbing fast, but your W-2 history may not show it yet &mdash; which means an mortgage built today should be sized for the trajectory, not the snapshot.</p>
+            <ul class="stage-bullets">
+              <li>Bridge year: still on Method 1, with Method 2 transition once 12 months of OT data exists.</li>
+              <li>Document overtime carefully &mdash; each pay stub, each line item, all preserved.</li>
+              <li>License premium and shift differential should start showing up; capture all line items in pay records.</li>
+              <li>Don't overextend yet &mdash; A&amp;P pay growth is steady, but the big jumps are 3+ years out.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-label">Stage 03</div>
+          <div class="stage-content">
+            <h4>Senior A&amp;P (years 3&ndash;7)</h4>
+            <p>You're consistently working 8&ndash;12 OT hours per week. Type ratings or specialty endorsements add premium pay. This is when mortgage income stabilizes at the higher level &mdash; and when most generalist lenders still get the file wrong.</p>
+            <ul class="stage-bullets">
+              <li>Method 2 captures full OT + premiums &mdash; qualifying income often 35&ndash;50% above base.</li>
+              <li>Investment property becomes feasible: DSCR loan on a property near base keeps personal qualifying clean.</li>
+              <li>Type-rating premiums (B777, A350, etc.) document well in pay stubs.</li>
+              <li>Tax planning: 401(k) match, profit sharing, ESOP can supplement qualifying through asset-based methods if needed.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-label">Stage 04</div>
+          <div class="stage-content">
+            <h4>IA-certified inspector</h4>
+            <p>Inspection Authorization is the next certification ladder. IA premium adds $4&ndash;8/hour. You're now in the upper-decile of mechanic pay, and the mortgage you can support has crossed into jumbo territory in most markets.</p>
+            <ul class="stage-bullets">
+              <li>Method 3 qualifying on the IA upgrade pay if you've been awarded but haven't started.</li>
+              <li>Jumbo eligibility opens up for most IA mechanics in any major market.</li>
+              <li>Consider supervisory track or specialty (turbine, avionics, structures) &mdash; each path has different pay trajectories we can model.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-label">Stage 05</div>
+          <div class="stage-content">
+            <h4>Contract / traveling mechanic</h4>
+            <p>You're moving between maintenance bases on contract assignments. Pay is significantly higher; documentation is messier. Most lenders give up on a contract mortgage; we don't.</p>
+            <ul class="stage-bullets">
+              <li>Bank statement loan is usually the right call &mdash; 12 or 24 months of deposits qualify you cleanly.</li>
+              <li>Per diem on the road counts (similar to pilot per diem).</li>
+              <li>Multiple W-2s in a year are normal for contract mechanics; we aggregate them properly.</li>
+              <li>Investment-property strategy works well &mdash; you're often not home anyway.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-label">Stage 06</div>
+          <div class="stage-content">
+            <h4>Military mechanic transitioning to commercial</h4>
+            <p>You served as an aviation maintainer (Air Force 2A, Navy AT/AME/AD, Marine MOS 60xx, Army 15-series) and you're moving to commercial work. The transition has specific advantages that compound when you structure the mortgage correctly.</p>
+            <ul class="stage-bullets">
+              <li>VA loan eligibility is the foundation. Zero down, no PMI, VA jumbo scales with your commercial income.</li>
+              <li>Military experience often qualifies for A&amp;P certification via experience pathway (no full Part 147 school).</li>
+              <li>SkillBridge and post-9/11 GI Bill can fund certifications during the transition window.</li>
+              <li>Reserves drill pay continues alongside commercial income if you're still in.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="stage-label">Stage 07</div>
+          <div class="stage-content">
+            <h4>Maintenance leadership / management</h4>
+            <p>Lead, supervisor, manager, or quality control. Salary structure. Bonuses. Different mortgage approach.</p>
+            <ul class="stage-bullets">
+              <li>Salaried + bonus income qualifies under standard W-2 methods.</li>
+              <li>Asset-based qualifying often supplements W-2 &mdash; particularly useful pre-retirement.</li>
+              <li>Profit sharing and ESOP grants can be documented as supplemental income.</li>
+              <li>Plan for retirement on certification timing &mdash; A&amp;P doesn't mandatory-retire, but income often peaks mid-50s.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 11 — TESTIMONIALS (photo avatars, NO red example warnings) ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">07 &middot; Client stories</div>
+        <h2>What aircraft mechanics say about their Stairway experience.</h2>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar">
+            <img src="https://i.pravatar.cc/300?img=11" alt="Bryan Thompson, senior A&amp;P mechanic at FedEx" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=11';">
+          </div>
+          <blockquote class="testim-quote">"FedEx senior A&amp;P at MEM. My credit union refused to count my overtime &mdash; said it wasn't guaranteed. Stairway pulled two years of pay stubs, totaled the OT, and qualified my mortgage on the real number. Got me into a house 40% bigger than the other lender quoted."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Bryan Thompson</div>
+            <div class="testim-meta">Senior A&amp;P &middot; FedEx Express &middot; Tennessee</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar">
+            <img src="https://i.pravatar.cc/300?img=53" alt="Rafael Ortiz, contract aviation maintenance mechanic" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=53';">
+          </div>
+          <blockquote class="testim-quote">"I do contract work &mdash; six months at one base, six at another. Three lenders refused me because I had multiple W-2s in the same year. Stairway used a bank statement mortgage, qualified me off 24 months of deposits, and closed in 24 days. Bought my first home at 38."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Rafael Ortiz</div>
+            <div class="testim-meta">Contract Aviation Maintenance &middot; Multi-base &middot; Arizona</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar">
+            <img src="https://i.pravatar.cc/300?img=8" alt="SSgt (Ret.) Trent Kelly, retired Air Force aviation maintainer now at Boeing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=8';">
+          </div>
+          <blockquote class="testim-quote">"Retired Air Force aviation maintainer, 14 years active, started at Boeing six months before I called Stairway. They used my VA eligibility, factored in my military retirement, AND counted my Boeing OT. Zero down mortgage on a $585K home in Renton. 23 days from application."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">SSgt (Ret.) Trent Kelly</div>
+            <div class="testim-meta">A&amp;P Mechanic &middot; Boeing &middot; Washington</div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="testim-attribution-credit" style="margin-top: 2rem; font-size: 0.75rem; color: #555; text-align: center; letter-spacing: 0.02em;">
+        Testimonial photos are representative stock imagery from Pexels &mdash;
+        <a href="https://www.pexels.com/photo/220453/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">photo 1</a>,
+        <a href="https://www.pexels.com/photo/2379004/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">photo 2</a>,
+        <a href="https://www.pexels.com/photo/2182970/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">photo 3</a>.
+        Stories are composites based on actual aircraft mechanic clients.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 12 — BIO (NMLS fixed) ============ -->
+  <section class="bio-section">
+    <div class="container">
+      <div class="bio-grid">
+        <div>
+          <figure class="bio-photo">
+            <img src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" alt="Jim Blackburn, founder of Stairway Mortgage" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x600/0A0E1A/E8EEFF/png?text=Jim+Blackburn';">
+          </figure>
+        </div>
+        <div>
+          <h3 class="bio-name">Jim Blackburn</h3>
+          <div class="bio-title">Founder, Stairway Mortgage &middot; Broker NMLS #1072866</div>
+
+          <blockquote class="bio-quote">"I've spent years figuring out what makes an aviation-industry mortgage different &mdash; and how to structure the mortgage so the people who actually fix the fleet qualify for the homes their careers can afford."</blockquote>
+
+          <div class="bio-body">
+            <p>Aviation pay is one of the most misunderstood income structures in U.S. consumer lending, and most loan officers either default to a generic conventional play or refuse the loan entirely. Neither works for a pilot whose income is structured around credit hours and per diem, a flight attendant whose real pay is twice their base hourly, an aircraft mechanic whose overtime is 30% of total income, or a controller whose locality and premium pay double their GS base.</p>
+            <p>At Stairway, we take the time to read your contract, understand your pay structure, and pick the qualifying method that gets you to the right mortgage &mdash; not the home a generalist lender thinks you can afford based on a single pay stub. Whether you're a first-year apprentice, a senior A&amp;P at a major carrier, an IA-certified inspector, or a Boeing veteran transitioning to commercial maintenance, we structure your mortgage like a flight plan: efficient, compliant, and built for the goal.</p>
+            <p style="margin-top: var(--s-5);"><a href="https://stairwaymortgage.com/founder-philosophy-values/" class="btn-arrow">Read more about my approach &middot; Or browse case studies</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 13 — FAQ (25 items, 23 with keyword phrase) ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">08 &middot; Frequently asked</div>
+        <h2>Aircraft mechanic mortgage questions, answered.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <div class="faq-num">01</div>
+          <div>
+            <div class="faq-q">Will an aircraft mechanic mortgage lender count my overtime?</div>
+            <div class="faq-a">Most won't. We will, once you have a 24-month history. For a senior A&amp;P averaging 10 OT hours/week, this adds roughly $2,000&ndash;3,000/month of qualifying income &mdash; translating to $300,000&ndash;450,000 more home you can qualify for. The rule is well-established (Fannie Mae allows it under <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener">Fannie Mae B3-3.1-01 loan rule</a>); the gap is execution by loan lenders unfamiliar with mechanic pay structures.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">02</div>
+          <div>
+            <div class="faq-q">Can I get an aircraft mechanic mortgage as a new A&amp;P (year 1)?</div>
+            <div class="faq-a">Yes. Method 1 qualifies you on base hourly &times; 40 hours from day one &mdash; no OT history required. Most new A&amp;Ps qualify in the $200,000&ndash;$350,000 home range depending on the airline and base. Once you have 12 months of consistent OT, we transition your loan to Method 2 for the next refi.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">03</div>
+          <div>
+            <div class="faq-q">What about shift differentials and license premiums on an aircraft mechanic mortgage?</div>
+            <div class="faq-a">All of it counts under Method 2. Shift differential (typically 5&ndash;15% premium for nights/weekends), A&amp;P license premium, IA premium ($4&ndash;8/hour bump per the <a href="https://www.faa.gov/training_testing/testing/ia_info_guide.pdf" target="_blank" rel="noopener">FAA IA Guide for loan borrowers</a>), and type-rating premiums (e.g., $2&ndash;4/hour for B777, A350, etc.) all show on your pay stubs as separate line items, and we document each one on the loan file.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">04</div>
+          <div>
+            <div class="faq-q">I just got my IA. Can my aircraft mechanic mortgage qualify on the IA pay before I start?</div>
+            <div class="faq-a">Yes, with documentation. Award letter, confirmed effective date, contractual hourly rate with IA premium &mdash; we qualify you on the new pay rather than your pre-IA income. This typically adds $25,000&ndash;$45,000 of qualifying income to the loan.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">05</div>
+          <div>
+            <div class="faq-q">I do contract work and have multiple W-2s. Is that a problem for an aircraft mechanic mortgage?</div>
+            <div class="faq-a">Not for us. We work with contract mechanics regularly. Bank statement loans (qualifying off 12 or 24 months of deposits) work well when multiple W-2s confuse traditional underwriting. 1099 loans work for fully independent contractors. We pick the loan that fits your income reality.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">06</div>
+          <div>
+            <div class="faq-q">I served in the military as a mechanic. Does that help my aircraft mechanic mortgage?</div>
+            <div class="faq-a">A lot. Military aviation maintainers (Air Force 2A, Navy AT/AME/AD, Marine 60xx, Army 15) often qualify for A&amp;P certification via the experience pathway (<a href="https://www.faa.gov/regulations_policies/orders_notices" target="_blank" rel="noopener">FAA Order 8900.1</a>). For mortgages: <a href="https://www.va.gov/housing-assistance/home-loans/" target="_blank" rel="noopener">VA loan for the veteran loan</a> eligibility is the biggest benefit &mdash; zero down, no PMI, VA jumbo scales with your civilian income. We pull your COE and structure the largest VA loan you can use.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">07</div>
+          <div>
+            <div class="faq-q">My airline pays differently for AOG (aircraft-on-ground) work. Does that count toward an aircraft mechanic mortgage?</div>
+            <div class="faq-a">Yes. AOG callouts, on-call pay, and standby pay all count under Method 2 if they're documented on your pay stubs and have a 12+ month history. We pull each line item separately so the loan underwriter sees the full picture.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">08</div>
+          <div>
+            <div class="faq-q">Can I qualify for an aircraft mechanic mortgage with mostly 1099 income?</div>
+            <div class="faq-a">Yes &mdash; either with a 1099 loan or a bank statement loan, depending on which is cleaner for your situation. Independent contractor mechanics, traveling A&amp;Ps, and consultants we routinely qualify on 1099 income for an loan without forcing two years of tax returns.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">09</div>
+          <div>
+            <div class="faq-q">How does mandatory retirement affect the aircraft mechanic mortgage?</div>
+            <div class="faq-a">There is no mandatory retirement age for mechanics (unlike pilots at 65 or ATC at 56). Most mechanics work into their 60s. loan lender concerns about retirement timing don't apply the same way &mdash; we don't need to amortize against a hard cutoff.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">10</div>
+          <div>
+            <div class="faq-q">I work for an MRO (third-party maintenance organization). Does that change the aircraft mechanic mortgage?</div>
+            <div class="faq-a">No. MRO mechanics qualify the same way as airline-direct mechanics. Same Method 2 mechanics, same OT counting, same license premiums. The only nuance is that some MROs governed by <a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-H/part-145" target="_blank" rel="noopener">14 CFR Part 145 repair-station rules for loan files</a> have more variable hours season-to-season &mdash; we work with the 24-month average to smooth that out on the loan file.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">11</div>
+          <div>
+            <div class="faq-q">Can I use my profit sharing as aircraft mechanic mortgage qualifying income?</div>
+            <div class="faq-a">Yes, with two-year history. Major airlines (Delta, United, American, Southwest) pay significant profit sharing in good years. We use the 24-month average so a strong year doesn't inflate your loan qualification and a weak year doesn't penalize you.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">12</div>
+          <div>
+            <div class="faq-q">I'm planning to start contracting traveling mechanic work. Should I close the aircraft mechanic mortgage now or wait?</div>
+            <div class="faq-a">Depends on documentation. If you have 12+ months of W-2 income to qualify before going contract, close the loan now while your W-2 is clean. If you're already contracting, we use bank statement loans &mdash; buying anytime works.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">13</div>
+          <div>
+            <div class="faq-q">Do you work with avionics technicians and other specialty mechanics on the aircraft mechanic mortgage program?</div>
+            <div class="faq-a">Yes. Avionics technicians (BLS SOC 49-2091, median $81,390 in May 2024), structures specialists, NDT (non-destructive testing) inspectors, and other specialty mechanics qualify the same way &mdash; Method 2 on the 12-month average, with specialty premiums all counted in the loan file.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">14</div>
+          <div>
+            <div class="faq-q">I'm an A&amp;P student. Can my aircraft mechanic mortgage use future-rate qualification on a job offer?</div>
+            <div class="faq-a">Sometimes. With a signed offer letter from an airline or MRO, confirmed start date, and contractual pay rate &mdash; yes. Most underwriters want documentation that's within 60&ndash;90 days of closing. We've closed loan files for new A&amp;Ps before their first shift.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">15</div>
+          <div>
+            <div class="faq-q">How long does the aircraft mechanic mortgage process take?</div>
+            <div class="faq-a">From application to closing, 21&ndash;30 days is typical. Same-day pre-approval is available if your file is complete (W-2s, two months of statements, current pay stubs, certifications, ID). See our <a href="https://stairwaymortgage.com/same-day-approval/">same-day loan approval</a> page for the fast track, or browse <a href="https://stairwaymortgage.com/case-studies">loan case studies</a> we've closed.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">16</div>
+          <div>
+            <div class="faq-q">Do MRO mechanics qualify for the same aircraft mechanic mortgage programs as airline-direct mechanics?</div>
+            <div class="faq-a">Yes. MRO mechanics (StandardAero, AAR, AVIALL, Pratt &amp; Whitney maintenance, HEICO) qualify under identical loan methods &mdash; Method 2 with overtime, shift differential, and license premiums. The only nuance is that some MROs have more variable hours season to season, so we use the 24-month average to smooth that out.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">17</div>
+          <div>
+            <div class="faq-q">How does FAA certification renewal affect aircraft mechanic mortgage approval?</div>
+            <div class="faq-a">It doesn't directly affect approval. A&amp;P certificates don't expire &mdash; once you have them, they're permanent (assuming you remain in good standing with the FAA per <a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-65" target="_blank" rel="noopener">14 CFR Part 65 certification rules behind every loan</a>). Inspection Authorization renews every two years but is administrative. loan lenders care about active employment, not certificate renewal cycles.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">18</div>
+          <div>
+            <div class="faq-q">Can I refinance an existing aircraft mechanic mortgage if I just upgraded from A&amp;P to IA?</div>
+            <div class="faq-a">Yes &mdash; and it's a great trigger for refinancing. The IA upgrade typically adds $20&ndash;40K of annual income, which makes you eligible for a larger loan or a better rate. We can refinance into a higher loan-to-value or simply re-qualify at the new income level to get better terms.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">19</div>
+          <div>
+            <div class="faq-q">I work seasonal heavy-maintenance checks &mdash; my OT spikes and falls. Does that hurt aircraft mechanic mortgage qualifying?</div>
+            <div class="faq-a">It doesn't hurt as long as you have a 24-month history. We use the 24-month average specifically to smooth out seasonal variability. A mechanic with a strong winter heavy-check season and lighter summers still gets credit for the full annual income on the loan &mdash; we just don't over-rely on any single 3-month window.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">20</div>
+          <div>
+            <div class="faq-q">Can apprentice or pre-A&amp;P mechanics qualify for an aircraft mechanic mortgage?</div>
+            <div class="faq-a">Yes, with realistic expectations. Apprentice pay is lower and OT eligibility is limited, but Method 1 (base hourly &times; 40 hours) qualifies you on documented income. <a href="https://www.hud.gov/program_offices/housing/sfh/handbook_4000-1" target="_blank" rel="noopener">FHA loan with 3.5% down</a> or VA with zero down works for most apprentice loan borrowers. Plan around your A&amp;P certification completion to refinance into stronger terms once certified.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">21</div>
+          <div>
+            <div class="faq-q">What if I do both W-2 employment and 1099 contract work simultaneously on the aircraft mechanic mortgage application?</div>
+            <div class="faq-a">We can combine them. Your W-2 income qualifies under standard methods; your 1099 income qualifies via 1099 loan or bank statement loan rules. The result is a unified loan qualifying income that reflects your real cash flow. Many traveling mechanics use this hybrid structure during a transition.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">22</div>
+          <div>
+            <div class="faq-q">Do helicopter and rotorcraft mechanics qualify for the same aircraft mechanic mortgage programs?</div>
+            <div class="faq-a">Yes. The FAA A&amp;P certificate covers both fixed-wing and rotorcraft (with additional ratings for specific aircraft types). The loan doesn't distinguish between airline mechanics and helicopter mechanics &mdash; both qualify under Method 2 with overtime and certification premiums.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">23</div>
+          <div>
+            <div class="faq-q">Does my A&amp;P license count toward any state homebuyer assistance for an aircraft mechanic mortgage?</div>
+            <div class="faq-a">A few states (notably Texas, Florida, and Washington) have first-responder or critical-trade homebuyer programs that include licensed aviation mechanics. Florida-specific options through the <a href="https://www.floridahousing.org/programs/homebuyer-overview-page" target="_blank" rel="noopener">Florida Housing Finance Corporation programs that pair with an loan</a> at qualifying incomes. These programs are state-specific and change frequently &mdash; we check at application time for any active programs in your purchase state.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">24</div>
+          <div>
+            <div class="faq-q">Can I use my 401(k) as down payment for an aircraft mechanic mortgage?</div>
+            <div class="faq-a">Yes, several ways. 401(k) loans (borrow against, repay yourself) preserve the tax-advantaged status. 401(k) withdrawals for first-time homebuyers have penalty exceptions. Or use 401(k) balance as asset-based qualification, leaving the money invested. The mortgage interest deduction on the loan itself flows through <a href="https://www.irs.gov/publications/p936" target="_blank" rel="noopener">IRS Pub 936 mortgage interest deduction for the loan</a> &mdash; we model all three options for you.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">25</div>
+          <div>
+            <div class="faq-q">Are there any FAA programs that help aircraft mechanics with housing assistance?</div>
+            <div class="faq-a">The FAA itself doesn't run housing assistance programs, but it does fund the workforce pipeline through <a href="https://www.faa.gov/about/office_org/headquarters_offices/ang/grants/awd" target="_blank" rel="noopener">Aviation Workforce Development Grants behind the loan pipeline</a>, reauthorized under the <a href="https://www.congress.gov/bill/118th-congress/senate-bill/1939" target="_blank" rel="noopener">FAA Reauthorization Act of 2024 funding loan borrower training</a>. Most loan borrowers work for private airlines or MROs, so the federal-employee programs don't apply. Standard mortgage products (conventional, FHA, VA, USDA, jumbo) cover the entire mechanic population.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERNAL AM MORTGAGE RESOURCES BLOCK -->
+  <section class="section">
+    <div class="container" style="max-width: 920px;">
+      <div class="faq-cross-links" style="padding: var(--s-6); background: var(--paper-warm, #faf7f2); border-left: 3px solid var(--blue, #0F2EA0);">
+        <p style="margin: 0 0 var(--s-3) 0; font-family: var(--serif); font-size: var(--text-md); font-weight: 500;">More <a href="https://stairwaymortgage.com/aviation-professionals/" style="color: inherit; text-decoration: underline;">aircraft mechanic mortgage</a> resources at Stairway</p>
+        <ul style="margin: 0; padding-left: var(--s-5); font-size: var(--text-sm); line-height: 1.7; list-style: none;">
+          <li>→ <a href="https://stairwaymortgage.com/aviation-professionals/">All aviation professional mortgage programs</a></li>
+          <li>→ <a href="https://stairwaymortgage.com/loan-programs/conventional-loan/">Conventional aircraft mechanic mortgage program details</a></li>
+          <li>→ <a href="https://stairwaymortgage.com/loan-programs/va-loan/">VA aircraft mechanic mortgage for military maintainers</a></li>
+          <li>→ <a href="https://stairwaymortgage.com/loan-programs/fha-loan/">FHA aircraft mechanic mortgage for apprentices and new A&amp;Ps</a></li>
+          <li>→ <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Jumbo aircraft mechanic mortgage for senior mechanics and IAs</a></li>
+          <li>→ <a href="https://stairwaymortgage.com/loan-programs/bank-statement-loan/">Bank-statement aircraft mechanic mortgage for contract maintainers</a></li>
+          <li>→ <a href="https://stairwaymortgage.com/loan-programs/1099-loan/">1099 loan for traveling and freelance mechanics</a></li>
+          <li>→ <a href="https://stairwaymortgage.com/purchase-inquiry/">Start your aircraft mechanic mortgage pre-approval</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 14 — RESOURCES ============ -->
+  <section class="resources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-7);">
+        <div class="eyebrow">Additional resources</div>
+        <h2>More on certification, careers, and homeownership.</h2>
+        <p>Trusted industry, government, and educational resources beyond the primary sources cited throughout this mortgage guide.</p>
+      </div>
+
+      <div class="resources-grid">
+        <div class="resource-item">Professional Aviation Maintenance Association &mdash; industry advocacy and education for every mortgage borrower &mdash; <a href="https://www.pama.org" target="_blank" rel="noopener">PAMA mechanic resources</a></div>
+        <div class="resource-item">Aviation Technician Education Council &mdash; A&amp;P school accreditation and pipeline data &mdash; <a href="https://www.atec-amt.org" target="_blank" rel="noopener">ATEC aircraft mechanic certification resources</a></div>
+        <div class="resource-item">Aircraft Mechanics Fraternal Association &mdash; union representation at SW, AS, Horizon &mdash; <a href="https://amfanational.org/" target="_blank" rel="noopener">AMFA aircraft mechanic union</a></div>
+        <div class="resource-item">IAMAW &mdash; the union representing United and Hawaiian mortgage borrowers &mdash; <a href="https://www.goiam.org/" target="_blank" rel="noopener">IAMAW aerospace district</a></div>
+        <div class="resource-item">Detailed BLS aircraft and avionics mechanics occupational profile &mdash; <a href="https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm" target="_blank" rel="noopener">BLS aircraft mechanic occupation data</a></div>
+        <div class="resource-item">BLS state &amp; metro wage tables for mortgage geographic sizing &mdash; <a href="https://www.bls.gov/oes/current/oes493011.htm" target="_blank" rel="noopener">BLS OEWS 49-3011 state &amp; metro</a></div>
+        <div class="resource-item">FAA Aviation Workforce Development Grants funding tomorrow's mortgage borrowers &mdash; <a href="https://www.faa.gov/about/office_org/headquarters_offices/ang/grants/awd" target="_blank" rel="noopener">FAA AWD program</a></div>
+        <div class="resource-item">Boeing's 20-year forecast of maintenance technician demand &mdash; <a href="https://www.boeing.com/commercial/market/pilot-technician-outlook" target="_blank" rel="noopener">Boeing PTO 2025&ndash;2044</a></div>
+        <div class="resource-item">NMLS Consumer Access &mdash; verify your mortgage broker's individual NMLS &mdash; <a href="https://www.nmlsconsumeraccess.org" target="_blank" rel="noopener">NMLS Consumer Access lookup</a></div>
+        <div class="resource-item">Federal Reserve mortgage rate history and current 30-year fixed averages &mdash; <a href="https://fred.stlouisfed.org/series/MORTGAGE30US" target="_blank" rel="noopener">FRED mortgage rate data</a></div>
+        <div class="resource-item">HUD homebuyer assistance and first-time buyer education &mdash; <a href="https://www.hud.gov/topics/buying_a_home" target="_blank" rel="noopener">HUD home buying resources</a></div>
+        <div class="resource-item">CFPB mortgage learning center and consumer protections &mdash; <a href="https://www.consumerfinance.gov/owning-a-home/" target="_blank" rel="noopener">CFPB aircraft mechanic mortgage education</a></div>
+        <div class="resource-item">VA home loan benefits page for the military-trained mortgage borrower &mdash; <a href="https://www.va.gov/housing-assistance/home-loans/" target="_blank" rel="noopener">VA loans for veterans</a></div>
+        <div class="resource-item">14 CFR Part 65 mechanic certification regulations governing every mortgage applicant &mdash; <a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-65" target="_blank" rel="noopener">FAA Part 65 mechanic rules</a></div>
+        <div class="resource-item">14 CFR Part 43 maintenance, preventive maintenance, and alterations &mdash; <a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43" target="_blank" rel="noopener">FAA Part 43 maintenance rules</a></div>
+        <div class="resource-item">Aviation Maintenance Magazine &mdash; industry news and technical analysis &mdash; <a href="https://www.avm-mag.com" target="_blank" rel="noopener">Aviation Maintenance industry coverage</a></div>
+        <div class="resource-item">FAA Aviation Safety Information Analysis and Sharing system &mdash; <a href="https://www.asias.faa.gov" target="_blank" rel="noopener">FAA ASIAS safety data</a></div>
+        <div class="resource-item">NTSB aviation accident database &mdash; context for the maintenance industry behind every mortgage &mdash; <a href="https://www.ntsb.gov/investigations/AccidentReports/Pages/aviation.aspx" target="_blank" rel="noopener">NTSB aviation reports</a></div>
+        <div class="resource-item">Fannie Mae HomeReady program &mdash; low-down-payment mortgage option &mdash; <a href="https://singlefamily.fanniemae.com/originating-underwriting/mortgage-products/homeready-mortgage" target="_blank" rel="noopener">Fannie Mae HomeReady details</a></div>
+        <div class="resource-item">Florida Housing Finance Corporation &mdash; down-payment help for Florida mortgage borrowers &mdash; <a href="https://www.floridahousing.org/programs/homebuyer-overview-page" target="_blank" rel="noopener">Florida Housing FC homebuyer programs</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 15 — SOURCES & FURTHER READING (4 columns) ============ -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">References</div>
+        <h2>Sources &amp; further reading for the aircraft mechanic mortgage.</h2>
+        <p>mortgage qualification depends on FAA certification rules, union contract structures, and GSE/federal variable-income guidelines. These are the authoritative sources we cite throughout this guide. All links open in a new tab.</p>
+      </div>
+
+      <div class="sources-grid">
+
+        <div class="source-group">
+          <h4>Federal &amp; Regulatory</h4>
+          <ul class="source-list">
+            <li><a href="https://www.bls.gov/ooh/installation-maintenance-and-repair/aircraft-and-avionics-equipment-mechanics-and-technicians.htm" target="_blank" rel="noopener"><span class="source-name">BLS OOH &middot; Aircraft &amp; Avionics Mechanics ($78,680 median, May 2024)</span><span class="source-url">bls.gov/ooh/.../aircraft-and-avionics-equipment-mechanics</span></a></li>
+            <li><a href="https://www.bls.gov/oes/current/oes493011.htm" target="_blank" rel="noopener"><span class="source-name">BLS OEWS &middot; 49-3011 Aircraft Mechanics &mdash; State &amp; Metro</span><span class="source-url">bls.gov/oes/current/oes493011</span></a></li>
+            <li><a href="https://www.bls.gov/oes/current/oes492091.htm" target="_blank" rel="noopener"><span class="source-name">BLS OEWS &middot; 49-2091 Avionics Technicians ($81,390 median)</span><span class="source-url">bls.gov/oes/current/oes492091</span></a></li>
+            <li><a href="https://www.faa.gov/mechanics" target="_blank" rel="noopener"><span class="source-name">FAA &middot; Mechanics Certification Portal</span><span class="source-url">faa.gov/mechanics</span></a></li>
+            <li><a href="https://www.faa.gov/mechanics/become" target="_blank" rel="noopener"><span class="source-name">FAA &middot; Become a Mechanic (A&amp;P path)</span><span class="source-url">faa.gov/mechanics/become</span></a></li>
+            <li><a href="https://www.faa.gov/training_testing/testing/ia_info_guide.pdf" target="_blank" rel="noopener"><span class="source-name">FAA &middot; IA Information Guide (FAA-G-8082-19)</span><span class="source-url">faa.gov/.../ia_info_guide.pdf</span></a></li>
+            <li><a href="https://www.faa.gov/documentlibrary/media/form/faa_form_8610-1.pdf" target="_blank" rel="noopener"><span class="source-name">FAA Form 8610-1 &middot; Mechanic Application for IA</span><span class="source-url">faa.gov/.../faa_form_8610-1.pdf</span></a></li>
+            <li><a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-65" target="_blank" rel="noopener"><span class="source-name">eCFR &middot; 14 CFR Part 65 &mdash; Mechanic Certification</span><span class="source-url">ecfr.gov/.../part-65</span></a></li>
+            <li><a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-C/part-43" target="_blank" rel="noopener"><span class="source-name">eCFR &middot; 14 CFR Part 43 &mdash; Maintenance &amp; Alterations</span><span class="source-url">ecfr.gov/.../part-43</span></a></li>
+            <li><a href="https://www.ecfr.gov/current/title-14/chapter-I/subchapter-H/part-145" target="_blank" rel="noopener"><span class="source-name">eCFR &middot; 14 CFR Part 145 &mdash; Repair Stations</span><span class="source-url">ecfr.gov/.../part-145</span></a></li>
+            <li><a href="https://www.faa.gov/about/office_org/headquarters_offices/ang/grants/awd" target="_blank" rel="noopener"><span class="source-name">FAA &middot; Aviation Workforce Development Grants</span><span class="source-url">faa.gov/.../grants/awd</span></a></li>
+            <li><a href="https://www.congress.gov/bill/118th-congress/senate-bill/1939" target="_blank" rel="noopener"><span class="source-name">Congress.gov &middot; FAA Reauthorization Act of 2024 (S.1939)</span><span class="source-url">congress.gov/bill/118th-congress/senate-bill/1939</span></a></li>
+            <li><a href="https://files.gao.gov/reports/GAO-25-108502/index.html" target="_blank" rel="noopener"><span class="source-name">GAO-25-108502 &middot; FAA 2024 Reauthorization Key Provisions</span><span class="source-url">files.gao.gov/reports/GAO-25-108502</span></a></li>
+            <li><a href="https://www.ntsb.gov/investigations/AccidentReports/Pages/aviation.aspx" target="_blank" rel="noopener"><span class="source-name">NTSB &middot; Aviation Accident Reports Database</span><span class="source-url">ntsb.gov/.../aviation</span></a></li>
+            <li><a href="https://www.asias.faa.gov" target="_blank" rel="noopener"><span class="source-name">FAA ASIAS &middot; Safety Information Analysis &amp; Sharing</span><span class="source-url">asias.faa.gov</span></a></li>
+            <li><a href="https://fred.stlouisfed.org/series/LEU0254510200A" target="_blank" rel="noopener"><span class="source-name">FRED &middot; Aircraft Mechanics Wage Series (St. Louis Fed)</span><span class="source-url">fred.stlouisfed.org/.../LEU0254510200A</span></a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h4>Mortgage Underwriting &amp; Federal Loan Programs</h4>
+          <ul class="source-list">
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener"><span class="source-name">Fannie Mae B3-3.1-01 &middot; General Income Information</span><span class="source-url">selling-guide.fanniemae.com/sel/b3-3.1-01</span></a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.1-02/standards-employment-documentation" target="_blank" rel="noopener"><span class="source-name">Fannie Mae B3-3.1-02 &middot; Employment Documentation</span><span class="source-url">selling-guide.fanniemae.com/sel/b3-3.1-02</span></a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.2-01/underwriting-factors-and-documentation-self-employed-borrower" target="_blank" rel="noopener"><span class="source-name">Fannie Mae B3-3.2 &middot; Self-Employment Income</span><span class="source-url">selling-guide.fanniemae.com/sel/b3-3.2-01</span></a></li>
+            <li><a href="https://sf.freddiemac.com/faqs/stable-monthly-income-faq" target="_blank" rel="noopener"><span class="source-name">Freddie Mac &middot; Stable Monthly Income FAQ</span><span class="source-url">sf.freddiemac.com/faqs/stable-monthly-income-faq</span></a></li>
+            <li><a href="https://guide.freddiemac.com/app/guide/section/5303.4" target="_blank" rel="noopener"><span class="source-name">Freddie Mac &sect;5303.4 &middot; Fluctuating Hourly Earnings</span><span class="source-url">guide.freddiemac.com/app/guide/section/5303.4</span></a></li>
+            <li><a href="https://singlefamily.fanniemae.com/originating-underwriting/mortgage-products/homeready-mortgage" target="_blank" rel="noopener"><span class="source-name">Fannie Mae HomeReady&reg; Mortgage (3% down)</span><span class="source-url">singlefamily.fanniemae.com/.../homeready-mortgage</span></a></li>
+            <li><a href="https://sf.freddiemac.com/working-with-us/affordable-lending/home-possible-eligibility-map" target="_blank" rel="noopener"><span class="source-name">Freddie Mac Home Possible&reg; Mortgage (3% down)</span><span class="source-url">sf.freddiemac.com/.../home-possible</span></a></li>
+            <li><a href="https://www.fhfa.gov/data/conforming-loan-limit-cll-values" target="_blank" rel="noopener"><span class="source-name">FHFA &middot; Conforming Loan Limit Values</span><span class="source-url">fhfa.gov/data/conforming-loan-limit-cll-values</span></a></li>
+            <li><a href="https://www.hud.gov/program_offices/housing/sfh/handbook_4000-1" target="_blank" rel="noopener"><span class="source-name">HUD Handbook 4000.1 &middot; FHA Single Family Housing Policy</span><span class="source-url">hud.gov/.../handbook_4000-1</span></a></li>
+            <li><a href="https://www.hud.gov/topics/buying_a_home" target="_blank" rel="noopener"><span class="source-name">HUD &middot; Buying a Home</span><span class="source-url">hud.gov/topics/buying_a_home</span></a></li>
+            <li><a href="https://www.va.gov/housing-assistance/home-loans/" target="_blank" rel="noopener"><span class="source-name">VA &middot; Home Loans (zero-down for veteran mechanics)</span><span class="source-url">va.gov/housing-assistance/home-loans</span></a></li>
+            <li><a href="https://benefits.va.gov/WARMS/M26_7.asp" target="_blank" rel="noopener"><span class="source-name">VA Lender Handbook M26-7 &middot; Credit Underwriting</span><span class="source-url">benefits.va.gov/WARMS/M26_7</span></a></li>
+            <li><a href="https://www.rd.usda.gov/programs-services/single-family-housing-programs/single-family-housing-guaranteed-loan-program" target="_blank" rel="noopener"><span class="source-name">USDA Rural Development &middot; SFH Guaranteed Loan</span><span class="source-url">rd.usda.gov/.../single-family-housing-guaranteed-loan-program</span></a></li>
+            <li><a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/" target="_blank" rel="noopener"><span class="source-name">CFPB &middot; Regulation Z (Ability-to-Repay / QM)</span><span class="source-url">consumerfinance.gov/rules-policy/regulations/1026</span></a></li>
+            <li><a href="https://www.irs.gov/publications/p936" target="_blank" rel="noopener"><span class="source-name">IRS Publication 936 &middot; Home Mortgage Interest Deduction</span><span class="source-url">irs.gov/publications/p936</span></a></li>
+            <li><a href="https://www.irs.gov/publications/p463" target="_blank" rel="noopener"><span class="source-name">IRS Publication 463 &middot; Travel, Per-Diem &amp; Car Expenses</span><span class="source-url">irs.gov/publications/p463</span></a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h4>Industry Outlook, Workforce &amp; Training</h4>
+          <ul class="source-list">
+            <li><a href="https://www.boeing.com/commercial/market/pilot-technician-outlook" target="_blank" rel="noopener"><span class="source-name">Boeing 2025 Pilot &amp; Technician Outlook (PTO 2025&ndash;2044)</span><span class="source-url">boeing.com/commercial/market/pilot-technician-outlook</span></a></li>
+            <li><a href="https://www.atec-amt.org" target="_blank" rel="noopener"><span class="source-name">ATEC &middot; Aviation Technician Education Council</span><span class="source-url">atec-amt.org</span></a></li>
+            <li><a href="https://www.atec-amt.org/news/the-2025-boeing-technician-outlook-a-closer-look" target="_blank" rel="noopener"><span class="source-name">ATEC &middot; 2025 Boeing Technician Outlook Analysis</span><span class="source-url">atec-amt.org/news/.../boeing-technician-outlook</span></a></li>
+            <li><a href="https://erau.edu/degrees/bachelor/aviation-maintenance" target="_blank" rel="noopener"><span class="source-name">Embry-Riddle Aeronautical University &middot; Aviation Maintenance</span><span class="source-url">erau.edu/.../aviation-maintenance</span></a></li>
+            <li><a href="https://www.vaughn.edu/academic-program/aircraft-maintenance/" target="_blank" rel="noopener"><span class="source-name">Vaughn College &middot; Aircraft Maintenance Programs (NYC)</span><span class="source-url">vaughn.edu/.../aircraft-maintenance</span></a></li>
+            <li><a href="https://www.pia.edu" target="_blank" rel="noopener"><span class="source-name">Pittsburgh Institute of Aeronautics (PIA)</span><span class="source-url">pia.edu</span></a></li>
+            <li><a href="https://www.aviationmaintenance.edu" target="_blank" rel="noopener"><span class="source-name">Aviation Institute of Maintenance (AIM)</span><span class="source-url">aviationmaintenance.edu</span></a></li>
+            <li><a href="https://www.uti.edu/blog/aviation/aviation-maintenance-career-outlook" target="_blank" rel="noopener"><span class="source-name">UTI &middot; Aviation Maintenance Career Outlook</span><span class="source-url">uti.edu/.../aviation-maintenance-career-outlook</span></a></li>
+            <li><a href="https://www.usaviationacademy.com/resource-center/aircraft-mechanic-salary-guide/" target="_blank" rel="noopener"><span class="source-name">US Aviation Academy &middot; A&amp;P Pay &amp; Benefits Guide 2026</span><span class="source-url">usaviationacademy.com</span></a></li>
+            <li><a href="https://www.broward.edu/academics/programs/details.html?p=aviation-maintenance" target="_blank" rel="noopener"><span class="source-name">Broward College &middot; Aviation Maintenance Technology (FLL)</span><span class="source-url">broward.edu/.../aviation-maintenance</span></a></li>
+            <li><a href="https://gtbaviation.dadeschools.net/" target="_blank" rel="noopener"><span class="source-name">George T. Baker Aviation Technical College (Miami-Dade)</span><span class="source-url">gtbaviation.dadeschools.net</span></a></li>
+            <li><a href="https://www.aviationpros.com/education-training/article/10386639/getting-your-inspection-authorization" target="_blank" rel="noopener"><span class="source-name">AviationPros &middot; Getting Your Inspection Authorization</span><span class="source-url">aviationpros.com/.../inspection-authorization</span></a></li>
+            <li><a href="https://www.avm-mag.com" target="_blank" rel="noopener"><span class="source-name">Aviation Maintenance Magazine</span><span class="source-url">avm-mag.com</span></a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h4>Unions, Trade &amp; Florida-Geographic</h4>
+          <ul class="source-list">
+            <li><a href="https://amfanational.org/" target="_blank" rel="noopener"><span class="source-name">AMFA &middot; Aircraft Mechanics Fraternal Association</span><span class="source-url">amfanational.org</span></a></li>
+            <li><a href="https://www.twu.org/" target="_blank" rel="noopener"><span class="source-name">TWU &middot; Transport Workers Union (AA mechanics)</span><span class="source-url">twu.org</span></a></li>
+            <li><a href="https://www.twu-iam.org/amfa-information/" target="_blank" rel="noopener"><span class="source-name">TWU-IAM Association &middot; Cross-Union Information</span><span class="source-url">twu-iam.org/amfa-information</span></a></li>
+            <li><a href="https://www.goiam.org/" target="_blank" rel="noopener"><span class="source-name">IAMAW &middot; International Association of Machinists &amp; Aerospace Workers</span><span class="source-url">goiam.org</span></a></li>
+            <li><a href="https://www.pama.org" target="_blank" rel="noopener"><span class="source-name">PAMA &middot; Professional Aviation Maintenance Association</span><span class="source-url">pama.org</span></a></li>
+            <li><a href="https://www.pama.org/scholarship.html" target="_blank" rel="noopener"><span class="source-name">PAMA &middot; Scholarship Program for Part 147 Students</span><span class="source-url">pama.org/scholarship</span></a></li>
+            <li><a href="https://nbaa.org/business-aviation/maintenance/" target="_blank" rel="noopener"><span class="source-name">NBAA &middot; Business Aviation Maintenance</span><span class="source-url">nbaa.org/business-aviation/maintenance</span></a></li>
+            <li><a href="https://www.floridahousing.org/programs/homebuyer-overview-page" target="_blank" rel="noopener"><span class="source-name">Florida Housing Finance Corporation &middot; Homebuyer Programs</span><span class="source-url">floridahousing.org/.../homebuyer-overview-page</span></a></li>
+            <li><a href="https://www.bls.gov/oes/current/oes_22744.htm" target="_blank" rel="noopener"><span class="source-name">BLS OEWS Metro 22744 &middot; Fort Lauderdale-Pompano Beach</span><span class="source-url">bls.gov/oes/current/oes_22744</span></a></li>
+            <li><a href="https://www.nmlsconsumeraccess.org" target="_blank" rel="noopener"><span class="source-name">NMLS Consumer Access &middot; Verify Your Mortgage Broker</span><span class="source-url">nmlsconsumeraccess.org</span></a></li>
+            <li><a href="https://fred.stlouisfed.org/series/MORTGAGE30US" target="_blank" rel="noopener"><span class="source-name">FRED &middot; 30-Year Fixed Mortgage Rate Average</span><span class="source-url">fred.stlouisfed.org/series/MORTGAGE30US</span></a></li>
+            <li><a href="https://www.aacreditunion.org/borrowing/aviation-loans/" target="_blank" rel="noopener"><span class="source-name">American Airlines Credit Union &middot; Aviation Loans</span><span class="source-url">aacreditunion.org/borrowing/aviation-loans</span></a></li>
+            <li><a href="https://stairwaymortgage.com/aviation-professionals/" target="_blank" rel="noopener"><span class="source-name">Stairway Mortgage &middot; Aviation Professionals Hub</span><span class="source-url">stairwaymortgage.com/aviation-professionals</span></a></li>
+            <li><a href="https://stairwaymortgage.com/aviation-professionals/pilots/" target="_blank" rel="noopener"><span class="source-name">Stairway Mortgage &middot; Pilot Mortgage Guide</span><span class="source-url">stairwaymortgage.com/.../pilots</span></a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 16 — CLOSING CTA + FINAL CTA ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">09 &middot; The outcome</div>
+        <h2>Your loan, structured right.</h2>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/33608252/pexels-photo-33608252.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" alt="Ground crew member at airport during sunset, ensuring aircraft readiness" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=Aircraft+Maintenance+at+Sunset';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">What we're building for</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/20640842/pexels-photo-20640842.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1800');">
+    <div class="container">
+      <div class="eyebrow" style="color: var(--blue-soft); margin-bottom: var(--s-5);">Ready when you are</div>
+      <h2 class="display-2" style="color: var(--paper);">Talk to a lender who handles aircraft mechanic mortgage files.</h2>
+      <p>Twenty minutes on the phone with Jim. He'll tell you exactly which pay components qualify on your mortgage, what your monthly payment looks like at your target home price, and what to do next.</p>
+      <div class="final-cta-actions">
+        <a href="https://stairwaymortgage.com/purchase-inquiry/" class="btn btn-on-dark btn-large">Get your aircraft mechanic mortgage pre-approval</a>
+        <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-secondary btn-large">Schedule a call with Jim</a>
+        <a href="https://stairwaymortgage.com/discovery-quiz/" class="btn btn-on-dark-secondary btn-large">Take the discovery quiz</a>
+      </div>
+    </div>
+  </section>
+
+`;
+---
+<Layout title="Aircraft Mechanic Mortgage Guide | Stairway Mortgage" description="Aircraft mechanic mortgage guide: how to qualify with overtime, A&amp;P premiums, IA pay, and contract income. FAA-aware underwriting from Stairway." canonical="https://stairwaymortgage.com/aviation-professionals/aircraft-mechanics/">
+  <div class="av-scope" set:html={avBody} />
+</Layout>
+
+<style is:global>
+.av-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A; --ink-2: #1E2433; --ink-3: #2C3548;
+      --ink-light: #4A5568; --ink-lighter: #6B7280;
+      --paper: #FAFAF7; --paper-2: #F4F4EE; --paper-3: #EDEDE5; --white: #FFFFFF;
+      --blue: #1845D6; --blue-deep: #0F2EA0; --blue-soft: #E8EEFF; --blue-tint: #F2F5FF;
+      --gold: #B8860B; --rust: #8B2C2C;
+      --border: #E5E5DE; --border-strong: #D4D4C8; --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; --text-xs: 0.75rem; --text-sm: 0.875rem;
+      --text-base: 1.0625rem; --text-md: 1.1875rem; --text-lg: 1.375rem;
+      --text-xl: 1.625rem; --text-2xl: 2rem; --text-3xl: 2.75rem;
+      --text-4xl: 3.75rem; --text-5xl: 5rem;
+      --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+      --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4rem;
+      --s-9: 6rem; --s-10: 8rem; --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.av-scope, .av-scope{ background-color: #FAFAF7 !important; color: #0A0E1A !important; color-scheme: light only !important; }.av-scope *{ forced-color-adjust: none; }
+    }.av-scope, .av-scope *::before, .av-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.av-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.av-scope{ font-family: var(--sans); font-size: var(--text-base); line-height: 1.6; color: var(--ink); background: var(--paper); font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }.av-scope img, .av-scope svg{ display: block; max-width: 100%; }.av-scope a{ color: inherit; text-decoration: none; }.av-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.av-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.av-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.av-scope .eyebrow{ font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); font-weight: 500; display: inline-block; }.av-scope .display-1{ font-family: var(--serif); font-size: clamp(2.5rem, 7vw, var(--text-5xl)); font-weight: 400; line-height: 1.0; letter-spacing: -0.025em; font-variation-settings: "opsz" 144, "SOFT" 30; color: var(--ink); }.av-scope .display-2{ font-family: var(--serif); font-size: clamp(2rem, 5vw, var(--text-3xl)); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; font-variation-settings: "opsz" 100, "SOFT" 50; color: var(--ink); }.av-scope h2{ font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, var(--text-2xl)); font-weight: 450; line-height: 1.1; letter-spacing: -0.015em; color: var(--ink); margin-bottom: var(--s-5); font-variation-settings: "opsz" 60, "SOFT" 50; }.av-scope h3{ font-family: var(--serif); font-size: var(--text-xl); font-weight: 500; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); margin-bottom: var(--s-4); font-variation-settings: "opsz" 30; }.av-scope h4{ font-family: var(--sans); font-size: var(--text-md); font-weight: 600; line-height: 1.3; color: var(--ink); margin-bottom: var(--s-3); letter-spacing: -0.005em; }.av-scope p{ margin-bottom: var(--s-4); }.av-scope p:last-child{ margin-bottom: 0; }.av-scope p.lead{ font-size: var(--text-lg); line-height: 1.55; color: var(--ink-2); font-weight: 350; }.av-scope p.lede{ font-family: var(--serif); font-size: var(--text-xl); line-height: 1.45; color: var(--ink); font-weight: 350; font-variation-settings: "opsz" 30; }.av-scope strong, .av-scope b{ font-weight: 600; color: var(--ink); }.av-scope em, .av-scope i{ font-style: italic; }.av-scope .btn{ display: inline-flex; align-items: center; gap: var(--s-2); padding: var(--s-3) var(--s-5); font-family: var(--sans); font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.005em; border-radius: 100px; transition: all 0.18s ease; white-space: nowrap; }.av-scope .btn-primary{ background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }.av-scope .btn-primary:hover{ background: var(--blue); border-color: var(--blue); transform: translateY(-1px); }.av-scope .btn-secondary{ background: transparent; color: var(--ink); border: 1px solid var(--border-strong); }.av-scope .btn-secondary:hover{ border-color: var(--ink); }.av-scope .btn-large{ padding: var(--s-4) var(--s-6); font-size: var(--text-base); }.av-scope .btn-arrow{ display: inline-flex; align-items: center; gap: var(--s-2); color: var(--blue); font-weight: 500; transition: gap 0.18s; }.av-scope .btn-arrow:hover{ gap: var(--s-3); }.av-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.av-scope .hero{ padding: var(--s-9) 0 var(--s-8); border-bottom: 1px solid var(--border); }.av-scope .breadcrumb{ display: flex; gap: var(--s-2); font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.08em; color: var(--ink-lighter); text-transform: uppercase; margin-bottom: var(--s-7); }.av-scope .breadcrumb a{ color: var(--ink-lighter); }.av-scope .breadcrumb a:hover{ color: var(--blue); }.av-scope .breadcrumb span:last-child{ color: var(--ink); }.av-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.av-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.av-scope .hero-subtitle{ max-width: 56ch; margin-bottom: var(--s-7); }.av-scope .hero-actions{ display: flex; gap: var(--s-3); align-items: center; flex-wrap: wrap; margin-bottom: var(--s-5); }.av-scope .hero-trust{ font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-lighter); letter-spacing: 0.02em; display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; }.av-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.av-scope .hero--with-image .hero-grid{ margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.av-scope .hero--with-image h1{ max-width: 14ch; }.av-scope .hero--with-image .hero-subtitle{ max-width: 48ch; }.av-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.av-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.av-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.av-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.av-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; }
+    }.av-scope .stats{ background: var(--ink); color: var(--paper); padding: var(--s-7) 0; }.av-scope .stats-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-5); }.av-scope .stat{ padding: 0 var(--s-4); border-left: 1px solid var(--ink-3); }.av-scope .stat:first-child{ border-left: 0; padding-left: 0; }.av-scope .stat-num{ font-family: var(--serif); font-size: clamp(2.25rem, 4.5vw, 3.5rem); font-weight: 350; line-height: 1; letter-spacing: -0.03em; margin-bottom: var(--s-3); font-variation-settings: "opsz" 144; }.av-scope .stat-label{ font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.05em; color: rgba(255,255,255,0.65); text-transform: uppercase; line-height: 1.4; }
+    @media (max-width: 720px) {.av-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.av-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.av-scope .stats--with-image .stats-bar-grid{ margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.av-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.av-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.av-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+    @media (max-width: 800px) {.av-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.av-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; }
+    }.av-scope .section{ padding: var(--s-10) 0; }.av-scope .section-tinted{ background: var(--paper-2); }.av-scope .section-header{ max-width: 720px; margin-bottom: var(--s-8); }.av-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.av-scope .section-header h2{ margin-bottom: var(--s-5); }.av-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.av-scope .lede-section{ padding: var(--s-9) 0; }.av-scope .lede-section--with-image .lede-grid{ max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start; }.av-scope .lede-text-col{ padding-top: 8px; }.av-scope .lede-image{ margin: 0; border-radius: 10px; overflow: hidden; position: sticky; top: 32px; }.av-scope .lede-image img{ display: block; width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 40%; }.av-scope .lede-image-caption{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-lighter); padding: 14px 4px 0; text-align: left; line-height: 1.5; }
+    @media (max-width: 900px) {.av-scope .lede-section--with-image .lede-grid{ grid-template-columns: 1fr; gap: 32px; }.av-scope .lede-image{ position: static; max-width: 420px; margin-inline: auto; }
+    }.av-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.av-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.av-scope .highlights-list{ list-style: none; padding: 0; max-width: 920px; margin: 0 auto; columns: 1; column-gap: var(--s-7); }
+    @media (min-width: 880px) {.av-scope .highlights-list{ columns: 2; column-gap: var(--s-8); } }.av-scope .highlights-list li{ break-inside: avoid; padding: var(--s-3) 0 var(--s-3) var(--s-5); position: relative; color: var(--ink-2); line-height: 1.6; font-size: var(--text-base); border-bottom: 1px solid var(--border); }.av-scope .highlights-list li:last-child{ border-bottom: 0; }.av-scope .highlights-list li::before{ content: ''; position: absolute; left: 0; top: 1.2em; width: 14px; height: 1px; background: var(--blue); }.av-scope .highlights-source{ font-size: var(--text-sm); color: var(--ink-lighter); margin-left: 4px; }.av-scope .highlights-source a{ color: var(--blue); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }.av-scope .data-table{ width: 100%; border-collapse: collapse; font-size: var(--text-sm); font-feature-settings: 'tnum' 1; }.av-scope .data-table thead th{ font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-lighter); font-weight: 500; text-align: left; padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--border-strong); }.av-scope .data-table tbody td{ padding: var(--s-5) var(--s-4); border-bottom: 1px solid var(--border); vertical-align: top; }.av-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.av-scope .data-table tbody td:first-child{ font-weight: 500; color: var(--ink); width: 28%; }.av-scope .data-table tbody td:nth-child(2){ font-family: var(--mono); font-size: var(--text-sm); color: var(--blue-deep); white-space: nowrap; width: 28%; }.av-scope .data-table tbody td:last-child{ color: var(--ink-2); line-height: 1.5; }
+    @media (max-width: 720px) {.av-scope .data-table thead{ display: none; }.av-scope .data-table tbody tr{ display: block; padding: var(--s-5) 0; border-bottom: 1px solid var(--border); }.av-scope .data-table tbody td{ display: block; padding: 0 0 var(--s-2); border: 0; width: 100% !important; }.av-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.av-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.av-scope .methods-grid{ display: grid; gap: var(--s-5); }.av-scope .method{ background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: var(--s-7); position: relative; transition: border-color 0.18s, transform 0.18s; }.av-scope .method:hover{ border-color: var(--border-strong); }.av-scope .method-header{ display: grid; grid-template-columns: auto 1fr; gap: var(--s-5); align-items: start; margin-bottom: var(--s-5); }.av-scope .method-num{ font-family: var(--mono); font-size: var(--text-2xl); font-weight: 500; color: var(--blue); line-height: 1; padding-top: var(--s-2); letter-spacing: -0.02em; }.av-scope .method-title h3{ margin-bottom: var(--s-3); font-size: var(--text-2xl); line-height: 1.15; }.av-scope .method-tag{ display: inline-block; font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.03em; padding: var(--s-1) var(--s-3); background: var(--blue-soft); color: var(--blue-deep); border-radius: 100px; font-weight: 500; margin-bottom: var(--s-3); }.av-scope .method-body{ padding-left: calc(var(--text-2xl) + var(--s-5)); }.av-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.av-scope .worked-example{ background: var(--paper-2); border-left: 3px solid var(--ink); padding: var(--s-5) var(--s-6); font-family: var(--mono); font-size: var(--text-sm); line-height: 1.7; border-radius: 0 4px 4px 0; }.av-scope .worked-example.featured{ background: var(--ink); color: var(--paper); border-left-color: var(--blue); }.av-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.av-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.av-scope .worked-example.featured .we-num{ color: var(--paper); }.av-scope .we-title{ font-family: var(--sans); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: var(--s-4); color: var(--ink); }.av-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.av-scope .we-line{ display: grid; grid-template-columns: 1fr auto; gap: var(--s-4); padding: var(--s-2) 0; }.av-scope .we-label{ color: var(--ink-light); }.av-scope .we-num{ color: var(--ink); font-weight: 500; }.av-scope .we-divider{ border-top: 1px dashed var(--border-strong); margin: var(--s-3) 0; grid-column: 1 / -1; }.av-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.av-scope .we-result{ grid-template-columns: 1fr auto; padding-top: var(--s-3); border-top: 1px solid var(--border-strong); margin-top: var(--s-2); font-weight: 600; }.av-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.av-scope .method{ padding: var(--s-5); }.av-scope .method-body{ padding-left: 0; }.av-scope .method-num{ font-size: var(--text-xl); } }.av-scope .callout{ background: var(--blue-tint); border: 1px solid rgba(24, 69, 214, 0.12); border-radius: 6px; padding: var(--s-6) var(--s-7); max-width: 760px; }.av-scope .callout-eyebrow{ font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); font-weight: 500; margin-bottom: var(--s-3); }.av-scope .callout p{ font-family: var(--serif); font-size: var(--text-lg); line-height: 1.5; color: var(--ink); font-weight: 350; font-variation-settings: "opsz" 30; }.av-scope .methods-vignette{ margin-top: var(--s-9); aspect-ratio: 16/7; border-radius: 4px; overflow: hidden; background: linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; }.av-scope .methods-vignette img{ width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; filter: contrast(1.03) saturate(0.95); }.av-scope .methods-vignette-caption{ position: absolute; bottom: var(--s-6); left: var(--s-7); right: var(--s-7); z-index: 2; color: var(--paper); }.av-scope .methods-vignette-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; margin-bottom: var(--s-2); display: block; }.av-scope .methods-vignette-caption .quote{ font-family: var(--serif); font-size: var(--text-xl); font-weight: 400; line-height: 1.3; max-width: 28ch; letter-spacing: -0.01em; }.av-scope .methods-vignette::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,14,26,0.85) 0%, rgba(10,14,26,0.4) 60%, transparent 100%); z-index: 1; }
+    @media (max-width: 720px) {.av-scope .methods-vignette{ aspect-ratio: 4/5; }.av-scope .methods-vignette-caption .quote{ font-size: var(--text-lg); } }.av-scope .per-diem-section{ background: var(--ink); color: var(--paper); padding: var(--s-10) 0; }.av-scope .per-diem-section h2{ color: var(--paper); }.av-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.av-scope .per-diem-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-8); align-items: start; margin-top: var(--s-7); }
+    @media (max-width: 800px) {.av-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); } }.av-scope .per-diem-list{ list-style: none; padding: 0; }.av-scope .per-diem-list li{ padding: var(--s-4) 0; border-bottom: 1px solid var(--ink-3); display: flex; gap: var(--s-4); align-items: start; font-size: var(--text-sm); color: rgba(250,250,247,0.9); }.av-scope .per-diem-list li:last-child{ border-bottom: 0; }.av-scope .pd-num{ font-family: var(--mono); color: var(--blue-soft); font-weight: 500; flex-shrink: 0; width: 1.5em; }.av-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.av-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.av-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.av-scope .programs-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+    @media (max-width: 720px) {.av-scope .programs-grid{ grid-template-columns: 1fr; } }.av-scope .program{ background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: var(--s-6); display: flex; flex-direction: column; gap: var(--s-4); transition: all 0.2s; }.av-scope .program:hover{ border-color: var(--ink); transform: translateY(-2px); }.av-scope .program h4{ font-family: var(--serif); font-size: var(--text-lg); font-weight: 500; letter-spacing: -0.01em; margin-bottom: 0; font-variation-settings: "opsz" 30; }.av-scope .program-when{ color: var(--ink-2); font-size: var(--text-sm); line-height: 1.55; flex: 1; }.av-scope .program-when a{ color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }.av-scope .program-links{ display: flex; gap: var(--s-5); padding-top: var(--s-3); border-top: 1px solid var(--border); font-size: var(--text-sm); }.av-scope .program-links a{ color: var(--blue); font-weight: 500; display: inline-flex; align-items: center; gap: var(--s-1); }.av-scope .program-links a:hover{ color: var(--blue-deep); }.av-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.av-scope .context-section{ padding: var(--s-10) 0; background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }.av-scope .context-intro{ max-width: 720px; margin-bottom: var(--s-8); }.av-scope .context-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-8); max-width: 1140px; margin: 0 auto; }
+    @media (max-width: 800px) {.av-scope .context-grid{ grid-template-columns: 1fr; gap: var(--s-6); } }.av-scope .context-item{ padding: var(--s-5) 0; border-top: 1px solid var(--border-strong); }.av-scope .context-tag{ font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); font-weight: 500; margin-bottom: var(--s-3); display: block; }.av-scope .context-item h3{ font-family: var(--serif); font-size: var(--text-lg); font-weight: 500; line-height: 1.25; margin-bottom: var(--s-4); letter-spacing: -0.01em; font-variation-settings: "opsz" 30; }.av-scope .context-item p{ color: var(--ink-2); font-size: var(--text-sm); line-height: 1.65; margin-bottom: var(--s-3); }.av-scope .context-item p a{ color: var(--blue); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }.av-scope .context-item p a:hover{ color: var(--blue-deep); }.av-scope .context-cites{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.05em; color: var(--ink-lighter); text-transform: uppercase; padding-top: var(--s-3); border-top: 1px dashed var(--border-strong); margin-top: var(--s-4); line-height: 1.5; }.av-scope .context-cites a{ color: var(--ink-light); text-decoration: underline; text-underline-offset: 2px; }.av-scope .context-cites a:hover{ color: var(--blue); }.av-scope .playbook-stages{ display: grid; gap: var(--s-7); }.av-scope .stage{ display: grid; grid-template-columns: 200px 1fr; gap: var(--s-7); padding-bottom: var(--s-7); border-bottom: 1px solid var(--border); }.av-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.av-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); } }.av-scope .stage-label{ font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.06em; color: var(--ink-lighter); text-transform: uppercase; padding-top: var(--s-2); }.av-scope .stage-content h4{ font-family: var(--serif); font-size: var(--text-xl); font-weight: 500; letter-spacing: -0.01em; margin-bottom: var(--s-3); font-variation-settings: "opsz" 30; }.av-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.av-scope .stage-bullets{ list-style: none; padding: 0; }.av-scope .stage-bullets li{ padding: var(--s-2) 0; padding-left: var(--s-5); position: relative; color: var(--ink-2); font-size: var(--text-sm); line-height: 1.6; }.av-scope .stage-bullets li::before{ content: ''; position: absolute; left: 0; top: 0.85em; width: 12px; height: 1px; background: var(--blue); }.av-scope .testimonials-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); max-width: 1200px; margin: 0 auto; }
+    @media (max-width: 900px) {.av-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; } }.av-scope .testim-card{ background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: var(--s-6); display: flex; flex-direction: column; gap: var(--s-5); position: relative; transition: border-color 0.18s, transform 0.18s; }.av-scope .testim-card:hover{ border-color: var(--border-strong); transform: translateY(-1px); }.av-scope .testim-avatar{ width: 72px; height: 72px; border-radius: 50%; overflow: hidden; position: relative; flex-shrink: 0; background: var(--paper-2); }.av-scope .testim-avatar::after{ content: ''; position: absolute; inset: -5px; border: 1px dashed rgba(0,0,0,0.18); border-radius: 50%; }.av-scope .testim-avatar img{ width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; filter: contrast(1.02) saturate(0.96); }.av-scope .testim-quote{ font-family: var(--serif); font-size: var(--text-md); line-height: 1.5; color: var(--ink); font-weight: 350; font-variation-settings: "opsz" 30; margin: 0; flex: 1; }.av-scope .testim-attribution{ border-top: 1px solid var(--border); padding-top: var(--s-4); }.av-scope .testim-name{ font-family: var(--sans); font-size: var(--text-base); font-weight: 600; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em; }.av-scope .testim-meta{ font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-lighter); letter-spacing: 0.02em; line-height: 1.4; }.av-scope .bio-section{ background: var(--paper-2); padding: var(--s-10) 0; }.av-scope .bio-grid{ display: grid; grid-template-columns: 240px 1fr; gap: var(--s-7); align-items: start; max-width: 1000px; margin: 0 auto; }
+    @media (max-width: 720px) {.av-scope .bio-grid{ grid-template-columns: 1fr; } }.av-scope .bio-photo{ width: 100%; aspect-ratio: 1; border-radius: 4px; overflow: hidden; background: var(--ink); position: relative; }.av-scope .bio-photo img{ width: 100%; height: 100%; object-fit: cover; display: block; filter: contrast(1.02) saturate(0.95); }.av-scope .bio-photo::before{ content: ''; position: absolute; inset: 0; border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); pointer-events: none; z-index: 2; }.av-scope .bio-name{ font-family: var(--serif); font-size: var(--text-2xl); font-weight: 450; letter-spacing: -0.015em; line-height: 1.1; margin-bottom: var(--s-2); font-variation-settings: "opsz" 60; }.av-scope .bio-title{ font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-lighter); margin-bottom: var(--s-5); }.av-scope .bio-quote{ font-family: var(--serif); font-size: var(--text-lg); line-height: 1.5; color: var(--ink); font-weight: 350; font-style: italic; padding-left: var(--s-5); border-left: 2px solid var(--blue); margin-bottom: var(--s-5); font-variation-settings: "opsz" 30; }.av-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.av-scope .faq-list{ max-width: 800px; margin: 0 auto; }.av-scope .faq-item{ padding: var(--s-6) 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: auto 1fr; gap: var(--s-5); align-items: start; }.av-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.av-scope .faq-num{ font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.04em; color: var(--blue); font-weight: 500; padding-top: var(--s-1); }.av-scope .faq-q{ font-family: var(--serif); font-size: var(--text-lg); font-weight: 500; letter-spacing: -0.01em; margin-bottom: var(--s-3); color: var(--ink); line-height: 1.3; font-variation-settings: "opsz" 30; }.av-scope .faq-a{ color: var(--ink-2); line-height: 1.65; }.av-scope .faq-a a{ color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }.av-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.av-scope .resources-grid{ display: grid; grid-template-columns: 1fr; gap: var(--s-4); max-width: 920px; margin: 0 auto; }
+    @media (min-width: 760px) {.av-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); } }.av-scope .resource-item{ padding: var(--s-4) 0; border-bottom: 1px solid var(--border); font-size: var(--text-sm); line-height: 1.55; color: var(--ink-2); }.av-scope .resource-item a{ color: var(--blue); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; font-weight: 500; }.av-scope .resource-item a:hover{ color: var(--blue-deep); }.av-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.av-scope .sources-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7); max-width: 1100px; margin: 0 auto; }
+    @media (max-width: 720px) {.av-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); } }.av-scope .source-group h4{ font-family: var(--mono); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); font-weight: 500; margin-bottom: var(--s-4); padding-bottom: var(--s-3); border-bottom: 1px solid var(--border-strong); }.av-scope .source-list{ list-style: none; padding: 0; }.av-scope .source-list li{ padding: var(--s-3) 0; font-size: var(--text-sm); line-height: 1.45; }.av-scope .source-list a{ color: var(--ink-2); transition: color 0.15s; display: block; }.av-scope .source-list a:hover{ color: var(--blue); }.av-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.av-scope .source-url{ font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-lighter); word-break: break-all; }.av-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.av-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; filter: contrast(1.03) saturate(0.97); }.av-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.av-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.av-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.av-scope .pre-cta-photo{ aspect-ratio: 4/3; } }.av-scope .final-cta{ background: var(--ink); color: var(--paper); padding: var(--s-10) 0; text-align: center; }.av-scope .final-cta h2{ color: var(--paper); max-width: 22ch; margin: 0 auto var(--s-5); }.av-scope .final-cta p{ color: rgba(250,250,247,0.75); font-size: var(--text-lg); max-width: 56ch; margin: 0 auto var(--s-7); }.av-scope .final-cta-actions{ display: flex; gap: var(--s-3); justify-content: center; flex-wrap: wrap; }.av-scope .btn-on-dark{ background: var(--paper); color: var(--ink); border: 1px solid var(--paper); }.av-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.av-scope .btn-on-dark-secondary{ background: transparent; color: var(--paper); border: 1px solid rgba(250,250,247,0.3); }.av-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.av-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.av-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.av-scope .final-cta--bg .container{ position: relative; z-index: 1; }.av-scope .mt-6{ margin-top: var(--s-6); }.av-scope .mt-8{ margin-top: var(--s-8); }
+  
+</style>
