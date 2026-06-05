@@ -1,0 +1,200 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "FHA 203k Refinance Calculator: Estimate Your Max Loan, Renovation Budget, Payment & Cash to Close";
+const metaDescription = "Calculate an FHA 203k renovation refinance: total project costs, maximum FHA loan, UFMIP, full monthly payment with MI, cash to close, and income to qualify.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/fha-203k-loan-refinance/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA 203k Refinance Calculator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"FHA 203K Renovation Refinance Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an FHA 203k refinance?","acceptedAnswer":{"@type":"Answer","text":"It lets you refinance your current mortgage and roll in the cost of renovating the home into a single new FHA loan."}},{"@type":"Question","name":"How much can I borrow?","acceptedAnswer":{"@type":"Answer","text":"The loan is capped at 110% of the after-repair value, subject to HUD county loan limits. Raising your ARV raises the allowable loan."}},{"@type":"Question","name":"What mortgage insurance applies?","acceptedAnswer":{"@type":"Answer","text":"FHA charges a 1.75% upfront mortgage insurance premium (UFMIP), usually financed, plus monthly mortgage insurance built into your payment."}}]};
+---
+<Layout title={metaTitle} description={metaDescription} canonical={canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<main class="container-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span>
+    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <span aria-current="page">FHA 203k Refinance Calculator</span>
+  </nav>
+  <header class="calc-head">
+    <p class="eyebrow">FHA · 203k Renovation Refinance</p>
+    <h1 class="display-lg">FHA 203K Renovation Refinance Loan Payment Calculator</h1>
+    <p class="lede">Refinance and renovate in one loan. Estimate your total project costs, maximum FHA loan, full monthly payment with MI, cash to close, and the income needed to qualify.</p>
+    <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+  </header>
+  <section class="calc" aria-label="FHA 203k Refinance Calculator">
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="field-row">
+          <div class="field"><label for="bal">Loan Balance</label><div class="input-money"><span>$</span><input id="bal" type="number" inputmode="numeric" value="200000" min="0" step="1000" /></div></div>
+          <div class="field"><label for="reno">Estimated Renovation Budget</label><div class="input-money"><span>$</span><input id="reno" type="number" inputmode="numeric" value="100000" min="0" step="1000" /></div></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="asis">As-Is Value</label><div class="input-money"><span>$</span><input id="asis" type="number" inputmode="numeric" value="300000" min="0" step="1000" /></div></div>
+          <div class="field"><label for="arv">After Repair Value (ARV)</label><div class="input-money"><span>$</span><input id="arv" type="number" inputmode="numeric" value="400000" min="0" step="1000" /></div></div>
+        </div>
+        <div class="field"><label for="term">Term of Loan</label><div class="input-plain"><select id="term">
+          <option value="15">15 years</option>
+          <option value="20">20 years</option>
+          <option value="30" selected>30 years</option>
+        </select></div></div>
+        <div class="field-row">
+          <div class="field"><label for="ins">Monthly Insurance</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="200" min="0" step="10" /></div></div>
+          <div class="field"><label for="tax">Monthly Taxes</label><div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="300" min="0" step="10" /></div></div>
+        </div>
+        <div class="field"><label for="hoa">Monthly HOA</label><div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="10" /></div></div>
+        <div class="field"><label for="rate">Estimated New Interest Rate <span class="val" id="rateVal">7.0%</span></label><input id="rate" type="range" min="2.5" max="10" step="0.1" value="7" /></div>
+        <div class="field">
+          <span class="lbl">Are you thinking about buying another home after this one to continue your wealth journey?</span>
+          <div class="radios" role="radiogroup" aria-label="Buying another home">
+            <label><input type="radio" name="wealth" value="1" /> Yes</label>
+            <label><input type="radio" name="wealth" value="2" checked /> No</label>
+          </div>
+        </div>
+      </div>
+      <div class="calc-results" aria-live="polite">
+        <p class="summary-title">Summary</p>
+        <p class="summary-sub">Project Costs</p>
+        <div class="result"><span class="result-label">Total Property Costs</span><span class="result-value" id="rTotalProp">$310,000</span><span class="result-note">Payoff + renovation + 10% contingency.</span></div>
+        <div class="result"><span class="result-label">Total Financeable Costs</span><span class="result-value" id="rFinanceable">$312,000</span><span class="result-note">Includes ~4% estimated closing costs. Not a Loan Estimate.</span></div>
+        <p class="summary-sub">Loan</p>
+        <div class="result"><span class="result-label">Maximum FHA Loan Allowed</span><span class="result-value" id="rMaxFHA">$440,000</span></div>
+        <div class="result"><span class="result-label">Desired Loan Amount</span><span class="result-value" id="rDesired">$312,000</span></div>
+        <div class="result"><span class="result-label">UFMIP (1.75%)</span><span class="result-value" id="rUFMIP">$5,460</span></div>
+        <div class="result"><span class="result-label">Final Loan Amount</span><span class="result-value" id="rFinal">$317,460</span><span class="result-note">Base plus financed UFMIP.</span></div>
+        <p class="summary-sub">Payment Breakdown</p>
+        <div class="result"><span class="result-label">Principal &amp; Interest Payment</span><span class="result-value" id="rPI">$2,112</span></div>
+        <div class="result"><span class="result-label">Monthly Insurance</span><span class="result-value" id="rIns">$200</span></div>
+        <div class="result"><span class="result-label">Monthly Taxes</span><span class="result-value" id="rTax">$300</span></div>
+        <div class="result"><span class="result-label">Estimated Monthly MI</span><span class="result-value" id="rMI">$198</span></div>
+        <div class="result"><span class="result-label">HOA (paid separately)</span><span class="result-value" id="rHOA">$0</span></div>
+        <div class="result result--primary"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$2,810</span></div>
+        <p class="summary-sub">Cash to Close</p>
+        <div class="result result--primary"><span class="result-label">Cash Out of Pocket (no lender credit)</span><span class="result-value" id="rCashNo">$0</span></div>
+        <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$5,621</span><span class="result-note">FHA allows up to 43-50% DTI with compensating factors.</span></div>
+        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <p class="micro">Estimates only — not a commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+  <section class="body-content">
+    <figure class="author">
+      <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+        <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+      </a>
+      <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+    </figure>
+    <div class="cta-card">
+      <h4>Ready to Take Your First Step?</h4>
+      <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+      <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+      <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+    </div>
+    <div class="cta-card">
+      <h4>Need a Pre-Approval Letter—Fast?</h4>
+      <p>Buying a home soon? Complete our short form and we'll connect you with the best loan options for your target property and financial situation—fast.</p>
+      <ul><li>Only 2 minutes to complete</li><li>Quick turnaround on pre-approval</li><li>No credit score impact</li></ul>
+      <a href="https://stairwaymortgage.com/purchase-inquiry">Get Pre-Approved Now</a>
+    </div>
+    <div class="cta-card">
+      <h4>Got a Few Questions First?</h4>
+      <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+      <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+    </div>
+    <h2>Important Disclaimer</h2>
+    <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed mortgage advisor before making financial decisions.</p>
+    <h2>Related Posts</h2>
+    <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+  </section>
+</main>
+<script is:inline>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt0 = (n) => (n<0?'-$':'$') + Math.abs(Math.round(n)).toLocaleString('en-US');
+  function compute(){
+    const bal=+$('bal').value||0, reno=+$('reno').value||0, arv=+$('arv').value||0,
+          term=+$('term').value||30, mins=+$('ins').value||0, mtax=+$('tax').value||0,
+          hoa=+$('hoa').value||0, rate=+$('rate').value||0;
+    const totalProp = 0.10*reno + bal + reno;
+    const financeable = bal + reno + (bal+reno)*0.04;
+    const maxFHA = arv*1.10;
+    const desired = Math.min(financeable, maxFHA);
+    const ufmip = desired*0.0175;
+    const final = desired + ufmip;
+    const r=rate/1200;
+    const n = term===30 ? 360 : 180;
+    const pi = r>0 ? final*r/(1-Math.pow(1+r,-n)) : final/n;  // on FINAL loan
+    const mi=(final*0.0075)/12;
+    const total = pi + mins + mtax + 0 + mi;  // [Deleted Value]=0
+    const cashNo = Math.max(financeable - maxFHA, 0);
+    const income = 2*(total + hoa);
+    $('rateVal').textContent=rate.toFixed(1)+'%';
+    $('rTotalProp').textContent=fmt0(totalProp); $('rFinanceable').textContent=fmt0(financeable);
+    $('rMaxFHA').textContent=fmt0(maxFHA); $('rDesired').textContent=fmt0(desired);
+    $('rUFMIP').textContent=fmt0(ufmip); $('rFinal').textContent=fmt0(final);
+    $('rPI').textContent=fmt0(pi); $('rIns').textContent=fmt0(mins); $('rTax').textContent=fmt0(mtax);
+    $('rMI').textContent=fmt0(mi); $('rHOA').textContent=fmt0(hoa); $('rTotal').textContent=fmt0(total);
+    $('rCashNo').textContent=fmt0(cashNo); $('rIncome').textContent=fmt0(income);
+  }
+  document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+  compute();
+})();
+</script>
+<style>
+.crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+.crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+.display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
+.lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+.trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+.calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+.calc::before{content:"";display:block;height:4px;background:var(--blue);}
+.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+@media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+.calc-inputs{padding:30px 30px 32px;}
+.calc-results{padding:30px;background:var(--color-ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+.summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+.summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+.field{margin-bottom:20px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+.lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+label .val{float:right;font-family:'JetBrains Mono',monospace;color:var(--blue);font-weight:600;}
+.radios{display:flex;gap:20px;}
+.radios label{font-weight:500;color:#2b3140;display:flex;align-items:center;gap:9px;margin:0;cursor:pointer;}
+.radios input{accent-color:var(--blue);width:17px;height:17px;}
+.input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+.input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+.input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+.input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain input,.input-plain select{flex:1;border:0;outline:0;padding:13px 6px 13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain .suffix{padding:0 14px 0 4px;color:var(--mute);font-weight:600;}
+input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
+.hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--mute);}
+.result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+.result--primary{background:#fff;border-color:#fff;}
+.result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+.result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+.result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+.result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+.cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+.cta-primary:hover{background:#2a57e6;}
+.micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+.body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+.body-content p{color:#2b3140;}
+.author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+.author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+.author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+.author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+.cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+.cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+.cta-card p{max-width:620px;margin:0 auto 18px;}
+.cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+.cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+.cta-card a:hover{background:var(--blue);}
+.related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+</style>
+</Layout>
