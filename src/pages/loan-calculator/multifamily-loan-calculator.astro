@@ -1,0 +1,202 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "Multifamily Loan Calculator: Estimate Your NOI, Cash Flow, DSCR & Cap Rate";
+const metaDescription = "Underwrite a multifamily property: potential gross income, effective gross income, operating expenses, NOI, cash flow before and after debt, DSCR, and cap rate.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/multifamily-loan-calculator/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Multifamily Loan Calculator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Multifamily Loan Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is NOI?","acceptedAnswer":{"@type":"Answer","text":"Net Operating Income is your effective gross income minus operating expenses — before debt service. It's the core number lenders and investors use to value a multifamily property."}},{"@type":"Question","name":"What is DSCR?","acceptedAnswer":{"@type":"Answer","text":"Debt-service coverage ratio is NOI divided by annual debt service. Lenders typically want 1.20 or higher."}},{"@type":"Question","name":"What down payment is needed?","acceptedAnswer":{"@type":"Answer","text":"20% down is typically the minimum for a non-owner-occupied multifamily rental. Owner-occupied 1-4 unit properties may qualify for as little as 3.5% down via FHA."}}]};
+---
+<Layout title={metaTitle} description={metaDescription} canonical={canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<main class="container-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span>
+    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <span aria-current="page">Multifamily Loan Calculator</span>
+  </nav>
+  <header class="calc-head">
+    <p class="eyebrow">Investor · Multifamily Underwriting</p>
+    <h1 class="display-lg">Multifamily Loan Calculator</h1>
+    <p class="lede">Underwrite a multifamily deal end to end: income, expenses, NOI, cash flow before and after debt, DSCR, and cap rate.</p>
+    <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+  </header>
+  <section class="calc" aria-label="Multifamily Loan Calculator">
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="field"><label for="price">Purchase Price</label><div class="input-money"><span>$</span><input id="price" type="number" inputmode="numeric" value="1000000" min="0" step="10000" /></div></div>
+        <div class="field"><label for="down">Down Payment %</label><div class="input-plain"><input id="down" type="number" inputmode="decimal" value="20" min="0" step="1" /><span class="suffix">%</span></div><p class="hint hint--mute">20% minimum for non-owner-occupied multifamily.</p></div>
+        <div class="field"><label for="units">Number of Units <span class="val" id="unitsVal">12</span></label><input id="units" type="range" min="1" max="500" step="1" value="12" /></div>
+        <div class="field-row">
+          <div class="field"><label for="rent">Market Rent (per unit/mo)</label><div class="input-money"><span>$</span><input id="rent" type="number" inputmode="numeric" value="1500" min="0" step="25" /></div></div>
+          <div class="field"><label for="other">Other Income (per unit/mo)</label><div class="input-money"><span>$</span><input id="other" type="number" inputmode="numeric" value="25" min="0" step="5" /></div></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="vac">Vacancy &amp; Credit Loss %</label><div class="input-plain"><input id="vac" type="number" inputmode="decimal" value="5" min="0" step="0.5" /><span class="suffix">%</span></div></div>
+          <div class="field"><label for="conc">Concessions %</label><div class="input-plain"><input id="conc" type="number" inputmode="decimal" value="2" min="0" step="0.5" /><span class="suffix">%</span></div></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="ptax">Property Taxes (annual)</label><div class="input-money"><span>$</span><input id="ptax" type="number" inputmode="numeric" value="22000" min="0" step="500" /></div></div>
+          <div class="field"><label for="ins">Insurance (annual)</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="8000" min="0" step="500" /></div></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="util">Owner-Paid Utilities (annual)</label><div class="input-money"><span>$</span><input id="util" type="number" inputmode="numeric" value="12000" min="0" step="500" /></div></div>
+          <div class="field"><label for="repairs">Repairs &amp; Maintenance (annual)</label><div class="input-money"><span>$</span><input id="repairs" type="number" inputmode="numeric" value="18000" min="0" step="500" /></div></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="capex">CapEx Reserve (per unit/yr)</label><div class="input-money"><span>$</span><input id="capex" type="number" inputmode="numeric" value="300" min="0" step="50" /></div></div>
+          <div class="field"><label for="mgmt">Management Fee (% of EGI)</label><div class="input-plain"><input id="mgmt" type="number" inputmode="decimal" value="8" min="0" step="0.5" /><span class="suffix">%</span></div></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="rate">Interest Rate (annual)</label><div class="input-plain"><input id="rate" type="number" inputmode="decimal" value="6" min="0" step="0.1" /><span class="suffix">%</span></div></div>
+          <div class="field"><label for="amort">Amortization (years)</label><div class="input-plain"><input id="amort" type="number" inputmode="numeric" value="30" min="1" step="1" /></div></div>
+        </div>
+      </div>
+      <div class="calc-results" aria-live="polite">
+        <p class="summary-title">Summary</p>
+        <p class="summary-sub">Income</p>
+        <div class="result"><span class="result-label">Potential Gross Income (PGI)</span><span class="result-value" id="rPGI">$219,600</span></div>
+        <div class="result"><span class="result-label">Vacancy / Credit Loss</span><span class="result-value" id="rVac">$10,980</span></div>
+        <div class="result"><span class="result-label">Concessions</span><span class="result-value" id="rConc">$4,392</span></div>
+        <div class="result result--primary"><span class="result-label">Effective Gross Income (EGI)</span><span class="result-value" id="rEGI">$204,228</span></div>
+        <p class="summary-sub">Expenses &amp; NOI</p>
+        <div class="result"><span class="result-label">Operating Expenses</span><span class="result-value" id="rOpex">$76,338</span></div>
+        <div class="result result--primary"><span class="result-label">Net Operating Income (NOI)</span><span class="result-value" id="rNOI">$127,890</span></div>
+        <div class="result"><span class="result-label">CapEx Reserves</span><span class="result-value" id="rCapex">$3,600</span></div>
+        <div class="result result--primary"><span class="result-label">Cash Flow Before Debt Service</span><span class="result-value" id="rCFBefore">$124,290</span></div>
+        <p class="summary-sub">Financing</p>
+        <div class="result"><span class="result-label">Loan Amount</span><span class="result-value" id="rLoan">$800,000</span></div>
+        <div class="result"><span class="result-label">Annual Debt Service</span><span class="result-value" id="rADS">$48,000</span></div>
+        <div class="result result--primary"><span class="result-label">Cash Flow After Debt Service</span><span class="result-value" id="rCFAfter">$76,290</span></div>
+        <div class="result"><span class="result-label">DSCR</span><span class="result-value" id="rDSCR">2.66</span></div>
+        <div class="result result--primary"><span class="result-label">Cap Rate</span><span class="result-value" id="rCap">12.79%</span></div>
+        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <p class="micro">Estimates only — not a commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+  <section class="body-content">
+    <figure class="author">
+      <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+        <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+      </a>
+      <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+    </figure>
+    <div class="cta-card">
+      <h4>Ready to Take Your First Step?</h4>
+      <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+      <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+      <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+    </div>
+    <div class="cta-card">
+      <h4>Need a Pre-Approval Letter—Fast?</h4>
+      <p>Buying a home soon? Complete our short form and we'll connect you with the best loan options for your target property and financial situation—fast.</p>
+      <ul><li>Only 2 minutes to complete</li><li>Quick turnaround on pre-approval</li><li>No credit score impact</li></ul>
+      <a href="https://stairwaymortgage.com/purchase-inquiry">Get Pre-Approved Now</a>
+    </div>
+    <div class="cta-card">
+      <h4>Got a Few Questions First?</h4>
+      <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+      <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+    </div>
+    <h2>Important Disclaimer</h2>
+    <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed mortgage advisor before making financial decisions.</p>
+    <h2>Related Posts</h2>
+    <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+  </section>
+</main>
+<script is:inline>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt0 = (n) => (n<0?'-$':'$') + Math.abs(Math.round(n)).toLocaleString('en-US');
+  function compute(){
+    const price=+$('price').value||0, downpct=+$('down').value||0, units=+$('units').value||0,
+          rent=+$('rent').value||0, other=+$('other').value||0, vac=+$('vac').value||0,
+          conc=+$('conc').value||0, ptax=+$('ptax').value||0, ins=+$('ins').value||0,
+          util=+$('util').value||0, repairs=+$('repairs').value||0, capex=+$('capex').value||0,
+          mgmt=+$('mgmt').value||0, rate=+$('rate').value||0, amort=+$('amort').value||30;
+    const pgi=12*units*(rent+other);
+    const vacLoss=pgi*vac/100;
+    const concLoss=pgi*conc/100;
+    const egi=pgi-(vacLoss+concLoss);
+    const opex=ptax+ins+util+repairs+(mgmt/100*egi);
+    const noi=egi-opex;
+    const capexR=units*capex;
+    const cfBefore=noi-capexR;
+    const loan=price-(price*downpct/100);
+    let ads=0;
+    if(-loan!==0){
+      const i=rate/12;
+      const pay = i>0 ? loan*i/(1-Math.pow(1+i,-amort*12)) : loan/(amort*12);
+      ads=Math.ceil(pay)*12/100;
+    }
+    const cfAfter=cfBefore-ads;
+    const dscr=ads?noi/ads:0;
+    const cap=price?noi/price*100:0;
+    $('unitsVal').textContent=units;
+    $('rPGI').textContent=fmt0(pgi); $('rVac').textContent=fmt0(vacLoss); $('rConc').textContent=fmt0(concLoss);
+    $('rEGI').textContent=fmt0(egi); $('rOpex').textContent=fmt0(opex); $('rNOI').textContent=fmt0(noi);
+    $('rCapex').textContent=fmt0(capexR); $('rCFBefore').textContent=fmt0(cfBefore);
+    $('rLoan').textContent=fmt0(loan); $('rADS').textContent=fmt0(ads); $('rCFAfter').textContent=fmt0(cfAfter);
+    $('rDSCR').textContent=dscr.toFixed(2); $('rCap').textContent=cap.toFixed(2)+'%';
+  }
+  document.querySelectorAll('input').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+  compute();
+})();
+</script>
+<style>
+.crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+.crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+.display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(30px,4.6vw,48px);line-height:1.06;margin:0 0 18px;letter-spacing:-.01em;}
+.lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+.trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+.calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+.calc::before{content:"";display:block;height:4px;background:var(--blue);}
+.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+@media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+.calc-inputs{padding:30px 30px 32px;}
+.calc-results{padding:30px;background:var(--color-ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+.summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+.summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+.field{margin-bottom:20px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+.lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+label .val{float:right;font-family:'JetBrains Mono',monospace;color:var(--blue);font-weight:600;}
+.input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+.input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+.input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+.input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain input{flex:1;border:0;outline:0;padding:13px 6px 13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain .suffix{padding:0 14px 0 4px;color:var(--mute);font-weight:600;}
+input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
+.hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--mute);}
+.result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+.result--primary{background:#fff;border-color:#fff;}
+.result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+.result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+.result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+.result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+.cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+.cta-primary:hover{background:#2a57e6;}
+.micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+.body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+.body-content p{color:#2b3140;}
+.author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+.author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+.author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+.author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+.cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+.cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+.cta-card p{max-width:620px;margin:0 auto 18px;}
+.cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+.cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+.cta-card a:hover{background:var(--blue);}
+.related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+</style>
+</Layout>

@@ -1,0 +1,223 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "Buy & Hold Rental Property Calculator: Cash Flow, Appreciation, Equity, Depreciation Tax Savings & ROI";
+const metaDescription = "Analyze a buy-and-hold rental: monthly cash flow, 15- and 30-year appreciation, equity buildup, depreciation tax savings, total return, and annualized ROI.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/rental-property-calculator/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Rental Property Calculator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Buy & Hold: Cashflow, Appreciation, Equity, Depreciation & Tax Savings Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I analyze a buy-and-hold rental?","acceptedAnswer":{"@type":"Answer","text":"Look at four returns together: monthly cash flow, appreciation, equity buildup as the loan pays down, and depreciation tax savings. This calculator combines all four into a total return and annualized ROI."}},{"@type":"Question","name":"How does depreciation save taxes?","acceptedAnswer":{"@type":"Answer","text":"Residential rental buildings are depreciated over 27.5 years. The annual deduction times your tax bracket is your yearly tax savings."}},{"@type":"Question","name":"What down payment is required?","acceptedAnswer":{"@type":"Answer","text":"Conventional guidelines require a 15% minimum down payment on a single-unit investment property."}}]};
+---
+<Layout title={metaTitle} description={metaDescription} canonical={canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<main class="container-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span>
+    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <span aria-current="page">Rental Property Calculator</span>
+  </nav>
+  <header class="calc-head">
+    <p class="eyebrow">Investor · Buy &amp; Hold</p>
+    <h1 class="display-lg">Buy &amp; Hold: Cashflow, Appreciation, Equity, Depreciation &amp; Tax Savings Calculator</h1>
+    <p class="lede">See all four ways a rental builds wealth: monthly cash flow, appreciation, equity buildup, and depreciation tax savings — projected over 15 and 30 years.</p>
+    <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+  </header>
+  <section class="calc" aria-label="Rental Property Calculator">
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="field"><label for="price">Purchase Price</label><div class="input-money"><span>$</span><input id="price" type="number" inputmode="numeric" value="400000" min="0" step="1000" /></div></div>
+        <div class="field"><label for="down">Down Payment Percentage <span class="val" id="downVal">15%</span></label><input id="down" type="range" min="15" max="100" step="1" value="15" /><p class="hint hint--mute">15% minimum on a 1-unit investment. Need less down? Consider a Fix-and-Flip loan.</p></div>
+        <div class="field"><label for="rent">Estimated Rental Income</label><div class="input-money"><span>$</span><input id="rent" type="number" inputmode="numeric" value="4000" min="0" step="50" /></div><p class="hint hint--mute">Check Zillow for comparable rentals.</p></div>
+        <div class="field"><label for="taxbr">Tax Bracket %</label><div class="input-plain"><input id="taxbr" type="number" inputmode="decimal" value="24" min="0" step="1" /><span class="suffix">%</span></div><p class="hint hint--mute">Used for your depreciation tax benefit.</p></div>
+        <div class="field"><label for="term">Term of Loan</label><div class="input-plain"><select id="term">
+          <option value="15">15 years</option>
+          <option value="20">20 years</option>
+          <option value="30" selected>30 years</option>
+        </select></div></div>
+        <div class="field-row">
+          <div class="field"><label for="ins">Annual Insurance</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="2400" min="0" step="100" /></div></div>
+          <div class="field"><label for="tax">Annual Taxes</label><div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="5000" min="0" step="100" /></div></div>
+        </div>
+        <div class="field"><label for="hoa">Monthly HOA</label><div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="10" /></div></div>
+        <div class="field"><label for="rate">Estimated Interest Rate <span class="val" id="rateVal">6.99%</span></label><input id="rate" type="range" min="5" max="10" step="0.1" value="6.99" /></div>
+        <div class="field">
+          <span class="lbl">Are you thinking about buying another home to continue your wealth journey?</span>
+          <div class="radios" role="radiogroup" aria-label="Buying another home">
+            <label><input type="radio" name="wealth" value="1" /> Yes</label>
+            <label><input type="radio" name="wealth" value="2" checked /> No</label>
+          </div>
+        </div>
+      </div>
+      <div class="calc-results" aria-live="polite">
+        <p class="summary-title">Summary</p>
+        <p class="summary-sub">The Deal</p>
+        <div class="result"><span class="result-label">Desired Loan Amount</span><span class="result-value" id="rDesired">$340,000</span></div>
+        <div class="result"><span class="result-label">Principal &amp; Interest Payment</span><span class="result-value" id="rPI">$2,260</span></div>
+        <div class="result"><span class="result-label">Monthly Insurance</span><span class="result-value" id="rIns">$200</span></div>
+        <div class="result"><span class="result-label">Monthly Taxes</span><span class="result-value" id="rTax">$417</span></div>
+        <div class="result"><span class="result-label">Monthly PMI</span><span class="result-value" id="rPMI">$116</span></div>
+        <div class="result"><span class="result-label">HOA (paid separately)</span><span class="result-value" id="rHOA">$0</span></div>
+        <div class="result"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$2,993</span></div>
+        <div class="result result--primary"><span class="result-label">Net Monthly Income (cash flow)</span><span class="result-value" id="rNet">$1,007</span></div>
+        <div class="result result--primary"><span class="result-label">Cash to Close — no credit</span><span class="result-value" id="rCashNo">$84,000</span><span class="result-note">Includes 6% estimated closing costs. Not a Loan Estimate.</span></div>
+        <div class="result result--primary"><span class="result-label">Cash to Close — with 3% seller credit</span><span class="result-value" id="rCashSC">$72,000</span></div>
+        <p class="summary-sub">15-Year Growth</p>
+        <div class="result"><span class="result-label">Estimated Value (15 yrs)</span><span class="result-value" id="rVal15">$623,187</span></div>
+        <div class="result"><span class="result-label">Mortgage Balance (15 yrs)</span><span class="result-value" id="rBal15">$251,567</span></div>
+        <div class="result"><span class="result-label">Equity (15 yrs)</span><span class="result-value" id="rEq15">$371,620</span></div>
+        <div class="result"><span class="result-label">Cash Flow Collected (15 yrs)</span><span class="result-value" id="rCf15">$224,843</span></div>
+        <div class="result"><span class="result-label">Tax Saved via Depreciation (15 yrs)</span><span class="result-value" id="rDep15">$41,891</span></div>
+        <div class="result result--primary"><span class="result-label">Total Return (15 yrs)</span><span class="result-value" id="rTot15">$638,355</span></div>
+        <div class="result result--primary"><span class="result-label">Annual ROI % (15 yrs)</span><span class="result-value" id="rRoi15">13.1%</span></div>
+        <p class="summary-sub">30-Year Growth</p>
+        <div class="result"><span class="result-label">Estimated Value (30 yrs)</span><span class="result-value" id="rVal30">$970,905</span></div>
+        <div class="result"><span class="result-label">Mortgage Balance (30 yrs)</span><span class="result-value" id="rBal30">$0</span></div>
+        <div class="result"><span class="result-label">Equity (30 yrs)</span><span class="result-value" id="rEq30">$970,905</span></div>
+        <div class="result"><span class="result-label">Cash Flow Collected (30 yrs)</span><span class="result-value" id="rCf30">$575,142</span></div>
+        <div class="result"><span class="result-label">Tax Saved via Depreciation (30 yrs)</span><span class="result-value" id="rDep30">$83,782</span></div>
+        <div class="result result--primary"><span class="result-label">Total Return (30 yrs)</span><span class="result-value" id="rTot30">$1,629,829</span></div>
+        <div class="result result--primary"><span class="result-label">Annual ROI % (30 yrs)</span><span class="result-value" id="rRoi30">10.0%</span></div>
+        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <p class="micro">Estimates only — not a commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+  <section class="body-content">
+    <figure class="author">
+      <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+        <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+      </a>
+      <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+    </figure>
+    <div class="cta-card">
+      <h4>Ready to Take Your First Step?</h4>
+      <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+      <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+      <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+    </div>
+    <div class="cta-card">
+      <h4>Need a Pre-Approval Letter—Fast?</h4>
+      <p>Buying a home soon? Complete our short form and we'll connect you with the best loan options for your target property and financial situation—fast.</p>
+      <ul><li>Only 2 minutes to complete</li><li>Quick turnaround on pre-approval</li><li>No credit score impact</li></ul>
+      <a href="https://stairwaymortgage.com/purchase-inquiry">Get Pre-Approved Now</a>
+    </div>
+    <div class="cta-card">
+      <h4>Got a Few Questions First?</h4>
+      <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+      <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+    </div>
+    <h2>Important Disclaimer</h2>
+    <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed mortgage advisor before making financial decisions.</p>
+    <h2>Related Posts</h2>
+    <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+  </section>
+</main>
+<script is:inline>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt0 = (n) => (n<0?'-$':'$') + Math.abs(Math.round(n)).toLocaleString('en-US');
+  function compute(){
+    const price=+$('price').value||0, downpct=+$('down').value||0, rent=+$('rent').value||0,
+          taxbr=+$('taxbr').value||0, term=+$('term').value||30, annIns=+$('ins').value||0,
+          annTax=+$('tax').value||0, hoa=+$('hoa').value||0, rate=+$('rate').value||0;
+    const desired=Math.min(price-(price*downpct/100), 0.85*price);
+    const r=rate/1200;
+    const n = term===30 ? 360 : 180;
+    const pi = r>0 ? desired*r/(1-Math.pow(1+r,-n)) : desired/n;
+    const mins=annIns/12, mtax=annTax/12;
+    const ltv=price?desired/price:0;
+    const pmi=(ltv>0.801 && ltv<=0.85) ? (desired*0.0041)/12 : 0;
+    const total=pi+mins+mtax+pmi;
+    const cashNo=downpct*price*0.01 + 0.06*price;
+    const cashSC=downpct*price*0.01 + 0.03*price;
+    const netMonthly=rent-total;
+    const val15=price*Math.pow(1.03,15);
+    const bal15=r>0 ? desired*((Math.pow(1+r,360)-Math.pow(1+r,180))/(Math.pow(1+r,360)-1)) : desired*0.5;
+    const eq15=val15-bal15;
+    const cf15=12*netMonthly*((Math.pow(1.03,15)-1)/0.03);
+    const dep15=((0.8*price)/27.5)*(taxbr/100)*15;
+    const tot15=eq15+cf15+dep15;
+    const biz15=rent*180*0.25;
+    const roi15 = (cashSC && (tot15-biz15)>0) ? 100*(Math.pow((tot15-biz15)/cashSC,1/15)-1) : 0;
+    const val30=price*Math.pow(1.03,30);
+    const bal30=0;
+    const eq30=val30-bal30;
+    const cf30=12*netMonthly*((Math.pow(1.03,30)-1)/0.03);
+    const dep30=((0.8*price)/27.5)*(taxbr/100)*30;
+    const tot30=eq30+cf30+dep30;
+    const biz30=rent*360*0.25;
+    const roi30 = (cashSC && (tot30-biz30)>0) ? 100*(Math.pow((tot30-biz30)/cashSC,1/30)-1) : 0;
+    $('downVal').textContent=downpct+'%'; $('rateVal').textContent=rate.toFixed(2)+'%';
+    $('rDesired').textContent=fmt0(desired); $('rPI').textContent=fmt0(pi); $('rIns').textContent=fmt0(mins);
+    $('rTax').textContent=fmt0(mtax); $('rPMI').textContent=fmt0(pmi); $('rHOA').textContent=fmt0(hoa);
+    $('rTotal').textContent=fmt0(total); $('rNet').textContent=fmt0(netMonthly);
+    $('rCashNo').textContent=fmt0(cashNo); $('rCashSC').textContent=fmt0(cashSC);
+    $('rVal15').textContent=fmt0(val15); $('rBal15').textContent=fmt0(bal15); $('rEq15').textContent=fmt0(eq15);
+    $('rCf15').textContent=fmt0(cf15); $('rDep15').textContent=fmt0(dep15); $('rTot15').textContent=fmt0(tot15);
+    $('rRoi15').textContent=roi15.toFixed(1)+'%';
+    $('rVal30').textContent=fmt0(val30); $('rBal30').textContent=fmt0(bal30); $('rEq30').textContent=fmt0(eq30);
+    $('rCf30').textContent=fmt0(cf30); $('rDep30').textContent=fmt0(dep30); $('rTot30').textContent=fmt0(tot30);
+    $('rRoi30').textContent=roi30.toFixed(1)+'%';
+  }
+  document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+  compute();
+})();
+</script>
+<style>
+.crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+.crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+.display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,4.2vw,44px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
+.lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+.trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+.calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+.calc::before{content:"";display:block;height:4px;background:var(--blue);}
+.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+@media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+.calc-inputs{padding:30px 30px 32px;}
+.calc-results{padding:30px;background:var(--color-ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+.summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+.summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+.field{margin-bottom:20px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+.lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+label .val{float:right;font-family:'JetBrains Mono',monospace;color:var(--blue);font-weight:600;}
+.radios{display:flex;gap:20px;}
+.radios label{font-weight:500;color:#2b3140;display:flex;align-items:center;gap:9px;margin:0;cursor:pointer;}
+.radios input{accent-color:var(--blue);width:17px;height:17px;}
+.input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+.input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+.input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+.input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain input,.input-plain select{flex:1;border:0;outline:0;padding:13px 6px 13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain .suffix{padding:0 14px 0 4px;color:var(--mute);font-weight:600;}
+input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
+.hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--mute);}
+.result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+.result--primary{background:#fff;border-color:#fff;}
+.result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+.result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+.result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+.result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+.cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+.cta-primary:hover{background:#2a57e6;}
+.micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+.body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+.body-content p{color:#2b3140;}
+.author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+.author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+.author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+.author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+.cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+.cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+.cta-card p{max-width:620px;margin:0 auto 18px;}
+.cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+.cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+.cta-card a:hover{background:var(--blue);}
+.related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+</style>
+</Layout>
