@@ -1,0 +1,178 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "DSCR Refinance Calculator: Estimate Your New Payment, Monthly Savings, Max Loan & Cash Back on a Rental";
+const metaDescription = "Calculate a DSCR investment rate-reduction refinance: new payment, monthly and annual savings, maximum loan based on rent and DSCR ratio, and estimated cash back.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/dscr-loan-refinance/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"DSCR Refinance Calculator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"DSCR Investment Rate Reduction Refinance","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a DSCR refinance?","acceptedAnswer":{"@type":"Answer","text":"A DSCR (debt-service coverage ratio) refinance qualifies an investment property on its rental income rather than your personal income, lowering your rate or pulling cash out."}},{"@type":"Question","name":"What DSCR ratio do lenders require?","acceptedAnswer":{"@type":"Answer","text":"Most DSCR lenders require a minimum ratio of 1.0; some go as high as 1.35, and a few allow 0.75 at a higher rate."}},{"@type":"Question","name":"How much cash can I pull out?","acceptedAnswer":{"@type":"Answer","text":"Cash back is your maximum loan (up to 80% of value or what the rent supports) minus your current balance and roughly 3% closing costs."}}]};
+---
+<Layout title={metaTitle} description={metaDescription} canonical={canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<main class="container-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span>
+    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <span aria-current="page">DSCR Refinance Calculator</span>
+  </nav>
+  <header class="calc-head">
+    <p class="eyebrow">Investor · DSCR · Rate Reduction Refinance</p>
+    <h1 class="display-lg">DSCR Investment Rate Reduction Refinance</h1>
+    <p class="lede">Lower your rate or pull cash from a rental — qualified on the property's income, not yours. Estimate your new payment, savings, max loan, and cash back.</p>
+    <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+  </header>
+  <section class="calc" aria-label="DSCR Refinance Calculator">
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="field"><label for="bal">Current Loan Balance</label><div class="input-money"><span>$</span><input id="bal" type="number" inputmode="numeric" value="250000" min="0" step="1000" /></div></div>
+        <div class="field"><label for="curpi">Monthly Principal &amp; Interest Payment</label><div class="input-money"><span>$</span><input id="curpi" type="number" inputmode="numeric" value="2700" min="0" step="10" /></div><p class="hint hint--mute">Your current payment excluding taxes, insurance, and MI.</p></div>
+        <div class="field"><label for="pmi">Monthly PMI</label><div class="input-money"><span>$</span><input id="pmi" type="number" inputmode="numeric" value="0" min="0" step="10" /></div><p class="hint hint--mute">Skip if not applicable.</p></div>
+        <div class="field-row">
+          <div class="field"><label for="tax">Monthly Property Taxes</label><div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="400" min="0" step="10" /></div></div>
+          <div class="field"><label for="ins">Monthly Homeowners Insurance</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="200" min="0" step="10" /></div></div>
+        </div>
+        <div class="field"><label for="hoa">Monthly HOA</label><div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="10" /></div></div>
+        <div class="field"><label for="home">Estimated Current Home Value</label><div class="input-money"><span>$</span><input id="home" type="number" inputmode="numeric" value="400000" min="0" step="1000" /></div><p class="hint hint--mute">Use an appraisal, online estimate, or your best guess.</p></div>
+        <div class="field"><label for="rent">Estimated Rental Income</label><div class="input-money"><span>$</span><input id="rent" type="number" inputmode="numeric" value="4000" min="0" step="50" /></div><p class="hint hint--mute">Check Zillow for comparable rentals.</p></div>
+        <div class="field"><label for="dscr">DSCR Ratio</label><div class="input-plain"><input id="dscr" type="number" inputmode="decimal" value="1" min="0.5" step="0.05" /></div><p class="hint hint--mute">Rent ÷ total PITIA. Most lenders require 1.0+; a few allow 0.75.</p></div>
+        <div class="field"><label for="rate">Estimated New Interest Rate</label><div class="input-plain"><input id="rate" type="number" inputmode="decimal" value="6.99" min="0" step="0.01" /><span class="suffix">%</span></div><p class="hint hint--mute">If unsure, assume ~0.5% lower than your current rate.</p></div>
+        <div class="field">
+          <span class="lbl">Are you thinking about buying another home after this one to continue your wealth journey?</span>
+          <div class="radios" role="radiogroup" aria-label="Buying another home">
+            <label><input type="radio" name="wealth" value="1" /> Yes</label>
+            <label><input type="radio" name="wealth" value="2" checked /> No</label>
+          </div>
+        </div>
+      </div>
+      <div class="calc-results" aria-live="polite">
+        <p class="summary-title">Summary</p>
+        <p class="summary-sub">Rate Reduction</p>
+        <div class="result result--primary"><span class="result-label">New Principal &amp; Interest Payment</span><span class="result-value" id="rNewPI">$1,728.05</span></div>
+        <div class="result result--primary"><span class="result-label">Monthly Savings</span><span class="result-value" id="rMonthlySave">$971.95</span></div>
+        <div class="result result--primary"><span class="result-label">Annual Savings</span><span class="result-value" id="rAnnualSave">$11,663</span><span class="result-note">Refinance costs ~3% of loan; varies by state. Not a Loan Estimate.</span></div>
+        <p class="summary-sub">Optional Cash Out (based on rent)</p>
+        <div class="result"><span class="result-label">Maximum Loan per Rent</span><span class="result-value" id="rMaxLoan">$320,000</span><span class="result-note">Increase rent or lower DSCR to 0.75 to raise this.</span></div>
+        <div class="result result--primary"><span class="result-label">Estimated Cash Back</span><span class="result-value" id="rCashBack">$62,500</span><span class="result-note">Includes ~3% estimated closing costs. Not a Loan Estimate.</span></div>
+        <div class="result"><span class="result-label">Total Monthly Housing Expense (with cash back)</span><span class="result-value" id="rTotalHousing">$3,800</span></div>
+        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <p class="micro">Estimates only — not a commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+  <section class="body-content">
+    <figure class="author">
+      <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+        <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+      </a>
+      <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+    </figure>
+    <div class="cta-card">
+      <h4>Ready to Take Your First Step?</h4>
+      <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+      <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+      <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+    </div>
+    <div class="cta-card">
+      <h4>Need a Pre-Approval Letter—Fast?</h4>
+      <p>Buying a home soon? Complete our short form and we'll connect you with the best loan options for your target property and financial situation—fast.</p>
+      <ul><li>Only 2 minutes to complete</li><li>Quick turnaround on pre-approval</li><li>No credit score impact</li></ul>
+      <a href="https://stairwaymortgage.com/purchase-inquiry">Get Pre-Approved Now</a>
+    </div>
+    <div class="cta-card">
+      <h4>Got a Few Questions First?</h4>
+      <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+      <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+    </div>
+    <h2>Important Disclaimer</h2>
+    <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed mortgage advisor before making financial decisions.</p>
+    <h2>Related Posts</h2>
+    <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+  </section>
+</main>
+<script is:inline>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt0 = (n) => (n<0?'-$':'$') + Math.abs(Math.round(n)).toLocaleString('en-US');
+  const fmt2 = (n) => (n<0?'-$':'$') + Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  function compute(){
+    const bal=+$('bal').value||0, curpi=+$('curpi').value||0, pmi=+$('pmi').value||0,
+          mtax=+$('tax').value||0, mins=+$('ins').value||0, hoa=+$('hoa').value||0,
+          home=+$('home').value||0, rent=+$('rent').value||0, dscr=+$('dscr').value||1, rate=+$('rate').value||0;
+    const r=rate/1200;
+    const newPI = r>0 ? Math.ceil(((bal*1.04)*r/(1-Math.pow(1+r,-360)))*100)/100 : (bal*1.04)/360;
+    const msave = curpi - newPI;
+    const asave = msave*12;
+    const maxPIrent = rent/dscr - mtax - mins - mins;
+    let maxLoan = bal + 0.04*bal;
+    if(r>0){
+      const pvFactor = (Math.pow(1+r,360)-1)/(r*Math.pow(1+r,360));
+      const rawLoan = Math.floor(maxPIrent*pvFactor);
+      maxLoan = Math.max(Math.min(0.8*home, rawLoan), bal + 0.04*bal);
+    }
+    const cashBack = maxLoan - bal - bal*0.03;
+    const totalHousing = maxPIrent + mtax + mins;
+    $('rNewPI').textContent=fmt2(newPI); $('rMonthlySave').textContent=fmt2(msave); $('rAnnualSave').textContent=fmt0(asave);
+    $('rMaxLoan').textContent=fmt0(maxLoan); $('rCashBack').textContent=fmt0(cashBack); $('rTotalHousing').textContent=fmt0(totalHousing);
+  }
+  document.querySelectorAll('input').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+  compute();
+})();
+</script>
+<style>
+.crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+.crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+.display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(30px,4.6vw,48px);line-height:1.06;margin:0 0 18px;letter-spacing:-.01em;}
+.lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+.trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+.calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+.calc::before{content:"";display:block;height:4px;background:var(--blue);}
+.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+@media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+.calc-inputs{padding:30px 30px 32px;}
+.calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+.summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+.summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+.field{margin-bottom:20px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+.lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+.radios{display:flex;gap:20px;}
+.radios label{font-weight:500;color:#2b3140;display:flex;align-items:center;gap:9px;margin:0;cursor:pointer;}
+.radios input{accent-color:var(--blue);width:17px;height:17px;}
+.input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+.input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+.input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+.input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain input{flex:1;border:0;outline:0;padding:13px 6px 13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain .suffix{padding:0 14px 0 4px;color:var(--mute);font-weight:600;}
+input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
+.hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--mute);}
+.result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+.result--primary{background:#fff;border-color:#fff;}
+.result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+.result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+.result-value{font-family:'Fraunces',serif;font-weight:600;font-size:26px;letter-spacing:-.01em;color:#fff;}
+.result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+.cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+.cta-primary:hover{background:#2a57e6;}
+.micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+.body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+.body-content p{color:#2b3140;}
+.author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+.author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+.author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+.author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+.cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+.cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+.cta-card p{max-width:620px;margin:0 auto 18px;}
+.cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+.cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+.cta-card a:hover{background:var(--blue);}
+.related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+</style>
+</Layout>

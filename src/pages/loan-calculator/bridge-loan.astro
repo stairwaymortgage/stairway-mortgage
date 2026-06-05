@@ -1,0 +1,242 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "Bridge Loan Calculator: Estimate Your Equity Transfer, Bridge Payment, Recast & Capital Gains Tax Saved";
+const metaDescription = "Calculate a bridge loan to buy before you sell: net equity available, initial down payment and payment, post-sale recast, capital gains tax exclusion savings, and reinvestment growth.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/bridge-loan/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Bridge Loan Calculator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Bridge Loan, Capital Gains Tax Exclusion & Payment Recast Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a bridge loan?","acceptedAnswer":{"@type":"Answer","text":"A bridge loan lets you tap the equity in your current home to buy a new one before your existing home sells, then recast the loan once the sale closes."}},{"@type":"Question","name":"How much equity can I use?","acceptedAnswer":{"@type":"Answer","text":"Up to 80% combined loan-to-value on a departing primary residence, or 75% on an investment or second home, minus exit costs and your existing mortgage balance."}},{"@type":"Question","name":"How does the capital gains exclusion work?","acceptedAnswer":{"@type":"Answer","text":"If you lived in the home 2 of the last 5 years, you may exclude up to $250,000 of gain ($500,000 filing jointly) from capital gains tax."}}]};
+---
+<Layout title={metaTitle} description={metaDescription} canonical={canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<main class="container-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span>
+    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <span aria-current="page">Bridge Loan Calculator</span>
+  </nav>
+  <header class="calc-head">
+    <p class="eyebrow">Bridge · Buy Before You Sell</p>
+    <h1 class="display-lg">Bridge Loan, Capital Gains Tax Exclusion &amp; Payment Recast Calculator</h1>
+    <p class="lede">Buy your next home before the current one sells. Estimate your usable equity, bridge payment, post-sale recast, and the capital gains tax you could save.</p>
+    <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+  </header>
+  <section class="calc" aria-label="Bridge Loan Calculator">
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="field">
+          <span class="lbl">Are you selling your primary residence?</span>
+          <div class="radios" role="radiogroup" aria-label="Selling primary residence">
+            <label><input type="radio" name="primary" value="1" checked /> Yes</label>
+            <label><input type="radio" name="primary" value="2" /> No</label>
+          </div>
+          <p class="hint hint--mute">80% max leverage on a primary residence; 75% on investment or second home.</p>
+        </div>
+        <div class="field"><label for="sales">Sales price of home to exchange</label><div class="input-money"><span>$</span><input id="sales" type="number" inputmode="numeric" value="500000" min="0" step="1000" /></div></div>
+        <div class="field"><label for="mtgbal">Mortgage balance of home to exchange</label><div class="input-money"><span>$</span><input id="mtgbal" type="number" inputmode="numeric" value="200000" min="0" step="1000" /></div></div>
+        <div class="field"><label for="newprice">Purchase price of new home</label><div class="input-money"><span>$</span><input id="newprice" type="number" inputmode="numeric" value="800000" min="0" step="1000" /></div></div>
+        <div class="field"><label for="holdback">Cash Hold Back Percentage <span class="val" id="holdbackVal">20%</span></label><input id="holdback" type="range" min="0" max="100" step="1" value="20" /><p class="hint hint--mute">Net equity you want to keep on hand instead of putting toward the new home.</p></div>
+        <div class="field"><label for="exit">Estimated Exit Costs (% of sales price)</label><div class="input-plain"><input id="exit" type="number" inputmode="numeric" value="5" min="0" step="0.5" /><span class="suffix">%</span></div><p class="hint hint--mute">~6% with a Realtor; add 1–2% for transfer taxes, title, attorney. Varies by state.</p></div>
+        <div class="field-row">
+          <div class="field"><label for="ins">Annual Insurance</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="2400" min="0" step="100" /></div></div>
+          <div class="field"><label for="tax">Annual Taxes</label><div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="5000" min="0" step="100" /></div></div>
+        </div>
+        <div class="field"><label for="hoa">Monthly HOA</label><div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="10" /></div></div>
+        <div class="field"><label for="rate">Estimated Interest Rate <span class="val" id="rateVal">6.99%</span></label><input id="rate" type="range" min="5" max="10" step="0.1" value="6.99" /></div>
+        <div class="field">
+          <span class="lbl">Did you live in the home 2 of the last 5 years?</span>
+          <div class="radios" role="radiogroup" aria-label="Lived 2 of 5 years">
+            <label><input type="radio" name="lived" value="1" checked /> Yes</label>
+            <label><input type="radio" name="lived" value="2" /> No</label>
+          </div>
+        </div>
+        <div class="field">
+          <span class="lbl">How do you file income taxes?</span>
+          <div class="radios" role="radiogroup" aria-label="Filing status">
+            <label><input type="radio" name="filing" value="1" /> Individual</label>
+            <label><input type="radio" name="filing" value="2" checked /> Joint married</label>
+          </div>
+          <p class="hint hint--mute">Capital gains exclusion: $250,000 individual / $500,000 joint.</p>
+        </div>
+        <div class="field"><label for="cgrate">Capital Gains Tax Rate %</label><div class="input-plain"><input id="cgrate" type="number" inputmode="numeric" value="15" min="0" step="1" /><span class="suffix">%</span></div><p class="hint hint--mute">0%, 15%, or 20% depending on your taxable income.</p></div>
+      </div>
+      <div class="calc-results" aria-live="polite">
+        <p class="summary-title">Summary</p>
+        <p class="summary-sub">Equity Available</p>
+        <div class="result"><span class="result-label">Total Estimated Net Equity Available</span><span class="result-value" id="rNetEquity">$266,750</span><span class="result-note">After exit costs, payoff, and ~3% bridge costs.</span></div>
+        <div class="result"><span class="result-label">Equity You Will Keep On Hand</span><span class="result-value" id="rKeep">$53,350</span></div>
+        <div class="result"><span class="result-label">Total Equity to Transfer (both sales close)</span><span class="result-value" id="rTransfer">$213,400</span></div>
+        <p class="summary-sub">New Purchase</p>
+        <div class="result"><span class="result-label">Initial Equity as Down Payment</span><span class="result-value" id="rInitDP">$175,000</span><span class="result-note">Subject to 80% (primary) / 75% (investment) CLTV.</span></div>
+        <div class="result"><span class="result-label">Initial Loan Amount</span><span class="result-value" id="rInitLoan">$625,000</span></div>
+        <div class="result"><span class="result-label">Initial Principal &amp; Interest</span><span class="result-value" id="rInitPI">$4,153.94</span></div>
+        <div class="result"><span class="result-label">Monthly Insurance</span><span class="result-value" id="rIns">$200</span></div>
+        <div class="result"><span class="result-label">Monthly Taxes</span><span class="result-value" id="rTax">$417</span></div>
+        <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
+        <div class="result result--primary"><span class="result-label">Initial Total Monthly Housing Expense</span><span class="result-value" id="rInitTotal">$4,771</span></div>
+        <div class="result result--primary"><span class="result-label">Cash to Close — without seller credit</span><span class="result-value" id="rCashNo">$48,000</span><span class="result-note">Reduced by bridge funds; includes 6% estimated closing costs. Not a Loan Estimate.</span></div>
+        <div class="result result--primary"><span class="result-label">Cash to Close — with 6% seller credit</span><span class="result-value" id="rCashSC">$0</span></div>
+        <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$9,541</span><span class="result-note">Assumes a 50% DTI qualifying ratio.</span></div>
+        <p class="summary-sub">After Recast (departing home sells)</p>
+        <div class="result"><span class="result-label">Remaining Equity to Transfer</span><span class="result-value" id="rRemEq">$38,400</span></div>
+        <div class="result"><span class="result-label">Final Loan Amount</span><span class="result-value" id="rFinalLoan">$586,600</span></div>
+        <div class="result"><span class="result-label">New Principal &amp; Interest</span><span class="result-value" id="rNewPI">$3,898.72</span></div>
+        <div class="result result--primary"><span class="result-label">Final Total Monthly Housing Expense</span><span class="result-value" id="rFinalTotal">$4,515</span></div>
+        <p class="summary-sub">Capital Gains Tax Saved</p>
+        <div class="result result--primary"><span class="result-label">1st-Year Tax Saved (exclusion rule)</span><span class="result-value" id="rTaxSaved">$40,013</span></div>
+        <div class="result"><span class="result-label">Value of that savings in 15 years (3%)</span><span class="result-value" id="rG15">$62,338</span></div>
+        <div class="result"><span class="result-label">Value of that savings in 30 years (3%)</span><span class="result-value" id="rG30">$97,121</span></div>
+        <p class="summary-sub">Reinvest the Savings in Real Estate</p>
+        <div class="result"><span class="result-label">Rental Property Price (5x at 20% down)</span><span class="result-value" id="rRent">$200,063</span></div>
+        <div class="result"><span class="result-label">Estimated value after 15 years</span><span class="result-value" id="rRV15">$311,691</span></div>
+        <div class="result"><span class="result-label">Estimated value after 30 years</span><span class="result-value" id="rRV30">$485,604</span></div>
+        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <p class="micro">Estimates only — not a commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+  <section class="body-content">
+    <figure class="author">
+      <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+        <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+      </a>
+      <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+    </figure>
+    <div class="cta-card">
+      <h4>Ready to Take Your First Step?</h4>
+      <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+      <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+      <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+    </div>
+    <div class="cta-card">
+      <h4>Need a Pre-Approval Letter—Fast?</h4>
+      <p>Buying a home soon? Complete our short form and we'll connect you with the best loan options for your target property and financial situation—fast.</p>
+      <ul><li>Only 2 minutes to complete</li><li>Quick turnaround on pre-approval</li><li>No credit score impact</li></ul>
+      <a href="https://stairwaymortgage.com/purchase-inquiry">Get Pre-Approved Now</a>
+    </div>
+    <div class="cta-card">
+      <h4>Got a Few Questions First?</h4>
+      <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+      <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+    </div>
+    <h2>Important Disclaimer</h2>
+    <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed mortgage advisor before making financial decisions.</p>
+    <h2>Related Posts</h2>
+    <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+  </section>
+</main>
+<script is:inline>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt0 = (n) => (n<0?'-$':'$') + Math.abs(Math.round(n)).toLocaleString('en-US');
+  const fmt2 = (n) => (n<0?'-$':'$') + Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  function radio(name){const e=document.querySelector('input[name="'+name+'"]:checked');return e?+e.value:0;}
+  function compute(){
+    const primary=radio('primary'), sales=+$('sales').value||0, mtgbal=+$('mtgbal').value||0,
+          newprice=+$('newprice').value||0, holdback=+$('holdback').value||0, exitpct=+$('exit').value||0,
+          annIns=+$('ins').value||0, annTax=+$('tax').value||0, hoa=+$('hoa').value||0,
+          rate=+$('rate').value||0, cgrate=+$('cgrate').value||0;
+    const preCost = sales - (sales*exitpct/100) - mtgbal;
+    const bridgeCosts = preCost*0.03;
+    const netEquity = preCost - bridgeCosts;
+    const keep = netEquity*holdback/100;
+    const transfer = netEquity - keep;
+    const cap = (primary===1 ? 0.8 : 0.75)*sales - (sales*exitpct/100) - mtgbal;
+    const initDP = Math.max(0, Math.min(transfer, cap));
+    const initLoan = newprice - initDP;
+    const r=rate/100/12;
+    const pi = (L)=> r>0 ? Math.floor(((L*r)/(1-Math.pow(1+r,-360)))*100)/100 : Math.floor((L/360)*100)/100;
+    const initPI = pi(initLoan);
+    const ltv = newprice>0 ? initLoan/newprice : 0;
+    let pmi=0;
+    if(ltv>0.801 && ltv<=0.85) pmi=(initLoan*0.0012)/12;
+    else if(ltv>0.851 && ltv<=0.9) pmi=(initLoan*0.0017)/12;
+    else if(ltv>0.901 && ltv<=0.95) pmi=(initLoan*0.0025)/12;
+    else if(ltv>0.951 && ltv<=0.97) pmi=(initLoan*0.0032)/12;
+    const mins=annIns/12, mtax=annTax/12;
+    const initTotal = initPI + mins + pmi + mtax;
+    const cashNo = newprice - initDP - initLoan + newprice*0.06;
+    const cashSC = Math.max(cashNo - newprice*0.06, 0);
+    const income = initTotal/0.50;
+    const remEq = netEquity - initDP - keep;
+    const finalLoan = initLoan - remEq;
+    const newPI = pi(finalLoan);
+    const finalTotal = newPI + mins + mtax;
+    const taxSaved = netEquity*cgrate/100;
+    const g15 = taxSaved*Math.pow(1.03,15), g30 = taxSaved*Math.pow(1.03,30);
+    const rentPrice = taxSaved/0.20;
+    const rv15=rentPrice*Math.pow(1.03,15), rv30=rentPrice*Math.pow(1.03,30);
+    $('holdbackVal').textContent=holdback+'%'; $('rateVal').textContent=rate.toFixed(2)+'%';
+    $('rNetEquity').textContent=fmt0(netEquity); $('rKeep').textContent=fmt0(keep); $('rTransfer').textContent=fmt0(transfer);
+    $('rInitDP').textContent=fmt0(initDP); $('rInitLoan').textContent=fmt0(initLoan); $('rInitPI').textContent=fmt2(initPI);
+    $('rIns').textContent=fmt0(mins); $('rTax').textContent=fmt0(mtax); $('rHOA').textContent=fmt0(hoa);
+    $('rInitTotal').textContent=fmt0(initTotal); $('rCashNo').textContent=fmt0(cashNo); $('rCashSC').textContent=fmt0(cashSC);
+    $('rIncome').textContent=fmt0(income);
+    $('rRemEq').textContent=fmt0(remEq); $('rFinalLoan').textContent=fmt0(finalLoan); $('rNewPI').textContent=fmt2(newPI);
+    $('rFinalTotal').textContent=fmt0(finalTotal);
+    $('rTaxSaved').textContent=fmt0(taxSaved); $('rG15').textContent=fmt0(g15); $('rG30').textContent=fmt0(g30);
+    $('rRent').textContent=fmt0(rentPrice); $('rRV15').textContent=fmt0(rv15); $('rRV30').textContent=fmt0(rv30);
+  }
+  document.querySelectorAll('input').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+  compute();
+})();
+</script>
+<style>
+.crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+.crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+.display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(30px,4.6vw,48px);line-height:1.06;margin:0 0 18px;letter-spacing:-.01em;}
+.lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+.trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+.calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+.calc::before{content:"";display:block;height:4px;background:var(--blue);}
+.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+@media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+.calc-inputs{padding:30px 30px 32px;}
+.calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+.summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+.summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+.field{margin-bottom:20px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+.lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+label .val{float:right;font-family:'JetBrains Mono',monospace;color:var(--blue);font-weight:600;}
+.radios{display:flex;gap:20px;}
+.radios label{font-weight:500;color:#2b3140;display:flex;align-items:center;gap:9px;margin:0;cursor:pointer;}
+.radios input{accent-color:var(--blue);width:17px;height:17px;}
+.input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+.input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+.input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+.input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain input{flex:1;border:0;outline:0;padding:13px 6px 13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain .suffix{padding:0 14px 0 4px;color:var(--mute);font-weight:600;}
+input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
+.hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--mute);}
+.result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+.result--primary{background:#fff;border-color:#fff;}
+.result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+.result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+.result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+.result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+.cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+.cta-primary:hover{background:#2a57e6;}
+.micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+.body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+.body-content p{color:#2b3140;}
+.author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+.author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+.author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+.author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+.cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+.cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+.cta-card p{max-width:620px;margin:0 auto 18px;}
+.cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+.cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+.cta-card a:hover{background:var(--blue);}
+.related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+</style>
+</Layout>
