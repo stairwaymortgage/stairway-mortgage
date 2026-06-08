@@ -1,174 +1,127 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Get A Local Introduction"}]};
+import GetLocalIntroForm from '../components/forms/GetLocalIntroForm.astro';
+const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Get A Local Introduction"}]};
 ---
 
-<Layout title="Meet Your Local Mortgage Partner | Stairway Mortgage" description="Connect with a fully vetted and approved mortgage partner in your area. Local expertise with access to 300+ national lenders. Personal service you can trust." canonical="https://stairwaymortgage.com/get-a-local-introduction/">
+<Layout title="Get Introduced to a Trusted Local Professional | Stairway Mortgage" description="We connect you with fully vetted mortgage, real estate, title, and insurance professionals in your area. Local expertise, national reach." canonical="https://stairwaymortgage.com/get-a-local-introduction/">
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <nav class="container-page ft-breadcrumb" aria-label="Breadcrumb">
+
+  <nav class="container-page gli-breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span> <span>Get A Local Introduction</span>
   </nav>
-  <header class="container-prose ft-header">
-    <span class="eyebrow eyebrow-blue mb-4">Stairway</span>
-    <h1 class="display-md">Get A Local Introduction</h1>
-  </header>
-  <article class="container-prose prose-editorial ft-body" set:html={`<h1>Get Introduced To A Local Professional
-</h1>				
-		<p>Your Bridge to Trusted Experts in Your Market</p>		
-					<a href="https://forms.stairwaymortgage.com/widget/survey/FXnG9gzrcdeInICWhTft">
-									Start The Conversation
-					</a>
-					<h2>Are You Making Real Estate Moves Without the Right People in Place?
-</h2>				
-		Before you buy, build, refinance, invest, or scale—ask yourself:
-									<h3>
-							Do I truly trust the people I’ve hired to guide me?						
-					</h3>
-									<h3>
-							Have I interviewed more than one expert before making a decision?						
-					</h3>
-									<h3>
-							Do I know how to vet a realtor, contractor, attorney, or insurance agent?						
-					</h3>
-									<h3>
-							Am I choosing based on trust, or just convenience?						
-					</h3>
-									<h3>
-							Do I have a complete team—or am I piecing it together on my own?						
-					</h3>
-					<h5>At Stairway Mortgage, We Know the Power of a Strong Local Team</h5>				
-					<h6>That’s why we maintain relationships with vetted local professionals in every city and state we serve—including:</h6>				
-							<ul>
-							<li>
-										 Real estate agents
-									</li>
-								<li>
-										 General contractors and builders
-									</li>
-								<li>
-										 Insurance brokers
-									</li>
-								<li>
-										 Home inspectors and appraisers
-									</li>
-								<li>
-										 Financial advisors
-									</li>
-								<li>
-										 Title companies
-									</li>
-								<li>
-										 Attorneys
-									</li>
-								<li>
-										 Designers, architects, and more
-									</li>
-						</ul>
-					<h2>Your Goals Deserve a Dream Team
-</h2>				
-		<p>Whether you’re a first-time buyer needing a patient realtor… a retiree looking for a trustworthy contractor… or a passive investor needing eyes and boots on the ground… We’ll help you find the right person for the right step on your journey.</p>		
-					<a href="https://forms.stairwaymortgage.com/widget/survey/FXnG9gzrcdeInICWhTft">
-									Start The Conversation
-					</a>
-															<img src="/wp-content/uploads/2024/05/qute.png" title="" alt="" loading="lazy" />															
-					<h2>100% Client Satisfaction
-</h2>				
-					<h2>Real Comments, Real People
-</h2>				
-					<h2>Hear From Some Past Clients of Our
-Founder</h2>				
-											<img width="833" height="835" src="/wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349.jpg" alt="" srcset="/wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349.jpg 833w, /wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349-300x300.jpg 300w, /wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349-150x150.jpg 150w, /wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349-768x770.jpg 768w, /wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349-708x710.jpg 708w, /wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349-600x600.jpg 600w" sizes="(max-width: 833px) 100vw, 833px" />										
-																		<strong>Alexis Kulick - via Faceook</strong>
-																											Director of Digital Campaign at UBS - CALIFORNIA
-																			<ul>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																			</ul>
-																		<p><b>Easy and quick refinance with great rates and expert advice.</b><br>
-<em>
-I recently refinanced my existing mortgage with Jim and his team, and I was so pleased with how easy and quick the whole process was. Jim and his team were very responsive to my questions, and I feel confident that I got the best rate and shaved 9 years off my mortgage. He is very knowledgeable and helped me determine the best option for myself and my family. Definitely recommend him.
-        </em></p>
-											<img width="145" height="136" src="/wp-content/uploads/2025/03/Julian-Einfrank-e1742922797847.jpeg" alt="" />										
-																		<strong>Julian Einfrank - via Facebook</strong>
-																											Sr. Wealth Advisor Clifton Larson Allen - ILLINOIS
-																			<ul>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																			</ul>
-																		<p><b>Complex loan scenario handled with expertise and care.</b><br>
-<em>
-The process went smoothly. Jim Blackburn is a lending saint. He knows the market well and cares about his clients tremendously. The team made it really easy to do business, uploading documents and getting forms signed. Our situation is a bit complex. Rather than turn us away for some added work, they dug in to get it done right. They like the complexity, whereas other lenders don’t want to roll up their sleeves. Highly recommend Jim Blackburn for new loans and refinances!
-</em></p>
-											<img width="200" height="200" src="/wp-content/uploads/2025/03/Elizabeth-Torres.jpeg" alt="" srcset="/wp-content/uploads/2025/03/Elizabeth-Torres.jpeg 200w, /wp-content/uploads/2025/03/Elizabeth-Torres-150x150.jpeg 150w" sizes="(max-width: 200px) 100vw, 200px" />										
-																		<strong>Elizabeth	Torres - via Facebook</strong>
-																											Senior Branch Mgr. at JP Morgan Chase - ILLINOIS
-																			<ul>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																			</ul>
-																		<p><b>Closed in time for Thanksgiving! Jim and his team were amazing, and we got a much better deal than previous lender.</b><br>
-<em>
-We closed our loan within 19 days. Just in time for Thanksgiving!! Jim and his team are amazing! We initially had gone with a different loan office and the interest rate and down payment was ridiculous. The owner of the company where my husband works referred us to Jim and we are very grateful for that. We had such an amazing experience with Jim and his team! Since our transaction, we’ve been referring Jim to anyone we know that are thinking of purchasing a house.        
-</em></p>
-											<img width="60" height="60" src="/wp-content/uploads/2025/03/Livermore-David.png" alt="" />										
-																		<strong>David Livermore - via Google</strong>
-																											Founder Cultural Intelligence - CALIFORNIA
-																			<ul>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																			</ul>
-																		<p><b>Secured financing despite market challenges and self-employment.</b><br>
-<em>
-Run, don't walk to work with Jim and his team. Jim helped us get financing when it seemed like an impossible feat. It was hard enough to be managing a home purchase 2000 miles away, but add to that an extremely competitive market and being self-employed, and it seemed impossible until Jim's team got involved. Jim was not only responsive; he consistently went above and beyond by making clear recommendations, working his magic, and ensuring that financing wasn’t a barrier for buying our dream house in one of the most competitive markets in the country.          
-</em></p>
-											<img width="144" height="145" src="/wp-content/uploads/2025/03/Christina-Curva-Carrasco-e1742922902463.jpg" alt="" />										
-																		<strong>Christina	Curva Carrasco - via Facebook</strong>
-																											Owner at Curated Interiors - WASHINGTON DC
-																			<ul>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																			</ul>
-																		<p><b>Smooth, fast, and hassle-free mortgage and refinance process.</b><br>
-<em>
-Jim and his team are great to work with! We have used Jim twice with our home mortgage. Both times, the process was smooth and uneventful (which is what I wanted). He has kept in touch with us and contacted us when he felt it was the right time for us to refinance! I was amazed at our refinancing process – it took them about a little over two weeks to process all our information and close! I love the new online process of submitting all the information they require – it made it super easy for me to organize and gather all the documents.
-</em></p>
-					<h2>Are You A Real Estate Professional?
-</h2>				
-		Consider joining our partner network and help local clients climb the stairway of homeownership and real estate wealth building.
-					<a href="https://forms.stairwaymortgage.com/widget/survey/rcCQllaMhF6923T5rvoL">
-									Get Connected Today
-					</a>`} />
+
+  <section class="gli-hero">
+    <div class="container-page gli-hero__inner">
+      <div class="gli-hero__copy">
+        <span class="eyebrow eyebrow-blue">Trusted Local Network</span>
+        <h1 class="display-lg gli-hero__title">Get introduced to the right<br/>local <em>professional</em>.</h1>
+        <p class="lede gli-hero__lede">Before you buy, build, refinance, or invest — make sure the people guiding you are vetted, experienced, and aligned with your goals. We personally introduce you to the right mortgage, real estate, title, insurance, and financial professionals in your market.</p>
+        <div class="gli-hero__stats">
+          <div><span class="editorial-number">300+</span><small>lenders in our network</small></div>
+          <div><span class="editorial-number">48</span><small>states covered</small></div>
+          <div><span class="editorial-number">5.0★</span><small>624 reviews</small></div>
+        </div>
+        <button data-open-local-intro class="btn btn-blue btn-arrow gli-hero__cta">Get My Introduction</button>
+        <p class="gli-hero__sub mono">Free · No obligation · Takes ~15 seconds</p>
+      </div>
+      <div class="gli-hero__visual">
+        <div class="gli-card">
+          <div class="gli-card__icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="gli-card__title font-display">Who do you need?</h3>
+          <ul class="gli-card__list">
+            <li>Mortgage broker</li>
+            <li>Real estate agent</li>
+            <li>Title & settlement</li>
+            <li>Home insurance</li>
+            <li>Financial planner</li>
+            <li>Tax professional</li>
+            <li>Contractor / builder</li>
+            <li>Attorney</li>
+          </ul>
+          <p class="gli-card__note mono">We vet every referral personally.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight gli-how">
+    <div class="container-page">
+      <h2 class="display-md gli-how__title">How it works</h2>
+      <div class="gli-how__grid">
+        <div class="gli-how__step">
+          <span class="gli-how__num font-display">1</span>
+          <h3>Tell us what you need</h3>
+          <p>Answer a few quick questions about your situation, location, and the type of professional you're looking for.</p>
+        </div>
+        <div class="gli-how__step">
+          <span class="gli-how__num font-display">2</span>
+          <h3>We match you</h3>
+          <p>Our team personally selects the best-fit professional from our vetted network — no random referrals.</p>
+        </div>
+        <div class="gli-how__step">
+          <span class="gli-how__num font-display">3</span>
+          <h3>Get introduced</h3>
+          <p>We make a warm introduction so you're not cold-calling. Your pro already knows your situation.</p>
+        </div>
+      </div>
+      <div class="gli-how__cta-wrap">
+        <button data-open-local-intro class="btn btn-blue btn-arrow">Start Now — It's Free</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight gli-final">
+    <div class="container-prose">
+      <div class="card gli-final__card">
+        <h2 class="display-md">The right people change everything.</h2>
+        <p class="lede">One introduction can save you thousands and months of headaches. Let us connect you.</p>
+        <button data-open-local-intro class="btn btn-blue btn-arrow">Get My Introduction</button>
+      </div>
+    </div>
+  </section>
+
+  <GetLocalIntroForm />
 </Layout>
 
 <style>
-  .ft-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
-  .ft-breadcrumb a { color:var(--color-mute); text-decoration:none; } .ft-breadcrumb a:hover { color:var(--color-blue); }
-  .ft-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
-  .ft-header { padding-top:0.5rem; padding-bottom:1rem; }
-  .ft-body { margin-top:1.5rem; padding-bottom:4rem; }
-  .ft-body :global(h2) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.4rem,2.5vw,1.9rem); margin-top:2.5rem; margin-bottom:1rem; }
-  .ft-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:1.3rem; margin-top:1.75rem; margin-bottom:0.7rem; }
-  .ft-body :global(h2 b),.ft-body :global(h3 b) { font-weight:inherit; }
-  .ft-body :global(p) { font-size:16px; line-height:1.7; margin-bottom:1.1rem; color:var(--color-ink-light); }
-  .ft-body :global(ul),.ft-body :global(ol) { margin:0 0 1.4rem 1.25rem; display:flex; flex-direction:column; gap:0.45rem; }
-  .ft-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
-  .ft-body :global(img) { max-width:100%; height:auto; border-radius:10px; margin:1.5rem 0; }
-  .ft-body :global(table) { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:14px; }
-  .ft-body :global(th),.ft-body :global(td) { border:1px solid var(--color-bone); padding:0.6rem 0.8rem; text-align:left; }
-  .ft-body :global(th) { background:var(--color-paper-tint); font-weight:600; }
+  .gli-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .gli-breadcrumb a { color:var(--color-mute); text-decoration:none; }
+  .gli-breadcrumb a:hover { color:var(--color-blue); }
+  .gli-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+
+  .gli-hero { padding:clamp(3rem,8vw,6rem) 0 clamp(2rem,5vw,4rem); background:linear-gradient(180deg, var(--color-paper-tint), var(--color-paper)); border-bottom:1px solid var(--color-bone); }
+  .gli-hero__inner { display:grid; grid-template-columns:1fr minmax(0,0.7fr); gap:clamp(2rem,5vw,4rem); align-items:center; }
+  @media(max-width:820px){ .gli-hero__inner { grid-template-columns:1fr; } }
+  .gli-hero__title { margin:1rem 0 1.5rem; }
+  .gli-hero__title em { font-style:italic; color:var(--color-blue); }
+  .gli-hero__lede { max-width:54ch; margin-bottom:2rem; }
+  .gli-hero__stats { display:flex; gap:2.5rem; margin-bottom:2rem; flex-wrap:wrap; }
+  .gli-hero__stats div { display:flex; flex-direction:column; }
+  .gli-hero__stats .editorial-number { font-size:clamp(1.6rem,3vw,2.2rem); }
+  .gli-hero__stats small { font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.07em; text-transform:uppercase; color:var(--color-mute); }
+  .gli-hero__cta { font-size:16px; padding:0.85rem 2rem; }
+  .gli-hero__sub { font-size:11px; color:var(--color-mute); margin-top:0.75rem; }
+
+  .gli-card { background:var(--color-ink); color:var(--color-paper); border-radius:18px; padding:clamp(1.5rem,3vw,2.5rem); box-shadow:0 24px 60px -20px rgba(10,14,26,0.4); }
+  .gli-card__icon { margin-bottom:1.25rem; }
+  .gli-card__title { font-size:1.3rem; margin-bottom:1rem; }
+  .gli-card__list { list-style:none; padding:0; margin:0 0 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .gli-card__list li { display:flex; align-items:center; gap:0.5rem; font-size:14px; color:rgba(250,250,247,0.75); }
+  .gli-card__list li::before { content:'\2713'; color:var(--color-green); font-weight:700; }
+  .gli-card__note { font-size:10.5px; color:rgba(250,250,247,0.5); letter-spacing:0.04em; }
+
+  .gli-how { padding:clamp(3rem,6vw,5rem) 0; }
+  .gli-how__title { margin-bottom:2.5rem; }
+  .gli-how__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:2rem; margin-bottom:2.5rem; }
+  .gli-how__step { border:1px solid var(--color-bone); border-radius:14px; padding:1.5rem; background:var(--color-paper); }
+  .gli-how__num { font-size:2rem; color:var(--color-blue); margin-bottom:0.5rem; display:block; }
+  .gli-how__step h3 { font-family:var(--font-display); font-weight:500; font-size:1.15rem; margin-bottom:0.5rem; }
+  .gli-how__step p { font-size:14.5px; line-height:1.6; color:var(--color-ink-light); margin:0; }
+  .gli-how__cta-wrap { text-align:center; }
+
+  .gli-final { padding:clamp(2rem,5vw,4rem) 0; }
+  .gli-final__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
 </style>
