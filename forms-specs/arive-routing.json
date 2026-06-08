@@ -1,0 +1,52 @@
+{
+  "task": "arive-form-routing",
+  "summary": "Point the right buttons at the two external Arive (my1003app/LendWize) forms, add an Apply button to the Get-a-Mortgage dropdown, and replicate the old RankMath redirects — WITHOUT clobbering real pages on the new site.",
+  "arive_urls": {
+    "inquiry_same_day_purchase": "https://stairwaymortgage.my1003app.com/agent/jimblackburn/inquiry",
+    "full_application_apply": "https://stairwaymortgage.my1003app.com/"
+  },
+  "link_behavior": {
+    "target": "same tab (no target=_blank)",
+    "rel": "noopener (still safe practice even same-tab)"
+  },
+  "button_routing": [
+    {
+      "where": "Header 'See My Options' button (global, in Header.astro)",
+      "destination": "inquiry_same_day_purchase",
+      "note": "Lightweight inquiry entry. SHARED COMPONENT — coordinate with calculator partner before editing Header.astro."
+    },
+    {
+      "where": "Hero 'See My Options' button on every page under the 'Get a Mortgage' nav section (loan-type pages where the visitor already knows what they need)",
+      "destination": "full_application_apply",
+      "note": "Claude Code identifies these pages from the live nav tree. Visitor is ready to apply -> full application."
+    },
+    {
+      "where": "'See My Options' button on the /same-day-approval/ page itself",
+      "destination": "full_application_apply",
+      "note": "By the time they're on this page and click, they're ready for the full app."
+    },
+    {
+      "where": "NEW subtle 'Apply for Mortgage' button in the Header 'Get a Mortgage' dropdown",
+      "destination": "full_application_apply",
+      "note": "Place where most appropriate within the dropdown. SHARED COMPONENT — coordinate before editing Header.astro."
+    }
+  ],
+  "redirects": {
+    "principle": "Replicate old RankMath redirects ONLY for slugs that are NOT real pages on the new site. NEVER redirect a slug that renders a real page (that would make the page unreachable).",
+    "known_real_pages_keep": [
+      "/same-day-approval/  (real editorial page on new site — DO NOT redirect; its button links to Arive)"
+    ],
+    "candidate_redirect_sources_from_old_wp": [
+      "/apply-for-mortgage/   (was a WP post, likely a redirect shell -> full_application_apply)",
+      "/mortgage-preapproval/ (likely redirect shell -> full_application_apply)",
+      "/purchase-inquiry/     (CONFIRM: real page on new site? If yes, keep + button. If no page, 301 -> inquiry_same_day_purchase)",
+      "/reverse-mortgage-inquiry/   (CONFIRM real page vs shell)",
+      "/refinance-or-heloc-inquiry/ (CONFIRM real page vs shell)"
+    ],
+    "redirect_type": "301 permanent, via vercel.json redirects[]",
+    "safety_rule_for_claude_code": "For each candidate source: if a real page file exists in src/pages for that slug, DO NOT add a redirect — instead update that page's CTA button to point at the right Arive URL. Only add a vercel.json 301 for slugs that have NO corresponding page on the new site."
+  },
+  "compliance": {
+    "note": "External Arive links — no compliance text needed on the link itself. Arive/NEXA handles the application-side disclosures. Keep button labels as 'See My Options' / 'Apply for Mortgage' (never 'Talk to Jim')."
+  }
+}

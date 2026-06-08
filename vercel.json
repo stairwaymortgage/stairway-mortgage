@@ -22,6 +22,10 @@
   ],
   "redirects": [
     { "source": "/home", "destination": "/", "permanent": true },
-    { "source": "/home/", "destination": "/", "permanent": true }
+    { "source": "/home/", "destination": "/", "permanent": true },
+    { "source": "/apply-for-mortgage", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
+    { "source": "/apply-for-mortgage/", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
+    { "source": "/mortgage-preapproval", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
+    { "source": "/mortgage-preapproval/", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true }
   ]
 }
