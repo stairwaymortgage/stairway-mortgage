@@ -164,10 +164,7 @@ const icons: Record<string, string> = {
 
       <!-- Logo -->
       <a href="/" class="hdr-logo" aria-label="Stairway Mortgage — home">
-        <img src="/logo-mark.png" alt="" class="hdr-logo__mark" aria-hidden="true" />
-        <span class="hdr-logo__text font-display">
-          Stairway <span class="hdr-logo__mute">Mortgage</span>
-        </span>
+        <img src="/logo-header.png" alt="Stairway Mortgage" class="hdr-logo__img" />
       </a>
 
       <!-- Desktop mega-menu triggers -->
@@ -300,8 +297,7 @@ const icons: Record<string, string> = {
   <div class="container-page">
     <div class="hdr-sticky__inner">
       <a href="/" class="hdr-logo hdr-logo--sm" aria-label="Home">
-        <img src="/logo-mark.png" alt="" class="hdr-logo__mark" aria-hidden="true" />
-        <span class="hdr-logo__text font-display">Stairway</span>
+        <img src="/logo-header.png" alt="Stairway Mortgage" class="hdr-logo__img" />
       </a>
       <div class="hdr-sticky__right">
         <a href="tel:+19549931625" class="hdr-phone hdr-phone--sm" aria-label="Call">
@@ -427,17 +423,8 @@ const icons: Record<string, string> = {
     text-decoration: none;
     flex-shrink: 0;
   }
-  .hdr-logo__mark { width: 26px; height: 26px; }
-  .hdr-logo__text {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--color-ink);
-    letter-spacing: -0.015em;
-    line-height: 1;
-  }
-  .hdr-logo__mute { color: var(--color-mute); font-weight: 400; }
-  .hdr-logo--sm .hdr-logo__mark { width: 22px; height: 22px; }
-  .hdr-logo--sm .hdr-logo__text { font-size: 16px; }
+  .hdr-logo__img { height: 40px; width: auto; display: block; }
+  .hdr-logo--sm .hdr-logo__img { height: 30px; }
 
   /* ── Nav triggers ── */
   .hdr-nav {
