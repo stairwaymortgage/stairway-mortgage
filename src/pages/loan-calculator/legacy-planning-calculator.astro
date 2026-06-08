@@ -1,0 +1,157 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "Legacy Impact Planner | Stairway Mortgage";
+const metaDescription = "Set annual giving percentages for your family and the causes you care about to see how your legacy can support loved ones and charities. Built by Jim Blackburn, NMLS #1072866.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/legacy-planning-calculator/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Legacy Impact Planner","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Legacy Impact Planner","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this planner show?","acceptedAnswer":{"@type":"Answer","text":"It estimates how much of your legacy value you could distribute each year to your family and to charitable causes, based on the percentages you choose."}},{"@type":"Question","name":"How is the annual distribution calculated?","acceptedAnswer":{"@type":"Answer","text":"Each annual figure is your starting legacy value multiplied by the percentage you allocate to that purpose."}},{"@type":"Question","name":"Does this account for growth or taxes?","acceptedAnswer":{"@type":"Answer","text":"This is a simple annual snapshot. For projections that factor in growth, inflation, and estate taxes over time, speak with a licensed financial or estate-planning professional."}}]};
+---
+<Layout title={metaTitle} description={metaDescription}>
+  <link slot="head" rel="canonical" href={canonical} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="container-page">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <span aria-current="page">Legacy Impact Planner</span>
+    </nav>
+    <header class="calc-head">
+      <p class="eyebrow">Wealth · Legacy</p>
+      <h1 class="display-lg">Legacy Impact Planner</h1>
+      <p class="lede"><em>Design your legacy. Provide for loved ones. Fuel what matters.</em> Set annual giving percentages and see how your wealth can support your heirs and the causes you believe in.</p>
+      <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+    </header>
+    <section class="calc" aria-label="Legacy Impact Planner">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <p class="group-label">Your Legacy</p>
+          <div class="field">
+            <label for="legacy">Starting Legacy Value: <span id="legacyOut" class="slider-out">$100,000</span></label>
+            <input id="legacy" type="range" min="100000" max="1000000000" step="100000" value="100000" />
+          </div>
+          <p class="group-label">Annual Allocations</p>
+          <div class="field"><label for="family">Family Legacy Distribution (%)</label><div class="input-plain"><input id="family" type="number" inputmode="decimal" value="4" min="0" step="0.5" /><span class="suffix">%</span></div><p class="hint hint--mute">Percentage of your legacy distributed each year to family, heirs, or loved ones.</p></div>
+          <div class="field"><label for="charity">Charitable Giving Allocation (%)</label><div class="input-plain"><input id="charity" type="number" inputmode="decimal" value="3" min="0" step="0.5" /><span class="suffix">%</span></div><p class="hint hint--mute">Percentage directed annually toward causes, missions, or nonprofits.</p></div>
+          <div class="field">
+            <label for="growth">Annual Growth Target: <span id="growthOut" class="slider-out">3.0%</span></label>
+            <input id="growth" type="range" min="1" max="30" step="0.5" value="3" />
+            <p class="hint hint--mute">Your estimated annual return — a reference for your income and legacy goals.</p>
+          </div>
+        </div>
+        <div class="calc-results" aria-live="polite">
+          <p class="summary-title">Your Annual Impact</p>
+          <p class="summary-sub">Each Year</p>
+          <div class="result result--primary"><span class="result-label">Annual Legacy to Family</span><span class="result-value" id="rFamily">$4,000</span><span class="result-note">Distributed to family, heirs, or loved ones.</span></div>
+          <div class="result result--primary"><span class="result-label">Annual Charitable Giving</span><span class="result-value" id="rCharity">$3,000</span><span class="result-note">Directed to the causes you believe in.</span></div>
+          <a class="cta-primary" href="https://stairwaymortgage.com/schedule-call">Plan My Legacy</a>
+          <p class="micro">Estimates only — not a commitment to lend.</p>
+        </div>
+      </div>
+    </section>
+    <section class="body-content">
+      <figure class="author">
+        <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+          <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+        </a>
+        <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+      </figure>
+      <div class="cta-card">
+        <h4>Ready to Take Your First Step?</h4>
+        <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+        <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+        <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+      </div>
+      <div class="cta-card">
+        <h4>Want to Build a Legacy With Real Estate?</h4>
+        <p>Tell us about your goals and we'll map out a strategy to grow and pass on lasting wealth—fast.</p>
+        <ul><li>Only 2 minutes to complete</li><li>Quick turnaround</li><li>No credit score impact</li></ul>
+        <a href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+      </div>
+      <div class="cta-card">
+        <h4>Got a Few Questions First?</h4>
+        <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+        <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+      </div>
+      <h2>Important Disclaimer</h2>
+      <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed financial or estate-planning professional before making decisions.</p>
+      <h2>Related Posts</h2>
+      <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+    </section>
+  </main>
+
+  <script is:inline>
+  (function () {
+    const $ = (id) => document.getElementById(id);
+    const fmt0 = (n) => { if(!isFinite(n)) return '—'; const r=Math.round(n); return (r<0?'-$':'$') + Math.abs(r).toLocaleString('en-US'); };
+    function compute(){
+      const legacy=+$('legacy').value||0, family=+$('family').value||0,
+            charity=+$('charity').value||0, growth=+$('growth').value||0;
+      $('legacyOut').textContent = fmt0(legacy);
+      $('growthOut').textContent = growth.toFixed(1)+'%';
+      // Annual Legacy to Family = legacy * family/100
+      const fam = legacy * family/100;
+      // Annual Charitable Giving = legacy * charity/100
+      const char = legacy * charity/100;
+      // NOTE: Annual Growth Target is collected but NOT used in any calculation (matches live widget — orphaned input).
+      $('rFamily').textContent=fmt0(fam); $('rCharity').textContent=fmt0(char);
+    }
+    document.querySelectorAll('input').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+    compute();
+  })();
+  </script>
+
+  <style>
+  .crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+  .crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+  .display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
+  .lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+  .trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+  .calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+  .calc::before{content:"";display:block;height:4px;background:var(--blue);}
+  .calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+  @media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+  .calc-inputs{padding:30px 30px 32px;}
+  .group-label{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--blue);font-weight:600;margin:22px 0 12px;}
+  .group-label:first-child{margin-top:0;}
+  .calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+  .summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+  .summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+  .field{margin-bottom:20px;}
+  .lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+  .slider-out{color:var(--blue);font-family:'JetBrains Mono',monospace;font-weight:600;}
+  input[type=range]{width:100%;accent-color:var(--blue);height:6px;}
+  .input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+  .input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .input-plain input{flex:1;border:0;outline:0;padding:13px 6px 13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  .input-plain .suffix{padding:0 14px 0 4px;color:var(--mute);font-weight:600;}
+  .hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--mute);}
+  .result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+  .result--primary{background:#fff;border-color:#fff;}
+  .result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+  .result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+  .result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+  .result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+  .cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+  .cta-primary:hover{background:#2a57e6;}
+  .micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+  .body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+  .body-content p{color:#2b3140;}
+  .author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+  .author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+  .author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+  .author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+  .cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+  .cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+  .cta-card p{max-width:620px;margin:0 auto 18px;}
+  .cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+  .cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+  .cta-card a:hover{background:var(--blue);}
+  .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+  </style>
+</Layout>
