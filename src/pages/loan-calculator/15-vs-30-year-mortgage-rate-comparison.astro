@@ -1,0 +1,173 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "15 vs 30 Year Mortgage Rate Comparison Calculator | Stairway Mortgage";
+const metaDescription = "Compare a 15-year vs 30-year mortgage and instantly see the trade-off in monthly payment, total interest, and lifetime savings. Built by Jim Blackburn, NMLS #1072866.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/15-vs-30-year-mortgage-rate-comparison/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"15 vs 30 Year Mortgage Rate Comparison Calculator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"15 vs 30 Year Mortgage Rate Comparison Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is a 15-year or 30-year mortgage better?","acceptedAnswer":{"@type":"Answer","text":"Both are tools to reach financial goals. A 15-year pays off debt faster with far less total interest; a 30-year has a lower monthly payment, freeing up cash flow you can invest over time."}},{"@type":"Question","name":"How much more interest does a 30-year cost?","acceptedAnswer":{"@type":"Answer","text":"On a 30-year mortgage you typically pay substantially more total interest than on a 15-year because you borrow for twice as long, even though the monthly payment is lower."}},{"@type":"Question","name":"How is the monthly savings calculated?","acceptedAnswer":{"@type":"Answer","text":"It is the difference between the 15-year and 30-year monthly principal and interest payments — the monthly cash flow you free up by choosing the 30-year term."}}]};
+---
+<Layout title={metaTitle} description={metaDescription} canonical={canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="container-page">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <span aria-current="page">15 vs 30 Year Mortgage Comparison</span>
+    </nav>
+    <header class="calc-head">
+      <p class="eyebrow">Comparison · 15 vs 30 Year</p>
+      <h1 class="display-lg">15 vs 30 Year Mortgage Rate Comparison Calculator</h1>
+      <p class="lede">Compare 15-year vs 30-year mortgage rates and instantly see the trade-off in monthly payment, total interest, and lifetime savings.</p>
+      <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+    </header>
+    <section class="calc" aria-label="15 vs 30 Year Mortgage Comparison Calculator">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <div class="field"><label for="loan">Loan Amount</label><div class="input-money"><span>$</span><input id="loan" type="number" inputmode="numeric" value="500000" min="0" step="1000" /></div></div>
+          <div class="field"><label for="r15">15 Year Fixed Rate</label><div class="input-plain"><input id="r15" type="number" inputmode="decimal" value="4.875" min="0" step="0.001" /><span class="suffix">%</span></div><p class="hint hint--mute">Enter a rate for a 15-year fixed mortgage.</p></div>
+          <div class="field"><label for="r30">30 Year Fixed Rate</label><div class="input-plain"><input id="r30" type="number" inputmode="decimal" value="5.875" min="0" step="0.001" /><span class="suffix">%</span></div><p class="hint hint--mute">Enter a rate for a 30-year fixed mortgage.</p></div>
+        </div>
+        <div class="calc-results" aria-live="polite">
+          <p class="summary-title">Results</p>
+          <p class="summary-sub">15 Year Fixed</p>
+          <div class="result"><span class="result-label">15 Year Fixed Rate</span><span class="result-value" id="r15rate">4.875%</span></div>
+          <div class="result"><span class="result-label">15 Year P&amp;I Payment</span><span class="result-value" id="r15pi">$3,921</span></div>
+          <div class="result"><span class="result-label">15 Year Total Interest Costs</span><span class="result-value" id="r15ti">$205,868</span></div>
+          <p class="summary-sub">30 Year Fixed</p>
+          <div class="result"><span class="result-label">30 Year Fixed Rate</span><span class="result-value" id="r30rate">5.875%</span></div>
+          <div class="result"><span class="result-label">30 Year P&amp;I Payment</span><span class="result-value" id="r30pi">$2,958</span></div>
+          <div class="result"><span class="result-label">30 Year Total Interest Costs</span><span class="result-value" id="r30ti">$564,768</span></div>
+          <p class="summary-sub">Savings Analysis</p>
+          <div class="result result--primary"><span class="result-label">Difference In Interest Costs</span><span class="result-value" id="rDiffInt">$358,900</span><span class="result-note">Extra interest paid over the life of the 30-year vs the 15-year.</span></div>
+          <div class="result result--primary"><span class="result-label">Difference In Monthly Cashflow With 30 Year</span><span class="result-value" id="rDiffMo">$964</span><span class="result-note">Monthly cash freed up by choosing the 30-year.</span></div>
+          <div class="result"><span class="result-label">Difference In Annual Cashflow With 30 Year</span><span class="result-value" id="rDiffAnn">$11,566</span></div>
+          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <p class="micro">Estimates only — not a commitment to lend.</p>
+        </div>
+      </div>
+    </section>
+    <section class="body-content">
+      <div class="conclusion-card">
+        <h3>15 vs 30 Year Mortgage Conclusion</h3>
+        <p>15- and 30-year mortgages are simply tools to help you reach your financial goals.</p>
+        <p>Both paying down debt and building wealth matter. If your priority is long-term wealth building and you have a 10-year (or longer) horizon before you'll need the cash, a 30-year fixed can be the smarter move because the lower payment lets you invest the monthly savings consistently over time. If your horizon is shorter—or you're on a fixed income—accelerating debt payoff with a 15-year mortgage may be the better fit.</p>
+      </div>
+      <figure class="author">
+        <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+          <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+        </a>
+        <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+      </figure>
+      <div class="cta-card">
+        <h4>Ready to Take Your First Step?</h4>
+        <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+        <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+        <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+      </div>
+      <div class="cta-card">
+        <h4>Not Sure Which Term Fits Your Goals?</h4>
+        <p>Tell us about your scenario and your horizon, and we'll help you compare the right options for your wealth-building plan—fast.</p>
+        <ul><li>Only 2 minutes to complete</li><li>Quick turnaround</li><li>No credit score impact</li></ul>
+        <a href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+      </div>
+      <div class="cta-card">
+        <h4>Got a Few Questions First?</h4>
+        <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+        <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+      </div>
+      <h2>Important Disclaimer</h2>
+      <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed mortgage advisor before making financial decisions.</p>
+      <h2>Related Posts</h2>
+      <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+    </section>
+  </main>
+
+  <script is:inline>
+  (function () {
+    const $ = (id) => document.getElementById(id);
+    const fmt0 = (n) => { const r=Math.round(n); return (r<0?'-$':'$') + Math.abs(r).toLocaleString('en-US'); };
+    function compute(){
+      const loan=+$('loan').value||0, r15=+$('r15').value||0, r30=+$('r30').value||0;
+      // 15yr P&I — rate/1200, 180 months
+      const i15 = r15/1200;
+      const pi15 = i15>0 ? loan*i15/(1-Math.pow(1+i15,-180)) : loan/180;
+      const ti15 = pi15*180 - loan;
+      // 30yr P&I — rate/100/12, 360 months
+      const i30 = r30/100/12;
+      const pi30 = i30>0 ? loan*i30/(1-Math.pow(1+i30,-360)) : loan/360;
+      const ti30 = pi30*360 - loan;
+      const diffInt = ti30 - ti15;
+      const diffMo = pi15 - pi30;
+      const diffAnn = diffMo*12;
+      $('r15rate').textContent = r15.toFixed(3)+'%';
+      $('r15pi').textContent = fmt0(pi15);
+      $('r15ti').textContent = fmt0(ti15);
+      $('r30rate').textContent = r30.toFixed(3)+'%';
+      $('r30pi').textContent = fmt0(pi30);
+      $('r30ti').textContent = fmt0(ti30);
+      $('rDiffInt').textContent = fmt0(diffInt);
+      $('rDiffMo').textContent = fmt0(diffMo);
+      $('rDiffAnn').textContent = fmt0(diffAnn);
+    }
+    document.querySelectorAll('input').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+    compute();
+  })();
+  </script>
+
+  <style>
+  .crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+  .crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+  .display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
+  .lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+  .trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+  .calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+  .calc::before{content:"";display:block;height:4px;background:var(--blue);}
+  .calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+  @media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+  .calc-inputs{padding:30px 30px 32px;}
+  .calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+  .summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+  .summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+  .field{margin-bottom:20px;}
+  .lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+  .input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+  .input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+  .input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  .input-plain input{flex:1;border:0;outline:0;padding:13px 6px 13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  .input-plain .suffix{padding:0 14px 0 4px;color:var(--mute);font-weight:600;}
+  .hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--mute);}
+  .result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+  .result--primary{background:#fff;border-color:#fff;}
+  .result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+  .result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+  .result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+  .result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+  .cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+  .cta-primary:hover{background:#2a57e6;}
+  .micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+  .conclusion-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:28px 32px;margin:8px 0 32px;max-width:760px;}
+  .conclusion-card h3{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin:0 0 12px;}
+  .conclusion-card p{color:#2b3140;margin:0 0 12px;}
+  .body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+  .body-content p{color:#2b3140;}
+  .author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+  .author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+  .author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+  .author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+  .cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+  .cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+  .cta-card p{max-width:620px;margin:0 auto 18px;}
+  .cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+  .cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+  .cta-card a:hover{background:var(--blue);}
+  .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+  </style>
+</Layout>
+</content>

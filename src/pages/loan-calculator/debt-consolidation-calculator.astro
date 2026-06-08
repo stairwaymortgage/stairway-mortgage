@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "Debt Ratio Calculator | Stairway Mortgage";
+const metaDescription = "Enter your monthly income and obligations to instantly see your debt-to-income ratio, plus an estimate of the monthly housing payment and loan amount you may have room for. Built by Jim Blackburn, NMLS #1072866.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/debt-consolidation-calculator/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Debt Ratio Calculator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Debt Ratio Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a debt-to-income ratio?","acceptedAnswer":{"@type":"Answer","text":"It is the share of your gross monthly income that goes toward monthly debt obligations, including your housing payment. Lenders use it to gauge how much additional payment you can support."}},{"@type":"Question","name":"What DTI do lenders look for?","acceptedAnswer":{"@type":"Answer","text":"Guidelines vary by loan type. Many programs target a back-end ratio around 43% to 50%, with flexibility for strong compensating factors."}},{"@type":"Question","name":"Does this include my future housing payment?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Total Monthly Obligations figure is meant to include your housing payment along with car loans, credit cards, student loans, and other installment debt."}}]};
+---
+<Layout title={metaTitle} description={metaDescription} canonical={canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="container-page">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <span aria-current="page">Debt Ratio Calculator</span>
+    </nav>
+    <header class="calc-head">
+      <p class="eyebrow">Qualifying · Debt-to-Income</p>
+      <h1 class="display-lg">Debt Ratio Calculator</h1>
+      <p class="lede">Enter your monthly income and obligations to instantly see your debt-to-income percentage — plus a rough estimate of the housing payment and loan amount you may have room for.</p>
+      <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+    </header>
+    <section class="calc" aria-label="Debt Ratio Calculator">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <p class="group-label">Income &amp; Obligations</p>
+          <div class="field">
+            <label for="oblig">Total Monthly Obligations: <span id="obligOut" class="slider-out">$1,000</span></label>
+            <input id="oblig" type="range" min="0" max="20000" step="100" value="1000" />
+            <p class="hint hint--mute">Car, installment loans, student loans, credit cards, and housing payment.</p>
+          </div>
+          <div class="field">
+            <label for="income">Total Monthly Income: <span id="incomeOut" class="slider-out">$3,000</span></label>
+            <input id="income" type="range" min="0" max="50000" step="100" value="3000" />
+            <p class="hint hint--mute">Gross income, including rents collected and reported on tax returns.</p>
+          </div>
+          <p class="group-label">New Housing Estimate</p>
+          <div class="field-row">
+            <div class="field"><label for="rate">Estimated Rate (30-Yr Fixed)</label><div class="input-plain"><input id="rate" type="number" inputmode="decimal" value="5.999" min="0" step="0.001" /><span class="suffix">%</span></div></div>
+            <div class="field"><label for="loanAmt">New Loan Amount</label><div class="input-money"><span>$</span><input id="loanAmt" type="number" inputmode="numeric" value="400000" min="0" step="1000" /></div><p class="hint hint--mute">Estimate, used only for the PMI figure.</p></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="tax">Annual Property Tax Estimate</label><div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="4800" min="0" step="100" /></div></div>
+            <div class="field"><label for="ins">Annual Property Insurance Estimate</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="2400" min="0" step="100" /></div></div>
+          </div>
+          <div class="field">
+            <label for="down20">Are you planning to put 20% down?</label>
+            <select id="down20">
+              <option value="2" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-results" aria-live="polite">
+          <p class="summary-title">Summary</p>
+          <p class="summary-sub">Debt-to-Income</p>
+          <div class="result result--primary"><span class="result-label">Debt Ratio</span><span class="result-value" id="rDti">33.33%</span><span class="result-note">Share of income going toward monthly obligations.</span></div>
+          <p class="summary-sub">Monthly Amount Remaining for New Housing Expense</p>
+          <div class="result"><span class="result-label">Max Total Monthly</span><span class="result-value" id="rMaxTotal">$500</span><span class="result-note">Income × 50%, less current obligations.</span></div>
+          <div class="result"><span class="result-label">PMI Monthly Estimate</span><span class="result-value" id="rPmi">-$283</span></div>
+          <div class="result"><span class="result-label">Tax Monthly Estimate</span><span class="result-value" id="rTax">-$400</span></div>
+          <div class="result"><span class="result-label">Insurance Monthly Estimate</span><span class="result-value" id="rIns">-$200</span></div>
+          <div class="result"><span class="result-label">Remaining for Principal &amp; Interest Payment</span><span class="result-value" id="rRemPI">$217</span></div>
+          <div class="result result--primary"><span class="result-label">Max Loan Amount</span><span class="result-value" id="rMaxLoan">$36,117</span><span class="result-note">Estimated from income, debts, and the rate entered.</span></div>
+          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <p class="micro">Estimates only — not a commitment to lend.</p>
+        </div>
+      </div>
+    </section>
+    <section class="body-content">
+      <figure class="author">
+        <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+          <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+        </a>
+        <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+      </figure>
+      <div class="cta-card">
+        <h4>Ready to Take Your First Step?</h4>
+        <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+        <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+        <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+      </div>
+      <div class="cta-card">
+        <h4>Want to Know What You Really Qualify For?</h4>
+        <p>Tell us about your scenario and we'll run accurate qualifying numbers for your goals—fast.</p>
+        <ul><li>Only 2 minutes to complete</li><li>Quick turnaround</li><li>No credit score impact</li></ul>
+        <a href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+      </div>
+      <div class="cta-card">
+        <h4>Got a Few Questions First?</h4>
+        <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+        <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+      </div>
+      <h2>Important Disclaimer</h2>
+      <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed mortgage advisor before making financial decisions.</p>
+      <h2>Related Posts</h2>
+      <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+    </section>
+  </main>
+
+  <script is:inline>
+  (function () {
+    const $ = (id) => document.getElementById(id);
+    const fmt0 = (n) => { const r=Math.round(n); return (r<0?'-$':'$') + Math.abs(r).toLocaleString('en-US'); };
+    function compute(){
+      const oblig=+$('oblig').value||0, income=+$('income').value||0,
+            rate=+$('rate').value||0, loanAmt=+$('loanAmt').value||0,
+            tax=+$('tax').value||0, ins=+$('ins').value||0;
+      $('obligOut').textContent = fmt0(oblig);
+      $('incomeOut').textContent = fmt0(income);
+      // Debt Ratio = (oblig/income)*100
+      const dti = income>0 ? (oblig/income)*100 : 0;
+      // Max Total Monthly = (income*.50) - oblig
+      const maxTotal = (income*0.50) - oblig;
+      // PMI Monthly = (0.0085*loanAmt)/12*-1
+      const pmi = (0.0085*loanAmt)/12*-1;
+      // Tax Monthly = tax/12*-1
+      const taxM = tax/12*-1;
+      // Insurance Monthly = ins/12*-1
+      const insM = ins/12*-1;
+      // Remaining for P&I = Max Total Monthly + PMI  (tax & ins NOT included — replicates widget)
+      const remPI = maxTotal + pmi;
+      // Max Loan Amount = ROUNDDOWN( remPI*100 / ((1-(1+rate/100)^-360)*(rate/100)) ) / 10
+      // NOTE: rate/100 (not /1200) replicated verbatim from widget
+      let maxLoan = 0;
+      const r = rate/100;
+      if (r > 0) {
+        const denom = (1 - Math.pow(1+r, -360)) * r;
+        if (denom !== 0) maxLoan = Math.floor( remPI*100 / denom ) / 10;
+      }
+      $('rDti').textContent = dti.toFixed(2)+'%';
+      $('rMaxTotal').textContent = fmt0(maxTotal);
+      $('rPmi').textContent = fmt0(pmi);
+      $('rTax').textContent = fmt0(taxM);
+      $('rIns').textContent = fmt0(insM);
+      $('rRemPI').textContent = fmt0(remPI);
+      $('rMaxLoan').textContent = fmt0(maxLoan);
+    }
+    document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+    compute();
+  })();
+  </script>
+
+  <style>
+  .crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+  .crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+  .display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
+  .lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+  .trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+  .calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+  .calc::before{content:"";display:block;height:4px;background:var(--blue);}
+  .calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+  @media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+  .calc-inputs{padding:30px 30px 32px;}
+  .group-label{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--blue);font-weight:600;margin:22px 0 12px;}
+  .group-label:first-child{margin-top:0;}
+  .calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+  .summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+  .summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+  .field{margin-bottom:20px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+  .lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+  .slider-out{color:var(--blue);font-family:'JetBrains Mono',monospace;font-weight:600;}
+  input[type=range]{width:100%;accent-color:var(--blue);height:6px;}
+  .input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+  .input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+  .input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  .input-plain input{flex:1;border:0;outline:0;padding:13px 6px 13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  .input-plain .suffix{padding:0 14px 0 4px;color:var(--mute);font-weight:600;}
+  select{width:100%;padding:13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;border:1px solid var(--bone);border-radius:10px;background:#fff;color:var(--ink);}
+  select:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--mute);}
+  .result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+  .result--primary{background:#fff;border-color:#fff;}
+  .result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+  .result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+  .result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+  .result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+  .cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+  .cta-primary:hover{background:#2a57e6;}
+  .micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+  .body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+  .body-content p{color:#2b3140;}
+  .author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+  .author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+  .author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+  .author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+  .cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+  .cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+  .cta-card p{max-width:620px;margin:0 auto 18px;}
+  .cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+  .cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+  .cta-card a:hover{background:var(--blue);}
+  .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+  </style>
+</Layout>
+</content>
