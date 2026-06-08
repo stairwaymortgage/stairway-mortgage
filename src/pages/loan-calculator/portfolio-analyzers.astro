@@ -1,0 +1,162 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "Portfolio Analyzers | Stairway Mortgage";
+const metaDescription = "Enter your holdings across cash, real estate, commodities, bonds, and stocks to instantly see your total portfolio and your allocation across each asset class. Built by Jim Blackburn, NMLS #1072866.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/portfolio-analyzers/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Portfolio Analyzers","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Portfolio Analyzers","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this analyzer show?","acceptedAnswer":{"@type":"Answer","text":"It adds up your holdings across seven asset classes to give your total portfolio value, then shows what percentage of the portfolio each asset class represents."}},{"@type":"Question","name":"How is the real estate percentage calculated?","acceptedAnswer":{"@type":"Answer","text":"Real estate is shown net of any debt against it — your real estate value minus debt, divided by the total portfolio. The other classes use their full value."}},{"@type":"Question","name":"Why does my debt not lower the total?","acceptedAnswer":{"@type":"Answer","text":"The total portfolio reflects gross asset values. Debt is only applied to the real estate allocation percentage, not the overall total."}}]};
+---
+<Layout title={metaTitle} description={metaDescription}>
+  <link slot="head" rel="canonical" href={canonical} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="container-page">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <span aria-current="page">Portfolio Analyzers</span>
+    </nav>
+    <header class="calc-head">
+      <p class="eyebrow">Wealth · Allocation</p>
+      <h1 class="display-lg">Portfolio Analyzers</h1>
+      <p class="lede">Enter your holdings across each asset class to instantly see your total portfolio and how it's allocated.</p>
+      <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+    </header>
+    <section class="calc" aria-label="Portfolio Analyzers">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <p class="group-label">Your Holdings</p>
+          <div class="field"><label for="cash">Cash</label><div class="input-money"><span>$</span><input id="cash" type="number" inputmode="numeric" value="200000" min="0" step="1000" /></div></div>
+          <div class="field"><label for="re">Real Estate (REITs, Partnerships)</label><div class="input-money"><span>$</span><input id="re" type="number" inputmode="numeric" value="300000" min="0" step="1000" /></div></div>
+          <div class="field"><label for="debt">Total Debt Against Real Estate</label><div class="input-money"><span>$</span><input id="debt" type="number" inputmode="numeric" value="0" min="0" step="1000" /></div><p class="hint hint--mute">Only adjusts your real estate allocation; doesn't reduce the total.</p></div>
+          <div class="field"><label for="comm">Commodities (Gold / Broad Basket)</label><div class="input-money"><span>$</span><input id="comm" type="number" inputmode="numeric" value="100000" min="0" step="1000" /></div></div>
+          <div class="field"><label for="bonds">Bonds</label><div class="input-money"><span>$</span><input id="bonds" type="number" inputmode="numeric" value="100000" min="0" step="1000" /></div></div>
+          <div class="field"><label for="large">U.S. Large-Cap Stocks</label><div class="input-money"><span>$</span><input id="large" type="number" inputmode="numeric" value="200000" min="0" step="1000" /></div></div>
+          <div class="field"><label for="smid">U.S. Small/Mid-Cap Stocks</label><div class="input-money"><span>$</span><input id="smid" type="number" inputmode="numeric" value="50000" min="0" step="1000" /></div></div>
+          <div class="field"><label for="intl">International Stocks</label><div class="input-money"><span>$</span><input id="intl" type="number" inputmode="numeric" value="50000" min="0" step="1000" /></div></div>
+        </div>
+        <div class="calc-results" aria-live="polite">
+          <p class="summary-title">Results</p>
+          <div class="result result--primary"><span class="result-label">Total Portfolio</span><span class="result-value" id="rTotal">$1,000,000</span><span class="result-note">The total value of all your assets.</span></div>
+          <p class="summary-sub">Allocation</p>
+          <div class="result"><span class="result-label">Cash</span><span class="result-value" id="rCash">20.0%</span></div>
+          <div class="result"><span class="result-label">Real Estate (REITs, Partnerships)</span><span class="result-value" id="rRE">30.0%</span><span class="result-note">Net of debt against real estate.</span></div>
+          <div class="result"><span class="result-label">Commodities (Gold / Broad Basket)</span><span class="result-value" id="rComm">10.0%</span></div>
+          <div class="result"><span class="result-label">Bonds</span><span class="result-value" id="rBonds">10.0%</span></div>
+          <div class="result"><span class="result-label">U.S. Large-Cap Stocks</span><span class="result-value" id="rLarge">20.0%</span></div>
+          <div class="result"><span class="result-label">U.S. Small/Mid-Cap Stocks</span><span class="result-value" id="rSmid">5.0%</span></div>
+          <div class="result"><span class="result-label">International Stocks</span><span class="result-value" id="rIntl">5.0%</span></div>
+          <a class="cta-primary" href="https://forms.stairwaymortgage.com/widget/survey/AepgdRkM7HMhrzkZ0AsO" target="_blank" rel="noopener">Request a Free Consultation</a>
+          <p class="micro">Estimates only — not a commitment to lend.</p>
+        </div>
+      </div>
+    </section>
+    <section class="body-content">
+      <figure class="author">
+        <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+          <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+        </a>
+        <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+      </figure>
+      <div class="cta-card">
+        <h4>Ready to Take Your First Step?</h4>
+        <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+        <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+        <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+      </div>
+      <div class="cta-card">
+        <h4>Want to Grow the Real Estate Slice?</h4>
+        <p>Tell us about your goals and we'll map out a strategy to put real estate to work in your portfolio—fast.</p>
+        <ul><li>Only 2 minutes to complete</li><li>Quick turnaround</li><li>No credit score impact</li></ul>
+        <a href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+      </div>
+      <div class="cta-card">
+        <h4>Got a Few Questions First?</h4>
+        <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+        <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+      </div>
+      <h2>Important Disclaimer</h2>
+      <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed financial advisor before making investment decisions.</p>
+      <h2>Related Posts</h2>
+      <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+    </section>
+  </main>
+
+  <script is:inline>
+  (function () {
+    const $ = (id) => document.getElementById(id);
+    const fmt0 = (n) => { if(!isFinite(n)) return '—'; const r=Math.round(n); return (r<0?'-$':'$') + Math.abs(r).toLocaleString('en-US'); };
+    const pct = (x,total) => (total>0 && isFinite(x/total)) ? (x/total*100).toFixed(1)+'%' : '—';
+    function compute(){
+      const cash=+$('cash').value||0, re=+$('re').value||0, debt=+$('debt').value||0,
+            comm=+$('comm').value||0, bonds=+$('bonds').value||0, large=+$('large').value||0,
+            smid=+$('smid').value||0, intl=+$('intl').value||0;
+      // Total Portfolio = SUM of 7 asset classes (debt NOT included)
+      const total = cash + re + comm + bonds + large + smid + intl;
+      $('rTotal').textContent = fmt0(total);
+      $('rCash').textContent  = pct(cash, total);
+      // Real Estate % is EQUITY-ADJUSTED: (re - debt) / total * 100 (total stays gross)
+      $('rRE').textContent    = pct(re - debt, total);
+      $('rComm').textContent  = pct(comm, total);
+      $('rBonds').textContent = pct(bonds, total);
+      $('rLarge').textContent = pct(large, total);
+      $('rSmid').textContent  = pct(smid, total);
+      $('rIntl').textContent  = pct(intl, total);
+    }
+    document.querySelectorAll('input').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+    compute();
+  })();
+  </script>
+
+  <style>
+  .crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+  .crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+  .display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
+  .lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+  .trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+  .calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+  .calc::before{content:"";display:block;height:4px;background:var(--blue);}
+  .calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+  @media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+  .calc-inputs{padding:30px 30px 32px;}
+  .group-label{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--blue);font-weight:600;margin:22px 0 12px;}
+  .group-label:first-child{margin-top:0;}
+  .calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+  .summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+  .summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+  .field{margin-bottom:20px;}
+  .lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+  .input-money{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+  .input-money:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+  .input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  .hint{font-size:12px;margin:6px 0 0;color:var(--mute);} .hint--mute{color:var(--mute);}
+  .result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+  .result--primary{background:#fff;border-color:#fff;}
+  .result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+  .result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+  .result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+  .result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+  .cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+  .cta-primary:hover{background:#2a57e6;}
+  .micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+  .body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+  .body-content p{color:#2b3140;}
+  .author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+  .author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+  .author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+  .author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+  .cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+  .cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+  .cta-card p{max-width:620px;margin:0 auto 18px;}
+  .cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+  .cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+  .cta-card a:hover{background:var(--blue);}
+  .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+  </style>
+</Layout>
