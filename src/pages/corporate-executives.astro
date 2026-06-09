@@ -1,19 +1,1405 @@
 ---
 import Layout from '../layouts/Layout.astro';
----
-<Layout title="Corporate Executives — Stairway Mortgage" description="Stock comp, RSU, and bonus-friendly loan programs for executives.">
-  <section class="section relative overflow-hidden">
-    <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Your Profession · Corporate Executives</span>
-        <h1 class="display-xl mt-6 mb-6">Loans that understand <em class="italic text-[var(--color-blue)]">executive compensation</em>.</h1>
-        <p class="lede max-w-xl mx-auto mb-6">RSUs, stock options, bonuses, and deferred comp — we qualify you on the full picture.</p>
-        <p class="mono text-[11px] text-[var(--color-mute)] mt-6">NMLS #1072866</p>
-        <div class="flex flex-wrap gap-3 justify-center mt-10">
-          <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-6 py-3.5">See My Options</a>
-          <a href="/contact-us/" class="btn btn-ghost text-base px-6 py-3.5">Talk to Our Team</a>
+const ceBody = `
+  
+
+  <!-- HERO -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+
+      <div class="hero-eyebrow eyebrow">Corporate Executives Mortgages</div>
+      <h1 class="display-1">Corporate executive mortgage for the people whose comp is mostly not on the W-2.</h1>
+      <p class="lead hero-subtitle">C-suite officers, senior VPs, directors, pre-IPO equity holders, and relocating executives share a uniquely complex mortgage profile: a strong base salary, large RSU/PSU vesting schedules, performance bonuses paid annually or deferred, sign-on equity grants, relocation packages, and increasingly carried-interest or partnership interests on top. Generalist lenders look at the W-2, ignore the unvested equity, miss the deferred comp entirely, and qualify you for half what you actually earn. We read the offer letter, the vesting schedule, the deferred-comp election form, and the relo agreement &mdash; and we qualify you on what you actually take home.</p>
+
+      <div class="hero-actions">
+        <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary btn-large">Schedule a call with Jim</a>
+        <a href="#professions" class="btn btn-secondary btn-large">Find your situation</a>
+      </div>
+
+      <div class="hero-trust">
+        <span class="trust-dot"></span>
+        <span>Broker NMLS #1072866</span>
+        <span>&middot;</span>
+        <span>Specialist in executive comp &amp; equity-heavy mortgages</span>
+      </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Corporate executive in a modern office reviewing strategic documents" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Corporate+Executives';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS BAR -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Executive situations we specialize in</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">$206K</div>
+          <div class="stat-label">BLS 2024 chief executive median (mean far higher)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Income-qualification methods for executive pay</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Specialist who reads your offer letter before we quote</div>
+        </div>
+      </div>
+
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Executive reviewing financial documents and equity grant materials" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x750/0A0E1A/E8EEFF/png?text=Corporate+Executives';">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEDE -->
+  <section class="lede-section">
+    <div class="container-narrow">
+      <p class="lede">Stairway Mortgage qualifies corporate executives on the total compensation they actually earn &mdash; <strong>not just the W-2 box 1 line that ignores half your package</strong>. A CFO at a public company with $400K base plus $800K in vesting RSUs, a senior VP with deferred bonus accumulating in a non-qualified plan, a director relocating with a sign-on grant and tax-protected relocation package, and a pre-IPO executive holding $3M in unvested ISOs each get qualified using the method that fits their structure. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
+    </div>
+  </section>
+
+  <!-- FIVE PROFESSION CARDS -->
+  <section class="professions-section section-tinted" id="professions">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">01 &middot; Choose your door</div>
+        <h2>Five executive mortgage situation guides.</h2>
+        <p>Each guide is built around the comp structure, equity treatment, and qualifying mechanics of that specific executive role or situation. Pick the one that matches yours.</p>
+      </div>
+
+      <div class="professions-grid">
+      <a class="profession-card" href="https://stairwaymortgage.com/corporate-executives/c-suite-executive/">
+        <div class="profession-num">01</div>
+        <h3 class="profession-title">C-Suite Executives</h3>
+        <p class="profession-tag">"My base is $500K. My total comp is $1.8M. The lender used base only."</p>
+        <ul class="profession-points">
+          <li>CEO/CFO/COO/CTO W-2 base + annual bonus + LTI structure</li>
+          <li>RSU/PSU vesting with two-year history of cash conversion</li>
+          <li>Deferred bonus &amp; non-qualified deferred comp plan treatment</li>
+          <li>Carried interest and partnership-level income coordination</li>
+        </ul>
+        <span class="profession-link">Read the C-suite mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/corporate-executives/senior-vp-vp/">
+        <div class="profession-num">02</div>
+        <h3 class="profession-title">Senior VPs &amp; VPs</h3>
+        <p class="profession-tag">"My RSUs vest quarterly. My W-2 jumps every time. Underwriting is confused."</p>
+        <ul class="profession-points">
+          <li>Senior VP / VP W-2 with quarterly RSU vesting in Box 1</li>
+          <li>Annual cash bonus + multi-year LTI grant stacking</li>
+          <li>Promotion-year comp jumps and trailing-12 qualification</li>
+          <li>Multi-employer history through career-ladder transitions</li>
+        </ul>
+        <span class="profession-link">Read the senior VP mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/corporate-executives/director-band/">
+        <div class="profession-num">03</div>
+        <h3 class="profession-title">Directors &amp; Senior Managers</h3>
+        <p class="profession-tag">"My OTE is $350K including stock. The lender treated me like a $200K W-2 employee."</p>
+        <ul class="profession-points">
+          <li>Director-band W-2 base + cash bonus + RSU mix</li>
+          <li>Stock comp counted via two-year vesting history</li>
+          <li>Big-tech, big-pharma, and Fortune 500 comp structure expertise</li>
+          <li>First-time home purchase at director comp tier</li>
+        </ul>
+        <span class="profession-link">Read the director mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/corporate-executives/pre-ipo-equity-holder/">
+        <div class="profession-num">04</div>
+        <h3 class="profession-title">Pre-IPO Equity Holders</h3>
+        <p class="profession-tag">"I have $4M of unvested ISOs in a hot pre-IPO. My W-2 is $280K. Help."</p>
+        <ul class="profession-points">
+          <li>Pre-IPO ISO / NSO / RSU unvested-equity asset documentation</li>
+          <li>Liquidity-event timing &amp; mortgage application sequencing</li>
+          <li>Asset-depletion treatment of post-vesting marketable securities</li>
+          <li>Secondary-market liquidity (tender offers) as down-payment source</li>
+        </ul>
+        <span class="profession-link">Read the pre-IPO equity holder mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/corporate-executives/relocating-executive/">
+        <div class="profession-num">05</div>
+        <h3 class="profession-title">Relocating Executives</h3>
+        <p class="profession-tag">"I&rsquo;m moving for a new role. My sign-on, relo, and house-buying timeline are all entangled."</p>
+        <ul class="profession-points">
+          <li>Sign-on bonus, relocation package, and forgivable-note timing</li>
+          <li>Pre-employment offer-letter qualification (start date 30-90 days out)</li>
+          <li>Bridge / contingency-free purchase strategies for relocation</li>
+          <li>Tax-protected relocation comp treatment in qualifying income</li>
+        </ul>
+        <span class="profession-link">Read the relocating executive mortgage guide</span>
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK SECTION: WHAT MAKES EXECUTIVE MORTGAGES DIFFERENT -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 760px;">
+        <div class="eyebrow eyebrow-light">02 &middot; The compensation generalist lenders mis-read</div>
+        <h2 style="color: var(--paper);">Five executive-comp patterns that confuse W-2 underwriting.</h2>
+        <p style="color: rgba(250,250,247,0.78);">Senior executive total compensation regularly exceeds 2&ndash;5x the W-2 base salary. The pieces beyond base are taxed, documented, and recurring &mdash; but they don&rsquo;t live where automated underwriting engines look first. Each pattern below has a documented path under Fannie Mae, Freddie Mac, or our Non-QM options.</p>
+      </div>
+
+      <div class="dark-grid">
+        <div class="dark-card">
+          <div class="dark-num">A</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">RSU &amp; PSU vesting income</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Vested RSU and PSU income reports on the W-2 in Box 1 as ordinary compensation, but lumpy &mdash; concentrated in vest cliffs and quarterly tranches. <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-09/other-sources-of-income" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Fannie Mae Selling Guide B3-3.1-09</a> permits future RSU income to count when the vesting schedule is documented and a prior-year history confirms the executive actually receives and uses the value. <a href="https://www.sec.gov/edgar.shtml" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">SEC EDGAR proxy filings</a> help document equity-plan continuity for publicly traded employers. Most lenders ignore RSU entirely. We don&rsquo;t.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">B</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Annual &amp; deferred cash bonus</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Senior executives often receive an annual cash bonus that&rsquo;s 50&ndash;200% of base, plus deferred bonuses paid into <a href="https://www.irs.gov/retirement-plans/nonqualified-deferred-compensation-audit-techniques-guide" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Section 409A non-qualified deferred-comp plans</a> that vest over several years. The current-year W-2 bonus is qualifying income with a two-year history. Deferred bonus that&rsquo;s vested but not paid is documentable as future income via the plan agreement. Most lenders use only the most recent paid bonus. We use the structured pattern.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">C</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Sign-on grants &amp; forgivable retention notes</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Senior executive offers regularly include sign-on cash, sign-on equity (often immediately vested or with short cliff), and retention bonuses structured as forgivable notes amortizing over 3&ndash;5 years. The forgivable note shows as debt on the credit report but the annual forgiveness shows as W-2 income. <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">CFPB Reg Z</a> permits the income to count when documented. The trick is treating debt and income consistently. We&rsquo;ve closed loans for executives at every major investment bank, wirehouse, and tech employer.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">D</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Pre-IPO unvested equity</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">An executive at a hot pre-IPO holds significant unvested ISOs or RSUs with a theoretical value in the millions but no current cash conversion. The unvested equity doesn&rsquo;t qualify as income (under either agency or Non-QM rules) but it may count toward reserves and asset position. After a liquidity event (IPO, tender offer, secondary sale), vested shares become marketable securities eligible for asset-depletion treatment. Timing the mortgage around a known liquidity event regularly converts $0 of additional qualifying income into $40K&ndash;$80K of asset-depletion income per month.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">E</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Relocation packages &amp; tax-protected income</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Executive relocation packages include moving costs, temporary housing, home-sale assistance, tax gross-up, and sometimes a lump-sum relocation allowance. Some pieces are tax-free per IRS rules; others are W-2 income with a tax-protection gross-up. The gross-up creates a one-time W-2 spike that confuses automated underwriting. We&rsquo;ve seen lenders use the spike as the new "expected" income and qualify clients for too-large loans, then claw back at the next renewal. We model the underlying base-comp number correctly.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- BIO -->
+  <section class="bio-section">
+    <div class="container">
+      <div class="bio-grid">
+        <figure class="bio-photo">
+          <img src="https://images.pexels.com/photos/3760529/pexels-photo-3760529.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mortgage broker reviewing executive compensation documents at a desk" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x800/0A0E1A/E8EEFF/png?text=Jim+Blackburn';">
+        </figure>
+        <div class="bio-text">
+          <div class="eyebrow">03 &middot; Why my desk?</div>
+          <h2>I&rsquo;ve closed loans for executives whose comp packages most lenders couldn&rsquo;t parse.</h2>
+          <p>I run a national mortgage practice from Fort Lauderdale, and a meaningful share of my originations come from corporate executives &mdash; the CFO buying a primary in Coral Gables, the senior VP relocating from New York with a complex sign-on package, the pre-IPO director with $4M of unvested ISOs and an aggressive timeline, the director-band hire making the jump from a renter to a buyer. The common thread is that the comp is too complex for an automated underwriting engine to read correctly, and most lenders fail because they only use the base salary or the most recent W-2 box 1.</p>
+          <p>The reason most lenders fail executive clients is that the loan officer doesn&rsquo;t look at the proxy filing, doesn&rsquo;t pull the equity-plan documents, doesn&rsquo;t ask for the deferred-comp plan election form. They feed your W-2 into automated underwriting, the engine reads box 1, and box 1 captures vested RSU but not unvested, captures the current-year bonus but not the deferred pattern. Our process: read the full comp package, model income three ways (W-2 only, W-2 plus documented variable, total realized comp with future-vesting projection), and route the file to the program whose underwriting box actually fits your situation.</p>
+          <p>Stairway Mortgage is a division of NEXA Mortgage LLC, the nation&rsquo;s largest mortgage brokerage. That means access to 300+ lender programs, including the asset-depletion, jumbo, and bank-statement options that fit executive-comp profiles. <strong>I personally read every executive loan file before it&rsquo;s submitted.</strong></p>
+          <div class="bio-cta">
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary">Schedule a call with Jim</a>
+            <span class="bio-cta-meta">No application required. 20-minute conversation.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">04 &middot; What executive clients say</div>
+        <h2>Three closings from the comp committee.</h2>
+        <p>Names abbreviated for client privacy. Employers anonymized. Numbers are real.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-1"><img src="https://i.pravatar.cc/300?img=14" alt="David L., CFO at a public company" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=14';"></div>
+          <blockquote class="testim-quote">"My base is $450K but my total comp with vested RSUs runs about $1.4M. The first lender qualified me on base only and offered me a $1.6M loan. Jim&rsquo;s team used the RSU vesting history and the deferred bonus pattern. Approved for $3.2M. Closed in 34 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">David L.</div>
+            <div class="testim-meta">CFO &middot; Public company &middot; Coral Gables</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-2"><img src="https://i.pravatar.cc/300?img=42" alt="Priscilla M., senior VP relocating to Florida" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/F0EDE8/6B5C4B/png?text=42';"></div>
+          <blockquote class="testim-quote">"I was relocating from Connecticut with a sign-on bonus, a forgivable-note retention package, and a relocation gross-up. Two lenders said the package was too complex to underwrite. Jim ran it cleanly. We closed before my start date."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Priscilla M.</div>
+            <div class="testim-meta">Senior VP &middot; Tech company &middot; Boca Raton</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-3"><img src="https://i.pravatar.cc/300?img=30" alt="Raj P., pre-IPO director at a hot startup" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EFE8/3D5A3D/png?text=30';"></div>
+          <blockquote class="testim-quote">"I had $3.8M of unvested ISOs that the lender said didn&rsquo;t count. We waited until after the secondary tender, used the proceeds plus asset-depletion on the remaining vested shares. Approved at the right number, closed before year-end."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Raj P.</div>
+            <div class="testim-meta">Pre-IPO Director &middot; Late-stage startup &middot; Miami</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">05 &middot; Executive mortgage FAQs</div>
+        <h2>Eight questions corporate executives ask first.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item"><summary>Will my RSU and PSU income count toward qualifying?</summary><div class="faq-body"><p>Vested RSU and PSU income reported on your W-2 (Box 1) counts when supported by a two-year vesting history. Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-09/other-sources-of-income" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.1-09</a>, future RSU income can also count when the vesting schedule is documented and a prior-year sale history confirms the executive actually receives and uses the value. We document with the equity-plan agreement, the vesting schedule, and (for public companies) the proxy filing. Unvested RSUs don&rsquo;t count toward income but may count toward reserves.</p></div></details>
+        <details class="faq-item"><summary>How is deferred compensation treated for qualifying?</summary><div class="faq-body"><p>Non-qualified deferred-compensation plans under <a href="https://www.irs.gov/retirement-plans/nonqualified-deferred-compensation-audit-techniques-guide" target="_blank" rel="noopener noreferrer">IRC Section 409A</a> are common at senior levels. Deferred bonus that has been credited to your account but not yet paid is documented via the plan agreement and election form. With a two-year history of consistent deferral patterns, this can count as continuing income. Where it cannot count as income, the accumulated deferred balance may count toward reserves and asset-depletion calculations.</p></div></details>
+        <details class="faq-item"><summary>I&rsquo;m relocating with a sign-on package and forgivable note. How does the lender treat this?</summary><div class="faq-body"><p>Each piece is treated separately. The sign-on cash bonus is W-2 income (one-time event, supportable with offer letter). Sign-on equity (if immediately vested) is current W-2 income. A forgivable retention note shows as debt on your credit report and an annual forgiveness amount as W-2 income. The relocation gross-up creates a one-time W-2 spike that we exclude from the qualifying base-comp number. We&rsquo;ve seen most major employers&rsquo; structures and know how each one flows into AUS.</p></div></details>
+        <details class="faq-item"><summary>I have unvested pre-IPO equity worth millions. Does any of it help me qualify?</summary><div class="faq-body"><p>Not as income. Unvested equity doesn&rsquo;t qualify under either agency or Non-QM income-documentation rules. But two paths exist: (1) unvested shares may count toward reserves if the lender accepts them at a discounted valuation; (2) timing the mortgage around a known liquidity event (IPO, tender offer, secondary sale) can convert unvested equity into marketable securities eligible for asset-depletion. Asset-depletion typically credits 84-360 months of implied income, so $1M of post-tax proceeds can produce $3K-$12K of monthly qualifying income depending on the program.</p></div></details>
+        <details class="faq-item"><summary>Can I close on a home before my new executive role officially starts?</summary><div class="faq-body"><p>Yes, with a signed offer letter. <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.1-01</a> allows qualifying on a future employment contract starting within a defined window (typically 60-90 days). The offer letter must show base salary and start date; the new employer must verify the offer. For relocation scenarios, this lets you close before you start and avoid bridge financing or temp housing. We&rsquo;ve done this for executives at hedge funds, wirehouses, tech companies, and Fortune 500 corporates.</p></div></details>
+        <details class="faq-item"><summary>How do you handle a CEO or CFO with carried interest or partnership income?</summary><div class="faq-body"><p>Carried interest is typically reported on Schedule K-1 from the partnership (fund) and may have multiple line items: ordinary income, capital gains, guaranteed payments. <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.4-02</a> allows partnership distributive share to count with a two-year history. Capital gains generally don&rsquo;t count as recurring income; ordinary income and guaranteed payments do. For private-equity, hedge-fund, and law-firm partners, we coordinate with your CPA to model the recurring component correctly.</p></div></details>
+        <details class="faq-item"><summary>I&rsquo;m a senior VP who just got promoted. Will the lender use my new comp or my old W-2?</summary><div class="faq-body"><p>Depends on the lender. Conventional lenders typically require a two-year average, which under-tells a recent promotion. Trailing-12-month qualifying is allowed by some lenders with a comp-structure-change attestation letter from the employer. The cleanest path is often to wait until you have 60-90 days of pay history at the new comp level, then qualify on current-run-rate. For executive comp in particular, we often run the file through a lender that explicitly accepts current-comp documentation for documented promotions.</p></div></details>
+        <details class="faq-item"><summary>What loan programs do you actually use for executive clients?</summary><div class="faq-body"><p>Conventional Fannie Mae and Freddie Mac (when W-2 plus documented RSU/bonus history hits the qualifying number), Jumbo and Super-Jumbo (for purchase prices over the conforming limit, common in Florida coastal markets), Asset-Depletion (for executives with substantial post-tax investment portfolios from prior liquidity events), Non-QM bank-statement (rare at this comp tier but useful for K-1-heavy or partnership-heavy borrowers), and Portfolio loans from private banks (for super-jumbo or relationship-driven needs). We pick the program after we read your full comp package, not before.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAME B CROSS-LINK BLOCK: EQUITY COMP OVERLAP -->
+  <section class="section">
+    <div class="container">
+      <div class="cross-link-block">
+        <div class="eyebrow">06 &middot; Equity comp across the corporate ladder</div>
+        <h2 style="margin-bottom: var(--s-5);">RSU, ISO, ESPP, deferred bonus &mdash; the comp that doesn&rsquo;t fit the W-2 box.</h2>
+        <p style="margin-bottom: var(--s-5); max-width: 760px;">Executive equity comp shares mechanics with software and pharma sales comp on the next tier down: vesting schedules, accelerator pay, tax-treatment elections, and timing-of-sale decisions all interact with mortgage qualification. If you&rsquo;re a senior individual contributor in software or pharma sales heading toward an executive track, or an executive on a path with significant sales-comp overlap, the patterns below cross-link cleanly.</p>
+        <ul class="cross-link-list">
+          <li>&rarr; <a href="https://stairwaymortgage.com/corporate-executives/c-suite-executive/">C-suite executive mortgage guide</a> &mdash; full LTI structure, deferred comp, and carried-interest treatment</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/corporate-executives/pre-ipo-equity-holder/">Pre-IPO equity holder guide</a> &mdash; unvested ISO/NSO/RSU strategy and liquidity-event timing</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/sales-professionals/software-saas-sales/">Software &amp; SaaS sales guide</a> (Sales Professionals) &mdash; RSU vesting and OTE qualification for senior IC sellers</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/sales-professionals/pharma-medical-device-sales/">Pharma sales guide</a> (Sales Professionals) &mdash; Big Pharma RSU/PSU schedules</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">07 &middot; Sources &amp; further reading</div>
+        <h2>The data, regulations, and industry research behind this guide.</h2>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h3 class="source-group-title">BLS occupational wage data</h3>
+          <ul class="source-list">
+            <li><a href="https://www.bls.gov/ooh/management/top-executives.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Top Executives (Chief Executives $206,420; General &amp; Operations Managers $102,950)</a></li>
+            <li><a href="https://www.bls.gov/ooh/management/" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Management Occupations Overview (median $122,090)</a></li>
+            <li><a href="https://www.bls.gov/ooh/business-and-financial/financial-managers.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Financial Managers (median $161,700)</a></li>
+            <li><a href="https://www.bls.gov/oes/2024/may/" target="_blank" rel="noopener noreferrer">BLS OEWS May 2024 &mdash; National employment &amp; wage data</a></li>
+            <li><a href="https://www.bls.gov/news.release/pdf/ocwage.pdf" target="_blank" rel="noopener noreferrer">BLS OEWS Detailed Occupational Wage Table</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Mortgage program guidelines</h3>
+          <ul class="source-list">
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.1-09/other-sources-of-income" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-09 &mdash; Other Sources of Income (RSU, bonus)</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-01 &mdash; General Income (future-employment qualification)</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.4-02 &mdash; Partnership &amp; S-Corp Income</a></li>
+            <li><a href="https://guide.freddiemac.com/app/guide/section/5303.4" target="_blank" rel="noopener noreferrer">Freddie Mac Single-Family Seller/Servicer Guide &mdash; Income Documentation</a></li>
+            <li><a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer">CFPB Regulation Z &mdash; Ability-to-Repay &amp; Qualified Mortgage Rule</a></li>
+            <li><a href="https://www.fhfa.gov/" target="_blank" rel="noopener noreferrer">Federal Housing Finance Agency (FHFA) &mdash; GSE oversight</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">IRS &amp; deferred-comp tax guidance</h3>
+          <ul class="source-list">
+            <li><a href="https://www.irs.gov/retirement-plans/nonqualified-deferred-compensation-audit-techniques-guide" target="_blank" rel="noopener noreferrer">IRS &mdash; Section 409A Non-Qualified Deferred Compensation Guide</a></li>
+            <li><a href="https://www.irs.gov/pub/irs-pdf/p15b.pdf" target="_blank" rel="noopener noreferrer">IRS Publication 15-B &mdash; Employer&rsquo;s Tax Guide to Fringe Benefits</a></li>
+            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/incentive-stock-options" target="_blank" rel="noopener noreferrer">IRS &mdash; Incentive Stock Options (ISOs)</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-schedule-k-1-form-1065" target="_blank" rel="noopener noreferrer">IRS &mdash; Schedule K-1 (Partnership &amp; Carried Interest)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Securities &amp; corporate disclosure</h3>
+          <ul class="source-list">
+            <li><a href="https://www.sec.gov/edgar.shtml" target="_blank" rel="noopener noreferrer">SEC EDGAR &mdash; Public company proxy filings (equity plan disclosures)</a></li>
+            <li><a href="https://www.sec.gov/divisions/corpfin/cf-noaction.shtml" target="_blank" rel="noopener noreferrer">SEC Division of Corporation Finance &mdash; Executive comp rules</a></li>
+            <li><a href="https://www.sec.gov/answers/execomp.htm" target="_blank" rel="noopener noreferrer">SEC &mdash; Executive Compensation Overview</a></li>
+            <li><a href="https://www.finra.org/" target="_blank" rel="noopener noreferrer">FINRA &mdash; Securities &amp; financial-industry regulation</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Economic &amp; industry data</h3>
+          <ul class="source-list">
+            <li><a href="https://www.bea.gov/" target="_blank" rel="noopener noreferrer">U.S. Bureau of Economic Analysis &mdash; Corporate profit data</a></li>
+            <li><a href="https://www.census.gov/" target="_blank" rel="noopener noreferrer">U.S. Census Bureau &mdash; Business &amp; establishment data</a></li>
+            <li><a href="https://www.dol.gov/" target="_blank" rel="noopener noreferrer">U.S. Department of Labor &mdash; Employment regulations</a></li>
+            <li><a href="https://www.federalreserve.gov/" target="_blank" rel="noopener noreferrer">Federal Reserve &mdash; Macroeconomic context</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE-CTA HAPPY OUTCOME BLOCK -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">08 &middot; What "right door first" looks like</div>
+        <h2>The CFO whose comp the first lender couldn&rsquo;t parse.</h2>
+        <p>CFO at a publicly traded mid-cap, $450K base salary, $400K annual cash bonus (paid 50% current, 50% deferred under 409A), $700K-$900K annual RSU grants with quarterly vesting, plus a 5-year LTI grant of PSUs cliff-vesting next year. Two big-bank lenders qualified him on base only and offered $1.6M. We pulled the proxy filing, modeled three years of RSU vest history, documented the 409A deferral pattern, and routed the file to a portfolio lender that explicitly underwrites public-company executive comp. Approved at $3.2M. Closed on a Coral Gables waterfront home in 34 days. No surprises at the table.</p>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/161819/keys-key-house-real-estate-161819.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Set of house keys on a wooden table at closing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=Executive+Closings';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">34-day close &middot; Coral Gables, FL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow eyebrow-light">Talk to an executive-comp mortgage specialist</div>
+        <h2 style="color: var(--paper);">Let&rsquo;s read your offer letter before anyone quotes you.</h2>
+        <p style="color: rgba(250,250,247,0.78);">No application. No credit pull. A 20-minute conversation where we look at your full comp package, your equity vesting schedule, and your goal &mdash; then we tell you which loan program fits and roughly what the numbers look like. If we&rsquo;re not the right shop, we&rsquo;ll tell you that too.</p>
+        <div class="final-cta-actions">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-primary btn-large">Schedule a call with Jim</a>
+          <a href="https://stairwaymortgage.com/corporate-executives/c-suite-executive/" class="btn btn-on-dark-secondary btn-large">Or read the C-suite guide first</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: rgba(250,250,247,0.5); margin-top: var(--s-6);">Stairway Mortgage is a division of NEXA Mortgage LLC. Jim Blackburn NMLS #1072866.</p>
+      </div>
+    </div>
+  </section>
+
+
+`;
+---
+<Layout title="Corporate Executive Mortgage · C-Suite, VPs, Directors, Pre-IPO, Relocating Executives" description="Corporate executive mortgage for C-suite officers, senior VPs, directors, pre-IPO equity holders, and relocating executives. We read your offer letter, RSU vesting schedule, deferred comp election, and relo package to qualify on real total compensation." canonical="https://stairwaymortgage.com/corporate-executives/">
+  <div class="ce-scope" set:html={ceBody} />
 </Layout>
+
+<style is:global>
+.ce-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A;
+      --ink-2: #1E2433;
+      --ink-3: #2C3548;
+      --ink-light: #4A5568;
+      --ink-lighter: #6B7280;
+      --paper: #FAFAF7;
+      --paper-2: #F4F4EE;
+      --paper-3: #EDEDE5;
+      --white: #FFFFFF;
+      --blue: #1845D6;
+      --blue-deep: #0F2EA0;
+      --blue-soft: #E8EEFF;
+      --blue-tint: #F2F5FF;
+      --gold: #B8860B;
+      --rust: #8B2C2C;
+      --border: #E5E5DE;
+      --border-strong: #D4D4C8;
+      --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; 
+      --text-xs: 0.75rem;    
+      --text-sm: 0.875rem;   
+      --text-base: 1.0625rem;
+      --text-md: 1.1875rem;  
+      --text-lg: 1.375rem;   
+      --text-xl: 1.625rem;   
+      --text-2xl: 2rem;      
+      --text-3xl: 2.75rem;   
+      --text-4xl: 3.75rem;   
+      --text-5xl: 5rem;      
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-5: 1.5rem;
+      --s-6: 2rem;
+      --s-7: 3rem;
+      --s-8: 4rem;
+      --s-9: 6rem;
+      --s-10: 8rem;
+      --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.ce-scope, .ce-scope{
+        background-color: #FAFAF7 !important;
+        color: #0A0E1A !important;
+        color-scheme: light only !important;
+      }.ce-scope *{
+        forced-color-adjust: none;
+      }
+    }.ce-scope, .ce-scope *::before, .ce-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.ce-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.ce-scope{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.ce-scope img, .ce-scope svg{ display: block; max-width: 100%; }.ce-scope a{ color: inherit; text-decoration: none; }.ce-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.ce-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.ce-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.ce-scope .container-wide{ max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }.ce-scope .eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-block;
+    }.ce-scope .display-1{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      color: var(--ink);
+    }.ce-scope .display-2{
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, var(--text-3xl));
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 100, "SOFT" 50;
+      color: var(--ink);
+    }.ce-scope h2{
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+      font-weight: 450;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 60, "SOFT" 50;
+    }.ce-scope h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--s-4);
+      font-variation-settings: "opsz" 30;
+    }.ce-scope h4{
+      font-family: var(--sans);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.005em;
+    }.ce-scope p{ margin-bottom: var(--s-4); }.ce-scope p:last-child{ margin-bottom: 0; }.ce-scope p.lead{
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      color: var(--ink-2);
+      font-weight: 350;
+    }.ce-scope p.lede{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.ce-scope .body-text{ color: var(--ink-2); }.ce-scope .text-muted{ color: var(--ink-lighter); }.ce-scope .text-small{ font-size: var(--text-sm); }.ce-scope .text-mono{ font-family: var(--mono); font-feature-settings: 'tnum' 1; }.ce-scope strong, .ce-scope b{ font-weight: 600; color: var(--ink); }.ce-scope em, .ce-scope i{ font-style: italic; }.ce-scope .nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }.ce-scope .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      max-width: 1340px;
+      margin: 0 auto;
+    }.ce-scope .logo{
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 30;
+    }.ce-scope .logo-mark{
+      width: 28px; height: 28px;
+      background: var(--ink);
+      position: relative;
+      border-radius: 2px;
+    }.ce-scope .logo-mark::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.ce-scope .logo-mark::after{
+      content: '';
+      position: absolute;
+      inset: 5px 9px 9px 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.ce-scope .logo-sub{ font-size: var(--text-2xs); color: var(--ink-lighter); font-family: var(--sans); font-weight: 400; letter-spacing: 0.04em; }.ce-scope .nav-links{
+      display: flex; gap: var(--s-6); list-style: none;
+      font-size: var(--text-sm); font-weight: 500;
+    }.ce-scope .nav-links a{ color: var(--ink-2); transition: color 0.15s; }.ce-scope .nav-links a:hover{ color: var(--blue); }.ce-scope .nav-cta{
+      display: flex; gap: var(--s-3);
+    }
+    @media (max-width: 900px) {.ce-scope .nav-links{ display: none; }.ce-scope .nav-cta .btn-secondary{ display: none; }
+    }.ce-scope .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-3) var(--s-5);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }.ce-scope .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }.ce-scope .btn-primary:hover{
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }.ce-scope .btn-secondary{
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }.ce-scope .btn-secondary:hover{
+      border-color: var(--ink);
+    }.ce-scope .btn-light{
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }.ce-scope .btn-light:hover{ background: var(--paper-2); }.ce-scope .btn-large{
+      padding: var(--s-4) var(--s-6);
+      font-size: var(--text-base);
+    }.ce-scope .btn-arrow{
+      display: inline-flex; align-items: center; gap: var(--s-2);
+      color: var(--blue); font-weight: 500;
+      transition: gap 0.18s;
+    }.ce-scope .btn-arrow:hover{ gap: var(--s-3); }.ce-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.ce-scope .hero{
+      padding: var(--s-9) 0 var(--s-8);
+      border-bottom: 1px solid var(--border);
+    }.ce-scope .breadcrumb{
+      display: flex; gap: var(--s-2);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      margin-bottom: var(--s-7);
+    }.ce-scope .breadcrumb a{ color: var(--ink-lighter); }.ce-scope .breadcrumb a:hover{ color: var(--blue); }.ce-scope .breadcrumb span:last-child{ color: var(--ink); }.ce-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.ce-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.ce-scope .hero-subtitle{
+      max-width: 56ch;
+      margin-bottom: var(--s-7);
+    }.ce-scope .hero-actions{
+      display: flex; gap: var(--s-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--s-5);
+    }.ce-scope .hero-trust{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: var(--s-3);
+    }.ce-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.ce-scope .stats{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-7) 0;
+    }.ce-scope .stats-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }.ce-scope .stat{
+      padding: 0 var(--s-4);
+      border-left: 1px solid var(--ink-3);
+    }.ce-scope .stat:first-child{ border-left: 0; padding-left: 0; }.ce-scope .stat-num{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 350;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 144;
+    }.ce-scope .stat-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {.ce-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.ce-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.ce-scope .section{
+      padding: var(--s-10) 0;
+    }.ce-scope .section-tinted{ background: var(--paper-2); }.ce-scope .section-dark{ background: var(--ink); color: var(--paper); }.ce-scope .section-header{
+      max-width: 720px;
+      margin-bottom: var(--s-8);
+    }.ce-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.ce-scope .section-header h2{ margin-bottom: var(--s-5); }.ce-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.ce-scope .lede-section{ padding: var(--s-9) 0; }.ce-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.ce-scope .data-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-feature-settings: 'tnum' 1;
+    }.ce-scope .data-table thead th{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      font-weight: 500;
+      text-align: left;
+      padding: var(--s-3) var(--s-4);
+      border-bottom: 1px solid var(--border-strong);
+    }.ce-scope .data-table tbody td{
+      padding: var(--s-5) var(--s-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }.ce-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.ce-scope .data-table tbody td:first-child{
+      font-weight: 500;
+      color: var(--ink);
+      width: 28%;
+    }.ce-scope .data-table tbody td:nth-child(2){
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--blue-deep);
+      white-space: nowrap;
+      width: 28%;
+    }.ce-scope .data-table tbody td:last-child{
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {.ce-scope .data-table thead{ display: none; }.ce-scope .data-table tbody tr{
+        display: block;
+        padding: var(--s-5) 0;
+        border-bottom: 1px solid var(--border);
+      }.ce-scope .data-table tbody td{
+        display: block;
+        padding: 0 0 var(--s-2);
+        border: 0;
+        width: 100% !important;
+      }.ce-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.ce-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.ce-scope .methods-grid{
+      display: grid;
+      gap: var(--s-5);
+    }.ce-scope .method{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.ce-scope .method:hover{
+      border-color: var(--border-strong);
+    }.ce-scope .method-header{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+      margin-bottom: var(--s-5);
+    }.ce-scope .method-num{
+      font-family: var(--mono);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: var(--s-2);
+      letter-spacing: -0.02em;
+    }.ce-scope .method-title h3{
+      margin-bottom: var(--s-3);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+    }.ce-scope .method-tag{
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      padding: var(--s-1) var(--s-3);
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.ce-scope .method-body{
+      padding-left: calc(var(--text-2xl) + var(--s-5));
+    }.ce-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.ce-scope .worked-example{
+      background: var(--paper-2);
+      border-left: 3px solid var(--ink);
+      padding: var(--s-5) var(--s-6);
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }.ce-scope .worked-example.featured{
+      background: var(--ink);
+      color: var(--paper);
+      border-left-color: var(--blue);
+    }.ce-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.ce-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.ce-scope .worked-example.featured .we-num{ color: var(--paper); }.ce-scope .we-title{
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--s-4);
+      color: var(--ink);
+    }.ce-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.ce-scope .we-line{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s-4);
+      padding: var(--s-2) 0;
+    }.ce-scope .we-label{ color: var(--ink-light); }.ce-scope .we-num{ color: var(--ink); font-weight: 500; }.ce-scope .we-divider{
+      border-top: 1px dashed var(--border-strong);
+      margin: var(--s-3) 0;
+      grid-column: 1 / -1;
+    }.ce-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.ce-scope .we-result{
+      grid-template-columns: 1fr auto;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border-strong);
+      margin-top: var(--s-2);
+      font-weight: 600;
+    }.ce-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.ce-scope .method{ padding: var(--s-5); }.ce-scope .method-body{ padding-left: 0; }.ce-scope .method-num{ font-size: var(--text-xl); }
+    }.ce-scope .callout{
+      background: var(--blue-tint);
+      border: 1px solid rgba(24, 69, 214, 0.12);
+      border-radius: 6px;
+      padding: var(--s-6) var(--s-7);
+      max-width: 760px;
+    }.ce-scope .callout-eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.ce-scope .callout p{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.ce-scope .testim-warning{
+      background: #FFF1F1;
+      border: 1px solid rgba(139, 44, 44, 0.3);
+      border-radius: 4px;
+      padding: var(--s-3) var(--s-5);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      color: var(--rust);
+      margin: 0 auto var(--s-7);
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+    }.ce-scope .testim-warning .mono-tag{
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.1em;
+      background: var(--rust);
+      color: var(--paper);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }.ce-scope .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {.ce-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; }
+    }.ce-scope .testimonials-grid--quad{
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+    }
+    @media (max-width: 900px) {.ce-scope .testimonials-grid--quad{ grid-template-columns: 1fr; max-width: 620px; }
+    }.ce-scope .testim-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.ce-scope .testim-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }.ce-scope .testim-card .example-tag{
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      background: rgba(139, 44, 44, 0.08);
+      color: var(--rust);
+      padding: 3px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+    }.ce-scope .testim-avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 30;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }.ce-scope .testim-avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      display: block;
+    }.ce-scope .testim-avatar::after{
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 50%;
+    }.ce-scope .testim-avatar-1{ background: var(--blue-soft); color: var(--blue-deep); }.ce-scope .testim-avatar-2{ background: #F0EDE8; color: #6B5C4B; }.ce-scope .testim-avatar-3{ background: #E8EFE8; color: #3D5A3D; }.ce-scope .testim-quote{
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      margin: 0;
+      flex: 1;
+    }.ce-scope .testim-attribution{
+      border-top: 1px solid var(--border);
+      padding-top: var(--s-4);
+    }.ce-scope .testim-name{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.005em;
+    }.ce-scope .testim-meta{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }.ce-scope .programs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+    @media (max-width: 720px) {.ce-scope .programs-grid{ grid-template-columns: 1fr; }
+    }.ce-scope .program{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      transition: all 0.2s;
+    }.ce-scope .program:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }.ce-scope .program h4{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      font-variation-settings: "opsz" 30;
+    }.ce-scope .program-when{
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      flex: 1;
+    }.ce-scope .program-links{
+      display: flex;
+      gap: var(--s-5);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+    }.ce-scope .program-links a{
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-1);
+    }.ce-scope .program-links a:hover{ color: var(--blue-deep); }.ce-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.ce-scope .per-diem-section{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+    }.ce-scope .per-diem-section h2{ color: var(--paper); }.ce-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.ce-scope .per-diem-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.ce-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); }
+    }.ce-scope .per-diem-list{
+      list-style: none;
+      padding: 0;
+    }.ce-scope .per-diem-list li{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--ink-3);
+      display: flex;
+      gap: var(--s-4);
+      align-items: start;
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.9);
+    }.ce-scope .per-diem-list li:last-child{ border-bottom: 0; }.ce-scope .pd-num{
+      font-family: var(--mono);
+      color: var(--blue-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 1.5em;
+    }.ce-scope .playbook-stages{ display: grid; gap: var(--s-7); }.ce-scope .stage{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-7);
+      padding-bottom: var(--s-7);
+      border-bottom: 1px solid var(--border);
+    }.ce-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.ce-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); }
+    }.ce-scope .stage-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      padding-top: var(--s-2);
+    }.ce-scope .stage-content h4{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.ce-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.ce-scope .stage-bullets{
+      list-style: none;
+      padding: 0;
+    }.ce-scope .stage-bullets li{
+      padding: var(--s-2) 0;
+      padding-left: var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }.ce-scope .stage-bullets li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 1px;
+      background: var(--blue);
+    }.ce-scope .bio-section{
+      background: var(--paper-2);
+      padding: var(--s-10) 0;
+    }.ce-scope .bio-grid{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-7);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.ce-scope .bio-grid{ grid-template-columns: 1fr; }
+    }.ce-scope .bio-photo{
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink);
+      position: relative;
+    }.ce-scope .bio-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
+    }.ce-scope .bio-photo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      z-index: 2;
+    }.ce-scope .bio-name{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: var(--s-2);
+      font-variation-settings: "opsz" 60;
+    }.ce-scope .bio-title{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      margin-bottom: var(--s-5);
+    }.ce-scope .bio-quote{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-style: italic;
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--blue);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 30;
+    }.ce-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.ce-scope .faq-list{
+      max-width: 800px;
+      margin: 0 auto;
+    }.ce-scope .faq-item{
+      padding: var(--s-6) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+    }.ce-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.ce-scope .faq-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.04em;
+      color: var(--blue);
+      font-weight: 500;
+      padding-top: var(--s-1);
+    }.ce-scope .faq-q{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      color: var(--ink);
+      line-height: 1.3;
+      font-variation-settings: "opsz" 30;
+    }.ce-scope .faq-a{
+      color: var(--ink-2);
+      line-height: 1.65;
+    }.ce-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.ce-scope .sources-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.ce-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.ce-scope .source-group h4{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border-strong);
+    }.ce-scope .source-list{ list-style: none; padding: 0; }.ce-scope .source-list li{
+      padding: var(--s-3) 0;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }.ce-scope .source-list a{
+      color: var(--ink-2);
+      transition: color 0.15s;
+      display: block;
+    }.ce-scope .source-list a:hover{ color: var(--blue); }.ce-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.ce-scope .source-url{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      word-break: break-all;
+    }.ce-scope .final-cta{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+      text-align: center;
+    }.ce-scope .final-cta h2{
+      color: var(--paper);
+      max-width: 22ch;
+      margin: 0 auto var(--s-5);
+    }.ce-scope .final-cta p{
+      color: rgba(250,250,247,0.75);
+      font-size: var(--text-lg);
+      max-width: 56ch;
+      margin: 0 auto var(--s-7);
+    }.ce-scope .final-cta-actions{
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }.ce-scope .btn-on-dark{
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--paper);
+    }.ce-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.ce-scope .btn-on-dark-secondary{
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(250,250,247,0.3);
+    }.ce-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.ce-scope .footer{
+      background: var(--ink-2);
+      color: var(--paper);
+      padding: var(--s-9) 0 var(--s-5);
+    }.ce-scope .footer-grid{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s-7);
+      margin-bottom: var(--s-7);
+    }
+    @media (max-width: 800px) {.ce-scope .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }.ce-scope .footer-brand .logo{ color: var(--paper); margin-bottom: var(--s-4); }.ce-scope .footer-brand p{ color: rgba(250,250,247,0.65); font-size: var(--text-sm); margin-bottom: var(--s-4); }.ce-scope .footer-brand .compliance{ font-family: var(--mono); font-size: var(--text-xs); line-height: 1.7; color: rgba(250,250,247,0.5); }.ce-scope .footer-col h5{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,0.6);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+    }.ce-scope .footer-col ul{ list-style: none; padding: 0; }.ce-scope .footer-col li{ padding: 4px 0; }.ce-scope .footer-col a{
+      color: rgba(250,250,247,0.85);
+      font-size: var(--text-sm);
+      transition: color 0.15s;
+    }.ce-scope .footer-col a:hover{ color: var(--paper); }.ce-scope .footer-bottom{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(250,250,247,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-4);
+      font-size: var(--text-xs);
+      color: rgba(250,250,247,0.5);
+      font-family: var(--mono);
+    }.ce-scope .mt-6{ margin-top: var(--s-6); }.ce-scope .mt-8{ margin-top: var(--s-8); }.ce-scope .mb-0{ margin-bottom: 0; }
+    @media (prefers-reduced-motion: no-preference) {.ce-scope .fade-in{
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.7s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }.ce-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.ce-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.ce-scope .highlights-list{
+      list-style: none;
+      padding: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      columns: 1;
+      column-gap: var(--s-7);
+    }
+    @media (min-width: 880px) {.ce-scope .highlights-list{ columns: 2; column-gap: var(--s-8); }
+    }.ce-scope .highlights-list li{
+      break-inside: avoid;
+      padding: var(--s-3) 0 var(--s-3) var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }.ce-scope .highlights-list li:last-child{ border-bottom: 0; }.ce-scope .highlights-list li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.2em;
+      width: 14px;
+      height: 1px;
+      background: var(--blue);
+    }.ce-scope .highlights-source{
+      font-size: var(--text-sm);
+      color: var(--ink-lighter);
+      margin-left: 4px;
+    }.ce-scope .highlights-source a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }.ce-scope .highlights-source a:hover{ color: var(--blue-deep); }.ce-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.ce-scope .resources-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {.ce-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); }
+    }.ce-scope .resource-item{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--ink-2);
+    }.ce-scope .resource-item a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }.ce-scope .resource-item a:hover{ color: var(--blue-deep); }.ce-scope .professions-section{
+      padding: var(--s-9) 0 var(--s-10);
+    }.ce-scope .professions-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      max-width: 1100px;
+      margin: var(--s-7) auto 0;
+    }
+    @media (max-width: 800px) {.ce-scope .professions-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.ce-scope .profession-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }.ce-scope .profession-card:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -12px rgba(10, 14, 26, 0.15);
+    }.ce-scope .profession-num{
+      font-family: var(--mono);
+      font-size: var(--text-md);
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }.ce-scope .profession-title{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variation-settings: "opsz" 60;
+      margin: 0;
+      color: var(--ink);
+    }.ce-scope .profession-tag{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.4;
+      color: var(--ink-2);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      font-style: italic;
+      margin: 0;
+    }.ce-scope .profession-points{
+      list-style: none;
+      padding: 0;
+      margin: var(--s-2) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }.ce-scope .profession-points li{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-light);
+      padding-left: var(--s-4);
+      position: relative;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }.ce-scope .profession-points li::before{
+      content: '·';
+      position: absolute;
+      left: var(--s-2);
+      top: -2px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.4em;
+    }.ce-scope .profession-link{
+      margin-top: auto;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-2);
+      transition: gap 0.2s;
+    }.ce-scope .profession-link::after{ content: '→'; transition: transform 0.2s; }.ce-scope .profession-card:hover .profession-link::after{ transform: translateX(4px); }.ce-scope .differentiators-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.ce-scope .differentiators-grid{ grid-template-columns: 1fr; gap: var(--s-6); }
+    }.ce-scope .differentiator{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }.ce-scope .differentiator-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--blue-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+      font-weight: 500;
+    }.ce-scope .differentiator h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.ce-scope .differentiator p{
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(250,250,247,0.85);
+      margin: 0;
+    }.ce-scope .hero--with-image .hero-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.ce-scope .hero--with-image h1{ max-width: 16ch; }.ce-scope .hero--with-image .hero-subtitle{ max-width: 52ch; }.ce-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.ce-scope .hero-image::before{ content: ''; position: absolute; top: 58%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(232,238,255,0.18) 35%, rgba(232,238,255,0.18) 65%, transparent 100%); z-index: 1; }.ce-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.ce-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.ce-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.ce-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; } }.ce-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.ce-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.ce-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.ce-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.ce-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.ce-scope .final-cta--bg .container{ position: relative; z-index: 1; }.ce-scope .stats--with-image .stats-bar-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.ce-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.ce-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.ce-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 800px) {.ce-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.ce-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); }.ce-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; } }.ce-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 30% 60%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.ce-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; filter: contrast(1.03) saturate(0.97); }.ce-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.ce-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.ce-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.ce-scope .pre-cta-photo{ aspect-ratio: 4/3; } }
+  
+</style>
+
