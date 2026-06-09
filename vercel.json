@@ -8,32 +8,110 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
       ]
     },
     {
       "source": "/(.*)\\.(jpg|jpeg|png|webp|gif|svg|ico|woff|woff2|ttf|eot)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ],
   "redirects": [
-    { "source": "/home", "destination": "/", "permanent": true },
-    { "source": "/home/", "destination": "/", "permanent": true },
-    { "source": "/apply-for-mortgage", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
-    { "source": "/apply-for-mortgage/", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
-    { "source": "/mortgage-preapproval", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
-    { "source": "/mortgage-preapproval/", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
-    { "source": "/aviation-professionals/pilots", "destination": "/aviation-professionals/pilot", "permanent": true },
-    { "source": "/aviation-professionals/pilots/", "destination": "/aviation-professionals/pilot/", "permanent": true },
-    { "source": "/aviation-professionals/flight-attendants", "destination": "/aviation-professionals/flight-attendant", "permanent": true },
-    { "source": "/aviation-professionals/flight-attendants/", "destination": "/aviation-professionals/flight-attendant/", "permanent": true },
-    { "source": "/aviation-professionals/aircraft-mechanics", "destination": "/aviation-professionals/aircraft-mechanic", "permanent": true },
-    { "source": "/aviation-professionals/aircraft-mechanics/", "destination": "/aviation-professionals/aircraft-mechanic/", "permanent": true },
-    { "source": "/aviation-professionals/air-traffic-controllers", "destination": "/aviation-professionals/air-traffic-controller", "permanent": true },
-    { "source": "/aviation-professionals/air-traffic-controllers/", "destination": "/aviation-professionals/air-traffic-controller/", "permanent": true }
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/apply-for-mortgage",
+      "destination": "https://stairwaymortgage.my1003app.com/",
+      "permanent": true
+    },
+    {
+      "source": "/apply-for-mortgage/",
+      "destination": "https://stairwaymortgage.my1003app.com/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-preapproval",
+      "destination": "https://stairwaymortgage.my1003app.com/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-preapproval/",
+      "destination": "https://stairwaymortgage.my1003app.com/",
+      "permanent": true
+    },
+    {
+      "source": "/aviation-professionals/pilots",
+      "destination": "/aviation-professionals/pilot",
+      "permanent": true
+    },
+    {
+      "source": "/aviation-professionals/pilots/",
+      "destination": "/aviation-professionals/pilot/",
+      "permanent": true
+    },
+    {
+      "source": "/aviation-professionals/flight-attendants",
+      "destination": "/aviation-professionals/flight-attendant",
+      "permanent": true
+    },
+    {
+      "source": "/aviation-professionals/flight-attendants/",
+      "destination": "/aviation-professionals/flight-attendant/",
+      "permanent": true
+    },
+    {
+      "source": "/aviation-professionals/aircraft-mechanics",
+      "destination": "/aviation-professionals/aircraft-mechanic",
+      "permanent": true
+    },
+    {
+      "source": "/aviation-professionals/aircraft-mechanics/",
+      "destination": "/aviation-professionals/aircraft-mechanic/",
+      "permanent": true
+    },
+    {
+      "source": "/aviation-professionals/air-traffic-controllers",
+      "destination": "/aviation-professionals/air-traffic-controller",
+      "permanent": true
+    },
+    {
+      "source": "/aviation-professionals/air-traffic-controllers/",
+      "destination": "/aviation-professionals/air-traffic-controller/",
+      "permanent": true
+    },
+    {
+      "source": "/legal-business-entrepreneurs",
+      "destination": "/professional-services",
+      "permanent": true
+    },
+    {
+      "source": "/legal-business-entrepreneurs/",
+      "destination": "/professional-services/",
+      "permanent": true
+    }
   ]
 }

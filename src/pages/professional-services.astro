@@ -1,0 +1,1455 @@
+---
+import Layout from '../layouts/Layout.astro';
+const psBody = `
+  
+
+  <!-- HERO -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+
+      <div class="hero-eyebrow eyebrow">Professional Services Mortgages</div>
+      <h1 class="display-1">Professional services mortgage for the people whose income doesn't fit a W-2 box.</h1>
+      <p class="lead hero-subtitle">Self-employed lawyers, financial planners, CPAs, architects, builders, consultants, mortgage brokers, and people buying into a practice all share one problem: 1099 income, K-1 distributions, S-corp pass-throughs, and Schedule C profit don't read like W-2 paychecks. Generalist lenders see a tax return that under-tells your earning power and qualify you for half what you actually make. We read the K-1, the bank statements, and the practice agreement &mdash; and we qualify you on what you actually earn.</p>
+
+      <div class="hero-actions">
+        <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary btn-large">Schedule a call with Jim</a>
+        <a href="#professions" class="btn btn-secondary btn-large">Find your profession</a>
+      </div>
+
+      <div class="hero-trust">
+        <span class="trust-dot"></span>
+        <span>Broker NMLS #1072866</span>
+        <span>&middot;</span>
+        <span>Specialist in self-employed &amp; pass-through-income mortgages</span>
+      </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Professional services consultant in a modern office reviewing documents" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Professional+Services';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS BAR -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-num">8</div>
+          <div class="stat-label">Professional services we specialize in</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Income-qualification methods for pass-through pay</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">$151K</div>
+          <div class="stat-label">BLS 2024 median wage for lawyers (top decile $239K+)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Specialist who reads your K-1 before we quote</div>
+        </div>
+      </div>
+
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Professional reviewing financial documents and a laptop on a desk" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x750/0A0E1A/E8EEFF/png?text=Professional+Services';">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEDE -->
+  <section class="lede-section">
+    <div class="container-narrow">
+      <p class="lede">Stairway Mortgage qualifies professional-services borrowers on the income they actually earn &mdash; <strong>not the AGI line on a tax return optimized for tax avoidance</strong>. A solo attorney with a Schedule C, a partner with a K-1 from a 50-attorney firm, a CPA whose S-corp pays a low W-2 salary plus large distributions, and an architect who just bought into the partnership all get qualified using the method that fits their pay structure. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
+    </div>
+  </section>
+
+  <!-- EIGHT PROFESSION CARDS -->
+  <section class="professions-section section-tinted" id="professions">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">01 &middot; Choose your door</div>
+        <h2>Eight professional services mortgage guides.</h2>
+        <p>Each guide is built around the pay structure, partnership track, and qualifying mechanics of that specific profession. Pick the one that matches yours.</p>
+      </div>
+
+      <div class="professions-grid">
+      <a class="profession-card" href="https://stairwaymortgage.com/professional-services/attorney/">
+        <div class="profession-num">01</div>
+        <h3 class="profession-title">Attorneys</h3>
+        <p class="profession-tag">"My K-1 from the firm and my W-2 from the firm don't add up to what I make."</p>
+        <ul class="profession-points">
+          <li>BigLaw associate W-2 with bonus and bonus deferral</li>
+          <li>Partner K-1 with capital account, guaranteed payments</li>
+          <li>Solo practice Schedule C with two-year average</li>
+          <li>Buy-in to partnership: capital call financing &amp; mortgage timing</li>
+        </ul>
+        <span class="profession-link">Read the attorney mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/professional-services/financial-planner/">
+        <div class="profession-num">02</div>
+        <h3 class="profession-title">Financial Planners</h3>
+        <p class="profession-tag">"My AUM-based income looks recurring. My lender disagrees."</p>
+        <ul class="profession-points">
+          <li>Recurring AUM fees treated as continuous income</li>
+          <li>RIA owner with S-corp distribution + W-2 structure</li>
+          <li>Commission &amp; trail income documented over rolling average</li>
+          <li>Broker-dealer 1099 with grid payout qualification</li>
+        </ul>
+        <span class="profession-link">Read the financial planner mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/professional-services/cpas-accountant/">
+        <div class="profession-num">03</div>
+        <h3 class="profession-title">CPAs &amp; Accountants</h3>
+        <p class="profession-tag">"I helped my clients shelter income. Now the lender penalizes me for it."</p>
+        <ul class="profession-points">
+          <li>S-corp owner W-2 + distribution split qualification</li>
+          <li>Partner K-1 with self-employment add-back</li>
+          <li>Schedule C solo practitioner with depreciation add-back</li>
+          <li>Practice buy-in or buy-out: timing the mortgage around equity</li>
+        </ul>
+        <span class="profession-link">Read the CPA mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/professional-services/architect-designer/">
+        <div class="profession-num">04</div>
+        <h3 class="profession-title">Architects &amp; Designers</h3>
+        <p class="profession-tag">"Project-based income lumps quarterly. Lenders see famine, ignore feast."</p>
+        <ul class="profession-points">
+          <li>Sole practitioner Schedule C with project pipeline letters</li>
+          <li>Partner in design firm with K-1 plus reimbursable billings</li>
+          <li>Owner of design-build firm with construction profit pass-through</li>
+          <li>Bank-statement program when revenue smooths over 24 months</li>
+        </ul>
+        <span class="profession-link">Read the architect mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/professional-services/builder-contractor/">
+        <div class="profession-num">05</div>
+        <h3 class="profession-title">Builders &amp; Contractors</h3>
+        <p class="profession-tag">"My business spends a million dollars. My tax return shows $80K profit."</p>
+        <ul class="profession-points">
+          <li>S-corp construction company W-2 + distribution structure</li>
+          <li>Sole-proprietor builder with material &amp; subcontractor add-backs</li>
+          <li>1099 specialty trade with bank-statement program</li>
+          <li>Spec builder financing aligned with personal residence loan</li>
+        </ul>
+        <span class="profession-link">Read the builder mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/professional-services/consultant/">
+        <div class="profession-num">06</div>
+        <h3 class="profession-title">Consultants</h3>
+        <p class="profession-tag">"My contracts are 6 to 18 months. The lender wants a permanent W-2."</p>
+        <ul class="profession-points">
+          <li>1099 independent consultant with engagement letter pipeline</li>
+          <li>S-corp with multiple client invoices and distribution history</li>
+          <li>Big-firm consultant W-2 with deferred bonus + RSU mix</li>
+          <li>International consultant with U.S. residency, Form 2555 context</li>
+        </ul>
+        <span class="profession-link">Read the consultant mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/professional-services/business-acquirer/">
+        <div class="profession-num">07</div>
+        <h3 class="profession-title">Business Acquirers</h3>
+        <p class="profession-tag">"I'm buying a $4M practice. My personal mortgage is the easy part."</p>
+        <ul class="profession-points">
+          <li>SBA 7(a) and 504 acquisition financing context</li>
+          <li>Personal mortgage timing around acquisition close</li>
+          <li>Seller-note income treated correctly for qualification</li>
+          <li>Asset-depletion program for high-net-worth low-W-2 borrowers</li>
+        </ul>
+        <span class="profession-link">Read the business acquirer mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/professional-services/mortgage-broker/">
+        <div class="profession-num">08</div>
+        <h3 class="profession-title">Mortgage Brokers</h3>
+        <p class="profession-tag">"I close 100 loans a year. My own qualification took six weeks."</p>
+        <ul class="profession-points">
+          <li>1099 LO commission income with two-year average</li>
+          <li>Broker-owner with S-corp distribution + LO W-2 split</li>
+          <li>Pipeline-aware qualification when current month tells a different story</li>
+          <li>Non-QM bank-statement when tax filings under-tell true income</li>
+        </ul>
+        <span class="profession-link">Read the mortgage broker mortgage guide</span>
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK SECTION: WHAT MAKES PRO-SERVICES MORTGAGES DIFFERENT -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 760px;">
+        <div class="eyebrow eyebrow-light">02 &middot; The income generalist lenders mis-read</div>
+        <h2 style="color: var(--paper);">Four pass-through structures that confuse W-2 underwriting.</h2>
+        <p style="color: rgba(250,250,247,0.78);">Self-employed borrowers don't get paid like W-2 employees, and their tax filings reflect deliberate, legal tax planning. Each of the four structures below has a documented path under Fannie Mae, Freddie Mac, or our Non-QM programs. We choose the one that fits.</p>
+      </div>
+
+      <div class="dark-grid">
+        <div class="dark-card">
+          <div class="dark-num">A</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Schedule C (sole proprietor)</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">A solo attorney, planner, architect, or consultant files <a href="https://www.irs.gov/forms-pubs/about-schedule-c-form-1040" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Schedule C on Form 1040</a>, deducts every legitimate business expense, and shows net profit that may be 30&ndash;60% of gross billings. Fannie Mae allows specific add-backs to that net-profit number: depreciation, depletion, business-use-of-home, and amortization. Generalist lenders skip the add-backs and qualify you on a smaller income. Our process: 1040 + Schedule C for two years, add back the IRS-allowed items, average the two years, then qualify.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">B</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">K-1 (partner or S-corp shareholder)</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">A partner at a law firm or CPA firm receives a <a href="https://www.irs.gov/forms-pubs/about-schedule-k-1-form-1065" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Schedule K-1 from a partnership</a> showing distributive share of income plus guaranteed payments. S-corp shareholders receive K-1s plus a W-2 from the corporation. <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Fannie Mae's analysis path</a> walks the K-1 line-by-line, considers ownership percentage, examines retained earnings, and rolls the result into qualifying income with a self-employment add-back. Most lenders default to W-2 only and ignore the K-1 entirely.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">C</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">S-corp distribution split</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">A common tax-optimization pattern: an S-corp owner pays themselves a reasonable W-2 salary and takes the rest of the company profit as a distribution (which avoids self-employment tax under <a href="https://www.irs.gov/businesses/small-businesses-self-employed/s-corporation-employees-shareholders-and-corporate-officers" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">IRS guidance for S-corp shareholders</a>). The W-2 looks low; the distributions look like investment income. To a generalist lender, you're earning $80K. In reality, you're earning $300K. The fix: a full review of Form 1120-S, Schedule K-1, and the personal 1040, with distributions added to qualifying income when the two-year history shows them as recurring.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">D</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Bank-statement (Non-QM)</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">When the tax return under-tells the real income story &mdash; aggressive deductions, recent expansion, depreciation-heavy capital purchases, or a single bad year in an otherwise strong practice &mdash; the Non-QM bank-statement program qualifies on 12 or 24 months of personal or business deposits instead of tax returns. <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">CFPB Reg Z's Ability-to-Repay rule</a> permits non-QM lending with documented compensating factors. This is the program that gets the contractor whose business spends $1M but whose Schedule C shows $80K profit into a $700K home.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIO -->
+  <section class="bio-section">
+    <div class="container">
+      <div class="bio-grid">
+        <figure class="bio-photo">
+          <img src="https://images.pexels.com/photos/3760529/pexels-photo-3760529.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mortgage broker reviewing loan documents at a desk" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x800/0A0E1A/E8EEFF/png?text=Jim+Blackburn';">
+        </figure>
+        <div class="bio-text">
+          <div class="eyebrow">03 &middot; Why my desk?</div>
+          <h2>I&rsquo;ve qualified attorneys, CPAs, and contractors on every pay structure the IRS allows.</h2>
+          <p>I run a national mortgage practice from Fort Lauderdale. A large share of my originations come from professional-services clients &mdash; the partner at the law firm refinancing the primary, the architect buying her first home after a successful project year, the contractor closing on land while his S-corp owns the equipment company. The common thread is that none of them have a clean W-2. Every file has a K-1, a Schedule C, a distribution schedule, or all three.</p>
+          <p>The reason most lenders fail these clients is that the loan officer never opens the K-1, never asks about the S-corp structure, never picks up the phone to call the CPA. They feed your 1040 into an automated underwriting engine, the engine reads AGI, and AGI &mdash; for a professional who took every legitimate deduction &mdash; is much smaller than what you actually take home. Our process: we read the full tax filing including all schedules, we map your real income, and we route the file to the program whose underwriting box your situation actually fits. Sometimes that&rsquo;s Fannie Mae with add-backs. Sometimes it&rsquo;s a Non-QM bank-statement program. Sometimes it&rsquo;s asset-depletion when the practice is the asset.</p>
+          <p>Stairway Mortgage is a division of NEXA Mortgage LLC, the nation&rsquo;s largest mortgage brokerage. That means access to 300+ lender programs, including the bank-statement and asset-based options that fit pass-through income. <strong>I personally read every professional-services loan file before it&rsquo;s submitted.</strong></p>
+          <div class="bio-cta">
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary">Schedule a call with Jim</a>
+            <span class="bio-cta-meta">No application required. 20-minute conversation.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">04 &middot; What professional clients say</div>
+        <h2>Three closings from the practice.</h2>
+        <p>Names abbreviated for client privacy. Firm names anonymized. Numbers are real.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-1"><img src="https://i.pravatar.cc/300?img=33" alt="Rachel B., partner attorney" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=33';"></div>
+          <blockquote class="testim-quote">"Two lenders qualified me on my W-2 only and offered half what I needed. Jim read the K-1, added back the guaranteed payments, and got me approved at the right number. Closed on the Coral Gables house in 27 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Rachel B.</div>
+            <div class="testim-meta">Partner &middot; Mid-size law firm &middot; Miami</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-2"><img src="https://i.pravatar.cc/300?img=52" alt="Daniel S., S-corp CPA" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/F0EDE8/6B5C4B/png?text=52';"></div>
+          <blockquote class="testim-quote">"I'm a CPA. I structured my own S-corp for tax efficiency. Then I tried to get a mortgage and the lender said I made $90K when I really make $310K. Jim saw the structure in two minutes and routed me through the right program."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Daniel S.</div>
+            <div class="testim-meta">CPA &middot; S-corp owner &middot; Fort Lauderdale</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-3"><img src="https://i.pravatar.cc/300?img=60" alt="Marcus T., licensed builder" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EFE8/3D5A3D/png?text=60';"></div>
+          <blockquote class="testim-quote">"My Schedule C showed $75K. My business runs $1.2M a year. Three lenders gave me 'no.' Jim's team ran me through a bank-statement program using 18 months of business deposits. Closed on a $680K primary."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Marcus T.</div>
+            <div class="testim-meta">Licensed Builder &middot; Sole proprietor &middot; Weston, FL</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">05 &middot; Professional services mortgage FAQs</div>
+        <h2>Ten questions self-employed professionals ask first.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item"><summary>Can I get a mortgage with only one year of self-employment history?</summary><div class="faq-body"><p>Fannie Mae and Freddie Mac standardly require two years of self-employment history for sole proprietors and partners. There are exceptions: if you have a prior W-2 history in the same field (e.g., associate-to-partner at a law firm with two years total tenure), some lenders treat the W-2 years as occupational continuity. Below the two-year threshold, the Non-QM bank-statement program qualifies on 12 months of deposits with no business-tax-return requirement.</p></div></details>
+        <details class="faq-item"><summary>How do K-1 distributions count toward qualifying income?</summary><div class="faq-body"><p>Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.4-02</a>, ordinary income, guaranteed payments, and recurring distributions from a partnership or S-corp K-1 count as qualifying income when supported by a two-year history. Capital gains and one-time distributions do not. The K-1 review also looks at the entity&rsquo;s overall financial health (Form 1065 or 1120-S retained earnings) to confirm the distributions are sustainable.</p></div></details>
+        <details class="faq-item"><summary>I run my income through an S-corp. The W-2 is small. Will I qualify on just that?</summary><div class="faq-body"><p>No, and you don&rsquo;t have to. We use both your W-2 from the S-corp and the distributions reported on Schedule K-1 of Form 1120-S. With a two-year history of both, both count. This is the right answer for most CPA, attorney, and consultant S-corp setups.</p></div></details>
+        <details class="faq-item"><summary>Does my Schedule C net profit get the depreciation added back?</summary><div class="faq-body"><p>Yes. Fannie Mae allows specific Schedule C add-backs to net profit for qualifying-income calculation: depreciation (Line 13), depletion (Line 12), amortization (where reported), and business-use-of-home expense (when documented separately). These are non-cash deductions that reduce taxable income but not actual income. Most generalist lenders skip them. We don&rsquo;t.</p></div></details>
+        <details class="faq-item"><summary>Can I get a mortgage while I&rsquo;m buying into a partnership?</summary><div class="faq-body"><p>Yes, with timing care. The mortgage application should reflect your post-buy-in income; the partnership&rsquo;s offer letter and the buy-in financing terms become part of the file. If the buy-in note is being paid from your share of distributions, the lender will treat the note payment as a debt obligation in DTI calculation. Cleaner option: close the personal mortgage before or well after the partnership buy-in to avoid concurrent-debt complications. We&rsquo;ve done both.</p></div></details>
+        <details class="faq-item"><summary>What about practice acquisition financing alongside a personal mortgage?</summary><div class="faq-body"><p>SBA 7(a) and 504 loans finance practice acquisitions; conventional and Non-QM finance personal residences. They&rsquo;re separate underwriting tracks. If both are happening in the same 12-month window, sequencing matters: typically the practice acquisition first (because its income contribution gets the seller-finance season required to count toward your personal mortgage income), then the personal mortgage. We coordinate with the practice broker and the SBA lender to time it correctly.</p></div></details>
+        <details class="faq-item"><summary>I have a 1099 contracting business. My deposits look great. My tax return looks terrible. Which one matters?</summary><div class="faq-body"><p>Depends on the program. Under Fannie Mae and Freddie Mac, the tax return rules &mdash; you qualify on Schedule C net profit (after allowed add-backs) and the deposit story is irrelevant. Under the Non-QM bank-statement program, deposits rule &mdash; we use 12 or 24 months of personal or business bank statements as the income basis, with the tax return playing a confirming role. We pick the program by which story your file tells more strongly.</p></div></details>
+        <details class="faq-item"><summary>I&rsquo;m a mortgage broker myself. Why can&rsquo;t I just do my own loan?</summary><div class="faq-body"><p>You can. Most can&rsquo;t. The most common reasons mortgage brokers struggle with their own loan are (1) commission income with no two-year average that smooths the variance, (2) S-corp structure where the W-2 looks tiny, (3) AUS (automated underwriting) returning a higher reserves or DTI flag because of the self-employment classification. Working with another broker (us) gives you a clean second set of eyes on the file and access to lender relationships that don&rsquo;t conflict with your originating shop.</p></div></details>
+        <details class="faq-item"><summary>What is the asset-depletion program, and would it work for me?</summary><div class="faq-body"><p>Asset-depletion treats your liquid investment assets as an implied income stream by dividing the portfolio value by a fixed term (typically 84 to 360 months depending on the program). If you have $2M in taxable brokerage and $400K in retirement, an asset-depletion program might credit you with $25K&ndash;$30K of monthly qualifying income on top of (or instead of) earned income. It&rsquo;s the right program for senior partners winding down, business sellers between exits, and high-net-worth low-recent-W-2 borrowers.</p></div></details>
+        <details class="faq-item"><summary>What loan programs do you actually use for professional-services clients?</summary><div class="faq-body"><p>Conventional Fannie Mae and Freddie Mac (when tax returns plus add-backs hit the qualifying number), Non-QM bank-statement (the most common path for high-distribution S-corp owners and bank-rich Schedule C filers), Non-QM 1099-only, Asset-Depletion (for high-net-worth low-W-2 borrowers), Jumbo (for purchase price over $806,500 in most Florida counties), and SBA-coordinated personal-mortgage timing (for clients acquiring practices). We pick the program after we read your file, not before.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAME C CROSS-LINK BLOCK: PRACTICE ACQUISITION -->
+  <section class="section">
+    <div class="container">
+      <div class="cross-link-block">
+        <div class="eyebrow">06 &middot; Practice acquisition &amp; buy-in financing</div>
+        <h2 style="margin-bottom: var(--s-5);">Buying into a partnership, acquiring a practice, exiting to start your own?</h2>
+        <p style="margin-bottom: var(--s-5); max-width: 760px;">A large share of our professional-services clients are mid-career &mdash; partner-track at a firm, buying a CPA practice, exiting BigLaw to hang their own shingle, acquiring a competitor&rsquo;s book of business. The personal mortgage isn&rsquo;t the only loan in the file; SBA acquisition financing, capital-call notes, and seller-financing schedules all interact with your personal qualification. We sequence and structure the personal mortgage to fit the practice transaction, not the other way around.</p>
+        <ul class="cross-link-list">
+          <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/business-acquirer/">Business acquirer mortgage guide</a> &mdash; SBA 7(a)/504 coordination, seller-note treatment, asset-depletion for the gap period</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/attorney/">Attorney buy-in section</a> &mdash; capital call financing and mortgage timing</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/cpas-accountant/">CPA practice succession section</a> &mdash; buy-out timing and equity treatment</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/financial-planner/">RIA owner section</a> &mdash; book-of-business acquisition and continuity financing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">07 &middot; Sources &amp; further reading</div>
+        <h2>The data, regulations, and industry research behind this guide.</h2>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h3 class="source-group-title">BLS occupational wage &amp; outlook data</h3>
+          <ul class="source-list">
+            <li><a href="https://www.bls.gov/ooh/legal/lawyers.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Lawyers (median $151,160 May 2024)</a></li>
+            <li><a href="https://www.bls.gov/ooh/business-and-financial/accountants-and-auditors.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Accountants &amp; Auditors (median $81,680 May 2024)</a></li>
+            <li><a href="https://www.bls.gov/ooh/architecture-and-engineering/architects.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Architects (median $96,690 May 2024)</a></li>
+            <li><a href="https://www.bls.gov/ooh/business-and-financial/management-analysts.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Management Analysts/Consultants (median $101,190)</a></li>
+            <li><a href="https://www.bls.gov/ooh/management/construction-managers.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Construction Managers (median $106,980)</a></li>
+            <li><a href="https://www.bls.gov/oes/2024/may/" target="_blank" rel="noopener noreferrer">BLS OEWS May 2024 &mdash; National employment &amp; wage data</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">IRS tax-filing guidance</h3>
+          <ul class="source-list">
+            <li><a href="https://www.irs.gov/forms-pubs/about-schedule-c-form-1040" target="_blank" rel="noopener noreferrer">IRS &mdash; Schedule C (Form 1040), Profit or Loss From Business</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-schedule-k-1-form-1065" target="_blank" rel="noopener noreferrer">IRS &mdash; Schedule K-1 (Form 1065), Partner&rsquo;s Share of Income</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-form-1120-s" target="_blank" rel="noopener noreferrer">IRS &mdash; Form 1120-S, U.S. Income Tax Return for an S Corporation</a></li>
+            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/s-corporation-employees-shareholders-and-corporate-officers" target="_blank" rel="noopener noreferrer">IRS &mdash; S Corporation Employees, Shareholders &amp; Corporate Officers</a></li>
+            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes" target="_blank" rel="noopener noreferrer">IRS &mdash; Self-Employment Tax (SE Tax)</a></li>
+            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center" target="_blank" rel="noopener noreferrer">IRS &mdash; Self-Employed Individuals Tax Center</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Mortgage program guidelines</h3>
+          <ul class="source-list">
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.4-02 &mdash; Partnership &amp; S-Corp Income Analysis</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.3-02 &mdash; Self-Employed Borrower Income Analysis</a></li>
+            <li><a href="https://guide.freddiemac.com/app/guide/section/5303.4" target="_blank" rel="noopener noreferrer">Freddie Mac Single-Family Seller/Servicer Guide &mdash; Income Documentation</a></li>
+            <li><a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer">CFPB Regulation Z &mdash; Ability-to-Repay &amp; Qualified Mortgage Rule</a></li>
+            <li><a href="https://www.fhfa.gov/" target="_blank" rel="noopener noreferrer">Federal Housing Finance Agency (FHFA) &mdash; GSE oversight</a></li>
+            <li><a href="https://www.ginniemae.gov/" target="_blank" rel="noopener noreferrer">Ginnie Mae &mdash; Government MBS guarantor</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Practice acquisition financing (SBA)</h3>
+          <ul class="source-list">
+            <li><a href="https://www.sba.gov/funding-programs/loans/7a-loans" target="_blank" rel="noopener noreferrer">SBA 7(a) Loan Program &mdash; Business acquisition &amp; working capital</a></li>
+            <li><a href="https://www.sba.gov/funding-programs/loans/504-loans" target="_blank" rel="noopener noreferrer">SBA 504 Loan Program &mdash; Real estate &amp; major equipment</a></li>
+            <li><a href="https://www.sba.gov/sites/default/files/2024-08/SBA-SOP-50-10-7-1.pdf" target="_blank" rel="noopener noreferrer">SBA Standard Operating Procedure 50 10 (lender requirements)</a></li>
+            <li><a href="https://www.sba.gov/" target="_blank" rel="noopener noreferrer">U.S. Small Business Administration</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Professional licensing &amp; regulation</h3>
+          <ul class="source-list">
+            <li><a href="https://www.americanbar.org/" target="_blank" rel="noopener noreferrer">American Bar Association &mdash; Attorney licensing &amp; ethics</a></li>
+            <li><a href="https://www.aicpa-cima.com/" target="_blank" rel="noopener noreferrer">AICPA &mdash; CPA licensing &amp; standards</a></li>
+            <li><a href="https://www.aia.org/" target="_blank" rel="noopener noreferrer">American Institute of Architects (AIA)</a></li>
+            <li><a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener noreferrer">NMLS Consumer Access &mdash; Mortgage broker &amp; lender registry</a></li>
+            <li><a href="https://www.sec.gov/divisions/investment/iaregulation.htm" target="_blank" rel="noopener noreferrer">SEC &mdash; Investment Adviser regulation</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Industry &amp; sector data</h3>
+          <ul class="source-list">
+            <li><a href="https://www.bls.gov/opub/mlr/2026/article/industry-and-occupational-employment-projections-overview.htm" target="_blank" rel="noopener noreferrer">BLS Monthly Labor Review &mdash; 2024-34 Industry &amp; Occupational Projections</a></li>
+            <li><a href="https://www.census.gov/" target="_blank" rel="noopener noreferrer">U.S. Census Bureau &mdash; Business establishment data</a></li>
+            <li><a href="https://www.bea.gov/" target="_blank" rel="noopener noreferrer">U.S. Bureau of Economic Analysis &mdash; Professional services GDP contribution</a></li>
+            <li><a href="https://www.dol.gov/" target="_blank" rel="noopener noreferrer">U.S. Department of Labor &mdash; Employment regulations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE-CTA HAPPY OUTCOME BLOCK -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">08 &middot; What "right door first" looks like</div>
+        <h2>The S-corp CPA who looked like he made $90K.</h2>
+        <p>Successful tax CPA in Fort Lauderdale, S-corp owner, paid himself a $90K W-2 and took $230K in distributions. Two big-bank loan officers qualified him on the W-2 only and offered him a $420K maximum loan. He wanted $720K for a Coral Ridge purchase. We saw the structure at the first conversation, pulled Form 1120-S and the K-1, demonstrated two years of consistent distribution history, and routed the file to a lender who underwrites S-corp distributions as qualifying income. Approved at the right number. Closed in 24 days. No surprises at the table.</p>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/161819/keys-key-house-real-estate-161819.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Set of house keys on a wooden table at closing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=Florida+Pro+Services+Closings';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">24-day close &middot; Coral Ridge, Fort Lauderdale</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow eyebrow-light">Talk to a self-employed mortgage specialist</div>
+        <h2 style="color: var(--paper);">Let&rsquo;s read your K-1 before anyone quotes you.</h2>
+        <p style="color: rgba(250,250,247,0.78);">No application. No credit pull. A 20-minute conversation where we look at your tax structure, your partnership or S-corp setup, and your goal &mdash; then we tell you which loan program fits and roughly what the numbers look like. If we&rsquo;re not the right shop, we&rsquo;ll tell you that too.</p>
+        <div class="final-cta-actions">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-primary btn-large">Schedule a call with Jim</a>
+          <a href="https://stairwaymortgage.com/professional-services/attorney/" class="btn btn-on-dark-secondary btn-large">Or read the attorney guide first</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: rgba(250,250,247,0.5); margin-top: var(--s-6);">Stairway Mortgage is a division of NEXA Mortgage LLC. Jim Blackburn NMLS #1072866.</p>
+      </div>
+    </div>
+  </section>
+
+
+`;
+---
+<Layout title="Professional Services Mortgage · Attorneys, CPAs, Consultants, Architects" description="Professional services mortgage for self-employed attorneys, CPAs, financial planners, architects, builders, consultants, mortgage brokers, and practice acquirers. We read your K-1, Schedule C, and S-corp filings to qualify you on real income." canonical="https://stairwaymortgage.com/professional-services/">
+  <div class="ps-scope" set:html={psBody} />
+</Layout>
+
+<style is:global>
+.ps-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A;
+      --ink-2: #1E2433;
+      --ink-3: #2C3548;
+      --ink-light: #4A5568;
+      --ink-lighter: #6B7280;
+      --paper: #FAFAF7;
+      --paper-2: #F4F4EE;
+      --paper-3: #EDEDE5;
+      --white: #FFFFFF;
+      --blue: #1845D6;
+      --blue-deep: #0F2EA0;
+      --blue-soft: #E8EEFF;
+      --blue-tint: #F2F5FF;
+      --gold: #B8860B;
+      --rust: #8B2C2C;
+      --border: #E5E5DE;
+      --border-strong: #D4D4C8;
+      --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; 
+      --text-xs: 0.75rem;    
+      --text-sm: 0.875rem;   
+      --text-base: 1.0625rem;
+      --text-md: 1.1875rem;  
+      --text-lg: 1.375rem;   
+      --text-xl: 1.625rem;   
+      --text-2xl: 2rem;      
+      --text-3xl: 2.75rem;   
+      --text-4xl: 3.75rem;   
+      --text-5xl: 5rem;      
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-5: 1.5rem;
+      --s-6: 2rem;
+      --s-7: 3rem;
+      --s-8: 4rem;
+      --s-9: 6rem;
+      --s-10: 8rem;
+      --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.ps-scope, .ps-scope{
+        background-color: #FAFAF7 !important;
+        color: #0A0E1A !important;
+        color-scheme: light only !important;
+      }.ps-scope *{
+        forced-color-adjust: none;
+      }
+    }.ps-scope, .ps-scope *::before, .ps-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.ps-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.ps-scope{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.ps-scope img, .ps-scope svg{ display: block; max-width: 100%; }.ps-scope a{ color: inherit; text-decoration: none; }.ps-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.ps-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.ps-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.ps-scope .container-wide{ max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }.ps-scope .eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-block;
+    }.ps-scope .display-1{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      color: var(--ink);
+    }.ps-scope .display-2{
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, var(--text-3xl));
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 100, "SOFT" 50;
+      color: var(--ink);
+    }.ps-scope h2{
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+      font-weight: 450;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 60, "SOFT" 50;
+    }.ps-scope h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--s-4);
+      font-variation-settings: "opsz" 30;
+    }.ps-scope h4{
+      font-family: var(--sans);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.005em;
+    }.ps-scope p{ margin-bottom: var(--s-4); }.ps-scope p:last-child{ margin-bottom: 0; }.ps-scope p.lead{
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      color: var(--ink-2);
+      font-weight: 350;
+    }.ps-scope p.lede{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.ps-scope .body-text{ color: var(--ink-2); }.ps-scope .text-muted{ color: var(--ink-lighter); }.ps-scope .text-small{ font-size: var(--text-sm); }.ps-scope .text-mono{ font-family: var(--mono); font-feature-settings: 'tnum' 1; }.ps-scope strong, .ps-scope b{ font-weight: 600; color: var(--ink); }.ps-scope em, .ps-scope i{ font-style: italic; }.ps-scope .nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }.ps-scope .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      max-width: 1340px;
+      margin: 0 auto;
+    }.ps-scope .logo{
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 30;
+    }.ps-scope .logo-mark{
+      width: 28px; height: 28px;
+      background: var(--ink);
+      position: relative;
+      border-radius: 2px;
+    }.ps-scope .logo-mark::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.ps-scope .logo-mark::after{
+      content: '';
+      position: absolute;
+      inset: 5px 9px 9px 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.ps-scope .logo-sub{ font-size: var(--text-2xs); color: var(--ink-lighter); font-family: var(--sans); font-weight: 400; letter-spacing: 0.04em; }.ps-scope .nav-links{
+      display: flex; gap: var(--s-6); list-style: none;
+      font-size: var(--text-sm); font-weight: 500;
+    }.ps-scope .nav-links a{ color: var(--ink-2); transition: color 0.15s; }.ps-scope .nav-links a:hover{ color: var(--blue); }.ps-scope .nav-cta{
+      display: flex; gap: var(--s-3);
+    }
+    @media (max-width: 900px) {.ps-scope .nav-links{ display: none; }.ps-scope .nav-cta .btn-secondary{ display: none; }
+    }.ps-scope .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-3) var(--s-5);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }.ps-scope .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }.ps-scope .btn-primary:hover{
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }.ps-scope .btn-secondary{
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }.ps-scope .btn-secondary:hover{
+      border-color: var(--ink);
+    }.ps-scope .btn-light{
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }.ps-scope .btn-light:hover{ background: var(--paper-2); }.ps-scope .btn-large{
+      padding: var(--s-4) var(--s-6);
+      font-size: var(--text-base);
+    }.ps-scope .btn-arrow{
+      display: inline-flex; align-items: center; gap: var(--s-2);
+      color: var(--blue); font-weight: 500;
+      transition: gap 0.18s;
+    }.ps-scope .btn-arrow:hover{ gap: var(--s-3); }.ps-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.ps-scope .hero{
+      padding: var(--s-9) 0 var(--s-8);
+      border-bottom: 1px solid var(--border);
+    }.ps-scope .breadcrumb{
+      display: flex; gap: var(--s-2);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      margin-bottom: var(--s-7);
+    }.ps-scope .breadcrumb a{ color: var(--ink-lighter); }.ps-scope .breadcrumb a:hover{ color: var(--blue); }.ps-scope .breadcrumb span:last-child{ color: var(--ink); }.ps-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.ps-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.ps-scope .hero-subtitle{
+      max-width: 56ch;
+      margin-bottom: var(--s-7);
+    }.ps-scope .hero-actions{
+      display: flex; gap: var(--s-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--s-5);
+    }.ps-scope .hero-trust{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: var(--s-3);
+    }.ps-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.ps-scope .stats{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-7) 0;
+    }.ps-scope .stats-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }.ps-scope .stat{
+      padding: 0 var(--s-4);
+      border-left: 1px solid var(--ink-3);
+    }.ps-scope .stat:first-child{ border-left: 0; padding-left: 0; }.ps-scope .stat-num{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 350;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 144;
+    }.ps-scope .stat-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {.ps-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.ps-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.ps-scope .section{
+      padding: var(--s-10) 0;
+    }.ps-scope .section-tinted{ background: var(--paper-2); }.ps-scope .section-dark{ background: var(--ink); color: var(--paper); }.ps-scope .section-header{
+      max-width: 720px;
+      margin-bottom: var(--s-8);
+    }.ps-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.ps-scope .section-header h2{ margin-bottom: var(--s-5); }.ps-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.ps-scope .lede-section{ padding: var(--s-9) 0; }.ps-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.ps-scope .data-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-feature-settings: 'tnum' 1;
+    }.ps-scope .data-table thead th{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      font-weight: 500;
+      text-align: left;
+      padding: var(--s-3) var(--s-4);
+      border-bottom: 1px solid var(--border-strong);
+    }.ps-scope .data-table tbody td{
+      padding: var(--s-5) var(--s-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }.ps-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.ps-scope .data-table tbody td:first-child{
+      font-weight: 500;
+      color: var(--ink);
+      width: 28%;
+    }.ps-scope .data-table tbody td:nth-child(2){
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--blue-deep);
+      white-space: nowrap;
+      width: 28%;
+    }.ps-scope .data-table tbody td:last-child{
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {.ps-scope .data-table thead{ display: none; }.ps-scope .data-table tbody tr{
+        display: block;
+        padding: var(--s-5) 0;
+        border-bottom: 1px solid var(--border);
+      }.ps-scope .data-table tbody td{
+        display: block;
+        padding: 0 0 var(--s-2);
+        border: 0;
+        width: 100% !important;
+      }.ps-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.ps-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.ps-scope .methods-grid{
+      display: grid;
+      gap: var(--s-5);
+    }.ps-scope .method{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.ps-scope .method:hover{
+      border-color: var(--border-strong);
+    }.ps-scope .method-header{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+      margin-bottom: var(--s-5);
+    }.ps-scope .method-num{
+      font-family: var(--mono);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: var(--s-2);
+      letter-spacing: -0.02em;
+    }.ps-scope .method-title h3{
+      margin-bottom: var(--s-3);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+    }.ps-scope .method-tag{
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      padding: var(--s-1) var(--s-3);
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.ps-scope .method-body{
+      padding-left: calc(var(--text-2xl) + var(--s-5));
+    }.ps-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.ps-scope .worked-example{
+      background: var(--paper-2);
+      border-left: 3px solid var(--ink);
+      padding: var(--s-5) var(--s-6);
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }.ps-scope .worked-example.featured{
+      background: var(--ink);
+      color: var(--paper);
+      border-left-color: var(--blue);
+    }.ps-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.ps-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.ps-scope .worked-example.featured .we-num{ color: var(--paper); }.ps-scope .we-title{
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--s-4);
+      color: var(--ink);
+    }.ps-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.ps-scope .we-line{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s-4);
+      padding: var(--s-2) 0;
+    }.ps-scope .we-label{ color: var(--ink-light); }.ps-scope .we-num{ color: var(--ink); font-weight: 500; }.ps-scope .we-divider{
+      border-top: 1px dashed var(--border-strong);
+      margin: var(--s-3) 0;
+      grid-column: 1 / -1;
+    }.ps-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.ps-scope .we-result{
+      grid-template-columns: 1fr auto;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border-strong);
+      margin-top: var(--s-2);
+      font-weight: 600;
+    }.ps-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.ps-scope .method{ padding: var(--s-5); }.ps-scope .method-body{ padding-left: 0; }.ps-scope .method-num{ font-size: var(--text-xl); }
+    }.ps-scope .callout{
+      background: var(--blue-tint);
+      border: 1px solid rgba(24, 69, 214, 0.12);
+      border-radius: 6px;
+      padding: var(--s-6) var(--s-7);
+      max-width: 760px;
+    }.ps-scope .callout-eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.ps-scope .callout p{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.ps-scope .testim-warning{
+      background: #FFF1F1;
+      border: 1px solid rgba(139, 44, 44, 0.3);
+      border-radius: 4px;
+      padding: var(--s-3) var(--s-5);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      color: var(--rust);
+      margin: 0 auto var(--s-7);
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+    }.ps-scope .testim-warning .mono-tag{
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.1em;
+      background: var(--rust);
+      color: var(--paper);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }.ps-scope .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {.ps-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; }
+    }.ps-scope .testimonials-grid--quad{
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+    }
+    @media (max-width: 900px) {.ps-scope .testimonials-grid--quad{ grid-template-columns: 1fr; max-width: 620px; }
+    }.ps-scope .testim-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.ps-scope .testim-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }.ps-scope .testim-card .example-tag{
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      background: rgba(139, 44, 44, 0.08);
+      color: var(--rust);
+      padding: 3px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+    }.ps-scope .testim-avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 30;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }.ps-scope .testim-avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      display: block;
+    }.ps-scope .testim-avatar::after{
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 50%;
+    }.ps-scope .testim-avatar-1{ background: var(--blue-soft); color: var(--blue-deep); }.ps-scope .testim-avatar-2{ background: #F0EDE8; color: #6B5C4B; }.ps-scope .testim-avatar-3{ background: #E8EFE8; color: #3D5A3D; }.ps-scope .testim-quote{
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      margin: 0;
+      flex: 1;
+    }.ps-scope .testim-attribution{
+      border-top: 1px solid var(--border);
+      padding-top: var(--s-4);
+    }.ps-scope .testim-name{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.005em;
+    }.ps-scope .testim-meta{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }.ps-scope .programs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+    @media (max-width: 720px) {.ps-scope .programs-grid{ grid-template-columns: 1fr; }
+    }.ps-scope .program{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      transition: all 0.2s;
+    }.ps-scope .program:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }.ps-scope .program h4{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      font-variation-settings: "opsz" 30;
+    }.ps-scope .program-when{
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      flex: 1;
+    }.ps-scope .program-links{
+      display: flex;
+      gap: var(--s-5);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+    }.ps-scope .program-links a{
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-1);
+    }.ps-scope .program-links a:hover{ color: var(--blue-deep); }.ps-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.ps-scope .per-diem-section{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+    }.ps-scope .per-diem-section h2{ color: var(--paper); }.ps-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.ps-scope .per-diem-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.ps-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); }
+    }.ps-scope .per-diem-list{
+      list-style: none;
+      padding: 0;
+    }.ps-scope .per-diem-list li{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--ink-3);
+      display: flex;
+      gap: var(--s-4);
+      align-items: start;
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.9);
+    }.ps-scope .per-diem-list li:last-child{ border-bottom: 0; }.ps-scope .pd-num{
+      font-family: var(--mono);
+      color: var(--blue-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 1.5em;
+    }.ps-scope .playbook-stages{ display: grid; gap: var(--s-7); }.ps-scope .stage{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-7);
+      padding-bottom: var(--s-7);
+      border-bottom: 1px solid var(--border);
+    }.ps-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.ps-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); }
+    }.ps-scope .stage-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      padding-top: var(--s-2);
+    }.ps-scope .stage-content h4{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.ps-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.ps-scope .stage-bullets{
+      list-style: none;
+      padding: 0;
+    }.ps-scope .stage-bullets li{
+      padding: var(--s-2) 0;
+      padding-left: var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }.ps-scope .stage-bullets li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 1px;
+      background: var(--blue);
+    }.ps-scope .bio-section{
+      background: var(--paper-2);
+      padding: var(--s-10) 0;
+    }.ps-scope .bio-grid{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-7);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.ps-scope .bio-grid{ grid-template-columns: 1fr; }
+    }.ps-scope .bio-photo{
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink);
+      position: relative;
+    }.ps-scope .bio-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
+    }.ps-scope .bio-photo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      z-index: 2;
+    }.ps-scope .bio-name{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: var(--s-2);
+      font-variation-settings: "opsz" 60;
+    }.ps-scope .bio-title{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      margin-bottom: var(--s-5);
+    }.ps-scope .bio-quote{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-style: italic;
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--blue);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 30;
+    }.ps-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.ps-scope .faq-list{
+      max-width: 800px;
+      margin: 0 auto;
+    }.ps-scope .faq-item{
+      padding: var(--s-6) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+    }.ps-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.ps-scope .faq-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.04em;
+      color: var(--blue);
+      font-weight: 500;
+      padding-top: var(--s-1);
+    }.ps-scope .faq-q{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      color: var(--ink);
+      line-height: 1.3;
+      font-variation-settings: "opsz" 30;
+    }.ps-scope .faq-a{
+      color: var(--ink-2);
+      line-height: 1.65;
+    }.ps-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.ps-scope .sources-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.ps-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.ps-scope .source-group h4{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border-strong);
+    }.ps-scope .source-list{ list-style: none; padding: 0; }.ps-scope .source-list li{
+      padding: var(--s-3) 0;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }.ps-scope .source-list a{
+      color: var(--ink-2);
+      transition: color 0.15s;
+      display: block;
+    }.ps-scope .source-list a:hover{ color: var(--blue); }.ps-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.ps-scope .source-url{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      word-break: break-all;
+    }.ps-scope .final-cta{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+      text-align: center;
+    }.ps-scope .final-cta h2{
+      color: var(--paper);
+      max-width: 22ch;
+      margin: 0 auto var(--s-5);
+    }.ps-scope .final-cta p{
+      color: rgba(250,250,247,0.75);
+      font-size: var(--text-lg);
+      max-width: 56ch;
+      margin: 0 auto var(--s-7);
+    }.ps-scope .final-cta-actions{
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }.ps-scope .btn-on-dark{
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--paper);
+    }.ps-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.ps-scope .btn-on-dark-secondary{
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(250,250,247,0.3);
+    }.ps-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.ps-scope .footer{
+      background: var(--ink-2);
+      color: var(--paper);
+      padding: var(--s-9) 0 var(--s-5);
+    }.ps-scope .footer-grid{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s-7);
+      margin-bottom: var(--s-7);
+    }
+    @media (max-width: 800px) {.ps-scope .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }.ps-scope .footer-brand .logo{ color: var(--paper); margin-bottom: var(--s-4); }.ps-scope .footer-brand p{ color: rgba(250,250,247,0.65); font-size: var(--text-sm); margin-bottom: var(--s-4); }.ps-scope .footer-brand .compliance{ font-family: var(--mono); font-size: var(--text-xs); line-height: 1.7; color: rgba(250,250,247,0.5); }.ps-scope .footer-col h5{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,0.6);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+    }.ps-scope .footer-col ul{ list-style: none; padding: 0; }.ps-scope .footer-col li{ padding: 4px 0; }.ps-scope .footer-col a{
+      color: rgba(250,250,247,0.85);
+      font-size: var(--text-sm);
+      transition: color 0.15s;
+    }.ps-scope .footer-col a:hover{ color: var(--paper); }.ps-scope .footer-bottom{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(250,250,247,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-4);
+      font-size: var(--text-xs);
+      color: rgba(250,250,247,0.5);
+      font-family: var(--mono);
+    }.ps-scope .mt-6{ margin-top: var(--s-6); }.ps-scope .mt-8{ margin-top: var(--s-8); }.ps-scope .mb-0{ margin-bottom: 0; }
+    @media (prefers-reduced-motion: no-preference) {.ps-scope .fade-in{
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.7s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }.ps-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.ps-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.ps-scope .highlights-list{
+      list-style: none;
+      padding: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      columns: 1;
+      column-gap: var(--s-7);
+    }
+    @media (min-width: 880px) {.ps-scope .highlights-list{ columns: 2; column-gap: var(--s-8); }
+    }.ps-scope .highlights-list li{
+      break-inside: avoid;
+      padding: var(--s-3) 0 var(--s-3) var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }.ps-scope .highlights-list li:last-child{ border-bottom: 0; }.ps-scope .highlights-list li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.2em;
+      width: 14px;
+      height: 1px;
+      background: var(--blue);
+    }.ps-scope .highlights-source{
+      font-size: var(--text-sm);
+      color: var(--ink-lighter);
+      margin-left: 4px;
+    }.ps-scope .highlights-source a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }.ps-scope .highlights-source a:hover{ color: var(--blue-deep); }.ps-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.ps-scope .resources-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {.ps-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); }
+    }.ps-scope .resource-item{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--ink-2);
+    }.ps-scope .resource-item a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }.ps-scope .resource-item a:hover{ color: var(--blue-deep); }.ps-scope .professions-section{
+      padding: var(--s-9) 0 var(--s-10);
+    }.ps-scope .professions-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      max-width: 1100px;
+      margin: var(--s-7) auto 0;
+    }
+    @media (max-width: 800px) {.ps-scope .professions-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.ps-scope .profession-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }.ps-scope .profession-card:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -12px rgba(10, 14, 26, 0.15);
+    }.ps-scope .profession-num{
+      font-family: var(--mono);
+      font-size: var(--text-md);
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }.ps-scope .profession-title{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variation-settings: "opsz" 60;
+      margin: 0;
+      color: var(--ink);
+    }.ps-scope .profession-tag{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.4;
+      color: var(--ink-2);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      font-style: italic;
+      margin: 0;
+    }.ps-scope .profession-points{
+      list-style: none;
+      padding: 0;
+      margin: var(--s-2) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }.ps-scope .profession-points li{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-light);
+      padding-left: var(--s-4);
+      position: relative;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }.ps-scope .profession-points li::before{
+      content: '·';
+      position: absolute;
+      left: var(--s-2);
+      top: -2px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.4em;
+    }.ps-scope .profession-link{
+      margin-top: auto;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-2);
+      transition: gap 0.2s;
+    }.ps-scope .profession-link::after{ content: '→'; transition: transform 0.2s; }.ps-scope .profession-card:hover .profession-link::after{ transform: translateX(4px); }.ps-scope .differentiators-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.ps-scope .differentiators-grid{ grid-template-columns: 1fr; gap: var(--s-6); }
+    }.ps-scope .differentiator{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }.ps-scope .differentiator-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--blue-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+      font-weight: 500;
+    }.ps-scope .differentiator h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.ps-scope .differentiator p{
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(250,250,247,0.85);
+      margin: 0;
+    }.ps-scope .hero--with-image .hero-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.ps-scope .hero--with-image h1{ max-width: 16ch; }.ps-scope .hero--with-image .hero-subtitle{ max-width: 52ch; }.ps-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.ps-scope .hero-image::before{ content: ''; position: absolute; top: 58%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(232,238,255,0.18) 35%, rgba(232,238,255,0.18) 65%, transparent 100%); z-index: 1; }.ps-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.ps-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.ps-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.ps-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; } }.ps-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.ps-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.ps-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.ps-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.ps-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.ps-scope .final-cta--bg .container{ position: relative; z-index: 1; }.ps-scope .stats--with-image .stats-bar-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.ps-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.ps-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.ps-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 800px) {.ps-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.ps-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); }.ps-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; } }.ps-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 30% 60%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.ps-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; filter: contrast(1.03) saturate(0.97); }.ps-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.ps-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.ps-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.ps-scope .pre-cta-photo{ aspect-ratio: 4/3; } }
+  
+</style>
+
