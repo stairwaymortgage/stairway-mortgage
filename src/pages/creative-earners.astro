@@ -1,19 +1,1415 @@
 ---
 import Layout from '../layouts/Layout.astro';
----
-<Layout title="Creative & Variable Income — Stairway Mortgage" description="Flexible income documentation for freelancers, artists, and variable earners.">
-  <section class="section relative overflow-hidden">
-    <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Your Profession · Creative & Variable Income</span>
-        <h1 class="display-xl mt-6 mb-6">Flexible lending for <em class="italic text-[var(--color-blue)]">how you actually earn</em>.</h1>
-        <p class="lede max-w-xl mx-auto mb-6">Freelancers, artists, gig workers — flexible income documentation so irregular paychecks do not block homeownership.</p>
-        <p class="mono text-[11px] text-[var(--color-mute)] mt-6">NMLS #1072866</p>
-        <div class="flex flex-wrap gap-3 justify-center mt-10">
-          <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-6 py-3.5">See My Options</a>
-          <a href="/contact-us/" class="btn btn-ghost text-base px-6 py-3.5">Talk to Our Team</a>
+const crBody = `
+  
+
+  <!-- HERO -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+
+      <div class="hero-eyebrow eyebrow">Creative Earners Mortgages</div>
+      <h1 class="display-1">Creative earner mortgage for the people whose income shows up on twelve different platforms and three different forms.</h1>
+      <p class="lead hero-subtitle">Content creators, freelance creatives, recording artists, film and television professionals, and authors share a uniquely complex mortgage profile: platform revenue from YouTube and TikTok and Instagram, royalty income from streaming and licensing, 1099-NEC freelance retainers, brand-sponsorship deals paid through LLCs, residuals that arrive years after the work, and tax returns optimized to minimize self-employment tax through legitimate deductions and S-corp structuring. Generalist lenders read the optimized AGI line and decline you. We read the platform statements, the LLC K-1, the royalty schedule, and the booking pipeline &mdash; and we qualify you on what you actually earn.</p>
+
+      <div class="hero-actions">
+        <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary btn-large">Schedule a call with Jim</a>
+        <a href="#professions" class="btn btn-secondary btn-large">Find your situation</a>
+      </div>
+
+      <div class="hero-trust">
+        <span class="trust-dot"></span>
+        <span>Broker NMLS #1072866</span>
+        <span>&middot;</span>
+        <span>Specialist in creative-income &amp; royalty mortgages</span>
+      </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/3756879/pexels-photo-3756879.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Creative professional working on a laptop in a modern studio space" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Creative+Earners';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS BAR -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Creative-earner situations we specialize in</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">$133K</div>
+          <div class="stat-label">BLS 2024 writers/authors top 10% (creators far higher)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Income-qualification methods for creative pay</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Specialist who reads your LLC return before we quote</div>
+        </div>
+      </div>
+
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/3756680/pexels-photo-3756680.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Content creator setup with camera and lighting equipment" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x750/0A0E1A/E8EEFF/png?text=Creative+Earners';">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEDE -->
+  <section class="lede-section">
+    <div class="container-narrow">
+      <p class="lede">Stairway Mortgage qualifies creative earners on the income they actually generate &mdash; <strong>not the AGI line on a tax return optimized to minimize self-employment tax</strong>. A content creator with $500K of YouTube AdSense plus brand-sponsorship LLC income, a freelance designer with retainer contracts and one-off project income, a recording artist with streaming royalties and touring income, a film professional with W-2 production income and 1099 residuals, and a published author with advance plus royalty income each get qualified using the method that fits their pattern. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
+    </div>
+  </section>
+
+  <!-- FIVE PROFESSION CARDS -->
+  <section class="professions-section section-tinted" id="professions">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">01 &middot; Choose your door</div>
+        <h2>Five creative earner mortgage situation guides.</h2>
+        <p>Each guide is built around the income structure, platform mix, and qualifying mechanics of that specific creative path. Pick the one that matches yours.</p>
+      </div>
+
+      <div class="professions-grid">
+      <a class="profession-card" href="https://stairwaymortgage.com/creative-earners/content-creator-influencer/">
+        <div class="profession-num">01</div>
+        <h3 class="profession-title">Content Creators &amp; Influencers</h3>
+        <p class="profession-tag">"My YouTube AdSense is $30K/month. My brand deals add another $25K. My tax return shows $180K."</p>
+        <ul class="profession-points">
+          <li>Multi-platform revenue (YouTube, TikTok, Instagram, Twitch) documentation</li>
+          <li>Brand sponsorship LLC income with quarterly retainer structure</li>
+          <li>Bank-statement Non-QM program for under-told tax returns</li>
+          <li>Affiliate revenue and digital-product income aggregation</li>
+        </ul>
+        <span class="profession-link">Read the content creator mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/creative-earners/freelance-creative/">
+        <div class="profession-num">02</div>
+        <h3 class="profession-title">Freelance Creatives</h3>
+        <p class="profession-tag">"I have eight 1099s, three retainers, and a single LLC. My income is real but my AGI is small."</p>
+        <ul class="profession-points">
+          <li>Multi-client 1099-NEC documentation with retainer-contract verification</li>
+          <li>LLC pass-through (Schedule C or S-corp election) treatment</li>
+          <li>Designer, writer, photographer, videographer freelance patterns</li>
+          <li>Two-year average vs trailing-12-month income qualification</li>
+        </ul>
+        <span class="profession-link">Read the freelance creative mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/creative-earners/recording-artist-musician/">
+        <div class="profession-num">03</div>
+        <h3 class="profession-title">Recording Artists &amp; Musicians</h3>
+        <p class="profession-tag">"Streaming royalties, touring revenue, sync licensing, merch. Five income streams, one mortgage."</p>
+        <ul class="profession-points">
+          <li>Streaming royalty income (Spotify, Apple Music) two-year history</li>
+          <li>Touring revenue and per-show booking documentation</li>
+          <li>Sync licensing and publishing royalty schedules</li>
+          <li>LLC/S-corp structure for tour and catalog income separation</li>
+        </ul>
+        <span class="profession-link">Read the recording artist mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/creative-earners/film-tv-professional/">
+        <div class="profession-num">04</div>
+        <h3 class="profession-title">Film &amp; TV Professionals</h3>
+        <p class="profession-tag">"My production W-2 is project-based. My residuals are real but irregular. The lender averaged me down."</p>
+        <ul class="profession-points">
+          <li>Production-by-production W-2 with union (SAG-AFTRA/IATSE/DGA/WGA) documentation</li>
+          <li>Residual income from streaming and broadcast distribution</li>
+          <li>Loan-out S-corp structure (common in film/TV at higher levels)</li>
+          <li>Below-the-line vs above-the-line income qualification differences</li>
+        </ul>
+        <span class="profession-link">Read the film &amp; TV professional mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/creative-earners/author-writer/">
+        <div class="profession-num">05</div>
+        <h3 class="profession-title">Authors &amp; Writers</h3>
+        <p class="profession-tag">"My advance was $250K spread over three years. My royalties build slowly. Underwriting is confused."</p>
+        <ul class="profession-points">
+          <li>Book advance amortization across multi-year contract</li>
+          <li>Royalty statement documentation (traditional &amp; self-publishing)</li>
+          <li>Ghostwriting, content-writing, and copywriting retainer income</li>
+          <li>Substack and direct-publishing subscription revenue</li>
+        </ul>
+        <span class="profession-link">Read the author mortgage guide</span>
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK SECTION: WHAT MAKES CREATIVE MORTGAGES DIFFERENT -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3206080/pexels-photo-3206080.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 760px;">
+        <div class="eyebrow eyebrow-light">02 &middot; The income generalist lenders mis-read</div>
+        <h2 style="color: var(--paper);">Four creative-income patterns that confuse W-2 underwriting.</h2>
+        <p style="color: rgba(250,250,247,0.78);">Creative earners almost never have a clean W-2. The income is documented &mdash; thoroughly &mdash; but it lives across platform statements, royalty schedules, LLC K-1s, 1099-NECs, and bank deposits rather than a single Box 1 number. Each pattern below has a documented qualifying path under Fannie Mae, Freddie Mac, or our Non-QM options.</p>
+      </div>
+
+      <div class="dark-grid">
+        <div class="dark-card">
+          <div class="dark-num">A</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Multi-platform &amp; multi-1099 income</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Content creators and freelance creatives typically have income from 5&ndash;15 different sources in a single year: YouTube AdSense, TikTok Creator Fund, brand-sponsorship LLCs, affiliate platforms, Substack, Patreon, course platforms, and direct-deposit retainers. Each generates a <a href="https://www.irs.gov/forms-pubs/about-form-1099-nec" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">1099-NEC</a> or <a href="https://www.irs.gov/businesses/understanding-your-form-1099-k" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">1099-K</a> at year-end. Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Fannie Mae B3-3.3-02</a>, all self-employment income aggregates after applicable add-backs. Generalist lenders try to treat each 1099 as a separate gig and disqualify the file. We treat the aggregate as one self-employment income stream.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">B</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">LLC and S-corp pass-through structure</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Established creative earners (high-revenue content creators, working recording artists, working film/TV professionals) almost always route income through an LLC or S-corp. The S-corp election lets them pay themselves a "reasonable" W-2 salary and take the rest as a distribution that avoids self-employment tax. <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Fannie Mae B3-3.4-02</a> allows the distribution to count as qualifying income with a two-year history. The lender pulls Form 1120-S, the K-1, the personal 1040, and uses the full picture &mdash; not just the W-2 salary.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">C</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Bank-statement (Non-QM) for under-told tax returns</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Most creative earners legitimately deduct home-office, equipment, software subscriptions, mileage, contractor payments, travel, and meals &mdash; producing a tax return where the net profit (or AGI) is far below the actual cash flow. The Non-QM bank-statement program qualifies on 12 or 24 months of personal or business deposits instead of tax returns. <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">CFPB Reg Z&rsquo;s Ability-to-Repay rule</a> permits non-QM lending with documented compensating factors. This is the program that gets the $500K-revenue YouTuber whose 1040 shows $180K into a $1.2M home.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">D</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Royalty &amp; residual income with documented schedules</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Authors, recording artists, songwriters, and film/TV writers receive royalties or residuals from past work that pays out over many years. <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-09/other-sources-of-income" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Fannie Mae Selling Guide B3-3.1-09</a> permits royalty income to count when there is a documented payment schedule and at least a two-year history. SAG-AFTRA, WGA, ASCAP, BMI, and SoundExchange statements all qualify as documentation. The income is by nature irregular but the recurrence pattern over a multi-year window establishes the qualifying number. Most lenders skip it. We don&rsquo;t.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- BIO -->
+  <section class="bio-section">
+    <div class="container">
+      <div class="bio-grid">
+        <figure class="bio-photo">
+          <img src="https://images.pexels.com/photos/3760529/pexels-photo-3760529.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mortgage broker reviewing loan documents at a desk" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x800/0A0E1A/E8EEFF/png?text=Jim+Blackburn';">
+        </figure>
+        <div class="bio-text">
+          <div class="eyebrow">03 &middot; Why my desk?</div>
+          <h2>I&rsquo;ve closed loans for creators whose income structures most lenders couldn&rsquo;t parse.</h2>
+          <p>I run a national mortgage practice from Fort Lauderdale, and an increasing share of my originations come from creative earners &mdash; the YouTuber buying a Miami house with platform revenue that exceeds her CPA&rsquo;s expectations, the touring musician with an LLC-routed streaming income, the freelance designer with $400K of retainer income hidden behind aggressive Schedule C deductions, the published author closing on her first home using a documented royalty schedule. The common thread is that the income is real and recurring, but the documentation lives in places generalist lenders never look.</p>
+          <p>The reason most lenders fail creative clients is that the loan officer never asks for the platform statements, never requests the royalty schedule, never pulls Form 1120-S for the S-corp. They feed your 1040 into automated underwriting, the engine reads AGI, and AGI for a creative earner with legitimate deductions and an S-corp distribution is much smaller than what you actually take home. Our process: read the platform exports, map every income stream, pull the LLC and S-corp returns, and route the file to the program whose underwriting box your situation actually fits &mdash; whether that&rsquo;s Fannie Mae self-employed with proper add-backs, Non-QM bank-statement, or asset-depletion when the creative business itself is the asset.</p>
+          <p>Stairway Mortgage is a division of NEXA Mortgage LLC, the nation&rsquo;s largest mortgage brokerage. That means access to 300+ lender programs, including the bank-statement, asset-depletion, and 1099-only options that fit creative-earner income. <strong>I personally read every creative-earner loan file before it&rsquo;s submitted.</strong></p>
+          <div class="bio-cta">
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary">Schedule a call with Jim</a>
+            <span class="bio-cta-meta">No application required. 20-minute conversation.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">04 &middot; What creative clients say</div>
+        <h2>Three closings from the creator economy.</h2>
+        <p>Names abbreviated for client privacy. Channel and label names anonymized. Numbers are real.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-1"><img src="https://i.pravatar.cc/300?img=47" alt="Mariah K., YouTube creator and brand-sponsorship LLC owner" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=47';"></div>
+          <blockquote class="testim-quote">"My YouTube AdSense plus brand deals put $620K through the LLC last year. My personal 1040 showed $215K after S-corp distribution and deductions. Two lenders qualified me on the W-2 only. Jim used the bank-statement program correctly. Approved at $1.4M."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Mariah K.</div>
+            <div class="testim-meta">Content Creator &middot; YouTube + brand sponsorship LLC &middot; Miami</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-2"><img src="https://i.pravatar.cc/300?img=11" alt="James R., touring musician and recording artist" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/F0EDE8/6B5C4B/png?text=11';"></div>
+          <blockquote class="testim-quote">"Streaming royalties through one LLC, touring through another, sync licensing through a third. Every lender I called said the structure was too complex. Jim pulled all three K-1s, documented the royalty pattern, and routed me through the right program."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">James R.</div>
+            <div class="testim-meta">Recording Artist &middot; Touring + streaming + sync licensing &middot; Fort Lauderdale</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-3"><img src="https://i.pravatar.cc/300?img=44" alt="Emma S., freelance designer with retainer clients" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EFE8/3D5A3D/png?text=44';"></div>
+          <blockquote class="testim-quote">"Twelve 1099s, four retainers, one Schedule C with a lot of legitimate deductions. The first lender ran me through automated underwriting and declined. Jim built the file manually using two years of bank statements. Closed in 32 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Emma S.</div>
+            <div class="testim-meta">Freelance Designer &middot; Retainer + project mix &middot; Coral Gables</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">05 &middot; Creative earner mortgage FAQs</div>
+        <h2>Eight questions creative earners ask first.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item"><summary>My tax return under-tells my real income. Can I still qualify for a mortgage?</summary><div class="faq-body"><p>Yes, through the Non-QM bank-statement program. <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer">CFPB Reg Z&rsquo;s Ability-to-Repay rule</a> permits qualifying on 12 or 24 months of personal or business bank deposits instead of tax returns. The lender does an expense-ratio adjustment (typically 50-75% of deposits count as qualifying income, depending on the program), but the resulting number usually beats the under-told 1040 figure substantially. This is the standard path for YouTubers, freelance creatives, and S-corp pass-through earners whose tax returns are optimized for self-employment-tax minimization.</p></div></details>
+        <details class="faq-item"><summary>I have 1099s from a dozen different platforms. How do you aggregate them?</summary><div class="faq-body"><p>Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.3-02</a>, all self-employment income on Schedule C aggregates after applicable add-backs. We collect every 1099-NEC and 1099-K, reconcile them against your Schedule C, add back legitimate non-cash deductions (depreciation, home-office, business-use-of-home expense per <a href="https://www.irs.gov/forms-pubs/about-form-8829" target="_blank" rel="noopener noreferrer">Form 8829</a>), and qualify you on the documented total. The 12-platform case typically nets out to roughly 1.4-1.8x the Schedule C net profit number once add-backs apply.</p></div></details>
+        <details class="faq-item"><summary>I run my creator business through an S-corp. How does that affect qualifying?</summary><div class="faq-body"><p>Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.4-02</a>, S-corp distributions count as qualifying income with a two-year history. We pull Form 1120-S, the K-1, and the personal 1040, then add the W-2 salary plus the distribution income. The lender reviews entity financial health (retained earnings, debt position) to confirm distributions are sustainable. With two years of consistent history, this is standard practice &mdash; not Non-QM, not asset-depletion, just done correctly.</p></div></details>
+        <details class="faq-item"><summary>Do royalty and residual statements count as qualifying income?</summary><div class="faq-body"><p>Yes, with a documented payment schedule and history. Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-09/other-sources-of-income" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-09</a>, royalty income counts when supported by a multi-year history. For musicians, this means ASCAP/BMI/SoundExchange statements plus streaming-platform royalty reports. For authors, publisher royalty statements plus self-publishing platform reports (KDP, IngramSpark). For film/TV writers and actors, SAG-AFTRA and WGA residual statements. The longer the history, the cleaner the qualifying number.</p></div></details>
+        <details class="faq-item"><summary>I&rsquo;m a film/TV professional. My W-2 is per-production. Will I be treated as a W-2 employee or self-employed?</summary><div class="faq-body"><p>Depends on your structure and whether you operate through a loan-out S-corp. Above-the-line talent and senior crew often operate through a loan-out S-corp that contracts with productions, receives W-2 from the S-corp, and treats production payments as S-corp revenue. Lower-tier crew typically receive W-2 directly from productions. Both qualify, but the documentation differs: loan-out S-corp follows the partnership/S-corp distribution path (B3-3.4-02), direct W-2 follows the variable-income two-year-average path (B3-3.1-01). Union (SAG-AFTRA, WGA, DGA, IATSE) membership and current contract documentation strengthens either path.</p></div></details>
+        <details class="faq-item"><summary>I&rsquo;m a published author with an advance paid over three years. How does that count?</summary><div class="faq-body"><p>Book advances are typically structured as: signing payment, manuscript delivery payment, hardcover publication payment, sometimes paperback payment. The IRS treats advances as ordinary income in the year received; lenders generally average across the contract period when documented. If you have a multi-book deal, the advance pattern is more predictable and easier to qualify. Standalone royalty income (post-advance) qualifies separately under <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-09/other-sources-of-income" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-09</a> with two years of statements.</p></div></details>
+        <details class="faq-item"><summary>How do you handle income from platforms that issue 1099-K instead of 1099-NEC?</summary><div class="faq-body"><p>Same way, with a reconciliation step. For the 2024 tax year, the IRS 1099-K threshold is $5,000 (down from $20,000 in prior years, scheduled to phase down further to $600 in future years &mdash; check current IRS guidance). 1099-K reports gross transactions before fees and refunds, so we reconcile against your platform export to get the net amount. Substack, Patreon, Stripe, PayPal, and most direct-deposit creator platforms now issue 1099-K. The qualifying income calculation uses the post-reconciliation net figure.</p></div></details>
+        <details class="faq-item"><summary>What loan programs do you actually use for creative-earner clients?</summary><div class="faq-body"><p>Non-QM bank-statement (the most common path for content creators and freelance creatives whose tax returns under-tell real income), Non-QM 1099-only (for high-1099-volume clients without complex deductions), Conventional Fannie Mae and Freddie Mac (when S-corp distributions plus W-2 hit the qualifying number cleanly), Asset-Depletion (for established creators with portfolio assets or paid-off catalog/IP), Jumbo (for purchase price over the conforming limit), and Portfolio loans from private banks (for super-jumbo creator clients with relationships). We pick the program after we read your full income picture, not before.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAME B CROSS-LINK BLOCK: ENTITY STRUCTURES & BUSINESS GROWTH -->
+  <section class="section">
+    <div class="container">
+      <div class="cross-link-block">
+        <div class="eyebrow">06 &middot; Creative business as a business</div>
+        <h2 style="margin-bottom: var(--s-5);">When your creative practice becomes a real business with employees, contractors, and entity structure.</h2>
+        <p style="margin-bottom: var(--s-5); max-width: 760px;">A growing creative practice eventually crosses the threshold from solo Schedule C filer to multi-entity operation with an S-corp election, contractor relationships, equipment loans, and sometimes a small team. At that point the mortgage conversation overlaps with Professional Services patterns &mdash; business acquisition financing, partnership structures, multi-entity tax planning. Many of our recurring creative clients return to us when they cross this threshold.</p>
+        <ul class="cross-link-list">
+          <li>&rarr; <a href="https://stairwaymortgage.com/creative-earners/content-creator-influencer/">Content creator mortgage guide</a> &mdash; multi-platform revenue &amp; brand-sponsorship LLC mechanics</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/creative-earners/freelance-creative/">Freelance creative mortgage guide</a> &mdash; retainer-vs-project income &amp; S-corp transition timing</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/business-acquirer/">Business acquirer guide</a> (Professional Services) &mdash; acquiring an agency, studio, or catalog</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/cpas-accountant/">CPA guide</a> (Professional Services) &mdash; entity-structuring coordination</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">07 &middot; Sources &amp; further reading</div>
+        <h2>The data, regulations, and industry research behind this guide.</h2>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h3 class="source-group-title">BLS occupational wage data</h3>
+          <ul class="source-list">
+            <li><a href="https://www.bls.gov/ooh/media-and-communication/writers-and-authors.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Writers &amp; Authors (median $72,270, top 10% $133,680, May 2024)</a></li>
+            <li><a href="https://www.bls.gov/ooh/media-and-communication/technical-writers.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Technical Writers (median $91,670)</a></li>
+            <li><a href="https://www.bls.gov/ooh/media-and-communication/photographers.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Photographers (median $20.44/hr)</a></li>
+            <li><a href="https://www.bls.gov/ooh/media-and-communication/" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Media &amp; Communication Occupations Overview ($70,300)</a></li>
+            <li><a href="https://www.bls.gov/ooh/entertainment-and-sports/producers-and-directors.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Producers &amp; Directors (median $82,510)</a></li>
+            <li><a href="https://www.bls.gov/ooh/arts-and-design/" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Arts &amp; Design Occupations (Art Directors $106,500)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Mortgage program guidelines</h3>
+          <ul class="source-list">
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.3-02 &mdash; Self-Employed Borrower Income Analysis</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.4-02 &mdash; Partnership &amp; S-Corp Income</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.1-09/other-sources-of-income" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-09 &mdash; Other Sources of Income (royalty, residual)</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-01 &mdash; General Income Information</a></li>
+            <li><a href="https://guide.freddiemac.com/app/guide/section/5303.4" target="_blank" rel="noopener noreferrer">Freddie Mac Single-Family Seller/Servicer Guide &mdash; Income Documentation</a></li>
+            <li><a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer">CFPB Regulation Z &mdash; Ability-to-Repay &amp; QM Rule</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">IRS tax-filing guidance</h3>
+          <ul class="source-list">
+            <li><a href="https://www.irs.gov/forms-pubs/about-schedule-c-form-1040" target="_blank" rel="noopener noreferrer">IRS &mdash; Schedule C (Form 1040), Profit or Loss From Business</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-form-1099-nec" target="_blank" rel="noopener noreferrer">IRS &mdash; Form 1099-NEC, Nonemployee Compensation</a></li>
+            <li><a href="https://www.irs.gov/businesses/understanding-your-form-1099-k" target="_blank" rel="noopener noreferrer">IRS &mdash; Form 1099-K (third-party payment reporting)</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-form-1120-s" target="_blank" rel="noopener noreferrer">IRS &mdash; Form 1120-S, S Corporation Tax Return</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-form-8829" target="_blank" rel="noopener noreferrer">IRS &mdash; Form 8829, Expenses for Business Use of Your Home</a></li>
+            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed" target="_blank" rel="noopener noreferrer">IRS &mdash; Small Business &amp; Self-Employed Tax Center</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Copyright &amp; intellectual property</h3>
+          <ul class="source-list">
+            <li><a href="https://www.copyright.gov/" target="_blank" rel="noopener noreferrer">U.S. Copyright Office &mdash; Registration &amp; royalty framework</a></li>
+            <li><a href="https://www.copyright.gov/circs/circ56.pdf" target="_blank" rel="noopener noreferrer">U.S. Copyright Office &mdash; Sound Recordings Circular</a></li>
+            <li><a href="https://www.uspto.gov/" target="_blank" rel="noopener noreferrer">USPTO &mdash; Trademark &amp; Patent Office</a></li>
+            <li><a href="https://www.loc.gov/copyright/" target="_blank" rel="noopener noreferrer">Library of Congress &mdash; Copyright Resources</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Industry organizations &amp; unions</h3>
+          <ul class="source-list">
+            <li><a href="https://www.sagaftra.org/" target="_blank" rel="noopener noreferrer">SAG-AFTRA &mdash; Screen Actors Guild &amp; AFTRA</a></li>
+            <li><a href="https://www.wga.org/" target="_blank" rel="noopener noreferrer">Writers Guild of America</a></li>
+            <li><a href="https://www.dga.org/" target="_blank" rel="noopener noreferrer">Directors Guild of America</a></li>
+            <li><a href="https://www.iatse.net/" target="_blank" rel="noopener noreferrer">IATSE &mdash; International Alliance of Theatrical Stage Employees</a></li>
+            <li><a href="https://www.ascap.com/" target="_blank" rel="noopener noreferrer">ASCAP &mdash; American Society of Composers, Authors &amp; Publishers</a></li>
+            <li><a href="https://www.bmi.com/" target="_blank" rel="noopener noreferrer">BMI &mdash; Broadcast Music, Inc.</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Economic &amp; industry data</h3>
+          <ul class="source-list">
+            <li><a href="https://www.bea.gov/" target="_blank" rel="noopener noreferrer">U.S. Bureau of Economic Analysis &mdash; Arts &amp; Cultural sector data</a></li>
+            <li><a href="https://www.census.gov/" target="_blank" rel="noopener noreferrer">U.S. Census Bureau &mdash; Self-employment statistics</a></li>
+            <li><a href="https://www.sba.gov/" target="_blank" rel="noopener noreferrer">U.S. Small Business Administration &mdash; Self-employment resources</a></li>
+            <li><a href="https://www.arts.gov/" target="_blank" rel="noopener noreferrer">National Endowment for the Arts &mdash; Creative economy research</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE-CTA HAPPY OUTCOME BLOCK -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">08 &middot; What "right door first" looks like</div>
+        <h2>The YouTuber who put $620K through the LLC.</h2>
+        <p>Content creator with a 1.8M-subscriber YouTube channel, brand-sponsorship deals routed through an LLC, and an S-corp election. Total LLC revenue: $620K last year. Personal 1040: $215K after S-corp salary + distribution and legitimate home-studio/equipment deductions. First two lenders qualified her on W-2 only ($110K) and offered $480K. We pulled the LLC 1120-S, ran the file through a Non-QM bank-statement program using 24 months of business deposits, and qualified her on the documented cash-flow number. Approved at $1.4M. Closed on a Miami house in 33 days. The right loan program existed the whole time &mdash; the first two lenders just didn&rsquo;t know it.</p>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/161819/keys-key-house-real-estate-161819.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Set of house keys on a wooden table at closing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=Creative+Earner+Closings';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">33-day close &middot; Miami, FL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow eyebrow-light">Talk to a creative-income mortgage specialist</div>
+        <h2 style="color: var(--paper);">Let&rsquo;s read your LLC return before anyone quotes you.</h2>
+        <p style="color: rgba(250,250,247,0.78);">No application. No credit pull. A 20-minute conversation where we look at your platform mix, your entity structure, your income pattern, and your goal &mdash; then we tell you which loan program fits and roughly what the numbers look like. If we&rsquo;re not the right shop, we&rsquo;ll tell you that too.</p>
+        <div class="final-cta-actions">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-primary btn-large">Schedule a call with Jim</a>
+          <a href="https://stairwaymortgage.com/creative-earners/content-creator-influencer/" class="btn btn-on-dark-secondary btn-large">Or read the content creator guide first</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: rgba(250,250,247,0.5); margin-top: var(--s-6);">Stairway Mortgage is a division of NEXA Mortgage LLC. Jim Blackburn NMLS #1072866.</p>
+      </div>
+    </div>
+  </section>
+
+
+`;
+---
+<Layout title="Creative Earner Mortgage · Content Creators, Freelancers, Musicians, Film/TV, Authors" description="Creative earner mortgage for content creators, freelance creatives, recording artists, film/TV professionals, and authors. We read your LLC return, royalty schedule, and platform statements to qualify on real income with bank-statement, 1099-only, or conventional programs." canonical="https://stairwaymortgage.com/creative-earners/">
+  <div class="cr-scope" set:html={crBody} />
 </Layout>
+
+<style is:global>
+.cr-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A;
+      --ink-2: #1E2433;
+      --ink-3: #2C3548;
+      --ink-light: #4A5568;
+      --ink-lighter: #6B7280;
+      --paper: #FAFAF7;
+      --paper-2: #F4F4EE;
+      --paper-3: #EDEDE5;
+      --white: #FFFFFF;
+      --blue: #1845D6;
+      --blue-deep: #0F2EA0;
+      --blue-soft: #E8EEFF;
+      --blue-tint: #F2F5FF;
+      --gold: #B8860B;
+      --rust: #8B2C2C;
+      --border: #E5E5DE;
+      --border-strong: #D4D4C8;
+      --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; 
+      --text-xs: 0.75rem;    
+      --text-sm: 0.875rem;   
+      --text-base: 1.0625rem;
+      --text-md: 1.1875rem;  
+      --text-lg: 1.375rem;   
+      --text-xl: 1.625rem;   
+      --text-2xl: 2rem;      
+      --text-3xl: 2.75rem;   
+      --text-4xl: 3.75rem;   
+      --text-5xl: 5rem;      
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-5: 1.5rem;
+      --s-6: 2rem;
+      --s-7: 3rem;
+      --s-8: 4rem;
+      --s-9: 6rem;
+      --s-10: 8rem;
+      --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.cr-scope, .cr-scope{
+        background-color: #FAFAF7 !important;
+        color: #0A0E1A !important;
+        color-scheme: light only !important;
+      }.cr-scope *{
+        forced-color-adjust: none;
+      }
+    }.cr-scope, .cr-scope *::before, .cr-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.cr-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.cr-scope{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.cr-scope img, .cr-scope svg{ display: block; max-width: 100%; }.cr-scope a{ color: inherit; text-decoration: none; }.cr-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.cr-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.cr-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.cr-scope .container-wide{ max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }.cr-scope .eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-block;
+    }.cr-scope .display-1{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      color: var(--ink);
+    }.cr-scope .display-2{
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, var(--text-3xl));
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 100, "SOFT" 50;
+      color: var(--ink);
+    }.cr-scope h2{
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+      font-weight: 450;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 60, "SOFT" 50;
+    }.cr-scope h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--s-4);
+      font-variation-settings: "opsz" 30;
+    }.cr-scope h4{
+      font-family: var(--sans);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.005em;
+    }.cr-scope p{ margin-bottom: var(--s-4); }.cr-scope p:last-child{ margin-bottom: 0; }.cr-scope p.lead{
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      color: var(--ink-2);
+      font-weight: 350;
+    }.cr-scope p.lede{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.cr-scope .body-text{ color: var(--ink-2); }.cr-scope .text-muted{ color: var(--ink-lighter); }.cr-scope .text-small{ font-size: var(--text-sm); }.cr-scope .text-mono{ font-family: var(--mono); font-feature-settings: 'tnum' 1; }.cr-scope strong, .cr-scope b{ font-weight: 600; color: var(--ink); }.cr-scope em, .cr-scope i{ font-style: italic; }.cr-scope .nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }.cr-scope .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      max-width: 1340px;
+      margin: 0 auto;
+    }.cr-scope .logo{
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 30;
+    }.cr-scope .logo-mark{
+      width: 28px; height: 28px;
+      background: var(--ink);
+      position: relative;
+      border-radius: 2px;
+    }.cr-scope .logo-mark::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.cr-scope .logo-mark::after{
+      content: '';
+      position: absolute;
+      inset: 5px 9px 9px 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.cr-scope .logo-sub{ font-size: var(--text-2xs); color: var(--ink-lighter); font-family: var(--sans); font-weight: 400; letter-spacing: 0.04em; }.cr-scope .nav-links{
+      display: flex; gap: var(--s-6); list-style: none;
+      font-size: var(--text-sm); font-weight: 500;
+    }.cr-scope .nav-links a{ color: var(--ink-2); transition: color 0.15s; }.cr-scope .nav-links a:hover{ color: var(--blue); }.cr-scope .nav-cta{
+      display: flex; gap: var(--s-3);
+    }
+    @media (max-width: 900px) {.cr-scope .nav-links{ display: none; }.cr-scope .nav-cta .btn-secondary{ display: none; }
+    }.cr-scope .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-3) var(--s-5);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }.cr-scope .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }.cr-scope .btn-primary:hover{
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }.cr-scope .btn-secondary{
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }.cr-scope .btn-secondary:hover{
+      border-color: var(--ink);
+    }.cr-scope .btn-light{
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }.cr-scope .btn-light:hover{ background: var(--paper-2); }.cr-scope .btn-large{
+      padding: var(--s-4) var(--s-6);
+      font-size: var(--text-base);
+    }.cr-scope .btn-arrow{
+      display: inline-flex; align-items: center; gap: var(--s-2);
+      color: var(--blue); font-weight: 500;
+      transition: gap 0.18s;
+    }.cr-scope .btn-arrow:hover{ gap: var(--s-3); }.cr-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.cr-scope .hero{
+      padding: var(--s-9) 0 var(--s-8);
+      border-bottom: 1px solid var(--border);
+    }.cr-scope .breadcrumb{
+      display: flex; gap: var(--s-2);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      margin-bottom: var(--s-7);
+    }.cr-scope .breadcrumb a{ color: var(--ink-lighter); }.cr-scope .breadcrumb a:hover{ color: var(--blue); }.cr-scope .breadcrumb span:last-child{ color: var(--ink); }.cr-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.cr-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.cr-scope .hero-subtitle{
+      max-width: 56ch;
+      margin-bottom: var(--s-7);
+    }.cr-scope .hero-actions{
+      display: flex; gap: var(--s-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--s-5);
+    }.cr-scope .hero-trust{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: var(--s-3);
+    }.cr-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.cr-scope .stats{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-7) 0;
+    }.cr-scope .stats-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }.cr-scope .stat{
+      padding: 0 var(--s-4);
+      border-left: 1px solid var(--ink-3);
+    }.cr-scope .stat:first-child{ border-left: 0; padding-left: 0; }.cr-scope .stat-num{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 350;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 144;
+    }.cr-scope .stat-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {.cr-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.cr-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.cr-scope .section{
+      padding: var(--s-10) 0;
+    }.cr-scope .section-tinted{ background: var(--paper-2); }.cr-scope .section-dark{ background: var(--ink); color: var(--paper); }.cr-scope .section-header{
+      max-width: 720px;
+      margin-bottom: var(--s-8);
+    }.cr-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.cr-scope .section-header h2{ margin-bottom: var(--s-5); }.cr-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.cr-scope .lede-section{ padding: var(--s-9) 0; }.cr-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.cr-scope .data-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-feature-settings: 'tnum' 1;
+    }.cr-scope .data-table thead th{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      font-weight: 500;
+      text-align: left;
+      padding: var(--s-3) var(--s-4);
+      border-bottom: 1px solid var(--border-strong);
+    }.cr-scope .data-table tbody td{
+      padding: var(--s-5) var(--s-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }.cr-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.cr-scope .data-table tbody td:first-child{
+      font-weight: 500;
+      color: var(--ink);
+      width: 28%;
+    }.cr-scope .data-table tbody td:nth-child(2){
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--blue-deep);
+      white-space: nowrap;
+      width: 28%;
+    }.cr-scope .data-table tbody td:last-child{
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {.cr-scope .data-table thead{ display: none; }.cr-scope .data-table tbody tr{
+        display: block;
+        padding: var(--s-5) 0;
+        border-bottom: 1px solid var(--border);
+      }.cr-scope .data-table tbody td{
+        display: block;
+        padding: 0 0 var(--s-2);
+        border: 0;
+        width: 100% !important;
+      }.cr-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.cr-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.cr-scope .methods-grid{
+      display: grid;
+      gap: var(--s-5);
+    }.cr-scope .method{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.cr-scope .method:hover{
+      border-color: var(--border-strong);
+    }.cr-scope .method-header{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+      margin-bottom: var(--s-5);
+    }.cr-scope .method-num{
+      font-family: var(--mono);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: var(--s-2);
+      letter-spacing: -0.02em;
+    }.cr-scope .method-title h3{
+      margin-bottom: var(--s-3);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+    }.cr-scope .method-tag{
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      padding: var(--s-1) var(--s-3);
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.cr-scope .method-body{
+      padding-left: calc(var(--text-2xl) + var(--s-5));
+    }.cr-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.cr-scope .worked-example{
+      background: var(--paper-2);
+      border-left: 3px solid var(--ink);
+      padding: var(--s-5) var(--s-6);
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }.cr-scope .worked-example.featured{
+      background: var(--ink);
+      color: var(--paper);
+      border-left-color: var(--blue);
+    }.cr-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.cr-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.cr-scope .worked-example.featured .we-num{ color: var(--paper); }.cr-scope .we-title{
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--s-4);
+      color: var(--ink);
+    }.cr-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.cr-scope .we-line{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s-4);
+      padding: var(--s-2) 0;
+    }.cr-scope .we-label{ color: var(--ink-light); }.cr-scope .we-num{ color: var(--ink); font-weight: 500; }.cr-scope .we-divider{
+      border-top: 1px dashed var(--border-strong);
+      margin: var(--s-3) 0;
+      grid-column: 1 / -1;
+    }.cr-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.cr-scope .we-result{
+      grid-template-columns: 1fr auto;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border-strong);
+      margin-top: var(--s-2);
+      font-weight: 600;
+    }.cr-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.cr-scope .method{ padding: var(--s-5); }.cr-scope .method-body{ padding-left: 0; }.cr-scope .method-num{ font-size: var(--text-xl); }
+    }.cr-scope .callout{
+      background: var(--blue-tint);
+      border: 1px solid rgba(24, 69, 214, 0.12);
+      border-radius: 6px;
+      padding: var(--s-6) var(--s-7);
+      max-width: 760px;
+    }.cr-scope .callout-eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.cr-scope .callout p{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.cr-scope .testim-warning{
+      background: #FFF1F1;
+      border: 1px solid rgba(139, 44, 44, 0.3);
+      border-radius: 4px;
+      padding: var(--s-3) var(--s-5);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      color: var(--rust);
+      margin: 0 auto var(--s-7);
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+    }.cr-scope .testim-warning .mono-tag{
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.1em;
+      background: var(--rust);
+      color: var(--paper);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }.cr-scope .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {.cr-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; }
+    }.cr-scope .testimonials-grid--quad{
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+    }
+    @media (max-width: 900px) {.cr-scope .testimonials-grid--quad{ grid-template-columns: 1fr; max-width: 620px; }
+    }.cr-scope .testim-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.cr-scope .testim-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }.cr-scope .testim-card .example-tag{
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      background: rgba(139, 44, 44, 0.08);
+      color: var(--rust);
+      padding: 3px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+    }.cr-scope .testim-avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 30;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }.cr-scope .testim-avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      display: block;
+    }.cr-scope .testim-avatar::after{
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 50%;
+    }.cr-scope .testim-avatar-1{ background: var(--blue-soft); color: var(--blue-deep); }.cr-scope .testim-avatar-2{ background: #F0EDE8; color: #6B5C4B; }.cr-scope .testim-avatar-3{ background: #E8EFE8; color: #3D5A3D; }.cr-scope .testim-quote{
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      margin: 0;
+      flex: 1;
+    }.cr-scope .testim-attribution{
+      border-top: 1px solid var(--border);
+      padding-top: var(--s-4);
+    }.cr-scope .testim-name{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.005em;
+    }.cr-scope .testim-meta{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }.cr-scope .programs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+    @media (max-width: 720px) {.cr-scope .programs-grid{ grid-template-columns: 1fr; }
+    }.cr-scope .program{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      transition: all 0.2s;
+    }.cr-scope .program:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }.cr-scope .program h4{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      font-variation-settings: "opsz" 30;
+    }.cr-scope .program-when{
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      flex: 1;
+    }.cr-scope .program-links{
+      display: flex;
+      gap: var(--s-5);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+    }.cr-scope .program-links a{
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-1);
+    }.cr-scope .program-links a:hover{ color: var(--blue-deep); }.cr-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.cr-scope .per-diem-section{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+    }.cr-scope .per-diem-section h2{ color: var(--paper); }.cr-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.cr-scope .per-diem-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.cr-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); }
+    }.cr-scope .per-diem-list{
+      list-style: none;
+      padding: 0;
+    }.cr-scope .per-diem-list li{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--ink-3);
+      display: flex;
+      gap: var(--s-4);
+      align-items: start;
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.9);
+    }.cr-scope .per-diem-list li:last-child{ border-bottom: 0; }.cr-scope .pd-num{
+      font-family: var(--mono);
+      color: var(--blue-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 1.5em;
+    }.cr-scope .playbook-stages{ display: grid; gap: var(--s-7); }.cr-scope .stage{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-7);
+      padding-bottom: var(--s-7);
+      border-bottom: 1px solid var(--border);
+    }.cr-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.cr-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); }
+    }.cr-scope .stage-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      padding-top: var(--s-2);
+    }.cr-scope .stage-content h4{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.cr-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.cr-scope .stage-bullets{
+      list-style: none;
+      padding: 0;
+    }.cr-scope .stage-bullets li{
+      padding: var(--s-2) 0;
+      padding-left: var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }.cr-scope .stage-bullets li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 1px;
+      background: var(--blue);
+    }.cr-scope .bio-section{
+      background: var(--paper-2);
+      padding: var(--s-10) 0;
+    }.cr-scope .bio-grid{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-7);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.cr-scope .bio-grid{ grid-template-columns: 1fr; }
+    }.cr-scope .bio-photo{
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink);
+      position: relative;
+    }.cr-scope .bio-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
+    }.cr-scope .bio-photo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      z-index: 2;
+    }.cr-scope .bio-name{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: var(--s-2);
+      font-variation-settings: "opsz" 60;
+    }.cr-scope .bio-title{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      margin-bottom: var(--s-5);
+    }.cr-scope .bio-quote{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-style: italic;
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--blue);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 30;
+    }.cr-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.cr-scope .faq-list{
+      max-width: 800px;
+      margin: 0 auto;
+    }.cr-scope .faq-item{
+      padding: var(--s-6) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+    }.cr-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.cr-scope .faq-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.04em;
+      color: var(--blue);
+      font-weight: 500;
+      padding-top: var(--s-1);
+    }.cr-scope .faq-q{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      color: var(--ink);
+      line-height: 1.3;
+      font-variation-settings: "opsz" 30;
+    }.cr-scope .faq-a{
+      color: var(--ink-2);
+      line-height: 1.65;
+    }.cr-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.cr-scope .sources-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.cr-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.cr-scope .source-group h4{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border-strong);
+    }.cr-scope .source-list{ list-style: none; padding: 0; }.cr-scope .source-list li{
+      padding: var(--s-3) 0;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }.cr-scope .source-list a{
+      color: var(--ink-2);
+      transition: color 0.15s;
+      display: block;
+    }.cr-scope .source-list a:hover{ color: var(--blue); }.cr-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.cr-scope .source-url{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      word-break: break-all;
+    }.cr-scope .final-cta{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+      text-align: center;
+    }.cr-scope .final-cta h2{
+      color: var(--paper);
+      max-width: 22ch;
+      margin: 0 auto var(--s-5);
+    }.cr-scope .final-cta p{
+      color: rgba(250,250,247,0.75);
+      font-size: var(--text-lg);
+      max-width: 56ch;
+      margin: 0 auto var(--s-7);
+    }.cr-scope .final-cta-actions{
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }.cr-scope .btn-on-dark{
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--paper);
+    }.cr-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.cr-scope .btn-on-dark-secondary{
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(250,250,247,0.3);
+    }.cr-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.cr-scope .footer{
+      background: var(--ink-2);
+      color: var(--paper);
+      padding: var(--s-9) 0 var(--s-5);
+    }.cr-scope .footer-grid{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s-7);
+      margin-bottom: var(--s-7);
+    }
+    @media (max-width: 800px) {.cr-scope .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }.cr-scope .footer-brand .logo{ color: var(--paper); margin-bottom: var(--s-4); }.cr-scope .footer-brand p{ color: rgba(250,250,247,0.65); font-size: var(--text-sm); margin-bottom: var(--s-4); }.cr-scope .footer-brand .compliance{ font-family: var(--mono); font-size: var(--text-xs); line-height: 1.7; color: rgba(250,250,247,0.5); }.cr-scope .footer-col h5{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,0.6);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+    }.cr-scope .footer-col ul{ list-style: none; padding: 0; }.cr-scope .footer-col li{ padding: 4px 0; }.cr-scope .footer-col a{
+      color: rgba(250,250,247,0.85);
+      font-size: var(--text-sm);
+      transition: color 0.15s;
+    }.cr-scope .footer-col a:hover{ color: var(--paper); }.cr-scope .footer-bottom{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(250,250,247,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-4);
+      font-size: var(--text-xs);
+      color: rgba(250,250,247,0.5);
+      font-family: var(--mono);
+    }.cr-scope .mt-6{ margin-top: var(--s-6); }.cr-scope .mt-8{ margin-top: var(--s-8); }.cr-scope .mb-0{ margin-bottom: 0; }
+    @media (prefers-reduced-motion: no-preference) {.cr-scope .fade-in{
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.7s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }.cr-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.cr-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.cr-scope .highlights-list{
+      list-style: none;
+      padding: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      columns: 1;
+      column-gap: var(--s-7);
+    }
+    @media (min-width: 880px) {.cr-scope .highlights-list{ columns: 2; column-gap: var(--s-8); }
+    }.cr-scope .highlights-list li{
+      break-inside: avoid;
+      padding: var(--s-3) 0 var(--s-3) var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }.cr-scope .highlights-list li:last-child{ border-bottom: 0; }.cr-scope .highlights-list li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.2em;
+      width: 14px;
+      height: 1px;
+      background: var(--blue);
+    }.cr-scope .highlights-source{
+      font-size: var(--text-sm);
+      color: var(--ink-lighter);
+      margin-left: 4px;
+    }.cr-scope .highlights-source a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }.cr-scope .highlights-source a:hover{ color: var(--blue-deep); }.cr-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.cr-scope .resources-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {.cr-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); }
+    }.cr-scope .resource-item{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--ink-2);
+    }.cr-scope .resource-item a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }.cr-scope .resource-item a:hover{ color: var(--blue-deep); }.cr-scope .professions-section{
+      padding: var(--s-9) 0 var(--s-10);
+    }.cr-scope .professions-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      max-width: 1100px;
+      margin: var(--s-7) auto 0;
+    }
+    @media (max-width: 800px) {.cr-scope .professions-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.cr-scope .profession-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }.cr-scope .profession-card:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -12px rgba(10, 14, 26, 0.15);
+    }.cr-scope .profession-num{
+      font-family: var(--mono);
+      font-size: var(--text-md);
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }.cr-scope .profession-title{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variation-settings: "opsz" 60;
+      margin: 0;
+      color: var(--ink);
+    }.cr-scope .profession-tag{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.4;
+      color: var(--ink-2);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      font-style: italic;
+      margin: 0;
+    }.cr-scope .profession-points{
+      list-style: none;
+      padding: 0;
+      margin: var(--s-2) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }.cr-scope .profession-points li{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-light);
+      padding-left: var(--s-4);
+      position: relative;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }.cr-scope .profession-points li::before{
+      content: '·';
+      position: absolute;
+      left: var(--s-2);
+      top: -2px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.4em;
+    }.cr-scope .profession-link{
+      margin-top: auto;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-2);
+      transition: gap 0.2s;
+    }.cr-scope .profession-link::after{ content: '→'; transition: transform 0.2s; }.cr-scope .profession-card:hover .profession-link::after{ transform: translateX(4px); }.cr-scope .differentiators-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.cr-scope .differentiators-grid{ grid-template-columns: 1fr; gap: var(--s-6); }
+    }.cr-scope .differentiator{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }.cr-scope .differentiator-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--blue-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+      font-weight: 500;
+    }.cr-scope .differentiator h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.cr-scope .differentiator p{
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(250,250,247,0.85);
+      margin: 0;
+    }.cr-scope .hero--with-image .hero-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.cr-scope .hero--with-image h1{ max-width: 16ch; }.cr-scope .hero--with-image .hero-subtitle{ max-width: 52ch; }.cr-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.cr-scope .hero-image::before{ content: ''; position: absolute; top: 58%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(232,238,255,0.18) 35%, rgba(232,238,255,0.18) 65%, transparent 100%); z-index: 1; }.cr-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.cr-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.cr-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.cr-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; } }.cr-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.cr-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.cr-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.cr-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.cr-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.cr-scope .final-cta--bg .container{ position: relative; z-index: 1; }.cr-scope .stats--with-image .stats-bar-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.cr-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.cr-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.cr-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 800px) {.cr-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.cr-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); }.cr-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; } }.cr-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 30% 60%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.cr-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; filter: contrast(1.03) saturate(0.97); }.cr-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.cr-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.cr-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.cr-scope .pre-cta-photo{ aspect-ratio: 4/3; } }
+  
+</style>
+
