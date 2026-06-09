@@ -1,23 +1,152 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// AUTO-DISCOVERY: read every calculator file's raw source at build time.
+// New calculators added to /loan-calculator/ appear here automatically on next build — no edits needed.
+const rawFiles = import.meta.glob('./loan-calculator/*.astro', { query: '?raw', import: 'default', eager: true });
+
+function parse(src) {
+  const title = (src.match(/const\s+metaTitle\s*=\s*["'`](.+?)["'`]/) || [])[1] || '';
+  const canon = (src.match(/const\s+canonical\s*=\s*["'`](.+?)["'`]/) || [])[1] || '';
+  const eyebrow = (src.match(/class=["']eyebrow["'][^>]*>\s*([^<]+?)\s*</) || [])[1] || '';
+  const desc = (src.match(/const\s+metaDescription\s*=\s*["'`](.+?)["'`]/) || [])[1] || '';
+  // slug from canonical, else from nothing
+  let slug = '';
+  const m = canon.match(/loan-calculator\/([^\/]+)\//);
+  if (m) slug = m[1];
+  return { title, slug, eyebrow, desc };
+}
+
+// Bucket rules: map a calculator to a category by keywords in its eyebrow/title/slug.
+const CATEGORIES = [
+  { key: 'purchase',   label: 'Home Purchase',        match: /purchase|fha|conventional|va |usda|first.time|down payment|affordab|pre.approv|conforming|jumbo/i },
+  { key: 'refinance',  label: 'Refinance & Equity',   match: /refinance|refi|heloc|equity|cash.out|break.even|streamline/i },
+  { key: 'investment', label: 'Investment & Rental',  match: /dscr|rental|investor|investment|cash flow|cap rate|brrrr|fix.and.flip|1031|portfolio|rehab/i },
+  { key: 'specialty',  label: 'Specialty & Non-QM',   match: /bank.statement|p.?and.?l|asset|self.employ|non.?qm|bridge|construction|renovat|reverse|profit|1099|itin|foreign/i },
+  { key: 'planning',   label: 'Planning & Wealth',    match: /legacy|wealth|retirement|passive|income|college|savings|growth|net worth|budget/i },
+];
+function bucket(c) {
+  const hay = (c.eyebrow + ' ' + c.title + ' ' + c.slug).toLowerCase();
+  for (const cat of CATEGORIES) if (cat.match.test(hay)) return cat.key;
+  return 'other';
+}
+
+let calcs = Object.values(rawFiles).map(parse).filter(c => c.slug && c.title);
+calcs.sort((a,b) => a.title.localeCompare(b.title));
+calcs.forEach(c => { c.cat = bucket(c); c.catLabel = (CATEGORIES.find(x=>x.key===c.cat)||{}).label || 'More Calculators'; });
+
+// group
+const groups = {};
+for (const c of calcs) { (groups[c.cat] ||= []).push(c); }
+const orderedCats = [...CATEGORIES.map(c=>c.key), 'other'].filter(k => groups[k]?.length);
+const totalCount = calcs.length;
+const canonical = "https://stairwaymortgage.com/loan-calculators/";
 ---
-<Layout title="Loan Calculators — Stairway Mortgage" description="Mortgage payment, refinance savings, and affordability calculators.">
-  <section class="section relative overflow-hidden">
+
+<Layout title="Free Mortgage Calculators | Stairway Mortgage" description="Free mortgage calculators — estimate payments, affordability, refinance savings, rental cash flow, and more. Guided by Jim Blackburn, NMLS #1072866." canonical={canonical}>
+  <section class="lc-hero">
     <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Tools & Rates · Calculators</span>
-        <h1 class="display-xl mt-6 mb-6">Run the <em class="italic text-[var(--color-blue)]">numbers</em>.</h1>
-        <p class="lede max-w-xl mx-auto mb-8">Mortgage payment, refinance break-even, affordability, and investor cash-flow calculators.</p>
-        <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
-          <a href="/buy-a-house-journey/" class="card"><h3 class="font-display text-lg font-medium mb-1">Affordability</h3><p class="text-[14px] text-[var(--color-mute)]">See what you can buy.</p></a>
-          <a href="/refinance-or-heloc-journey/" class="card"><h3 class="font-display text-lg font-medium mb-1">Refinance Break-Even</h3><p class="text-[14px] text-[var(--color-mute)]">See if a refi saves money.</p></a>
-          <a href="/renovate-a-house-journey/" class="card"><h3 class="font-display text-lg font-medium mb-1">Renovation Value</h3><p class="text-[14px] text-[var(--color-mute)]">Before vs. after your reno.</p></a>
-          <a href="/build-a-wealth-plan-journey/" class="card"><h3 class="font-display text-lg font-medium mb-1">Investor Leverage</h3><p class="text-[14px] text-[var(--color-mute)]">See how cash controls 4x its value.</p></a>
-        </div>
-        <div class="flex flex-wrap gap-3 justify-center mt-10">
-          <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-6 py-3.5">See My Options</a>
-        </div>
+      <span class="eyebrow eyebrow-blue">Free Tools</span>
+      <h1 class="display-xl lc-hero__title">Mortgage calculators for every move.</h1>
+      <p class="lede lc-hero__lede">Estimate payments, affordability, refinance savings, rental cash flow, and more — {totalCount} free calculators, no signup, no credit pull. Built to give you real numbers before you ever talk to anyone.</p>
+      <div class="lc-search">
+        <input type="search" id="lcSearch" placeholder="Search calculators…" aria-label="Search calculators" autocomplete="off" />
+        <span class="lc-search__count mono" id="lcCount">{totalCount} calculators</span>
+      </div>
+      <div class="lc-tabs" id="lcTabs">
+        <button class="lc-tab is-active" data-cat="all">All</button>
+        {orderedCats.map(k => <button class="lc-tab" data-cat={k}>{(CATEGORIES.find(x=>x.key===k)||{label:'More'}).label}</button>)}
       </div>
     </div>
   </section>
+
+  <section class="lc-body">
+    <div class="container-page">
+      {orderedCats.map(k => (
+        <div class="lc-group" data-group={k}>
+          <h2 class="lc-group__h">{(CATEGORIES.find(x=>x.key===k)||{label:'More Calculators'}).label} <span class="lc-group__n mono">{groups[k].length}</span></h2>
+          <div class="lc-grid">
+            {groups[k].map(c => (
+              <a href={`/loan-calculator/${c.slug}/`} class="lc-card" data-name={c.title.toLowerCase()} data-cat={k}>
+                <span class="lc-card__cat mono">{c.eyebrow || (CATEGORIES.find(x=>x.key===k)||{label:''}).label}</span>
+                <span class="lc-card__title">{c.title}</span>
+                {c.desc && <span class="lc-card__desc">{c.desc}</span>}
+                <span class="lc-card__go mono">Open &rarr;</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+      <p class="lc-empty" id="lcEmpty" hidden>No calculators match that search.</p>
+    </div>
+  </section>
+
+  <section class="section-tight lc-cta">
+    <div class="container-prose"><div class="card lc-cta__card">
+      <h2 class="display-md">Numbers looking good?</h2>
+      <p class="lede">Calculators give you the estimate. We give you the real answer — across 300+ lenders, no credit pull to start.</p>
+      <a href="/schedule-call/" class="btn btn-blue btn-arrow">Talk to Our Team</a>
+    </div></div>
+  </section>
+
+  <script is:inline>
+    (function(){
+      var search=document.getElementById('lcSearch'), tabs=document.getElementById('lcTabs'),
+          count=document.getElementById('lcCount'), empty=document.getElementById('lcEmpty');
+      var cards=Array.prototype.slice.call(document.querySelectorAll('.lc-card'));
+      var groups=Array.prototype.slice.call(document.querySelectorAll('.lc-group'));
+      var activeCat='all';
+      function apply(){
+        var q=(search.value||'').trim().toLowerCase();
+        var shown=0;
+        cards.forEach(function(c){
+          var okCat = activeCat==='all' || c.dataset.cat===activeCat;
+          var okQ = !q || c.dataset.name.indexOf(q)>-1;
+          var vis = okCat && okQ;
+          c.style.display = vis ? '' : 'none';
+          if(vis) shown++;
+        });
+        groups.forEach(function(g){
+          var any=g.querySelectorAll('.lc-card:not([style*="display: none"])').length>0;
+          g.style.display = any ? '' : 'none';
+        });
+        count.textContent = shown + (shown===1?' calculator':' calculators');
+        empty.hidden = shown>0;
+      }
+      search.addEventListener('input', apply);
+      tabs.addEventListener('click', function(e){
+        var b=e.target.closest('.lc-tab'); if(!b) return;
+        activeCat=b.dataset.cat;
+        tabs.querySelectorAll('.lc-tab').forEach(function(t){t.classList.toggle('is-active', t===b);});
+        apply();
+      });
+    })();
+  </script>
 </Layout>
+
+<style>
+  .lc-hero { padding: clamp(2.5rem,6vw,5rem) 0 clamp(1.5rem,3vw,2.5rem); background: linear-gradient(180deg,var(--color-paper-tint),var(--color-paper)); border-bottom:1px solid var(--color-bone); }
+  .lc-hero__title { margin:1rem 0 1rem; }
+  .lc-hero__lede { max-width:60ch; margin-bottom:2rem; }
+  .lc-search { display:flex; align-items:center; gap:1rem; max-width:560px; }
+  .lc-search input { flex:1; padding:0.85rem 1.1rem; border:1px solid var(--color-bone); border-radius:12px; background:var(--color-paper); font-family:var(--font-body); font-size:16px; color:var(--color-ink); }
+  .lc-search input:focus { outline:none; border-color:var(--color-blue); box-shadow:0 0 0 3px rgba(24,69,214,0.1); }
+  .lc-search__count { font-size:12px; color:var(--color-mute); white-space:nowrap; }
+  .lc-tabs { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.5rem; }
+  .lc-tab { padding:0.45rem 0.9rem; border:1px solid var(--color-bone); border-radius:999px; background:var(--color-paper); font-family:var(--font-mono); font-size:12px; color:var(--color-mute); cursor:pointer; transition:all .15s; }
+  .lc-tab:hover { border-color:var(--color-blue); color:var(--color-ink); }
+  .lc-tab.is-active { background:var(--color-ink); color:var(--color-paper); border-color:var(--color-ink); }
+  .lc-body { padding: clamp(2rem,4vw,3.5rem) 0; }
+  .lc-group { margin-bottom:3rem; }
+  .lc-group__h { font-family:var(--font-display); font-weight:500; font-size:clamp(1.4rem,3vw,1.9rem); margin-bottom:1.25rem; display:flex; align-items:baseline; gap:.6rem; }
+  .lc-group__n { font-size:13px; color:var(--color-mute); font-weight:400; }
+  .lc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1rem; }
+  .lc-card { display:flex; flex-direction:column; gap:.4rem; padding:1.4rem 1.5rem; border:1px solid var(--color-bone); border-radius:14px; background:var(--color-paper); text-decoration:none; transition:transform .18s, border-color .18s, box-shadow .18s; }
+  .lc-card:hover { transform:translateY(-3px); border-color:var(--color-blue); box-shadow:0 14px 32px -18px rgba(10,14,26,0.25); }
+  .lc-card__cat { font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--color-blue); }
+  .lc-card__title { font-family:var(--font-display); font-size:1.2rem; line-height:1.2; color:var(--color-ink); }
+  .lc-card__desc { font-size:13.5px; line-height:1.5; color:var(--color-mute); }
+  .lc-card__go { font-size:12px; color:var(--color-blue); margin-top:.35rem; }
+  .lc-empty { text-align:center; color:var(--color-mute); padding:3rem 0; }
+  .lc-cta__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
+</style>
