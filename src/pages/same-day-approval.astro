@@ -1,69 +1,142 @@
 ---
 import Layout from '../layouts/Layout.astro';
----
-<Layout title="Same-Day Approval — Stairway Mortgage" description="Pre-approved in as fast as 24 hours. 300+ lenders competing for your rate. No credit pull to start.">
+import VideoEmbed from '../components/VideoEmbed.astro';
 
-  <!-- HERO -->
-  <section class="section relative overflow-hidden sda-hero">
-    <div class="container-page">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="reveal">
-          <span class="eyebrow eyebrow-blue mb-6">Get Pre-Approved</span>
-          <h1 class="display-lg mt-5 mb-5">See your options in <em class="italic text-[var(--color-blue)]">about a minute</em>.</h1>
-          <p class="lede max-w-xl mb-8">Answer a few questions and our team matches you with the best programs from 300+ lenders. Pre-approval as fast as 24 hours.</p>
-          <div class="grid grid-cols-3 gap-4 mb-8">
-            <div><p class="font-display text-2xl leading-none mb-1">300+</p><p class="text-[11px] uppercase tracking-wider text-[var(--color-mute)]">Lenders</p></div>
-            <div><p class="font-display text-2xl leading-none mb-1">24hr</p><p class="text-[11px] uppercase tracking-wider text-[var(--color-mute)]">Approval</p></div>
-            <div><p class="font-display text-2xl leading-none mb-1">$0</p><p class="text-[11px] uppercase tracking-wider text-[var(--color-mute)]">Credit pull to start</p></div>
+const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Same-Day Approval"}]};
+const serviceSchema={"@context":"https://schema.org","@type":"Service","name":"Same-Day Mortgage Approval","description":"See your mortgage options in about a minute — no credit pull to start. 300+ lenders, 24-hour approval.","provider":{"@type":"Organization","name":"Stairway Mortgage"},"areaServed":"US"};
+---
+
+<Layout
+  title="Same-Day Approval: See Your Options in a Minute | Stairway"
+  description="See your mortgage options in about a minute — no credit pull to start. 300+ lenders, 24-hour approval, guided by Jim Blackburn (NMLS #1072866)."
+  canonical="https://stairwaymortgage.com/same-day-approval/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <section class="sda-hero">
+    <div class="container-page sda-hero__inner">
+      <div class="sda-hero__copy">
+        <span class="eyebrow eyebrow-blue">Free · About 1 minute · No credit pull</span>
+        <h1 class="display-xl sda-hero__title">See your options<br/>in about a minute.</h1>
+        <p class="lede sda-hero__lede">Tell us a little about your goal and we'll show you the loan programs that fit — then connect you with our team for a real, same-day answer. No credit pull to start.</p>
+        <ul class="sda-points">
+          <li><span class="sda-check" aria-hidden="true">✓</span> Compared across 300+ lenders, not one bank's products</li>
+          <li><span class="sda-check" aria-hidden="true">✓</span> A real human reviews your scenario — same day</li>
+          <li><span class="sda-check" aria-hidden="true">✓</span> Guided by Jim Blackburn · <span class="mono">NMLS #1072866</span></li>
+        </ul>
+        <div class="sda-stats">
+          <div><span class="editorial-number">300+</span><small>lenders</small></div>
+          <div><span class="editorial-number">24hr</span><small>approval</small></div>
+          <div><span class="editorial-number">$0</span><small>credit pull to start</small></div>
+        </div>
+      </div>
+
+      <div class="sda-form-wrap">
+        <div class="sda-form" id="sdaForm">
+          <p class="sda-form__title">Get your options</p>
+          <p class="sda-form__sub mono">Takes about a minute · no obligation</p>
+          <div class="sda-field"><label for="sdaName">First name</label><input id="sdaName" type="text" autocomplete="given-name" placeholder="Your first name" /></div>
+          <div class="sda-field"><label for="sdaEmail">Email</label><input id="sdaEmail" type="email" autocomplete="email" placeholder="you@email.com" /></div>
+          <div class="sda-field"><label for="sdaPhone">Phone</label><input id="sdaPhone" type="tel" autocomplete="tel" placeholder="(555) 555-5555" /></div>
+          <div class="sda-field"><label for="sdaGoal">What's your goal?</label>
+            <select id="sdaGoal">
+              <option value="">Select…</option>
+              <option>Buy a home</option>
+              <option>Refinance</option>
+              <option>Cash-out / tap equity</option>
+              <option>Invest in property</option>
+              <option>Build or renovate</option>
+              <option>Not sure yet</option>
+            </select>
           </div>
-          <div class="space-y-3">
-            <div class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Cash-backed offers that win bidding wars</span></div>
-            <div class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Available 7 days a week, including evenings</span></div>
-            <div class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">One application, 300+ lenders competing</span></div>
-          </div>
-          <p class="mono text-[11px] text-[var(--color-mute)] mt-6">NMLS #1072866</p>
+          <button class="btn btn-blue btn-arrow sda-submit" id="sdaSubmit" type="button">See My Options</button>
+          <p class="sda-err mono" id="sdaErr" hidden>Please add your name and a valid email.</p>
+          <p class="sda-form__legal mono">By submitting you agree to be contacted about your inquiry. This is not a commitment to lend or an offer of a specific rate.</p>
         </div>
 
-        <!-- FORM -->
-        <div class="reveal" style="transition-delay:100ms;">
-          <div class="card p-8 lg:p-10" id="sda-form-wrap">
-            <h2 class="font-display text-xl mb-1">Start your pre-approval</h2>
-            <p class="text-[14px] text-[var(--color-mute)] mb-6">Takes about 60 seconds. No credit pull.</p>
-            <div class="space-y-4" id="sda-form">
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" id="sda-name" placeholder="First" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" id="sda-email" placeholder="you@email.com" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Phone</label><input type="tel" id="sda-phone" placeholder="(555) 000-0000" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <button class="btn btn-blue w-full text-center text-base py-3.5" type="button" id="sda-submit">Get Pre-Approved</button>
-              <p class="text-[11px] text-[var(--color-mute)] text-center">No obligation. Not a commitment to lend.</p>
-            </div>
-            <div class="text-center py-10" id="sda-success" style="display:none;">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <p class="font-display text-xl mb-2">You are all set.</p>
-              <p class="text-[14px] text-[var(--color-mute)]">Our team will reach out within 24 hours. Prefer to talk now?</p>
-              <a href="tel:+19549931625" class="btn btn-ghost mt-4 text-base">Call (954) 993-1625</a>
-            </div>
-            <!-- TODO: Wire to /api/lead → HubSpot/Supabase -->
+        <div class="sda-success" id="sdaSuccess" hidden>
+          <div class="sda-success__icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="32" r="30" fill="none" stroke="var(--color-green)" stroke-width="3"/><path d="M20 33l8 8 16-18" fill="none" stroke="var(--color-green)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
+          <h2 class="sda-success__h">You're all set, <span id="sdaSuccessName">there</span>.</h2>
+          <p class="sda-success__p">Our team will reach out today with your options. Want to talk sooner?</p>
+          <a href="tel:+19549931625" class="btn btn-blue btn-arrow">Call (954) 993-1625</a>
+          <a href="/schedule-call/" class="sda-success__link mono">or book a time that works for you →</a>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="sda-video-section">
+    <div class="container-prose">
+      <span class="eyebrow eyebrow-blue">See how it works</span>
+      <h2 class="display-md sda-video__h">Same-day approval, explained.</h2>
+      <VideoEmbed src="https://media.stairwaymortgage.com/same-day-approval.mp4" title="How same-day approval works at Stairway" caption="Watch: how we deliver same-day approvals" />
+    </div>
+  </section>
+
+  <section class="section-tight sda-cta">
+    <div class="container-prose"><div class="card sda-cta__card">
+      <h2 class="display-md">Rather just talk it through?</h2>
+      <p class="lede">Book a free call and we'll walk your scenario together — straight answers, no pressure.</p>
+      <a href="/schedule-call/" class="btn btn-blue btn-arrow">Talk to Our Team</a>
+    </div></div>
+  </section>
+
+  <script is:inline>
+    (function(){
+      var form=document.getElementById('sdaForm'), success=document.getElementById('sdaSuccess'), err=document.getElementById('sdaErr');
+      var name=document.getElementById('sdaName'), email=document.getElementById('sdaEmail'), phone=document.getElementById('sdaPhone'), goal=document.getElementById('sdaGoal');
+      var submit=document.getElementById('sdaSubmit');
+      function validEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+      submit.addEventListener('click', function(){
+        var n=name.value.trim(), e=email.value.trim();
+        if(!n || !validEmail(e)){ err.hidden=false; return; }
+        err.hidden=true;
+        // TODO: POST lead {name, email, phone, goal} to HubSpot/Supabase endpoint here.
+        // Example: fetch('/api/lead', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name:n,email:e,phone:phone.value.trim(),goal:goal.value})});
+        document.getElementById('sdaSuccessName').textContent = n;
+        form.hidden=true; success.hidden=false;
+        success.scrollIntoView({behavior:'smooth', block:'center'});
+      });
+      [name,email].forEach(function(el){ el.addEventListener('input',function(){ err.hidden=true; }); });
+    })();
+  </script>
 </Layout>
 
 <style>
-  .sda-hero{position:relative;}.sda-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}
-</style>
+  .sda-hero { padding: clamp(2.5rem,6vw,5rem) 0 clamp(2.5rem,5vw,4rem); background: linear-gradient(180deg, var(--color-paper-tint), var(--color-paper)); border-bottom: 1px solid var(--color-bone); }
+  .sda-hero__inner { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,0.85fr); gap: clamp(2rem,5vw,4rem); align-items: start; }
+  @media (max-width: 920px){ .sda-hero__inner { grid-template-columns: 1fr; } }
+  .sda-hero__title { margin: 1rem 0 1.25rem; }
+  .sda-hero__lede { max-width: 48ch; margin-bottom: 1.75rem; }
+  .sda-points { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.7rem; }
+  .sda-points li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 15px; line-height: 1.5; color: var(--color-ink-light); }
+  .sda-check { color: var(--color-green); font-weight: 700; flex: 0 0 auto; }
+  .sda-stats { display: flex; gap: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-bone); flex-wrap: wrap; }
+  .sda-stats div { display: flex; flex-direction: column; }
+  .sda-stats .editorial-number { font-size: clamp(1.6rem,3.5vw,2.2rem); }
+  .sda-stats small { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--color-mute); }
 
-<script is:inline>
-(function(){
-  var btn=document.getElementById('sda-submit');if(!btn)return;
-  btn.addEventListener('click',function(){
-    var n=document.getElementById('sda-name').value.trim();
-    var e=document.getElementById('sda-email').value.trim();
-    if(!n||!e){alert('Please enter your name and email.');return;}
-    document.getElementById('sda-form').style.display='none';
-    document.getElementById('sda-success').style.display='block';
-  });
-})();
-</script>
+  .sda-form { background: var(--color-paper); border: 1px solid var(--color-bone); border-radius: 18px; padding: clamp(1.5rem,3vw,2.25rem); box-shadow: 0 18px 44px -24px rgba(10,14,26,0.22); }
+  .sda-form__title { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; color: var(--color-ink); margin-bottom: 0.3rem; }
+  .sda-form__sub { font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-mute); margin-bottom: 1.5rem; }
+  .sda-field { margin-bottom: 1rem; }
+  .sda-field label { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-mute); margin-bottom: 0.4rem; }
+  .sda-field input, .sda-field select { width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--color-bone); border-radius: 10px; background: var(--color-paper-tint); font-family: var(--font-body); font-size: 15px; color: var(--color-ink); }
+  .sda-field input:focus, .sda-field select:focus { outline: none; border-color: var(--color-blue); box-shadow: 0 0 0 3px rgba(24,69,214,0.1); }
+  .sda-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
+  .sda-err { color: var(--color-rust); font-size: 12px; margin-top: 0.75rem; }
+  .sda-form__legal { font-size: 10px; line-height: 1.5; color: var(--color-mute); margin-top: 1rem; letter-spacing: 0.01em; }
+
+  .sda-success { background: var(--color-paper); border: 1px solid var(--color-green); border-radius: 18px; padding: clamp(2rem,4vw,3rem); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; box-shadow: 0 18px 44px -24px rgba(46,158,46,0.3); }
+  .sda-success__h { font-family: var(--font-display); font-weight: 500; font-size: 1.7rem; color: var(--color-ink); }
+  .sda-success__p { font-size: 15px; color: var(--color-mute); max-width: 36ch; }
+  .sda-success__link { font-size: 12px; color: var(--color-blue); text-decoration: none; margin-top: 0.25rem; }
+
+  .sda-video-section { padding: clamp(2.5rem,5vw,4rem) 0; }
+  .sda-video__h { margin: 0.5rem 0 0.5rem; }
+
+  .sda-cta__card { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 2.5rem; }
+</style>

@@ -1,0 +1,399 @@
+---
+/**
+ * GetLocalIntroForm.astro
+ * Conversational popup lead form — rebuild of the GHL "Get a Local Introduction" survey.
+ *
+ * Styled as a SIBLING of the homepage AI chat blob (.aic family): dark gradient shell,
+ * aurora glow, sparkle header with live dot, message-in bubbles, chip answers, progress bar.
+ * NOT a real AI — it's a scripted conversational UI (compliance-safe for a mortgage form).
+ *
+ * All original survey fields kept, presented one-at-a-time quick-fill with a progress bar.
+ * Submits via the GHL inbound webhook with form_source "get-a-local-introduction".
+ * OTP = placeholder 000000 (no SMS). is:inline + plain JS (no TypeScript) so it runs on build.
+ *
+ * Trigger: any element with [data-open-local-intro] opens the popup.
+ */
+---
+
+<!-- Trigger note: add data-open-local-intro to any button to open this popup. -->
+<div class="gli-overlay" id="gli-overlay" hidden>
+  <div class="aic gli" role="dialog" aria-modal="true" aria-label="Get a local introduction">
+
+    <!-- Aurora glow blobs (ambient) -->
+    <span class="aic__aurora aic__aurora--1" aria-hidden="true"></span>
+    <span class="aic__aurora aic__aurora--2" aria-hidden="true"></span>
+
+    <!-- Header -->
+    <div class="aic__header">
+      <span class="aic__spark" aria-hidden="true">✦</span>
+      <div class="aic__brand">
+        <span class="aic__title">Local Intro Concierge <span class="aic__badge">AI</span></span>
+        <span class="aic__live"><span class="aic__dot"></span>Live · trusted local pros</span>
+      </div>
+      <button type="button" class="aic__close" id="gli-close" aria-label="Close">✕</button>
+    </div>
+
+    <!-- Progress -->
+    <div class="gli-progress" aria-hidden="true"><div class="gli-progress__bar" id="gli-bar"></div></div>
+    <p class="gli-stepcount" id="gli-stepcount">About 15 seconds · Step 1 of 7</p>
+
+    <!-- Body -->
+    <div class="aic__body" id="gli-body">
+      <form id="gli-form" novalidate>
+        <input type="text" name="_gotcha" id="gli-gotcha" tabindex="-1" autocomplete="off"
+               style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true" />
+
+        <!-- STEP 1 — intro_to (multi) -->
+        <div class="gli-slide" data-step="1">
+          <div class="aic__msg aic__msg--bot">Hi 👋 Let's get you introduced to the right local pro. Who would you like an introduction to?</div>
+          <div class="gli-chips" data-multi>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Appraiser" /><span>Appraiser <small>fair property value</small></span></label>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Inspector" /><span>Inspector <small>thorough evaluation</small></span></label>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Insurance Broker" /><span>Insurance Broker <small>properly covered</small></span></label>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Attorney / Title Team" /><span>Attorney / Title Team <small>deal closes smoothly</small></span></label>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Realtor / Wholesaler" /><span>Realtor / Wholesaler <small>exclusive deals</small></span></label>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Financial Planner" /><span>Financial Planner <small>tax-smart advice</small></span></label>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Accountant / Underwriter" /><span>Accountant / Underwriter <small>insight into finances</small></span></label>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Builder / Contractor" /><span>Builder / Contractor <small>on time, on budget</small></span></label>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Architect / Designer" /><span>Architect / Designer <small>reflects your vision</small></span></label>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Mortgage Advisor" /><span>Mortgage Advisor <small>right loan strategy</small></span></label>
+            <label class="gli-chip"><input type="checkbox" name="intro_to" value="Not sure yet" /><span>Not sure yet <small>point me in the right direction</small></span></label>
+          </div>
+          <p class="gli-err" data-err-for="intro_to"></p>
+        </div>
+
+        <!-- STEP 2 — most_important (multi, max 3) -->
+        <div class="gli-slide" data-step="2" hidden>
+          <div class="aic__msg aic__msg--bot">What's MOST important to you? <em>Pick up to 3.</em></div>
+          <div class="gli-chips" data-multi data-max="3">
+            <label class="gli-chip"><input type="checkbox" name="most_important" value="Trust in the person or team" /><span>Trust in the team</span></label>
+            <label class="gli-chip"><input type="checkbox" name="most_important" value="Confidence I'm making the right decision" /><span>Confidence in my decision</span></label>
+            <label class="gli-chip"><input type="checkbox" name="most_important" value="Fast response and clear communication" /><span>Fast, clear communication</span></label>
+            <label class="gli-chip"><input type="checkbox" name="most_important" value="A smooth, stress-free process" /><span>Smooth, stress-free process</span></label>
+            <label class="gli-chip"><input type="checkbox" name="most_important" value="Personalized advice for my situation" /><span>Personalized advice</span></label>
+            <label class="gli-chip"><input type="checkbox" name="most_important" value="Transparent pricing and no surprises" /><span>Transparent pricing</span></label>
+            <label class="gli-chip"><input type="checkbox" name="most_important" value="Deep expertise and industry knowledge" /><span>Deep expertise</span></label>
+            <label class="gli-chip"><input type="checkbox" name="most_important" value="Help navigating complex paperwork" /><span>Help with paperwork</span></label>
+            <label class="gli-chip"><input type="checkbox" name="most_important" value="Creative solutions or out-of-the-box strategies" /><span>Creative solutions</span></label>
+            <label class="gli-chip"><input type="checkbox" name="most_important" value="Long-term support beyond this transaction" /><span>Long-term support</span></label>
+          </div>
+          <p class="gli-hint mono" id="gli-max-hint">Up to 3</p>
+        </div>
+
+        <!-- STEP 3 — anything_else -->
+        <div class="gli-slide" data-step="3" hidden>
+          <div class="aic__msg aic__msg--bot">Anything else you'd like to share?</div>
+          <textarea class="gli-input gli-textarea" name="anything_else" rows="3" placeholder="Optional"></textarea>
+        </div>
+
+        <!-- STEP 4 — full name -->
+        <div class="gli-slide" data-step="4" hidden>
+          <div class="aic__msg aic__msg--bot">Great. What's your name?</div>
+          <input class="gli-input" type="text" name="full_name" id="gli-name" placeholder="First and last name" autocomplete="name" />
+        </div>
+
+        <!-- STEP 5 — email -->
+        <div class="gli-slide" data-step="5" hidden>
+          <div class="aic__msg aic__msg--bot">Where should we send your introduction?</div>
+          <input class="gli-input" type="email" name="email" id="gli-email" placeholder="you@email.com" autocomplete="email" />
+          <p class="gli-err" data-err-for="email"></p>
+        </div>
+
+        <!-- STEP 6 — phone + OTP -->
+        <div class="gli-slide" data-step="6" hidden>
+          <div class="aic__msg aic__msg--bot">And the best number to reach you?</div>
+          <div class="gli-row">
+            <input class="gli-input" type="tel" name="phone" id="gli-phone" placeholder="(954) 993-1625" autocomplete="tel" />
+            <button type="button" class="gli-verify" id="gli-send-otp">Verify</button>
+          </div>
+          <p class="gli-err" data-err-for="phone"></p>
+          <div class="gli-otp" id="gli-otp-wrap" hidden>
+            <p class="gli-hint mono">Enter the 6-digit code to verify.</p>
+            <div class="gli-row">
+              <input class="gli-input" type="text" inputmode="numeric" maxlength="6" id="gli-otp-input" placeholder="000000" autocomplete="one-time-code" />
+              <button type="button" class="gli-verify gli-verify--go" id="gli-check-otp">Confirm</button>
+            </div>
+            <p class="gli-err" data-err-for="otp"></p>
+            <p class="gli-ok mono" id="gli-otp-ok" hidden>✓ Phone verified</p>
+          </div>
+        </div>
+
+        <!-- STEP 7 — consent + submit -->
+        <div class="gli-slide" data-step="7" hidden>
+          <div class="aic__msg aic__msg--bot">Last thing — your consent so we can reach out.</div>
+          <label class="gli-consent">
+            <input type="checkbox" name="sms_consent" id="gli-consent" />
+            <span>I Consent to Receive SMS Notifications, Alerts &amp; Occasional Marketing Communication from company. Message frequency varies. Message &amp; data rates may apply. Text HELP to (954) 993-1625 for assistance. You can reply STOP to unsubscribe at any time.</span>
+          </label>
+          <p class="gli-err" data-err-for="sms_consent"></p>
+          <p class="gli-fine mono">Stairway Mortgage is a division of NEXA Mortgage LLC. <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a></p>
+        </div>
+
+        <!-- hidden attribution -->
+        <input type="hidden" name="phone_verified" id="gli-phone-verified" value="false" />
+        <input type="hidden" name="lo_id" /><input type="hidden" name="lo_name" />
+        <input type="hidden" name="utm_source" /><input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_campaign" /><input type="hidden" name="fbclid" />
+        <input type="hidden" name="source_url" />
+
+        <div class="gli-nav">
+          <button type="button" class="gli-btn gli-btn--ghost" id="gli-prev" hidden>← Back</button>
+          <button type="button" class="gli-btn gli-btn--go" id="gli-next">Next →</button>
+          <button type="submit" class="gli-btn gli-btn--go" id="gli-submit" hidden>See My Options</button>
+        </div>
+      </form>
+
+      <!-- success -->
+      <div class="gli-success" id="gli-success" hidden>
+        <div class="gli-success__mark">✓</div>
+        <h3 class="gli-success__h" id="gli-success-h">Thank you — we're on it.</h3>
+        <p class="gli-success__p">We've received your request to connect with a trusted local professional. Our team is reviewing your details and preparing to introduce you to someone who aligns with your current goals — so you can move forward with clarity and support.</p>
+        <p class="gli-success__closer" id="gli-success-closer">We're here to help you take the next step.</p>
+        <a class="gli-btn gli-btn--ghost" href="/">Back to home page</a>
+      </div>
+    </div>
+
+    <div class="aic__footer">Direct broker · Fannie Mae · Freddie Mac · 300+ lenders</div>
+  </div>
+</div>
+
+<style>
+  .gli-overlay[hidden] { display: none; }
+  .gli-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(10,14,26,.62); backdrop-filter: blur(6px);
+    display: grid; place-items: center; padding: 1.25rem;
+    animation: gli-fade .25s ease;
+  }
+  @keyframes gli-fade { from { opacity: 0 } to { opacity: 1 } }
+
+  /* .aic family — sibling of homepage AI chat blob */
+  .aic.gli {
+    --color-ink: #0A0E1A; --color-paper: #FAFAF7; --color-blue: #1845D6;
+    --serif: 'Fraunces',Georgia,serif; --sans: 'IBM Plex Sans',sans-serif; --mono: 'JetBrains Mono',monospace;
+    position: relative; width: 100%; max-width: 480px; max-height: 90vh; overflow: hidden auto;
+    background: linear-gradient(180deg,#0e1322,#0a0e1a); color: var(--color-paper);
+    border-radius: 18px; box-shadow: 0 32px 80px -24px rgba(10,14,26,.5), 0 0 0 1px #ffffff0f;
+    isolation: isolate; font-family: var(--sans);
+    animation: gli-pop .35s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes gli-pop { from { transform: translateY(16px) scale(.97); opacity: 0 } to { transform: none; opacity: 1 } }
+
+  .aic__aurora { position: absolute; width: 320px; height: 320px; border-radius: 50%; filter: blur(70px); opacity: .5; z-index: 0; animation: aic-drift 14s ease-in-out infinite; }
+  .aic__aurora--1 { background: #1845D6; top: -120px; right: -80px; }
+  .aic__aurora--2 { background: #6F46FF; bottom: -140px; left: -100px; animation-delay: -7s; }
+  @keyframes aic-drift { 0%,100% { transform: translate(0,0) } 50% { transform: translate(-30px,30px) } }
+
+  .aic__header { position: relative; z-index: 1; display: flex; align-items: center; gap: .7rem; padding: 1.1rem 1.25rem .9rem; }
+  .aic__spark { color: #9DB2FF; font-size: 1.2rem; animation: aic-sparkle 6s linear infinite; }
+  @keyframes aic-sparkle { to { transform: rotate(360deg) } }
+  .aic__brand { display: flex; flex-direction: column; gap: .15rem; flex: 1; }
+  .aic__title { font-family: var(--serif); font-size: 1.02rem; font-weight: 500; display: flex; align-items: center; gap: .5rem; }
+  .aic__badge { font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; background: #1845D6; color: #fff; padding: .12rem .4rem; border-radius: 5px; }
+  .aic__live { font-family: var(--mono); font-size: .66rem; color: #9aa6c4; display: flex; align-items: center; gap: .4rem; letter-spacing: .03em; }
+  .aic__dot { width: 7px; height: 7px; border-radius: 50%; background: #2E9E2E; animation: aic-pulse 2s ease-in-out infinite; }
+  @keyframes aic-pulse { 0%,100% { box-shadow: 0 0 0 0 #2E9E2E80 } 50% { box-shadow: 0 0 0 5px #2E9E2E00 } }
+  .aic__close { margin-left: auto; background: #ffffff14; border: 0; color: #c7cee0; width: 28px; height: 28px; border-radius: 8px; cursor: pointer; font-size: .8rem; }
+  .aic__close:hover { background: #ffffff24; }
+
+  .gli-progress { position: relative; z-index: 1; height: 3px; background: #ffffff14; margin: 0 1.25rem; border-radius: 99px; overflow: hidden; }
+  .gli-progress__bar { height: 100%; width: 14%; background: linear-gradient(90deg,#1845D6,#6F46FF); transition: width .4s cubic-bezier(.4,0,.2,1); }
+  .gli-stepcount { position: relative; z-index: 1; font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; color: #8a96b4; margin: .55rem 1.25rem 0; text-transform: uppercase; }
+
+  .aic__body { position: relative; z-index: 1; padding: 1rem 1.25rem 1.25rem; }
+  .aic__msg { font-size: .98rem; line-height: 1.5; margin-bottom: 1rem; animation: aic-msg-in .4s ease; }
+  .aic__msg--bot { color: #e6e9f2; }
+  .aic__msg em { color: #9DB2FF; font-style: normal; }
+  @keyframes aic-msg-in { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+
+  .gli-chips { display: flex; flex-direction: column; gap: .5rem; }
+  .gli-chip { display: flex; cursor: pointer; }
+  .gli-chip input { position: absolute; opacity: 0; }
+  .gli-chip span { flex: 1; padding: .7rem .9rem; border-radius: 10px; background: #ffffff0a; border: 1.5px solid #ffffff14; font-size: .9rem; transition: all .18s; display: flex; flex-direction: column; gap: .1rem; }
+  .gli-chip span small { color: #8a96b4; font-size: .72rem; }
+  .gli-chip:hover span { border-color: #1845D6; background: #1845D61a; }
+  .gli-chip input:checked + span { border-color: #6F46FF; background: #6F46FF24; box-shadow: 0 0 0 1px #6F46FF; }
+
+  .gli-input { width: 100%; box-sizing: border-box; font-family: var(--sans); font-size: 1rem; padding: .8rem .9rem; border-radius: 10px; background: #ffffff0d; border: 1.5px solid #ffffff1f; color: #fff; transition: border-color .18s, box-shadow .18s; }
+  .gli-input::placeholder { color: #76819c; }
+  .gli-input:focus { outline: none; border-color: #6F46FF; box-shadow: 0 0 0 3px #6F46FF33; }
+  .gli-textarea { resize: vertical; min-height: 76px; }
+  .gli-row { display: flex; gap: .5rem; }
+  .gli-row .gli-input { flex: 1; }
+  .gli-verify { white-space: nowrap; background: #ffffff14; color: #dfe4f0; border: 1.5px solid #ffffff24; border-radius: 10px; padding: 0 1rem; font-size: .85rem; cursor: pointer; font-family: var(--sans); }
+  .gli-verify--go { background: #1845D6; border-color: #1845D6; color: #fff; }
+  .gli-otp { margin-top: .9rem; padding-top: .9rem; border-top: 1px dashed #ffffff1f; }
+  .gli-ok { color: #5fd35f; font-size: .8rem; margin: .5rem 0 0; }
+  .gli-hint { color: #8a96b4; font-size: .7rem; margin: .5rem 0 0; }
+
+  .gli-consent { display: flex; gap: .6rem; align-items: flex-start; font-size: .82rem; line-height: 1.5; color: #b8c0d6; cursor: pointer; }
+  .gli-consent input { margin-top: .15rem; accent-color: #6F46FF; flex-shrink: 0; }
+  .gli-fine { font-family: var(--mono); font-size: .62rem; color: #76819c; margin: 1rem 0 0; line-height: 1.6; }
+  .gli-fine a { color: #9DB2FF; text-decoration: none; }
+  .gli-err { color: #ff8b8b; font-size: .78rem; margin: .5rem 0 0; min-height: .9rem; }
+
+  .gli-nav { display: flex; justify-content: space-between; gap: .75rem; margin-top: 1.4rem; }
+  .gli-btn { font-family: var(--sans); font-weight: 600; font-size: .9rem; padding: .75rem 1.4rem; border-radius: 10px; cursor: pointer; border: 1.5px solid transparent; transition: background .18s, transform .1s; }
+  .gli-btn:active { transform: translateY(1px); }
+  .gli-btn--go { background: #1845D6; color: #fff; margin-left: auto; }
+  .gli-btn--go:hover { background: #0F2EA0; }
+  .gli-btn--go:disabled { opacity: .6; cursor: not-allowed; }
+  .gli-btn--ghost { background: #ffffff10; color: #c7cee0; border-color: #ffffff24; }
+
+  .aic__footer { position: relative; z-index: 1; font-family: var(--mono); font-size: .62rem; color: #6b7591; text-align: center; padding: .9rem 1.25rem; border-top: 1px solid #ffffff0f; letter-spacing: .03em; }
+
+  .gli-success { text-align: center; padding: 1rem 0 .5rem; animation: aic-msg-in .4s ease; }
+  .gli-success__mark { width: 56px; height: 56px; margin: 0 auto 1rem; border-radius: 50%; background: #2E9E2E; color: #fff; font-size: 1.6rem; display: grid; place-items: center; }
+  .gli-success__h { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 0 0 .75rem; color: #fff; }
+  .gli-success__p { font-size: .92rem; line-height: 1.6; color: #b8c0d6; margin: 0 0 1rem; }
+  .gli-success__closer { font-size: .95rem; color: #e6e9f2; margin: 0 0 1.25rem; }
+</style>
+
+<script is:inline>
+  (function () {
+    var overlay = document.getElementById('gli-overlay');
+    var form = document.getElementById('gli-form');
+    if (!overlay || !form) return;
+
+    // Open/close
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest('[data-open-local-intro]');
+      if (t) { e.preventDefault(); overlay.hidden = false; document.body.style.overflow = 'hidden'; }
+    });
+    function close() { overlay.hidden = true; document.body.style.overflow = ''; }
+    document.getElementById('gli-close').addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) close(); });
+
+    var slides = Array.prototype.slice.call(form.querySelectorAll('.gli-slide'));
+    var total = slides.length;
+    var bar = document.getElementById('gli-bar');
+    var stepCount = document.getElementById('gli-stepcount');
+    var prevBtn = document.getElementById('gli-prev');
+    var nextBtn = document.getElementById('gli-next');
+    var submitBtn = document.getElementById('gli-submit');
+    var successEl = document.getElementById('gli-success');
+    var current = 0;
+
+    // attribution from URL params / cookies
+    var params = new URLSearchParams(window.location.search);
+    function cookie(n) { var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? decodeURIComponent(m.pop()) : ''; }
+    ['lo_id','lo_name','utm_source','utm_medium','utm_campaign','fbclid','source_url'].forEach(function (k) {
+      var el = form.querySelector('[name="' + k + '"]'); if (el) el.value = params.get(k) || cookie(k) || '';
+    });
+    var src = form.querySelector('[name="source_url"]'); if (src && !src.value) src.value = window.location.href;
+
+    // max-select enforcement (step 2 = up to 3)
+    form.querySelectorAll('.gli-chips[data-max]').forEach(function (grid) {
+      var max = parseInt(grid.getAttribute('data-max'), 10);
+      grid.addEventListener('change', function (ev) {
+        var checked = grid.querySelectorAll('input:checked');
+        if (checked.length > max && ev.target && ev.target.checked) { ev.target.checked = false; }
+      });
+    });
+
+    function showStep(i) {
+      slides.forEach(function (s, idx) { s.hidden = idx !== i; });
+      current = i;
+      bar.style.width = ((i + 1) / total) * 100 + '%';
+      stepCount.textContent = 'About 15 seconds · Step ' + (i + 1) + ' of ' + total;
+      prevBtn.hidden = i === 0;
+      var last = i === total - 1;
+      nextBtn.hidden = last; submitBtn.hidden = !last;
+    }
+    function setErr(n, m) { var el = form.querySelector('[data-err-for="' + n + '"]'); if (el) el.textContent = m; }
+    function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+    function isPhone(v) { return v.replace(/\D/g, '').length >= 10; }
+
+    // OTP placeholder
+    var phoneVerified = document.getElementById('gli-phone-verified');
+    var otpWrap = document.getElementById('gli-otp-wrap');
+    var otpInput = document.getElementById('gli-otp-input');
+    var otpOk = document.getElementById('gli-otp-ok');
+    document.getElementById('gli-send-otp').addEventListener('click', function () {
+      var v = form.querySelector('[name="phone"]').value;
+      if (!isPhone(v)) { setErr('phone', 'Enter a valid phone number first.'); return; }
+      setErr('phone', ''); otpWrap.hidden = false; otpInput.focus();
+    });
+    document.getElementById('gli-check-otp').addEventListener('click', function () {
+      if (otpInput.value.trim() === '000000') {
+        phoneVerified.value = 'true'; otpOk.hidden = false; setErr('otp', '');
+        otpInput.disabled = true;
+      } else { setErr('otp', 'Incorrect code. (Test code: 000000)'); }
+    });
+
+    function validateStep(i) {
+      var step = slides[i].getAttribute('data-step');
+      if (step === '1') {
+        if (!form.querySelectorAll('[name="intro_to"]:checked').length) { setErr('intro_to', 'Please pick at least one.'); return false; }
+        setErr('intro_to', '');
+      }
+      if (step === '5') {
+        if (!isEmail(form.querySelector('[name="email"]').value)) { setErr('email', 'Please enter a valid email.'); return false; }
+        setErr('email', '');
+      }
+      if (step === '6') {
+        if (!isPhone(form.querySelector('[name="phone"]').value)) { setErr('phone', 'Please enter a valid phone number.'); return false; }
+        setErr('phone', '');
+        if (phoneVerified.value !== 'true') { setErr('otp', 'Please verify your phone (tap Verify, code 000000).'); if (otpWrap.hidden) otpWrap.hidden = false; return false; }
+        setErr('otp', '');
+      }
+      if (step === '7') {
+        if (!form.querySelector('[name="sms_consent"]').checked) { setErr('sms_consent', 'Please check the box to continue.'); return false; }
+        setErr('sms_consent', '');
+      }
+      return true;
+    }
+
+    nextBtn.addEventListener('click', function () { if (validateStep(current) && current < total - 1) showStep(current + 1); });
+    prevBtn.addEventListener('click', function () { if (current > 0) showStep(current - 1); });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Guard: Enter key fires submit even on early steps. Only allow real submission
+      // on the final step. Otherwise treat it as "Next".
+      if (current < total - 1) {
+        if (validateStep(current)) showStep(current + 1);
+        return;
+      }
+      if (!validateStep(current)) return;
+      var honeypot = document.getElementById('gli-gotcha').value;
+
+      var fd = new FormData(form);
+      var data = {};
+      // collect, joining multi-checkboxes with comma
+      fd.forEach(function (val, key) {
+        if (data[key] !== undefined) { data[key] = data[key] + ', ' + val; } else { data[key] = String(val); }
+      });
+      var fullName = (data.full_name || '').trim();
+      var sp = fullName.indexOf(' ');
+      var first = sp === -1 ? fullName : fullName.slice(0, sp);
+      var last = sp === -1 ? '' : fullName.slice(sp + 1);
+
+      var payload = Object.assign({}, data, {
+        form_source: 'get-a-local-introduction', form_name: 'Get a Local Introduction',
+        first_name: first, last_name: last, email: data.email || '', phone: data.phone || '',
+        page_url: window.location.href, submitted_at: new Date().toISOString()
+      });
+
+      function done() {
+        form.hidden = true; successEl.hidden = false;
+        if (first) {
+          document.getElementById('gli-success-h').textContent = 'Thank you ' + first + ' — we\u2019re on it.';
+          document.getElementById('gli-success-closer').textContent = 'We\u2019re here to help you take the next step, ' + first + '.';
+        }
+      }
+      if (honeypot && honeypot.trim() !== '') { done(); return; }
+
+      submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
+      fetch('https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/fd7a3b30-ddf9-4415-b751-bfa88beda702', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+      }).then(done).catch(function () {
+        submitBtn.disabled = false; submitBtn.textContent = 'See My Options';
+        setErr('sms_consent', 'Something went wrong. Please try again or call (954) 993-1625.');
+      });
+    });
+
+    showStep(0);
+  })();
+</script>

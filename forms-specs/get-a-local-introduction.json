@@ -1,0 +1,76 @@
+{
+  "form_id": "get-a-local-introduction",
+  "form_source": "get-a-local-introduction",
+  "form_name": "Get a Local Introduction",
+  "origin_tool": "GHL Survey",
+  "page_slug": "/get-a-local-introduction/",
+  "presentation": "conversational popup (styled as sibling of homepage AI chat blob .aic)",
+  "submit": { "method": "webhook", "form_source_value": "get-a-local-introduction" },
+  "otp": { "type": "placeholder", "code": "000000", "note": "stub, no SMS; replace post-domain-switch" },
+  "success_message": {
+    "headline": "Thank you {first_name} — we're on it.",
+    "body": "We've received your request to connect with a trusted local professional. Our team is reviewing your details and preparing to introduce you to someone who aligns with your current goals — so you can move forward with clarity and support.",
+    "closer": "We're here to help you take the next step, {first_name}.",
+    "link": { "label": "Back to home page", "href": "/" }
+  },
+  "slides": [
+    {
+      "n": 1,
+      "key": "intro_to",
+      "label": "Who would you like an introduction to?",
+      "type": "checkbox_multi",
+      "required": true,
+      "options": [
+        "APPRAISER – A fair, professional assessment of property value",
+        "INSPECTOR – Peace of mind through a thorough property evaluation",
+        "INSURANCE BROKER – Confidence you're properly covered",
+        "ATTORNEY / TITLE TEAM – Confidence your deal will close smoothly",
+        "REALTOR / WHOLESALER – Access to exclusive deals and top local agents",
+        "FINANCIAL PLANNER – Personalized, tax-smart wealth advice",
+        "ACCOUNTANT / UNDERWRITER – Accuracy and insight into your finances",
+        "BUILDER / CONTRACTOR – A trusted team to build or renovate on time and on budget",
+        "ARCHITECT / DESIGNER – A design that reflects your vision and lifestyle",
+        "MORTGAGE ADVISOR – The right loan strategy for your long-term goals",
+        "NOT SURE YET – I just need to talk to someone and get pointed in the right direction"
+      ]
+    },
+    {
+      "n": 2,
+      "key": "most_important",
+      "label": "What is MOST important to you? (pick up to 3)",
+      "type": "checkbox_multi",
+      "max_select": 3,
+      "required": false,
+      "options": [
+        "Trust in the person or team I'm working with",
+        "Confidence I'm making the right decision",
+        "Fast response and clear communication",
+        "A smooth, stress-free process",
+        "Personalized advice for my situation",
+        "Transparent pricing and no surprises",
+        "Deep expertise and industry knowledge",
+        "Help navigating complex paperwork or red tape",
+        "Creative solutions or out-of-the-box strategies",
+        "Long-term support beyond this transaction"
+      ]
+    },
+    { "n": 3, "key": "anything_else", "label": "Anything else you'd like to share?", "type": "textarea", "required": false },
+    { "n": 4, "key": "full_name", "label": "Full name", "type": "text", "required": false, "maps_to": "first_name + last_name" },
+    { "n": 5, "key": "email", "label": "Email", "type": "email", "required": true },
+    { "n": 6, "key": "phone", "label": "Phone", "type": "tel", "required": true, "otp_gate": true },
+    {
+      "n": 7, "key": "sms_consent", "label": "SMS Consent", "type": "checkbox", "required": true,
+      "consent_text": "I Consent to Receive SMS Notifications, Alerts & Occasional Marketing Communication from company. Message frequency varies. Message & data rates may apply. Text HELP to (954) 993-1625 for assistance. You can reply STOP to unsubscribe at any time.",
+      "links": ["Privacy Policy", "Terms of Service"]
+    }
+  ],
+  "compliance": {
+    "division_line": "Stairway Mortgage is a division of NEXA Mortgage LLC.",
+    "no_rate_promises": true
+  },
+  "open_flags": [
+    "Q2 enforces max 3 selections.",
+    "Success message personalizes with first name.",
+    "Phone Verify = placeholder OTP 000000 (same as Build A House)."
+  ]
+}

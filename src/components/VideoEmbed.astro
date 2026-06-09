@@ -1,0 +1,55 @@
+---
+/*  VideoEmbed — lightweight, lazy, first-party video player (Stairway tokens).
+    Loads the <video> only on interaction (click poster) so the page stays fast
+    and R2 bandwidth isn't spent until the user actually wants to watch.
+    Pass R2 URLs for src + poster.                                            */
+interface Props {
+  src: string;        // R2 URL, e.g. https://media.stairwaymortgage.com/same-day-approval.mp4
+  poster?: string;    // R2 poster image URL (or /wp-content/uploads/... relative)
+  title?: string;     // accessible label / caption
+  caption?: string;
+}
+const { src, poster = '', title = 'Video', caption = '' } = Astro.props;
+const id = 'v' + Math.random().toString(36).slice(2, 9);
+---
+
+<figure class="vid">
+  <div class="vid__frame" id={id} data-src={src} role="button" tabindex="0" aria-label={`Play video: ${title}`}>
+    {poster && <img class="vid__poster" src={poster} alt={title} loading="lazy" width="1280" height="720" />}
+    <span class="vid__play" aria-hidden="true">
+      <svg viewBox="0 0 68 68" width="68" height="68"><circle cx="34" cy="34" r="34" fill="rgba(10,14,26,0.82)"/><path d="M27 22l20 12-20 12z" fill="#FAFAF7"/></svg>
+    </span>
+  </div>
+  {caption && <figcaption class="vid__cap mono">{caption}</figcaption>}
+</figure>
+
+<script is:inline define:vars={{ id }}>
+  (function () {
+    const frame = document.getElementById(id);
+    if (!frame) return;
+    function load() {
+      if (frame.dataset.loaded) return;
+      frame.dataset.loaded = '1';
+      const v = document.createElement('video');
+      v.src = frame.dataset.src;
+      v.controls = true; v.autoplay = true; v.playsInline = true;
+      v.className = 'vid__el';
+      frame.innerHTML = '';
+      frame.appendChild(v);
+      v.play().catch(function(){});
+    }
+    frame.addEventListener('click', load);
+    frame.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(); } });
+  })();
+</script>
+
+<style>
+  .vid { margin: 2.5rem 0; }
+  .vid__frame { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; cursor: pointer; background: var(--color-ink); border: 1px solid var(--color-bone); }
+  .vid__poster { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s, filter .3s; }
+  .vid__frame:hover .vid__poster { transform: scale(1.03); filter: brightness(0.9); }
+  .vid__play { position: absolute; inset: 0; display: grid; place-items: center; transition: transform .2s; }
+  .vid__frame:hover .vid__play { transform: scale(1.08); }
+  .vid__el { width: 100%; height: 100%; display: block; background: #000; }
+  .vid__cap { text-align: center; font-size: 11px; color: var(--color-mute); margin-top: 0.85rem; letter-spacing: 0.04em; }
+</style>
