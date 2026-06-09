@@ -1,19 +1,1426 @@
 ---
 import Layout from '../layouts/Layout.astro';
----
-<Layout title="Medical Professionals — Stairway Mortgage" description="Physician and nurse loan programs. Low or zero down payment.">
-  <section class="section relative overflow-hidden">
-    <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Your Profession · Medical Professionals</span>
-        <h1 class="display-xl mt-6 mb-6">Loan programs built for <em class="italic text-[var(--color-blue)]">physicians and nurses</em>.</h1>
-        <p class="lede max-w-xl mx-auto mb-6">Doctor loans with low or zero down payment and student-debt-friendly qualification.</p>
-        <p class="mono text-[11px] text-[var(--color-mute)] mt-6">NMLS #1072866</p>
-        <div class="flex flex-wrap gap-3 justify-center mt-10">
-          <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-6 py-3.5">See My Options</a>
-          <a href="/contact-us/" class="btn btn-ghost text-base px-6 py-3.5">Talk to Our Team</a>
+const mpBody = `
+  
+
+  <!-- HERO -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+
+      <div class="hero-eyebrow eyebrow">Medical Professionals Mortgages</div>
+      <h1 class="display-1">Medical professional mortgage for the people who carry six-figure debt and seven-figure earning potential.</h1>
+      <p class="lead hero-subtitle">Physicians, surgeons, nurse practitioners, PAs, pharmacists, residents, and veterinarians share a uniquely difficult mortgage profile: substantial guaranteed future income, large current student-loan balances on income-driven repayment, hospital W-2 with stipend and on-call mixed in, locum tenens 1099 side work, and partnership or productivity bonuses paid quarterly. Generalist lenders see the student debt and the variable income, calculate DTI using 1% of the loan balance, and either decline or qualify you for half what you can afford. We read the IDR statement, the locum 1099, the productivity contract, and the residency-completion letter &mdash; and we qualify you on what you actually earn.</p>
+
+      <div class="hero-actions">
+        <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary btn-large">Schedule a call with Jim</a>
+        <a href="#professions" class="btn btn-secondary btn-large">Find your profession</a>
+      </div>
+
+      <div class="hero-trust">
+        <span class="trust-dot"></span>
+        <span>Broker NMLS #1072866</span>
+        <span>&middot;</span>
+        <span>Specialist in physician &amp; healthcare-professional mortgages</span>
+      </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Medical professional in white coat reviewing patient records" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Medical+Professionals';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS BAR -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Medical professions we specialize in</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">$239K+</div>
+          <div class="stat-label">BLS 2024 physician median (specialists $300-500K)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Income-qualification methods for medical pay</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Specialist who reads your contract before we quote</div>
+        </div>
+      </div>
+
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/3825529/pexels-photo-3825529.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Medical professional working at desk in modern hospital setting" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x750/0A0E1A/E8EEFF/png?text=Medical+Professionals';">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEDE -->
+  <section class="lede-section">
+    <div class="container-narrow">
+      <p class="lede">Stairway Mortgage qualifies medical professionals on the income they actually earn and the debt they actually pay &mdash; <strong>not 1% of the student-loan balance and not just the hospital base salary</strong>. An attending physician with hospital W-2 plus productivity bonus plus locum 1099, a resident with a signed fellowship contract starting in six months, an NP with $90K of student debt on PAYE, and a pharmacist with hospital W-2 plus retail moonlighting each get qualified using the income method that fits their pattern. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
+    </div>
+  </section>
+
+  <!-- SIX PROFESSION CARDS -->
+  <section class="professions-section section-tinted" id="professions">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">01 &middot; Choose your door</div>
+        <h2>Six medical mortgage profession guides.</h2>
+        <p>Each guide is built around the comp structure, debt profile, and qualifying mechanics of that specific medical profession. Pick the one that matches yours.</p>
+      </div>
+
+      <div class="professions-grid">
+      <a class="profession-card" href="https://stairwaymortgage.com/medical-professionals/physician/">
+        <div class="profession-num">01</div>
+        <h3 class="profession-title">Physicians</h3>
+        <p class="profession-tag">"My W-2 is $290K. My productivity bonus is another $80K. The lender used only the W-2."</p>
+        <ul class="profession-points">
+          <li>Hospital-employed attending W-2 + RVU productivity bonus</li>
+          <li>Practice-owner physician with S-corp distribution structure</li>
+          <li>Physician-loan programs (low/zero down, IDR-friendly DTI)</li>
+          <li>Hospitalist, primary care, specialty practice variance</li>
+        </ul>
+        <span class="profession-link">Read the physician mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/medical-professionals/surgeon/">
+        <div class="profession-num">02</div>
+        <h3 class="profession-title">Surgeons</h3>
+        <p class="profession-tag">"My specialty earns $500K. Most lenders have never underwritten income this complex."</p>
+        <ul class="profession-points">
+          <li>Hospital-employed surgeon W-2 + procedure-based productivity</li>
+          <li>Private-practice surgical group K-1 with partner buy-in structure</li>
+          <li>Sub-specialty earnings (orthopedic, neuro, cardio, plastic) variance</li>
+          <li>Jumbo and super-jumbo loan qualification for high-value Florida purchases</li>
+        </ul>
+        <span class="profession-link">Read the surgeon mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/medical-professionals/medical-resident-fellow/">
+        <div class="profession-num">03</div>
+        <h3 class="profession-title">Residents &amp; Fellows</h3>
+        <p class="profession-tag">"My stipend is $68K. My signed attending contract starts in eight months at $340K."</p>
+        <ul class="profession-points">
+          <li>Resident-stipend W-2 plus IDR student-loan strategy</li>
+          <li>Signed-contract physician-loan programs (future-income qualifying)</li>
+          <li>Fellowship transition timing &amp; mortgage sequencing</li>
+          <li>$0/month IBR/PAYE/SAVE payment treatment in DTI</li>
+        </ul>
+        <span class="profession-link">Read the resident &amp; fellow mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/medical-professionals/nurse-practitioner-physician-assistant/">
+        <div class="profession-num">04</div>
+        <h3 class="profession-title">NPs &amp; Physician Assistants</h3>
+        <p class="profession-tag">"I&rsquo;m a nurse practitioner with $90K of debt. The lender qualified me on the wrong payment."</p>
+        <ul class="profession-points">
+          <li>Hospital/clinic W-2 with shift differential &amp; on-call documented</li>
+          <li>Locum tenens 1099 income with engagement-letter pipeline</li>
+          <li>Student-loan IDR treatment under Fannie Mae B3-6-05</li>
+          <li>Mid-career NP/PA to MD transition mortgage timing</li>
+        </ul>
+        <span class="profession-link">Read the NP &amp; PA mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/medical-professionals/pharmacist/">
+        <div class="profession-num">05</div>
+        <h3 class="profession-title">Pharmacists</h3>
+        <p class="profession-tag">"Retail W-2 plus hospital per-diem plus some consulting. Three income streams, one mortgage."</p>
+        <ul class="profession-points">
+          <li>Retail-chain pharmacist W-2 with shift differential and sign-on bonus</li>
+          <li>Hospital staff pharmacist W-2 with on-call premium</li>
+          <li>Per-diem &amp; relief pharmacist 1099 income documentation</li>
+          <li>Pharmacy-owner S-corp distribution + W-2 structure</li>
+        </ul>
+        <span class="profession-link">Read the pharmacist mortgage guide</span>
+      </a>
+
+      <a class="profession-card" href="https://stairwaymortgage.com/medical-professionals/veterinarian/">
+        <div class="profession-num">06</div>
+        <h3 class="profession-title">Veterinarians</h3>
+        <p class="profession-tag">"I just bought into a practice. My income tripled. The lender averaged it down."</p>
+        <ul class="profession-points">
+          <li>Associate vet W-2 + production bonus structure</li>
+          <li>Practice-owner vet S-corp distribution treatment</li>
+          <li>Practice acquisition financing alongside personal mortgage</li>
+          <li>Specialty practice (ER, surgery, equine) higher-income paths</li>
+        </ul>
+        <span class="profession-link">Read the veterinarian mortgage guide</span>
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK SECTION: WHAT MAKES MEDICAL MORTGAGES DIFFERENT -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 760px;">
+        <div class="eyebrow eyebrow-light">02 &middot; The income generalist lenders mis-read</div>
+        <h2 style="color: var(--paper);">Four medical-income patterns that confuse W-2 underwriting.</h2>
+        <p style="color: rgba(250,250,247,0.78);">Medical pay is highly structured but rarely simple. Hospital W-2 plus productivity. Resident stipend plus signed future contract. Heavy student debt with low actual IDR payments. Locum 1099 stacked on top of staff W-2. Each pattern has a documented qualifying path under Fannie Mae, Freddie Mac, the physician-loan programs, or our Non-QM options.</p>
+      </div>
+
+      <div class="dark-grid">
+        <div class="dark-card">
+          <div class="dark-num">A</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Student debt on IDR / PAYE / SAVE</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Medical school plus residency leaves the average new attending with $200K&ndash;$400K in federal student loans. Most are on <a href="https://studentaid.gov/manage-loans/repayment/plans/income-driven" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">income-driven repayment</a> where the actual monthly payment is far below what 1% of the balance suggests. Under <a href="https://selling-guide.fanniemae.com/sel/b3-6-05/monthly-debt-obligations" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Fannie Mae B3-6-05</a>, the actual IDR payment from the servicer counts in DTI. For a resident on PAYE with a $0/month payment against $280K of loans, that single rule swings $500K-$800K in qualifying loan amount.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">B</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Physician-loan programs (signed-contract qualifying)</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Several lenders offer specialized physician-loan products that allow qualifying on a signed-but-not-yet-active employment contract. A graduating resident with a $340K attending position starting in 60-90 days can close on a home today using the new contract as the qualifying income. Down-payment requirements are often 0&ndash;10% (vs. 20% conventional). PMI is waived. The trade-off: rates can be 0.25&ndash;0.50% higher than conforming. Sometimes worth it, sometimes not. We model both.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">C</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Multi-stream income stack</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Many attendings, NPs, and pharmacists work multiple income streams: hospital W-2 for staff position, locum tenens 1099 for additional shifts, moonlighting W-2 at a second hospital, sometimes a small consulting or expert-witness 1099 on top. Each stream has its own qualifying treatment. <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">CFPB Reg Z&rsquo;s Ability-to-Repay rule</a> permits all of them when documented. Generalist lenders default to the main W-2 only. We stack them correctly.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">D</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Practice-owner S-corp distribution</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Private-practice physicians, surgeons, and veterinarians often structure as an S-corp paying a "reasonable" W-2 salary plus a distribution that avoids self-employment tax. <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Fannie Mae B3-3.4-02</a> allows the distribution to count as qualifying income with a two-year history. Generalist lenders default to W-2 only and qualify a $500K-earning surgeon on $180K. We pull Form 1120-S, the K-1, and the personal 1040, and use the full picture.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- BIO -->
+  <section class="bio-section">
+    <div class="container">
+      <div class="bio-grid">
+        <figure class="bio-photo">
+          <img src="https://images.pexels.com/photos/3760529/pexels-photo-3760529.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mortgage broker reviewing loan documents at a desk" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x800/0A0E1A/E8EEFF/png?text=Jim+Blackburn';">
+        </figure>
+        <div class="bio-text">
+          <div class="eyebrow">03 &middot; Why my desk?</div>
+          <h2>I&rsquo;ve closed loans for physicians on every comp structure I&rsquo;ve seen.</h2>
+          <p>I run a national mortgage practice from Fort Lauderdale, and a substantial share of my originations come from medical professionals &mdash; the attending physician relocating for a new fellowship, the surgeon buying into a practice, the resident closing on her first home using a signed-contract physician loan, the NP refinancing after a hospital-system move. The common thread is that the file is more complex than a generic W-2 file, and most lenders fail because they read only the most obvious income source and ignore the rest.</p>
+          <p>The reason most lenders fail medical clients is that the loan officer never reads the employment contract carefully, never asks about the RVU productivity formula, never requests the IDR statement showing the actual monthly student-loan payment. They feed your AGI into automated underwriting, the engine applies 1% of your loan balance to DTI, and you&rsquo;re declined or under-qualified. Our process: we read the contract, we map every income stream, we get the IDR payment in writing from your servicer, and we route the file to the program that fits &mdash; whether that&rsquo;s Fannie Mae with proper IDR treatment, a physician-loan program with future-income qualifying, or Non-QM bank-statement for practice owners with aggressive deductions.</p>
+          <p>Stairway Mortgage is a division of NEXA Mortgage LLC, the nation&rsquo;s largest mortgage brokerage. That means access to 300+ lender programs, including the physician-loan, asset-depletion, and bank-statement options that fit medical-professional income. <strong>I personally read every medical loan file before it&rsquo;s submitted.</strong></p>
+          <div class="bio-cta">
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary">Schedule a call with Jim</a>
+            <span class="bio-cta-meta">No application required. 20-minute conversation.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">04 &middot; What medical clients say</div>
+        <h2>Three closings from the white coat.</h2>
+        <p>Names abbreviated for client privacy. Practice and hospital names anonymized. Numbers are real.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-1"><img src="https://i.pravatar.cc/300?img=51" alt="Dr. Rachel V., attending physician" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=51';"></div>
+          <blockquote class="testim-quote">"I had $310K in student loans on PAYE with a $180/month actual payment. Two lenders used 1% of the balance and disqualified me. Jim pulled the servicer statement, applied Fannie Mae B3-6-05, and got me approved at $1.4M. Closed on a Coral Gables home."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Dr. Rachel V.</div>
+            <div class="testim-meta">Attending Physician &middot; Hospital-employed &middot; Coral Gables</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-2"><img src="https://i.pravatar.cc/300?img=12" alt="Dr. Marcus K., orthopedic surgeon" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/F0EDE8/6B5C4B/png?text=12';"></div>
+          <blockquote class="testim-quote">"My income comes from hospital W-2 plus RVU productivity plus a partnership K-1 from the surgical group. The big bank used only the W-2 and offered me half what I needed. Jim&rsquo;s team used all three streams. Closed on Pinecrest in 31 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Dr. Marcus K.</div>
+            <div class="testim-meta">Orthopedic Surgeon &middot; Hospital + private group &middot; Pinecrest</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-3"><img src="https://i.pravatar.cc/300?img=23" alt="Dr. Priya N., chief resident heading to fellowship" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EFE8/3D5A3D/png?text=23';"></div>
+          <blockquote class="testim-quote">"I had a signed fellowship contract starting in seven months at $340K but my current resident stipend was only $68K. Jim routed me through a physician-loan program that qualified on the future contract. Closed before I started the new position."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Dr. Priya N.</div>
+            <div class="testim-meta">Chief Resident → Fellowship &middot; Miami</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">05 &middot; Medical mortgage FAQs</div>
+        <h2>Eight questions medical professionals ask first.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item"><summary>I have $300K of student loans. Can I still qualify for a $1M+ mortgage?</summary><div class="faq-body"><p>Yes, with the right DTI calculation. Under <a href="https://selling-guide.fanniemae.com/sel/b3-6-05/monthly-debt-obligations" target="_blank" rel="noopener noreferrer">Fannie Mae B3-6-05</a>, the actual monthly payment from your servicer counts in DTI &mdash; not 1% of the balance, not a 10-year-amortization estimate. If you&rsquo;re on PAYE/SAVE/IBR, that payment may be $0&ndash;$500/month against $300K of debt. We document it with the servicer statement and qualify you correctly. This single rule routinely swings $500K-$800K in qualifying loan amount for residents and new attendings.</p></div></details>
+        <details class="faq-item"><summary>I&rsquo;m a resident with a signed attending contract. Can I close before I start the new job?</summary><div class="faq-body"><p>Yes, through a physician-loan program. Several specialty lenders qualify on a signed-but-not-yet-active employment contract starting within 60-120 days. You provide the signed contract, the residency-completion letter, and proof of state license (or pending license). The physician-loan typically offers 0-10% down with no PMI, in exchange for a rate 0.25-0.50% higher than conventional. We model both physician-loan and conventional with future-income to show you the right math.</p></div></details>
+        <details class="faq-item"><summary>My income is hospital W-2 plus locum tenens 1099. Will both count?</summary><div class="faq-body"><p>Yes, with documentation. We use your hospital W-2 as continuous income (full credit), your locum 1099 as variable income (two-year average with current-year support per <a href="https://www.irs.gov/forms-pubs/about-schedule-c-form-1040" target="_blank" rel="noopener noreferrer">Schedule C</a> with allowed add-backs), and if you have an active locum engagement letter, that counts as forward-looking support. The two-stream stack often qualifies you for $200K-$400K more home than the W-2 alone.</p></div></details>
+        <details class="faq-item"><summary>I&rsquo;m an NP/PA. Will lenders treat me the same as a physician?</summary><div class="faq-body"><p>Functionally yes for income-qualifying. <a href="https://www.bls.gov/ooh/healthcare/nurse-anesthetists-nurse-midwives-and-nurse-practitioners.htm" target="_blank" rel="noopener noreferrer">BLS reports NP median wage at $132,050</a> and PAs at $133,260 &mdash; well into the income tier that supports significant mortgage qualification. The physician-loan programs typically extend to NPs and PAs with similar terms (low down, IDR-friendly DTI, signed-contract qualifying). Where they differ from physicians: the highest tier of physician-loan products (super-jumbo, $2M+) is often restricted to MDs/DOs.</p></div></details>
+        <details class="faq-item"><summary>My RVU productivity bonus varies quarter to quarter. Will it count?</summary><div class="faq-body"><p>Yes, as variable income with a two-year average. Your employment contract showing the RVU formula and the prior two years of pay stubs/W-2s establishing the bonus pattern allow us to qualify you on the average. If you&rsquo;ve had a recent productivity ramp (new specialty board certification, new procedural privileges, larger panel), we can sometimes use trailing-12-month or current-year run-rate with an employer attestation letter. The structure of the variable income matters more than its variability.</p></div></details>
+        <details class="faq-item"><summary>I&rsquo;m buying into a private practice. How does that affect my personal mortgage?</summary><div class="faq-body"><p>The practice buy-in note becomes a debt obligation in your personal DTI. If the note is paid from your share of partnership distributions, the monthly payment counts in DTI calculation. Sequencing matters: close your personal mortgage either before the buy-in (qualify on employee-period income) or after a year of K-1 history establishes the new income level. For SBA-financed acquisitions, see our <a href="https://stairwaymortgage.com/professional-services/business-acquirer/" target="_blank" rel="noopener noreferrer">business acquirer mortgage guide</a> for coordination logistics.</p></div></details>
+        <details class="faq-item"><summary>Are physician-loan programs always the right answer for doctors?</summary><div class="faq-body"><p>No. Physician-loans solve specific problems (low down payment, IDR-friendly DTI, signed-contract qualifying) but the rates are usually 0.25&ndash;0.50% higher than conventional. If you have 20% down, no IDR student debt issue, and a clean two-year W-2 history, conventional jumbo often produces a lower total interest cost. We run the numbers both ways. About 40% of our medical clients end up in physician-loan programs and 60% in conventional or non-QM options that fit their specific situation better.</p></div></details>
+        <details class="faq-item"><summary>What loan programs do you actually use for medical clients?</summary><div class="faq-body"><p>Conventional Fannie Mae and Freddie Mac (with proper IDR student-loan treatment), Physician-Loan programs (low/zero down, IDR-friendly, signed-contract qualifying), Jumbo and Super-Jumbo (for high-purchase prices in Florida), Non-QM bank-statement (for private-practice owners with aggressive deductions), Asset-Depletion (for senior physicians with portfolio assets), and SBA-coordinated personal-mortgage timing (for physicians acquiring practices). We pick the program after we read your contract and your full income picture &mdash; not before.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAME B CROSS-LINK BLOCK: PRACTICE ACQUISITION -->
+  <section class="section">
+    <div class="container">
+      <div class="cross-link-block">
+        <div class="eyebrow">06 &middot; Practice acquisition &amp; transition financing</div>
+        <h2 style="margin-bottom: var(--s-5);">Buying into a practice, leaving hospital employment, completing residency?</h2>
+        <p style="margin-bottom: var(--s-5); max-width: 760px;">Many of our medical clients are at career inflection points &mdash; residency-to-attending, attending-to-partner, hospital-employed to private-practice owner, established physician acquiring a colleague&rsquo;s practice. Each transition has mortgage timing implications. The personal mortgage interacts with SBA practice-acquisition financing, partnership buy-in notes, hospital exit timing, and (for residents) signed future contracts. For SBA-specific acquisition logistics, see our <a href="https://stairwaymortgage.com/professional-services/business-acquirer/">business acquirer mortgage guide</a> under Professional Services.</p>
+        <ul class="cross-link-list">
+          <li>&rarr; <a href="https://stairwaymortgage.com/medical-professionals/physician/">Physician mortgage guide</a> &mdash; hospital-to-practice transition timing &amp; partnership buy-in</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/medical-professionals/surgeon/">Surgeon mortgage guide</a> &mdash; surgical-group K-1 &amp; multi-location practice structures</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/medical-professionals/medical-resident-fellow/">Resident &amp; fellow mortgage guide</a> &mdash; signed-contract physician loans &amp; residency-completion timing</li>
+          <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/business-acquirer/">Business acquirer guide</a> (Professional Services) &mdash; SBA 7(a)/504 coordination</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">07 &middot; Sources &amp; further reading</div>
+        <h2>The data, regulations, and industry research behind this guide.</h2>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h3 class="source-group-title">BLS occupational wage data</h3>
+          <ul class="source-list">
+            <li><a href="https://www.bls.gov/ooh/healthcare/physicians-and-surgeons.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Physicians &amp; Surgeons (median $239,200+, May 2024)</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/nurse-anesthetists-nurse-midwives-and-nurse-practitioners.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Nurse Practitioners (median $132,050)</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/physician-assistants.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Physician Assistants (median $133,260)</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/pharmacists.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Pharmacists (median $137,480, top 10% $172,040)</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/veterinarians.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Veterinarians (median $130,020)</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Healthcare Occupations Overview</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Mortgage program guidelines</h3>
+          <ul class="source-list">
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-6-05/monthly-debt-obligations" target="_blank" rel="noopener noreferrer">Fannie Mae B3-6-05 &mdash; Monthly Debt Obligations (student loan IDR)</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.4-02 &mdash; Partnership &amp; S-Corp Income Analysis</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.3-02 &mdash; Self-Employed Borrower Income Analysis</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-01 &mdash; General Income Information (variable income)</a></li>
+            <li><a href="https://guide.freddiemac.com/app/guide/section/5303.4" target="_blank" rel="noopener noreferrer">Freddie Mac Single-Family Seller/Servicer Guide &mdash; Income Documentation</a></li>
+            <li><a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer">CFPB Regulation Z &mdash; Ability-to-Repay &amp; Qualified Mortgage Rule</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Student loans &amp; education debt</h3>
+          <ul class="source-list">
+            <li><a href="https://studentaid.gov/manage-loans/repayment/plans/income-driven" target="_blank" rel="noopener noreferrer">Federal Student Aid &mdash; Income-Driven Repayment Plans (IBR/SAVE/PAYE)</a></li>
+            <li><a href="https://studentaid.gov/manage-loans/forgiveness-cancellation/public-service" target="_blank" rel="noopener noreferrer">Federal Student Aid &mdash; Public Service Loan Forgiveness (PSLF)</a></li>
+            <li><a href="https://www.cfpb.gov/consumer-tools/student-loans/" target="_blank" rel="noopener noreferrer">CFPB &mdash; Student Loans Resource Center</a></li>
+            <li><a href="https://www.aamc.org/data-reports/students-residents/data/medical-school-graduation-questionnaire" target="_blank" rel="noopener noreferrer">AAMC &mdash; Medical Student Education: Debt &amp; Specialty Data</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">IRS tax-filing guidance</h3>
+          <ul class="source-list">
+            <li><a href="https://www.irs.gov/forms-pubs/about-schedule-c-form-1040" target="_blank" rel="noopener noreferrer">IRS &mdash; Schedule C (Form 1040), Profit or Loss From Business</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-schedule-k-1-form-1065" target="_blank" rel="noopener noreferrer">IRS &mdash; Schedule K-1 (Form 1065)</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-form-1120-s" target="_blank" rel="noopener noreferrer">IRS &mdash; Form 1120-S, U.S. Income Tax Return for an S Corporation</a></li>
+            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/s-corporation-employees-shareholders-and-corporate-officers" target="_blank" rel="noopener noreferrer">IRS &mdash; S Corporation Shareholders &amp; Officers</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Licensing &amp; professional bodies</h3>
+          <ul class="source-list">
+            <li><a href="https://www.ama-assn.org/" target="_blank" rel="noopener noreferrer">American Medical Association (AMA)</a></li>
+            <li><a href="https://www.aanp.org/" target="_blank" rel="noopener noreferrer">American Association of Nurse Practitioners</a></li>
+            <li><a href="https://www.aapa.org/" target="_blank" rel="noopener noreferrer">American Academy of Physician Associates (AAPA)</a></li>
+            <li><a href="https://www.pharmacist.com/" target="_blank" rel="noopener noreferrer">American Pharmacists Association</a></li>
+            <li><a href="https://www.avma.org/" target="_blank" rel="noopener noreferrer">American Veterinary Medical Association</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Industry &amp; sector data</h3>
+          <ul class="source-list">
+            <li><a href="https://www.hhs.gov/" target="_blank" rel="noopener noreferrer">U.S. Department of Health &amp; Human Services</a></li>
+            <li><a href="https://www.cdc.gov/" target="_blank" rel="noopener noreferrer">CDC &mdash; Centers for Disease Control &amp; Prevention</a></li>
+            <li><a href="https://www.cms.gov/" target="_blank" rel="noopener noreferrer">CMS &mdash; Centers for Medicare &amp; Medicaid Services</a></li>
+            <li><a href="https://www.nih.gov/" target="_blank" rel="noopener noreferrer">NIH &mdash; National Institutes of Health</a></li>
+            <li><a href="https://www.bea.gov/" target="_blank" rel="noopener noreferrer">U.S. Bureau of Economic Analysis &mdash; Healthcare sector GDP</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE-CTA HAPPY OUTCOME BLOCK -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">08 &middot; What "right door first" looks like</div>
+        <h2>The chief resident heading to fellowship.</h2>
+        <p>Chief resident in internal medicine, three months from completion, with a signed cardiology fellowship contract starting at $340K base. Current resident stipend: $68K. First lender required two years of attending-level income before they would qualify her. Second lender qualified her on the resident stipend only, capping her at $310K of buying power. We routed her through a physician-loan program that qualified on the signed future contract, no PMI, 5% down. Approved at $1.1M. Closed on a Coral Gables condo two months before her fellowship started. No bridge financing, no rental gap, no surprises.</p>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/161819/keys-key-house-real-estate-161819.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Set of house keys on a wooden table at closing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=Medical+Pro+Closings';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">29-day close &middot; Coral Gables, FL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow eyebrow-light">Talk to a physician-mortgage specialist</div>
+        <h2 style="color: var(--paper);">Let&rsquo;s read your contract before anyone quotes you.</h2>
+        <p style="color: rgba(250,250,247,0.78);">No application. No credit pull. A 20-minute conversation where we look at your contract, your student-debt situation, your locum or moonlighting income, and your goal &mdash; then we tell you which loan program fits and roughly what the numbers look like. If we&rsquo;re not the right shop, we&rsquo;ll tell you that too.</p>
+        <div class="final-cta-actions">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-primary btn-large">Schedule a call with Jim</a>
+          <a href="https://stairwaymortgage.com/medical-professionals/physician/" class="btn btn-on-dark-secondary btn-large">Or read the physician guide first</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: rgba(250,250,247,0.5); margin-top: var(--s-6);">Stairway Mortgage is a division of NEXA Mortgage LLC. Jim Blackburn NMLS #1072866.</p>
+      </div>
+    </div>
+  </section>
+
+
+`;
+---
+<Layout title="Medical Professional Mortgage · Physicians, Surgeons, Residents, NPs, PAs, Pharmacists, Vets" description="Medical professional mortgage for physicians, surgeons, residents, NPs, PAs, pharmacists, and veterinarians. We read your contract, IDR statement, and locum 1099 to qualify on real income with physician-loan or conventional programs." canonical="https://stairwaymortgage.com/medical-professionals/">
+  <div class="mp-scope" set:html={mpBody} />
 </Layout>
+
+<style is:global>
+.mp-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A;
+      --ink-2: #1E2433;
+      --ink-3: #2C3548;
+      --ink-light: #4A5568;
+      --ink-lighter: #6B7280;
+      --paper: #FAFAF7;
+      --paper-2: #F4F4EE;
+      --paper-3: #EDEDE5;
+      --white: #FFFFFF;
+      --blue: #1845D6;
+      --blue-deep: #0F2EA0;
+      --blue-soft: #E8EEFF;
+      --blue-tint: #F2F5FF;
+      --gold: #B8860B;
+      --rust: #8B2C2C;
+      --border: #E5E5DE;
+      --border-strong: #D4D4C8;
+      --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; 
+      --text-xs: 0.75rem;    
+      --text-sm: 0.875rem;   
+      --text-base: 1.0625rem;
+      --text-md: 1.1875rem;  
+      --text-lg: 1.375rem;   
+      --text-xl: 1.625rem;   
+      --text-2xl: 2rem;      
+      --text-3xl: 2.75rem;   
+      --text-4xl: 3.75rem;   
+      --text-5xl: 5rem;      
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-5: 1.5rem;
+      --s-6: 2rem;
+      --s-7: 3rem;
+      --s-8: 4rem;
+      --s-9: 6rem;
+      --s-10: 8rem;
+      --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.mp-scope, .mp-scope{
+        background-color: #FAFAF7 !important;
+        color: #0A0E1A !important;
+        color-scheme: light only !important;
+      }.mp-scope *{
+        forced-color-adjust: none;
+      }
+    }.mp-scope, .mp-scope *::before, .mp-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.mp-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.mp-scope{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.mp-scope img, .mp-scope svg{ display: block; max-width: 100%; }.mp-scope a{ color: inherit; text-decoration: none; }.mp-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.mp-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.mp-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.mp-scope .container-wide{ max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }.mp-scope .eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-block;
+    }.mp-scope .display-1{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      color: var(--ink);
+    }.mp-scope .display-2{
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, var(--text-3xl));
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 100, "SOFT" 50;
+      color: var(--ink);
+    }.mp-scope h2{
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+      font-weight: 450;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 60, "SOFT" 50;
+    }.mp-scope h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--s-4);
+      font-variation-settings: "opsz" 30;
+    }.mp-scope h4{
+      font-family: var(--sans);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.005em;
+    }.mp-scope p{ margin-bottom: var(--s-4); }.mp-scope p:last-child{ margin-bottom: 0; }.mp-scope p.lead{
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      color: var(--ink-2);
+      font-weight: 350;
+    }.mp-scope p.lede{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.mp-scope .body-text{ color: var(--ink-2); }.mp-scope .text-muted{ color: var(--ink-lighter); }.mp-scope .text-small{ font-size: var(--text-sm); }.mp-scope .text-mono{ font-family: var(--mono); font-feature-settings: 'tnum' 1; }.mp-scope strong, .mp-scope b{ font-weight: 600; color: var(--ink); }.mp-scope em, .mp-scope i{ font-style: italic; }.mp-scope .nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }.mp-scope .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      max-width: 1340px;
+      margin: 0 auto;
+    }.mp-scope .logo{
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 30;
+    }.mp-scope .logo-mark{
+      width: 28px; height: 28px;
+      background: var(--ink);
+      position: relative;
+      border-radius: 2px;
+    }.mp-scope .logo-mark::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.mp-scope .logo-mark::after{
+      content: '';
+      position: absolute;
+      inset: 5px 9px 9px 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.mp-scope .logo-sub{ font-size: var(--text-2xs); color: var(--ink-lighter); font-family: var(--sans); font-weight: 400; letter-spacing: 0.04em; }.mp-scope .nav-links{
+      display: flex; gap: var(--s-6); list-style: none;
+      font-size: var(--text-sm); font-weight: 500;
+    }.mp-scope .nav-links a{ color: var(--ink-2); transition: color 0.15s; }.mp-scope .nav-links a:hover{ color: var(--blue); }.mp-scope .nav-cta{
+      display: flex; gap: var(--s-3);
+    }
+    @media (max-width: 900px) {.mp-scope .nav-links{ display: none; }.mp-scope .nav-cta .btn-secondary{ display: none; }
+    }.mp-scope .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-3) var(--s-5);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }.mp-scope .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }.mp-scope .btn-primary:hover{
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }.mp-scope .btn-secondary{
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }.mp-scope .btn-secondary:hover{
+      border-color: var(--ink);
+    }.mp-scope .btn-light{
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }.mp-scope .btn-light:hover{ background: var(--paper-2); }.mp-scope .btn-large{
+      padding: var(--s-4) var(--s-6);
+      font-size: var(--text-base);
+    }.mp-scope .btn-arrow{
+      display: inline-flex; align-items: center; gap: var(--s-2);
+      color: var(--blue); font-weight: 500;
+      transition: gap 0.18s;
+    }.mp-scope .btn-arrow:hover{ gap: var(--s-3); }.mp-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.mp-scope .hero{
+      padding: var(--s-9) 0 var(--s-8);
+      border-bottom: 1px solid var(--border);
+    }.mp-scope .breadcrumb{
+      display: flex; gap: var(--s-2);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      margin-bottom: var(--s-7);
+    }.mp-scope .breadcrumb a{ color: var(--ink-lighter); }.mp-scope .breadcrumb a:hover{ color: var(--blue); }.mp-scope .breadcrumb span:last-child{ color: var(--ink); }.mp-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.mp-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.mp-scope .hero-subtitle{
+      max-width: 56ch;
+      margin-bottom: var(--s-7);
+    }.mp-scope .hero-actions{
+      display: flex; gap: var(--s-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--s-5);
+    }.mp-scope .hero-trust{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: var(--s-3);
+    }.mp-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.mp-scope .stats{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-7) 0;
+    }.mp-scope .stats-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }.mp-scope .stat{
+      padding: 0 var(--s-4);
+      border-left: 1px solid var(--ink-3);
+    }.mp-scope .stat:first-child{ border-left: 0; padding-left: 0; }.mp-scope .stat-num{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 350;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 144;
+    }.mp-scope .stat-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {.mp-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.mp-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.mp-scope .section{
+      padding: var(--s-10) 0;
+    }.mp-scope .section-tinted{ background: var(--paper-2); }.mp-scope .section-dark{ background: var(--ink); color: var(--paper); }.mp-scope .section-header{
+      max-width: 720px;
+      margin-bottom: var(--s-8);
+    }.mp-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.mp-scope .section-header h2{ margin-bottom: var(--s-5); }.mp-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.mp-scope .lede-section{ padding: var(--s-9) 0; }.mp-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.mp-scope .data-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-feature-settings: 'tnum' 1;
+    }.mp-scope .data-table thead th{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      font-weight: 500;
+      text-align: left;
+      padding: var(--s-3) var(--s-4);
+      border-bottom: 1px solid var(--border-strong);
+    }.mp-scope .data-table tbody td{
+      padding: var(--s-5) var(--s-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }.mp-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.mp-scope .data-table tbody td:first-child{
+      font-weight: 500;
+      color: var(--ink);
+      width: 28%;
+    }.mp-scope .data-table tbody td:nth-child(2){
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--blue-deep);
+      white-space: nowrap;
+      width: 28%;
+    }.mp-scope .data-table tbody td:last-child{
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {.mp-scope .data-table thead{ display: none; }.mp-scope .data-table tbody tr{
+        display: block;
+        padding: var(--s-5) 0;
+        border-bottom: 1px solid var(--border);
+      }.mp-scope .data-table tbody td{
+        display: block;
+        padding: 0 0 var(--s-2);
+        border: 0;
+        width: 100% !important;
+      }.mp-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.mp-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.mp-scope .methods-grid{
+      display: grid;
+      gap: var(--s-5);
+    }.mp-scope .method{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.mp-scope .method:hover{
+      border-color: var(--border-strong);
+    }.mp-scope .method-header{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+      margin-bottom: var(--s-5);
+    }.mp-scope .method-num{
+      font-family: var(--mono);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: var(--s-2);
+      letter-spacing: -0.02em;
+    }.mp-scope .method-title h3{
+      margin-bottom: var(--s-3);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+    }.mp-scope .method-tag{
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      padding: var(--s-1) var(--s-3);
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.mp-scope .method-body{
+      padding-left: calc(var(--text-2xl) + var(--s-5));
+    }.mp-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.mp-scope .worked-example{
+      background: var(--paper-2);
+      border-left: 3px solid var(--ink);
+      padding: var(--s-5) var(--s-6);
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }.mp-scope .worked-example.featured{
+      background: var(--ink);
+      color: var(--paper);
+      border-left-color: var(--blue);
+    }.mp-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.mp-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.mp-scope .worked-example.featured .we-num{ color: var(--paper); }.mp-scope .we-title{
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--s-4);
+      color: var(--ink);
+    }.mp-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.mp-scope .we-line{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s-4);
+      padding: var(--s-2) 0;
+    }.mp-scope .we-label{ color: var(--ink-light); }.mp-scope .we-num{ color: var(--ink); font-weight: 500; }.mp-scope .we-divider{
+      border-top: 1px dashed var(--border-strong);
+      margin: var(--s-3) 0;
+      grid-column: 1 / -1;
+    }.mp-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.mp-scope .we-result{
+      grid-template-columns: 1fr auto;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border-strong);
+      margin-top: var(--s-2);
+      font-weight: 600;
+    }.mp-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.mp-scope .method{ padding: var(--s-5); }.mp-scope .method-body{ padding-left: 0; }.mp-scope .method-num{ font-size: var(--text-xl); }
+    }.mp-scope .callout{
+      background: var(--blue-tint);
+      border: 1px solid rgba(24, 69, 214, 0.12);
+      border-radius: 6px;
+      padding: var(--s-6) var(--s-7);
+      max-width: 760px;
+    }.mp-scope .callout-eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.mp-scope .callout p{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.mp-scope .testim-warning{
+      background: #FFF1F1;
+      border: 1px solid rgba(139, 44, 44, 0.3);
+      border-radius: 4px;
+      padding: var(--s-3) var(--s-5);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      color: var(--rust);
+      margin: 0 auto var(--s-7);
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+    }.mp-scope .testim-warning .mono-tag{
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.1em;
+      background: var(--rust);
+      color: var(--paper);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }.mp-scope .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {.mp-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; }
+    }.mp-scope .testimonials-grid--quad{
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+    }
+    @media (max-width: 900px) {.mp-scope .testimonials-grid--quad{ grid-template-columns: 1fr; max-width: 620px; }
+    }.mp-scope .testim-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.mp-scope .testim-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }.mp-scope .testim-card .example-tag{
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      background: rgba(139, 44, 44, 0.08);
+      color: var(--rust);
+      padding: 3px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+    }.mp-scope .testim-avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 30;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }.mp-scope .testim-avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      display: block;
+    }.mp-scope .testim-avatar::after{
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 50%;
+    }.mp-scope .testim-avatar-1{ background: var(--blue-soft); color: var(--blue-deep); }.mp-scope .testim-avatar-2{ background: #F0EDE8; color: #6B5C4B; }.mp-scope .testim-avatar-3{ background: #E8EFE8; color: #3D5A3D; }.mp-scope .testim-quote{
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      margin: 0;
+      flex: 1;
+    }.mp-scope .testim-attribution{
+      border-top: 1px solid var(--border);
+      padding-top: var(--s-4);
+    }.mp-scope .testim-name{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.005em;
+    }.mp-scope .testim-meta{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }.mp-scope .programs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+    @media (max-width: 720px) {.mp-scope .programs-grid{ grid-template-columns: 1fr; }
+    }.mp-scope .program{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      transition: all 0.2s;
+    }.mp-scope .program:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }.mp-scope .program h4{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      font-variation-settings: "opsz" 30;
+    }.mp-scope .program-when{
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      flex: 1;
+    }.mp-scope .program-links{
+      display: flex;
+      gap: var(--s-5);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+    }.mp-scope .program-links a{
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-1);
+    }.mp-scope .program-links a:hover{ color: var(--blue-deep); }.mp-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.mp-scope .per-diem-section{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+    }.mp-scope .per-diem-section h2{ color: var(--paper); }.mp-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.mp-scope .per-diem-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.mp-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); }
+    }.mp-scope .per-diem-list{
+      list-style: none;
+      padding: 0;
+    }.mp-scope .per-diem-list li{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--ink-3);
+      display: flex;
+      gap: var(--s-4);
+      align-items: start;
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.9);
+    }.mp-scope .per-diem-list li:last-child{ border-bottom: 0; }.mp-scope .pd-num{
+      font-family: var(--mono);
+      color: var(--blue-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 1.5em;
+    }.mp-scope .playbook-stages{ display: grid; gap: var(--s-7); }.mp-scope .stage{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-7);
+      padding-bottom: var(--s-7);
+      border-bottom: 1px solid var(--border);
+    }.mp-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.mp-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); }
+    }.mp-scope .stage-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      padding-top: var(--s-2);
+    }.mp-scope .stage-content h4{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.mp-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.mp-scope .stage-bullets{
+      list-style: none;
+      padding: 0;
+    }.mp-scope .stage-bullets li{
+      padding: var(--s-2) 0;
+      padding-left: var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }.mp-scope .stage-bullets li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 1px;
+      background: var(--blue);
+    }.mp-scope .bio-section{
+      background: var(--paper-2);
+      padding: var(--s-10) 0;
+    }.mp-scope .bio-grid{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-7);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.mp-scope .bio-grid{ grid-template-columns: 1fr; }
+    }.mp-scope .bio-photo{
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink);
+      position: relative;
+    }.mp-scope .bio-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
+    }.mp-scope .bio-photo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      z-index: 2;
+    }.mp-scope .bio-name{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: var(--s-2);
+      font-variation-settings: "opsz" 60;
+    }.mp-scope .bio-title{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      margin-bottom: var(--s-5);
+    }.mp-scope .bio-quote{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-style: italic;
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--blue);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 30;
+    }.mp-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.mp-scope .faq-list{
+      max-width: 800px;
+      margin: 0 auto;
+    }.mp-scope .faq-item{
+      padding: var(--s-6) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+    }.mp-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.mp-scope .faq-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.04em;
+      color: var(--blue);
+      font-weight: 500;
+      padding-top: var(--s-1);
+    }.mp-scope .faq-q{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      color: var(--ink);
+      line-height: 1.3;
+      font-variation-settings: "opsz" 30;
+    }.mp-scope .faq-a{
+      color: var(--ink-2);
+      line-height: 1.65;
+    }.mp-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.mp-scope .sources-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.mp-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.mp-scope .source-group h4{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border-strong);
+    }.mp-scope .source-list{ list-style: none; padding: 0; }.mp-scope .source-list li{
+      padding: var(--s-3) 0;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }.mp-scope .source-list a{
+      color: var(--ink-2);
+      transition: color 0.15s;
+      display: block;
+    }.mp-scope .source-list a:hover{ color: var(--blue); }.mp-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.mp-scope .source-url{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      word-break: break-all;
+    }.mp-scope .final-cta{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+      text-align: center;
+    }.mp-scope .final-cta h2{
+      color: var(--paper);
+      max-width: 22ch;
+      margin: 0 auto var(--s-5);
+    }.mp-scope .final-cta p{
+      color: rgba(250,250,247,0.75);
+      font-size: var(--text-lg);
+      max-width: 56ch;
+      margin: 0 auto var(--s-7);
+    }.mp-scope .final-cta-actions{
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }.mp-scope .btn-on-dark{
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--paper);
+    }.mp-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.mp-scope .btn-on-dark-secondary{
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(250,250,247,0.3);
+    }.mp-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.mp-scope .footer{
+      background: var(--ink-2);
+      color: var(--paper);
+      padding: var(--s-9) 0 var(--s-5);
+    }.mp-scope .footer-grid{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s-7);
+      margin-bottom: var(--s-7);
+    }
+    @media (max-width: 800px) {.mp-scope .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }.mp-scope .footer-brand .logo{ color: var(--paper); margin-bottom: var(--s-4); }.mp-scope .footer-brand p{ color: rgba(250,250,247,0.65); font-size: var(--text-sm); margin-bottom: var(--s-4); }.mp-scope .footer-brand .compliance{ font-family: var(--mono); font-size: var(--text-xs); line-height: 1.7; color: rgba(250,250,247,0.5); }.mp-scope .footer-col h5{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,0.6);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+    }.mp-scope .footer-col ul{ list-style: none; padding: 0; }.mp-scope .footer-col li{ padding: 4px 0; }.mp-scope .footer-col a{
+      color: rgba(250,250,247,0.85);
+      font-size: var(--text-sm);
+      transition: color 0.15s;
+    }.mp-scope .footer-col a:hover{ color: var(--paper); }.mp-scope .footer-bottom{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(250,250,247,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-4);
+      font-size: var(--text-xs);
+      color: rgba(250,250,247,0.5);
+      font-family: var(--mono);
+    }.mp-scope .mt-6{ margin-top: var(--s-6); }.mp-scope .mt-8{ margin-top: var(--s-8); }.mp-scope .mb-0{ margin-bottom: 0; }
+    @media (prefers-reduced-motion: no-preference) {.mp-scope .fade-in{
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.7s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }.mp-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.mp-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.mp-scope .highlights-list{
+      list-style: none;
+      padding: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      columns: 1;
+      column-gap: var(--s-7);
+    }
+    @media (min-width: 880px) {.mp-scope .highlights-list{ columns: 2; column-gap: var(--s-8); }
+    }.mp-scope .highlights-list li{
+      break-inside: avoid;
+      padding: var(--s-3) 0 var(--s-3) var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }.mp-scope .highlights-list li:last-child{ border-bottom: 0; }.mp-scope .highlights-list li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.2em;
+      width: 14px;
+      height: 1px;
+      background: var(--blue);
+    }.mp-scope .highlights-source{
+      font-size: var(--text-sm);
+      color: var(--ink-lighter);
+      margin-left: 4px;
+    }.mp-scope .highlights-source a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }.mp-scope .highlights-source a:hover{ color: var(--blue-deep); }.mp-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.mp-scope .resources-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {.mp-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); }
+    }.mp-scope .resource-item{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--ink-2);
+    }.mp-scope .resource-item a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }.mp-scope .resource-item a:hover{ color: var(--blue-deep); }.mp-scope .professions-section{
+      padding: var(--s-9) 0 var(--s-10);
+    }.mp-scope .professions-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      max-width: 1100px;
+      margin: var(--s-7) auto 0;
+    }
+    @media (max-width: 800px) {.mp-scope .professions-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.mp-scope .profession-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }.mp-scope .profession-card:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -12px rgba(10, 14, 26, 0.15);
+    }.mp-scope .profession-num{
+      font-family: var(--mono);
+      font-size: var(--text-md);
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }.mp-scope .profession-title{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variation-settings: "opsz" 60;
+      margin: 0;
+      color: var(--ink);
+    }.mp-scope .profession-tag{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.4;
+      color: var(--ink-2);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      font-style: italic;
+      margin: 0;
+    }.mp-scope .profession-points{
+      list-style: none;
+      padding: 0;
+      margin: var(--s-2) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }.mp-scope .profession-points li{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-light);
+      padding-left: var(--s-4);
+      position: relative;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }.mp-scope .profession-points li::before{
+      content: '·';
+      position: absolute;
+      left: var(--s-2);
+      top: -2px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.4em;
+    }.mp-scope .profession-link{
+      margin-top: auto;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-2);
+      transition: gap 0.2s;
+    }.mp-scope .profession-link::after{ content: '→'; transition: transform 0.2s; }.mp-scope .profession-card:hover .profession-link::after{ transform: translateX(4px); }.mp-scope .differentiators-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.mp-scope .differentiators-grid{ grid-template-columns: 1fr; gap: var(--s-6); }
+    }.mp-scope .differentiator{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }.mp-scope .differentiator-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--blue-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+      font-weight: 500;
+    }.mp-scope .differentiator h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.mp-scope .differentiator p{
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(250,250,247,0.85);
+      margin: 0;
+    }.mp-scope .hero--with-image .hero-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.mp-scope .hero--with-image h1{ max-width: 16ch; }.mp-scope .hero--with-image .hero-subtitle{ max-width: 52ch; }.mp-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.mp-scope .hero-image::before{ content: ''; position: absolute; top: 58%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(232,238,255,0.18) 35%, rgba(232,238,255,0.18) 65%, transparent 100%); z-index: 1; }.mp-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.mp-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.mp-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.mp-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; } }.mp-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.mp-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.mp-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.mp-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.mp-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.mp-scope .final-cta--bg .container{ position: relative; z-index: 1; }.mp-scope .stats--with-image .stats-bar-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.mp-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.mp-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.mp-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 800px) {.mp-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.mp-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); }.mp-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; } }.mp-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 30% 60%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.mp-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; filter: contrast(1.03) saturate(0.97); }.mp-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.mp-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.mp-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.mp-scope .pre-cta-photo{ aspect-ratio: 4/3; } }
+  
+</style>
+
