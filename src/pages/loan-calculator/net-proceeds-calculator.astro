@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Net Proceeds Calculator | Stairway Mortgage";
 const metaDescription = "Estimate how much cash you'll walk away with at closing after your mortgage payoff, agent commission, and selling costs. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/net-proceeds-calculator/";
@@ -58,7 +58,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Total Selling Expenses</span><span class="result-value" id="rExp">$23,000</span><span class="result-note">Commission plus other costs.</span></div>
           <p class="summary-sub">Your Cash at Closing</p>
           <div class="result result--primary"><span class="result-label">Net Proceeds</span><span class="result-value" id="rNet">$127,000</span><span class="result-note">After payoff and all selling costs.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="net-proceeds-calculator">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -166,4 +166,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

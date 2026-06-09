@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA Streamline Refinance Rate Reduction Savings Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your new payment and monthly and annual savings from an FHA Streamline refinance into a lower rate. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fha-streamline-refinance/";
@@ -54,7 +54,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <p class="summary-sub">New Payment &amp; Qualifying</p>
           <div class="result"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$1,764</span><span class="result-note">New P&amp;I + taxes + insurance.</span></div>
           <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$3,528</span><span class="result-note">Based on a 50% DTI, including HOA.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/refinance-or-heloc-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="fha-streamline-refinance">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -169,4 +169,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

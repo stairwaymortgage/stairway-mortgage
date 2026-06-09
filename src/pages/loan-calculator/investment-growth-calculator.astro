@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Investment Growth Calculator: Project Your Asset Value, Total Contributions & Return on Investment";
 const metaDescription = "Project the growth of an investment over time: total contributions, future asset value at your target annual return, and total return on investment.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/investment-growth-calculator/";
@@ -38,7 +38,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Total Contributions</span><span class="result-value" id="rTotalContrib">$30,000</span><span class="result-note">Total amount invested over the period.</span></div>
         <div class="result result--primary"><span class="result-label">Projected Asset Value</span><span class="result-value" id="rAssetVal">$325,041</span></div>
         <div class="result result--primary"><span class="result-label">Return on Investment</span><span class="result-value" id="rRoi">983.5%</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="investment-growth-calculator">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend or invest.</p>
       </div>
     </div>
@@ -133,4 +133,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

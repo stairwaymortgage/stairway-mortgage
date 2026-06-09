@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Military Tax Benefits Calculator | Stairway Mortgage";
 const metaDescription = "Enter your monthly BAH and BAS to estimate your annual non-taxable income and the federal tax savings from your tax-free military allowances. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/military-tax-benefits-calculator/";
@@ -53,7 +53,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <p class="summary-sub">Your Tax-Free Benefit</p>
           <div class="result"><span class="result-label">Annual Non-Taxable Income</span><span class="result-value" id="rNonTax">$30,000</span><span class="result-note">(BAH + BAS) × 12.</span></div>
           <div class="result result--primary"><span class="result-label">Annual Tax Savings</span><span class="result-value" id="rSavings">$6,600</span><span class="result-note">Non-taxable income × your marginal rate.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="military-tax-benefits-calculator">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -160,4 +160,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

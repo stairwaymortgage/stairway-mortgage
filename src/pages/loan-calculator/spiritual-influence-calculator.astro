@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Your Real Impact on The World | Stairway Mortgage";
 const metaDescription = "See how many lives you could touch by sharing God's love each week — today and for years to come. A reflection from Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/spiritual-influence-calculator/";
@@ -55,7 +55,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <p class="summary-sub">Your Legacy</p>
           <div class="result"><span class="result-label">Total Indirect Influence</span><span class="result-value" id="rIndirect">259,000</span><span class="result-note">Your influence flows into lives you may never even meet.</span></div>
           <div class="result result--primary"><span class="result-label">Total Spiritual Influence</span><span class="result-value" id="rTotal">286,300</span><span class="result-note">The unseen reach of words carried through time and people.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/schedule-call">Yes, I Want to Share</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="spiritual-influence-calculator">Yes, I Want to Share</a>
           <p class="micro">For inspiration only — not prophecy, and definitely not a loan approval.</p>
         </div>
       </div>
@@ -168,4 +168,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

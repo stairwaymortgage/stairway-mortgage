@@ -4,7 +4,7 @@
 // the Elfsight editor and verified: at $500k/$300k/$100k/Primary the outputs are
 // Max Cash Back $147,000 and Desired Loan $102,300 — identical to Elfsight.
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "HELOC Calculator: Estimate Your Available Equity, Draw Amount & Monthly Payment";
 const metaDescription = "Calculate available equity, draw amount, and monthly payment for HELOC line of credit. Estimate funds accessible without refinancing existing favorable mortgage rate.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/heloc/";
@@ -108,7 +108,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
               <span class="result-note">Your fixed monthly payment after the draw period, assuming a 30-year repayment at 8%.</span>
             </div>
 
-            <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+            <a class="cta-primary" data-calc-cta data-calc-slug="heloc">See My Options</a>
             <p class="micro">Estimates only — not a commitment to lend. Rate shown is illustrative.</p>
           </div>
         </div>
@@ -189,6 +189,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
       compute();
     })();
   </script>
+  <CalcLeadForm />
 </Layout>
 
 <style>

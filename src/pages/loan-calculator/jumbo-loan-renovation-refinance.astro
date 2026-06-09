@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Jumbo Renovation Refinance Loan Payment Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your monthly payment and the cash needed to close on a jumbo refinance renovation loan: total project costs, interest reserves, max loan by LTV, payment, and income to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/jumbo-loan-renovation-refinance/";
@@ -64,7 +64,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <p class="summary-sub">Cash &amp; Income</p>
         <div class="result result--primary"><span class="result-label">Estimated Cash Out of Pocket</span><span class="result-value" id="rCash">$409,197</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$22,463</span><span class="result-note">Based on a 43% housing ratio.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/refinance-or-heloc-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="jumbo-loan-renovation-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -192,6 +192,7 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>
 </content>
 </invoke>

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Property Value Estimator: Average Your Home Value Across Zillow, Realtor, Trulia, Homes & Realty";
 const metaDescription = "Estimate your home's value by averaging the figures from Zillow, Realtor.com, Trulia, Homes.com, and Realty.com into a single blended estimate.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/property-value-estimator/";
@@ -39,7 +39,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result result--primary"><span class="result-label">Average Home Value</span><span class="result-value" id="rAvg">$2,040,000</span><span class="result-note">The average of your five online valuation estimates.</span></div>
         <p class="summary-sub">Want a Precise Number?</p>
         <div class="result"><span class="result-label">Next Steps</span><span class="result-value" style="font-size:16px;line-height:1.4;">Monthly home value report, or a bank-ordered appraisal for a precise figure.</span><span class="result-note">Online estimates are a starting point — not a substitute for an appraisal or CMA.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="property-value-estimator">See My Options</a>
         <p class="micro">Estimates only — not an appraisal or commitment to lend.</p>
       </div>
     </div>
@@ -132,4 +132,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

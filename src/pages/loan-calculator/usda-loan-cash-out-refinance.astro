@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "USDA Cash-Out Refinance Calculator: Estimate Your Max Loan, Cash Back, Payment & Income to Qualify";
 const metaDescription = "Calculate a USDA cash-out refinance: maximum loan, USDA guarantee fee, cash back, full monthly payment with the annual fee, and the income needed to qualify at a 41% DTI.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/usda-loan-cash-out-refinance/";
@@ -64,7 +64,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">HOA (paid separately)</span><span class="result-value" id="rHOA">$0</span></div>
         <div class="result result--primary"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$3,390</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$8,268</span><span class="result-note">Assumes a 41% USDA housing DTI.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="usda-loan-cash-out-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -184,4 +184,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

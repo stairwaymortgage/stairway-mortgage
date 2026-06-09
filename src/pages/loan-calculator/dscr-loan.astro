@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "DSCR Loan Calculator for Investment Purchase: Estimate Your Loan, Payment, Cash Flow & 15/30-Year ROI";
 const metaDescription = "Calculate your DSCR loan amount, monthly payment, net cash flow, and projected 15- and 30-year equity, cash flow, tax savings, and ROI on an investment property.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/dscr-loan/";
@@ -75,7 +75,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Income Tax Saved — Depreciation (30 yrs)</span><span class="result-value" id="rTax30">$83,782</span></div>
         <div class="result result--primary"><span class="result-label">Total Return (30 yrs)</span><span class="result-value" id="rTot30">$1,534,638</span></div>
         <div class="result result--primary"><span class="result-label">Annual ROI % (30 yrs)</span><span class="result-value" id="rRoi30">9.75%</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="dscr-loan">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend. Not tax advice.</p>
       </div>
     </div>
@@ -212,4 +212,5 @@ input[type=range]{width:100%;accent-color:var(--color-blue);height:4px;margin:6p
 .cta-card a:hover{background:var(--color-blue);}
 .related-placeholder{border:1px dashed var(--color-bone);border-radius:10px;padding:20px;color:var(--color-mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

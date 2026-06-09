@@ -1,0 +1,364 @@
+---
+/**
+ * CalcLeadForm — site-wide lead-capture popup for calculator pages.
+ * ----------------------------------------------------------------
+ * Rendered ONCE per calculator page. Opens when any element with
+ * [data-calc-cta] is clicked (the calculator's "See My Options" /
+ * "Talk to Our Team" / "Yes, I Want to Share" CTA, swapped in by the
+ * bulk-inject script). On open it scrapes the calculator title, all
+ * current input values, and all result values from the DOM, and on
+ * submit POSTs {firstName,lastName,email,phone,form_source,notes} to GHL.
+ *
+ * The webhook URL is the single source of truth from src/lib/ghl.ts —
+ * it is NOT re-hardcoded here. It is imported in frontmatter and passed
+ * to the (is:inline, plain-JS) script via the data-ghl-endpoint attribute,
+ * because an is:inline script cannot import an ES module.
+ *
+ * NMLS / calculator math / input IDs are never touched — this only adds
+ * a popup + reads the DOM.
+ */
+import { GHL_WEBHOOK_URL } from '../lib/ghl';
+---
+
+<div id="calc-lead-root" data-ghl-endpoint={GHL_WEBHOOK_URL} aria-hidden="true">
+  <div class="clf-overlay" data-clf-overlay>
+    <div class="clf-modal" role="dialog" aria-modal="true" aria-labelledby="clf-title">
+      <button type="button" class="clf-close" data-clf-close aria-label="Close">&times;</button>
+
+      <div class="clf-head">
+        <span class="clf-spark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18">
+            <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path>
+          </svg>
+        </span>
+        <div>
+          <p class="clf-title" id="clf-title">Get My Personalized Results</p>
+          <p class="clf-sub">Tell us where to send them — no obligation.</p>
+        </div>
+      </div>
+
+      <form class="clf-form" data-clf-form novalidate>
+        <div class="clf-row">
+          <div class="clf-field">
+            <label for="clf-first">First Name</label>
+            <input id="clf-first" name="first" type="text" autocomplete="given-name" required />
+          </div>
+          <div class="clf-field">
+            <label for="clf-last">Last Name</label>
+            <input id="clf-last" name="last" type="text" autocomplete="family-name" required />
+          </div>
+        </div>
+        <div class="clf-field">
+          <label for="clf-email">Email</label>
+          <input id="clf-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="clf-field">
+          <label for="clf-phone">Phone</label>
+          <input id="clf-phone" name="phone" type="tel" autocomplete="tel" required />
+        </div>
+
+        <!-- Honeypot: real users never fill this. -->
+        <input class="clf-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <p class="clf-error" data-clf-error hidden></p>
+        <button type="submit" class="clf-submit" data-clf-submit>Send My Results</button>
+        <p class="clf-micro">We'll never share your info. Msg &amp; data rates may apply.</p>
+      </form>
+
+      <div class="clf-thanks" data-clf-thanks hidden>
+        <span class="clf-check" aria-hidden="true">&#10003;</span>
+        <p class="clf-thanks-title">Thank you!</p>
+        <p class="clf-thanks-msg">Your results are on the way. Jim's team will reach out shortly.</p>
+        <button type="button" class="clf-submit clf-thanks-close" data-clf-close>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById('calc-lead-root');
+    if (!root) return;
+    var ENDPOINT = root.getAttribute('data-ghl-endpoint') || '';
+    var overlay  = root.querySelector('[data-clf-overlay]');
+    var form     = root.querySelector('[data-clf-form]');
+    var thanks   = root.querySelector('[data-clf-thanks]');
+    var errorEl  = root.querySelector('[data-clf-error]');
+    var submitBtn= root.querySelector('[data-clf-submit]');
+    var titleEl  = document.getElementById('clf-title');
+
+    var captured = { slug: '', notes: '', title: '' };
+    var sending  = false;
+
+    // Hybrid GHL routing: if a calculator's slug has a dedicated GHL custom field,
+    // its snapshot string is sent under THAT field key; otherwise it falls back to
+    // the generic "notes" key. (Only one slug mapped for now — the rest are added
+    // after this one-calculator test passes.)
+    var FIELD_MAP = {
+      'college-costs-calculator': 'college_housing_costs_vs_investment_property_results'
+    };
+
+    // ---------- DOM scraping (one component, all pages) ----------
+    function cleanText(s) { return (s || '').replace(/\s+/g, ' ').trim(); }
+
+    function labelFor(el) {
+      var lbl = null;
+      if (el.id) {
+        try { lbl = document.querySelector('label[for="' + (window.CSS && CSS.escape ? CSS.escape(el.id) : el.id) + '"]'); } catch (e) {}
+      }
+      if (!lbl) {
+        var f = el.closest('.field');
+        if (f) lbl = f.querySelector('label, .lbl');
+      }
+      if (!lbl) return '';
+      var clone = lbl.cloneNode(true);
+      // The live slider value lives in a .slider-out span INSIDE the label —
+      // strip it so the label isn't duplicated with the value.
+      var outs = clone.querySelectorAll('.slider-out');
+      for (var i = 0; i < outs.length; i++) outs[i].parentNode.removeChild(outs[i]);
+      return cleanText(clone.textContent).replace(/[: \s]+$/, '');
+    }
+
+    function valueFor(el) {
+      if (el.tagName === 'SELECT') {
+        return el.selectedOptions && el.selectedOptions[0] ? cleanText(el.selectedOptions[0].text) : '';
+      }
+      if (el.type === 'range') {
+        var f = el.closest('.field');
+        var out = f ? f.querySelector('.slider-out') : null;
+        return out ? cleanText(out.textContent) : cleanText(el.value); // unit already in slider-out
+      }
+      var v = cleanText(el.value);
+      if (v === '') return '';
+      if (el.closest('.input-money')) v = '$' + v;
+      var f2 = el.closest('.field');
+      if (f2) {
+        var suf = f2.querySelector('.suffix');
+        if (suf && suf.textContent.indexOf('%') !== -1) v = v + '%';
+      }
+      return v;
+    }
+
+    function scrapeInputs() {
+      var out = [];
+      var rootIn = document.querySelector('.calc-inputs');
+      if (!rootIn) return out;
+
+      // Radio groups: one entry per group, value = the checked option's text.
+      var seen = {};
+      var radios = rootIn.querySelectorAll('input[type="radio"]');
+      for (var i = 0; i < radios.length; i++) {
+        var name = radios[i].name;
+        if (!name || seen[name]) continue;
+        seen[name] = true;
+        var field = radios[i].closest('.field');
+        var label = '';
+        if (field) {
+          var grp = field.querySelector('.lbl');
+          label = grp ? cleanText(grp.textContent) : '';
+        }
+        var checked = rootIn.querySelector('input[name="' + (window.CSS && CSS.escape ? CSS.escape(name) : name) + '"]:checked');
+        var val = '';
+        if (checked) {
+          var wrap = checked.closest('label');
+          val = wrap ? cleanText(wrap.textContent) : checked.value;
+        }
+        if (label && val) out.push(label + ': ' + val);
+      }
+
+      // Everything else: text/number/select/range (skip hidden, radio, checkbox, honeypot).
+      var els = rootIn.querySelectorAll('input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), select');
+      for (var j = 0; j < els.length; j++) {
+        var el = els[j];
+        if (el.offsetParent === null && el.type !== 'range') continue; // hidden / collapsed
+        var lab = labelFor(el);
+        var v = valueFor(el);
+        if (lab && v !== '') out.push(lab + ': ' + v);
+      }
+      return out;
+    }
+
+    function scrapeResults() {
+      var out = [];
+      var rootR = document.querySelector('.calc-results');
+      if (!rootR) return out;
+      var rows = rootR.querySelectorAll('.result'); // includes dynamic rows (e.g. #yearRows); .summary-sub headers are <p>, skipped
+      for (var i = 0; i < rows.length; i++) {
+        var lbl = rows[i].querySelector('.result-label');
+        var val = rows[i].querySelector('.result-value');
+        if (!lbl || !val) continue;
+        var lt = cleanText(lbl.textContent);
+        var vt = cleanText(val.textContent);
+        if (lt && vt) out.push(lt + ': ' + vt);
+      }
+      return out;
+    }
+
+    function scrape(slug) {
+      var h1 = document.querySelector('h1');
+      var title = h1 ? cleanText(h1.textContent) : '';
+      var inputs = scrapeInputs();
+      var results = scrapeResults();
+      var notes = 'Calculator: ' + title +
+                  '\n\nINPUTS\n' + inputs.join(' | ') +
+                  '\n\nRESULTS\n' + results.join(' | ');
+      captured = { slug: slug, notes: notes, title: title };
+    }
+
+    // ---------- open / close ----------
+    function open(slug) {
+      scrape(slug);
+      if (titleEl && captured.title) titleEl.textContent = captured.title;
+      form.hidden = false;
+      thanks.hidden = true;
+      errorEl.hidden = true;
+      root.classList.add('clf-open');
+      root.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      var first = document.getElementById('clf-first');
+      if (first) setTimeout(function () { first.focus(); }, 30);
+    }
+    function close() {
+      root.classList.remove('clf-open');
+      root.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // Delegate so it works no matter where the CTA sits on the page.
+    document.addEventListener('click', function (e) {
+      var cta = e.target.closest ? e.target.closest('[data-calc-cta]') : null;
+      if (cta) {
+        e.preventDefault();
+        open(cta.getAttribute('data-calc-slug') || '');
+        return;
+      }
+      if (e.target.closest && e.target.closest('[data-clf-close]')) { close(); return; }
+      if (e.target === overlay) { close(); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && root.classList.contains('clf-open')) close();
+    });
+
+    // ---------- submit ----------
+    function showError(msg) { errorEl.textContent = msg; errorEl.hidden = false; }
+
+    function send(payload) {
+      // Mirrors src/lib/ghl.ts submitToGHL semantics (URL sourced from ghl.ts).
+      return fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Enter-key + button both land here; no native navigation.
+      if (sending) return;
+
+      // Honeypot — silently "succeed".
+      var gotcha = form.querySelector('[name="_gotcha"]');
+      if (gotcha && gotcha.value.trim() !== '') { form.hidden = true; thanks.hidden = false; return; }
+
+      var first = cleanText(form.first.value);
+      var last  = cleanText(form.last.value);
+      var email = cleanText(form.email.value);
+      var phone = cleanText(form.phone.value);
+
+      if (!first || !last) return showError('Please enter your first and last name.');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Please enter a valid email address.');
+      if (phone.replace(/\D/g, '').length < 10) return showError('Please enter a valid phone number.');
+      errorEl.hidden = true;
+
+      // Key names mirror the confirmed-working GetLocalIntroForm payload exactly
+      // (snake_case) so GHL's inbound-webhook contact mapping picks up name + phone.
+      var payload = {
+        first_name: first,
+        last_name: last,
+        full_name: (first + ' ' + last).trim(),
+        email: email,
+        phone: phone,
+        form_source: 'calc_' + captured.slug,
+        form_name: captured.title,
+        page_url: location.href,
+        submitted_at: new Date().toISOString()
+      };
+      // Snapshot goes under the slug's dedicated GHL field key if mapped, else "notes".
+      payload[FIELD_MAP[captured.slug] || 'notes'] = captured.notes;
+
+      sending = true;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      send(payload)
+        .then(function () { form.hidden = true; thanks.hidden = false; })
+        .catch(function () {
+          // Network/CORS failure — surface so we don't fake success during testing.
+          showError('Something went wrong. Please try again or call us.');
+        })
+        .then(function () {
+          sending = false;
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send My Results';
+        });
+    });
+  })();
+</script>
+
+<style>
+  /* Tokens (hardcoded — shared component must not depend on per-page CSS vars) */
+  #calc-lead-root { --clf-ink:#0A0E1A; --clf-paper:#FAFAF7; --clf-blue:#1845D6; --clf-bone:#E7E4DA; --clf-mute:#6B7280; }
+  #calc-lead-root[aria-hidden="true"] { display:none; }
+  #calc-lead-root .clf-overlay {
+    position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center;
+    padding:20px; background:rgba(10,14,26,.6); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+  }
+  #calc-lead-root .clf-modal {
+    position:relative; width:100%; max-width:440px; max-height:92vh; overflow:auto;
+    background:var(--clf-paper); border-radius:18px; padding:26px;
+    box-shadow:0 30px 60px -20px rgba(10,14,26,.55); border:1px solid rgba(255,255,255,.6);
+    font-family:'IBM Plex Sans',system-ui,sans-serif; color:var(--clf-ink);
+    animation:clf-pop .18s ease-out;
+  }
+  @keyframes clf-pop { from{opacity:0; transform:translateY(8px) scale(.985);} to{opacity:1; transform:none;} }
+  #calc-lead-root .clf-close {
+    position:absolute; top:12px; right:14px; border:0; background:transparent; cursor:pointer;
+    font-size:26px; line-height:1; color:var(--clf-mute); padding:4px;
+  }
+  #calc-lead-root .clf-close:hover { color:var(--clf-ink); }
+  #calc-lead-root .clf-head { display:flex; align-items:center; gap:12px; margin:0 0 20px; padding-right:24px; }
+  #calc-lead-root .clf-spark {
+    flex:none; display:grid; place-items:center; width:38px; height:38px; border-radius:11px;
+    background:linear-gradient(135deg,#1845D6,#3a63f0); color:#fff;
+  }
+  #calc-lead-root .clf-title { font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:20px; margin:0; line-height:1.15; }
+  #calc-lead-root .clf-sub { font-size:13px; color:var(--clf-mute); margin:3px 0 0; }
+  #calc-lead-root .clf-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media(max-width:420px){ #calc-lead-root .clf-row{ grid-template-columns:1fr; } }
+  #calc-lead-root .clf-field { margin-bottom:14px; }
+  #calc-lead-root .clf-field label { display:block; font-size:12.5px; font-weight:600; color:#384055; margin-bottom:6px; }
+  #calc-lead-root .clf-field input {
+    width:100%; box-sizing:border-box; padding:12px 13px; font-size:16px;
+    font-family:'IBM Plex Sans',sans-serif; color:var(--clf-ink);
+    border:1px solid var(--clf-bone); border-radius:10px; background:#fff;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  #calc-lead-root .clf-field input:focus { outline:0; border-color:var(--clf-blue); box-shadow:0 0 0 3px rgba(24,69,214,.12); }
+  #calc-lead-root .clf-gotcha { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+  #calc-lead-root .clf-error { color:#b42318; font-size:13px; margin:0 0 10px; }
+  #calc-lead-root .clf-submit {
+    width:100%; border:0; cursor:pointer; background:var(--clf-blue); color:#fff;
+    font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:15px;
+    padding:14px; border-radius:10px; transition:background .15s;
+  }
+  #calc-lead-root .clf-submit:hover { background:#2a57e6; }
+  #calc-lead-root .clf-submit:disabled { opacity:.7; cursor:default; }
+  #calc-lead-root .clf-micro { font-size:11px; color:var(--clf-mute); text-align:center; margin:10px 0 0; }
+  #calc-lead-root .clf-thanks { text-align:center; padding:14px 4px 4px; }
+  #calc-lead-root .clf-check {
+    display:inline-grid; place-items:center; width:52px; height:52px; border-radius:50%;
+    background:rgba(24,69,214,.1); color:var(--clf-blue); font-size:26px; margin-bottom:14px;
+  }
+  #calc-lead-root .clf-thanks-title { font-family:'Fraunces',serif; font-weight:600; font-size:24px; margin:0 0 8px; }
+  #calc-lead-root .clf-thanks-msg { font-size:14px; color:#384055; margin:0 0 20px; max-width:34ch; margin-left:auto; margin-right:auto; }
+  #calc-lead-root .clf-thanks-close { max-width:160px; margin:0 auto; }
+</style>

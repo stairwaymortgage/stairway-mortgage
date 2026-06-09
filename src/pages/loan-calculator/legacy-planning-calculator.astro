@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Legacy Impact Planner | Stairway Mortgage";
 const metaDescription = "Set annual giving percentages for your family and the causes you care about to see how your legacy can support loved ones and charities. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/legacy-planning-calculator/";
@@ -48,7 +48,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <p class="summary-sub">Each Year</p>
           <div class="result result--primary"><span class="result-label">Annual Legacy to Family</span><span class="result-value" id="rFamily">$4,000</span><span class="result-note">Distributed to family, heirs, or loved ones.</span></div>
           <div class="result result--primary"><span class="result-label">Annual Charitable Giving</span><span class="result-value" id="rCharity">$3,000</span><span class="result-note">Directed to the causes you believe in.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/schedule-call">Plan My Legacy</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="legacy-planning-calculator">Plan My Legacy</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -154,4 +154,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

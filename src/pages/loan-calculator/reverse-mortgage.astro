@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Reverse Mortgage Home Purchase Loan Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your reverse mortgage home purchase: principal limit by age, final loan amount, cash to close, and monthly housing expense — with no payment for life. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/reverse-mortgage/";
@@ -63,7 +63,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result result--primary"><span class="result-label">Without Seller Credit</span><span class="result-value" id="rCashNo">$256,500</span><span class="result-note">Includes 6% estimated closing costs; varies by state. Not a Loan Estimate.</span></div>
           <div class="result"><span class="result-label">With 6% Seller Credit</span><span class="result-value" id="rCashSC">$226,500</span><span class="result-note">Assumes a 6% seller credit toward closing costs and prepaids.</span></div>
           <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$1,000</span><span class="result-note">Based on a 50% FHA DTI allowance with compensating factors.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/reverse-mortgage-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="reverse-mortgage">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -202,5 +202,6 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>
 </content>

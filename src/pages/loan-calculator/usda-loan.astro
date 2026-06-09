@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "USDA Loan Calculator for Home Purchase: Estimate Your Payment, Guarantee Fee & Cash to Close with $0 Down";
 const metaDescription = "Calculate your USDA loan: base loan, upfront and monthly guarantee fee, total monthly payment, cash to close, and income needed to qualify — with $0 down in eligible rural areas.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/usda-loan/";
@@ -69,7 +69,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Monthly Taxes</span><span class="result-value" id="rTax">$300</span></div>
         <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$6,303</span><span class="result-note">USDA uses an approximate 41% housing ratio; area income limits apply.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="usda-loan">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -187,4 +187,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

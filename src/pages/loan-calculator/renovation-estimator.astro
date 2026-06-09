@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Renovation Estimator | Stairway Mortgage";
 const metaDescription = "Enter your project scopes and finish level to get a ballpark total for your home renovation, including demo and contingency. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/renovation-estimator/";
@@ -66,7 +66,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Contingency</span><span class="result-value" id="rCont">$4,400</span></div>
           <div class="result result--primary"><span class="result-label">Total Project Cost</span><span class="result-value" id="rTotal">$48,400</span></div>
           <div class="result result--primary"><span class="result-label">Cost per Sq Ft</span><span class="result-value" id="rCps">$24.20</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/refinance-or-heloc-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="renovation-estimator">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -196,4 +196,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

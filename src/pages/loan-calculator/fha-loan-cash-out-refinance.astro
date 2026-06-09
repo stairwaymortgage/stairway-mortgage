@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA Loan Calculator for Cash Out Refinance: Estimate Your Cash Back, New Payment & Mortgage Insurance";
 const metaDescription = "Calculate your FHA cash-out refinance: maximum loan at 80% LTV, cash back, upfront and monthly mortgage insurance, new payment, and income needed to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fha-loan-cash-out-refinance/";
@@ -66,7 +66,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
         <div class="result result--primary"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$1,964</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$3,928</span><span class="result-note">FHA generally allows 43% DTI, up to 50% with strong compensating factors.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="fha-loan-cash-out-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -184,4 +184,5 @@ input[type=range]{width:100%;accent-color:var(--color-blue);height:4px;margin:6p
 .cta-card a:hover{background:var(--color-blue);}
 .related-placeholder{border:1px dashed var(--color-bone);border-radius:10px;padding:20px;color:var(--color-mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

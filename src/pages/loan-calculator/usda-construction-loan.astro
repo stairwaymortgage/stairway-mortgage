@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "USDA New Construction Loan Calculator: Estimate Your Max Loan, Build Costs, Payment & Cash to Close";
 const metaDescription = "Calculate an FHA new-construction loan: total build costs, interest reserves, maximum FHA loan, UFMIP, full monthly payment with MI, cash to close, and income to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/usda-construction-loan/";
@@ -78,7 +78,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result result--primary"><span class="result-label">Without DPA</span><span class="result-value" id="rCashNo">$12,621</span></div>
         <div class="result"><span class="result-label">With DPA</span><span class="result-value" id="rCashDPA">$0</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$6,154</span><span class="result-note">FHA allows up to 43-50% DTI with compensating factors.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="usda-construction-loan">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -218,4 +218,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

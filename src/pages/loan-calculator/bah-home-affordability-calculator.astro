@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "BAH Home Affordability Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your maximum affordable home loan based on your monthly BAH, BAS, income, and debts. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/bah-home-affordability-calculator/";
@@ -52,7 +52,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Total Income For Qualifying</span><span class="result-value" id="rTotalInc">$6,000</span><span class="result-note">Monthly BAH + Income + BAS.</span></div>
           <div class="result result--primary"><span class="result-label">Maximum Monthly Available for Loan Payment</span><span class="result-value" id="rMaxPay">$2,500</span><span class="result-note">60% of qualifying income, less debts, taxes, insurance, and HOA.</span></div>
           <div class="result result--primary"><span class="result-label">Maximum Loan Estimate</span><span class="result-value" id="rMaxLoan">$376,148</span><span class="result-note">Assumes a 30-year term at the rate entered. No mortgage insurance included.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="bah-home-affordability-calculator">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -168,5 +168,6 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>
 </content>

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Rent Versus Buying a Home Calculator | Stairway Mortgage";
 const metaDescription = "Compare the annual cost of renting versus owning, plus your home's future value and net proceeds at sale. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/rent-versus-buying-a-home-calculator/";
@@ -69,7 +69,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Property Value at Sale</span><span class="result-value" id="rFV">$851,657</span></div>
           <div class="result"><span class="result-label">Sales Costs (8%)</span><span class="result-value" id="rSales">$68,133</span></div>
           <div class="result result--primary"><span class="result-label">Net Proceeds from Sale</span><span class="result-value" id="rNet">$223,524</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="rent-versus-buying-a-home-calculator">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -207,4 +207,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

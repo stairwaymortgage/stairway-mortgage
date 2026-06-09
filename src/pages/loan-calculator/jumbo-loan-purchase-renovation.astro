@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Jumbo Renovation Purchase Loan Calculator: Estimate Your Max Loan, Build Costs, Payment & Cash to Close";
 const metaDescription = "Calculate a jumbo renovation purchase: total project costs, interest reserves, maximum jumbo loan by LTV, full monthly payment, cash to close, and income to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/jumbo-loan-purchase-renovation/";
@@ -78,7 +78,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result result--primary"><span class="result-label">Without Seller Credit</span><span class="result-value" id="rCashNo">$316,116</span></div>
         <div class="result"><span class="result-label">With 4% Seller Credit</span><span class="result-value" id="rCashSC">$280,116</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$23,033</span><span class="result-note">Based on a 43% housing ratio.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="jumbo-loan-purchase-renovation">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -204,4 +204,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

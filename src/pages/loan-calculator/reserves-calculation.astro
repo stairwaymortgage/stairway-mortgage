@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Reserves Calculation | Stairway Mortgage";
 const metaDescription = "Add up your monthly expenses to see how much cash you'd need for 6 or 12 months of reserves. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/reserves-calculation/";
@@ -68,7 +68,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result result--primary"><span class="result-label">12 Months — Financial Planner Recommended</span><span class="result-value" id="rTwelve">$58,800</span></div>
           <p class="summary-sub">Lender Guideline</p>
           <div class="result"><span class="result-label">Mortgage Approval Requirement</span><span class="result-value" id="rApproval">$0</span><span class="result-note">Six months of rental-property housing expense.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="reserves-calculation">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -180,4 +180,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

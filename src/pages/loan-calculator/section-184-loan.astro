@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Section 184 Loan Calculator: Estimate Your Costs, Monthly Payment & Income Needed to Qualify";
 const metaDescription = "Calculate qualifying income, maximum loan, monthly payment, and cash to close for a 1099 income loan based on your last two years of 1099 earnings.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/section-184-loan/";
@@ -75,7 +75,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <p class="summary-sub">Cash to Close</p>
         <div class="result"><span class="result-label">Cash Out of Pocket — without seller credit</span><span class="result-value" id="rCashNo">$80,000</span><span class="result-note">Includes 6% estimated closing costs; varies by state. Not a Loan Estimate.</span></div>
         <div class="result"><span class="result-label">Cash Out of Pocket — with 3% seller credit</span><span class="result-value" id="rCashSC">$65,000</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="section-184-loan">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -198,4 +198,5 @@ input[type=range]{width:100%;accent-color:var(--color-blue);height:4px;margin:6p
 .cta-card a:hover{background:var(--color-blue);}
 .related-placeholder{border:1px dashed var(--color-bone);border-radius:10px;padding:20px;color:var(--color-mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

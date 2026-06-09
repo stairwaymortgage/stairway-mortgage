@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Mortgage Income Calculator | Stairway Mortgage";
 const metaDescription = "Add up your qualifying monthly income and see the maximum total debt payment lenders allow for Conventional, FHA, VA, USDA, and Jumbo loans. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/mortgage-income-calculator/";
@@ -44,7 +44,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Conventional, FHA, VA</span><span class="result-value" id="rConv">$4,000</span><span class="result-note">Up to a 50% back-end DTI.</span></div>
           <div class="result"><span class="result-label">USDA</span><span class="result-value" id="rUSDA">$3,280</span><span class="result-note">Up to a 41% back-end DTI.</span></div>
           <div class="result"><span class="result-label">Jumbo</span><span class="result-value" id="rJumbo">$3,440</span><span class="result-note">Best-rate jumbo lenders cap near 43%.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="mortgage-income-calculator">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -148,4 +148,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

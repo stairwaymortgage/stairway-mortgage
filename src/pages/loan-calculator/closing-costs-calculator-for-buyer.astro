@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Closing Cost Calculator for Buyer | Stairway Mortgage";
 const metaDescription = "Enter your home loan amount and estimated fees to instantly see your expected cash needed to close, broken down by Loan Estimate section. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/closing-costs-calculator-for-buyer/";
@@ -52,7 +52,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Total Other Costs (D+E+F+G)</span><span class="result-value" id="rOtherCosts">$5,900</span><span class="result-note">Taxes &amp; government fees + prepaids + initial escrow + other.</span></div>
           <p class="summary-sub">Cash to Close</p>
           <div class="result result--primary"><span class="result-label">Estimated Total Closing Costs</span><span class="result-value" id="rTotal">$9,403</span><span class="result-note">Total Loan Costs + Total Other Costs.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="closing-costs-calculator-for-buyer">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -167,5 +167,6 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>
 </content>

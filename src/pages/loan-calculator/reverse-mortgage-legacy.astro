@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Reverse Mortgage Legacy Inheritance Estimator | Stairway Mortgage";
 const metaDescription = "Estimate the inheritance left to your heirs after a reverse mortgage, comparing your home's future value against the growing loan balance. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/reverse-mortgage-legacy/";
@@ -54,7 +54,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">New Appraised Value at End</span><span class="result-value" id="rNewVal">$903,056</span><span class="result-note">Home value grown at a conservative 3%/yr.</span></div>
           <div class="result"><span class="result-label">Reverse Mortgage Balance to Be Paid</span><span class="result-value" id="rRevBal">$772,933</span><span class="result-note">Loan balance accumulating at 6%/yr.</span></div>
           <div class="result result--primary"><span class="result-label">Equity Received By Heirs</span><span class="result-value" id="rHeirs">$130,123</span><span class="result-note">Future value minus the loan balance.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/reverse-mortgage-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="reverse-mortgage-legacy">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -196,4 +196,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

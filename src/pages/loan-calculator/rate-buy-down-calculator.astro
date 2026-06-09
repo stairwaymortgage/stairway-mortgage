@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Rate Buy Down Calculator | Stairway Mortgage";
 const metaDescription = "See how much you save each month by buying down your mortgage rate with points, and how many years it takes to break even. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/rate-buy-down-calculator/";
@@ -52,7 +52,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Monthly Savings</span><span class="result-value" id="rMSav">$312</span></div>
           <div class="result"><span class="result-label">Annual Savings</span><span class="result-value" id="rASav">$3,744</span></div>
           <div class="result result--primary"><span class="result-label">Breakeven Period</span><span class="result-value" id="rBreak">5.3 years</span><span class="result-note">Years to recoup the upfront points cost.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="rate-buy-down-calculator">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -170,4 +170,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "DSCR Refinance Calculator: Estimate Your New Payment, Monthly Savings, Max Loan & Cash Back on a Rental";
 const metaDescription = "Calculate a DSCR investment rate-reduction refinance: new payment, monthly and annual savings, maximum loan based on rent and DSCR ratio, and estimated cash back.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/dscr-loan-refinance/";
@@ -58,7 +58,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Maximum Loan per Rent</span><span class="result-value" id="rMaxLoan">$320,000</span><span class="result-note">Increase rent or lower DSCR to 0.75 to raise this.</span></div>
         <div class="result result--primary"><span class="result-label">Estimated Cash Back</span><span class="result-value" id="rCashBack">$62,500</span><span class="result-note">Includes ~3% estimated closing costs. Not a Loan Estimate.</span></div>
         <div class="result"><span class="result-label">Total Monthly Housing Expense (with cash back)</span><span class="result-value" id="rTotalHousing">$3,800</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="dscr-loan-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -175,4 +175,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

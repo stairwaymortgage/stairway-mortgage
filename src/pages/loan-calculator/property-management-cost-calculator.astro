@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Property Management Cost Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your multifamily property's income, operating expenses including management fee, NOI, cash flow, DSCR, and cap rate. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/property-management-cost-calculator/";
@@ -81,7 +81,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Cash Flow After Debt Service</span><span class="result-value" id="rCfAfter">$79,290</span></div>
           <div class="result result--primary"><span class="result-label">DSCR</span><span class="result-value" id="rDscr">2.84</span><span class="result-note">Residential 1-4 units: typically 0.75-1.25. Commercial 5+ units: typically 1.35.</span></div>
           <div class="result"><span class="result-label">Cap Rate</span><span class="result-value" id="rCap">12.79%</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="property-management-cost-calculator">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -226,4 +226,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

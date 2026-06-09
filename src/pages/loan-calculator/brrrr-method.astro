@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "BRRRR Method Calculator: Estimate Your Acquisition Loan, Cash to Close, Refinance Cash-Out & Rental Cash Flow";
 const metaDescription = "Run a full BRRRR deal (Buy, Rehab, Rent, Refinance, Repeat): acquisition loan and payment, cash to close, cash-out refinance at ARV, cash back, and monthly rental cash flow.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/brrrr-method/";
@@ -82,7 +82,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Monthly Cash Flow</span><span class="result-value" id="rMCF">-$2,616</span><span class="result-note">Enter new rental income to see positive cash flow.</span></div>
         <div class="result"><span class="result-label">Annual Cash Flow</span><span class="result-value" id="rACF">-$31,398</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$1,937</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="brrrr-method">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -214,4 +214,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

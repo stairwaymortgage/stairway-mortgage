@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Conventional Loan Calculator for Home Purchase: Estimate Your Costs, Monthly Payment & Cash Needed to Close";
 const metaDescription = "Calculate your monthly payment, PMI, cash to close, and income needed for a conventional purchase loan. Estimate PITI and the down payment for your property type.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/conventional-loan/";
@@ -109,7 +109,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Cash Out of Pocket — with 3% seller credit</span><span class="result-value" id="rCashSC">$30,000</span><span class="result-note">Assumes a 3% seller credit toward closing costs and prepaids.</span></div>
         <div class="result"><span class="result-label">Cash Out of Pocket — with seller credit + DPA</span><span class="result-value" id="rCashDPA">$15,000</span><span class="result-note">Assumes 3% down payment assistance + 3% seller credit. Note: many DPA programs require a refinance within 5 years.</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$7,938.92</span><span class="result-note">Fannie Mae allows up to 50% DTI; Freddie Mac up to 45% with strong credit and reserves.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="conventional-loan">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -146,6 +146,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   </section>
     </div>
   </section>
+  <CalcLeadForm />
 </Layout>
 
 <script is:inline>

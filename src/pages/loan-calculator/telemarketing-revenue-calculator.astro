@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Phone Profit Calculator | Stairway Mortgage";
 const metaDescription = "See how much revenue each phone call is really worth, based on your call-to-meeting ratio, close rate, and average deal size. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/telemarketing-revenue-calculator/";
@@ -44,7 +44,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <p class="summary-title">Results</p>
           <p class="summary-sub">What Each Call Is Worth</p>
           <div class="result result--primary"><span class="result-label">Revenue per Phone Call</span><span class="result-value" id="rPerCall">$20</span><span class="result-note">Deal value divided by the total calls needed per sale.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/schedule-call">Talk to Our Team</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="telemarketing-revenue-calculator">Talk to Our Team</a>
           <p class="micro">Estimates only — gross revenue value per call, before costs.</p>
         </div>
       </div>
@@ -141,4 +141,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Build To Sell Spec Home Calculator: Purchase, Teardown, Build, Sell, Profit | Stairway Mortgage";
 const metaDescription = "Estimate cash to close, holding costs, and profit potential on a build-to-sell spec home you acquire, tear down, and build with one loan. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/spec-home-loan-acquisition-and-development/";
@@ -70,7 +70,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Profit Per Partner</span><span class="result-value" id="rPerPartner">$93,675</span></div>
           <div class="result result--primary"><span class="result-label">Cash on Cash ROI % Estimate</span><span class="result-value" id="rROI">105.6%</span><span class="result-note">Profit relative to cash invested.</span></div>
           <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncomeTarget">$29,242</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="spec-home-loan-acquisition-and-development">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -210,4 +210,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

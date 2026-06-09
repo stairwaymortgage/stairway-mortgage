@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "USDA Refinance Calculator: Estimate Your New Payment, Monthly Savings & Annual Savings on a Rate Reduction";
 const metaDescription = "Calculate your USDA rate-reduction refinance: new loan with guarantee fee and costs, new payment, monthly and annual savings, total housing expense, and income needed to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/usda-loan-refinance/";
@@ -62,7 +62,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
         <div class="result result--primary"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$2,667</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$6,504</span><span class="result-note">USDA uses an approximate 41% housing ratio.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="usda-loan-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -178,4 +178,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

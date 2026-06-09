@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "VA Cash-Out Refinance Calculator: Estimate Your Max Loan, Cash Back, Funding Fee & New Payment";
 const metaDescription = "Calculate your VA cash-out refinance: maximum loan up to 100% LTV, cash back, VA funding fee (waived for disabled veterans), new payment, and income needed to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/va-loan-cash-out-refinance/";
@@ -71,7 +71,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
         <div class="result result--primary"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$2,861</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$5,722</span><span class="result-note">Assumes a 50% DTI qualifying ratio.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="va-loan-cash-out-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -189,4 +189,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

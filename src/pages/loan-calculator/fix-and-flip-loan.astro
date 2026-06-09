@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Fix and Flip Profit Calculator: Estimate Your Loan, Holding Costs, Net Profit & Cash-on-Cash ROI";
 const metaDescription = "Calculate a fix-and-flip deal: maximum loan at 75% ARV, cash to close, property and holding costs, total project cost, net profit before tax, and cash-on-cash return.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fix-and-flip-loan/";
@@ -66,7 +66,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <p class="summary-sub">Profit</p>
         <div class="result result--primary"><span class="result-label">Profit Before Tax or 1031 Exchange</span><span class="result-value" id="rProfit">$114,518</span></div>
         <div class="result result--primary"><span class="result-label">Cash-on-Cash ROI Estimate</span><span class="result-value" id="rROI">286.30%</span><span class="result-note">Return on the actual cash you invested.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="fix-and-flip-loan">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -186,4 +186,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

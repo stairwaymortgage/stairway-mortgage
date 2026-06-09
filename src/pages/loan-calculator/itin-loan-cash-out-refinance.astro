@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "ITIN Cash-Out Refinance Calculator: Estimate Your Costs, Monthly Payment & Cash Back at Close";
 const metaDescription = "Calculate cash back, new loan amount, monthly payment, and income needed for a conventional cash-out refinance based on your home value and property type.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/itin-loan-cash-out-refinance/";
@@ -94,7 +94,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
         <div class="result result--primary"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$3,095.63</span><span class="result-note">Tax and insurance escrows can be waived.</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$6,191.26</span><span class="result-note">Fannie Mae allows up to 50% DTI; Freddie Mac up to 45% with strong credit and reserves.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="itin-loan-cash-out-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -130,6 +130,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   </section>
     </div>
   </section>
+  <CalcLeadForm />
 </Layout>
 
 <script is:inline>

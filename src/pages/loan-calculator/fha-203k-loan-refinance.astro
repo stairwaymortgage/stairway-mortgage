@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA 203k Refinance Calculator: Estimate Your Max Loan, Renovation Budget, Payment & Cash to Close";
 const metaDescription = "Calculate an FHA 203k renovation refinance: total project costs, maximum FHA loan, UFMIP, full monthly payment with MI, cash to close, and income to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fha-203k-loan-refinance/";
@@ -75,7 +75,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <p class="summary-sub">Cash to Close</p>
         <div class="result result--primary"><span class="result-label">Cash Out of Pocket (no lender credit)</span><span class="result-value" id="rCashNo">$0</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$5,621</span><span class="result-note">FHA allows up to 43-50% DTI with compensating factors.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="fha-203k-loan-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -197,4 +197,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

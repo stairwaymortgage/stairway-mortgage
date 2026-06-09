@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Buy & Hold Rental Property Calculator: Cash Flow, Appreciation, Equity, Depreciation Tax Savings & ROI";
 const metaDescription = "Analyze a buy-and-hold rental: monthly cash flow, 15- and 30-year appreciation, equity buildup, depreciation tax savings, total return, and annualized ROI.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/rental-property-calculator/";
@@ -80,7 +80,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Tax Saved via Depreciation (30 yrs)</span><span class="result-value" id="rDep30">$83,782</span></div>
         <div class="result result--primary"><span class="result-label">Total Return (30 yrs)</span><span class="result-value" id="rTot30">$1,629,829</span></div>
         <div class="result result--primary"><span class="result-label">Annual ROI % (30 yrs)</span><span class="result-value" id="rRoi30">10.0%</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="rental-property-calculator">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -220,4 +220,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

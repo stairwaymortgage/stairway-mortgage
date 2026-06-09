@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Passive Investment Return & Tax Advantage Calculator: Estimate Your Asset Value, ROI & Depreciation Tax Savings";
 const metaDescription = "Project a passive real-estate or syndication investment: total contributions, first-year depreciation tax savings, projected asset value, total ROI, and average annual return.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/passive-income-calculator/";
@@ -43,7 +43,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result result--primary"><span class="result-label">Return on Investment $</span><span class="result-value" id="rRoiDollar">$0</span></div>
         <div class="result result--primary"><span class="result-label">Return on Investment %</span><span class="result-value" id="rRoiPct">0.0%</span></div>
         <div class="result result--primary"><span class="result-label">Average Annual Return</span><span class="result-value" id="rAvgAnnual">0.0%</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="passive-income-calculator">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend or invest.</p>
       </div>
     </div>
@@ -149,4 +149,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

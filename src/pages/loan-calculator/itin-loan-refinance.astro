@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "ITIN Refinance Calculator: Estimate Your Costs, Monthly Savings & Total Interest Saved Over Time";
 const metaDescription = "Calculate your new payment, monthly and annual savings, and income needed for a conventional rate-and-term refinance. See how much a lower rate could save you.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/itin-loan-refinance/";
@@ -102,7 +102,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Maximum Loan Amount</span><span class="result-value" id="rMaxLoan">$400,000</span><span class="result-note">Subject to conventional conforming loan limits.</span></div>
         <div class="result"><span class="result-label">Maximum Cash Back</span><span class="result-value" id="rMaxCash">$200,000</span></div>
         <p class="cross-sell">Have you thought about getting cash back for renovation or additional property investment? <a href="https://stairwaymortgage.com/purchase-inquiry">Ask us how.</a></p>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="itin-loan-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -138,6 +138,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   </section>
     </div>
   </section>
+  <CalcLeadForm />
 </Layout>
 
 <script is:inline>

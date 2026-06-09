@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Condotel Refinance Calculator: Estimate Tax Deferred, Growth & Your New Payment";
 const metaDescription = "Estimate the capital gains tax you can defer with a 1031 exchange, the long-term growth of those funds, and the payment and cash to close on your replacement property.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/condotel-loan-refinance/";
@@ -55,7 +55,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result result--primary"><span class="result-label">Cash Out of Pocket — without seller credit</span><span class="result-value" id="rCashNo">$285,000</span><span class="result-note">Reduced by the 1031 exchange funds. Not a Loan Estimate.</span></div>
         <div class="result result--primary"><span class="result-label">Cash Out of Pocket — with 6% seller credit</span><span class="result-value" id="rCashSC">$243,000</span></div>
         <p class="cross-sell">Important forms: <a href="https://www.irs.gov/forms-pubs/about-form-8824" target="_blank" rel="noopener">1031 exchange IRS forms</a>.</p>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="condotel-loan-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend. Not tax advice; consult a qualified intermediary and tax professional.</p>
       </div>
     </div>
@@ -176,4 +176,5 @@ input[type=range]{width:100%;accent-color:var(--color-blue);height:4px;margin:6p
 .cta-card a:hover{background:var(--color-blue);}
 .related-placeholder{border:1px dashed var(--color-bone);border-radius:10px;padding:20px;color:var(--color-mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA Purchase Loan Payment Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your monthly payment and cash needed to close on a new FHA home purchase loan, with and without seller credit and down payment assistance. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/down-payment-assistance/";
@@ -74,7 +74,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result result--primary"><span class="result-label">With Seller Credit AND DPA</span><span class="result-value" id="rCashDPA">$0</span><span class="result-note">Assumes 3.5% DPA plus a 6% seller credit.</span></div>
           <p class="summary-sub">Qualifying</p>
           <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$5,220</span><span class="result-note">Based on a 50% DTI.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="down-payment-assistance">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -223,4 +223,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

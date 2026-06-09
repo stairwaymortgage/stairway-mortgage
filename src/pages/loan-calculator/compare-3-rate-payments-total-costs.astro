@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Compare 3 Rates (Total Costs) | Stairway Mortgage";
 const metaDescription = "Compare three rate scenarios on a total-cost basis against your Loan Estimate, with monthly and annual savings, breakeven point, and total savings over the loan term. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/compare-3-rate-payments-total-costs/";
@@ -72,7 +72,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <p class="summary-sub">Future Savings</p>
           <div class="result"><span class="result-label">Years To Save</span><span class="result-value" id="rYSave">28.0</span><span class="result-note">Years of savings remaining after breakeven.</span></div>
           <div class="result result--primary"><span class="result-label">Estimated Savings For Remaining Term</span><span class="result-value" id="rEstSav">$214,986</span><span class="result-note">Pure cashflow over the remaining loan term after breakeven.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="compare-3-rate-payments-total-costs">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -211,5 +211,6 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>
 </content>

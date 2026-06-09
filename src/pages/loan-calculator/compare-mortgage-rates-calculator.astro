@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Compare 2 Rates (Interest Costs) | Stairway Mortgage";
 const metaDescription = "Compare two interest rates side by side to see the total interest paid over your loan term and how much a lower rate saves you monthly, annually, and over the life of the loan. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/compare-mortgage-rates-calculator/";
@@ -53,7 +53,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result result--primary"><span class="result-label">Difference In Interest Costs</span><span class="result-value" id="rDiff">$611,058</span><span class="result-note">Total interest saved by choosing the lower rate.</span></div>
           <div class="result"><span class="result-label">Monthly Savings</span><span class="result-value" id="rMSav">$1,959</span><span class="result-note">Average interest saving per month over the term.</span></div>
           <div class="result"><span class="result-label">Annual Savings</span><span class="result-value" id="rASav">$23,502</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="compare-mortgage-rates-calculator">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -172,5 +172,6 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>
 </content>

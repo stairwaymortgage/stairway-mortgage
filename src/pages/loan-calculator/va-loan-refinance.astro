@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "VA Renovation Refinance Calculator: Estimate Your Rehab Loan, Funding Fee, New Payment & Cash to Close";
 const metaDescription = "Calculate your VA renovation refinance: total financeable costs with rehab budget and contingency, ARV-capped loan, funding fee (waived for disabled veterans), new payment, and cash to close.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/va-loan-refinance/";
@@ -75,7 +75,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Property Tax Discount (disabled)</span><span class="result-value" id="rTaxD">-$300</span></div>
         <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$4,392</span><span class="result-note">Assumes a 50% DTI qualifying ratio.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="va-loan-refinance">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -194,4 +194,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

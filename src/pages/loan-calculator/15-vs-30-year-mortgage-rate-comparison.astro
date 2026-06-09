@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "15 vs 30 Year Mortgage Rate Comparison Calculator | Stairway Mortgage";
 const metaDescription = "Compare a 15-year vs 30-year mortgage and instantly see the trade-off in monthly payment, total interest, and lifetime savings. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/15-vs-30-year-mortgage-rate-comparison/";
@@ -46,7 +46,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result result--primary"><span class="result-label">Difference In Interest Costs</span><span class="result-value" id="rDiffInt">$358,900</span><span class="result-note">Extra interest paid over the life of the 30-year vs the 15-year.</span></div>
           <div class="result result--primary"><span class="result-label">Difference In Monthly Cashflow With 30 Year</span><span class="result-value" id="rDiffMo">$964</span><span class="result-note">Monthly cash freed up by choosing the 30-year.</span></div>
           <div class="result"><span class="result-label">Difference In Annual Cashflow With 30 Year</span><span class="result-value" id="rDiffAnn">$11,566</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="15-vs-30-year-mortgage-rate-comparison">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -169,5 +169,6 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>
 </content>

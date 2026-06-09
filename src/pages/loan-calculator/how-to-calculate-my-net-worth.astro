@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "How to Calculate My Net Worth | Stairway Mortgage";
 const metaDescription = "Enter what you own and what you owe to instantly see your current net worth. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/how-to-calculate-my-net-worth/";
@@ -59,7 +59,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Total Assets</span><span class="result-value" id="rAssets">$1,610,000</span><span class="result-note">Everything you own.</span></div>
           <div class="result"><span class="result-label">Total Liabilities</span><span class="result-value" id="rLiab">$1,170,000</span><span class="result-note">Everything you owe.</span></div>
           <div class="result result--primary"><span class="result-label">Net Worth</span><span class="result-value" id="rNW">$440,000</span><span class="result-note">Total assets minus total liabilities.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/discovery-quiz">Build My Wealth Plan</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="how-to-calculate-my-net-worth">Build My Wealth Plan</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -169,4 +169,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Interest-Only Payment Calculator: Compare Your Interest-Only vs. Principal & Interest Payment and Monthly Savings";
 const metaDescription = "Compare an interest-only payment to a fully amortizing principal-and-interest payment. See your monthly and annual cash-flow savings at each rate.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/interest-only-payment-calculator/";
@@ -39,7 +39,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <p class="summary-sub">Cash Flow Analysis</p>
         <div class="result result--primary"><span class="result-label">Monthly Savings</span><span class="result-value" id="rMSave">$880</span></div>
         <div class="result result--primary"><span class="result-label">Annual Savings</span><span class="result-value" id="rASave">$10,557</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="interest-only-payment-calculator">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -141,4 +141,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

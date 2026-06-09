@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA Loan Calculator for Home Purchase: Estimate Your Monthly Payment, Mortgage Insurance & Cash to Close";
 const metaDescription = "Calculate your FHA base loan, upfront and monthly mortgage insurance, total monthly payment, cash to close, and the income needed to qualify with as little as 3.5% down.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fha-loan/";
@@ -61,7 +61,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Estimated Monthly MI</span><span class="result-value" id="rMI">$184</span><span class="result-note">Estimated FHA monthly mortgage insurance; may be lower for your scenario.</span></div>
         <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$5,220</span><span class="result-note">FHA generally allows 43% DTI, up to 50% with strong compensating factors.</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="fha-loan">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -181,4 +181,5 @@ input[type=range]{width:100%;accent-color:var(--color-blue);height:4px;margin:6p
 .cta-card a:hover{background:var(--color-blue);}
 .related-placeholder{border:1px dashed var(--color-bone);border-radius:10px;padding:20px;color:var(--color-mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

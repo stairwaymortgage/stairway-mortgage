@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Reverse Mortgage Cash Out Refinance Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your maximum cash back with a reverse mortgage cash-out refinance: principal limit by age, final loan amount, and monthly housing expense — with no payment for life. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/reverse-mortgage-cash-out-refinance/";
@@ -61,7 +61,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <p class="summary-sub">Cash Out</p>
           <div class="result result--primary"><span class="result-label">Estimated Cash Back</span><span class="result-value" id="rCashBack">$119,490</span><span class="result-note">Principal limit minus loan balance and 6% estimated closing costs. Not a Loan Estimate.</span></div>
           <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$1,000</span><span class="result-note">Based on a 50% FHA DTI allowance with compensating factors.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/reverse-mortgage-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="reverse-mortgage-cash-out-refinance">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -197,5 +197,6 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>
 </content>

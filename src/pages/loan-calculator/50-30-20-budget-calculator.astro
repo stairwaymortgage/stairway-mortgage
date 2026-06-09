@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "50/30/20 Budget Rule Calculator | Stairway Mortgage";
 const metaDescription = "Enter your monthly take-home pay and split it into 50% needs, 30% wants, and 20% savings and debt payoff with the 50/30/20 budget rule. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/50-30-20-budget-calculator/";
@@ -36,7 +36,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result result--primary"><span class="result-label">50% to Needs</span><span class="result-value" id="rNeeds">$4,000</span><span class="result-note">Essentials: mortgage/rent, utilities, groceries, insurance, transit, minimum debts.</span></div>
           <div class="result result--primary"><span class="result-label">30% to Wants</span><span class="result-value" id="rWants">$2,400</span><span class="result-note">Nice-to-haves: dining out, entertainment, travel, subscriptions, upgrades.</span></div>
           <div class="result result--primary"><span class="result-label">20% to Musts</span><span class="result-value" id="rMusts">$1,600</span><span class="result-note">Build reserves and wealth: emergency fund, retirement, extra debt payoff.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="50-30-20-budget-calculator">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -133,5 +133,6 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>
 </content>

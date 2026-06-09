@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Home Affordability Calculator: Estimate Your Maximum Loan Amount & Income Needed Based on Your Comfort Payment";
 const metaDescription = "Find out how much home you can afford: enter your comfortable monthly housing payment, taxes, insurance, HOA, and rate to estimate your maximum loan amount and the income needed to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/home-affordability-calculator/";
@@ -51,7 +51,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <p class="summary-sub">Payment Breakdown</p>
         <div class="result"><span class="result-label">Total Other (taxes, ins, PMI, HOA)</span><span class="result-value" id="rOther">$700</span></div>
         <div class="result"><span class="result-label">Amount Remaining for Loan Payment</span><span class="result-value" id="rRemaining">$3,300</span></div>
-        <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+        <a class="cta-primary" data-calc-cta data-calc-slug="home-affordability-calculator">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
@@ -161,4 +161,5 @@ input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
 .cta-card a:hover{background:var(--blue);}
 .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
+  <CalcLeadForm />
 </Layout>

@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
+import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Mortgage Payoff Calculator with Extra Payments | Stairway Mortgage";
 const metaDescription = "See how much faster you can pay off your mortgage by adding extra to each monthly payment. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/mortgage-payoff-calculator-with-extra-payments/";
@@ -46,7 +46,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Total Payment With Extra</span><span class="result-value" id="rTotal">$1,283</span><span class="result-note">Standard payment plus your extra.</span></div>
           <p class="summary-sub">Your Payoff</p>
           <div class="result result--primary"><span class="result-label">New Payoff Time</span><span class="result-value" id="rPayoff">25.0 years</span><span class="result-note">Time to payoff with extra payments.</span></div>
-          <a class="cta-primary" href="https://stairwaymortgage.com/refinance-or-heloc-inquiry">See My Options</a>
+          <a class="cta-primary" data-calc-cta data-calc-slug="mortgage-payoff-calculator-with-extra-payments">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -163,4 +163,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <CalcLeadForm />
 </Layout>
