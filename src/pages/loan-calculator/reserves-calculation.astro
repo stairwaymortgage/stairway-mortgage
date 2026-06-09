@@ -1,0 +1,183 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "Reserves Calculation | Stairway Mortgage";
+const metaDescription = "Add up your monthly expenses to see how much cash you'd need for 6 or 12 months of reserves. Built by Jim Blackburn, NMLS #1072866.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/reserves-calculation/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Reserves Calculation","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Reserves Calculation","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are cash reserves?","acceptedAnswer":{"@type":"Answer","text":"Reserves are the savings you keep on hand to cover your monthly expenses if your income is interrupted. Many planners suggest keeping 6 to 12 months of expenses."}},{"@type":"Question","name":"How is the reserve amount calculated?","acceptedAnswer":{"@type":"Answer","text":"It adds up your monthly housing, utilities, groceries, transportation, insurance, minimum debt payments, and rental property costs, then multiplies that total by 6 and by 12 months."}},{"@type":"Question","name":"Is this a loan approval?","acceptedAnswer":{"@type":"Answer","text":"No. It's an illustrative estimate. Lender reserve requirements vary by loan type, occupancy, and property. Talk with a licensed mortgage professional for your specific situation."}}]};
+---
+<Layout title={metaTitle} description={metaDescription}>
+  <link slot="head" rel="canonical" href={canonical} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="container-page">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <span aria-current="page">Reserves Calculation</span>
+    </nav>
+    <header class="calc-head">
+      <p class="eyebrow">Planning · Cash Reserves</p>
+      <h1 class="display-lg">Reserves Calculation</h1>
+      <p class="lede">Enter your monthly expenses to see how much cash you'd need for 6 or 12 months of reserves.</p>
+      <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+    </header>
+    <section class="calc" aria-label="Reserves Calculation">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <p class="group-label">Monthly Expenses</p>
+          <div class="field">
+            <label for="housing">Monthly Housing Expense: <span id="housingOut" class="slider-out">$2,000</span></label>
+            <input id="housing" type="range" min="0" max="100000" step="50" value="2000" />
+            <p class="hint hint--mute">Total rent or mortgage payment, including tax and insurance.</p>
+          </div>
+          <div class="field">
+            <label for="util">Monthly Utilities: <span id="utilOut" class="slider-out">$500</span></label>
+            <input id="util" type="range" min="0" max="10000" step="25" value="500" />
+            <p class="hint hint--mute">Electric, water, gas, internet, etc.</p>
+          </div>
+          <div class="field">
+            <label for="groc">Monthly Groceries &amp; Household: <span id="grocOut" class="slider-out">$1,000</span></label>
+            <input id="groc" type="range" min="0" max="10000" step="25" value="1000" />
+          </div>
+          <div class="field">
+            <label for="trans">Monthly Transportation: <span id="transOut" class="slider-out">$500</span></label>
+            <input id="trans" type="range" min="0" max="10000" step="25" value="500" />
+            <p class="hint hint--mute">Gas, transit, and car maintenance.</p>
+          </div>
+          <div class="field">
+            <label for="ins">Monthly Insurance: <span id="insOut" class="slider-out">$400</span></label>
+            <input id="ins" type="range" min="0" max="10000" step="25" value="400" />
+            <p class="hint hint--mute">Health, auto, and other.</p>
+          </div>
+          <div class="field">
+            <label for="debt">Monthly Minimum Debt Payments: <span id="debtOut" class="slider-out">$500</span></label>
+            <input id="debt" type="range" min="0" max="100000" step="25" value="500" />
+          </div>
+          <p class="group-label">Rental Properties</p>
+          <div class="field"><label for="rental">Monthly Housing Expense for All Rental Properties</label><div class="input-money"><span>$</span><input id="rental" type="number" inputmode="numeric" value="0" min="0" step="50" /></div></div>
+        </div>
+        <div class="calc-results" aria-live="polite">
+          <p class="summary-title">Summary</p>
+          <p class="summary-sub">Reserves Recommendations</p>
+          <div class="result result--primary"><span class="result-label">6 Months — Financial Planner Recommended</span><span class="result-value" id="rSix">$29,400</span></div>
+          <div class="result result--primary"><span class="result-label">12 Months — Financial Planner Recommended</span><span class="result-value" id="rTwelve">$58,800</span></div>
+          <p class="summary-sub">Lender Guideline</p>
+          <div class="result"><span class="result-label">Mortgage Approval Requirement</span><span class="result-value" id="rApproval">$0</span><span class="result-note">Six months of rental-property housing expense.</span></div>
+          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <p class="micro">Estimates only — not a commitment to lend.</p>
+        </div>
+      </div>
+    </section>
+    <section class="body-content">
+      <figure class="author">
+        <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+          <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+        </a>
+        <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+      </figure>
+      <div class="cta-card">
+        <h4>Ready to Take Your First Step?</h4>
+        <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+        <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+        <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+      </div>
+      <div class="cta-card">
+        <h4>Getting Ready to Qualify?</h4>
+        <p>Tell us about your goals and we'll help you map out the reserves and documentation you'll need—fast.</p>
+        <ul><li>Only 2 minutes to complete</li><li>Quick turnaround</li><li>No credit score impact</li></ul>
+        <a href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+      </div>
+      <div class="cta-card">
+        <h4>Got a Few Questions First?</h4>
+        <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+        <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+      </div>
+      <h2>Important Disclaimer</h2>
+      <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and hypothetical scenarios and may not reflect actual performance or eligibility. This is not a loan approval or loan estimate. All borrowers must qualify for financing based on credit, income, asset documentation, and property-specific guidelines. Please consult a licensed mortgage professional or financial advisor before making any financial decisions.</p>
+      <h2>Related Posts</h2>
+      <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+    </section>
+  </main>
+
+  <script is:inline>
+  (function () {
+    const $ = (id) => document.getElementById(id);
+    const fmt0 = (n) => { if(!isFinite(n)) return '—'; const r=Math.round(n); return (r<0?'-$':'$') + Math.abs(r).toLocaleString('en-US'); };
+    function compute(){
+      const housing=+$('housing').value||0, util=+$('util').value||0, groc=+$('groc').value||0,
+            trans=+$('trans').value||0, ins=+$('ins').value||0, debt=+$('debt').value||0,
+            rental=+$('rental').value||0;
+      $('housingOut').textContent=fmt0(housing); $('utilOut').textContent=fmt0(util);
+      $('grocOut').textContent=fmt0(groc); $('transOut').textContent=fmt0(trans);
+      $('insOut').textContent=fmt0(ins); $('debtOut').textContent=fmt0(debt);
+      // Sum of all 7 monthly expenses (incl. rental)
+      const total = housing + util + groc + trans + ins + debt + rental;
+      // 6 / 12 months recommended
+      const six = 6 * total;
+      const twelve = 12 * total;
+      // Mortgage Approval Requirement = rental * 6 ONLY (quirk — excludes all other fields)
+      const approval = rental * 6;
+      $('rSix').textContent=fmt0(six);
+      $('rTwelve').textContent=fmt0(twelve);
+      $('rApproval').textContent=fmt0(approval);
+    }
+    document.querySelectorAll('input').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+    compute();
+  })();
+  </script>
+
+  <style>
+  .crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+  .crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+  .display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
+  .lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+  .trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+  .calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+  .calc::before{content:"";display:block;height:4px;background:var(--blue);}
+  .calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+  @media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+  .calc-inputs{padding:30px 30px 32px;}
+  .group-label{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--blue);font-weight:600;margin:22px 0 12px;}
+  .group-label:first-child{margin-top:0;}
+  .calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+  .summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+  .summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+  .field{margin-bottom:20px;}
+  .lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+  .slider-out{color:var(--blue);font-family:'JetBrains Mono',monospace;font-weight:600;}
+  input[type=range]{width:100%;accent-color:var(--blue);height:6px;}
+  .input-money{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+  .input-money:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+  .input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  .hint{font-size:12px;margin:6px 0 0;color:var(--mute);} .hint--mute{color:var(--mute);}
+  .result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+  .result--primary{background:#fff;border-color:#fff;}
+  .result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+  .result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+  .result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+  .result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+  .cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+  .cta-primary:hover{background:#2a57e6;}
+  .micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+  .body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+  .body-content p{color:#2b3140;}
+  .author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+  .author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+  .author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+  .author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+  .cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+  .cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+  .cta-card p{max-width:620px;margin:0 auto 18px;}
+  .cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+  .cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+  .cta-card a:hover{background:var(--blue);}
+  .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+  </style>
+</Layout>

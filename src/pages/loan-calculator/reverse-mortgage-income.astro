@@ -1,0 +1,199 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "Reverse Mortgage Legacy Inheritance Estimator | Stairway Mortgage";
+const metaDescription = "Estimate the inheritance left to your heirs after a reverse mortgage, comparing your home's future value against the growing loan balance. Built by Jim Blackburn, NMLS #1072866.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/reverse-mortgage-income/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Reverse Mortgage Legacy Inheritance Estimator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Reverse Mortgage Legacy Inheritance Estimator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the inheritance to heirs estimated?","acceptedAnswer":{"@type":"Answer","text":"It compares your home's projected future value against the reverse mortgage balance that grows over the years, and shows the remaining equity your heirs may receive."}},{"@type":"Question","name":"What assumptions does this use?","acceptedAnswer":{"@type":"Answer","text":"It uses a conservative 3% annual home appreciation and a 6% reverse mortgage rate, with the principal limit based on HUD age factors. These are illustrative assumptions, not a quote."}},{"@type":"Question","name":"Is this a loan approval?","acceptedAnswer":{"@type":"Answer","text":"No. It's an illustrative estimate. Your actual reverse mortgage terms depend on your age, home value, rates, and HUD guidelines. Consult a licensed reverse mortgage professional."}}]};
+---
+<Layout title={metaTitle} description={metaDescription}>
+  <link slot="head" rel="canonical" href={canonical} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="container-page">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <span aria-current="page">Reverse Mortgage Legacy Estimator</span>
+    </nav>
+    <header class="calc-head">
+      <p class="eyebrow">Reverse Mortgage · Legacy</p>
+      <h1 class="display-lg">Reverse Mortgage Legacy Inheritance Estimator</h1>
+      <p class="lede">Estimate the inheritance to your heirs after a reverse mortgage — your home's future value against the growing loan balance.</p>
+      <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+    </header>
+    <section class="calc" aria-label="Reverse Mortgage Legacy Inheritance Estimator">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <p class="group-label">Your Details</p>
+          <div class="field-row">
+            <div class="field"><label for="startAge">Age at Start of Reverse Mortgage</label><div class="input-plain"><input id="startAge" type="number" inputmode="numeric" value="75" min="55" step="1" /></div></div>
+            <div class="field"><label for="endAge">Age at End of Reverse Mortgage</label><div class="input-plain"><input id="endAge" type="number" inputmode="numeric" value="95" min="55" step="1" /></div></div>
+          </div>
+          <div class="field"><label for="homeVal">Estimated Home Value When Reverse Started</label><div class="input-money"><span>$</span><input id="homeVal" type="number" inputmode="numeric" value="500000" min="0" step="5000" /></div><p class="hint hint--mute">Use an appraisal, online estimate, or your best guess.</p></div>
+          <div class="field"><label for="loanBal">Loan Balances When Reverse Started</label><div class="input-money"><span>$</span><input id="loanBal" type="number" inputmode="numeric" value="100000" min="0" step="5000" /></div><p class="hint hint--mute">All mortgages, loans, and lines of credit against this home.</p></div>
+          <p class="group-label">Estate Planning</p>
+          <div class="field">
+            <label for="trust">Do you already have a living trust set up?</label>
+            <select id="trust"><option value="1" selected>Yes</option><option value="2">No</option></select>
+            <p class="hint hint--mute">You may consider meeting with one of our legacy partners to explore a smart estate plan.</p>
+          </div>
+        </div>
+        <div class="calc-results" aria-live="polite">
+          <p class="summary-title">Summary</p>
+          <p class="summary-sub">Income From the Reverse Mortgage</p>
+          <div class="result"><span class="result-label">Monthly Income Received</span><span class="result-value" id="rMonthly">$556</span></div>
+          <div class="result"><span class="result-label">Annual Income Received</span><span class="result-value" id="rAnnual">$6,675</span></div>
+          <div class="result"><span class="result-label">Total Years Income Received</span><span class="result-value" id="rYears">20</span></div>
+          <div class="result"><span class="result-label">Total Income Received</span><span class="result-value" id="rTotalIncome">$133,500</span></div>
+          <p class="summary-sub">Legacy to Your Heirs</p>
+          <div class="result"><span class="result-label">New Appraised Value at End</span><span class="result-value" id="rNewVal">$903,056</span><span class="result-note">Home value grown at a conservative 3%/yr.</span></div>
+          <div class="result"><span class="result-label">Reverse Mortgage Balance to Be Paid</span><span class="result-value" id="rRevBal">$772,933</span><span class="result-note">Loan balance accumulating at 6%/yr.</span></div>
+          <div class="result result--primary"><span class="result-label">Equity Received By Heirs</span><span class="result-value" id="rHeirs">$130,123</span><span class="result-note">Future value minus the loan balance.</span></div>
+          <a class="cta-primary" href="https://stairwaymortgage.com/reverse-mortgage-inquiry">See My Options</a>
+          <p class="micro">Estimates only — not a commitment to lend.</p>
+        </div>
+      </div>
+    </section>
+    <section class="body-content">
+      <figure class="author">
+        <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+          <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+        </a>
+        <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+      </figure>
+      <div class="cta-card">
+        <h4>Ready to Take Your First Step?</h4>
+        <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+        <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+        <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+      </div>
+      <div class="cta-card">
+        <h4>Exploring a Reverse Mortgage?</h4>
+        <p>Tell us about your goals and we'll compare reverse mortgage programs across 250+ lenders for you—fast.</p>
+        <ul><li>Only 2 minutes to complete</li><li>Quick turnaround</li><li>No credit score impact</li></ul>
+        <a href="https://stairwaymortgage.com/reverse-mortgage-inquiry">See My Options</a>
+      </div>
+      <div class="cta-card">
+        <h4>Got a Few Questions First?</h4>
+        <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+        <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+      </div>
+      <h2>Important Disclaimer</h2>
+      <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and hypothetical scenarios and may not reflect actual performance or eligibility. This is not a loan approval or loan estimate. All borrowers must qualify for financing based on credit, income, asset documentation, and property-specific guidelines. Please consult a licensed mortgage professional or financial advisor before making any financial decisions.</p>
+      <h2>Related Posts</h2>
+      <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+    </section>
+  </main>
+
+  <script is:inline>
+  (function () {
+    const $ = (id) => document.getElementById(id);
+    const fmt0 = (n) => { if(!isFinite(n)) return '—'; const r=Math.round(n); return (r<0?'-$':'$') + Math.abs(r).toLocaleString('en-US'); };
+    const fmtN = (n) => { if(!isFinite(n)) return '—'; return Math.round(n).toLocaleString('en-US'); };
+    // PLF Factor at 6% — HUD age-tier table (hardcoded, verbatim)
+    function plf6(age){
+      if (age>=55 && age<=58) return 0.257;
+      if (age>=59 && age<=61) return 0.307;
+      if (age>=62 && age<=64) return 0.357;
+      if (age>=65 && age<=71) return 0.403;
+      if (age>=72 && age<=74) return 0.453;
+      if (age>=75 && age<=81) return 0.467;
+      if (age>=82 && age<=84) return 0.545;
+      if (age>=85 && age<=91) return 0.570;
+      if (age>=92 && age<=101) return 0.589;
+      if (age>=102) return 0.606;
+      return 0;
+    }
+    function compute(){
+      const startAge=+$('startAge').value||0, endAge=+$('endAge').value||0,
+            homeVal=+$('homeVal').value||0, loanBal=+$('loanBal').value||0;
+      // PLF at 6% for start age
+      const plf = plf6(startAge);
+      // Maximum Reverse Mortgage (Principal Limit) = homeVal × PLF
+      const maxRev = homeVal * plf;
+      // Maximum Reverse Loan (net of existing) = principalLimit − loanBalances
+      const maxReverseLoan = maxRev - loanBal;
+      // Months To Receive Payments = 12 × (endAge − startAge)
+      const months = 12 * (endAge - startAge);
+      // Monthly / Annual / Years / Total Income
+      const monthlyIncome = months>0 ? maxReverseLoan/months : 0;
+      const annualIncome = monthlyIncome*12;
+      const totalYears = months/12;
+      const totalIncome = annualIncome * totalYears;
+      // New appraised value = homeVal × (1+0.03)^totalYears  (hardcoded 3%, annual compound)
+      const newVal = homeVal * Math.pow(1+0.03, totalYears);
+      // Reverse Mortgage Balance to Be Paid = principalLimit × (1+(6/100)/12)^months (monthly compound, hardcoded 6%)
+      const revBal = maxRev * Math.pow(1 + (6/100)/12, months);
+      // Equity Received By Heirs = newVal − revBal  (no floor at 0, verbatim)
+      const heirs = newVal - revBal;
+      $('rMonthly').textContent=fmt0(monthlyIncome);
+      $('rAnnual').textContent=fmt0(annualIncome);
+      $('rYears').textContent=fmtN(totalYears);
+      $('rTotalIncome').textContent=fmt0(totalIncome);
+      $('rNewVal').textContent=fmt0(newVal);
+      $('rRevBal').textContent=fmt0(revBal);
+      $('rHeirs').textContent=fmt0(heirs);
+    }
+    document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+    compute();
+  })();
+  </script>
+
+  <style>
+  .crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+  .crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+  .display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
+  .lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+  .trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+  .calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+  .calc::before{content:"";display:block;height:4px;background:var(--blue);}
+  .calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+  @media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+  .calc-inputs{padding:30px 30px 32px;}
+  .group-label{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--blue);font-weight:600;margin:22px 0 12px;}
+  .group-label:first-child{margin-top:0;}
+  .calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+  .summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+  .summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+  .field{margin-bottom:20px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+  .lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+  .input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+  .input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+  .input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  .input-plain input{flex:1;border:0;outline:0;padding:13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  select{width:100%;padding:13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;border:1px solid var(--bone);border-radius:10px;background:#fff;color:var(--ink);}
+  select:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .hint{font-size:12px;margin:6px 0 0;color:var(--mute);} .hint--mute{color:var(--mute);}
+  .result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+  .result--primary{background:#fff;border-color:#fff;}
+  .result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+  .result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+  .result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+  .result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+  .cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+  .cta-primary:hover{background:#2a57e6;}
+  .micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+  .body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+  .body-content p{color:#2b3140;}
+  .author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+  .author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+  .author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+  .author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+  .cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+  .cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+  .cta-card p{max-width:620px;margin:0 auto 18px;}
+  .cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+  .cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+  .cta-card a:hover{background:var(--blue);}
+  .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+  </style>
+</Layout>

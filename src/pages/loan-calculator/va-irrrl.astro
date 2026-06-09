@@ -1,0 +1,191 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "VA IRRRL Refinance Interest Rate Reduction Loan Calculator | Stairway Mortgage";
+const metaDescription = "Estimate your new VA IRRRL payment and monthly savings, including the 0.5% funding fee and disabled-veteran benefits. Built by Jim Blackburn, NMLS #1072866.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/va-irrrl/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA IRRRL Refinance Calculator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"VA IRRRL Refinance Interest Rate Reduction Loan Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a VA IRRRL?","acceptedAnswer":{"@type":"Answer","text":"An Interest Rate Reduction Refinance Loan is a VA streamline refinance that lets eligible veterans lower their rate and payment on an existing VA loan with reduced paperwork."}},{"@type":"Question","name":"What is the VA funding fee for an IRRRL?","acceptedAnswer":{"@type":"Answer","text":"The IRRRL funding fee is 0.5% of the loan balance. Veterans receiving VA disability compensation are generally exempt and pay $0."}},{"@type":"Question","name":"Is this a loan approval?","acceptedAnswer":{"@type":"Answer","text":"No. It's an illustrative estimate, not a loan estimate or approval. Always obtain an official Loan Estimate from a licensed mortgage originator."}}]};
+---
+<Layout title={metaTitle} description={metaDescription}>
+  <link slot="head" rel="canonical" href={canonical} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="container-page">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <span aria-current="page">VA IRRRL Refinance</span>
+    </nav>
+    <header class="calc-head">
+      <p class="eyebrow">VA Loan · Streamline Refinance</p>
+      <h1 class="display-lg">VA IRRRL Refinance Interest Rate Reduction Loan Calculator</h1>
+      <p class="lede">Grab your most recent mortgage statement — accurate numbers give you a real picture of your VA IRRRL refinance options to reduce your rate and payment.</p>
+      <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+    </header>
+    <section class="calc" aria-label="VA IRRRL Refinance Calculator">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <p class="group-label">Your Current Loan</p>
+          <div class="field">
+            <label for="disabled">Are you a disabled veteran?</label>
+            <select id="disabled"><option value="1" selected>Yes</option><option value="2">No</option></select>
+            <p class="hint hint--mute">Disabled veterans are generally exempt from the VA funding fee and property tax.</p>
+          </div>
+          <div class="field"><label for="balance">Loan Balance</label><div class="input-money"><span>$</span><input id="balance" type="number" inputmode="numeric" value="300000" min="0" step="5000" /></div></div>
+          <div class="field"><label for="curPI">Monthly Principal &amp; Interest Payment</label><div class="input-money"><span>$</span><input id="curPI" type="number" inputmode="numeric" value="3600" min="0" step="50" /></div><p class="hint hint--mute">Your current payment excluding taxes, insurance, and PMI.</p></div>
+          <p class="group-label">Carrying Costs</p>
+          <div class="field-row">
+            <div class="field"><label for="ins">Monthly Homeowners Insurance</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="200" min="0" step="25" /></div></div>
+            <div class="field"><label for="tax">Monthly Property Taxes</label><div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="300" min="0" step="25" /></div></div>
+          </div>
+          <div class="field"><label for="hoa">Monthly HOA</label><div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="25" /></div><p class="hint hint--mute">Paid separately outside the mortgage.</p></div>
+          <p class="group-label">Your New Loan</p>
+          <div class="field">
+            <label for="rate">Estimated New Interest Rate: <span id="rateOut" class="slider-out">7.0%</span></label>
+            <input id="rate" type="range" min="2.5" max="15" step="0.1" value="7" />
+          </div>
+        </div>
+        <div class="calc-results" aria-live="polite">
+          <p class="summary-title">Summary</p>
+          <p class="summary-sub">Your New Loan</p>
+          <div class="result"><span class="result-label">Base Loan Amount</span><span class="result-value" id="rBase">$300,000</span></div>
+          <div class="result"><span class="result-label">VA Funding Fee</span><span class="result-value" id="rFee">$0</span><span class="result-note">0.5% for IRRRL; $0 if a disabled veteran.</span></div>
+          <div class="result"><span class="result-label">Final Loan Amount</span><span class="result-value" id="rFinal">$309,000</span><span class="result-note">Base + funding fee + ~3% estimated closing costs.</span></div>
+          <div class="result"><span class="result-label">New Principal &amp; Interest</span><span class="result-value" id="rNewPI">$1,996</span></div>
+          <p class="summary-sub">New Monthly Costs</p>
+          <div class="result"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rPITI">$2,196</span><span class="result-note">P&amp;I + insurance + taxes (taxes offset for disabled veterans).</span></div>
+          <p class="summary-sub">Your Savings</p>
+          <div class="result result--primary"><span class="result-label">Monthly Savings</span><span class="result-value" id="rMoSav">$1,604</span><span class="result-note">Current P&amp;I minus new P&amp;I.</span></div>
+          <div class="result result--primary"><span class="result-label">Annual Savings</span><span class="result-value" id="rAnnSav">$19,249</span></div>
+          <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$4,392</span></div>
+          <a class="cta-primary" href="https://stairwaymortgage.com/refinance-or-heloc-inquiry">See My Options</a>
+          <p class="micro">Estimates only — not a commitment to lend.</p>
+        </div>
+      </div>
+    </section>
+    <section class="body-content">
+      <figure class="author">
+        <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+          <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+        </a>
+        <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+      </figure>
+      <div class="cta-card">
+        <h4>Ready to Take Your First Step?</h4>
+        <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+        <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+        <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+      </div>
+      <div class="cta-card">
+        <h4>Ready to Lower Your VA Payment?</h4>
+        <p>Tell us about your current loan and we'll show what an IRRRL could save you—fast.</p>
+        <ul><li>Only 2 minutes to complete</li><li>Quick turnaround</li><li>No credit score impact</li></ul>
+        <a href="https://stairwaymortgage.com/refinance-or-heloc-inquiry">See My Options</a>
+      </div>
+      <div class="cta-card">
+        <h4>Got a Few Questions First?</h4>
+        <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+        <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+      </div>
+      <h2>Important Disclaimer</h2>
+      <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and hypothetical scenarios and may not reflect actual performance or eligibility. This is not a loan approval or loan estimate. All borrowers must qualify for financing based on credit, income, asset documentation, and property-specific guidelines. Please consult a licensed mortgage professional or financial advisor before making any financial decisions.</p>
+      <h2>Related Posts</h2>
+      <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+    </section>
+  </main>
+
+  <script is:inline>
+  (function () {
+    const $ = (id) => document.getElementById(id);
+    const fmt0 = (n) => { if(!isFinite(n)) return '—'; const r=Math.round(n); return (r<0?'-$':'$') + Math.abs(r).toLocaleString('en-US'); };
+    function compute(){
+      const disabled=$('disabled').value, balance=+$('balance').value||0, curPI=+$('curPI').value||0,
+            ins=+$('ins').value||0, tax=+$('tax').value||0, hoa=+$('hoa').value||0, rate=+$('rate').value||0;
+      $('rateOut').textContent = rate.toFixed(1)+'%';
+      const isDisabled = (disabled==='1');
+      // Base Loan = balance
+      const base = balance;
+      // VA Funding Fee: 0.5% of balance ONLY if NOT disabled (CONTAINS value 2 = No)
+      const fee = isDisabled ? 0 : balance*0.005;
+      // Final Loan = base + fee + 3%*balance (hardcoded closing costs, literal % => 0.03)
+      const finalLoan = base + fee + 0.03*balance;
+      // New P&I: amortize BALANCE at newRate, hardcoded 360 months
+      const r = (rate/100)/12;
+      const newPI = r>0 ? (balance*r)/(1 - Math.pow(1+r, -360)) : balance/360;
+      // Tax discount: -taxes if disabled, else 0
+      const taxDisc = isDisabled ? -tax : 0;
+      // Total Monthly Housing = newPI + ins + tax + taxDisc  (HOA excluded)
+      const totalPITI = newPI + ins + tax + taxDisc;
+      // Monthly Savings = current P&I (entered) - new P&I
+      const moSav = curPI - newPI;
+      const annSav = moSav*12;
+      // Income Target = 2*totalPITI + HOA
+      const income = 2*totalPITI + hoa;
+      $('rBase').textContent=fmt0(base); $('rFee').textContent=fmt0(fee);
+      $('rFinal').textContent=fmt0(finalLoan); $('rNewPI').textContent=fmt0(newPI);
+      $('rPITI').textContent=fmt0(totalPITI); $('rMoSav').textContent=fmt0(moSav);
+      $('rAnnSav').textContent=fmt0(annSav); $('rIncome').textContent=fmt0(income);
+    }
+    document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+    compute();
+  })();
+  </script>
+
+  <style>
+  .crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+  .crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+  .display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(26px,3.8vw,42px);line-height:1.1;margin:0 0 18px;letter-spacing:-.01em;}
+  .lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+  .trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+  .calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+  .calc::before{content:"";display:block;height:4px;background:var(--blue);}
+  .calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+  @media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+  .calc-inputs{padding:30px 30px 32px;}
+  .group-label{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--blue);font-weight:600;margin:22px 0 12px;}
+  .group-label:first-child{margin-top:0;}
+  .calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+  .summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+  .summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+  .field{margin-bottom:20px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+  .lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+  .slider-out{color:var(--blue);font-family:'JetBrains Mono',monospace;font-weight:600;}
+  input[type=range]{width:100%;accent-color:var(--blue);height:6px;}
+  .input-money{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+  .input-money:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+  .input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  select{width:100%;padding:13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;border:1px solid var(--bone);border-radius:10px;background:#fff;color:var(--ink);}
+  select:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .hint{font-size:12px;margin:6px 0 0;color:var(--mute);} .hint--mute{color:var(--mute);}
+  .result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+  .result--primary{background:#fff;border-color:#fff;}
+  .result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+  .result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+  .result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+  .result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+  .cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+  .cta-primary:hover{background:#2a57e6;}
+  .micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+  .body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+  .body-content p{color:#2b3140;}
+  .author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+  .author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+  .author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+  .author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+  .cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+  .cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+  .cta-card p{max-width:620px;margin:0 auto 18px;}
+  .cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+  .cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+  .cta-card a:hover{background:var(--blue);}
+  .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+  </style>
+</Layout>
