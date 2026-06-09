@@ -26,6 +26,14 @@
     { "source": "/apply-for-mortgage", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
     { "source": "/apply-for-mortgage/", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
     { "source": "/mortgage-preapproval", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
-    { "source": "/mortgage-preapproval/", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true }
+    { "source": "/mortgage-preapproval/", "destination": "https://stairwaymortgage.my1003app.com/", "permanent": true },
+    { "source": "/aviation-professionals/pilots", "destination": "/aviation-professionals/pilot", "permanent": true },
+    { "source": "/aviation-professionals/pilots/", "destination": "/aviation-professionals/pilot/", "permanent": true },
+    { "source": "/aviation-professionals/flight-attendants", "destination": "/aviation-professionals/flight-attendant", "permanent": true },
+    { "source": "/aviation-professionals/flight-attendants/", "destination": "/aviation-professionals/flight-attendant/", "permanent": true },
+    { "source": "/aviation-professionals/aircraft-mechanics", "destination": "/aviation-professionals/aircraft-mechanic", "permanent": true },
+    { "source": "/aviation-professionals/aircraft-mechanics/", "destination": "/aviation-professionals/aircraft-mechanic/", "permanent": true },
+    { "source": "/aviation-professionals/air-traffic-controllers", "destination": "/aviation-professionals/air-traffic-controller", "permanent": true },
+    { "source": "/aviation-professionals/air-traffic-controllers/", "destination": "/aviation-professionals/air-traffic-controller/", "permanent": true }
   ]
 }
