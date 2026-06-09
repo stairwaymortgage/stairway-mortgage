@@ -56,14 +56,7 @@ const menus = [
       {
         heading: 'Clients We Serve — By Profession',
         links: [
-          { icon: 'plane',   title: 'Aviation Professionals', desc: 'Pilot & crew specialist lending',  href: '/aviation-professionals/', live: true,
-            subs: [
-              { title: 'Pilots',                  href: '/aviation-professionals/pilots/' },
-              { title: 'Flight Attendants',       href: '/aviation-professionals/flight-attendants/' },
-              { title: 'Aircraft Mechanics',      href: '/aviation-professionals/aircraft-mechanics/' },
-              { title: 'Air Traffic Controllers', href: '/aviation-professionals/air-traffic-controllers/' },
-            ],
-          },
+          { icon: 'plane',   title: 'Aviation Professionals', desc: 'Pilot & crew specialist lending',  href: '/aviation-professionals/', live: true },
           { icon: 'medical', title: 'Medical Professionals',              desc: 'Physician & nurse loan programs',     live: false },
           { icon: 'medical', title: 'Dental & Wellness Professionals',    desc: 'Specialized healthcare lending',      live: false },
           { icon: 'brief',   title: 'Corporate Executives',              desc: 'Stock-comp & RSU-friendly loans',     live: false },
@@ -662,6 +655,7 @@ const icons: Record<string, string> = {
     line-height: 1.4;
   }
   /* ── Aviation sub-links ── */
+  /* NOTE: sub-link CSS retained for future use; no hub currently exposes subs in header */
   .mega__subs {
     list-style: none;
     padding: 0 0 0 3.1rem;

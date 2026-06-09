@@ -25,11 +25,14 @@ const journey = [
 ];
 
 const professions = [
-  { label: 'Medical Professionals', href: '/medical-professionals/' },
-  { label: 'Aviation Professionals', href: '/aviation-professionals/' },
-  { label: 'Corporate Executives', href: '/corporate-executives/' },
-  { label: 'Self-Employed & Owners', href: '/legal-business-entrepreneurs/' },
-  { label: 'Creative & Variable', href: '/creative-earners/' },
+  { label: 'Aviation Professionals', href: '/aviation-professionals/', live: true },
+  { label: 'Corporate Executives', href: '/corporate-executives/', live: true },
+  { label: 'Creative Earners', href: '/creative-earners/', live: true },
+  { label: 'Dental & Wellness Professionals', href: null, live: false },
+  { label: 'Medical Professionals', href: '/medical-professionals/', live: true },
+  { label: 'Professional Services', href: null, live: false },
+  { label: 'Sales Professionals', href: null, live: false },
+  { label: 'Yacht Professionals', href: '/yacht-professionals/', live: true },
 ];
 
 const tools = [
@@ -208,7 +211,15 @@ const legal = [
         <h5 class="eyebrow mb-4">By Profession</h5>
         <ul class="space-y-2 mb-6">
           {professions.map(l => (
-            <li><a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a></li>
+            <li>
+              {l.live ? (
+                <a href={l.href} class="text-[13.5px] opacity-65 hover:opacity-100 hover:text-[var(--color-paper)] transition-opacity">{l.label}</a>
+              ) : (
+                <span class="text-[13.5px] opacity-40 cursor-default">
+                  {l.label} <span class="ml-1 inline-block px-1.5 py-px text-[9px] font-mono uppercase tracking-wider border border-[var(--color-paper)]/20 rounded text-[var(--color-paper)]/50 align-middle">SOON</span>
+                </span>
+              )}
+            </li>
           ))}
         </ul>
         <h5 class="eyebrow mb-4">Legal</h5>
