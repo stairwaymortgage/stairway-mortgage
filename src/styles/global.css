@@ -38,6 +38,15 @@
   --container-prose: 720px;
 }
 
+/* ----- Unprefixed aliases consumed by /loan-calculator/* page-scoped styles ----- */
+:root {
+  --ink: var(--color-ink);
+  --blue: var(--color-blue);
+  --bone: #EAE7DE;
+  --paper-tint: #F4F2EC;
+  --mute: #6B7280;
+}
+
 /* ==========================================
    BASE STYLES
    ========================================== */
