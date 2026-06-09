@@ -350,6 +350,12 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      // Guard: Enter key fires submit even on early steps. Only allow real submission
+      // on the final step. Otherwise treat it as "Next".
+      if (current < total - 1) {
+        if (validateStep(current)) showStep(current + 1);
+        return;
+      }
       if (!validateStep(current)) return;
       var honeypot = document.getElementById('gli-gotcha').value;
 
