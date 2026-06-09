@@ -1,0 +1,254 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metaTitle = "College Housing Costs VS. Investment Property | Stairway Mortgage";
+const metaDescription = "Compare paying for college housing with student loans against buying an investment property your student lives in — and see the long-term wealth difference. Built by Jim Blackburn, NMLS #1072866.";
+const canonical = "https://stairwaymortgage.com/loan-calculator/college-costs-calculator/";
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"College Housing Costs VS. Investment Property","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"College Housing Costs VS. Investment Property","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this calculator compare?","acceptedAnswer":{"@type":"Answer","text":"It compares the cost of paying for college housing with student loans against buying a 1–4 unit investment property your student lives in while renting the other units, including long-term equity and cash flow."}},{"@type":"Question","name":"What assumptions does it use?","acceptedAnswer":{"@type":"Answer","text":"It uses a conservative 3% annual appreciation, FHA financing with UFMIP and monthly mortgage insurance, and a 30-year loan. These are illustrative assumptions, not a quote."}},{"@type":"Question","name":"Is this a loan approval?","acceptedAnswer":{"@type":"Answer","text":"No. It's an illustrative estimate, not a loan estimate or approval. Always obtain an official Loan Estimate from a licensed mortgage originator."}}]};
+---
+<Layout title={metaTitle} description={metaDescription}>
+  <link slot="head" rel="canonical" href={canonical} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <main class="container-page">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <span aria-current="page">College Housing vs. Investment Property</span>
+    </nav>
+    <header class="calc-head">
+      <p class="eyebrow">Investing · College Housing</p>
+      <h1 class="display-lg">College Housing Costs VS. Investment Property</h1>
+      <p class="lede">See the long-term wealth opportunity of buying an asset instead of taking student loans for college-provided housing.</p>
+      <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+    </header>
+    <section class="calc" aria-label="College Housing vs Investment Property Calculator">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <p class="group-label">College Housing</p>
+          <div class="field"><label for="annualHousing">Estimated cost of college housing / room and board per year</label><div class="input-money"><span>$</span><input id="annualHousing" type="number" inputmode="numeric" value="12000" min="0" step="500" /></div></div>
+          <div class="field-row">
+            <div class="field"><label for="inflation">Annual inflation of college housing</label><div class="input-plain"><input id="inflation" type="number" inputmode="decimal" value="3" min="0" step="0.5" /><span class="suffix">%</span></div></div>
+            <div class="field"><label for="studentRate">Interest rate on student housing loans</label><div class="input-plain"><input id="studentRate" type="number" inputmode="decimal" value="10" min="0" step="0.25" /><span class="suffix">%</span></div></div>
+          </div>
+          <div class="field"><label for="years">How many years will the student attend school?</label><div class="input-plain"><input id="years" type="number" inputmode="numeric" value="4" min="1" max="25" step="1" /></div><p class="hint hint--mute">Bachelors 4 · Masters 6 · Med School 4 · Residency 3–7.</p></div>
+          <p class="group-label">The Investment Property</p>
+          <div class="field"><label for="price">Purchase Price</label><div class="input-money"><span>$</span><input id="price" type="number" inputmode="numeric" value="1000000" min="0" step="10000" /></div></div>
+          <div class="field">
+            <label for="units">How many units are you buying?</label>
+            <select id="units"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4" selected>4</option></select>
+          </div>
+          <div class="field"><label for="rentNonOwner">Total monthly rent on the non-owner-occupied units</label><div class="input-money"><span>$</span><input id="rentNonOwner" type="number" inputmode="numeric" value="9000" min="0" step="100" /></div></div>
+          <div class="field">
+            <label for="dp">Down Payment Percentage: <span id="dpOut" class="slider-out">3.5%</span></label>
+            <input id="dp" type="range" min="3.5" max="100" step="1" value="3.5" />
+            <p class="hint hint--mute">3.5% is the minimum (down payment assistance and gift funds allowed).</p>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="ins">Annual Insurance</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="2400" min="0" step="100" /></div></div>
+            <div class="field"><label for="tax">Annual Taxes</label><div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="3600" min="0" step="100" /></div></div>
+          </div>
+          <div class="field"><label for="hoa">Monthly HOA</label><div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="25" /></div></div>
+          <div class="field">
+            <label for="rate">Estimated Interest Rate: <span id="rateOut" class="slider-out">6.75%</span></label>
+            <input id="rate" type="range" min="2.5" max="10" step="0.01" value="6.75" />
+          </div>
+        </div>
+        <div class="calc-results" aria-live="polite">
+          <p class="summary-title">Summary</p>
+          <p class="summary-sub">Education Costs</p>
+          <div class="result"><span class="result-label">Total Balance owed</span><span class="result-value" id="rTotalOwed">—</span><span class="result-note">Sum of each year's principal + interest at graduation.</span></div>
+          <p class="summary-sub">Investment Property Summary</p>
+          <div class="result"><span class="result-label">Desired Loan Amount</span><span class="result-value" id="rDesired">$965,000</span></div>
+          <div class="result"><span class="result-label">UFMIP</span><span class="result-value" id="rUfmip">$16,888</span></div>
+          <div class="result"><span class="result-label">Final Loan Amount</span><span class="result-value" id="rFinal">$981,888</span></div>
+          <div class="result"><span class="result-label">Principal &amp; Interest</span><span class="result-value" id="rPI">$6,369</span></div>
+          <div class="result"><span class="result-label">Estimated Monthly MI</span><span class="result-value" id="rMI">$614</span></div>
+          <div class="result"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rHousing">$7,482</span></div>
+          <div class="result"><span class="result-label">Total Monthly Income</span><span class="result-value" id="rIncome">$9,000</span></div>
+          <div class="result result--primary"><span class="result-label">Monthly Cashflow</span><span class="result-value" id="rCashflow">$1,518</span></div>
+          <div class="result"><span class="result-label">Cash Out of Pocket (no seller credit/DPA)</span><span class="result-value" id="rOOPnone">$95,000</span></div>
+          <div class="result"><span class="result-label">Cash Out of Pocket (with seller credit)</span><span class="result-value" id="rOOPseller">$35,000</span></div>
+          <div class="result"><span class="result-label">Cash Out of Pocket (seller credit + DPA)</span><span class="result-value" id="rOOPdpa">$35,000</span><span class="result-note">DPA only on 1–2 units; not eligible for 3–4 units.</span></div>
+          <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rTarget">$8,214</span></div>
+          <p class="summary-sub">Wealth Analysis</p>
+          <div class="result result--primary"><span class="result-label">Equity in 5 Years</span><span class="result-value" id="rEq5">$253,373</span></div>
+          <div class="result"><span class="result-label">Cash Flow Collected · 5 Years</span><span class="result-value" id="rCf5">$91,069</span></div>
+          <div class="result result--primary"><span class="result-label">Equity in 15 Years</span><span class="result-value" id="rEq15">$850,667</span></div>
+          <div class="result"><span class="result-label">Cash Flow Collected · 15 Years</span><span class="result-value" id="rCf15">$273,208</span></div>
+          <div class="result result--primary"><span class="result-label">Equity in 30 Years</span><span class="result-value" id="rEq30">$2,427,262</span><span class="result-note">Property paid off; equals appreciated value.</span></div>
+          <div class="result"><span class="result-label">Cash Flow Collected · 30 Years</span><span class="result-value" id="rCf30">$546,415</span></div>
+          <p class="summary-sub">Education Cost Itemized</p>
+          <div id="yearRows"></div>
+          <a class="cta-primary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+          <p class="micro">Estimates only — not a commitment to lend.</p>
+        </div>
+      </div>
+    </section>
+    <section class="body-content">
+      <figure class="author">
+        <a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">
+          <img width="120" height="120" src="https://stairwaymortgage.com/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+        </a>
+        <h3><a href="http://www.mortgagemanjim.com/linkedin%20" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+      </figure>
+      <div class="cta-card">
+        <h4>Ready to Take Your First Step?</h4>
+        <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+        <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+        <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+      </div>
+      <div class="cta-card">
+        <h4>Thinking About Buying Instead of Renting a Dorm?</h4>
+        <p>Tell us about your goals and we'll show what owning could look like for your family—fast.</p>
+        <ul><li>Only 2 minutes to complete</li><li>Quick turnaround</li><li>No credit score impact</li></ul>
+        <a href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
+      </div>
+      <div class="cta-card">
+        <h4>Got a Few Questions First?</h4>
+        <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+        <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+      </div>
+      <h2>Important Disclaimer</h2>
+      <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and hypothetical scenarios and may not reflect actual performance or eligibility. This is not a loan approval or loan estimate. All borrowers must qualify for financing based on credit, income, asset documentation, and property-specific guidelines. Please consult a licensed mortgage professional or financial advisor before making any financial decisions.</p>
+      <h2>Related Posts</h2>
+      <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+    </section>
+  </main>
+
+  <script is:inline>
+  (function () {
+    const $ = (id) => document.getElementById(id);
+    const fmt0 = (n) => { if(!isFinite(n)) return '—'; const r=Math.round(n); return (r<0?'-$':'$') + Math.abs(r).toLocaleString('en-US'); };
+    function yearCost(n, annualHousing, inflation, studentRate, years){
+      // Year 1 anomaly: cost * (1+studentRate/100)^years  (uses LOAN rate + full-years exponent)
+      if (n===1) return years>0 ? annualHousing*Math.pow(1+studentRate/100, years) : null;
+      // Year N>=2: cost * (1+inflation/100)^(n-1) * (1+studentRate/100)^(years-(n-1))
+      if (years>(n-1)) return annualHousing*Math.pow(1+inflation/100, n-1)*Math.pow(1+studentRate/100, years-(n-1));
+      return null; // ELSE branch = "" (empty)
+    }
+    function compute(){
+      const annualHousing=+$('annualHousing').value||0, inflation=+$('inflation').value||0,
+            studentRate=+$('studentRate').value||0, years=+$('years').value||0,
+            price=+$('price').value||0, units=+$('units').value||0, rentNonOwner=+$('rentNonOwner').value||0,
+            dp=+$('dp').value||0, ins=+$('ins').value||0, tax=+$('tax').value||0, hoa=+$('hoa').value||0, rate=+$('rate').value||0;
+      $('dpOut').textContent = dp+'%'; $('rateOut').textContent = rate.toFixed(2)+'%';
+
+      // ---- Education side ----
+      // Total Balance owed: SUM over fired years. Year-5 ref is DELETED (contributes nothing),
+      // and ELSE branches return "" (empty string). The live widget's SUM cannot coerce the
+      // empty-string/deleted mix and renders a dash. Replicate that: always show — (faithful).
+      $('rTotalOwed').textContent = '—';
+      // Per-year itemized rows (these DO compute on live)
+      const rowsHost = $('yearRows');
+      rowsHost.innerHTML = '';
+      const maxYears = Math.min(Math.max(years,0), 25);
+      for (let n=1; n<=maxYears; n++){
+        const c = yearCost(n, annualHousing, inflation, studentRate, years);
+        if (c===null) continue;
+        const row = document.createElement('div');
+        row.className = 'result';
+        row.innerHTML = '<span class="result-label">Year '+n+'</span><span class="result-value">'+fmt0(c)+'</span>';
+        rowsHost.appendChild(row);
+      }
+
+      // ---- Investment side ----
+      // Desired Loan = price - price*dp/100 + (dp/100)*1.75%  (3rd term ~0.0006, vestigial)
+      const base = price - (price*dp/100) + (dp/100)*0.0175;
+      const ufmip = base*0.0175;
+      const finalLoan = base + ufmip;
+      const r = rate/100/12;
+      const pi = r>0 ? Math.round(((finalLoan*r)/(1-Math.pow(1+r,-360)))*100)/100 : finalLoan/360;
+      const mIns = ins/12, mTax = tax/12;
+      const mi = (finalLoan*0.0075)/12;
+      const totalHousing = pi + mIns + mTax + mi;       // HOA excluded
+      const totalIncome = rentNonOwner;
+      const cashflow = totalIncome - totalHousing;
+      const oopNone = (dp*price)*0.01 + 0.06*price;
+      const oopSeller = (dp*price)*0.01;
+      const oopDpa = (units===1||units===2) ? oopSeller - (3.5/100*price) : oopSeller;
+      const incomeTarget = (totalHousing*2) - rentNonOwner*0.75;
+
+      // ---- Wealth Analysis ----
+      const appr5 = price*Math.pow(1.03,5), appr15 = price*Math.pow(1.03,15), appr30 = price*Math.pow(1.03,30);
+      const bal = (np) => { const R=rate/100/12; return base*((Math.pow(1+R,360)-Math.pow(1+R,np))/(Math.pow(1+R,360)-1)); };
+      const bal5 = bal(60), bal15 = bal(180), bal30 = 0;
+      const eq5 = appr5-bal5, eq15 = appr15-bal15, eq30 = appr30-bal30;
+      const cf5 = cashflow*60, cf15 = cashflow*180, cf30 = cashflow*360;
+
+      $('rDesired').textContent=fmt0(base); $('rUfmip').textContent=fmt0(ufmip); $('rFinal').textContent=fmt0(finalLoan);
+      $('rPI').textContent=fmt0(pi); $('rMI').textContent=fmt0(mi);
+      $('rHousing').textContent=fmt0(totalHousing); $('rIncome').textContent=fmt0(totalIncome);
+      $('rCashflow').textContent=fmt0(cashflow);
+      $('rOOPnone').textContent=fmt0(oopNone); $('rOOPseller').textContent=fmt0(oopSeller); $('rOOPdpa').textContent=fmt0(oopDpa);
+      $('rTarget').textContent=fmt0(incomeTarget);
+      $('rEq5').textContent=fmt0(eq5); $('rCf5').textContent=fmt0(cf5);
+      $('rEq15').textContent=fmt0(eq15); $('rCf15').textContent=fmt0(cf15);
+      $('rEq30').textContent=fmt0(eq30); $('rCf30').textContent=fmt0(cf30);
+    }
+    document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+    compute();
+  })();
+  </script>
+
+  <style>
+  .crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+  .crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+  .display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(26px,3.8vw,42px);line-height:1.1;margin:0 0 18px;letter-spacing:-.01em;}
+  .lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+  .trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+  .calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+  .calc::before{content:"";display:block;height:4px;background:var(--blue);}
+  .calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+  @media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+  .calc-inputs{padding:30px 30px 32px;}
+  .group-label{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:var(--blue);font-weight:600;margin:22px 0 12px;}
+  .group-label:first-child{margin-top:0;}
+  .calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+  .summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+  .summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+  #yearRows{display:flex;flex-direction:column;gap:12px;}
+  .field{margin-bottom:20px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+  .lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+  .slider-out{color:var(--blue);font-family:'JetBrains Mono',monospace;font-weight:600;}
+  input[type=range]{width:100%;accent-color:var(--blue);height:6px;}
+  .input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+  .input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+  .input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  .input-plain input{flex:1;border:0;outline:0;padding:13px 6px 13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+  .input-plain .suffix{padding:0 14px 0 4px;color:var(--mute);font-weight:600;}
+  select{width:100%;padding:13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;border:1px solid var(--bone);border-radius:10px;background:#fff;color:var(--ink);}
+  select:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+  .hint{font-size:12px;margin:6px 0 0;color:var(--mute);} .hint--mute{color:var(--mute);}
+  .result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+  .result--primary{background:#fff;border-color:#fff;}
+  .result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+  .result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+  .result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+  .result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+  .cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+  .cta-primary:hover{background:#2a57e6;}
+  .micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+  .body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+  .body-content p{color:#2b3140;}
+  .author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+  .author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+  .author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+  .author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+  .cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+  .cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+  .cta-card p{max-width:620px;margin:0 auto 18px;}
+  .cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+  .cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+  .cta-card a:hover{background:var(--blue);}
+  .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+  </style>
+</Layout>
