@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SpinWheelForm from '../components/forms/SpinWheelForm.astro';
+---
+<Layout title="Spin the Wheel — Stairway Mortgage" description="Spin the wheel for a chance to win a $500 Tax Strategy Call with a Certified Public Accountant. Answer a few quick questions and claim your prize.">
+
+  <section class="section relative overflow-hidden sw-hero">
+    <div class="container-page">
+      <div class="max-w-2xl mx-auto text-center">
+        <span class="eyebrow eyebrow-blue mb-6">Spin &amp; Win</span>
+        <h1 class="display-lg mt-6 mb-4">Win up to <em class="italic text-[var(--color-blue)]">$500</em></h1>
+        <p class="lede max-w-xl mx-auto mb-10">Answer one quick question, share your contact info, and spin the wheel for a chance to win a $500 Tax Strategy Call with a Certified Public Accountant.</p>
+
+        <div class="sw-launch">
+          <button type="button" data-open-spin-wheel class="btn btn-blue btn-arrow text-base px-7 py-3.5">Spin the Wheel</button>
+          <p class="sw-launch__meta mono">Live · 1–2 minutes · No login</p>
+        </div>
+      </div>
+
+      <p class="mono text-[11px] text-[var(--color-mute)] text-center mt-12">NMLS #1072866</p>
+    </div>
+  </section>
+
+  <SpinWheelForm />
+
+</Layout>
+
+<style>
+  .sw-hero{position:relative;}.sw-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}
+  .sw-launch{display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .sw-launch__meta{font-size:12px;color:var(--color-mute);letter-spacing:0.04em;}
+</style>

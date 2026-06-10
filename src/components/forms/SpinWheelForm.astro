@@ -1,0 +1,377 @@
+---
+/**
+ * SpinWheelForm.astro — Stairway "Spin the Wheel" (rebuild of Outgrow spin-to-win).
+ *
+ * Flow: intro -> Q1 (top 3 goals, max 3) -> birthday -> contact (name/email/phone/consent)
+ *       -> spin (animated SVG wheel, rigged to land on $500 Tax Strategy) -> prize popup
+ *       -> redirect to /thank-you-for-playing/ with name params.
+ *
+ * Light/white theme (matches Discovery Quiz). is:inline plain JS. Enter-guard.
+ * Submits to its OWN GHL webhook (form_source: spin-the-wheel) BEFORE the spin.
+ *
+ * Trigger: any element with [data-open-spin-wheel].
+ */
+---
+
+<div class="sw-overlay" id="sw-overlay" hidden>
+  <div class="aic sw" role="dialog" aria-modal="true" aria-label="Spin the Wheel">
+    <div class="aic__header">
+      <span class="aic__spark" aria-hidden="true">✦</span>
+      <div class="aic__brand">
+        <span class="aic__title">Spin &amp; Win <span class="aic__badge">$500</span></span>
+        <span class="aic__live"><span class="aic__dot"></span>Live · win up to $500</span>
+      </div>
+      <button type="button" class="aic__close" id="sw-close" aria-label="Close">✕</button>
+    </div>
+
+    <div class="sw-progress" aria-hidden="true"><div class="sw-progress__bar" id="sw-bar"></div></div>
+    <p class="sw-stepcount" id="sw-stepcount"></p>
+
+    <div class="aic__body" id="sw-body">
+      <!-- Intro -->
+      <div class="sw-screen" id="sw-intro">
+        <div class="sw-wheel-mini" id="sw-wheel-mini" aria-hidden="true"></div>
+        <h3 class="sw-h">Spin the wheel and win up to <span class="sw-accent">$500!</span></h3>
+        <p class="sw-introcopy">Answer 1 question, then provide your birthday, name, email and phone.</p>
+        <button type="button" class="sw-btn sw-btn--go sw-btn--pill" id="sw-start">Get Started</button>
+      </div>
+
+      <!-- Q1: goals (max 3) -->
+      <div class="sw-screen" id="sw-goals" hidden>
+        <div class="sw-nav"><button type="button" class="sw-nav-btn sw-nav-btn--back" id="sw-goals-prev" aria-label="Back" disabled>←</button><button type="button" class="sw-nav-btn sw-nav-btn--next" id="sw-goals-next" aria-label="Next">→</button></div>
+        <h3 class="sw-q">Top 3 goals in the next 12 months?</h3>
+        <p class="sw-hint" id="sw-goals-hint">Pick up to 3</p>
+        <div class="sw-chips" id="sw-goals-chips" data-max="3"></div>
+        <p class="sw-err" id="sw-goals-err"></p>
+      </div>
+
+      <!-- Birthday -->
+      <div class="sw-screen" id="sw-bday" hidden>
+        <div class="sw-nav"><button type="button" class="sw-nav-btn sw-nav-btn--back" id="sw-bday-prev" aria-label="Back">←</button><button type="button" class="sw-nav-btn sw-nav-btn--next" id="sw-bday-next" aria-label="Next">→</button></div>
+        <h3 class="sw-q">Birthday?</h3>
+        <p class="sw-sub">Nobody celebrates alone! :)</p>
+        <input class="sw-input" type="date" id="sw-bday-input" />
+        <p class="sw-err" id="sw-bday-err"></p>
+      </div>
+
+      <!-- Contact -->
+      <div class="sw-screen" id="sw-contact" hidden>
+        <div class="sw-nav"><button type="button" class="sw-nav-btn sw-nav-btn--back" id="sw-contact-prev" aria-label="Back">←</button></div>
+        <input type="text" name="_gotcha" id="sw-gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true" />
+        <label class="sw-label">Full Name <span class="sw-req">*</span></label>
+        <input class="sw-input" type="text" id="sw-name" placeholder="First and last name" autocomplete="name" />
+        <p class="sw-err" data-err="name"></p>
+        <label class="sw-label">Email <span class="sw-req">*</span></label>
+        <input class="sw-input" type="email" id="sw-email" placeholder="you@email.com" autocomplete="email" />
+        <p class="sw-err" data-err="email"></p>
+        <label class="sw-label">Mobile Phone Number <span class="sw-req">*</span></label>
+        <input class="sw-input" type="tel" id="sw-phone" placeholder="(954) 993-1625" autocomplete="tel" />
+        <p class="sw-err" data-err="phone"></p>
+        <label class="sw-consent">
+          <input type="checkbox" id="sw-consent" />
+          <span>By clicking "Spin The Wheel," I agree to Stairway Mortgage's <a href="/terms/">Terms of Use</a> and <a href="/privacy/">Privacy Policy</a>. I also consent to receive calls, text messages, and/or pre-recorded voicemails via automated technology — even if I'm on a Do Not Call list. Consent is not a condition of purchase. I can opt out any time by replying "STOP."</span>
+        </label>
+        <p class="sw-err" data-err="consent"></p>
+        <button type="button" class="sw-btn sw-btn--go sw-btn--pill" id="sw-to-wheel">Spin The Wheel!</button>
+      </div>
+
+      <!-- Wheel -->
+      <div class="sw-screen" id="sw-wheel-screen" hidden>
+        <h3 class="sw-q" id="sw-wheel-title">Let it rip!</h3>
+        <div class="sw-wheel-wrap">
+          <div class="sw-pointer" aria-hidden="true"></div>
+          <div class="sw-wheel" id="sw-wheel"></div>
+        </div>
+        <button type="button" class="sw-btn sw-btn--go sw-btn--pill" id="sw-spin">Spin the wheel</button>
+      </div>
+    </div>
+
+    <!-- Prize popup -->
+    <div class="sw-prize" id="sw-prize" hidden>
+      <button type="button" class="sw-prize__x" id="sw-prize-x" aria-label="Close">✕</button>
+      <div class="sw-prize__card">
+        <p class="sw-prize__seg" id="sw-prize-seg">Tax Analysis</p>
+        <div class="sw-prize__check">✓</div>
+        <p class="sw-prize__congrats">Congratulations!</p>
+      </div>
+      <p class="sw-prize__desc" id="sw-prize-desc">You've won a $500 Tax Strategy Call with a Certified Public Accountant.</p>
+      <button type="button" class="sw-btn sw-btn--go sw-btn--pill" id="sw-claim">Claim Your Prize</button>
+    </div>
+
+    <div class="aic__footer">Stairway Mortgage · A Division of Nexa Mortgage</div>
+  </div>
+</div>
+
+<style>
+  .sw-overlay[hidden] { display: none; }
+  .sw-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(10,14,26,.45); backdrop-filter: blur(4px); display: grid; place-items: center; padding: 1.25rem; animation: sw-fade .25s ease; }
+  @keyframes sw-fade { from { opacity: 0 } to { opacity: 1 } }
+
+  .aic.sw {
+    --ink: #0A0E1A; --blue: #1845D6; --wheel-blue: #1d3a6b; --line: #e6e7ea; --muted: #6b7280; --soft: #f4f5f7;
+    --serif: 'Fraunces',Georgia,serif; --sans: 'IBM Plex Sans',sans-serif; --mono: 'JetBrains Mono',monospace;
+    position: relative; width: 100%; max-width: 540px; max-height: 92vh; overflow: hidden auto;
+    background: #fff; color: var(--ink); border-radius: 18px;
+    box-shadow: 0 32px 80px -24px rgba(10,14,26,.35), 0 0 0 1px #0a0e1a0d;
+    isolation: isolate; font-family: var(--sans); animation: sw-pop .35s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes sw-pop { from { transform: translateY(16px) scale(.97); opacity: 0 } to { transform: none; opacity: 1 } }
+
+  .aic__header { display: flex; align-items: center; gap: .7rem; padding: 1.1rem 1.4rem .9rem; border-bottom: 1px solid var(--line); }
+  .aic__spark { color: var(--blue); font-size: 1.2rem; }
+  .aic__brand { display: flex; flex-direction: column; gap: .15rem; flex: 1; }
+  .aic__title { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; display: flex; align-items: center; gap: .5rem; }
+  .aic__badge { font-family: var(--mono); font-size: .58rem; letter-spacing: .06em; background: var(--ink); color: #fff; padding: .12rem .45rem; border-radius: 5px; }
+  .aic__live { font-family: var(--mono); font-size: .66rem; color: var(--muted); display: flex; align-items: center; gap: .4rem; }
+  .aic__dot { width: 7px; height: 7px; border-radius: 50%; background: #2E9E2E; animation: sw-pulse 2s ease-in-out infinite; }
+  @keyframes sw-pulse { 0%,100% { box-shadow: 0 0 0 0 #2E9E2E66 } 50% { box-shadow: 0 0 0 5px #2E9E2E00 } }
+  .aic__close { background: var(--soft); border: 0; color: #444; width: 30px; height: 30px; border-radius: 999px; cursor: pointer; }
+
+  .sw-progress { height: 6px; background: var(--soft); margin: 1.1rem 1.4rem 0; border-radius: 99px; overflow: hidden; }
+  .sw-progress__bar { height: 100%; width: 0%; background: var(--ink); transition: width .4s cubic-bezier(.4,0,.2,1); }
+  .sw-stepcount { font-family: var(--mono); font-size: .66rem; letter-spacing: .04em; color: var(--muted); margin: .5rem 1.4rem 0; min-height: .8rem; }
+
+  .aic__body { padding: 1.25rem 1.6rem 1.6rem; text-align: center; }
+  .sw-nav { display: flex; justify-content: center; gap: .8rem; margin-bottom: 1.2rem; }
+  .sw-nav-btn { width: 44px; height: 44px; border-radius: 999px; border: 0; cursor: pointer; font-size: 1.1rem; display: grid; place-items: center; color: #fff; }
+  .sw-nav-btn--next { background: var(--ink); }
+  .sw-nav-btn--back { background: var(--ink); }
+  .sw-nav-btn:disabled { background: #c7c7c7; cursor: not-allowed; }
+
+  .sw-h { font-family: var(--serif); font-weight: 500; font-size: 1.7rem; line-height: 1.2; margin: 1rem 0 .8rem; }
+  .sw-accent { color: var(--blue); }
+  .sw-q { font-family: var(--serif); font-weight: 500; font-size: 1.4rem; line-height: 1.3; margin: .25rem 0 .4rem; }
+  .sw-introcopy { font-size: .95rem; line-height: 1.6; color: #4b5563; font-style: italic; margin: 0 0 1.5rem; }
+  .sw-sub { font-size: .9rem; color: var(--muted); font-style: italic; margin: 0 0 1.2rem; }
+  .sw-hint { font-size: .8rem; color: var(--muted); margin: 0 0 1rem; }
+
+  .sw-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+  .sw-chip { cursor: pointer; }
+  .sw-chip input { position: absolute; opacity: 0; }
+  .sw-chip span { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem .9rem; border-radius: 10px; background: #fff; border: 1.5px solid var(--line); font-size: .88rem; transition: all .15s; }
+  .sw-chip span::before { content: ''; width: 16px; height: 16px; border-radius: 4px; border: 2px solid #c4c8d0; flex-shrink: 0; transition: all .15s; }
+  .sw-chip:hover span { border-color: var(--ink); }
+  .sw-chip input:checked + span { border-color: var(--ink); background: var(--soft); }
+  .sw-chip input:checked + span::before { background: var(--ink); border-color: var(--ink); box-shadow: inset 0 0 0 2px #fff; }
+
+  .sw-label { display: block; font-size: .85rem; color: #374151; margin: .9rem 0 .35rem; text-align: left; }
+  .sw-req { color: #d11; }
+  .sw-input { width: 100%; box-sizing: border-box; font-family: var(--sans); font-size: 1rem; padding: .85rem .9rem; border-radius: 10px; background: #fff; border: 1.5px solid var(--line); color: var(--ink); }
+  .sw-input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px #0a0e1a14; }
+  .sw-consent { display: flex; gap: .6rem; align-items: flex-start; font-size: .78rem; line-height: 1.5; color: #4b5563; cursor: pointer; margin: 1rem 0; text-align: left; }
+  .sw-consent input { margin-top: .15rem; accent-color: var(--ink); flex-shrink: 0; }
+  .sw-consent a { color: var(--blue); }
+  .sw-err { color: #d11; font-size: .8rem; margin: .4rem 0 0; min-height: .9rem; text-align: left; }
+
+  .sw-btn { font-family: var(--sans); font-weight: 600; font-size: 1rem; cursor: pointer; border: 1.5px solid transparent; transition: background .18s, transform .1s; }
+  .sw-btn:active { transform: translateY(1px); }
+  .sw-btn--pill { border-radius: 999px; padding: .85rem 2rem; margin: .5rem auto 0; display: inline-block; }
+  .sw-btn--go { background: var(--ink); color: #fff; }
+  .sw-btn--go:hover { background: #1a2030; }
+  .sw-btn--go:disabled { opacity: .5; cursor: not-allowed; }
+
+  /* wheel */
+  .sw-wheel-wrap { position: relative; width: 280px; height: 280px; margin: 1rem auto 1.5rem; }
+  .sw-pointer { position: absolute; top: -6px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 14px solid transparent; border-right: 14px solid transparent; border-top: 26px solid var(--ink); z-index: 3; filter: drop-shadow(0 2px 2px rgba(0,0,0,.3)); }
+  .sw-wheel { width: 280px; height: 280px; border-radius: 50%; transition: transform 5s cubic-bezier(.17,.67,.12,.99); box-shadow: 0 0 0 8px #fff, 0 12px 40px -8px rgba(10,14,26,.4); }
+  .sw-wheel-mini { width: 150px; height: 150px; margin: .5rem auto 0; border-radius: 50%; }
+
+  /* prize popup */
+  .sw-prize[hidden] { display: none; }
+  .sw-prize { position: absolute; inset: 0; z-index: 5; background: rgba(255,255,255,.85); backdrop-filter: blur(3px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; animation: sw-fade .3s ease; }
+  .sw-prize__x { position: absolute; top: 1rem; right: 1rem; background: var(--soft); border: 0; width: 30px; height: 30px; border-radius: 999px; cursor: pointer; color: #444; }
+  .sw-prize__card { background: linear-gradient(135deg,#f0fdf4,#e6f7ee); border-radius: 16px; padding: 1.5rem 2rem; box-shadow: 0 12px 40px -12px rgba(46,158,46,.3); position: relative; overflow: hidden; }
+  .sw-prize__seg { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); margin: 0 0 .75rem; }
+  .sw-prize__check { width: 56px; height: 56px; margin: 0 auto .75rem; border-radius: 50%; background: #2E9E2E; color: #fff; font-size: 1.6rem; display: grid; place-items: center; }
+  .sw-prize__congrats { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); margin: 0; }
+  .sw-prize__desc { font-size: .95rem; color: #374151; margin: 1.25rem 0; max-width: 320px; line-height: 1.5; }
+</style>
+
+<script is:inline>
+  (function () {
+    var overlay = document.getElementById('sw-overlay');
+    if (!overlay) return;
+
+    // 6 wheel segments (matches Outgrow). Rigged to land on "Tax Analysis" ($500 Tax Strategy).
+    var SEGMENTS = [
+      { label: 'Asset Protection', color: '#0A0E1A' },
+      { label: 'Wealth Plan',      color: '#1d3a6b' },
+      { label: 'Mortgage Analysis',color: '#0A0E1A' },
+      { label: 'Tax Analysis',     color: '#1d3a6b' },
+      { label: 'Asset Allocation', color: '#0A0E1A' },
+      { label: '$500',             color: '#1d3a6b' }
+    ];
+    var WIN_INDEX = 3; // Tax Analysis
+    var PRIZE_DESC = "You've won a $500 Tax Strategy Call with a Certified Public Accountant.";
+    var REDIRECT_BASE = 'https://stairwaymortgage.com/thank-you-for-playing/';
+
+    var GOALS = ['Buy a home','Build a house','Sell a house','Buy an investment property','Invest passively with a professional group','Find a tenant','Buy a second home','Refinance or HELOC','Reverse mortgage','Build a real estate wealth plan','Acquire a business','Find a business partner','Complete financial review','Complete a course','Start a business','Get married','Have a baby','Graduate college','Graduate high school','Rent a home','Improve my health','Find a job','Improve my credit','Save more money','Get divorced'];
+
+    var WEBHOOK = 'https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/SPIN_WHEEL_TRIGGER_ID';
+
+    // ---- build wheel SVG ----
+    function buildWheel(el, size) {
+      var n = SEGMENTS.length, r = size/2, cx = r, cy = r;
+      var seg = 360/n;
+      var svg = '<svg viewBox="0 0 '+size+' '+size+'" width="'+size+'" height="'+size+'" xmlns="http://www.w3.org/2000/svg">';
+      for (var i=0;i<n;i++){
+        var a0 = (i*seg - 90) * Math.PI/180, a1 = ((i+1)*seg - 90) * Math.PI/180;
+        var x0 = cx + r*Math.cos(a0), y0 = cy + r*Math.sin(a0);
+        var x1 = cx + r*Math.cos(a1), y1 = cy + r*Math.sin(a1);
+        svg += '<path d="M'+cx+','+cy+' L'+x0+','+y0+' A'+r+','+r+' 0 0 1 '+x1+','+y1+' Z" fill="'+SEGMENTS[i].color+'"/>';
+        // label
+        var am = ((i+0.5)*seg - 90) * Math.PI/180;
+        var lr = r*0.62;
+        var lx = cx + lr*Math.cos(am), ly = cy + lr*Math.sin(am);
+        var deg = (i+0.5)*seg;
+        svg += '<text x="'+lx+'" y="'+ly+'" fill="#fff" font-size="'+(size*0.045)+'" font-family="IBM Plex Sans, sans-serif" text-anchor="middle" dominant-baseline="middle" transform="rotate('+deg+' '+lx+' '+ly+')">'+SEGMENTS[i].label+'</text>';
+      }
+      // hub
+      svg += '<circle cx="'+cx+'" cy="'+cy+'" r="'+(size*0.16)+'" fill="#fff"/>';
+      svg += '<text x="'+cx+'" y="'+cy+'" fill="#0A0E1A" font-size="'+(size*0.13)+'" font-family="Fraunces, serif" text-anchor="middle" dominant-baseline="middle">S</text>';
+      svg += '</svg>';
+      el.innerHTML = svg;
+    }
+
+    // ---- state ----
+    var state = { goals: [], bday: '', name:'', email:'', phone:'', spun:false };
+    var screens = ['sw-intro','sw-goals','sw-bday','sw-contact','sw-wheel-screen'];
+    var stepLabels = ['', 'Step 1 of 4', 'Step 2 of 4', 'Step 3 of 4', 'Spin!'];
+    var cur = 0;
+
+    var els = {
+      bar: document.getElementById('sw-bar'),
+      stepcount: document.getElementById('sw-stepcount'),
+      goalsChips: document.getElementById('sw-goals-chips'),
+      goalsHint: document.getElementById('sw-goals-hint'),
+      wheel: document.getElementById('sw-wheel'),
+      wheelMini: document.getElementById('sw-wheel-mini'),
+      prize: document.getElementById('sw-prize')
+    };
+
+    // open/close
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest('[data-open-spin-wheel]');
+      if (t) { e.preventDefault(); overlay.hidden = false; document.body.style.overflow='hidden'; }
+    });
+    function close(){ overlay.hidden = true; document.body.style.overflow=''; }
+    document.getElementById('sw-close').addEventListener('click', close);
+    overlay.addEventListener('click', function(e){ if(e.target===overlay) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !overlay.hidden) close(); });
+
+    function show(i){
+      cur = i;
+      screens.forEach(function(id,idx){ document.getElementById(id).hidden = idx!==i; });
+      els.bar.style.width = (i/(screens.length-1)*100)+'%';
+      els.stepcount.textContent = stepLabels[i];
+    }
+
+    // build goal chips
+    GOALS.forEach(function(g){
+      var lab = document.createElement('label'); lab.className='sw-chip';
+      var inp = document.createElement('input'); inp.type='checkbox'; inp.value=g;
+      var sp = document.createElement('span'); sp.appendChild(document.createTextNode(g));
+      lab.appendChild(inp); lab.appendChild(sp); els.goalsChips.appendChild(lab);
+    });
+    els.goalsChips.addEventListener('change', function(ev){
+      var checked = els.goalsChips.querySelectorAll('input:checked');
+      if (checked.length > 3 && ev.target.checked) { ev.target.checked = false; }
+    });
+
+    function setErr(id,msg){ var el=document.getElementById(id); if(el) el.textContent=msg; }
+    function setErrData(name,msg){ var el=document.querySelector('[data-err="'+name+'"]'); if(el) el.textContent=msg; }
+    function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+    function isPhone(v){ return v.replace(/\D/g,'').length>=10; }
+
+    // build wheels
+    buildWheel(els.wheel, 280);
+    buildWheel(els.wheelMini, 150);
+
+    // navigation
+    document.getElementById('sw-start').addEventListener('click', function(){ show(1); });
+    document.getElementById('sw-goals-next').addEventListener('click', function(){
+      var checked = Array.prototype.map.call(els.goalsChips.querySelectorAll('input:checked'), function(i){return i.value;});
+      if (!checked.length){ setErr('sw-goals-err','Please pick at least one goal.'); return; }
+      setErr('sw-goals-err',''); state.goals = checked; show(2);
+    });
+    document.getElementById('sw-bday-prev').addEventListener('click', function(){ show(1); });
+    document.getElementById('sw-bday-next').addEventListener('click', function(){
+      var v = document.getElementById('sw-bday-input').value;
+      if (!v){ setErr('sw-bday-err','Please enter your birthday.'); return; }
+      setErr('sw-bday-err',''); state.bday = v; show(3);
+    });
+    document.getElementById('sw-contact-prev').addEventListener('click', function(){ show(2); });
+
+    // contact -> validate -> SUBMIT to GHL -> go to wheel
+    document.getElementById('sw-to-wheel').addEventListener('click', submitThenWheel);
+
+    function submitThenWheel(){
+      var name=document.getElementById('sw-name').value.trim();
+      var email=document.getElementById('sw-email').value.trim();
+      var phone=document.getElementById('sw-phone').value.trim();
+      var consent=document.getElementById('sw-consent').checked;
+      var honeypot=document.getElementById('sw-gotcha').value;
+      var ok=true;
+      if(!name){setErrData('name','Please enter your name.');ok=false;}else setErrData('name','');
+      if(!isEmail(email)){setErrData('email','Please enter a valid email.');ok=false;}else setErrData('email','');
+      if(!isPhone(phone)){setErrData('phone','Please enter a valid phone.');ok=false;}else setErrData('phone','');
+      if(!consent){setErrData('consent','Please agree to continue.');ok=false;}else setErrData('consent','');
+      if(!ok) return;
+      state.name=name; state.email=email; state.phone=phone;
+
+      var sp = name.indexOf(' ');
+      var first = sp===-1?name:name.slice(0,sp);
+      var last = sp===-1?'':name.slice(sp+1);
+      state.first=first; state.last=last;
+
+      var payload = {
+        form_source:'spin-the-wheel', form_name:'Spin the Wheel',
+        first_name:first, last_name:last, email:email, phone:phone,
+        birthday: state.bday, goals: state.goals.join(', '),
+        prize:'$500 Tax Strategy Call', prize_segment:'Tax Analysis',
+        full_name_og:name, first_name_og:first, last_name_og:last,
+        quiz_name_og:'Spin the Wheel', lead_source_og:'Website - Spin the Wheel',
+        page_url: window.location.href, submitted_at: new Date().toISOString()
+      };
+
+      var btn=document.getElementById('sw-to-wheel');
+      // update wheel title with name
+      document.getElementById('sw-wheel-title').textContent = 'Let it rip ' + first + '!';
+
+      if (honeypot && honeypot.trim()!==''){ show(4); return; }
+      btn.disabled=true; btn.textContent='Loading…';
+      fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+        .then(function(){ btn.disabled=false; btn.textContent='Spin The Wheel!'; show(4); })
+        .catch(function(){ btn.disabled=false; btn.textContent='Spin The Wheel!'; show(4); });
+    }
+
+    // spin (rigged to WIN_INDEX)
+    var spinBtn=document.getElementById('sw-spin');
+    spinBtn.addEventListener('click', function(){
+      if (state.spun) return; state.spun=true;
+      spinBtn.disabled=true;
+      var n=SEGMENTS.length, seg=360/n;
+      // pointer is at top (12 o'clock). Segment i center angle = i*seg + seg/2 (measured from top, clockwise).
+      // To bring WIN_INDEX center to top, rotate so that center aligns to 0 (top). Add full spins.
+      var targetCenter = WIN_INDEX*seg + seg/2;
+      var spins = 5;
+      var finalRotation = spins*360 + (360 - targetCenter);
+      els.wheel.style.transform = 'rotate('+finalRotation+'deg)';
+      setTimeout(function(){
+        document.getElementById('sw-prize-seg').textContent = SEGMENTS[WIN_INDEX].label;
+        document.getElementById('sw-prize-desc').textContent = PRIZE_DESC;
+        els.prize.hidden=false;
+      }, 5200);
+    });
+
+    document.getElementById('sw-prize-x').addEventListener('click', function(){ els.prize.hidden=true; });
+    document.getElementById('sw-claim').addEventListener('click', function(){
+      var url = REDIRECT_BASE + '?firstname=' + encodeURIComponent(state.first||'') +
+        '&lastname=' + encodeURIComponent(state.last||'') +
+        '&fullname=' + encodeURIComponent(state.name||'');
+      window.location.href = url;
+    });
+
+    show(0);
+  })();
+</script>
