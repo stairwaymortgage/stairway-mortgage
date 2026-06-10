@@ -1,0 +1,100 @@
+{
+  "form_id": "discovery-quiz",
+  "form_source": "discovery-quiz",
+  "form_name": "Stairway Discovery Quiz",
+  "origin_tool": "Outgrow (being retired)",
+  "page_slug": "/discovery-quiz/",
+  "presentation": "conversational popup (.aic family) — multi-step, linear, progress bar",
+  "submit": { "method": "webhook", "form_source_value": "discovery-quiz" },
+  "otp": { "type": "placeholder", "code": "000000" },
+  "flow": "LINEAR — everyone sees all questions; progress bar 0→100%. No branching.",
+
+  "merge_fields": {
+    "{fullname}": "from contact capture Full Name",
+    "{Q1}": "persona (which best describes you today)",
+    "{Q2}": "concerns most about financial future",
+    "{Q7}": "what is most important to you today",
+    "{Q8}": "planning to buy in 12 months"
+  },
+
+  "personas": [
+    { "key": "smart-steward-parent", "name": "Smart Steward Parent", "tagline": "Laying the Groundwork for Wealth" },
+    { "key": "smart-steward-student", "name": "Smart Steward Student", "tagline": "Laying the Groundwork for Wealth" },
+    { "key": "first-time-buyer", "name": "First-Time Home Buyer", "tagline": "Laying the Groundwork for Wealth" },
+    { "key": "homeowner", "name": "Homeowner", "tagline": "Laying the Groundwork for Wealth" },
+    { "key": "senior-homeowner", "name": "Senior Homeowner (55+)", "tagline": "Protecting What You've Built, Planning What's Next" },
+    { "key": "first-time-investor", "name": "First-Time Investor", "tagline": "Laying the Groundwork for Wealth" },
+    { "key": "active-investor", "name": "Active Investor", "tagline": "Scaling Your Portfolio with Intention" },
+    { "key": "passive-investor", "name": "Passive Investor", "tagline": "Letting Your Money Do the Work" },
+    { "key": "legacy-angel", "name": "Legacy Angel", "tagline": "Designing Wealth That Lasts Beyond You" }
+  ],
+
+  "primary_profile_logic": {
+    "rule": "Primary = direct map from Q1 answer.",
+    "map": {
+      "Legacy Angel": "legacy-angel",
+      "Passive Investor": "passive-investor",
+      "Active Investor": "active-investor",
+      "First-Time Investor": "first-time-investor",
+      "Senior Homeowner (55+)": "senior-homeowner",
+      "Homeowner": "homeowner",
+      "First-Time Buyer": "first-time-buyer",
+      "Parent (college housing)": "smart-steward-parent",
+      "Student (college housing)": "smart-steward-student",
+      "Just exploring": "DERIVE — use highest secondary score as primary when 'just exploring' is picked"
+    }
+  },
+
+  "secondary_profile_logic": {
+    "rule": "Each answer option carries persona tags (weights). Tally across all answered questions. Secondary = highest-scoring persona that is NOT the Primary. 'Just exploring' primary => primary becomes the top score, secondary the next.",
+    "note": "Scoring tags are editorial (built sensibly, not recovered from Outgrow). Listed per-question in scoring_tags."
+  },
+
+  "guided_score_logic": {
+    "section": "Q24-Q35 — 0-3 ratings of how guided each professional made them feel.",
+    "professionals": [
+      {"q": 24, "label": "Buying Realtor", "intro": "Realtor / Wholesaler"},
+      {"q": 25, "label": "Listing Realtor", "intro": "Realtor / Wholesaler"},
+      {"q": 26, "label": "Mortgage Advisor", "intro": "Mortgage Advisor"},
+      {"q": 27, "label": "Insurance Broker", "intro": "Insurance Broker"},
+      {"q": 28, "label": "Investment Advisor", "intro": "Financial Planner"},
+      {"q": 29, "label": "Financial Planner", "intro": "Financial Planner"},
+      {"q": 30, "label": "Accountant", "intro": "Accountant / Underwriter"},
+      {"q": 31, "label": "Estate Attorney", "intro": "Attorney / Title Team"},
+      {"q": 32, "label": "Asset Protection Attorney", "intro": "Attorney / Title Team"},
+      {"q": 33, "label": "Private Placement Attorney", "intro": "Attorney / Title Team"},
+      {"q": 34, "label": "Nonprofit Attorney", "intro": "Attorney / Title Team"},
+      {"q": 35, "label": "Major Life Changes support", "intro": "Financial Planner"}
+    ],
+    "use": "Any professional scored 0 or 1 => surfaced in result as a recommended introduction ('room to grow') with a link to /get-a-local-introduction/. Also: compute a 'guidance_gap_count' and pass all 12 scores + the gap list to GHL.",
+    "threshold": "0 or 1 = gap (show intro). 2-3 = adequate (no intro)."
+  },
+
+  "result_screen": {
+    "intro_line": "You're in the driver's seat {fullname}! Now it's time to take your next step toward {Q7}.",
+    "sub": "Below you'll find your Primary Profile—the stage that best reflects your current goals. You'll also see a Secondary Profile you may want to begin exploring.",
+    "shows": "Primary persona card + Secondary persona card (image, name, tagline, personalized body, verse, 'Get the ___ Guide' CTA).",
+    "guide_cta_url": "https://stairwaymortgage.com/guides/",
+    "gaps_block": "If any guided-score gaps: a 'Strengthen your team' block listing recommended professional introductions -> /get-a-local-introduction/",
+    "final_cta": {
+      "line": "Ready to talk {fullname}? Let's map your next step together so you can {Q2}.",
+      "sub": "Schedule a call with a Stairway Advisor so you can turn goals into a plan.",
+      "url": "https://stairwaymortgage.com/schedule-call/"
+    }
+  },
+
+  "ghl_fields": {
+    "strategy": "Option B default: send all answers with sensible snake_case keys + a full Q&A summary in 'quiz_summary' so nothing is lost even if custom-field keys don't match. Upgrade to exact key mapping when Jim provides field keys. Also send: primary_profile, secondary_profile, guidance_gap_count, guidance_gaps (list).",
+    "core": ["first_name","last_name","email","phone","form_source"]
+  },
+
+  "compliance": { "no_rate_promises": true, "division_line": "Stairway Mortgage is a division of NEXA Mortgage LLC." },
+
+  "open_flags": [
+    "Secondary-profile scoring tags are editorial — confirm in spec summary before build.",
+    "Guided-score gap threshold (0-1) is editorial.",
+    "Typos in original options (dispositoning, wihtout, montly, stratgic) — DECISION: fix silently in rebuild (clean copy).",
+    "'Just exploring' primary derives from top score.",
+    "Joke option 'A slice of pizza...' in Q7 — keep (brand personality) but it carries no persona weight."
+  ]
+}

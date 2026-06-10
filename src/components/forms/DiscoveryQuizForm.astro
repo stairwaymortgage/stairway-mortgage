@@ -1,0 +1,727 @@
+---
+/**
+ * DiscoveryQuizForm.astro — Stairway Discovery Quiz (rebuild of Outgrow quiz).
+ *
+ * Conversational popup (.aic family). Linear, 35 questions + contact capture.
+ * - Primary Profile = Q1. Secondary = scored from answer persona-tags.
+ * - Guided-score section (0-3 per professional): scores of 0-1 surface introductions.
+ * - Personalized dual-persona result with merge fields {fullname}/{Q2}/{Q7}/{Q8}.
+ * - Submits to GHL webhook (form_source: discovery-quiz) with all answers + profiles + gaps.
+ *
+ * is:inline + plain JS (no TS). Enter-key submit guard. OTP placeholder 000000 (none here —
+ * quiz uses plain contact capture, no phone verify in original, so no OTP).
+ *
+ * Trigger: any element with [data-open-discovery-quiz].
+ */
+---
+
+<div class="dq-overlay" id="dq-overlay" hidden>
+  <div class="aic dq" role="dialog" aria-modal="true" aria-label="Stairway Discovery Quiz">
+    <span class="aic__aurora aic__aurora--1" aria-hidden="true"></span>
+    <span class="aic__aurora aic__aurora--2" aria-hidden="true"></span>
+
+    <div class="aic__header">
+      <span class="aic__spark" aria-hidden="true">✦</span>
+      <div class="aic__brand">
+        <span class="aic__title">Stairway Discovery <span class="aic__badge">AI</span></span>
+        <span class="aic__live"><span class="aic__dot"></span>Live · 3–5 minutes</span>
+      </div>
+      <button type="button" class="aic__close" id="dq-close" aria-label="Close">✕</button>
+    </div>
+
+    <div class="dq-progress" aria-hidden="true"><div class="dq-progress__bar" id="dq-bar"></div></div>
+    <p class="dq-stepcount" id="dq-stepcount"></p>
+
+    <div class="aic__body" id="dq-body">
+      <!-- Intro -->
+      <div class="dq-screen" id="dq-intro">
+        <div class="aic__msg aic__msg--bot">Hi 👋 Welcome to the <strong>Stairway Discovery Quiz</strong>.</div>
+        <p class="dq-introcopy">Discover where you are on your financial journey — and what smart step to take next. We'll help you identify opportunities, avoid costly mistakes, and connect you with the right tools, experts, and strategies to grow wealth with confidence.</p>
+        <button type="button" class="dq-btn dq-btn--go" id="dq-start">Get Started →</button>
+      </div>
+
+      <!-- Question host (rendered by JS) -->
+      <div class="dq-screen" id="dq-question" hidden>
+        <div class="aic__msg aic__msg--bot" id="dq-q-title"></div>
+        <p class="dq-q-sub" id="dq-q-sub" hidden></p>
+        <div class="dq-options" id="dq-options"></div>
+        <p class="dq-err" id="dq-q-err"></p>
+        <div class="dq-nav">
+          <button type="button" class="dq-btn dq-btn--ghost" id="dq-prev">← Back</button>
+          <button type="button" class="dq-btn dq-btn--go" id="dq-next">Next →</button>
+        </div>
+      </div>
+
+      <!-- Contact capture -->
+      <div class="dq-screen" id="dq-contact" hidden>
+        <div class="aic__msg aic__msg--bot">Almost there — how can we get in touch?</div>
+        <input type="text" name="_gotcha" id="dq-gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true" />
+        <label class="dq-label">Full name <span class="dq-req">*</span></label>
+        <input class="dq-input" type="text" id="dq-name" placeholder="First and last name" autocomplete="name" />
+        <p class="dq-err" data-err="name"></p>
+        <label class="dq-label">Email <span class="dq-req">*</span></label>
+        <input class="dq-input" type="email" id="dq-email" placeholder="you@email.com" autocomplete="email" />
+        <p class="dq-err" data-err="email"></p>
+        <label class="dq-label">Mobile phone <span class="dq-req">*</span></label>
+        <input class="dq-input" type="tel" id="dq-phone" placeholder="(954) 993-1625" autocomplete="tel" />
+        <p class="dq-err" data-err="phone"></p>
+        <label class="dq-consent">
+          <input type="checkbox" id="dq-consent" />
+          <span>I Consent to Receive SMS Notifications, Alerts &amp; Occasional Marketing Communication from company. Message frequency varies. Message &amp; data rates may apply. Text HELP to (954) 993-1625 for assistance. You can reply STOP to unsubscribe at any time.</span>
+        </label>
+        <p class="dq-err" data-err="consent"></p>
+        <p class="dq-fine">This form collects information voluntarily for the purpose of communication only. Stairway Mortgage is a division of NEXA Mortgage LLC.</p>
+        <div class="dq-nav">
+          <button type="button" class="dq-btn dq-btn--ghost" id="dq-contact-prev">← Back</button>
+          <button type="button" class="dq-btn dq-btn--go" id="dq-submit">See My Results →</button>
+        </div>
+      </div>
+
+      <!-- Result (rendered by JS) -->
+      <div class="dq-screen" id="dq-result" hidden>
+        <div id="dq-result-content"></div>
+      </div>
+    </div>
+
+    <div class="aic__footer">Stairway Mortgage · Guiding your every step</div>
+  </div>
+</div>
+
+<style>
+  .dq-overlay[hidden] { display: none; }
+  .dq-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(10,14,26,.62); backdrop-filter: blur(6px); display: grid; place-items: center; padding: 1.25rem; animation: dq-fade .25s ease; }
+  @keyframes dq-fade { from { opacity: 0 } to { opacity: 1 } }
+
+  .aic.dq {
+    --blue: #1845D6; --blue-deep: #0F2EA0; --violet: #6F46FF; --green: #2E9E2E;
+    --serif: 'Fraunces',Georgia,serif; --sans: 'IBM Plex Sans',sans-serif; --mono: 'JetBrains Mono',monospace;
+    position: relative; width: 100%; max-width: 520px; max-height: 92vh; overflow: hidden auto;
+    background: linear-gradient(180deg,#0e1322,#0a0e1a); color: #FAFAF7;
+    border-radius: 18px; box-shadow: 0 32px 80px -24px rgba(10,14,26,.5), 0 0 0 1px #ffffff0f;
+    isolation: isolate; font-family: var(--sans); animation: dq-pop .35s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes dq-pop { from { transform: translateY(16px) scale(.97); opacity: 0 } to { transform: none; opacity: 1 } }
+
+  .aic__aurora { position: absolute; width: 340px; height: 340px; border-radius: 50%; filter: blur(75px); opacity: .5; z-index: 0; animation: dq-drift 14s ease-in-out infinite; }
+  .aic__aurora--1 { background: #1845D6; top: -130px; right: -90px; }
+  .aic__aurora--2 { background: #6F46FF; bottom: -150px; left: -110px; animation-delay: -7s; }
+  @keyframes dq-drift { 0%,100% { transform: translate(0,0) } 50% { transform: translate(-30px,30px) } }
+
+  .aic__header { position: relative; z-index: 1; display: flex; align-items: center; gap: .7rem; padding: 1.1rem 1.25rem .9rem; }
+  .aic__spark { color: #9DB2FF; font-size: 1.2rem; animation: dq-sparkle 6s linear infinite; }
+  @keyframes dq-sparkle { to { transform: rotate(360deg) } }
+  .aic__brand { display: flex; flex-direction: column; gap: .15rem; flex: 1; }
+  .aic__title { font-family: var(--serif); font-size: 1.02rem; font-weight: 500; display: flex; align-items: center; gap: .5rem; }
+  .aic__badge { font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; background: #1845D6; color: #fff; padding: .12rem .4rem; border-radius: 5px; }
+  .aic__live { font-family: var(--mono); font-size: .66rem; color: #9aa6c4; display: flex; align-items: center; gap: .4rem; }
+  .aic__dot { width: 7px; height: 7px; border-radius: 50%; background: #2E9E2E; animation: dq-pulse 2s ease-in-out infinite; }
+  @keyframes dq-pulse { 0%,100% { box-shadow: 0 0 0 0 #2E9E2E80 } 50% { box-shadow: 0 0 0 5px #2E9E2E00 } }
+  .aic__close { background: #ffffff14; border: 0; color: #c7cee0; width: 28px; height: 28px; border-radius: 8px; cursor: pointer; }
+
+  .dq-progress { position: relative; z-index: 1; height: 3px; background: #ffffff14; margin: 0 1.25rem; border-radius: 99px; overflow: hidden; }
+  .dq-progress__bar { height: 100%; width: 0%; background: linear-gradient(90deg,#1845D6,#6F46FF); transition: width .4s cubic-bezier(.4,0,.2,1); }
+  .dq-stepcount { position: relative; z-index: 1; font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; color: #8a96b4; margin: .55rem 1.25rem 0; text-transform: uppercase; min-height: .8rem; }
+
+  .aic__body { position: relative; z-index: 1; padding: 1rem 1.25rem 1.25rem; }
+  .aic__msg { font-size: 1.02rem; line-height: 1.5; margin-bottom: 1rem; animation: dq-in .4s ease; color: #e6e9f2; }
+  .aic__msg strong { color: #fff; }
+  @keyframes dq-in { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+  .dq-introcopy { font-size: .92rem; line-height: 1.6; color: #b8c0d6; margin: 0 0 1.5rem; }
+  .dq-q-sub { font-size: .85rem; color: #9DB2FF; margin: -.5rem 0 1rem; }
+
+  .dq-options { display: flex; flex-direction: column; gap: .5rem; }
+  .dq-opt { display: flex; cursor: pointer; }
+  .dq-opt input { position: absolute; opacity: 0; }
+  .dq-opt span { flex: 1; padding: .7rem .9rem; border-radius: 10px; background: #ffffff0a; border: 1.5px solid #ffffff14; font-size: .9rem; transition: all .15s; line-height: 1.4; }
+  .dq-opt:hover span { border-color: #1845D6; background: #1845D61a; }
+  .dq-opt input:checked + span { border-color: #6F46FF; background: #6F46FF24; box-shadow: 0 0 0 1px #6F46FF; }
+  /* compact grid for short-option (rating/short) questions */
+  .dq-options--grid { display: flex; flex-direction: row; flex-wrap: wrap; gap: .5rem; }
+  .dq-options--grid .dq-opt span { white-space: nowrap; }
+  .dq-rating { justify-content: center; }
+  .dq-rating .dq-opt span { min-width: 48px; text-align: center; font-family: var(--mono); }
+
+  .dq-label { display: block; font-size: .82rem; color: #b8c0d6; margin: .9rem 0 .35rem; }
+  .dq-req { color: #ff8b8b; }
+  .dq-input { width: 100%; box-sizing: border-box; font-family: var(--sans); font-size: 1rem; padding: .8rem .9rem; border-radius: 10px; background: #ffffff0d; border: 1.5px solid #ffffff1f; color: #fff; }
+  .dq-input::placeholder { color: #76819c; }
+  .dq-input:focus { outline: none; border-color: #6F46FF; box-shadow: 0 0 0 3px #6F46FF33; }
+  .dq-consent { display: flex; gap: .6rem; align-items: flex-start; font-size: .8rem; line-height: 1.5; color: #b8c0d6; cursor: pointer; margin-top: 1rem; }
+  .dq-consent input { margin-top: .15rem; accent-color: #6F46FF; flex-shrink: 0; }
+  .dq-fine { font-family: var(--mono); font-size: .62rem; color: #76819c; margin: 1rem 0 0; line-height: 1.6; }
+  .dq-err { color: #ff8b8b; font-size: .78rem; margin: .4rem 0 0; min-height: .9rem; }
+
+  .dq-nav { display: flex; justify-content: space-between; gap: .75rem; margin-top: 1.4rem; }
+  .dq-btn { font-family: var(--sans); font-weight: 600; font-size: .9rem; padding: .75rem 1.5rem; border-radius: 10px; cursor: pointer; border: 1.5px solid transparent; transition: background .18s, transform .1s; }
+  .dq-btn:active { transform: translateY(1px); }
+  .dq-btn--go { background: #1845D6; color: #fff; margin-left: auto; }
+  .dq-btn--go:hover { background: #0F2EA0; }
+  .dq-btn--go:disabled { opacity: .6; cursor: not-allowed; }
+  .dq-btn--ghost { background: #ffffff10; color: #c7cee0; border-color: #ffffff24; }
+  .aic__footer { position: relative; z-index: 1; font-family: var(--mono); font-size: .62rem; color: #6b7591; text-align: center; padding: .9rem 1.25rem; border-top: 1px solid #ffffff0f; }
+
+  /* Result */
+  .dq-result-intro { text-align: center; margin-bottom: 1.5rem; }
+  .dq-result-intro h3 { font-family: var(--serif); font-weight: 500; font-size: 1.4rem; color: #fff; margin: 0 0 .6rem; line-height: 1.25; }
+  .dq-result-intro p { font-size: .9rem; color: #b8c0d6; line-height: 1.5; margin: 0; }
+  .dq-card { background: #ffffff0a; border: 1.5px solid #ffffff1f; border-radius: 14px; padding: 1.25rem; margin-bottom: 1rem; }
+  .dq-card__tag { font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: #9DB2FF; }
+  .dq-card__tag--secondary { color: #c0a6ff; }
+  .dq-card__name { font-family: var(--serif); font-size: 1.25rem; color: #fff; margin: .25rem 0 .15rem; }
+  .dq-card__line { font-style: italic; color: #9aa6c4; font-size: .85rem; margin: 0 0 .75rem; }
+  .dq-card__body { font-size: .88rem; line-height: 1.55; color: #c7cee0; margin: 0 0 1rem; }
+  .dq-card__cta { display: inline-block; background: #1845D6; color: #fff; text-decoration: none; font-weight: 600; font-size: .85rem; padding: .65rem 1.3rem; border-radius: 9px; }
+  .dq-card__cta:hover { background: #0F2EA0; }
+  .dq-gaps { background: #6F46FF14; border: 1.5px solid #6F46FF40; border-radius: 14px; padding: 1.25rem; margin-bottom: 1rem; }
+  .dq-gaps h4 { font-family: var(--serif); font-size: 1.05rem; color: #fff; margin: 0 0 .5rem; }
+  .dq-gaps p { font-size: .85rem; color: #c7cee0; line-height: 1.5; margin: 0 0 .75rem; }
+  .dq-gaps ul { margin: 0 0 1rem; padding-left: 1.1rem; color: #c7cee0; font-size: .85rem; }
+  .dq-gaps li { margin-bottom: .25rem; }
+  .dq-final { text-align: center; padding: 1rem 0 .25rem; }
+  .dq-final h3 { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; color: #fff; margin: 0 0 .5rem; }
+  .dq-final p { font-size: .88rem; color: #b8c0d6; margin: 0 0 1rem; line-height: 1.5; }
+</style>
+
+<script is:inline>
+  (function () {
+    var overlay = document.getElementById('dq-overlay');
+    if (!overlay) return;
+
+    // ---------- PERSONA DEFINITIONS ----------
+    var PERSONAS = {
+      'smart-steward-parent': { name: 'Smart Steward Parent', line: 'Laying the Groundwork for Wealth',
+        body: "You're not just supporting your kid — you're guiding them toward a future with more freedom, options, and clarity. This step is about using your knowledge, resources, and influence to help your children build strong financial roots." },
+      'smart-steward-student': { name: 'Smart Steward Student', line: 'Laying the Groundwork for Wealth',
+        body: "You're not just thinking about funds or your first job — you're already looking ahead. You're learning how money works, how credit gets built, and how to play the long game when it comes to validating and owning real stuff." },
+      'first-time-buyer': { name: 'First-Time Home Buyer', line: 'Laying the Groundwork for Wealth',
+        body: "You're not just shopping for a home — you're making one of the biggest financial moves of your life. This step is about clarity, preparation, and power: knowing what to expect, and how to avoid the rookie mistakes that cost time and money." },
+      'homeowner': { name: 'Homeowner', line: 'Laying the Groundwork for Wealth',
+        body: "Owning a home is already a powerful move. Now it's time to ask: is your home working for you? This step is about tapping into the opportunity you've already built — reducing debt, growing equity, and making smart equity decisions." },
+      'senior-homeowner': { name: 'Senior Homeowner (55+)', line: "Protecting What You've Built, Planning What's Next",
+        body: "You've spent years building equity and stability. Now it's about using that foundation to create comfort, support your loved ones, and make smart decisions for the next chapter — on your terms." },
+      'first-time-investor': { name: 'First-Time Investor', line: 'Laying the Groundwork for Wealth',
+        body: "You're not just saving money — you're ready to put it to work. This step is all about strategy, clarity, and confidence. You don't need to be rich: you just need to start smart, build with intention, and surround yourself with people who've done it before." },
+      'active-investor': { name: 'Active Investor', line: 'Scaling Your Portfolio with Intention',
+        body: "You're not new to this — you bought, sold, leveraged, or renovated. Maybe you've done it all. But the goal now isn't just more properties: it's smarter growth. This step is about getting better financing, and unlocking equity plays that keep you scaling." },
+      'passive-investor': { name: 'Passive Investor', line: 'Letting Your Money Do the Work',
+        body: "You've worked hard to earn, save, and position yourself. Now it's about smarter movement: finding better deals, protecting cash, and passive income that feels truly passive. This step is about aligning your capital with operators you trust." },
+      'legacy-angel': { name: 'Legacy Angel', line: 'Designing Wealth That Lasts Beyond You',
+        body: "You've built more than assets — you've built options. This step is about something bigger: an impact that lasts. Whether it's writing up your kids, supporting your faith or favorite causes, or creating a legacy that reflects your values — this is your next level." }
+    };
+
+    // ---------- QUESTIONS ----------
+    // type: 'single' (radio), 'rating' (0-3), 'info' (instruction only)
+    // tags: persona weights applied when that option is chosen
+    // P = persona keys shorthand
+    var P = {
+      SSP:'smart-steward-parent', SSS:'smart-steward-student', FTB:'first-time-buyer',
+      HO:'homeowner', SHO:'senior-homeowner', FTI:'first-time-investor',
+      AI:'active-investor', PI:'passive-investor', LA:'legacy-angel'
+    };
+    function t(){ /* build a tag map from args: t(P.AI, P.FTI) */ var o={}; for(var i=0;i<arguments.length;i++){o[arguments[i]]=1;} return o; }
+
+    var QUESTIONS = [
+      { id:'q1_persona', type:'single', required:true, primary:true, title:'Which best describes you today?',
+        opts:[
+          {label:"I'm a Legacy Angel with multiple assets to protect and a vision to impact generations to come.", primary:P.LA},
+          {label:"I'm a Passive Investor still accumulating shares or holdings that generate income and growth without my effort.", primary:P.PI},
+          {label:"I'm an Active Investor who is regularly accumulating properties.", primary:P.AI},
+          {label:"I'm a First-Time Investor exploring real estate investing.", primary:P.FTI},
+          {label:"I'm a Senior Homeowner (55+) researching my home equity senior benefits.", primary:P.SHO},
+          {label:"I'm a Homeowner learning about debt consolidation, home renovation, and other ways to grow my home equity.", primary:P.HO},
+          {label:"I'm a First-Time Buyer deciding between a home or investment.", primary:P.FTB},
+          {label:"I'm a Parent researching college housing / investment for my child.", primary:P.SSP},
+          {label:"I'm a Student researching college housing / investment for myself.", primary:P.SSS},
+          {label:"I'm just exploring and not sure where I fit yet.", primary:null}
+        ]},
+      { id:'q2_concern', type:'single', merge:'Q2', title:'What concerns you most about your financial future?',
+        opts:[
+          {label:"Losing my hard-earned wealth to taxes instead of passing it to family or causes I care about.", tags:t(P.LA)},
+          {label:"Running out of income — even with investments in place.", tags:t(P.PI,P.SHO)},
+          {label:"Making smart decisions whether to keep accumulating single-unit properties — or shift to a smarter, more scalable strategy.", tags:t(P.AI)},
+          {label:"Learning the investment skills I was never taught — and avoiding rookie mistakes.", tags:t(P.FTI)},
+          {label:"Being able to stay in my home comfortably and affordably.", tags:t(P.SHO)},
+          {label:"Building credit and getting financially ready for my first big move.", tags:t(P.FTB)},
+          {label:'Making smarter equity decisions so I can pay off "dumb" debt and begin growing my wealth.', tags:t(P.HO)},
+          {label:"Finding affordable college housing while planning for the future.", tags:t(P.SSP,P.SSS)},
+          {label:"Teaching my child investment skills and setting the family up for a wealthy future.", tags:t(P.SSP)},
+          {label:"None of this concerns me", tags:{}}
+        ]},
+      { id:'q3_college', type:'single', title:'Will you, a child or grandchild be attending college in the future?',
+        opts:[ {label:'No',tags:{}}, {label:'12 months or less',tags:t(P.SSP,P.SSS)}, {label:'1-4 years',tags:t(P.SSP,P.SSS)}, {label:'5 years +',tags:t(P.SSP)} ]},
+      { id:'q4_proptypes', type:'single', title:'What types of properties do you own?',
+        opts:[ {label:'Residential & commercial properties',tags:t(P.AI,P.LA)}, {label:'Multiple houses',tags:t(P.AI)}, {label:'Just my home',tags:t(P.HO)}, {label:'Renting',tags:t(P.FTB,P.FTI)}, {label:'Living with family',tags:t(P.SSS,P.FTB)} ]},
+      { id:'q5_propcount', type:'single', title:'How many properties do you own?',
+        opts:[ {label:'10+',tags:t(P.LA,P.AI)}, {label:'5-10',tags:t(P.AI)}, {label:'2-4',tags:t(P.AI,P.PI)}, {label:'1',tags:t(P.HO)}, {label:'Owned in the past, not today',tags:t(P.FTI)}, {label:'Never owned',tags:t(P.FTB,P.FTI)} ]},
+      { id:'q6_important_year', type:'single', title:"What's most important to you this year?",
+        opts:[
+          {label:'Structuring my legacy to impact people or causes I care about',tags:t(P.LA)},
+          {label:'Earning optimal yield on assets passively with professional managers',tags:t(P.PI)},
+          {label:'Getting in front of as many deals as possible',tags:t(P.AI)},
+          {label:'Being introduced to quality local partners to manage deals',tags:t(P.AI,P.PI)},
+          {label:'Staying in my home during retirement',tags:t(P.SHO)},
+          {label:'Upgrading my home for space and comfort',tags:t(P.HO)},
+          {label:'Supporting my children and family',tags:t(P.SSP)},
+          {label:'Building a retirement income plan that gives me confidence',tags:t(P.SHO,P.PI)},
+          {label:'Paying off debt to reduce monthly expenses and begin building wealth',tags:t(P.HO)},
+          {label:'Solidifying a plan for relocation and deciding to sell or not with confidence',tags:t(P.HO)},
+          {label:'Buying a home to live in and create memories',tags:t(P.FTB)},
+          {label:'Creating a wealth plan that makes me feel secure',tags:t(P.FTI)},
+          {label:'Deciding with confidence whether renting or buying at college is best',tags:t(P.SSP,P.SSS)}
+        ]},
+      { id:'q7_important_today', type:'single', merge:'Q7', title:'What is most important to you today?',
+        opts:[
+          {label:'An inspirational wealth transfer plan with a Godly vision',tags:t(P.LA)},
+          {label:'A trusted team of professionals to provide a monthly statement of all acquisitions, dispositions, and returns.',tags:t(P.PI)},
+          {label:'A system to accumulate multiple vetted properties quickly',tags:t(P.AI)},
+          {label:'Buying my first investment property in the smartest way',tags:t(P.FTI)},
+          {label:'Staying in my home without a mortgage payment',tags:t(P.SHO)},
+          {label:'Reducing my monthly payments so I can save more',tags:t(P.HO)},
+          {label:'A comfortable home to live in',tags:t(P.FTB)},
+          {label:'A strategic college housing investment plan',tags:t(P.SSP,P.SSS)},
+          {label:'A peace of mind knowing that everything is perfectly set up.',tags:t(P.LA,P.SHO)},
+          {label:'A slice of pizza and an ice cold beverage',tags:{}}
+        ]},
+      { id:'q8_buy_timeline', type:'single', merge:'Q8', title:'Planning to buy in 12 months or less?',
+        opts:[
+          {label:'Just living on my dividends and rental income for now (not even buying green bananas)',tags:t(P.PI)},
+          {label:'Always buying - need more vetted deals',tags:t(P.AI)},
+          {label:'Looking for a rental property',tags:t(P.FTI,P.AI)},
+          {label:'Fix N Flip property (buy at a discount, rehab, sell for profit)',tags:t(P.AI)},
+          {label:'I want a second home "401Kabin" to create a wealth of memories.',tags:t(P.HO)},
+          {label:'Looking to "house hack" (live in a house while my roommates pay the mortgage)',tags:t(P.FTI,P.FTB)},
+          {label:'Need a home to live in (not willing to sacrifice comfort for wealth)',tags:t(P.FTB)},
+          {label:"I don't have the means to buy",tags:t(P.SSS)},
+          {label:"I'm not interested in buying",tags:{}}
+        ]},
+      { id:'q9_improvement', type:'single', title:'Which part of owning real estate can use improvement?',
+        opts:[
+          {label:'Need help dispositioning a portfolio',tags:t(P.AI,P.LA)},
+          {label:'Need to swap equity with 1035 exchange to postpone tax',tags:t(P.AI,P.LA)},
+          {label:"Better leverage - my trapped equity is earning 0%!",tags:t(P.HO,P.AI)},
+          {label:'Need to downsize - my home is too big!',tags:t(P.SHO)},
+          {label:'Need to upsize - my home is too small!',tags:t(P.HO)},
+          {label:'Need to renovate - my kitchen is outdated!',tags:t(P.HO)},
+          {label:'Need to reduce or eliminate payment',tags:t(P.SHO,P.HO)},
+          {label:'Relocating - comparing keep vs sell',tags:t(P.HO)},
+          {label:'No needs at this time - just curious',tags:{}}
+        ]},
+      { id:'q10_equity_goals', type:'single', title:'What are your most important home equity goals?',
+        opts:[
+          {label:'Transferring wealth to my heirs the right way',tags:t(P.LA)},
+          {label:'Reducing my tax liability',tags:t(P.LA,P.AI)},
+          {label:'Having enough income to live',tags:t(P.SHO)},
+          {label:'Just trying to stay in my home',tags:t(P.SHO)},
+          {label:'Making my home safer and more accessible',tags:t(P.SHO)},
+          {label:'Transferring my home equity to a new home',tags:t(P.HO)},
+          {label:'Reducing monthly debt payments',tags:t(P.HO)},
+          {label:'Helping family with my equity',tags:t(P.SSP)},
+          {label:'1035 Exchanging equity to a new property',tags:t(P.AI)},
+          {label:"I don't own any real estate",tags:t(P.FTB,P.FTI)}
+        ]},
+      { id:'q11_sell_timeline', type:'single', title:'Planning to sell in next 12 months?',
+        opts:[
+          {label:'Yes, multiple properties',tags:t(P.AI)},
+          {label:'Yes, an investment property',tags:t(P.AI,P.PI)},
+          {label:'Yes, vacation home',tags:t(P.HO)},
+          {label:'Yes, my home',tags:t(P.HO)},
+          {label:'No',tags:{}},
+          {label:'Unsure, would like to discuss',tags:{}}
+        ]},
+      { id:'q12_buy_concern', type:'single', title:'What concerns you most about buying your next property?',
+        opts:[
+          {label:'Not buying anymore',tags:t(P.SHO)},
+          {label:'The time it takes to find one',tags:t(P.AI)},
+          {label:'Capital gains tax',tags:t(P.AI,P.LA)},
+          {label:'Finding a below market property for renovation',tags:t(P.AI)},
+          {label:'Transferring equity',tags:t(P.HO,P.AI)},
+          {label:'Low inventory - finding something I like',tags:t(P.FTB)},
+          {label:"I don't know what I can afford",tags:t(P.FTB)},
+          {label:'Self employed income',tags:t(P.FTI,P.FTB)},
+          {label:'Credit needs improvement',tags:t(P.FTB)},
+          {label:'Need to save down payment',tags:t(P.FTB)},
+          {label:'I think prices are high',tags:t(P.FTB)},
+          {label:'Need someone to explain the process',tags:t(P.FTB,P.FTI)},
+          {label:'Would like a financial partner to back me',tags:t(P.FTI)},
+          {label:'Unsure if now is the right time',tags:{}},
+          {label:'Would like a contractor partner to do the work',tags:t(P.AI,P.FTI)}
+        ]},
+      { id:'q13_involved', type:'single', title:'How involved do you want to be in investing?',
+        opts:[ {label:'Passive only',tags:t(P.PI)}, {label:'Somewhat involved',tags:t(P.PI,P.FTI)}, {label:'Hands-on',tags:t(P.AI)}, {label:'Not ready yet',tags:t(P.FTI,P.FTB)} ]},
+      { id:'q14_capital', type:'single', title:'How much capital do you have liquid and ready to deploy?',
+        opts:[ {label:'$1M+',tags:t(P.LA,P.PI)}, {label:'$500k-$1M',tags:t(P.PI,P.AI)}, {label:'$250k-500k',tags:t(P.PI,P.AI)}, {label:'$100k-250k',tags:t(P.AI)}, {label:'$50k-100k',tags:t(P.AI,P.FTI)}, {label:'$25k-50k',tags:t(P.FTI)}, {label:'$10k-25k',tags:t(P.FTI)}, {label:'<$10k',tags:t(P.FTI,P.FTB)} ]},
+      { id:'q15_contribute', type:'single', title:'How would you contribute to an investment team?',
+        opts:[ {label:"I'm comfortable - no need for a team!",tags:t(P.PI,P.LA)}, {label:'Already have a great team',tags:t(P.AI,P.LA)}, {label:'Invest capital only',tags:t(P.PI)}, {label:'Make cold calls',tags:t(P.AI,P.FTI)}, {label:'Analyze property numbers',tags:t(P.AI)}, {label:'Negotiate the price',tags:t(P.AI)}, {label:'Manage people',tags:t(P.AI)}, {label:'Run social media ads',tags:t(P.FTI)}, {label:'Rehab the property',tags:t(P.AI)}, {label:'Raise capital for acquisitions',tags:t(P.AI)} ]},
+      { id:'q16_challenged', type:'single', title:'Where do you feel challenged as an investor?',
+        opts:[ {label:'No challenges - everything is handled for me!',tags:t(P.PI,P.LA)}, {label:'Trusting my operators',tags:t(P.PI)}, {label:'Finding time to analyze',tags:t(P.AI)}, {label:'Finding cashflowing properties with 25% down',tags:t(P.AI)}, {label:'Building a capable team',tags:t(P.AI)}, {label:'Scaling to the next level',tags:t(P.AI)}, {label:'Understanding the numbers',tags:t(P.FTI)}, {label:'Raising capital',tags:t(P.AI,P.FTI)}, {label:'Managing properties',tags:t(P.AI)}, {label:'Identifying my highest and best use skill',tags:t(P.FTI)}, {label:'Finding a mentor',tags:t(P.FTI)}, {label:'I am not an investor yet',tags:t(P.FTB)} ]},
+      { id:'q17_hesitation', type:'single', title:"What's your biggest hesitation about investing in real estate?",
+        opts:[
+          {label:"I'm already investing!",tags:t(P.AI)},
+          {label:'Not interested',tags:{}},
+          {label:'I want to learn before I act',tags:t(P.FTI)},
+          {label:"I don't know how to start",tags:t(P.FTI)},
+          {label:"I'm afraid of losing money",tags:t(P.FTI)},
+          {label:'I have little cash',tags:t(P.FTI,P.FTB)},
+          {label:'I have cash but low self employed income',tags:t(P.FTI)},
+          {label:'I need help finding the right deal',tags:t(P.AI,P.FTI)},
+          {label:'I want someone to guide me',tags:t(P.FTI)},
+          {label:'I have cash but poor credit',tags:t(P.FTI,P.FTB)}
+        ]},
+      { id:'q18_passive_years', type:'single', title:'In how many years would you like to have enough passive income to live on?', sub:"Realistically, let's set a goal!",
+        opts:[ {label:'I have enough now',tags:t(P.LA,P.PI)}, {label:'5 years or less',tags:t(P.PI,P.AI)}, {label:'5-10 years',tags:t(P.AI)}, {label:'10-15 years',tags:t(P.FTI)}, {label:'15-20 years',tags:t(P.FTI)}, {label:'20+ years',tags:t(P.FTI,P.FTB)} ]},
+      { id:'q19_income_need', type:'single', title:'How much income do you need annually to live comfortably?', sub:'Just a ballpark!',
+        opts:[ {label:'I have plenty now! Thanks.',tags:t(P.LA)}, {label:'1m+',tags:t(P.LA)}, {label:'500k',tags:t(P.PI)}, {label:'250k',tags:t(P.PI)}, {label:'100k',tags:t(P.PI,P.AI)}, {label:'50k',tags:t(P.FTI)}, {label:'25k',tags:t(P.FTI)}, {label:'Less than 25k',tags:t(P.FTB,P.SSS)} ]},
+      { id:'q20_income_now', type:'single', title:'How much income annually are your assets generating now?', sub:'Just a ballpark!',
+        opts:[ {label:'Assets are generating plenty now! Thanks.',tags:t(P.LA,P.PI)}, {label:'1m+',tags:t(P.LA)}, {label:'500k',tags:t(P.PI)}, {label:'250k',tags:t(P.PI)}, {label:'100k',tags:t(P.AI)}, {label:'50k',tags:t(P.AI)}, {label:'25k',tags:t(P.FTI)}, {label:'Less than 25k',tags:t(P.FTI,P.FTB)} ]},
+      { id:'q21_age', type:'single', title:"What's your age range?",
+        opts:[ {label:'Over 70',tags:t(P.SHO,P.LA)}, {label:'54-70',tags:t(P.SHO)}, {label:'37-53',tags:t(P.HO,P.AI)}, {label:'26-36',tags:t(P.FTB,P.FTI)}, {label:'Under 25',tags:t(P.SSS,P.FTB)} ]},
+      { id:'q22_management', type:'single', title:'Are you considering property management or looking for tenants?',
+        opts:[ {label:'I am happy with my asset manager',tags:t(P.PI,P.LA)}, {label:'I manage rentals myself',tags:t(P.AI)}, {label:'Looking for a tenant',tags:t(P.AI)}, {label:'I would like to explore property managers',tags:t(P.PI)}, {label:'Not a landlord yet',tags:t(P.FTI,P.FTB)} ]},
+      { id:'q23_passive_attr', type:'single', title:'What is the #1 attribute you look for in a passive investment?',
+        opts:[ {label:'Liquidity - 24 hour access to capital upon request',tags:t(P.PI)}, {label:'Consistent cash flow',tags:t(P.PI)}, {label:'Double digit long-term returns',tags:t(P.PI,P.AI)}, {label:'Experienced operators',tags:t(P.PI)}, {label:'Access to vetted deals',tags:t(P.PI,P.AI)}, {label:'Low risk and hassle',tags:t(P.PI,P.SHO)}, {label:'Not at this level yet',tags:t(P.FTI)} ]},
+      { id:'q24_children_wealth', type:'single', title:'Want to help your children or grandchildren build wealth?',
+        opts:[ {label:'Already have living trusts and LLCs in place.',tags:t(P.LA)}, {label:'Yes, I want to learn more about strategic structures',tags:t(P.LA,P.SSP)}, {label:"No, I don't have the means.",tags:{}} ]},
+      { id:'q25_charitable', type:'single', title:'Want to leave a charitable footprint on humanity in honor of your life?',
+        opts:[ {label:'Everything is in place — my assets are correctly titled and protected to ensure a seamless transfer process.',tags:t(P.LA)}, {label:'Yes, and I have the financial means',tags:t(P.LA)}, {label:"No, I don't have the financial means",tags:{}} ]},
+      { id:'q26_legacy_focus', type:'single', title:'What legacy are you most focused on building?',
+        opts:[
+          {label:'My legacy is well structured and I review it annually with my advisors.',tags:t(P.LA)},
+          {label:'A foundation or charitable impact',tags:t(P.LA)},
+          {label:'A will or trust to protect assets',tags:t(P.LA,P.SHO)},
+          {label:'Financial security for my family',tags:t(P.SSP,P.HO)},
+          {label:'Properties that pay future income',tags:t(P.AI,P.PI)},
+          {label:'Teaching my values to the next gen',tags:t(P.SSP)},
+          {label:'Financial security for myself',tags:t(P.FTI,P.FTB)},
+          {label:'Not thinking that far ahead',tags:{}}
+        ]},
+      // ---- Guided Score section ----
+      { id:'q23_info', type:'info', title:"On the next page, choose 0-3 to show how guided you've felt in your experiences.",
+        info:"0 = no experience · 1 = poor · 2 = average · 3 = great. Your answers help us uncover opportunities and connect you with trusted professionals — when and where it matters most." },
+      { id:'gs_buying_realtor', type:'rating', gap:'Buying Realtor', intro:'Realtor / Wholesaler', heading:'Buying Real Estate', title:'How guided did the last Buying Realtor make you feel through the search, negotiations, and contract process?' },
+      { id:'gs_listing_realtor', type:'rating', gap:'Listing Realtor', intro:'Realtor / Wholesaler', heading:'Listing Real Estate', title:'How guided did the last Listing Realtor make you feel through the staging, pricing, and marketing process?' },
+      { id:'gs_mortgage', type:'rating', gap:'Mortgage Advisor', intro:'Mortgage Advisor', heading:'Home Equity Growth', title:'How guided did your Mortgage Advisor make you feel through the qualification and strategy evaluation process?' },
+      { id:'gs_insurance', type:'rating', gap:'Insurance Broker', intro:'Insurance Broker', heading:'Risk & Insurance Coverage', title:'How guided did your Insurance Broker make you feel through the risk analysis and coverage evaluation process?' },
+      { id:'gs_investment', type:'rating', gap:'Investment Advisor', intro:'Financial Planner', heading:'Investment Growth Plan', title:'How guided did your Investment Advisor make you feel through the risk analysis and asset allocation process?' },
+      { id:'gs_financial_planner', type:'rating', gap:'Financial Planner', intro:'Financial Planner', heading:'Retirement Income Planning', title:'How guided did your Financial Planner make you feel through the asset, income, expense planning process?' },
+      { id:'gs_accountant', type:'rating', gap:'Accountant', intro:'Accountant / Underwriter', heading:'Tax Strategy', title:'How guided did your Accountant make you feel through the strategic deduction and charitable donation process?' },
+      { id:'gs_estate_attorney', type:'rating', gap:'Estate Attorney', intro:'Attorney / Title Team', heading:'Estate Planning & Wealth Transfer', title:'How guided did your Attorney make you feel through the strategic wealth and estate planning process?' },
+      { id:'gs_asset_attorney', type:'rating', gap:'Asset Protection Attorney', intro:'Attorney / Title Team', heading:'Asset Protection & Legal Planning', title:'How guided did your Attorney make you feel through the strategic advisory and legal structuring process?' },
+      { id:'gs_ppm_attorney', type:'rating', gap:'Private Placement Attorney', intro:'Attorney / Title Team', heading:'Private Capital Raising (506b & 506c)', title:'How guided did your Private Placement Attorney make you feel through the private capital structuring process?' },
+      { id:'gs_nonprofit_attorney', type:'rating', gap:'Nonprofit Attorney', intro:'Attorney / Title Team', heading:'Nonprofit Formation (501c3 & 501c4)', title:'How guided did your Nonprofit Attorney make you feel through the strategic non-profit planning process?' },
+      { id:'gs_life_changes', type:'rating', gap:'Life-Change Support', intro:'Financial Planner', heading:'Support During Major Life Changes', title:'How supported would you feel today if you faced a divorce, death, job change, inheritance, or health issue today?' }
+    ];
+
+    // ---------- STATE ----------
+    var answers = {};      // qid -> {label, value, tags, primary}
+    var scores = {};       // persona -> count
+    var idx = -1;          // -1 = intro; 0..N-1 questions; then contact; then result
+    var phase = 'intro';   // intro | quiz | contact | result
+
+    var els = {
+      bar: document.getElementById('dq-bar'),
+      stepcount: document.getElementById('dq-stepcount'),
+      intro: document.getElementById('dq-intro'),
+      question: document.getElementById('dq-question'),
+      contact: document.getElementById('dq-contact'),
+      result: document.getElementById('dq-result'),
+      qTitle: document.getElementById('dq-q-title'),
+      qSub: document.getElementById('dq-q-sub'),
+      options: document.getElementById('dq-options'),
+      qErr: document.getElementById('dq-q-err'),
+      prev: document.getElementById('dq-prev'),
+      next: document.getElementById('dq-next'),
+      resultContent: document.getElementById('dq-result-content')
+    };
+
+    // ---------- OPEN / CLOSE ----------
+    document.addEventListener('click', function (e) {
+      var tr = e.target.closest('[data-open-discovery-quiz]');
+      if (tr) { e.preventDefault(); overlay.hidden = false; document.body.style.overflow = 'hidden'; }
+    });
+    function close() { overlay.hidden = true; document.body.style.overflow = ''; }
+    document.getElementById('dq-close').addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) close(); });
+
+    // ---------- NAV HELPERS ----------
+    function totalSteps() { return QUESTIONS.length + 1; } // +1 contact
+    function showScreen(name) {
+      els.intro.hidden = name !== 'intro';
+      els.question.hidden = name !== 'quiz';
+      els.contact.hidden = name !== 'contact';
+      els.result.hidden = name !== 'result';
+    }
+    function setProgress(stepNum, totalNum, label) {
+      els.bar.style.width = (stepNum / totalNum * 100) + '%';
+      els.stepcount.textContent = label || ('Step ' + stepNum + ' of ' + totalNum);
+    }
+
+    document.getElementById('dq-start').addEventListener('click', function () {
+      phase = 'quiz'; idx = 0; renderQuestion();
+    });
+
+    // ---------- RENDER QUESTION ----------
+    function renderQuestion() {
+      showScreen('quiz');
+      var q = QUESTIONS[idx];
+      els.qErr.textContent = '';
+      els.qTitle.innerHTML = q.heading ? ('<strong>' + q.heading + '</strong><br>' + q.title) : q.title;
+      if (q.sub) { els.qSub.hidden = false; els.qSub.textContent = q.sub; } else { els.qSub.hidden = true; }
+      setProgress(idx + 1, totalSteps(), 'Step ' + (idx + 1) + ' of ' + totalSteps());
+
+      els.options.innerHTML = '';
+      els.prev.style.visibility = idx === 0 ? 'hidden' : 'visible';
+
+      if (q.type === 'info') {
+        els.options.className = 'dq-options';
+        var info = document.createElement('p');
+        info.className = 'dq-introcopy';
+        info.textContent = q.info;
+        els.options.appendChild(info);
+        els.next.textContent = 'Continue →';
+        return;
+      }
+
+      els.next.textContent = (idx === QUESTIONS.length - 1) ? 'Continue →' : 'Next →';
+      var isRating = q.type === 'rating';
+      els.options.className = isRating ? 'dq-options dq-options--grid dq-rating' : 'dq-options';
+
+      var opts = isRating
+        ? [{label:'0',value:0},{label:'1',value:1},{label:'2',value:2},{label:'3',value:3}]
+        : q.opts.map(function(o,i){ return {label:o.label, value:i}; });
+
+      opts.forEach(function (o) {
+        var lab = document.createElement('label');
+        lab.className = 'dq-opt';
+        var inp = document.createElement('input');
+        inp.type = 'radio'; inp.name = q.id; inp.value = o.value;
+        var saved = answers[q.id];
+        if (saved && String(saved.value) === String(o.value)) inp.checked = true;
+        var sp = document.createElement('span'); sp.textContent = o.label;
+        lab.appendChild(inp); lab.appendChild(sp);
+        els.options.appendChild(lab);
+      });
+    }
+
+    function recordAnswer() {
+      var q = QUESTIONS[idx];
+      if (q.type === 'info') return true;
+      var sel = els.options.querySelector('input[name="' + q.id + '"]:checked');
+      if (!sel) {
+        if (q.required) { els.qErr.textContent = 'Please choose an option.'; return false; }
+        // optional & unanswered: clear any prior and allow
+        delete answers[q.id]; return true;
+      }
+      var val = sel.value;
+      if (q.type === 'rating') {
+        answers[q.id] = { label: q.gap, value: parseInt(val,10), rating: true };
+      } else {
+        var opt = q.opts[parseInt(val,10)];
+        answers[q.id] = { label: opt.label, value: parseInt(val,10), tags: opt.tags || {}, primary: opt.primary || null };
+      }
+      return true;
+    }
+
+    els.next.addEventListener('click', function () {
+      if (!recordAnswer()) return;
+      if (idx < QUESTIONS.length - 1) { idx++; renderQuestion(); }
+      else { phase = 'contact'; showContact(); }
+    });
+    els.prev.addEventListener('click', function () {
+      if (idx > 0) { idx--; renderQuestion(); }
+    });
+
+    // ---------- CONTACT ----------
+    function showContact() {
+      showScreen('contact');
+      setProgress(totalSteps(), totalSteps(), 'Final step · almost done');
+    }
+    document.getElementById('dq-contact-prev').addEventListener('click', function () {
+      phase = 'quiz'; idx = QUESTIONS.length - 1; renderQuestion();
+    });
+
+    function setErr(name, msg) { var el = els.contact.querySelector('[data-err="' + name + '"]'); if (el) el.textContent = msg; }
+    function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+    function isPhone(v){ return v.replace(/\D/g,'').length >= 10; }
+
+    document.getElementById('dq-submit').addEventListener('click', submitQuiz);
+
+    function submitQuiz() {
+      var name = document.getElementById('dq-name').value.trim();
+      var email = document.getElementById('dq-email').value.trim();
+      var phone = document.getElementById('dq-phone').value.trim();
+      var consent = document.getElementById('dq-consent').checked;
+      var honeypot = document.getElementById('dq-gotcha').value;
+      var ok = true;
+      if (!name) { setErr('name','Please enter your name.'); ok=false; } else setErr('name','');
+      if (!isEmail(email)) { setErr('email','Please enter a valid email.'); ok=false; } else setErr('email','');
+      if (!isPhone(phone)) { setErr('phone','Please enter a valid phone.'); ok=false; } else setErr('phone','');
+      if (!consent) { setErr('consent','Please check the box to continue.'); ok=false; } else setErr('consent','');
+      if (!ok) return;
+
+      var result = computeResult();
+      var payload = buildPayload(name, email, phone, result);
+
+      if (honeypot && honeypot.trim() !== '') { renderResult(result, name); return; }
+
+      var btn = document.getElementById('dq-submit');
+      btn.disabled = true; btn.textContent = 'Calculating…';
+      fetch('https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/fd7a3b30-ddf9-4415-b751-bfa88beda702', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)
+      }).then(function(){ renderResult(result, name); })
+        .catch(function(){ renderResult(result, name); }); // show result regardless; lead retry handled server-side
+    }
+
+    // ---------- SCORING ----------
+    function computeResult() {
+      // tally persona scores from tagged answers
+      var tally = {};
+      Object.keys(PERSONAS).forEach(function(k){ tally[k]=0; });
+      var primary = null;
+      Object.keys(answers).forEach(function(qid){
+        var a = answers[qid];
+        if (a.primary) primary = a.primary;
+        if (a.tags) Object.keys(a.tags).forEach(function(p){ tally[p] += a.tags[p]; });
+      });
+      // primary: if Q1 gave a primary use it; else (just exploring) top tally
+      var ranked = Object.keys(tally).sort(function(a,b){ return tally[b]-tally[a]; });
+      if (!primary) primary = ranked[0];
+      // secondary = top persona that's not primary
+      var secondary = null;
+      for (var i=0;i<ranked.length;i++){ if (ranked[i] !== primary) { secondary = ranked[i]; break; } }
+      // guided gaps: rating answers scored 0 or 1
+      var gaps = [];
+      QUESTIONS.forEach(function(q){
+        if (q.type === 'rating') {
+          var a = answers[q.id];
+          if (a && a.value <= 1) gaps.push({ label: q.gap, intro: q.intro });
+        }
+      });
+      // de-dup intros
+      var seenIntro = {}; var introList = [];
+      gaps.forEach(function(g){ if(!seenIntro[g.intro]){ seenIntro[g.intro]=1; introList.push(g.intro); } });
+      return { primary: primary, secondary: secondary, tally: tally, gaps: gaps, introList: introList };
+    }
+
+    // ---------- GHL FIELD KEY MAP (my question id -> GHL custom field key) ----------
+    var GHL_KEYS = {
+      q1_persona:'q1_which_best_describes_you_today',
+      q2_concern:'q2_what_concerns_you_most_about_your_financial_future',
+      q3_college:'q3_will_you_a_child_or_grandchild_be_attending_college_in_the_future',
+      q4_proptypes:'q4_what_types_of_properties_do_you_own',
+      q5_propcount:'q5_how_many_properties_do_you_own',
+      q6_important_year:'q6_whats_most_important_to_you_this_year',
+      q7_important_today:'q7_what_is_most_important_to_you_today',
+      q8_buy_timeline:'q8_planning_to_buy_in_12_months_or_less',
+      q9_improvement:'q9_which_part_of_owning_real_estate_can_use_improvement',
+      q10_equity_goals:'q10_what_are_your_most_important_home_equity_goals',
+      q11_sell_timeline:'q11_planning_to_sell_in_next_12_months',
+      q12_buy_concern:'q12_what_concerns_you_most_about_buying_your_next_property',
+      q13_involved:'q13_how_involved_do_you_want_to_be_in_investing',
+      q14_capital:'q14_how_much_capital_do_you_have_liquid_and_ready_to_deploy',
+      q15_contribute:'q15_how_would_you_contribute_to_an_investment_team',
+      q16_challenged:'q16_where_do_you_feel_challenged_as_an_investor',
+      q17_hesitation:'q17_whats_your_biggest_hesitation_about_investing_in_real_estate',
+      q18_passive_years:'q18_in_how_many_years_would_you_like_to_have_enough_passive_income_to_live_on',
+      q19_income_need:'q19_how_much_income_do_you_need_annually_to_live_comfortably',
+      q20_income_now:'q20_how_much_income_annually_are_your_assets_generating_now',
+      q21_age:'q21_whats_your_age_range',
+      q22_management:'q22_are_you_considering_property_management_or_looking_for_tenant',
+      q23_passive_attr:'q23_what_is_the_1_attribute_you_look_for_in_a_passive_investment',
+      q24_children_wealth:'q24_want_to_help_your_children_or_grandchildren_build_wealth',
+      q25_charitable:'q25_want_to_leave_a_charitable_footprint_on_humanity_in_honor_of_your_life',
+      q26_legacy_focus:'q26_what_legacy_are_you_most_focused_on_building',
+      gs_buying_realtor:'q27_buying_real_estate_how_guided_did_the_last_buying_realtor',
+      gs_listing_realtor:'q28_listing_real_estate_how_guided_did_the_last_listing_realtor',
+      gs_mortgage:'q29_home_equity_growth_how_guided_did_your_mortgage_advisor',
+      gs_insurance:'q30_risk_insurance_coverage_how_guided_did_your_insurance_broker',
+      gs_investment:'q31_investment_growth_plan_how_guided_did_your_investment_advisor',
+      gs_financial_planner:'q32_retirement_income_planning_how_guided_did_your_financial_planner',
+      gs_accountant:'q33_tax_strategy_how_guided_did_your_accountant',
+      gs_asset_attorney:'q34_asset_protection_legal_planning_how_guided_did_your_attorney',
+      gs_estate_attorney:'q35_estate_planning_wealth_transfer_how_guided_did_your_attorney',
+      gs_ppm_attorney:'q36_private_capital_raising_506b_506c_how_guided_did_your_private_placement_attorney',
+      gs_nonprofit_attorney:'q37_nonprofit_formation_501c3_501c4_how_guided_did_your_nonprofit_attorney',
+      gs_life_changes:'q38_support_during_major_life_changes_how_supported_would_you_feel'
+    };
+
+    // ---------- PAYLOAD ----------
+    function buildPayload(name, email, phone, result) {
+      var sp = name.indexOf(' ');
+      var first = sp === -1 ? name : name.slice(0,sp);
+      var last = sp === -1 ? '' : name.slice(sp+1);
+      var data = {
+        form_source: 'discovery-quiz', form_name: 'Stairway Discovery Quiz',
+        first_name: first, last_name: last, email: email, phone: phone,
+        // GHL "OG" mirror fields
+        full_name_og: name, first_name_og: first, last_name_og: last,
+        quiz_name_og: 'Stairway Discovery Quiz', lead_source_og: 'Website - Discovery Quiz',
+        created_at_og: new Date().toISOString(),
+        // Primary persona -> Discovery Outcome field
+        discovery_outcome: PERSONAS[result.primary] ? PERSONAS[result.primary].name : result.primary,
+        primary_profile: PERSONAS[result.primary] ? PERSONAS[result.primary].name : result.primary,
+        secondary_profile: PERSONAS[result.secondary] ? PERSONAS[result.secondary].name : result.secondary,
+        guidance_gap_count: result.gaps.length,
+        guidance_gaps: result.gaps.map(function(g){ return g.label; }).join(', '),
+        recommended_intros: result.introList.join(', '),
+        page_url: window.location.href, submitted_at: new Date().toISOString()
+      };
+      // each answer -> its exact GHL custom field key (fallback to q_<id> if unmapped)
+      var summary = [];
+      QUESTIONS.forEach(function(q){
+        var a = answers[q.id];
+        if (!a) return;
+        var val = a.rating ? String(a.value) : a.label;
+        var key = GHL_KEYS[q.id] || ('q_' + q.id);
+        data[key] = val;
+        summary.push(q.title.replace(/<[^>]*>/g,'') + ': ' + val);
+      });
+      data.quiz_summary = summary.join('\n');
+      return data;
+    }
+
+    // ---------- RENDER RESULT ----------
+    function mergeText(str, name) {
+      var q2 = answers['q2_concern'] ? answers['q2_concern'].label : 'your goals';
+      var q7 = answers['q7_important_today'] ? answers['q7_important_today'].label : 'what matters most';
+      var q8 = answers['q8_buy_timeline'] ? answers['q8_buy_timeline'].label : '';
+      return str.replace(/\{fullname\}/g, name.split(' ')[0])
+                .replace(/\{Q2\}/g, q2).replace(/\{Q7\}/g, q7).replace(/\{Q8\}/g, q8);
+    }
+    function card(personaKey, isPrimary, name) {
+      var p = PERSONAS[personaKey]; if (!p) return '';
+      return '<div class="dq-card">' +
+        '<span class="dq-card__tag ' + (isPrimary?'':'dq-card__tag--secondary') + '">' + (isPrimary?'Your Primary Profile':'Secondary Profile to Explore') + '</span>' +
+        '<div class="dq-card__name">' + p.name + '</div>' +
+        '<div class="dq-card__line">' + p.line + '</div>' +
+        '<p class="dq-card__body">' + p.body + '</p>' +
+        '<a class="dq-card__cta" href="https://stairwaymortgage.com/guides/">Get the ' + p.name + ' Guide →</a>' +
+        '</div>';
+    }
+    function renderResult(result, name) {
+      showScreen('result');
+      setProgress(totalSteps(), totalSteps(), 'Your results');
+      var first = name.split(' ')[0];
+      var html = '';
+      html += '<div class="dq-result-intro"><h3>' + mergeText("You're in the driver's seat {fullname}! Now it's time to take your next step toward {Q7}.", name) + '</h3>' +
+              "<p>Below you'll find your Primary Profile — the stage that best reflects your current goals — plus a Secondary Profile you may want to begin exploring.</p></div>";
+      html += card(result.primary, true, name);
+      if (result.secondary && result.secondary !== result.primary) html += card(result.secondary, false, name);
+      if (result.introList.length) {
+        html += '<div class="dq-gaps"><h4>Strengthen your team</h4>' +
+          '<p>Based on your answers, these are the relationships where a trusted introduction could help most:</p><ul>' +
+          result.introList.map(function(i){ return '<li>' + i + '</li>'; }).join('') + '</ul>' +
+          '<a class="dq-card__cta" href="https://stairwaymortgage.com/get-a-local-introduction/">Get a Local Introduction →</a></div>';
+      }
+      html += '<div class="dq-final"><h3>' + mergeText('Ready to talk {fullname}?', name) + '</h3>' +
+              '<p>' + mergeText("Let's map your next step together so you can {Q2}. Schedule a call with a Stairway Advisor and turn your goals into a plan.", name) + '</p>' +
+              '<a class="dq-card__cta" href="https://stairwaymortgage.com/schedule-call/">Schedule a Call →</a></div>';
+      els.resultContent.innerHTML = html;
+      els.body = document.getElementById('dq-body'); if (els.body) els.body.scrollTop = 0;
+    }
+
+    // init
+    showScreen('intro');
+    setProgress(0, totalSteps(), 'Stairway Discovery Quiz · 3–5 min');
+  })();
+</script>
