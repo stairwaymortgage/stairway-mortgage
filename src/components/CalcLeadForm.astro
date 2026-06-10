@@ -279,8 +279,8 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       var inputs = scrapeInputs();
       var results = scrapeResults();
       var notes = 'Calculator: ' + title +
-                  '\n\nINPUTS\n' + inputs.join(' | ') +
-                  '\n\nRESULTS\n' + results.join(' | ');
+                  '\n\nINPUTS\n' + inputs.join('\n') +
+                  '\n\nRESULTS\n' + results.join('\n');
       captured = { slug: slug, notes: notes, title: title };
     }
 
