@@ -16,6 +16,13 @@
 export const GHL_WEBHOOK_URL =
   "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/fd7a3b30-ddf9-4415-b751-bfa88beda702";
 
+/**
+ * Dedicated webhook for /the-drawing ONLY — routes to its own GHL workflow,
+ * separate from the shared GHL_WEBHOOK_URL above. Do NOT use for other forms.
+ */
+export const GHL_WEBHOOK_THE_DRAWING =
+  "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/63810884-486d-4190-a2cd-af9c63ef8e63";
+
 /** Standard fields every form sends, plus arbitrary form-specific fields. */
 export interface LeadPayload {
   /** Which form this came from, e.g. "same-day-approval". REQUIRED — drives GHL routing. */

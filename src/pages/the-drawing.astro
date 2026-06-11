@@ -21,7 +21,7 @@
  * mapped to the site's --font-display / --font-body.
  */
 import Layout from '../layouts/Layout.astro';
-import { GHL_WEBHOOK_URL } from '../lib/ghl';
+import { GHL_WEBHOOK_THE_DRAWING } from '../lib/ghl';
 
 const goalOptions = [
   'Buy a home', 'Build a house', 'Sell a house',
@@ -54,7 +54,7 @@ const cards = [
   title="The Drawing — Stairway Mortgage"
   description="A small ritual. One card. One outcome. Drawn fresh each month for new patrons of the House."
 >
-  <section id="drawing-root" data-step="0" data-ghl-endpoint={GHL_WEBHOOK_URL}>
+  <section id="drawing-root" data-step="0" data-ghl-endpoint={GHL_WEBHOOK_THE_DRAWING}>
     <div class="dw-grain" aria-hidden="true"></div>
     <div class="dw-inner">
       <div class="dw-brand">Stairway Mortgage</div>
