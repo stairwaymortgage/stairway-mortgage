@@ -34,8 +34,8 @@
       <button type="button" class="rm-nav-btn rm-next" id="rm-next">Next &rarr;</button>
     </div>
 
-    <input type="text" id="rm-hp" name="company_website" tabindex="-1" autocomplete="off"
-           class="rm-hp" aria-hidden="true" />
+    <input type="text" id="rm-hp" name="rm_hp_field" tabindex="-1" autocomplete="new-password"
+           class="rm-hp" aria-hidden="true" data-lpignore="true" data-1p-ignore data-form-type="other" />
 
     <div class="rm-stage" id="rm-stage"></div>
   </div>
@@ -235,6 +235,12 @@
     var nav      = document.getElementById("rm-nav");
     var progWrap = document.getElementById("rm-progress-wrap");
     var hp       = document.getElementById("rm-hp");
+    // Honeypot guard: real users who tab into it get flagged; browser autofill does not focus it.
+    if(hp){
+      hp.addEventListener("focus", function(){ hp.setAttribute("data-touched","1"); });
+      // Strip any browser-autofilled value shortly after load so it can't false-trip the check.
+      setTimeout(function(){ if(hp.getAttribute("data-touched")!=="1"){ hp.value=""; } }, 1200);
+    }
 
     function fmtVal(s, v){ if(s.fmt==="k"){ return v>=1000 ? Math.round(v/1000)+"K" : String(v); } return String(v); }
     function esc(t){ var d=document.createElement("div"); d.textContent=(t==null?"":t); return d.innerHTML; }
@@ -365,7 +371,9 @@
     function flashError(){ stage.style.transition="none"; stage.style.opacity="0.4"; setTimeout(function(){ stage.style.transition="opacity .25s"; stage.style.opacity="1"; },60); }
 
     function submit(){
-      if(hp && hp.value){ return; }
+      // Honeypot: only treat as bot if the field was actually FOCUSED/typed by a user.
+      // Browsers sometimes autofill hidden fields (e.g. company name) — that must NOT block real submits.
+      if(hp && hp.value && hp.getAttribute("data-touched")==="1"){ return; }
       var parts=(state.full_name||"").trim().split(/\s+/);
       var first=parts.shift()||""; var last=parts.join(" ")||"";
       var reasonFinal = state.reason || (state.reason_other ? ("Other: "+state.reason_other) : "");
