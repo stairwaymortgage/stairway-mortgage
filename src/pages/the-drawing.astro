@@ -1,0 +1,745 @@
+---
+/**
+ * The Drawing — a monthly "draw one card" ritual lead capture.
+ * ----------------------------------------------------------------
+ * Ported from a React prototype (the-drawing.jsx) to Astro + is:inline
+ * plain JS (locked project rule: NO React / JSX / TypeScript in pages).
+ *
+ * 6-state flow on ONE container, toggled by a data-step attribute:
+ *   0 intro → 1 identity → 2 intention → 3 celebration → 4 draw → 5 reveal
+ * All six sections live in the DOM; CSS shows only the active one.
+ *
+ * GHL: the webhook URL is the single source of truth from src/lib/ghl.ts —
+ * imported in frontmatter, handed to the (is:inline) script via a data
+ * attribute, because an is:inline script cannot import an ES module.
+ * The POST fires when the user LANDS on the reveal (state 5), not on the
+ * final CTA, so the lead is captured even if they bounce. Reveal is shown
+ * optimistically; webhook errors fail silently (console only).
+ *
+ * Fonts: Fraunces + IBM Plex Sans are already loaded globally in
+ * global.css — NOT re-imported here. The prototype's Cormorant/Inter are
+ * mapped to the site's --font-display / --font-body.
+ */
+import Layout from '../layouts/Layout.astro';
+import { GHL_WEBHOOK_URL } from '../lib/ghl';
+
+const goalOptions = [
+  'Buy a home', 'Build a house', 'Sell a house',
+  'Buy an investment property', 'Invest passively',
+  'Find a tenant', 'Buy a second home',
+  'Refinance or HELOC', 'Reverse mortgage',
+  'Build a real estate wealth plan',
+  'Acquire a business', 'Find a business partner',
+  'Complete a financial review', 'Complete a course',
+  'Start a business', 'Get married', 'Have a baby',
+  'Graduate college', 'Rent a home',
+  'Improve my health', 'Find a job',
+  'Improve my credit', 'Save more money'
+];
+
+const cards = [
+  { id: 1, name: 'The Patron',    subtitle: 'I',    prize: '$500 closing credit',                                  meaning: 'A meaningful contribution toward the cost of bringing you home.' },
+  { id: 2, name: 'The Concierge', subtitle: 'II',   prize: 'A personal introduction to a trusted partner',        meaning: 'CPA, attorney, planner, or realtor — chosen for your circumstance.' },
+  { id: 3, name: 'The Architect', subtitle: 'III',  prize: '30-minute planning session with Jim',                 meaning: 'A private conversation to map your next move with intention.' },
+  { id: 4, name: 'The Steward',   subtitle: 'IV',   prize: 'Home value report + market analysis',                 meaning: 'A clear picture of what you own and what the market is saying.' },
+  { id: 5, name: 'The Voyager',   subtitle: 'V',    prize: 'The Stairway Roadmap, delivered to your inbox',       meaning: 'All eight guides — the full journey from age 18 to legacy.' },
+  { id: 6, name: 'The Founder',   subtitle: 'VI',   prize: '15-minute personal call with Jim',                    meaning: 'A direct line for your questions, however unconventional.' },
+  { id: 7, name: 'The Legacy',    subtitle: 'VII',  prize: 'Estate-planning introduction session',               meaning: 'A first conversation about what you build to leave behind.' },
+  { id: 8, name: 'The Climber',   subtitle: 'VIII', prize: '$250 closing credit',                                 meaning: 'A welcome at the door of your next home.' },
+  { id: 9, name: 'The Ledger',    subtitle: 'IX',   prize: '30-day rate lock when you start your application',    meaning: 'A month of certainty in a market that rarely offers any.' }
+];
+---
+
+<Layout
+  title="The Drawing — Stairway Mortgage"
+  description="A small ritual. One card. One outcome. Drawn fresh each month for new patrons of the House."
+>
+  <section id="drawing-root" data-step="0" data-ghl-endpoint={GHL_WEBHOOK_URL}>
+    <div class="dw-grain" aria-hidden="true"></div>
+    <div class="dw-inner">
+      <div class="dw-brand">Stairway Mortgage</div>
+
+      <!-- STATE 0 — Intro -->
+      <div class="dw-step" data-s="0">
+        <h1 class="dw-h1">The Drawing</h1>
+        <p class="dw-lede">A small ritual. One card. One outcome. Drawn fresh each month for new patrons of the House.</p>
+        <div class="dw-hint">Nine cards. Each carries a different gift — some quiet, some considerable. No one walks away empty-handed.</div>
+        <button type="button" class="dw-cta dw-cta--primary" data-go="1">Begin the Ritual</button>
+      </div>
+
+      <!-- STATE 1 — Identity -->
+      <div class="dw-step" data-s="1">
+        <div class="dw-counter">I · Identity</div>
+        <h2 class="dw-h2">Who is drawing?</h2>
+        <p class="dw-lede">So we know who to address when your gift arrives.</p>
+        <form class="dw-form" data-identity-form novalidate>
+          <div class="dw-field">
+            <label class="dw-label" for="dw-name">Full Name</label>
+            <input class="dw-input" id="dw-name" name="name" type="text" autocomplete="name" placeholder="Your name" />
+            <div class="dw-error" data-err="name" hidden>Required</div>
+          </div>
+          <div class="dw-field">
+            <label class="dw-label" for="dw-email">Email</label>
+            <input class="dw-input" id="dw-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+            <div class="dw-error" data-err="email" hidden>Required</div>
+          </div>
+          <div class="dw-field">
+            <label class="dw-label" for="dw-phone">Mobile Phone</label>
+            <input class="dw-input" id="dw-phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 555-5555" />
+            <div class="dw-error" data-err="phone" hidden>Required</div>
+          </div>
+          <button type="submit" class="dw-cta dw-cta--primary" data-identity-submit>Continue</button>
+        </form>
+        <p class="dw-consent">By continuing, you agree to Stairway Mortgage's Terms of Use and Privacy Policy. You consent to receive calls, text messages, and pre-recorded voicemails via automated technology, even if on a Do Not Call list. Consent is not a condition of purchase. Reply STOP to opt out.</p>
+      </div>
+
+      <!-- STATE 2 — Intention -->
+      <div class="dw-step" data-s="2">
+        <div class="dw-counter">II · Intention</div>
+        <h2 class="dw-h2">What are you climbing toward?</h2>
+        <p class="dw-lede">Choose up to three. We tailor what comes next to where you're headed.</p>
+        <div class="dw-chips">
+          {goalOptions.map((g) => (
+            <span class="dw-chip" role="button" tabindex="0" data-goal={g}>{g}</span>
+          ))}
+        </div>
+        <div class="dw-counter" data-goal-count>0 of 3 chosen</div>
+        <button type="button" class="dw-cta dw-cta--primary is-disabled" data-go="3" data-goals-next disabled>Continue</button>
+      </div>
+
+      <!-- STATE 3 — Celebration -->
+      <div class="dw-step" data-s="3">
+        <div class="dw-counter">III · Celebration</div>
+        <h2 class="dw-h2">When do we celebrate you?</h2>
+        <p class="dw-lede">Nobody celebrates alone. We mark the date and reach out when it comes.</p>
+        <div class="dw-field" style="margin-top:32px;">
+          <label class="dw-label" for="dw-birthday">Birthday</label>
+          <input class="dw-input" id="dw-birthday" name="birthday" type="date" />
+        </div>
+        <button type="button" class="dw-cta dw-cta--primary is-disabled" data-go="4" data-birthday-next disabled>To the Cards</button>
+      </div>
+
+      <!-- STATE 4 — The Draw -->
+      <div class="dw-step" data-s="4">
+        <div class="dw-counter">IV · The Draw</div>
+        <h2 class="dw-h2">Choose your card.</h2>
+        <p class="dw-lede" data-draw-lede>Trust your hand. One card, one outcome.</p>
+        <div class="dw-grid" data-card-grid>
+          {cards.map((c) => (
+            <div class="dw-card" data-card-id={c.id}>
+              <div class="dw-card-inner">
+                <div class="dw-face dw-back"><div class="dw-monogram">S</div></div>
+                <div class="dw-face dw-front">
+                  <div class="dw-front-num">{c.subtitle}</div>
+                  <div class="dw-front-name">{c.name}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- STATE 5 — The Reveal -->
+      <div class="dw-step dw-step--center" data-s="5">
+        <div class="dw-counter">V · The Reveal</div>
+        <h2 class="dw-h2">You drew <span data-reveal-name>your card</span>.</h2>
+        <div class="dw-reveal-card">
+          <div class="dw-reveal-num" data-reveal-num></div>
+          <div class="dw-reveal-cardname" data-reveal-cardname></div>
+          <div class="dw-reveal-rule"></div>
+          <div class="dw-reveal-prize" data-reveal-prize></div>
+        </div>
+        <p class="dw-lede dw-lede--center dw-italic" data-reveal-meaning></p>
+        <p class="dw-confirm">A confirmation is on its way to <span data-reveal-email></span>. The Concierge will reach out within one business day to make it real.</p>
+        <button type="button" class="dw-cta dw-cta--primary" data-claim>Claim Your Gift</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Card data for the reveal step (single source = frontmatter `cards`). -->
+  <script type="application/json" id="dw-cards" set:html={JSON.stringify(cards)}></script>
+</Layout>
+
+<style>
+  /* ── Page-local noir palette (seeded from the locked spec tokens). ──
+     #2d2350 is NOT a site CSS variable — the site theme is a light one —
+     so The Drawing carries its own scoped palette. */
+  #drawing-root {
+    --dw-violet: #2d2350;
+    --dw-violet-deep: #382b62;
+    --dw-cream: #f4ead5;
+    --dw-bone: #e8dcc8;
+    --dw-muted: #b8a888;
+    --dw-eyebrow: #a89576;
+    --dw-mono: #7a6ba8;
+    --dw-cardink: #2a2118;
+
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    padding: 32px 24px 56px;
+    background: radial-gradient(ellipse at top, #1a1410 0%, #0a0807 60%, #050403 100%);
+    color: var(--dw-bone);
+    font-family: var(--font-display);
+  }
+
+  /* Film grain */
+  #drawing-root .dw-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  #drawing-root .dw-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  #drawing-root .dw-brand {
+    font-size: 13px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--dw-eyebrow);
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: var(--font-body);
+    font-weight: 500;
+  }
+
+  /* ── Step visibility: all in DOM, only active one shown ── */
+  #drawing-root .dw-step { display: none; }
+  #drawing-root[data-step="0"] .dw-step[data-s="0"],
+  #drawing-root[data-step="1"] .dw-step[data-s="1"],
+  #drawing-root[data-step="2"] .dw-step[data-s="2"],
+  #drawing-root[data-step="3"] .dw-step[data-s="3"],
+  #drawing-root[data-step="4"] .dw-step[data-s="4"],
+  #drawing-root[data-step="5"] .dw-step[data-s="5"] {
+    display: block;
+    animation: dw-fadeUp 0.6s ease-out both;
+  }
+  #drawing-root .dw-step--center { text-align: center; }
+
+  @keyframes dw-fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Typography ── */
+  #drawing-root .dw-h1 {
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+    color: var(--dw-cream);
+    font-style: italic;
+    font-family: var(--font-display);
+  }
+  #drawing-root .dw-h2 {
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 20px 0 12px;
+    color: var(--dw-cream);
+    font-style: italic;
+    font-family: var(--font-display);
+  }
+  #drawing-root .dw-lede {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--dw-muted);
+    margin: 0 0 32px;
+    font-weight: 400;
+  }
+  #drawing-root .dw-lede--center { text-align: center; }
+  #drawing-root .dw-italic { font-style: italic; }
+  #drawing-root .dw-hint {
+    font-size: 15px;
+    color: var(--dw-eyebrow);
+    font-style: italic;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    border-top: 1px solid var(--dw-cardink);
+    border-bottom: 1px solid var(--dw-cardink);
+    padding: 20px 0;
+    margin: 32px 0;
+  }
+  #drawing-root .dw-counter {
+    font-size: 11px;
+    color: #8a7355;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 20px;
+    font-family: var(--font-body);
+  }
+  #drawing-root .dw-confirm {
+    font-size: 13px;
+    color: #8a7355;
+    margin-top: 24px;
+    font-family: var(--font-body);
+  }
+
+  /* ── Buttons ── */
+  #drawing-root .dw-cta {
+    width: 100%;
+    padding: 18px;
+    background: transparent;
+    color: var(--dw-cream);
+    border: 1px solid #6b5a42;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 24px;
+  }
+  #drawing-root .dw-cta--primary {
+    background: var(--dw-violet);
+    border: 1px solid var(--dw-violet);
+    font-weight: 600;
+  }
+  #drawing-root .dw-cta:hover:not(:disabled):not(.is-disabled) {
+    background: var(--dw-violet-deep);
+    border-color: var(--dw-violet-deep);
+  }
+  #drawing-root .dw-cta.is-disabled,
+  #drawing-root .dw-cta:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  /* ── Fields ── */
+  #drawing-root .dw-form { margin-top: 32px; }
+  #drawing-root .dw-field + .dw-field { margin-top: 24px; }
+  #drawing-root .dw-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #8a7355;
+    margin-bottom: 8px;
+    font-family: var(--font-body);
+    font-weight: 500;
+  }
+  #drawing-root .dw-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #3a2f23;
+    color: var(--dw-cream);
+    font-size: 18px;
+    font-family: inherit;
+    outline: none;
+    border-radius: 0;
+  }
+  #drawing-root .dw-input::placeholder { color: #5a4a36; }
+  #drawing-root .dw-input:focus { border-bottom-color: var(--dw-violet); }
+  /* Make the native date picker indicator visible on the dark field */
+  #drawing-root .dw-input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.7); cursor: pointer; }
+  #drawing-root .dw-error {
+    color: #c87060;
+    font-size: 11px;
+    margin-top: 4px;
+    font-family: var(--font-body);
+    letter-spacing: 0.04em;
+  }
+  #drawing-root .dw-consent {
+    font-size: 11px;
+    line-height: 1.5;
+    color: #7a6850;
+    margin-top: 24px;
+    font-family: var(--font-body);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Chips ── */
+  #drawing-root .dw-chips { margin: 24px -4px 0; }
+  #drawing-root .dw-chip {
+    display: inline-block;
+    padding: 10px 16px;
+    margin: 4px;
+    background: transparent;
+    color: #c8b89c;
+    border: 1px solid #3a2f23;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  #drawing-root .dw-chip.is-active {
+    background: var(--dw-violet);
+    color: var(--dw-cream);
+    border-color: var(--dw-violet);
+    font-weight: 600;
+  }
+  #drawing-root .dw-chip.is-active::before { content: '✓ '; }
+  #drawing-root .dw-chip.is-locked {
+    color: #4a3f33;
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* ── Card grid ── */
+  #drawing-root .dw-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 32px 0;
+  }
+  #drawing-root .dw-card {
+    aspect-ratio: 2.5 / 3.5;
+    perspective: 1000px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.6s;
+  }
+  #drawing-root .dw-card.is-dim { opacity: 0.2; }
+  #drawing-root .dw-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotateY(0deg);
+  }
+  #drawing-root .dw-card.is-flipped .dw-card-inner { transform: rotateY(180deg); }
+  #drawing-root .dw-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(232, 220, 200, 0.08);
+  }
+  #drawing-root .dw-back {
+    background: linear-gradient(135deg, #1f1812 0%, #2a2118 50%, #1f1812 100%);
+    border: 1px solid #4a3f2e;
+  }
+  #drawing-root .dw-front {
+    background: linear-gradient(180deg, #f4ead5 0%, #e8dcc0 100%);
+    transform: rotateY(180deg);
+    flex-direction: column;
+    padding: 12px;
+    color: var(--dw-cardink);
+    text-align: center;
+  }
+  #drawing-root .dw-monogram {
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--dw-mono);
+    font-style: italic;
+    letter-spacing: 0.1em;
+    font-family: var(--font-display);
+  }
+  #drawing-root .dw-front-num {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--dw-violet);
+    font-family: var(--font-body);
+    font-weight: 600;
+  }
+  #drawing-root .dw-front-name {
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 4px;
+    line-height: 1.1;
+    font-family: var(--font-display);
+  }
+
+  /* ── Reveal card ── */
+  #drawing-root .dw-reveal-card {
+    width: 220px;
+    aspect-ratio: 2.5 / 3.5;
+    margin: 32px auto 32px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #f4ead5 0%, #e8dcc0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    color: var(--dw-cardink);
+    box-shadow: 0 12px 60px rgba(45, 35, 80, 0.4), 0 0 0 1px rgba(232, 220, 200, 0.1);
+  }
+  #drawing-root .dw-reveal-num {
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    color: var(--dw-violet);
+    font-family: var(--font-body);
+    font-weight: 600;
+  }
+  #drawing-root .dw-reveal-cardname {
+    font-size: 28px;
+    font-style: italic;
+    margin: 8px 0 16px;
+    color: var(--dw-cardink);
+    font-family: var(--font-display);
+  }
+  #drawing-root .dw-reveal-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--dw-violet);
+    margin: 8px 0 16px;
+  }
+  #drawing-root .dw-reveal-prize {
+    font-size: 17px;
+    color: var(--dw-cardink);
+    line-height: 1.3;
+  }
+
+  @media (max-width: 480px) {
+    #drawing-root .dw-h1 { font-size: 44px; }
+    #drawing-root .dw-h2 { font-size: 30px; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById('drawing-root');
+    if (!root) return;
+
+    var ENDPOINT = root.getAttribute('data-ghl-endpoint') || '';
+
+    // Card data (single source = the JSON emitted from frontmatter `cards`).
+    var cards = [];
+    try {
+      var dataEl = document.getElementById('dw-cards');
+      if (dataEl) cards = JSON.parse(dataEl.textContent || '[]');
+    } catch (e) { cards = []; }
+
+    // ── State ──
+    var state = {
+      name: '', email: '', phone: '', birthday: '',
+      goals: [], chosenCard: null
+    };
+    var sent = false; // webhook fires exactly once
+
+    // ── Helpers ──
+    function setStep(n) { root.setAttribute('data-step', String(n)); }
+    function clean(s) { return (s || '').replace(/\s+/g, ' ').trim(); }
+    function digits(s) { return (s || '').replace(/\D/g, ''); }
+
+    // ── Step 0 → 1 ──
+    var beginBtn = root.querySelector('[data-go="1"]');
+    if (beginBtn) beginBtn.addEventListener('click', function () { setStep(1); });
+
+    // ── Step 1: Identity (form submit = button click OR Enter; never navigates) ──
+    var form = root.querySelector('[data-identity-form]');
+    var nameInput = document.getElementById('dw-name');
+    var emailInput = document.getElementById('dw-email');
+    var phoneInput = document.getElementById('dw-phone');
+
+    function showErr(key, on) {
+      var el = root.querySelector('[data-err="' + key + '"]');
+      if (el) el.hidden = !on;
+    }
+
+    function validateIdentity() {
+      var ok = true;
+      var nm = clean(nameInput.value);
+      var em = clean(emailInput.value);
+      var ph = clean(phoneInput.value);
+      if (!nm) { showErr('name', true); ok = false; } else { showErr('name', false); }
+      if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { showErr('email', true); ok = false; } else { showErr('email', false); }
+      if (!ph || digits(ph).length < 10) { showErr('phone', true); ok = false; } else { showErr('phone', false); }
+      if (ok) { state.name = nm; state.email = em; state.phone = ph; }
+      return ok;
+    }
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        // Enter-key early-submit guard: the form never navigates; Enter and the
+        // Continue button both land here, validate, and advance only if valid.
+        e.preventDefault();
+        if (validateIdentity()) setStep(2);
+      });
+    }
+
+    // ── Step 2: Intention (max 3 chips) ──
+    var chips = Array.prototype.slice.call(root.querySelectorAll('.dw-chip'));
+    var goalCountEl = root.querySelector('[data-goal-count]');
+    var goalsNext = root.querySelector('[data-goals-next]');
+
+    function renderGoals() {
+      var full = state.goals.length >= 3;
+      chips.forEach(function (chip) {
+        var g = chip.getAttribute('data-goal');
+        var active = state.goals.indexOf(g) !== -1;
+        chip.classList.toggle('is-active', active);
+        chip.classList.toggle('is-locked', full && !active);
+      });
+      if (goalCountEl) goalCountEl.textContent = state.goals.length + ' of 3 chosen';
+      var none = state.goals.length === 0;
+      if (goalsNext) {
+        goalsNext.disabled = none;
+        goalsNext.classList.toggle('is-disabled', none);
+      }
+    }
+
+    function toggleGoal(g) {
+      var i = state.goals.indexOf(g);
+      if (i !== -1) {
+        state.goals.splice(i, 1);
+      } else if (state.goals.length < 3) {
+        state.goals.push(g);
+      }
+      renderGoals();
+    }
+
+    chips.forEach(function (chip) {
+      var g = chip.getAttribute('data-goal');
+      chip.addEventListener('click', function () { toggleGoal(g); });
+      chip.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleGoal(g); }
+      });
+    });
+
+    if (goalsNext) goalsNext.addEventListener('click', function () {
+      if (state.goals.length > 0) setStep(3);
+    });
+
+    // ── Step 3: Celebration (birthday) ──
+    var birthdayInput = document.getElementById('dw-birthday');
+    var birthdayNext = root.querySelector('[data-birthday-next]');
+
+    function renderBirthday() {
+      var empty = !clean(birthdayInput.value);
+      if (birthdayNext) {
+        birthdayNext.disabled = empty;
+        birthdayNext.classList.toggle('is-disabled', empty);
+      }
+    }
+    if (birthdayInput) birthdayInput.addEventListener('input', renderBirthday);
+    if (birthdayInput) birthdayInput.addEventListener('change', renderBirthday);
+    if (birthdayNext) birthdayNext.addEventListener('click', function () {
+      if (clean(birthdayInput.value)) { state.birthday = clean(birthdayInput.value); setStep(4); }
+    });
+
+    // ── Step 4: The Draw ──
+    var grid = root.querySelector('[data-card-grid]');
+    var drawLede = root.querySelector('[data-draw-lede]');
+    var cardEls = Array.prototype.slice.call(root.querySelectorAll('.dw-card'));
+
+    function drawCard(id) {
+      if (state.chosenCard) return; // lock: only the first tap counts
+      state.chosenCard = id;
+      if (drawLede) drawLede.textContent = 'The card turns…';
+      cardEls.forEach(function (el) {
+        var cid = parseInt(el.getAttribute('data-card-id'), 10);
+        if (cid !== id) el.classList.add('is-dim');
+      });
+      var chosenEl = root.querySelector('.dw-card[data-card-id="' + id + '"]');
+      setTimeout(function () { if (chosenEl) chosenEl.classList.add('is-flipped'); }, 200);
+      setTimeout(function () { goToReveal(); }, 2400);
+    }
+
+    cardEls.forEach(function (el) {
+      el.addEventListener('click', function () {
+        var cid = parseInt(el.getAttribute('data-card-id'), 10);
+        drawCard(cid);
+      });
+    });
+
+    // ── Step 5: The Reveal ──
+    function cardById(id) {
+      for (var i = 0; i < cards.length; i++) { if (cards[i].id === id) return cards[i]; }
+      return null;
+    }
+
+    function setText(sel, txt) {
+      var el = root.querySelector(sel);
+      if (el) el.textContent = txt;
+    }
+
+    function goToReveal() {
+      var card = cardById(state.chosenCard);
+      if (!card) { setStep(5); return; }
+
+      setText('[data-reveal-name]', card.name);
+      setText('[data-reveal-num]', card.subtitle);
+      setText('[data-reveal-cardname]', card.name);
+      setText('[data-reveal-prize]', card.prize);
+      setText('[data-reveal-meaning]', card.meaning);
+      setText('[data-reveal-email]', state.email);
+
+      setStep(5);
+
+      // Fire the lead optimistically — do NOT block the reveal on the network.
+      fireLead(card);
+    }
+
+    // ── GHL webhook (fire once, silent failure) ──
+    function fireLead(card) {
+      if (sent) return;
+      sent = true;
+
+      var parts = state.name.split(/\s+/);
+      var firstName = parts.shift() || '';
+      var lastName = parts.join(' ');
+
+      var goalsStr = state.goals.join(' | ');
+      var notes =
+        'The Drawing' +
+        '\n\nGOALS\n' + goalsStr +
+        '\n\nCARD DRAWN\n' + card.subtitle + '. ' + card.name + ' — ' + card.prize +
+        '\n\nBIRTHDAY\n' + state.birthday;
+
+      var payload = {
+        first_name: firstName,
+        last_name: lastName,
+        full_name: state.name,
+        email: state.email,
+        phone: digits(state.phone),
+        birthday: state.birthday,
+        source: 'The Drawing',
+        // form_source drives GHL inbound-webhook routing (single source of truth
+        // in src/lib/ghl.ts). Added on top of the spec payload so this lead routes.
+        form_source: 'the-drawing',
+        goals: state.goals,
+        card_drawn: card.name,
+        card_numeral: card.subtitle,
+        card_prize: card.prize,
+        notes: notes,
+        page_url: typeof window !== 'undefined' ? window.location.href : '',
+        submitted_at: new Date().toISOString()
+      };
+
+      try {
+        fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(function (err) {
+          console.log('The Drawing — lead submit failed (non-blocking):', err);
+        });
+      } catch (err) {
+        console.log('The Drawing — lead submit threw (non-blocking):', err);
+      }
+    }
+
+    // ── Final CTA ──
+    var claimBtn = root.querySelector('[data-claim]');
+    if (claimBtn) claimBtn.addEventListener('click', function () { window.location.href = '/'; });
+
+    // Initial paint of gated controls
+    renderGoals();
+    renderBirthday();
+  })();
+</script>
