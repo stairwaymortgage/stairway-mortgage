@@ -16,7 +16,7 @@
 //   <ReverseMortgageForm />
 //
 // TODO BEFORE GO-LIVE (both marked in <script>):
-//   1. Swap REVERSE_MORTGAGE_TRIGGER_ID with the real GHL Inbound Webhook trigger ID.
+//   1. TRIGGER_ID is set (GHL Reverse Mortgage webhook). Change only if the workflow changes.
 //   2. Swap BOOKING_URL ("#") with the real Calendly/GHL booking link.
 ---
 
@@ -187,7 +187,7 @@
   (function () {
     // ---- CONFIG ----------------------------------------------------------
     var WEBHOOK_BASE = "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/";
-    var TRIGGER_ID   = "REVERSE_MORTGAGE_TRIGGER_ID"; // TODO: swap with real GHL trigger ID
+    var TRIGGER_ID   = "e8c4995a-513a-41ac-b1a8-051c7ef6bd96"; // GHL — Stairway Reverse Mortgage
     var WEBHOOK_URL  = WEBHOOK_BASE + TRIGGER_ID;
     var FORM_SOURCE  = "reverse-mortgage";
     var BOOKING_URL  = "#"; // TODO: swap with real Calendly/GHL booking link
