@@ -1,9 +1,10 @@
 ---
-/*  Stairway Mortgage — Conversion-focused header
-    3 layers: trust strip · main bar with 3 mega-menus · sticky condensed on scroll
-    Self-contained: styles + script bundled in component                          */
+/*  Stairway Mortgage â€” Conversion-focused header
+    3 layers: trust strip Â· main bar with 4 mega-menus Â· sticky condensed on scroll
+    Self-contained: styles + script bundled in component
+    UPDATED: Yacht / Corp Exec / Creative Earners flipped to live; added Our Programs mega-menu       */
 
-/* ── Menu data ───────────────────────────────────────────────── */
+/* â”€â”€ Menu data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const menus = [
   {
     id: 'mega-mortgage',
@@ -46,24 +47,24 @@ const menus = [
       {
         heading: "Where you're at",
         links: [
-          { icon: 'plane',   title: 'Relocate Anywhere™',    desc: 'Agents in all 50 states',            href: '/relocate-anywhere/' },
+          { icon: 'plane',   title: 'Relocate Anywhereâ„¢',    desc: 'Agents in all 50 states',            href: '/relocate-anywhere/' },
           { icon: 'key',     title: 'First-Time Buyer',     desc: 'Buying your very first home',        href: '/first-time-buyers-journey/' },
-          { icon: 'home',    title: 'Current Homeowner',     desc: 'Refinance, renovate, or leverage',   href: '/homeowners-journey/' },
+          { icon: 'home',    title: 'Current Homeowner',    desc: 'Refinance, renovate, or leverage',   href: '/homeowners-journey/' },
           { icon: 'heart',   title: 'Homeowner 55+',        desc: 'Retirement income & downsizing',     href: '/senior-homeowners-55-journey/' },
           { icon: 'chart',   title: 'Real-Estate Investor', desc: 'Scale your rental portfolio',        href: '/active-investors-journey/' },
         ],
       },
       {
-        heading: 'Clients We Serve — By Profession',
+        heading: 'Clients We Serve â€” By Profession',
         links: [
-          { icon: 'plane',   title: 'Aviation Professionals', desc: 'Pilot & crew specialist lending',  href: '/aviation-professionals/', live: true },
-          { icon: 'medical', title: 'Medical Professionals',              desc: 'Physician & nurse loan programs',     live: false },
-          { icon: 'medical', title: 'Dental & Wellness Professionals',    desc: 'Specialized healthcare lending',      live: false },
-          { icon: 'brief',   title: 'Corporate Executives',              desc: 'Stock-comp & RSU-friendly loans',     live: false },
-          { icon: 'pen',     title: 'Creative Earners',                  desc: 'Flexible income documentation',       live: false },
-          { icon: 'user',    title: 'Professional Services',             desc: 'Legal & entrepreneurs',               live: false },
-          { icon: 'ship',    title: 'Yacht Professionals',               desc: 'Maritime industry lending',            live: false },
-          { icon: 'trend',   title: 'Sales Professionals',               desc: 'Commission-based income programs',    live: false },
+          { icon: 'plane',   title: 'Aviation Professionals',           desc: 'Pilot & crew specialist lending',  href: '/aviation-professionals/',  live: true },
+          { icon: 'ship',    title: 'Yacht Professionals',              desc: 'Maritime industry lending',        href: '/yacht-professionals/',     live: true },
+          { icon: 'brief',   title: 'Corporate Executives',             desc: 'Stock-comp & RSU-friendly loans',  href: '/corporate-executives/',    live: true },
+          { icon: 'pen',     title: 'Creative Earners',                 desc: 'Flexible income documentation',    href: '/creative-earners/',        live: true },
+          { icon: 'medical', title: 'Medical Professionals',            desc: 'Physician & nurse loan programs',  live: false },
+          { icon: 'medical', title: 'Dental & Wellness Professionals',  desc: 'Specialized healthcare lending',   live: false },
+          { icon: 'user',    title: 'Professional Services',            desc: 'Legal & entrepreneurs',            live: false },
+          { icon: 'trend',   title: 'Sales Professionals',              desc: 'Commission-based income programs', live: false },
         ],
       },
     ],
@@ -73,13 +74,63 @@ const menus = [
     },
   },
   {
+    id: 'mega-programs',
+    label: 'Our Programs',
+    columns: [
+      {
+        heading: 'Aviation Professionals',
+        links: [
+          { icon: 'plane', title: 'Aviation Hub',             desc: 'All aviation programs',           href: '/aviation-professionals/' },
+          { icon: 'plane', title: 'Pilots',                   desc: 'Multi-W-2, per diem, scale',      href: '/aviation-professionals/pilot/' },
+          { icon: 'plane', title: 'Flight Attendants',        desc: 'Variable income specialist',      href: '/aviation-professionals/flight-attendant/' },
+          { icon: 'plane', title: 'Aircraft Mechanics',       desc: 'A&P, IA, line-maintenance',       href: '/aviation-professionals/aircraft-mechanic/' },
+          { icon: 'plane', title: 'Air Traffic Controllers',  desc: 'FAA, locality pay, premium',      href: '/aviation-professionals/air-traffic-controller/' },
+        ],
+      },
+      {
+        heading: 'Yacht Professionals',
+        links: [
+          { icon: 'ship', title: 'Yacht Hub',          desc: 'All yacht programs',              href: '/yacht-professionals/' },
+          { icon: 'ship', title: 'Yacht Captains',     desc: 'Master credentials, rotational',  href: '/yacht-professionals/captain/' },
+          { icon: 'ship', title: 'Yacht Engineers',    desc: 'MCA Y1-Y4, chief engineer',       href: '/yacht-professionals/engineer/' },
+          { icon: 'ship', title: 'Yacht Surveyors',    desc: 'SAMS, NAMS, Schedule C',          href: '/yacht-professionals/surveyor/' },
+        ],
+      },
+      {
+        heading: 'Corporate Executives',
+        links: [
+          { icon: 'brief', title: 'Corp Exec Hub',          desc: 'All executive programs',         href: '/corporate-executives/' },
+          { icon: 'brief', title: 'C-Suite Executive',      desc: 'RSU/PSU, 409A, change of control', href: '/corporate-executives/c-suite-executive/' },
+          { icon: 'brief', title: 'Senior VP / VP',         desc: 'Leadership equity-comp',         href: '/corporate-executives/senior-vp-vp/' },
+          { icon: 'brief', title: 'Director Band',          desc: 'First-time RSU borrower',        href: '/corporate-executives/director-band/' },
+          { icon: 'brief', title: 'Pre-IPO Equity Holder',  desc: 'QSBS 1202, 83(b), AMT',          href: '/corporate-executives/pre-ipo-equity-holder/' },
+          { icon: 'brief', title: 'Relocating Executive',   desc: 'Multi-state W-2, relo',          href: '/corporate-executives/relocating-executive/' },
+        ],
+      },
+      {
+        heading: 'Creative Earners',
+        links: [
+          { icon: 'pen', title: 'Creative Hub',                 desc: 'All creative programs',          href: '/creative-earners/' },
+          { icon: 'pen', title: 'Film & TV Professional',       desc: 'SAG-AFTRA, Loan-Out, residuals', href: '/creative-earners/film-tv-professional/' },
+          { icon: 'pen', title: 'Recording Artist & Musician',  desc: 'ASCAP / BMI / SESAC / AFM',      href: '/creative-earners/recording-artist-musician/' },
+          { icon: 'pen', title: 'Author & Writer',              desc: 'Book advances, royalties',       href: '/creative-earners/author-writer/' },
+          { icon: 'pen', title: 'Content Creator & Influencer', desc: 'YouTube / Twitch / TikTok',      href: '/creative-earners/content-creator-influencer/' },
+        ],
+      },
+    ],
+    feature: {
+      title: 'Not sure which path fits you?',
+      cta: { label: 'Schedule a call with Jim', href: '/schedule-call/' },
+    },
+  },
+  {
     id: 'mega-tools',
     label: 'Free Tools & Rates',
     columns: [
       {
         heading: 'Tools & rates',
         links: [
-          { icon: 'grad',    title: 'The 8 Steps™',          desc: 'The Stairway Client System',         href: '/the-8-steps/' },
+          { icon: 'grad',    title: 'The 8 Stepsâ„¢',         desc: 'The Stairway Client System',         href: '/the-8-steps/' },
           { icon: 'calc',    title: 'Loan Calculators',     desc: 'Run the numbers yourself',           href: '/loan-calculators/' },
           { icon: 'trend',   title: "Today's Rates",        desc: 'Live wholesale rate check',          href: '/current-rates/' },
           { icon: 'home',    title: 'Home Value Report',    desc: 'Instant property valuation',         href: '/home-value-report/' },
@@ -104,7 +155,7 @@ const menus = [
   },
 ];
 
-/* ── Icon SVG paths (16×16 viewBox) ──────────────────────── */
+/* â”€â”€ Icon SVG paths (16Ã—16 viewBox) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const icons: Record<string, string> = {
   home:    'M8 1L1 7v8h5v-4h4v4h5V7L8 1z',
   refresh: 'M2 8a6 6 0 0110.3-4.2M14 8a6 6 0 01-10.3 4.2',
@@ -129,36 +180,36 @@ const icons: Record<string, string> = {
 };
 ---
 
-<!-- ═══════════════════════════════════════════════════════════
-     LAYER 1 — Trust Strip
-     ═══════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     LAYER 1 â€” Trust Strip
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div class="hdr-trust" aria-label="Trust signals">
   <div class="container-page">
     <div class="hdr-trust__inner">
       <div class="hdr-trust__left">
         <span class="hdr-trust__item">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="var(--color-green)" aria-hidden="true"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-          5.0 · 624 reviews
+          5.0 Â· 624 reviews
         </span>
-        <span class="hdr-trust__sep">·</span>
+        <span class="hdr-trust__sep">Â·</span>
         <span class="hdr-trust__item">NEXA licensed in 48 states</span>
-        <span class="hdr-trust__sep">·</span>
-        <span class="hdr-trust__item">Jim Blackburn · <span class="mono">NMLS #1072866</span></span>
+        <span class="hdr-trust__sep">Â·</span>
+        <span class="hdr-trust__item">Jim Blackburn Â· <span class="mono">NMLS #1072866</span></span>
       </div>
       <span class="hdr-trust__right">Equal Housing Lender</span>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     LAYER 2 — Main Navigation Bar
-     ═══════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     LAYER 2 â€” Main Navigation Bar
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <header class="hdr-main" id="hdr-main">
   <div class="container-page">
     <div class="hdr-main__inner">
 
       <!-- Logo -->
-      <a href="/" class="hdr-logo" aria-label="Stairway Mortgage — home">
+      <a href="/" class="hdr-logo" aria-label="Stairway Mortgage â€” home">
         <img src="/logo-header.png" alt="Stairway Mortgage" class="hdr-logo__img" />
       </a>
 
@@ -189,7 +240,7 @@ const icons: Record<string, string> = {
         </a>
         <div class="hdr-cta-wrap">
           <a href="https://stairwaymortgage.my1003app.com/agent/jimblackburn/inquiry" rel="noopener" class="btn btn-blue hdr-cta">See My Options</a>
-          <span class="hdr-cta-sub">60-sec match · no credit pull</span>
+          <span class="hdr-cta-sub">60-sec match Â· no credit pull</span>
         </div>
       </div>
 
@@ -202,7 +253,7 @@ const icons: Record<string, string> = {
     </div>
   </div>
 
-  <!-- ── Mega-menu panels (desktop) ── -->
+  <!-- â”€â”€ Mega-menu panels (desktop) â”€â”€ -->
   {menus.map((m) => (
     <div class="mega" id={m.id} role="region" aria-label={m.label + ' menu'}>
       <div class="container-page">
@@ -285,9 +336,9 @@ const icons: Record<string, string> = {
   ))}
 </header>
 
-<!-- ═══════════════════════════════════════════════════════════
-     LAYER 3 — Sticky Condensed Bar (appears on scroll)
-     ═══════════════════════════════════════════════════════════ -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     LAYER 3 â€” Sticky Condensed Bar (appears on scroll)
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div class="hdr-sticky" id="hdr-sticky" aria-hidden="true">
   <div class="container-page">
     <div class="hdr-sticky__inner">
@@ -305,13 +356,13 @@ const icons: Record<string, string> = {
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      MOBILE DRAWER
-     ═══════════════════════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <div class="hdr-drawer" id="hdr-drawer" aria-hidden="true">
   <div class="hdr-drawer__top">
     <a href="https://stairwaymortgage.my1003app.com/agent/jimblackburn/inquiry" rel="noopener" class="btn btn-blue hdr-drawer__cta">See My Options</a>
-    <p class="hdr-drawer__cta-sub">60-sec match · no credit pull</p>
+    <p class="hdr-drawer__cta-sub">60-sec match Â· no credit pull</p>
   </div>
   <nav class="hdr-drawer__nav" aria-label="Mobile navigation">
     {menus.map((m) => (
@@ -347,11 +398,11 @@ const icons: Record<string, string> = {
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      SCOPED STYLES
-     ═══════════════════════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <style>
-  /* ── Trust strip ── */
+  /* â”€â”€ Trust strip â”€â”€ */
   .hdr-trust {
     background: var(--color-ink);
     color: var(--color-paper);
@@ -392,7 +443,7 @@ const icons: Record<string, string> = {
     text-transform: uppercase;
   }
 
-  /* ── Main bar ── */
+  /* â”€â”€ Main bar â”€â”€ */
   .hdr-main {
     position: sticky;
     top: 0;
@@ -410,7 +461,7 @@ const icons: Record<string, string> = {
     height: 64px;
   }
 
-  /* ── Logo ── */
+  /* â”€â”€ Logo â”€â”€ */
   .hdr-logo {
     display: inline-flex;
     align-items: center;
@@ -421,7 +472,7 @@ const icons: Record<string, string> = {
   .hdr-logo__img { height: 54px; width: auto; display: block; }
   .hdr-logo--sm .hdr-logo__img { height: 38px; }
 
-  /* ── Nav triggers ── */
+  /* â”€â”€ Nav triggers â”€â”€ */
   .hdr-nav {
     display: none;
     align-items: center;
@@ -455,7 +506,7 @@ const icons: Record<string, string> = {
     transform: rotate(180deg);
   }
 
-  /* ── Actions (phone + CTA) ── */
+  /* â”€â”€ Actions (phone + CTA) â”€â”€ */
   .hdr-actions {
     display: none;
     align-items: center;
@@ -483,7 +534,7 @@ const icons: Record<string, string> = {
     letter-spacing: 0.02em;
   }
 
-  /* ── Hamburger ── */
+  /* â”€â”€ Hamburger â”€â”€ */
   .hdr-burger {
     display: flex;
     flex-direction: column;
@@ -511,7 +562,7 @@ const icons: Record<string, string> = {
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* ── Mega-menu panels ── */
+  /* â”€â”€ Mega-menu panels â”€â”€ */
   .mega {
     position: absolute;
     top: 100%;
@@ -632,7 +683,7 @@ const icons: Record<string, string> = {
     padding: 0.7rem 1rem !important;
   }
 
-  /* ── Coming Soon items ── */
+  /* â”€â”€ Coming Soon items â”€â”€ */
   .mega__link--soon {
     opacity: 0.45;
     cursor: default;
@@ -655,7 +706,7 @@ const icons: Record<string, string> = {
     vertical-align: middle;
     line-height: 1.4;
   }
-  /* ── Aviation sub-links ── */
+  /* â”€â”€ Aviation sub-links â”€â”€ */
   /* NOTE: sub-link CSS retained for future use; no hub currently exposes subs in header */
   .mega__subs {
     list-style: none;
@@ -675,7 +726,7 @@ const icons: Record<string, string> = {
     background: var(--color-paper-tint);
     color: var(--color-ink);
   }
-  /* ── Mobile drawer coming-soon + sub-links ── */
+  /* â”€â”€ Mobile drawer coming-soon + sub-links â”€â”€ */
   .hdr-drawer__link--soon {
     opacity: 0.4;
     cursor: default;
@@ -753,7 +804,7 @@ const icons: Record<string, string> = {
     background: var(--color-blue-tint);
   }
 
-  /* ── Sticky condensed bar ── */
+  /* â”€â”€ Sticky condensed bar â”€â”€ */
   .hdr-sticky {
     position: fixed;
     top: 0;
@@ -786,7 +837,7 @@ const icons: Record<string, string> = {
     padding: 0.45rem 0.9rem !important;
   }
 
-  /* ── Mobile drawer ── */
+  /* â”€â”€ Mobile drawer â”€â”€ */
   .hdr-drawer {
     position: fixed;
     top: 98px; /* trust strip 34 + main bar 64 */
@@ -866,10 +917,10 @@ const icons: Record<string, string> = {
     justify-content: center;
   }
 
-  /* ── Body lock when drawer open ── */
+  /* â”€â”€ Body lock when drawer open â”€â”€ */
   :global(body.menu-open) { overflow: hidden; }
 
-  /* ── Hide elements on mobile / desktop ── */
+  /* â”€â”€ Hide elements on mobile / desktop â”€â”€ */
   @media (max-width: 979px) {
     .hdr-trust__right { display: none; }
     .hdr-trust__sep:last-of-type,
@@ -883,14 +934,14 @@ const icons: Record<string, string> = {
   }
 </style>
 
-<!-- ═══════════════════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      SELF-CONTAINED SCRIPT
-     ═══════════════════════════════════════════════════════════ -->
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <script is:inline>
 (function() {
   'use strict';
 
-  /* ── Mega-menu (desktop) ── */
+  /* â”€â”€ Mega-menu (desktop) â”€â”€ */
   var triggers = document.querySelectorAll('.hdr-nav__trigger');
   var timeouts = {};
 
@@ -985,7 +1036,7 @@ const icons: Record<string, string> = {
     }
   });
 
-  /* ── Mobile drawer ── */
+  /* â”€â”€ Mobile drawer â”€â”€ */
   var burger = document.getElementById('hdr-burger');
   var drawer = document.getElementById('hdr-drawer');
 
@@ -999,7 +1050,7 @@ const icons: Record<string, string> = {
     });
   }
 
-  /* ── Sticky condensed bar ── */
+  /* â”€â”€ Sticky condensed bar â”€â”€ */
   var sticky = document.getElementById('hdr-sticky');
   var mainBar = document.getElementById('hdr-main');
   var threshold = 240;
