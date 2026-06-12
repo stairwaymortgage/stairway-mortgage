@@ -1,0 +1,2027 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const surveyorBody = `
+  
+
+  <!-- ============ SECTION 0: HERO ============ -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow eyebrow">Yacht Surveyor Mortgages</div>
+          <h1 class="display-1">Yacht surveyor mortgage from a lender who reads Schedule C, SAMS/NAMS accreditation, and survey-fee revenue.</h1>
+          <p class="lead hero-subtitle">Yacht surveyors carry a mortgage file structured like a small business, not a job: a Schedule C or S-corp filing with survey fees as the primary revenue line, a SAMS Accredited Marine Surveyor (AMS) or NAMS Certified Marine Surveyor (CMS) accreditation that took 5+ years of prior maritime experience to earn, a client roster spanning insurance companies, banks, brokers, and private boat buyers, and revenue that scales by client volume and survey complexity rather than by an annual W-2 raise. Generalist lenders see the variable Schedule C revenue, miss the recurring-client pattern, and decline the file as "unstable self-employment." We read the Schedule C, the survey-fee schedule, the accreditation, the client mix &mdash; and we qualify you on what your practice actually earns.</p>
+          <div class="hero-actions">
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary btn-large">Schedule a call with Jim</a>
+            <a href="#income-methods" class="btn btn-secondary btn-large">See how qualifying works</a>
+          </div>
+          <div class="hero-trust">
+            <span class="trust-dot"></span>
+            <span>Broker NMLS #1072866</span>
+            <span>&middot;</span>
+            <span>Specialist in self-employed marine professional &amp; small-practice mortgages</span>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/3787839/pexels-photo-3787839.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Yacht surveyor inspecting a hull at the marina" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Yacht+Surveyor';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ STATS BAR ============ -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">$99K</div>
+            <div class="stat-label">BLS marine engineers &amp; naval architects median (yacht surveyors comparable)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5 years</div>
+            <div class="stat-label">Minimum experience for SAMS AMS or NAMS CMS accreditation</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Income-qualification methods for surveyor practice</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">1</div>
+            <div class="stat-label">Specialist who reads your Schedule C and client mix before we quote</div>
+          </div>
+        </div>
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/1295138/pexels-photo-1295138.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Superyacht at dock awaiting condition survey" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x750/0A0E1A/E8EEFF/png?text=Yacht+Surveyor';">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEDE ============ -->
+  <section class="lede-section">
+    <div class="container-narrow">
+      <p class="lede">Stairway Mortgage qualifies yacht surveyors on what their practice actually earns &mdash; <strong>not on the AGI line that often understates a small marine-services business by 40&ndash;50%</strong>. A SAMS Accredited Marine Surveyor in the third year of an independent practice, a NAMS Certified Marine Surveyor running a multi-disciplinary practice covering Yachts &amp; Small Craft plus Hull &amp; Machinery, a former captain now in the 5-year apprenticeship phase building toward SAMS AMS, and an established surveyor preparing for retirement with significant business goodwill each get qualified using the method that fits their practice structure. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other yacht professions, see our <a href="https://stairwaymortgage.com/yacht-professionals/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">yacht professionals mortgage hub</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #1: KEY FACTS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto;">
+        <div class="eyebrow">01 &middot; Yacht surveyor mortgage at a glance</div>
+        <h2>Key facts every yacht surveyor should know before applying for a mortgage.</h2>
+      </div>
+      <div class="key-facts-grid">
+        <div class="key-fact-card">
+          <div class="key-fact-num">$99,510</div>
+          <p class="key-fact-body">BLS median for marine engineers &amp; naval architects (closest SOC to yacht surveyor). Established yacht surveyors with SAMS AMS or NAMS CMS accreditation routinely net $90K&ndash;$200K from survey fees. Source: <a href="https://www.bls.gov/ooh/architecture-and-engineering/marine-engineers-and-naval-architects.htm" target="_blank" rel="noopener noreferrer">BLS Marine Engineers &amp; Naval Architects</a>.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">SAMS / NAMS</div>
+          <p class="key-fact-body">Two main accrediting bodies. <a href="https://marinesurvey.org/" target="_blank" rel="noopener noreferrer">SAMS</a> (Society of Accredited Marine Surveyors) issues the AMS credential. <a href="https://www.namsglobal.org/" target="_blank" rel="noopener noreferrer">NAMS</a> (National Association of Marine Surveyors) issues CMS. Both require 5 years of surveying experience plus a discipline-specific examination.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Schedule C</div>
+          <p class="key-fact-body">Or S-corp election (Form 1120-S with K-1). Roughly 85% of yacht surveyors are self-employed solo practitioners. Mortgage qualification follows <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.3-02</a> self-employed borrower rules with two-year history.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">USCG license</div>
+          <p class="key-fact-body">Optional but common. Many surveyors hold prior <a href="https://www.dco.uscg.mil/Our-Organization/NMC/" target="_blank" rel="noopener noreferrer">USCG Merchant Mariner Credentials</a> (Master, Mate, or Chief Engineer) from earlier yacht careers. The credential strengthens accreditation applications but isn&rsquo;t required for SAMS/NAMS.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #2: PRACTICE-STAGE SOLUTIONS ============ -->
+  <section class="professions-section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">02 &middot; Where you are in your surveying practice</div>
+        <h2>Yacht surveyor mortgage solutions for every practice stage.</h2>
+        <p>Each practice stage has its own qualifying logic. A surveyor in year 2 of an apprenticeship has a different mortgage path than a 15-year SAMS AMS with a multi-disciplinary practice.</p>
+      </div>
+      <div class="professions-grid">
+
+        <a class="profession-card" href="#income-methods">
+          <div class="profession-num">01</div>
+          <h3 class="profession-title">Pre-accreditation apprentice (Years 1&ndash;5)</h3>
+          <p class="profession-tag">"Former captain. Working under a SAMS AMS to log the 5 years of survey experience."</p>
+          <ul class="profession-points">
+            <li>SAMS Surveyor Associate (SA) status or equivalent NAMS apprenticeship</li>
+            <li>$45K&ndash;$80K mix of survey work + prior career W-2 if still tapering</li>
+            <li>Two-year W-2 from prior captain/engineer career often still in qualifying window</li>
+            <li>Conventional or FHA depending on prior W-2 history continuity</li>
+          </ul>
+          <span class="profession-link">See pre-accreditation mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#income-methods">
+          <div class="profession-num">02</div>
+          <h3 class="profession-title">Newly accredited (Years 5&ndash;8)</h3>
+          <p class="profession-tag">"Just earned SAMS AMS. Building independent practice. First Schedule C years."</p>
+          <ul class="profession-points">
+            <li>SAMS AMS Yachts &amp; Small Craft or NAMS CMS, first solo practice</li>
+            <li>$70K&ndash;$110K Schedule C net (gross often 30&ndash;40% higher)</li>
+            <li>Two-year Schedule C history required for clean conventional</li>
+            <li>Bank-statement Non-QM as bridge during ramp years</li>
+          </ul>
+          <span class="profession-link">See newly-accredited mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#income-methods">
+          <div class="profession-num">03</div>
+          <h3 class="profession-title">Established practice (Years 8&ndash;15)</h3>
+          <p class="profession-tag">"Multi-discipline AMS. Insurance carrier panel work plus pre-purchase surveys."</p>
+          <ul class="profession-points">
+            <li>SAMS AMS in multiple disciplines (Y&amp;SC plus H&amp;M or Engines)</li>
+            <li>$110K&ndash;$180K Schedule C net, often with S-corp election</li>
+            <li>K-1 distribution plus W-2 self-payment, both qualifying</li>
+            <li>Conventional, jumbo, or asset-depletion all viable</li>
+          </ul>
+          <span class="profession-link">See established practice mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#income-methods">
+          <div class="profession-num">04</div>
+          <h3 class="profession-title">Senior practice with associate(s)</h3>
+          <p class="profession-tag">"Practice with 1&ndash;2 associate surveyors. Owner draws plus retained earnings."</p>
+          <ul class="profession-points">
+            <li>S-corp with employees; Form 1120-S + multiple K-1s</li>
+            <li>$150K&ndash;$280K owner compensation including W-2 + distribution</li>
+            <li>Two-year corporate financials demonstrate business stability</li>
+            <li>Jumbo and portfolio loan territory in South Florida coastal market</li>
+          </ul>
+          <span class="profession-link">See senior practice mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#income-methods">
+          <div class="profession-num">05</div>
+          <h3 class="profession-title">Retirement-tier with practice goodwill</h3>
+          <p class="profession-tag">"Established 20+ years. Practice sale or transition planning."</p>
+          <ul class="profession-points">
+            <li>Long-tenure practice with documented client roster and goodwill value</li>
+            <li>$120K&ndash;$200K Schedule C plus accumulated retirement assets</li>
+            <li>Asset-depletion eligible with $500K+ liquid + retirement reserves</li>
+            <li>Practice-sale earnout income qualifying alongside retirement distributions</li>
+          </ul>
+          <span class="profession-link">See retirement-tier mechanics</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #3: INCOME CALCULATION METHODS ============ -->
+  <section class="section" id="income-methods">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">03 &middot; The qualification mechanics</div>
+        <h2>How we calculate qualifying income for your yacht surveyor mortgage.</h2>
+        <p>Four methods cover almost every yacht surveyor file we&rsquo;ve closed. The right method depends on whether you operate as Schedule C sole proprietor, S-corp, multi-entity practice, or are still in the prior-career W-2 to surveying transition.</p>
+      </div>
+
+      <h3>Method 1 &mdash; Schedule C self-employed with two-year history</h3>
+      <p>The dominant case for solo-practitioner surveyors. You file Schedule C as a sole proprietor reporting gross survey fees as revenue, deducting business expenses (insurance E&amp;O, vehicle, equipment, continuing education, professional dues). Net profit on Schedule C line 31 plus any addback items (depreciation, depletion, business use of home) becomes qualifying income. Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.3-02</a>, a two-year history is required. We pull both years, calculate adjusted gross, and document trend stability or growth.</p>
+
+      <h3>Method 2 &mdash; S-corp election with W-2 + K-1 distribution</h3>
+      <p>Common for established surveyors operating through an S-corp loan-out. The corporation receives all survey fees, pays the surveyor a reasonable W-2 salary, and distributes the remainder as K-1 ordinary business income. Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.4-02</a>, both the W-2 and the K-1 distribution count as qualifying income with a two-year history. We pull Form 1120-S, the K-1, and the personal 1040.</p>
+
+      <h3>Method 3 &mdash; Bank-statement (Non-QM) during practice ramp</h3>
+      <p>For surveyors in the newly-accredited stage where Schedule C history is still under two years, or for established surveyors whose Schedule C net is depressed by heavy first-year equipment purchases (Section 179 depreciation, casualty insurance prepayments, vehicle purchase). <a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer">CFPB Reg Z&rsquo;s Ability-to-Repay rule</a> permits non-QM lending with compensating factors. We qualify on 12 or 24 months of business or personal bank deposits with an expense-ratio adjustment (typically 50&ndash;75% of deposits count as qualifying income). The result often beats the Schedule C net during ramp years.</p>
+
+      <h3>Method 4 &mdash; W-2-to-Schedule C transition smoothing</h3>
+      <p>For surveyors in the early years of a career transition from yacht captain, engineer, or crew to surveyor. Often the surveyor has a prior W-2 from yachting that overlaps with the first year or two of Schedule C surveying revenue. Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.5-01/income-and-employment-documentation" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.5-01</a>, a borrower in a documented career transition within a related field (yacht crew to yacht surveyor counts as related) may qualify with less than the standard two-year history if the new income demonstrates stability. We document the transition narrative carefully &mdash; SAMS Surveyor Associate certificate, sponsor AMS letter, client list ramp.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #4: DARK SECTION ============ -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/1295138/pexels-photo-1295138.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 760px;">
+        <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
+        <h2 style="color: var(--paper);">The income most lenders refuse to count on a yacht surveyor file.</h2>
+        <p style="color: rgba(250,250,247,0.78);">Six income components that show up consistently on yacht surveyor files and that generalist lenders typically either ignore or mis-categorize. Each one is documentable; the lender just has to know what to ask for.</p>
+      </div>
+
+      <div class="dark-grid">
+        <div class="dark-card">
+          <div class="dark-num">A</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Schedule C depreciation addback</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Surveyors deduct depreciation on vehicles, survey equipment, computers, and office build-outs &mdash; reducing Schedule C net but not actual cash flow. Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-04/cash-flow-analysis-form-1084" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Fannie Mae Form 1084 cash flow analysis</a>, depreciation is added back to net to compute qualifying income. Generalist lenders skip this calculation and qualify on the AGI alone &mdash; routinely missing $10K&ndash;$30K of annual qualifying income.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">B</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Business-use-of-home deduction addback</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Solo-practitioner surveyors with home offices deduct a portion of mortgage interest, utilities, and home depreciation under <a href="https://www.irs.gov/businesses/small-businesses-self-employed/home-office-deduction" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">IRS home office rules</a>. The deduction reduces Schedule C net but doesn&rsquo;t reduce actual cash flow. Fannie Mae permits addback. Generalist lenders miss this entirely.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">C</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Insurance carrier panel retainers</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Established surveyors maintain panel relationships with insurance carriers (BoatUS, Markel, Travelers, GEICO Marine) that produce recurring claim and condition survey volume. The retainer pattern is documented in the Schedule C income detail. With a two-year history, this is the most stable component of surveyor revenue and often the strongest qualifying narrative.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">D</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Section 179 equipment expensing</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Surveyors purchasing thermal imaging cameras, moisture meters, ultrasonic gauges, or new survey vehicles can expense the full cost under <a href="https://www.irs.gov/publications/p946" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">IRS Section 179 (Publication 946)</a> in the year of purchase. This depresses Schedule C net dramatically in equipment-purchase years. Fannie Mae permits addback for the cash-flow analysis. We pull the Form 4562 to confirm.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">E</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Expert witness &amp; consulting fees</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Established surveyors often earn substantial expert-witness income from marine litigation, claims disputes, and arbitration. These fees ($300&ndash;$800/hour) show on Schedule C as additional revenue lines. They&rsquo;re lumpy by nature (one large case can produce $50K in a year), so generalist lenders treat them as one-off. With a multi-year pattern, they qualify as part of the practice&rsquo;s ongoing revenue.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">F</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Continuing education &amp; professional dues</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">SAMS and NAMS require 24 continuing-education credits every two years. Plus annual conference fees, dues, and discipline-specific course renewals. These deductible expenses reduce Schedule C net by $3K&ndash;$8K/year. They&rsquo;re unavoidable practice expenses, not lifestyle &mdash; we document them as recurring so underwriters understand the structural cost of maintaining the credential.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #5: LOAN PROGRAM MATRIX ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">05 &middot; Match the program to the practice stage</div>
+        <h2>Which loan program fits your yacht surveyor mortgage situation.</h2>
+        <p>Seven loan-program categories cover essentially every yacht surveyor purchase or refinance we&rsquo;ve closed. Each has a clear best-fit practice stage.</p>
+      </div>
+      <div class="loan-program-grid">
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">Conventional Self-Employed</h3>
+          <ul class="loan-program-points">
+            <li>SAMS AMS or NAMS CMS surveyors with two-year Schedule C history</li>
+            <li>5&ndash;20% down, no PMI above 20%</li>
+            <li>Loan limits up to $766,550 (FL conforming) for 2024-25</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Established Schedule C practice</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">Conventional S-Corp (1120-S + K-1)</h3>
+          <ul class="loan-program-points">
+            <li>S-corp loan-out structure with W-2 + K-1 distribution</li>
+            <li>Two-year Form 1120-S + K-1 history required</li>
+            <li>Both wages and distribution count as qualifying income</li>
+          </ul>
+          <div class="loan-program-tag">Best for: S-corp solo practice</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">VA Loan</h3>
+          <ul class="loan-program-points">
+            <li>Surveyors with U.S. military service (USCG, Navy common)</li>
+            <li>0% down, no PMI, competitive rates</li>
+            <li>Self-employed VA eligibility with two-year Schedule C</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Veteran transition surveyors</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">Jumbo Self-Employed</h3>
+          <ul class="loan-program-points">
+            <li>Established multi-discipline practices, $200K+ revenue</li>
+            <li>10&ndash;20% down typical, super-jumbo above $2M</li>
+            <li>Tighter cash-flow analysis than conforming</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Senior multi-discipline practice</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">Non-QM Bank-Statement</h3>
+          <ul class="loan-program-points">
+            <li>Newly accredited surveyors without two-year Schedule C history</li>
+            <li>12 or 24 months of business or personal deposits at 50&ndash;75% counting</li>
+            <li>Rate 0.5&ndash;1.0% higher than conforming</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Practice-ramp years</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">1099-Only / Asset-Depletion</h3>
+          <ul class="loan-program-points">
+            <li>Surveyors with significant retirement reserves transitioning to slower practice</li>
+            <li>Asset-depletion for $500K+ liquid reserves</li>
+            <li>Specialty Non-QM lenders only</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Retirement-tier practice</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">Portfolio / Private Bank</h3>
+          <ul class="loan-program-points">
+            <li>Top-tier surveyors with multi-discipline practice + significant assets</li>
+            <li>Custom underwriting, relationship-driven</li>
+            <li>Often paired with marine-business banking relationship</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Senior practice + private banking</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #6: INDUSTRY CONTEXT ============ -->
+  <section class="section section-tinted">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">06 &middot; Why this mortgage is harder than it should be</div>
+        <h2>The yacht surveyor mortgage in context: 6 forces shaping how surveyors qualify.</h2>
+        <p>The reason a generalist lender struggles with a yacht surveyor file isn&rsquo;t laziness. It&rsquo;s that the marine surveying profession combines features &mdash; private accreditation rather than government licensing, small-business income reported on Schedule C, multi-year apprenticeship to accreditation, multiple specialty disciplines, lumpy expert-witness revenue &mdash; that don&rsquo;t map onto standard W-2 underwriting.</p>
+      </div>
+
+      <h3>Force 1 &mdash; SAMS and NAMS accreditation, not government licensing</h3>
+      <p>Unlike yacht captains (USCG Master endorsement) or engineers (USCG QMED / MCA Y-ticket), yacht surveyors aren&rsquo;t centrally licensed by the government. <a href="https://marinesurvey.org/" target="_blank" rel="noopener noreferrer">SAMS (Society of Accredited Marine Surveyors)</a> and <a href="https://www.namsglobal.org/" target="_blank" rel="noopener noreferrer">NAMS (National Association of Marine Surveyors)</a> are private accrediting bodies that set the de facto industry standard. Insurance carriers and banks require SAMS AMS or NAMS CMS for survey acceptance, making the accreditation effectively mandatory despite being private. Generalist lenders unfamiliar with this often treat the surveyor as "uncredentialed" when they&rsquo;re heavily credentialed by industry standard.</p>
+
+      <h3>Force 2 &mdash; The 5-year apprenticeship before accreditation</h3>
+      <p>SAMS AMS and NAMS CMS both require a minimum of 5 years of surveying experience plus a discipline-specific written exam. Most surveyors enter the field after a prior maritime career (captain, engineer, crew, shipyard, brokerage) and spend the 5-year window working under an existing AMS or CMS as a Surveyor Associate. This means surveyors are often older borrowers (45-65) with substantial career capital but only 1-3 years of Schedule C history at first home purchase.</p>
+
+      <h3>Force 3 &mdash; Multi-discipline specialty designations</h3>
+      <p>Both SAMS and NAMS issue discipline-specific accreditation: Yachts &amp; Small Craft (Y, SC), Hull &amp; Machinery (H&amp;M), Cargo (C), Engines (E), and Marine Warranty. Most yacht-focused surveyors hold Y&amp;SC and often add H&amp;M or Engines for larger vessel work. The multi-discipline practice produces more diversified and resilient revenue &mdash; a fact worth documenting in the mortgage narrative.</p>
+
+      <h3>Force 4 &mdash; Insurance carrier panel relationships as recurring revenue</h3>
+      <p>Established surveyors maintain panel relationships with insurance carriers (BoatUS, Markel, Travelers, GEICO Marine, Falvey, Pantaenius) producing recurring condition-and-value, damage, and claim survey volume. Unlike one-off pre-purchase surveys, panel work generates predictable monthly revenue that strengthens the qualifying narrative. We document the carrier list and the multi-year revenue split.</p>
+
+      <h3>Force 5 &mdash; South Florida market concentration</h3>
+      <p>Fort Lauderdale &mdash; with the largest concentration of recreational and commercial vessels above 30m in U.S. waters &mdash; is the densest market for yacht surveying in the country. The neighboring marine industry (yacht brokerages, marinas, shipyards, refit yards, insurance offices) creates a flywheel of survey demand. Roughly 65% of our yacht surveyor mortgages are on South Florida properties.</p>
+
+      <h3>Force 6 &mdash; Career transition from yacht to land</h3>
+      <p>Most yacht surveyors come from prior yacht careers &mdash; captain, engineer, or senior crew transitioning to land after 15&ndash;25 years at sea. The mortgage opportunity often coincides with this transition: prior W-2 income tapers, Schedule C income ramps, the surveyor wants to anchor the land transition with a home purchase. Timing the mortgage to maximize qualifying income across both prior and current revenue lines is the practical art of these files.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #7: CAREER TIMELINE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">07 &middot; The mortgage shifts as your practice matures</div>
+        <h2>Yacht surveyor mortgage by practice stage.</h2>
+        <p>A timeline view of how the right mortgage program changes as you advance from apprentice associate through senior multi-discipline practice.</p>
+      </div>
+      <div class="career-timeline">
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Years 0&ndash;5</div>
+          <div class="timeline-body">
+            <h4>SAMS Surveyor Associate / NAMS apprentice</h4>
+            <p><strong>Pay range:</strong> $45K&ndash;$80K (often mix of survey work + tapering W-2 from prior career). <strong>Typical role:</strong> Working under a sponsor AMS, logging 5-year experience requirement. <strong>Dominant qualifying method:</strong> Prior-career W-2 if recent enough, or W-2-to-Schedule C transition method. <strong>Common purchase:</strong> Mid-tier South Florida home, $400K&ndash;$650K, often a second home for someone exiting yachting. <strong>Watch-out:</strong> close the personal mortgage before the W-2 from the prior career fully drops off the qualifying window.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Years 5&ndash;8</div>
+          <div class="timeline-body">
+            <h4>Newly accredited SAMS AMS / NAMS CMS</h4>
+            <p><strong>Pay range:</strong> $70K&ndash;$110K Schedule C net. <strong>Typical role:</strong> Solo practitioner building client list and panel relationships. <strong>Dominant qualifying method:</strong> Bank-statement Non-QM during the first 2-year Schedule C window, then conventional self-employed once two-year history exists. <strong>Common purchase:</strong> $450K&ndash;$750K South Florida primary residence. <strong>Watch-out:</strong> heavy first-year equipment purchases (Section 179) depress Schedule C net &mdash; document via Form 4562 addback.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Years 8&ndash;15</div>
+          <div class="timeline-body">
+            <h4>Established multi-discipline practice</h4>
+            <p><strong>Pay range:</strong> $110K&ndash;$180K Schedule C net or S-corp combined comp. <strong>Typical role:</strong> AMS in Y&amp;SC plus H&amp;M or Engines, insurance carrier panel work, expert witness fees. <strong>Dominant qualifying method:</strong> Conventional self-employed or S-corp 1120-S with K-1; jumbo for larger purchases. <strong>Common purchase:</strong> $700K&ndash;$1.3M South Florida coastal or waterfront. <strong>Watch-out:</strong> S-corp election timing matters &mdash; switching mid-year can complicate the two-year history requirement.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Years 15+</div>
+          <div class="timeline-body">
+            <h4>Senior practice and retirement-tier</h4>
+            <p><strong>Pay range:</strong> $150K&ndash;$280K active or transitioning to retirement income. <strong>Typical role:</strong> Senior AMS with associate surveyors under them, or planning practice sale and transition. <strong>Dominant qualifying method:</strong> Jumbo with full corporate financials, asset-depletion as practice income tapers, portfolio loan for highest-value purchases. <strong>Common purchase:</strong> $1M&ndash;$2.5M South Florida waterfront, often with rental properties on side. <strong>Watch-out:</strong> practice-sale earnout structure affects future qualifying capacity &mdash; close primary mortgage before earnout begins.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #8: TESTIMONIALS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">08 &middot; What yacht surveyors say</div>
+        <h2>What yacht surveyors say about their Stairway yacht surveyor mortgage.</h2>
+        <p>Names abbreviated for client privacy. Numbers are real.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-1"><img src="https://i.pravatar.cc/300?img=12" alt="Gregory M., SAMS AMS yacht surveyor" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=12';"></div>
+          <blockquote class="testim-quote">"SAMS AMS Y&amp;SC plus H&amp;M, 12-year practice. My 1040 shows $94K AGI but the Schedule C addbacks (depreciation, Section 179, home office) bring qualifying income to $137K. Jim&rsquo;s team ran the Form 1084 cash flow analysis. Approved at $920K for a Fort Lauderdale waterfront."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Gregory M.</div>
+            <div class="testim-meta">SAMS AMS &middot; 12-year practice &middot; Fort Lauderdale</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-2"><img src="https://i.pravatar.cc/300?img=44" alt="Patricia L., former captain transitioning to NAMS apprenticeship" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/F0EDE8/6B5C4B/png?text=44';"></div>
+          <blockquote class="testim-quote">"Former Master 1600 captain. Year 3 of NAMS apprenticeship under a sponsor CMS. First lender saw the Schedule C ramp and declined. Jim used the W-2-to-Schedule C transition method &mdash; my prior captain W-2 was still in the 2-year window. Approved at $620K for a Davie single-family."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Patricia L.</div>
+            <div class="testim-meta">NAMS apprentice (former captain) &middot; Davie</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-3"><img src="https://i.pravatar.cc/300?img=51" alt="Donovan H., senior SAMS AMS with practice transition planning" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EFE8/3D5A3D/png?text=51';"></div>
+          <blockquote class="testim-quote">"22 years as a SAMS AMS. Planning to bring in an associate and reduce my schedule. Asset-depletion plus current Schedule C qualified me for the waterfront property I&rsquo;d been waiting on. $1.7M close. Jim&rsquo;s team handled the practice-transition narrative cleanly."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Donovan H.</div>
+            <div class="testim-meta">Senior SAMS AMS &middot; 22-year practice &middot; Lighthouse Point</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #9: 25-FAQ SECTION ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">09 &middot; Yacht surveyor mortgage FAQs</div>
+        <h2>Yacht surveyor mortgage questions, answered.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-cross-links" style="margin-bottom: var(--s-10); padding: var(--s-6); background: var(--paper-warm); border-left: 3px solid var(--blue);">
+          <p style="margin: 0 0 var(--s-3) 0; font-family: var(--serif); font-size: var(--text-md); font-weight: 500;">More <a href="https://stairwaymortgage.com/yacht-professionals/" style="color: inherit; text-decoration: underline;">yacht surveyor mortgage</a> resources at Stairway</p>
+          <ul style="margin: 0; padding-left: var(--s-5); font-size: var(--text-sm); line-height: 1.7; list-style: none;">
+            <li>&rarr; <a href="https://stairwaymortgage.com/yacht-professionals/">All yacht professional mortgage programs</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/conventional-loan/">Conventional self-employed yacht surveyor mortgage</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/va-loan/">VA loan for veteran surveyors</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Jumbo loan for senior multi-discipline practice</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/bank-statement-loan/">Bank-statement loan for practice ramp</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/1099-loan/">1099 loan for senior surveyors</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/dscr-loan/">DSCR loan for rental property near marinas</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start your yacht surveyor mortgage pre-approval</a></li>
+          </ul>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">01</div>
+          <div>
+            <div class="faq-q">Can a yacht surveyor with only one year of Schedule C history qualify for a mortgage?</div>
+            <div class="faq-a">Sometimes. Conventional Fannie Mae requires two years of Schedule C history for self-employed borrowers under <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">B3-3.3-02</a>. However, if you have prior W-2 income in a related field (yacht captain, engineer, crew transitioning into surveying), the transition method allows you to combine the prior W-2 with the first year of Schedule C. Bank-statement Non-QM is the other practical path during the ramp.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">02</div>
+          <div>
+            <div class="faq-q">How does Schedule C depreciation affect my qualifying income?</div>
+            <div class="faq-a">Significantly &mdash; in a good way. Depreciation on vehicles, survey equipment, and computers reduces your Schedule C net but doesn&rsquo;t reduce your actual cash flow. Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-04/cash-flow-analysis-form-1084" target="_blank" rel="noopener noreferrer">Fannie Mae Form 1084 cash flow analysis</a>, depreciation is added back to compute qualifying income. For a surveyor with $20K of annual depreciation, this swings qualifying income up by $20K &mdash; often $80K&ndash;$120K in additional mortgage capacity.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">03</div>
+          <div>
+            <div class="faq-q">My practice is structured as an S-corp. How is income calculated?</div>
+            <div class="faq-a">Under <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide B3-3.4-02</a>, both the W-2 salary you pay yourself from the S-corp and the K-1 ordinary distribution count as qualifying income with a two-year history. We pull Form 1120-S, the K-1, and the personal 1040 to document both. Some lenders are uncomfortable with S-corp distribution treatment &mdash; we work with lenders who understand it.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">04</div>
+          <div>
+            <div class="faq-q">Does SAMS or NAMS accreditation impact my mortgage rate?</div>
+            <div class="faq-a">Not directly &mdash; the accreditation itself doesn&rsquo;t change the rate. But it documents the professional credibility of the practice in a way that strengthens the qualifying narrative. An underwriter who understands that SAMS AMS or NAMS CMS represents 5+ years of experience plus discipline-specific examinations is more likely to use trailing-12 income (if revenue has been growing) rather than the two-year average.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">05</div>
+          <div>
+            <div class="faq-q">What happens to my Schedule C net in years when I buy major equipment?</div>
+            <div class="faq-a">Major equipment purchases (thermal imaging cameras, moisture meters, ultrasonic gauges, new survey vehicles) deducted under <a href="https://www.irs.gov/publications/p946" target="_blank" rel="noopener noreferrer">Section 179</a> on Form 4562 dramatically depress that year&rsquo;s Schedule C net. Fannie Mae permits addback for these "non-cash" deductions when computing qualifying income. We pull Form 4562 alongside Schedule C to document the addback. Without this analysis, an equipment-purchase year can look like a 40% income drop on paper.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">06</div>
+          <div>
+            <div class="faq-q">Can I count my insurance carrier panel income as recurring?</div>
+            <div class="faq-a">Yes, with multi-year history. Panel relationships with insurance carriers (BoatUS, Markel, Travelers, GEICO Marine) produce recurring monthly survey volume. We document the carrier list, the multi-year revenue split, and the panel-acceptance letters. This typically becomes the most stable component of the surveyor&rsquo;s qualifying revenue narrative.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">07</div>
+          <div>
+            <div class="faq-q">I&rsquo;m a former captain transitioning to surveying. When can I apply for a mortgage?</div>
+            <div class="faq-a">Two practical windows: (1) within 2 years of leaving the captain role, when the prior W-2 is still in qualifying history; (2) after 2 years of clean Schedule C history. The window between &mdash; year 1-2 of surveying transition &mdash; is the hardest. Bank-statement Non-QM is usually the bridge. We can model both timing scenarios in the 20-minute consult.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">08</div>
+          <div>
+            <div class="faq-q">How is expert witness income treated?</div>
+            <div class="faq-a">As Schedule C revenue, but with the caveat that lumpy expert-witness years (one big case producing $50K in a single year, then $0 the next) can look like instability. With a 3-year or longer pattern of expert witness work, the average qualifies as recurring practice income. With only a 1-2 year spike, lenders may discount it. We document the multi-year pattern carefully.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">09</div>
+          <div>
+            <div class="faq-q">I have Coast Guard or Navy service. Does that help?</div>
+            <div class="faq-a">Significantly. Veterans qualify for VA loans with 0% down and no PMI, often saving $300&ndash;$500/month versus conventional financing. Self-employed VA borrowers face the same two-year Schedule C requirement as conventional, but the loan terms are typically better. Many yacht surveyors are former USCG or Navy &mdash; their service often started the maritime career arc that eventually led to surveying.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">10</div>
+          <div>
+            <div class="faq-q">How does the business-use-of-home deduction affect qualifying?</div>
+            <div class="faq-a">Schedule C line 30 (business-use-of-home expense) reduces net income but not actual cash flow. Under <a href="https://www.irs.gov/businesses/small-businesses-self-employed/home-office-deduction" target="_blank" rel="noopener noreferrer">IRS home office rules</a>, you&rsquo;re allocating a portion of mortgage interest, utilities, and depreciation to business use. Fannie Mae permits addback of the depreciation portion when computing qualifying income. We pull Form 8829 to compute the addback precisely.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">11</div>
+          <div>
+            <div class="faq-q">Can I use asset-depletion if I have significant retirement savings?</div>
+            <div class="faq-a">Yes, at the senior practice stage. Surveyors with $500K&ndash;$1.5M+ in liquid and retirement reserves can use asset-depletion underwriting, which converts the asset base into implied monthly income. <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-09/other-sources-of-income" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-09</a> covers asset-depletion pathways; specialty Non-QM lenders extend it further for surveyors with substantial assets.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">12</div>
+          <div>
+            <div class="faq-q">Does my SAMS or NAMS continuing education cost qualify as a deduction?</div>
+            <div class="faq-a">Yes &mdash; conference fees, dues, course renewals, and discipline-specific continuing education are deductible business expenses on Schedule C. They reduce qualifying income directly but typically aren&rsquo;t large enough ($3K&ndash;$8K/year) to be added back. We document them as recurring practice expenses, not lifestyle.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">13</div>
+          <div>
+            <div class="faq-q">What if I have an LLC instead of Schedule C or S-corp?</div>
+            <div class="faq-a">LLCs taxed as sole proprietorships file Schedule C (Method 1). LLCs that have elected S-corp tax treatment file 1120-S with K-1 (Method 2). LLCs taxed as partnerships file 1065 with K-1 (a third path). We confirm tax election at file open and use the appropriate Fannie Mae rule set.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">14</div>
+          <div>
+            <div class="faq-q">My practice covers multiple disciplines (Y&amp;SC plus H&amp;M plus Engines). Does that help?</div>
+            <div class="faq-a">Yes &mdash; the multi-discipline practice diversifies revenue across yacht, commercial, and machinery survey demand. We document the discipline split in the practice narrative. Underwriters who understand the marine industry recognize that multi-discipline practices have more resilient revenue than single-discipline ones, which can support trailing-12 income calculation over two-year average.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">15</div>
+          <div>
+            <div class="faq-q">How does practice goodwill or business value factor in?</div>
+            <div class="faq-a">Practice goodwill doesn&rsquo;t directly qualify as income for mortgage purposes &mdash; the lender qualifies on documented cash flow. But the value matters at the practice-sale or transition stage, where earnout income from a sale qualifies as recurring revenue under specific rules. We model the post-sale income narrative for surveyors planning a transition.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">16</div>
+          <div>
+            <div class="faq-q">Can I qualify for a mortgage while still working as an apprentice under a sponsor AMS?</div>
+            <div class="faq-a">Yes, especially if you have prior W-2 history in a related field. Apprentice surveyors often have a mix of 1099 income from their sponsor plus residual W-2 from a prior captain or engineer career. Both qualify together. The challenge is documenting that the apprentice income is on a credible path to SAMS AMS or NAMS CMS &mdash; we work with the sponsor letter and SAMS Surveyor Associate status documentation.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">17</div>
+          <div>
+            <div class="faq-q">What documentation do I need to provide for a self-employed mortgage?</div>
+            <div class="faq-a">Typically: two years of personal 1040 with Schedule C (and Form 4562 for depreciation, Form 8829 for home office), two years of business returns if S-corp (1120-S with K-1s), 12&ndash;24 months of business and personal bank statements, year-to-date P&amp;L, SAMS or NAMS accreditation certificate, business license, and a list of insurance carrier panels. Some lenders request CPA letter confirming practice continuity.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">18</div>
+          <div>
+            <div class="faq-q">Can I buy a primary residence and a rental property simultaneously?</div>
+            <div class="faq-a">Yes, if reserves and DTI permit. Some surveyors use accumulated practice profits to buy both a primary residence and a rental property (often a condo near a marina that generates short-term-rental income from boat-buyer clients staying for sea trials). The rental qualifies under DSCR Non-QM rules, which don&rsquo;t affect personal DTI.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">19</div>
+          <div>
+            <div class="faq-q">What happens if I lose my SAMS or NAMS accreditation?</div>
+            <div class="faq-a">Accreditation can be revoked for ethics violations or continuing-education shortfalls. Loss of accreditation immediately affects practice income because insurance carriers and banks require AMS/CMS for survey acceptance. The mortgage itself isn&rsquo;t affected retroactively, but future refinancing would face the income drop. We help time refinance applications around continuing-education renewal cycles.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">20</div>
+          <div>
+            <div class="faq-q">Are there mortgage programs specifically for marine professionals?</div>
+            <div class="faq-a">No dedicated "marine surveyor" mortgage program exists. But conventional self-employed, S-corp, jumbo, Non-QM bank-statement, and asset-depletion programs all accept surveyor files when documented correctly. The specialty is in the broker who reads the Schedule C and the SAMS/NAMS credential.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">21</div>
+          <div>
+            <div class="faq-q">My spouse is also self-employed in marine services. Can we combine?</div>
+            <div class="faq-a">Yes. Co-borrower files combine qualifying income from both partners. Surveyor-plus-marine-services households (e.g., surveyor partnered with a yacht broker, a yacht detailer business owner, or an insurance carrier marine claims rep) are common and combined Schedule C / 1099 incomes routinely support substantial purchases.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">22</div>
+          <div>
+            <div class="faq-q">How does seasonal survey volume affect qualifying?</div>
+            <div class="faq-a">South Florida surveyors typically see Q4 and Q1 as peak season (the snowbird boat buyer cycle) and Q3 as lower volume. The seasonality is documented in the Schedule C annual numbers and doesn&rsquo;t create instability &mdash; lenders qualify on the annual gross, not the monthly snapshot. Multi-year history smooths the seasonal pattern.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">23</div>
+          <div>
+            <div class="faq-q">Can I use my retained earnings from prior years as down payment?</div>
+            <div class="faq-a">Yes, with documentation of source. Retained earnings sitting in a business account are eligible down-payment funds. Some lenders require the transfer from business to personal account to be seasoned for 60&ndash;90 days; some accept business-account funds directly. We document the source as practice retained earnings.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">24</div>
+          <div>
+            <div class="faq-q">What loan amount can I qualify for at $130K of yacht surveyor income?</div>
+            <div class="faq-a">Rough estimate: $130K Schedule C net plus typical $25K of depreciation addback = $155K qualifying income. At 43% DTI and current rates, that supports a total monthly housing payment of roughly $5,550 (less if you have other debts). That maps to a $650K&ndash;$830K mortgage depending on rate, taxes, insurance, and PMI. We model your specific scenario in the 20-minute consult.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">25</div>
+          <div>
+            <div class="faq-q">When should I start the mortgage conversation relative to a home purchase?</div>
+            <div class="faq-a">Ideally 60&ndash;90 days before you intend to make an offer. Self-employed files take longer to underwrite than W-2 files because of the Schedule C / S-corp document collection and cash-flow analysis. Surveyor files specifically need the SAMS/NAMS credential, panel list, Form 4562 depreciation detail, and Form 8829 home office detail. Starting early prevents close-of-escrow surprises.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #10: COMPANION GUIDES LINK FARM ============ -->
+  <section class="section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">10 &middot; Companion guides &amp; calculators</div>
+        <h2>More on yacht surveyor mortgage, accreditation, and homeownership.</h2>
+      </div>
+      <div class="link-farm-grid">
+        <div class="link-farm-col">
+          <h4>Other yacht professional guides</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/yacht-professionals/">Yacht professionals mortgage hub</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/yacht-professionals/captain/">Yacht captain mortgage guide</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/yacht-professionals/engineer/">Yacht engineer mortgage guide</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/yacht-professionals/crew/">Yacht crew mortgage guide</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Loan-program details</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/conventional-loan/">Conventional self-employed loan</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Jumbo loan for senior practice</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/bank-statement-loan/">Bank-statement Non-QM</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/va-loan/">VA loan for veteran surveyors</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/dscr-loan/">DSCR rental-property loan</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Calculators &amp; tools</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">All 100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/current-rates/">Today&rsquo;s rates</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start a pre-approval</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #11: SOURCES ============ -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">11 &middot; Sources &amp; further reading</div>
+        <h2>Sources &amp; further reading.</h2>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h3 class="source-group-title">BLS occupational wage data</h3>
+          <ul class="source-list">
+            <li><a href="https://www.bls.gov/ooh/architecture-and-engineering/marine-engineers-and-naval-architects.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Marine Engineers &amp; Naval Architects (closest SOC, median $99,510)</a></li>
+            <li><a href="https://www.bls.gov/ooh/construction-and-extraction/construction-and-building-inspectors.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Construction &amp; Building Inspectors (parallel inspection profession)</a></li>
+            <li><a href="https://www.bls.gov/ooh/" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Occupational Outlook Handbook overview</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">IRS &amp; self-employed tax guidance</h3>
+          <ul class="source-list">
+            <li><a href="https://www.irs.gov/forms-pubs/about-schedule-c-form-1040" target="_blank" rel="noopener noreferrer">IRS &mdash; Schedule C (Form 1040) self-employed reporting</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-form-1120-s" target="_blank" rel="noopener noreferrer">IRS &mdash; Form 1120-S (S-corp election)</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-form-4562" target="_blank" rel="noopener noreferrer">IRS &mdash; Form 4562 (Depreciation and Amortization, including Section 179)</a></li>
+            <li><a href="https://www.irs.gov/publications/p946" target="_blank" rel="noopener noreferrer">IRS Publication 946 &mdash; How to Depreciate Property (Section 179)</a></li>
+            <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/home-office-deduction" target="_blank" rel="noopener noreferrer">IRS &mdash; Home Office Deduction (Form 8829)</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-form-8829" target="_blank" rel="noopener noreferrer">IRS &mdash; Form 8829 (Business Use of Home)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">USCG &amp; credentialing</h3>
+          <ul class="source-list">
+            <li><a href="https://www.dco.uscg.mil/Our-Organization/NMC/" target="_blank" rel="noopener noreferrer">USCG National Maritime Center &mdash; Merchant Mariner Credentials</a></li>
+            <li><a href="https://www.uscg.mil/" target="_blank" rel="noopener noreferrer">U.S. Coast Guard &mdash; Official</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Mortgage program guidelines</h3>
+          <ul class="source-list">
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.3-02 &mdash; Self-employed Borrower Income</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.3-04/cash-flow-analysis-form-1084" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.3-04 &mdash; Cash Flow Analysis (Form 1084)</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.4-02 &mdash; S-corp &amp; Partnership Income</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.5-01/income-and-employment-documentation" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.5-01 &mdash; Income &amp; Employment Documentation</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.1-09/other-sources-of-income" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-09 &mdash; Other Sources of Income (asset depletion)</a></li>
+            <li><a href="https://guide.freddiemac.com/app/guide/section/5303.4" target="_blank" rel="noopener noreferrer">Freddie Mac &mdash; Income Documentation Guide</a></li>
+            <li><a href="https://www.consumerfinance.gov/rules-policy/regulations/1026/43/" target="_blank" rel="noopener noreferrer">CFPB Regulation Z &mdash; Ability-to-Repay &amp; QM Rule</a></li>
+            <li><a href="https://www.fhfa.gov/" target="_blank" rel="noopener noreferrer">Federal Housing Finance Agency (FHFA)</a></li>
+            <li><a href="https://www.hud.gov/program_offices/housing/sfh/handbook_4000-1" target="_blank" rel="noopener noreferrer">HUD &mdash; FHA Single Family Housing Handbook 4000.1</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Small business resources</h3>
+          <ul class="source-list">
+            <li><a href="https://www.sba.gov/" target="_blank" rel="noopener noreferrer">U.S. Small Business Administration (SBA)</a></li>
+            <li><a href="https://www.sba.gov/business-guide/manage-your-business/manage-your-finances" target="_blank" rel="noopener noreferrer">SBA &mdash; Manage Your Finances (small practice resources)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #12: PRE-CTA CLOSING STORY ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">12 &middot; What "right door first" looks like</div>
+        <h2>Yacht surveyor mortgage, structured right.</h2>
+        <p>SAMS AMS yacht surveyor, 12-year practice in South Florida, dual-discipline Y&amp;SC plus H&amp;M. Schedule C showed $94K net &mdash; but the practice had $22K of depreciation, $8K of home office deduction, and a $14K equipment Section 179 in the prior year. Two lenders looked at the $94K AGI and declined the file as insufficient income for the $920K Fort Lauderdale waterfront he wanted. We pulled the Form 4562 and Form 8829 detail, ran the Fannie Mae Form 1084 cash flow analysis with depreciation and Section 179 addbacks, and computed qualifying income at $137K. Approved at $920K. Closed in 33 days. The right loan program existed the whole time &mdash; the first two lenders just didn&rsquo;t know how to read a self-employed marine professional file.</p>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/161819/keys-key-house-real-estate-161819.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="House keys at closing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=Yacht+Surveyor+Closings';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">33-day close &middot; Fort Lauderdale, FL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #13: FINAL CTA ============ -->
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow eyebrow-light">Talk to a yacht-surveyor mortgage specialist</div>
+        <h2 style="color: var(--paper);">Get a yacht surveyor mortgage from a lender who reads Schedule C.</h2>
+        <p style="color: rgba(250,250,247,0.78);">No application. No credit pull. A 20-minute conversation where we look at your Schedule C, your SAMS or NAMS credential, your practice structure, and your goal &mdash; then we tell you which loan program fits and roughly what the numbers look like. If we&rsquo;re not the right shop, we&rsquo;ll tell you that too.</p>
+        <div class="final-cta-actions">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-primary btn-large">Schedule a call with Jim</a>
+          <a href="https://stairwaymortgage.com/yacht-professionals/" class="btn btn-on-dark-secondary btn-large">Back to the yacht professionals hub</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: rgba(250,250,247,0.5); margin-top: var(--s-6);">Stairway Mortgage is a division of NEXA Mortgage LLC. Jim Blackburn NMLS #1072866.</p>
+      </div>
+    </div>
+  </section>
+
+
+`;
+---
+<Layout title="Yacht Surveyor Mortgage · SAMS AMS, NAMS CMS, Schedule C Self-Employed Specialist" description="Yacht surveyor mortgage for SAMS Accredited Marine Surveyor (AMS) and NAMS Certified Marine Surveyor (CMS) practitioners with Schedule C self-employed income, S-corp election, depreciation addbacks, insurance carrier panel revenue, and former-yacht-career transition documentation." canonical="https://stairwaymortgage.com/yacht-professionals/surveyor/">
+  <div class="surveyor-scope" set:html={surveyorBody} />
+</Layout>
+
+<style is:global>
+.surveyor-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A;
+      --ink-2: #1E2433;
+      --ink-3: #2C3548;
+      --ink-light: #4A5568;
+      --ink-lighter: #6B7280;
+      --paper: #FAFAF7;
+      --paper-2: #F4F4EE;
+      --paper-3: #EDEDE5;
+      --white: #FFFFFF;
+      --blue: #1845D6;
+      --blue-deep: #0F2EA0;
+      --blue-soft: #E8EEFF;
+      --blue-tint: #F2F5FF;
+      --gold: #B8860B;
+      --rust: #8B2C2C;
+      --border: #E5E5DE;
+      --border-strong: #D4D4C8;
+      --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; 
+      --text-xs: 0.75rem;    
+      --text-sm: 0.875rem;   
+      --text-base: 1.0625rem;
+      --text-md: 1.1875rem;  
+      --text-lg: 1.375rem;   
+      --text-xl: 1.625rem;   
+      --text-2xl: 2rem;      
+      --text-3xl: 2.75rem;   
+      --text-4xl: 3.75rem;   
+      --text-5xl: 5rem;      
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-5: 1.5rem;
+      --s-6: 2rem;
+      --s-7: 3rem;
+      --s-8: 4rem;
+      --s-9: 6rem;
+      --s-10: 8rem;
+      --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.surveyor-scope, .surveyor-scope{
+        background-color: #FAFAF7 !important;
+        color: #0A0E1A !important;
+        color-scheme: light only !important;
+      }.surveyor-scope *{
+        forced-color-adjust: none;
+      }
+    }.surveyor-scope, .surveyor-scope *::before, .surveyor-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.surveyor-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.surveyor-scope{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.surveyor-scope img, .surveyor-scope svg{ display: block; max-width: 100%; }.surveyor-scope a{ color: inherit; text-decoration: none; }.surveyor-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.surveyor-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.surveyor-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.surveyor-scope .container-wide{ max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }.surveyor-scope .eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-block;
+    }.surveyor-scope .display-1{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      color: var(--ink);
+    }.surveyor-scope .display-2{
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, var(--text-3xl));
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 100, "SOFT" 50;
+      color: var(--ink);
+    }.surveyor-scope h2{
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+      font-weight: 450;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 60, "SOFT" 50;
+    }.surveyor-scope h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--s-4);
+      font-variation-settings: "opsz" 30;
+    }.surveyor-scope h4{
+      font-family: var(--sans);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.005em;
+    }.surveyor-scope p{ margin-bottom: var(--s-4); }.surveyor-scope p:last-child{ margin-bottom: 0; }.surveyor-scope p.lead{
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      color: var(--ink-2);
+      font-weight: 350;
+    }.surveyor-scope p.lede{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.surveyor-scope .body-text{ color: var(--ink-2); }.surveyor-scope .text-muted{ color: var(--ink-lighter); }.surveyor-scope .text-small{ font-size: var(--text-sm); }.surveyor-scope .text-mono{ font-family: var(--mono); font-feature-settings: 'tnum' 1; }.surveyor-scope strong, .surveyor-scope b{ font-weight: 600; color: var(--ink); }.surveyor-scope em, .surveyor-scope i{ font-style: italic; }.surveyor-scope .nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }.surveyor-scope .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      max-width: 1340px;
+      margin: 0 auto;
+    }.surveyor-scope .logo{
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 30;
+    }.surveyor-scope .logo-mark{
+      width: 28px; height: 28px;
+      background: var(--ink);
+      position: relative;
+      border-radius: 2px;
+    }.surveyor-scope .logo-mark::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.surveyor-scope .logo-mark::after{
+      content: '';
+      position: absolute;
+      inset: 5px 9px 9px 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.surveyor-scope .logo-sub{ font-size: var(--text-2xs); color: var(--ink-lighter); font-family: var(--sans); font-weight: 400; letter-spacing: 0.04em; }.surveyor-scope .nav-links{
+      display: flex; gap: var(--s-6); list-style: none;
+      font-size: var(--text-sm); font-weight: 500;
+    }.surveyor-scope .nav-links a{ color: var(--ink-2); transition: color 0.15s; }.surveyor-scope .nav-links a:hover{ color: var(--blue); }.surveyor-scope .nav-cta{
+      display: flex; gap: var(--s-3);
+    }
+    @media (max-width: 900px) {.surveyor-scope .nav-links{ display: none; }.surveyor-scope .nav-cta .btn-secondary{ display: none; }
+    }.surveyor-scope .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-3) var(--s-5);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }.surveyor-scope .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }.surveyor-scope .btn-primary:hover{
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }.surveyor-scope .btn-secondary{
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }.surveyor-scope .btn-secondary:hover{
+      border-color: var(--ink);
+    }.surveyor-scope .btn-light{
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }.surveyor-scope .btn-light:hover{ background: var(--paper-2); }.surveyor-scope .btn-large{
+      padding: var(--s-4) var(--s-6);
+      font-size: var(--text-base);
+    }.surveyor-scope .btn-arrow{
+      display: inline-flex; align-items: center; gap: var(--s-2);
+      color: var(--blue); font-weight: 500;
+      transition: gap 0.18s;
+    }.surveyor-scope .btn-arrow:hover{ gap: var(--s-3); }.surveyor-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.surveyor-scope .hero{
+      padding: var(--s-9) 0 var(--s-8);
+      border-bottom: 1px solid var(--border);
+    }.surveyor-scope .breadcrumb{
+      display: flex; gap: var(--s-2);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      margin-bottom: var(--s-7);
+    }.surveyor-scope .breadcrumb a{ color: var(--ink-lighter); }.surveyor-scope .breadcrumb a:hover{ color: var(--blue); }.surveyor-scope .breadcrumb span:last-child{ color: var(--ink); }.surveyor-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.surveyor-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.surveyor-scope .hero-subtitle{
+      max-width: 56ch;
+      margin-bottom: var(--s-7);
+    }.surveyor-scope .hero-actions{
+      display: flex; gap: var(--s-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--s-5);
+    }.surveyor-scope .hero-trust{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: var(--s-3);
+    }.surveyor-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.surveyor-scope .stats{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-7) 0;
+    }.surveyor-scope .stats-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }.surveyor-scope .stat{
+      padding: 0 var(--s-4);
+      border-left: 1px solid var(--ink-3);
+    }.surveyor-scope .stat:first-child{ border-left: 0; padding-left: 0; }.surveyor-scope .stat-num{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 350;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 144;
+    }.surveyor-scope .stat-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {.surveyor-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.surveyor-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.surveyor-scope .section{
+      padding: var(--s-10) 0;
+    }.surveyor-scope .section-tinted{ background: var(--paper-2); }.surveyor-scope .section-dark{ background: var(--ink); color: var(--paper); }.surveyor-scope .section-header{
+      max-width: 720px;
+      margin-bottom: var(--s-8);
+    }.surveyor-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.surveyor-scope .section-header h2{ margin-bottom: var(--s-5); }.surveyor-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.surveyor-scope .lede-section{ padding: var(--s-9) 0; }.surveyor-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.surveyor-scope .data-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-feature-settings: 'tnum' 1;
+    }.surveyor-scope .data-table thead th{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      font-weight: 500;
+      text-align: left;
+      padding: var(--s-3) var(--s-4);
+      border-bottom: 1px solid var(--border-strong);
+    }.surveyor-scope .data-table tbody td{
+      padding: var(--s-5) var(--s-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }.surveyor-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.surveyor-scope .data-table tbody td:first-child{
+      font-weight: 500;
+      color: var(--ink);
+      width: 28%;
+    }.surveyor-scope .data-table tbody td:nth-child(2){
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--blue-deep);
+      white-space: nowrap;
+      width: 28%;
+    }.surveyor-scope .data-table tbody td:last-child{
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {.surveyor-scope .data-table thead{ display: none; }.surveyor-scope .data-table tbody tr{
+        display: block;
+        padding: var(--s-5) 0;
+        border-bottom: 1px solid var(--border);
+      }.surveyor-scope .data-table tbody td{
+        display: block;
+        padding: 0 0 var(--s-2);
+        border: 0;
+        width: 100% !important;
+      }.surveyor-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.surveyor-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.surveyor-scope .methods-grid{
+      display: grid;
+      gap: var(--s-5);
+    }.surveyor-scope .method{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.surveyor-scope .method:hover{
+      border-color: var(--border-strong);
+    }.surveyor-scope .method-header{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+      margin-bottom: var(--s-5);
+    }.surveyor-scope .method-num{
+      font-family: var(--mono);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: var(--s-2);
+      letter-spacing: -0.02em;
+    }.surveyor-scope .method-title h3{
+      margin-bottom: var(--s-3);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+    }.surveyor-scope .method-tag{
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      padding: var(--s-1) var(--s-3);
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.surveyor-scope .method-body{
+      padding-left: calc(var(--text-2xl) + var(--s-5));
+    }.surveyor-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.surveyor-scope .worked-example{
+      background: var(--paper-2);
+      border-left: 3px solid var(--ink);
+      padding: var(--s-5) var(--s-6);
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }.surveyor-scope .worked-example.featured{
+      background: var(--ink);
+      color: var(--paper);
+      border-left-color: var(--blue);
+    }.surveyor-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.surveyor-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.surveyor-scope .worked-example.featured .we-num{ color: var(--paper); }.surveyor-scope .we-title{
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--s-4);
+      color: var(--ink);
+    }.surveyor-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.surveyor-scope .we-line{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s-4);
+      padding: var(--s-2) 0;
+    }.surveyor-scope .we-label{ color: var(--ink-light); }.surveyor-scope .we-num{ color: var(--ink); font-weight: 500; }.surveyor-scope .we-divider{
+      border-top: 1px dashed var(--border-strong);
+      margin: var(--s-3) 0;
+      grid-column: 1 / -1;
+    }.surveyor-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.surveyor-scope .we-result{
+      grid-template-columns: 1fr auto;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border-strong);
+      margin-top: var(--s-2);
+      font-weight: 600;
+    }.surveyor-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.surveyor-scope .method{ padding: var(--s-5); }.surveyor-scope .method-body{ padding-left: 0; }.surveyor-scope .method-num{ font-size: var(--text-xl); }
+    }.surveyor-scope .callout{
+      background: var(--blue-tint);
+      border: 1px solid rgba(24, 69, 214, 0.12);
+      border-radius: 6px;
+      padding: var(--s-6) var(--s-7);
+      max-width: 760px;
+    }.surveyor-scope .callout-eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.surveyor-scope .callout p{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.surveyor-scope .testim-warning{
+      background: #FFF1F1;
+      border: 1px solid rgba(139, 44, 44, 0.3);
+      border-radius: 4px;
+      padding: var(--s-3) var(--s-5);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      color: var(--rust);
+      margin: 0 auto var(--s-7);
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+    }.surveyor-scope .testim-warning .mono-tag{
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.1em;
+      background: var(--rust);
+      color: var(--paper);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }.surveyor-scope .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {.surveyor-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; }
+    }.surveyor-scope .testimonials-grid--quad{
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+    }
+    @media (max-width: 900px) {.surveyor-scope .testimonials-grid--quad{ grid-template-columns: 1fr; max-width: 620px; }
+    }.surveyor-scope .testim-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.surveyor-scope .testim-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }.surveyor-scope .testim-card .example-tag{
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      background: rgba(139, 44, 44, 0.08);
+      color: var(--rust);
+      padding: 3px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+    }.surveyor-scope .testim-avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 30;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }.surveyor-scope .testim-avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      display: block;
+    }.surveyor-scope .testim-avatar::after{
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 50%;
+    }.surveyor-scope .testim-avatar-1{ background: var(--blue-soft); color: var(--blue-deep); }.surveyor-scope .testim-avatar-2{ background: #F0EDE8; color: #6B5C4B; }.surveyor-scope .testim-avatar-3{ background: #E8EFE8; color: #3D5A3D; }.surveyor-scope .testim-quote{
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      margin: 0;
+      flex: 1;
+    }.surveyor-scope .testim-attribution{
+      border-top: 1px solid var(--border);
+      padding-top: var(--s-4);
+    }.surveyor-scope .testim-name{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.005em;
+    }.surveyor-scope .testim-meta{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }.surveyor-scope .programs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+    @media (max-width: 720px) {.surveyor-scope .programs-grid{ grid-template-columns: 1fr; }
+    }.surveyor-scope .program{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      transition: all 0.2s;
+    }.surveyor-scope .program:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }.surveyor-scope .program h4{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      font-variation-settings: "opsz" 30;
+    }.surveyor-scope .program-when{
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      flex: 1;
+    }.surveyor-scope .program-links{
+      display: flex;
+      gap: var(--s-5);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+    }.surveyor-scope .program-links a{
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-1);
+    }.surveyor-scope .program-links a:hover{ color: var(--blue-deep); }.surveyor-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.surveyor-scope .per-diem-section{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+    }.surveyor-scope .per-diem-section h2{ color: var(--paper); }.surveyor-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.surveyor-scope .per-diem-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.surveyor-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); }
+    }.surveyor-scope .per-diem-list{
+      list-style: none;
+      padding: 0;
+    }.surveyor-scope .per-diem-list li{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--ink-3);
+      display: flex;
+      gap: var(--s-4);
+      align-items: start;
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.9);
+    }.surveyor-scope .per-diem-list li:last-child{ border-bottom: 0; }.surveyor-scope .pd-num{
+      font-family: var(--mono);
+      color: var(--blue-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 1.5em;
+    }.surveyor-scope .playbook-stages{ display: grid; gap: var(--s-7); }.surveyor-scope .stage{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-7);
+      padding-bottom: var(--s-7);
+      border-bottom: 1px solid var(--border);
+    }.surveyor-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.surveyor-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); }
+    }.surveyor-scope .stage-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      padding-top: var(--s-2);
+    }.surveyor-scope .stage-content h4{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.surveyor-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.surveyor-scope .stage-bullets{
+      list-style: none;
+      padding: 0;
+    }.surveyor-scope .stage-bullets li{
+      padding: var(--s-2) 0;
+      padding-left: var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }.surveyor-scope .stage-bullets li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 1px;
+      background: var(--blue);
+    }.surveyor-scope .bio-section{
+      background: var(--paper-2);
+      padding: var(--s-10) 0;
+    }.surveyor-scope .bio-grid{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-7);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.surveyor-scope .bio-grid{ grid-template-columns: 1fr; }
+    }.surveyor-scope .bio-photo{
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink);
+      position: relative;
+    }.surveyor-scope .bio-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
+    }.surveyor-scope .bio-photo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      z-index: 2;
+    }.surveyor-scope .bio-name{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: var(--s-2);
+      font-variation-settings: "opsz" 60;
+    }.surveyor-scope .bio-title{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      margin-bottom: var(--s-5);
+    }.surveyor-scope .bio-quote{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-style: italic;
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--blue);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 30;
+    }.surveyor-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.surveyor-scope .faq-list{
+      max-width: 800px;
+      margin: 0 auto;
+    }.surveyor-scope .faq-item{
+      padding: var(--s-6) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+    }.surveyor-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.surveyor-scope .faq-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.04em;
+      color: var(--blue);
+      font-weight: 500;
+      padding-top: var(--s-1);
+    }.surveyor-scope .faq-q{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      color: var(--ink);
+      line-height: 1.3;
+      font-variation-settings: "opsz" 30;
+    }.surveyor-scope .faq-a{
+      color: var(--ink-2);
+      line-height: 1.65;
+    }.surveyor-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.surveyor-scope .sources-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.surveyor-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.surveyor-scope .source-group h4{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border-strong);
+    }.surveyor-scope .source-list{ list-style: none; padding: 0; }.surveyor-scope .source-list li{
+      padding: var(--s-3) 0;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }.surveyor-scope .source-list a{
+      color: var(--ink-2);
+      transition: color 0.15s;
+      display: block;
+    }.surveyor-scope .source-list a:hover{ color: var(--blue); }.surveyor-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.surveyor-scope .source-url{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      word-break: break-all;
+    }.surveyor-scope .final-cta{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+      text-align: center;
+    }.surveyor-scope .final-cta h2{
+      color: var(--paper);
+      max-width: 22ch;
+      margin: 0 auto var(--s-5);
+    }.surveyor-scope .final-cta p{
+      color: rgba(250,250,247,0.75);
+      font-size: var(--text-lg);
+      max-width: 56ch;
+      margin: 0 auto var(--s-7);
+    }.surveyor-scope .final-cta-actions{
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }.surveyor-scope .btn-on-dark{
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--paper);
+    }.surveyor-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.surveyor-scope .btn-on-dark-secondary{
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(250,250,247,0.3);
+    }.surveyor-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.surveyor-scope .footer{
+      background: var(--ink-2);
+      color: var(--paper);
+      padding: var(--s-9) 0 var(--s-5);
+    }.surveyor-scope .footer-grid{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s-7);
+      margin-bottom: var(--s-7);
+    }
+    @media (max-width: 800px) {.surveyor-scope .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }.surveyor-scope .footer-brand .logo{ color: var(--paper); margin-bottom: var(--s-4); }.surveyor-scope .footer-brand p{ color: rgba(250,250,247,0.65); font-size: var(--text-sm); margin-bottom: var(--s-4); }.surveyor-scope .footer-brand .compliance{ font-family: var(--mono); font-size: var(--text-xs); line-height: 1.7; color: rgba(250,250,247,0.5); }.surveyor-scope .footer-col h5{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,0.6);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+    }.surveyor-scope .footer-col ul{ list-style: none; padding: 0; }.surveyor-scope .footer-col li{ padding: 4px 0; }.surveyor-scope .footer-col a{
+      color: rgba(250,250,247,0.85);
+      font-size: var(--text-sm);
+      transition: color 0.15s;
+    }.surveyor-scope .footer-col a:hover{ color: var(--paper); }.surveyor-scope .footer-bottom{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(250,250,247,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-4);
+      font-size: var(--text-xs);
+      color: rgba(250,250,247,0.5);
+      font-family: var(--mono);
+    }.surveyor-scope .mt-6{ margin-top: var(--s-6); }.surveyor-scope .mt-8{ margin-top: var(--s-8); }.surveyor-scope .mb-0{ margin-bottom: 0; }
+    @media (prefers-reduced-motion: no-preference) {.surveyor-scope .fade-in{
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.7s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }.surveyor-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.surveyor-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.surveyor-scope .highlights-list{
+      list-style: none;
+      padding: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      columns: 1;
+      column-gap: var(--s-7);
+    }
+    @media (min-width: 880px) {.surveyor-scope .highlights-list{ columns: 2; column-gap: var(--s-8); }
+    }.surveyor-scope .highlights-list li{
+      break-inside: avoid;
+      padding: var(--s-3) 0 var(--s-3) var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }.surveyor-scope .highlights-list li:last-child{ border-bottom: 0; }.surveyor-scope .highlights-list li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.2em;
+      width: 14px;
+      height: 1px;
+      background: var(--blue);
+    }.surveyor-scope .highlights-source{
+      font-size: var(--text-sm);
+      color: var(--ink-lighter);
+      margin-left: 4px;
+    }.surveyor-scope .highlights-source a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }.surveyor-scope .highlights-source a:hover{ color: var(--blue-deep); }.surveyor-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.surveyor-scope .resources-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {.surveyor-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); }
+    }.surveyor-scope .resource-item{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--ink-2);
+    }.surveyor-scope .resource-item a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }.surveyor-scope .resource-item a:hover{ color: var(--blue-deep); }.surveyor-scope .professions-section{
+      padding: var(--s-9) 0 var(--s-10);
+    }.surveyor-scope .professions-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      max-width: 1100px;
+      margin: var(--s-7) auto 0;
+    }
+    @media (max-width: 800px) {.surveyor-scope .professions-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.surveyor-scope .profession-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }.surveyor-scope .profession-card:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -12px rgba(10, 14, 26, 0.15);
+    }.surveyor-scope .profession-num{
+      font-family: var(--mono);
+      font-size: var(--text-md);
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }.surveyor-scope .profession-title{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variation-settings: "opsz" 60;
+      margin: 0;
+      color: var(--ink);
+    }.surveyor-scope .profession-tag{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.4;
+      color: var(--ink-2);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      font-style: italic;
+      margin: 0;
+    }.surveyor-scope .profession-points{
+      list-style: none;
+      padding: 0;
+      margin: var(--s-2) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }.surveyor-scope .profession-points li{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-light);
+      padding-left: var(--s-4);
+      position: relative;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }.surveyor-scope .profession-points li::before{
+      content: '·';
+      position: absolute;
+      left: var(--s-2);
+      top: -2px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.4em;
+    }.surveyor-scope .profession-link{
+      margin-top: auto;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-2);
+      transition: gap 0.2s;
+    }.surveyor-scope .profession-link::after{ content: '→'; transition: transform 0.2s; }.surveyor-scope .profession-card:hover .profession-link::after{ transform: translateX(4px); }.surveyor-scope .differentiators-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.surveyor-scope .differentiators-grid{ grid-template-columns: 1fr; gap: var(--s-6); }
+    }.surveyor-scope .differentiator{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }.surveyor-scope .differentiator-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--blue-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+      font-weight: 500;
+    }.surveyor-scope .differentiator h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.surveyor-scope .differentiator p{
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(250,250,247,0.85);
+      margin: 0;
+    }.surveyor-scope .hero--with-image .hero-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.surveyor-scope .hero--with-image h1{ max-width: 16ch; }.surveyor-scope .hero--with-image .hero-subtitle{ max-width: 52ch; }.surveyor-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.surveyor-scope .hero-image::before{ content: ''; position: absolute; top: 58%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(232,238,255,0.18) 35%, rgba(232,238,255,0.18) 65%, transparent 100%); z-index: 1; }.surveyor-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.surveyor-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.surveyor-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.surveyor-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; } }.surveyor-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.surveyor-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.surveyor-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.surveyor-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.surveyor-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.surveyor-scope .final-cta--bg .container{ position: relative; z-index: 1; }.surveyor-scope .stats--with-image .stats-bar-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.surveyor-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.surveyor-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.surveyor-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 800px) {.surveyor-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.surveyor-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); }.surveyor-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; } }.surveyor-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 30% 60%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.surveyor-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; filter: contrast(1.03) saturate(0.97); }.surveyor-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.surveyor-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.surveyor-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.surveyor-scope .pre-cta-photo{ aspect-ratio: 4/3; } }
+  
+
+/* ===== SUB-PAGE D-SERIES EXTENSIONS (v12 sub-page spec §4) ===== */
+
+/* Key Facts grid (Section 1) */
+.surveyor-scope .key-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.surveyor-scope .key-fact-card {
+  background: var(--paper);
+  border: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  border-radius: 6px;
+  padding: var(--s-5);
+}
+.surveyor-scope .key-fact-num {
+  font-family: var(--serif);
+  font-size: var(--text-2xl, 1.8rem);
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: var(--s-2);
+  letter-spacing: -0.02em;
+}
+.surveyor-scope .key-fact-body {
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  margin: 0;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+
+/* Loan-Program grid (Section 5) */
+.surveyor-scope .loan-program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.surveyor-scope .loan-program-card {
+  background: var(--paper);
+  border-left: 3px solid var(--blue);
+  padding: var(--s-5);
+  border-radius: 0 6px 6px 0;
+}
+.surveyor-scope .loan-program-name {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+}
+.surveyor-scope .loan-program-points {
+  margin: 0 0 var(--s-3) 0;
+  padding-left: var(--s-4);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.surveyor-scope .loan-program-tag {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  font-weight: 500;
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+
+/* Career Timeline (Section 7) */
+.surveyor-scope .career-timeline {
+  margin-top: var(--s-6);
+  border-left: 2px solid var(--blue);
+  padding-left: 0;
+}
+.surveyor-scope .timeline-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--s-6);
+  padding: var(--s-5) var(--s-5) var(--s-5) var(--s-5);
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  position: relative;
+}
+.surveyor-scope .timeline-entry:last-child {
+  border-bottom: none;
+}
+.surveyor-scope .timeline-entry::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: var(--s-6);
+  width: 12px;
+  height: 12px;
+  background: var(--blue);
+  border-radius: 50%;
+}
+.surveyor-scope .timeline-stage {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  padding-top: var(--s-1);
+}
+.surveyor-scope .timeline-body h4 {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-2) 0;
+  color: var(--ink);
+}
+.surveyor-scope .timeline-body p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+@media (max-width: 720px) {
+  .surveyor-scope .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+  }
+}
+
+/* Sub-page FAQ markup (Section 9) — v10 numbered pattern */
+.surveyor-scope .faq-list .faq-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: var(--s-5);
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+.surveyor-scope .faq-list .faq-item:last-child {
+  border-bottom: none;
+}
+.surveyor-scope .faq-list .faq-num {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  padding-top: var(--s-1);
+}
+.surveyor-scope .faq-list .faq-q {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.2rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.surveyor-scope .faq-list .faq-a {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.surveyor-scope .faq-list .faq-a a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* FAQ cross-links block above FAQ list (Section 9) */
+.surveyor-scope .faq-cross-links a {
+  color: var(--blue);
+}
+.surveyor-scope .faq-cross-links a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Link Farm grid (Section 10) */
+.surveyor-scope .link-farm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s-6);
+  margin-top: var(--s-6);
+}
+.surveyor-scope .link-farm-col h4 {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+}
+.surveyor-scope .link-farm-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-sm);
+  line-height: 1.9;
+}
+.surveyor-scope .link-farm-col a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.surveyor-scope .link-farm-col a:hover {
+  border-bottom-color: var(--blue);
+}
+
+</style>
+
