@@ -3,33 +3,35 @@
    Aesthetic: Stripe-clean + editorial gravitas + financial precision
    ========================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* ----- Color tokens — warm, deliberate, NOT generic ----- */
-  --color-ink: #0A0E1A;          /* near-black with warm undertone */
-  --color-ink-light: #1A1F2E;
-  --color-paper: #FAFAF7;        /* warm off-white, not sterile */
-  --color-paper-tint: #F4F2EC;
-  --color-bone: #EAE7DE;         /* warm divider tone */
+  /* ----- Color tokens — subtle forest palette with cream default ----- */
+  --color-ink: #1a2420;          /* deep forest ink */
+  --color-ink-light: #2a3430;
+  --color-paper: #f7f5ef;        /* cream — default page background */
+  --color-paper-tint: #f0ede5;
+  --color-bone: #e3e0d6;         /* warm divider tone */
 
-  --color-blue: #1845D6;         /* electric trust blue */
-  --color-blue-deep: #0F2B8E;
-  --color-blue-tint: #E8EDFC;
+  --color-forest: #1f3d34;       /* forest accent */
+  --color-royal: #2f47c9;        /* trust blue — primary CTA */
+  --color-royal-deep: #1e2f8a;
+  --color-royal-tint: #e8ecfc;
 
   --color-rust: #8B2C2C;         /* editorial accent — testimonials, callouts */
   --color-rust-tint: #F4E8E6;
 
-  --color-green: #2E9E2E;        /* preserved brand CTA — Apply Now */
+  --color-green: #2E9E2E;        /* THIN ACCENT only — never repaint backgrounds */
   --color-green-deep: #1F6E20;
 
-  --color-mute: #6B7280;
+  --color-mute: #6b7770;         /* muted forest-grey */
   --color-mute-light: #9CA3AF;
+  --color-line: #e3e0d6;         /* explicit line/divider token */
 
   /* ----- Typography ----- */
   --font-display: 'Fraunces', 'Times New Roman', serif;
-  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
 
   /* ----- Spacing rhythm (8px grid) ----- */
@@ -41,10 +43,14 @@
 /* ----- Unprefixed aliases consumed by /loan-calculator/* page-scoped styles ----- */
 :root {
   --ink: var(--color-ink);
-  --blue: var(--color-blue);
-  --bone: #EAE7DE;
-  --paper-tint: #F4F2EC;
-  --mute: #6B7280;
+  --blue: var(--color-royal);
+  --bone: #e3e0d6;
+  --paper-tint: #f0ede5;
+  --mute: #6b7770;
+  /* backward-compat aliases — old --color-blue refs resolve to royal */
+  --color-blue: var(--color-royal);
+  --color-blue-deep: var(--color-royal-deep);
+  --color-blue-tint: var(--color-royal-tint);
 }
 
 /* ==========================================
@@ -71,6 +77,15 @@ body {
    DISPLAY TYPOGRAPHY (Fraunces)
    Designed for editorial impact — never timid
    ========================================== */
+h1 {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
 .font-display {
   font-family: var(--font-display);
   font-variation-settings: "opsz" 144;
@@ -166,8 +181,8 @@ body {
   background: var(--color-ink);
 }
 
-.eyebrow-blue { color: var(--color-blue); }
-.eyebrow-blue::before { background: var(--color-blue); }
+.eyebrow-blue { color: var(--color-royal); }
+.eyebrow-blue::before { background: var(--color-royal); }
 
 .eyebrow-rust { color: var(--color-rust); }
 .eyebrow-rust::before { background: var(--color-rust); }
@@ -238,15 +253,15 @@ body {
 }
 
 .btn-blue {
-  background: var(--color-blue);
+  background: var(--color-royal);
   color: white;
-  border-color: var(--color-blue);
+  border-color: var(--color-royal);
 }
 .btn-blue:hover {
-  background: var(--color-blue-deep);
-  border-color: var(--color-blue-deep);
+  background: var(--color-royal-deep);
+  border-color: var(--color-royal-deep);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px -8px rgba(24, 69, 214, 0.45);
+  box-shadow: 0 6px 20px -8px rgba(47, 71, 201, 0.45);
 }
 
 .btn-ghost {
