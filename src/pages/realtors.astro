@@ -1,0 +1,1895 @@
+---
+import Layout from '../layouts/Layout.astro';
+const prealtorBody = `
+  
+
+  <!-- ============ SECTION 0: HERO ============ -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow eyebrow">Realtors &middot; Partner Education</div>
+          <h1 class="display-1">Why your Realtor matters in your mortgage transaction &mdash; and what the August 2024 NAR settlement changed about how buyers, sellers, and agents work together in Florida real estate.</h1>
+          <p class="lead hero-subtitle">Working with a Realtor (a licensed real estate agent and member of the <a href="https://www.nar.realtor/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">National Association of REALTORS&reg;</a>) is fundamental to a successful Florida real estate transaction. <strong>The NAR settlement effective August 17, 2024 (resolving the Sitzer / Burnett class action for a $418M payment) restructured how buyer&rsquo;s agent compensation works: listing brokers may no longer offer compensation on MLS, and buyer&rsquo;s agents must execute a written buyer agency agreement before showing property</strong>. Per <a href="https://www.redfin.com/news/buyers-agent-commission-decline/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Redfin Q1 2025 data</a>, average buyer&rsquo;s agent commission was 2.40%, substantially flat vs pre-settlement with tier variation ($1M+ trending 2.17%, under $500K trending 2.45%). This guide educates Florida consumers on what Realtors do and how the 2024 settlement affects your transaction. <strong>If you&rsquo;re a Realtor reading this looking for a mortgage on your own home, scroll to the bottom for the Realtor-as-borrower CTA.</strong></p>
+          <div class="hero-actions">
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary btn-large">Schedule a call with Jim</a>
+            <a href="#realtor-role" class="btn btn-secondary btn-large">See what your Realtor does</a>
+          </div>
+          <div class="hero-trust">
+            <span class="trust-dot"></span>
+            <span>Broker NMLS #1072866</span>
+            <span>&middot;</span>
+            <span>Florida mortgage broker partnering with Realtors across Broward, Miami-Dade, Palm Beach, and the Treasure Coast for residential purchase, refinance, and investment transactions</span>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/8293645/pexels-photo-8293645.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Realtor showing home to buyers" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Realtor+Partner';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ STATS BAR ============ -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">1.5M+ REALTORS&reg;</div>
+            <div class="stat-label">Approximately 1.5 million members of the <a href="https://www.nar.realtor/" target="_blank" rel="noopener noreferrer" style="color: inherit;">National Association of REALTORS&reg;</a> licensed across the United States. Florida is a top-3 state by Realtor membership with substantial concentration in Miami-Dade, Broward, and Palm Beach counties</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Aug 17, 2024</div>
+            <div class="stat-label">NAR settlement effective date. Listing brokers may not offer buyer&rsquo;s agent compensation on MLS. Buyer&rsquo;s agents must have written buyer agency agreement signed before showing property to prospective buyer</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$418M</div>
+            <div class="stat-label">NAR settlement payment in Sitzer / Burnett class action resolving claims related to traditional cooperative compensation MLS practice. Settlement effective Aug 17, 2024 across U.S. residential real estate market</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2.40% avg</div>
+            <div class="stat-label">Average buyer&rsquo;s agent commission in Q1 2025 per Redfin data, substantially flat vs pre-settlement levels with tier-specific variation (homes over $1M trending lower at 2.17%, homes under $500K trending higher at 2.45%)</div>
+          </div>
+        </div>
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/7464699/pexels-photo-7464699.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Realtor signing buyer agency agreement post-NAR settlement" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x750/0A0E1A/E8EEFF/png?text=NAR+Settlement';">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEDE ============ -->
+  <section class="lede-section">
+    <div class="container-narrow">
+      <p class="lede">Working with a licensed Florida Realtor is the foundation of a successful real estate transaction. <strong>Your Realtor handles pricing strategy, MLS access, contract drafting and negotiation, contingency management (financing, inspection, appraisal, title, HOA), disclosure compliance under Florida real estate law, inspection coordination, appraisal coordination with the lender, title work, HOA estoppel coordination, walkthrough, and closing-day execution at the title company</strong>. Following the <a href="https://www.nar.realtor/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">NAR settlement</a> effective August 17, 2024 (resolving the Sitzer / Burnett class action for a $418M settlement payment), three structural changes apply: <strong>(1) listing brokers may no longer offer compensation to buyer&rsquo;s agents through MLS platforms, (2) buyer&rsquo;s agents must execute a written buyer agency agreement with the buyer before showing any property, and (3) buyer&rsquo;s agent commission is negotiated transparently between buyer and buyer&rsquo;s agent</strong>. Buyer&rsquo;s agent commission remains negotiable; sellers in most Florida transactions continue offering cooperative compensation through off-MLS channels. <strong>Stairway Mortgage partners with Florida Realtors across Broward, Miami-Dade, Palm Beach, the Treasure Coast, and statewide.</strong> Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #1: KEY FACTS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto;">
+        <div class="eyebrow">01 &middot; Working with a Realtor at a glance</div>
+        <h2>Key facts every Florida buyer and seller should know about working with a Realtor.</h2>
+      </div>
+      <div class="key-facts-grid">
+        <div class="key-fact-card">
+          <div class="key-fact-num">Licensed agent</div>
+          <p class="key-fact-body">A Florida Realtor is a licensed real estate sales associate or broker through <a href="https://www2.myfloridalicense.com/" target="_blank" rel="noopener noreferrer">Florida DBPR</a> Division of Real Estate AND a member of the <a href="https://www.nar.realtor/" target="_blank" rel="noopener noreferrer">National Association of REALTORS&reg;</a> and <a href="https://www.floridarealtors.org/" target="_blank" rel="noopener noreferrer">Florida Realtors</a> state association. The REALTOR&reg; trademark designates NAR membership with adherence to the NAR Code of Ethics.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Buyer agreement</div>
+          <p class="key-fact-body">Effective August 17, 2024, buyer&rsquo;s agents must execute a written buyer agency agreement with the prospective buyer before showing any property listed on MLS. The agreement specifies buyer&rsquo;s agent compensation terms either as percentage or dollar amount and the duration of the agency relationship.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">MLS no compensation</div>
+          <p class="key-fact-body">Effective August 17, 2024, listing brokers may not offer buyer&rsquo;s agent compensation through MLS platforms. Cooperative compensation offers from sellers to buyer&rsquo;s agents continue but through direct channels outside MLS (listing-side disclosure, contract negotiation, off-MLS communication).</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Commission negotiable</div>
+          <p class="key-fact-body">Buyer&rsquo;s agent commission has always been negotiable contractually. Post-settlement, the negotiation is transparent in the buyer-agent relationship through the written buyer agency agreement. Per Redfin Q1 2025 data, average buyer&rsquo;s agent commission was 2.40% with tier-specific variation by home price.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #2: REALTOR REPRESENTATION TYPES ============ -->
+  <section class="professions-section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">02 &middot; Five Realtor representation types</div>
+        <h2>How Realtors represent buyers and sellers in Florida transactions.</h2>
+        <p>Florida real estate law recognizes multiple agency relationship types governing how a Realtor represents the buyer, the seller, or both parties in a transaction. The most common Florida arrangement is transaction broker representation (default in Florida absent written designation otherwise), with single-agent buyer representation, single-agent seller representation, dual agent representation, and no-brokerage relationship status as the other defined types.</p>
+      </div>
+      <div class="professions-grid">
+
+        <a class="profession-card" href="#realtor-role">
+          <div class="profession-num">01</div>
+          <h3 class="profession-title">Transaction broker</h3>
+          <p class="profession-tag">"Default Florida agency. Facilitates the transaction without exclusively representing either party. Limited fiduciary duties under Florida statute."</p>
+          <ul class="profession-points">
+            <li>Default Florida agency type (absent written designation)</li>
+            <li>Limited fiduciary duties (loyalty, full disclosure modified)</li>
+            <li>Most common in Florida residential transactions</li>
+            <li>Disclosure timing: at first substantive communication</li>
+          </ul>
+          <span class="profession-link">See transaction broker mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#realtor-role">
+          <div class="profession-num">02</div>
+          <h3 class="profession-title">Single agent (buyer representation)</h3>
+          <p class="profession-tag">"Exclusive buyer representation with full fiduciary duties (loyalty, confidentiality, obedience, full disclosure, accounting, skill care diligence) under Florida statute."</p>
+          <ul class="profession-points">
+            <li>Full fiduciary duties to buyer client</li>
+            <li>Written buyer agency agreement required (post-Aug 2024)</li>
+            <li>Buyer&rsquo;s agent commission negotiated in agreement</li>
+            <li>Most protective for buyer&rsquo;s interests</li>
+          </ul>
+          <span class="profession-link">See single-agent buyer mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#realtor-role">
+          <div class="profession-num">03</div>
+          <h3 class="profession-title">Single agent (seller representation)</h3>
+          <p class="profession-tag">"Exclusive seller representation (listing agent) with full fiduciary duties. Listing agreement specifies listing commission and any cooperative compensation offer to buyer&rsquo;s agent."</p>
+          <ul class="profession-points">
+            <li>Full fiduciary duties to seller client</li>
+            <li>Listing agreement specifies commission terms</li>
+            <li>Cooperative compensation offer to buyer&rsquo;s agent off-MLS</li>
+            <li>Most protective for seller&rsquo;s interests</li>
+          </ul>
+          <span class="profession-link">See listing agent mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#realtor-role">
+          <div class="profession-num">04</div>
+          <h3 class="profession-title">Dual agent / Designated sales associate</h3>
+          <p class="profession-tag">"Florida Designated Sales Associate (DSA) represents both buyer and seller with disclosure. Commercial transactions over $1M typical; rarely in residential. Written informed consent required."</p>
+          <ul class="profession-points">
+            <li>Designated Sales Associate (DSA) under Florida statute</li>
+            <li>Commercial transactions over $1M typical</li>
+            <li>Written informed consent required</li>
+            <li>Rare in residential context</li>
+          </ul>
+          <span class="profession-link">See DSA mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#realtor-role">
+          <div class="profession-num">05</div>
+          <h3 class="profession-title">No-brokerage relationship</h3>
+          <p class="profession-tag">"Limited services without establishing an agency relationship. Used in specific scenarios (FSBO, limited service representation). Disclosure required at first substantive communication."</p>
+          <ul class="profession-points">
+            <li>No agency relationship established</li>
+            <li>Limited services provided</li>
+            <li>Disclosure required at first substantive communication</li>
+            <li>Specific scenarios (FSBO, limited service representation)</li>
+          </ul>
+          <span class="profession-link">See no-brokerage mechanics</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #3: REALTOR ROLE THROUGH THE TRANSACTION ============ -->
+  <section class="section" id="realtor-role">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">03 &middot; What your Realtor does at each transaction phase</div>
+        <h2>How your Realtor moves your transaction from pre-approval to closing.</h2>
+        <p>Four substantive phases cover the Realtor&rsquo;s work through a Florida real estate transaction. Each phase involves specific deliverables and risk-mitigation work that differentiates a successful close from a deal that falls apart.</p>
+      </div>
+
+      <h3>Phase 1 &mdash; Pre-contract: pricing, MLS access, and buyer agency agreement</h3>
+      <p>Buyer&rsquo;s agent work: written buyer agency agreement execution (required post-Aug 17 2024), buyer needs analysis, MLS access and showing coordination, comparable market analysis (CMA), and coordination with the mortgage lender for pre-approval. Listing agent work: seller listing consultation, CMA for pricing, listing agreement execution specifying commission and any cooperative compensation offer, professional photography, and MLS listing input with required disclosures.</p>
+
+      <h3>Phase 2 &mdash; Offer and contract: negotiation, contingencies, escrow</h3>
+      <p>Offer negotiation: price, financing terms, deposit, contingency structure, closing timeline, possession. Florida residential contracts use the <a href="https://www.floridarealtors.org/" target="_blank" rel="noopener noreferrer">Florida Realtors / Florida Bar (FR/Bar) forms</a>. Contingency periods: financing 30-45 days, inspection 10-15 days, appraisal 30-45 days. Buyer&rsquo;s agent coordinates with lender for loan estimate timing and underwriting milestones.</p>
+
+      <h3>Phase 3 &mdash; Due diligence: inspection, appraisal, title, HOA</h3>
+      <p>Inspection: buyer&rsquo;s agent recommends licensed Florida home inspector, coordinates access, reviews report, and negotiates any repair credits. Appraisal: ordered by lender, value comparison with contract price, low-appraisal scenarios handled through renegotiation or buyer-funded difference. Title: search through Florida title company, title insurance for buyer and lender. HOA / condo: estoppel ordering, association approval typically 14-30 days.</p>
+
+      <h3>Phase 4 &mdash; Closing: walkthrough, document review, possession transfer</h3>
+      <p>Pre-closing walkthrough 24-48 hours before closing: verifies property condition matches contract terms. Closing Disclosure (CD) reviewed at least 3 days before closing under <a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener noreferrer">CFPB TRID rules</a>. Florida closings handled by title companies or attorneys depending on county practice. Closing day: document signing, deed recording, wire transfer, possession transfer.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #4: NAR SETTLEMENT DARK SECTION ============ -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/8293645/pexels-photo-8293645.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 760px;">
+        <div class="eyebrow eyebrow-light">04 &middot; What the 2024 NAR settlement actually changed</div>
+        <h2 style="color: var(--paper);">Six things every Florida buyer and seller should know about the post-settlement landscape.</h2>
+        <p style="color: rgba(250,250,247,0.78);">The NAR settlement effective August 17, 2024 restructured how buyer&rsquo;s agent compensation is offered and negotiated. The substantive changes are sometimes misreported in popular media; the actual changes are limited and specific. Six clarifications every Florida buyer and seller should understand.</p>
+      </div>
+
+      <div class="dark-grid">
+        <div class="dark-card">
+          <div class="dark-num">A</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">MLS no longer displays buyer&rsquo;s agent compensation</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Effective Aug 17, 2024, listing brokers may not advertise buyer&rsquo;s agent compensation on MLS. Cooperative compensation offers continue but through direct off-MLS channels (listing-side disclosure, contract negotiation, separate agreements). The MLS rule change is the central structural change.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">B</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Buyer agency agreements now mandatory pre-showing</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Effective Aug 17, 2024, buyer&rsquo;s agents must execute a written buyer agency agreement before showing any MLS-listed property. The agreement specifies compensation (percentage or dollar amount) and agency duration. Applies even to virtual showings.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">C</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Commission was always negotiable</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Buyer&rsquo;s agent commission has always been negotiable. The settlement made the negotiation transparent through the written agreement. Headlines suggesting "the end of buyer&rsquo;s agent commission" misrepresented the change. Redfin Q1 2025 average: 2.40%, flat vs pre-settlement.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">D</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Cooperative compensation continues off-MLS</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Sellers in most Florida transactions continue offering cooperative compensation through off-MLS channels. The economic incentive remains aligned: cooperative compensation attracts qualified buyer-side representation. Off-MLS channels include listing-side disclosure and contract negotiation.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">E</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Steering prevention is a regulatory goal</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">A regulatory goal of the post-settlement structure is preventing "steering" &mdash; agents guiding clients toward higher-commission listings rather than best-fit properties. The MLS rule change removes easy commission comparison across listings. Florida brokerages have implemented training and compliance frameworks.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">F</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Florida MLS implementation continues</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Florida MLS systems including Stellar MLS (Central Florida), <a href="https://www.miamire.com/" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Miami Association of REALTORS&reg; MLS</a>, BeachesMLS (Treasure Coast), and other regional MLS platforms have implemented the post-Aug 2024 changes with continuing system updates. Form FR/Bar contracts through <a href="https://www.floridarealtors.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Florida Realtors</a> and the Florida Bar have been updated to reflect the new buyer agency agreement requirements and commission disclosure structure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ H2 #5: REALTOR DESIGNATIONS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">05 &middot; Realtor designations and what they signal</div>
+        <h2>Realtor designations and credentials explained.</h2>
+        <p>NAR-recognized designations document specialized expertise in specific real estate practice areas. Florida Realtors holding multiple relevant designations commonly demonstrate continuing professional education and specialty practice depth. Seven prominent designations:</p>
+      </div>
+      <div class="loan-program-grid">
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CRS &mdash; Certified Residential Specialist</h3>
+          <ul class="loan-program-points">
+            <li>NAR&rsquo;s top residential designation through Residential Real Estate Council</li>
+            <li>Requires substantial transaction volume + advanced coursework</li>
+            <li>Top 3% of REALTORS&reg; nationally hold CRS</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Residential transactions</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">ABR &mdash; Accredited Buyer&rsquo;s Representative</h3>
+          <ul class="loan-program-points">
+            <li>NAR designation for buyer-side representation expertise</li>
+            <li>Through Real Estate Buyer&rsquo;s Agent Council (REBAC)</li>
+            <li>Particularly relevant post-NAR settlement era</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Buyer&rsquo;s agent expertise</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">GRI &mdash; Graduate, REALTOR&reg; Institute</h3>
+          <ul class="loan-program-points">
+            <li>Foundational professional education designation</li>
+            <li>Multi-module coursework covering contracts, legal, finance</li>
+            <li>Common foundation designation for experienced agents</li>
+          </ul>
+          <div class="loan-program-tag">Best for: General foundation</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">SRES &mdash; Seniors Real Estate Specialist</h3>
+          <ul class="loan-program-points">
+            <li>Specialized expertise for clients aged 50+</li>
+            <li>Reverse mortgage, downsizing, aging-in-place planning</li>
+            <li>Particularly relevant for Florida 55+ communities</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Senior clients</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">MRP &mdash; Military Relocation Professional</h3>
+          <ul class="loan-program-points">
+            <li>Military and VA buyer / seller expertise</li>
+            <li>VA loan knowledge and military relocation timeline</li>
+            <li>Relevant for Florida bases (Jacksonville, Pensacola, MacDill)</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Military / VA clients</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">RENE &mdash; Real Estate Negotiation Expert</h3>
+          <ul class="loan-program-points">
+            <li>Advanced negotiation training and techniques</li>
+            <li>Particularly relevant in competitive market scenarios</li>
+            <li>Post-NAR settlement commission negotiation relevance</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Complex negotiations</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CIPS &mdash; Certified International Property Specialist</h3>
+          <ul class="loan-program-points">
+            <li>International real estate transaction expertise</li>
+            <li>FIRPTA withholding compliance for foreign sellers</li>
+            <li>Particularly relevant for Miami-Dade international clients</li>
+          </ul>
+          <div class="loan-program-tag">Best for: International clients</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #6: INDUSTRY CONTEXT ============ -->
+  <section class="section section-tinted">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">06 &middot; Six forces shaping the Florida Realtor industry</div>
+        <h2>How the post-settlement Florida Realtor industry works in 2026.</h2>
+        <p>The post-NAR-settlement Florida Realtor industry operates at the intersection of MLS structural changes, buyer agency agreement adoption, top brokerage consolidation, Florida population growth and migration, condo / HOA regulatory complexity, and the substantial luxury and international market concentration in South Florida.</p>
+      </div>
+
+      <h3>Force 1 &mdash; NAR settlement implementation continues</h3>
+      <p>Florida MLS systems (Stellar MLS, <a href="https://www.miamire.com/" target="_blank" rel="noopener noreferrer">Miami Association of REALTORS&reg; MLS</a>, BeachesMLS, and others) have removed cooperative compensation fields and updated documentation. Florida Realtors / Florida Bar contract forms (FR/Bar) updated to reflect new buyer agency agreement requirements.</p>
+
+      <h3>Force 2 &mdash; Buyer agency agreement adoption</h3>
+      <p>Buyer agency agreements were standard in Florida pre-settlement but formality has increased. Agreements now specify compensation as percentage or dollar amount with clear duration terms. Florida buyer&rsquo;s agents standardize on 30-day, 60-day, or transaction-specific durations.</p>
+
+      <h3>Force 3 &mdash; Top brokerage consolidation</h3>
+      <p>Top Florida brokerages by transaction volume include Compass, Coldwell Banker Realty, Berkshire Hathaway HomeServices Florida Realty, RE/MAX, Keller Williams Realty, EXP Realty, and Redfin. Luxury-tier: Douglas Elliman, One Sotheby&rsquo;s International Realty, Premier Sotheby&rsquo;s, Engel &amp; V&ouml;lkers Florida, Christie&rsquo;s International, and The Corcoran Group Florida. Brokerage consolidation continues.</p>
+
+      <h3>Force 4 &mdash; Florida population growth and migration</h3>
+      <p>Florida continues experiencing population growth and in-migration from California, New York, Illinois, and New Jersey driven by no-state-income-tax advantage. The migration supports sustained residential transaction volume. Retirement-age (55+) and family relocation segments create opportunities for SRES-designated Realtors and family-oriented brokerages.</p>
+
+      <h3>Force 5 &mdash; Condo / HOA regulatory complexity</h3>
+      <p>Florida condo / HOA transaction complexity has increased since the 2021 Surfside collapse and SB 4-D (May 2022). Condo associations are now subject to Structural Integrity Reserve Studies (SIRS), milestone inspection requirements, and reserve funding requirements. Realtors operating in condo / HOA communities require expertise in association documentation, estoppel processes, and reserve disclosure.</p>
+
+      <h3>Force 6 &mdash; Luxury and international market concentration</h3>
+      <p>South Florida (Miami-Dade, Broward, Palm Beach) carries substantial luxury and international concentration. Foreign buyer activity from Latin America, Europe, Canada, Middle East, and Asia supports premium-tier volume. FIRPTA (Foreign Investment in Real Property Tax Act) withholding compliance for foreign sellers requires CIPS-designated Realtor expertise.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #7: TRANSACTION TIMELINE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">07 &middot; The Florida real estate transaction timeline</div>
+        <h2>Florida real estate transaction timeline with Realtor + lender coordination.</h2>
+        <p>A timeline view of how Realtor work coordinates with mortgage lender work through the typical 30-45 day Florida residential purchase transaction.</p>
+      </div>
+      <div class="career-timeline">
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Days 0-7</div>
+          <div class="timeline-body">
+            <h4>Pre-contract: pre-approval, buyer agency, MLS search</h4>
+            <p><strong>Realtor work:</strong> buyer agency agreement execution, MLS access, comparable market analysis, showing coordination. <strong>Lender work:</strong> pre-approval documentation, income / asset / credit review, pre-approval letter issuance. <strong>Coordination:</strong> Realtor and lender align on price range and loan program selection.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Days 7-14</div>
+          <div class="timeline-body">
+            <h4>Offer, contract, escrow</h4>
+            <p><strong>Realtor work:</strong> offer drafting and negotiation, Florida Realtors / Florida Bar contract execution, escrow deposit handling, contingency period setup (financing, inspection, appraisal, title, HOA). <strong>Lender work:</strong> formal loan application, Loan Estimate issuance under CFPB TRID rules within 3 business days. <strong>Coordination:</strong> contract financing terms align with lender pre-approval terms.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Days 14-35</div>
+          <div class="timeline-body">
+            <h4>Due diligence: inspection, appraisal, title, HOA</h4>
+            <p><strong>Realtor work:</strong> inspection coordination with licensed Florida home inspector, appraisal coordination with lender, title work coordination through Florida title company, HOA / condo estoppel ordering and approval timeline. <strong>Lender work:</strong> full underwriting, appraisal review, title review, condition clearing. <strong>Coordination:</strong> Realtor manages contingency removal timing.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Days 35-45</div>
+          <div class="timeline-body">
+            <h4>Clear-to-close and closing</h4>
+            <p><strong>Realtor work:</strong> pre-closing walkthrough 24-48 hours before closing, closing document review coordination, possession transfer planning. <strong>Lender work:</strong> final underwriting clearance, Closing Disclosure (CD) issuance at least 3 days before closing per CFPB TRID rules, wire transfer of loan funds. <strong>Coordination:</strong> closing-day execution at Florida title company or attorney&rsquo;s office.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #8: TESTIMONIALS (CLIENT EXPERIENCE) ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">08 &middot; What buyers and sellers say</div>
+        <h2>What Florida buyers and sellers say about working with their Realtor + Stairway team.</h2>
+        <p>Names abbreviated for client privacy. Transaction details anonymized. Realtor names withheld out of professional courtesy.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-1"><img src="https://i.pravatar.cc/300?img=10" alt="Michelle B., Florida buyer working with Realtor + Stairway team" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=10';"></div>
+          <blockquote class="testim-quote">"First-time homebuyer in Plantation with a Series C founder-CEO equity position. My Realtor (12 years Broward experience, CRS designation) executed the post-settlement buyer agency agreement clearly, coordinated MLS search and negotiated seller-funded cooperative compensation off-MLS. Jim&rsquo;s team handled the founder-CEO qualifying with below-market W-2 + equity + balance sheet narrative. $785K Conventional Conforming close in 38 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Michelle B.</div>
+            <div class="testim-meta">First-time homebuyer (Series C founder-CEO) &middot; Plantation</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-2"><img src="https://i.pravatar.cc/300?img=11" alt="Anthony G., Florida luxury buyer working with Sotheby's Realtor + Stairway team" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/F0EDE8/6B5C4B/png?text=11';"></div>
+          <blockquote class="testim-quote">"Luxury Coral Springs purchase as post-acquisition owner-CEO of acquired SaaS company. My One Sotheby&rsquo;s International Realty Realtor brought 18 years luxury experience plus CIPS designation. The Realtor coordinated complex contract terms (including post-closing occupancy) while Jim&rsquo;s team handled the post-acquisition owner-CEO Asset-Depletion qualifying on cash proceeds. $1.85M Conventional Jumbo K-1 close in 44 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Anthony G.</div>
+            <div class="testim-meta">Post-acquisition owner-CEO (luxury Coral Springs) &middot; Coral Springs</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-3"><img src="https://i.pravatar.cc/300?img=12" alt="Linda P., Florida senior buyer working with SRES-designated Realtor + Stairway team" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EFE8/3D5A3D/png?text=12';"></div>
+          <blockquote class="testim-quote">"Retiree downsizing from $1.4M NC home to $785K Bay Colony condo for no-state-income-tax advantage. My SRES-designated Realtor brought substantive expertise in Florida 55+ communities and post-Surfside condo regulatory landscape (SIRS, milestone inspection, reserve funding) that generalist Realtors miss. Jim&rsquo;s team handled retiree qualifying on Asset-Depletion + Social Security + pension multi-source. $785K Conventional Jumbo close in 41 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Linda P.</div>
+            <div class="testim-meta">Retiree downsizer (SRES Realtor + 55+ community) &middot; Bay Colony</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #9: 10-FAQ SECTION ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">09 &middot; Realtor partner FAQs</div>
+        <h2>Questions Florida buyers, sellers, and Realtors ask, answered.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-cross-links" style="margin-bottom: var(--s-10); padding: var(--s-6); background: var(--paper-warm); border-left: 3px solid var(--blue);">
+          <p style="margin: 0 0 var(--s-3) 0; font-family: var(--serif); font-size: var(--text-md); font-weight: 500;">More <a href="https://stairwaymortgage.com/" style="color: inherit; text-decoration: underline;">Realtor partnership and borrower-side</a> resources at Stairway</p>
+          <ul style="margin: 0; padding-left: var(--s-5); font-size: var(--text-sm); line-height: 1.7; list-style: none;">
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/">All mortgage loan programs</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/sales-professionals/real-estate-agent/">Realtor mortgage guide (Realtor-as-borrower)</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/sales-professionals/commercial-real-estate-brokers/">CRE broker mortgage guide</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start your pre-approval</a></li>
+          </ul>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">01</div>
+          <div>
+            <div class="faq-q">What changed in real estate transactions after the August 2024 NAR settlement?</div>
+            <div class="faq-a">Three changes effective Aug 17, 2024: (1) listing brokers may not offer compensation on MLS; (2) buyer&rsquo;s agents must execute written buyer agency agreement before showing any property; (3) commission negotiation now transparent in the written agreement. Cooperative compensation continues off-MLS.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">02</div>
+          <div>
+            <div class="faq-q">Do I have to pay my buyer&rsquo;s agent directly now?</div>
+            <div class="faq-a">Not necessarily. The written agreement specifies the compensation, but in most Florida transactions sellers continue offering cooperative compensation off-MLS. Contract negotiation typically resolves who pays. Buyer-paid is one option but not the default.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">03</div>
+          <div>
+            <div class="faq-q">What&rsquo;s the difference between a transaction broker and a single agent in Florida?</div>
+            <div class="faq-a">Transaction broker (default in Florida) facilitates the transaction without exclusive representation. Single agent provides exclusive representation with full fiduciary duties (loyalty, confidentiality, obedience, full disclosure, accounting, skill care diligence). Single-agent representation requires written designation.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">04</div>
+          <div>
+            <div class="faq-q">How do I know if my Realtor is the right fit for my situation?</div>
+            <div class="faq-a">Look for relevant designations (CRS, SRES, MRP, CIPS, ABR, RENE), substantial transaction volume in your geography, brokerage affiliation, and prior client references. Interview multiple Realtors before signing buyer agency agreement.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">05</div>
+          <div>
+            <div class="faq-q">What does my Realtor do during the inspection phase?</div>
+            <div class="faq-a">Your Realtor recommends a licensed Florida home inspector, coordinates inspection date and access, reviews the report, and negotiates repair credits or contract modifications. Florida inspection contingency typically 10-15 days. The Realtor manages contingency timing and post-inspection renegotiation.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">06</div>
+          <div>
+            <div class="faq-q">How does my Realtor coordinate with my mortgage lender?</div>
+            <div class="faq-a">Realtor + lender coordination spans pre-approval, contract financing terms, appraisal coordination, financing contingency timing, conditions clearing, Closing Disclosure 3-day review under CFPB TRID rules, and closing-day execution. Stairway works with Florida Realtor partners across Broward, Miami-Dade, Palm Beach, and the Treasure Coast.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">07</div>
+          <div>
+            <div class="faq-q">What is FIRPTA and when does my Realtor need to address it?</div>
+            <div class="faq-a">FIRPTA (Foreign Investment in Real Property Tax Act) imposes IRS withholding requirements on real property purchases from foreign sellers (non-U.S. tax residents). Withholding typically 15% of purchase price unless reduced through certification. Florida transactions involving foreign sellers require FIRPTA compliance coordination. Realtors with CIPS designation commonly carry FIRPTA expertise.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">08</div>
+          <div>
+            <div class="faq-q">How does the Florida condo regulatory framework affect my purchase?</div>
+            <div class="faq-a">Florida condo associations are subject to Structural Integrity Reserve Studies (SIRS), milestone inspection (10-25 years depending on building), and reserve funding requirements. Estoppel certificates document association financial status, special assessments, and reserve compliance. Realtors in condo communities require expertise in association documentation.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">09</div>
+          <div>
+            <div class="faq-q">How does my Realtor handle the closing process at the title company?</div>
+            <div class="faq-a">Florida closings handled by title companies or attorneys depending on county practice. Your Realtor coordinates with the title company through document collection, deed preparation, title insurance ordering, settlement statement review, and closing-day execution. Pre-closing walkthrough 24-48 hours before closing verifies property condition matches contract terms.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">10</div>
+          <div>
+            <div class="faq-q">I&rsquo;m a Realtor. Can Stairway help with my own home mortgage?</div>
+            <div class="faq-a">Yes &mdash; Stairway specializes in Realtor-as-borrower mortgages. Real estate agents typically operate as 1099 commission earners with Schedule C structure. We document the multi-year commission history with Form 1084 cash-flow addback recovery under <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">B3-3.3-02</a>. See our <a href="https://stairwaymortgage.com/sales-professionals/real-estate-agent/">Realtor mortgage guide</a> for the full Realtor-as-borrower documentation framework.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #10: COMPANION GUIDES LINK FARM ============ -->
+  <section class="section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">10 &middot; Companion guides &amp; calculators</div>
+        <h2>More on Florida real estate transactions, Realtor partnerships, and mortgage coordination.</h2>
+      </div>
+      <div class="link-farm-grid">
+        <div class="link-farm-col">
+          <h4>For Realtors (partner-as-borrower)</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/sales-professionals/real-estate-agent/">Realtor mortgage guide</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/sales-professionals/commercial-real-estate-brokers/">CRE broker mortgage guide</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/sales-professionals/">Sales professionals hub</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/business-acquirers/">Business acquirer mortgage</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Loan-program details</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/conventional-loan/">Conventional conforming</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Jumbo loan details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/bank-statement-loan/">Bank statement Non-QM</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/asset-depletion-loan/">Asset-depletion details</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Calculators &amp; tools</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">All 100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/current-rates/">Today&rsquo;s rates</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start a pre-approval</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #11: SOURCES ============ -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">11 &middot; Sources &amp; further reading</div>
+        <h2>Sources &amp; further reading.</h2>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h3 class="source-group-title">NAR, Florida Realtors &amp; state real estate references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.nar.realtor/" target="_blank" rel="noopener noreferrer">NAR &mdash; National Association of REALTORS&reg;</a></li>
+            <li><a href="https://www.floridarealtors.org/" target="_blank" rel="noopener noreferrer">Florida Realtors &mdash; State association</a></li>
+            <li><a href="https://www.miamire.com/" target="_blank" rel="noopener noreferrer">Miami Association of REALTORS&reg;</a></li>
+            <li><a href="https://www2.myfloridalicense.com/" target="_blank" rel="noopener noreferrer">Florida DBPR &mdash; Division of Real Estate</a></li>
+            <li><a href="https://www.nar.realtor/about-nar/policies/code-of-ethics" target="_blank" rel="noopener noreferrer">NAR Code of Ethics</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">NAR settlement &amp; commission structure</h3>
+          <ul class="source-list">
+            <li><a href="https://www.nar.realtor/the-facts" target="_blank" rel="noopener noreferrer">NAR &mdash; Settlement Facts and Implementation</a></li>
+            <li><a href="https://www.justice.gov/atr" target="_blank" rel="noopener noreferrer">DOJ Antitrust Division (residential real estate enforcement)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Florida real estate law &amp; regulation</h3>
+          <ul class="source-list">
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter475" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 475 &mdash; Real Estate Brokers</a></li>
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter718" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 718 &mdash; Condominiums</a></li>
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter720" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 720 &mdash; HOAs</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Mortgage transaction coordination references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener noreferrer">CFPB &mdash; Consumer Financial Protection Bureau (TRID rules)</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/" target="_blank" rel="noopener noreferrer">Fannie Mae Selling Guide</a></li>
+            <li><a href="https://www.fhfa.gov/" target="_blank" rel="noopener noreferrer">FHFA &mdash; Federal Housing Finance Agency</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">IRS &amp; FIRPTA references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.irs.gov/individuals/international-taxpayers/firpta-withholding" target="_blank" rel="noopener noreferrer">IRS FIRPTA &mdash; Foreign Investment in Real Property Tax Act</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-schedule-c-form-1040" target="_blank" rel="noopener noreferrer">IRS Schedule C (Realtor 1099 income)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #12: PRE-CTA REALTOR PARTNERSHIP STORY ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">12 &middot; What Realtor + Stairway partnership looks like</div>
+        <h2>Real-world Realtor partnership coordination.</h2>
+        <p>A Florida Realtor partner with 18 years of Broward and Miami-Dade residential transaction experience and active CRS, ABR, and CIPS designations referred a post-acquisition owner-CEO client to Stairway after the client&rsquo;s prior generalist lender refused to handle the complex multi-source qualifying. Client situation: post-acquisition owner-CEO of acquired SaaS company 30 months post-close with W-2 $185K + K-1 $245K from S-corp + substantial entity-level goodwill amortization + SBA 7(a) acquisition debt. Property: $1.85M Coral Springs home. The Realtor handled post-settlement buyer agency at 2.75% with negotiable seller offer, MLS search, comparable market analysis, FR/Bar contract execution with appropriate contingency structure, off-MLS cooperative compensation negotiation, inspection coordination ($4,500 credit at closing), appraisal at $1.86M supporting contract price, title work, and HOA estoppel. Stairway handled the post-acquisition owner-CEO qualifying with W-2 + K-1 entity Form 1084 cash-flow addbacks under <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--blue);">B3-3.4-02</a>. $1.85M Conventional Jumbo K-1 close in 44 days. <strong>Realtor + Stairway coordination across complex multi-source qualifying is the partnership pattern that produces successful Florida residential closes &mdash; the Realtor brings transaction execution expertise, Stairway brings specialty mortgage underwriting expertise, and the combination differentiates a successful close from a deal that falls apart.</strong></p>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="House keys at Realtor + Stairway closing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=Realtor+Closings';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">44-day Realtor + Stairway close &middot; Coral Springs, FL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #13: FINAL CTA + PARTNER-AS-BORROWER CTA ============ -->
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow eyebrow-light">Talk to a Florida mortgage specialist about your Realtor partnership transaction</div>
+        <h2 style="color: var(--paper);">Whether you&rsquo;re a Florida buyer, seller, or Realtor &mdash; Stairway coordinates the mortgage side of your transaction with the expertise your Realtor partner expects.</h2>
+        <p style="color: rgba(250,250,247,0.78);">For Florida buyers: pre-approval timing, loan program selection across Conventional Conforming / Jumbo / Non-QM / Asset-Depletion, channel-specific qualifying documentation, and Realtor + lender coordination across the 30-45 day transaction timeline. For Florida sellers: pre-listing consultation on buyer financing capacity, contract financing terms review, contingency timing coordination with buyer&rsquo;s lender, and closing-day execution. <strong>For Florida Realtors looking for a mortgage on your own home or investment property:</strong> Realtor 1099 commission income with Schedule C structure qualifies under <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer" style="color: var(--paper); text-decoration: underline;">Fannie Mae B3-3.3-02</a> with Form 1084 cash-flow addbacks. See our dedicated <a href="https://stairwaymortgage.com/sales-professionals/real-estate-agent/" style="color: var(--paper); text-decoration: underline;">Realtor-as-borrower mortgage guide</a> for the full Realtor income documentation framework.</p>
+        <div class="final-cta-actions">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-primary btn-large">Schedule a call with Jim</a>
+          <a href="https://stairwaymortgage.com/sales-professionals/real-estate-agent/" class="btn btn-on-dark-secondary btn-large">Realtor-as-borrower guide</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: rgba(250,250,247,0.5); margin-top: var(--s-6);">Jim Blackburn NMLS #1072866 &middot; Stairway Mortgage</p>
+      </div>
+    </div>
+  </section>
+`;
+---
+<Layout title="Realtors · Florida Realtor Partner Hub — NAR Settlement, Buyer Agency Agreements &amp; Mortgage Coordination Specialist" description="Florida Realtor partner hub educating buyers and sellers on what licensed Realtors do in a real estate transaction post-NAR settlement effective August 17, 2024 (resolving Sitzer / Burnett class action for $418M settlement payment). Buyer's agents must execute written buyer agency agreement before showing property; listing brokers may no longer offer compensation on MLS platforms; cooperative compensation continues off-MLS through direct channels; buyer's agent commission remains negotiable per Redfin Q1 2025 data showing 2.40% average. Florida agency relationship types: transaction broker (default), single agent buyer or seller, designated sales associate (DSA), no-brokerage relationship. Realtor designations including CRS Certified Residential Specialist, ABR Accredited Buyer's Representative, GRI Graduate REALTOR Institute, SRES Seniors Real Estate Specialist, MRP Military Relocation Professional, RENE Real Estate Negotiation Expert, CIPS Certified International Property Specialist. Florida real estate law governing transaction broker default agency, single agent fiduciary duties (loyalty, confidentiality, obedience, full disclosure, accounting, skill care diligence), Designated Sales Associate dual representation. Top Florida brokerages including Compass, Coldwell Banker Realty, Berkshire Hathaway HomeServices Florida Realty, RE/MAX, Keller Williams Realty, EXP Realty, Redfin, and luxury-tier Douglas Elliman, One Sotheby's International Realty, Premier Sotheby's, Engel and Volkers Florida, Christie's International Real Estate. Florida condo regulatory framework post-Surfside (SB 4-D May 2022, Structural Integrity Reserve Studies SIRS, milestone inspection requirements, reserve funding requirements). FIRPTA Foreign Investment in Real Property Tax Act withholding for foreign sellers. Realtor + mortgage lender coordination across 30-45 day Florida residential purchase transaction timeline: pre-approval, offer drafting and Florida Realtors / Florida Bar (FR/Bar) contract execution, contingency setup, inspection coordination, appraisal coordination, title and HOA estoppel, Closing Disclosure 3-day review under CFPB TRID rules, closing-day execution. Partner-as-borrower CTA at bottom routing Realtors looking for mortgages on their own home to dedicated Realtor-as-borrower mortgage guide with Schedule C 1099 commission income documentation under Fannie Mae B3-3.3-02 and Form 1084 cash-flow addback recovery." canonical="https://stairwaymortgage.com/realtors/">
+  <div class="prealtor-scope" set:html={prealtorBody} />
+</Layout>
+
+<style is:global>
+.prealtor-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A;
+      --ink-2: #1E2433;
+      --ink-3: #2C3548;
+      --ink-light: #4A5568;
+      --ink-lighter: #6B7280;
+      --paper: #FAFAF7;
+      --paper-2: #F4F4EE;
+      --paper-3: #EDEDE5;
+      --white: #FFFFFF;
+      --blue: #1845D6;
+      --blue-deep: #0F2EA0;
+      --blue-soft: #E8EEFF;
+      --blue-tint: #F2F5FF;
+      --gold: #B8860B;
+      --rust: #8B2C2C;
+      --border: #E5E5DE;
+      --border-strong: #D4D4C8;
+      --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; 
+      --text-xs: 0.75rem;    
+      --text-sm: 0.875rem;   
+      --text-base: 1.0625rem;
+      --text-md: 1.1875rem;  
+      --text-lg: 1.375rem;   
+      --text-xl: 1.625rem;   
+      --text-2xl: 2rem;      
+      --text-3xl: 2.75rem;   
+      --text-4xl: 3.75rem;   
+      --text-5xl: 5rem;      
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-5: 1.5rem;
+      --s-6: 2rem;
+      --s-7: 3rem;
+      --s-8: 4rem;
+      --s-9: 6rem;
+      --s-10: 8rem;
+      --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.prealtor-scope, .prealtor-scope{
+        background-color: #FAFAF7 !important;
+        color: #0A0E1A !important;
+        color-scheme: light only !important;
+      }.prealtor-scope *{
+        forced-color-adjust: none;
+      }
+    }.prealtor-scope, .prealtor-scope *::before, .prealtor-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.prealtor-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.prealtor-scope{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.prealtor-scope img, .prealtor-scope svg{ display: block; max-width: 100%; }.prealtor-scope a{ color: inherit; text-decoration: none; }.prealtor-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.prealtor-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.prealtor-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.prealtor-scope .container-wide{ max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }.prealtor-scope .eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-block;
+    }.prealtor-scope .display-1{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      color: var(--ink);
+    }.prealtor-scope .display-2{
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, var(--text-3xl));
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 100, "SOFT" 50;
+      color: var(--ink);
+    }.prealtor-scope h2{
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+      font-weight: 450;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 60, "SOFT" 50;
+    }.prealtor-scope h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--s-4);
+      font-variation-settings: "opsz" 30;
+    }.prealtor-scope h4{
+      font-family: var(--sans);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.005em;
+    }.prealtor-scope p{ margin-bottom: var(--s-4); }.prealtor-scope p:last-child{ margin-bottom: 0; }.prealtor-scope p.lead{
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      color: var(--ink-2);
+      font-weight: 350;
+    }.prealtor-scope p.lede{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.prealtor-scope .body-text{ color: var(--ink-2); }.prealtor-scope .text-muted{ color: var(--ink-lighter); }.prealtor-scope .text-small{ font-size: var(--text-sm); }.prealtor-scope .text-mono{ font-family: var(--mono); font-feature-settings: 'tnum' 1; }.prealtor-scope strong, .prealtor-scope b{ font-weight: 600; color: var(--ink); }.prealtor-scope em, .prealtor-scope i{ font-style: italic; }.prealtor-scope .nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }.prealtor-scope .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      max-width: 1340px;
+      margin: 0 auto;
+    }.prealtor-scope .logo{
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 30;
+    }.prealtor-scope .logo-mark{
+      width: 28px; height: 28px;
+      background: var(--ink);
+      position: relative;
+      border-radius: 2px;
+    }.prealtor-scope .logo-mark::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.prealtor-scope .logo-mark::after{
+      content: '';
+      position: absolute;
+      inset: 5px 9px 9px 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.prealtor-scope .logo-sub{ font-size: var(--text-2xs); color: var(--ink-lighter); font-family: var(--sans); font-weight: 400; letter-spacing: 0.04em; }.prealtor-scope .nav-links{
+      display: flex; gap: var(--s-6); list-style: none;
+      font-size: var(--text-sm); font-weight: 500;
+    }.prealtor-scope .nav-links a{ color: var(--ink-2); transition: color 0.15s; }.prealtor-scope .nav-links a:hover{ color: var(--blue); }.prealtor-scope .nav-cta{
+      display: flex; gap: var(--s-3);
+    }
+    @media (max-width: 900px) {.prealtor-scope .nav-links{ display: none; }.prealtor-scope .nav-cta .btn-secondary{ display: none; }
+    }.prealtor-scope .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-3) var(--s-5);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }.prealtor-scope .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }.prealtor-scope .btn-primary:hover{
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }.prealtor-scope .btn-secondary{
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }.prealtor-scope .btn-secondary:hover{
+      border-color: var(--ink);
+    }.prealtor-scope .btn-light{
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }.prealtor-scope .btn-light:hover{ background: var(--paper-2); }.prealtor-scope .btn-large{
+      padding: var(--s-4) var(--s-6);
+      font-size: var(--text-base);
+    }.prealtor-scope .btn-arrow{
+      display: inline-flex; align-items: center; gap: var(--s-2);
+      color: var(--blue); font-weight: 500;
+      transition: gap 0.18s;
+    }.prealtor-scope .btn-arrow:hover{ gap: var(--s-3); }.prealtor-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.prealtor-scope .hero{
+      padding: var(--s-9) 0 var(--s-8);
+      border-bottom: 1px solid var(--border);
+    }.prealtor-scope .breadcrumb{
+      display: flex; gap: var(--s-2);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      margin-bottom: var(--s-7);
+    }.prealtor-scope .breadcrumb a{ color: var(--ink-lighter); }.prealtor-scope .breadcrumb a:hover{ color: var(--blue); }.prealtor-scope .breadcrumb span:last-child{ color: var(--ink); }.prealtor-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.prealtor-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.prealtor-scope .hero-subtitle{
+      max-width: 56ch;
+      margin-bottom: var(--s-7);
+    }.prealtor-scope .hero-actions{
+      display: flex; gap: var(--s-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--s-5);
+    }.prealtor-scope .hero-trust{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: var(--s-3);
+    }.prealtor-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.prealtor-scope .stats{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-7) 0;
+    }.prealtor-scope .stats-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }.prealtor-scope .stat{
+      padding: 0 var(--s-4);
+      border-left: 1px solid var(--ink-3);
+    }.prealtor-scope .stat:first-child{ border-left: 0; padding-left: 0; }.prealtor-scope .stat-num{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 350;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 144;
+    }.prealtor-scope .stat-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {.prealtor-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.prealtor-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.prealtor-scope .section{
+      padding: var(--s-10) 0;
+    }.prealtor-scope .section-tinted{ background: var(--paper-2); }.prealtor-scope .section-dark{ background: var(--ink); color: var(--paper); }.prealtor-scope .section-header{
+      max-width: 720px;
+      margin-bottom: var(--s-8);
+    }.prealtor-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.prealtor-scope .section-header h2{ margin-bottom: var(--s-5); }.prealtor-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.prealtor-scope .lede-section{ padding: var(--s-9) 0; }.prealtor-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.prealtor-scope .data-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-feature-settings: 'tnum' 1;
+    }.prealtor-scope .data-table thead th{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      font-weight: 500;
+      text-align: left;
+      padding: var(--s-3) var(--s-4);
+      border-bottom: 1px solid var(--border-strong);
+    }.prealtor-scope .data-table tbody td{
+      padding: var(--s-5) var(--s-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }.prealtor-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.prealtor-scope .data-table tbody td:first-child{
+      font-weight: 500;
+      color: var(--ink);
+      width: 28%;
+    }.prealtor-scope .data-table tbody td:nth-child(2){
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--blue-deep);
+      white-space: nowrap;
+      width: 28%;
+    }.prealtor-scope .data-table tbody td:last-child{
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {.prealtor-scope .data-table thead{ display: none; }.prealtor-scope .data-table tbody tr{
+        display: block;
+        padding: var(--s-5) 0;
+        border-bottom: 1px solid var(--border);
+      }.prealtor-scope .data-table tbody td{
+        display: block;
+        padding: 0 0 var(--s-2);
+        border: 0;
+        width: 100% !important;
+      }.prealtor-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.prealtor-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.prealtor-scope .methods-grid{
+      display: grid;
+      gap: var(--s-5);
+    }.prealtor-scope .method{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.prealtor-scope .method:hover{
+      border-color: var(--border-strong);
+    }.prealtor-scope .method-header{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+      margin-bottom: var(--s-5);
+    }.prealtor-scope .method-num{
+      font-family: var(--mono);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: var(--s-2);
+      letter-spacing: -0.02em;
+    }.prealtor-scope .method-title h3{
+      margin-bottom: var(--s-3);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+    }.prealtor-scope .method-tag{
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      padding: var(--s-1) var(--s-3);
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.prealtor-scope .method-body{
+      padding-left: calc(var(--text-2xl) + var(--s-5));
+    }.prealtor-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.prealtor-scope .worked-example{
+      background: var(--paper-2);
+      border-left: 3px solid var(--ink);
+      padding: var(--s-5) var(--s-6);
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }.prealtor-scope .worked-example.featured{
+      background: var(--ink);
+      color: var(--paper);
+      border-left-color: var(--blue);
+    }.prealtor-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.prealtor-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.prealtor-scope .worked-example.featured .we-num{ color: var(--paper); }.prealtor-scope .we-title{
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--s-4);
+      color: var(--ink);
+    }.prealtor-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.prealtor-scope .we-line{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s-4);
+      padding: var(--s-2) 0;
+    }.prealtor-scope .we-label{ color: var(--ink-light); }.prealtor-scope .we-num{ color: var(--ink); font-weight: 500; }.prealtor-scope .we-divider{
+      border-top: 1px dashed var(--border-strong);
+      margin: var(--s-3) 0;
+      grid-column: 1 / -1;
+    }.prealtor-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.prealtor-scope .we-result{
+      grid-template-columns: 1fr auto;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border-strong);
+      margin-top: var(--s-2);
+      font-weight: 600;
+    }.prealtor-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.prealtor-scope .method{ padding: var(--s-5); }.prealtor-scope .method-body{ padding-left: 0; }.prealtor-scope .method-num{ font-size: var(--text-xl); }
+    }.prealtor-scope .callout{
+      background: var(--blue-tint);
+      border: 1px solid rgba(24, 69, 214, 0.12);
+      border-radius: 6px;
+      padding: var(--s-6) var(--s-7);
+      max-width: 760px;
+    }.prealtor-scope .callout-eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.prealtor-scope .callout p{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.prealtor-scope .testim-warning{
+      background: #FFF1F1;
+      border: 1px solid rgba(139, 44, 44, 0.3);
+      border-radius: 4px;
+      padding: var(--s-3) var(--s-5);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      color: var(--rust);
+      margin: 0 auto var(--s-7);
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+    }.prealtor-scope .testim-warning .mono-tag{
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.1em;
+      background: var(--rust);
+      color: var(--paper);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }.prealtor-scope .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {.prealtor-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; }
+    }.prealtor-scope .testimonials-grid--quad{
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+    }
+    @media (max-width: 900px) {.prealtor-scope .testimonials-grid--quad{ grid-template-columns: 1fr; max-width: 620px; }
+    }.prealtor-scope .testim-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.prealtor-scope .testim-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }.prealtor-scope .testim-card .example-tag{
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      background: rgba(139, 44, 44, 0.08);
+      color: var(--rust);
+      padding: 3px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+    }.prealtor-scope .testim-avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 30;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }.prealtor-scope .testim-avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      display: block;
+    }.prealtor-scope .testim-avatar::after{
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 50%;
+    }.prealtor-scope .testim-avatar-1{ background: var(--blue-soft); color: var(--blue-deep); }.prealtor-scope .testim-avatar-2{ background: #F0EDE8; color: #6B5C4B; }.prealtor-scope .testim-avatar-3{ background: #E8EFE8; color: #3D5A3D; }.prealtor-scope .testim-quote{
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      margin: 0;
+      flex: 1;
+    }.prealtor-scope .testim-attribution{
+      border-top: 1px solid var(--border);
+      padding-top: var(--s-4);
+    }.prealtor-scope .testim-name{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.005em;
+    }.prealtor-scope .testim-meta{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }.prealtor-scope .programs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+    @media (max-width: 720px) {.prealtor-scope .programs-grid{ grid-template-columns: 1fr; }
+    }.prealtor-scope .program{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      transition: all 0.2s;
+    }.prealtor-scope .program:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }.prealtor-scope .program h4{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      font-variation-settings: "opsz" 30;
+    }.prealtor-scope .program-when{
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      flex: 1;
+    }.prealtor-scope .program-links{
+      display: flex;
+      gap: var(--s-5);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+    }.prealtor-scope .program-links a{
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-1);
+    }.prealtor-scope .program-links a:hover{ color: var(--blue-deep); }.prealtor-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.prealtor-scope .per-diem-section{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+    }.prealtor-scope .per-diem-section h2{ color: var(--paper); }.prealtor-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.prealtor-scope .per-diem-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.prealtor-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); }
+    }.prealtor-scope .per-diem-list{
+      list-style: none;
+      padding: 0;
+    }.prealtor-scope .per-diem-list li{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--ink-3);
+      display: flex;
+      gap: var(--s-4);
+      align-items: start;
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.9);
+    }.prealtor-scope .per-diem-list li:last-child{ border-bottom: 0; }.prealtor-scope .pd-num{
+      font-family: var(--mono);
+      color: var(--blue-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 1.5em;
+    }.prealtor-scope .playbook-stages{ display: grid; gap: var(--s-7); }.prealtor-scope .stage{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-7);
+      padding-bottom: var(--s-7);
+      border-bottom: 1px solid var(--border);
+    }.prealtor-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.prealtor-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); }
+    }.prealtor-scope .stage-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      padding-top: var(--s-2);
+    }.prealtor-scope .stage-content h4{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.prealtor-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.prealtor-scope .stage-bullets{
+      list-style: none;
+      padding: 0;
+    }.prealtor-scope .stage-bullets li{
+      padding: var(--s-2) 0;
+      padding-left: var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }.prealtor-scope .stage-bullets li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 1px;
+      background: var(--blue);
+    }.prealtor-scope .bio-section{
+      background: var(--paper-2);
+      padding: var(--s-10) 0;
+    }.prealtor-scope .bio-grid{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-7);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.prealtor-scope .bio-grid{ grid-template-columns: 1fr; }
+    }.prealtor-scope .bio-photo{
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink);
+      position: relative;
+    }.prealtor-scope .bio-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
+    }.prealtor-scope .bio-photo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      z-index: 2;
+    }.prealtor-scope .bio-name{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: var(--s-2);
+      font-variation-settings: "opsz" 60;
+    }.prealtor-scope .bio-title{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      margin-bottom: var(--s-5);
+    }.prealtor-scope .bio-quote{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-style: italic;
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--blue);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 30;
+    }.prealtor-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.prealtor-scope .faq-list{
+      max-width: 800px;
+      margin: 0 auto;
+    }.prealtor-scope .faq-item{
+      padding: var(--s-6) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+    }.prealtor-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.prealtor-scope .faq-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.04em;
+      color: var(--blue);
+      font-weight: 500;
+      padding-top: var(--s-1);
+    }.prealtor-scope .faq-q{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      color: var(--ink);
+      line-height: 1.3;
+      font-variation-settings: "opsz" 30;
+    }.prealtor-scope .faq-a{
+      color: var(--ink-2);
+      line-height: 1.65;
+    }.prealtor-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.prealtor-scope .sources-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.prealtor-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.prealtor-scope .source-group h4{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border-strong);
+    }.prealtor-scope .source-list{ list-style: none; padding: 0; }.prealtor-scope .source-list li{
+      padding: var(--s-3) 0;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }.prealtor-scope .source-list a{
+      color: var(--ink-2);
+      transition: color 0.15s;
+      display: block;
+    }.prealtor-scope .source-list a:hover{ color: var(--blue); }.prealtor-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.prealtor-scope .source-url{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      word-break: break-all;
+    }.prealtor-scope .final-cta{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+      text-align: center;
+    }.prealtor-scope .final-cta h2{
+      color: var(--paper);
+      max-width: 22ch;
+      margin: 0 auto var(--s-5);
+    }.prealtor-scope .final-cta p{
+      color: rgba(250,250,247,0.75);
+      font-size: var(--text-lg);
+      max-width: 56ch;
+      margin: 0 auto var(--s-7);
+    }.prealtor-scope .final-cta-actions{
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }.prealtor-scope .btn-on-dark{
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--paper);
+    }.prealtor-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.prealtor-scope .btn-on-dark-secondary{
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(250,250,247,0.3);
+    }.prealtor-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.prealtor-scope .footer{
+      background: var(--ink-2);
+      color: var(--paper);
+      padding: var(--s-9) 0 var(--s-5);
+    }.prealtor-scope .footer-grid{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s-7);
+      margin-bottom: var(--s-7);
+    }
+    @media (max-width: 800px) {.prealtor-scope .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }.prealtor-scope .footer-brand .logo{ color: var(--paper); margin-bottom: var(--s-4); }.prealtor-scope .footer-brand p{ color: rgba(250,250,247,0.65); font-size: var(--text-sm); margin-bottom: var(--s-4); }.prealtor-scope .footer-brand .compliance{ font-family: var(--mono); font-size: var(--text-xs); line-height: 1.7; color: rgba(250,250,247,0.5); }.prealtor-scope .footer-col h5{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,0.6);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+    }.prealtor-scope .footer-col ul{ list-style: none; padding: 0; }.prealtor-scope .footer-col li{ padding: 4px 0; }.prealtor-scope .footer-col a{
+      color: rgba(250,250,247,0.85);
+      font-size: var(--text-sm);
+      transition: color 0.15s;
+    }.prealtor-scope .footer-col a:hover{ color: var(--paper); }.prealtor-scope .footer-bottom{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(250,250,247,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-4);
+      font-size: var(--text-xs);
+      color: rgba(250,250,247,0.5);
+      font-family: var(--mono);
+    }.prealtor-scope .mt-6{ margin-top: var(--s-6); }.prealtor-scope .mt-8{ margin-top: var(--s-8); }.prealtor-scope .mb-0{ margin-bottom: 0; }
+    @media (prefers-reduced-motion: no-preference) {.prealtor-scope .fade-in{
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.7s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }.prealtor-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.prealtor-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.prealtor-scope .highlights-list{
+      list-style: none;
+      padding: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      columns: 1;
+      column-gap: var(--s-7);
+    }
+    @media (min-width: 880px) {.prealtor-scope .highlights-list{ columns: 2; column-gap: var(--s-8); }
+    }.prealtor-scope .highlights-list li{
+      break-inside: avoid;
+      padding: var(--s-3) 0 var(--s-3) var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }.prealtor-scope .highlights-list li:last-child{ border-bottom: 0; }.prealtor-scope .highlights-list li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.2em;
+      width: 14px;
+      height: 1px;
+      background: var(--blue);
+    }.prealtor-scope .highlights-source{
+      font-size: var(--text-sm);
+      color: var(--ink-lighter);
+      margin-left: 4px;
+    }.prealtor-scope .highlights-source a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }.prealtor-scope .highlights-source a:hover{ color: var(--blue-deep); }.prealtor-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.prealtor-scope .resources-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {.prealtor-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); }
+    }.prealtor-scope .resource-item{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--ink-2);
+    }.prealtor-scope .resource-item a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }.prealtor-scope .resource-item a:hover{ color: var(--blue-deep); }.prealtor-scope .professions-section{
+      padding: var(--s-9) 0 var(--s-10);
+    }.prealtor-scope .professions-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      max-width: 1100px;
+      margin: var(--s-7) auto 0;
+    }
+    @media (max-width: 800px) {.prealtor-scope .professions-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.prealtor-scope .profession-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }.prealtor-scope .profession-card:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -12px rgba(10, 14, 26, 0.15);
+    }.prealtor-scope .profession-num{
+      font-family: var(--mono);
+      font-size: var(--text-md);
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }.prealtor-scope .profession-title{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variation-settings: "opsz" 60;
+      margin: 0;
+      color: var(--ink);
+    }.prealtor-scope .profession-tag{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.4;
+      color: var(--ink-2);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      font-style: italic;
+      margin: 0;
+    }.prealtor-scope .profession-points{
+      list-style: none;
+      padding: 0;
+      margin: var(--s-2) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }.prealtor-scope .profession-points li{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-light);
+      padding-left: var(--s-4);
+      position: relative;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }.prealtor-scope .profession-points li::before{
+      content: '·';
+      position: absolute;
+      left: var(--s-2);
+      top: -2px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.4em;
+    }.prealtor-scope .profession-link{
+      margin-top: auto;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-2);
+      transition: gap 0.2s;
+    }.prealtor-scope .profession-link::after{ content: '→'; transition: transform 0.2s; }.prealtor-scope .profession-card:hover .profession-link::after{ transform: translateX(4px); }.prealtor-scope .differentiators-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.prealtor-scope .differentiators-grid{ grid-template-columns: 1fr; gap: var(--s-6); }
+    }.prealtor-scope .differentiator{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }.prealtor-scope .differentiator-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--blue-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+      font-weight: 500;
+    }.prealtor-scope .differentiator h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.prealtor-scope .differentiator p{
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(250,250,247,0.85);
+      margin: 0;
+    }.prealtor-scope .hero--with-image .hero-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.prealtor-scope .hero--with-image h1{ max-width: 16ch; }.prealtor-scope .hero--with-image .hero-subtitle{ max-width: 52ch; }.prealtor-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.prealtor-scope .hero-image::before{ content: ''; position: absolute; top: 58%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(232,238,255,0.18) 35%, rgba(232,238,255,0.18) 65%, transparent 100%); z-index: 1; }.prealtor-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.prealtor-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.prealtor-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.prealtor-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; } }.prealtor-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.prealtor-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.prealtor-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.prealtor-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.prealtor-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.prealtor-scope .final-cta--bg .container{ position: relative; z-index: 1; }.prealtor-scope .stats--with-image .stats-bar-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.prealtor-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.prealtor-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.prealtor-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 800px) {.prealtor-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.prealtor-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); }.prealtor-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; } }.prealtor-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 30% 60%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.prealtor-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; filter: contrast(1.03) saturate(0.97); }.prealtor-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.prealtor-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.prealtor-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.prealtor-scope .pre-cta-photo{ aspect-ratio: 4/3; } }
+  
+
+/* ===== SUB-PAGE D-SERIES EXTENSIONS (v12 sub-page spec §4) ===== */
+
+/* Key Facts grid (Section 1) */
+.prealtor-scope .key-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.prealtor-scope .key-fact-card {
+  background: var(--paper);
+  border: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  border-radius: 6px;
+  padding: var(--s-5);
+}
+.prealtor-scope .key-fact-num {
+  font-family: var(--serif);
+  font-size: var(--text-2xl, 1.8rem);
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: var(--s-2);
+  letter-spacing: -0.02em;
+}
+.prealtor-scope .key-fact-body {
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  margin: 0;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+
+/* Loan-Program grid (Section 5) */
+.prealtor-scope .loan-program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.prealtor-scope .loan-program-card {
+  background: var(--paper);
+  border-left: 3px solid var(--blue);
+  padding: var(--s-5);
+  border-radius: 0 6px 6px 0;
+}
+.prealtor-scope .loan-program-name {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+}
+.prealtor-scope .loan-program-points {
+  margin: 0 0 var(--s-3) 0;
+  padding-left: var(--s-4);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.prealtor-scope .loan-program-tag {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  font-weight: 500;
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+
+/* Career Timeline (Section 7) */
+.prealtor-scope .career-timeline {
+  margin-top: var(--s-6);
+  border-left: 2px solid var(--blue);
+  padding-left: 0;
+}
+.prealtor-scope .timeline-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--s-6);
+  padding: var(--s-5) var(--s-5) var(--s-5) var(--s-5);
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  position: relative;
+}
+.prealtor-scope .timeline-entry:last-child {
+  border-bottom: none;
+}
+.prealtor-scope .timeline-entry::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: var(--s-6);
+  width: 12px;
+  height: 12px;
+  background: var(--blue);
+  border-radius: 50%;
+}
+.prealtor-scope .timeline-stage {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  padding-top: var(--s-1);
+}
+.prealtor-scope .timeline-body h4 {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-2) 0;
+  color: var(--ink);
+}
+.prealtor-scope .timeline-body p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+@media (max-width: 720px) {
+  .prealtor-scope .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+  }
+}
+
+/* Sub-page FAQ markup (Section 9) — v10 numbered pattern */
+.prealtor-scope .faq-list .faq-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: var(--s-5);
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+.prealtor-scope .faq-list .faq-item:last-child {
+  border-bottom: none;
+}
+.prealtor-scope .faq-list .faq-num {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  padding-top: var(--s-1);
+}
+.prealtor-scope .faq-list .faq-q {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.2rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.prealtor-scope .faq-list .faq-a {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.prealtor-scope .faq-list .faq-a a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* FAQ cross-links block above FAQ list (Section 9) */
+.prealtor-scope .faq-cross-links a {
+  color: var(--blue);
+}
+.prealtor-scope .faq-cross-links a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Link Farm grid (Section 10) */
+.prealtor-scope .link-farm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s-6);
+  margin-top: var(--s-6);
+}
+.prealtor-scope .link-farm-col h4 {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+}
+.prealtor-scope .link-farm-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-sm);
+  line-height: 1.9;
+}
+.prealtor-scope .link-farm-col a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.prealtor-scope .link-farm-col a:hover {
+  border-bottom-color: var(--blue);
+}
+
+</style>
+
