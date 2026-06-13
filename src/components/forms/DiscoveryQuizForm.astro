@@ -522,6 +522,15 @@
         inp.type = 'radio'; inp.name = q.id; inp.value = o.value;
         var saved = answers[q.id];
         if (saved && String(saved.value) === String(o.value)) inp.checked = true;
+        // Auto-advance on selection (single + rating only, not multi-choice)
+        inp.addEventListener('change', function () {
+          setTimeout(function () {
+            if (recordAnswer()) {
+              if (idx < QUESTIONS.length - 1) { idx++; renderQuestion(); }
+              else { phase = 'contact'; showContact(); }
+            }
+          }, 250);
+        });
         var sp = document.createElement('span'); sp.textContent = o.label;
         lab.appendChild(inp); lab.appendChild(sp);
         els.options.appendChild(lab);
