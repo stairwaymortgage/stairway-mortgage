@@ -28,15 +28,17 @@
   --color-mute-light: #9CA3AF;
   --color-line: #e3e0d6;         /* explicit line/divider token */
 
-  /* ----- Typography ----- */
-  --font-display: 'Fraunces', 'Times New Roman', serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
-
   /* ----- Spacing rhythm (8px grid) ----- */
   --spacing-section: clamp(4rem, 9vw, 8rem);
   --container-max: 1320px;
   --container-prose: 720px;
+}
+
+/* ----- Typography (outside @theme to avoid Tailwind v4 circular --font-* refs) ----- */
+:root {
+  --stw-display: 'Fraunces', 'Times New Roman', serif;
+  --stw-body: 'Inter', system-ui, sans-serif;
+  --stw-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
 }
 
 /* ----- Unprefixed aliases consumed by /loan-calculator/* page-scoped styles ----- */
@@ -65,7 +67,7 @@ html {
 
 :root { --fluid-body: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem); }
 body {
-  font-family: var(--font-body, 'Inter'), system-ui, sans-serif;
+  font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
   font-weight: 400;
   line-height: 1.6;
   font-size: var(--fluid-body);
@@ -81,7 +83,7 @@ h1,
 .hero h1,
 .hero-title,
 [class*="hero"] h1 {
-  font-family: var(--font-display, 'Fraunces'), Georgia, serif;
+  font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-optical-sizing: auto;
   font-weight: 600;
   line-height: 1.04;
@@ -90,13 +92,13 @@ h1,
 }
 
 h2, .hero h2 {
-  font-family: var(--font-display, 'Fraunces'), Georgia, serif;
+  font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-weight: 500;
   line-height: 1.12;
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
 }
 h3 {
-  font-family: var(--font-display, 'Fraunces'), Georgia, serif;
+  font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-weight: 500;
   font-size: clamp(1.3rem, 2.5vw, 1.7rem);
 }
@@ -116,7 +118,7 @@ h3 {
 }
 
 .font-display {
-  font-family: var(--font-display);
+  font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-variation-settings: "opsz" 144;
   font-feature-settings: "ss01", "ss02";
   letter-spacing: -0.02em;
@@ -124,7 +126,7 @@ h3 {
 }
 
 .display-xl {
-  font-family: var(--font-display);
+  font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-variation-settings: "opsz" 144;
   font-weight: 400;
   font-size: clamp(3.5rem, 9vw, 7.5rem);
@@ -134,7 +136,7 @@ h3 {
 }
 
 .display-lg {
-  font-family: var(--font-display);
+  font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-variation-settings: "opsz" 144;
   font-weight: 600;
   font-size: clamp(2.5rem, 5.5vw, 4.5rem);
@@ -143,7 +145,7 @@ h3 {
 }
 
 .display-md {
-  font-family: var(--font-display);
+  font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-variation-settings: "opsz" 96;
   font-weight: 500;
   font-size: clamp(1.75rem, 3.5vw, 2.75rem);
@@ -152,7 +154,7 @@ h3 {
 }
 
 .display-sm {
-  font-family: var(--font-display);
+  font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-variation-settings: "opsz" 48;
   font-weight: 500;
   font-size: clamp(1.25rem, 2vw, 1.625rem);
@@ -165,7 +167,7 @@ h3 {
    The defining "wow" element across the site
    ========================================== */
 .editorial-number {
-  font-family: var(--font-display);
+  font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-variation-settings: "opsz" 144;
   font-weight: 300;
   font-size: clamp(4rem, 11vw, 9rem);
@@ -176,7 +178,7 @@ h3 {
 }
 
 .editorial-number-sm {
-  font-family: var(--font-display);
+  font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-variation-settings: "opsz" 96;
   font-weight: 400;
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -185,7 +187,7 @@ h3 {
 }
 
 /* Mono for precise data — rates, dates, NMLS numbers */
-.mono { font-family: var(--font-mono); font-feature-settings: "tnum", "lnum"; }
+.mono { font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-feature-settings: "tnum", "lnum"; }
 
 /* ==========================================
    EYEBROW — small editorial labels
@@ -194,7 +196,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  font-family: var(--font-body);
+  font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -220,7 +222,7 @@ h3 {
    BODY TEXT
    ========================================== */
 .lede {
-  font-family: var(--font-body);
+  font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
   font-weight: 300;
   font-size: clamp(1.125rem, 1.6vw, 1.375rem);
   line-height: 1.55;
@@ -245,7 +247,7 @@ h3 {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.95rem 1.5rem;
-  font-family: var(--font-body);
+  font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: -0.005em;
@@ -356,7 +358,7 @@ h3 {
 }
 
 .card-step-num {
-  font-family: var(--font-mono);
+  font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.08em;

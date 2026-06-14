@@ -181,7 +181,7 @@ const cards = [
     padding: 32px 24px 56px;
     background: radial-gradient(ellipse at top, #1a1410 0%, #0a0807 60%, #050403 100%);
     color: var(--dw-bone);
-    font-family: var(--font-display);
+    font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   }
 
   /* Film grain */
@@ -208,7 +208,7 @@ const cards = [
     color: var(--dw-eyebrow);
     text-align: center;
     margin-bottom: 40px;
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
     font-weight: 500;
   }
 
@@ -239,7 +239,7 @@ const cards = [
     letter-spacing: -0.02em;
     color: var(--dw-cream);
     font-style: italic;
-    font-family: var(--font-display);
+    font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   }
   #drawing-root .dw-h2 {
     font-size: 36px;
@@ -248,7 +248,7 @@ const cards = [
     margin: 20px 0 12px;
     color: var(--dw-cream);
     font-style: italic;
-    font-family: var(--font-display);
+    font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   }
   #drawing-root .dw-lede {
     font-size: 17px;
@@ -277,13 +277,13 @@ const cards = [
     text-transform: uppercase;
     text-align: center;
     margin-top: 20px;
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
   }
   #drawing-root .dw-confirm {
     font-size: 13px;
     color: #8a7355;
     margin-top: 24px;
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
   }
 
   /* ── Buttons ── */
@@ -297,7 +297,7 @@ const cards = [
     letter-spacing: 0.28em;
     text-transform: uppercase;
     cursor: pointer;
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
     font-weight: 500;
     transition: all 0.3s ease;
     margin-top: 24px;
@@ -327,7 +327,7 @@ const cards = [
     text-transform: uppercase;
     color: #8a7355;
     margin-bottom: 8px;
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
     font-weight: 500;
   }
   #drawing-root .dw-input {
@@ -351,7 +351,7 @@ const cards = [
     color: #c87060;
     font-size: 11px;
     margin-top: 4px;
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
     letter-spacing: 0.04em;
   }
   #drawing-root .dw-consent {
@@ -359,7 +359,7 @@ const cards = [
     line-height: 1.5;
     color: #7a6850;
     margin-top: 24px;
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
     letter-spacing: 0.01em;
   }
 
@@ -374,7 +374,7 @@ const cards = [
     border: 1px solid #3a2f23;
     font-size: 13px;
     cursor: pointer;
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
     font-weight: 400;
     letter-spacing: 0.02em;
     transition: all 0.2s ease;
@@ -446,13 +446,13 @@ const cards = [
     color: var(--dw-mono);
     font-style: italic;
     letter-spacing: 0.1em;
-    font-family: var(--font-display);
+    font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   }
   #drawing-root .dw-front-num {
     font-size: 10px;
     letter-spacing: 0.2em;
     color: var(--dw-violet);
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
     font-weight: 600;
   }
   #drawing-root .dw-front-name {
@@ -460,7 +460,7 @@ const cards = [
     font-style: italic;
     margin-top: 4px;
     line-height: 1.1;
-    font-family: var(--font-display);
+    font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   }
 
   /* ── Reveal card ── */
@@ -482,7 +482,7 @@ const cards = [
     font-size: 12px;
     letter-spacing: 0.24em;
     color: var(--dw-violet);
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
     font-weight: 600;
   }
   #drawing-root .dw-reveal-cardname {
@@ -490,7 +490,7 @@ const cards = [
     font-style: italic;
     margin: 8px 0 16px;
     color: var(--dw-cardink);
-    font-family: var(--font-display);
+    font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   }
   #drawing-root .dw-reveal-rule {
     width: 40px;

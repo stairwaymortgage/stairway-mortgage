@@ -446,23 +446,23 @@ const collectionSchema={"@context":"https://schema.org","@type":"CollectionPage"
   .lp-hero__stats { display: flex; gap: 3rem; margin-top: 2.5rem; flex-wrap: wrap; }
   .lp-hero__stats div { display: flex; flex-direction: column; }
   .lp-hero__stats .editorial-number { font-size: clamp(1.8rem,4vw,2.6rem); }
-  .lp-hero__stats small { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mute); }
+  .lp-hero__stats small { font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mute); }
 
   .lp-finder { padding: clamp(2rem,5vw,4rem) 0; }
   .lp-finder__card { background: var(--color-ink); color: var(--color-paper); border-radius: 20px; padding: clamp(1.75rem,4vw,3rem); }
   .lp-finder__card .eyebrow-rust { color: #E59A9A; }
   .lp-finder__card h2 { color: var(--color-paper); margin: 0.5rem 0 2rem; }
   .lp-finder__steps { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 2rem; }
-  .lp-q__label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(250,250,247,0.6); margin-bottom: 0.85rem; }
+  .lp-q__label { font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(250,250,247,0.6); margin-bottom: 0.85rem; }
   .lp-q__opts { display: flex; flex-direction: column; gap: 0.5rem; }
-  .lp-q__opts button { text-align: left; padding: 0.65rem 0.9rem; border-radius: 9px; border: 1px solid rgba(250,250,247,0.18); background: rgba(250,250,247,0.04); color: var(--color-paper); font-family: var(--font-body); font-size: 14px; cursor: pointer; transition: all .18s; }
+  .lp-q__opts button { text-align: left; padding: 0.65rem 0.9rem; border-radius: 9px; border: 1px solid rgba(250,250,247,0.18); background: rgba(250,250,247,0.04); color: var(--color-paper); font-family: var(--stw-body, 'Inter'), system-ui, sans-serif; font-size: 14px; cursor: pointer; transition: all .18s; }
   .lp-q__opts button:hover { border-color: var(--color-blue); background: rgba(24,69,214,0.18); }
   .lp-q__opts button.is-sel { background: var(--color-blue); border-color: var(--color-blue); font-weight: 600; }
   .lp-finder__result { margin-top: 2rem; font-size: 13px; color: #9FE0A0; letter-spacing: 0.03em; }
 
   .lp-catalog { padding: clamp(2rem,5vw,3rem) 0 clamp(3rem,7vw,5rem); }
   .lp-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
-  .lp-tab { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; padding: 0.55rem 0.95rem; border-radius: 999px; border: 1px solid var(--color-bone); background: var(--color-paper); color: var(--color-ink); cursor: pointer; transition: all .18s; }
+  .lp-tab { font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 12px; letter-spacing: 0.04em; padding: 0.55rem 0.95rem; border-radius: 999px; border: 1px solid var(--color-bone); background: var(--color-paper); color: var(--color-ink); cursor: pointer; transition: all .18s; }
   .lp-tab span { opacity: 0.5; margin-left: 0.3rem; }
   .lp-tab:hover { border-color: var(--color-ink); }
   .lp-tab.is-active { background: var(--color-ink); color: var(--color-paper); border-color: var(--color-ink); }
@@ -474,10 +474,10 @@ const collectionSchema={"@context":"https://schema.org","@type":"CollectionPage"
   .lp-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 34px -16px rgba(10,14,26,0.22); border-color: var(--accent); }
   .lp-tile:hover::before { transform: scaleX(1); }
   .lp-tile__cat { font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); }
-  .lp-tile__name { font-family: var(--font-display); font-weight: 500; font-size: 1.35rem; line-height: 1.12; color: var(--color-ink); letter-spacing: -0.01em; }
+  .lp-tile__name { font-family: var(--stw-display, 'Fraunces'), Georgia, serif; font-weight: 500; font-size: 1.35rem; line-height: 1.12; color: var(--color-ink); letter-spacing: -0.01em; }
   .lp-tile__desc { font-size: 13.5px; line-height: 1.55; color: var(--color-mute); flex: 1; }
-  .lp-tile__go { font-family: var(--font-mono); font-size: 12px; color: var(--color-ink); margin-top: 0.5rem; transition: gap .2s; }
-  .lp-tile__badge { position: absolute; top: 1rem; right: 1rem; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; background: var(--color-green); color: #fff; padding: 0.2rem 0.5rem; border-radius: 5px; opacity: 0; transform: scale(0.8); transition: all .25s; }
+  .lp-tile__go { font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 12px; color: var(--color-ink); margin-top: 0.5rem; transition: gap .2s; }
+  .lp-tile__badge { position: absolute; top: 1rem; right: 1rem; font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; background: var(--color-green); color: #fff; padding: 0.2rem 0.5rem; border-radius: 5px; opacity: 0; transform: scale(0.8); transition: all .25s; }
   .lp-tile.is-match { border-color: var(--color-green); box-shadow: 0 0 0 1px var(--color-green), 0 14px 34px -16px rgba(46,158,46,0.32); }
   .lp-tile.is-match .lp-tile__badge { opacity: 1; transform: scale(1); }
   .lp-tile.is-match::before { transform: scaleX(1); background: var(--color-green); }

@@ -459,7 +459,7 @@ const icons: Record<string, string> = {
     align-items: center;
     gap: 4px;
     padding: 0.55rem 0.9rem;
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: var(--color-ink);
@@ -578,7 +578,7 @@ const icons: Record<string, string> = {
     gap: 2rem;
   }
   .mega__heading {
-    font-family: var(--font-body);
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -665,7 +665,7 @@ const icons: Record<string, string> = {
   .mega__icon--soon { opacity: 0.5; }
   .mega__soon-badge {
     display: inline-block;
-    font-family: var(--font-mono);
+    font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
     font-size: 9px;
     font-weight: 600;
     letter-spacing: 0.08em;

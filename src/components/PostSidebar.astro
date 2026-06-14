@@ -88,7 +88,7 @@ const tags = Object.entries(taxonomy.tags)
   .ps-search { display: flex; gap: 0.5rem; }
   .ps-search__input,
   .ps-news__input {
-    flex: 1; min-width: 0; padding: 0.7rem 0.85rem; font-family: var(--font-body); font-size: 14px;
+    flex: 1; min-width: 0; padding: 0.7rem 0.85rem; font-family: var(--stw-body, 'Inter'), system-ui, sans-serif; font-size: 14px;
     border: 1px solid var(--color-bone); border-radius: 8px; background: var(--color-paper-tint); color: var(--color-ink);
   }
   .ps-search__input:focus, .ps-news__input:focus { outline: none; border-color: var(--color-blue); }
@@ -112,11 +112,11 @@ const tags = Object.entries(taxonomy.tags)
   .ps-ebook__cta:hover { background: var(--color-paper); color: var(--color-ink); }
 
   .ps-label {
-    display: block; font-family: var(--font-body); font-size: 13px; font-weight: 600;
+    display: block; font-family: var(--stw-body, 'Inter'), system-ui, sans-serif; font-size: 13px; font-weight: 600;
     letter-spacing: 0.02em; margin-bottom: 0.55rem; color: var(--color-ink);
   }
   .ps-select {
-    width: 100%; padding: 0.7rem 0.85rem; font-family: var(--font-body); font-size: 14px;
+    width: 100%; padding: 0.7rem 0.85rem; font-family: var(--stw-body, 'Inter'), system-ui, sans-serif; font-size: 14px;
     border: 1px solid var(--color-bone); border-radius: 8px; background: var(--color-paper-tint);
     color: var(--color-ink); cursor: pointer;
   }

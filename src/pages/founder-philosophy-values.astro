@@ -272,7 +272,7 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
 
 <style>
   /* Breadcrumb */
-  .fp-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .fp-breadcrumb { font-family:var(--stw-mono, 'JetBrains Mono'), monospace; font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
   .fp-breadcrumb a { color:var(--color-mute); text-decoration:none; }
   .fp-breadcrumb a:hover { color:var(--color-blue); }
   .fp-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
@@ -304,8 +304,8 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   .fp-best__head .lede { margin-top:1rem; }
   .fp-best__grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.25rem; }
   .fp-best__card { background:var(--color-paper); border:1px solid var(--color-bone); border-radius:14px; padding:1.75rem; display:flex; flex-direction:column; gap:0.5rem; }
-  .fp-best__letter { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(2.4rem,5vw,3.2rem); line-height:1; color:var(--color-blue); }
-  .fp-best__card h3 { font-family:var(--font-display); font-weight:500; font-size:1.25rem; margin:0; }
+  .fp-best__letter { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(2.4rem,5vw,3.2rem); line-height:1; color:var(--color-blue); }
+  .fp-best__card h3 { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:1.25rem; margin:0; }
   .fp-best__card p { font-size:15px; line-height:1.65; color:var(--color-ink-light); margin:0; }
   .fp-best__footer { text-align:center; font-size:13px; color:var(--color-mute); margin-top:2rem; letter-spacing:0.04em; }
 
@@ -316,14 +316,14 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   .fp-values__row { display:flex; align-items:center; gap:1.5rem; padding:1.15rem 1rem; border-bottom:1px solid var(--color-bone); font-size:16px; line-height:1.6; color:var(--color-mute); border-radius:8px; transition:background .18s; }
   .fp-values__row:first-child { border-top:1px solid var(--color-bone); }
   .fp-values__row:hover { background:var(--color-paper-tint); }
-  .fp-values__letter { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:2.5rem; line-height:1; color:var(--color-rust); flex:0 0 64px; text-align:center; }
+  .fp-values__letter { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-variation-settings:"opsz" 96; font-weight:500; font-size:2.5rem; line-height:1; color:var(--color-rust); flex:0 0 64px; text-align:center; }
   .fp-values__row strong { font-weight:600; color:var(--color-ink); }
   .fp-values__portrait { display:block; max-width:360px; margin:2rem auto 0; }
   .fp-values__portrait img { width:100%; height:auto; display:block; border-radius:14px; border:1px solid var(--color-bone); object-fit:initial; }
 
   /* 5. Mission / Leverage */
   .fp-mission { padding:clamp(3rem,6vw,5rem) 0; background:var(--color-paper-tint); border-top:1px solid var(--color-bone); border-bottom:1px solid var(--color-bone); }
-  .fp-mission .display-md { font-family:var(--font-display); font-weight:500; font-size:clamp(1.5rem,3vw,2rem); margin-top:3rem; margin-bottom:1rem; }
+  .fp-mission .display-md { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:clamp(1.5rem,3vw,2rem); margin-top:3rem; margin-bottom:1rem; }
   .fp-mission .display-md:first-child { margin-top:0; }
   .fp-mission p { font-size:16px; line-height:1.75; color:var(--color-ink-light); margin-bottom:1.1rem; }
   .fp-mission strong { color:var(--color-ink); }
@@ -336,12 +336,12 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   .fp-manifesto { padding:clamp(4rem,8vw,7rem) 0; background:var(--color-ink); color:var(--color-paper); }
   .fp-manifesto__inner { text-align:center; display:flex; flex-direction:column; align-items:center; }
   .fp-manifesto__quote { position:relative; margin:0 0 3rem; max-width:48ch; border:none; padding:3rem 0 0; }
-  .fp-manifesto__quote::before { content:'\201C'; position:absolute; top:-0.2em; left:50%; transform:translateX(-50%); font-family:var(--font-display); font-size:4rem; line-height:1; color:var(--color-blue); opacity:0.7; pointer-events:none; }
-  .fp-manifesto__quote p { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:400; font-style:italic; font-size:clamp(1.5rem,3.5vw,2.2rem); line-height:1.35; color:var(--color-paper); margin-bottom:1rem; }
-  .fp-manifesto__quote cite { font-family:var(--font-mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:rgba(250,250,247,0.6); font-style:normal; }
+  .fp-manifesto__quote::before { content:'\201C'; position:absolute; top:-0.2em; left:50%; transform:translateX(-50%); font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-size:4rem; line-height:1; color:var(--color-blue); opacity:0.7; pointer-events:none; }
+  .fp-manifesto__quote p { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-variation-settings:"opsz" 96; font-weight:400; font-style:italic; font-size:clamp(1.5rem,3.5vw,2.2rem); line-height:1.35; color:var(--color-paper); margin-bottom:1rem; }
+  .fp-manifesto__quote cite { font-family:var(--stw-mono, 'JetBrains Mono'), monospace; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:rgba(250,250,247,0.6); font-style:normal; }
   .fp-manifesto__emblem { max-width:200px; height:auto; margin-bottom:3rem; opacity:0.85; }
   .fp-manifesto__poem { max-width:42ch; }
-  .fp-manifesto__poem p { font-family:var(--font-display); font-size:clamp(1rem,2vw,1.2rem); line-height:1.8; color:rgba(250,250,247,0.82); margin-bottom:0.15rem; }
+  .fp-manifesto__poem p { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-size:clamp(1rem,2vw,1.2rem); line-height:1.8; color:rgba(250,250,247,0.82); margin-bottom:0.15rem; }
 
   /* 5b. Testimonials */
   .fp-testimonials { padding:clamp(3rem,6vw,5rem) 0; }

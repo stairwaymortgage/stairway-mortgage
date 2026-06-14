@@ -51,7 +51,7 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
 </Layout>
 
 <style>
-  .post-breadcrumb { font-family:var(--font-mono); font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.5rem; }
+  .post-breadcrumb { font-family:var(--stw-mono, 'JetBrains Mono'), monospace; font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.5rem; }
   .post-breadcrumb a { color:var(--color-mute); text-decoration:none; } .post-breadcrumb a:hover { color:var(--color-blue); }
   .post-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
   .post-title { margin-bottom:1.25rem; }
@@ -61,8 +61,8 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   .post-layout { display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:3.5rem; align-items:start; }
   .post-main { min-width:0; }
   @media (max-width:980px) { .post-layout { grid-template-columns:1fr; } }
-  .post-body :global(h2) { font-family:var(--font-display); font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(1.6rem,3vw,2.25rem); line-height:1.15; margin-top:3rem; margin-bottom:1.1rem; }
-  .post-body :global(h3) { font-family:var(--font-display); font-weight:500; font-size:clamp(1.25rem,2vw,1.6rem); margin-top:2rem; margin-bottom:0.85rem; }
+  .post-body :global(h2) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(1.6rem,3vw,2.25rem); line-height:1.15; margin-top:3rem; margin-bottom:1.1rem; }
+  .post-body :global(h3) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:clamp(1.25rem,2vw,1.6rem); margin-top:2rem; margin-bottom:0.85rem; }
   .post-body :global(h2 b),.post-body :global(h3 b) { font-weight:inherit; }
   .post-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.25rem; color:var(--color-ink-light); }
   .post-body :global(ul),.post-body :global(ol) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }

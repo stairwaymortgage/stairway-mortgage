@@ -97,23 +97,23 @@
   .dscr-field label { display: block; font-size: 13px; font-weight: 600; color: var(--color-ink); margin-bottom: 0.5rem; }
   .dscr-input { display: flex; align-items: center; border: 1px solid var(--color-bone); border-radius: 8px; background: var(--color-paper); overflow: hidden; }
   .dscr-input:focus-within { border-color: var(--color-blue); }
-  .dscr-input span { padding: 0 0.5rem 0 0.85rem; color: var(--color-mute); font-family: var(--font-mono); font-size: 15px; }
-  .dscr-input input { flex: 1; min-width: 0; border: none; outline: none; background: transparent; padding: 0.75rem 0.85rem 0.75rem 0; font-family: var(--font-mono); font-size: 16px; color: var(--color-ink); }
+  .dscr-input span { padding: 0 0.5rem 0 0.85rem; color: var(--color-mute); font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 15px; }
+  .dscr-input input { flex: 1; min-width: 0; border: none; outline: none; background: transparent; padding: 0.75rem 0.85rem 0.75rem 0; font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 16px; color: var(--color-ink); }
 
   .dscr-result { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; background: var(--color-paper); border: 1px solid var(--color-bone); border-radius: 12px; padding: 1.5rem; }
   .dscr-gauge { flex: 0 0 auto; }
-  .dscr-gauge__num { font-family: var(--font-display); font-size: 34px; font-weight: 400; fill: var(--color-ink); }
-  .dscr-gauge__lbl { font-family: var(--font-mono); font-size: 12px; fill: var(--color-mute); letter-spacing: 0.08em; }
+  .dscr-gauge__num { font-family: var(--stw-display, 'Fraunces'), Georgia, serif; font-size: 34px; font-weight: 400; fill: var(--color-ink); }
+  .dscr-gauge__lbl { font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 12px; fill: var(--color-mute); letter-spacing: 0.08em; }
   #dscr-arc { transition: stroke-dashoffset 0.5s cubic-bezier(0.16,1,0.3,1), stroke 0.3s; }
 
   .dscr-readout { flex: 1; min-width: 230px; }
-  .dscr-verdict { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; margin-bottom: 0.5rem; }
+  .dscr-verdict { font-family: var(--stw-display, 'Fraunces'), Georgia, serif; font-size: 1.35rem; font-weight: 500; margin-bottom: 0.5rem; }
   .dscr-verdict--ok { color: var(--color-green-deep); }
   .dscr-verdict--warn { color: #9A6212; }
   .dscr-verdict--bad { color: var(--color-rust); }
   .dscr-explain { font-size: 14.5px; line-height: 1.6; color: var(--color-ink-light); margin-bottom: 1rem; }
   .dscr-zones { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
-  .dscr-zone { font-family: var(--font-mono); font-size: 11px; padding: 0.3rem 0.65rem; border-radius: 6px; }
+  .dscr-zone { font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 11px; padding: 0.3rem 0.65rem; border-radius: 6px; }
   .dscr-zone--bad { background: var(--color-rust-tint); color: var(--color-rust); }
   .dscr-zone--ok { background: var(--color-blue-tint); color: var(--color-blue-deep); }
   .dscr-zone--best { background: #E4F4E4; color: var(--color-green-deep); }

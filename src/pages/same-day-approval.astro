@@ -117,21 +117,21 @@ const serviceSchema={"@context":"https://schema.org","@type":"Service","name":"S
   .sda-stats { display: flex; gap: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-bone); flex-wrap: wrap; }
   .sda-stats div { display: flex; flex-direction: column; }
   .sda-stats .editorial-number { font-size: clamp(1.6rem,3.5vw,2.2rem); }
-  .sda-stats small { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--color-mute); }
+  .sda-stats small { font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--color-mute); }
 
   .sda-form { background: var(--color-paper); border: 1px solid var(--color-bone); border-radius: 18px; padding: clamp(1.5rem,3vw,2.25rem); box-shadow: 0 18px 44px -24px rgba(10,14,26,0.22); }
-  .sda-form__title { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; color: var(--color-ink); margin-bottom: 0.3rem; }
+  .sda-form__title { font-family: var(--stw-display, 'Fraunces'), Georgia, serif; font-weight: 500; font-size: 1.5rem; color: var(--color-ink); margin-bottom: 0.3rem; }
   .sda-form__sub { font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-mute); margin-bottom: 1.5rem; }
   .sda-field { margin-bottom: 1rem; }
-  .sda-field label { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-mute); margin-bottom: 0.4rem; }
-  .sda-field input, .sda-field select { width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--color-bone); border-radius: 10px; background: var(--color-paper-tint); font-family: var(--font-body); font-size: 15px; color: var(--color-ink); }
+  .sda-field label { display: block; font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-mute); margin-bottom: 0.4rem; }
+  .sda-field input, .sda-field select { width: 100%; padding: 0.75rem 0.85rem; border: 1px solid var(--color-bone); border-radius: 10px; background: var(--color-paper-tint); font-family: var(--stw-body, 'Inter'), system-ui, sans-serif; font-size: 15px; color: var(--color-ink); }
   .sda-field input:focus, .sda-field select:focus { outline: none; border-color: var(--color-blue); box-shadow: 0 0 0 3px rgba(24,69,214,0.1); }
   .sda-submit { width: 100%; justify-content: center; margin-top: 0.5rem; }
   .sda-err { color: var(--color-rust); font-size: 12px; margin-top: 0.75rem; }
   .sda-form__legal { font-size: 10px; line-height: 1.5; color: var(--color-mute); margin-top: 1rem; letter-spacing: 0.01em; }
 
   .sda-success { background: var(--color-paper); border: 1px solid var(--color-green); border-radius: 18px; padding: clamp(2rem,4vw,3rem); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; box-shadow: 0 18px 44px -24px rgba(46,158,46,0.3); }
-  .sda-success__h { font-family: var(--font-display); font-weight: 500; font-size: 1.7rem; color: var(--color-ink); }
+  .sda-success__h { font-family: var(--stw-display, 'Fraunces'), Georgia, serif; font-weight: 500; font-size: 1.7rem; color: var(--color-ink); }
   .sda-success__p { font-size: 15px; color: var(--color-mute); max-width: 36ch; }
   .sda-success__link { font-size: 12px; color: var(--color-blue); text-decoration: none; margin-top: 0.25rem; }
 
