@@ -64,11 +64,12 @@ html {
   color: var(--color-ink);
 }
 
+:root { --fluid-body: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem); }
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-body, 'Inter'), system-ui, sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  font-size: 17px;
+  font-size: var(--fluid-body);
   letter-spacing: -0.005em;
   background: var(--color-paper);
 }
@@ -77,13 +78,42 @@ body {
    DISPLAY TYPOGRAPHY (Fraunces)
    Designed for editorial impact — never timid
    ========================================== */
-h1 {
-  font-family: var(--font-display);
-  font-variation-settings: "opsz" 144;
-  font-weight: 400;
-  font-size: clamp(2.8rem, 6vw, 5.2rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+h1,
+.hero h1,
+.hero-title,
+[class*="hero"] h1 {
+  font-family: var(--font-display, 'Fraunces'), Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+}
+
+h2, .hero h2 {
+  font-family: var(--font-display, 'Fraunces'), Georgia, serif;
+  font-weight: 500;
+  line-height: 1.12;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+}
+h3 {
+  font-family: var(--font-display, 'Fraunces'), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+}
+
+.hero p,
+.hero-sub,
+.hero__subtitle,
+[class*="hero"] p {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.55;
+}
+
+@media (max-width: 480px) {
+  h1, .hero h1, [class*="hero"] h1 { font-size: clamp(2.1rem, 9vw, 2.7rem); }
+  h2, .hero h2 { font-size: clamp(1.6rem, 6vw, 2rem); }
+  .hero p, [class*="hero"] p { font-size: 1rem; }
 }
 
 .font-display {

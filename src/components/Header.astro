@@ -40,100 +40,67 @@ const menus = [
       { label: 'Apply for Mortgage', href: 'https://stairwaymortgage.my1003app.com/', rel: 'noopener' },
     ],
   },
-  {
-    id: 'mega-situation',
-    label: 'Your Situation',
+    {
+    id: 'mega-journey',
+    label: 'Your Journey',
     columns: [
       {
-        heading: "Where you're at",
+        heading: "Where You're At",
         links: [
-          { icon: 'plane',   title: 'Relocate Anywhere™',    desc: 'Agents in all 50 states',            href: '/relocate-anywhere/' },
-          { icon: 'key',     title: 'First-Time Buyer',     desc: 'Buying your very first home',        href: '/first-time-buyers-journey/' },
-          { icon: 'home',    title: 'Current Homeowner',    desc: 'Refinance, renovate, or leverage',   href: '/homeowners-journey/' },
-          { icon: 'heart',   title: 'Homeowner 55+',        desc: 'Retirement income & downsizing',     href: '/senior-homeowners-55-journey/' },
-          { icon: 'chart',   title: 'Real-Estate Investor', desc: 'Scale your rental portfolio',        href: '/active-investors-journey/' },
+          { icon: 'plane', title: 'Relocate Anywhere\u2122', desc: 'Agents in all 50 states',         href: '/relocate-anywhere/' },
+          { icon: 'key',   title: 'First-Time Buyer',      desc: 'Buying your very first home',      href: '/first-time-buyers-journey/' },
+          { icon: 'home',  title: 'Current Homeowner',     desc: 'Refinance, renovate, or leverage', href: '/homeowners-journey/' },
+          { icon: 'heart', title: 'Homeowner 55+',         desc: 'Retirement income & downsizing',   href: '/senior-homeowners-55-journey/' },
+          { icon: 'chart', title: 'Real-Estate Investor',  desc: 'Scale your rental portfolio',      href: '/active-investors-journey/' },
         ],
       },
       {
-        heading: 'Clients We Serve — By Profession',
+        heading: 'The 8 Step Journey',
         links: [
-          { icon: 'plane',   title: 'Aviation Professionals',           desc: 'Pilot & crew specialist lending',  href: '/aviation-professionals/',  live: true },
-          { icon: 'ship',    title: 'Yacht Professionals',              desc: 'Maritime industry lending',        href: '/yacht-professionals/',     live: true },
-          { icon: 'brief',   title: 'Corporate Executives',             desc: 'Stock-comp & RSU-friendly loans',  href: '/corporate-executives/',    live: true },
-          { icon: 'pen',     title: 'Creative Earners',                 desc: 'Flexible income documentation',    href: '/creative-earners/',        live: true },
-          { icon: 'medical', title: 'Medical Professionals',            desc: 'Physician & nurse loan programs',  live: false },
-          { icon: 'medical', title: 'Dental & Wellness Professionals',  desc: 'Specialized healthcare lending',   live: false },
-          { icon: 'user',    title: 'Professional Services',            desc: 'Legal & entrepreneurs',            live: false },
-          { icon: 'trend',   title: 'Sales Professionals',              desc: 'Commission-based income programs', live: false },
-        ],
-      },
-      {
-        heading: 'Our Partners',
-        links: [
-          { icon: 'home',    title: 'Realtors',                desc: 'NAR settlement + Florida buyer agency',  href: '/realtors/', live: true },
-          { icon: 'calc',    title: 'CPAs & Accountants',      desc: 'Coming soon',                            live: false },
-          { icon: 'chart',   title: 'Financial Advisors',      desc: 'Coming soon',                            live: false },
-          { icon: 'file',    title: 'Attorneys',               desc: 'Coming soon',                            live: false },
-          { icon: 'heart',   title: 'Insurance Agents',        desc: 'Coming soon',                            live: false },
-          { icon: 'user',    title: 'Divorce Professionals',   desc: 'Coming soon',                            live: false },
-          { icon: 'trend',   title: 'Wealth Managers',         desc: 'Coming soon',                            live: false },
+          { icon: 'seed',  title: 'Smart Steward',        desc: 'Laying the groundwork for wealth',  href: '/the-8-steps/smart-stewards/',        live: true },
+          { icon: 'key',   title: 'First-Time Buyer',     desc: 'The first key, the first door',     href: '/the-8-steps/first-time-home-buyer/', live: true },
+          { icon: 'home',  title: 'Homeowner',            desc: 'Building equity and protecting it', href: '/the-8-steps/homeowner/',             live: true },
+          { icon: 'heart', title: 'Senior Homeowner',     desc: 'Options and dignity for 55+',       href: '/the-8-steps/senior-homeowner/',      live: true },
+          { icon: 'chart', title: 'First-Time Investor',  desc: 'Your wedge into real estate',       href: '/the-8-steps/first-time-investor/',   live: true },
+          { icon: 'trend', title: 'Active Investor',      desc: 'Scaling a portfolio with strategy', href: '/the-8-steps/active-investor/',       live: true },
+          { icon: 'brief', title: 'Passive Investor',     desc: 'Letting your money do the work',    href: '/the-8-steps/passive-investor/',      live: true },
+          { icon: 'star',  title: 'Legacy Angel',         desc: 'Wealth that lasts beyond you',      href: '/the-8-steps/legacy-angel/',          live: true },
         ],
       },
     ],
-    feature: {
-      title: "Let's build a plan around your situation",
-      cta: { label: 'Build My Plan', href: '/discovery-quiz/' },
-    },
+    feature: { title: "Not sure where you are? Take the 2-minute Discovery Quiz.", cta: { label: 'Find My Stage', href: '/discovery-quiz/' } },
   },
   {
     id: 'mega-programs',
     label: 'Our Programs',
     columns: [
       {
-        heading: 'Aviation Professionals',
+        heading: 'By Profession',
         links: [
-          { icon: 'plane', title: 'Aviation Hub',             desc: 'All aviation programs',           href: '/aviation-professionals/' },
-          { icon: 'plane', title: 'Pilots',                   desc: 'Multi-W-2, per diem, scale',      href: '/aviation-professionals/pilot/' },
-          { icon: 'plane', title: 'Flight Attendants',        desc: 'Variable income specialist',      href: '/aviation-professionals/flight-attendant/' },
-          { icon: 'plane', title: 'Aircraft Mechanics',       desc: 'A&P, IA, line-maintenance',       href: '/aviation-professionals/aircraft-mechanic/' },
-          { icon: 'plane', title: 'Air Traffic Controllers',  desc: 'FAA, locality pay, premium',      href: '/aviation-professionals/air-traffic-controller/' },
+          { icon: 'plane',   title: 'Aviation Professionals',          href: '/aviation-professionals/',        live: true },
+          { icon: 'ship',    title: 'Yacht Professionals',             href: '/yacht-professionals/',           live: true },
+          { icon: 'brief',   title: 'Corporate Executives',            href: '/corporate-executives/',          live: true },
+          { icon: 'pen',     title: 'Creative Earners',                href: '/creative-earners/',              live: true },
+          { icon: 'medical', title: 'Medical Professionals',           href: '/medical-professionals/',         live: true },
+          { icon: 'medical', title: 'Dental & Wellness Professionals', href: '/dental-wellness-professionals/', live: true },
+          { icon: 'user',    title: 'Professional Services',           href: '/professional-services/',         live: true },
+          { icon: 'trend',   title: 'Sales Professionals',             href: '/sales-professionals/',           live: true },
         ],
       },
       {
-        heading: 'Yacht Professionals',
+        heading: 'For Partners',
         links: [
-          { icon: 'ship', title: 'Yacht Hub',          desc: 'All yacht programs',              href: '/yacht-professionals/' },
-          { icon: 'ship', title: 'Yacht Captains',     desc: 'Master credentials, rotational',  href: '/yacht-professionals/captain/' },
-          { icon: 'ship', title: 'Yacht Engineers',    desc: 'MCA Y1-Y4, chief engineer',       href: '/yacht-professionals/engineer/' },
-          { icon: 'ship', title: 'Yacht Surveyors',    desc: 'SAMS, NAMS, Schedule C',          href: '/yacht-professionals/surveyor/' },
-        ],
-      },
-      {
-        heading: 'Corporate Executives',
-        links: [
-          { icon: 'brief', title: 'Corp Exec Hub',          desc: 'All executive programs',         href: '/corporate-executives/' },
-          { icon: 'brief', title: 'C-Suite Executive',      desc: 'RSU/PSU, 409A, change of control', href: '/corporate-executives/c-suite-executive/' },
-          { icon: 'brief', title: 'Senior VP / VP',         desc: 'Leadership equity-comp',         href: '/corporate-executives/senior-vp-vp/' },
-          { icon: 'brief', title: 'Director Band',          desc: 'First-time RSU borrower',        href: '/corporate-executives/director-band/' },
-          { icon: 'brief', title: 'Pre-IPO Equity Holder',  desc: 'QSBS 1202, 83(b), AMT',          href: '/corporate-executives/pre-ipo-equity-holder/' },
-          { icon: 'brief', title: 'Relocating Executive',   desc: 'Multi-state W-2, relo',          href: '/corporate-executives/relocating-executive/' },
-        ],
-      },
-      {
-        heading: 'Creative Earners',
-        links: [
-          { icon: 'pen', title: 'Creative Hub',                 desc: 'All creative programs',          href: '/creative-earners/' },
-          { icon: 'pen', title: 'Film & TV Professional',       desc: 'SAG-AFTRA, Loan-Out, residuals', href: '/creative-earners/film-tv-professional/' },
-          { icon: 'pen', title: 'Recording Artist & Musician',  desc: 'ASCAP / BMI / SESAC / AFM',      href: '/creative-earners/recording-artist-musician/' },
-          { icon: 'pen', title: 'Author & Writer',              desc: 'Book advances, royalties',       href: '/creative-earners/author-writer/' },
-          { icon: 'pen', title: 'Content Creator & Influencer', desc: 'YouTube / Twitch / TikTok',      href: '/creative-earners/content-creator-influencer/' },
+          { icon: 'home',  title: 'Realtors',              href: '/realtors/',              live: true },
+          { icon: 'calc',  title: 'CPAs & Accountants',    href: '/cpas-accountants/',      live: false },
+          { icon: 'chart', title: 'Financial Advisors',    href: '/financial-advisors/',    live: false },
+          { icon: 'file',  title: 'Attorneys',             href: '/attorneys/',             live: false },
+          { icon: 'heart', title: 'Insurance Agents',      href: '/insurance-agents/',      live: false },
+          { icon: 'user',  title: 'Divorce Professionals', href: '/divorce-professionals/', live: false },
+          { icon: 'trend', title: 'Wealth Managers',       href: '/wealth-managers/',       live: false },
         ],
       },
     ],
-    feature: {
-      title: 'Not sure which path fits you?',
-      cta: { label: 'Talk to Our Team', href: '/schedule-call/' },
-    },
+    feature: { title: 'Specialized lending for complex income.', cta: { label: 'See All Programs', href: '/programs/' } },
   },
   {
     id: 'mega-tools',
@@ -189,6 +156,8 @@ const icons: Record<string, string> = {
   book:    'M2 2h5v12H2V2zm7 0h5v12H9V2z',
   grad:    'M8 1L1 5l7 4 7-4-7-4zM3 7v4l5 3 5-3V7',
   ship:    'M1 13c2 1 4 1 6 0s4-1 6 0M3 9l5-6 5 6M8 3v6',
+  seed:    'M8 14V8m0 0C8 5 5 2 2 2c0 4 2 6 6 6zm0 0c0-3 3-6 6-6 0 4-2 6-6 6z',
+  star:    'M8 1l2.2 4.5L15 6.3l-3.5 3.4.8 4.9L8 12.5l-4.3 2.1.8-4.9L1 6.3l4.8-.8L8 1z',
 };
 ---
 
@@ -267,7 +236,7 @@ const icons: Record<string, string> = {
   {menus.map((m) => (
     <div class="mega" id={m.id} role="region" aria-label={m.label + ' menu'}>
       <div class="container-page">
-        {m.id === 'mega-situation' && (
+        {m.id === 'mega-journey' && (
           <a href="/your-journey/" class="mega__journey-cta">
             <span class="mega__journey-icon" aria-hidden="true">&#x2302;</span>
             <span class="mega__journey-text">
@@ -748,7 +717,7 @@ const icons: Record<string, string> = {
     color: var(--color-mute);
   }
 
-  /* Journey CTA in Your Situation menu */
+  /* Journey CTA in Your Journey menu */
   .mega__journey-cta {
     display: flex;
     align-items: center;
