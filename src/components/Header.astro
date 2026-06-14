@@ -13,6 +13,7 @@ const menus = [
       {
         heading: 'Most Popular',
         links: [
+          { icon: 'plane',   title: 'Relocate Anywhere\u2122', desc: 'Agents in all 50 states',        href: '/relocate-anywhere/' },
           { icon: 'home',    title: 'Buy a Home',          desc: 'Purchase your next property',        href: '/buy-a-house-journey/' },
           { icon: 'refresh', title: 'Refinance or HELOC',  desc: 'Lower your rate or tap equity',      href: '/refinance-or-heloc-journey/' },
           { icon: 'hammer',  title: 'Build a Home',        desc: 'Construction-to-permanent loans',    href: '/build-a-house-journey/' },
@@ -45,16 +46,6 @@ const menus = [
     label: 'Your Journey',
     columns: [
       {
-        heading: "Where You're At",
-        links: [
-          { icon: 'plane', title: 'Relocate Anywhere\u2122', desc: 'Agents in all 50 states',         href: '/relocate-anywhere/' },
-          { icon: 'key',   title: 'First-Time Buyer',      desc: 'Buying your very first home',      href: '/first-time-buyers-journey/' },
-          { icon: 'home',  title: 'Current Homeowner',     desc: 'Refinance, renovate, or leverage', href: '/homeowners-journey/' },
-          { icon: 'heart', title: 'Homeowner 55+',         desc: 'Retirement income & downsizing',   href: '/senior-homeowners-55-journey/' },
-          { icon: 'chart', title: 'Real-Estate Investor',  desc: 'Scale your rental portfolio',      href: '/active-investors-journey/' },
-        ],
-      },
-      {
         heading: 'The 8 Step Journey',
         links: [
           { icon: 'seed',  title: 'Smart Steward',        desc: 'Laying the groundwork for wealth',  href: '/the-8-steps/smart-stewards/',        live: true },
@@ -83,7 +74,6 @@ const menus = [
           { icon: 'pen',     title: 'Creative Earners',                href: '/creative-earners/',              live: true },
           { icon: 'medical', title: 'Medical Professionals',           href: '/medical-professionals/',         live: true },
           { icon: 'medical', title: 'Dental & Wellness Professionals', href: '/dental-wellness-professionals/', live: true },
-          { icon: 'user',    title: 'Professional Services',           href: '/professional-services/',         live: true },
           { icon: 'trend',   title: 'Sales Professionals',             href: '/sales-professionals/',           live: true },
         ],
       },
@@ -91,12 +81,16 @@ const menus = [
         heading: 'For Partners',
         links: [
           { icon: 'home',  title: 'Realtors',              href: '/realtors/',              live: true },
-          { icon: 'calc',  title: 'CPAs & Accountants',    href: '/cpas-accountants/',      live: false },
-          { icon: 'chart', title: 'Financial Advisors',    href: '/financial-advisors/',    live: false },
-          { icon: 'file',  title: 'Attorneys',             href: '/attorneys/',             live: false },
-          { icon: 'heart', title: 'Insurance Agents',      href: '/insurance-agents/',      live: false },
-          { icon: 'user',  title: 'Divorce Professionals', href: '/divorce-professionals/', live: false },
-          { icon: 'trend', title: 'Wealth Managers',       href: '/wealth-managers/',       live: false },
+          { icon: 'user',  title: 'Professional Advisors', desc: 'Legal, tax, financial & insurance', href: '/professional-services/', live: true,
+            subs: [
+              { title: 'CPAs & Accountants',    href: '/cpas-accountants/' },
+              { title: 'Financial Advisors',    href: '/financial-advisors/' },
+              { title: 'Attorneys',             href: '/attorneys/' },
+              { title: 'Insurance Agents',      href: '/insurance-agents/' },
+              { title: 'Divorce Professionals', href: '/divorce-professionals/' },
+              { title: 'Wealth Managers',       href: '/wealth-managers/' },
+            ],
+          },
         ],
       },
     ],
