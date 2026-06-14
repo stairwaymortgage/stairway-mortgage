@@ -44,18 +44,33 @@ const menus = [
     {
     id: 'mega-journey',
     label: 'Your Journey',
-    columns: [
+    journeyStages: [
       {
-        heading: 'The 8 Step Journey',
-        links: [
-          { icon: 'seed',  title: 'Smart Steward',        desc: 'Laying the groundwork for wealth',  href: '/the-8-steps/smart-stewards/',        live: true },
-          { icon: 'key',   title: 'First-Time Buyer',     desc: 'The first key, the first door',     href: '/the-8-steps/first-time-home-buyer/', live: true },
-          { icon: 'home',  title: 'Homeowner',            desc: 'Building equity and protecting it', href: '/the-8-steps/homeowner/',             live: true },
-          { icon: 'heart', title: 'Senior Homeowner',     desc: 'Options and dignity for 55+',       href: '/the-8-steps/senior-homeowner/',      live: true },
-          { icon: 'chart', title: 'First-Time Investor',  desc: 'Your wedge into real estate',       href: '/the-8-steps/first-time-investor/',   live: true },
-          { icon: 'trend', title: 'Active Investor',      desc: 'Scaling a portfolio with strategy', href: '/the-8-steps/active-investor/',       live: true },
-          { icon: 'brief', title: 'Passive Investor',     desc: 'Letting your money do the work',    href: '/the-8-steps/passive-investor/',      live: true },
-          { icon: 'star',  title: 'Legacy Angel',         desc: 'Wealth that lasts beyond you',      href: '/the-8-steps/legacy-angel/',          live: true },
+        stage: 'Starting Out',
+        steps: [
+          { num: '01', title: 'Smart Steward',         href: '/the-8-steps/smart-stewards/' },
+          { num: '02', title: 'First-Time Home Buyer', href: '/the-8-steps/first-time-home-buyer/' },
+        ],
+      },
+      {
+        stage: 'Growing',
+        steps: [
+          { num: '03', title: 'Homeowner',              href: '/the-8-steps/homeowner/' },
+          { num: '04', title: 'Senior Homeowner 55+',   href: '/the-8-steps/senior-homeowner/' },
+        ],
+      },
+      {
+        stage: 'Investing',
+        steps: [
+          { num: '05', title: 'First-Time Investor',    href: '/the-8-steps/first-time-investor/' },
+          { num: '06', title: 'Active Investor',        href: '/the-8-steps/active-investor/' },
+          { num: '07', title: 'Passive Investor',       href: '/the-8-steps/passive-investor/' },
+        ],
+      },
+      {
+        stage: 'Legacy',
+        steps: [
+          { num: '08', title: 'Legacy Angel',           href: '/the-8-steps/legacy-angel/' },
         ],
       },
     ],
@@ -241,7 +256,26 @@ const icons: Record<string, string> = {
           </a>
         )}
         <div class="mega__grid">
-          <!-- Link columns -->
+          {/* Journey 4-stage layout */}
+          {m.journeyStages ? (
+            <div class="journey-grid">
+              {m.journeyStages.map((stage) => (
+                <div class="journey-col">
+                  <div class="journey-stage">{stage.stage}</div>
+                  <ul class="journey-steps">
+                    {stage.steps.map((s) => (
+                      <li>
+                        <a href={s.href} class="journey-step">
+                          <span class="journey-num">{s.num}</span>
+                          <span class="journey-title">{s.title}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ) : (
           <div class="mega__cols">
             {m.columns.map((col) => (
               <div class="mega__col">
@@ -287,7 +321,8 @@ const icons: Record<string, string> = {
               </div>
             ))}
           </div>
-          <!-- Feature card -->
+          )}
+          {/* Feature card */}
           <div class="mega__feature">
             <div class="mega__feature-card">
               <p class="mega__feature-title font-display">{m.feature.title}</p>
@@ -347,18 +382,26 @@ const icons: Record<string, string> = {
           </svg>
         </summary>
         <div class="hdr-drawer__links">
-          {m.columns.flatMap(c => c.links).map(link => (
-            link.live === false ? (
-              <span class="hdr-drawer__link hdr-drawer__link--soon">{link.title} <span class="mega__soon-badge">SOON</span></span>
-            ) : (
-              <Fragment>
-                <a href={link.href} class="hdr-drawer__link">{link.title}</a>
-                {link.subs && link.subs.map(sub => (
-                  <a href={sub.href} class="hdr-drawer__link hdr-drawer__sub-link">{sub.title}</a>
-                ))}
-              </Fragment>
-            )
-          ))}
+          {m.journeyStages ? (
+            m.journeyStages.flatMap(s => s.steps).map(step => (
+              <a href={step.href} class="hdr-drawer__link">
+                <span class="journey-num" style="margin-right:.4rem">{step.num}</span>{step.title}
+              </a>
+            ))
+          ) : (
+            m.columns.flatMap(c => c.links).map(link => (
+              link.live === false ? (
+                <span class="hdr-drawer__link hdr-drawer__link--soon">{link.title} <span class="mega__soon-badge">SOON</span></span>
+              ) : (
+                <Fragment>
+                  <a href={link.href} class="hdr-drawer__link">{link.title}</a>
+                  {link.subs && link.subs.map(sub => (
+                    <a href={sub.href} class="hdr-drawer__link hdr-drawer__sub-link">{sub.title}</a>
+                  ))}
+                </Fragment>
+              )
+            ))
+          )}
         </div>
       </details>
     ))}
