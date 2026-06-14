@@ -144,6 +144,11 @@ h3 {
   letter-spacing: -0.02em;
 }
 
+.emph-blue {
+  font-style: italic;
+  color: var(--color-royal, #2f47c9);
+}
+
 .display-md {
   font-family: var(--stw-display, 'Fraunces'), Georgia, serif;
   font-variation-settings: "opsz" 96;
