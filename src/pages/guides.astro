@@ -1,76 +1,355 @@
 ---
+// src/pages/guides.astro  (or guides/index.astro — match the existing route)
+// Rebuilt from WordPress XML: 1 Roadmap hero + 11 guide cards, each with its own
+// 3D book cover (R2) and its own GHL download form. Forest palette + Fraunces/Inter.
 import Layout from '../layouts/Layout.astro';
 
-const guides = [
-  { num: '01', title: 'Smart Stewards', desc: 'Credit building, education planning, and financial foundation.', stage: 'College Planning' },
-  { num: '02', title: 'First-Time Home Buyer', desc: 'Pre-approval, offers, closing — from nervous to confident.', stage: 'The First Door' },
-  { num: '03', title: 'Homeowner', desc: 'Equity strategies, refinancing, and making your home work.', stage: 'Equity at Work' },
-  { num: '04', title: 'Senior Homeowner 55+', desc: 'Reverse mortgages, downsizing, retirement equity.', stage: 'The Bridge' },
-  { num: '05', title: 'First-Time Investor', desc: 'Cash flow, financing, and your first rental property.', stage: 'Consumer to Owner' },
-  { num: '06', title: 'Active Investor', desc: 'Leverage, scaling, and portfolio optimization.', stage: 'Scaling' },
-  { num: '07', title: 'Passive Investor', desc: 'Passive income, syndications, and hands-off strategies.', stage: 'Allocator' },
-  { num: '08', title: 'Legacy Angel', desc: 'Philanthropy, wealth transfer, and generational giving.', stage: 'The Summit' },
+const HERO = {
+  name: `The Stairway Roadmap`,
+  subtitle: `5 Steps That Can Reshape Your Wealth Journey Forever`,
+  form: `https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c`,
+  bullets: [
+    `What if your teen graduated with equity instead of debt — using a four-unit FHA strategy most families have never heard of? (Step 1 – Smart Stewards)`,`Why buying your first home is less about the loan… and more about the 12-step readiness checklist that could save you thousands. (Step 2 – First-Time Buyers)`,`You’ve been paying down your mortgage — now it’s time to turn that equity into your next opportunity. (Step 3 – Homeowners)`,`The BRRRR strategy isn’t just for big-time investors — it’s for everyday heroes ready to buy, rehab, rent, and repeat their way to freedom. (Step 5 – First-Time Investors)`,`Most families lose their wealth within two generations — but yours doesn’t have to. (Step 8 – Legacy Angels)`
+  ],
+};
+
+const GUIDES = [
+  {
+    name: `Smart Steward’s Guide`,
+    stage: `College Planning`,
+    cover: `https://media.stairwaymortgage.com/guides/smart-steward.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/b8rm89jlhChuOhyr0qUt`,
+    subtitle: `5 Moves That Build Wealth Before 21`,
+    bullets: [
+      `What if your teen graduated with \$80K in equity and a four-unit property … instead of a diploma and \$80K in debt? (You’ll learn the strategy in Chapter 10.)`,
+      `She added her 14-year-old as an authorized user … and by 18, he had a 765 credit score — without ever touching the card. (Chapter 2 — The strategy every parent should know.)`,
+      `A 19-year-old used one little-known FHA hack to buy a fourplex… and never paid rent again. (Chapter 10 — The ultimate house hack revealed.)`,
+      `Your child could get a 100-point credit score boost in 60 days — with no money and zero risk to you. (Chapter 3 — The credit trick nobody talks about.)`,
+      `One family paid off \$14,000 in debt using a whiteboard… and a 20-minute Sunday ritual. (Chapter 7 — A simple habit that changed everything.)`
+    ],
+  },
+  {
+    name: `First-Time Buyer’s Guide`,
+    stage: `The First Door`,
+    cover: `https://media.stairwaymortgage.com/guides/first-time-buyer.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/a2SmF3Xzm8r0mXJj5bWT`,
+    subtitle: `5 Breakthroughs That Could Save You Thousands (and Your Sanity)`,
+    bullets: [
+      `Think your 750 credit score is helping you? It might be the reason you're losing deals to buyers with a 680. (Chapter 3 — What lenders and realtors won’t say out loud.)`,
+      `The millionaire move no one’s teaching: how to borrow from your 401(k) to fund your down payment — without wrecking your retirement. (Chapter 10 — Real leverage, real strategy.)`,
+      `One negotiation phrase can save you \$5,000–\$15,000 on closing day — even against higher offers. (Chapter 13 — Use it once, remember it forever.)`,
+      `The myth of needing 20% down is dead. Why 3–5% down could launch your wealth-building journey faster than waiting. (Chapter 12 — Stop stalling. Start growing.)`,
+      `The 90-day transformation plan that boosts credit, lowers DTI, builds savings — and flips the “I’m not ready” script for good. (Chapter 6 — This isn’t motivation. It’s momentum.)`
+    ],
+  },
+  {
+    name: `Homeowner’s Guide`,
+    stage: `Equity at Work`,
+    cover: `https://media.stairwaymortgage.com/guides/homeowner.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/ud7hnK1HRv4cyVZKXvbU`,
+    subtitle: `5 Game-Changing Truths for Homeowners`,
+    bullets: [
+      `Paying off your mortgage early could quietly be stealing your wealth. (You’ll rethink everything after Chapter 2.)`,
+      `A retired widow used her home equity to fund a healing sabbatical and start a ministry garden. (Chapter 11 will change the way you see legacy.)`,
+      `The refinance strategy that saved one family \$93,000 — and it had nothing to do with interest rates . (Uncovered in Chapter 5.)`,
+      `The advice to “never touch your equity” might be the most expensive mistake you ever believed. (See Chapter 3 for the mindset shift that changes everything.)`,
+      `The 15-minute monthly system used by wealth-building homeowners to track, grow, and protect equity like pros. (That’s in Chapter 9 — and it’s so simple it fits on one page.)`
+    ],
+  },
+  {
+    name: `Senior Homeowners Guide`,
+    stage: `Retirement & Reverse`,
+    cover: `https://media.stairwaymortgage.com/guides/senior-homeowner.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/RnboTClObAm8NEDJarjM`,
+    subtitle: `5 Powerful Truths Every Senior Homeowner Deserves to Know`,
+    bullets: [
+      `What your heirs actually inherit when you do a reverse mortgage — and why most assumptions are completely wrong . (Chapter 2 — This will ease your mind.)`,
+      `The single decision most retirees overlook that could free up hundreds each month. (Chapter 5 — Small shift, big freedom.)`,
+      `The surprising Scripture-backed reason you should not fear using your assets while you’re still alive. (Chapter 12 — Faith meets finance in the best way.)`,
+      `A simple equity line helped one couple avoid panic-selling their stocks in a market downturn. (Chapter 8 — Protecting your future starts here.)`,
+      `One widow used her reverse mortgage to gift her grandkids a once-in-a-lifetime experience. (Chapter 7 — A legacy they’ll never forget.)`
+    ],
+  },
+  {
+    name: `First-Time Investor’s Guide`,
+    stage: `The First Rental`,
+    cover: `https://media.stairwaymortgage.com/guides/first-time-investor.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/2e3Fnci8D2xTZ6mR4BEu`,
+    subtitle: `5 Investor Secrets They Never Taught You in School`,
+    bullets: [
+      `The most powerful investment strategy isn’t money — it’s your mindset . (Chapter 1 — And the silent way most people sabotage it before they ever buy.)`,
+      `How one buyer used a VA loan to control a triplex with \$0 down — and how it still cash flows today. (Chapter 6 — Creative financing, real results.)`,
+      `The \$12,000 mistake most new landlords make — and what a nurse from Tampa did instead. (Chapter 10 — Avoid this and save yourself thousands.)`,
+      `The 5 hidden engines of wealth inside every real estate deal — and why most people only ever activate one. (Chapter 2 — This will change how you evaluate deals forever.)`,
+      `“Getting a deal” is overrated — win by becoming the buyer every seller wants to work with. (Chapter 7 — It’s not about the discount. It’s about positioning.)`
+    ],
+  },
+  {
+    name: `Active Investor’s Guide`,
+    stage: `Scaling Up`,
+    cover: `https://media.stairwaymortgage.com/guides/active-investor.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/2hET2JC78jkKtdApQWcm`,
+    subtitle: `5 Wealth Moves for Investors Who Want to Scale Smarter and Sleep Better`,
+    bullets: [
+      `Small shift in entity structuring could protect your family — your current setup might be draining cash . (Chapter 5 — Most investors miss this.)`,
+      `Build trust with private investors — even if you're not a “salesperson.” (Chapter 10 — This turns connections into capital.)`,
+      `1031 exchange into bigger blessings — without being chained to taxes. (Chapter 4 — Learn the rule. Unlock the reward.)`,
+      `One automation system gave an investor weekends and peace of mind back. (Chapter 7 — This changes everything.)`,
+      `Cost segregation isn’t just a CPA trick — it's a kingdom wealth hack hiding in plain sight. (Chapter 6 — More savings. More giving. More legacy.)`
+    ],
+  },
+  {
+    name: `Passive Investor’s Guide`,
+    stage: `Mailbox Money`,
+    cover: `https://media.stairwaymortgage.com/guides/passive-investor.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/TFQi7Vq3UgSDkeKN8DmR`,
+    subtitle: `5 Passive Income Secrets That Work While You Sleep`,
+    bullets: [
+      `“Mailbox money” isn’t a myth — here’s how to structure deals that actually create it. (Chapter 4 — The income stream most people dream of but never build.)`,
+      `The one mistake most new passive investors make — and how it costs them trust, time, and peace of mind. (Chapter 9 — Avoid this, and you’re already ahead.)`,
+      `Depreciation and paper losses can lead to real tax savings. (Chapter 11 — What CPAs know… and most investors miss.)`,
+      `Red flags to watch for when vetting syndication sponsors — before you wire a single dollar. (Chapter 9 — Trust but verify, with confidence.)`,
+      `Earn income like a bank by investing in real estate notes — with security and simplicity. (Chapter 7 — Become the lender, not the landlord.)`
+    ],
+  },
+  {
+    name: `Legacy Builder’s Guide`,
+    stage: `Generational Wealth`,
+    cover: `https://media.stairwaymortgage.com/guides/legacy-builder.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/Yw4oQrUGWvbb3hSRNTcH`,
+    subtitle: `5 Truths Every Kingdom-Minded Builder Must Know`,
+    bullets: [
+      `“Inheritance” without stewardship leads to generational loss — and here’s how to rewrite that story. (Chapter 2 — It’s not just about passing wealth… it’s about passing wisdom.)`,
+      `One mistake causes 70% of families to lose wealth within two generations — and here’s how to avoid it. (Chapter 6 — Most estate plans miss this.)`,
+      `Write a Family Mission Statement that outlives bank accounts — and becomes your spiritual compass. (Chapter 3 — Leave more than money.)`,
+      `Preserve your voice, your values, and your vision — so your great-grandkids feel like they knew you. (Chapter 12 — Stories, letters, legacy.)`,
+      `Know the difference between gifting money and training heirs — and how to do both with confidence. (Chapter 8 — This is the work that multiplies.)`
+    ],
+  },
+  {
+    name: `Seller’s Guide`,
+    stage: `The Smart Exit`,
+    cover: `https://media.stairwaymortgage.com/guides/seller.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/0gDhCiRkyvcsF1MnNEHb`,
+    subtitle: `5 Seller Secrets That Could Save You Thousands`,
+    bullets: [
+      `Why your “walkaway” number is almost always wrong — and how to calculate your true equity before you list  (Chapter 2 — The Equity Reality Check.)`,
+      `How market hesitation costs sellers more than price drops — and how to time your sale with confidence. (Chapter 8 — The hidden cost of waiting.)`,
+      `The emotional traps that silently cost sellers thousands — and how to avoid them with one simple mindset shift. (Chapter 7 — You can’t afford to be reactive.)`,
+      `What FSBO really takes — and why going it alone becomes a full-time job you never asked for. (Chapter 9 — The DIY myth, exposed.)`,
+      `The 157 hidden tasks your agent normally handles — and why hiring smart isn’t optional, it’s strategic. (Chapter 14 — You’ll never see agents the same way again.)`
+    ],
+  },
+  {
+    name: `American Hero’s Guide`,
+    stage: `Service & VA`,
+    cover: `https://media.stairwaymortgage.com/guides/american-hero.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/axqvXT2pbjpbteilvUt3`,
+    subtitle: `5 Life-Changing Wealth Strategies for Those Who Serve`,
+    bullets: [
+      `How military service rewires your mindset around money, mission, and meaning — and how to turn that into a wealth advantage. (Chapter 1 — The Warrior’s Wealth Code.)`,
+      `Why your VA loan is the most underused wealth-building tool in America — and how to use it to house-hack a multifamily property. (Chapter 7 — Multifamily with a Mission.)`,
+      `How to keep growing your real estate portfolio while stationed overseas — and build equity during active duty. (Chapter 9 — Deployment to Ownership.)`,
+      `The truth about down payment assistance programs for civilian protectors — and how to stack benefits for massive leverage. (Chapter 12 — Firefighters, Nurses, Teachers & More.)`,
+      `How to use equity from your first home to fund your next mission — and create a real estate legacy that outlives your service. (Chapter 16 — Using Equity to Fund the Next Mission.)`
+    ],
+  },
+  {
+    name: `IRA Planning Guide`,
+    stage: `Tax-Free Growth`,
+    cover: `https://media.stairwaymortgage.com/guides/ira-planning.png`,
+    form: `https://forms.stairwaymortgage.com/widget/survey/TODO-IRA-FORM`,
+    subtitle: `5 Roth IRA Secrets That Could Build You a Business and a Tax-Free Retirement`,
+    bullets: [
+      `What if your retirement account could legally fund a business you don’t run — and grow tax-free for decades? (Discover the Roth IRA “hacker’s playbook” hidden in plain sight.)`,
+      `The exact way to use a self-directed Roth IRA to become a *hands-off equity partner in someone else’s business.(Without violating IRS rules — or triggering taxes.)`,
+      `How to fund a startup, support a franchise, or back a family business — all while building *your own retirement wealth (This is the investor’s loophole with a purpose.)`,
+      `Why most CPAs and advisors don’t talk about Roth-funded business investing — and why you’ll wish you’d known sooner.  (The secrets are legal, but rarely taught.)`,
+      `How one investor used their Roth IRA to become a 25% owner in a business they never touched — and retired with *6 figures of tax-free income. (This is passive income, upgraded.)`
+    ],
+  },
 ];
 ---
-<Layout title="Free Guides — Stairway Mortgage" description="The 8-ebook Stairway Roadmap. From first credit card to lasting legacy — one guide for every stage. Free.">
 
-  <section class="section relative overflow-hidden guides-hero">
-    <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Learn · Free Guides</span>
-        <h1 class="display-lg mt-6 mb-4">The Stairway <em class="italic text-[var(--color-blue)]">Roadmap</em>.</h1>
-        <p class="lede max-w-xl mx-auto mb-10">Eight ebooks. One journey. From building credit at 18 to building legacy — each guide walks you through a complete stage. All free.</p>
-        <a href="https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c" target="_blank" rel="noopener" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Download the Roadmap — Free</a>
-      </div>
-    </div>
-  </section>
+<Layout
+  title="Free Wealth-Building Guides & eBooks | Stairway Mortgage"
+  description="Twelve free, stage-by-stage guides on building wealth through real estate, finance, and smart leverage — from first home to lasting legacy. Instant download.">
 
-  <section class="section-tight bg-[var(--color-paper-tint)]">
-    <div class="container-page">
-      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
-        <span class="eyebrow eyebrow-rust mb-5">8 Guides, 8 Stages</span>
-        <h2 class="display-md mt-5">One guide for <em class="italic font-light">every stage</em>.</h2>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {guides.map((g, i) => (
-          <div class="card reveal" style={`transition-delay:${i * 60}ms;`}>
-            <span class="card-step-num mono block mb-3">{g.num}</span>
-            <h3 class="font-display text-lg font-medium mb-1">{g.title}</h3>
-            <span class="mono text-[10px] text-[var(--color-rust)] uppercase tracking-wider block mb-2">{g.stage}</span>
-            <p class="text-[13px] text-[var(--color-mute)]">{g.desc}</p>
+  <main class="guides">
+
+    <!-- ===== HERO ===== -->
+    <section class="g-hero">
+      <div class="g-hero__inner">
+        <p class="g-eyebrow">The Stairway Library</p>
+        <h1 class="g-hero__title">Free guides for every step of the climb.</h1>
+        <p class="g-hero__lead">
+          Instant access to expert-curated guides — real questions, smart answers,
+          a lifelong strategy. Whether you are buying your first home, planning
+          retirement, or investing passively, there is a roadmap made for your stage.
+        </p>
+
+        <div class="g-hero__roadmap">
+          <div class="g-roadmap__copy">
+            <p class="g-eyebrow g-eyebrow--royal">Start here</p>
+            <h2 class="g-roadmap__name" set:html={HERO.name}></h2>
+            <p class="g-roadmap__sub" set:html={HERO.subtitle}></p>
+            <ul class="g-roadmap__bullets">
+              {HERO.bullets.map(b => <li set:html={b}></li>)}
+            </ul>
+            <a class="g-btn g-btn--lg" href={HERO.form} target="_blank" rel="noopener">
+              Get the Roadmap &rarr;
+            </a>
           </div>
+          <div class="g-roadmap__stack" aria-hidden="true">
+            <span class="g-spine g-spine--1"></span>
+            <span class="g-spine g-spine--2"></span>
+            <span class="g-spine g-spine--3"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GUIDE LIBRARY ===== -->
+    <section class="g-library">
+      <div class="g-library__head">
+        <p class="g-eyebrow">The collection</p>
+        <h2 class="g-library__title">Pick your guide.</h2>
+        <p class="g-library__note">Each download is a focused playbook for one stage. Take the one that fits where you are now.</p>
+      </div>
+
+      <div class="g-grid">
+        {GUIDES.map(g => (
+          <article class="g-card">
+            <div class="g-card__cover">
+              <img
+                src={g.cover}
+                alt={`${g.name} — book cover`}
+                width="400" height="600" loading="lazy"
+                onerror="this.style.opacity=0;this.parentElement.classList.add('g-card__cover--missing')"
+              />
+            </div>
+            <div class="g-card__body">
+              {g.stage && <p class="g-card__stage">{g.stage}</p>}
+              <h3 class="g-card__name" set:html={g.name}></h3>
+              <p class="g-card__sub" set:html={g.subtitle}></p>
+              <ul class="g-card__bullets">
+                {g.bullets.slice(0,3).map(b => <li set:html={b}></li>)}
+              </ul>
+              <a class="g-btn" href={g.form} target="_blank" rel="noopener">
+                Download free &rarr;
+              </a>
+            </div>
+          </article>
         ))}
       </div>
-      <div class="text-center mt-10 reveal">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/mjaP6vw7ZpN11NfzOd8c" target="_blank" rel="noopener" class="btn btn-primary btn-arrow text-base px-7 py-3.5">Get All 8 Guides — Free</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-dark text-center">
-    <div class="container-page reveal">
-      <h2 class="display-md text-[var(--color-paper)] mb-4">Ready to start <em class="italic font-light text-[var(--color-blue-tint)]">climbing</em>?</h2>
-      <div class="flex flex-wrap gap-3 justify-center mt-8">
-        <a href="/same-day-approval/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">See My Options</a>
-        <a href="/contact-us/" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Talk to Our Team</a>
+    <!-- ===== CLOSING CTA ===== -->
+    <section class="g-cta">
+      <div class="g-cta__inner">
+        <h2 class="g-cta__title">Not sure which guide fits?</h2>
+        <p class="g-cta__lead">Take the 2-minute Discovery Quiz and we will point you to the right stage — or talk it through with our team.</p>
+        <div class="g-cta__actions">
+          <a class="g-btn g-btn--lg" href="/discovery-quiz/">See My Options</a>
+          <a class="g-btn g-btn--ghost" href="/schedule-call/">Talk to Our Team</a>
+        </div>
       </div>
-      <p class="mono text-[11px] text-[rgba(250,250,247,.4)] mt-8">NMLS #1072866</p>
-    </div>
-  </section>
+    </section>
 
+  </main>
+
+  <style is:global>
+    /* ===== GUIDES PAGE — forest palette, Fraunces/Inter, royal accent ===== */
+    .guides { background: var(--color-cream, #f7f5ef); color: var(--color-ink, #1a2420); }
+    .g-eyebrow {
+      font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
+      font-size: .66rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--color-muted, #6b7770); margin: 0 0 .8rem;
+    }
+    .g-eyebrow--royal { color: var(--color-royal, #2f47c9); }
+
+    /* HERO */
+    .g-hero { background: var(--color-forest, #1f3d34); color: #f4f5ef; padding: clamp(3rem,7vw,5.5rem) 1.25rem; }
+    .g-hero__inner { max-width: 1040px; margin: 0 auto; }
+    .g-hero .g-eyebrow { color: #9db8ad; }
+    .g-hero__title {
+      font-family: var(--stw-display, 'Fraunces'), Georgia, serif; font-weight: 600;
+      font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -.02em;
+      margin: 0 0 1rem; color: #f4f5ef; max-width: 18ch;
+    }
+    .g-hero__lead { font-size: clamp(1rem,1.6vw,1.18rem); line-height: 1.6; color: #c9d6cf; max-width: 60ch; margin: 0 0 2.5rem; }
+
+    .g-hero__roadmap {
+      display: grid; grid-template-columns: 1.4fr .6fr; gap: 2rem; align-items: center;
+      background: rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px; padding: clamp(1.5rem,3vw,2.4rem);
+    }
+    .g-roadmap__name { font-family: var(--stw-display,'Fraunces'),serif; font-weight: 500; font-size: clamp(1.5rem,3vw,2rem); margin: 0 0 .3rem; color: #f4f5ef; }
+    .g-roadmap__sub { font-style: italic; color: #9db8ad; margin: 0 0 1.1rem; font-family: var(--stw-display,'Fraunces'),serif; }
+    .g-roadmap__bullets { list-style: none; margin: 0 0 1.6rem; padding: 0; display: flex; flex-direction: column; gap: .6rem; }
+    .g-roadmap__bullets li { position: relative; padding-left: 1.4rem; font-size: .92rem; line-height: 1.5; color: #dce6e0; }
+    .g-roadmap__bullets li::before { content: '→'; position: absolute; left: 0; color: #8fa9ff; }
+    /* book stack motif (the signature element) */
+    .g-roadmap__stack { display: flex; flex-direction: column; gap: .5rem; align-items: center; }
+    .g-spine { width: 80%; height: 26px; border-radius: 4px; box-shadow: 0 6px 16px rgba(0,0,0,.3); }
+    .g-spine--1 { background: linear-gradient(90deg,#2f47c9,#4a60d8); width: 92%; }
+    .g-spine--2 { background: linear-gradient(90deg,#8b6b2c,#a8854a); width: 80%; }
+    .g-spine--3 { background: linear-gradient(90deg,#1f3d34,#2e5648); width: 88%; }
+
+    /* LIBRARY */
+    .g-library { max-width: 1180px; margin: 0 auto; padding: clamp(3rem,6vw,5rem) 1.25rem; }
+    .g-library__head { text-align: center; margin-bottom: 2.5rem; }
+    .g-library__title { font-family: var(--stw-display,'Fraunces'),serif; font-weight: 600; font-size: clamp(1.8rem,4vw,2.6rem); margin: 0 0 .5rem; }
+    .g-library__note { color: var(--color-muted,#6b7770); max-width: 52ch; margin: 0 auto; line-height: 1.55; }
+
+    .g-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+    .g-card {
+      background: #fff; border: 1px solid var(--color-line,#e3e0d6); border-radius: 16px;
+      overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s;
+    }
+    .g-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(26,36,32,.1); }
+    .g-card__cover {
+      background: linear-gradient(160deg,#f0ede5,#e3e0d6); padding: 1.5rem 1.5rem 0;
+      display: flex; justify-content: center; align-items: flex-end; min-height: 230px;
+    }
+    .g-card__cover img { max-height: 260px; width: auto; filter: drop-shadow(0 14px 28px rgba(26,36,32,.28)); }
+    .g-card__cover--missing::after { content: 'Cover coming soon'; color: var(--color-muted,#6b7770); font-family: var(--stw-mono,monospace); font-size: .7rem; padding-bottom: 1.5rem; }
+    .g-card__body { padding: 1.4rem 1.4rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
+    .g-card__stage { font-family: var(--stw-mono,'JetBrains Mono'),monospace; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-royal,#2f47c9); margin: 0 0 .5rem; }
+    .g-card__name { font-family: var(--stw-display,'Fraunces'),serif; font-weight: 600; font-size: 1.3rem; line-height: 1.15; margin: 0 0 .3rem; }
+    .g-card__sub { font-style: italic; color: var(--color-muted,#6b7770); font-size: .9rem; margin: 0 0 1rem; font-family: var(--stw-display,'Fraunces'),serif; }
+    .g-card__bullets { list-style: none; margin: 0 0 1.3rem; padding: 0; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+    .g-card__bullets li { position: relative; padding-left: 1.2rem; font-size: .85rem; line-height: 1.45; color: #374151; }
+    .g-card__bullets li::before { content: ''; position: absolute; left: 0; top: .5em; width: 6px; height: 6px; border-radius: 50%; background: var(--color-forest,#1f3d34); }
+
+    /* BUTTONS */
+    .g-btn {
+      display: inline-flex; align-items: center; gap: .4rem; align-self: flex-start;
+      background: var(--color-royal,#2f47c9); color: #fff; text-decoration: none;
+      font-family: var(--stw-body,'Inter'),sans-serif; font-weight: 600; font-size: .9rem;
+      padding: .75rem 1.4rem; border-radius: 999px; transition: transform .15s, box-shadow .15s, background .15s;
+    }
+    .g-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(47,71,201,.28); background: var(--color-royal-deep,#1e2f8a); }
+    .g-btn--lg { padding: .9rem 1.8rem; font-size: .98rem; }
+    .g-btn--ghost { background: transparent; border: 1.5px solid currentColor; color: #f4f5ef; }
+    .g-btn--ghost:hover { background: rgba(255,255,255,.1); box-shadow: none; }
+
+    /* CLOSING CTA */
+    .g-cta { background: var(--color-forest,#1f3d34); color: #f4f5ef; padding: clamp(3rem,6vw,4.5rem) 1.25rem; text-align: center; }
+    .g-cta__inner { max-width: 640px; margin: 0 auto; }
+    .g-cta__title { font-family: var(--stw-display,'Fraunces'),serif; font-weight: 600; font-size: clamp(1.7rem,4vw,2.4rem); margin: 0 0 .6rem; color: #f4f5ef; }
+    .g-cta__lead { color: #c9d6cf; line-height: 1.6; margin: 0 0 1.8rem; }
+    .g-cta__actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .g-grid { grid-template-columns: repeat(2, 1fr); }
+      .g-hero__roadmap { grid-template-columns: 1fr; }
+      .g-roadmap__stack { flex-direction: row; justify-content: center; margin-top: 1rem; }
+      .g-spine { width: 60px !important; height: 80px; }
+    }
+    @media (max-width: 560px) {
+      .g-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </Layout>
-
-<style>
-  .guides-hero{position:relative;}.guides-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}
-</style>
-
-<script is:inline>
-(function(){
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
-  }
-})();
-</script>
