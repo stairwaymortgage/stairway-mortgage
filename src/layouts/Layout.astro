@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import seoData from '../data/seo.json';
 
 interface Props {
   title: string;
@@ -10,12 +11,27 @@ interface Props {
   ogImage?: string;
 }
 
+const defaultDesc = "Florida's #1 trusted mortgage broker with 300+ lenders. Leverage wisely. Grow wealthy.";
+
+// SEO carry-forward: look up RankMath title/description by pathname
+// Precedence: explicit page prop > seo.json > default
+const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const seoEntry = (seoData as Record<string, {title?: string; description?: string}>)[pathname];
+
 const {
-  title,
-  description = "Florida's #1 trusted mortgage broker with 300+ lenders. Leverage wisely. Grow wealthy.",
+  title: propTitle,
+  description: propDesc,
   canonical,
   ogImage = '/og-default.svg'
 } = Astro.props;
+
+// Use page prop if explicitly set and differs from the generic default;
+// otherwise fall back to seo.json, then default
+const title = propTitle || seoEntry?.title || '';
+const description = (propDesc && propDesc !== defaultDesc ? propDesc : null)
+  || seoEntry?.description
+  || propDesc
+  || defaultDesc;
 
 const siteUrl = 'https://stairwaymortgage.com';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
