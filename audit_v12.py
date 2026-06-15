@@ -45,7 +45,7 @@ NEXA_NMLS  = "1660690"
 GOOD_PHONE = "954) 993-1625"          # canonical
 BAD_PHONE  = "954) 255-6680"          # stale, must never appear
 GOOD_STAT  = re.compile(r"\$5\d{2}\s*M", re.I)         # $500M+
-BAD_STAT   = re.compile(r"\$3\d{2}\s*M", re.I)         # $350M / $350M+ (stale)
+BAD_STAT   = re.compile(r"\$350\s*M\+?(?!\w)")           # $350M / $350M+ only (not $350 monthly, $350,000)
 
 # CTA wording rule (project memory). Jim's name allowed ONLY in review/founder copy.
 CTA_BAD = [r"talk to jim", r"call with jim", r"schedule a call with jim"]
