@@ -59,6 +59,12 @@
    ========================================== */
 * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
+/* Mobile overflow guard — nothing forces horizontal scroll */
+html, body { overflow-x: hidden; max-width: 100%; }
+*, *::before, *::after { min-width: 0; }
+img, svg, video, iframe, canvas, table { max-width: 100%; height: auto; }
+pre, code { overflow-x: auto; max-width: 100%; }
+
 html {
   scroll-behavior: smooth;
   background: var(--color-paper);
