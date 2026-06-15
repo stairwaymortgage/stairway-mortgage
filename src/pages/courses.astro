@@ -1,20 +1,96 @@
 ---
+// src/pages/courses.astro — rebuilt from WP XML. 11 Stairway Academy courses.
 import Layout from '../layouts/Layout.astro';
+
+const COURSES = [
+  { title:`Smart Stewards Course`, img:`https://media.stairwaymortgage.com/courses/smart-stewards.png`, link:`https://academy.stairwaymortgage.com/courses/offers/54f4ec36-3d34-4221-9a4b-b5779d29edc2`, duration:`4h 46m`, level:`Beginners`, chapters:`6 Chapters`, desc:`Build financial foundations for ages 18-25.` },
+  { title:`First-Time Buyer Course`, img:`https://media.stairwaymortgage.com/courses/first-time-buyer.png`, link:`https://academy.stairwaymortgage.com/courses/offers/c5945b87-2852-4182-a121-35a461f0e2ac`, duration:`4h 19m`, level:`Beginners`, chapters:`6 Chapters`, desc:`Everything you need to confidently buy your first home.` },
+  { title:`Homeowners Course`, img:`https://media.stairwaymortgage.com/courses/homeowners.png`, link:`https://academy.stairwaymortgage.com/courses/offers/b4c5dd12-1428-4550-a81f-4cfda6799523`, duration:`5h 7m`, level:`Beginners`, chapters:`6 Chapters`, desc:`Build and protect equity in the home you own.` },
+  { title:`Senior Homeowners Course`, img:`https://media.stairwaymortgage.com/courses/senior-homeowners.png`, link:`https://academy.stairwaymortgage.com/courses/offers/a48f1ef2-97e1-4116-9ec2-05bf02967203`, duration:`4h 18m`, level:`Beginners`, chapters:`6 Chapters`, desc:`Retirement income, downsizing, and reverse strategies for 55+.` },
+  { title:`First-Time Investors Course`, img:`https://media.stairwaymortgage.com/courses/first-time-investors.png`, link:`https://academy.stairwaymortgage.com/courses/offers/0b60ae27-8d50-4798-b177-9cea2a17677f`, duration:`4h 26m`, level:`Beginners`, chapters:`6 Chapters`, desc:`Make your first rental property purchase with confidence.` },
+  { title:`Active Investors Course`, img:`https://media.stairwaymortgage.com/courses/active-investors.png`, link:`https://academy.stairwaymortgage.com/courses/offers/20d6a687-e8ab-400f-bf55-b44bf98420ed`, duration:`3h 7m`, level:`Advanced`, chapters:`6 Chapters`, desc:`Scale a rental portfolio with strategy and leverage.` },
+  { title:`Passive Investors Course`, img:`https://media.stairwaymortgage.com/courses/passive-investors.png`, link:`https://academy.stairwaymortgage.com/courses/offers/72c737c3-2681-49f5-a653-5763a930b45e`, duration:`2h 36m`, level:`Advanced`, chapters:`6 Chapters`, desc:`Build income streams that work without daily management.` },
+  { title:`Legacy Angels Course`, img:`https://media.stairwaymortgage.com/courses/legacy-angels.png`, link:`https://academy.stairwaymortgage.com/courses/offers/7bf8f7b8-dbd4-481a-a3c9-f4b75016624c`, duration:`3h 7m`, level:`Advanced`, chapters:`6 Chapters`, desc:`Design wealth that lasts beyond you.` },
+  { title:`Seller's Course`, img:`https://media.stairwaymortgage.com/courses/sellers.png`, link:`https://academy.stairwaymortgage.com/courses/offers/097ca017-dc89-4b5b-8ee0-69a432367ec5`, duration:`5h 18m`, level:`Beginners`, chapters:`6 Chapters`, desc:`Sell strategically and keep more of your equity.` },
+  { title:`American Hero Course`, img:`https://media.stairwaymortgage.com/courses/american-hero.png`, link:`https://academy.stairwaymortgage.com/courses/offers/81ac0c72-bd7f-4f99-8b71-08c1d56a6561`, duration:`4h 0m`, level:`Beginners`, chapters:`6 Chapters`, desc:`VA loans and homeownership for those who served.` },
+  { title:`Strategic Financier Course`, img:`https://media.stairwaymortgage.com/courses/strategic-financier.png`, link:`https://academy.stairwaymortgage.com/courses/offers/711615b0-6dd9-47c5-a25a-09c67c8cf9bd`, duration:`3h 30m`, level:`Advanced`, chapters:`6 Chapters`, desc:`Advanced tax, IRA, and wealth-structuring strategies.` },
+];
 ---
-<Layout title="Courses — Stairway Mortgage" description="Video learning library. Mortgage education and wealth-building.">
-  <section class="section relative overflow-hidden">
-    <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Learn · Courses</span>
-        <h1 class="display-xl mt-6 mb-6">Learn at your <em class="italic text-[var(--color-blue)]">own pace</em>.</h1>
-        <p class="lede max-w-xl mx-auto mb-8">Video courses on mortgages, investing, and wealth-building. Coming soon.</p>
-        <div class="card max-w-lg mx-auto p-8 text-center">
-          <p class="text-[14px] text-[var(--color-mute)]"><!-- TODO: Add course listings --></p>
-        </div>
-        <div class="flex flex-wrap gap-3 justify-center mt-10">
-          <a href="/guides/" class="btn btn-blue btn-arrow text-base px-6 py-3.5">Get Free Guides Instead</a>
+<Layout
+  title="Stairway Academy — Free Wealth-Building Courses | Stairway Mortgage"
+  description="Self-paced video courses for every stage of your wealth journey — from Smart Stewards to Legacy Angels. Taught by the Stairway team.">
+  <main class="courses">
+    <section class="c-hero">
+      <div class="c-hero__inner">
+        <p class="c-eyebrow">Stairway Academy</p>
+        <h1 class="c-hero__title">Courses for every step of the climb.</h1>
+        <p class="c-hero__lead">Self-paced video courses that turn financial questions into lifelong strategy — whether you are buying your first home or designing a legacy. Each course is six chapters, taught by the Stairway team.</p>
+      </div>
+    </section>
+    <section class="c-grid-wrap">
+      <div class="c-grid">
+        {COURSES.map(c => (
+          <a class="c-card" href={c.link} target="_blank" rel="noopener">
+            <div class="c-card__thumb">
+              <img src={c.img} alt={`${c.title} thumbnail`} width="400" height="260" loading="lazy"
+                onerror="this.style.opacity=0;this.parentElement.classList.add('c-card__thumb--missing')" />
+              <span class={`c-level c-level--${c.level.toLowerCase()}`}>{c.level}</span>
+            </div>
+            <div class="c-card__body">
+              <h3 class="c-card__title">{c.title}</h3>
+              <p class="c-card__desc">{c.desc}</p>
+              <div class="c-card__meta">
+                <span>{c.chapters}</span><span class="c-dot">&middot;</span><span>{c.duration}</span>
+              </div>
+              <span class="c-card__cta">Start learning &rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+    <section class="c-cta">
+      <div class="c-cta__inner">
+        <h2 class="c-cta__title">Prefer a guide to a course?</h2>
+        <p class="c-cta__lead">Grab a free downloadable guide for your stage, or talk it through with our team.</p>
+        <div class="c-cta__actions">
+          <a class="c-btn c-btn--lg" href="/guides/">Browse Free Guides</a>
+          <a class="c-btn c-btn--ghost" href="/schedule-call/">Talk to Our Team</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
+  <style is:global>
+    .courses { background: var(--color-cream,#f7f5ef); color: var(--color-ink,#1a2420); }
+    .c-eyebrow { font-family: var(--stw-mono,'JetBrains Mono'),monospace; font-size:.66rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#9db8ad; margin:0 0 .8rem; }
+    .c-hero { background: var(--color-forest,#1f3d34); color:#f4f5ef; padding:clamp(3rem,7vw,5rem) 1.25rem; }
+    .c-hero__inner { max-width:1040px; margin:0 auto; }
+    .c-hero__title { font-family:var(--stw-display,'Fraunces'),Georgia,serif; font-weight:600; font-size:clamp(2.2rem,5vw,3.6rem); line-height:1.05; letter-spacing:-.02em; margin:0 0 1rem; color:#f4f5ef; max-width:18ch; }
+    .c-hero__lead { font-size:clamp(1rem,1.6vw,1.18rem); line-height:1.6; color:#c9d6cf; max-width:60ch; }
+    .c-grid-wrap { max-width:1180px; margin:0 auto; padding:clamp(3rem,6vw,5rem) 1.25rem; }
+    .c-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.75rem; }
+    .c-card { background:#fff; border:1px solid var(--color-line,#e3e0d6); border-radius:16px; overflow:hidden; text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:transform .2s, box-shadow .2s; }
+    .c-card:hover { transform:translateY(-4px); box-shadow:0 18px 44px rgba(26,36,32,.1); }
+    .c-card__thumb { position:relative; aspect-ratio:3/2; background:linear-gradient(160deg,#f0ede5,#e3e0d6); overflow:hidden; }
+    .c-card__thumb img { width:100%; height:100%; object-fit:cover; }
+    .c-card__thumb--missing::after { content:'Thumbnail coming soon'; position:absolute; inset:0; display:grid; place-items:center; color:var(--color-muted,#6b7770); font-family:var(--stw-mono,monospace); font-size:.7rem; }
+    .c-level { position:absolute; top:.8rem; left:.8rem; font-family:var(--stw-mono,'JetBrains Mono'),monospace; font-size:.58rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:.25rem .6rem; border-radius:999px; color:#fff; }
+    .c-level--beginners { background:var(--color-forest,#1f3d34); }
+    .c-level--advanced { background:var(--color-royal,#2f47c9); }
+    .c-card__body { padding:1.3rem 1.4rem 1.5rem; display:flex; flex-direction:column; flex:1; }
+    .c-card__title { font-family:var(--stw-display,'Fraunces'),serif; font-weight:600; font-size:1.25rem; line-height:1.15; margin:0 0 .4rem; }
+    .c-card__desc { font-size:.9rem; line-height:1.55; color:#374151; margin:0 0 1rem; flex:1; }
+    .c-card__meta { font-family:var(--stw-mono,'JetBrains Mono'),monospace; font-size:.72rem; color:var(--color-muted,#6b7770); margin-bottom:1rem; display:flex; gap:.5rem; align-items:center; }
+    .c-dot { opacity:.5; }
+    .c-card__cta { font-family:var(--stw-body,'Inter'),sans-serif; font-weight:600; font-size:.9rem; color:var(--color-royal,#2f47c9); }
+    .c-cta { background:var(--color-forest,#1f3d34); color:#f4f5ef; padding:clamp(3rem,6vw,4.5rem) 1.25rem; text-align:center; }
+    .c-cta__inner { max-width:640px; margin:0 auto; }
+    .c-cta__title { font-family:var(--stw-display,'Fraunces'),serif; font-weight:600; font-size:clamp(1.7rem,4vw,2.4rem); margin:0 0 .6rem; color:#f4f5ef; }
+    .c-cta__lead { color:#c9d6cf; line-height:1.6; margin:0 0 1.8rem; }
+    .c-cta__actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .c-btn { display:inline-flex; align-items:center; background:var(--color-royal,#2f47c9); color:#fff; text-decoration:none; font-family:var(--stw-body,'Inter'),sans-serif; font-weight:600; font-size:.95rem; padding:.85rem 1.7rem; border-radius:999px; transition:transform .15s, box-shadow .15s; }
+    .c-btn:hover { transform:translateY(-2px); box-shadow:0 10px 24px rgba(47,71,201,.28); }
+    .c-btn--ghost { background:transparent; border:1.5px solid #f4f5ef; }
+    @media (max-width:900px){ .c-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:560px){ .c-grid { grid-template-columns:1fr; } }
+  </style>
 </Layout>
