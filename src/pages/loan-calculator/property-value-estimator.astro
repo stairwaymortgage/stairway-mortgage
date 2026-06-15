@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Property Value Estimator: Average Your Home Value Across Zillow, Realtor, Trulia, Homes & Realty";
 const metaDescription = "Estimate your home's value by averaging the figures from Zillow, Realtor.com, Trulia, Homes.com, and Realty.com into a single blended estimate.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/property-value-estimator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Property Value Estimator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Property Value Estimator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Property Value Estimator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How accurate are online home value estimates?","acceptedAnswer":{"@type":"Answer","text":"Each site uses a different model, so estimates can vary widely. Averaging several sources gives a more balanced figure than relying on any single one."}},{"@type":"Question","name":"Which sites should I use?","acceptedAnswer":{"@type":"Answer","text":"Common sources include Zillow, Realtor.com, Trulia, Homes.com, and Realty.com. Enter each one's estimate to get a blended average."}},{"@type":"Question","name":"Is this an appraisal?","acceptedAnswer":{"@type":"Answer","text":"No. For a precise value, request a bank-ordered appraisal or a professional comparative market analysis."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Property Value Estimator</span>
   </nav>
   <header class="calc-head">

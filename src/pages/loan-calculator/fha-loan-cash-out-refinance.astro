@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA Loan Calculator for Cash Out Refinance: Estimate Your Cash Back, New Payment & Mortgage Insurance";
 const metaDescription = "Calculate your FHA cash-out refinance: maximum loan at 80% LTV, cash back, upfront and monthly mortgage insurance, new payment, and income needed to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fha-loan-cash-out-refinance/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA Cash-Out Refinance Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA Cash-Out Refinance Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"FHA Cashout Refinance Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much cash can I take out with an FHA cash-out refinance?","acceptedAnswer":{"@type":"Answer","text":"FHA cash-out refinances are generally limited to 80% of your home's value. Your cash back is that maximum loan minus your current balance and estimated closing costs."}},{"@type":"Question","name":"Does an FHA cash-out have mortgage insurance?","acceptedAnswer":{"@type":"Answer","text":"Yes. FHA loans include an upfront mortgage insurance premium (UFMIP) of 1.75% added to the loan, plus a monthly mortgage insurance premium."}},{"@type":"Question","name":"What income do I need to qualify?","acceptedAnswer":{"@type":"Answer","text":"FHA generally allows up to 43% DTI, and up to 50% with strong compensating factors such as reserves or a solid payment history."}}]};
 ---
@@ -15,7 +15,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">FHA Cash-Out Refinance Calculator</span>
   </nav>
   <header class="calc-head">

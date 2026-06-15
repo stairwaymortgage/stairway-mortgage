@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 const metaTitle = "Flood Insurance Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your annual flood and hazard insurance cost from your home size, rebuild cost, coverage, deductible, and coastal risk. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/flood-insurance-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Flood Insurance Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Flood Insurance Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Flood Insurance Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is my coverage estimated?","acceptedAnswer":{"@type":"Answer","text":"Dwelling coverage is based on your home's square footage times the rebuild cost per square foot. Personal property is estimated at 50% of dwelling coverage and loss of use at 20%."}},{"@type":"Question","name":"What affects my premium?","acceptedAnswer":{"@type":"Answer","text":"The estimate applies a base rate to your insured value, adds a discount for a higher deductible, and a surcharge if your home is in a coastal area."}},{"@type":"Question","name":"Is this an official quote?","acceptedAnswer":{"@type":"Answer","text":"No. This is a ballpark estimate only. Premiums vary by carrier, location, and property specifics, so always obtain an official quote."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Flood Insurance Calculator</span>
     </nav>
     <header class="calc-head">

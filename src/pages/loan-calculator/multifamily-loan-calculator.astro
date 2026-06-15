@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Multifamily Loan Calculator: Estimate Your NOI, Cash Flow, DSCR & Cap Rate";
 const metaDescription = "Underwrite a multifamily property: potential gross income, effective gross income, operating expenses, NOI, cash flow before and after debt, DSCR, and cap rate.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/multifamily-loan-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Multifamily Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Multifamily Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Multifamily Loan Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is NOI?","acceptedAnswer":{"@type":"Answer","text":"Net Operating Income is your effective gross income minus operating expenses — before debt service. It's the core number lenders and investors use to value a multifamily property."}},{"@type":"Question","name":"What is DSCR?","acceptedAnswer":{"@type":"Answer","text":"Debt-service coverage ratio is NOI divided by annual debt service. Lenders typically want 1.20 or higher."}},{"@type":"Question","name":"What down payment is needed?","acceptedAnswer":{"@type":"Answer","text":"20% down is typically the minimum for a non-owner-occupied multifamily rental. Owner-occupied 1-4 unit properties may qualify for as little as 3.5% down via FHA."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Multifamily Loan Calculator</span>
   </nav>
   <header class="calc-head">

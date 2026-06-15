@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA 2–4 Unit Home Purchase Cash Flow & Appreciation Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your monthly payment, cash to close, rental cash flow, and long-term appreciation on a 2–4 unit owner-occupied FHA purchase. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fha-loan-multifamily/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA 2–4 Unit Home Purchase Cash Flow Appreciation Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA 2–4 Unit Home Purchase Cash Flow Appreciation Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"FHA 2–4 Unit Home Purchase Cash Flow Appreciation Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I buy a 2–4 unit with an FHA loan?","acceptedAnswer":{"@type":"Answer","text":"Yes. FHA allows as little as 3.5% down on a 2–4 unit property as long as you occupy one of the units as your primary residence. The other units can be rented."}},{"@type":"Question","name":"How does rental income help me qualify?","acceptedAnswer":{"@type":"Answer","text":"FHA typically lets you count about 75% of the market rent from the units you won't occupy toward qualifying, which can substantially lower the income you need."}},{"@type":"Question","name":"How is appreciation estimated here?","acceptedAnswer":{"@type":"Answer","text":"This tool assumes a conservative 3% annual appreciation and projects your property value, remaining mortgage balance, equity, and cumulative cash flow at 5, 15, and 30 years."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">FHA 2–4 Unit Cash Flow &amp; Appreciation</span>
     </nav>
     <header class="calc-head">

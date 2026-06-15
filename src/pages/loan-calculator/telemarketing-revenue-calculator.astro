@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Phone Profit Calculator | Stairway Mortgage";
 const metaDescription = "See how much revenue each phone call is really worth, based on your call-to-meeting ratio, close rate, and average deal size. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/telemarketing-revenue-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Phone Profit Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Phone Profit Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Phone Profit Calculator","applicationCategory":"BusinessApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this calculator show?","acceptedAnswer":{"@type":"Answer","text":"It shows the average revenue each phone call is worth, based on how many calls it takes to book a meeting, how many meetings it takes to close a sale, and your average revenue per closed deal."}},{"@type":"Question","name":"How is revenue per call calculated?","acceptedAnswer":{"@type":"Answer","text":"Average revenue per closed deal is divided by the total number of calls needed per sale — that is, calls-per-meeting multiplied by meetings-per-sale."}},{"@type":"Question","name":"Does it include costs?","acceptedAnswer":{"@type":"Answer","text":"No. It estimates gross revenue value per call only and does not subtract wages, lead costs, or overhead."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Phone Profit Calculator</span>
     </nav>
     <header class="calc-head">

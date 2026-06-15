@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Reverse Mortgage Legacy Inheritance Estimator | Stairway Mortgage";
 const metaDescription = "Estimate the inheritance left to your heirs after a reverse mortgage, comparing your home's future value against the growing loan balance. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/reverse-mortgage-income/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Reverse Mortgage Legacy Inheritance Estimator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Reverse Mortgage Legacy Inheritance Estimator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Reverse Mortgage Legacy Inheritance Estimator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the inheritance to heirs estimated?","acceptedAnswer":{"@type":"Answer","text":"It compares your home's projected future value against the reverse mortgage balance that grows over the years, and shows the remaining equity your heirs may receive."}},{"@type":"Question","name":"What assumptions does this use?","acceptedAnswer":{"@type":"Answer","text":"It uses a conservative 3% annual home appreciation and a 6% reverse mortgage rate, with the principal limit based on HUD age factors. These are illustrative assumptions, not a quote."}},{"@type":"Question","name":"Is this a loan approval?","acceptedAnswer":{"@type":"Answer","text":"No. It's an illustrative estimate. Your actual reverse mortgage terms depend on your age, home value, rates, and HUD guidelines. Consult a licensed reverse mortgage professional."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Reverse Mortgage Legacy Estimator</span>
     </nav>
     <header class="calc-head">

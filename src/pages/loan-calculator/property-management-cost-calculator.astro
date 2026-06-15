@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Property Management Cost Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your multifamily property's income, operating expenses including management fee, NOI, cash flow, DSCR, and cap rate. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/property-management-cost-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Property Management Cost Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Property Management Cost Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Property Management Cost Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is DSCR?","acceptedAnswer":{"@type":"Answer","text":"Debt Service Coverage Ratio measures a property's net operating income against its annual loan payments. A ratio above 1.0 means the property's income covers its debt."}},{"@type":"Question","name":"What DSCR do lenders require?","acceptedAnswer":{"@type":"Answer","text":"Residential lenders for 1-4 unit properties typically look for 0.75 to 1.25, while commercial lenders for 5+ units typically require around 1.35."}},{"@type":"Question","name":"Is DSCR based on NOI or cash flow?","acceptedAnswer":{"@type":"Answer","text":"This calculator uses net operating income (income after operating expenses, before CapEx reserves) as the numerator, divided by annual debt service."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Property Management Cost Calculator</span>
     </nav>
     <header class="calc-head">

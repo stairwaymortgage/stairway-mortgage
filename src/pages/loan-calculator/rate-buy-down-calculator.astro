@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Rate Buy Down Calculator | Stairway Mortgage";
 const metaDescription = "See how much you save each month by buying down your mortgage rate with points, and how many years it takes to break even. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/rate-buy-down-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Rate Buy Down Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Rate Buy Down Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Rate Buy Down Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a rate buydown?","acceptedAnswer":{"@type":"Answer","text":"Paying points upfront to permanently lower your mortgage interest rate, which reduces your monthly payment for the life of the loan."}},{"@type":"Question","name":"How is the breakeven calculated?","acceptedAnswer":{"@type":"Answer","text":"It divides the upfront cost of the points by your annual payment savings, giving the number of years it takes to recoup the cost."}},{"@type":"Question","name":"How are the points priced?","acceptedAnswer":{"@type":"Answer","text":"Points are entered as a percentage of the loan amount. For example, 5 means an upfront cost equal to 5% of the loan."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Rate Buy Down Calculator</span>
     </nav>
     <header class="calc-head">

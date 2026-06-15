@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Legacy Impact Planner | Stairway Mortgage";
 const metaDescription = "Set annual giving percentages for your family and the causes you care about to see how your legacy can support loved ones and charities. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/legacy-planning-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Legacy Impact Planner","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Legacy Impact Planner","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Legacy Impact Planner","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this planner show?","acceptedAnswer":{"@type":"Answer","text":"It estimates how much of your legacy value you could distribute each year to your family and to charitable causes, based on the percentages you choose."}},{"@type":"Question","name":"How is the annual distribution calculated?","acceptedAnswer":{"@type":"Answer","text":"Each annual figure is your starting legacy value multiplied by the percentage you allocate to that purpose."}},{"@type":"Question","name":"Does this account for growth or taxes?","acceptedAnswer":{"@type":"Answer","text":"This is a simple annual snapshot. For projections that factor in growth, inflation, and estate taxes over time, speak with a licensed financial or estate-planning professional."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Legacy Impact Planner</span>
     </nav>
     <header class="calc-head">

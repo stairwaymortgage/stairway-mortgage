@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Section 184 Loan Calculator: Estimate Your Costs, Monthly Payment & Income Needed to Qualify";
 const metaDescription = "Calculate qualifying income, maximum loan, monthly payment, and cash to close for a 1099 income loan based on your last two years of 1099 earnings.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/section-184-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Section 184 Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Section 184 Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"1099 Mortgage Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is income calculated on a 1099 loan?","acceptedAnswer":{"@type":"Answer","text":"Qualifying income is generally the average of your two most recent years of 1099 earnings, divided across 24 months to get a monthly figure."}},{"@type":"Question","name":"How much can I borrow with a 1099 loan?","acceptedAnswer":{"@type":"Answer","text":"Your maximum loan is the lower of what your income supports (housing payment up to about 50% of income, minus other obligations) and the maximum allowed by loan-to-value for your property type."}},{"@type":"Question","name":"What down payment is required?","acceptedAnswer":{"@type":"Answer","text":"A 10% minimum down payment is typical for a 1099 income loan on a primary residence, with higher requirements for second homes and investment properties."}}]};
 ---
@@ -15,7 +15,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Section 184 Loan Calculator</span>
   </nav>
   <header class="calc-head">

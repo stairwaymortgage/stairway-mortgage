@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Compare 3 Rate/Payments (Points Only) | Stairway Mortgage";
 const metaDescription = "Compare three rate and payment scenarios by discount points, see your monthly and annual savings, breakeven point, and total savings over the loan term. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/compare-3-rate-payments-points-only/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Compare 3 Rate/Payments (Points Only)","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Compare 3 Rate/Payments (Points Only)","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Compare 3 Rate/Payments (Points Only)","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are discount points?","acceptedAnswer":{"@type":"Answer","text":"Discount points are an upfront fee paid to the lender to lower your interest rate. Paying more points lowers your rate and monthly payment; taking a lender credit raises your rate but reduces upfront cost."}},{"@type":"Question","name":"What is the breakeven point on buying points?","acceptedAnswer":{"@type":"Answer","text":"It is how long you must keep the loan for the monthly savings from a lower rate to recover the extra upfront cost of the points. Past breakeven, the savings are pure benefit."}},{"@type":"Question","name":"Which strategy should I choose?","acceptedAnswer":{"@type":"Answer","text":"If you will keep the loan past the breakeven period and can afford the upfront cash, the lowest-rate option wins. If you may sell, refinance, or pay off sooner, the lowest-cost (higher-rate) option is usually better."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Compare 3 Rate/Payments (Points Only)</span>
     </nav>
     <header class="calc-head">

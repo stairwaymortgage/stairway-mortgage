@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Bridge Loan Calculator: Estimate Your Equity Transfer, Bridge Payment, Recast & Capital Gains Tax Saved";
 const metaDescription = "Calculate a bridge loan to buy before you sell: net equity available, initial down payment and payment, post-sale recast, capital gains tax exclusion savings, and reinvestment growth.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/bridge-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Bridge Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Bridge Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Bridge Loan, Capital Gains Tax Exclusion & Payment Recast Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a bridge loan?","acceptedAnswer":{"@type":"Answer","text":"A bridge loan lets you tap the equity in your current home to buy a new one before your existing home sells, then recast the loan once the sale closes."}},{"@type":"Question","name":"How much equity can I use?","acceptedAnswer":{"@type":"Answer","text":"Up to 80% combined loan-to-value on a departing primary residence, or 75% on an investment or second home, minus exit costs and your existing mortgage balance."}},{"@type":"Question","name":"How does the capital gains exclusion work?","acceptedAnswer":{"@type":"Answer","text":"If you lived in the home 2 of the last 5 years, you may exclude up to $250,000 of gain ($500,000 filing jointly) from capital gains tax."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Bridge Loan Calculator</span>
   </nav>
   <header class="calc-head">

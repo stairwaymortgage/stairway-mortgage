@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Jumbo Refinance Calculator: Estimate Your New Payment, Monthly & Annual Savings, and Income to Qualify";
 const metaDescription = "Calculate a jumbo rate-reduction refinance: new payment, monthly and annual savings, interest-only option, and the income needed to qualify at a 43% DTI.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/jumbo-loan-refinance/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Jumbo Refinance Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Jumbo Refinance Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Jumbo Refinance Rate Reduction Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a jumbo refinance?","acceptedAnswer":{"@type":"Answer","text":"A jumbo refinance replaces a loan above the conforming county limit, typically to lower your rate and payment. Jumbo loans have tighter credit, income, and reserve guidelines."}},{"@type":"Question","name":"What DTI do jumbo lenders allow?","acceptedAnswer":{"@type":"Answer","text":"Most jumbo lenders cap debt-to-income at 43%, though up to 50% is possible with strong credit and reserves; the best rates are often near 37% DTI."}},{"@type":"Question","name":"Should I consider interest-only?","acceptedAnswer":{"@type":"Answer","text":"If you don't plan to stay long term, an interest-only payment can lower monthly cost and free up cash to invest. This calculator shows that option."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Jumbo Refinance Calculator</span>
   </nav>
   <header class="calc-head">

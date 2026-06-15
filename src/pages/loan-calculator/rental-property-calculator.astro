@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Buy & Hold Rental Property Calculator: Cash Flow, Appreciation, Equity, Depreciation Tax Savings & ROI";
 const metaDescription = "Analyze a buy-and-hold rental: monthly cash flow, 15- and 30-year appreciation, equity buildup, depreciation tax savings, total return, and annualized ROI.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/rental-property-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Rental Property Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Rental Property Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Buy & Hold: Cashflow, Appreciation, Equity, Depreciation & Tax Savings Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I analyze a buy-and-hold rental?","acceptedAnswer":{"@type":"Answer","text":"Look at four returns together: monthly cash flow, appreciation, equity buildup as the loan pays down, and depreciation tax savings. This calculator combines all four into a total return and annualized ROI."}},{"@type":"Question","name":"How does depreciation save taxes?","acceptedAnswer":{"@type":"Answer","text":"Residential rental buildings are depreciated over 27.5 years. The annual deduction times your tax bracket is your yearly tax savings."}},{"@type":"Question","name":"What down payment is required?","acceptedAnswer":{"@type":"Answer","text":"Conventional guidelines require a 15% minimum down payment on a single-unit investment property."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Rental Property Calculator</span>
   </nav>
   <header class="calc-head">

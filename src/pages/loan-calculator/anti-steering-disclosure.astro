@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Anti-Steering Disclosure Form Calculator | Stairway Mortgage";
 const metaDescription = "Compare total closing costs across the lowest rate, the Loan Estimate rate, and the highest rate to complete a broker anti-steering disclosure. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/anti-steering-disclosure/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Anti-Steering Disclosure Form Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Anti-Steering Disclosure Form Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Anti-Steering Disclosure Form Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an anti-steering disclosure?","acceptedAnswer":{"@type":"Answer","text":"It is a broker compliance document that presents the borrower with several loan options — typically the lowest rate, the disclosed rate, and the highest rate with the lowest cost — so the borrower is not steered toward a single option."}},{"@type":"Question","name":"Why does the lowest rate cost more?","acceptedAnswer":{"@type":"Answer","text":"A lower interest rate usually requires paying discount points up front, which increases total closing costs. A higher rate can come with a lender credit that lowers closing costs."}},{"@type":"Question","name":"What is the Price of Rate?","acceptedAnswer":{"@type":"Answer","text":"It is the cost or credit tied to a given rate from the lender's price sheet. A negative number is a lender credit; a positive number is points paid."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Anti-Steering Disclosure Form Calculator</span>
     </nav>
     <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "USDA Loan Calculator for Home Purchase: Estimate Your Payment, Guarantee Fee & Cash to Close with $0 Down";
 const metaDescription = "Calculate your USDA loan: base loan, upfront and monthly guarantee fee, total monthly payment, cash to close, and income needed to qualify — with $0 down in eligible rural areas.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/usda-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"USDA Purchase Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"USDA Purchase Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"USDA Purchase Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much down payment do I need for a USDA loan?","acceptedAnswer":{"@type":"Answer","text":"USDA loans allow $0 down in eligible rural and suburban areas, with down payment assistance and gift funds permitted."}},{"@type":"Question","name":"What fees does a USDA loan have?","acceptedAnswer":{"@type":"Answer","text":"USDA loans carry a 1% upfront guarantee fee (added to the loan) and a 0.35% annual fee collected monthly."}},{"@type":"Question","name":"What income do I need to qualify?","acceptedAnswer":{"@type":"Answer","text":"USDA uses a roughly 41% housing ratio for qualifying, and there are area income limits since the program targets low-to-moderate-income households."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">USDA Purchase Loan Calculator</span>
   </nav>
   <header class="calc-head">

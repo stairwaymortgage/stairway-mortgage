@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "USDA Refinance Interest Rate Reduction Loan Payment Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your new USDA rate-reduction refinance payment, monthly and annual savings, total housing expense, and income to qualify. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/usda-loan-renovation/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"USDA Refinance Interest Rate Reduction Loan Payment Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"USDA Refinance Interest Rate Reduction Loan Payment Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"USDA Refinance Interest Rate Reduction Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a USDA rate-reduction refinance?","acceptedAnswer":{"@type":"Answer","text":"It refinances an existing USDA loan into a lower interest rate to reduce your monthly principal and interest payment, rolling the upfront guarantee fee and closing costs into the new loan."}},{"@type":"Question","name":"What fees does a USDA refinance include?","acceptedAnswer":{"@type":"Answer","text":"A 1% upfront guarantee fee and a 0.35% annual guarantee fee, plus estimated closing costs. The upfront fee and closing costs are typically financed into the loan."}},{"@type":"Question","name":"What income do I need to qualify?","acceptedAnswer":{"@type":"Answer","text":"USDA loans typically cap debt-to-income at 41%, though higher ratios up to 50% may be approved with strong credit, reserves, or a GUS Accept finding."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">USDA Rate-Reduction Refinance Calculator</span>
     </nav>
     <header class="calc-head">

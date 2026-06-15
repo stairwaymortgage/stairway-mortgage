@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Home Improvement Loan Calculator: Estimate Your Renovation Loan, Financeable Costs & Payment";
 const metaDescription = "Calculate total project cost, loan amount, monthly payment, and cash to close for a conventional HomeStyle renovation refinance based on your after-repair value.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/home-improvement-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Home Improvement Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Home Improvement Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Conventional Renovation Homestyle Refinance Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a HomeStyle renovation refinance?","acceptedAnswer":{"@type":"Answer","text":"It refinances your existing loan and finances renovation costs in a single conventional loan, sized against the after-repair value (ARV) of the property."}},{"@type":"Question","name":"How much can I finance?","acceptedAnswer":{"@type":"Answer","text":"The maximum loan is generally 75% of the after-repair value on a renovation refinance, subject to conventional conforming loan limits. The financed amount also includes the payoff, renovation costs, a 10% contingency reserve, interest reserves, and closing costs."}},{"@type":"Question","name":"How much cash do I need?","acceptedAnswer":{"@type":"Answer","text":"Cash needed is the total financeable costs minus your loan amount. Increasing the ARV can increase the loan amount and reduce cash to close."}}]};
 ---
@@ -15,7 +15,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Home Improvement Loan Calculator</span>
   </nav>
   <header class="calc-head">

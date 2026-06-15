@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "VA IRRRL Refinance Interest Rate Reduction Loan Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your new VA IRRRL payment and monthly savings, including the 0.5% funding fee and disabled-veteran benefits. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/va-irrrl/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA IRRRL Refinance Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA IRRRL Refinance Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"VA IRRRL Refinance Interest Rate Reduction Loan Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a VA IRRRL?","acceptedAnswer":{"@type":"Answer","text":"An Interest Rate Reduction Refinance Loan is a VA streamline refinance that lets eligible veterans lower their rate and payment on an existing VA loan with reduced paperwork."}},{"@type":"Question","name":"What is the VA funding fee for an IRRRL?","acceptedAnswer":{"@type":"Answer","text":"The IRRRL funding fee is 0.5% of the loan balance. Veterans receiving VA disability compensation are generally exempt and pay $0."}},{"@type":"Question","name":"Is this a loan approval?","acceptedAnswer":{"@type":"Answer","text":"No. It's an illustrative estimate, not a loan estimate or approval. Always obtain an official Loan Estimate from a licensed mortgage originator."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">VA IRRRL Refinance</span>
     </nav>
     <header class="calc-head">

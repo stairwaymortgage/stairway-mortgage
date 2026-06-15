@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Mortgage Income Calculator | Stairway Mortgage";
 const metaDescription = "Add up your qualifying monthly income and see the maximum total debt payment lenders allow for Conventional, FHA, VA, USDA, and Jumbo loans. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/mortgage-income-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Mortgage Income Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Mortgage Income Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Income Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What income counts toward qualifying?","acceptedAnswer":{"@type":"Answer","text":"Lenders may count W-2 base pay, consistent variable pay like overtime and bonuses, self-employment net income, retirement and Social Security, net rental income, and qualifying alimony or child support."}},{"@type":"Question","name":"What is back-end DTI?","acceptedAnswer":{"@type":"Answer","text":"Back-end debt-to-income is the share of your gross monthly income that can go toward all monthly debt payments. Caps vary by loan type."}},{"@type":"Question","name":"What are the DTI caps shown here?","acceptedAnswer":{"@type":"Answer","text":"This tool applies common back-end caps of 50% for Conventional, FHA, and VA, 41% for USDA, and 43% for Jumbo. Your actual limit depends on credit, reserves, and other factors."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Mortgage Income Calculator</span>
     </nav>
     <header class="calc-head">

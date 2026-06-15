@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Renovation Estimator | Stairway Mortgage";
 const metaDescription = "Enter your project scopes and finish level to get a ballpark total for your home renovation, including demo and contingency. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/renovation-estimator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Renovation Estimator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Renovation Estimator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Renovation Estimator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the finish level affect the estimate?","acceptedAnswer":{"@type":"Answer","text":"Each finish level — Economy, Standard, or Premium — applies a different built-in unit cost for paint, flooring, windows, kitchens, and baths."}},{"@type":"Question","name":"What is included in the total?","acceptedAnswer":{"@type":"Answer","text":"Hard costs for each scope plus your appliances allowance, a demo and disposal percentage, and a contingency percentage."}},{"@type":"Question","name":"Is this an exact quote?","acceptedAnswer":{"@type":"Answer","text":"No. It's a ballpark estimate using typical unit costs. Actual pricing depends on your market, materials, and contractor."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Renovation Estimator</span>
     </nav>
     <header class="calc-head">

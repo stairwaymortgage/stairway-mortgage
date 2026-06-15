@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "15 vs 30 Year Mortgage Rate Comparison Calculator | Stairway Mortgage";
 const metaDescription = "Compare a 15-year vs 30-year mortgage and instantly see the trade-off in monthly payment, total interest, and lifetime savings. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/15-vs-30-year-mortgage-rate-comparison/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"15 vs 30 Year Mortgage Rate Comparison Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"15 vs 30 Year Mortgage Rate Comparison Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"15 vs 30 Year Mortgage Rate Comparison Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is a 15-year or 30-year mortgage better?","acceptedAnswer":{"@type":"Answer","text":"Both are tools to reach financial goals. A 15-year pays off debt faster with far less total interest; a 30-year has a lower monthly payment, freeing up cash flow you can invest over time."}},{"@type":"Question","name":"How much more interest does a 30-year cost?","acceptedAnswer":{"@type":"Answer","text":"On a 30-year mortgage you typically pay substantially more total interest than on a 15-year because you borrow for twice as long, even though the monthly payment is lower."}},{"@type":"Question","name":"How is the monthly savings calculated?","acceptedAnswer":{"@type":"Answer","text":"It is the difference between the 15-year and 30-year monthly principal and interest payments — the monthly cash flow you free up by choosing the 30-year term."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">15 vs 30 Year Mortgage Comparison</span>
     </nav>
     <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Conventional Loan Calculator for Cash Out Refinance: Estimate Your Costs, Monthly Payment & Cash Back at Close";
 const metaDescription = "Calculate cash back, new loan amount, monthly payment, and income needed for a conventional cash-out refinance based on your home value and property type.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/conventional-loan-cash-out-refinance/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Conventional Cash-Out Refinance Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Conventional Cash-Out Refinance Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Conventional Cashout Refinance Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much cash can I take out with a conventional cash-out refinance?","acceptedAnswer":{"@type":"Answer","text":"Conventional cash-out is generally limited to 80% loan-to-value on a primary residence, lower for investment and multi-unit properties, per the Fannie Mae and Freddie Mac LTV matrices. Your cash back is the new loan amount minus your current balance and closing costs."}},{"@type":"Question","name":"Does a cash-out refinance replace my current mortgage?","acceptedAnswer":{"@type":"Answer","text":"Yes. A cash-out refinance pays off your existing first mortgage and replaces it with a larger loan, returning the difference to you in cash at closing."}},{"@type":"Question","name":"What income do I need to qualify?","acceptedAnswer":{"@type":"Answer","text":"As a rule of thumb, your total monthly housing expense plus HOA should be roughly half your gross monthly income. Fannie Mae allows up to 50% DTI; Freddie Mac up to 45% with strong credit and reserves."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     <div class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Conventional Cash-Out Refinance Calculator</span>
   </nav>
   <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "BRRRR Method Calculator: Estimate Your Acquisition Loan, Cash to Close, Refinance Cash-Out & Rental Cash Flow";
 const metaDescription = "Run a full BRRRR deal (Buy, Rehab, Rent, Refinance, Repeat): acquisition loan and payment, cash to close, cash-out refinance at ARV, cash back, and monthly rental cash flow.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/brrrr-method/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"BRRRR Method Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"BRRRR Method Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"BRRRR Method Calculator (Buy, Rehab, Rent, Refi Cash Out, Repeat)","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the BRRRR method?","acceptedAnswer":{"@type":"Answer","text":"BRRRR stands for Buy, Rehab, Rent, Refinance, Repeat — a strategy to recycle your capital by pulling cash out after forcing appreciation through renovation."}},{"@type":"Question","name":"How much can I refinance?","acceptedAnswer":{"@type":"Answer","text":"Cash-out refinance limits depend on property type — typically 80% of ARV for a primary 1-unit, down to 70% for a 2-4 unit investment property."}},{"@type":"Question","name":"How is cash back calculated?","acceptedAnswer":{"@type":"Answer","text":"Cash back is the refinance loan minus your acquisition loan payoff and roughly 4% refinance closing costs."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">BRRRR Method Calculator</span>
   </nav>
   <header class="calc-head">

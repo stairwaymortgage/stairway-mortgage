@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "VA High Balance Purchase Calculator: Estimate Your Loan, Funding Fee, Payment & Cash to Close";
 const metaDescription = "Calculate your VA high-balance (jumbo) purchase: base loan at the county limit, VA funding fee (waived for disabled veterans), payment, cash to close, and income needed to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/va-high-balance-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA High Balance Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA High Balance Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"VA High Balance Purchase Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a VA high-balance loan?","acceptedAnswer":{"@type":"Answer","text":"A VA high-balance (jumbo) loan lets eligible veterans buy in high-cost areas above the standard county loan limit. The portion above the limit typically requires a down payment."}},{"@type":"Question","name":"What is the VA funding fee?","acceptedAnswer":{"@type":"Answer","text":"A one-time fee that varies by down payment and first vs. subsequent use. It is waived for veterans receiving VA disability compensation."}},{"@type":"Question","name":"Where do I find my county loan limit?","acceptedAnswer":{"@type":"Answer","text":"You can look up the conforming loan limit for your county on the FHFA website."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">VA High Balance Loan Calculator</span>
   </nav>
   <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "DSCR Loan Calculator for Investment Purchase: Estimate Your Loan, Payment, Cash Flow & 15/30-Year ROI";
 const metaDescription = "Calculate your DSCR loan amount, monthly payment, net cash flow, and projected 15- and 30-year equity, cash flow, tax savings, and ROI on an investment property.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/dscr-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"DSCR Investment Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"DSCR Investment Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"DSCR Investment Purchase Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a DSCR loan?","acceptedAnswer":{"@type":"Answer","text":"A DSCR (debt-service coverage ratio) loan qualifies an investment property on its rental income rather than your personal income. The loan amount is sized so the rent covers the property's total payment at your target DSCR ratio."}},{"@type":"Question","name":"What DSCR ratio do I need?","acceptedAnswer":{"@type":"Answer","text":"Most DSCR lenders require a minimum ratio of 1.0, some as high as 1.35. A few allow as low as 0.75, often with a slightly higher rate."}},{"@type":"Question","name":"How much down payment is required?","acceptedAnswer":{"@type":"Answer","text":"Most DSCR lenders require 20% down, though some programs allow as little as 15%."}}]};
 ---
@@ -15,7 +15,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">DSCR Investment Loan Calculator</span>
   </nav>
   <header class="calc-head">

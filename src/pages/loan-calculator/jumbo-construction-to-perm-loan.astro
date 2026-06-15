@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Jumbo Construction-to-Perm Calculator: Payoff, Tear-Down & Build — Max Loan, Payment & Cash to Close";
 const metaDescription = "Model a jumbo ground-up construction-to-perm loan: payoff, tear-down and build costs, interest reserves, maximum jumbo loan by LTV, full monthly payment, cash to close, and income to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/jumbo-construction-to-perm-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Jumbo Construction-to-Perm Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Jumbo Construction-to-Perm Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Jumbo Ground Up Construction: Payoff, Tear Down & Build Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a construction-to-perm loan?","acceptedAnswer":{"@type":"Answer","text":"It is a single loan that funds the construction (often interest-only) and then converts to a permanent mortgage when the home is complete, avoiding a second closing."}},{"@type":"Question","name":"How much can I borrow?","acceptedAnswer":{"@type":"Answer","text":"The loan is capped at the lesser of 75% of total financeable costs or an LTV against the after-repair value (80% for a primary residence, 75% for a second home or spec property)."}},{"@type":"Question","name":"Can I roll in a payoff and tear-down?","acceptedAnswer":{"@type":"Answer","text":"Yes. The model includes paying off an existing loan plus tear-down and build costs, with interest reserves to cover payments during construction."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Jumbo Construction-to-Perm Calculator</span>
   </nav>
   <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "College Housing Costs VS. Investment Property | Stairway Mortgage";
 const metaDescription = "Compare paying for college housing with student loans against buying an investment property your student lives in — and see the long-term wealth difference. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/college-costs-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"College Housing Costs VS. Investment Property","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"College Housing Costs VS. Investment Property","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"College Housing Costs VS. Investment Property","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this calculator compare?","acceptedAnswer":{"@type":"Answer","text":"It compares the cost of paying for college housing with student loans against buying a 1–4 unit investment property your student lives in while renting the other units, including long-term equity and cash flow."}},{"@type":"Question","name":"What assumptions does it use?","acceptedAnswer":{"@type":"Answer","text":"It uses a conservative 3% annual appreciation, FHA financing with UFMIP and monthly mortgage insurance, and a 30-year loan. These are illustrative assumptions, not a quote."}},{"@type":"Question","name":"Is this a loan approval?","acceptedAnswer":{"@type":"Answer","text":"No. It's an illustrative estimate, not a loan estimate or approval. Always obtain an official Loan Estimate from a licensed mortgage originator."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">College Housing vs. Investment Property</span>
     </nav>
     <header class="calc-head">

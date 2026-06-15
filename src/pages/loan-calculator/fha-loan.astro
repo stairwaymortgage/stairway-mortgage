@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA Loan Calculator for Home Purchase: Estimate Your Monthly Payment, Mortgage Insurance & Cash to Close";
 const metaDescription = "Calculate your FHA base loan, upfront and monthly mortgage insurance, total monthly payment, cash to close, and the income needed to qualify with as little as 3.5% down.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fha-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA Purchase Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA Purchase Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"FHA Purchase Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much down payment do I need for an FHA loan?","acceptedAnswer":{"@type":"Answer","text":"FHA loans allow as little as 3.5% down, and down payment assistance and gift funds are permitted."}},{"@type":"Question","name":"What is FHA mortgage insurance?","acceptedAnswer":{"@type":"Answer","text":"FHA loans carry an upfront mortgage insurance premium (UFMIP) of 1.75% of the base loan, which is added to the loan, plus an annual premium collected monthly."}},{"@type":"Question","name":"What income do I need to qualify?","acceptedAnswer":{"@type":"Answer","text":"FHA generally allows a debt-to-income ratio up to 43%, and up to 50% with strong compensating factors such as cash reserves or solid payment history."}}]};
 ---
@@ -15,7 +15,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">FHA Purchase Loan Calculator</span>
   </nav>
   <header class="calc-head">

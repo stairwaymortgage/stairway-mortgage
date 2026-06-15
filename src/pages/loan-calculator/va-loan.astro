@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "VA Loan Calculator for Home Purchase: Estimate Your Payment, Funding Fee & Cash to Close with $0 Down";
 const metaDescription = "Calculate your VA loan: base loan, VA funding fee (with disabled-veteran waiver), monthly payment, cash to close, and income needed to qualify — with as little as $0 down.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/va-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA Purchase Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA Purchase Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"VA Purchase Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much down payment do I need for a VA loan?","acceptedAnswer":{"@type":"Answer","text":"VA loans allow as little as $0 down for eligible veterans and service members, with no monthly mortgage insurance."}},{"@type":"Question","name":"What is the VA funding fee?","acceptedAnswer":{"@type":"Answer","text":"The VA funding fee is a one-time fee that varies by down payment and whether it's your first use. It is waived for veterans receiving VA disability compensation."}},{"@type":"Question","name":"Do disabled veterans get extra benefits?","acceptedAnswer":{"@type":"Answer","text":"Veterans with a service-connected disability are generally exempt from the VA funding fee and may qualify for property tax exemptions depending on their state."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">VA Purchase Loan Calculator</span>
   </nav>
   <header class="calc-head">

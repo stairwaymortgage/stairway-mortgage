@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Net Proceeds Calculator | Stairway Mortgage";
 const metaDescription = "Estimate how much cash you'll walk away with at closing after your mortgage payoff, agent commission, and selling costs. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/net-proceeds-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Net Proceeds Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Net Proceeds Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Net Proceeds Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are net proceeds?","acceptedAnswer":{"@type":"Answer","text":"Net proceeds are the cash you walk away with after subtracting your remaining mortgage balance, agent commission, and other selling costs from the sale price."}},{"@type":"Question","name":"How is the agent commission calculated?","acceptedAnswer":{"@type":"Answer","text":"Commission is the sale price multiplied by the commission rate you enter. Residential rates often run 5% to 6%."}},{"@type":"Question","name":"What goes into other selling expenses?","acceptedAnswer":{"@type":"Answer","text":"This is a single combined figure for costs like title and escrow, transfer taxes, repairs, concessions, and any prorated items."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Net Proceeds Calculator</span>
     </nav>
     <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Closing Cost Calculator for Buyer | Stairway Mortgage";
 const metaDescription = "Enter your home loan amount and estimated fees to instantly see your expected cash needed to close, broken down by Loan Estimate section. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/closing-costs-calculator-for-buyer/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Closing Cost Calculator for Buyer","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Closing Cost Calculator for Buyer","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Closing Cost Calculator for Buyer","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What closing costs do buyers pay?","acceptedAnswer":{"@type":"Answer","text":"Buyer closing costs typically include origination charges, third-party services, taxes and government fees, prepaids, an initial escrow deposit, and other items, organized into Loan Estimate sections A through G."}},{"@type":"Question","name":"How much are buyer closing costs?","acceptedAnswer":{"@type":"Answer","text":"They vary by loan size, location, and loan type, but commonly run roughly 2% to 5% of the loan amount. Use the line items above to estimate your own total."}},{"@type":"Question","name":"Can the seller help pay closing costs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Depending on loan type and down payment, sellers may contribute toward a buyer's closing costs and prepaids, often up to 6% on FHA, USDA, and VA loans."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Closing Cost Calculator for Buyer</span>
     </nav>
     <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Conventional Loan Calculator for Construction: Estimate Your Costs, Monthly Payment & Cash Needed to Close";
 const metaDescription = "Calculate total project cost, interest reserves, loan amount, monthly payment, and cash to close for a conventional new construction-to-permanent loan.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/conventional-construction-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Conventional Construction Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Conventional Construction Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Conventional New Construction Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What costs are included in a construction loan?","acceptedAnswer":{"@type":"Answer","text":"Total project cost includes land, hard costs (labor and materials), soft costs (permits, architectural, engineering), plus a 10% hard-cost contingency reserve per conventional new-construction guidelines."}},{"@type":"Question","name":"What are interest reserves?","acceptedAnswer":{"@type":"Answer","text":"Interest reserves are prepaid interest covering roughly 12 months of construction, estimated about 3% above the permanent rate. No payments are due during construction, and any unused reserve is applied to principal at completion."}},{"@type":"Question","name":"How much can I finance on a conventional construction loan?","acceptedAnswer":{"@type":"Answer","text":"For single-closing construction-to-permanent loans, conventional guidelines allow up to 97% LTV for a one-unit primary residence, 90% for second homes, 85% for two units, and 75% for 3-4 units, subject to conforming loan limits."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     <div class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Conventional Construction Calculator</span>
   </nav>
   <header class="calc-head">

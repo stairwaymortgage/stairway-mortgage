@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "BAH Home Affordability Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your maximum affordable home loan based on your monthly BAH, BAS, income, and debts. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/bah-home-affordability-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"BAH Home Affordability Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"BAH Home Affordability Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"BAH Home Affordability Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does BAH affect home affordability?","acceptedAnswer":{"@type":"Answer","text":"Your Basic Allowance for Housing counts as qualifying income. Combined with your other income and allowances, it helps determine the monthly payment — and therefore the loan amount — you can support."}},{"@type":"Question","name":"What is BAS?","acceptedAnswer":{"@type":"Answer","text":"Basic Allowance for Subsistence is a military allowance for food costs that can also be counted as qualifying income."}},{"@type":"Question","name":"What term and rate does this assume?","acceptedAnswer":{"@type":"Answer","text":"The maximum loan estimate assumes a 30-year term at the interest rate you enter. It does not include mortgage insurance."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">BAH Home Affordability Calculator</span>
     </nav>
     <header class="calc-head">

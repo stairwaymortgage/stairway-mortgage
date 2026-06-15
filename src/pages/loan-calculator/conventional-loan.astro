@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Conventional Loan Calculator for Home Purchase: Estimate Your Costs, Monthly Payment & Cash Needed to Close";
 const metaDescription = "Calculate your monthly payment, PMI, cash to close, and income needed for a conventional purchase loan. Estimate PITI and the down payment for your property type.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/conventional-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Conventional Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Conventional Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Conventional Purchase Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much can I borrow with a conventional loan?","acceptedAnswer":{"@type":"Answer","text":"Your maximum loan-to-value depends on the property type per the Fannie Mae and Freddie Mac LTV matrices: up to 97% for a 1-unit primary residence, lower for additional units, second homes, and investment properties, and subject to conforming loan limits."}},{"@type":"Question","name":"When do I have to pay PMI on a conventional loan?","acceptedAnswer":{"@type":"Answer","text":"Private mortgage insurance generally applies when your loan-to-value is above 80%. The estimated monthly cost rises as your down payment shrinks, and PMI can typically be removed once you reach 20% equity."}},{"@type":"Question","name":"How much cash do I need to close?","acceptedAnswer":{"@type":"Answer","text":"Cash to close is roughly your down payment plus closing costs. This calculator shows three scenarios: without help, with a 3% seller credit, and with both a seller credit and down payment assistance."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     <div class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Conventional Loan Calculator</span>
   </nav>
 

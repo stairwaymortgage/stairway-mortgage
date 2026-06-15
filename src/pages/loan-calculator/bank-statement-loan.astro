@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Bank Statement Loan Calculator for Home Purchase: Estimate Your Costs, Monthly Payment & Income Needed to Qualify";
 const metaDescription = "Calculate qualifying income, maximum loan, monthly payment, and cash to close for a bank statement loan based on your last two years of income.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/bank-statement-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Bank Statement Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Bank Statement Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Bank Statement Loan Calculator for Home Purchase","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is income calculated on a bank statement loan?","acceptedAnswer":{"@type":"Answer","text":"Qualifying income is generally based on the average of your two most recent years of income, divided across 24 months to get a monthly figure."}},{"@type":"Question","name":"How much can I borrow?","acceptedAnswer":{"@type":"Answer","text":"Your maximum loan is the lower of what your income supports (housing payment up to about 50% of income, minus other obligations) and the maximum allowed by loan-to-value for your property type."}},{"@type":"Question","name":"What down payment is required?","acceptedAnswer":{"@type":"Answer","text":"A 10% minimum down payment is typical on a primary residence, with higher requirements for second homes and investment properties."}}]};
 ---
@@ -15,7 +15,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Bank Statement Loan Calculator</span>
   </nav>
   <header class="calc-head">

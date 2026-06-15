@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Investment Growth Calculator: Project Your Asset Value, Total Contributions & Return on Investment";
 const metaDescription = "Project the growth of an investment over time: total contributions, future asset value at your target annual return, and total return on investment.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/investment-growth-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Investment Growth Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Investment Growth Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Investment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does compound growth work?","acceptedAnswer":{"@type":"Answer","text":"Your contributions grow at your target annual return, compounding each year so earlier dollars have more time to multiply."}},{"@type":"Question","name":"What growth rate should I use?","acceptedAnswer":{"@type":"Answer","text":"It depends on the asset: high-yield savings around 3-4.5%, bonds 3-6.5%, and equities or real estate higher with more volatility. Use a conservative figure."}},{"@type":"Question","name":"What is return on investment?","acceptedAnswer":{"@type":"Answer","text":"ROI here is your projected asset value minus total contributions, divided by total contributions, expressed as a percentage."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Investment Growth Calculator</span>
   </nav>
   <header class="calc-head">

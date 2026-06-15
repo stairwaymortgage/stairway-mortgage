@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Interest-Only Payment Calculator: Compare Your Interest-Only vs. Principal & Interest Payment and Monthly Savings";
 const metaDescription = "Compare an interest-only payment to a fully amortizing principal-and-interest payment. See your monthly and annual cash-flow savings at each rate.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/interest-only-payment-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Interest-Only Payment Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Interest-Only Payment Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Interest Only Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an interest-only payment?","acceptedAnswer":{"@type":"Answer","text":"You pay only the monthly interest, with no principal reduction. The payment is lower, but the balance doesn't go down during the interest-only period."}},{"@type":"Question","name":"When does interest-only make sense?","acceptedAnswer":{"@type":"Answer","text":"It can help cash flow for investors or borrowers who plan to sell or refinance before the interest-only period ends, freeing up money to invest elsewhere."}},{"@type":"Question","name":"Why might the interest-only rate be higher?","acceptedAnswer":{"@type":"Answer","text":"Lenders often price interest-only loans at a slightly higher rate to offset the added risk of no principal paydown."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Interest-Only Payment Calculator</span>
   </nav>
   <header class="calc-head">

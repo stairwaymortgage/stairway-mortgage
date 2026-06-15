@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "VA New Construction Loan Calculator: Estimate Your Max VA Loan, Funding Fee, Payment & Cash to Close";
 const metaDescription = "Calculate a VA new-construction loan: total build costs, interest reserves, maximum VA loan, funding fee (with disabled-veteran waiver), full monthly payment, cash to close, and income to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/va-construction-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA New Construction Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA New Construction Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"VA New Construction Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do VA construction loans require a down payment?","acceptedAnswer":{"@type":"Answer","text":"Eligible veterans can finance up to 100% of the lesser of the after-repair value or total acquisition cost, so no down payment is typically required."}},{"@type":"Question","name":"What is the VA funding fee?","acceptedAnswer":{"@type":"Answer","text":"It is generally 2.15% for first-time use and 3.3% for subsequent use, reduced with larger down payments and waived entirely for veterans with a qualifying service-connected disability."}},{"@type":"Question","name":"Are payments due during construction?","acceptedAnswer":{"@type":"Answer","text":"During the build the veteran can make interest-only payments or roll in up to 12 months of payments, as long as the after-repair value supports the 100% LTV."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">VA New Construction Loan Calculator</span>
   </nav>
   <header class="calc-head">

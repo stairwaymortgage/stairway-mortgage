@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA 203k Renovation Loan Calculator: Estimate Your Max Loan, Financeable Costs, Payment & Cash to Close";
 const metaDescription = "Calculate an FHA 203k renovation purchase: total project costs, interest reserves, maximum FHA loan, UFMIP, full monthly payment with MI, cash to close, and income to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fha-203k-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA 203k Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA 203k Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"FHA 203K Renovation Purchase Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an FHA 203k loan?","acceptedAnswer":{"@type":"Answer","text":"An FHA 203k lets you finance the purchase of a home plus the cost of renovating it in a single loan, with as little as 3.5% down."}},{"@type":"Question","name":"How much can I borrow?","acceptedAnswer":{"@type":"Answer","text":"The loan is capped at the lesser of 110% of the after-repair value or 96.5% of total financeable costs, subject to HUD county loan limits."}},{"@type":"Question","name":"What mortgage insurance applies?","acceptedAnswer":{"@type":"Answer","text":"FHA charges a 1.75% upfront mortgage insurance premium (UFMIP), usually financed, plus monthly mortgage insurance built into your payment."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">FHA 203k Loan Calculator</span>
   </nav>
   <header class="calc-head">

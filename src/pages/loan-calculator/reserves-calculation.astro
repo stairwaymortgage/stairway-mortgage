@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Reserves Calculation | Stairway Mortgage";
 const metaDescription = "Add up your monthly expenses to see how much cash you'd need for 6 or 12 months of reserves. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/reserves-calculation/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Reserves Calculation","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Reserves Calculation","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Reserves Calculation","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are cash reserves?","acceptedAnswer":{"@type":"Answer","text":"Reserves are the savings you keep on hand to cover your monthly expenses if your income is interrupted. Many planners suggest keeping 6 to 12 months of expenses."}},{"@type":"Question","name":"How is the reserve amount calculated?","acceptedAnswer":{"@type":"Answer","text":"It adds up your monthly housing, utilities, groceries, transportation, insurance, minimum debt payments, and rental property costs, then multiplies that total by 6 and by 12 months."}},{"@type":"Question","name":"Is this a loan approval?","acceptedAnswer":{"@type":"Answer","text":"No. It's an illustrative estimate. Lender reserve requirements vary by loan type, occupancy, and property. Talk with a licensed mortgage professional for your specific situation."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Reserves Calculation</span>
     </nav>
     <header class="calc-head">

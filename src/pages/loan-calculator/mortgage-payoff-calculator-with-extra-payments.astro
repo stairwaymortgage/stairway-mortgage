@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Mortgage Payoff Calculator with Extra Payments | Stairway Mortgage";
 const metaDescription = "See how much faster you can pay off your mortgage by adding extra to each monthly payment. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/mortgage-payoff-calculator-with-extra-payments/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Mortgage Payoff Calculator with Extra Payments","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Mortgage Payoff Calculator with Extra Payments","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Payoff Calculator with Extra Payments","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do extra payments shorten my mortgage?","acceptedAnswer":{"@type":"Answer","text":"Every dollar paid above your scheduled payment goes straight to principal, which reduces the balance interest is charged on and shortens the time to payoff."}},{"@type":"Question","name":"How is my standard payment calculated?","acceptedAnswer":{"@type":"Answer","text":"It uses the standard fixed-rate amortization formula based on your loan amount, interest rate, and term."}},{"@type":"Question","name":"Is this an exact payoff date?","acceptedAnswer":{"@type":"Answer","text":"No. It is an estimate. Your actual payoff depends on your exact balance, rate, and how consistently you make the extra payments."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Mortgage Payoff with Extra Payments</span>
     </nav>
     <header class="calc-head">

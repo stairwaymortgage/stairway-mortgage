@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "VA Cash-Out Refinance Calculator: Estimate Your Max Loan, Cash Back, Funding Fee & New Payment";
 const metaDescription = "Calculate your VA cash-out refinance: maximum loan up to 100% LTV, cash back, VA funding fee (waived for disabled veterans), new payment, and income needed to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/va-loan-cash-out-refinance/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA Cash-Out Refinance Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"VA Cash-Out Refinance Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"VA Cash Out Refinance Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much can I borrow on a VA cash-out refinance?","acceptedAnswer":{"@type":"Answer","text":"VA cash-out refinances can go up to 100% of your home's value. Your cash back is that maximum loan minus your current balance and estimated closing costs."}},{"@type":"Question","name":"Is there a VA funding fee on a cash-out?","acceptedAnswer":{"@type":"Answer","text":"Yes, typically 3.3% of the loan amount, but it is waived for veterans receiving VA disability compensation."}},{"@type":"Question","name":"What income do I need to qualify?","acceptedAnswer":{"@type":"Answer","text":"As a rule of thumb, your total monthly housing expense plus HOA should be roughly half your gross monthly income."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">VA Cash-Out Refinance Calculator</span>
   </nav>
   <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Compare 3 Rates (Total Costs) | Stairway Mortgage";
 const metaDescription = "Compare three rate scenarios on a total-cost basis against your Loan Estimate, with monthly and annual savings, breakeven point, and total savings over the loan term. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/compare-3-rate-payments-total-costs/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Compare 3 Rates (Total Costs)","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Compare 3 Rates (Total Costs)","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Compare 3 Rates (Total Costs)","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does this compare total costs?","acceptedAnswer":{"@type":"Answer","text":"Each scenario's total cost starts from your Loan Estimate's disclosed closing costs, then adds the difference between that scenario's rate price and the LE rate price. A lower rate adds points; a higher rate applies a lender credit."}},{"@type":"Question","name":"What is the breakeven point?","acceptedAnswer":{"@type":"Answer","text":"It is how long you must keep the loan for the monthly savings of a lower rate to recover the extra upfront cost. Past breakeven, the monthly savings are pure benefit."}},{"@type":"Question","name":"Which strategy should I choose?","acceptedAnswer":{"@type":"Answer","text":"If you will keep the loan past the breakeven period and can afford the upfront cash, the lowest-rate option wins. If you may sell, refinance, or pay off sooner, the lowest-cost option is usually better."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Compare 3 Rates (Total Costs)</span>
     </nav>
     <header class="calc-head">

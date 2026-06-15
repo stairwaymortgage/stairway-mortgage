@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "DSCR Refinance Calculator: Estimate Your New Payment, Monthly Savings, Max Loan & Cash Back on a Rental";
 const metaDescription = "Calculate a DSCR investment rate-reduction refinance: new payment, monthly and annual savings, maximum loan based on rent and DSCR ratio, and estimated cash back.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/dscr-loan-refinance/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"DSCR Refinance Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"DSCR Refinance Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"DSCR Investment Rate Reduction Refinance","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a DSCR refinance?","acceptedAnswer":{"@type":"Answer","text":"A DSCR (debt-service coverage ratio) refinance qualifies an investment property on its rental income rather than your personal income, lowering your rate or pulling cash out."}},{"@type":"Question","name":"What DSCR ratio do lenders require?","acceptedAnswer":{"@type":"Answer","text":"Most DSCR lenders require a minimum ratio of 1.0; some go as high as 1.35, and a few allow 0.75 at a higher rate."}},{"@type":"Question","name":"How much cash can I pull out?","acceptedAnswer":{"@type":"Answer","text":"Cash back is your maximum loan (up to 80% of value or what the rent supports) minus your current balance and roughly 3% closing costs."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">DSCR Refinance Calculator</span>
   </nav>
   <header class="calc-head">

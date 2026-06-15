@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Reverse Mortgage Cash Out Refinance Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your maximum cash back with a reverse mortgage cash-out refinance: principal limit by age, final loan amount, and monthly housing expense — with no payment for life. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/reverse-mortgage-cash-out-refinance/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Reverse Mortgage Cash Out Refinance Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Reverse Mortgage Cash Out Refinance Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Reverse Mortgage Cash Out Refinance Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a reverse mortgage cash-out refinance?","acceptedAnswer":{"@type":"Answer","text":"It refinances an existing mortgage into a reverse mortgage, paying off the current loan and potentially returning cash to the borrower, with no required monthly principal and interest payment for life."}},{"@type":"Question","name":"How much cash can I take out?","acceptedAnswer":{"@type":"Answer","text":"Cash back is the principal limit (home value times a Principal Limit Factor based on age) minus your existing loan balance and estimated closing costs."}},{"@type":"Question","name":"Do I still pay anything monthly?","acceptedAnswer":{"@type":"Answer","text":"There is no monthly principal and interest payment, but you remain responsible for property taxes, homeowners insurance, and any HOA dues."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Reverse Mortgage Cash-Out Refinance Calculator</span>
     </nav>
     <header class="calc-head">

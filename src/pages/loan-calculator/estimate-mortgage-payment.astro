@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Estimate Mortgage Payment | Stairway Mortgage";
 const metaDescription = "Enter your loan amount, interest rate, term, taxes, and insurance to instantly estimate your total monthly mortgage payment. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/estimate-mortgage-payment/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Estimate Mortgage Payment","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Estimate Mortgage Payment","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Estimate Mortgage Payment","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What's included in a monthly mortgage payment?","acceptedAnswer":{"@type":"Answer","text":"A typical payment includes principal and interest, plus escrowed property taxes and homeowner's insurance. Mortgage insurance is added when you put less than 20% down, and HOA dues are paid on top."}},{"@type":"Question","name":"When do I pay mortgage insurance?","acceptedAnswer":{"@type":"Answer","text":"Mortgage insurance generally applies when your down payment is under 20%. This estimate uses about 0.85% of the loan amount per year when you indicate you are not putting 20% down."}},{"@type":"Question","name":"How is principal and interest calculated?","acceptedAnswer":{"@type":"Answer","text":"It uses the standard amortization formula based on your loan amount, monthly interest rate, and the number of monthly payments over the loan term."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Estimate Mortgage Payment</span>
     </nav>
     <header class="calc-head">

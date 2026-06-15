@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA Purchase Loan Payment Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your monthly payment and cash needed to close on a new FHA home purchase loan, with and without seller credit and down payment assistance. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/down-payment-assistance/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA Purchase Loan Payment Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA Purchase Loan Payment Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"FHA Purchase Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the minimum FHA down payment?","acceptedAnswer":{"@type":"Answer","text":"FHA loans allow as little as 3.5% down, and down payment assistance and gift funds are permitted toward that amount."}},{"@type":"Question","name":"What is UFMIP?","acceptedAnswer":{"@type":"Answer","text":"The FHA Up-Front Mortgage Insurance Premium is 1.75% of the base loan amount. It is typically financed into the loan rather than paid in cash."}},{"@type":"Question","name":"Should I use down payment assistance?","acceptedAnswer":{"@type":"Answer","text":"DPA programs can help you buy sooner, but many carry conditions such as repayment or an equity share if you sell or refinance within the first few years. If you can close without it, you keep more of your equity and flexibility."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">FHA Purchase Loan Payment Calculator</span>
     </nav>
     <header class="calc-head">

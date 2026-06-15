@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA Streamline Refinance Calculator: Estimate Your New Payment, Monthly Savings & Annual Savings";
 const metaDescription = "Calculate your FHA streamline refinance: new principal and interest payment, monthly and annual savings, total monthly housing expense, and income needed to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fha-loan-refinance/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA Streamline Refinance Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA Streamline Refinance Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"FHA Streamline Refinance Rate Reduction Savings Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an FHA streamline refinance?","acceptedAnswer":{"@type":"Answer","text":"An FHA streamline refinance lets existing FHA borrowers lower their rate and payment with reduced documentation and often no new appraisal, as long as the refinance provides a net tangible benefit."}},{"@type":"Question","name":"How much can I save?","acceptedAnswer":{"@type":"Answer","text":"Your monthly savings is the difference between your current principal and interest payment and your new payment at a lower rate. This calculator also shows your annual savings."}},{"@type":"Question","name":"What are typical FHA closing costs?","acceptedAnswer":{"@type":"Answer","text":"FHA closing costs are commonly estimated at around 4% and vary state to state. This is an estimate only, not a Loan Estimate."}}]};
 ---
@@ -15,7 +15,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">FHA Streamline Refinance Calculator</span>
   </nav>
   <header class="calc-head">

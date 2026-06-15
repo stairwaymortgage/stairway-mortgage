@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "FHA New Construction Loan Calculator: Estimate Your Max Loan, Build Costs, Payment & Cash to Close";
 const metaDescription = "Calculate an FHA new-construction loan: total build costs, interest reserves, maximum FHA loan, UFMIP, full monthly payment with MI, cash to close, and income to qualify.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fha-construction-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA New Construction Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"FHA New Construction Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"FHA New Construction Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an FHA new construction loan?","acceptedAnswer":{"@type":"Answer","text":"It finances the land, soft costs, and hard construction costs of building a home in a single FHA loan, with as little as 3.5% down."}},{"@type":"Question","name":"How are payments handled during construction?","acceptedAnswer":{"@type":"Answer","text":"Interest reserves cover roughly six months of interest during the build, so no payments are due while construction is underway. Unused reserves apply to principal at completion."}},{"@type":"Question","name":"How much can I borrow?","acceptedAnswer":{"@type":"Answer","text":"The loan is capped at 96.5% of the after-repair value, subject to HUD county loan limits. Raising your ARV raises the allowable loan."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">FHA New Construction Loan Calculator</span>
   </nav>
   <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "How to Calculate My Net Worth | Stairway Mortgage";
 const metaDescription = "Enter what you own and what you owe to instantly see your current net worth. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/how-to-calculate-my-net-worth/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"How to Calculate My Net Worth","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"How to Calculate My Net Worth","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"How to Calculate my Net Worth","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is net worth?","acceptedAnswer":{"@type":"Answer","text":"Net worth is everything you own (assets) minus everything you owe (liabilities). It's a snapshot of your overall financial position."}},{"@type":"Question","name":"What counts as an asset?","acceptedAnswer":{"@type":"Answer","text":"Cash and savings, taxable and retirement investments, HSAs, real estate including your home, business equity, and other valuables like vehicles, crypto, and collectibles."}},{"@type":"Question","name":"What counts as a liability?","acceptedAnswer":{"@type":"Answer","text":"Mortgages and HELOCs, auto loans, student loans, personal or business loans, and credit card balances."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">How to Calculate My Net Worth</span>
     </nav>
     <header class="calc-head">

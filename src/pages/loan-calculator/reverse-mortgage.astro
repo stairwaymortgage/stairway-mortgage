@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Reverse Mortgage Home Purchase Loan Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your reverse mortgage home purchase: principal limit by age, final loan amount, cash to close, and monthly housing expense — with no payment for life. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/reverse-mortgage/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Reverse Mortgage Home Purchase Loan Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Reverse Mortgage Home Purchase Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Reverse Mortgage Home Purchase Loan Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a reverse mortgage for purchase (H4P)?","acceptedAnswer":{"@type":"Answer","text":"It lets a borrower aged 62+ (or 55+ on non-traditional programs) buy a home using reverse mortgage proceeds plus a down payment, with no required monthly principal and interest payment for life."}},{"@type":"Question","name":"How is the principal limit determined?","acceptedAnswer":{"@type":"Answer","text":"The principal limit is the purchase price multiplied by a Principal Limit Factor (PLF) based on the age of the oldest borrower and the expected interest rate."}},{"@type":"Question","name":"Do I still pay anything monthly?","acceptedAnswer":{"@type":"Answer","text":"There is no monthly principal and interest payment, but you remain responsible for property taxes, homeowners insurance, and any HOA dues."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Reverse Mortgage Home Purchase Calculator</span>
     </nav>
     <header class="calc-head">

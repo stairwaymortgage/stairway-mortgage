@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Build To Sell Spec Home Calculator: Purchase, Teardown, Build, Sell, Profit | Stairway Mortgage";
 const metaDescription = "Estimate cash to close, holding costs, and profit potential on a build-to-sell spec home you acquire, tear down, and build with one loan. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/spec-home-loan-acquisition-and-development/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Build To Sell Spec Home Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Build To Sell Spec Home Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Build To Sell Spec Home Calculator: Purchase, Teardown, Build, Sell, Profit","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this spec home calculator estimate?","acceptedAnswer":{"@type":"Answer","text":"It estimates your cash to close, the maximum and desired loan amount, holding costs over the build period, total project cost, and profit before tax on a build-to-sell spec home financed with a single acquisition-and-construction loan."}},{"@type":"Question","name":"How is the maximum loan determined?","acceptedAnswer":{"@type":"Answer","text":"It is the lesser of 75% of total allowable financeable costs or 75% of the after-repair value, reflecting typical construction loan underwriting."}},{"@type":"Question","name":"Is this a loan approval?","acceptedAnswer":{"@type":"Answer","text":"No. It's an illustrative estimate, not a loan estimate or approval. Always obtain an official Loan Estimate from a licensed mortgage originator."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Build To Sell Spec Home</span>
     </nav>
     <header class="calc-head">

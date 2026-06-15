@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Military Tax Benefits Calculator | Stairway Mortgage";
 const metaDescription = "Enter your monthly BAH and BAS to estimate your annual non-taxable income and the federal tax savings from your tax-free military allowances. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/military-tax-benefits-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Military Tax Benefits Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Military Tax Benefits Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Military Tax Benefits Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are BAH and BAS taxable?","acceptedAnswer":{"@type":"Answer","text":"No. Basic Allowance for Housing (BAH) and Basic Allowance for Subsistence (BAS) are generally tax-free, which lowers your taxable income compared to civilian pay."}},{"@type":"Question","name":"How are my tax savings estimated?","acceptedAnswer":{"@type":"Answer","text":"The tool annualizes your monthly BAH and BAS, then multiplies that tax-free total by your marginal tax bracket to estimate the federal tax you avoid."}},{"@type":"Question","name":"What tax bracket should I enter?","acceptedAnswer":{"@type":"Answer","text":"Enter your marginal federal tax rate. The reference table covers the 10% through 37% brackets by filing status, but always confirm your current rate with the IRS."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Military Tax Benefits Calculator</span>
     </nav>
     <header class="calc-head">

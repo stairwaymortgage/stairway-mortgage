@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 const metaTitle = "Portfolio Analyzers | Stairway Mortgage";
 const metaDescription = "Enter your holdings across cash, real estate, commodities, bonds, and stocks to instantly see your total portfolio and your allocation across each asset class. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/portfolio-analyzers/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Portfolio Analyzers","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Portfolio Analyzers","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Portfolio Analyzers","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this analyzer show?","acceptedAnswer":{"@type":"Answer","text":"It adds up your holdings across seven asset classes to give your total portfolio value, then shows what percentage of the portfolio each asset class represents."}},{"@type":"Question","name":"How is the real estate percentage calculated?","acceptedAnswer":{"@type":"Answer","text":"Real estate is shown net of any debt against it — your real estate value minus debt, divided by the total portfolio. The other classes use their full value."}},{"@type":"Question","name":"Why does my debt not lower the total?","acceptedAnswer":{"@type":"Answer","text":"The total portfolio reflects gross asset values. Debt is only applied to the real estate allocation percentage, not the overall total."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Portfolio Analyzers</span>
     </nav>
     <header class="calc-head">

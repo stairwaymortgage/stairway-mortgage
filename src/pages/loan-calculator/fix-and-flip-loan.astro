@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Fix and Flip Profit Calculator: Estimate Your Loan, Holding Costs, Net Profit & Cash-on-Cash ROI";
 const metaDescription = "Calculate a fix-and-flip deal: maximum loan at 75% ARV, cash to close, property and holding costs, total project cost, net profit before tax, and cash-on-cash return.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/fix-and-flip-loan/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Fix and Flip Profit Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Fix and Flip Profit Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Fix And Flip Profit Calculator (Buy/Sell)","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much can I borrow on a fix and flip?","acceptedAnswer":{"@type":"Answer","text":"Typically up to 75% of the after-repair value (ARV), with 100% of rehab funds available within that limit. A 10% minimum down payment on the purchase price applies."}},{"@type":"Question","name":"What is cash-on-cash ROI?","acceptedAnswer":{"@type":"Answer","text":"Cash-on-cash return measures your profit relative to the actual cash you invested, not the total project size or property value."}},{"@type":"Question","name":"What costs are included?","acceptedAnswer":{"@type":"Answer","text":"Purchase price, renovation plus a 10% contingency, holding costs (interest, taxes, insurance, HOA over the months held), and exit/selling costs."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Fix and Flip Profit Calculator</span>
   </nav>
   <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Rent Versus Buying a Home Calculator | Stairway Mortgage";
 const metaDescription = "Compare the annual cost of renting versus owning, plus your home's future value and net proceeds at sale. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/rent-versus-buying-a-home-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Rent Versus Buying a Home Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Rent Versus Buying a Home Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Rent Versus Buying a Home Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this calculator compare?","acceptedAnswer":{"@type":"Answer","text":"It compares your annual cost of owning a home — principal, interest, taxes, insurance, mortgage insurance, HOA, and maintenance — against your annual cost of renting, and estimates your net proceeds if you sell at the end of your holding period."}},{"@type":"Question","name":"How is the future home value calculated?","acceptedAnswer":{"@type":"Answer","text":"The purchase price is compounded by your estimated annual appreciation rate over the number of years you plan to hold the property."}},{"@type":"Question","name":"Are net proceeds exact?","acceptedAnswer":{"@type":"Answer","text":"No. Net proceeds are an estimate: future value minus the original loan amount and an 8% sales cost. It does not account for principal paid down over time, so your actual equity may be higher."}}]};
 ---
@@ -17,7 +17,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Rent vs. Buying a Home</span>
     </nav>
     <header class="calc-head">

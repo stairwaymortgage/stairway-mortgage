@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "USDA Cash-Out Refinance Calculator: Estimate Your Max Loan, Cash Back, Payment & Income to Qualify";
 const metaDescription = "Calculate a USDA cash-out refinance: maximum loan, USDA guarantee fee, cash back, full monthly payment with the annual fee, and the income needed to qualify at a 41% DTI.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/usda-loan-cash-out-refinance/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"USDA Cash-Out Refinance Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"USDA Cash-Out Refinance Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"USDA Cash Out Refinance Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can you do a cash-out refinance on a USDA loan?","acceptedAnswer":{"@type":"Answer","text":"USDA programs are limited and primarily for primary residences. Use this tool to estimate scenarios, then confirm eligibility with a licensed originator."}},{"@type":"Question","name":"What fees does a USDA loan have?","acceptedAnswer":{"@type":"Answer","text":"USDA loans carry a 1% upfront guarantee fee (often rolled into the loan) and a 0.35% annual fee paid monthly."}},{"@type":"Question","name":"What income do I need to qualify?","acceptedAnswer":{"@type":"Answer","text":"This calculator uses a 41% housing debt-to-income guideline to estimate the gross monthly income needed."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">USDA Cash-Out Refinance Calculator</span>
   </nav>
   <header class="calc-head">

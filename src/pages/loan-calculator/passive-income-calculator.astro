@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Passive Investment Return & Tax Advantage Calculator: Estimate Your Asset Value, ROI & Depreciation Tax Savings";
 const metaDescription = "Project a passive real-estate or syndication investment: total contributions, first-year depreciation tax savings, projected asset value, total ROI, and average annual return.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/passive-income-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Passive Investment Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Passive Investment Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Passive Investment Return & Tax Advantage Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a preferred return?","acceptedAnswer":{"@type":"Answer","text":"In a syndication, a preferred return means limited partners receive their payout before the general partners share in any profits."}},{"@type":"Question","name":"How does bonus depreciation help?","acceptedAnswer":{"@type":"Answer","text":"Under the 2025 OBBBA, most qualified property is eligible for 100% first-year bonus depreciation, letting investors deduct the full value (excluding land) in year one."}},{"@type":"Question","name":"What return should I assume?","acceptedAnswer":{"@type":"Answer","text":"This calculator lets you set an annual growth target. Syndication targets vary widely; use a conservative figure and confirm with the offering's documents."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 <main class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
-    <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">Passive Investment Calculator</span>
   </nav>
   <header class="calc-head">

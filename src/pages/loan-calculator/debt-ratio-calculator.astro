@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "Debt Ratio Calculator | Stairway Mortgage";
 const metaDescription = "Enter your monthly income and obligations to instantly see your debt-to-income ratio, plus an estimate of the monthly housing payment and loan amount you may have room for. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/debt-ratio-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"Debt Ratio Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Debt Ratio Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Debt Ratio Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a debt-to-income ratio?","acceptedAnswer":{"@type":"Answer","text":"It is the share of your gross monthly income that goes toward monthly debt obligations, including your housing payment. Lenders use it to gauge how much additional payment you can support."}},{"@type":"Question","name":"What DTI do lenders look for?","acceptedAnswer":{"@type":"Answer","text":"Guidelines vary by loan type. Many programs target a back-end ratio around 43% to 50%, with flexibility for strong compensating factors."}},{"@type":"Question","name":"Does this include my future housing payment?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Total Monthly Obligations figure is meant to include your housing payment along with car loans, credit cards, student loans, and other installment debt."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">Debt Ratio Calculator</span>
     </nav>
     <header class="calc-head">

@@ -4,7 +4,7 @@ import CalcLeadForm from '../../components/CalcLeadForm.astro';
 const metaTitle = "50/30/20 Budget Rule Calculator | Stairway Mortgage";
 const metaDescription = "Enter your monthly take-home pay and split it into 50% needs, 30% wants, and 20% savings and debt payoff with the 50/30/20 budget rule. Built by Jim Blackburn, NMLS #1072866.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/50-30-20-budget-calculator/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/all-loan-calculators/"},{"@type":"ListItem","position":3,"name":"50 30 20 Budget Rule Calculator","item":canonical}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"50 30 20 Budget Rule Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"50 30 20 Budget Rule Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
 const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the 50/30/20 budget rule?","acceptedAnswer":{"@type":"Answer","text":"It splits your monthly take-home pay into three buckets: 50% for needs, 30% for wants, and 20% for savings and debt payoff."}},{"@type":"Question","name":"Should I use gross or net income?","acceptedAnswer":{"@type":"Answer","text":"Use your monthly take-home (net) pay — the amount that lands in your account after taxes and deductions."}},{"@type":"Question","name":"What counts as a need versus a want?","acceptedAnswer":{"@type":"Answer","text":"Needs are essentials like housing, utilities, groceries, insurance, transit, and minimum debt payments. Wants are nice-to-haves like dining out, entertainment, travel, and subscriptions."}}]};
 ---
@@ -16,7 +16,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   <main class="container-page">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span>/</span>
-      <a href="/all-loan-calculators/">Loan Calculators</a> <span>/</span>
+      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
       <span aria-current="page">50/30/20 Budget Rule Calculator</span>
     </nav>
     <header class="calc-head">
