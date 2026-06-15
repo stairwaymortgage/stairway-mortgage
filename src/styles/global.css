@@ -138,7 +138,6 @@ h3 {
   font-size: clamp(3.5rem, 9vw, 7.5rem);
   line-height: 0.95;
   letter-spacing: -0.035em;
-  color: var(--color-ink);
 }
 
 .display-lg {
@@ -184,7 +183,6 @@ h3 {
   font-size: clamp(4rem, 11vw, 9rem);
   line-height: 0.85;
   letter-spacing: -0.045em;
-  color: var(--color-ink);
   font-feature-settings: "lnum", "ss01";
 }
 
