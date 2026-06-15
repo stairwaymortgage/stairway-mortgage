@@ -1,0 +1,1897 @@
+---
+import Layout from '../layouts/Layout.astro';
+const pattorneyBody = `
+  
+
+  <!-- ============ SECTION 0: HERO ============ -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow eyebrow">Attorneys &middot; Partner Education</div>
+          <h1 class="display-1">Why your attorney matters in your real estate transaction &mdash; closings, title work, FIRPTA compliance, estate planning, asset protection, and Florida homestead alignment with your home ownership.</h1>
+          <p class="lead hero-subtitle">Working with a licensed Florida attorney on your real estate transaction is the difference between a properly-documented purchase or sale and a transaction with unresolved title defects, missed FIRPTA compliance, mistitled ownership structure, or estate planning gaps. <strong>Your attorney handles closing execution at the title company or law firm (Florida is an attorney closing state in many counties), title search and title insurance coordination through <a href="https://www.alta.org/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">ALTA</a> or Florida-form policies, FR/Bar contract review and negotiation (<a href="https://www.floridabar.org/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Florida Bar</a> + <a href="https://www.floridarealtors.org/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Florida Realtors</a> joint forms), Florida deed type selection (warranty deed, quit-claim deed, lady bird / enhanced life estate deed, trust transfer deed), FIRPTA withholding compliance for foreign-seller transactions under IRS Form 8288, Florida homestead exemption + descendant restriction analysis under <a href="https://www.flsenate.gov/Laws/Constitution#A10S04" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Florida Constitution Article X Section 4</a>, estate planning coordination through revocable trust ownership structures, asset protection through tenancy by entireties and LLC structures, and lender attorney coordination at closing</strong>. For divorce-related transactions, the family law attorney coordinates equitable distribution of marital property under Florida Statutes Chapter 61. <strong>If you&rsquo;re an attorney reading this looking for a mortgage on your own home, scroll to the bottom for the attorney-as-borrower CTA covering BigLaw, regional, and solo practice paths.</strong></p>
+          <div class="hero-actions">
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary btn-large">Schedule a call with Jim</a>
+            <a href="#attorney-role" class="btn btn-secondary btn-large">See what your attorney does</a>
+          </div>
+          <div class="hero-trust">
+            <span class="trust-dot"></span>
+            <span>Broker NMLS #1072866</span>
+            <span>&middot;</span>
+            <span>Florida mortgage broker coordinating with Florida attorney partners for closings, title work, FIRPTA compliance, estate planning trust ownership documentation, asset protection structures, and BigLaw / regional / solo attorney-as-borrower mortgage qualifying</span>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Real estate attorney reviewing closing documents with client" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Real+Estate+Attorney';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ STATS BAR ============ -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">110K+ FL attorneys</div>
+            <div class="stat-label">Approximately 110,000 attorneys actively licensed in Florida through <a href="https://www.floridabar.org/" target="_blank" rel="noopener noreferrer" style="color: inherit;">The Florida Bar</a>. Substantial concentration in Miami-Dade, Broward, Palm Beach, and Orlando markets with specialized real estate, estate, and asset protection practices</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Attorney closings</div>
+            <div class="stat-label">Florida is an attorney closing state in many counties. Closings handled by title companies OR attorneys depending on county practice. Real estate transactional attorneys coordinate title search, title insurance, deed preparation, and closing-day execution</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">15% FIRPTA</div>
+            <div class="stat-label">FIRPTA (Foreign Investment in Real Property Tax Act) withholding rate for foreign-seller real estate transactions. Generally 15% of gross purchase price; reduced rates available with IRS Form 8288-B certification. Attorney coordination required</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Unlimited homestead</div>
+            <div class="stat-label">Florida homestead exemption under <a href="https://www.flsenate.gov/Laws/Constitution#A10S04" target="_blank" rel="noopener noreferrer" style="color: inherit;">Florida Constitution Article X Section 4</a> provides UNLIMITED creditor protection on primary residence (with 1/2 acre municipal / 160 acre rural cap). Plus descendant restrictions on devise.</div>
+          </div>
+        </div>
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/5668481/pexels-photo-5668481.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Florida attorney closing documents and title work" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x750/0A0E1A/E8EEFF/png?text=Florida+Attorney';">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEDE ============ -->
+  <section class="lede-section">
+    <div class="container-narrow">
+      <p class="lede">Working with a licensed Florida attorney on your real estate transaction is the foundation of properly-documented Florida homeownership. <strong>Your attorney handles closing execution at the title company or law firm (Florida is an attorney closing state in many counties), title search and title insurance coordination through <a href="https://www.alta.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">ALTA</a> or Florida-form policies, FR/Bar contract review and negotiation (Florida Realtors / Florida Bar joint forms), Florida deed type selection (warranty deed providing full title warranty, quit-claim deed providing no warranty, lady bird / enhanced life estate deed for probate avoidance with retained control, trust transfer deed for trust ownership), FIRPTA withholding compliance for foreign-seller transactions under <a href="https://www.irs.gov/individuals/international-taxpayers/firpta-withholding" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">IRS FIRPTA</a> rules and Form 8288 withholding submission, Florida homestead exemption + descendant restriction analysis under <a href="https://www.flsenate.gov/Laws/Constitution#A10S04" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Constitution Article X Section 4</a>, estate planning coordination through revocable trust ownership structures with Florida homestead-compliant designation, asset protection through tenancy by entireties (Florida-protected marital ownership) and LLC structures, equitable distribution coordination for divorce-related real estate transactions under <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter61" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Statutes Chapter 61</a>, and lender attorney coordination at closing for deed and security instrument execution</strong>. The attorney + lender coordination matters substantively for complex closings including trust ownership, foreign buyer or seller, divorce-related transactions, estate-related sales (after death), and asset protection structures. <strong>Stairway Mortgage partners with Florida attorneys across Broward, Miami-Dade, Palm Beach, the Treasure Coast, and statewide on residential purchase, refinance, and investment transactions with proper trust ownership documentation, estate planning alignment, and FIRPTA-compliant closing structures.</strong> Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #1: KEY FACTS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto;">
+        <div class="eyebrow">01 &middot; Working with a Florida attorney at a glance</div>
+        <h2>Key facts every Florida buyer and seller should know about attorney coordination.</h2>
+      </div>
+      <div class="key-facts-grid">
+        <div class="key-fact-card">
+          <div class="key-fact-num">Licensed by Bar</div>
+          <p class="key-fact-body">A Florida attorney is licensed by <a href="https://www.floridabar.org/" target="_blank" rel="noopener noreferrer">The Florida Bar</a> and admitted to practice through the Florida Supreme Court. Real estate attorneys carry Florida Bar Real Property Section involvement. Estate attorneys carry Florida Bar Real Property, Probate &amp; Trust Law Section involvement.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Attorney closings</div>
+          <p class="key-fact-body">Florida is an attorney closing state in many counties (vs title-company-only practice). Closings handled by title companies or attorneys depending on county practice. Real estate transactional attorneys coordinate title search, title insurance, deed preparation, and closing-day execution. Coordination required between attorney + lender.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Florida deed types</div>
+          <p class="key-fact-body">Florida deed types: warranty deed (full title warranty, standard purchase), quit-claim deed (no warranty, common in family transfers), lady bird / enhanced life estate deed (probate avoidance with retained control), trust transfer deed (trust ownership), special warranty deed (limited warranty). Attorney selection guides deed type choice.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">FIRPTA + foreign seller</div>
+          <p class="key-fact-body">FIRPTA withholding under <a href="https://www.irs.gov/individuals/international-taxpayers/firpta-withholding" target="_blank" rel="noopener noreferrer">IRC Section 1445</a> applies to foreign-seller transactions: generally 15% of gross purchase price withheld at closing. Reduced rates available with IRS Form 8288-B withholding certificate. Attorney coordinates compliance + IRS Form 8288 submission within 20 days of closing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #2: FIVE ATTORNEY TYPES ============ -->
+  <section class="professions-section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">02 &middot; Five attorney types in Florida real estate</div>
+        <h2>How attorneys serve Florida real estate buyers, sellers, and owners.</h2>
+        <p>Florida real estate practice spans multiple attorney specializations: real estate transactional, title, estate planning, family law / divorce, and asset protection. The five types commonly coordinate on complex transactions where multiple legal considerations overlap.</p>
+      </div>
+      <div class="professions-grid">
+
+        <a class="profession-card" href="#attorney-role">
+          <div class="profession-num">01</div>
+          <h3 class="profession-title">Real estate transactional attorney</h3>
+          <p class="profession-tag">"Closings, contract review, title work, deed preparation, lender coordination. Handles the residential purchase or sale transaction execution from FR/Bar contract through closing-day execution at the title company or law firm."</p>
+          <ul class="profession-points">
+            <li>FR/Bar contract review and negotiation</li>
+            <li>Title search and title insurance coordination</li>
+            <li>Deed preparation (warranty / quit-claim / lady bird)</li>
+            <li>Closing-day execution + lender coordination</li>
+          </ul>
+          <span class="profession-link">See transactional mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#attorney-role">
+          <div class="profession-num">02</div>
+          <h3 class="profession-title">Title attorney</h3>
+          <p class="profession-tag">"Title search, title insurance underwriting, title defect resolution, curative action. Title attorneys commonly affiliated with title companies but also independent. Florida-form title insurance through <a href=\"https://www.alta.org/\" target=\"_blank\" rel=\"noopener noreferrer\">ALTA</a> or Florida-form policies."</p>
+          <ul class="profession-points">
+            <li>Title search and chain of title verification</li>
+            <li>Title insurance underwriting</li>
+            <li>Title defect resolution and curative action</li>
+            <li>ALTA + Florida-form title policies</li>
+          </ul>
+          <span class="profession-link">See title mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#attorney-role">
+          <div class="profession-num">03</div>
+          <h3 class="profession-title">Estate planning attorney</h3>
+          <p class="profession-tag">"Trust formation, will drafting, beneficiary designation, Florida homestead-compliant trust ownership, estate tax planning given the 2026 federal exemption sunset, lady bird deed estate planning for probate avoidance."</p>
+          <ul class="profession-points">
+            <li>Revocable trust + property ownership alignment</li>
+            <li>Florida homestead descendant restriction analysis</li>
+            <li>Estate tax planning (2026 sunset urgency)</li>
+            <li>Lady bird deed for probate avoidance</li>
+          </ul>
+          <span class="profession-link">See estate planning mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#attorney-role">
+          <div class="profession-num">04</div>
+          <h3 class="profession-title">Family law / divorce attorney</h3>
+          <p class="profession-tag">"Equitable distribution of marital real property under <a href=\"https://www.flsenate.gov/Laws/Statutes/2024/Chapter61\" target=\"_blank\" rel=\"noopener noreferrer\">Florida Statutes Chapter 61</a>. Coordinates marital vs non-marital property classification, valuation, and division. Often coordinates with mortgage refinance or sale during divorce."</p>
+          <ul class="profession-points">
+            <li>Equitable distribution under FL Statutes 61</li>
+            <li>Marital vs non-marital property classification</li>
+            <li>Property valuation for division</li>
+            <li>Refinance / sale coordination during divorce</li>
+          </ul>
+          <span class="profession-link">See family law mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#attorney-role">
+          <div class="profession-num">05</div>
+          <h3 class="profession-title">Asset protection attorney</h3>
+          <p class="profession-tag">"Florida-protected asset structures including tenancy by entireties (marital ownership with full creditor protection from individual debts), LLC ownership for investment property, Florida homestead unlimited exemption strategy, FLP (Family Limited Partnership) structures."</p>
+          <ul class="profession-points">
+            <li>Tenancy by entireties (married couple protection)</li>
+            <li>LLC ownership for investment property</li>
+            <li>Florida homestead unlimited exemption</li>
+            <li>FLP and other asset protection structures</li>
+          </ul>
+          <span class="profession-link">See asset protection mechanics</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #3: ATTORNEY + REAL ESTATE 4 PHASES ============ -->
+  <section class="section" id="attorney-role">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">03 &middot; What your attorney does at each transaction phase</div>
+        <h2>How your Florida attorney coordinates with your real estate transaction.</h2>
+        <p>Four substantive phases cover the attorney&rsquo;s work across a Florida real estate transaction: pre-contract structure planning, contract execution and due diligence, closing preparation, and closing-day execution + post-closing recording.</p>
+      </div>
+
+      <h3>Phase 1 &mdash; Pre-contract: ownership structure planning</h3>
+      <p>Your attorney evaluates the optimal ownership structure for the purchase: individual ownership (simplest, includes Florida homestead eligibility for primary residence), tenancy by entireties (marital couple ownership with full Florida creditor protection from individual spouse debts), LLC ownership (typical for investment property providing asset protection and entity-level liability shield), trust ownership (revocable trust for estate planning + probate avoidance, irrevocable trust for asset protection or Medicaid planning). For HNW estate planning, the attorney coordinates trust structure ahead of closing.</p>
+
+      <h3>Phase 2 &mdash; Contract: FR/Bar review + due diligence coordination</h3>
+      <p>Attorney coordinates Florida Realtors / Florida Bar (FR/Bar) contract review covering financing terms, contingency structure, inspection coordination, FIRPTA disclosure if foreign seller, condo / HOA approval timeline if applicable, escrow deposit handling, and closing date scheduling. Title attorney runs title search through Florida title company or in-house. Title insurance commitment issued documenting title status, requirements, and exceptions. Any title defects identified for curative action before closing.</p>
+
+      <h3>Phase 3 &mdash; Closing preparation: deed + security instrument</h3>
+      <p>Attorney prepares deed for execution (warranty deed standard for purchase, with trust transfer deed if trust ownership). Lender attorney coordinates security instrument (mortgage or deed of trust) preparation. Title insurance final policy preparation. <a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener noreferrer">CFPB TRID</a> Closing Disclosure (CD) coordinated between lender + attorney + title company at least 3 business days before closing. For trust ownership, attorney verifies trust documentation meets Florida homestead requirements + lender requirements simultaneously.</p>
+
+      <h3>Phase 4 &mdash; Closing day + post-closing recording</h3>
+      <p>Closing-day execution at the title company or law firm. Document execution: deed signing, mortgage / security instrument signing, settlement statement review. Funding: lender wires loan funds, buyer wires balance, seller proceeds wired or check issued. Recording: deed + security instrument recorded with the county clerk. Post-closing: title insurance final policy issuance, recording confirmation, attorney file documentation. For FIRPTA situations, withholding submission within 20 days of closing.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #4: FLORIDA HOMESTEAD + ASSET PROTECTION DARK SECTION ============ -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/8867482/pexels-photo-8867482.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 760px;">
+        <div class="eyebrow eyebrow-light">04 &middot; What attorney-level real estate expertise means</div>
+        <h2 style="color: var(--paper);">Six things every Florida buyer and seller should know about attorney-level real estate work.</h2>
+        <p style="color: rgba(250,250,247,0.78);">Attorney-level Florida real estate expertise differs substantially from DIY or non-attorney transaction handling. Six clarifications every Florida buyer, seller, and owner should understand.</p>
+      </div>
+
+      <div class="dark-grid">
+        <div class="dark-card">
+          <div class="dark-num">A</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Florida homestead UNLIMITED creditor protection</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Florida homestead exemption under <a href="https://www.flsenate.gov/Laws/Constitution#A10S04" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Florida Constitution Article X Section 4</a> provides UNLIMITED creditor protection on primary residence (with 1/2 acre municipal / 160 acre rural area cap). Among the strongest creditor protections in the U.S. Federal exceptions: tax liens, certain federal debt, mortgages on the property. Florida homestead is foundational to Florida asset protection strategy.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">B</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Homestead descendant restrictions on devise</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Florida homestead restricts devise (testamentary transfer at death) if the decedent is survived by a spouse OR minor child. Cannot freely devise homestead to anyone other than spouse or descendants under Article X Section 4(c). Attorney + estate planning coordination essential to structure ownership compliant with homestead descendant rules. Trust ownership requires careful Florida homestead-compliant drafting.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">C</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Tenancy by entireties marital protection</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Tenancy by entireties is a Florida-recognized form of marital ownership providing full creditor protection on the property from claims against ONE spouse individually. Joint debts can still reach the property. Both spouses must be on title for entireties ownership. Attorney + lender coordination on entireties ownership structure aligned with mortgage qualifying.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">D</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Lady bird deed for probate avoidance</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Lady bird deed (enhanced life estate deed) is a Florida-recognized deed structure allowing the grantor to retain full ownership + control during life (including ability to sell, mortgage, or revoke) while automatically transferring ownership to designated remainder beneficiaries at death without probate. Useful estate planning tool for primary residence + family transfers.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">E</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">FIRPTA withholding for foreign sellers</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">FIRPTA under <a href="https://www.law.cornell.edu/uscode/text/26/1445" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">IRC Section 1445</a> requires 15% withholding on foreign-seller real estate transactions (gross purchase price). Reduced rates with IRS Form 8288-B withholding certificate certification. Attorney + title company coordinate compliance + Form 8288 submission within 20 days of closing. Substantial penalties for non-compliance.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">F</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">2026 federal estate tax exemption sunset urgency</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Federal estate tax exemption $13.99M (2025) sunsets to approximately $7M in 2026 absent Congressional extension. Florida no-state-estate-tax. HNW estate planning attorneys coordinating substantial trust funding + gifting strategies during 2025 transition. Trust ownership of real property must remain Florida homestead-compliant. Estate planning attorney + real estate attorney coordination essential.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ H2 #5: ATTORNEY DESIGNATIONS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">05 &middot; Florida attorney credentials and Bar section memberships</div>
+        <h2>Florida attorney credentials and specialty designations explained.</h2>
+        <p>Florida attorney credentials document specialty practice depth across real estate, estate planning, family law, tax, and elder law. Florida attorneys commonly hold multiple Bar section memberships and continuing education credentials reflecting their primary practice focus.</p>
+      </div>
+      <div class="loan-program-grid">
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">FL Bar Board Certified Real Estate Lawyer</h3>
+          <ul class="loan-program-points">
+            <li>The Florida Bar Board Certification in Real Estate Law</li>
+            <li>5+ years practice + exam + peer review</li>
+            <li>Highest formal real estate specialty credential</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Real estate transactional</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">FL Bar RPPTL Section</h3>
+          <ul class="loan-program-points">
+            <li>Real Property, Probate &amp; Trust Law Section membership</li>
+            <li>Florida&rsquo;s primary real estate + estate practice section</li>
+            <li>Section CLE + practice resources</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Real estate + estate practice</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">FL Bar Family Law Section</h3>
+          <ul class="loan-program-points">
+            <li>Family Law Section membership for divorce attorneys</li>
+            <li>Florida Statutes Chapter 61 practice</li>
+            <li>Marital property + equitable distribution expertise</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Divorce real property division</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">FL Bar Tax Section</h3>
+          <ul class="loan-program-points">
+            <li>Tax Section membership for tax-focused attorneys</li>
+            <li>Estate tax planning + FIRPTA compliance</li>
+            <li>Section 1031 exchange coordination</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Estate + tax + FIRPTA</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">ABA RPTE Section</h3>
+          <ul class="loan-program-points">
+            <li>American Bar Association Real Property, Trust &amp; Estate Section</li>
+            <li>National-level real estate + trust + estate community</li>
+            <li>Practice resources + CLE</li>
+          </ul>
+          <div class="loan-program-tag">Best for: National practice depth</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CELA &mdash; Certified Elder Law Attorney</h3>
+          <ul class="loan-program-points">
+            <li>National Elder Law Foundation certification</li>
+            <li>Elder law + Medicaid planning + special needs</li>
+            <li>Long-term care + estate planning intersection</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Elder + Medicaid planning</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">LLM in Taxation</h3>
+          <ul class="loan-program-points">
+            <li>Master of Laws in Taxation (post-JD specialty degree)</li>
+            <li>Deep tax law expertise (estate, income, international)</li>
+            <li>NYU, Georgetown, U Florida programs nationally recognized</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Tax + estate complexity</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #6: INDUSTRY CONTEXT ============ -->
+  <section class="section section-tinted">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">06 &middot; Six forces shaping the Florida attorney real estate industry</div>
+        <h2>How the Florida real estate attorney industry operates in 2026.</h2>
+        <p>Florida real estate attorney practice operates at the intersection of Bar regulation, county-level closing practice variation, Florida homestead constitutional protection evolution, estate planning 2026 sunset urgency, asset protection sophistication growth, and FIRPTA enforcement with substantial Florida foreign buyer volume.</p>
+      </div>
+
+      <h3>Force 1 &mdash; Florida Bar regulation + ethical standards</h3>
+      <p>The Florida Bar regulates attorney practice through ethical rules, CLE requirements, board certification programs, and disciplinary procedures. Bar membership is mandatory for practice. Real estate transactional attorneys carry RPPTL Section involvement. Board Certified Real Estate Lawyers represent the highest formal specialty credential.</p>
+
+      <h3>Force 2 &mdash; Attorney closing state county practice variation</h3>
+      <p>Florida is an attorney closing state in many counties (vs title-company-only practice). Practice varies by county: some counties strongly attorney-driven (Palm Beach, Broward), others title-company-driven. South Florida concentration of foreign buyers + HNW transactions drives heavier attorney involvement. Closings handled by attorneys typically include deeper title curative work, more complex structures (trusts, LLCs), and direct attorney-lender coordination.</p>
+
+      <h3>Force 3 &mdash; Florida homestead constitutional protection evolution</h3>
+      <p>Florida homestead exemption under <a href="https://www.flsenate.gov/Laws/Constitution#A10S04" target="_blank" rel="noopener noreferrer">Florida Constitution Article X Section 4</a> remains among the strongest creditor protections in the U.S. Continuing case law refinement on homestead-compliant trust ownership, descendant restriction application, and the boundaries of homestead protection. Florida attorneys with deep homestead expertise critical for HNW + estate planning + asset protection coordination.</p>
+
+      <h3>Force 4 &mdash; Estate planning 2026 sunset urgency</h3>
+      <p>Federal estate tax exemption $13.99M (2025) sunsets to approximately $7M per person in 2026 absent Congressional extension. Estate planning attorneys coordinating substantial trust funding + gifting strategies during 2025 transition. HNW Florida estate planning relevance intensifying. Florida no-state-estate-tax advantage remains. Estate planning + real estate attorney coordination essential for trust ownership of Florida real property.</p>
+
+      <h3>Force 5 &mdash; Asset protection sophistication growth</h3>
+      <p>Florida is among the top U.S. asset protection jurisdictions: unlimited homestead exemption, tenancy by entireties, LLC anonymity options, and FLP structures. Sophisticated asset protection attorneys coordinate multi-layer structures spanning Florida-domestic + offshore protection trusts. Practice growth supported by Florida wealth migration + HNW concentration. Asset protection coordination matters for investment property + business owner clients.</p>
+
+      <h3>Force 6 &mdash; FIRPTA enforcement + foreign buyer volume</h3>
+      <p>Florida is a top destination for foreign real estate buyers (Latin America, Europe, Canada). FIRPTA withholding under <a href="https://www.law.cornell.edu/uscode/text/26/1445" target="_blank" rel="noopener noreferrer">IRC Section 1445</a> enforcement remains active. Withholding rate 15% of gross purchase price standard; reduced rates with Form 8288-B certification. Attorney + title company coordination on FIRPTA compliance + Form 8288 submission within 20 days of closing required. Substantial penalties for non-compliance.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #7: TIMELINE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">07 &middot; Attorney + real estate transaction timeline</div>
+        <h2>The attorney + real estate transaction timeline.</h2>
+        <p>A timeline view of how attorney work integrates with a Florida real estate transaction lifecycle across pre-contract structure planning, contract due diligence, closing preparation, and closing-day execution.</p>
+      </div>
+      <div class="career-timeline">
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Pre-contract</div>
+          <div class="timeline-body">
+            <h4>Ownership structure planning</h4>
+            <p><strong>Attorney work:</strong> Optimal ownership structure evaluation (individual, tenancy by entireties, LLC, revocable trust, irrevocable trust). Estate planning coordination if applicable. Asset protection structure evaluation. For HNW + trust ownership, trust documentation coordinated ahead of contract. <strong>Coordination with lender:</strong> Pre-approval structured to align with intended ownership entity.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Contract + due diligence</div>
+          <div class="timeline-body">
+            <h4>FR/Bar review + title work</h4>
+            <p><strong>Attorney work:</strong> FR/Bar contract review covering financing terms, contingencies, inspection coordination, FIRPTA disclosure if foreign seller, condo / HOA approval timeline if applicable. Title search and title insurance commitment. Title defect identification + curative action coordination. <strong>Coordination with lender:</strong> Lender attorney coordinates conditions + approval timeline.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Closing prep</div>
+          <div class="timeline-body">
+            <h4>Deed + security instrument preparation</h4>
+            <p><strong>Attorney work:</strong> Deed preparation (warranty deed standard purchase, trust transfer deed for trust ownership, lady bird deed for retained-control estate planning). Title insurance final policy preparation. <a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener noreferrer">CFPB</a> TRID Closing Disclosure coordination at least 3 business days pre-closing. Trust ownership verification for Florida homestead compliance if applicable.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Closing day + recording</div>
+          <div class="timeline-body">
+            <h4>Execution + funding + recording</h4>
+            <p><strong>Attorney work:</strong> Closing-day execution at title company or law firm. Deed signing, mortgage / security instrument signing, settlement statement review. Funding wire coordination. Recording of deed + security instrument with county clerk. Post-closing title insurance final policy issuance + file documentation. <strong>FIRPTA</strong> withholding submission within 20 days of closing if applicable.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #8: TESTIMONIALS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">08 &middot; What buyers and sellers say</div>
+        <h2>What Florida buyers say about their attorney + Stairway coordination.</h2>
+        <p>Names abbreviated for client privacy. Transaction details anonymized. Attorney names withheld out of professional courtesy.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-1"><img src="https://i.pravatar.cc/300?img=19" alt="Edward C., Florida HNW buyer with trust ownership coordinated by Bar Board Certified Real Estate Lawyer" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=19';"></div>
+          <blockquote class="testim-quote">"HNW purchase of a $2.4M Boca Raton primary residence with revocable trust ownership coordinated by my Florida Bar Board Certified Real Estate Lawyer. My attorney coordinated trust documentation Florida-homestead-compliant per Article X Section 4, FR/Bar contract review, title search through Stewart Title with one curative item resolved, and closing-day execution at the firm. Jim&rsquo;s team handled the financing with trust documentation accepted by the underwriter on first review. $2.4M Conventional Jumbo with trust ownership close in 39 days. Attorney + Stairway coordination on the trust documentation was seamless."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Edward C.</div>
+            <div class="testim-meta">HNW buyer + trust ownership &middot; Boca Raton</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-2"><img src="https://i.pravatar.cc/300?img=20" alt="Robert M., Florida investment property buyer with LLC asset protection structure coordinated by RPPTL attorney" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/F0EDE8/6B5C4B/png?text=20';"></div>
+          <blockquote class="testim-quote">"Investment property purchase of a $1.15M Fort Lauderdale 4-unit residential building with Florida LLC ownership for asset protection coordinated by my RPPTL Section attorney at a Broward County firm. My attorney structured the Florida LLC (member-managed with operating agreement reflecting individual ownership), coordinated title work through ALTA-form policy, and handled closing-day execution with the LLC properly designated on deed + mortgage. Jim&rsquo;s team handled the DSCR Non-QM financing with LLC ownership accepted by the lender, debt-service coverage ratio at 1.32 supporting qualification on rental income alone. $1.15M DSCR Non-QM close in 38 days. Attorney coordination on the LLC structure aligned with lender requirements without restructuring."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Robert M.</div>
+            <div class="testim-meta">Investment property + LLC asset protection &middot; Fort Lauderdale</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-3"><img src="https://i.pravatar.cc/300?img=21" alt="Jennifer T., Florida divorce-related refinance buying out spouse coordinated by Family Law Section attorney" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EFE8/3D5A3D/png?text=21';"></div>
+          <blockquote class="testim-quote">"Divorce-related refinance buying out my spouse&rsquo;s interest in our $1.45M Coral Springs marital residence coordinated by my Florida Bar Family Law Section attorney. My attorney handled the equitable distribution analysis under Florida Statutes Chapter 61, marital settlement agreement (MSA) drafting with property division terms, and coordination of the buyout refinance timeline to align with the divorce judgment. Jim&rsquo;s team handled the refinance using W-2 income only (post-divorce single-income qualifying), Cash-Out Refinance providing the buyout proceeds to my ex-spouse at closing, and proper deed transfer execution post-closing. $1.45M Cash-Out Refinance close in 41 days. Attorney + Stairway timeline alignment with the divorce proceeding worked exactly as planned."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Jennifer T.</div>
+            <div class="testim-meta">Divorce buyout refinance &middot; Coral Springs</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #9: 10-FAQ SECTION ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">09 &middot; Attorney partner FAQs</div>
+        <h2>Questions Florida buyers, sellers, and attorneys ask, answered.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-cross-links" style="margin-bottom: var(--s-10); padding: var(--s-6); background: var(--paper-warm); border-left: 3px solid var(--blue);">
+          <p style="margin: 0 0 var(--s-3) 0; font-family: var(--serif); font-size: var(--text-md); font-weight: 500;">More <a href="https://stairwaymortgage.com/" style="color: inherit; text-decoration: underline;">attorney partnership and borrower-side</a> resources at Stairway</p>
+          <ul style="margin: 0; padding-left: var(--s-5); font-size: var(--text-sm); line-height: 1.7; list-style: none;">
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/attorneys/">Attorney mortgage guide (BigLaw / regional / solo)</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Jumbo loan details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/dscr-investor-loan/">DSCR Non-QM details (LLC investment property)</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start your pre-approval</a></li>
+          </ul>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">01</div>
+          <div>
+            <div class="faq-q">Do I need an attorney for a Florida real estate closing?</div>
+            <div class="faq-a">Depends on county practice + transaction complexity. Florida is an attorney closing state in many counties; closings handled by attorneys OR title companies. Attorney involvement is essential for trust ownership, foreign seller (FIRPTA), divorce-related transactions, estate-related sales, complex title issues, and LLC ownership structures. Standard purchase with simple individual ownership may proceed via title company alone.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">02</div>
+          <div>
+            <div class="faq-q">What&rsquo;s the difference between a warranty deed and a quit-claim deed?</div>
+            <div class="faq-a">Warranty deed provides FULL title warranty (grantor warrants clean title back through the chain). Standard for arms-length purchases. Quit-claim deed provides NO warranty (grantor conveys whatever interest they have, if any). Common in family transfers, divorce property division, name corrections. Attorney guides selection based on transaction context.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">03</div>
+          <div>
+            <div class="faq-q">What is a lady bird deed and when does it make sense?</div>
+            <div class="faq-a">Lady bird deed (enhanced life estate deed) is a Florida-recognized structure allowing the grantor to retain full control during life (including ability to sell, mortgage, or revoke) while automatically transferring ownership to remainder beneficiaries at death without probate. Useful for primary residence + family estate planning. Florida-specific; not recognized in all states.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">04</div>
+          <div>
+            <div class="faq-q">How does Florida homestead descendant restriction work?</div>
+            <div class="faq-a">Under <a href="https://www.flsenate.gov/Laws/Constitution#A10S04" target="_blank" rel="noopener noreferrer">Florida Constitution Article X Section 4(c)</a>, homestead cannot be freely devised at death if the decedent is survived by a spouse OR minor child. Devise must comply with constitutional restrictions favoring surviving spouse + descendants. Attorney + estate planning coordination essential for trust ownership structures Florida-homestead-compliant.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">05</div>
+          <div>
+            <div class="faq-q">What is FIRPTA and when does it apply?</div>
+            <div class="faq-a">FIRPTA (Foreign Investment in Real Property Tax Act) under <a href="https://www.law.cornell.edu/uscode/text/26/1445" target="_blank" rel="noopener noreferrer">IRC Section 1445</a> requires withholding on foreign-seller real estate transactions: generally 15% of gross purchase price withheld at closing. Reduced rates available with IRS Form 8288-B withholding certificate. Attorney + title company coordinate compliance and Form 8288 submission within 20 days of closing.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">06</div>
+          <div>
+            <div class="faq-q">How does tenancy by entireties protect my property?</div>
+            <div class="faq-a">Tenancy by entireties is Florida-recognized marital ownership providing full creditor protection on the property from claims against ONE spouse individually. Joint debts can still reach the property. Both spouses must be on title for entireties ownership; presumed for married couples taking title together. Foundational Florida marital asset protection structure.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">07</div>
+          <div>
+            <div class="faq-q">Can I hold my Florida home in an LLC?</div>
+            <div class="faq-a">Yes for investment property; complicated for primary residence (LLC ownership may lose Florida homestead exemption). Investment property + LLC ownership common for asset protection + liability shield. Primary residence + LLC ownership generally avoided due to homestead loss. Attorney + lender coordination essential; LLC ownership requires DSCR Non-QM or portfolio-lender financing typically.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">08</div>
+          <div>
+            <div class="faq-q">How does my trust ownership work with a Florida mortgage?</div>
+            <div class="faq-a">Revocable living trust ownership is common for Florida primary residence (preserves homestead exemption if properly structured per Article X Section 4). Lender requires trust documentation review for Florida-homestead-compliant terms. Trust transfer deed records ownership. Mortgage executed by trustee in trust capacity. Attorney + lender coordinate documentation; Stairway handles trust-owned property financing regularly.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">09</div>
+          <div>
+            <div class="faq-q">I&rsquo;m a BigLaw partner. Can Stairway help with my own home mortgage?</div>
+            <div class="faq-a">Yes &mdash; for BigLaw partners with W-2 + partnership K-1 + capital distributions + draw + bonus + RSU at major firms (Latham, Skadden, K&amp;E, Greenberg Traurig, etc.), see our dedicated <a href="https://stairwaymortgage.com/professional-services/attorneys/">attorney mortgage guide</a> covering multi-source partnership income synthesis with Form 1084 cash-flow addbacks and Fannie Mae B3-3.4-02 documentation.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">10</div>
+          <div>
+            <div class="faq-q">I&rsquo;m a solo or regional practitioner. Can Stairway help with my mortgage?</div>
+            <div class="faq-a">Yes &mdash; for solo + regional practitioners with sole proprietorship Schedule C or single-member LLC pass-through income, see our <a href="https://stairwaymortgage.com/professional-services/attorneys/">attorney mortgage guide</a> covering Schedule C income analysis, business income continuity narrative, Bank Statement Non-QM as alternative for higher add-back complexity, and bar-licensed continuity documentation for the lender.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #10: COMPANION GUIDES ============ -->
+  <section class="section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">10 &middot; Companion guides &amp; calculators</div>
+        <h2>More on attorney partnerships, trust ownership, and FIRPTA closings.</h2>
+      </div>
+      <div class="link-farm-grid">
+        <div class="link-farm-col">
+          <h4>For attorneys (partner-as-borrower)</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/attorneys/">Attorney mortgage guide</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/cpas-accountants/">CPA mortgage guide</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/financial-advisors/">FA mortgage guide</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/">Professional services hub</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Trust + LLC + complex closings</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Jumbo loan details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/dscr-investor-loan/">DSCR Non-QM (LLC investment)</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/asset-depletion-loan/">Asset-Depletion (estate planning)</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/conventional-loan/">Conventional conforming</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Calculators &amp; tools</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">All 100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/current-rates/">Today&rsquo;s rates</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start a pre-approval</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #11: SOURCES ============ -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">11 &middot; Sources &amp; further reading</div>
+        <h2>Sources &amp; further reading.</h2>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h3 class="source-group-title">Florida Bar, ABA &amp; specialty designations</h3>
+          <ul class="source-list">
+            <li><a href="https://www.floridabar.org/" target="_blank" rel="noopener noreferrer">The Florida Bar &mdash; primary attorney regulatory body</a></li>
+            <li><a href="https://www.americanbar.org/" target="_blank" rel="noopener noreferrer">American Bar Association (ABA)</a></li>
+            <li><a href="https://www.americanbar.org/groups/real_property_trust_estate/" target="_blank" rel="noopener noreferrer">ABA Real Property, Trust &amp; Estate Section (RPTE)</a></li>
+            <li><a href="https://www.nelf.org/" target="_blank" rel="noopener noreferrer">National Elder Law Foundation (CELA)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Florida Statutes &amp; Constitution</h3>
+          <ul class="source-list">
+            <li><a href="https://www.flsenate.gov/Laws/Constitution#A10S04" target="_blank" rel="noopener noreferrer">Florida Constitution Article X Section 4 &mdash; Homestead</a></li>
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter689" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 689 &mdash; Conveyances</a></li>
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter475" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 475 &mdash; Real Estate Brokers</a></li>
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter718" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 718 &mdash; Condominiums</a></li>
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter720" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 720 &mdash; Homeowners&rsquo; Associations</a></li>
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter61" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 61 &mdash; Dissolution + Family Law</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">IRS FIRPTA &amp; tax</h3>
+          <ul class="source-list">
+            <li><a href="https://www.irs.gov/individuals/international-taxpayers/firpta-withholding" target="_blank" rel="noopener noreferrer">IRS FIRPTA Withholding</a></li>
+            <li><a href="https://www.law.cornell.edu/uscode/text/26/1445" target="_blank" rel="noopener noreferrer">Cornell Law &mdash; IRC Section 1445 (FIRPTA)</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-form-8288" target="_blank" rel="noopener noreferrer">IRS Form 8288 &mdash; FIRPTA Withholding</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">ALTA &amp; title</h3>
+          <ul class="source-list">
+            <li><a href="https://www.alta.org/" target="_blank" rel="noopener noreferrer">ALTA &mdash; American Land Title Association</a></li>
+            <li><a href="https://www.floridarealtors.org/" target="_blank" rel="noopener noreferrer">Florida Realtors (FR/Bar contract co-author)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">CFPB &amp; mortgage references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener noreferrer">CFPB &mdash; Consumer Financial Protection Bureau</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.4-02 &mdash; Partnership / S-Corp (attorney-as-borrower)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #12: PRE-CTA STORY ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">12 &middot; What attorney + Stairway partnership looks like</div>
+        <h2>Real-world attorney partnership coordination.</h2>
+        <p>A Florida Bar Board Certified Real Estate Lawyer at a Palm Beach County boutique firm referred an HNW client to Stairway after the prior generalist lender refused to handle trust ownership documentation properly. Client situation: $3.2M Delray Beach primary residence purchase with revocable trust ownership coordinated as part of comprehensive estate plan ahead of the 2026 federal estate tax exemption sunset. <strong>Attorney partnership coordination: revocable trust structuring Florida-homestead-compliant per Article X Section 4, trust transfer deed preparation, FR/Bar contract review, title search through Stewart Title with one curative item resolved, lender attorney coordination on trust documentation, and closing-day execution at the firm.</strong> Stairway applied Asset-Depletion Non-QM on $7.4M managed liquid portfolio alongside W-2 family office income; attorney-prepared trust certificate addressed lender requirements on first review. $3.2M Conventional Jumbo + Asset-Depletion close in 42 days. <strong>Attorney + Stairway coordination on trust ownership + Florida homestead compliance is the partnership pattern that produces successful HNW residential closes.</strong></p>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="House keys at attorney + Stairway closing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=Attorney+Closings';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">42-day attorney + Stairway close &middot; Delray Beach, FL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #13: FINAL CTA + PARTNER-AS-BORROWER CTA ============ -->
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow eyebrow-light">Talk to a Florida mortgage specialist about your attorney partnership transaction</div>
+        <h2 style="color: var(--paper);">Whether you&rsquo;re a Florida buyer working with an attorney on trust ownership, FIRPTA compliance, or estate planning &mdash; or an attorney looking for a mortgage yourself &mdash; Stairway coordinates the mortgage side with the depth your attorney partner expects.</h2>
+        <p style="color: rgba(250,250,247,0.78);">For Florida buyers with attorney coordination: trust ownership documentation, Florida homestead alignment under Article X Section 4, FIRPTA compliance for foreign-seller transactions, divorce-related refinance buyouts, LLC ownership for investment property, asset protection structure alignment with mortgage qualifying. <strong>For attorneys looking for a mortgage on your own home, our dedicated <a href="https://stairwaymortgage.com/professional-services/attorneys/" style="color: var(--paper); text-decoration: underline;">attorney mortgage guide</a> covers BigLaw partner W-2 + K-1 + capital + RSU multi-source synthesis under Fannie Mae B3-3.4-02, regional firm partnership distributions, and solo / Schedule C income with Bank Statement Non-QM alternative paths.</strong></p>
+        <div class="final-cta-actions">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-primary btn-large">Schedule a call with Jim</a>
+          <a href="https://stairwaymortgage.com/professional-services/attorneys/" class="btn btn-on-dark-secondary btn-large">Attorney mortgage guide</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: rgba(250,250,247,0.5); margin-top: var(--s-6);">Jim Blackburn NMLS #1072866 &middot; Stairway Mortgage</p>
+      </div>
+    </div>
+  </section>
+`;
+---
+<Layout title="Attorneys · Florida Attorney Partner Hub — Closings, Title Work, FIRPTA, Estate Planning, Asset Protection &amp; Homestead Specialist" description="Florida attorney partner hub educating buyers, sellers, and HNW clients on what attorneys do in real estate transactions: closing execution at title company or law firm in Florida attorney closing state counties; title search and title insurance coordination through ALTA or Florida-form policies; FR/Bar contract review and negotiation under Florida Realtors and Florida Bar joint forms; Florida deed type selection including warranty deed providing full title warranty, quit-claim deed providing no warranty, lady bird or enhanced life estate deed for probate avoidance with retained control, trust transfer deed for revocable trust ownership, special warranty deed for limited warranty conveyances; FIRPTA Foreign Investment in Real Property Tax Act withholding compliance under IRC Section 1445 with generally 15% gross purchase price withholding on foreign-seller transactions and reduced rates available with IRS Form 8288-B certification with attorney coordination on Form 8288 submission within 20 days of closing; Florida homestead exemption under Florida Constitution Article X Section 4 with UNLIMITED creditor protection on primary residence and descendant restrictions on devise; estate planning coordination through revocable trust ownership structures with Florida homestead-compliant designation; asset protection through tenancy by entireties Florida-protected marital ownership and LLC structures and FLP family limited partnership structures; equitable distribution coordination for divorce-related real estate transactions under Florida Statutes Chapter 61; lender attorney coordination at closing for deed and security instrument execution. Florida attorney types: real estate transactional attorney handling closings and contract review and title work and deed preparation; title attorney handling title search and title insurance underwriting and title defect resolution and ALTA + Florida-form policies; estate planning attorney handling trust formation and will drafting and beneficiary designation and Florida homestead-compliant trust ownership and lady bird deed; family law divorce attorney handling equitable distribution and marital vs non-marital property classification and refinance / sale coordination during divorce; asset protection attorney handling tenancy by entireties and LLC ownership and Florida homestead unlimited exemption strategy and FLP structures. Florida Bar credentials: Florida Bar Board Certified Real Estate Lawyer; Florida Bar Real Property Probate & Trust Law Section RPPTL; Florida Bar Family Law Section; Florida Bar Tax Section; ABA Real Property Trust & Estate Section RPTE; CELA Certified Elder Law Attorney through National Elder Law Foundation; LLM in Taxation Master of Laws post-JD specialty degree from NYU Georgetown or U Florida. Partner-as-borrower CTA at bottom routing attorneys to dedicated attorney mortgage guide covering BigLaw partner W-2 + K-1 + capital distributions + RSU multi-source synthesis under Fannie Mae B3-3.4-02, regional firm partnership distributions, and solo or regional Schedule C income with Bank Statement Non-QM alternative." canonical="https://stairwaymortgage.com/attorneys/">
+  <div class="pattorney-scope" set:html={pattorneyBody} />
+</Layout>
+
+<style is:global>
+.pattorney-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A;
+      --ink-2: #1E2433;
+      --ink-3: #2C3548;
+      --ink-light: #4A5568;
+      --ink-lighter: #6B7280;
+      --paper: #FAFAF7;
+      --paper-2: #F4F4EE;
+      --paper-3: #EDEDE5;
+      --white: #FFFFFF;
+      --blue: #1845D6;
+      --blue-deep: #0F2EA0;
+      --blue-soft: #E8EEFF;
+      --blue-tint: #F2F5FF;
+      --gold: #B8860B;
+      --rust: #8B2C2C;
+      --border: #E5E5DE;
+      --border-strong: #D4D4C8;
+      --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; 
+      --text-xs: 0.75rem;    
+      --text-sm: 0.875rem;   
+      --text-base: 1.0625rem;
+      --text-md: 1.1875rem;  
+      --text-lg: 1.375rem;   
+      --text-xl: 1.625rem;   
+      --text-2xl: 2rem;      
+      --text-3xl: 2.75rem;   
+      --text-4xl: 3.75rem;   
+      --text-5xl: 5rem;      
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-5: 1.5rem;
+      --s-6: 2rem;
+      --s-7: 3rem;
+      --s-8: 4rem;
+      --s-9: 6rem;
+      --s-10: 8rem;
+      --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.pattorney-scope, .pattorney-scope{
+        background-color: #FAFAF7 !important;
+        color: #0A0E1A !important;
+        color-scheme: light only !important;
+      }.pattorney-scope *{
+        forced-color-adjust: none;
+      }
+    }.pattorney-scope, .pattorney-scope *::before, .pattorney-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.pattorney-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.pattorney-scope{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.pattorney-scope img, .pattorney-scope svg{ display: block; max-width: 100%; }.pattorney-scope a{ color: inherit; text-decoration: none; }.pattorney-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.pattorney-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.pattorney-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.pattorney-scope .container-wide{ max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }.pattorney-scope .eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-block;
+    }.pattorney-scope .display-1{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      color: var(--ink);
+    }.pattorney-scope .display-2{
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, var(--text-3xl));
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 100, "SOFT" 50;
+      color: var(--ink);
+    }.pattorney-scope h2{
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+      font-weight: 450;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 60, "SOFT" 50;
+    }.pattorney-scope h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--s-4);
+      font-variation-settings: "opsz" 30;
+    }.pattorney-scope h4{
+      font-family: var(--sans);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.005em;
+    }.pattorney-scope p{ margin-bottom: var(--s-4); }.pattorney-scope p:last-child{ margin-bottom: 0; }.pattorney-scope p.lead{
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      color: var(--ink-2);
+      font-weight: 350;
+    }.pattorney-scope p.lede{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.pattorney-scope .body-text{ color: var(--ink-2); }.pattorney-scope .text-muted{ color: var(--ink-lighter); }.pattorney-scope .text-small{ font-size: var(--text-sm); }.pattorney-scope .text-mono{ font-family: var(--mono); font-feature-settings: 'tnum' 1; }.pattorney-scope strong, .pattorney-scope b{ font-weight: 600; color: var(--ink); }.pattorney-scope em, .pattorney-scope i{ font-style: italic; }.pattorney-scope .nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }.pattorney-scope .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      max-width: 1340px;
+      margin: 0 auto;
+    }.pattorney-scope .logo{
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 30;
+    }.pattorney-scope .logo-mark{
+      width: 28px; height: 28px;
+      background: var(--ink);
+      position: relative;
+      border-radius: 2px;
+    }.pattorney-scope .logo-mark::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.pattorney-scope .logo-mark::after{
+      content: '';
+      position: absolute;
+      inset: 5px 9px 9px 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.pattorney-scope .logo-sub{ font-size: var(--text-2xs); color: var(--ink-lighter); font-family: var(--sans); font-weight: 400; letter-spacing: 0.04em; }.pattorney-scope .nav-links{
+      display: flex; gap: var(--s-6); list-style: none;
+      font-size: var(--text-sm); font-weight: 500;
+    }.pattorney-scope .nav-links a{ color: var(--ink-2); transition: color 0.15s; }.pattorney-scope .nav-links a:hover{ color: var(--blue); }.pattorney-scope .nav-cta{
+      display: flex; gap: var(--s-3);
+    }
+    @media (max-width: 900px) {.pattorney-scope .nav-links{ display: none; }.pattorney-scope .nav-cta .btn-secondary{ display: none; }
+    }.pattorney-scope .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-3) var(--s-5);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }.pattorney-scope .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }.pattorney-scope .btn-primary:hover{
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }.pattorney-scope .btn-secondary{
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }.pattorney-scope .btn-secondary:hover{
+      border-color: var(--ink);
+    }.pattorney-scope .btn-light{
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }.pattorney-scope .btn-light:hover{ background: var(--paper-2); }.pattorney-scope .btn-large{
+      padding: var(--s-4) var(--s-6);
+      font-size: var(--text-base);
+    }.pattorney-scope .btn-arrow{
+      display: inline-flex; align-items: center; gap: var(--s-2);
+      color: var(--blue); font-weight: 500;
+      transition: gap 0.18s;
+    }.pattorney-scope .btn-arrow:hover{ gap: var(--s-3); }.pattorney-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.pattorney-scope .hero{
+      padding: var(--s-9) 0 var(--s-8);
+      border-bottom: 1px solid var(--border);
+    }.pattorney-scope .breadcrumb{
+      display: flex; gap: var(--s-2);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      margin-bottom: var(--s-7);
+    }.pattorney-scope .breadcrumb a{ color: var(--ink-lighter); }.pattorney-scope .breadcrumb a:hover{ color: var(--blue); }.pattorney-scope .breadcrumb span:last-child{ color: var(--ink); }.pattorney-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.pattorney-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.pattorney-scope .hero-subtitle{
+      max-width: 56ch;
+      margin-bottom: var(--s-7);
+    }.pattorney-scope .hero-actions{
+      display: flex; gap: var(--s-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--s-5);
+    }.pattorney-scope .hero-trust{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: var(--s-3);
+    }.pattorney-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.pattorney-scope .stats{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-7) 0;
+    }.pattorney-scope .stats-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }.pattorney-scope .stat{
+      padding: 0 var(--s-4);
+      border-left: 1px solid var(--ink-3);
+    }.pattorney-scope .stat:first-child{ border-left: 0; padding-left: 0; }.pattorney-scope .stat-num{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 350;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 144;
+    }.pattorney-scope .stat-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {.pattorney-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.pattorney-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.pattorney-scope .section{
+      padding: var(--s-10) 0;
+    }.pattorney-scope .section-tinted{ background: var(--paper-2); }.pattorney-scope .section-dark{ background: var(--ink); color: var(--paper); }.pattorney-scope .section-header{
+      max-width: 720px;
+      margin-bottom: var(--s-8);
+    }.pattorney-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.pattorney-scope .section-header h2{ margin-bottom: var(--s-5); }.pattorney-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.pattorney-scope .lede-section{ padding: var(--s-9) 0; }.pattorney-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.pattorney-scope .data-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-feature-settings: 'tnum' 1;
+    }.pattorney-scope .data-table thead th{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      font-weight: 500;
+      text-align: left;
+      padding: var(--s-3) var(--s-4);
+      border-bottom: 1px solid var(--border-strong);
+    }.pattorney-scope .data-table tbody td{
+      padding: var(--s-5) var(--s-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }.pattorney-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.pattorney-scope .data-table tbody td:first-child{
+      font-weight: 500;
+      color: var(--ink);
+      width: 28%;
+    }.pattorney-scope .data-table tbody td:nth-child(2){
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--blue-deep);
+      white-space: nowrap;
+      width: 28%;
+    }.pattorney-scope .data-table tbody td:last-child{
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {.pattorney-scope .data-table thead{ display: none; }.pattorney-scope .data-table tbody tr{
+        display: block;
+        padding: var(--s-5) 0;
+        border-bottom: 1px solid var(--border);
+      }.pattorney-scope .data-table tbody td{
+        display: block;
+        padding: 0 0 var(--s-2);
+        border: 0;
+        width: 100% !important;
+      }.pattorney-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.pattorney-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.pattorney-scope .methods-grid{
+      display: grid;
+      gap: var(--s-5);
+    }.pattorney-scope .method{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.pattorney-scope .method:hover{
+      border-color: var(--border-strong);
+    }.pattorney-scope .method-header{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+      margin-bottom: var(--s-5);
+    }.pattorney-scope .method-num{
+      font-family: var(--mono);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: var(--s-2);
+      letter-spacing: -0.02em;
+    }.pattorney-scope .method-title h3{
+      margin-bottom: var(--s-3);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+    }.pattorney-scope .method-tag{
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      padding: var(--s-1) var(--s-3);
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.pattorney-scope .method-body{
+      padding-left: calc(var(--text-2xl) + var(--s-5));
+    }.pattorney-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.pattorney-scope .worked-example{
+      background: var(--paper-2);
+      border-left: 3px solid var(--ink);
+      padding: var(--s-5) var(--s-6);
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }.pattorney-scope .worked-example.featured{
+      background: var(--ink);
+      color: var(--paper);
+      border-left-color: var(--blue);
+    }.pattorney-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.pattorney-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.pattorney-scope .worked-example.featured .we-num{ color: var(--paper); }.pattorney-scope .we-title{
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--s-4);
+      color: var(--ink);
+    }.pattorney-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.pattorney-scope .we-line{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s-4);
+      padding: var(--s-2) 0;
+    }.pattorney-scope .we-label{ color: var(--ink-light); }.pattorney-scope .we-num{ color: var(--ink); font-weight: 500; }.pattorney-scope .we-divider{
+      border-top: 1px dashed var(--border-strong);
+      margin: var(--s-3) 0;
+      grid-column: 1 / -1;
+    }.pattorney-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.pattorney-scope .we-result{
+      grid-template-columns: 1fr auto;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border-strong);
+      margin-top: var(--s-2);
+      font-weight: 600;
+    }.pattorney-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.pattorney-scope .method{ padding: var(--s-5); }.pattorney-scope .method-body{ padding-left: 0; }.pattorney-scope .method-num{ font-size: var(--text-xl); }
+    }.pattorney-scope .callout{
+      background: var(--blue-tint);
+      border: 1px solid rgba(24, 69, 214, 0.12);
+      border-radius: 6px;
+      padding: var(--s-6) var(--s-7);
+      max-width: 760px;
+    }.pattorney-scope .callout-eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.pattorney-scope .callout p{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.pattorney-scope .testim-warning{
+      background: #FFF1F1;
+      border: 1px solid rgba(139, 44, 44, 0.3);
+      border-radius: 4px;
+      padding: var(--s-3) var(--s-5);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      color: var(--rust);
+      margin: 0 auto var(--s-7);
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+    }.pattorney-scope .testim-warning .mono-tag{
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.1em;
+      background: var(--rust);
+      color: var(--paper);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }.pattorney-scope .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {.pattorney-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; }
+    }.pattorney-scope .testimonials-grid--quad{
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+    }
+    @media (max-width: 900px) {.pattorney-scope .testimonials-grid--quad{ grid-template-columns: 1fr; max-width: 620px; }
+    }.pattorney-scope .testim-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.pattorney-scope .testim-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }.pattorney-scope .testim-card .example-tag{
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      background: rgba(139, 44, 44, 0.08);
+      color: var(--rust);
+      padding: 3px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+    }.pattorney-scope .testim-avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 30;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }.pattorney-scope .testim-avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      display: block;
+    }.pattorney-scope .testim-avatar::after{
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 50%;
+    }.pattorney-scope .testim-avatar-1{ background: var(--blue-soft); color: var(--blue-deep); }.pattorney-scope .testim-avatar-2{ background: #F0EDE8; color: #6B5C4B; }.pattorney-scope .testim-avatar-3{ background: #E8EFE8; color: #3D5A3D; }.pattorney-scope .testim-quote{
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      margin: 0;
+      flex: 1;
+    }.pattorney-scope .testim-attribution{
+      border-top: 1px solid var(--border);
+      padding-top: var(--s-4);
+    }.pattorney-scope .testim-name{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.005em;
+    }.pattorney-scope .testim-meta{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }.pattorney-scope .programs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+    @media (max-width: 720px) {.pattorney-scope .programs-grid{ grid-template-columns: 1fr; }
+    }.pattorney-scope .program{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      transition: all 0.2s;
+    }.pattorney-scope .program:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }.pattorney-scope .program h4{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      font-variation-settings: "opsz" 30;
+    }.pattorney-scope .program-when{
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      flex: 1;
+    }.pattorney-scope .program-links{
+      display: flex;
+      gap: var(--s-5);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+    }.pattorney-scope .program-links a{
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-1);
+    }.pattorney-scope .program-links a:hover{ color: var(--blue-deep); }.pattorney-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.pattorney-scope .per-diem-section{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+    }.pattorney-scope .per-diem-section h2{ color: var(--paper); }.pattorney-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.pattorney-scope .per-diem-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.pattorney-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); }
+    }.pattorney-scope .per-diem-list{
+      list-style: none;
+      padding: 0;
+    }.pattorney-scope .per-diem-list li{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--ink-3);
+      display: flex;
+      gap: var(--s-4);
+      align-items: start;
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.9);
+    }.pattorney-scope .per-diem-list li:last-child{ border-bottom: 0; }.pattorney-scope .pd-num{
+      font-family: var(--mono);
+      color: var(--blue-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 1.5em;
+    }.pattorney-scope .playbook-stages{ display: grid; gap: var(--s-7); }.pattorney-scope .stage{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-7);
+      padding-bottom: var(--s-7);
+      border-bottom: 1px solid var(--border);
+    }.pattorney-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.pattorney-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); }
+    }.pattorney-scope .stage-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      padding-top: var(--s-2);
+    }.pattorney-scope .stage-content h4{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.pattorney-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.pattorney-scope .stage-bullets{
+      list-style: none;
+      padding: 0;
+    }.pattorney-scope .stage-bullets li{
+      padding: var(--s-2) 0;
+      padding-left: var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }.pattorney-scope .stage-bullets li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 1px;
+      background: var(--blue);
+    }.pattorney-scope .bio-section{
+      background: var(--paper-2);
+      padding: var(--s-10) 0;
+    }.pattorney-scope .bio-grid{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-7);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.pattorney-scope .bio-grid{ grid-template-columns: 1fr; }
+    }.pattorney-scope .bio-photo{
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink);
+      position: relative;
+    }.pattorney-scope .bio-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
+    }.pattorney-scope .bio-photo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      z-index: 2;
+    }.pattorney-scope .bio-name{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: var(--s-2);
+      font-variation-settings: "opsz" 60;
+    }.pattorney-scope .bio-title{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      margin-bottom: var(--s-5);
+    }.pattorney-scope .bio-quote{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-style: italic;
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--blue);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 30;
+    }.pattorney-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.pattorney-scope .faq-list{
+      max-width: 800px;
+      margin: 0 auto;
+    }.pattorney-scope .faq-item{
+      padding: var(--s-6) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+    }.pattorney-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.pattorney-scope .faq-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.04em;
+      color: var(--blue);
+      font-weight: 500;
+      padding-top: var(--s-1);
+    }.pattorney-scope .faq-q{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      color: var(--ink);
+      line-height: 1.3;
+      font-variation-settings: "opsz" 30;
+    }.pattorney-scope .faq-a{
+      color: var(--ink-2);
+      line-height: 1.65;
+    }.pattorney-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.pattorney-scope .sources-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.pattorney-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.pattorney-scope .source-group h4{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border-strong);
+    }.pattorney-scope .source-list{ list-style: none; padding: 0; }.pattorney-scope .source-list li{
+      padding: var(--s-3) 0;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }.pattorney-scope .source-list a{
+      color: var(--ink-2);
+      transition: color 0.15s;
+      display: block;
+    }.pattorney-scope .source-list a:hover{ color: var(--blue); }.pattorney-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.pattorney-scope .source-url{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      word-break: break-all;
+    }.pattorney-scope .final-cta{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+      text-align: center;
+    }.pattorney-scope .final-cta h2{
+      color: var(--paper);
+      max-width: 22ch;
+      margin: 0 auto var(--s-5);
+    }.pattorney-scope .final-cta p{
+      color: rgba(250,250,247,0.75);
+      font-size: var(--text-lg);
+      max-width: 56ch;
+      margin: 0 auto var(--s-7);
+    }.pattorney-scope .final-cta-actions{
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }.pattorney-scope .btn-on-dark{
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--paper);
+    }.pattorney-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.pattorney-scope .btn-on-dark-secondary{
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(250,250,247,0.3);
+    }.pattorney-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.pattorney-scope .footer{
+      background: var(--ink-2);
+      color: var(--paper);
+      padding: var(--s-9) 0 var(--s-5);
+    }.pattorney-scope .footer-grid{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s-7);
+      margin-bottom: var(--s-7);
+    }
+    @media (max-width: 800px) {.pattorney-scope .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }.pattorney-scope .footer-brand .logo{ color: var(--paper); margin-bottom: var(--s-4); }.pattorney-scope .footer-brand p{ color: rgba(250,250,247,0.65); font-size: var(--text-sm); margin-bottom: var(--s-4); }.pattorney-scope .footer-brand .compliance{ font-family: var(--mono); font-size: var(--text-xs); line-height: 1.7; color: rgba(250,250,247,0.5); }.pattorney-scope .footer-col h5{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,0.6);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+    }.pattorney-scope .footer-col ul{ list-style: none; padding: 0; }.pattorney-scope .footer-col li{ padding: 4px 0; }.pattorney-scope .footer-col a{
+      color: rgba(250,250,247,0.85);
+      font-size: var(--text-sm);
+      transition: color 0.15s;
+    }.pattorney-scope .footer-col a:hover{ color: var(--paper); }.pattorney-scope .footer-bottom{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(250,250,247,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-4);
+      font-size: var(--text-xs);
+      color: rgba(250,250,247,0.5);
+      font-family: var(--mono);
+    }.pattorney-scope .mt-6{ margin-top: var(--s-6); }.pattorney-scope .mt-8{ margin-top: var(--s-8); }.pattorney-scope .mb-0{ margin-bottom: 0; }
+    @media (prefers-reduced-motion: no-preference) {.pattorney-scope .fade-in{
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.7s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }.pattorney-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.pattorney-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.pattorney-scope .highlights-list{
+      list-style: none;
+      padding: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      columns: 1;
+      column-gap: var(--s-7);
+    }
+    @media (min-width: 880px) {.pattorney-scope .highlights-list{ columns: 2; column-gap: var(--s-8); }
+    }.pattorney-scope .highlights-list li{
+      break-inside: avoid;
+      padding: var(--s-3) 0 var(--s-3) var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }.pattorney-scope .highlights-list li:last-child{ border-bottom: 0; }.pattorney-scope .highlights-list li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.2em;
+      width: 14px;
+      height: 1px;
+      background: var(--blue);
+    }.pattorney-scope .highlights-source{
+      font-size: var(--text-sm);
+      color: var(--ink-lighter);
+      margin-left: 4px;
+    }.pattorney-scope .highlights-source a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }.pattorney-scope .highlights-source a:hover{ color: var(--blue-deep); }.pattorney-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.pattorney-scope .resources-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {.pattorney-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); }
+    }.pattorney-scope .resource-item{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--ink-2);
+    }.pattorney-scope .resource-item a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }.pattorney-scope .resource-item a:hover{ color: var(--blue-deep); }.pattorney-scope .professions-section{
+      padding: var(--s-9) 0 var(--s-10);
+    }.pattorney-scope .professions-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      max-width: 1100px;
+      margin: var(--s-7) auto 0;
+    }
+    @media (max-width: 800px) {.pattorney-scope .professions-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.pattorney-scope .profession-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }.pattorney-scope .profession-card:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -12px rgba(10, 14, 26, 0.15);
+    }.pattorney-scope .profession-num{
+      font-family: var(--mono);
+      font-size: var(--text-md);
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }.pattorney-scope .profession-title{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variation-settings: "opsz" 60;
+      margin: 0;
+      color: var(--ink);
+    }.pattorney-scope .profession-tag{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.4;
+      color: var(--ink-2);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      font-style: italic;
+      margin: 0;
+    }.pattorney-scope .profession-points{
+      list-style: none;
+      padding: 0;
+      margin: var(--s-2) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }.pattorney-scope .profession-points li{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-light);
+      padding-left: var(--s-4);
+      position: relative;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }.pattorney-scope .profession-points li::before{
+      content: '·';
+      position: absolute;
+      left: var(--s-2);
+      top: -2px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.4em;
+    }.pattorney-scope .profession-link{
+      margin-top: auto;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-2);
+      transition: gap 0.2s;
+    }.pattorney-scope .profession-link::after{ content: '→'; transition: transform 0.2s; }.pattorney-scope .profession-card:hover .profession-link::after{ transform: translateX(4px); }.pattorney-scope .differentiators-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.pattorney-scope .differentiators-grid{ grid-template-columns: 1fr; gap: var(--s-6); }
+    }.pattorney-scope .differentiator{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }.pattorney-scope .differentiator-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--blue-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+      font-weight: 500;
+    }.pattorney-scope .differentiator h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.pattorney-scope .differentiator p{
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(250,250,247,0.85);
+      margin: 0;
+    }.pattorney-scope .hero--with-image .hero-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.pattorney-scope .hero--with-image h1{ max-width: 16ch; }.pattorney-scope .hero--with-image .hero-subtitle{ max-width: 52ch; }.pattorney-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.pattorney-scope .hero-image::before{ content: ''; position: absolute; top: 58%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(232,238,255,0.18) 35%, rgba(232,238,255,0.18) 65%, transparent 100%); z-index: 1; }.pattorney-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.pattorney-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.pattorney-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.pattorney-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; } }.pattorney-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.pattorney-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.pattorney-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.pattorney-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.pattorney-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.pattorney-scope .final-cta--bg .container{ position: relative; z-index: 1; }.pattorney-scope .stats--with-image .stats-bar-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.pattorney-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.pattorney-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.pattorney-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 800px) {.pattorney-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.pattorney-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); }.pattorney-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; } }.pattorney-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 30% 60%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.pattorney-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; filter: contrast(1.03) saturate(0.97); }.pattorney-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.pattorney-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.pattorney-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.pattorney-scope .pre-cta-photo{ aspect-ratio: 4/3; } }
+  
+
+/* ===== SUB-PAGE D-SERIES EXTENSIONS (v12 sub-page spec §4) ===== */
+
+/* Key Facts grid (Section 1) */
+.pattorney-scope .key-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.pattorney-scope .key-fact-card {
+  background: var(--paper);
+  border: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  border-radius: 6px;
+  padding: var(--s-5);
+}
+.pattorney-scope .key-fact-num {
+  font-family: var(--serif);
+  font-size: var(--text-2xl, 1.8rem);
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: var(--s-2);
+  letter-spacing: -0.02em;
+}
+.pattorney-scope .key-fact-body {
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  margin: 0;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+
+/* Loan-Program grid (Section 5) */
+.pattorney-scope .loan-program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.pattorney-scope .loan-program-card {
+  background: var(--paper);
+  border-left: 3px solid var(--blue);
+  padding: var(--s-5);
+  border-radius: 0 6px 6px 0;
+}
+.pattorney-scope .loan-program-name {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+}
+.pattorney-scope .loan-program-points {
+  margin: 0 0 var(--s-3) 0;
+  padding-left: var(--s-4);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.pattorney-scope .loan-program-tag {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  font-weight: 500;
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+
+/* Career Timeline (Section 7) */
+.pattorney-scope .career-timeline {
+  margin-top: var(--s-6);
+  border-left: 2px solid var(--blue);
+  padding-left: 0;
+}
+.pattorney-scope .timeline-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--s-6);
+  padding: var(--s-5) var(--s-5) var(--s-5) var(--s-5);
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  position: relative;
+}
+.pattorney-scope .timeline-entry:last-child {
+  border-bottom: none;
+}
+.pattorney-scope .timeline-entry::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: var(--s-6);
+  width: 12px;
+  height: 12px;
+  background: var(--blue);
+  border-radius: 50%;
+}
+.pattorney-scope .timeline-stage {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  padding-top: var(--s-1);
+}
+.pattorney-scope .timeline-body h4 {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-2) 0;
+  color: var(--ink);
+}
+.pattorney-scope .timeline-body p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+@media (max-width: 720px) {
+  .pattorney-scope .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+  }
+}
+
+/* Sub-page FAQ markup (Section 9) — v10 numbered pattern */
+.pattorney-scope .faq-list .faq-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: var(--s-5);
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+.pattorney-scope .faq-list .faq-item:last-child {
+  border-bottom: none;
+}
+.pattorney-scope .faq-list .faq-num {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  padding-top: var(--s-1);
+}
+.pattorney-scope .faq-list .faq-q {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.2rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.pattorney-scope .faq-list .faq-a {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.pattorney-scope .faq-list .faq-a a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* FAQ cross-links block above FAQ list (Section 9) */
+.pattorney-scope .faq-cross-links a {
+  color: var(--blue);
+}
+.pattorney-scope .faq-cross-links a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Link Farm grid (Section 10) */
+.pattorney-scope .link-farm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s-6);
+  margin-top: var(--s-6);
+}
+.pattorney-scope .link-farm-col h4 {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+}
+.pattorney-scope .link-farm-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-sm);
+  line-height: 1.9;
+}
+.pattorney-scope .link-farm-col a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.pattorney-scope .link-farm-col a:hover {
+  border-bottom-color: var(--blue);
+}
+
+</style>
+

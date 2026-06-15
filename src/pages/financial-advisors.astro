@@ -1,0 +1,1897 @@
+---
+import Layout from '../layouts/Layout.astro';
+const pfaBody = `
+  
+
+  <!-- ============ SECTION 0: HERO ============ -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow eyebrow">Financial Advisors &middot; Partner Education</div>
+          <h1 class="display-1">Why your Financial Advisor matters in your real estate decision &mdash; portfolio coordination, down payment strategy, asset-depletion qualifying, 401(k) loan options, and estate planning alignment with your home purchase.</h1>
+          <p class="lead hero-subtitle">Working with a Financial Advisor (FA) on your real estate transaction is the difference between an isolated home purchase and a coordinated financial strategy spanning your portfolio, retirement plan, and estate. <strong>Your FA handles down payment funding strategy (liquid vs taxable-account vs retirement-account sources), 401(k) loan coordination under <a href="https://www.law.cornell.edu/uscode/text/26/72" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">IRC Section 72(p)</a> for home purchase (up to $50K or 50% of vested balance, 5-year repayment, 15-year repayment for primary residence), IRA first-time home buyer withdrawal exemption (up to $10K under IRC Section 72(t)(2)(F)), asset-depletion mortgage qualifying coordination for retirees, investment portfolio rebalancing post-purchase, and estate planning alignment</strong>. For FAs themselves, the regulatory landscape spans fiduciary RIA practice under the <a href="https://www.law.cornell.edu/uscode/text/15/chapter-2D/subchapter-II" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Investment Advisers Act of 1940</a> (acting in client&rsquo;s best interest), broker-dealer registered representative under FINRA Reg BI (Regulation Best Interest, effective June 30, 2020 requiring best interest standard for retail brokerage), and hybrid advisor structures combining both. For Florida buyers and sellers, the FA + mortgage coordination is substantive when assets are managed by the FA and asset-depletion or portfolio-tied qualifying applies. <strong>If you&rsquo;re a Financial Advisor reading this looking for a mortgage on your own home, scroll to the bottom for the FA-as-borrower CTAs covering both RIA principal and wirehouse producer paths.</strong></p>
+          <div class="hero-actions">
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary btn-large">Schedule a call with Jim</a>
+            <a href="#fa-role" class="btn btn-secondary btn-large">See what your FA does</a>
+          </div>
+          <div class="hero-trust">
+            <span class="trust-dot"></span>
+            <span>Broker NMLS #1072866</span>
+            <span>&middot;</span>
+            <span>Florida mortgage broker coordinating with Financial Advisor partners for down payment strategy, 401(k) loan options, asset-depletion qualifying, IRA first-time buyer withdrawals, and portfolio-tied jumbo mortgage qualifying</span>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/7567485/pexels-photo-7567485.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Financial Advisor reviewing portfolio with client" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Financial+Advisor';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ STATS BAR ============ -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">340K+ FAs</div>
+            <div class="stat-label">Approximately 340,000 Personal Financial Advisors employed across the United States per <a href="https://www.bls.gov/ooh/business-and-financial/personal-financial-advisors.htm" target="_blank" rel="noopener noreferrer" style="color: inherit;">BLS OOH</a>. Approximately 95,000+ CFP-certified professionals through <a href="https://www.cfp.net/" target="_blank" rel="noopener noreferrer" style="color: inherit;">CFP Board</a></div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Reg BI 2020</div>
+            <div class="stat-label"><a href="https://www.sec.gov/regulation-best-interest" target="_blank" rel="noopener noreferrer" style="color: inherit;">SEC Regulation Best Interest (Reg BI)</a> effective June 30, 2020 requires broker-dealer registered representatives to act in the retail customer&rsquo;s best interest distinct from but parallel to the RIA fiduciary standard under Investment Advisers Act of 1940</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$50K 401(k)</div>
+            <div class="stat-label">Maximum 401(k) loan amount under <a href="https://www.law.cornell.edu/uscode/text/26/72" target="_blank" rel="noopener noreferrer" style="color: inherit;">IRC Section 72(p)</a>: the lesser of $50K or 50% of vested account balance. Standard 5-year repayment; extended 15-year repayment for primary residence purchase</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$10K IRA</div>
+            <div class="stat-label">First-time home buyer IRA withdrawal exemption from 10% early withdrawal penalty under IRC Section 72(t)(2)(F). Up to $10K per person ($20K married couple) lifetime exemption. Withdrawal remains income-taxable but penalty-exempt</div>
+          </div>
+        </div>
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/7821488/pexels-photo-7821488.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Financial planning + portfolio review documents" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x750/0A0E1A/E8EEFF/png?text=FA+Planning';">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEDE ============ -->
+  <section class="lede-section">
+    <div class="container-narrow">
+      <p class="lede">Working with a Financial Advisor (FA) on your Florida real estate transaction is the foundation of a coordinated financial strategy. <strong>Your FA handles down payment funding strategy across liquid taxable-account assets vs retirement-account sources with tax implications, 401(k) loan coordination under <a href="https://www.law.cornell.edu/uscode/text/26/72" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">IRC Section 72(p)</a> (up to $50K or 50% of vested balance with extended 15-year repayment for primary residence purchase), IRA first-time home buyer withdrawal exemption (up to $10K per person under IRC Section 72(t)(2)(F)), portfolio rebalancing post-purchase to maintain target asset allocation, estate planning alignment of the new property within trust or beneficiary designation structures, retirement income planning for Social Security claiming + Required Minimum Distributions (RMDs) at age 73 under SECURE Act 2.0, and asset-depletion mortgage qualifying coordination on managed portfolio balances</strong>. The FA category spans Registered Investment Advisors (RIA) operating under the <a href="https://www.law.cornell.edu/uscode/text/15/chapter-2D/subchapter-II" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Investment Advisers Act of 1940</a> fiduciary standard (must act in client&rsquo;s best interest), broker-dealer registered representatives under <a href="https://www.sec.gov/regulation-best-interest" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">SEC Reg BI</a> (best interest standard effective June 30, 2020), hybrid advisors holding both RIA and BD licenses, insurance-licensed advisors selling life insurance and annuity products, and emerging robo-advisor + human hybrid platforms (Schwab Intelligent Portfolios Premium, Vanguard Personal Advisor Services, Fidelity Personalized Planning). For Florida buyers, the FA + mortgage coordination matters substantively when managed portfolio assets enable asset-depletion qualifying or when retirement plan loan funding affects the financing structure. <strong>Stairway Mortgage partners with Florida Financial Advisors across Broward, Miami-Dade, Palm Beach, the Treasure Coast, and statewide on asset-depletion qualifying, portfolio-tied jumbo mortgage qualifying, and retirement plan loan coordination.</strong> Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #1: KEY FACTS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto;">
+        <div class="eyebrow">01 &middot; Working with a Financial Advisor at a glance</div>
+        <h2>Key facts every Florida buyer and seller should know about FA coordination.</h2>
+      </div>
+      <div class="key-facts-grid">
+        <div class="key-fact-card">
+          <div class="key-fact-num">Fiduciary vs Best Interest</div>
+          <p class="key-fact-body">RIA practitioners operate under fiduciary standard duty per <a href="https://www.law.cornell.edu/uscode/text/15/chapter-2D/subchapter-II" target="_blank" rel="noopener noreferrer">Investment Advisers Act of 1940</a> (must act in client&rsquo;s best interest). Broker-dealer registered reps operate under <a href="https://www.sec.gov/regulation-best-interest" target="_blank" rel="noopener noreferrer">Reg BI</a> best interest standard. Different regulatory frameworks for different advisor categories.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Down payment strategy</div>
+          <p class="key-fact-body">Your FA structures down payment funding across taxable account liquid assets vs retirement-account sources, evaluating tax implications, opportunity costs of selling appreciated investments, and timing of liquidation across tax years. Multi-source funding optimizes the total tax outcome.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Retirement plan loans</div>
+          <p class="key-fact-body">401(k) loan under <a href="https://www.law.cornell.edu/uscode/text/26/72" target="_blank" rel="noopener noreferrer">IRC Section 72(p)</a> permits up to $50K or 50% of vested balance with 5-year repayment (15-year for primary residence). IRA first-time home buyer withdrawal up to $10K per person penalty-exempt under IRC Section 72(t)(2)(F).</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Asset-depletion qualifying</div>
+          <p class="key-fact-body">For mortgage qualifying, Asset-Depletion Non-QM converts liquid managed portfolio balance to implied monthly income (typically amortized over 360 months). FA coordination supports verification of managed AUM balance and continuity narrative for the mortgage lender.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #2: FA TYPES ============ -->
+  <section class="professions-section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">02 &middot; Five Financial Advisor types</div>
+        <h2>How Financial Advisors work and how they&rsquo;re regulated.</h2>
+        <p>The FA category spans multiple regulatory frameworks and business models. Five primary FA types: Registered Investment Advisor (fiduciary RIA), broker-dealer registered rep (Reg BI), hybrid advisor (both), insurance-licensed advisor, and robo-advisor + human hybrid platforms.</p>
+      </div>
+      <div class="professions-grid">
+
+        <a class="profession-card" href="#fa-role">
+          <div class="profession-num">01</div>
+          <h3 class="profession-title">Registered Investment Advisor (RIA)</h3>
+          <p class="profession-tag">"Fee-based fiduciary advisor under Investment Advisers Act of 1940. Must act in client&rsquo;s best interest. Compensation typically AUM-based (0.50-1.25% annual fee) or flat-fee or hourly. Form ADV registration with SEC or state board."</p>
+          <ul class="profession-points">
+            <li>Fiduciary standard duty (best interest required)</li>
+            <li>AUM-based fee 0.50-1.25% typical</li>
+            <li>Form ADV through SEC or state board</li>
+            <li>Series 65 Investment Adviser Representative</li>
+          </ul>
+          <span class="profession-link">See RIA mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#fa-role">
+          <div class="profession-num">02</div>
+          <h3 class="profession-title">Broker-dealer registered rep</h3>
+          <p class="profession-tag">"Commission + fee compensation under FINRA broker-dealer registration. Reg BI best interest standard (effective June 30, 2020). Major wirehouses: Merrill Lynch, Morgan Stanley, UBS, Wells Fargo Advisors plus regional broker-dealers."</p>
+          <ul class="profession-points">
+            <li>Reg BI best interest standard</li>
+            <li>Commission + AUM fee compensation</li>
+            <li>FINRA Series 7 + Series 66 typical</li>
+            <li>Wirehouse + regional BD platforms</li>
+          </ul>
+          <span class="profession-link">See BD rep mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#fa-role">
+          <div class="profession-num">03</div>
+          <h3 class="profession-title">Hybrid advisor (RIA + BD)</h3>
+          <p class="profession-tag">"Dual registration as RIA + broker-dealer registered rep. Combines fee-based fiduciary advisory with commission-based product sales. Common at independent broker-dealer firms like LPL Financial, Raymond James, Cetera, Commonwealth."</p>
+          <ul class="profession-points">
+            <li>Dual RIA + BD registration</li>
+            <li>Fee + commission compensation</li>
+            <li>Series 7 + Series 65 / 66</li>
+            <li>Independent BD platform typical</li>
+          </ul>
+          <span class="profession-link">See hybrid mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#fa-role">
+          <div class="profession-num">04</div>
+          <h3 class="profession-title">Insurance + investment advisor</h3>
+          <p class="profession-tag">"Insurance-licensed advisor selling life insurance, annuities (fixed, variable, indexed), and long-term care products alongside investment advisory. Major: New York Life, Northwestern Mutual, MassMutual, Prudential, Guardian, MetLife."</p>
+          <ul class="profession-points">
+            <li>Insurance license + Series 6 or 7</li>
+            <li>Annuity, life insurance, LTC products</li>
+            <li>Career advisor or independent agency</li>
+            <li>Commission + trail compensation</li>
+          </ul>
+          <span class="profession-link">See insurance advisor mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#fa-role">
+          <div class="profession-num">05</div>
+          <h3 class="profession-title">Robo-advisor + human hybrid</h3>
+          <p class="profession-tag">"Robo-advisor platforms with human advisor access. Schwab Intelligent Portfolios Premium, Vanguard Personal Advisor Services, Fidelity Personalized Planning, Betterment Premium, Wealthfront. Lower fees (0.30-0.50%) with algorithm-driven asset allocation."</p>
+          <ul class="profession-points">
+            <li>Lower fee (0.30-0.50% AUM typical)</li>
+            <li>Algorithm-driven asset allocation</li>
+            <li>Human CFP access for planning</li>
+            <li>Schwab / Vanguard / Fidelity scale</li>
+          </ul>
+          <span class="profession-link">See robo-hybrid mechanics</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #3: FA + REAL ESTATE 4 PHASES ============ -->
+  <section class="section" id="fa-role">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">03 &middot; What your FA does at each real estate phase</div>
+        <h2>How your Financial Advisor coordinates with your real estate transaction.</h2>
+        <p>Four substantive phases cover the FA&rsquo;s work across a real estate transaction lifecycle: pre-purchase down payment planning, purchase + closing portfolio rebalancing, ongoing ownership integration with retirement and estate planning, and sale or refinance portfolio reallocation.</p>
+      </div>
+
+      <h3>Phase 1 &mdash; Pre-purchase: down payment funding strategy</h3>
+      <p>Your FA evaluates down payment funding sources: liquid taxable-account assets (tax-efficient lot selection, capital gain considerations, ETF vs mutual fund tax implications), retirement-account sources (401(k) loan up to $50K with 15-year repayment for primary residence under <a href="https://www.law.cornell.edu/uscode/text/26/72" target="_blank" rel="noopener noreferrer">IRC Section 72(p)</a>, IRA first-time buyer withdrawal up to $10K per person penalty-exempt under IRC Section 72(t)(2)(F)), Roth IRA contribution withdrawal (always penalty-free), HELOC on existing property, and gift / loan from family. Multi-source funding optimizes tax outcome.</p>
+
+      <h3>Phase 2 &mdash; Purchase + closing: portfolio rebalancing</h3>
+      <p>At and after closing, your FA rebalances the portfolio to maintain target asset allocation given the new real estate exposure. Equity withdrawal from the portfolio for down payment reduces overall investment allocation; rebalancing across remaining holdings to maintain target stock / bond / alternative percentages. For asset-depletion qualifying mortgages, the FA documents the managed AUM balance for the lender at closing. For 401(k) loan funding, the FA coordinates with the 401(k) plan administrator on loan documentation and repayment setup.</p>
+
+      <h3>Phase 3 &mdash; Ownership: retirement + estate planning integration</h3>
+      <p>Through the ownership period, your FA integrates the property within retirement and estate planning frameworks: Required Minimum Distribution (RMD) coordination at age 73 under SECURE Act 2.0, beneficiary designation alignment with property ownership (trust vs individual vs joint), Florida homestead exemption + descendant protection considerations under <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter196" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 196</a>, and estate tax planning given the $13.99M federal estate tax exemption (2025) sunsetting to approximately $7M in 2026 absent Congressional extension.</p>
+
+      <h3>Phase 4 &mdash; Sale or refinance: portfolio reallocation</h3>
+      <p>At sale or refinance, your FA coordinates proceeds reallocation: Section 121 primary home gain exclusion ($250K single / $500K joint) preserves up to that amount of gain tax-free for portfolio reinvestment, depreciation recapture impact for investment property sale, 1031 like-kind exchange financing coordination if rolling into replacement investment property, and refinancing impact on portfolio cash flow (lower payment freeing income for investing vs higher cash-out balance from cash-out refi).</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #4: FIDUCIARY + REG BI DARK SECTION ============ -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/7567485/pexels-photo-7567485.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 760px;">
+        <div class="eyebrow eyebrow-light">04 &middot; What FA-level expertise means for your real estate decision</div>
+        <h2 style="color: var(--paper);">Six things every Florida buyer and seller should know about FA + real estate coordination.</h2>
+        <p style="color: rgba(250,250,247,0.78);">FA-level financial planning expertise on real estate transactions is substantively different from DIY approaches or commission-only product sales. Six clarifications every Florida buyer, seller, and retiree should understand.</p>
+      </div>
+
+      <div class="dark-grid">
+        <div class="dark-card">
+          <div class="dark-num">A</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Fiduciary standard vs Best Interest standard</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">RIA fiduciary standard under <a href="https://www.law.cornell.edu/uscode/text/15/chapter-2D/subchapter-II" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Investment Advisers Act of 1940</a> requires acting in client&rsquo;s best interest at all times. BD Reg BI standard under <a href="https://www.sec.gov/regulation-best-interest" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">SEC Regulation Best Interest</a> requires recommendations in retail customer&rsquo;s best interest. Different frameworks; clients should understand which standard applies to their relationship.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">B</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">401(k) loan: $50K cap + 15-year repayment for primary residence</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">401(k) loan under <a href="https://www.law.cornell.edu/uscode/text/26/72" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">IRC Section 72(p)</a>: up to $50K or 50% of vested balance. Standard 5-year repayment, but EXTENDED 15-year repayment available for primary residence purchase. No early withdrawal penalty since it&rsquo;s a loan. Job loss triggers immediate repayment (or rollover to IRA within deadline).</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">C</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">IRA first-time home buyer $10K penalty exemption</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">IRA withdrawal for first-time home buyer purchase: up to $10K per person ($20K married couple) lifetime exemption from the 10% early withdrawal penalty under IRC Section 72(t)(2)(F). Income tax still applies on the withdrawal (Traditional IRA) but penalty waived. Roth IRA contributions always withdrawable penalty + tax-free.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">D</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Asset-Depletion mortgage qualifying on managed AUM</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Asset-Depletion Non-QM converts liquid managed portfolio balance to implied monthly income (typically amortized over 360 months as available). FA coordination supports verification of managed AUM balance, asset class composition, and continuity narrative. Particularly useful for retirees, post-acquisition founders, and high-balance portfolio holders with limited current income.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">E</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Estate tax planning + Florida homestead protection</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Federal estate tax exemption $13.99M (2025) sunsets to approximately $7M in 2026 absent Congressional extension. Florida no-state-estate-tax. Florida homestead exemption under <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter196" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Florida Statutes Chapter 196</a> provides creditor protection + descendant restrictions on devise. FA + estate attorney coordination addresses trust ownership vs individual + beneficiary alignment.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">F</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">PE consolidation reshaping the FA industry</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">PE-backed RIA consolidator wave continues: Hightower Advisors (Thomas H. Lee Partners), Mercer Advisors (Oak Hill / Genstar), Wealth Enhancement Group (Onex), Captrust (GTCR), Beacon Pointe, Creative Planning (General Atlantic), Mariner Wealth Advisors, Edelman Financial Engines. Practice valuations at 8-12x annual recurring revenue. Industry consolidation accelerating; smaller RIA practices increasingly acquired into PE-backed platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ H2 #5: FA DESIGNATIONS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">05 &middot; FA credentials and specialty designations</div>
+        <h2>Financial Advisor credentials and designations explained.</h2>
+        <p>FA credentials document specialty expertise across financial planning, investment management, retirement planning, and fiduciary practice. Florida FAs commonly hold multiple credentials reflecting continuing professional education and specialty practice depth.</p>
+      </div>
+      <div class="loan-program-grid">
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CFP &mdash; Certified Financial Planner</h3>
+          <ul class="loan-program-points">
+            <li>Foundational financial planning credential through CFP Board</li>
+            <li>Bachelor&rsquo;s degree + coursework + exam + 6,000 hours experience</li>
+            <li>Fiduciary standard adopted in 2019 for CFPs</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Comprehensive planning</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CFA &mdash; Chartered Financial Analyst</h3>
+          <ul class="loan-program-points">
+            <li>Investment management credential through <a href="https://www.cfainstitute.org/" target="_blank" rel="noopener noreferrer">CFA Institute</a></li>
+            <li>Three-level exam + 4,000 hours qualified experience</li>
+            <li>Investment analysis, portfolio management, ethics</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Investment management</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">ChFC &mdash; Chartered Financial Consultant</h3>
+          <ul class="loan-program-points">
+            <li>The American College of Financial Services credential</li>
+            <li>Alternative to CFP; coursework-based without single exam</li>
+            <li>Comprehensive financial planning</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Alternative to CFP</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CIMA &mdash; Certified Investment Mgmt Analyst</h3>
+          <ul class="loan-program-points">
+            <li>Investments &amp; Wealth Institute credential</li>
+            <li>Investment consulting + portfolio construction</li>
+            <li>Common at institutional consulting practices</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Institutional / HNW consulting</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CRPC &mdash; Chartered Retirement Planning Counselor</h3>
+          <ul class="loan-program-points">
+            <li>College for Financial Planning credential</li>
+            <li>Retirement planning specialty</li>
+            <li>SECURE Act 2.0 + RMD planning expertise</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Retirement planning</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">AIF &mdash; Accredited Investment Fiduciary</h3>
+          <ul class="loan-program-points">
+            <li>Center for Fiduciary Studies credential</li>
+            <li>Fiduciary standard practice expertise</li>
+            <li>ERISA + investment policy coordination</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Fiduciary practice</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">Series 65 / 66 / 7 &mdash; Regulatory licenses</h3>
+          <ul class="loan-program-points">
+            <li>Series 65 IAR or 66 (combined) for RIA</li>
+            <li>Series 7 General Securities Representative for BD</li>
+            <li>FINRA + state regulatory framework</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Regulatory authorization</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #6: INDUSTRY CONTEXT ============ -->
+  <section class="section section-tinted">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">06 &middot; Six forces shaping the Florida FA industry</div>
+        <h2>How the Florida Financial Advisor industry works in 2026.</h2>
+        <p>The Florida FA industry operates at the intersection of fiduciary regulatory evolution, fee-based vs commission compensation dynamics, PE-backed RIA consolidation, Florida wealth migration patterns, robo-advisor + technology platform competition, and estate tax planning relevance with the 2026 sunset.</p>
+      </div>
+
+      <h3>Force 1 &mdash; Fiduciary standard evolution + Reg BI implementation</h3>
+      <p>Regulatory framework continues evolving: RIA fiduciary standard under <a href="https://www.law.cornell.edu/uscode/text/15/chapter-2D/subchapter-II" target="_blank" rel="noopener noreferrer">Investment Advisers Act of 1940</a> remains foundational. SEC Reg BI effective June 30, 2020 imposes best interest standard on broker-dealer registered reps. CFP Board adopted fiduciary standard for CFPs in 2019. Industry continues consolidating around fiduciary-pure practice models. DOL fiduciary rule evolution continues at federal level.</p>
+
+      <h3>Force 2 &mdash; Fee compression and fee model transitions</h3>
+      <p>RIA fee compression: AUM-based fees trending toward 0.50-0.75% at high-AUM tiers ($5M+ client accounts) vs traditional 1% standard. Robo-advisor platforms (Schwab Intelligent Portfolios, Vanguard PAS, Fidelity, Betterment, Wealthfront) at 0.30-0.50% pressure traditional advisory fees. Many RIAs adopting tiered fee schedules with declining marginal rates. Flat-fee and hourly-fee models growing for some practice segments.</p>
+
+      <h3>Force 3 &mdash; PE consolidation accelerating</h3>
+      <p>PE-backed RIA consolidator wave continues with substantial activity: Hightower Advisors (Thomas H. Lee Partners), Mercer Advisors (Oak Hill Capital then Genstar Capital), Wealth Enhancement Group (Onex Partners), Captrust (GTCR), Beacon Pointe Advisors, Creative Planning (General Atlantic), Mariner Wealth Advisors, Edelman Financial Engines. Practice valuations at 8-12x annual recurring revenue. Industry consolidation reshaping competitive landscape.</p>
+
+      <h3>Force 4 &mdash; Florida wealth migration supporting practice growth</h3>
+      <p>Florida continues experiencing substantial wealth migration from California, New York, Illinois, and New Jersey driven by no-state-income-tax advantage. The migration trend supports sustained Florida FA practice growth in high-net-worth segments. Many newly-Florida-resident HNW clients require multi-state tax planning + estate planning + portfolio rebalancing for their post-migration financial structure.</p>
+
+      <h3>Force 5 &mdash; Robo-advisor + AI augmentation</h3>
+      <p>Robo-advisor platforms continue scaling: Schwab Intelligent Portfolios, Vanguard Personal Advisor Services, Fidelity Personalized Planning, Betterment Premium, Wealthfront. AI-augmented planning tools emerging for human advisors. Lower-AUM client segment increasingly served via robo + human hybrid platforms rather than traditional 1% AUM fee. Established RIA practices adopting technology to scale junior advisor productivity.</p>
+
+      <h3>Force 6 &mdash; Estate planning relevance with 2026 sunset</h3>
+      <p>Federal estate tax exemption $13.99M (2025) per the inflation-adjusted TCJA provisions sunsets to approximately $7M per person in 2026 absent Congressional extension. This creates substantial estate planning urgency for HNW clients during 2025 transitional period. FA + estate attorney coordination on trust structures, gifting strategies, and beneficiary alignment is intensifying through the sunset period. Florida no-state-estate-tax advantage remains.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #7: TIMELINE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">07 &middot; FA + real estate ownership timeline</div>
+        <h2>The FA + real estate ownership timeline across phases.</h2>
+        <p>A timeline view of how FA work integrates with real estate ownership across pre-purchase planning, purchase year, ongoing ownership, and sale or refinance year.</p>
+      </div>
+      <div class="career-timeline">
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Pre-purchase</div>
+          <div class="timeline-body">
+            <h4>Pre-purchase down payment + financing planning</h4>
+            <p><strong>FA work:</strong> Down payment funding source analysis across taxable account, retirement plan loan options (401(k) primary residence 15-year repayment, IRA $10K first-time exemption), portfolio rebalancing planning, mortgage qualifying coordination with Asset-Depletion if applicable. <strong>Coordination with lender:</strong> Managed AUM verification for asset-depletion qualifying.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Purchase year</div>
+          <div class="timeline-body">
+            <h4>Purchase + closing portfolio rebalancing</h4>
+            <p><strong>FA work:</strong> Tax-efficient liquidation across taxable holdings (lot selection, long-term vs short-term capital gain analysis), 401(k) loan setup if applicable, portfolio rebalancing to maintain target asset allocation post-purchase, year-end tax planning given the major liquidation event. <strong>Coordination with lender:</strong> Closing-day funding wire coordination from managed accounts.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Ownership</div>
+          <div class="timeline-body">
+            <h4>Ownership: retirement + estate integration</h4>
+            <p><strong>FA work:</strong> Required Minimum Distribution (RMD) coordination at age 73 under SECURE Act 2.0, beneficiary designation alignment with property ownership structure (trust vs individual vs joint), estate planning given 2026 federal exemption sunset, Florida homestead exemption + creditor protection coordination, ongoing portfolio rebalancing through ownership years.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Sale / refinance</div>
+          <div class="timeline-body">
+            <h4>Sale or refinance year</h4>
+            <p><strong>FA work:</strong> Section 121 primary home exclusion preservation ($250K / $500K), proceeds reinvestment planning, refinance impact on cash flow + investment capacity, cash-out refinance proceeds allocation if applicable, 1031 exchange financing coordination for investment property. <strong>Coordination with lender:</strong> Refinance qualifying coordination + cash-out proceeds wire to managed accounts.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #8: TESTIMONIALS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">08 &middot; What buyers and sellers say</div>
+        <h2>What Florida buyers say about their FA + Stairway coordination.</h2>
+        <p>Names abbreviated for client privacy. Transaction details anonymized. FA names withheld out of professional courtesy.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-1"><img src="https://i.pravatar.cc/300?img=16" alt="William H., Florida retiree with asset-depletion qualifying via FA coordination" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=16';"></div>
+          <blockquote class="testim-quote">"Retiree purchasing a $1.65M Palm Beach Gardens condo with $4.8M in managed liquid portfolio through a CFP-credentialed RIA at a fiduciary-pure South Florida practice. My FA documented the managed AUM balance, asset class composition (60% equity / 35% bonds / 5% alternatives), continuity narrative, and Schwab Advisor Services custodial relationship. Jim&rsquo;s team applied Asset-Depletion Non-QM amortizing the $4.8M over 360 months to approximately $13,300/month implied income. Combined with Social Security + pension income, qualified at $1.65M Conventional Jumbo Asset-Depletion in 38 days. FA + Stairway coordination was seamless."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">William H.</div>
+            <div class="testim-meta">Retiree with Asset-Depletion + FA coordination &middot; Palm Beach Gardens</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-2"><img src="https://i.pravatar.cc/300?img=17" alt="Sarah B., Florida first-time buyer with FA-coordinated 401(k) loan for down payment" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/F0EDE8/6B5C4B/png?text=17';"></div>
+          <blockquote class="testim-quote">"First-time buyer purchasing a $625K Coconut Creek home with W-2 + 401(k) loan coordinated through my CFP at a hybrid RIA + BD platform. My FA evaluated multi-source down payment options and structured: $35K 401(k) loan under Section 72(p) (15-year primary residence repayment), $10K IRA first-time home buyer withdrawal penalty-exempt under Section 72(t)(2)(F), plus $30K from taxable brokerage with tax-efficient lot selection. Jim&rsquo;s team handled the financing accommodating the multi-source down payment documentation. $625K Conventional Conforming close in 35 days. FA + Stairway combination optimized both the tax outcome and financing."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Sarah B.</div>
+            <div class="testim-meta">First-time buyer + FA-coordinated 401(k) loan &middot; Coconut Creek</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-3"><img src="https://i.pravatar.cc/300?img=18" alt="Margaret D., Florida estate-planning relocator with FA + estate attorney coordination" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EFE8/3D5A3D/png?text=18';"></div>
+          <blockquote class="testim-quote">"HNW relocator from Connecticut purchasing a $2.85M Naples primary residence as part of comprehensive estate + Florida domicile establishment strategy ahead of the 2026 federal estate tax exemption sunset. My FA at a national RIA partnership coordinated with my estate attorney on trust ownership structure (revocable trust → property → individual + beneficiary alignment), Florida homestead exemption + descendant protection considerations, multi-state tax filings for the migration year, and portfolio repositioning for the post-Florida-domicile structure. Jim&rsquo;s team handled the financing on Asset-Depletion + W-2 multi-source qualifying with proper trust ownership documentation. $2.85M Conventional Jumbo close in 44 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Margaret D.</div>
+            <div class="testim-meta">HNW estate-planning relocator (CT → FL) &middot; Naples</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #9: 10-FAQ SECTION ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">09 &middot; FA partner FAQs</div>
+        <h2>Questions Florida buyers, sellers, and FAs ask, answered.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-cross-links" style="margin-bottom: var(--s-10); padding: var(--s-6); background: var(--paper-warm); border-left: 3px solid var(--blue);">
+          <p style="margin: 0 0 var(--s-3) 0; font-family: var(--serif); font-size: var(--text-md); font-weight: 500;">More <a href="https://stairwaymortgage.com/" style="color: inherit; text-decoration: underline;">FA partnership and borrower-side</a> resources at Stairway</p>
+          <ul style="margin: 0; padding-left: var(--s-5); font-size: var(--text-sm); line-height: 1.7; list-style: none;">
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/asset-depletion-loan/">Asset-Depletion loan details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/financial-advisors/">FA mortgage guide (RIA principal)</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/sales-professionals/financial-advisor-sales/">FA mortgage guide (wirehouse producer)</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start your pre-approval</a></li>
+          </ul>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">01</div>
+          <div>
+            <div class="faq-q">What&rsquo;s the difference between an RIA and a broker-dealer FA?</div>
+            <div class="faq-a">RIA (Registered Investment Advisor) operates under fiduciary standard per <a href="https://www.law.cornell.edu/uscode/text/15/chapter-2D/subchapter-II" target="_blank" rel="noopener noreferrer">Investment Advisers Act of 1940</a> requiring acting in client&rsquo;s best interest. Broker-dealer registered rep operates under <a href="https://www.sec.gov/regulation-best-interest" target="_blank" rel="noopener noreferrer">Reg BI</a> best interest standard. Different regulatory frameworks; fiduciary is a stronger duty.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">02</div>
+          <div>
+            <div class="faq-q">Can I use my 401(k) for down payment?</div>
+            <div class="faq-a">Two paths: (1) 401(k) loan under <a href="https://www.law.cornell.edu/uscode/text/26/72" target="_blank" rel="noopener noreferrer">IRC Section 72(p)</a> up to $50K or 50% of vested balance, with 5-year standard or 15-year primary-residence repayment. No early withdrawal penalty. (2) Hardship withdrawal subject to ordinary income tax + 10% early withdrawal penalty if under 59&frac12;. Most prefer the loan path. FA coordinates with plan administrator.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">03</div>
+          <div>
+            <div class="faq-q">Can I withdraw from my IRA for a first-time home purchase?</div>
+            <div class="faq-a">Yes, up to $10K per person ($20K married couple) lifetime exemption from the 10% early withdrawal penalty under IRC Section 72(t)(2)(F). Traditional IRA withdrawal still subject to ordinary income tax. Roth IRA contributions always withdrawable penalty + tax-free (since contributions were after-tax).</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">04</div>
+          <div>
+            <div class="faq-q">How does Asset-Depletion qualifying work with my managed portfolio?</div>
+            <div class="faq-a">Asset-Depletion Non-QM converts liquid managed portfolio balance to implied monthly income amortized over 360 months. FA documentation of the managed AUM balance + custodial relationship + asset class composition supports the qualifying. Useful for retirees, post-acquisition founders, and high-balance portfolio holders with limited current W-2 or self-employment income.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">05</div>
+          <div>
+            <div class="faq-q">Should I sell investments or take a 401(k) loan for down payment?</div>
+            <div class="faq-a">Depends on tax implications + opportunity cost: selling appreciated investments triggers capital gains tax (15-20% long-term, ordinary rate short-term); 401(k) loan avoids tax but reduces tax-advantaged growth on the loan balance. Your FA evaluates the specific tax situation, expected future returns, and your overall financial plan.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">06</div>
+          <div>
+            <div class="faq-q">How does Florida homestead exemption affect my property ownership?</div>
+            <div class="faq-a">Florida homestead exemption under <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter196" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 196</a> provides creditor protection on primary residence (unlimited dollar amount) + property tax reduction. Florida also imposes descendant restrictions on devise of homestead. FA + estate attorney coordinate trust ownership vs individual + beneficiary alignment.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">07</div>
+          <div>
+            <div class="faq-q">What is the 2026 federal estate tax exemption sunset?</div>
+            <div class="faq-a">The TCJA-doubled federal estate tax exemption ($13.99M per person in 2025, inflation-adjusted) sunsets in 2026 to approximately $7M per person absent Congressional extension. This creates substantial estate planning urgency for HNW clients during 2025. FA + estate attorney coordination on gifting strategies, trust funding, and beneficiary alignment is intensifying.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">08</div>
+          <div>
+            <div class="faq-q">How does my FA coordinate with my mortgage lender?</div>
+            <div class="faq-a">FA + lender coordination spans: pre-approval Asset-Depletion balance documentation, down payment funding source verification, 401(k) loan or IRA withdrawal documentation, closing-day wire from managed accounts, post-closing portfolio rebalancing. Stairway Mortgage partners with Florida FAs across Broward, Miami-Dade, Palm Beach, and the Treasure Coast.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">09</div>
+          <div>
+            <div class="faq-q">I&rsquo;m an RIA principal. Can Stairway help with my own home mortgage?</div>
+            <div class="faq-a">Yes &mdash; for RIA practice principals operating S-corp or partnership structures with W-2 + K-1, see our dedicated <a href="https://stairwaymortgage.com/professional-services/financial-advisors/">RIA principal mortgage guide</a> covering Form 1084 cash-flow addbacks at the entity level, AUM-based recurring revenue continuity, Form ADV documentation, and post-consolidator-sale Asset-Depletion qualifying under B3-3.4-02.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">10</div>
+          <div>
+            <div class="faq-q">I&rsquo;m a wirehouse FA producer. Can Stairway help with my own home mortgage?</div>
+            <div class="faq-a">Yes &mdash; for wirehouse FAs at Merrill Lynch, Morgan Stanley, UBS, Wells Fargo Advisors with commission + AUM-fee participation + insurance product overrides + W-2 + RSU compensation, see our dedicated <a href="https://stairwaymortgage.com/sales-professionals/financial-advisor-sales/">FA producer mortgage guide</a> covering complex multi-source income documentation under B3-3.1-01 variable income framework.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #10: COMPANION GUIDES ============ -->
+  <section class="section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">10 &middot; Companion guides &amp; calculators</div>
+        <h2>More on FA partnerships, asset-depletion qualifying, and retirement plan loans.</h2>
+      </div>
+      <div class="link-farm-grid">
+        <div class="link-farm-col">
+          <h4>For FAs (partner-as-borrower)</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/financial-advisors/">RIA principal mortgage</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/sales-professionals/financial-advisor-sales/">FA producer mortgage</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/business-acquirers/">Practice acquisition mortgage</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/">Professional services hub</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Portfolio-tied loan programs</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/asset-depletion-loan/">Asset-depletion details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Jumbo loan details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/conventional-loan/">Conventional conforming</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/bank-statement-loan/">Bank statement Non-QM</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Calculators &amp; tools</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">All 100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/current-rates/">Today&rsquo;s rates</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start a pre-approval</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #11: SOURCES ============ -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">11 &middot; Sources &amp; further reading</div>
+        <h2>Sources &amp; further reading.</h2>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h3 class="source-group-title">CFP Board, CFA Institute &amp; credential references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.cfp.net/" target="_blank" rel="noopener noreferrer">CFP Board &mdash; Certified Financial Planner Board of Standards</a></li>
+            <li><a href="https://www.cfainstitute.org/" target="_blank" rel="noopener noreferrer">CFA Institute &mdash; Chartered Financial Analyst</a></li>
+            <li><a href="https://www.theamericancollege.edu/" target="_blank" rel="noopener noreferrer">The American College of Financial Services (ChFC)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">SEC, FINRA &amp; regulatory references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.sec.gov/" target="_blank" rel="noopener noreferrer">SEC &mdash; Securities and Exchange Commission</a></li>
+            <li><a href="https://www.sec.gov/regulation-best-interest" target="_blank" rel="noopener noreferrer">SEC Regulation Best Interest (Reg BI)</a></li>
+            <li><a href="https://www.finra.org/" target="_blank" rel="noopener noreferrer">FINRA &mdash; Financial Industry Regulatory Authority</a></li>
+            <li><a href="https://www.nasaa.org/" target="_blank" rel="noopener noreferrer">NASAA &mdash; State Securities Boards</a></li>
+            <li><a href="https://www.dol.gov/" target="_blank" rel="noopener noreferrer">DOL &mdash; Department of Labor (ERISA)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">IRS &amp; tax references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.law.cornell.edu/uscode/text/26/72" target="_blank" rel="noopener noreferrer">Cornell Law &mdash; IRC Section 72 (401(k) loans, IRA withdrawals)</a></li>
+            <li><a href="https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-loans" target="_blank" rel="noopener noreferrer">IRS &mdash; 401(k) Loan Rules</a></li>
+            <li><a href="https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions" target="_blank" rel="noopener noreferrer">IRS &mdash; Early Distribution Tax (10% penalty)</a></li>
+            <li><a href="https://www.law.cornell.edu/uscode/text/15/chapter-2D/subchapter-II" target="_blank" rel="noopener noreferrer">Cornell Law &mdash; Investment Advisers Act of 1940</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Mortgage program references</h3>
+          <ul class="source-list">
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-01 &mdash; Variable Income (FA producer)</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.4-02 &mdash; Partnership / S-Corp (RIA principal)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Florida real estate &amp; BLS references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter196" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 196 &mdash; Homestead Exemption</a></li>
+            <li><a href="https://www.bls.gov/ooh/business-and-financial/personal-financial-advisors.htm" target="_blank" rel="noopener noreferrer">BLS OOH &mdash; Personal Financial Advisors</a></li>
+            <li><a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener noreferrer">CFPB &mdash; Consumer Financial Protection Bureau</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #12: PRE-CTA STORY ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">12 &middot; What FA + Stairway partnership looks like</div>
+        <h2>Real-world FA partnership coordination.</h2>
+        <p>A Florida FA partner at a CFP-credentialed fiduciary RIA practice in Boca Raton referred a retiree client to Stairway after the prior generalist lender refused to handle the asset-depletion qualifying properly. Client situation: retiree relocator from Connecticut purchasing a $2.85M Naples Florida primary residence as part of comprehensive estate + Florida domicile establishment strategy ahead of the 2026 federal estate tax exemption sunset. <strong>FA partnership coordination: managed AUM balance documentation ($6.4M liquid portfolio at the RIA practice with Schwab Advisor Services custody), asset class composition documentation (55% equity / 35% bonds / 10% alternatives), 24-month managed portfolio continuity narrative, estate attorney coordination on revocable trust ownership structure for the Naples property with Florida homestead and descendant protection alignment, multi-state tax filings for the migration year coordinated with the client&rsquo;s CPA, and post-Florida-domicile portfolio repositioning planning.</strong> Stairway Mortgage applied Asset-Depletion Non-QM amortizing the $6.4M managed liquid portfolio over 360 months to approximately $17,800/month implied income under the asset-depletion framework, plus Social Security income, plus pension income, multi-source documentation properly synthesized for the underwriter. Trust ownership documentation for the property aligned with mortgage qualifying. $2.85M Conventional Jumbo close in 44 days. <strong>FA + Stairway coordination across HNW retiree qualifying with proper trust ownership and asset-depletion documentation is the partnership pattern that produces successful Florida HNW residential closes &mdash; the FA brings portfolio management + estate planning + trust coordination expertise, Stairway brings specialty mortgage underwriting expertise on asset-depletion + multi-source synthesis.</strong></p>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="House keys at FA + Stairway closing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=FA+Closings';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">44-day FA + Stairway close &middot; Naples, FL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #13: FINAL CTA + DUAL PARTNER-AS-BORROWER CTA ============ -->
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow eyebrow-light">Talk to a Florida mortgage specialist about your FA partnership transaction</div>
+        <h2 style="color: var(--paper);">Whether you&rsquo;re a Florida buyer working with an FA on portfolio-coordinated mortgage qualifying, or an FA looking for a mortgage yourself &mdash; Stairway coordinates the mortgage side with the depth your FA partner expects.</h2>
+        <p style="color: rgba(250,250,247,0.78);">For Florida buyers with FA: down payment funding strategy, 401(k) loan and IRA withdrawal coordination, asset-depletion qualifying on managed AUM, portfolio-tied jumbo qualifying, and trust ownership documentation for estate planning alignment. <strong>For Financial Advisors looking for a mortgage on your own home, two paths apply by FA category:</strong> RIA practice principals operating S-corp or partnership structures with W-2 + K-1 use the <a href="https://stairwaymortgage.com/professional-services/financial-advisors/" style="color: var(--paper); text-decoration: underline;">RIA principal mortgage guide</a> with Form 1084 cash-flow addbacks. Wirehouse and broker-dealer FA producers with commission + AUM-fee + insurance product overrides + W-2 + RSU use the <a href="https://stairwaymortgage.com/sales-professionals/financial-advisor-sales/" style="color: var(--paper); text-decoration: underline;">FA producer mortgage guide</a> with multi-source variable income synthesis under B3-3.1-01.</p>
+        <div class="final-cta-actions">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-primary btn-large">Schedule a call with Jim</a>
+          <a href="https://stairwaymortgage.com/professional-services/financial-advisors/" class="btn btn-on-dark-secondary btn-large">RIA principal guide</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: rgba(250,250,247,0.5); margin-top: var(--s-6);">Jim Blackburn NMLS #1072866 &middot; Stairway Mortgage</p>
+      </div>
+    </div>
+  </section>
+`;
+---
+<Layout title="Financial Advisors · Florida FA Partner Hub — Fiduciary RIA, Reg BI Broker-Dealer, 401(k) Loans, IRA First-Time Buyer &amp; Asset-Depletion Mortgage Coordination" description="Florida Financial Advisor partner hub educating buyers, sellers, and retirees on what FAs do in real estate: down payment funding strategy across liquid taxable account and retirement plan sources; 401(k) loan coordination under IRC Section 72(p) up to $50K or 50% vested balance with 15-year repayment for primary residence; IRA first-time home buyer withdrawal up to $10K per person penalty-exempt under IRC Section 72(t)(2)(F); Asset-Depletion mortgage qualifying on managed AUM portfolio balance amortized over 360 months; portfolio rebalancing post-purchase; estate planning alignment with property ownership structure (revocable trust vs individual vs joint); Florida homestead exemption under Florida Statutes Chapter 196 with creditor protection and descendant restrictions; SECURE Act 2.0 Required Minimum Distribution at age 73; federal estate tax exemption $13.99M (2025) sunsetting to approximately $7M in 2026 absent Congressional extension. FA types: Registered Investment Advisor (RIA) fiduciary practice under Investment Advisers Act of 1940; broker-dealer registered representative under SEC Regulation Best Interest (Reg BI) effective June 30, 2020; hybrid advisor with both RIA and BD registration; insurance-licensed advisor selling life insurance and annuity products; robo-advisor + human hybrid platforms (Schwab Intelligent Portfolios Premium, Vanguard Personal Advisor Services, Fidelity Personalized Planning, Betterment Premium, Wealthfront). FA designations: CFP Certified Financial Planner through CFP Board; CFA Chartered Financial Analyst through CFA Institute; ChFC Chartered Financial Consultant through The American College; CIMA Certified Investment Management Analyst through Investments and Wealth Institute; CRPC Chartered Retirement Planning Counselor; AIF Accredited Investment Fiduciary; Series 65 Investment Adviser Representative, Series 66 combined, Series 7 General Securities Representative through FINRA. PE consolidator wave including Hightower Advisors, Mercer Advisors, Wealth Enhancement Group, Captrust, Beacon Pointe, Creative Planning, Mariner Wealth Advisors, Edelman Financial Engines with practice valuations at 8-12x annual recurring revenue. Florida wealth migration accelerating FA practice growth. Dual partner-as-borrower CTA at bottom routing FAs to dedicated RIA principal mortgage guide (S-corp partnership W-2 + K-1 with Form 1084 cash-flow addbacks under Fannie Mae B3-3.4-02) or wirehouse FA producer mortgage guide (multi-source variable income synthesis under B3-3.1-01)." canonical="https://stairwaymortgage.com/financial-advisors/">
+  <div class="pfa-scope" set:html={pfaBody} />
+</Layout>
+
+<style is:global>
+.pfa-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A;
+      --ink-2: #1E2433;
+      --ink-3: #2C3548;
+      --ink-light: #4A5568;
+      --ink-lighter: #6B7280;
+      --paper: #FAFAF7;
+      --paper-2: #F4F4EE;
+      --paper-3: #EDEDE5;
+      --white: #FFFFFF;
+      --blue: #1845D6;
+      --blue-deep: #0F2EA0;
+      --blue-soft: #E8EEFF;
+      --blue-tint: #F2F5FF;
+      --gold: #B8860B;
+      --rust: #8B2C2C;
+      --border: #E5E5DE;
+      --border-strong: #D4D4C8;
+      --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; 
+      --text-xs: 0.75rem;    
+      --text-sm: 0.875rem;   
+      --text-base: 1.0625rem;
+      --text-md: 1.1875rem;  
+      --text-lg: 1.375rem;   
+      --text-xl: 1.625rem;   
+      --text-2xl: 2rem;      
+      --text-3xl: 2.75rem;   
+      --text-4xl: 3.75rem;   
+      --text-5xl: 5rem;      
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-5: 1.5rem;
+      --s-6: 2rem;
+      --s-7: 3rem;
+      --s-8: 4rem;
+      --s-9: 6rem;
+      --s-10: 8rem;
+      --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.pfa-scope, .pfa-scope{
+        background-color: #FAFAF7 !important;
+        color: #0A0E1A !important;
+        color-scheme: light only !important;
+      }.pfa-scope *{
+        forced-color-adjust: none;
+      }
+    }.pfa-scope, .pfa-scope *::before, .pfa-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.pfa-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.pfa-scope{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.pfa-scope img, .pfa-scope svg{ display: block; max-width: 100%; }.pfa-scope a{ color: inherit; text-decoration: none; }.pfa-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.pfa-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.pfa-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.pfa-scope .container-wide{ max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }.pfa-scope .eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-block;
+    }.pfa-scope .display-1{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      color: var(--ink);
+    }.pfa-scope .display-2{
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, var(--text-3xl));
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 100, "SOFT" 50;
+      color: var(--ink);
+    }.pfa-scope h2{
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+      font-weight: 450;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 60, "SOFT" 50;
+    }.pfa-scope h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--s-4);
+      font-variation-settings: "opsz" 30;
+    }.pfa-scope h4{
+      font-family: var(--sans);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.005em;
+    }.pfa-scope p{ margin-bottom: var(--s-4); }.pfa-scope p:last-child{ margin-bottom: 0; }.pfa-scope p.lead{
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      color: var(--ink-2);
+      font-weight: 350;
+    }.pfa-scope p.lede{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.pfa-scope .body-text{ color: var(--ink-2); }.pfa-scope .text-muted{ color: var(--ink-lighter); }.pfa-scope .text-small{ font-size: var(--text-sm); }.pfa-scope .text-mono{ font-family: var(--mono); font-feature-settings: 'tnum' 1; }.pfa-scope strong, .pfa-scope b{ font-weight: 600; color: var(--ink); }.pfa-scope em, .pfa-scope i{ font-style: italic; }.pfa-scope .nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }.pfa-scope .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      max-width: 1340px;
+      margin: 0 auto;
+    }.pfa-scope .logo{
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 30;
+    }.pfa-scope .logo-mark{
+      width: 28px; height: 28px;
+      background: var(--ink);
+      position: relative;
+      border-radius: 2px;
+    }.pfa-scope .logo-mark::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.pfa-scope .logo-mark::after{
+      content: '';
+      position: absolute;
+      inset: 5px 9px 9px 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.pfa-scope .logo-sub{ font-size: var(--text-2xs); color: var(--ink-lighter); font-family: var(--sans); font-weight: 400; letter-spacing: 0.04em; }.pfa-scope .nav-links{
+      display: flex; gap: var(--s-6); list-style: none;
+      font-size: var(--text-sm); font-weight: 500;
+    }.pfa-scope .nav-links a{ color: var(--ink-2); transition: color 0.15s; }.pfa-scope .nav-links a:hover{ color: var(--blue); }.pfa-scope .nav-cta{
+      display: flex; gap: var(--s-3);
+    }
+    @media (max-width: 900px) {.pfa-scope .nav-links{ display: none; }.pfa-scope .nav-cta .btn-secondary{ display: none; }
+    }.pfa-scope .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-3) var(--s-5);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }.pfa-scope .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }.pfa-scope .btn-primary:hover{
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }.pfa-scope .btn-secondary{
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }.pfa-scope .btn-secondary:hover{
+      border-color: var(--ink);
+    }.pfa-scope .btn-light{
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }.pfa-scope .btn-light:hover{ background: var(--paper-2); }.pfa-scope .btn-large{
+      padding: var(--s-4) var(--s-6);
+      font-size: var(--text-base);
+    }.pfa-scope .btn-arrow{
+      display: inline-flex; align-items: center; gap: var(--s-2);
+      color: var(--blue); font-weight: 500;
+      transition: gap 0.18s;
+    }.pfa-scope .btn-arrow:hover{ gap: var(--s-3); }.pfa-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.pfa-scope .hero{
+      padding: var(--s-9) 0 var(--s-8);
+      border-bottom: 1px solid var(--border);
+    }.pfa-scope .breadcrumb{
+      display: flex; gap: var(--s-2);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      margin-bottom: var(--s-7);
+    }.pfa-scope .breadcrumb a{ color: var(--ink-lighter); }.pfa-scope .breadcrumb a:hover{ color: var(--blue); }.pfa-scope .breadcrumb span:last-child{ color: var(--ink); }.pfa-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.pfa-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.pfa-scope .hero-subtitle{
+      max-width: 56ch;
+      margin-bottom: var(--s-7);
+    }.pfa-scope .hero-actions{
+      display: flex; gap: var(--s-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--s-5);
+    }.pfa-scope .hero-trust{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: var(--s-3);
+    }.pfa-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.pfa-scope .stats{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-7) 0;
+    }.pfa-scope .stats-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }.pfa-scope .stat{
+      padding: 0 var(--s-4);
+      border-left: 1px solid var(--ink-3);
+    }.pfa-scope .stat:first-child{ border-left: 0; padding-left: 0; }.pfa-scope .stat-num{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 350;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 144;
+    }.pfa-scope .stat-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {.pfa-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.pfa-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.pfa-scope .section{
+      padding: var(--s-10) 0;
+    }.pfa-scope .section-tinted{ background: var(--paper-2); }.pfa-scope .section-dark{ background: var(--ink); color: var(--paper); }.pfa-scope .section-header{
+      max-width: 720px;
+      margin-bottom: var(--s-8);
+    }.pfa-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.pfa-scope .section-header h2{ margin-bottom: var(--s-5); }.pfa-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.pfa-scope .lede-section{ padding: var(--s-9) 0; }.pfa-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.pfa-scope .data-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-feature-settings: 'tnum' 1;
+    }.pfa-scope .data-table thead th{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      font-weight: 500;
+      text-align: left;
+      padding: var(--s-3) var(--s-4);
+      border-bottom: 1px solid var(--border-strong);
+    }.pfa-scope .data-table tbody td{
+      padding: var(--s-5) var(--s-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }.pfa-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.pfa-scope .data-table tbody td:first-child{
+      font-weight: 500;
+      color: var(--ink);
+      width: 28%;
+    }.pfa-scope .data-table tbody td:nth-child(2){
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--blue-deep);
+      white-space: nowrap;
+      width: 28%;
+    }.pfa-scope .data-table tbody td:last-child{
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {.pfa-scope .data-table thead{ display: none; }.pfa-scope .data-table tbody tr{
+        display: block;
+        padding: var(--s-5) 0;
+        border-bottom: 1px solid var(--border);
+      }.pfa-scope .data-table tbody td{
+        display: block;
+        padding: 0 0 var(--s-2);
+        border: 0;
+        width: 100% !important;
+      }.pfa-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.pfa-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.pfa-scope .methods-grid{
+      display: grid;
+      gap: var(--s-5);
+    }.pfa-scope .method{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.pfa-scope .method:hover{
+      border-color: var(--border-strong);
+    }.pfa-scope .method-header{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+      margin-bottom: var(--s-5);
+    }.pfa-scope .method-num{
+      font-family: var(--mono);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: var(--s-2);
+      letter-spacing: -0.02em;
+    }.pfa-scope .method-title h3{
+      margin-bottom: var(--s-3);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+    }.pfa-scope .method-tag{
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      padding: var(--s-1) var(--s-3);
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.pfa-scope .method-body{
+      padding-left: calc(var(--text-2xl) + var(--s-5));
+    }.pfa-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.pfa-scope .worked-example{
+      background: var(--paper-2);
+      border-left: 3px solid var(--ink);
+      padding: var(--s-5) var(--s-6);
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }.pfa-scope .worked-example.featured{
+      background: var(--ink);
+      color: var(--paper);
+      border-left-color: var(--blue);
+    }.pfa-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.pfa-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.pfa-scope .worked-example.featured .we-num{ color: var(--paper); }.pfa-scope .we-title{
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--s-4);
+      color: var(--ink);
+    }.pfa-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.pfa-scope .we-line{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s-4);
+      padding: var(--s-2) 0;
+    }.pfa-scope .we-label{ color: var(--ink-light); }.pfa-scope .we-num{ color: var(--ink); font-weight: 500; }.pfa-scope .we-divider{
+      border-top: 1px dashed var(--border-strong);
+      margin: var(--s-3) 0;
+      grid-column: 1 / -1;
+    }.pfa-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.pfa-scope .we-result{
+      grid-template-columns: 1fr auto;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border-strong);
+      margin-top: var(--s-2);
+      font-weight: 600;
+    }.pfa-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.pfa-scope .method{ padding: var(--s-5); }.pfa-scope .method-body{ padding-left: 0; }.pfa-scope .method-num{ font-size: var(--text-xl); }
+    }.pfa-scope .callout{
+      background: var(--blue-tint);
+      border: 1px solid rgba(24, 69, 214, 0.12);
+      border-radius: 6px;
+      padding: var(--s-6) var(--s-7);
+      max-width: 760px;
+    }.pfa-scope .callout-eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.pfa-scope .callout p{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.pfa-scope .testim-warning{
+      background: #FFF1F1;
+      border: 1px solid rgba(139, 44, 44, 0.3);
+      border-radius: 4px;
+      padding: var(--s-3) var(--s-5);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      color: var(--rust);
+      margin: 0 auto var(--s-7);
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+    }.pfa-scope .testim-warning .mono-tag{
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.1em;
+      background: var(--rust);
+      color: var(--paper);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }.pfa-scope .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {.pfa-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; }
+    }.pfa-scope .testimonials-grid--quad{
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+    }
+    @media (max-width: 900px) {.pfa-scope .testimonials-grid--quad{ grid-template-columns: 1fr; max-width: 620px; }
+    }.pfa-scope .testim-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.pfa-scope .testim-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }.pfa-scope .testim-card .example-tag{
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      background: rgba(139, 44, 44, 0.08);
+      color: var(--rust);
+      padding: 3px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+    }.pfa-scope .testim-avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 30;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }.pfa-scope .testim-avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      display: block;
+    }.pfa-scope .testim-avatar::after{
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 50%;
+    }.pfa-scope .testim-avatar-1{ background: var(--blue-soft); color: var(--blue-deep); }.pfa-scope .testim-avatar-2{ background: #F0EDE8; color: #6B5C4B; }.pfa-scope .testim-avatar-3{ background: #E8EFE8; color: #3D5A3D; }.pfa-scope .testim-quote{
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      margin: 0;
+      flex: 1;
+    }.pfa-scope .testim-attribution{
+      border-top: 1px solid var(--border);
+      padding-top: var(--s-4);
+    }.pfa-scope .testim-name{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.005em;
+    }.pfa-scope .testim-meta{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }.pfa-scope .programs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+    @media (max-width: 720px) {.pfa-scope .programs-grid{ grid-template-columns: 1fr; }
+    }.pfa-scope .program{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      transition: all 0.2s;
+    }.pfa-scope .program:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }.pfa-scope .program h4{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      font-variation-settings: "opsz" 30;
+    }.pfa-scope .program-when{
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      flex: 1;
+    }.pfa-scope .program-links{
+      display: flex;
+      gap: var(--s-5);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+    }.pfa-scope .program-links a{
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-1);
+    }.pfa-scope .program-links a:hover{ color: var(--blue-deep); }.pfa-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.pfa-scope .per-diem-section{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+    }.pfa-scope .per-diem-section h2{ color: var(--paper); }.pfa-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.pfa-scope .per-diem-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.pfa-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); }
+    }.pfa-scope .per-diem-list{
+      list-style: none;
+      padding: 0;
+    }.pfa-scope .per-diem-list li{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--ink-3);
+      display: flex;
+      gap: var(--s-4);
+      align-items: start;
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.9);
+    }.pfa-scope .per-diem-list li:last-child{ border-bottom: 0; }.pfa-scope .pd-num{
+      font-family: var(--mono);
+      color: var(--blue-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 1.5em;
+    }.pfa-scope .playbook-stages{ display: grid; gap: var(--s-7); }.pfa-scope .stage{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-7);
+      padding-bottom: var(--s-7);
+      border-bottom: 1px solid var(--border);
+    }.pfa-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.pfa-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); }
+    }.pfa-scope .stage-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      padding-top: var(--s-2);
+    }.pfa-scope .stage-content h4{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.pfa-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.pfa-scope .stage-bullets{
+      list-style: none;
+      padding: 0;
+    }.pfa-scope .stage-bullets li{
+      padding: var(--s-2) 0;
+      padding-left: var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }.pfa-scope .stage-bullets li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 1px;
+      background: var(--blue);
+    }.pfa-scope .bio-section{
+      background: var(--paper-2);
+      padding: var(--s-10) 0;
+    }.pfa-scope .bio-grid{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-7);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.pfa-scope .bio-grid{ grid-template-columns: 1fr; }
+    }.pfa-scope .bio-photo{
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink);
+      position: relative;
+    }.pfa-scope .bio-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
+    }.pfa-scope .bio-photo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      z-index: 2;
+    }.pfa-scope .bio-name{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: var(--s-2);
+      font-variation-settings: "opsz" 60;
+    }.pfa-scope .bio-title{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      margin-bottom: var(--s-5);
+    }.pfa-scope .bio-quote{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-style: italic;
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--blue);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 30;
+    }.pfa-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.pfa-scope .faq-list{
+      max-width: 800px;
+      margin: 0 auto;
+    }.pfa-scope .faq-item{
+      padding: var(--s-6) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+    }.pfa-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.pfa-scope .faq-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.04em;
+      color: var(--blue);
+      font-weight: 500;
+      padding-top: var(--s-1);
+    }.pfa-scope .faq-q{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      color: var(--ink);
+      line-height: 1.3;
+      font-variation-settings: "opsz" 30;
+    }.pfa-scope .faq-a{
+      color: var(--ink-2);
+      line-height: 1.65;
+    }.pfa-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.pfa-scope .sources-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.pfa-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.pfa-scope .source-group h4{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border-strong);
+    }.pfa-scope .source-list{ list-style: none; padding: 0; }.pfa-scope .source-list li{
+      padding: var(--s-3) 0;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }.pfa-scope .source-list a{
+      color: var(--ink-2);
+      transition: color 0.15s;
+      display: block;
+    }.pfa-scope .source-list a:hover{ color: var(--blue); }.pfa-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.pfa-scope .source-url{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      word-break: break-all;
+    }.pfa-scope .final-cta{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+      text-align: center;
+    }.pfa-scope .final-cta h2{
+      color: var(--paper);
+      max-width: 22ch;
+      margin: 0 auto var(--s-5);
+    }.pfa-scope .final-cta p{
+      color: rgba(250,250,247,0.75);
+      font-size: var(--text-lg);
+      max-width: 56ch;
+      margin: 0 auto var(--s-7);
+    }.pfa-scope .final-cta-actions{
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }.pfa-scope .btn-on-dark{
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--paper);
+    }.pfa-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.pfa-scope .btn-on-dark-secondary{
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(250,250,247,0.3);
+    }.pfa-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.pfa-scope .footer{
+      background: var(--ink-2);
+      color: var(--paper);
+      padding: var(--s-9) 0 var(--s-5);
+    }.pfa-scope .footer-grid{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s-7);
+      margin-bottom: var(--s-7);
+    }
+    @media (max-width: 800px) {.pfa-scope .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }.pfa-scope .footer-brand .logo{ color: var(--paper); margin-bottom: var(--s-4); }.pfa-scope .footer-brand p{ color: rgba(250,250,247,0.65); font-size: var(--text-sm); margin-bottom: var(--s-4); }.pfa-scope .footer-brand .compliance{ font-family: var(--mono); font-size: var(--text-xs); line-height: 1.7; color: rgba(250,250,247,0.5); }.pfa-scope .footer-col h5{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,0.6);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+    }.pfa-scope .footer-col ul{ list-style: none; padding: 0; }.pfa-scope .footer-col li{ padding: 4px 0; }.pfa-scope .footer-col a{
+      color: rgba(250,250,247,0.85);
+      font-size: var(--text-sm);
+      transition: color 0.15s;
+    }.pfa-scope .footer-col a:hover{ color: var(--paper); }.pfa-scope .footer-bottom{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(250,250,247,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-4);
+      font-size: var(--text-xs);
+      color: rgba(250,250,247,0.5);
+      font-family: var(--mono);
+    }.pfa-scope .mt-6{ margin-top: var(--s-6); }.pfa-scope .mt-8{ margin-top: var(--s-8); }.pfa-scope .mb-0{ margin-bottom: 0; }
+    @media (prefers-reduced-motion: no-preference) {.pfa-scope .fade-in{
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.7s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }.pfa-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.pfa-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.pfa-scope .highlights-list{
+      list-style: none;
+      padding: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      columns: 1;
+      column-gap: var(--s-7);
+    }
+    @media (min-width: 880px) {.pfa-scope .highlights-list{ columns: 2; column-gap: var(--s-8); }
+    }.pfa-scope .highlights-list li{
+      break-inside: avoid;
+      padding: var(--s-3) 0 var(--s-3) var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }.pfa-scope .highlights-list li:last-child{ border-bottom: 0; }.pfa-scope .highlights-list li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.2em;
+      width: 14px;
+      height: 1px;
+      background: var(--blue);
+    }.pfa-scope .highlights-source{
+      font-size: var(--text-sm);
+      color: var(--ink-lighter);
+      margin-left: 4px;
+    }.pfa-scope .highlights-source a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }.pfa-scope .highlights-source a:hover{ color: var(--blue-deep); }.pfa-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.pfa-scope .resources-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {.pfa-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); }
+    }.pfa-scope .resource-item{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--ink-2);
+    }.pfa-scope .resource-item a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }.pfa-scope .resource-item a:hover{ color: var(--blue-deep); }.pfa-scope .professions-section{
+      padding: var(--s-9) 0 var(--s-10);
+    }.pfa-scope .professions-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      max-width: 1100px;
+      margin: var(--s-7) auto 0;
+    }
+    @media (max-width: 800px) {.pfa-scope .professions-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.pfa-scope .profession-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }.pfa-scope .profession-card:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -12px rgba(10, 14, 26, 0.15);
+    }.pfa-scope .profession-num{
+      font-family: var(--mono);
+      font-size: var(--text-md);
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }.pfa-scope .profession-title{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variation-settings: "opsz" 60;
+      margin: 0;
+      color: var(--ink);
+    }.pfa-scope .profession-tag{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.4;
+      color: var(--ink-2);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      font-style: italic;
+      margin: 0;
+    }.pfa-scope .profession-points{
+      list-style: none;
+      padding: 0;
+      margin: var(--s-2) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }.pfa-scope .profession-points li{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-light);
+      padding-left: var(--s-4);
+      position: relative;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }.pfa-scope .profession-points li::before{
+      content: '·';
+      position: absolute;
+      left: var(--s-2);
+      top: -2px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.4em;
+    }.pfa-scope .profession-link{
+      margin-top: auto;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-2);
+      transition: gap 0.2s;
+    }.pfa-scope .profession-link::after{ content: '→'; transition: transform 0.2s; }.pfa-scope .profession-card:hover .profession-link::after{ transform: translateX(4px); }.pfa-scope .differentiators-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.pfa-scope .differentiators-grid{ grid-template-columns: 1fr; gap: var(--s-6); }
+    }.pfa-scope .differentiator{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }.pfa-scope .differentiator-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--blue-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+      font-weight: 500;
+    }.pfa-scope .differentiator h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.pfa-scope .differentiator p{
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(250,250,247,0.85);
+      margin: 0;
+    }.pfa-scope .hero--with-image .hero-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.pfa-scope .hero--with-image h1{ max-width: 16ch; }.pfa-scope .hero--with-image .hero-subtitle{ max-width: 52ch; }.pfa-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.pfa-scope .hero-image::before{ content: ''; position: absolute; top: 58%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(232,238,255,0.18) 35%, rgba(232,238,255,0.18) 65%, transparent 100%); z-index: 1; }.pfa-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.pfa-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.pfa-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.pfa-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; } }.pfa-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.pfa-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.pfa-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.pfa-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.pfa-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.pfa-scope .final-cta--bg .container{ position: relative; z-index: 1; }.pfa-scope .stats--with-image .stats-bar-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.pfa-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.pfa-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.pfa-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 800px) {.pfa-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.pfa-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); }.pfa-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; } }.pfa-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 30% 60%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.pfa-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; filter: contrast(1.03) saturate(0.97); }.pfa-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.pfa-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.pfa-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.pfa-scope .pre-cta-photo{ aspect-ratio: 4/3; } }
+  
+
+/* ===== SUB-PAGE D-SERIES EXTENSIONS (v12 sub-page spec §4) ===== */
+
+/* Key Facts grid (Section 1) */
+.pfa-scope .key-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.pfa-scope .key-fact-card {
+  background: var(--paper);
+  border: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  border-radius: 6px;
+  padding: var(--s-5);
+}
+.pfa-scope .key-fact-num {
+  font-family: var(--serif);
+  font-size: var(--text-2xl, 1.8rem);
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: var(--s-2);
+  letter-spacing: -0.02em;
+}
+.pfa-scope .key-fact-body {
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  margin: 0;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+
+/* Loan-Program grid (Section 5) */
+.pfa-scope .loan-program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.pfa-scope .loan-program-card {
+  background: var(--paper);
+  border-left: 3px solid var(--blue);
+  padding: var(--s-5);
+  border-radius: 0 6px 6px 0;
+}
+.pfa-scope .loan-program-name {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+}
+.pfa-scope .loan-program-points {
+  margin: 0 0 var(--s-3) 0;
+  padding-left: var(--s-4);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.pfa-scope .loan-program-tag {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  font-weight: 500;
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+
+/* Career Timeline (Section 7) */
+.pfa-scope .career-timeline {
+  margin-top: var(--s-6);
+  border-left: 2px solid var(--blue);
+  padding-left: 0;
+}
+.pfa-scope .timeline-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--s-6);
+  padding: var(--s-5) var(--s-5) var(--s-5) var(--s-5);
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  position: relative;
+}
+.pfa-scope .timeline-entry:last-child {
+  border-bottom: none;
+}
+.pfa-scope .timeline-entry::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: var(--s-6);
+  width: 12px;
+  height: 12px;
+  background: var(--blue);
+  border-radius: 50%;
+}
+.pfa-scope .timeline-stage {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  padding-top: var(--s-1);
+}
+.pfa-scope .timeline-body h4 {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-2) 0;
+  color: var(--ink);
+}
+.pfa-scope .timeline-body p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+@media (max-width: 720px) {
+  .pfa-scope .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+  }
+}
+
+/* Sub-page FAQ markup (Section 9) — v10 numbered pattern */
+.pfa-scope .faq-list .faq-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: var(--s-5);
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+.pfa-scope .faq-list .faq-item:last-child {
+  border-bottom: none;
+}
+.pfa-scope .faq-list .faq-num {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  padding-top: var(--s-1);
+}
+.pfa-scope .faq-list .faq-q {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.2rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.pfa-scope .faq-list .faq-a {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.pfa-scope .faq-list .faq-a a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* FAQ cross-links block above FAQ list (Section 9) */
+.pfa-scope .faq-cross-links a {
+  color: var(--blue);
+}
+.pfa-scope .faq-cross-links a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Link Farm grid (Section 10) */
+.pfa-scope .link-farm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s-6);
+  margin-top: var(--s-6);
+}
+.pfa-scope .link-farm-col h4 {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+}
+.pfa-scope .link-farm-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-sm);
+  line-height: 1.9;
+}
+.pfa-scope .link-farm-col a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.pfa-scope .link-farm-col a:hover {
+  border-bottom-color: var(--blue);
+}
+
+</style>
+

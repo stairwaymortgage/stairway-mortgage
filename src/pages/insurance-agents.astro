@@ -1,0 +1,1896 @@
+---
+import Layout from '../layouts/Layout.astro';
+const piaBody = `
+  
+
+  <!-- ============ SECTION 0: HERO ============ -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow eyebrow">Insurance Agents &middot; Partner Education</div>
+          <h1 class="display-1">Why your insurance agent matters in your Florida real estate transaction &mdash; homeowners coverage, hurricane and wind protection, NFIP flood, condo HO-6, and mortgage lender requirements at closing.</h1>
+          <p class="lead hero-subtitle">Working with a licensed Florida insurance agent on your real estate transaction is the difference between obtaining proper coverage at the right price and discovering inadequate coverage after a claim. <strong>Your agent handles homeowners insurance HO-3 or HO-5 policy selection, hurricane and windstorm coverage (private market or <a href="https://www.citizensfla.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Citizens Property Insurance Corporation</a> state-backed insurer of last resort), NFIP flood insurance through FEMA at <a href="https://www.floodsmart.gov/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">FloodSmart.gov</a> or private flood alternatives, condo HO-6 unit-owner policy with loss assessment coverage, dwelling fire DP-3 for investment property, umbrella liability layered above auto and homeowners, wind mitigation inspection coordination for Florida-specific premium discounts, hurricane deductible structure (typically 2-10% of dwelling value), and binder issuance at closing meeting your mortgage lender&rsquo;s requirements for 12 months prepaid insurance</strong>. Florida insurance market context is critical: substantial market disruption 2022-2024 with private carrier withdrawals, Citizens Property Insurance growth, and legislative reforms under <a href="https://www.flsenate.gov/Session/Bill/2022D/2A" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Florida SB 2A (2022)</a> and SB 7052 (2023). <strong>If you&rsquo;re an insurance agent reading this looking for a mortgage on your own home, scroll to the bottom for the agent-as-borrower CTA covering W-2 + commission + book-of-business multi-source income paths.</strong></p>
+          <div class="hero-actions">
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary btn-large">Schedule a call with Jim</a>
+            <a href="#agent-role" class="btn btn-secondary btn-large">See what your agent does</a>
+          </div>
+          <div class="hero-trust">
+            <span class="trust-dot"></span>
+            <span>Broker NMLS #1072866</span>
+            <span>&middot;</span>
+            <span>Florida mortgage broker coordinating with Florida insurance agent partners on homeowners HO-3 / HO-5 / condo HO-6 / DP-3 investment property policies, wind mitigation inspections, NFIP flood and private flood, hurricane deductible structures, and binder issuance for mortgage lender requirements at closing</span>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/7821488/pexels-photo-7821488.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Insurance agent reviewing homeowners policy documents with client" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Insurance+Agent';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ STATS BAR ============ -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">Florida insurance market</div>
+            <div class="stat-label">Florida homeowners insurance market continues operating under substantial reform pressure following 2022-2024 reforms. <a href="https://www.citizensfla.com/" target="_blank" rel="noopener noreferrer" style="color: inherit;">Citizens Property Insurance Corporation</a> as state-backed insurer of last resort plus private market depopulation initiatives</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Wind mitigation discounts</div>
+            <div class="stat-label">Florida-specific wind mitigation inspection program: discounts for hip roof shape, roof deck attachment, roof-to-wall connections, secondary water resistance, opening protection (impact-rated windows / shutters), and roof covering compliance with Florida Building Code</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2-10% hurricane deductible</div>
+            <div class="stat-label">Florida hurricane deductible typically structured as a percentage of dwelling coverage (commonly 2%, 5%, or 10%), separate from the standard all-other-perils deductible. Applies once per calendar year for hurricane-named storms</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">12 months prepaid</div>
+            <div class="stat-label">Mortgage lender requirement: 12 months homeowners insurance premium prepaid at closing plus initial escrow reserve typically 2-3 months. Binder document issued by agent at closing as proof of coverage; full policy follows post-closing</div>
+          </div>
+        </div>
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/5668481/pexels-photo-5668481.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Florida hurricane wind insurance policy documents" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x750/0A0E1A/E8EEFF/png?text=Insurance+Coverage';">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEDE ============ -->
+  <section class="lede-section">
+    <div class="container-narrow">
+      <p class="lede">Working with a licensed Florida insurance agent on your real estate transaction is the foundation of properly-protected Florida homeownership. <strong>Your agent handles homeowners insurance HO-3 (standard all-risk dwelling) or HO-5 (premier all-risk with broader personal property) policy selection, hurricane and windstorm coverage which in Florida is often a separate peril (private carrier or <a href="https://www.citizensfla.com/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Citizens Property Insurance Corporation</a> as state-backed insurer of last resort), NFIP National Flood Insurance Program coverage through FEMA under the federal flood program at <a href="https://www.floodsmart.gov/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">FloodSmart.gov</a> with maximum $250,000 dwelling coverage and $100,000 contents coverage or private flood alternatives offering higher limits, condo HO-6 unit-owner policy with loss assessment coverage for special assessments from the condo association master policy gaps, dwelling fire DP-3 for investment property and rental units, umbrella liability layered above auto and homeowners primary policies for $1M-$5M+ additional liability, wind mitigation inspection coordination for Florida-specific premium discounts on hip roof, opening protection, roof-to-wall connection, and secondary water resistance features, hurricane deductible structure typically as percentage of dwelling coverage (2%, 5%, or 10%) separate from the standard all-other-perils deductible, and binder issuance at closing meeting your mortgage lender&rsquo;s requirements for 12 months prepaid insurance plus initial escrow reserve</strong>. Florida insurance market context: substantial market disruption from 2022-2024 with private carrier withdrawals, Citizens growth to over 1.2 million policies at peak, and legislative reforms under <a href="https://www.flsenate.gov/Session/Bill/2022D/2A" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida SB 2A (2022 special session)</a> establishing the Reinsurance to Assist Policyholders (RAP) program, and SB 7052 (2023). <strong>Stairway Mortgage partners with Florida insurance agents across Broward, Miami-Dade, Palm Beach, the Treasure Coast, and statewide on residential purchase, refinance, and investment property transactions with proper homeowners + wind + flood + condo + umbrella coverage coordination meeting mortgage lender requirements.</strong> Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #1: KEY FACTS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto;">
+        <div class="eyebrow">01 &middot; Working with a Florida insurance agent at a glance</div>
+        <h2>Key facts every Florida buyer and homeowner should know about insurance coordination.</h2>
+      </div>
+      <div class="key-facts-grid">
+        <div class="key-fact-card">
+          <div class="key-fact-num">Licensed by FLOIR</div>
+          <p class="key-fact-body">Florida insurance agents are licensed by the <a href="https://www.floir.com/" target="_blank" rel="noopener noreferrer">Florida Office of Insurance Regulation (FLOIR)</a> through the <a href="https://www.myfloridacfo.com/" target="_blank" rel="noopener noreferrer">Florida CFO / Department of Financial Services</a>. License types: 2-20 General Lines, 2-15 Life-Health, 2-14 Life only, plus surplus lines specialty endorsement.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Hurricane is separate peril</div>
+          <p class="key-fact-body">Florida homeowners policies typically structure hurricane / named-storm coverage as a separate peril with separate deductible (commonly 2%, 5%, or 10% of dwelling value). Triggered by National Hurricane Center named-storm declaration. Applies once per calendar year per Florida Statutes Chapter 627.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">NFIP flood is separate</div>
+          <p class="key-fact-body"><a href="https://www.floodsmart.gov/" target="_blank" rel="noopener noreferrer">NFIP National Flood Insurance Program</a> administered by FEMA provides flood coverage separately from homeowners insurance. Maximum coverage: $250K dwelling + $100K contents. Required by mortgage lender in FEMA-designated Special Flood Hazard Areas (SFHA).</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Binder at closing</div>
+          <p class="key-fact-body">Mortgage lender requires homeowners insurance binder at closing as proof of coverage. 12 months premium prepaid at closing plus initial escrow reserve (typically 2-3 months). Full policy follows post-closing. Coverage must equal or exceed dwelling replacement cost per lender requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #2: FIVE AGENT TYPES ============ -->
+  <section class="professions-section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">02 &middot; Five insurance agent types in Florida</div>
+        <h2>How insurance agents work and how they&rsquo;re structured.</h2>
+        <p>Florida insurance market spans multiple agent business models: independent agents representing multiple carriers, captive agents with single-carrier appointments, surplus lines brokers for hard-to-place risks, insurance brokers working for the client, and direct writers selling without traditional agent intermediation.</p>
+      </div>
+      <div class="professions-grid">
+
+        <a class="profession-card" href="#agent-role">
+          <div class="profession-num">01</div>
+          <h3 class="profession-title">Independent agents (multiple carriers)</h3>
+          <p class="profession-tag">"Independent insurance agents represent multiple admitted carriers and shop coverage across the market for the client. Common in Florida for homeowners + wind + flood combinations given carrier withdrawal patterns. Agency-owner business model with commission compensation."</p>
+          <ul class="profession-points">
+            <li>Multiple admitted-carrier appointments</li>
+            <li>Shop coverage across the market</li>
+            <li>Common for complex Florida risks</li>
+            <li>Independent Insurance Agents of Florida (IIABA)</li>
+          </ul>
+          <span class="profession-link">See independent agent mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#agent-role">
+          <div class="profession-num">02</div>
+          <h3 class="profession-title">Captive agents (single carrier)</h3>
+          <p class="profession-tag">"Captive agents represent a single insurance carrier exclusively. Major: State Farm, Allstate, Farmers, Liberty Mutual (in Florida market), Nationwide. Agent operates branded location for the carrier. Common for bundled auto + homeowners customers seeking single-carrier convenience."</p>
+          <ul class="profession-points">
+            <li>Single-carrier exclusive appointment</li>
+            <li>Branded location and marketing</li>
+            <li>Bundle discount auto + home typical</li>
+            <li>State Farm, Allstate, Farmers, Nationwide</li>
+          </ul>
+          <span class="profession-link">See captive agent mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#agent-role">
+          <div class="profession-num">03</div>
+          <h3 class="profession-title">Surplus lines brokers</h3>
+          <p class="profession-tag">"Surplus lines brokers place coverage with non-admitted (E&amp;S) carriers for hard-to-place Florida risks. Common in Florida for older homes, coastal exposure, prior claims history, or properties exceeding admitted carrier underwriting appetite. Specialty endorsement required."</p>
+          <ul class="profession-points">
+            <li>Non-admitted (E&amp;S) carrier placement</li>
+            <li>Hard-to-place coastal + older homes</li>
+            <li>Higher premiums but broader underwriting</li>
+            <li>Surplus lines license endorsement</li>
+          </ul>
+          <span class="profession-link">See surplus lines mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#agent-role">
+          <div class="profession-num">04</div>
+          <h3 class="profession-title">Insurance brokers</h3>
+          <p class="profession-tag">"Insurance brokers work on the CLIENT&rsquo;s behalf as fiduciary representative shopping the market. Distinction from independent agent: broker has clearer client-side fiduciary positioning. Common for commercial + HNW residential placement with complex coverage needs."</p>
+          <ul class="profession-points">
+            <li>Client-side fiduciary positioning</li>
+            <li>Complex placement coordination</li>
+            <li>HNW residential + commercial typical</li>
+            <li>Brokers more common in commercial market</li>
+          </ul>
+          <span class="profession-link">See broker mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#agent-role">
+          <div class="profession-num">05</div>
+          <h3 class="profession-title">Direct writers (no agent intermediation)</h3>
+          <p class="profession-tag">"Direct writers sell insurance directly to consumers without traditional agent intermediation. Geico, Progressive Direct, USAA (military-affiliated), Esurance. Lower distribution costs but limited Florida homeowners footprint due to market complexity. Auto more common than home direct."</p>
+          <ul class="profession-points">
+            <li>Direct-to-consumer sales channel</li>
+            <li>Geico, Progressive, USAA, Esurance</li>
+            <li>Limited FL homeowners footprint</li>
+            <li>Auto more common than home direct</li>
+          </ul>
+          <span class="profession-link">See direct writer mechanics</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #3: AGENT + REAL ESTATE 4 PHASES ============ -->
+  <section class="section" id="agent-role">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">03 &middot; What your agent does at each transaction phase</div>
+        <h2>How your Florida insurance agent coordinates with your real estate transaction.</h2>
+        <p>Four substantive phases cover the agent&rsquo;s work across a Florida real estate transaction: pre-application coverage analysis, quote sourcing and underwriting coordination, closing binder preparation, and post-closing policy issuance + ongoing service.</p>
+      </div>
+
+      <h3>Phase 1 &mdash; Pre-application: coverage analysis</h3>
+      <p>Your agent evaluates property characteristics affecting coverage and pricing: location flood zone (FEMA Special Flood Hazard Area or X zone), distance to coast (typically 1-mile, 5-mile, 10-mile bands), year built (pre-1992 vs post-Florida Building Code), roof age and material, hurricane mitigation features, prior claims history, and ownership structure (individual, trust, LLC). Agent recommends coverage approach: homeowners HO-3 or HO-5, wind through admitted carrier or Citizens, NFIP flood if SFHA-designated, condo HO-6 with loss assessment if applicable.</p>
+
+      <h3>Phase 2 &mdash; Quote sourcing + underwriting coordination</h3>
+      <p>Agent shops the market across admitted private carriers, Citizens Property Insurance (if private market unavailable at acceptable rates), and surplus lines if hard-to-place. Wind mitigation inspection coordinated for Florida-specific premium discounts (hip roof, opening protection, roof-to-wall connection, secondary water resistance). Four-Point Inspection coordinated if property over 25-30 years old (roof, electrical, plumbing, HVAC condition). Quotes presented to client with coverage and premium comparison.</p>
+
+      <h3>Phase 3 &mdash; Closing binder preparation</h3>
+      <p>Once policy selected, agent prepares binder for closing meeting lender requirements: dwelling coverage at or above replacement cost, mortgagee clause naming the lender + loan number, effective date matching closing date, premium prepaid for 12 months, plus initial escrow reserve typically 2-3 months. NFIP flood binder issued separately if required. Wind binder separate if private wind carrier or Citizens. All binders provided to title company / closing attorney for closing-day documentation.</p>
+
+      <h3>Phase 4 &mdash; Post-closing policy + ongoing service</h3>
+      <p>Full policy documents follow post-closing within 30-60 days. Renewal coordination annually with potential rate review + carrier shopping if market shifts. Claims coordination if losses occur. Wind mitigation re-inspection coordination every 5 years (typical Florida discount validity). Policy changes coordinated for ownership updates (trust transfer, LLC formation), coverage adjustments (renovations affecting replacement cost), and umbrella liability layering as needed.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #4: FL INSURANCE MARKET DARK SECTION ============ -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/258109/pexels-photo-258109.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 760px;">
+        <div class="eyebrow eyebrow-light">04 &middot; What Florida insurance market knowledge means for your real estate</div>
+        <h2 style="color: var(--paper);">Six things every Florida buyer and homeowner should know about Florida insurance.</h2>
+        <p style="color: rgba(250,250,247,0.78);">Florida insurance market context is substantively different from other states. Six clarifications every Florida buyer and homeowner should understand before closing.</p>
+      </div>
+
+      <div class="dark-grid">
+        <div class="dark-card">
+          <div class="dark-num">A</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Citizens Property Insurance &mdash; insurer of last resort</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Florida-created state-backed nonprofit insurer of last resort under <a href="https://www.citizensfla.com/" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">Citizens Property Insurance Corporation</a>. Available when private market quote exceeds Citizens by certain margin. Coverage limits and underwriting rules differ from private market. Depopulation initiatives transfer policies back to private carriers periodically.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">B</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">2022-2024 reform legislation</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Florida <a href="https://www.flsenate.gov/Session/Bill/2022D/2A" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">SB 2A (2022 special session)</a> established the Reinsurance to Assist Policyholders (RAP) program, modified attorney fee provisions, and addressed assignment of benefits. SB 7052 (2023) continued reform efforts. Reform aims to stabilize the Florida market following carrier withdrawals.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">C</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Wind mitigation inspection discounts</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Florida-specific wind mitigation inspection program identifies premium-discount features: hip roof shape, roof deck attachment quality, roof-to-wall connection strength (clips / single straps / double straps), opening protection (impact-rated windows or shutters meeting Florida Building Code), and roof covering compliance. Discounts can be substantial; re-inspection every 5 years typical.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">D</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Hurricane deductible structure</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Florida hurricane deductible structured as percentage of dwelling coverage (commonly 2%, 5%, or 10%). For $500K dwelling at 5% hurricane deductible: $25,000 deductible vs the standard $1,000-$5,000 all-other-perils deductible. Triggered by National Hurricane Center named-storm declaration. Applies once per calendar year for named storms.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">E</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">NFIP flood vs private flood</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);"><a href="https://www.floodsmart.gov/" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">NFIP National Flood Insurance Program</a> through FEMA: maximum $250K dwelling + $100K contents coverage. Risk Rating 2.0 methodology since October 2021 updated premium calculation. Private flood market emerging with higher coverage limits + faster processing. Required by mortgage lender in FEMA Special Flood Hazard Areas (SFHA).</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">F</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Condo HO-6 + loss assessment coverage</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Condo unit-owner HO-6 policy covers interior (walls-in) + personal property + liability + loss assessment. Loss assessment coverage critical for special assessments from condo association master policy gaps. Post-Surfside (June 2021) and SB 4-D milestone inspection + reserve funding requirements increase loss assessment relevance for Florida condo owners.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ H2 #5: AGENT DESIGNATIONS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">05 &middot; Insurance agent credentials and specialty designations</div>
+        <h2>Florida insurance agent credentials and designations explained.</h2>
+        <p>Insurance agent credentials document specialty expertise across property &amp; casualty, life-health, risk management, and personal vs commercial lines practice. Florida agents commonly hold multiple designations reflecting continuing professional education through The Institutes (formerly IIA) and The National Alliance.</p>
+      </div>
+      <div class="loan-program-grid">
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CPCU &mdash; Chartered Property Casualty Underwriter</h3>
+          <ul class="loan-program-points">
+            <li>Premier P&amp;C insurance credential through The Institutes</li>
+            <li>Eight-exam curriculum + ethics requirement</li>
+            <li>Highest formal insurance specialty credential</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Senior P&amp;C practice</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CIC &mdash; Certified Insurance Counselor</h3>
+          <ul class="loan-program-points">
+            <li>The National Alliance credential</li>
+            <li>Five-institute curriculum + annual update</li>
+            <li>Comprehensive insurance practice</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Independent agent practice</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CRM &mdash; Certified Risk Manager</h3>
+          <ul class="loan-program-points">
+            <li>The National Alliance risk management credential</li>
+            <li>Risk identification, analysis, treatment</li>
+            <li>Commercial + HNW residential practice</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Risk management practice</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CISR &mdash; Certified Insurance Service Representative</h3>
+          <ul class="loan-program-points">
+            <li>The National Alliance service-side credential</li>
+            <li>Five-institute focus on customer service</li>
+            <li>Common for CSR + account manager roles</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Account management</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">AAI &mdash; Accredited Adviser in Insurance</h3>
+          <ul class="loan-program-points">
+            <li>The Institutes coverage analysis credential</li>
+            <li>Personal + commercial lines coverage depth</li>
+            <li>Common for producer + CSR practice</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Coverage analysis</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">ARM &mdash; Associate in Risk Management</h3>
+          <ul class="loan-program-points">
+            <li>The Institutes risk management credential</li>
+            <li>Risk analysis + treatment + financing</li>
+            <li>Commercial + corporate risk practice</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Commercial risk</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">FAIA / IIABA &mdash; FL Trade Associations</h3>
+          <ul class="loan-program-points">
+            <li>FAIA Florida Association of Insurance Agents</li>
+            <li>IIABA Independent Insurance Agents of FL</li>
+            <li>Trade association + continuing education</li>
+          </ul>
+          <div class="loan-program-tag">Best for: FL trade involvement</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #6: INDUSTRY CONTEXT ============ -->
+  <section class="section section-tinted">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">06 &middot; Six forces shaping the Florida insurance industry</div>
+        <h2>How the Florida insurance industry operates in 2026.</h2>
+        <p>Florida insurance market operates at the intersection of hurricane catastrophe exposure, private carrier withdrawal cycles, Citizens depopulation initiatives, 2022-2024 legislative reforms, NFIP Risk Rating 2.0 implementation, and surplus lines market growth for hard-to-place risks.</p>
+      </div>
+
+      <h3>Force 1 &mdash; Hurricane catastrophe exposure</h3>
+      <p>Florida ranks consistently among top U.S. hurricane catastrophe exposure jurisdictions per <a href="https://www.iii.org/" target="_blank" rel="noopener noreferrer">Insurance Information Institute</a> data. Hurricane Andrew (1992), Charley (2004), Wilma (2005), Irma (2017), Michael (2018), Ian (2022), Idalia (2023) cumulative loss history substantial. Risk-adjusted reinsurance pricing reflects exposure. Catastrophe modeling refinement continues with climate change considerations.</p>
+
+      <h3>Force 2 &mdash; Private carrier withdrawal + Citizens growth</h3>
+      <p>Florida private homeowners carrier withdrawal pressure continued through 2022-2023 with multiple major carriers reducing or exiting Florida personal lines. <a href="https://www.citizensfla.com/" target="_blank" rel="noopener noreferrer">Citizens Property Insurance Corporation</a> grew substantially through this period reaching over 1.2 million policies at peak. Depopulation initiatives transfer policies back to admitted private carriers as market conditions improve. Coverage availability remains challenging in coastal and high-exposure zones.</p>
+
+      <h3>Force 3 &mdash; 2022-2024 reform legislation</h3>
+      <p><a href="https://www.flsenate.gov/Session/Bill/2022D/2A" target="_blank" rel="noopener noreferrer">Florida SB 2A (December 2022 special session)</a> established Reinsurance to Assist Policyholders (RAP) program providing reinsurance support, modified attorney fee provisions for property insurance claims, and addressed assignment of benefits (AOB). SB 7052 (2023) continued reform efforts. Reform aims to stabilize the Florida market and encourage private carrier return.</p>
+
+      <h3>Force 4 &mdash; NFIP Risk Rating 2.0 + private flood market</h3>
+      <p>NFIP transitioned to <a href="https://www.fema.gov/flood-insurance/risk-rating" target="_blank" rel="noopener noreferrer">Risk Rating 2.0</a> methodology beginning October 2021 (Phase I) and April 2022 (Phase II for existing policies). New methodology incorporates more granular flood risk data + replacement cost variation + frequency of flooding. Private flood market continues growing as alternative or supplement to NFIP coverage, particularly for higher-value properties beyond NFIP&rsquo;s $250K dwelling limit.</p>
+
+      <h3>Force 5 &mdash; Surplus lines market growth</h3>
+      <p>Florida surplus lines market growing as private admitted carriers withdraw from harder-to-place segments. <a href="https://www.fslso.com/" target="_blank" rel="noopener noreferrer">Florida Surplus Lines Service Office</a> coordinates market regulation. Surplus lines provides coverage for older homes, coastal exposure, prior claims history, and properties exceeding admitted carrier underwriting appetite. Higher premiums typical but broader underwriting reach.</p>
+
+      <h3>Force 6 &mdash; Condo insurance + Surfside aftermath</h3>
+      <p>Post-Surfside condo collapse (June 2021) and Florida SB 4-D (May 2022) milestone inspection + structural integrity reserve study (SIRS) + reserve funding requirements reshape condo insurance. Condo association master policies under pressure from increased structural concerns. Condo unit-owner HO-6 policies with loss assessment coverage critical given potential special assessments from association master policy gaps.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #7: TIMELINE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">07 &middot; Insurance + real estate transaction timeline</div>
+        <h2>The insurance agent + real estate transaction timeline.</h2>
+        <p>A timeline view of how agent work integrates with a Florida real estate transaction across pre-application coverage analysis, quote sourcing + underwriting, closing binder prep, and post-closing policy + ongoing service.</p>
+      </div>
+      <div class="career-timeline">
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Pre-application</div>
+          <div class="timeline-body">
+            <h4>Coverage analysis + property assessment</h4>
+            <p><strong>Agent work:</strong> Property characteristic evaluation (flood zone, coastal distance, year built, roof, mitigation features, claims history, ownership structure). Coverage approach recommendation: HO-3 or HO-5, wind through admitted carrier or Citizens, NFIP flood if SFHA-designated, condo HO-6 with loss assessment if applicable. <strong>Coordination with lender:</strong> Coverage requirements verified ahead of binder.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Quote sourcing</div>
+          <div class="timeline-body">
+            <h4>Market shopping + underwriting coordination</h4>
+            <p><strong>Agent work:</strong> Shop admitted carriers, Citizens (if applicable), surplus lines (if hard-to-place). Wind mitigation inspection coordinated for Florida-specific discounts. Four-Point Inspection if older property. Quote comparison presented with coverage + premium differences. <strong>Coordination with lender:</strong> Premium impact on PITI calculation confirmed for qualifying.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Closing binder</div>
+          <div class="timeline-body">
+            <h4>Binder preparation for closing</h4>
+            <p><strong>Agent work:</strong> Binder prepared meeting lender requirements: dwelling coverage at or above replacement cost, mortgagee clause naming lender + loan number, effective date matching closing date, 12 months premium prepaid + initial escrow reserve. NFIP flood binder separate if required. Wind binder separate if private wind or Citizens.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Post-closing</div>
+          <div class="timeline-body">
+            <h4>Policy issuance + ongoing service</h4>
+            <p><strong>Agent work:</strong> Full policy documents follow post-closing within 30-60 days. Annual renewal coordination with rate review + carrier shopping if market shifts. Claims coordination if losses occur. Wind mitigation re-inspection every 5 years. Policy changes for ownership updates (trust, LLC), coverage adjustments, umbrella liability layering.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #8: TESTIMONIALS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">08 &middot; What buyers and homeowners say</div>
+        <h2>What Florida buyers say about their insurance agent + Stairway coordination.</h2>
+        <p>Names abbreviated for client privacy. Transaction details anonymized. Agent names withheld out of professional courtesy.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-1"><img src="https://i.pravatar.cc/300?img=22" alt="Patricia L., Florida coastal buyer with Citizens wind + private HO-3 + NFIP flood coordinated by CPCU independent agent" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=22';"></div>
+          <blockquote class="testim-quote">"Coastal Pompano Beach purchase of a $1.15M oceanfront condo with complex coverage stack coordinated by my CPCU-credentialed independent agent. My agent placed HO-6 unit-owner coverage with one carrier, separate Citizens wind coverage (private wind market unavailable at acceptable rate for the address), NFIP flood coverage at $250K dwelling + $100K contents maximum, and loss assessment coverage with $50K limit given the condo association master policy structure. Jim&rsquo;s team coordinated PITI calculation with the multi-policy premium load (total $14,800/year homeowners + wind + flood) and the Conventional Jumbo qualifying held together. $1.15M Conventional Jumbo close in 38 days. Agent + Stairway coordination on the multi-policy stack worked exactly."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Patricia L.</div>
+            <div class="testim-meta">Coastal condo + multi-policy stack &middot; Pompano Beach</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-2"><img src="https://i.pravatar.cc/300?img=23" alt="Michael S., Florida investment property buyer with DP-3 dwelling fire policy coordinated by CIC independent agent" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/F0EDE8/6B5C4B/png?text=23';"></div>
+          <blockquote class="testim-quote">"Investment property purchase of a $785K Plantation single-family rental with DP-3 dwelling fire policy coordinated by my CIC-credentialed independent agent. My agent placed DP-3 special form coverage through an admitted carrier accepting the rental property risk, separate NFIP flood (X zone but lender required preferred risk rate), and umbrella liability layered above for $2M additional liability protection given other investment property exposure. Wind mitigation inspection identified hip roof + impact-rated windows + roof-to-wall double straps for substantial premium discount. Jim&rsquo;s team handled the DSCR Non-QM financing with proper policy documentation accepted by lender. $785K DSCR Non-QM close in 36 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Michael S.</div>
+            <div class="testim-meta">Investment SFR + DP-3 coverage &middot; Plantation</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-3"><img src="https://i.pravatar.cc/300?img=24" alt="Linda R., Florida HNW relocator with HO-5 premier + umbrella + surplus lines wind coordinated by CRM agent" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EFE8/3D5A3D/png?text=24';"></div>
+          <blockquote class="testim-quote">"HNW relocator from New York purchasing a $2.4M Naples primary residence on the Gulf Coast with comprehensive coverage stack coordinated by my CRM-credentialed agent at a boutique HNW practice. My agent placed HO-5 premier homeowners coverage through an admitted carrier accepting the HNW risk profile, separate surplus lines wind coverage given private wind market underwriting limits at the coastal address, NFIP flood plus private flood excess for higher limits, and $5M umbrella liability layered above. Total coverage premium $28,400/year. Jim&rsquo;s team coordinated PITI on the multi-policy load. $2.4M Conventional Jumbo with Asset-Depletion qualifying close in 42 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Linda R.</div>
+            <div class="testim-meta">HNW relocator + HO-5 + umbrella + surplus wind &middot; Naples</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #9: 10-FAQ SECTION ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">09 &middot; Insurance agent partner FAQs</div>
+        <h2>Questions Florida buyers, homeowners, and agents ask, answered.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-cross-links" style="margin-bottom: var(--s-10); padding: var(--s-6); background: var(--paper-warm); border-left: 3px solid var(--blue);">
+          <p style="margin: 0 0 var(--s-3) 0; font-family: var(--serif); font-size: var(--text-md); font-weight: 500;">More <a href="https://stairwaymortgage.com/" style="color: inherit; text-decoration: underline;">insurance partnership and borrower-side</a> resources at Stairway</p>
+          <ul style="margin: 0; padding-left: var(--s-5); font-size: var(--text-sm); line-height: 1.7; list-style: none;">
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Jumbo loan details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/dscr-investor-loan/">DSCR Non-QM details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/condo-loan/">Condo loan details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start your pre-approval</a></li>
+          </ul>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">01</div>
+          <div>
+            <div class="faq-q">What&rsquo;s the difference between HO-3, HO-5, and HO-6 policies?</div>
+            <div class="faq-a">HO-3 is the standard homeowners policy with named-perils personal property + all-risk dwelling coverage. HO-5 is the premier variant with all-risk on both dwelling AND personal property (broader). HO-6 is the condo unit-owner policy covering walls-in interior + personal property + liability + loss assessment. Agent selection depends on property type + coverage preference.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">02</div>
+          <div>
+            <div class="faq-q">Do I need NFIP flood insurance in Florida?</div>
+            <div class="faq-a">Required by mortgage lender in FEMA-designated <a href="https://www.fema.gov/flood-maps" target="_blank" rel="noopener noreferrer">Special Flood Hazard Areas (SFHA)</a> (high-risk flood zones). Optional but recommended in X zones for many Florida properties given hurricane storm surge risk. NFIP maximum: $250K dwelling + $100K contents. Private flood emerging with higher limits available.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">03</div>
+          <div>
+            <div class="faq-q">What is Citizens Property Insurance and when does it apply?</div>
+            <div class="faq-a">Citizens Property Insurance Corporation is Florida&rsquo;s state-backed nonprofit insurer of last resort. Available when private market quote exceeds Citizens by a defined margin. Coverage limits and underwriting rules differ from private market. Depopulation initiatives transfer policies to private carriers when market conditions allow.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">04</div>
+          <div>
+            <div class="faq-q">How does the hurricane deductible work?</div>
+            <div class="faq-a">Florida hurricane deductible structured as percentage of dwelling coverage (commonly 2%, 5%, or 10%) separate from all-other-perils deductible. For $500K dwelling at 5%: $25,000 hurricane deductible vs $1,000-$5,000 standard deductible. Triggered by National Hurricane Center named-storm declaration. Applies once per calendar year for named storms per Florida Statutes Chapter 627.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">05</div>
+          <div>
+            <div class="faq-q">What is a wind mitigation inspection and is it worth doing?</div>
+            <div class="faq-a">Florida-specific inspection identifying premium-discount features: hip roof shape, roof deck attachment, roof-to-wall connections (clips / single / double straps), opening protection (impact-rated windows / shutters), secondary water resistance, roof covering compliance. Discounts can be substantial; cost typically $75-$150 with potential annual premium savings of $500-$2,000+ depending on property.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">06</div>
+          <div>
+            <div class="faq-q">Why do older Florida homes need a Four-Point Inspection?</div>
+            <div class="faq-a">Carriers typically require Four-Point Inspection for properties 25-30+ years old: roof, electrical, plumbing, HVAC condition assessment. Cost $75-$150. Identifies any major system issues affecting insurability. Some carriers require updated electrical (no aluminum wiring), updated plumbing (no polybutylene), or roof under certain age.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">07</div>
+          <div>
+            <div class="faq-q">What is loss assessment coverage and why do I need it for a condo?</div>
+            <div class="faq-a">Loss assessment coverage in condo HO-6 covers special assessments from the condo association master policy gaps (deductible, exclusions, limits exceeded). Critical post-Surfside (June 2021) and Florida SB 4-D milestone inspection + reserve funding requirements. Typical $5K-$50K coverage; agents recommend higher limits given recent special assessment trends.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">08</div>
+          <div>
+            <div class="faq-q">When do I need surplus lines insurance?</div>
+            <div class="faq-a">Surplus lines (non-admitted E&amp;S carriers) covers risks the admitted market won&rsquo;t take: older homes, coastal exposure, prior claims history, properties exceeding admitted carrier underwriting appetite. Higher premiums typical but broader underwriting reach. Florida Surplus Lines Service Office coordinates market regulation. Agent must hold surplus lines license endorsement.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">09</div>
+          <div>
+            <div class="faq-q">How much homeowners insurance do I need for my mortgage?</div>
+            <div class="faq-a">Lender requires dwelling coverage at or above replacement cost (not market value). 12 months premium prepaid at closing plus initial escrow reserve typically 2-3 months. Mortgagee clause naming the lender + loan number. Binder issued at closing as proof of coverage; full policy follows post-closing. Coverage maintained through ownership for lender protection.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">10</div>
+          <div>
+            <div class="faq-q">I&rsquo;m an insurance agent. Can Stairway help with my own home mortgage?</div>
+            <div class="faq-a">Yes &mdash; for agency principals and producers with W-2 + commission + book-of-business renewals + bonus + variable comp, Stairway handles multi-source qualifying with Fannie Mae B3-3.1-01 variable income synthesis. Independent agency owners with K-1 partnership income use B3-3.4-02 partnership documentation. See our <a href="https://stairwaymortgage.com/professional-services/">professional services hub</a> for multi-source income qualifying paths.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #10: COMPANION GUIDES ============ -->
+  <section class="section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">10 &middot; Companion guides &amp; calculators</div>
+        <h2>More on Florida insurance, mortgage requirements, and condo coverage.</h2>
+      </div>
+      <div class="link-farm-grid">
+        <div class="link-farm-col">
+          <h4>Property type loan programs</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Jumbo loan details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/condo-loan/">Condo loan details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/dscr-investor-loan/">DSCR Non-QM investment</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/conventional-loan/">Conventional conforming</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Florida-specific topics</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/">All loan programs</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/">Professional services hub</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/sales-professionals/">Sales professionals hub</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Calculators &amp; tools</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">All 100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/current-rates/">Today&rsquo;s rates</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start a pre-approval</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #11: SOURCES ============ -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">11 &middot; Sources &amp; further reading</div>
+        <h2>Sources &amp; further reading.</h2>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h3 class="source-group-title">Florida insurance regulators</h3>
+          <ul class="source-list">
+            <li><a href="https://www.floir.com/" target="_blank" rel="noopener noreferrer">Florida Office of Insurance Regulation (FLOIR)</a></li>
+            <li><a href="https://www.myfloridacfo.com/" target="_blank" rel="noopener noreferrer">Florida CFO / Department of Financial Services</a></li>
+            <li><a href="https://www.fslso.com/" target="_blank" rel="noopener noreferrer">Florida Surplus Lines Service Office</a></li>
+            <li><a href="https://www.naic.org/" target="_blank" rel="noopener noreferrer">NAIC &mdash; National Association of Insurance Commissioners</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Citizens, NFIP &amp; flood resources</h3>
+          <ul class="source-list">
+            <li><a href="https://www.citizensfla.com/" target="_blank" rel="noopener noreferrer">Citizens Property Insurance Corporation</a></li>
+            <li><a href="https://www.floodsmart.gov/" target="_blank" rel="noopener noreferrer">FloodSmart.gov &mdash; NFIP consumer site</a></li>
+            <li><a href="https://www.fema.gov/flood-insurance" target="_blank" rel="noopener noreferrer">FEMA &mdash; National Flood Insurance Program</a></li>
+            <li><a href="https://www.fema.gov/flood-insurance/risk-rating" target="_blank" rel="noopener noreferrer">FEMA &mdash; NFIP Risk Rating 2.0</a></li>
+            <li><a href="https://www.fema.gov/flood-maps" target="_blank" rel="noopener noreferrer">FEMA Flood Maps</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Florida Statutes &amp; reform legislation</h3>
+          <ul class="source-list">
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter627" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 627 &mdash; Insurance Rates and Contracts</a></li>
+            <li><a href="https://www.flsenate.gov/Session/Bill/2022D/2A" target="_blank" rel="noopener noreferrer">Florida SB 2A (2022 special session)</a></li>
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter718" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 718 &mdash; Condominiums (SB 4-D)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Insurance trade &amp; data</h3>
+          <ul class="source-list">
+            <li><a href="https://www.iii.org/" target="_blank" rel="noopener noreferrer">Insurance Information Institute (III)</a></li>
+            <li><a href="https://www.theinstitutes.org/" target="_blank" rel="noopener noreferrer">The Institutes (CPCU, AAI, ARM)</a></li>
+            <li><a href="https://scic.com/" target="_blank" rel="noopener noreferrer">The National Alliance (CIC, CRM, CISR)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">CFPB &amp; mortgage references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener noreferrer">CFPB &mdash; Consumer Financial Protection Bureau</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.1-01 &mdash; Variable Income (agent-as-borrower)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #12: PRE-CTA STORY ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">12 &middot; What agent + Stairway partnership looks like</div>
+        <h2>Real-world insurance agent partnership coordination.</h2>
+        <p>A Florida CPCU-credentialed independent agent at a boutique HNW practice in Palm Beach County referred a coastal HNW client to Stairway after the prior lender struggled with the multi-policy insurance stack PITI calculation. Client situation: $2.85M Delray Beach oceanfront condo with complex coverage stack required by the property location and lender requirements. <strong>Agent partnership coordination: HO-6 unit-owner policy through admitted carrier accepting the HNW risk profile, separate Citizens wind coverage (private wind market unavailable at acceptable rate for the oceanfront address), NFIP flood at maximum $250K + private flood excess for $1M total flood coverage, loss assessment coverage at $100K limit given the building&rsquo;s SB 4-D milestone inspection findings, $5M umbrella liability layered above, and total annual premium load $24,800/year synthesized into the PITI calculation.</strong> Stairway Mortgage handled PITI calculation incorporating the multi-policy premium load (homeowners + wind + flood + private flood excess + umbrella allocation), Asset-Depletion Non-QM qualifying on $8.2M managed liquid portfolio, and proper binder coordination for closing. $2.85M Conventional Jumbo + Asset-Depletion close in 43 days. <strong>Agent + Stairway coordination on multi-policy insurance stack with proper PITI calculation is the partnership pattern that produces successful coastal HNW Florida closes &mdash; the agent brings deep Florida insurance market expertise on coverage placement, Stairway brings specialty mortgage underwriting expertise on multi-source qualifying and proper PITI inclusion.</strong></p>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="House keys at insurance agent + Stairway closing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=Agent+Closings';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">43-day agent + Stairway close &middot; Delray Beach, FL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #13: FINAL CTA + PARTNER-AS-BORROWER CTA ============ -->
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow eyebrow-light">Talk to a Florida mortgage specialist about your insurance partnership transaction</div>
+        <h2 style="color: var(--paper);">Whether you&rsquo;re a Florida buyer working with an insurance agent on coverage placement &mdash; or an insurance agent looking for a mortgage yourself &mdash; Stairway coordinates the mortgage side with the depth your agent partner expects.</h2>
+        <p style="color: rgba(250,250,247,0.78);">For Florida buyers with insurance agent coordination: multi-policy coverage stack PITI calculation, Citizens vs private market coverage decisions, NFIP vs private flood, condo HO-6 with loss assessment, hurricane deductible structure, wind mitigation inspection coordination, surplus lines for hard-to-place risks. <strong>For insurance agents looking for a mortgage on your own home,</strong> Stairway handles W-2 + commission + book-of-business + bonus multi-source qualifying. Agency principals with K-1 partnership income use the <a href="https://stairwaymortgage.com/professional-services/" style="color: var(--paper); text-decoration: underline;">professional services hub</a> for partnership documentation paths under Fannie Mae B3-3.4-02. Independent producers with W-2 + variable commission use B3-3.1-01 variable income synthesis.</p>
+        <div class="final-cta-actions">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-primary btn-large">Schedule a call with Jim</a>
+          <a href="https://stairwaymortgage.com/professional-services/" class="btn btn-on-dark-secondary btn-large">Multi-source income mortgages</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: rgba(250,250,247,0.5); margin-top: var(--s-6);">Jim Blackburn NMLS #1072866 &middot; Stairway Mortgage</p>
+      </div>
+    </div>
+  </section>
+`;
+---
+<Layout title="Insurance Agents · Florida Insurance Agent Partner Hub — Homeowners HO-3, Hurricane Wind, NFIP Flood, Condo HO-6, Citizens Property &amp; Mortgage Lender Requirements" description="Florida insurance agent partner hub educating buyers, homeowners, and condo unit owners on what insurance agents do in real estate transactions: homeowners insurance HO-3 standard all-risk dwelling or HO-5 premier all-risk policy selection; hurricane and windstorm coverage in Florida as separate peril through private admitted carriers or Citizens Property Insurance Corporation as state-backed insurer of last resort; NFIP National Flood Insurance Program coverage through FEMA at FloodSmart.gov with maximum $250000 dwelling coverage and $100000 contents coverage or private flood alternatives offering higher limits; condo HO-6 unit-owner policy with loss assessment coverage critical post-Surfside collapse June 2021 and Florida SB 4-D milestone inspection structural integrity reserve study and reserve funding requirements; dwelling fire DP-3 for investment property and rental units; umbrella liability layered above auto and homeowners primary policies for $1M to $5M+ additional liability; wind mitigation inspection coordination for Florida-specific premium discounts on hip roof, opening protection impact-rated windows or shutters, roof-to-wall connection straps, secondary water resistance, and roof covering compliance with Florida Building Code; hurricane deductible structure as percentage of dwelling coverage commonly 2 percent 5 percent or 10 percent separate from standard all-other-perils deductible triggered by National Hurricane Center named-storm declaration; Four-Point Inspection for properties 25-30+ years old covering roof electrical plumbing HVAC condition assessment; and binder issuance at closing meeting mortgage lender requirements for 12 months prepaid insurance plus initial escrow reserve. Florida insurance market context: substantial market disruption 2022-2024 with private carrier withdrawals, Citizens Property Insurance growth to over 1.2 million policies at peak, and legislative reforms under Florida SB 2A 2022 special session establishing Reinsurance to Assist Policyholders RAP program and SB 7052 2023. Insurance agent types: independent agents representing multiple admitted carriers; captive agents with single-carrier appointments at State Farm Allstate Farmers Liberty Mutual Nationwide; surplus lines brokers placing coverage with non-admitted E&S carriers for hard-to-place coastal and older home risks; insurance brokers working as client-side fiduciary; direct writers Geico Progressive USAA Esurance. Florida agent credentials: CPCU Chartered Property Casualty Underwriter through The Institutes; CIC Certified Insurance Counselor and CRM Certified Risk Manager and CISR Certified Insurance Service Representative through The National Alliance; AAI Accredited Adviser in Insurance and ARM Associate in Risk Management through The Institutes; FAIA Florida Association of Insurance Agents and IIABA Independent Insurance Agents of Florida trade associations. Partner-as-borrower CTA at bottom routing insurance agents to /professional-services/ hub for multi-source income mortgage qualifying paths covering W-2 plus commission plus book-of-business renewals plus bonus variable compensation under Fannie Mae B3-3.1-01 variable income framework, agency principals with K-1 partnership income under B3-3.4-02 partnership documentation." canonical="https://stairwaymortgage.com/insurance-agents/">
+  <div class="pia-scope" set:html={piaBody} />
+</Layout>
+
+<style is:global>
+.pia-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A;
+      --ink-2: #1E2433;
+      --ink-3: #2C3548;
+      --ink-light: #4A5568;
+      --ink-lighter: #6B7280;
+      --paper: #FAFAF7;
+      --paper-2: #F4F4EE;
+      --paper-3: #EDEDE5;
+      --white: #FFFFFF;
+      --blue: #1845D6;
+      --blue-deep: #0F2EA0;
+      --blue-soft: #E8EEFF;
+      --blue-tint: #F2F5FF;
+      --gold: #B8860B;
+      --rust: #8B2C2C;
+      --border: #E5E5DE;
+      --border-strong: #D4D4C8;
+      --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; 
+      --text-xs: 0.75rem;    
+      --text-sm: 0.875rem;   
+      --text-base: 1.0625rem;
+      --text-md: 1.1875rem;  
+      --text-lg: 1.375rem;   
+      --text-xl: 1.625rem;   
+      --text-2xl: 2rem;      
+      --text-3xl: 2.75rem;   
+      --text-4xl: 3.75rem;   
+      --text-5xl: 5rem;      
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-5: 1.5rem;
+      --s-6: 2rem;
+      --s-7: 3rem;
+      --s-8: 4rem;
+      --s-9: 6rem;
+      --s-10: 8rem;
+      --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.pia-scope, .pia-scope{
+        background-color: #FAFAF7 !important;
+        color: #0A0E1A !important;
+        color-scheme: light only !important;
+      }.pia-scope *{
+        forced-color-adjust: none;
+      }
+    }.pia-scope, .pia-scope *::before, .pia-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.pia-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.pia-scope{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.pia-scope img, .pia-scope svg{ display: block; max-width: 100%; }.pia-scope a{ color: inherit; text-decoration: none; }.pia-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.pia-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.pia-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.pia-scope .container-wide{ max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }.pia-scope .eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-block;
+    }.pia-scope .display-1{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      color: var(--ink);
+    }.pia-scope .display-2{
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, var(--text-3xl));
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 100, "SOFT" 50;
+      color: var(--ink);
+    }.pia-scope h2{
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+      font-weight: 450;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 60, "SOFT" 50;
+    }.pia-scope h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--s-4);
+      font-variation-settings: "opsz" 30;
+    }.pia-scope h4{
+      font-family: var(--sans);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.005em;
+    }.pia-scope p{ margin-bottom: var(--s-4); }.pia-scope p:last-child{ margin-bottom: 0; }.pia-scope p.lead{
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      color: var(--ink-2);
+      font-weight: 350;
+    }.pia-scope p.lede{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.pia-scope .body-text{ color: var(--ink-2); }.pia-scope .text-muted{ color: var(--ink-lighter); }.pia-scope .text-small{ font-size: var(--text-sm); }.pia-scope .text-mono{ font-family: var(--mono); font-feature-settings: 'tnum' 1; }.pia-scope strong, .pia-scope b{ font-weight: 600; color: var(--ink); }.pia-scope em, .pia-scope i{ font-style: italic; }.pia-scope .nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }.pia-scope .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      max-width: 1340px;
+      margin: 0 auto;
+    }.pia-scope .logo{
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 30;
+    }.pia-scope .logo-mark{
+      width: 28px; height: 28px;
+      background: var(--ink);
+      position: relative;
+      border-radius: 2px;
+    }.pia-scope .logo-mark::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.pia-scope .logo-mark::after{
+      content: '';
+      position: absolute;
+      inset: 5px 9px 9px 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.pia-scope .logo-sub{ font-size: var(--text-2xs); color: var(--ink-lighter); font-family: var(--sans); font-weight: 400; letter-spacing: 0.04em; }.pia-scope .nav-links{
+      display: flex; gap: var(--s-6); list-style: none;
+      font-size: var(--text-sm); font-weight: 500;
+    }.pia-scope .nav-links a{ color: var(--ink-2); transition: color 0.15s; }.pia-scope .nav-links a:hover{ color: var(--blue); }.pia-scope .nav-cta{
+      display: flex; gap: var(--s-3);
+    }
+    @media (max-width: 900px) {.pia-scope .nav-links{ display: none; }.pia-scope .nav-cta .btn-secondary{ display: none; }
+    }.pia-scope .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-3) var(--s-5);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }.pia-scope .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }.pia-scope .btn-primary:hover{
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }.pia-scope .btn-secondary{
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }.pia-scope .btn-secondary:hover{
+      border-color: var(--ink);
+    }.pia-scope .btn-light{
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }.pia-scope .btn-light:hover{ background: var(--paper-2); }.pia-scope .btn-large{
+      padding: var(--s-4) var(--s-6);
+      font-size: var(--text-base);
+    }.pia-scope .btn-arrow{
+      display: inline-flex; align-items: center; gap: var(--s-2);
+      color: var(--blue); font-weight: 500;
+      transition: gap 0.18s;
+    }.pia-scope .btn-arrow:hover{ gap: var(--s-3); }.pia-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.pia-scope .hero{
+      padding: var(--s-9) 0 var(--s-8);
+      border-bottom: 1px solid var(--border);
+    }.pia-scope .breadcrumb{
+      display: flex; gap: var(--s-2);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      margin-bottom: var(--s-7);
+    }.pia-scope .breadcrumb a{ color: var(--ink-lighter); }.pia-scope .breadcrumb a:hover{ color: var(--blue); }.pia-scope .breadcrumb span:last-child{ color: var(--ink); }.pia-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.pia-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.pia-scope .hero-subtitle{
+      max-width: 56ch;
+      margin-bottom: var(--s-7);
+    }.pia-scope .hero-actions{
+      display: flex; gap: var(--s-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--s-5);
+    }.pia-scope .hero-trust{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: var(--s-3);
+    }.pia-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.pia-scope .stats{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-7) 0;
+    }.pia-scope .stats-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }.pia-scope .stat{
+      padding: 0 var(--s-4);
+      border-left: 1px solid var(--ink-3);
+    }.pia-scope .stat:first-child{ border-left: 0; padding-left: 0; }.pia-scope .stat-num{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 350;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 144;
+    }.pia-scope .stat-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {.pia-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.pia-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.pia-scope .section{
+      padding: var(--s-10) 0;
+    }.pia-scope .section-tinted{ background: var(--paper-2); }.pia-scope .section-dark{ background: var(--ink); color: var(--paper); }.pia-scope .section-header{
+      max-width: 720px;
+      margin-bottom: var(--s-8);
+    }.pia-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.pia-scope .section-header h2{ margin-bottom: var(--s-5); }.pia-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.pia-scope .lede-section{ padding: var(--s-9) 0; }.pia-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.pia-scope .data-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-feature-settings: 'tnum' 1;
+    }.pia-scope .data-table thead th{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      font-weight: 500;
+      text-align: left;
+      padding: var(--s-3) var(--s-4);
+      border-bottom: 1px solid var(--border-strong);
+    }.pia-scope .data-table tbody td{
+      padding: var(--s-5) var(--s-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }.pia-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.pia-scope .data-table tbody td:first-child{
+      font-weight: 500;
+      color: var(--ink);
+      width: 28%;
+    }.pia-scope .data-table tbody td:nth-child(2){
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--blue-deep);
+      white-space: nowrap;
+      width: 28%;
+    }.pia-scope .data-table tbody td:last-child{
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {.pia-scope .data-table thead{ display: none; }.pia-scope .data-table tbody tr{
+        display: block;
+        padding: var(--s-5) 0;
+        border-bottom: 1px solid var(--border);
+      }.pia-scope .data-table tbody td{
+        display: block;
+        padding: 0 0 var(--s-2);
+        border: 0;
+        width: 100% !important;
+      }.pia-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.pia-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.pia-scope .methods-grid{
+      display: grid;
+      gap: var(--s-5);
+    }.pia-scope .method{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.pia-scope .method:hover{
+      border-color: var(--border-strong);
+    }.pia-scope .method-header{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+      margin-bottom: var(--s-5);
+    }.pia-scope .method-num{
+      font-family: var(--mono);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: var(--s-2);
+      letter-spacing: -0.02em;
+    }.pia-scope .method-title h3{
+      margin-bottom: var(--s-3);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+    }.pia-scope .method-tag{
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      padding: var(--s-1) var(--s-3);
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.pia-scope .method-body{
+      padding-left: calc(var(--text-2xl) + var(--s-5));
+    }.pia-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.pia-scope .worked-example{
+      background: var(--paper-2);
+      border-left: 3px solid var(--ink);
+      padding: var(--s-5) var(--s-6);
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }.pia-scope .worked-example.featured{
+      background: var(--ink);
+      color: var(--paper);
+      border-left-color: var(--blue);
+    }.pia-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.pia-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.pia-scope .worked-example.featured .we-num{ color: var(--paper); }.pia-scope .we-title{
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--s-4);
+      color: var(--ink);
+    }.pia-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.pia-scope .we-line{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s-4);
+      padding: var(--s-2) 0;
+    }.pia-scope .we-label{ color: var(--ink-light); }.pia-scope .we-num{ color: var(--ink); font-weight: 500; }.pia-scope .we-divider{
+      border-top: 1px dashed var(--border-strong);
+      margin: var(--s-3) 0;
+      grid-column: 1 / -1;
+    }.pia-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.pia-scope .we-result{
+      grid-template-columns: 1fr auto;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border-strong);
+      margin-top: var(--s-2);
+      font-weight: 600;
+    }.pia-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.pia-scope .method{ padding: var(--s-5); }.pia-scope .method-body{ padding-left: 0; }.pia-scope .method-num{ font-size: var(--text-xl); }
+    }.pia-scope .callout{
+      background: var(--blue-tint);
+      border: 1px solid rgba(24, 69, 214, 0.12);
+      border-radius: 6px;
+      padding: var(--s-6) var(--s-7);
+      max-width: 760px;
+    }.pia-scope .callout-eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.pia-scope .callout p{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.pia-scope .testim-warning{
+      background: #FFF1F1;
+      border: 1px solid rgba(139, 44, 44, 0.3);
+      border-radius: 4px;
+      padding: var(--s-3) var(--s-5);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      color: var(--rust);
+      margin: 0 auto var(--s-7);
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+    }.pia-scope .testim-warning .mono-tag{
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.1em;
+      background: var(--rust);
+      color: var(--paper);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }.pia-scope .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {.pia-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; }
+    }.pia-scope .testimonials-grid--quad{
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+    }
+    @media (max-width: 900px) {.pia-scope .testimonials-grid--quad{ grid-template-columns: 1fr; max-width: 620px; }
+    }.pia-scope .testim-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.pia-scope .testim-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }.pia-scope .testim-card .example-tag{
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      background: rgba(139, 44, 44, 0.08);
+      color: var(--rust);
+      padding: 3px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+    }.pia-scope .testim-avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 30;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }.pia-scope .testim-avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      display: block;
+    }.pia-scope .testim-avatar::after{
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 50%;
+    }.pia-scope .testim-avatar-1{ background: var(--blue-soft); color: var(--blue-deep); }.pia-scope .testim-avatar-2{ background: #F0EDE8; color: #6B5C4B; }.pia-scope .testim-avatar-3{ background: #E8EFE8; color: #3D5A3D; }.pia-scope .testim-quote{
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      margin: 0;
+      flex: 1;
+    }.pia-scope .testim-attribution{
+      border-top: 1px solid var(--border);
+      padding-top: var(--s-4);
+    }.pia-scope .testim-name{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.005em;
+    }.pia-scope .testim-meta{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }.pia-scope .programs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+    @media (max-width: 720px) {.pia-scope .programs-grid{ grid-template-columns: 1fr; }
+    }.pia-scope .program{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      transition: all 0.2s;
+    }.pia-scope .program:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }.pia-scope .program h4{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      font-variation-settings: "opsz" 30;
+    }.pia-scope .program-when{
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      flex: 1;
+    }.pia-scope .program-links{
+      display: flex;
+      gap: var(--s-5);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+    }.pia-scope .program-links a{
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-1);
+    }.pia-scope .program-links a:hover{ color: var(--blue-deep); }.pia-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.pia-scope .per-diem-section{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+    }.pia-scope .per-diem-section h2{ color: var(--paper); }.pia-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.pia-scope .per-diem-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.pia-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); }
+    }.pia-scope .per-diem-list{
+      list-style: none;
+      padding: 0;
+    }.pia-scope .per-diem-list li{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--ink-3);
+      display: flex;
+      gap: var(--s-4);
+      align-items: start;
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.9);
+    }.pia-scope .per-diem-list li:last-child{ border-bottom: 0; }.pia-scope .pd-num{
+      font-family: var(--mono);
+      color: var(--blue-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 1.5em;
+    }.pia-scope .playbook-stages{ display: grid; gap: var(--s-7); }.pia-scope .stage{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-7);
+      padding-bottom: var(--s-7);
+      border-bottom: 1px solid var(--border);
+    }.pia-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.pia-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); }
+    }.pia-scope .stage-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      padding-top: var(--s-2);
+    }.pia-scope .stage-content h4{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.pia-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.pia-scope .stage-bullets{
+      list-style: none;
+      padding: 0;
+    }.pia-scope .stage-bullets li{
+      padding: var(--s-2) 0;
+      padding-left: var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }.pia-scope .stage-bullets li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 1px;
+      background: var(--blue);
+    }.pia-scope .bio-section{
+      background: var(--paper-2);
+      padding: var(--s-10) 0;
+    }.pia-scope .bio-grid{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-7);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.pia-scope .bio-grid{ grid-template-columns: 1fr; }
+    }.pia-scope .bio-photo{
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink);
+      position: relative;
+    }.pia-scope .bio-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
+    }.pia-scope .bio-photo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      z-index: 2;
+    }.pia-scope .bio-name{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: var(--s-2);
+      font-variation-settings: "opsz" 60;
+    }.pia-scope .bio-title{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      margin-bottom: var(--s-5);
+    }.pia-scope .bio-quote{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-style: italic;
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--blue);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 30;
+    }.pia-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.pia-scope .faq-list{
+      max-width: 800px;
+      margin: 0 auto;
+    }.pia-scope .faq-item{
+      padding: var(--s-6) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+    }.pia-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.pia-scope .faq-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.04em;
+      color: var(--blue);
+      font-weight: 500;
+      padding-top: var(--s-1);
+    }.pia-scope .faq-q{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      color: var(--ink);
+      line-height: 1.3;
+      font-variation-settings: "opsz" 30;
+    }.pia-scope .faq-a{
+      color: var(--ink-2);
+      line-height: 1.65;
+    }.pia-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.pia-scope .sources-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.pia-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.pia-scope .source-group h4{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border-strong);
+    }.pia-scope .source-list{ list-style: none; padding: 0; }.pia-scope .source-list li{
+      padding: var(--s-3) 0;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }.pia-scope .source-list a{
+      color: var(--ink-2);
+      transition: color 0.15s;
+      display: block;
+    }.pia-scope .source-list a:hover{ color: var(--blue); }.pia-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.pia-scope .source-url{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      word-break: break-all;
+    }.pia-scope .final-cta{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+      text-align: center;
+    }.pia-scope .final-cta h2{
+      color: var(--paper);
+      max-width: 22ch;
+      margin: 0 auto var(--s-5);
+    }.pia-scope .final-cta p{
+      color: rgba(250,250,247,0.75);
+      font-size: var(--text-lg);
+      max-width: 56ch;
+      margin: 0 auto var(--s-7);
+    }.pia-scope .final-cta-actions{
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }.pia-scope .btn-on-dark{
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--paper);
+    }.pia-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.pia-scope .btn-on-dark-secondary{
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(250,250,247,0.3);
+    }.pia-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.pia-scope .footer{
+      background: var(--ink-2);
+      color: var(--paper);
+      padding: var(--s-9) 0 var(--s-5);
+    }.pia-scope .footer-grid{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s-7);
+      margin-bottom: var(--s-7);
+    }
+    @media (max-width: 800px) {.pia-scope .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }.pia-scope .footer-brand .logo{ color: var(--paper); margin-bottom: var(--s-4); }.pia-scope .footer-brand p{ color: rgba(250,250,247,0.65); font-size: var(--text-sm); margin-bottom: var(--s-4); }.pia-scope .footer-brand .compliance{ font-family: var(--mono); font-size: var(--text-xs); line-height: 1.7; color: rgba(250,250,247,0.5); }.pia-scope .footer-col h5{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,0.6);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+    }.pia-scope .footer-col ul{ list-style: none; padding: 0; }.pia-scope .footer-col li{ padding: 4px 0; }.pia-scope .footer-col a{
+      color: rgba(250,250,247,0.85);
+      font-size: var(--text-sm);
+      transition: color 0.15s;
+    }.pia-scope .footer-col a:hover{ color: var(--paper); }.pia-scope .footer-bottom{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(250,250,247,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-4);
+      font-size: var(--text-xs);
+      color: rgba(250,250,247,0.5);
+      font-family: var(--mono);
+    }.pia-scope .mt-6{ margin-top: var(--s-6); }.pia-scope .mt-8{ margin-top: var(--s-8); }.pia-scope .mb-0{ margin-bottom: 0; }
+    @media (prefers-reduced-motion: no-preference) {.pia-scope .fade-in{
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.7s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }.pia-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.pia-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.pia-scope .highlights-list{
+      list-style: none;
+      padding: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      columns: 1;
+      column-gap: var(--s-7);
+    }
+    @media (min-width: 880px) {.pia-scope .highlights-list{ columns: 2; column-gap: var(--s-8); }
+    }.pia-scope .highlights-list li{
+      break-inside: avoid;
+      padding: var(--s-3) 0 var(--s-3) var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }.pia-scope .highlights-list li:last-child{ border-bottom: 0; }.pia-scope .highlights-list li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.2em;
+      width: 14px;
+      height: 1px;
+      background: var(--blue);
+    }.pia-scope .highlights-source{
+      font-size: var(--text-sm);
+      color: var(--ink-lighter);
+      margin-left: 4px;
+    }.pia-scope .highlights-source a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }.pia-scope .highlights-source a:hover{ color: var(--blue-deep); }.pia-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.pia-scope .resources-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {.pia-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); }
+    }.pia-scope .resource-item{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--ink-2);
+    }.pia-scope .resource-item a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }.pia-scope .resource-item a:hover{ color: var(--blue-deep); }.pia-scope .professions-section{
+      padding: var(--s-9) 0 var(--s-10);
+    }.pia-scope .professions-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      max-width: 1100px;
+      margin: var(--s-7) auto 0;
+    }
+    @media (max-width: 800px) {.pia-scope .professions-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.pia-scope .profession-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }.pia-scope .profession-card:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -12px rgba(10, 14, 26, 0.15);
+    }.pia-scope .profession-num{
+      font-family: var(--mono);
+      font-size: var(--text-md);
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }.pia-scope .profession-title{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variation-settings: "opsz" 60;
+      margin: 0;
+      color: var(--ink);
+    }.pia-scope .profession-tag{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.4;
+      color: var(--ink-2);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      font-style: italic;
+      margin: 0;
+    }.pia-scope .profession-points{
+      list-style: none;
+      padding: 0;
+      margin: var(--s-2) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }.pia-scope .profession-points li{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-light);
+      padding-left: var(--s-4);
+      position: relative;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }.pia-scope .profession-points li::before{
+      content: '·';
+      position: absolute;
+      left: var(--s-2);
+      top: -2px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.4em;
+    }.pia-scope .profession-link{
+      margin-top: auto;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-2);
+      transition: gap 0.2s;
+    }.pia-scope .profession-link::after{ content: '→'; transition: transform 0.2s; }.pia-scope .profession-card:hover .profession-link::after{ transform: translateX(4px); }.pia-scope .differentiators-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.pia-scope .differentiators-grid{ grid-template-columns: 1fr; gap: var(--s-6); }
+    }.pia-scope .differentiator{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }.pia-scope .differentiator-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--blue-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+      font-weight: 500;
+    }.pia-scope .differentiator h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.pia-scope .differentiator p{
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(250,250,247,0.85);
+      margin: 0;
+    }.pia-scope .hero--with-image .hero-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.pia-scope .hero--with-image h1{ max-width: 16ch; }.pia-scope .hero--with-image .hero-subtitle{ max-width: 52ch; }.pia-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.pia-scope .hero-image::before{ content: ''; position: absolute; top: 58%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(232,238,255,0.18) 35%, rgba(232,238,255,0.18) 65%, transparent 100%); z-index: 1; }.pia-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.pia-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.pia-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.pia-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; } }.pia-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.pia-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.pia-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.pia-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.pia-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.pia-scope .final-cta--bg .container{ position: relative; z-index: 1; }.pia-scope .stats--with-image .stats-bar-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.pia-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.pia-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.pia-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 800px) {.pia-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.pia-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); }.pia-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; } }.pia-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 30% 60%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.pia-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; filter: contrast(1.03) saturate(0.97); }.pia-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.pia-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.pia-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.pia-scope .pre-cta-photo{ aspect-ratio: 4/3; } }
+  
+
+/* ===== SUB-PAGE D-SERIES EXTENSIONS (v12 sub-page spec §4) ===== */
+
+/* Key Facts grid (Section 1) */
+.pia-scope .key-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.pia-scope .key-fact-card {
+  background: var(--paper);
+  border: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  border-radius: 6px;
+  padding: var(--s-5);
+}
+.pia-scope .key-fact-num {
+  font-family: var(--serif);
+  font-size: var(--text-2xl, 1.8rem);
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: var(--s-2);
+  letter-spacing: -0.02em;
+}
+.pia-scope .key-fact-body {
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  margin: 0;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+
+/* Loan-Program grid (Section 5) */
+.pia-scope .loan-program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.pia-scope .loan-program-card {
+  background: var(--paper);
+  border-left: 3px solid var(--blue);
+  padding: var(--s-5);
+  border-radius: 0 6px 6px 0;
+}
+.pia-scope .loan-program-name {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+}
+.pia-scope .loan-program-points {
+  margin: 0 0 var(--s-3) 0;
+  padding-left: var(--s-4);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.pia-scope .loan-program-tag {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  font-weight: 500;
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+
+/* Career Timeline (Section 7) */
+.pia-scope .career-timeline {
+  margin-top: var(--s-6);
+  border-left: 2px solid var(--blue);
+  padding-left: 0;
+}
+.pia-scope .timeline-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--s-6);
+  padding: var(--s-5) var(--s-5) var(--s-5) var(--s-5);
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  position: relative;
+}
+.pia-scope .timeline-entry:last-child {
+  border-bottom: none;
+}
+.pia-scope .timeline-entry::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: var(--s-6);
+  width: 12px;
+  height: 12px;
+  background: var(--blue);
+  border-radius: 50%;
+}
+.pia-scope .timeline-stage {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  padding-top: var(--s-1);
+}
+.pia-scope .timeline-body h4 {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-2) 0;
+  color: var(--ink);
+}
+.pia-scope .timeline-body p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+@media (max-width: 720px) {
+  .pia-scope .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+  }
+}
+
+/* Sub-page FAQ markup (Section 9) — v10 numbered pattern */
+.pia-scope .faq-list .faq-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: var(--s-5);
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+.pia-scope .faq-list .faq-item:last-child {
+  border-bottom: none;
+}
+.pia-scope .faq-list .faq-num {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  padding-top: var(--s-1);
+}
+.pia-scope .faq-list .faq-q {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.2rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.pia-scope .faq-list .faq-a {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.pia-scope .faq-list .faq-a a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* FAQ cross-links block above FAQ list (Section 9) */
+.pia-scope .faq-cross-links a {
+  color: var(--blue);
+}
+.pia-scope .faq-cross-links a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Link Farm grid (Section 10) */
+.pia-scope .link-farm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s-6);
+  margin-top: var(--s-6);
+}
+.pia-scope .link-farm-col h4 {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+}
+.pia-scope .link-farm-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-sm);
+  line-height: 1.9;
+}
+.pia-scope .link-farm-col a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.pia-scope .link-farm-col a:hover {
+  border-bottom-color: var(--blue);
+}
+
+</style>
+

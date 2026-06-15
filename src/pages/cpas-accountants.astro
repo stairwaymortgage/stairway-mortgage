@@ -1,0 +1,1900 @@
+---
+import Layout from '../layouts/Layout.astro';
+const pcpaBody = `
+  
+
+  <!-- ============ SECTION 0: HERO ============ -->
+  <header class="hero hero--with-image">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow eyebrow">CPAs &amp; Accountants &middot; Partner Education</div>
+          <h1 class="display-1">Why your CPA matters in your real estate transaction &mdash; tax planning, basis tracking, deduction strategy, 1031 exchanges, and Form 1084 cash-flow coordination for self-employed mortgage qualifying.</h1>
+          <p class="lead hero-subtitle">Working with a licensed Certified Public Accountant (CPA) on your Florida real estate transaction is the difference between a tax-optimized purchase or sale and leaving substantial dollars on the table through missed deductions, mistimed basis decisions, mishandled 1031 exchanges, or self-employed mortgage qualifying that fails because the CPA + lender coordination wasn&rsquo;t set up properly. <strong>Your CPA handles mortgage interest deduction strategy (limited to interest on the first $750K of acquisition debt under <a href="https://www.law.cornell.edu/uscode/text/26/163" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">IRC Section 163(h)</a> post-TCJA), SALT cap navigation ($10K state and local tax cap including property taxes under <a href="https://www.law.cornell.edu/uscode/text/26/164" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">IRC Section 164(b)(6)</a>), Section 121 primary home gain exclusion ($250K single / $500K joint), 1031 like-kind exchange coordination for investment property, depreciation strategy and cost segregation for investment property, basis tracking through ownership periods, and for self-employed borrowers, Form 1084 cash-flow addback preparation that makes complex K-1, Schedule C, or partnership distribution income qualify properly with the mortgage lender</strong>. For Florida buyers and sellers, the no-state-income-tax advantage interacts with multi-state tax situations, FIRPTA withholding for foreign sellers, and Florida-specific basis and homestead exemption considerations. This guide educates Florida consumers on what CPAs do in real estate transactions. <strong>If you&rsquo;re a CPA reading this looking for a mortgage on your own home or your firm, scroll to the bottom for the CPA-as-borrower CTA.</strong></p>
+          <div class="hero-actions">
+            <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-primary btn-large">Schedule a call with Jim</a>
+            <a href="#cpa-role" class="btn btn-secondary btn-large">See what your CPA does</a>
+          </div>
+          <div class="hero-trust">
+            <span class="trust-dot"></span>
+            <span>Broker NMLS #1072866</span>
+            <span>&middot;</span>
+            <span>Florida mortgage broker coordinating with CPA partners for self-employed K-1, Schedule C, partnership distribution, and complex income mortgage qualifying with Form 1084 cash-flow addbacks</span>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="CPA reviewing tax returns and real estate documents with client" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=CPA+Partner';">
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ STATS BAR ============ -->
+  <section class="stats stats--with-image">
+    <div class="container">
+      <div class="stats-bar-grid">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">680K+ CPAs</div>
+            <div class="stat-label">Approximately 680,000 actively licensed CPAs across the United States. <a href="https://www.aicpa-cima.com/" target="_blank" rel="noopener noreferrer" style="color: inherit;">AICPA</a> is the national professional organization; <a href="https://www.ficpa.org/" target="_blank" rel="noopener noreferrer" style="color: inherit;">FICPA</a> represents approximately 19,000 Florida CPAs</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$750K cap</div>
+            <div class="stat-label">Post-TCJA acquisition debt limit for mortgage interest deduction under <a href="https://www.law.cornell.edu/uscode/text/26/163" target="_blank" rel="noopener noreferrer" style="color: inherit;">IRC Section 163(h)</a>. Loans originated before Dec 15, 2017 grandfathered at $1M. Interest on acquisition debt above $750K not deductible</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$10K SALT</div>
+            <div class="stat-label">State and local tax (SALT) deduction cap under <a href="https://www.law.cornell.edu/uscode/text/26/164" target="_blank" rel="noopener noreferrer" style="color: inherit;">IRC Section 164(b)(6)</a> post-TCJA. Includes state income tax, property tax, and sales tax combined. Florida benefits from no-state-income-tax (state income tax = $0)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$250K / $500K</div>
+            <div class="stat-label">Primary home capital gains exclusion under <a href="https://www.law.cornell.edu/uscode/text/26/121" target="_blank" rel="noopener noreferrer" style="color: inherit;">IRC Section 121</a>. $250K single / $500K joint exclusion on gain from sale of primary residence (2-of-5-year ownership and use requirement)</div>
+          </div>
+        </div>
+        <figure class="stats-bar-image">
+          <img src="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="CPA tax preparation and basis tracking documents" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x750/0A0E1A/E8EEFF/png?text=CPA+Work';">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEDE ============ -->
+  <section class="lede-section">
+    <div class="container-narrow">
+      <p class="lede">Working with a licensed Florida Certified Public Accountant (CPA) on your real estate transaction is the foundation of tax-optimized homeownership. <strong>Your CPA handles mortgage interest deduction strategy under <a href="https://www.law.cornell.edu/uscode/text/26/163" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">IRC Section 163(h)</a> (acquisition debt limited to $750K post-TCJA), SALT cap navigation ($10K cap on state/local taxes including property tax), Section 121 primary home gain exclusion ($250K single / $500K joint with 2-of-5-year ownership and use requirement), 1031 like-kind exchange coordination for investment property under <a href="https://www.law.cornell.edu/uscode/text/26/1031" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">IRC Section 1031</a>, depreciation strategy and cost segregation under <a href="https://www.law.cornell.edu/uscode/text/26/168" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">IRC Section 168</a> (27.5-year residential / 39-year commercial), basis tracking through ownership and improvement periods, passive activity loss rules under <a href="https://www.law.cornell.edu/uscode/text/26/469" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">IRC Section 469</a> for investment property, Section 199A QBI deduction for pass-through real estate businesses, and FIRPTA compliance for foreign-seller transactions</strong>. For self-employed buyers carrying complex K-1 partnership distributions, Schedule C sole proprietor income, or S-corp principal W-2 + K-1 combinations, your CPA prepares Form 1084 cash-flow addback documentation that recovers depreciation, amortization, and other non-cash deductions at the entity level &mdash; making the qualifying income properly visible to the mortgage underwriter under <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Fannie Mae B3-3.4-02</a> and <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">B3-3.3-02</a>. The CPA + lender coordination is what differentiates a successful close from a deal that falls apart due to missed cash-flow addbacks the generalist lender wouldn&rsquo;t apply. <strong>Stairway Mortgage partners with Florida CPAs across Broward, Miami-Dade, Palm Beach, the Treasure Coast, and statewide on self-employed mortgage qualifying for complex K-1, Schedule C, and partnership distribution borrowers.</strong> Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #1: KEY FACTS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 760px; margin: 0 auto;">
+        <div class="eyebrow">01 &middot; Working with a CPA on real estate at a glance</div>
+        <h2>Key facts every Florida buyer, seller, and self-employed borrower should know about working with a CPA.</h2>
+      </div>
+      <div class="key-facts-grid">
+        <div class="key-fact-card">
+          <div class="key-fact-num">Licensed CPA</div>
+          <p class="key-fact-body">A Florida CPA is licensed by <a href="https://www.myfloridalicense.com/" target="_blank" rel="noopener noreferrer">Florida DBPR</a> Board of Accountancy, requires 150 semester hours of education, passing the Uniform CPA Exam, and continuing professional education. Membership in <a href="https://www.aicpa-cima.com/" target="_blank" rel="noopener noreferrer">AICPA</a> and <a href="https://www.ficpa.org/" target="_blank" rel="noopener noreferrer">FICPA</a> typical.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Tax planning</div>
+          <p class="key-fact-body">Your CPA structures pre-purchase tax planning covering deduction strategy (mortgage interest, property tax, points), basis planning, withholding optimization, and timing of major transactions across tax years to optimize multi-year tax outcomes under TCJA constraints.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">1031 + depreciation</div>
+          <p class="key-fact-body">For investment property, your CPA coordinates 1031 like-kind exchanges under <a href="https://www.law.cornell.edu/uscode/text/26/1031" target="_blank" rel="noopener noreferrer">IRC Section 1031</a>, depreciation schedules (27.5-year residential / 39-year commercial), cost segregation studies for accelerated depreciation, and passive activity loss tracking under <a href="https://www.law.cornell.edu/uscode/text/26/469" target="_blank" rel="noopener noreferrer">IRC Section 469</a>.</p>
+        </div>
+        <div class="key-fact-card">
+          <div class="key-fact-num">Form 1084 prep</div>
+          <p class="key-fact-body">For self-employed mortgage borrowers, your CPA prepares Form 1084 cash-flow addback documentation recovering depreciation, amortization, and other non-cash deductions at the entity level so qualifying income is properly visible to the lender under <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.4-02</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #2: CPA SERVICE TYPES ============ -->
+  <section class="professions-section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">02 &middot; Five CPA service types in real estate</div>
+        <h2>How CPAs serve Florida real estate buyers, sellers, and self-employed borrowers.</h2>
+        <p>CPA practice in real estate spans tax preparation, tax planning, 1031 advisory, personal financial planning (PFS-designated CPAs), and business advisory for self-employed real estate investors. The five service types commonly combine in a single CPA relationship across multi-year planning horizons.</p>
+      </div>
+      <div class="professions-grid">
+
+        <a class="profession-card" href="#cpa-role">
+          <div class="profession-num">01</div>
+          <h3 class="profession-title">Tax preparation</h3>
+          <p class="profession-tag">"Annual tax return preparation across Form 1040 individual, Form 1120-S S-corp, Form 1065 partnership, Form 1041 trust / estate. For real estate: Schedule A itemized deductions, Schedule E rental income."</p>
+          <ul class="profession-points">
+            <li>Form 1040 individual returns with Schedule A</li>
+            <li>Schedule E for rental property income</li>
+            <li>Schedule C for self-employed sole proprietor</li>
+            <li>Pass-through entity returns (1120-S, 1065)</li>
+          </ul>
+          <span class="profession-link">See tax prep mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#cpa-role">
+          <div class="profession-num">02</div>
+          <h3 class="profession-title">Tax planning</h3>
+          <p class="profession-tag">"Multi-year tax strategy covering deduction optimization, timing of major transactions, entity structure, and Florida no-state-income-tax migration planning. Proactive vs reactive tax preparation."</p>
+          <ul class="profession-points">
+            <li>Mortgage interest deduction strategy ($750K cap)</li>
+            <li>SALT cap navigation ($10K combined cap)</li>
+            <li>Timing of purchase / sale across tax years</li>
+            <li>Section 199A QBI deduction planning</li>
+          </ul>
+          <span class="profession-link">See tax planning mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#cpa-role">
+          <div class="profession-num">03</div>
+          <h3 class="profession-title">1031 exchange advisory</h3>
+          <p class="profession-tag">"Like-kind exchange coordination under IRC Section 1031 deferring capital gains on investment property. 45-day identification + 180-day completion timeline. Qualified intermediary (QI) coordination required."</p>
+          <ul class="profession-points">
+            <li>45-day identification period from closing</li>
+            <li>180-day completion timeline from closing</li>
+            <li>Qualified intermediary (QI) coordination</li>
+            <li>Replacement property planning</li>
+          </ul>
+          <span class="profession-link">See 1031 mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#cpa-role">
+          <div class="profession-num">04</div>
+          <h3 class="profession-title">Personal financial planning (PFS)</h3>
+          <p class="profession-tag">"PFS-designated CPAs (Personal Financial Specialist credential through AICPA) provide comprehensive personal financial planning including retirement, estate, investment, and tax-coordinated wealth management."</p>
+          <ul class="profession-points">
+            <li>PFS credential through AICPA</li>
+            <li>Retirement planning + Required Min Distributions</li>
+            <li>Estate planning coordination</li>
+            <li>Tax-coordinated investment strategy</li>
+          </ul>
+          <span class="profession-link">See PFS mechanics</span>
+        </a>
+
+        <a class="profession-card" href="#cpa-role">
+          <div class="profession-num">05</div>
+          <h3 class="profession-title">Business advisory + Form 1084 prep</h3>
+          <p class="profession-tag">"For self-employed mortgage borrowers, the CPA prepares Form 1084 cash-flow addback documentation recovering entity-level depreciation, amortization, and other non-cash deductions. Critical for K-1, Schedule C, partnership qualifying."</p>
+          <ul class="profession-points">
+            <li>Form 1084 cash-flow addback documentation</li>
+            <li>Entity-level depreciation + amortization recovery</li>
+            <li>K-1 partnership distribution timing</li>
+            <li>Schedule C self-employed income analysis</li>
+          </ul>
+          <span class="profession-link">See Form 1084 mechanics</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #3: CPA + REAL ESTATE THROUGH 4 PHASES ============ -->
+  <section class="section" id="cpa-role">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">03 &middot; What your CPA does at each transaction phase</div>
+        <h2>How your CPA coordinates with your real estate transaction.</h2>
+        <p>Four substantive phases cover the CPA&rsquo;s work across a real estate transaction lifecycle: pre-purchase tax planning, purchase + closing deduction setup, ongoing ownership basis tracking and annual returns, and sale or refinance gain treatment.</p>
+      </div>
+
+      <h3>Phase 1 &mdash; Pre-purchase tax planning</h3>
+      <p>Your CPA evaluates the tax implications of the upcoming purchase: deduction capacity (itemized vs standard), mortgage interest deduction subject to $750K acquisition debt cap, property tax deduction subject to $10K SALT cap, points deduction strategy, withholding optimization for the year of purchase, and timing of related transactions (sale of prior home, 1031 exchange if investment) across tax years. For Florida buyers relocating from California, New York, or other high-tax states, the no-state-income-tax migration planning is substantive.</p>
+
+      <h3>Phase 2 &mdash; Purchase + closing deduction setup</h3>
+      <p>At closing, the CPA coordinates documentation collection: Form 1098 mortgage interest reporting from the lender, points deduction documentation (deductible in year paid if certain conditions met under <a href="https://www.irs.gov/forms-pubs/about-publication-936" target="_blank" rel="noopener noreferrer">IRS Pub 936</a>), property tax pro-ration documentation, and any seller-paid items affecting basis. For investment property, the CPA coordinates Schedule E setup and depreciation schedule initialization (27.5-year residential / 39-year commercial under <a href="https://www.law.cornell.edu/uscode/text/26/168" target="_blank" rel="noopener noreferrer">IRC Section 168</a>).</p>
+
+      <h3>Phase 3 &mdash; Ownership: annual returns + basis tracking</h3>
+      <p>Through the ownership period, the CPA maintains basis tracking documentation for capital improvements (added to basis), depreciation recapture tracking on investment property, passive activity loss limitations under <a href="https://www.law.cornell.edu/uscode/text/26/469" target="_blank" rel="noopener noreferrer">IRC Section 469</a> for investment property (real estate professional status may avoid limitations), and Section 199A QBI deduction tracking for pass-through rental real estate businesses. For owner-occupied property, the CPA tracks improvements that affect future Section 121 primary home gain exclusion eligibility.</p>
+
+      <h3>Phase 4 &mdash; Sale or refinance: gain treatment + 1031 coordination</h3>
+      <p>At sale, the CPA coordinates capital gain or loss calculation: Section 121 primary home exclusion ($250K single / $500K joint with 2-of-5-year ownership and use requirement), depreciation recapture for investment property at ordinary income rates, 1031 like-kind exchange coordination if rolling into replacement investment property (45-day identification + 180-day completion timelines, qualified intermediary coordination). For FIRPTA situations (non-U.S. seller), the CPA coordinates withholding compliance.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #4: SALT CAP + TCJA DARK SECTION ============ -->
+  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="section-header" style="max-width: 760px;">
+        <div class="eyebrow eyebrow-light">04 &middot; What your generalist accountant misses on real estate</div>
+        <h2 style="color: var(--paper);">Six things every Florida buyer and seller should know about CPA-level real estate tax expertise.</h2>
+        <p style="color: rgba(250,250,247,0.78);">CPA-level tax expertise on real estate transactions is substantively different from generalist accountant or DIY tax software approaches. Six clarifications every Florida buyer, seller, and self-employed borrower should understand.</p>
+      </div>
+
+      <div class="dark-grid">
+        <div class="dark-card">
+          <div class="dark-num">A</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">SALT cap + Florida no-state-income-tax advantage</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Post-TCJA SALT cap limits state and local tax deduction to $10K combined under <a href="https://www.law.cornell.edu/uscode/text/26/164" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">IRC Section 164(b)(6)</a>. Florida residents benefit from no-state-income-tax meaning the entire $10K cap can be used for property tax deduction. Florida CPAs structure migration timing from high-tax states (California, New York, Illinois, New Jersey) to optimize the multi-year tax outcome.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">B</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Mortgage interest deduction $750K cap</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Post-TCJA mortgage interest deduction limited to interest on the first $750K of acquisition debt under <a href="https://www.law.cornell.edu/uscode/text/26/163" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">IRC Section 163(h)</a>. Loans originated before Dec 15, 2017 grandfathered at $1M. Interest on home equity debt no longer deductible unless used for substantial improvement of the residence. Refinancing the grandfathered loan preserves the $1M limit.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">C</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Section 121 primary home gain exclusion</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Section 121 excludes $250K single / $500K joint of gain on sale of primary residence under <a href="https://www.law.cornell.edu/uscode/text/26/121" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">IRC Section 121</a> if the 2-of-5-year ownership AND use requirement is met. CPA tracking of basis through improvements, partial business use, and depreciation (if rented portion of time) is substantive. Spouse death timing, divorce, military deployment, and other special rules apply.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">D</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">1031 like-kind exchange timing</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">1031 like-kind exchanges defer capital gains on investment property under <a href="https://www.law.cornell.edu/uscode/text/26/1031" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">IRC Section 1031</a> with strict timelines: 45-day identification of replacement property + 180-day completion from sale of relinquished property. Qualified intermediary (QI) coordination required for valid 1031 treatment. Post-TCJA limited to real property only (personal property 1031 eliminated).</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">E</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Depreciation recapture on investment property sale</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">Investment property sale triggers depreciation recapture: prior depreciation deductions recaptured at ordinary income rates up to 25% (unrecaptured Section 1250 gain) plus remaining gain at long-term capital gains rates. CPA tracking of accumulated depreciation through ownership is essential. Cost segregation studies accelerated depreciation increases recapture exposure at sale &mdash; multi-year planning matters.</p>
+        </div>
+        <div class="dark-card">
+          <div class="dark-num">F</div>
+          <h3 class="dark-card-title" style="color: var(--paper);">Form 1084 cash-flow addback for self-employed mortgage</h3>
+          <p class="dark-card-body" style="color: rgba(250,250,247,0.72);">For self-employed mortgage qualifying, CPA-prepared Form 1084 cash-flow addback documentation recovers depreciation, amortization, and other entity-level non-cash deductions making qualifying income properly visible to the lender. Generalist accountants often miss this prep, resulting in qualifying income being understated by 30-50%. <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">B3-3.4-02</a> + <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer" style="color: var(--blue-soft);">B3-3.3-02</a> documentation matters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ H2 #5: CPA DESIGNATIONS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">05 &middot; CPA credentials and specialty designations</div>
+        <h2>CPA credentials and specialty designations explained.</h2>
+        <p>The CPA license is the foundational credential. Additional AICPA-recognized specialty designations document depth in particular practice areas. Florida CPAs commonly hold multiple credentials reflecting continuing professional education and specialty practice depth.</p>
+      </div>
+      <div class="loan-program-grid">
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CPA &mdash; Certified Public Accountant</h3>
+          <ul class="loan-program-points">
+            <li>Foundational license through state Board of Accountancy</li>
+            <li>150 semester hours education + Uniform CPA Exam</li>
+            <li>Florida licensure through DBPR Board of Accountancy</li>
+          </ul>
+          <div class="loan-program-tag">Best for: All accounting practice</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">PFS &mdash; Personal Financial Specialist</h3>
+          <ul class="loan-program-points">
+            <li>AICPA personal financial planning credential for CPAs</li>
+            <li>Comprehensive personal financial planning expertise</li>
+            <li>Retirement, estate, investment, tax integration</li>
+          </ul>
+          <div class="loan-program-tag">Best for: HNW personal planning</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">MST / LLM in Tax</h3>
+          <ul class="loan-program-points">
+            <li>Master of Science in Taxation (MST) or LLM in Tax</li>
+            <li>Advanced tax law and policy specialization</li>
+            <li>Common at Big 4 + boutique tax practices</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Complex tax work</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">EA &mdash; Enrolled Agent</h3>
+          <ul class="loan-program-points">
+            <li>IRS-licensed tax practitioner (alternative to CPA)</li>
+            <li>Tax-only practice authorization</li>
+            <li>SEE exam through IRS</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Tax-specific representation</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">ABV &mdash; Accredited in Business Valuation</h3>
+          <ul class="loan-program-points">
+            <li>AICPA business valuation credential</li>
+            <li>Used in M&amp;A, estate planning, litigation</li>
+            <li>Real estate investment valuation</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Valuation work</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">CGMA &mdash; Chartered Global Management Accountant</h3>
+          <ul class="loan-program-points">
+            <li>AICPA + CIMA joint global designation</li>
+            <li>Management accounting and corporate finance</li>
+            <li>Common at Big 4 advisory practices</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Corporate advisory</div>
+        </div>
+
+        <div class="loan-program-card">
+          <h3 class="loan-program-name">AICPA Tax Section / FICPA</h3>
+          <ul class="loan-program-points">
+            <li>AICPA Tax Section membership for tax-focused CPAs</li>
+            <li>FICPA membership for Florida-licensed CPAs</li>
+            <li>Continuing professional education resources</li>
+          </ul>
+          <div class="loan-program-tag">Best for: Professional community</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #6: INDUSTRY CONTEXT ============ -->
+  <section class="section section-tinted">
+    <div class="container-narrow">
+      <div class="section-header">
+        <div class="eyebrow">06 &middot; Six forces shaping the Florida CPA industry</div>
+        <h2>How the Florida CPA industry works in 2026.</h2>
+        <p>The Florida CPA industry operates at the intersection of TCJA structural changes, AICPA peer review and CPE requirements, Big 4 vs regional firm competitive dynamics, substantial Florida wealth migration, technology platform adoption, and specialty practice growth in high-net-worth and real estate verticals.</p>
+      </div>
+
+      <h3>Force 1 &mdash; TCJA (2017) and continuing tax law evolution</h3>
+      <p>The Tax Cuts and Jobs Act (TCJA) of 2017 restructured individual taxation through the SALT cap ($10K combined), mortgage interest deduction cap ($750K acquisition debt), increased standard deduction (reducing itemized deduction frequency), Section 199A QBI deduction for pass-through businesses, and many other provisions. Many TCJA individual provisions expire in 2025 absent Congressional extension &mdash; CPA monitoring of legislative developments is substantive for multi-year planning.</p>
+
+      <h3>Force 2 &mdash; AICPA peer review and CPE requirements</h3>
+      <p>AICPA peer review requirements + state Board of Accountancy continuing professional education (CPE) requirements (80 hours per 2-year period for Florida CPAs) maintain professional standards. <a href="https://www.aicpa-cima.com/" target="_blank" rel="noopener noreferrer">AICPA</a> and <a href="https://www.ficpa.org/" target="_blank" rel="noopener noreferrer">FICPA</a> coordinate continuing education programs across specialty practice areas including real estate, high-net-worth, international, and forensic accounting.</p>
+
+      <h3>Force 3 &mdash; Big 4 + national firm consolidation</h3>
+      <p>Top tier CPA firms operate at substantial scale: Big 4 (<a href="https://www2.deloitte.com/" target="_blank" rel="noopener noreferrer">Deloitte</a>, <a href="https://www.ey.com/" target="_blank" rel="noopener noreferrer">EY</a>, <a href="https://home.kpmg/" target="_blank" rel="noopener noreferrer">KPMG</a>, <a href="https://www.pwc.com/" target="_blank" rel="noopener noreferrer">PwC</a>) plus national firms including <a href="https://www.bdo.com/" target="_blank" rel="noopener noreferrer">BDO</a>, <a href="https://www.grantthornton.com/" target="_blank" rel="noopener noreferrer">Grant Thornton</a>, and RSM. Florida regional firms including Berkowitz Pollack Brant (BPB), MBAF / Crowe, and Daszkal Bolton serve substantial Florida private wealth and middle-market client bases. Consolidation activity continues with periodic acquisitions.</p>
+
+      <h3>Force 4 &mdash; Florida wealth migration accelerating CPA practice growth</h3>
+      <p>Florida continues experiencing substantial wealth migration from California, New York, Illinois, and New Jersey driven by no-state-income-tax advantage. The migration trend supports sustained Florida CPA practice growth, particularly in high-net-worth and real estate specialty verticals serving newly-Florida-resident clients with multi-state tax complexity from prior-state ties.</p>
+
+      <h3>Force 5 &mdash; Technology platform adoption</h3>
+      <p>CPA practices adopt technology platforms for tax preparation (Drake, ProSeries, Lacerte, UltraTax), accounting (QuickBooks, Xero, Sage Intacct, NetSuite), document management (SafeSend, CCH Axcess), and workflow (Karbon, Canopy, Aiwyn). Cloud-based accounting reduces firm operational overhead and supports remote client servicing. AI-augmented tax research tools have emerged supporting senior tax specialist productivity.</p>
+
+      <h3>Force 6 &mdash; Specialty practice growth in real estate and HNW</h3>
+      <p>Specialty CPA practice growth has accelerated in real estate (investment property, 1031 exchanges, depreciation strategy, cost segregation), high-net-worth (estate planning, trust taxation, multi-generational planning), international (FIRPTA compliance, expatriate taxation, treaty analysis), and entity advisory (S-corp election strategy, partnership allocation, M&amp;A taxation). Specialty-focused CPAs commonly carry MST or LLM in Tax credentials supporting depth in particular practice areas.</p>
+    </div>
+  </section>
+
+  <!-- ============ H2 #7: TIMELINE ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">07 &middot; CPA + real estate ownership timeline</div>
+        <h2>The CPA + real estate ownership timeline across tax years.</h2>
+        <p>A timeline view of how CPA work integrates with real estate ownership across pre-purchase planning, purchase year, ongoing ownership, and sale or refinance year.</p>
+      </div>
+      <div class="career-timeline">
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Pre-purchase</div>
+          <div class="timeline-body">
+            <h4>Pre-purchase tax planning (6-12 months before)</h4>
+            <p><strong>CPA work:</strong> Deduction capacity analysis, mortgage interest deduction strategy under $750K cap, SALT cap navigation, withholding optimization for purchase year, multi-state tax migration planning if relocating to Florida, and entity structure planning for investment property. <strong>Coordination with lender:</strong> Pre-approval timing alignment with CPA-prepared Form 1084 if self-employed borrower.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Purchase year</div>
+          <div class="timeline-body">
+            <h4>Purchase + closing (tax year of close)</h4>
+            <p><strong>CPA work:</strong> Form 1098 mortgage interest documentation, points deduction strategy (deductible in year paid if conditions met per <a href="https://www.irs.gov/forms-pubs/about-publication-936" target="_blank" rel="noopener noreferrer">IRS Pub 936</a>), property tax pro-ration, basis initialization (purchase price + closing costs + acquisition costs), and Schedule E setup for investment property. <strong>Coordination with lender:</strong> Closing Disclosure review for tax-relevant items.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Ownership</div>
+          <div class="timeline-body">
+            <h4>Annual returns + basis tracking (Years 2 onward)</h4>
+            <p><strong>CPA work:</strong> Annual Form 1040 with Schedule A itemized deductions (mortgage interest + property tax up to SALT cap), Schedule E for investment property income, depreciation schedule maintenance, capital improvements added to basis, Section 199A QBI deduction for pass-through rental businesses. For owner-occupied: tracking improvements affecting future Section 121 exclusion eligibility.</p>
+          </div>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-stage">Sale / refinance</div>
+          <div class="timeline-body">
+            <h4>Sale or refinance year</h4>
+            <p><strong>CPA work:</strong> Capital gain or loss calculation, Section 121 primary home exclusion ($250K/$500K) coordination, depreciation recapture for investment property (up to 25% on prior depreciation under Section 1250), 1031 like-kind exchange coordination if rolling into replacement investment property (45-day identification + 180-day completion). <strong>Coordination with lender:</strong> Refinance interest deductibility re-evaluation.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #8: TESTIMONIALS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">08 &middot; What buyers and sellers say</div>
+        <h2>What Florida buyers and sellers say about their CPA + Stairway coordination.</h2>
+        <p>Names abbreviated for client privacy. Transaction details anonymized. CPA names withheld out of professional courtesy.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-1"><img src="https://i.pravatar.cc/300?img=13" alt="Steven R., Florida buyer working with CPA on self-employed mortgage qualifying" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EEFF/0F2EA0/png?text=13';"></div>
+          <blockquote class="testim-quote">"Self-employed S-corp owner buying a $1.2M Fort Lauderdale home with combined W-2 + K-1 income. My CPA at a Boca Raton regional firm prepared Form 1084 cash-flow addback documentation recovering substantial entity-level depreciation and amortization at the S-corp level. The prior lender refused to apply the addbacks and offered $785K. Jim&rsquo;s team accepted the CPA-prepared Form 1084 under B3-3.4-02 properly, recovered the non-cash deductions, and approved at $1.2M Conventional Jumbo K-1 in 41 days. CPA + Stairway coordination was the whole game."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Steven R.</div>
+            <div class="testim-meta">Self-employed S-corp owner &middot; Fort Lauderdale</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-2"><img src="https://i.pravatar.cc/300?img=14" alt="Catherine M., Florida investor coordinating 1031 exchange with CPA" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/F0EDE8/6B5C4B/png?text=14';"></div>
+          <blockquote class="testim-quote">"Investment property owner rolling proceeds from sale of a $1.4M Orlando rental into a $1.85M Coral Springs replacement through a 1031 like-kind exchange. My CPA coordinated the 45-day identification period from the relinquished property close, the qualified intermediary (QI) arrangement, the 180-day completion timeline, and the depreciation recapture deferral. Jim&rsquo;s team handled the financing side of the replacement property close to match the 180-day window perfectly. $1.85M Conventional Jumbo investment close on day 167 of the 180-day window. The CPA + Stairway timing coordination protected the 1031 deferral."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">Catherine M.</div>
+            <div class="testim-meta">Investor with 1031 exchange &middot; Coral Springs</div>
+          </div>
+        </article>
+
+        <article class="testim-card">
+          <div class="testim-avatar testim-avatar-3"><img src="https://i.pravatar.cc/300?img=15" alt="James K., Florida senior downsizer working with PFS-designated CPA on Section 121 exclusion" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/E8EFE8/3D5A3D/png?text=15';"></div>
+          <blockquote class="testim-quote">"Retiree relocating from a $2.1M California primary residence to a $1.1M Naples Florida primary residence. My PFS-designated CPA coordinated the Section 121 primary home exclusion strategy ($500K joint exclusion on the California sale), the Florida no-state-income-tax migration timing across tax years, and the multi-state tax filings for the year of relocation. Jim&rsquo;s team handled the Florida primary residence mortgage qualifying on Asset-Depletion + Social Security + pension multi-source documentation. CPA + Stairway combined optimized both the tax outcome and the financing. $1.1M close Conventional Jumbo Asset-Depletion in 39 days."</blockquote>
+          <div class="testim-attribution">
+            <div class="testim-name">James K.</div>
+            <div class="testim-meta">Retiree relocator (CA → FL) &middot; Naples</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #9: 10-FAQ SECTION ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">09 &middot; CPA partner FAQs</div>
+        <h2>Questions Florida buyers, sellers, and CPAs ask, answered.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-cross-links" style="margin-bottom: var(--s-10); padding: var(--s-6); background: var(--paper-warm); border-left: 3px solid var(--blue);">
+          <p style="margin: 0 0 var(--s-3) 0; font-family: var(--serif); font-size: var(--text-md); font-weight: 500;">More <a href="https://stairwaymortgage.com/" style="color: inherit; text-decoration: underline;">CPA partnership and borrower-side</a> resources at Stairway</p>
+          <ul style="margin: 0; padding-left: var(--s-5); font-size: var(--text-sm); line-height: 1.7; list-style: none;">
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/">All mortgage loan programs</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/cpas-accountants/">CPA mortgage guide (CPA-as-borrower)</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/business-acquirers/">Business acquirer mortgage</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start your pre-approval</a></li>
+          </ul>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">01</div>
+          <div>
+            <div class="faq-q">What&rsquo;s the difference between a CPA and an accountant?</div>
+            <div class="faq-a">A CPA (Certified Public Accountant) is licensed by the state Board of Accountancy with 150 semester hours education, passing the Uniform CPA Exam, and ongoing continuing professional education. An accountant or bookkeeper may not hold the CPA license. For substantive tax planning, audit work, and complex advisory, the CPA credential matters.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">02</div>
+          <div>
+            <div class="faq-q">How does the post-TCJA $750K mortgage interest deduction cap affect my purchase?</div>
+            <div class="faq-a">Under <a href="https://www.law.cornell.edu/uscode/text/26/163" target="_blank" rel="noopener noreferrer">IRC Section 163(h)</a>, mortgage interest deduction is limited to interest on the first $750K of acquisition debt (post-Dec 15, 2017 loans). Loans originated before Dec 15, 2017 grandfathered at $1M. For Florida buyers acquiring properties with loans above $750K, the CPA structures the deduction strategy considering the cap.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">03</div>
+          <div>
+            <div class="faq-q">How does the SALT cap interact with Florida no-state-income-tax?</div>
+            <div class="faq-a">The $10K combined SALT cap under <a href="https://www.law.cornell.edu/uscode/text/26/164" target="_blank" rel="noopener noreferrer">IRC Section 164(b)(6)</a> limits state income tax + property tax + sales tax combined. Florida residents benefit because the state income tax component is $0, meaning the full $10K cap is available for property tax deduction. Florida CPAs optimize migration timing from high-tax states to capture this benefit.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">04</div>
+          <div>
+            <div class="faq-q">How does Section 121 primary home gain exclusion work?</div>
+            <div class="faq-a"><a href="https://www.law.cornell.edu/uscode/text/26/121" target="_blank" rel="noopener noreferrer">IRC Section 121</a> excludes $250K single / $500K joint of gain on sale of primary residence if the 2-of-5-year ownership AND use requirement is met. Basis tracking through improvements, partial business use, and depreciation (if rented portion of time) affects calculated gain. CPA documentation matters for accurate exclusion.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">05</div>
+          <div>
+            <div class="faq-q">How does a 1031 like-kind exchange work for investment property?</div>
+            <div class="faq-a"><a href="https://www.law.cornell.edu/uscode/text/26/1031" target="_blank" rel="noopener noreferrer">IRC Section 1031</a> defers capital gains on investment property by rolling proceeds into replacement investment property with strict timelines: 45-day identification from sale + 180-day completion. Qualified intermediary (QI) coordination required. Post-TCJA limited to real property only. CPA + QI + lender coordination protects 1031 treatment.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">06</div>
+          <div>
+            <div class="faq-q">What is Form 1084 and why does my CPA need to prepare it?</div>
+            <div class="faq-a">Form 1084 is Fannie Mae&rsquo;s cash-flow analysis form recovering non-cash deductions (depreciation, amortization, depletion) at the entity level. For self-employed borrowers, CPA-prepared Form 1084 makes qualifying income properly visible to the lender under <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">B3-3.4-02</a> and <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">B3-3.3-02</a>. Generalist accountants often skip this prep.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">07</div>
+          <div>
+            <div class="faq-q">What is depreciation recapture and how does it affect my investment property sale?</div>
+            <div class="faq-a">Investment property sale triggers depreciation recapture: prior depreciation deductions recaptured at ordinary income rates up to 25% (unrecaptured Section 1250 gain) plus remaining gain at long-term capital gains rates. CPA tracking of accumulated depreciation through ownership is essential. Cost segregation accelerated depreciation increases recapture exposure at sale &mdash; multi-year planning matters.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">08</div>
+          <div>
+            <div class="faq-q">Should I do cost segregation for my investment property?</div>
+            <div class="faq-a">Cost segregation studies identify components of investment property eligible for shorter recovery periods (5-year personal property, 15-year land improvements, 27.5-year residential structure) accelerating depreciation deductions. Beneficial for properties over $500K-$1M with active rental income offsetting depreciation. Increases recapture exposure at sale. CPA + cost segregation specialist coordination required.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">09</div>
+          <div>
+            <div class="faq-q">I&rsquo;m moving from California to Florida. How does my CPA coordinate the multi-state tax?</div>
+            <div class="faq-a">Multi-state tax coordination during Florida migration involves: California part-year resident return + Florida no-state-income-tax for the post-migration period; California source-income tracking for any continuing California ties (real estate, business interests, partnerships); domicile establishment in Florida (driver license, voter registration, primary residence) supporting the migration; coordination with timing of major transactions across tax years.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-num">10</div>
+          <div>
+            <div class="faq-q">I&rsquo;m a CPA. Can Stairway help with my own home mortgage?</div>
+            <div class="faq-a">Yes &mdash; Stairway specializes in CPA-as-borrower mortgages. CPAs typically operate as W-2 employees at firms (junior to senior staff), partners with K-1 from partnership Form 1065 distributions (mid-tier to senior partner), or sole-practitioner S-corp owners with W-2 + K-1. See our <a href="https://stairwaymortgage.com/professional-services/cpas-accountants/">CPA mortgage guide</a> for the full CPA-as-borrower documentation framework under B3-3.4-02.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #10: COMPANION GUIDES ============ -->
+  <section class="section section-tinted">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow">10 &middot; Companion guides &amp; calculators</div>
+        <h2>More on CPA partnerships, self-employed mortgage qualifying, and tax-coordinated real estate.</h2>
+      </div>
+      <div class="link-farm-grid">
+        <div class="link-farm-col">
+          <h4>For CPAs (partner-as-borrower)</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/cpas-accountants/">CPA mortgage guide</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/business-acquirers/">Business acquirer mortgage</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/entrepreneurs/">Entrepreneur mortgage</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/professional-services/">Professional services hub</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Self-employed loan programs</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/">Jumbo loan details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/bank-statement-loan/">Bank statement Non-QM</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/asset-depletion-loan/">Asset-depletion details</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-programs/p-and-l-only-loan/">P&amp;L Statement Only Non-QM</a></li>
+          </ul>
+        </div>
+        <div class="link-farm-col">
+          <h4>Calculators &amp; tools</h4>
+          <ul>
+            <li>&rarr; <a href="https://stairwaymortgage.com/loan-calculator/">All 100+ mortgage calculators</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/current-rates/">Today&rsquo;s rates</a></li>
+            <li>&rarr; <a href="https://stairwaymortgage.com/purchase-inquiry/">Start a pre-approval</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #11: SOURCES ============ -->
+  <section class="sources-section">
+    <div class="container">
+      <div class="section-header" style="text-align: center; max-width: 720px; margin: 0 auto var(--s-8);">
+        <div class="eyebrow">11 &middot; Sources &amp; further reading</div>
+        <h2>Sources &amp; further reading.</h2>
+      </div>
+
+      <div class="sources-grid">
+        <div class="source-group">
+          <h3 class="source-group-title">AICPA, FICPA &amp; CPA regulatory references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.aicpa-cima.com/" target="_blank" rel="noopener noreferrer">AICPA &mdash; American Institute of Certified Public Accountants</a></li>
+            <li><a href="https://www.ficpa.org/" target="_blank" rel="noopener noreferrer">FICPA &mdash; Florida Institute of Certified Public Accountants</a></li>
+            <li><a href="https://www.myfloridalicense.com/" target="_blank" rel="noopener noreferrer">Florida DBPR &mdash; Board of Accountancy</a></li>
+            <li><a href="https://www.nasba.org/" target="_blank" rel="noopener noreferrer">NASBA &mdash; National Association of State Boards of Accountancy</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">IRS publications &amp; forms</h3>
+          <ul class="source-list">
+            <li><a href="https://www.irs.gov/forms-pubs/about-publication-936" target="_blank" rel="noopener noreferrer">IRS Pub 936 &mdash; Home Mortgage Interest Deduction</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-publication-523" target="_blank" rel="noopener noreferrer">IRS Pub 523 &mdash; Selling Your Home</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-publication-527" target="_blank" rel="noopener noreferrer">IRS Pub 527 &mdash; Residential Rental Property</a></li>
+            <li><a href="https://www.irs.gov/forms-pubs/about-form-1098" target="_blank" rel="noopener noreferrer">IRS Form 1098 &mdash; Mortgage Interest Statement</a></li>
+            <li><a href="https://www.irs.gov/individuals/international-taxpayers/firpta-withholding" target="_blank" rel="noopener noreferrer">IRS FIRPTA Withholding</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Cornell Law &mdash; IRC statutory references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.law.cornell.edu/uscode/text/26/121" target="_blank" rel="noopener noreferrer">Cornell Law &mdash; IRC Section 121 (Primary Home Gain Exclusion)</a></li>
+            <li><a href="https://www.law.cornell.edu/uscode/text/26/163" target="_blank" rel="noopener noreferrer">Cornell Law &mdash; IRC Section 163 (Mortgage Interest Deduction)</a></li>
+            <li><a href="https://www.law.cornell.edu/uscode/text/26/164" target="_blank" rel="noopener noreferrer">Cornell Law &mdash; IRC Section 164 (SALT Cap)</a></li>
+            <li><a href="https://www.law.cornell.edu/uscode/text/26/168" target="_blank" rel="noopener noreferrer">Cornell Law &mdash; IRC Section 168 (Depreciation)</a></li>
+            <li><a href="https://www.law.cornell.edu/uscode/text/26/199A" target="_blank" rel="noopener noreferrer">Cornell Law &mdash; IRC Section 199A (QBI Deduction)</a></li>
+            <li><a href="https://www.law.cornell.edu/uscode/text/26/469" target="_blank" rel="noopener noreferrer">Cornell Law &mdash; IRC Section 469 (Passive Activity)</a></li>
+            <li><a href="https://www.law.cornell.edu/uscode/text/26/1031" target="_blank" rel="noopener noreferrer">Cornell Law &mdash; IRC Section 1031 (Like-Kind Exchange)</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Mortgage qualifying for self-employed</h3>
+          <ul class="source-list">
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.3-02 &mdash; Schedule C Self-Employed</a></li>
+            <li><a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer">Fannie Mae B3-3.4-02 &mdash; Partnership / S-Corp K-1</a></li>
+          </ul>
+        </div>
+
+        <div class="source-group">
+          <h3 class="source-group-title">Florida real estate references</h3>
+          <ul class="source-list">
+            <li><a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener noreferrer">CFPB &mdash; Consumer Financial Protection Bureau (TRID rules)</a></li>
+            <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter196" target="_blank" rel="noopener noreferrer">Florida Statutes Chapter 196 &mdash; Homestead Exemption</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #12: PRE-CTA STORY ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: var(--s-6);">
+        <div class="eyebrow">12 &middot; What CPA + Stairway partnership looks like</div>
+        <h2>Real-world CPA partnership coordination.</h2>
+        <p>A Florida CPA partner at a Boca Raton regional accounting firm referred a self-employed S-corp owner client to Stairway after the prior generalist lender refused to apply the CPA-prepared Form 1084 cash-flow addbacks. Client situation: S-corp owner of a Florida marketing services firm with W-2 $145K + K-1 averaging $385K from Form 1120-S, plus substantial entity-level depreciation and amortization. Property: $1.2M Fort Lauderdale home. <strong>CPA coordination: Form 1084 cash-flow addback documentation systematically recovering entity-level depreciation and amortization at the S-corp level, 2-year Form 1120-S returns with K-1 schedules, S-corp election documentation, and shareholder agreement.</strong> Stairway applied the CPA-prepared Form 1084 cash-flow addbacks under <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--blue);">B3-3.4-02</a>, ran the 24-month K-1 average, and qualified the borrower at full W-2 + K-1. Prior generalist lender had offered $785K based on W-2 alone. Stairway approved at $1.2M Conventional Jumbo K-1 in 41 days. <strong>CPA + Stairway coordination for self-employed S-corp owner qualifying with proper Form 1084 prep is the partnership pattern that differentiates a successful close from a deal that falls apart due to addback rejection.</strong></p>
+      </div>
+      <div class="pre-cta-photo">
+        <img src="https://images.pexels.com/photos/277559/pexels-photo-277559.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="House keys at CPA + Stairway closing" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1400x700/0A0E1A/E8EEFF/png?text=CPA+Closings';">
+        <div class="pre-cta-photo-caption">
+          <span class="label">41-day CPA + Stairway close &middot; Fort Lauderdale, FL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ H2 #13: FINAL CTA + PARTNER-AS-BORROWER CTA ============ -->
+  <section class="final-cta final-cta--bg" style="background-image: url('https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow eyebrow-light">Talk to a Florida mortgage specialist about your CPA partnership transaction</div>
+        <h2 style="color: var(--paper);">Whether you&rsquo;re a Florida buyer working with a CPA on self-employed mortgage qualifying, or a CPA looking for a mortgage yourself &mdash; Stairway coordinates the mortgage side with the depth your CPA partner expects.</h2>
+        <p style="color: rgba(250,250,247,0.78);">For Florida buyers with CPA: self-employed K-1 / Schedule C / partnership distribution qualifying with proper Form 1084 cash-flow addback recovery under <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--paper); text-decoration: underline;">B3-3.4-02</a> + <a href="https://selling-guide.fanniemae.com/sel/b3-3.3-02/income-analysis-self-employed-borrowers" target="_blank" rel="noopener noreferrer" style="color: var(--paper); text-decoration: underline;">B3-3.3-02</a>, multi-state tax migration coordination, 1031 exchange financing timing, and Section 121 sale-side coordination. <strong>For Florida CPAs looking for a mortgage on your own home or your firm:</strong> CPA practice principal income with W-2 + K-1 from firm partnership or S-corp qualifies under B3-3.4-02. See our dedicated <a href="https://stairwaymortgage.com/professional-services/cpas-accountants/" style="color: var(--paper); text-decoration: underline;">CPA-as-borrower mortgage guide</a> for the full CPA income documentation framework.</p>
+        <div class="final-cta-actions">
+          <a href="https://stairwaymortgage.com/schedule-call" class="btn btn-on-dark-primary btn-large">Schedule a call with Jim</a>
+          <a href="https://stairwaymortgage.com/professional-services/cpas-accountants/" class="btn btn-on-dark-secondary btn-large">CPA-as-borrower guide</a>
+        </div>
+        <p style="font-size: var(--text-xs); color: rgba(250,250,247,0.5); margin-top: var(--s-6);">Jim Blackburn NMLS #1072866 &middot; Stairway Mortgage</p>
+      </div>
+    </div>
+  </section>
+`;
+---
+<Layout title="CPAs &amp; Accountants · Florida CPA Partner Hub — Tax Planning, 1031 Exchanges, SALT Cap &amp; Form 1084 Self-Employed Mortgage Coordination Specialist" description="Florida CPA / Accountant partner hub educating buyers, sellers, and self-employed borrowers on what licensed Certified Public Accountants do in real estate transactions: mortgage interest deduction strategy under IRC Section 163(h) with $750K acquisition debt cap post-TCJA; SALT cap navigation under IRC Section 164(b)(6) with $10K combined state and local tax cap; Section 121 primary home gain exclusion at $250K single / $500K joint with 2-of-5-year ownership and use requirement; 1031 like-kind exchange coordination under IRC Section 1031 with 45-day identification and 180-day completion timelines plus qualified intermediary coordination; depreciation strategy under IRC Section 168 at 27.5-year residential and 39-year commercial recovery periods; cost segregation studies for accelerated depreciation; passive activity loss limitations under IRC Section 469 for investment property; Section 199A QBI deduction for pass-through real estate businesses; basis tracking through ownership and capital improvement periods; FIRPTA Foreign Investment in Real Property Tax Act compliance for foreign-seller transactions. For self-employed mortgage borrowers, CPA-prepared Form 1084 cash-flow addback documentation recovering entity-level depreciation, amortization, and other non-cash deductions making qualifying income properly visible to mortgage lender under Fannie Mae B3-3.4-02 partnership and S-corp analysis and B3-3.3-02 Schedule C self-employed income analysis. CPA credentials: licensed CPA through state Board of Accountancy with 150 semester hours education and Uniform CPA Exam; PFS Personal Financial Specialist credential through AICPA; MST Master of Science in Taxation or LLM in Tax for advanced tax specialization; EA Enrolled Agent IRS-licensed tax practitioner; ABV Accredited in Business Valuation; CGMA Chartered Global Management Accountant; AICPA Tax Section and FICPA Florida Institute of CPAs membership. Top CPA firms: Big 4 Deloitte EY KPMG PwC plus national BDO Grant Thornton RSM plus Florida regional Berkowitz Pollack Brant MBAF Crowe Daszkal Bolton. Florida wealth migration from California New York Illinois New Jersey driven by no-state-income-tax advantage with multi-state tax filings during migration year. Florida no-state-income-tax interaction with $10K SALT cap providing full cap availability for property tax deduction. Partner-as-borrower CTA at bottom routing CPAs looking for mortgages on their own home to dedicated CPA-as-borrower mortgage guide with S-corp partnership principal W-2 + K-1 documentation under Fannie Mae B3-3.4-02." canonical="https://stairwaymortgage.com/cpas-accountants/">
+  <div class="pcpa-scope" set:html={pcpaBody} />
+</Layout>
+
+<style is:global>
+.pcpa-scope{
+      color-scheme: light only;
+      --ink: #0A0E1A;
+      --ink-2: #1E2433;
+      --ink-3: #2C3548;
+      --ink-light: #4A5568;
+      --ink-lighter: #6B7280;
+      --paper: #FAFAF7;
+      --paper-2: #F4F4EE;
+      --paper-3: #EDEDE5;
+      --white: #FFFFFF;
+      --blue: #1845D6;
+      --blue-deep: #0F2EA0;
+      --blue-soft: #E8EEFF;
+      --blue-tint: #F2F5FF;
+      --gold: #B8860B;
+      --rust: #8B2C2C;
+      --border: #E5E5DE;
+      --border-strong: #D4D4C8;
+      --border-dark: #2C3548;
+      --text-2xs: 0.6875rem; 
+      --text-xs: 0.75rem;    
+      --text-sm: 0.875rem;   
+      --text-base: 1.0625rem;
+      --text-md: 1.1875rem;  
+      --text-lg: 1.375rem;   
+      --text-xl: 1.625rem;   
+      --text-2xl: 2rem;      
+      --text-3xl: 2.75rem;   
+      --text-4xl: 3.75rem;   
+      --text-5xl: 5rem;      
+      --s-1: 0.25rem;
+      --s-2: 0.5rem;
+      --s-3: 0.75rem;
+      --s-4: 1rem;
+      --s-5: 1.5rem;
+      --s-6: 2rem;
+      --s-7: 3rem;
+      --s-8: 4rem;
+      --s-9: 6rem;
+      --s-10: 8rem;
+      --s-11: 10rem;
+      --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {.pcpa-scope, .pcpa-scope{
+        background-color: #FAFAF7 !important;
+        color: #0A0E1A !important;
+        color-scheme: light only !important;
+      }.pcpa-scope *{
+        forced-color-adjust: none;
+      }
+    }.pcpa-scope, .pcpa-scope *::before, .pcpa-scope *::after{ box-sizing: border-box; margin: 0; padding: 0; }.pcpa-scope{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }.pcpa-scope{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }.pcpa-scope img, .pcpa-scope svg{ display: block; max-width: 100%; }.pcpa-scope a{ color: inherit; text-decoration: none; }.pcpa-scope button{ font: inherit; cursor: pointer; border: 0; background: none; }.pcpa-scope .container{ max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }.pcpa-scope .container-narrow{ max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }.pcpa-scope .container-wide{ max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }.pcpa-scope .eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-block;
+    }.pcpa-scope .display-1{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      color: var(--ink);
+    }.pcpa-scope .display-2{
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, var(--text-3xl));
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 100, "SOFT" 50;
+      color: var(--ink);
+    }.pcpa-scope h2{
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+      font-weight: 450;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 60, "SOFT" 50;
+    }.pcpa-scope h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--s-4);
+      font-variation-settings: "opsz" 30;
+    }.pcpa-scope h4{
+      font-family: var(--sans);
+      font-size: var(--text-md);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: var(--s-3);
+      letter-spacing: -0.005em;
+    }.pcpa-scope p{ margin-bottom: var(--s-4); }.pcpa-scope p:last-child{ margin-bottom: 0; }.pcpa-scope p.lead{
+      font-size: var(--text-lg);
+      line-height: 1.55;
+      color: var(--ink-2);
+      font-weight: 350;
+    }.pcpa-scope p.lede{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.pcpa-scope .body-text{ color: var(--ink-2); }.pcpa-scope .text-muted{ color: var(--ink-lighter); }.pcpa-scope .text-small{ font-size: var(--text-sm); }.pcpa-scope .text-mono{ font-family: var(--mono); font-feature-settings: 'tnum' 1; }.pcpa-scope strong, .pcpa-scope b{ font-weight: 600; color: var(--ink); }.pcpa-scope em, .pcpa-scope i{ font-style: italic; }.pcpa-scope .nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }.pcpa-scope .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--s-4) var(--s-6);
+      max-width: 1340px;
+      margin: 0 auto;
+    }.pcpa-scope .logo{
+      display: flex;
+      align-items: center;
+      gap: var(--s-3);
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 30;
+    }.pcpa-scope .logo-mark{
+      width: 28px; height: 28px;
+      background: var(--ink);
+      position: relative;
+      border-radius: 2px;
+    }.pcpa-scope .logo-mark::before{
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.pcpa-scope .logo-mark::after{
+      content: '';
+      position: absolute;
+      inset: 5px 9px 9px 5px;
+      border-top: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }.pcpa-scope .logo-sub{ font-size: var(--text-2xs); color: var(--ink-lighter); font-family: var(--sans); font-weight: 400; letter-spacing: 0.04em; }.pcpa-scope .nav-links{
+      display: flex; gap: var(--s-6); list-style: none;
+      font-size: var(--text-sm); font-weight: 500;
+    }.pcpa-scope .nav-links a{ color: var(--ink-2); transition: color 0.15s; }.pcpa-scope .nav-links a:hover{ color: var(--blue); }.pcpa-scope .nav-cta{
+      display: flex; gap: var(--s-3);
+    }
+    @media (max-width: 900px) {.pcpa-scope .nav-links{ display: none; }.pcpa-scope .nav-cta .btn-secondary{ display: none; }
+    }.pcpa-scope .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-2);
+      padding: var(--s-3) var(--s-5);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      letter-spacing: 0.005em;
+      border-radius: 100px;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }.pcpa-scope .btn-primary{
+      background: var(--ink);
+      color: var(--paper);
+      border: 1px solid var(--ink);
+    }.pcpa-scope .btn-primary:hover{
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }.pcpa-scope .btn-secondary{
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }.pcpa-scope .btn-secondary:hover{
+      border-color: var(--ink);
+    }.pcpa-scope .btn-light{
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }.pcpa-scope .btn-light:hover{ background: var(--paper-2); }.pcpa-scope .btn-large{
+      padding: var(--s-4) var(--s-6);
+      font-size: var(--text-base);
+    }.pcpa-scope .btn-arrow{
+      display: inline-flex; align-items: center; gap: var(--s-2);
+      color: var(--blue); font-weight: 500;
+      transition: gap 0.18s;
+    }.pcpa-scope .btn-arrow:hover{ gap: var(--s-3); }.pcpa-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.pcpa-scope .hero{
+      padding: var(--s-9) 0 var(--s-8);
+      border-bottom: 1px solid var(--border);
+    }.pcpa-scope .breadcrumb{
+      display: flex; gap: var(--s-2);
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      margin-bottom: var(--s-7);
+    }.pcpa-scope .breadcrumb a{ color: var(--ink-lighter); }.pcpa-scope .breadcrumb a:hover{ color: var(--blue); }.pcpa-scope .breadcrumb span:last-child{ color: var(--ink); }.pcpa-scope .hero-eyebrow{ margin-bottom: var(--s-5); }.pcpa-scope .hero h1{ margin-bottom: var(--s-6); max-width: 18ch; }.pcpa-scope .hero-subtitle{
+      max-width: 56ch;
+      margin-bottom: var(--s-7);
+    }.pcpa-scope .hero-actions{
+      display: flex; gap: var(--s-3);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: var(--s-5);
+    }.pcpa-scope .hero-trust{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: var(--s-3);
+    }.pcpa-scope .trust-dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }.pcpa-scope .stats{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-7) 0;
+    }.pcpa-scope .stats-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+    }.pcpa-scope .stat{
+      padding: 0 var(--s-4);
+      border-left: 1px solid var(--ink-3);
+    }.pcpa-scope .stat:first-child{ border-left: 0; padding-left: 0; }.pcpa-scope .stat-num{
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 350;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 144;
+    }.pcpa-scope .stat-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {.pcpa-scope .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-7) var(--s-4); }.pcpa-scope .stat:nth-child(3){ border-left: 0; padding-left: 0; }
+    }.pcpa-scope .section{
+      padding: var(--s-10) 0;
+    }.pcpa-scope .section-tinted{ background: var(--paper-2); }.pcpa-scope .section-dark{ background: var(--ink); color: var(--paper); }.pcpa-scope .section-header{
+      max-width: 720px;
+      margin-bottom: var(--s-8);
+    }.pcpa-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.pcpa-scope .section-header h2{ margin-bottom: var(--s-5); }.pcpa-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.pcpa-scope .lede-section{ padding: var(--s-9) 0; }.pcpa-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.pcpa-scope .data-table{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      font-feature-settings: 'tnum' 1;
+    }.pcpa-scope .data-table thead th{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      font-weight: 500;
+      text-align: left;
+      padding: var(--s-3) var(--s-4);
+      border-bottom: 1px solid var(--border-strong);
+    }.pcpa-scope .data-table tbody td{
+      padding: var(--s-5) var(--s-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }.pcpa-scope .data-table tbody tr:hover{ background: rgba(24, 69, 214, 0.025); }.pcpa-scope .data-table tbody td:first-child{
+      font-weight: 500;
+      color: var(--ink);
+      width: 28%;
+    }.pcpa-scope .data-table tbody td:nth-child(2){
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      color: var(--blue-deep);
+      white-space: nowrap;
+      width: 28%;
+    }.pcpa-scope .data-table tbody td:last-child{
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {.pcpa-scope .data-table thead{ display: none; }.pcpa-scope .data-table tbody tr{
+        display: block;
+        padding: var(--s-5) 0;
+        border-bottom: 1px solid var(--border);
+      }.pcpa-scope .data-table tbody td{
+        display: block;
+        padding: 0 0 var(--s-2);
+        border: 0;
+        width: 100% !important;
+      }.pcpa-scope .data-table tbody td:first-child{ font-size: var(--text-md); }
+    }.pcpa-scope .methods-intro{ max-width: 720px; margin-bottom: var(--s-8); }.pcpa-scope .methods-grid{
+      display: grid;
+      gap: var(--s-5);
+    }.pcpa-scope .method{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.pcpa-scope .method:hover{
+      border-color: var(--border-strong);
+    }.pcpa-scope .method-header{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+      margin-bottom: var(--s-5);
+    }.pcpa-scope .method-num{
+      font-family: var(--mono);
+      font-size: var(--text-2xl);
+      font-weight: 500;
+      color: var(--blue);
+      line-height: 1;
+      padding-top: var(--s-2);
+      letter-spacing: -0.02em;
+    }.pcpa-scope .method-title h3{
+      margin-bottom: var(--s-3);
+      font-size: var(--text-2xl);
+      line-height: 1.15;
+    }.pcpa-scope .method-tag{
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.03em;
+      padding: var(--s-1) var(--s-3);
+      background: var(--blue-soft);
+      color: var(--blue-deep);
+      border-radius: 100px;
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.pcpa-scope .method-body{
+      padding-left: calc(var(--text-2xl) + var(--s-5));
+    }.pcpa-scope .method-body > p{ margin-bottom: var(--s-5); color: var(--ink-2); }.pcpa-scope .worked-example{
+      background: var(--paper-2);
+      border-left: 3px solid var(--ink);
+      padding: var(--s-5) var(--s-6);
+      font-family: var(--mono);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }.pcpa-scope .worked-example.featured{
+      background: var(--ink);
+      color: var(--paper);
+      border-left-color: var(--blue);
+    }.pcpa-scope .worked-example.featured .we-label{ color: rgba(255,255,255,0.6); }.pcpa-scope .worked-example.featured .we-result{ color: var(--paper); border-color: rgba(255,255,255,0.2); }.pcpa-scope .worked-example.featured .we-num{ color: var(--paper); }.pcpa-scope .we-title{
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: var(--s-4);
+      color: var(--ink);
+    }.pcpa-scope .worked-example.featured .we-title{ color: var(--blue-soft); }.pcpa-scope .we-line{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s-4);
+      padding: var(--s-2) 0;
+    }.pcpa-scope .we-label{ color: var(--ink-light); }.pcpa-scope .we-num{ color: var(--ink); font-weight: 500; }.pcpa-scope .we-divider{
+      border-top: 1px dashed var(--border-strong);
+      margin: var(--s-3) 0;
+      grid-column: 1 / -1;
+    }.pcpa-scope .worked-example.featured .we-divider{ border-top-color: rgba(255,255,255,0.2); }.pcpa-scope .we-result{
+      grid-template-columns: 1fr auto;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border-strong);
+      margin-top: var(--s-2);
+      font-weight: 600;
+    }.pcpa-scope .we-result .we-label{ color: var(--ink); }
+    @media (max-width: 720px) {.pcpa-scope .method{ padding: var(--s-5); }.pcpa-scope .method-body{ padding-left: 0; }.pcpa-scope .method-num{ font-size: var(--text-xl); }
+    }.pcpa-scope .callout{
+      background: var(--blue-tint);
+      border: 1px solid rgba(24, 69, 214, 0.12);
+      border-radius: 6px;
+      padding: var(--s-6) var(--s-7);
+      max-width: 760px;
+    }.pcpa-scope .callout-eyebrow{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-3);
+    }.pcpa-scope .callout p{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+    }.pcpa-scope .testim-warning{
+      background: #FFF1F1;
+      border: 1px solid rgba(139, 44, 44, 0.3);
+      border-radius: 4px;
+      padding: var(--s-3) var(--s-5);
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      color: var(--rust);
+      margin: 0 auto var(--s-7);
+      max-width: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-3);
+      flex-wrap: wrap;
+    }.pcpa-scope .testim-warning .mono-tag{
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.1em;
+      background: var(--rust);
+      color: var(--paper);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }.pcpa-scope .testimonials-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {.pcpa-scope .testimonials-grid{ grid-template-columns: 1fr; gap: var(--s-6); max-width: 620px; }
+    }.pcpa-scope .testimonials-grid--quad{
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1100px;
+    }
+    @media (max-width: 900px) {.pcpa-scope .testimonials-grid--quad{ grid-template-columns: 1fr; max-width: 620px; }
+    }.pcpa-scope .testim-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-5);
+      position: relative;
+      transition: border-color 0.18s, transform 0.18s;
+    }.pcpa-scope .testim-card:hover{
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }.pcpa-scope .testim-card .example-tag{
+      position: absolute;
+      top: var(--s-4);
+      right: var(--s-4);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      background: rgba(139, 44, 44, 0.08);
+      color: var(--rust);
+      padding: 3px 8px;
+      border-radius: 100px;
+      font-weight: 600;
+    }.pcpa-scope .testim-avatar{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      font-variation-settings: "opsz" 30;
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+    }.pcpa-scope .testim-avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 25%;
+      display: block;
+    }.pcpa-scope .testim-avatar::after{
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border: 1px dashed rgba(0,0,0,0.18);
+      border-radius: 50%;
+    }.pcpa-scope .testim-avatar-1{ background: var(--blue-soft); color: var(--blue-deep); }.pcpa-scope .testim-avatar-2{ background: #F0EDE8; color: #6B5C4B; }.pcpa-scope .testim-avatar-3{ background: #E8EFE8; color: #3D5A3D; }.pcpa-scope .testim-quote{
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      margin: 0;
+      flex: 1;
+    }.pcpa-scope .testim-attribution{
+      border-top: 1px solid var(--border);
+      padding-top: var(--s-4);
+    }.pcpa-scope .testim-name{
+      font-family: var(--sans);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: -0.005em;
+    }.pcpa-scope .testim-meta{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }.pcpa-scope .programs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+    }
+    @media (max-width: 720px) {.pcpa-scope .programs-grid{ grid-template-columns: 1fr; }
+    }.pcpa-scope .program{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      transition: all 0.2s;
+    }.pcpa-scope .program:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+    }.pcpa-scope .program h4{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      font-variation-settings: "opsz" 30;
+    }.pcpa-scope .program-when{
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      flex: 1;
+    }.pcpa-scope .program-links{
+      display: flex;
+      gap: var(--s-5);
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+    }.pcpa-scope .program-links a{
+      color: var(--blue);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--s-1);
+    }.pcpa-scope .program-links a:hover{ color: var(--blue-deep); }.pcpa-scope .program-links a::after{ content: '↗'; font-size: 0.85em; }.pcpa-scope .per-diem-section{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+    }.pcpa-scope .per-diem-section h2{ color: var(--paper); }.pcpa-scope .per-diem-section p{ color: rgba(250,250,247,0.85); }.pcpa-scope .per-diem-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.pcpa-scope .per-diem-grid{ grid-template-columns: 1fr; gap: var(--s-7); }
+    }.pcpa-scope .per-diem-list{
+      list-style: none;
+      padding: 0;
+    }.pcpa-scope .per-diem-list li{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--ink-3);
+      display: flex;
+      gap: var(--s-4);
+      align-items: start;
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.9);
+    }.pcpa-scope .per-diem-list li:last-child{ border-bottom: 0; }.pcpa-scope .pd-num{
+      font-family: var(--mono);
+      color: var(--blue-soft);
+      font-weight: 500;
+      flex-shrink: 0;
+      width: 1.5em;
+    }.pcpa-scope .playbook-stages{ display: grid; gap: var(--s-7); }.pcpa-scope .stage{
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s-7);
+      padding-bottom: var(--s-7);
+      border-bottom: 1px solid var(--border);
+    }.pcpa-scope .stage:last-child{ border-bottom: 0; }
+    @media (max-width: 720px) {.pcpa-scope .stage{ grid-template-columns: 1fr; gap: var(--s-3); }
+    }.pcpa-scope .stage-label{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      color: var(--ink-lighter);
+      text-transform: uppercase;
+      padding-top: var(--s-2);
+    }.pcpa-scope .stage-content h4{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.pcpa-scope .stage-content p{ color: var(--ink-2); margin-bottom: var(--s-4); }.pcpa-scope .stage-bullets{
+      list-style: none;
+      padding: 0;
+    }.pcpa-scope .stage-bullets li{
+      padding: var(--s-2) 0;
+      padding-left: var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }.pcpa-scope .stage-bullets li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 12px;
+      height: 1px;
+      background: var(--blue);
+    }.pcpa-scope .bio-section{
+      background: var(--paper-2);
+      padding: var(--s-10) 0;
+    }.pcpa-scope .bio-grid{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--s-7);
+      align-items: start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.pcpa-scope .bio-grid{ grid-template-columns: 1fr; }
+    }.pcpa-scope .bio-photo{
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ink);
+      position: relative;
+    }.pcpa-scope .bio-photo img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
+    }.pcpa-scope .bio-photo::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      z-index: 2;
+    }.pcpa-scope .bio-name{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      margin-bottom: var(--s-2);
+      font-variation-settings: "opsz" 60;
+    }.pcpa-scope .bio-title{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-lighter);
+      margin-bottom: var(--s-5);
+    }.pcpa-scope .bio-quote{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 350;
+      font-style: italic;
+      padding-left: var(--s-5);
+      border-left: 2px solid var(--blue);
+      margin-bottom: var(--s-5);
+      font-variation-settings: "opsz" 30;
+    }.pcpa-scope .bio-body p{ color: var(--ink-2); margin-bottom: var(--s-4); }.pcpa-scope .faq-list{
+      max-width: 800px;
+      margin: 0 auto;
+    }.pcpa-scope .faq-item{
+      padding: var(--s-6) 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--s-5);
+      align-items: start;
+    }.pcpa-scope .faq-item:first-child{ border-top: 1px solid var(--border); }.pcpa-scope .faq-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.04em;
+      color: var(--blue);
+      font-weight: 500;
+      padding-top: var(--s-1);
+    }.pcpa-scope .faq-q{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s-3);
+      color: var(--ink);
+      line-height: 1.3;
+      font-variation-settings: "opsz" 30;
+    }.pcpa-scope .faq-a{
+      color: var(--ink-2);
+      line-height: 1.65;
+    }.pcpa-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.pcpa-scope .sources-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 720px) {.pcpa-scope .sources-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.pcpa-scope .source-group h4{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+      padding-bottom: var(--s-3);
+      border-bottom: 1px solid var(--border-strong);
+    }.pcpa-scope .source-list{ list-style: none; padding: 0; }.pcpa-scope .source-list li{
+      padding: var(--s-3) 0;
+      font-size: var(--text-sm);
+      line-height: 1.45;
+    }.pcpa-scope .source-list a{
+      color: var(--ink-2);
+      transition: color 0.15s;
+      display: block;
+    }.pcpa-scope .source-list a:hover{ color: var(--blue); }.pcpa-scope .source-name{ font-weight: 500; display: block; margin-bottom: 2px; }.pcpa-scope .source-url{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-lighter);
+      word-break: break-all;
+    }.pcpa-scope .final-cta{
+      background: var(--ink);
+      color: var(--paper);
+      padding: var(--s-10) 0;
+      text-align: center;
+    }.pcpa-scope .final-cta h2{
+      color: var(--paper);
+      max-width: 22ch;
+      margin: 0 auto var(--s-5);
+    }.pcpa-scope .final-cta p{
+      color: rgba(250,250,247,0.75);
+      font-size: var(--text-lg);
+      max-width: 56ch;
+      margin: 0 auto var(--s-7);
+    }.pcpa-scope .final-cta-actions{
+      display: flex;
+      gap: var(--s-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }.pcpa-scope .btn-on-dark{
+      background: var(--paper);
+      color: var(--ink);
+      border: 1px solid var(--paper);
+    }.pcpa-scope .btn-on-dark:hover{ background: var(--blue); color: var(--paper); border-color: var(--blue); }.pcpa-scope .btn-on-dark-secondary{
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid rgba(250,250,247,0.3);
+    }.pcpa-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.pcpa-scope .footer{
+      background: var(--ink-2);
+      color: var(--paper);
+      padding: var(--s-9) 0 var(--s-5);
+    }.pcpa-scope .footer-grid{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--s-7);
+      margin-bottom: var(--s-7);
+    }
+    @media (max-width: 800px) {.pcpa-scope .footer-grid{ grid-template-columns: 1fr 1fr; }
+    }.pcpa-scope .footer-brand .logo{ color: var(--paper); margin-bottom: var(--s-4); }.pcpa-scope .footer-brand p{ color: rgba(250,250,247,0.65); font-size: var(--text-sm); margin-bottom: var(--s-4); }.pcpa-scope .footer-brand .compliance{ font-family: var(--mono); font-size: var(--text-xs); line-height: 1.7; color: rgba(250,250,247,0.5); }.pcpa-scope .footer-col h5{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,250,247,0.6);
+      font-weight: 500;
+      margin-bottom: var(--s-4);
+    }.pcpa-scope .footer-col ul{ list-style: none; padding: 0; }.pcpa-scope .footer-col li{ padding: 4px 0; }.pcpa-scope .footer-col a{
+      color: rgba(250,250,247,0.85);
+      font-size: var(--text-sm);
+      transition: color 0.15s;
+    }.pcpa-scope .footer-col a:hover{ color: var(--paper); }.pcpa-scope .footer-bottom{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(250,250,247,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s-4);
+      font-size: var(--text-xs);
+      color: rgba(250,250,247,0.5);
+      font-family: var(--mono);
+    }.pcpa-scope .mt-6{ margin-top: var(--s-6); }.pcpa-scope .mt-8{ margin-top: var(--s-8); }.pcpa-scope .mb-0{ margin-bottom: 0; }
+    @media (prefers-reduced-motion: no-preference) {.pcpa-scope .fade-in{
+        opacity: 0;
+        transform: translateY(12px);
+        animation: fadeIn 0.7s ease forwards;
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }.pcpa-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.pcpa-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.pcpa-scope .highlights-list{
+      list-style: none;
+      padding: 0;
+      max-width: 920px;
+      margin: 0 auto;
+      columns: 1;
+      column-gap: var(--s-7);
+    }
+    @media (min-width: 880px) {.pcpa-scope .highlights-list{ columns: 2; column-gap: var(--s-8); }
+    }.pcpa-scope .highlights-list li{
+      break-inside: avoid;
+      padding: var(--s-3) 0 var(--s-3) var(--s-5);
+      position: relative;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }.pcpa-scope .highlights-list li:last-child{ border-bottom: 0; }.pcpa-scope .highlights-list li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.2em;
+      width: 14px;
+      height: 1px;
+      background: var(--blue);
+    }.pcpa-scope .highlights-source{
+      font-size: var(--text-sm);
+      color: var(--ink-lighter);
+      margin-left: 4px;
+    }.pcpa-scope .highlights-source a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }.pcpa-scope .highlights-source a:hover{ color: var(--blue-deep); }.pcpa-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.pcpa-scope .resources-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {.pcpa-scope .resources-grid{ grid-template-columns: 1fr 1fr; gap: var(--s-4) var(--s-7); }
+    }.pcpa-scope .resource-item{
+      padding: var(--s-4) 0;
+      border-bottom: 1px solid var(--border);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--ink-2);
+    }.pcpa-scope .resource-item a{
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }.pcpa-scope .resource-item a:hover{ color: var(--blue-deep); }.pcpa-scope .professions-section{
+      padding: var(--s-9) 0 var(--s-10);
+    }.pcpa-scope .professions-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      max-width: 1100px;
+      margin: var(--s-7) auto 0;
+    }
+    @media (max-width: 800px) {.pcpa-scope .professions-grid{ grid-template-columns: 1fr; gap: var(--s-5); }
+    }.pcpa-scope .profession-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-7);
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }.pcpa-scope .profession-card:hover{
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -12px rgba(10, 14, 26, 0.15);
+    }.pcpa-scope .profession-num{
+      font-family: var(--mono);
+      font-size: var(--text-md);
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }.pcpa-scope .profession-title{
+      font-family: var(--serif);
+      font-size: var(--text-2xl);
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variation-settings: "opsz" 60;
+      margin: 0;
+      color: var(--ink);
+    }.pcpa-scope .profession-tag{
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      line-height: 1.4;
+      color: var(--ink-2);
+      font-weight: 350;
+      font-variation-settings: "opsz" 30;
+      font-style: italic;
+      margin: 0;
+    }.pcpa-scope .profession-points{
+      list-style: none;
+      padding: 0;
+      margin: var(--s-2) 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-2);
+    }.pcpa-scope .profession-points li{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--ink-light);
+      padding-left: var(--s-4);
+      position: relative;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }.pcpa-scope .profession-points li::before{
+      content: '·';
+      position: absolute;
+      left: var(--s-2);
+      top: -2px;
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.4em;
+    }.pcpa-scope .profession-link{
+      margin-top: auto;
+      padding-top: var(--s-5);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-2);
+      transition: gap 0.2s;
+    }.pcpa-scope .profession-link::after{ content: '→'; transition: transform 0.2s; }.pcpa-scope .profession-card:hover .profession-link::after{ transform: translateX(4px); }.pcpa-scope .differentiators-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-6);
+      margin-top: var(--s-7);
+    }
+    @media (max-width: 800px) {.pcpa-scope .differentiators-grid{ grid-template-columns: 1fr; gap: var(--s-6); }
+    }.pcpa-scope .differentiator{
+      padding-top: var(--s-5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }.pcpa-scope .differentiator-num{
+      font-family: var(--mono);
+      font-size: var(--text-xs);
+      color: var(--blue-soft);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--s-3);
+      font-weight: 500;
+    }.pcpa-scope .differentiator h3{
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: var(--s-3);
+      font-variation-settings: "opsz" 30;
+    }.pcpa-scope .differentiator p{
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(250,250,247,0.85);
+      margin: 0;
+    }.pcpa-scope .hero--with-image .hero-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }.pcpa-scope .hero--with-image h1{ max-width: 16ch; }.pcpa-scope .hero--with-image .hero-subtitle{ max-width: 52ch; }.pcpa-scope .hero-image{ position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%); box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25); }.pcpa-scope .hero-image::before{ content: ''; position: absolute; top: 58%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(232,238,255,0.18) 35%, rgba(232,238,255,0.18) 65%, transparent 100%); z-index: 1; }.pcpa-scope .hero-image img{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2; }.pcpa-scope .hero-image::after{ content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px; }
+    @media (max-width: 900px) {.pcpa-scope .hero--with-image .hero-grid{ grid-template-columns: 1fr; gap: var(--s-7); }.pcpa-scope .hero-image{ aspect-ratio: 16/11; max-width: 100%; } }.pcpa-scope .per-diem-section--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 35%; background-repeat: no-repeat; isolation: isolate; }.pcpa-scope .per-diem-section--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.78) 100%); z-index: 0; }.pcpa-scope .per-diem-section--bg .container{ position: relative; z-index: 1; }.pcpa-scope .final-cta--bg{ position: relative; background-color: #0A0E1A; background-size: cover; background-position: center 50%; background-repeat: no-repeat; isolation: isolate; }.pcpa-scope .final-cta--bg::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,26,0.72) 0%, rgba(10,14,26,0.95) 100%); z-index: 0; }.pcpa-scope .final-cta--bg .container{ position: relative; z-index: 1; }.pcpa-scope .stats--with-image .stats-bar-grid{ max-width: var(--measure); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 5vw, 64px); align-items: center; }.pcpa-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--s-3); }.pcpa-scope .stats-bar-image{ margin: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 24px 64px rgba(0,0,0,0.45); }.pcpa-scope .stats-bar-image img{ display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 800px) {.pcpa-scope .stats--with-image .stats-bar-grid{ grid-template-columns: 1fr; gap: 32px; }.pcpa-scope .stats--with-image .stats-bar-grid > .stats-grid{ grid-template-columns: repeat(2, 1fr); }.pcpa-scope .stats-bar-image{ order: -1; aspect-ratio: 16/9; } }.pcpa-scope .pre-cta-photo{ aspect-ratio: 21/9; border-radius: 4px; overflow: hidden; background: radial-gradient(circle at 30% 60%, rgba(184,134,11,0.18) 0%, transparent 55%), linear-gradient(160deg, #1E2433 0%, #0A0E1A 100%); position: relative; margin: var(--s-9) 0 0; }.pcpa-scope .pre-cta-photo img{ width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; filter: contrast(1.03) saturate(0.97); }.pcpa-scope .pre-cta-photo-caption{ position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2; display: flex; align-items: center; gap: var(--s-4); }.pcpa-scope .pre-cta-photo-caption .label{ font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,250,247,0.85); padding: var(--s-2) var(--s-4); border: 1px solid rgba(250,250,247,0.3); border-radius: 100px; }.pcpa-scope .pre-cta-photo::before{ content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(10,14,26,0.78) 100%); z-index: 1; }
+    @media (max-width: 720px) {.pcpa-scope .pre-cta-photo{ aspect-ratio: 4/3; } }
+  
+
+/* ===== SUB-PAGE D-SERIES EXTENSIONS (v12 sub-page spec §4) ===== */
+
+/* Key Facts grid (Section 1) */
+.pcpa-scope .key-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.pcpa-scope .key-fact-card {
+  background: var(--paper);
+  border: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  border-radius: 6px;
+  padding: var(--s-5);
+}
+.pcpa-scope .key-fact-num {
+  font-family: var(--serif);
+  font-size: var(--text-2xl, 1.8rem);
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: var(--s-2);
+  letter-spacing: -0.02em;
+}
+.pcpa-scope .key-fact-body {
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  margin: 0;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+
+/* Loan-Program grid (Section 5) */
+.pcpa-scope .loan-program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+.pcpa-scope .loan-program-card {
+  background: var(--paper);
+  border-left: 3px solid var(--blue);
+  padding: var(--s-5);
+  border-radius: 0 6px 6px 0;
+}
+.pcpa-scope .loan-program-name {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+}
+.pcpa-scope .loan-program-points {
+  margin: 0 0 var(--s-3) 0;
+  padding-left: var(--s-4);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.pcpa-scope .loan-program-tag {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+  font-weight: 500;
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+
+/* Career Timeline (Section 7) */
+.pcpa-scope .career-timeline {
+  margin-top: var(--s-6);
+  border-left: 2px solid var(--blue);
+  padding-left: 0;
+}
+.pcpa-scope .timeline-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--s-6);
+  padding: var(--s-5) var(--s-5) var(--s-5) var(--s-5);
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+  position: relative;
+}
+.pcpa-scope .timeline-entry:last-child {
+  border-bottom: none;
+}
+.pcpa-scope .timeline-entry::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: var(--s-6);
+  width: 12px;
+  height: 12px;
+  background: var(--blue);
+  border-radius: 50%;
+}
+.pcpa-scope .timeline-stage {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  padding-top: var(--s-1);
+}
+.pcpa-scope .timeline-body h4 {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-2) 0;
+  color: var(--ink);
+}
+.pcpa-scope .timeline-body p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+@media (max-width: 720px) {
+  .pcpa-scope .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+  }
+}
+
+/* Sub-page FAQ markup (Section 9) — v10 numbered pattern */
+.pcpa-scope .faq-list .faq-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: var(--s-5);
+  padding: var(--s-5) 0;
+  border-bottom: 1px solid var(--ink-10, rgba(10,14,26,0.08));
+}
+.pcpa-scope .faq-list .faq-item:last-child {
+  border-bottom: none;
+}
+.pcpa-scope .faq-list .faq-num {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  padding-top: var(--s-1);
+}
+.pcpa-scope .faq-list .faq-q {
+  font-family: var(--serif);
+  font-size: var(--text-lg, 1.2rem);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.pcpa-scope .faq-list .faq-a {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--ink-80, rgba(10,14,26,0.8));
+}
+.pcpa-scope .faq-list .faq-a a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* FAQ cross-links block above FAQ list (Section 9) */
+.pcpa-scope .faq-cross-links a {
+  color: var(--blue);
+}
+.pcpa-scope .faq-cross-links a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Link Farm grid (Section 10) */
+.pcpa-scope .link-farm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s-6);
+  margin-top: var(--s-6);
+}
+.pcpa-scope .link-farm-col h4 {
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  font-weight: 600;
+  margin: 0 0 var(--s-3) 0;
+}
+.pcpa-scope .link-farm-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-sm);
+  line-height: 1.9;
+}
+.pcpa-scope .link-farm-col a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+.pcpa-scope .link-farm-col a:hover {
+  border-bottom-color: var(--blue);
+}
+
+</style>
+
