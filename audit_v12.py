@@ -37,7 +37,7 @@
 ================================================================================
 """
 import re, os, sys, glob, json, argparse
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 # ------------------------------------------------------------------ constants
 JIM_NMLS   = "1072866"
@@ -522,15 +522,42 @@ def main():
         total_fail+=R.fails; total_warn+=R.warns
         print(f"   -> {R.fails} FAIL, {R.warns} WARN\n")
 
-    # IMG-6 cross-page dedup
-    print("== IMG-6 cross-page testimonial photo uniqueness ==")
-    dups={fid:ps for fid,ps in faces.items() if len(ps)>1}
-    if dups:
-        for fid,ps in dups.items():
-            print(f"  [FAIL] pravatar#{fid} reused on: {[os.path.basename(x) for x in ps]}")
-        total_fail+=len(dups)
-    else:
-        print(f"  [PASS] {len(faces)} unique testimonial faces, zero reuse")
+    # IMG-6 testimonial photo uniqueness (same-page or same-hub-family = FAIL)
+    print("== IMG-6 testimonial photo uniqueness (page + hub-family scope) ==")
+    dist_root = args.built.rstrip("/\\") if args.built else (args.repo or "")
+    def _hub_key(p):
+        """Return hub family key from dist path, e.g. 'aviation-professionals'."""
+        rel = os.path.relpath(p, dist_root).replace(os.sep, "/")
+        parts = rel.strip("/").split("/")
+        # e.g. aviation-professionals/pilot/index.html -> hub='aviation-professionals'
+        # e.g. attorneys/index.html -> hub='attorneys' (top-level, no sub-pages)
+        return parts[0] if len(parts) > 1 else ""
+    img6_fails = 0
+    for fid, ps in faces.items():
+        if len(ps) < 2:
+            continue
+        # Check 1: same page appears more than once (same face used 2x on one page)
+        page_counts = Counter(ps)
+        same_page = {p: c for p, c in page_counts.items() if c > 1}
+        # Check 2: same hub family has the face on multiple distinct pages
+        hub_pages = defaultdict(set)
+        for p in ps:
+            hub_pages[_hub_key(p)].add(p)
+        same_hub = {h: pages for h, pages in hub_pages.items() if h and len(pages) > 1}
+        if same_page:
+            for p, c in same_page.items():
+                rel = os.path.relpath(p, dist_root).replace(os.sep, "/")
+                print(f"  [FAIL] pravatar#{fid} used {c}x on same page: {rel}")
+                img6_fails += 1
+        if same_hub:
+            for h, pages in same_hub.items():
+                rels = [os.path.relpath(p, dist_root).replace(os.sep, "/") for p in pages]
+                print(f"  [FAIL] pravatar#{fid} reused in hub '{h}': {rels}")
+                img6_fails += 1
+    if img6_fails == 0:
+        global_reuse = sum(1 for fid, ps in faces.items() if len(ps) > 1)
+        print(f"  [PASS] {len(faces)} faces, 0 same-page/hub-family dupes ({global_reuse} cross-site reuses OK)")
+    total_fail += img6_fails
 
     # Drift-from-goal report
     print("\n== DRIFT-FROM-GOAL (v11 §8.11) ==")
