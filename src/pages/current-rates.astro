@@ -45,8 +45,10 @@ const OB_SRC = `https://www2.optimalblue.com/OBMMI/widgetConfig.php?actbg=1f3d34
           <figure class="r-chart">
             <figcaption class="r-chart__cap">{f.label}</figcaption>
             <div class="r-embed">
-              <iframe src={}
-                title={f.label} scrolling="no" frameborder="0" loading="lazy"></iframe>
+              <iframe src={`https://fred.stlouisfed.org/graph/graph-landing.php?g=${f.id}&width=670&height=475`}
+                title={f.label} scrolling="no" frameborder="0"
+                style="overflow:hidden; border:0;"
+                loading="lazy" allowtransparency="true"></iframe>
             </div>
           </figure>
         ))}
@@ -85,8 +87,8 @@ const OB_SRC = `https://www2.optimalblue.com/OBMMI/widgetConfig.php?actbg=1f3d34
     .r-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
     .r-chart { margin:0; background:#fff; border:1px solid var(--color-line,#e3e0d6); border-radius:14px; padding:1.2rem; }
     .r-chart__cap { font-family:var(--stw-display,'Fraunces'),serif; font-weight:500; font-size:1.05rem; margin-bottom:.8rem; }
-    .r-chart .r-embed { border:0; aspect-ratio:670/475; }
-    .r-chart .r-embed iframe { width:100%; height:100%; position:absolute; inset:0; }
+    .r-chart .r-embed { position:relative; width:100%; max-width:670px; margin:0 auto; border:0; }
+    .r-chart .r-embed iframe { width:100%; height:525px; display:block; }
     .r-alert { background:var(--color-forest,#1f3d34); color:#f4f5ef; padding:clamp(3rem,6vw,4.5rem) 1.25rem; text-align:center; }
     .r-alert__inner { max-width:640px; margin:0 auto; }
     .r-alert .r-h2, .r-alert .r-eyebrow { color:#f4f5ef; }
@@ -96,5 +98,7 @@ const OB_SRC = `https://www2.optimalblue.com/OBMMI/widgetConfig.php?actbg=1f3d34
     .r-btn:hover { transform:translateY(-2px); box-shadow:0 10px 24px rgba(47,71,201,.28); }
     .r-btn--ghost { background:transparent; border:1.5px solid #f4f5ef; }
     @media (max-width:760px){ .r-grid { grid-template-columns:1fr; } }
+    @media (max-width:700px){ .r-chart .r-embed iframe { height:460px; } }
   </style>
+  <script is:inline src="https://fred.stlouisfed.org/graph/js/embed.js"></script>
 </Layout>
