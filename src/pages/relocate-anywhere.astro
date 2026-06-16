@@ -9,7 +9,7 @@ import Layout from '../layouts/Layout.astro';
   <div class="aurora"><span class="orb orb-1"></span><span class="orb orb-2"></span><span class="orb orb-3"></span></div>
   <div class="container-page hero-inner">
     <span class="eyebrow" style="color:#0DBFB1;opacity:.9">Tools &amp; Resources &middot; Relocate Anywhere&trade;</span>
-    <h1 class="display-lg">Relocating? We have <em>trusted agents</em> waiting in all 50 states.</h1>
+    <h1 class="display-lg">Relocating? We have <span class="hero__accent">trusted agents</span> waiting in all 50 states.</h1>
     <p class="lead">Before we introduce you to a local real estate professional, we get your financing lined up. Pre-approval first, then we connect you with experienced agents anywhere in the country &mdash; the brands you already know and trust.</p>
     <div class="hero-stats">
       <div class="hstat"><div class="n">355+</div><div class="l">Brokerage Brands</div></div>
@@ -214,7 +214,7 @@ import Layout from '../layouts/Layout.astro';
 @keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,50px) scale(.92)}}
 .hero-inner{position:relative;z-index:1;max-width:860px}
 .hero h1{margin:22px 0 24px}
-.hero h1 em{font-style:italic;color:#0DBFB1}
+.hero h1 .hero__accent{font-style:normal;color:#0DBFB1}
 .hero .lead{opacity:.88;max-width:640px}
 .hero-stats{display:flex;gap:36px;margin-top:40px;flex-wrap:wrap}
 .hstat .n{font-family:var(--stw-display, 'Fraunces'), Georgia, serif;font-size:2.6rem;line-height:1;color:#0DBFB1}
@@ -236,7 +236,7 @@ import Layout from '../layouts/Layout.astro';
 .funnel{background:linear-gradient(100deg,var(--color-blue),#6B7FE8);color:#fff;padding:30px 0}
 .funnel-inner{display:flex;align-items:center;gap:24px;justify-content:space-between;flex-wrap:wrap}
 .funnel p{font-size:1.05rem;font-weight:500;max-width:680px}
-.funnel strong{font-family:var(--stw-display, 'Fraunces'), Georgia, serif;font-style:italic;font-weight:400;font-size:1.2rem}
+.funnel strong{font-family:var(--stw-display, 'Fraunces'), Georgia, serif;font-style:normal;font-weight:400;font-size:1.2rem}
 
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}

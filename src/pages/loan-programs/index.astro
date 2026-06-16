@@ -15,7 +15,7 @@ const collectionSchema={"@context":"https://schema.org","@type":"CollectionPage"
   <header class="lp-hero">
     <div class="container-page lp-hero__inner">
       <span class="eyebrow eyebrow-blue">44 Programs · 9 Categories · 1 Match</span>
-      <h1 class="display-xl lp-hero__title">Find the loan<br/>built for <em>your</em> situation.</h1>
+      <h1 class="display-xl lp-hero__title">Find the loan<br/>built for <span class="lp-hero__accent">your</span> situation.</h1>
       <p class="lede lp-hero__lede">Most brokers show you three options. We compare forty-four — then narrow to the one that fits. Guided by Jim Blackburn, <span class="mono">NMLS #1072866</span>.</p>
       <div class="lp-hero__stats">
         <div><span class="editorial-number">44</span><small>loan programs</small></div>
@@ -441,7 +441,7 @@ const collectionSchema={"@context":"https://schema.org","@type":"CollectionPage"
 <style>
   .lp-hero { padding: clamp(3rem,8vw,6rem) 0 clamp(2rem,5vw,4rem); background: linear-gradient(180deg, var(--color-paper-tint), var(--color-paper)); border-bottom: 1px solid var(--color-bone); }
   .lp-hero__title { margin: 1rem 0 1.5rem; }
-  .lp-hero__title em { font-style: italic; color: var(--color-blue); }
+  .lp-hero__title .lp-hero__accent { font-style: normal; color: var(--color-blue); }
   .lp-hero__lede { max-width: 60ch; }
   .lp-hero__stats { display: flex; gap: 3rem; margin-top: 2.5rem; flex-wrap: wrap; }
   .lp-hero__stats div { display: flex; flex-direction: column; }
