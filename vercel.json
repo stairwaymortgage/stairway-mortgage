@@ -34,6 +34,11 @@
   ],
   "redirects": [
     {
+      "source": "/your-journey/",
+      "destination": "/the-8-steps/",
+      "permanent": true
+    },
+    {
       "source": "/home",
       "destination": "/",
       "permanent": true

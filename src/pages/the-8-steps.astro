@@ -165,6 +165,339 @@ const rungs = [
     </div>
   </section>
 
+  <!-- ══ STW ACCORDION GRID ══ -->
+<style>
+.stw-ac-section{padding:72px 0;background:#fafaf8;border-top:1px solid #e8e4dc;}
+.stw-ac-inner{max-width:1200px;margin:0 auto;padding:0 24px;}
+.stw-ac-header{text-align:center;margin-bottom:48px;}
+.stw-ac-eyebrow{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#1845D6;background:#dce8ff;padding:3px 10px;border-radius:20px;margin-bottom:14px;}
+.stw-ac-title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(26px,3.5vw,38px);line-height:1.2;color:#0f1117;margin-bottom:10px;}
+.stw-ac-sub{font-size:15px;color:#6b6b6b;max-width:540px;margin:0 auto;}
+/* Grid wraps both cards and panels */
+.stw-ac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media(max-width:1000px){.stw-ac-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:540px){.stw-ac-grid{grid-template-columns:1fr;}}
+/* Card */
+.ac-card{background:#fff;border:1.5px solid #e8e4dc;border-radius:12px;padding:20px 18px;cursor:pointer;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s;}
+.ac-card:hover,.ac-card.active{border-color:var(--sc);box-shadow:0 0 0 2px color-mix(in srgb,var(--sc) 18%,transparent);}
+.ac-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;}
+.ac-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:#888;font-weight:500;}
+.ac-card-arrow{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.06);transition:background .15s,color .15s;color:#888;}
+.ac-card-arrow svg{width:10px;height:10px;}
+.ac-card:hover .ac-card-arrow,.ac-card.active .ac-card-arrow{background:var(--sc);color:#fff;}
+.ac-name{font-family:'DM Serif Display',Georgia,serif;font-size:18px;color:#0f1117;margin-bottom:5px;line-height:1.25;}
+.ac-desc{font-size:13px;color:#6b6b6b;line-height:1.5;flex:1;}
+.ac-explore{margin-top:14px;padding-top:12px;border-top:1px solid #e8e4dc;font-size:12px;font-weight:500;color:var(--sc);}
+/* Panel — spans full grid width */
+.ac-panel{display:none;grid-column:1/-1;background:#fff;border:1.5px solid #e8e4dc;border-radius:12px;overflow:hidden;}
+.ac-panel.open{display:block;}
+.ac-close{display:flex;align-self:flex-end;margin:14px 16px 0 auto;background:none;border:none;cursor:pointer;font-size:12px;color:#888;font-family:'Inter',sans-serif;}
+.ac-close:hover{color:#0f1117;}
+.ac-panel-inner{padding:24px 28px 28px;}
+.ac-panel-header{display:flex;align-items:flex-start;gap:14px;padding-bottom:18px;border-bottom:1px solid #e8e4dc;margin-bottom:20px;}
+.ac-badge{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#fff;flex-shrink:0;}
+.ac-panel-name{font-family:'DM Serif Display',Georgia,serif;font-size:24px;color:#0f1117;margin-bottom:3px;}
+.ac-panel-sub{font-size:13px;color:#888;font-style:italic;}
+.ac-intro{font-size:14.5px;color:#333;line-height:1.7;margin-bottom:18px;}
+.ac-discover{border-left:3px solid #ccc;background:#f8f9ff;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:20px;}
+.ac-discover-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:10px;}
+.ac-discover-list{list-style:none;padding:0;margin:0;}
+.ac-discover-list li{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:#333;line-height:1.55;margin-bottom:7px;}
+.ac-discover-list li:last-child{margin-bottom:0;}
+.ac-discover-list li::before{content:'→';flex-shrink:0;font-size:12px;margin-top:2px;}
+/* Parts grid */
+.ac-parts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:700px){.ac-parts{grid-template-columns:1fr;}}
+.ac-part{background:#fafaf8;border:1px solid #e8e4dc;border-radius:9px;padding:16px 14px;}
+.ac-part-head{display:flex;align-items:flex-start;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #ede9e3;}
+.ac-roman{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;padding:3px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
+.ac-part-name{font-size:12.5px;font-weight:600;color:#0f1117;line-height:1.35;}
+.ac-chapters{list-style:none;padding:0;margin:0;}
+.ac-chapters li{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:#444;padding:4px 0;border-bottom:1px solid rgba(0,0,0,0.04);line-height:1.5;}
+.ac-chapters li:last-child{border-bottom:none;}
+.ac-chapters li::before{content:'';width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:6px;background:currentColor;opacity:.4;}
+/* CTAs */
+.ac-ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.ac-btn-primary{display:inline-flex;align-items:center;gap:5px;background:#0f1117;color:#fff;font-size:13.5px;font-weight:500;padding:11px 22px;border-radius:8px;text-decoration:none;font-family:'Inter',sans-serif;}
+.ac-btn-primary:hover{background:#333;}
+.ac-btn-ghost{font-size:13px;color:#0f1117;text-decoration:none;border:1.5px solid #e8e4dc;padding:10px 18px;border-radius:8px;font-family:'Inter',sans-serif;}
+.ac-btn-ghost:hover{background:#f3f1ec;}
+.ac-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:#bbb;margin-left:auto;}
+/* fallback no color-mix */
+@supports not (background:color-mix(in srgb,red 18%,transparent)){.ac-card.active{box-shadow:0 0 0 2px rgba(0,0,0,.12);}}
+</style>
+<section class="stw-ac-section">
+  <div class="stw-ac-inner">
+    <div class="stw-ac-header">
+      <span class="stw-ac-eyebrow">Eight steps. One climb.</span>
+      <h2 class="stw-ac-title">Find your step. Start climbing.</h2>
+      <p class="stw-ac-sub">Each step is a real moment in a real estate life. You only need the one you're standing on today.</p>
+    </div>
+    <div class="stw-ac-grid">
+<div class="ac-card" data-idx="0" style="--sc:#7B61FF">
+  <div class="ac-card-top">
+    <span class="ac-num">01</span>
+    <div class="ac-card-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.4"/></svg></div>
+  </div>
+  <div class="ac-name">Smart Stewards</div>
+  <div class="ac-desc">Building credit and financial foundation.</div>
+  <div class="ac-explore">Explore this stage →</div>
+</div>
+<div class="ac-panel" id="ac-panel-0">
+  <button class="ac-close" onclick="closePanel(0)">✕ Close</button>
+  <div class="ac-panel-inner">
+    <div class="ac-panel-header">
+      <div class="ac-badge" style="background:#7B61FF">01</div>
+      <div><div class="ac-panel-name">Smart Stewards</div><div class="ac-panel-sub">Building credit and financial foundation.</div></div>
+    </div>
+    <p class="ac-intro">Legacy begins at home — not with money, but with values. This playbook teaches families how to build credit early, turn education costs into equity, and raise financially confident children.</p>
+    <div class="ac-discover" style="border-color:#7B61FF">
+      <div class="ac-discover-label" style="color:#7B61FF">What you'll discover in this playbook</div>
+      <ul class="ac-discover-list"><li>Give your teen a 100-point credit score head start — without spending a dime</li><li>Why one family's student graduated with equity instead of debt using a simple FHA strategy</li><li>The 4-unit college strategy that turns housing costs into cash flow</li></ul>
+    </div>
+    <div class="ac-parts"><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#7B61FF;background:#7B61FF18">Part I</span><span class="ac-part-name">The invisible resume</span></div><ul class="ac-chapters"><li>What is a credit score and why does it matter?</li><li>Why waiting until 18 is too late — time as a multiplier</li><li>The power of authorized users</li><li>Teaching financial responsibility early</li><li>Breaking the "us vs them" mentality about money</li><li>How to start the money conversation at home</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#7B61FF;background:#7B61FF18">Part II</span><span class="ac-part-name">Turning college into a wealth event</span></div><ul class="ac-chapters"><li>Building a family financial plan</li><li>Your family credit strategy</li><li>The college housing trap</li><li>The 4-unit strategy — real case study</li><li>How to qualify while still in school</li><li>Don't want 4 units? Try 1!</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#7B61FF;background:#7B61FF18">Part III</span><span class="ac-part-name">Starting your legacy now</span></div><ul class="ac-chapters"><li>What if college isn't part of the plan?</li><li>It's not just about the kids — the whole family's trajectory</li></ul></div></div>
+    <div class="ac-ctas">
+      <a href="https://stairway-vercel.vercel.app/the-8-steps/smart-stewards/" class="ac-btn-primary" target="_blank" rel="noopener">Explore the full Smart Stewards guide →</a>
+      <a href="https://academy.stairwaymortgage.com/courses/offers/c5945b87-2852-4182-a121-35a461f0e2ac" class="ac-btn-ghost" target="_blank" rel="noopener">Start the course</a>
+      <span class="ac-meta">14 chapters · Beginner</span>
+    </div>
+  </div>
+</div>
+<div class="ac-card" data-idx="1" style="--sc:#1845D6">
+  <div class="ac-card-top">
+    <span class="ac-num">02</span>
+    <div class="ac-card-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.4"/></svg></div>
+  </div>
+  <div class="ac-name">First-Time Buyers</div>
+  <div class="ac-desc">Buying your first home with confidence.</div>
+  <div class="ac-explore">Explore this stage →</div>
+</div>
+<div class="ac-panel" id="ac-panel-1">
+  <button class="ac-close" onclick="closePanel(1)">✕ Close</button>
+  <div class="ac-panel-inner">
+    <div class="ac-panel-header">
+      <div class="ac-badge" style="background:#1845D6">02</div>
+      <div><div class="ac-panel-name">First-Time Buyers</div><div class="ac-panel-sub">Buying your first home with confidence.</div></div>
+    </div>
+    <p class="ac-intro">Your first home is one of the biggest decisions you'll ever make. This playbook walks you through everything — from understanding credit to finding the right loan to getting the keys.</p>
+    <div class="ac-discover" style="border-color:#1845D6">
+      <div class="ac-discover-label" style="color:#1845D6">What you'll discover in this playbook</div>
+      <ul class="ac-discover-list"><li>The exact 12-point readiness checklist smart buyers use before house hunting</li><li>How to choose between FHA, VA, Conventional, and USDA — and which saves you most</li><li>The negotiation tactics that could save you thousands at closing</li></ul>
+    </div>
+    <div class="ac-parts"><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#1845D6;background:#1845D618">Part I</span><span class="ac-part-name">Readiness and foundation</span></div><ul class="ac-chapters"><li>Are you really ready? The honest self-assessment</li><li>The hidden costs of homeownership</li><li>Credit scores and the approval sweet spot</li><li>Mastering the DTI ratio</li><li>Budgeting with the 28/36 rule</li><li>How to improve credit, budget, and DTI all at once</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#1845D6;background:#1845D618">Part II</span><span class="ac-part-name">Building your buying power</span></div><ul class="ac-chapters"><li>The pre-approval process that sets you apart</li><li>Programs and grants most buyers miss</li><li>The gift letter strategy that keeps families close</li><li>401(k) loans vs. withdrawals — which builds wealth</li><li>Seller concessions that reduce your cash-to-close</li><li>The 3–5% down payment myth</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#1845D6;background:#1845D618">Part III</span><span class="ac-part-name">The offer, inspection, and close</span></div><ul class="ac-chapters"><li>The offer strategy that wins in competitive markets</li><li>Inspection negotiation — what to fight for</li><li>Appraisal challenges and how to overcome them</li><li>Closing day preparation that prevents surprises</li><li>The first 30 days as a homeowner</li></ul></div></div>
+    <div class="ac-ctas">
+      <a href="https://stairway-vercel.vercel.app/the-8-steps/first-time-home-buyer/" class="ac-btn-primary" target="_blank" rel="noopener">Explore the full First-Time Buyers guide →</a>
+      <a href="https://academy.stairwaymortgage.com/courses/offers/b4c5dd12-1428-4550-a81f-4cfda6799523" class="ac-btn-ghost" target="_blank" rel="noopener">Start the course</a>
+      <span class="ac-meta">17 chapters · Beginner</span>
+    </div>
+  </div>
+</div>
+<div class="ac-card" data-idx="2" style="--sc:#2E9E2E">
+  <div class="ac-card-top">
+    <span class="ac-num">03</span>
+    <div class="ac-card-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.4"/></svg></div>
+  </div>
+  <div class="ac-name">Homeowners</div>
+  <div class="ac-desc">Leveraging equity, renovating, growing.</div>
+  <div class="ac-explore">Explore this stage →</div>
+</div>
+<div class="ac-panel" id="ac-panel-2">
+  <button class="ac-close" onclick="closePanel(2)">✕ Close</button>
+  <div class="ac-panel-inner">
+    <div class="ac-panel-header">
+      <div class="ac-badge" style="background:#2E9E2E">03</div>
+      <div><div class="ac-panel-name">Homeowners</div><div class="ac-panel-sub">Leveraging equity, renovating, growing.</div></div>
+    </div>
+    <p class="ac-intro">You got the keys. Now make your home work for you. This playbook teaches you how to steward your home wisely — building equity, protecting your investment, and using your home to create opportunities.</p>
+    <div class="ac-discover" style="border-color:#2E9E2E">
+      <div class="ac-discover-label" style="color:#2E9E2E">What you'll discover in this playbook</div>
+      <ul class="ac-discover-list"><li>How every mortgage payment becomes forced savings — the wealth habit most people miss</li><li>When refinancing makes sense — and when it's a costly mistake</li><li>The equity access strategies that fund renovations, education, or your next investment</li></ul>
+    </div>
+    <div class="ac-parts"><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#2E9E2E;background:#2E9E2E18">Part I</span><span class="ac-part-name">Understanding your equity engine</span></div><ul class="ac-chapters"><li>Your home is more than shelter — it's your wealth vehicle</li><li>The mortgage payoff myth that's stealing your future</li><li>Faith, fear, and financial leverage</li><li>Your equity audit — what's really in your vault?</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#2E9E2E;background:#2E9E2E18">Part II</span><span class="ac-part-name">Strategic equity management</span></div><ul class="ac-chapters"><li>Strategic refinancing — more than just lower rates</li><li>HELOC vs. cash-out refi — choose the right tool</li><li>Renovate with purpose, not emotion</li><li>Equity for life, not just lifestyle</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#2E9E2E;background:#2E9E2E18">Part III</span><span class="ac-part-name">Graduating to the next level</span></div><ul class="ac-chapters"><li>The annual equity strategy session</li><li>Your home as ministry and mission</li><li>Graduating to the next level</li><li>The new way to live in a home</li></ul></div></div>
+    <div class="ac-ctas">
+      <a href="https://stairway-vercel.vercel.app/the-8-steps/homeowner/" class="ac-btn-primary" target="_blank" rel="noopener">Explore the full Homeowners guide →</a>
+      <a href="https://academy.stairwaymortgage.com/courses/offers/a48f1ef2-97e1-4116-9ec2-05bf02967203" class="ac-btn-ghost" target="_blank" rel="noopener">Start the course</a>
+      <span class="ac-meta">13 chapters · Intermediate</span>
+    </div>
+  </div>
+</div>
+<div class="ac-card" data-idx="3" style="--sc:#D4A547">
+  <div class="ac-card-top">
+    <span class="ac-num">04</span>
+    <div class="ac-card-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.4"/></svg></div>
+  </div>
+  <div class="ac-name">Senior Homeowners</div>
+  <div class="ac-desc">Retirement income and downsizing options.</div>
+  <div class="ac-explore">Explore this stage →</div>
+</div>
+<div class="ac-panel" id="ac-panel-3">
+  <button class="ac-close" onclick="closePanel(3)">✕ Close</button>
+  <div class="ac-panel-inner">
+    <div class="ac-panel-header">
+      <div class="ac-badge" style="background:#D4A547">04</div>
+      <div><div class="ac-panel-name">Senior Homeowners</div><div class="ac-panel-sub">Retirement income and downsizing options.</div></div>
+    </div>
+    <p class="ac-intro">You've spent decades building equity. Now let it serve you. This playbook shows seniors how to access their home's value for income, care, travel, and peace of mind — without selling.</p>
+    <div class="ac-discover" style="border-color:#D4A547">
+      <div class="ac-discover-label" style="color:#D4A547">What you'll discover in this playbook</div>
+      <ul class="ac-discover-list"><li>The truth about reverse mortgages — and why the myths are keeping people stuck</li><li>How one widow eliminated her monthly payments and finally breathed again</li><li>Three payout strategies: lump sum, monthly income, or a line of credit you control</li></ul>
+    </div>
+    <div class="ac-parts"><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#D4A547;background:#D4A54718">Part I</span><span class="ac-part-name">Demystifying your options</span></div><ul class="ac-chapters"><li>The truth about reverse mortgages — understand the tool before you reject it</li><li>Ownership, heirs, and legal protection</li><li>How much can you access? The math: age, home value, and rates</li><li>Three payout strategies for different goals</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#D4A547;background:#D4A54718">Part II</span><span class="ac-part-name">Deploying your equity with purpose</span></div><ul class="ac-chapters"><li>Debt elimination and monthly cash flow</li><li>Aging in place with confidence</li><li>Travel, family, and life bucket lists</li><li>Portfolio protection and tax-free access</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#D4A547;background:#D4A54718">Part III</span><span class="ac-part-name">Legacy and family alignment</span></div><ul class="ac-chapters"><li>Is this the right time for you? Health, age, and readiness</li><li>Alternatives to consider first — HELOCs, cash-out refis, downsizing</li><li>Family conversations that build unity</li><li>Your equity. Your freedom. Your legacy.</li><li>Living free in your golden years — purpose, joy, and peace</li></ul></div></div>
+    <div class="ac-ctas">
+      <a href="https://stairway-vercel.vercel.app/the-8-steps/senior-homeowner/" class="ac-btn-primary" target="_blank" rel="noopener">Explore the full Senior Homeowners guide →</a>
+      <a href="https://academy.stairwaymortgage.com/courses/offers/0b60ae27-8d50-4798-b177-9cea2a17677f" class="ac-btn-ghost" target="_blank" rel="noopener">Start the course</a>
+      <span class="ac-meta">13 chapters · All levels</span>
+    </div>
+  </div>
+</div>
+<div class="ac-card" data-idx="4" style="--sc:#0EA5A4">
+  <div class="ac-card-top">
+    <span class="ac-num">05</span>
+    <div class="ac-card-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.4"/></svg></div>
+  </div>
+  <div class="ac-name">First-Time Investors</div>
+  <div class="ac-desc">Your first rental property, demystified.</div>
+  <div class="ac-explore">Explore this stage →</div>
+</div>
+<div class="ac-panel" id="ac-panel-4">
+  <button class="ac-close" onclick="closePanel(4)">✕ Close</button>
+  <div class="ac-panel-inner">
+    <div class="ac-panel-header">
+      <div class="ac-badge" style="background:#0EA5A4">05</div>
+      <div><div class="ac-panel-name">First-Time Investors</div><div class="ac-panel-sub">Your first rental property, demystified.</div></div>
+    </div>
+    <p class="ac-intro">Ready to stop just owning and start investing? This playbook walks you through buying your first rental property — the analysis, the financing, and the systems that make it work.</p>
+    <div class="ac-discover" style="border-color:#0EA5A4">
+      <div class="ac-discover-label" style="color:#0EA5A4">What you'll discover in this playbook</div>
+      <ul class="ac-discover-list"><li>The investor mindset shift that separates successful landlords from struggling ones</li><li>How to analyze deals without emotion — the numbers that actually matter</li><li>The BRRRR method: buy one property, get your down payment back, and repeat</li></ul>
+    </div>
+    <div class="ac-parts"><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#0EA5A4;background:#0EA5A418">Part I</span><span class="ac-part-name">The investor mindset and strategy</span></div><ul class="ac-chapters"><li>The investor mindset shift — think like a strategist, not a homeowner</li><li>How real estate creates wealth — cash flow, appreciation, tax, equity</li><li>Choosing your strategy and property type</li><li>Where to buy and why — market signals and neighborhood analysis</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#0EA5A4;background:#0EA5A418">Part II</span><span class="ac-part-name">Deal analysis and financing</span></div><ul class="ac-chapters"><li>Deal analysis without emotion — the numbers that actually matter</li><li>Creative financing options — partnerships, seller financing, portfolio loans</li><li>How to find and win the right property</li><li>Inspections, appraisals, and closing day</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#0EA5A4;background:#0EA5A418">Part III</span><span class="ac-part-name">Operating and scaling</span></div><ul class="ac-chapters"><li>Property management basics — tenant screening and leases</li><li>Avoiding costly beginner mistakes</li><li>Assembling your investment team</li><li>Scaling with confidence — planning for properties 2, 3, and beyond</li></ul></div></div>
+    <div class="ac-ctas">
+      <a href="https://stairway-vercel.vercel.app/the-8-steps/first-time-investor/" class="ac-btn-primary" target="_blank" rel="noopener">Explore the full First-Time Investors guide →</a>
+      <a href="https://academy.stairwaymortgage.com/courses/offers/20d6a687-e8ab-400f-bf55-b44bf98420ed" class="ac-btn-ghost" target="_blank" rel="noopener">Start the course</a>
+      <span class="ac-meta">12 chapters · Intermediate</span>
+    </div>
+  </div>
+</div>
+<div class="ac-card" data-idx="5" style="--sc:#8B2C2C">
+  <div class="ac-card-top">
+    <span class="ac-num">06</span>
+    <div class="ac-card-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.4"/></svg></div>
+  </div>
+  <div class="ac-name">Active Investors</div>
+  <div class="ac-desc">Scaling your portfolio with leverage.</div>
+  <div class="ac-explore">Explore this stage →</div>
+</div>
+<div class="ac-panel" id="ac-panel-5">
+  <button class="ac-close" onclick="closePanel(5)">✕ Close</button>
+  <div class="ac-panel-inner">
+    <div class="ac-panel-header">
+      <div class="ac-badge" style="background:#8B2C2C">06</div>
+      <div><div class="ac-panel-name">Active Investors</div><div class="ac-panel-sub">Scaling your portfolio with leverage.</div></div>
+    </div>
+    <p class="ac-intro">You've bought a few properties. Now what? This playbook shows experienced investors how to scale from a few doors to a portfolio — with systems, partnerships, and advanced financing.</p>
+    <div class="ac-discover" style="border-color:#8B2C2C">
+      <div class="ac-discover-label" style="color:#8B2C2C">What you'll discover in this playbook</div>
+      <ul class="ac-discover-list"><li>How to go from 2 properties to 10+ in 24 months using capital recycling</li><li>The syndication blueprint: how to raise private capital for larger deals</li><li>1031 exchanges, tax optimization, and exit strategies that multiply wealth</li></ul>
+    </div>
+    <div class="ac-parts"><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#8B2C2C;background:#8B2C2C18">Part I</span><span class="ac-part-name">Advanced financing strategies</span></div><ul class="ac-chapters"><li>Beyond conventional loans — portfolio lending, DSCR, non-QM</li><li>Cross-collateralization and capital unlocking</li><li>Mastering the BRRRR method — buy, rehab, rent, refinance, repeat</li><li>1031 exchanges and tax leverage</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#8B2C2C;background:#8B2C2C18">Part II</span><span class="ac-part-name">Legal, tax, and entity strategy</span></div><ul class="ac-chapters"><li>LLCs, trusts, and legal entity essentials</li><li>Real estate tax optimization — depreciation, cost segregation, QBI</li><li>Business systems for real estate operations</li><li>Out-of-state and multi-market expansion</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#8B2C2C;background:#8B2C2C18">Part III</span><span class="ac-part-name">Institutional-level moves</span></div><ul class="ac-chapters"><li>From residential to commercial — scaling into larger assets</li><li>Syndication and raising private capital</li><li>Exit strategies that multiply wealth</li><li>Generational real estate planning</li></ul></div></div>
+    <div class="ac-ctas">
+      <a href="https://stairway-vercel.vercel.app/the-8-steps/active-investor/" class="ac-btn-primary" target="_blank" rel="noopener">Explore the full Active Investors guide →</a>
+      <a href="https://academy.stairwaymortgage.com/courses/offers/72c737c3-2681-49f5-a653-5763a930b45e" class="ac-btn-ghost" target="_blank" rel="noopener">Start the course</a>
+      <span class="ac-meta">12 chapters · Advanced</span>
+    </div>
+  </div>
+</div>
+<div class="ac-card" data-idx="6" style="--sc:#64748B">
+  <div class="ac-card-top">
+    <span class="ac-num">07</span>
+    <div class="ac-card-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.4"/></svg></div>
+  </div>
+  <div class="ac-name">Passive Investors</div>
+  <div class="ac-desc">Real estate income without the hassle.</div>
+  <div class="ac-explore">Explore this stage →</div>
+</div>
+<div class="ac-panel" id="ac-panel-6">
+  <button class="ac-close" onclick="closePanel(6)">✕ Close</button>
+  <div class="ac-panel-inner">
+    <div class="ac-panel-header">
+      <div class="ac-badge" style="background:#64748B">07</div>
+      <div><div class="ac-panel-name">Passive Investors</div><div class="ac-panel-sub">Real estate income without the hassle.</div></div>
+    </div>
+    <p class="ac-intro">What if your money worked while you rested? This playbook is for investors who want real estate returns without managing tenants, toilets, or contractors.</p>
+    <div class="ac-discover" style="border-color:#64748B">
+      <div class="ac-discover-label" style="color:#64748B">What you'll discover in this playbook</div>
+      <ul class="ac-discover-list"><li>REITs, syndications, and crowdfunding — how to earn without operating</li><li>The 30 questions to ask before trusting a sponsor with your capital</li><li>How to align your investments with your values — not just your returns</li></ul>
+    </div>
+    <div class="ac-parts"><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#64748B;background:#64748B18">Part I</span><span class="ac-part-name">The passive investor mindset</span></div><ul class="ac-chapters"><li>The passive investment mindset — freedom-focused, not control-focused</li><li>Accredited vs. non-accredited investors — know your status</li><li>Returns and risks — understanding cash flow, IRR, and downside</li><li>Faith and capital alignment — investing with purpose</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#64748B;background:#64748B18">Part II</span><span class="ac-part-name">The passive investment vehicles</span></div><ul class="ac-chapters"><li>Syndications and private placements</li><li>REITs and real estate funds</li><li>Real estate notes and lending — be the bank</li><li>Crowdfunding and tech platforms — with caution</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#64748B;background:#64748B18">Part III</span><span class="ac-part-name">Protecting and scaling passive income</span></div><ul class="ac-chapters"><li>How to vet a sponsor or deal — the 30-question checklist</li><li>Tracking your portfolio and returns — K-1s and cash flow reports</li><li>Tax strategies for passive investors</li><li>Scaling passive income over time</li><li>Let your money work while you rest</li></ul></div></div>
+    <div class="ac-ctas">
+      <a href="https://stairway-vercel.vercel.app/the-8-steps/passive-investor/" class="ac-btn-primary" target="_blank" rel="noopener">Explore the full Passive Investors guide →</a>
+      <a href="https://academy.stairwaymortgage.com/courses/offers/7bf8f7b8-dbd4-481a-a3c9-f4b75016624c" class="ac-btn-ghost" target="_blank" rel="noopener">Start the course</a>
+      <span class="ac-meta">13 chapters · Advanced</span>
+    </div>
+  </div>
+</div>
+<div class="ac-card" data-idx="7" style="--sc:#4F46E5">
+  <div class="ac-card-top">
+    <span class="ac-num">08</span>
+    <div class="ac-card-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.4"/></svg></div>
+  </div>
+  <div class="ac-name">Legacy Angels</div>
+  <div class="ac-desc">Turning wealth into lasting impact.</div>
+  <div class="ac-explore">Explore this stage →</div>
+</div>
+<div class="ac-panel" id="ac-panel-7">
+  <button class="ac-close" onclick="closePanel(7)">✕ Close</button>
+  <div class="ac-panel-inner">
+    <div class="ac-panel-header">
+      <div class="ac-badge" style="background:#4F46E5">08</div>
+      <div><div class="ac-panel-name">Legacy Angels</div><div class="ac-panel-sub">Turning wealth into lasting impact.</div></div>
+    </div>
+    <p class="ac-intro">Building wealth is one thing. Passing it on wisely is another. This playbook is for those ready to create a multi-generational legacy — trusts, estate planning, and family governance that lasts.</p>
+    <div class="ac-discover" style="border-color:#4F46E5">
+      <div class="ac-discover-label" style="color:#4F46E5">What you'll discover in this playbook</div>
+      <ul class="ac-discover-list"><li>Why most families lose wealth within two generations — and how to prevent it</li><li>The essential documents every estate needs: living trusts, wills, powers of attorney</li><li>How to prepare heirs to receive wealth responsibly — not just financially</li></ul>
+    </div>
+    <div class="ac-parts"><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#4F46E5;background:#4F46E518">Part I</span><span class="ac-part-name">Defining true legacy</span></div><ul class="ac-chapters"><li>What legacy really means — beyond money</li><li>The difference between inheritance and legacy</li><li>Writing your family mission statement</li><li>Legacy from a faith perspective — wealth as eternal impact</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#4F46E5;background:#4F46E518">Part II</span><span class="ac-part-name">Building multi-generational wealth structures</span></div><ul class="ac-chapters"><li>Age-appropriate financial education for heirs</li><li>Building a multi-generational wealth plan</li><li>The family investment charter</li><li>Teaching through trusts, not just talk</li></ul></div><div class="ac-part"><div class="ac-part-head"><span class="ac-roman" style="color:#4F46E5;background:#4F46E518">Part III</span><span class="ac-part-name">Using wealth to serve</span></div><ul class="ac-chapters"><li>Philanthropy through property</li><li>Living to give — not just to accumulate</li><li>Succession and long-term asset protection</li><li>Preserving the story with the wealth — letters, interviews, archives</li></ul></div></div>
+    <div class="ac-ctas">
+      <a href="https://stairway-vercel.vercel.app/the-8-steps/legacy-angel/" class="ac-btn-primary" target="_blank" rel="noopener">Explore the full Legacy Angels guide →</a>
+      <a href="https://academy.stairwaymortgage.com/courses/offers/097ca017-dc89-4b5b-8ee0-69a432367ec5" class="ac-btn-ghost" target="_blank" rel="noopener">Start the course</a>
+      <span class="ac-meta">12 chapters · All levels</span>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+<script is:inline>
+(function(){
+  var open = -1;
+  function closePanel(idx){
+    var panel = document.getElementById('ac-panel-'+idx);
+    var card = document.querySelector('.ac-card[data-idx="'+idx+'"]');
+    if(panel) panel.classList.remove('open');
+    if(card) card.classList.remove('active');
+    open = -1;
+  }
+  window.closePanel = closePanel;
+  document.querySelectorAll('.ac-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      var idx = parseInt(card.dataset.idx);
+      if(open === idx){ closePanel(idx); return; }
+      if(open >= 0) closePanel(open);
+      card.classList.add('active');
+      var panel = document.getElementById('ac-panel-'+idx);
+      if(panel){
+        panel.classList.add('open');
+        setTimeout(function(){ panel.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 50);
+      }
+      open = idx;
+    });
+  });
+})();
+</script>
+<!-- ══ END STW ACCORDION GRID ══ -->
+
   <!-- PHILOSOPHY -->
   <section class="section bg-[var(--color-paper-tint)] border-t border-[var(--color-bone)]">
     <div class="container-prose text-center reveal">
