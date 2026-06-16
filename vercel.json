@@ -1147,6 +1147,116 @@
       "source": "/property-deals/email-verif-33064-fl-zyxwvutsrqponml/",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/sales-professionals/yacht-broker",
+      "destination": "/yacht-professionals/yacht-broker/",
+      "permanent": true
+    },
+    {
+      "source": "/sales-professionals/yacht-broker/",
+      "destination": "/yacht-professionals/yacht-broker/",
+      "permanent": true
+    },
+    {
+      "source": "/yacht-professionals/crew",
+      "destination": "/yacht-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/yacht-professionals/crew/",
+      "destination": "/yacht-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-professionals/surgeon",
+      "destination": "/medical-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-professionals/surgeon/",
+      "destination": "/medical-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-professionals/nurse-practitioner-physician-assistant",
+      "destination": "/medical-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/medical-professionals/nurse-practitioner-physician-assistant/",
+      "destination": "/medical-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/dental-wellness-professionals/physical-therapists",
+      "destination": "/dental-wellness-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/dental-wellness-professionals/physical-therapists/",
+      "destination": "/dental-wellness-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/corporate-executives/director-band",
+      "destination": "/corporate-executives/",
+      "permanent": true
+    },
+    {
+      "source": "/corporate-executives/director-band/",
+      "destination": "/corporate-executives/",
+      "permanent": true
+    },
+    {
+      "source": "/corporate-executives/senior-vp-vp",
+      "destination": "/corporate-executives/",
+      "permanent": true
+    },
+    {
+      "source": "/corporate-executives/senior-vp-vp/",
+      "destination": "/corporate-executives/",
+      "permanent": true
+    },
+    {
+      "source": "/sales-professionals/financial-advisor-sales",
+      "destination": "/sales-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/sales-professionals/financial-advisor-sales/",
+      "destination": "/sales-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/sales-professionals/insurance-agent",
+      "destination": "/sales-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/sales-professionals/insurance-agent/",
+      "destination": "/sales-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/sales-professionals/mortgage-loan-officer",
+      "destination": "/sales-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/sales-professionals/mortgage-loan-officer/",
+      "destination": "/sales-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/sales-professionals/real-estate-agent",
+      "destination": "/sales-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/sales-professionals/real-estate-agent/",
+      "destination": "/sales-professionals/",
+      "permanent": true
     }
   ]
 }

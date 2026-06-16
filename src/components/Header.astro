@@ -93,85 +93,79 @@ const menus = [
             ] },
           { icon: 'ship',    title: 'Yacht Professionals', href: '/yacht-professionals/', live: true,
             subs: [
+              { title: 'Yacht Broker',   href: '/yacht-professionals/yacht-broker/' },
               { title: 'Yacht Captain',  href: '/yacht-professionals/captain/' },
-              { title: 'Yacht Crew',     href: '/yacht-professionals/yacht-crew/' },
               { title: 'Yacht Engineer', href: '/yacht-professionals/engineer/' },
+              { title: 'Yacht Crew',     href: '/yacht-professionals/yacht-crew/' },
               { title: 'Yacht Surveyor', href: '/yacht-professionals/surveyor/' },
-            ] },
-          { icon: 'brief',   title: 'Corporate Executives', href: '/corporate-executives/', live: true,
-            subs: [
-              { title: 'C-Suite Executive',     href: '/corporate-executives/c-suite-executive/' },
-              { title: 'Senior VP / VP',        href: '/corporate-executives/senior-vp-vp/' },
-              { title: 'Director Band',         href: '/corporate-executives/director-band/' },
-              { title: 'Pre-IPO Equity Holder', href: '/corporate-executives/pre-ipo-equity-holder/' },
-              { title: 'Relocating Executive',  href: '/corporate-executives/relocating-executive/' },
-            ] },
-          { icon: 'pen',     title: 'Creative Earners', href: '/creative-earners/', live: true,
-            subs: [
-              { title: 'Author / Writer',              href: '/creative-earners/author-writer/' },
-              { title: 'Screenwriters',                href: '/creative-earners/screenwriters/' },
-              { title: 'Commercial Talent',            href: '/creative-earners/commercial-talent/' },
-              { title: 'Content Creator / Influencer', href: '/creative-earners/content-creator-influencer/' },
-              { title: 'Film / TV Professional',       href: '/creative-earners/film-tv-professional/' },
-              { title: 'Recording Artist / Musician',  href: '/creative-earners/recording-artist-musician/' },
             ] },
           { icon: 'medical', title: 'Medical Professionals', href: '/medical-professionals/', live: true,
             subs: [
-              { title: 'Physicians',                   href: '/medical-professionals/physician/' },
-              { title: 'Surgeons',                     href: '/medical-professionals/surgeon/' },
-              { title: 'Anesthesiologists',            href: '/medical-professionals/anesthesiologists/' },
-              { title: 'Nurse Anesthetists (CRNAs)',   href: '/medical-professionals/nurse-anesthetists/' },
-              { title: 'Osteopathic Physicians (DOs)', href: '/medical-professionals/osteopathic-physicians/' },
-              { title: 'Podiatrists (DPMs)',           href: '/medical-professionals/podiatrists/' },
-              { title: 'Medical Resident / Fellow',    href: '/medical-professionals/medical-resident-fellow/' },
-              { title: 'Nurse Practitioner / PA',      href: '/medical-professionals/nurse-practitioner-physician-assistant/' },
-              { title: 'Pharmacist',                   href: '/medical-professionals/pharmacist/' },
-              { title: 'Veterinarian',                 href: '/medical-professionals/veterinarian/' },
+              { title: 'Physician',             href: '/medical-professionals/physician/' },
+              { title: 'Osteopathic Physician', href: '/medical-professionals/osteopathic-physicians/' },
+              { title: 'Orthopedic Physician',  live: false },
+              { title: 'Resident Physician',    href: '/medical-professionals/medical-resident-fellow/' },
+              { title: 'Nurse Anesthetist',     href: '/medical-professionals/nurse-anesthetists/' },
+              { title: 'Podiatrist',            href: '/medical-professionals/podiatrists/' },
+              { title: 'Pharmacist',            href: '/medical-professionals/pharmacist/' },
+              { title: 'Veterinarian',          href: '/medical-professionals/veterinarian/' },
+              { title: 'Anesthesiologist',      href: '/medical-professionals/anesthesiologists/' },
             ] },
           { icon: 'medical', title: 'Dental & Wellness', href: '/dental-wellness-professionals/', live: true,
             subs: [
-              { title: 'Dentist',                    href: '/dental-wellness-professionals/dentist/' },
-              { title: 'Dental Specialist',          href: '/dental-wellness-professionals/dental-specialist/' },
-              { title: 'Chiropractor',               href: '/dental-wellness-professionals/chiropractor/' },
-              { title: 'Acupuncturist',              href: '/dental-wellness-professionals/acupuncturist/' },
-              { title: 'Nutritionist',               href: '/dental-wellness-professionals/nutritionist/' },
-              { title: 'Physical Therapists (DPTs)', href: '/dental-wellness-professionals/physical-therapists/' },
-              { title: 'Wellness Practice Owner',    href: '/dental-wellness-professionals/wellness-practice-owner/' },
+              { title: 'Dentist',                href: '/dental-wellness-professionals/dentist/' },
+              { title: 'Dental Medicine',        href: '/dental-wellness-professionals/dental-specialist/' },
+              { title: 'Chiropractor',           href: '/dental-wellness-professionals/chiropractor/' },
+              { title: 'Acupuncturist',          href: '/dental-wellness-professionals/acupuncturist/' },
+              { title: 'Nutritionist',           href: '/dental-wellness-professionals/nutritionist/' },
+              { title: 'Wellness Practice Owner', href: '/dental-wellness-professionals/wellness-practice-owner/' },
+            ] },
+          { icon: 'brief',   title: 'Corporate Executives', href: '/corporate-executives/', live: true,
+            subs: [
+              { title: 'C-Suite Executive',          href: '/corporate-executives/c-suite-executive/' },
+              { title: 'Tech Equity Compensation',   href: '/corporate-executives/pre-ipo-equity-holder/' },
+              { title: 'International Executive',    href: '/corporate-executives/relocating-executive/' },
+              { title: 'Finance Executive',          live: false },
+            ] },
+          { icon: 'user',    title: 'Professional Advisors', href: '/professional-advisors/', live: true,
+            subs: [
+              { title: 'Attorney',              href: '/professional-advisors/attorney/' },
+              { title: 'Financial Planner',     href: '/professional-advisors/financial-planner/' },
+              { title: 'CPAs / Accountant',     href: '/professional-advisors/cpas-accountant/' },
+              { title: 'Mortgage Broker',       href: '/professional-advisors/mortgage-broker/' },
+              { title: 'Insurance Agency Owner', href: '/professional-advisors/insurance-agency-owner/' },
+            ] },
+          { icon: 'home',    title: 'Real Estate Professionals', href: '/real-estate-professionals/', live: true,
+            subs: [
+              { title: 'Architect / Designer',   href: '/real-estate-professionals/architect-designer/' },
+              { title: 'Builder / Contractor',   href: '/real-estate-professionals/builder-contractor/' },
+              { title: 'Real Estate Broker',     href: '/real-estate-professionals/real-estate-broker/' },
+              { title: 'Home Inspector',         href: '/real-estate-professionals/home-inspector/' },
+              { title: 'Appraiser',              live: false },
+            ] },
+          { icon: 'file',    title: 'Business Advisors', href: '/business-advisors/', live: true,
+            subs: [
+              { title: 'Consultant',        href: '/business-advisors/consultant/' },
+              { title: 'Business Acquirer',  href: '/business-advisors/business-acquirer/' },
+              { title: 'Investment Banker',  href: '/business-advisors/investment-banker/' },
+              { title: 'Business Broker',    href: '/business-advisors/business-broker/' },
+              { title: 'Business Capital',   href: '/business-advisors/business-capital/' },
+            ] },
+          { icon: 'pen',     title: 'Creative Earners', href: '/creative-earners/', live: true,
+            subs: [
+              { title: 'Actor / Celebrity',            href: '/creative-earners/commercial-talent/' },
+              { title: 'Professional Athlete',         live: false },
+              { title: 'Musician / Recording Artist',  href: '/creative-earners/recording-artist-musician/' },
+              { title: 'Content Creator / Influencer', href: '/creative-earners/content-creator-influencer/' },
+              { title: 'Author / Screenwriter',        href: '/creative-earners/author-writer/' },
+              { title: 'Filmmaker / Producer',         href: '/creative-earners/film-tv-professional/' },
             ] },
           { icon: 'trend',   title: 'Sales Professionals', href: '/sales-professionals/', live: true,
             subs: [
-              { title: 'Real Estate Agent',             href: '/sales-professionals/real-estate-agent/' },
-              { title: 'Mortgage Loan Officer',         href: '/sales-professionals/mortgage-loan-officer/' },
-              { title: 'Insurance Agent',               href: '/sales-professionals/insurance-agent/' },
-              { title: 'Pharma / Medical Device Sales', href: '/sales-professionals/pharma-medical-device-sales/' },
-              { title: 'Software / SaaS Sales',         href: '/sales-professionals/software-saas-sales/' },
-              { title: 'Financial Advisor (Sales)',     href: '/sales-professionals/financial-advisor-sales/' },
-              { title: 'Yacht Broker',                  href: '/sales-professionals/yacht-broker/' },
-            ] },
-          { icon: 'file',    title: 'Professional Services', href: '/professional-services/', live: true,
-            subs: [
-              { title: 'Attorneys',              href: '/professional-services/attorneys/' },
-              { title: 'Financial Advisors',     href: '/professional-services/financial-advisors/' },
-              { title: 'CPAs & Accountants',     href: '/professional-services/cpas-accountants/' },
-              { title: 'Architects & Engineers', href: '/professional-services/architects-engineers/' },
-              { title: 'Entrepreneurs',          href: '/professional-services/entrepreneurs/' },
-              { title: 'Consultants',            href: '/professional-services/consultants/' },
-              { title: 'Business Acquirers',     href: '/professional-services/business-acquirers/' },
-            ] },
-        ],
-      },
-      {
-        heading: 'For Partners',
-        links: [
-          { icon: 'user', title: 'Professional Advisors', href: '/professional-advisors/', live: true,
-            subs: [
-              { title: 'Realtors',              href: '/realtors/' },
-              { title: 'CPAs & Accountants',    href: '/cpas-accountants/' },
-              { title: 'Financial Advisors',    href: '/financial-advisors/' },
-              { title: 'Attorneys',             href: '/attorneys/' },
-              { title: 'Insurance Agents',      href: '/insurance-agents/' },
-              { title: 'Divorce Professionals', href: '/divorce-professionals/' },
-              { title: 'Wealth Managers',       href: '/wealth-managers/' },
+              { title: 'Medical / Pharmaceutical Sales', href: '/sales-professionals/pharma-medical-device-sales/' },
+              { title: 'Software / SaaS Sales',          href: '/sales-professionals/software-saas-sales/' },
+              { title: 'Luxury Goods Broker',            live: false },
+              { title: 'Auto Dealership Owner',          live: false },
             ] },
         ],
       },
@@ -366,7 +360,10 @@ const icons: Record<string, string> = {
                           <p class="mega__flyout-title">{link.title}</p>
                           <ul>
                             {link.subs.map((sub) => (
-                              <li><a href={sub.href} class="mega__sub-link" role="menuitem">{sub.title}</a></li>
+                              <li>{sub.live === false
+                                ? <span class="mega__sub-link mega__sub-link--soon">{sub.title} · Soon</span>
+                                : <a href={sub.href} class="mega__sub-link" role="menuitem">{sub.title}</a>
+                              }</li>
                             ))}
                           </ul>
                         </div>
@@ -498,7 +495,9 @@ const icons: Record<string, string> = {
                 <Fragment>
                   <a href={link.href} class="hdr-drawer__link">{link.title}</a>
                   {link.subs && link.subs.map(sub => (
-                    <a href={sub.href} class="hdr-drawer__link hdr-drawer__sub-link">{sub.title}</a>
+                    sub.live === false
+                      ? <span class="hdr-drawer__link hdr-drawer__sub-link hdr-drawer__link--soon">{sub.title} · Soon</span>
+                      : <a href={sub.href} class="hdr-drawer__link hdr-drawer__sub-link">{sub.title}</a>
                   ))}
                 </Fragment>
               )
@@ -873,6 +872,7 @@ const icons: Record<string, string> = {
   .mega__flyout ul { list-style: none; margin: 0; padding: 0; }
   .mega__flyout .mega__sub-link { display: block; padding: 0.4rem 0.5rem; font-size: 13px; color: var(--color-ink, #1a2420); border-radius: 6px; text-decoration: none; }
   .mega__flyout .mega__sub-link:hover { background: var(--color-paper-tint); color: var(--color-royal, #2f47c9); }
+  .mega__sub-link--soon { opacity: 0.4; cursor: default; pointer-events: none; font-style: italic; }
   /* right-column categories: flip flyout LEFT to avoid screen-edge clipping */
   .mega__list--flyout .mega__cat:nth-child(even) .mega__flyout { left: auto; right: calc(100% + 8px); transform: translateX(6px); }
   .mega__list--flyout .mega__cat:nth-child(even):hover .mega__flyout,
