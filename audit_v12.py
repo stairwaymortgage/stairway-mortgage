@@ -116,13 +116,19 @@ CIT2_BAND = (40, 50, 55)  # hard floor / warn floor / goal (percent)
 
 # ------------------------------------------------------------------ helpers
 class Report:
-    def __init__(self): self.fails=0; self.warns=0; self.lines=[]
+    def __init__(self, waiver_set=None):
+        self.fails=0; self.warns=0; self.waived=0; self.lines=[]
+        self._waiver_set = waiver_set or set()
     def add(self, status, code, msg):
+        if status=="FAIL" and code in self._waiver_set:
+            self.waived+=1
+            self.lines.append(("WAIV", code, msg))
+            return
         if status=="FAIL": self.fails+=1
         if status=="WARN": self.warns+=1
         self.lines.append((status, code, msg))
     def emit(self):
-        sym={"PASS":"PASS","WARN":"WARN","FAIL":"FAIL","INFO":"----"}
+        sym={"PASS":"PASS","WARN":"WARN","FAIL":"FAIL","INFO":"----","WAIV":"WAIV"}
         for st,code,msg in self.lines:
             print(f"  [{sym[st]}] {code:8} {msg}")
 
@@ -171,8 +177,8 @@ def is_redirect_stub(html):
     body_words = len(strip_text(re.sub(r"<head.*?</head>"," ",html,flags=re.S|re.I)).split())
     return has_refresh or (has_noindex and body_words < 60)
 
-def audit_page(path, html, kw, kind, faces_registry, routes, drift):
-    R = Report()
+def audit_page(path, html, kw, kind, faces_registry, routes, drift, waiver_set=None):
+    R = Report(waiver_set=waiver_set)
 
     # ---- Redirect-stub short-circuit (exempt from full-page rules) ----
     if is_redirect_stub(html):
@@ -511,15 +517,39 @@ def main():
     else:
         ap.error("need --repo, --built, --glob, or --file")
 
-    total_fail=total_warn=0
+    # Load waivers
+    waivers_by_route = defaultdict(set)  # route -> set of codes
+    waivers_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "audit-waivers.json")
+    if os.path.exists(waivers_file):
+        for w in json.load(open(waivers_file, encoding="utf-8")):
+            waivers_by_route[w["path"]].add(w["code"])
+
+    def _route_from_path(p):
+        """Derive the URL route from a dist or src file path."""
+        if args.built:
+            rel = os.path.relpath(p, dist).replace(os.sep, "/")
+        elif args.repo:
+            rel = os.path.relpath(p, os.path.join(args.repo, "src", "pages")).replace(os.sep, "/")
+            rel = re.sub(r"\.astro$", "", rel)
+        else:
+            rel = p
+        rel = "/" + rel.lstrip("/")
+        rel = re.sub(r"/index\.html$", "", rel)
+        rel = re.sub(r"/index$", "", rel)
+        rel = re.sub(r"\.html$", "", rel)
+        return rel if rel else "/"
+
+    total_fail=total_warn=total_waived=0
     for path,kw,kind in targets:
         html=open(path,encoding="utf-8").read()
         if path in overrides:
             kw=overrides[path].get("kw",kw); kind=overrides[path].get("kind",kind)
+        route = _route_from_path(path)
+        waiver_set = waivers_by_route.get(route, set())
         print(f"== {os.path.basename(path)}  [{kind}]  kw='{kw}' ==")
-        R=audit_page(path,html,kw,kind,faces,routes,drift)
+        R=audit_page(path,html,kw,kind,faces,routes,drift,waiver_set=waiver_set)
         R.emit()
-        total_fail+=R.fails; total_warn+=R.warns
+        total_fail+=R.fails; total_warn+=R.warns; total_waived+=R.waived
         print(f"   -> {R.fails} FAIL, {R.warns} WARN\n")
 
     # IMG-6 testimonial photo uniqueness (same-page or same-hub-family = FAIL)
@@ -565,7 +595,8 @@ def main():
         d=round(val-goal,2)
         print(f"  {metric:12} {os.path.basename(path):42} landed {val:>7} goal {goal:>6} drift {d:+g}")
 
-    print(f"\n================ ROLL-UP: {total_fail} FAIL, {total_warn} WARN ================")
+    waived_str = f", {total_waived} WAIVED" if total_waived else ""
+    print(f"\n================ ROLL-UP: {total_fail} FAIL, {total_warn} WARN{waived_str} ================")
     sys.exit(total_fail)
 
 if __name__=="__main__":
