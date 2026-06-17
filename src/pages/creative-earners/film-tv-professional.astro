@@ -59,7 +59,7 @@ const actorBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies actors and entertainers on the full income picture &mdash; <strong>SAG-AFTRA scale wages, residuals from multiple productions, Loan-Out S-corp distributions, foreign royalty 1099s, commercial and voiceover 1099 sessions, theatrical Equity income, and the Schedule C deductions that make the math work</strong>. An emerging actor with three years of mixed W-2 and Schedule C, a working actor with a recurring TV role channeled through a Loan-Out corporation, a commercial voiceover specialist with a steady 1099 book of business, and an established theatrical performer with mixed SAG-AFTRA + Equity income each get qualified using the methods that fit their actual production-cycle. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other creative earner paths, see our <a href="https://stairwaymortgage.com/creative-earners/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">creative earners mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const actorBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3941848/pexels-photo-3941848.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/3941848/pexels-photo-3941848.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -885,7 +885,7 @@ const actorBody = `
       display: inline-block;
     }.actor-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1024,7 +1024,7 @@ const actorBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.actor-scope .btn-arrow:hover{ gap: var(--s-3); }.actor-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.actor-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.actor-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1081,7 +1081,7 @@ const actorBody = `
     }.actor-scope .section-tinted{ background: var(--paper-2); }.actor-scope .section-dark{ background: var(--ink); color: var(--paper); }.actor-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.actor-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.actor-scope .section-header h2{ margin-bottom: var(--s-5); }.actor-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.actor-scope .lede-section{ padding: var(--s-9) 0; }.actor-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.actor-scope .data-table{
+    }.actor-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.actor-scope .section-header h2{ margin-bottom: var(--s-5); }.actor-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.actor-scope .lede-section{ padding: 64px 0; }.actor-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.actor-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1540,7 +1540,7 @@ const actorBody = `
     }.actor-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.actor-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.actor-scope .sources-grid{
+    }.actor-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.actor-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1601,7 +1601,7 @@ const actorBody = `
     }.actor-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.actor-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.actor-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1641,7 +1641,7 @@ const actorBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.actor-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.actor-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.actor-scope .highlights-list{
+    }.actor-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.actor-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.actor-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1676,7 +1676,7 @@ const actorBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.actor-scope .highlights-source a:hover{ color: var(--blue-deep); }.actor-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.actor-scope .resources-grid{
+    }.actor-scope .highlights-source a:hover{ color: var(--blue-deep); }.actor-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.actor-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2024,5 +2024,19 @@ const actorBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .actor-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .actor-scope .lede-text-col { padding-top: 8px; }
+    .actor-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .actor-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .actor-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .actor-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .actor-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .actor-scope section { padding: 48px 0; } }
 </style>
 

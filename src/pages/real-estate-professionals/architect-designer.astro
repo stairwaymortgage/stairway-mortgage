@@ -59,7 +59,7 @@ const archdesBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Florida architect and designer income operates across distinctive professional-services structures. <strong>AIA-licensed architects under <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter481" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Statutes Chapter 481</a> Part I operate practice across multiple specialization tracks including residential (custom home + multifamily + condo design with substantial Palm Beach + Miami-Dade + Naples + Coral Gables HNW residential practice volume), commercial (office, retail, mixed-use, multifamily commercial), healthcare (hospitals, medical office, ambulatory surgical centers), hospitality (hotels, resorts, restaurants), education (K-12, higher education facilities), and government (municipal, state, federal projects). <a href="https://www.ncarb.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">NCARB (National Council of Architectural Registration Boards)</a> certification supports multi-state practice mobility. <a href="https://www.aia.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">AIA (American Institute of Architects)</a> membership including <a href="https://www.aiafla.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">AIA Florida</a> state component + AIA Miami + AIA Fort Lauderdale + AIA Palm Beach + AIA Tampa Bay local chapters provides continuing education + practice community. Interior designers under Chapter 481 Part II operate similar professional service practice structures with FBAID licensure + IIDA / ASID membership common. Business structures span solo Schedule C practitioner through boutique S-corp through multi-principal partnership for large firms. For partner-track principals at established firms, income structure is multi-source: W-2 base salary as employed component (typical $145K-$285K range depending on seniority + market), project bonus tied to billable hour targets + engagement outcomes + practice profitability, K-1 partnership distribution for equity-holding partners representing share of partnership ordinary business income + actual distributions (typically substantially exceeding W-2 base at senior partner level), and firm equity stake supporting practice value beyond annual cash compensation</strong>. For mortgage qualifying, the multi-source income synthesizes under <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Fannie Mae B3-3.1-01</a> for W-2 + variable components + <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">B3-3.4-02</a> for K-1 partnership documentation with partnership agreement excerpt + 2-year K-1 schedules + distribution policy. <a href="https://singlefamily.fanniemae.com/media/document/pdf/cash-flow-analysis-form-1084-fannie-mae" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Form 1084 cash-flow analysis</a> at partnership entity level adds back depreciation + business use of home + amortization + entity non-cash expenses. For solo practitioners with substantial Schedule C add-backs depressing AGI, Bank Statement Non-QM offers alternative qualifying path. <strong>Stairway Mortgage handles Florida architect + designer borrowers across all firm structures with deep understanding of partnership K-1 documentation, Form 1084 entity-level mechanics, multi-source synthesis, and Jumbo qualifying for HNW partner-track principals.</strong> Or skip ahead: <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Jumbo loan details</a>, <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">mortgage calculators</a>, or <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
     </div>
@@ -199,7 +199,7 @@ const archdesBody = `
   </section>
 
   <!-- ============ H2 #4: FLORIDA DESIGN MARKET DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What Florida architect + designer practice actually looks like</div>
@@ -978,7 +978,7 @@ const archdesBody = `
       display: inline-block;
     }.archdes-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1117,7 +1117,7 @@ const archdesBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.archdes-scope .btn-arrow:hover{ gap: var(--s-3); }.archdes-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.archdes-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.archdes-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1174,7 +1174,7 @@ const archdesBody = `
     }.archdes-scope .section-tinted{ background: var(--paper-2); }.archdes-scope .section-dark{ background: var(--ink); color: var(--paper); }.archdes-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.archdes-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.archdes-scope .section-header h2{ margin-bottom: var(--s-5); }.archdes-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.archdes-scope .lede-section{ padding: var(--s-9) 0; }.archdes-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.archdes-scope .data-table{
+    }.archdes-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.archdes-scope .section-header h2{ margin-bottom: var(--s-5); }.archdes-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.archdes-scope .lede-section{ padding: 64px 0; }.archdes-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.archdes-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1633,7 +1633,7 @@ const archdesBody = `
     }.archdes-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.archdes-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.archdes-scope .sources-grid{
+    }.archdes-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.archdes-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1694,7 +1694,7 @@ const archdesBody = `
     }.archdes-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.archdes-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.archdes-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1734,7 +1734,7 @@ const archdesBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.archdes-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.archdes-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.archdes-scope .highlights-list{
+    }.archdes-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.archdes-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.archdes-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1769,7 +1769,7 @@ const archdesBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.archdes-scope .highlights-source a:hover{ color: var(--blue-deep); }.archdes-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.archdes-scope .resources-grid{
+    }.archdes-scope .highlights-source a:hover{ color: var(--blue-deep); }.archdes-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.archdes-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2117,5 +2117,19 @@ const archdesBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .archdes-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .archdes-scope .lede-text-col { padding-top: 8px; }
+    .archdes-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .archdes-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .archdes-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .archdes-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .archdes-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .archdes-scope section { padding: 48px 0; } }
 </style>
 

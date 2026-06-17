@@ -59,7 +59,7 @@ const authorBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies authors on the full income picture &mdash; <strong>book advances paid in staggered milestones across signing, delivery and acceptance, publication, and paperback release; backlist royalties paid semiannually by traditional publishers (typically 10&ndash;15% hardcover, 6&ndash;7.5% paperback, 25% net for ebooks); self-publishing royalties from Amazon KDP (35% or 70% tiers), Apple Books, Kobo, IngramSpark, Draft2Digital, and Substack; subsidiary rights revenue from translation rights sold to foreign publishers, audio rights to Audible and others, and serial rights to magazines and newspapers; film and TV option payments structured similar to screenwriter options; speaking fees and adjacent revenue from keynote circuits, university lecture tours, and corporate engagements; and Schedule C deductions that Form 1084 properly recovers</strong>. An emerging author with one book deal and backlist building, a working mid-list author with a multi-book contract and Loan-Out S-corp consideration, an established backlist author with predictable royalty annuity income, a bestseller breakout with film/TV options and significant accumulated wealth, and a self-publishing entrepreneur with KDP-dominant income each get qualified using methods that fit their actual revenue mix. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other creative earner paths, see our <a href="https://stairwaymortgage.com/creative-earners/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">creative earners mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const authorBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/261909/pexels-photo-261909.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/261909/pexels-photo-261909.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -889,7 +889,7 @@ const authorBody = `
       display: inline-block;
     }.author-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1028,7 +1028,7 @@ const authorBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.author-scope .btn-arrow:hover{ gap: var(--s-3); }.author-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.author-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.author-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1085,7 +1085,7 @@ const authorBody = `
     }.author-scope .section-tinted{ background: var(--paper-2); }.author-scope .section-dark{ background: var(--ink); color: var(--paper); }.author-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.author-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.author-scope .section-header h2{ margin-bottom: var(--s-5); }.author-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.author-scope .lede-section{ padding: var(--s-9) 0; }.author-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.author-scope .data-table{
+    }.author-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.author-scope .section-header h2{ margin-bottom: var(--s-5); }.author-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.author-scope .lede-section{ padding: 64px 0; }.author-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.author-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1544,7 +1544,7 @@ const authorBody = `
     }.author-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.author-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.author-scope .sources-grid{
+    }.author-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.author-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1605,7 +1605,7 @@ const authorBody = `
     }.author-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.author-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.author-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1645,7 +1645,7 @@ const authorBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.author-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.author-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.author-scope .highlights-list{
+    }.author-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.author-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.author-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1680,7 +1680,7 @@ const authorBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.author-scope .highlights-source a:hover{ color: var(--blue-deep); }.author-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.author-scope .resources-grid{
+    }.author-scope .highlights-source a:hover{ color: var(--blue-deep); }.author-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.author-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2028,5 +2028,19 @@ const authorBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .author-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .author-scope .lede-text-col { padding-top: 8px; }
+    .author-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .author-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .author-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .author-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .author-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .author-scope section { padding: 48px 0; } }
 </style>
 

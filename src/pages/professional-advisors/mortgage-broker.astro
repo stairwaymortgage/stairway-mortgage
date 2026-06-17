@@ -59,7 +59,7 @@ const mortbrokerBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Florida mortgage brokers and mortgage loan originators (MLOs) operate at the intersection of Florida Chapter 494 Mortgage Brokering and Mortgage Lending Act regulatory framework, federal SAFE Act + NMLS licensing system, Dodd-Frank Regulation Z 12 CFR 1026.36 loan originator compensation rules, and distinctive pipeline + close cycle commission dynamics. <strong>Florida mortgage broker / MLO practice spans five primary categories. Independent principal broker / mortgage broker shop owner licensed as Florida Mortgage Broker Business under Chapter 494 Part II with broker-of-record principal broker license. Shop owner typically licensed at higher level than associated LOs, operates broker shop infrastructure (CRM + LOS + compliance + bond + E&amp;O), and earns through: W-2 base if active LO + branch P&amp;L override + commission split economics across associated LOs (typical 60-80% to LO + 20-40% to broker shop + sometimes desk fee structures). Florida concentration substantial &mdash; estimated 1,800+ Florida-licensed Mortgage Broker Business entities under FL OFR per recent counts. Net branch manager operating Florida branch as P&amp;L center under UWM correspondent / Rocket Pro TPO / loanDepot Wholesale / Movement Mortgage with override on branch volume + production-based compensation + sometimes equity participation. W-2 LO at retail bank / direct lender (Wells Fargo Home Lending, Chase Home Lending, BofA Home Loans, Rocket Mortgage retail, loanDepot retail, U.S. Bank Home Mortgage) with W-2 base $45K-$100K + per-loan commission 25-100 bps + annual bonus + benefits. Top retail W-2 LO producers $300K-$1M+. 1099 LO independent contractor at broker shop with 60-80% commission economics + no employer benefits + Schedule C / PLLC structure + own E&amp;O + own NMLS maintenance. Wholesale AE at wholesale lender (UWM, Rocket Pro TPO, Newrez, AmeriHome, Plaza, Carrington, Homepoint) to broker shop network with W-2 base $85K-$150K + per-loan 10-25 bps of loan amount funded + territory volume bonuses. Top AEs $250K-$750K. Income economics: pipeline + close cycle 30-45 days application to funding. Per-loan commission 50-200 bps depending on company + role + LPC vs BPC structure. Dodd-Frank Reg Z 12 CFR 1026.36 prohibits compensation tied to loan terms with mandatory 3-loan rolling-average compliance + anti-steering provisions. LPC (lender-paid) vs BPC (borrower-paid) structural choice: LPC = lender pays LO + cannot also be paid by borrower; BPC = borrower pays LO + cannot also be paid by lender. Florida mortgage industry features multi-state licensing pathway + no-state-income-tax top-producer concentration + Florida purchase + Non-QM market substantial + Latin American business hub. Strong forward-looking practice outlook</strong>. For mortgage qualifying, the multi-source MLO income synthesizes under B3-3.1-01 variable income for W-2 base + commission + bonus with 24-month averaging + continuity narrative documenting active pipeline + closed loan history + NMLS license continuity; B3-3.2-01 self-employed for 1099 LO operating Schedule C / single-member PLLC + Form 1084 cash-flow analysis; and B3-3.4-02 partnership / S-corp for independent broker shop owner with branch P&amp;L override + K-1 distributions + Form 1084 entity-level analysis. Pipeline + close cycle commission averaging critical &mdash; YTD calculation timing affects qualifying depending on application month relative to recent closings. <strong>Stairway Mortgage routinely handles Florida MLO + mortgage broker mortgages with pipeline + close cycle commission averaging, NMLS license continuity, Dodd-Frank Regulation Z LO compensation framework, and Florida Chapter 494 practice ecosystem context.</strong> Or skip ahead: <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Jumbo loan details</a>, <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">mortgage calculators</a>, or <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
     </div>
@@ -199,7 +199,7 @@ const mortbrokerBody = `
   </section>
 
   <!-- ============ H2 #4: FL CH 494 + DODD-FRANK + NMLS DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/7681731/pexels-photo-7681731.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/7681731/pexels-photo-7681731.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; Florida Chapter 494 + Dodd-Frank + NMLS context</div>
@@ -972,7 +972,7 @@ const mortbrokerBody = `
       display: inline-block;
     }.mortbroker-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1111,7 +1111,7 @@ const mortbrokerBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.mortbroker-scope .btn-arrow:hover{ gap: var(--s-3); }.mortbroker-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.mortbroker-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.mortbroker-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1168,7 +1168,7 @@ const mortbrokerBody = `
     }.mortbroker-scope .section-tinted{ background: var(--paper-2); }.mortbroker-scope .section-dark{ background: var(--ink); color: var(--paper); }.mortbroker-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.mortbroker-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.mortbroker-scope .section-header h2{ margin-bottom: var(--s-5); }.mortbroker-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.mortbroker-scope .lede-section{ padding: var(--s-9) 0; }.mortbroker-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.mortbroker-scope .data-table{
+    }.mortbroker-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.mortbroker-scope .section-header h2{ margin-bottom: var(--s-5); }.mortbroker-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.mortbroker-scope .lede-section{ padding: 64px 0; }.mortbroker-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.mortbroker-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1627,7 +1627,7 @@ const mortbrokerBody = `
     }.mortbroker-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.mortbroker-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.mortbroker-scope .sources-grid{
+    }.mortbroker-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.mortbroker-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1688,7 +1688,7 @@ const mortbrokerBody = `
     }.mortbroker-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.mortbroker-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.mortbroker-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1728,7 +1728,7 @@ const mortbrokerBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.mortbroker-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.mortbroker-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.mortbroker-scope .highlights-list{
+    }.mortbroker-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.mortbroker-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.mortbroker-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1763,7 +1763,7 @@ const mortbrokerBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.mortbroker-scope .highlights-source a:hover{ color: var(--blue-deep); }.mortbroker-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.mortbroker-scope .resources-grid{
+    }.mortbroker-scope .highlights-source a:hover{ color: var(--blue-deep); }.mortbroker-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.mortbroker-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2111,5 +2111,19 @@ const mortbrokerBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .mortbroker-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .mortbroker-scope .lede-text-col { padding-top: 8px; }
+    .mortbroker-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .mortbroker-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .mortbroker-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .mortbroker-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .mortbroker-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .mortbroker-scope section { padding: 48px 0; } }
 </style>
 

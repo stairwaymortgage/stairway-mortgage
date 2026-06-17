@@ -59,7 +59,7 @@ const bldconBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Florida builders and contractors operate income economics generalist lenders consistently misunderstand. <strong>Custom home builders constructing $1.5M-$15M+ residential projects in Palm Beach, Miami Beach, Coral Gables, Naples, and Fort Lauderdale; general contractors handling commercial + residential project mix; specialty trade contractors (mechanical, electrical, plumbing, roofing, pool, HVAC) operating focused subspecialty practice; and design-build firms combining architectural + construction services under integrated business structure</strong>. Business structure ranges from Schedule C sole proprietor and single-member LLC pass-through for smaller operations through S-corp election (substantial volume tier) and partnership structures (multi-principal larger builders + GCs). For each business form, the income structure features distinctive characteristics: project-driven year-over-year variability tracking pipeline + completion timing rather than steady monthly revenue, substantial equipment depreciation across construction vehicles + trailers + tools, business mileage frequently exceeding personal mileage at IRS standard rate ($0.67/mile 2024), business use of home / office for plan review + customer meetings + administrative work, Section 179 expensing on technology + tools + business equipment that aggressive contractors maximize for tax efficiency, and entity-level non-cash expenses (amortization of intangibles, business asset depreciation) that flow through partnership returns. Tax returns commonly show AGI substantially depressed below true cash flow position. <strong>For mortgage qualifying, <a href="https://selling-guide.fanniemae.com/sel/b3-3.2-01/underwriting-factors-and-documentation-for-a-self-employed-borrower" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Fannie Mae B3-3.2-01</a> self-employed documentation framework applies with 2-year personal returns + 2-year business returns (Schedule C, 1120-S, 1065, K-1) + Year-to-Date Profit &amp; Loss statement CPA-prepared. <a href="https://singlefamily.fanniemae.com/media/document/pdf/cash-flow-analysis-form-1084-fannie-mae" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Form 1084 cash-flow analysis</a> systematically adds back non-cash expenses to derive qualifying cash flow above AGI &mdash; typical 15-35% qualifying capacity recovery for contractor borrowers depending on add-back profile. For aggressive-depreciation borrowers where Form 1084 still leaves qualifying capacity below borrower needs, Bank Statement Non-QM qualifies on 12-24 months business bank statement deposits with typical 50% expense ratio applied. P&amp;L Statement Non-QM provides alternative for established contractors with CPA-prepared documented financials. For contractor borrowers building investment property portfolios alongside primary residence + business, DSCR Non-QM qualifies on property rental income alone permitting scaling beyond personal qualifying capacity. Stairway Mortgage handles Florida contractor borrowers across all these paths with deep understanding of Form 1084 mechanics, Bank Statement Non-QM strategy, P&amp;L Non-QM positioning, and contractor-specific income synthesis.</strong> Or skip ahead: <a href="https://stairwaymortgage.com/loan-programs/bank-statement-loan/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Bank Statement Non-QM details</a>, <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">mortgage calculators</a>, or <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
     </div>
@@ -199,7 +199,7 @@ const bldconBody = `
   </section>
 
   <!-- ============ H2 #4: FLORIDA BUILDING CODE + HURRICANE DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What Florida builder + contractor practice actually looks like</div>
@@ -976,7 +976,7 @@ const bldconBody = `
       display: inline-block;
     }.bldcon-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1115,7 +1115,7 @@ const bldconBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.bldcon-scope .btn-arrow:hover{ gap: var(--s-3); }.bldcon-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.bldcon-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.bldcon-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1172,7 +1172,7 @@ const bldconBody = `
     }.bldcon-scope .section-tinted{ background: var(--paper-2); }.bldcon-scope .section-dark{ background: var(--ink); color: var(--paper); }.bldcon-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.bldcon-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.bldcon-scope .section-header h2{ margin-bottom: var(--s-5); }.bldcon-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.bldcon-scope .lede-section{ padding: var(--s-9) 0; }.bldcon-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.bldcon-scope .data-table{
+    }.bldcon-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.bldcon-scope .section-header h2{ margin-bottom: var(--s-5); }.bldcon-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.bldcon-scope .lede-section{ padding: 64px 0; }.bldcon-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.bldcon-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1631,7 +1631,7 @@ const bldconBody = `
     }.bldcon-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.bldcon-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.bldcon-scope .sources-grid{
+    }.bldcon-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.bldcon-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1692,7 +1692,7 @@ const bldconBody = `
     }.bldcon-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.bldcon-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.bldcon-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1732,7 +1732,7 @@ const bldconBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.bldcon-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.bldcon-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.bldcon-scope .highlights-list{
+    }.bldcon-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.bldcon-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.bldcon-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1767,7 +1767,7 @@ const bldconBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.bldcon-scope .highlights-source a:hover{ color: var(--blue-deep); }.bldcon-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.bldcon-scope .resources-grid{
+    }.bldcon-scope .highlights-source a:hover{ color: var(--blue-deep); }.bldcon-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.bldcon-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2115,5 +2115,19 @@ const bldconBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .bldcon-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .bldcon-scope .lede-text-col { padding-top: 8px; }
+    .bldcon-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .bldcon-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .bldcon-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .bldcon-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .bldcon-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .bldcon-scope section { padding: 48px 0; } }
 </style>
 

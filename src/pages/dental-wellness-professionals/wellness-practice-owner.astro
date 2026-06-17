@@ -59,7 +59,7 @@ const wpoBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies wellness practice owners on the full income picture &mdash; <strong>S-corp W-2 reasonable compensation from primary entity plus K-1 distributions from primary AND each satellite-location entity under Fannie Mae B3-3.4-02 multi-entity aggregation, med-spa procedure revenue from injectables (Botox, dermal fillers, Sculptra, PDO threads), laser treatments (IPL, CO2, Q-switched, Nd:YAG, diode), body sculpting (CoolSculpting, EmSculpt, Morpheus8), microneedling, and IV therapy flowing through Schedule C or 1120-S gross revenue, subscription membership recurring revenue documented through merchant processor reports, product retail revenue from medical-grade skincare and supplements, MD or NP medical director supervision arrangements structured as employment or contractor relationships depending on state board requirements, Schedule C cash-flow analysis with Form 1084 addbacks for IRC Section 167 equipment depreciation on aesthetic lasers and treatment devices and Section 179 immediate equipment expensing, and SBA 7(a) and 504 expansion financing coordination for new satellite locations</strong>. A first-location wellness practice owner with $480K annual practice revenue, a mature single-location med-spa owner with established membership program, a multi-location wellness brand owner with 3 satellite med-spas each as separate S-corp, a hormone optimization clinic with employed MD medical director, and an established wellness practice owner mid-acquisition of a competitor&rsquo;s practice through SBA 7(a) each get qualified using methods that fit their actual structure. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other dental and wellness paths, see our <a href="https://stairwaymortgage.com/dental-wellness-professionals/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">dental and wellness professionals mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const wpoBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3997992/pexels-photo-3997992.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/3997992/pexels-photo-3997992.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -881,7 +881,7 @@ const wpoBody = `
       display: inline-block;
     }.wpo-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1020,7 +1020,7 @@ const wpoBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.wpo-scope .btn-arrow:hover{ gap: var(--s-3); }.wpo-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.wpo-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.wpo-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1077,7 +1077,7 @@ const wpoBody = `
     }.wpo-scope .section-tinted{ background: var(--paper-2); }.wpo-scope .section-dark{ background: var(--ink); color: var(--paper); }.wpo-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.wpo-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.wpo-scope .section-header h2{ margin-bottom: var(--s-5); }.wpo-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.wpo-scope .lede-section{ padding: var(--s-9) 0; }.wpo-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.wpo-scope .data-table{
+    }.wpo-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.wpo-scope .section-header h2{ margin-bottom: var(--s-5); }.wpo-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.wpo-scope .lede-section{ padding: 64px 0; }.wpo-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.wpo-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1536,7 +1536,7 @@ const wpoBody = `
     }.wpo-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.wpo-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.wpo-scope .sources-grid{
+    }.wpo-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.wpo-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1597,7 +1597,7 @@ const wpoBody = `
     }.wpo-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.wpo-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.wpo-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1637,7 +1637,7 @@ const wpoBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.wpo-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.wpo-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.wpo-scope .highlights-list{
+    }.wpo-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.wpo-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.wpo-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1672,7 +1672,7 @@ const wpoBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.wpo-scope .highlights-source a:hover{ color: var(--blue-deep); }.wpo-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.wpo-scope .resources-grid{
+    }.wpo-scope .highlights-source a:hover{ color: var(--blue-deep); }.wpo-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.wpo-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2020,5 +2020,19 @@ const wpoBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .wpo-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .wpo-scope .lede-text-col { padding-top: 8px; }
+    .wpo-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .wpo-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .wpo-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .wpo-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .wpo-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .wpo-scope section { padding: 48px 0; } }
 </style>
 

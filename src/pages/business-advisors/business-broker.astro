@@ -59,7 +59,7 @@ const bizbrokerBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Florida business brokers and M&amp;A intermediaries operate at the intersection of Florida Chapter 475 Part I real estate licensing framework, distinctive 6-18 month deal cycle commission dynamics, IBBA + M&amp;A Source professional certification ecosystem, and substantial Sun Belt M&amp;A activity driven by Florida business demographic transition. <strong>Florida business brokerage practice spans five primary categories. Main street business broker focused on $1M-$10M enterprise value transactions typically representing seller (95%+ engagements) across restaurants + retail + service businesses + main street SMBs + light industrial + B2B services with commission structure typical 8-10% of EV at close, deal cycle 6-12 months typical, focused on local + regional buyer pool with substantial first-time-buyer education + financing coordination (SBA 7(a) acquisition financing common for main street deals). Lower middle market M&amp;A advisor focused on $10M-$100M enterprise value transactions with more sophisticated buyer pool (strategic acquirers + private equity + family offices + independent sponsors + search funds) with Lehman scale commission structure (typical 5% first $1M + 4% second + 3% third + 2% fourth + 1% above) + retainer ($25K-$100K typical) + success fee hybrid + deal cycle 8-18 months typical with extensive due diligence support. Boutique M&amp;A advisor / sell-side specialist focused on sector specialty (healthcare M&amp;A, technology M&amp;A, services M&amp;A, distribution M&amp;A, professional services M&amp;A) with deeper buyer relationships + higher per-deal fees + sometimes equity participation in deals + practice substantially differentiated by sector expertise. Franchise + service business specialist focused on restaurants + franchises + home services + light industrial + B2B services with specialty buyer networks + franchisor relationships + multi-unit operator pipeline. Affiliated business broker operating under master broker-of-record license at established business brokerage firm (Murphy Business + Sunbelt Business Brokers + Transworld Business Advisors + VR Business Brokers FL franchisees + boutique FL firms) rather than as independent broker, with split commission economics + brokerage E&amp;O coverage + back office support. Income economics feature distinctive deal cycle dynamics: deal cycle 6-18 months from engagement to close typical (vs 60-90 days for residential RE), feast-or-famine commission pattern with episodic large commission events, heavy upfront investment in business valuation work + marketing materials + buyer outreach + due diligence support (typical $5K-$25K upfront sunk cost per engagement), multi-month commission lag between deal close + commission payment + tax recognition. Co-brokerage splits when working with cooperating broker (typical 50/50 split between buyer-side + seller-side brokers when both engaged). Florida business broker professional ecosystem strong &mdash; <a href="https://www.ibba.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">IBBA (International Business Brokers Association)</a> + <a href="https://www.maionline.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">M&amp;A Source</a> professional frameworks with CBI (Certified Business Intermediary &mdash; IBBA) + M&amp;AMI (Merger &amp; Acquisition Master Intermediary &mdash; M&amp;A Source) designations + Florida Business Brokers Association state-level community. Florida Sun Belt M&amp;A activity substantial 2020-2026 driven by baby boomer business owner retirements + business demographic transition + Sun Belt corporate relocations + Latin American business hub activity + private equity roll-up activity + ETA acquisition pipeline + Florida small business density rank top 3 nationally. Strong forward-looking practice outlook</strong>. For mortgage qualifying, the multi-source business broker income synthesizes under B3-3.1-01 variable income for commission income with 24-month averaging (extended to 36-48 months for low-volume / high-value deal practices) + continuity narrative documenting active engagements + pipeline + transaction track record, B3-3.2-01 self-employed for solo business broker operating Schedule C / single-member PLLC, and B3-3.4-02 partnership / S-corp for boutique M&amp;A firm equity partners with K-1 distributions. Deal cycle commission averaging critical &mdash; YTD calculation timing affects qualifying calculation depending on application month relative to recent deal closings. <strong>Stairway Mortgage routinely handles Florida business broker mortgages with deal cycle commission averaging, IBBA + M&amp;A Source certification narrative, Chapter 475 Part I licensing context, and Florida Sun Belt M&amp;A activity narrative.</strong> Or skip ahead: <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Jumbo loan details</a>, <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">mortgage calculators</a>, or <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
     </div>
@@ -199,7 +199,7 @@ const bizbrokerBody = `
   </section>
 
   <!-- ============ H2 #4: FL BUSINESS BROKER MARKET + IBBA DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; Florida business broker market + IBBA context</div>
@@ -971,7 +971,7 @@ const bizbrokerBody = `
       display: inline-block;
     }.bizbroker-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1110,7 +1110,7 @@ const bizbrokerBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.bizbroker-scope .btn-arrow:hover{ gap: var(--s-3); }.bizbroker-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.bizbroker-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.bizbroker-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1167,7 +1167,7 @@ const bizbrokerBody = `
     }.bizbroker-scope .section-tinted{ background: var(--paper-2); }.bizbroker-scope .section-dark{ background: var(--ink); color: var(--paper); }.bizbroker-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.bizbroker-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.bizbroker-scope .section-header h2{ margin-bottom: var(--s-5); }.bizbroker-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.bizbroker-scope .lede-section{ padding: var(--s-9) 0; }.bizbroker-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.bizbroker-scope .data-table{
+    }.bizbroker-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.bizbroker-scope .section-header h2{ margin-bottom: var(--s-5); }.bizbroker-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.bizbroker-scope .lede-section{ padding: 64px 0; }.bizbroker-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.bizbroker-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1626,7 +1626,7 @@ const bizbrokerBody = `
     }.bizbroker-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.bizbroker-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.bizbroker-scope .sources-grid{
+    }.bizbroker-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.bizbroker-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1687,7 +1687,7 @@ const bizbrokerBody = `
     }.bizbroker-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.bizbroker-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.bizbroker-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1727,7 +1727,7 @@ const bizbrokerBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.bizbroker-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.bizbroker-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.bizbroker-scope .highlights-list{
+    }.bizbroker-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.bizbroker-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.bizbroker-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1762,7 +1762,7 @@ const bizbrokerBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.bizbroker-scope .highlights-source a:hover{ color: var(--blue-deep); }.bizbroker-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.bizbroker-scope .resources-grid{
+    }.bizbroker-scope .highlights-source a:hover{ color: var(--blue-deep); }.bizbroker-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.bizbroker-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2110,5 +2110,19 @@ const bizbrokerBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .bizbroker-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .bizbroker-scope .lede-text-col { padding-top: 8px; }
+    .bizbroker-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .bizbroker-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .bizbroker-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .bizbroker-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .bizbroker-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .bizbroker-scope section { padding: 48px 0; } }
 </style>
 

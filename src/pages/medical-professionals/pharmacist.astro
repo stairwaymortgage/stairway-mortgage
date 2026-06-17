@@ -59,7 +59,7 @@ const pharmacistBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies working pharmacists on the full income picture &mdash; <strong>retail chain pharmacy W-2 from CVS, Walgreens, Walmart, Costco, Publix, Rite Aid, or regional chain employers under Fannie Mae B3-3.1-01 as continuing employment income with 24-month average, hospital pharmacy W-2 base salary with possible specialty premium for BPS board-certified clinical pharmacists (BCPS, BCOP, BCIDP, BCCP, BCPP) treated as variable income under B3-3.1-01, relief or PRN W-2 supplementation from secondary chain or hospital pharmacy employers aggregating under B3-3.1-01 with 24-month history, multi-shift pattern overtime and weekend differential pay treated as variable W-2 income, hospital pharmacy residency (PGY-1, PGY-2) signed forward employment contracts for new graduates transitioning to first attending pharmacist position, S-corp W-2 reasonable compensation plus K-1 distributions under Fannie Mae B3-3.4-02 for independent community pharmacy owners, specialty pharmacy owners (including expanding GLP-1 compounding pharmacy ownership), and traditional compounding pharmacy owners with USP &lt;797&gt;/&lt;800&gt; compliant operations, consulting 1099-NEC income for clinical specialty pharmacists providing pharmacy benefit consulting, formulary management, or expert witness work, $150K&ndash;$250K of PharmD federal student loans on income-driven repayment with actual servicer payments documented under Fannie Mae B3-6-05 instead of 1 percent of balance, and PSLF eligibility for pharmacists employed at 501(c)(3) nonprofit hospitals, VA Medical Centers, Indian Health Service, and county hospitals</strong>. A new-grad PharmD starting first CVS or hospital position, an established hospital clinical pharmacist with BCPS specialty certification, an independent community pharmacy owner with practice S-corp, a specialty compounding pharmacy owner, and a multi-source pharmacist combining hospital W-2 with relief work each get qualified using methods that fit their actual structure. <strong>The key contrast: pharmacists do NOT qualify for Physician/Doctor Loan products at most specialty lenders &mdash; Conventional Conforming or Jumbo with proper B3-6-05 IDR documentation is the typical optimal path.</strong> We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other medical professional paths, see our <a href="https://stairwaymortgage.com/medical-professionals/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">medical professionals mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const pharmacistBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -881,7 +881,7 @@ const pharmacistBody = `
       display: inline-block;
     }.pharmacist-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1020,7 +1020,7 @@ const pharmacistBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.pharmacist-scope .btn-arrow:hover{ gap: var(--s-3); }.pharmacist-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.pharmacist-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.pharmacist-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1077,7 +1077,7 @@ const pharmacistBody = `
     }.pharmacist-scope .section-tinted{ background: var(--paper-2); }.pharmacist-scope .section-dark{ background: var(--ink); color: var(--paper); }.pharmacist-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.pharmacist-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.pharmacist-scope .section-header h2{ margin-bottom: var(--s-5); }.pharmacist-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.pharmacist-scope .lede-section{ padding: var(--s-9) 0; }.pharmacist-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.pharmacist-scope .data-table{
+    }.pharmacist-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.pharmacist-scope .section-header h2{ margin-bottom: var(--s-5); }.pharmacist-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.pharmacist-scope .lede-section{ padding: 64px 0; }.pharmacist-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.pharmacist-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1536,7 +1536,7 @@ const pharmacistBody = `
     }.pharmacist-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.pharmacist-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.pharmacist-scope .sources-grid{
+    }.pharmacist-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.pharmacist-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1597,7 +1597,7 @@ const pharmacistBody = `
     }.pharmacist-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.pharmacist-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.pharmacist-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1637,7 +1637,7 @@ const pharmacistBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.pharmacist-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.pharmacist-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.pharmacist-scope .highlights-list{
+    }.pharmacist-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.pharmacist-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.pharmacist-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1672,7 +1672,7 @@ const pharmacistBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.pharmacist-scope .highlights-source a:hover{ color: var(--blue-deep); }.pharmacist-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.pharmacist-scope .resources-grid{
+    }.pharmacist-scope .highlights-source a:hover{ color: var(--blue-deep); }.pharmacist-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.pharmacist-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2020,5 +2020,29 @@ const pharmacistBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .pharmacist-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.6fr 1fr;
+      gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .pharmacist-scope .lede-text-col { padding-top: 8px; }
+    .pharmacist-scope .lede-image {
+      margin: 0; border-radius: 4px; overflow: hidden;
+      position: sticky; top: 32px;
+    }
+    .pharmacist-scope .lede-image img {
+      width: 100%; height: auto; aspect-ratio: 3/4;
+      object-fit: cover; object-position: center 20%;
+    }
+    .pharmacist-scope .lede-image-caption {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-light);
+      padding: 14px 4px 0; line-height: 1.5;
+    }
+    @media (max-width: 900px) {
+      .pharmacist-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .pharmacist-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
 </style>
 

@@ -59,7 +59,7 @@ const specialistBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies dental specialists on the full income picture &mdash; <strong>S-corp W-2 reasonable compensation from primary entity plus K-1 distributions from primary AND each satellite-office entity under Fannie Mae B3-3.4-02 multi-entity aggregation, hospital W-2 affiliation income for oral surgeons under B3-3.1-01, 1099-NEC referral-fee or consulting income from referring general dentists under B3-3.3-02, Schedule C self-employment with Form 1084 addbacks for specialty equipment depreciation under IRC Section 167 (CBCT 3D imaging $80K&ndash;$200K, orthodontic intraoral scanners $40K&ndash;$80K, periodontal and surgical lasers $50K&ndash;$120K, ortho-mounted treatment scopes) and Section 179 equipment expensing, student loan actual IDR payments (not 1% of balance) under Fannie Mae B3-6-05, and forward-visibility on additional satellite office expansion or partnership buy-ins coordinated with SBA 7(a) financing</strong>. A post-residency orthodontist with $620K of residency student loans, an oral surgeon splitting time between hospital W-2 and private practice, a periodontist running 4 satellite offices each as separate S-corp, an endodontist on PSLF eligibility track, and a pediatric dentist with a 5-doctor partnership each get qualified using methods that fit their actual structure. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other dental and wellness paths, see our <a href="https://stairwaymortgage.com/dental-wellness-professionals/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">dental and wellness professionals mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const specialistBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3845126/pexels-photo-3845126.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/3845126/pexels-photo-3845126.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -883,7 +883,7 @@ const specialistBody = `
       display: inline-block;
     }.specialist-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1022,7 +1022,7 @@ const specialistBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.specialist-scope .btn-arrow:hover{ gap: var(--s-3); }.specialist-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.specialist-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.specialist-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1079,7 +1079,7 @@ const specialistBody = `
     }.specialist-scope .section-tinted{ background: var(--paper-2); }.specialist-scope .section-dark{ background: var(--ink); color: var(--paper); }.specialist-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.specialist-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.specialist-scope .section-header h2{ margin-bottom: var(--s-5); }.specialist-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.specialist-scope .lede-section{ padding: var(--s-9) 0; }.specialist-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.specialist-scope .data-table{
+    }.specialist-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.specialist-scope .section-header h2{ margin-bottom: var(--s-5); }.specialist-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.specialist-scope .lede-section{ padding: 64px 0; }.specialist-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.specialist-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1538,7 +1538,7 @@ const specialistBody = `
     }.specialist-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.specialist-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.specialist-scope .sources-grid{
+    }.specialist-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.specialist-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1599,7 +1599,7 @@ const specialistBody = `
     }.specialist-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.specialist-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.specialist-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1639,7 +1639,7 @@ const specialistBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.specialist-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.specialist-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.specialist-scope .highlights-list{
+    }.specialist-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.specialist-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.specialist-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1674,7 +1674,7 @@ const specialistBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.specialist-scope .highlights-source a:hover{ color: var(--blue-deep); }.specialist-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.specialist-scope .resources-grid{
+    }.specialist-scope .highlights-source a:hover{ color: var(--blue-deep); }.specialist-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.specialist-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2022,5 +2022,19 @@ const specialistBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .specialist-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .specialist-scope .lede-text-col { padding-top: 8px; }
+    .specialist-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .specialist-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .specialist-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .specialist-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .specialist-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .specialist-scope section { padding: 48px 0; } }
 </style>
 

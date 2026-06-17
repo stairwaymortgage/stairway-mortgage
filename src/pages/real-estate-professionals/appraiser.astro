@@ -361,7 +361,7 @@ const canonical = "https://stairwaymortgage.com/real-estate-professionals/apprai
   .appraiser-scope .breadcrumb a { color: var(--blue, #1845D6); text-decoration: none; }
   .appraiser-scope .breadcrumb span:not(:last-child) { margin: 0 8px; opacity: 0.5; }
   .appraiser-scope .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue, #1845D6); margin-bottom: 20px; }
-  .appraiser-scope .display-1 { font-family: 'Fraunces', serif; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 28px; max-width: 22ch; font-weight: 500; }
+  .appraiser-scope .display-1 { font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 28px; max-width: 22ch; font-weight: 500; }
   .appraiser-scope .hero-lead { font-size: 1.1875rem; line-height: 1.55; color: var(--ink-2, #1E2433); margin-bottom: 36px; max-width: 64ch; }
   .appraiser-scope .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 28px; }
   .appraiser-scope .btn-primary, .appraiser-scope .btn-primary-light { display: inline-block; padding: 16px 28px; background: var(--blue, #1845D6); color: #fff; text-decoration: none; font-weight: 600; border-radius: 6px; transition: background 0.2s; }
@@ -378,7 +378,7 @@ const canonical = "https://stairwaymortgage.com/real-estate-professionals/apprai
   .appraiser-scope .fact-label { font-size: 14px; color: var(--ink-light, #4A5568); line-height: 1.5; }
 
   /* SECTION SHARED */
-  .appraiser-scope section { padding: 80px 0; }
+  .appraiser-scope section { padding: 64px 0; }
   .appraiser-scope .section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue, #1845D6); margin-bottom: 16px; }
   .appraiser-scope section h2 { font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 3.5vw, 2.75rem); line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 24px; max-width: 26ch; font-weight: 500; }
   .appraiser-scope section h2 + p, .appraiser-scope .lede, .appraiser-scope .qual-lede, .appraiser-scope .roles-lede, .appraiser-scope .cta-lede { font-size: 1.0625rem; line-height: 1.7; color: var(--ink-2, #1E2433); margin-bottom: 16px; max-width: 70ch; }
@@ -451,5 +451,6 @@ const canonical = "https://stairwaymortgage.com/real-estate-professionals/apprai
     .appraiser-scope .timeline-list li { grid-template-columns: 48px 1fr; gap: 18px; }
     .appraiser-scope .step-num { width: 44px; height: 44px; font-size: 1.25rem; }
   }
+    @media (max-width: 720px) { .appraiser-scope section { padding: 48px 0; } }
 </style>
 </Layout>

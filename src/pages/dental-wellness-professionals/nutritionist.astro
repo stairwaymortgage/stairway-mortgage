@@ -59,7 +59,7 @@ const nutritionistBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies Registered Dietitians and Registered Dietitian Nutritionists on the full income picture &mdash; <strong>W-2 wages from hospital, clinic, dialysis center, school, or long-term care employment under Fannie Mae B3-3.1-01, telehealth platform 1099-NEC income from Healthie, Nourish, Berry Street, Fay and similar platforms under B3-3.3-02, Medical Nutrition Therapy (MNT) insurance billing through CPT codes 97802/97803/97804 for Medicare-covered conditions (diabetes, chronic kidney disease, post-transplant), corporate wellness consulting retainer income from employer wellness programs, Schedule C cash-pay private practice income for performance nutrition, sports nutrition, eating-disorder specialty, and intuitive eating practices, S-corp distributions under B3-3.4-02 for established multi-RD practice owners, supplement and digital meal-plan product revenue, and actual income-driven repayment payments from Federal Student Aid IBR/SAVE/PAYE plans counted in DTI under B3-6-05</strong>. A new-RD in a hospital diabetes program with $95K of student loans, a clinical RD building telehealth practice with three platform 1099s, a solo private practice RD specializing in eating-disorder recovery, an established performance nutrition specialist with NFL/NBA team consulting, and a corporate wellness firm owner with employed dietitians each get qualified using methods that fit their actual structure. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other dental and wellness paths, see our <a href="https://stairwaymortgage.com/dental-wellness-professionals/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">dental and wellness professionals mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const nutritionistBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/4099267/pexels-photo-4099267.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/4099267/pexels-photo-4099267.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -881,7 +881,7 @@ const nutritionistBody = `
       display: inline-block;
     }.nutritionist-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1020,7 +1020,7 @@ const nutritionistBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.nutritionist-scope .btn-arrow:hover{ gap: var(--s-3); }.nutritionist-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.nutritionist-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.nutritionist-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1077,7 +1077,7 @@ const nutritionistBody = `
     }.nutritionist-scope .section-tinted{ background: var(--paper-2); }.nutritionist-scope .section-dark{ background: var(--ink); color: var(--paper); }.nutritionist-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.nutritionist-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.nutritionist-scope .section-header h2{ margin-bottom: var(--s-5); }.nutritionist-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.nutritionist-scope .lede-section{ padding: var(--s-9) 0; }.nutritionist-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.nutritionist-scope .data-table{
+    }.nutritionist-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.nutritionist-scope .section-header h2{ margin-bottom: var(--s-5); }.nutritionist-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.nutritionist-scope .lede-section{ padding: 64px 0; }.nutritionist-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.nutritionist-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1536,7 +1536,7 @@ const nutritionistBody = `
     }.nutritionist-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.nutritionist-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.nutritionist-scope .sources-grid{
+    }.nutritionist-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.nutritionist-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1597,7 +1597,7 @@ const nutritionistBody = `
     }.nutritionist-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.nutritionist-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.nutritionist-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1637,7 +1637,7 @@ const nutritionistBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.nutritionist-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.nutritionist-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.nutritionist-scope .highlights-list{
+    }.nutritionist-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.nutritionist-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.nutritionist-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1672,7 +1672,7 @@ const nutritionistBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.nutritionist-scope .highlights-source a:hover{ color: var(--blue-deep); }.nutritionist-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.nutritionist-scope .resources-grid{
+    }.nutritionist-scope .highlights-source a:hover{ color: var(--blue-deep); }.nutritionist-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.nutritionist-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2020,5 +2020,19 @@ const nutritionistBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .nutritionist-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .nutritionist-scope .lede-text-col { padding-top: 8px; }
+    .nutritionist-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .nutritionist-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .nutritionist-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .nutritionist-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .nutritionist-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .nutritionist-scope section { padding: 48px 0; } }
 </style>
 

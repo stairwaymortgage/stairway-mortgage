@@ -59,7 +59,7 @@ const rebrokerBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Florida real estate brokers operate as the supervisory license tier above sales associates with distinctive income economics. <strong>The Florida broker license under <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter475" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Statutes Chapter 475 Part I</a> requires 24 months active sales associate experience plus 72 hours post-licensing education plus successful Florida Real Estate Commission (FREC) examination. Brokers can: supervise sales associates and broker-associates, register a real estate brokerage entity, hold escrow funds, and operate as principal broker for a brokerage. Income structure features multi-source mix that varies substantially by broker role: principal brokerage owners earn commission overrides on transactions closed by supervised sales associates (typically 5-15% of associate&rsquo;s commission depending on brokerage compensation structure), own production commission on broker&rsquo;s personal transactions, brokerage ownership equity reported as K-1 partnership distribution or S-corp distribution depending on entity structure, property management commission stream from supervised property management activity under <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter475" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">FREC Rule 61J2</a> property management regulations, and ancillary fees from referral programs + transaction coordination + buyer agency services. Broker-associates (brokers licensed as associates under another principal broker) earn higher commission splits than sales associates plus override compensation on referrals + transaction coordination but typically lack brokerage equity stake. The August 17, 2024 NAR settlement ($418M) reshaped the post-settlement broker compensation landscape with three substantive changes: (1) written buyer agency agreements mandatory before MLS-listed property showings, (2) MLS systems no longer displaying buyer broker compensation publicly, (3) broker compensation more openly negotiated between parties rather than commission-pool model. Florida MLS systems (<a href="https://www.stellarmls.com/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Stellar MLS</a> covering Central + South Florida, <a href="https://www.miamirealtors.com/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">MIAMI Association of REALTORS MLS</a>, <a href="https://www.beachesmls.com/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">BeachesMLS</a> covering Palm Beach + Broward + Treasure Coast) adapted to new requirements. Florida broker compensation models continuing evolution post-settlement</strong>. For mortgage qualifying, the multi-source commission income synthesizes under <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Fannie Mae B3-3.1-01</a> variable income framework for commission + override + own production components with 24-month averaging + continuity narrative addressing post-NAR-settlement environment. <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">B3-3.4-02</a> partnership / S-corp documentation applies to brokerage equity K-1 distributions. <a href="https://singlefamily.fanniemae.com/media/document/pdf/cash-flow-analysis-form-1084-fannie-mae" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Form 1084 cash-flow analysis</a> at brokerage entity level applies. For high-add-back brokers running brokerage with substantial business expenses, Bank Statement or P&amp;L Statement Non-QM alternative paths expand qualifying capacity. <strong>Stairway Mortgage handles Florida real estate broker borrowers across all license tiers and business structures with deep understanding of commission income mechanics, brokerage equity K-1 documentation, post-NAR-settlement continuity narrative, and HNW Jumbo qualifying for established brokerage owners.</strong> Or skip ahead: <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Jumbo loan details</a>, <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">mortgage calculators</a>, or <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
     </div>
@@ -199,7 +199,7 @@ const rebrokerBody = `
   </section>
 
   <!-- ============ H2 #4: NAR SETTLEMENT DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3935343/pexels-photo-3935343.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/3935343/pexels-photo-3935343.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; Post-NAR-settlement broker compensation landscape</div>
@@ -977,7 +977,7 @@ const rebrokerBody = `
       display: inline-block;
     }.rebroker-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1116,7 +1116,7 @@ const rebrokerBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.rebroker-scope .btn-arrow:hover{ gap: var(--s-3); }.rebroker-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.rebroker-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.rebroker-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1173,7 +1173,7 @@ const rebrokerBody = `
     }.rebroker-scope .section-tinted{ background: var(--paper-2); }.rebroker-scope .section-dark{ background: var(--ink); color: var(--paper); }.rebroker-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.rebroker-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.rebroker-scope .section-header h2{ margin-bottom: var(--s-5); }.rebroker-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.rebroker-scope .lede-section{ padding: var(--s-9) 0; }.rebroker-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.rebroker-scope .data-table{
+    }.rebroker-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.rebroker-scope .section-header h2{ margin-bottom: var(--s-5); }.rebroker-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.rebroker-scope .lede-section{ padding: 64px 0; }.rebroker-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.rebroker-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1632,7 +1632,7 @@ const rebrokerBody = `
     }.rebroker-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.rebroker-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.rebroker-scope .sources-grid{
+    }.rebroker-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.rebroker-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1693,7 +1693,7 @@ const rebrokerBody = `
     }.rebroker-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.rebroker-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.rebroker-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1733,7 +1733,7 @@ const rebrokerBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.rebroker-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.rebroker-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.rebroker-scope .highlights-list{
+    }.rebroker-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.rebroker-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.rebroker-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1768,7 +1768,7 @@ const rebrokerBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.rebroker-scope .highlights-source a:hover{ color: var(--blue-deep); }.rebroker-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.rebroker-scope .resources-grid{
+    }.rebroker-scope .highlights-source a:hover{ color: var(--blue-deep); }.rebroker-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.rebroker-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2116,5 +2116,19 @@ const rebrokerBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .rebroker-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .rebroker-scope .lede-text-col { padding-top: 8px; }
+    .rebroker-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .rebroker-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .rebroker-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .rebroker-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .rebroker-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .rebroker-scope section { padding: 48px 0; } }
 </style>
 

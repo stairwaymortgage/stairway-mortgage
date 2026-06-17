@@ -359,7 +359,7 @@ const canonical = "https://stairwaymortgage.com/corporate-executives/finance-exe
   .finance-exec-scope .breadcrumb a { color: var(--blue, #1845D6); text-decoration: none; }
   .finance-exec-scope .breadcrumb span:not(:last-child) { margin: 0 8px; opacity: 0.5; }
   .finance-exec-scope .hero-eyebrow, .finance-exec-scope .section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue, #1845D6); margin-bottom: 16px; }
-  .finance-exec-scope .display-1 { font-family: 'Fraunces', serif; font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 28px; max-width: 22ch; font-weight: 500; }
+  .finance-exec-scope .display-1 { font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 28px; max-width: 22ch; font-weight: 500; }
   .finance-exec-scope .hero-lead { font-size: 1.1875rem; line-height: 1.55; color: var(--ink-2, #1E2433); margin-bottom: 36px; max-width: 64ch; }
   .finance-exec-scope .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 28px; }
   .finance-exec-scope .btn-primary, .finance-exec-scope .btn-primary-light { display: inline-block; padding: 16px 28px; background: var(--blue, #1845D6); color: #fff; text-decoration: none; font-weight: 600; border-radius: 6px; transition: background 0.2s; }
@@ -374,7 +374,7 @@ const canonical = "https://stairwaymortgage.com/corporate-executives/finance-exe
   .finance-exec-scope .hero-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; padding-top: 36px; border-top: 1px solid var(--border, #E5E5DE); }
   .finance-exec-scope .fact-num { font-family: 'Fraunces', serif; font-size: 2.25rem; line-height: 1; color: var(--blue, #1845D6); margin-bottom: 10px; font-weight: 600; }
   .finance-exec-scope .fact-label { font-size: 14px; color: var(--ink-light, #4A5568); line-height: 1.5; }
-  .finance-exec-scope section { padding: 80px 0; }
+  .finance-exec-scope section { padding: 64px 0; }
   .finance-exec-scope section h2 { font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 3.5vw, 2.75rem); line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 24px; max-width: 26ch; font-weight: 500; }
   .finance-exec-scope section h2 + p, .finance-exec-scope .lede, .finance-exec-scope .qual-lede, .finance-exec-scope .roles-lede, .finance-exec-scope .cta-lede { font-size: 1.0625rem; line-height: 1.7; color: var(--ink-2, #1E2433); margin-bottom: 16px; max-width: 70ch; }
   .finance-exec-scope .industry-context p { margin-bottom: 18px; }
@@ -424,5 +424,6 @@ const canonical = "https://stairwaymortgage.com/corporate-executives/finance-exe
     .finance-exec-scope .timeline-list li { grid-template-columns: 48px 1fr; gap: 18px; }
     .finance-exec-scope .step-num { width: 44px; height: 44px; font-size: 1.25rem; }
   }
+    @media (max-width: 720px) { .finance-exec-scope section { padding: 48px 0; } }
 </style>
 </Layout>

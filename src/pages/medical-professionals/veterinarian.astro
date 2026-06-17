@@ -59,7 +59,7 @@ const vetBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies working veterinarians on the full income picture &mdash; <strong>corporate veterinary chain W-2 from Mars Veterinary Health (Banfield, VCA, BluePearl), National Veterinary Associates (NVA), Pathway Vet Alliance (Thrive Pet Healthcare), PetVet Care Centers, AmeriVet Veterinary Partners, Compassion-First Pet Hospitals, or regional veterinary chains under Fannie Mae B3-3.1-01 as continuing employment income with 24-month average, production-based pay structures common in veterinary employment (typically 20-25 percent of professional services revenue generated) treated as variable income with 24-month average, AVMA boarded specialty diplomate premium W-2 at specialty referral hospitals and academic teaching hospitals (ACVS surgery, ACVIM internal medicine and subspecialties of cardiology/neurology/oncology, ACVECC emergency and critical care, ACVO ophthalmology, ACVD dermatology, ACVAA anesthesia, ACT theriogenology, ACVR radiology, ACVPath pathology, plus 13 additional AVMA-recognized specialty colleges), independent veterinary practice S-corp W-2 reasonable compensation plus K-1 distributions under B3-3.4-02 from Form 1120-S, post-sale rollover equity and earnout consideration from independent practices acquired by PE-backed veterinary chains, relief veterinarian 1099-NEC supplementation and emergency hospital shift work, equine and large animal mobile practice income, veterinary pharmaceutical industry W-2 from Zoetis, Boehringer Ingelheim Animal Health, Merck Animal Health, Elanco, and Virbac potentially including restricted stock compensation, government veterinarian W-2 from USDA APHIS, FDA Center for Veterinary Medicine, military veterinary corps, or state public health, $200K&ndash;$400K of DVM federal student loans on income-driven repayment with actual servicer-statement payments documented under Fannie Mae B3-6-05 instead of 1 percent of balance, and PSLF eligibility for veterinarians employed at academic veterinary medicine programs, government agencies, and 501(c)(3) nonprofit veterinary settings</strong>. A new-grad DVM at corporate small-animal chain, an established small-animal practitioner with production-based compensation, a boarded surgical specialty veterinarian at a referral hospital, an independent practice owner pre-PE sale, and an equine practitioner each get qualified using methods that fit their actual structure. <strong>The key contrast: veterinarians do NOT qualify for Physician/Doctor Loan products at most specialty lenders &mdash; Conventional Conforming or Jumbo with proper B3-6-05 IDR documentation is the typical optimal path.</strong> We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other medical professional paths, see our <a href="https://stairwaymortgage.com/medical-professionals/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">medical professionals mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const vetBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/6235660/pexels-photo-6235660.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/6235660/pexels-photo-6235660.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -878,7 +878,7 @@ const vetBody = `
       display: inline-block;
     }.vet-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1017,7 +1017,7 @@ const vetBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.vet-scope .btn-arrow:hover{ gap: var(--s-3); }.vet-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.vet-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.vet-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1074,7 +1074,7 @@ const vetBody = `
     }.vet-scope .section-tinted{ background: var(--paper-2); }.vet-scope .section-dark{ background: var(--ink); color: var(--paper); }.vet-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.vet-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.vet-scope .section-header h2{ margin-bottom: var(--s-5); }.vet-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.vet-scope .lede-section{ padding: var(--s-9) 0; }.vet-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.vet-scope .data-table{
+    }.vet-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.vet-scope .section-header h2{ margin-bottom: var(--s-5); }.vet-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.vet-scope .lede-section{ padding: 64px 0; }.vet-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.vet-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1533,7 +1533,7 @@ const vetBody = `
     }.vet-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.vet-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.vet-scope .sources-grid{
+    }.vet-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.vet-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1594,7 +1594,7 @@ const vetBody = `
     }.vet-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.vet-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.vet-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1634,7 +1634,7 @@ const vetBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.vet-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.vet-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.vet-scope .highlights-list{
+    }.vet-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.vet-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.vet-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1669,7 +1669,7 @@ const vetBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.vet-scope .highlights-source a:hover{ color: var(--blue-deep); }.vet-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.vet-scope .resources-grid{
+    }.vet-scope .highlights-source a:hover{ color: var(--blue-deep); }.vet-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.vet-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2017,5 +2017,29 @@ const vetBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .vet-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.6fr 1fr;
+      gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .vet-scope .lede-text-col { padding-top: 8px; }
+    .vet-scope .lede-image {
+      margin: 0; border-radius: 4px; overflow: hidden;
+      position: sticky; top: 32px;
+    }
+    .vet-scope .lede-image img {
+      width: 100%; height: auto; aspect-ratio: 3/4;
+      object-fit: cover; object-position: center 20%;
+    }
+    .vet-scope .lede-image-caption {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-light);
+      padding: 14px 4px 0; line-height: 1.5;
+    }
+    @media (max-width: 900px) {
+      .vet-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .vet-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
 </style>
 

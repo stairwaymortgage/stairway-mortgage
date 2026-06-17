@@ -59,7 +59,7 @@ const bizcapBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Florida business capital professionals operate at the intersection of capital allocator + lender + capital-raising advisor practices with distinctive multi-source income mechanics, Florida capital industry post-2020 migration, and Latin American family office capital flow ecosystem. <strong>Florida business capital practice spans five primary categories. Independent sponsor pursuing multi-deal acquisition without committed fund &mdash; deal sourcing fee 1-2% of EV at close + interim management fee modest if any + carry / promote 15-25% of profits above 8% hurdle + sometimes co-invest equity. More episodic + back-loaded vs committed-fund PE model. Florida concentration substantial 2020-2026 given Florida family office density + Latin American business hub investor base + Sun Belt M&amp;A activity supporting deal flow. Private credit direct lender at Ares + Sixth Street + Oaktree + Owl Rock + Bain Capital Credit + Apollo Credit + Golub Capital originating senior secured + unitranche + mezzanine + second lien loans to middle market. Interest spread + origination fees + ongoing portfolio management. W-2 base $250K-$500K + bonus 50-150% + management fee carry + sometimes deal participation. Capital placement advisor raising capital for sponsors + GPs + operators across private equity + private credit + real estate + venture + independent sponsors. Placement fee 1-3% of capital raised + sometimes back-end carry. Boutique + institutional placement teams. Family office capital allocator at single-family office ($500M-$10B+ AUM) or multi-family office allocating across direct investments + private funds + alternatives. W-2 base $300K-$600K + bonus + retention + sometimes direct investment carry. Florida + Palm Beach concentration given <a href="https://www.fofs.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">family office</a> ecosystem maturation. Mezzanine + structured capital provider placing mezz debt + preferred equity + growth capital. Interest + warrant + participation rights. Hybrid lender-investor with current yield + equity upside. <a href="https://www.sba.gov/partners/sbic" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">SBIC (Small Business Investment Company)</a> program participation through SBA framework provides leverage + lower cost of capital for qualified SBIC funds with community SBIC fund Florida activity. Florida capital industry expansion accelerated post-2020 with Apollo + Blackstone + Ares + Owl Rock + Sixth Street + Oaktree growth + family office ecosystem ($500B+ Latin American HNW wealth) + independent sponsor model growth 2020-2026. Practice ecosystem includes <a href="https://www.sec.gov/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">SEC</a> registration for investment advisers (private credit funds + capital placement advisors typically), <a href="https://www.finra.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">FINRA</a> broker-dealer registration for capital placement advisors (Series 7 + 79 IB representative + 63 + 65/66 licenses), and <a href="https://ilpa.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">ILPA (Institutional Limited Partners Association)</a> professional standards for LP-GP interactions</strong>. For mortgage qualifying, the multi-source capital professional income synthesizes under B3-3.1-01 variable income for W-2 base + bonus + placement fees with 24-36 month averaging + continuity narrative documenting deal pipeline + fund pipeline + capital raising track record, B3-3.4-02 partnership / S-corp for independent sponsor K-1 + private credit fund GP K-1 + co-invest distributions, and specialty treatment for carry / promote with extended multi-year averaging 36-60 months given episodic + back-loaded nature. Capital placement fee episodic timing addressed through multi-year averaging + continuity narrative. <strong>Stairway Mortgage handles Florida business capital borrowers across all five practice categories with deep understanding of episodic carry mechanics, interest spread + origination fee economics, capital placement fee structures, family office allocator compensation, and multi-source synthesis.</strong> Or skip ahead: <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Jumbo loan details</a>, <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">mortgage calculators</a>, or <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
     </div>
@@ -199,7 +199,7 @@ const bizcapBody = `
   </section>
 
   <!-- ============ H2 #4: FL CAPITAL INDUSTRY + PRIVATE CREDIT MIGRATION DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/7681090/pexels-photo-7681090.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/7681090/pexels-photo-7681090.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; Florida capital industry + private credit migration context</div>
@@ -972,7 +972,7 @@ const bizcapBody = `
       display: inline-block;
     }.bizcap-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1111,7 +1111,7 @@ const bizcapBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.bizcap-scope .btn-arrow:hover{ gap: var(--s-3); }.bizcap-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.bizcap-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.bizcap-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1168,7 +1168,7 @@ const bizcapBody = `
     }.bizcap-scope .section-tinted{ background: var(--paper-2); }.bizcap-scope .section-dark{ background: var(--ink); color: var(--paper); }.bizcap-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.bizcap-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.bizcap-scope .section-header h2{ margin-bottom: var(--s-5); }.bizcap-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.bizcap-scope .lede-section{ padding: var(--s-9) 0; }.bizcap-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.bizcap-scope .data-table{
+    }.bizcap-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.bizcap-scope .section-header h2{ margin-bottom: var(--s-5); }.bizcap-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.bizcap-scope .lede-section{ padding: 64px 0; }.bizcap-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.bizcap-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1627,7 +1627,7 @@ const bizcapBody = `
     }.bizcap-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.bizcap-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.bizcap-scope .sources-grid{
+    }.bizcap-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.bizcap-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1688,7 +1688,7 @@ const bizcapBody = `
     }.bizcap-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.bizcap-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.bizcap-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1728,7 +1728,7 @@ const bizcapBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.bizcap-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.bizcap-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.bizcap-scope .highlights-list{
+    }.bizcap-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.bizcap-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.bizcap-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1763,7 +1763,7 @@ const bizcapBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.bizcap-scope .highlights-source a:hover{ color: var(--blue-deep); }.bizcap-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.bizcap-scope .resources-grid{
+    }.bizcap-scope .highlights-source a:hover{ color: var(--blue-deep); }.bizcap-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.bizcap-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2111,5 +2111,19 @@ const bizcapBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .bizcap-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .bizcap-scope .lede-text-col { padding-top: 8px; }
+    .bizcap-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .bizcap-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .bizcap-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .bizcap-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .bizcap-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .bizcap-scope section { padding: 48px 0; } }
 </style>
 

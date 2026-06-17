@@ -59,7 +59,7 @@ const residentBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies medical residents and fellows on the right income picture for their stage &mdash; <strong>Physician/Doctor Loan signed-contract qualifying using the signed forward attending employment contract documenting future W-2 base salary, sign-on bonus, loan-repayment-assistance, and RVU productivity bonus structure up to 60&ndash;90 days pre-start under Fannie Mae B3-3.1-01 forward-employment treatment; current resident or fellow W-2 stipend under Fannie Mae B3-3.1-01 as continuing employment income when not yet close to residency end; income-driven repayment (PAYE, SAVE, IBR) student loan payment from Federal Student Aid documented through servicer statement counted in DTI under Fannie Mae B3-6-05 instead of 1 percent of the medical-school loan balance; PSLF qualifying payment accrual during nonprofit hospital residency that reduces effective long-term student loan exposure; resident moonlighting W-2 from secondary hospitals or urgent care that aggregates as supplementary income under B3-3.1-01; co-borrower qualifying with an attending spouse where applicable; FHA conventional alternatives for tight-cash residents who need maximum down-payment flexibility; and forward attending sign-on bonus, relocation reimbursement, and multi-year loan-repayment-assistance treated as continuing employer compensation when contract documentation supports continuation provisions</strong>. A PGY-2 internal medicine resident planning ahead for the post-residency purchase, a PGY-3 family medicine resident with signed attending contract for July start, an orthopedic chief resident finishing 5-year residency with signed fellowship contract, a final-year cardiology fellow finishing subspecialty training, and a J-1 visa resident on waiver pathway each get qualified using the method that fits their actual structure. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other medical professional paths, see our <a href="https://stairwaymortgage.com/medical-professionals/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">medical professionals mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const residentBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -877,7 +877,7 @@ const residentBody = `
       display: inline-block;
     }.resident-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1016,7 +1016,7 @@ const residentBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.resident-scope .btn-arrow:hover{ gap: var(--s-3); }.resident-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.resident-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.resident-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1073,7 +1073,7 @@ const residentBody = `
     }.resident-scope .section-tinted{ background: var(--paper-2); }.resident-scope .section-dark{ background: var(--ink); color: var(--paper); }.resident-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.resident-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.resident-scope .section-header h2{ margin-bottom: var(--s-5); }.resident-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.resident-scope .lede-section{ padding: var(--s-9) 0; }.resident-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.resident-scope .data-table{
+    }.resident-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.resident-scope .section-header h2{ margin-bottom: var(--s-5); }.resident-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.resident-scope .lede-section{ padding: 64px 0; }.resident-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.resident-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1532,7 +1532,7 @@ const residentBody = `
     }.resident-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.resident-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.resident-scope .sources-grid{
+    }.resident-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.resident-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1593,7 +1593,7 @@ const residentBody = `
     }.resident-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.resident-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.resident-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1633,7 +1633,7 @@ const residentBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.resident-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.resident-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.resident-scope .highlights-list{
+    }.resident-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.resident-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.resident-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1668,7 +1668,7 @@ const residentBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.resident-scope .highlights-source a:hover{ color: var(--blue-deep); }.resident-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.resident-scope .resources-grid{
+    }.resident-scope .highlights-source a:hover{ color: var(--blue-deep); }.resident-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.resident-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2016,5 +2016,29 @@ const residentBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .resident-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.6fr 1fr;
+      gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .resident-scope .lede-text-col { padding-top: 8px; }
+    .resident-scope .lede-image {
+      margin: 0; border-radius: 4px; overflow: hidden;
+      position: sticky; top: 32px;
+    }
+    .resident-scope .lede-image img {
+      width: 100%; height: auto; aspect-ratio: 3/4;
+      object-fit: cover; object-position: center 20%;
+    }
+    .resident-scope .lede-image-caption {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-light);
+      padding: 14px 4px 0; line-height: 1.5;
+    }
+    @media (max-width: 900px) {
+      .resident-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .resident-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
 </style>
 

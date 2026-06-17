@@ -59,7 +59,7 @@ const attorneyBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Florida attorneys operate at the intersection of <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter454" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Statutes Chapter 454</a> Bar admission + <a href="https://www.floridabar.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Bar</a> regulation under Florida Supreme Court oversight, distinct practice structures spanning BigLaw partnership through solo + contingency + government roles, and the highest-tier professional-services income mechanics in the U.S. mortgage market. <strong>Florida Bar admission requires Bar examination + character + fitness clearance + Florida Bar registration + ongoing mandatory continuing legal education (CLE) 33 hours per 3-year cycle including 5 hours ethics + technology + mental health/substance abuse content. <a href="https://supremecourt.flcourts.gov/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Supreme Court</a> exercises oversight of the legal profession through Rules of Professional Conduct administered by the Florida Bar. Practice structures span the full attorney income spectrum: BigLaw equity partner roles at AmLaw 100/200 firms with Miami + Fort Lauderdale + Tampa + Orlando offices feature K-1 partnership distributions typically $750K-$5M+ annually depending on firm tier + practice group + origination + tenure with capital contribution requirements typically $200K-$1M+; non-equity / income partner roles feature W-2 base salary typically $400K-$800K + variable annual bonus + production credits; solo practitioner + small firm partner structures span Schedule C or single-member PLLC for solos through LLP / partnership for small firms with transactional, litigation, or specialty focus across personal injury / medical malpractice / commercial / real estate / family / criminal / tax practice areas; plaintiff-side contingency attorney practices feature highly variable year-to-year income with episodic large recoveries with Florida 2023 HB 837 tort reform fundamentally reshaping economics; government / public sector attorney roles span US Department of Justice + US Attorney offices + Florida Attorney General + state attorney offices + state agency counsel + federal/state judges featuring stable W-2 framework. Florida 2023 House Bill 837 tort reform substantially reduced PIP litigation + modified first-party insurance bad-faith claim economics + modified attorney fee provisions + shortened statute of limitations for negligence claims from 4 to 2 years. Post-Surfside (Champlain Towers South June 2021 partial collapse) condo litigation generating substantial fee activity through 2022-2025. Post-2022 Hurricane Ian ($109B+ damages) insurance litigation sustained activity. Miami legal community anchors substantial international tax + wealth structuring + cross-border M&amp;A + Latin American business law practice driving HNW partner economics</strong>. For mortgage qualifying, the multi-source attorney income synthesizes under B3-3.4-02 partnership / S-corp framework for K-1 partner distributions with 2-year personal returns + 2-year entity returns (Form 1065 or 1120-S + K-1 schedules) + partnership / shareholder agreement excerpt + ownership percentage + Form 1084 cash-flow analysis at firm entity level, B3-3.1-01 variable income for bonus + production credits + originator credit + contingency fee streams with 2-year history + continuity narrative, and <a href="https://selling-guide.fanniemae.com/sel/b3-3.2-01/underwriting-factors-and-documentation-for-a-self-employed-borrower" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">B3-3.2-01 self-employed</a> framework for solo Schedule C / PLLC practice. Multi-source synthesis combines all applicable components into single qualifying income figure. <strong>Stairway Mortgage handles Florida attorney borrowers across BigLaw partnership + non-equity partner + solo practice + plaintiff contingency + government attorney structures with deep understanding of K-1 capital account mechanics, contingency fee continuity narrative, Florida tort reform context, and multi-source synthesis.</strong> Or skip ahead: <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Jumbo loan details</a>, <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">mortgage calculators</a>, or <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
     </div>
@@ -199,7 +199,7 @@ const attorneyBody = `
   </section>
 
   <!-- ============ H2 #4: FLORIDA LEGAL MARKET DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/5668859/pexels-photo-5668859.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/5668859/pexels-photo-5668859.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; Florida legal market context</div>
@@ -975,7 +975,7 @@ const attorneyBody = `
       display: inline-block;
     }.attorney-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1114,7 +1114,7 @@ const attorneyBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.attorney-scope .btn-arrow:hover{ gap: var(--s-3); }.attorney-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.attorney-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.attorney-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1171,7 +1171,7 @@ const attorneyBody = `
     }.attorney-scope .section-tinted{ background: var(--paper-2); }.attorney-scope .section-dark{ background: var(--ink); color: var(--paper); }.attorney-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.attorney-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.attorney-scope .section-header h2{ margin-bottom: var(--s-5); }.attorney-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.attorney-scope .lede-section{ padding: var(--s-9) 0; }.attorney-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.attorney-scope .data-table{
+    }.attorney-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.attorney-scope .section-header h2{ margin-bottom: var(--s-5); }.attorney-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.attorney-scope .lede-section{ padding: 64px 0; }.attorney-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.attorney-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1630,7 +1630,7 @@ const attorneyBody = `
     }.attorney-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.attorney-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.attorney-scope .sources-grid{
+    }.attorney-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.attorney-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1691,7 +1691,7 @@ const attorneyBody = `
     }.attorney-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.attorney-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.attorney-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1731,7 +1731,7 @@ const attorneyBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.attorney-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.attorney-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.attorney-scope .highlights-list{
+    }.attorney-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.attorney-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.attorney-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1766,7 +1766,7 @@ const attorneyBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.attorney-scope .highlights-source a:hover{ color: var(--blue-deep); }.attorney-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.attorney-scope .resources-grid{
+    }.attorney-scope .highlights-source a:hover{ color: var(--blue-deep); }.attorney-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.attorney-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2114,5 +2114,19 @@ const attorneyBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .attorney-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .attorney-scope .lede-text-col { padding-top: 8px; }
+    .attorney-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .attorney-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .attorney-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .attorney-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .attorney-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .attorney-scope section { padding: 48px 0; } }
 </style>
 

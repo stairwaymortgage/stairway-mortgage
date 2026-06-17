@@ -59,7 +59,7 @@ const dentistBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies dentists on the full income picture &mdash; <strong>S-corp W-2 wages at reasonable compensation plus K-1 distributions from practice profit under Fannie Mae B3-3.4-02, Schedule C net profit with Form 1084 addbacks for depreciation under IRC Section 167 and equipment expensing under IRC Section 179, multi-office 1099-NEC income from DSO-affiliated days at corporate dental groups, partnership distributions from group practices, student loan actual IDR payments (not 1% of balance) under Fannie Mae B3-6-05, and forward visibility on practice acquisition transactions coordinated with SBA 7(a) financing</strong>. A new-grad dentist on income-based repayment with $400K of student loans, a working associate building toward ownership, a solo practice owner with an S-corp generating $700K through W-2 plus K-1 distributions, a practice acquirer buying out a retiring dentist&rsquo;s patient base, and a multi-location owner running 3 offices each get qualified using methods that fit their actual structure. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other dental and wellness paths, see our <a href="https://stairwaymortgage.com/dental-wellness-professionals/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">dental and wellness professionals mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const dentistBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -882,7 +882,7 @@ const dentistBody = `
       display: inline-block;
     }.dentist-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1021,7 +1021,7 @@ const dentistBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.dentist-scope .btn-arrow:hover{ gap: var(--s-3); }.dentist-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.dentist-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.dentist-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1078,7 +1078,7 @@ const dentistBody = `
     }.dentist-scope .section-tinted{ background: var(--paper-2); }.dentist-scope .section-dark{ background: var(--ink); color: var(--paper); }.dentist-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.dentist-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.dentist-scope .section-header h2{ margin-bottom: var(--s-5); }.dentist-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.dentist-scope .lede-section{ padding: var(--s-9) 0; }.dentist-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.dentist-scope .data-table{
+    }.dentist-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.dentist-scope .section-header h2{ margin-bottom: var(--s-5); }.dentist-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.dentist-scope .lede-section{ padding: 64px 0; }.dentist-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.dentist-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1537,7 +1537,7 @@ const dentistBody = `
     }.dentist-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.dentist-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.dentist-scope .sources-grid{
+    }.dentist-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.dentist-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1598,7 +1598,7 @@ const dentistBody = `
     }.dentist-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.dentist-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.dentist-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1638,7 +1638,7 @@ const dentistBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.dentist-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.dentist-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.dentist-scope .highlights-list{
+    }.dentist-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.dentist-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.dentist-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1673,7 +1673,7 @@ const dentistBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.dentist-scope .highlights-source a:hover{ color: var(--blue-deep); }.dentist-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.dentist-scope .resources-grid{
+    }.dentist-scope .highlights-source a:hover{ color: var(--blue-deep); }.dentist-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.dentist-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2021,5 +2021,19 @@ const dentistBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .dentist-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .dentist-scope .lede-text-col { padding-top: 8px; }
+    .dentist-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .dentist-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .dentist-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .dentist-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .dentist-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .dentist-scope section { padding: 48px 0; } }
 </style>
 

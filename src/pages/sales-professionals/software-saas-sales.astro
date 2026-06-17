@@ -59,7 +59,7 @@ const saasBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies working software and SaaS sales professionals on the full income picture &mdash; <strong>W-2 base salary plus quarterly variable commission tied to annual quota attainment plus accelerator commission past 100% of quota plus annual President&rsquo;s Club bonus for top 10-20% of reps (typically combining cash bonus, recognition trip, and elevated RSU grant) plus RSU stock compensation vesting on 4-year schedule from new-hire grant and annual refresh grants at publicly-traded SaaS employers including Salesforce, Microsoft, Oracle, ServiceNow, Workday, Adobe, HubSpot, Snowflake, Datadog, CrowdStrike, MongoDB, Palantir, Atlassian, Cloudflare, Twilio, Okta, Zoom, Asana, Monday.com, Confluent, Elastic, and Veeva Systems, plus pre-IPO stock options with 409A valuations at growth-stage employers including Databricks, Stripe, Canva, and various late-stage AI infrastructure and cybersecurity companies awaiting liquidity event through IPO or strategic acquisition, plus sign-on bonuses for newly recruited AEs in competitive markets (commonly $25K-$100K paid in vesting installments over 12-24 months), plus retention bonuses for proven Enterprise/Strategic AE performers (commonly $50K-$300K multi-year vesting), plus sales manager and director-level override income for promoted reps managing teams of AEs, plus VP Sales and Chief Revenue Officer comp combining elevated base salary with team performance bonus plus substantial RSU grants, all under Fannie Mae B3-3.1-01 variable income with 24-month average plus B3-3.1-09 RSU vesting analysis</strong>. An SDR/BDR in years 1-2 building toward AE promotion, an established AE at $200K OTE with steady quota attainment, an Enterprise AE managing $1M+ ACV deals with substantial RSU vesting, a Strategic AE managing Fortune 500 key accounts at hyper-growth platforms, and a Sales Manager or Director combining personal management override with team performance bonus each get qualified using methods that fit their actual structure. <strong>Software and SaaS sales is W-2 dominant similar to pharma/device sales (covered on the prior sub-page) but with substantially heavier equity compensation through RSU and pre-IPO stock options, and faster career compensation progression as reps move from SDR through AE tiers to Enterprise/Strategic AE roles.</strong> Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other sales professional paths, see our <a href="https://stairwaymortgage.com/sales-professionals/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">sales professionals mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const saasBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -873,7 +873,7 @@ const saasBody = `
       display: inline-block;
     }.saas-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1012,7 +1012,7 @@ const saasBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.saas-scope .btn-arrow:hover{ gap: var(--s-3); }.saas-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.saas-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.saas-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1069,7 +1069,7 @@ const saasBody = `
     }.saas-scope .section-tinted{ background: var(--paper-2); }.saas-scope .section-dark{ background: var(--ink); color: var(--paper); }.saas-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.saas-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.saas-scope .section-header h2{ margin-bottom: var(--s-5); }.saas-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.saas-scope .lede-section{ padding: var(--s-9) 0; }.saas-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.saas-scope .data-table{
+    }.saas-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.saas-scope .section-header h2{ margin-bottom: var(--s-5); }.saas-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.saas-scope .lede-section{ padding: 64px 0; }.saas-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.saas-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1528,7 +1528,7 @@ const saasBody = `
     }.saas-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.saas-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.saas-scope .sources-grid{
+    }.saas-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.saas-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1589,7 +1589,7 @@ const saasBody = `
     }.saas-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.saas-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.saas-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1629,7 +1629,7 @@ const saasBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.saas-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.saas-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.saas-scope .highlights-list{
+    }.saas-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.saas-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.saas-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1664,7 +1664,7 @@ const saasBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.saas-scope .highlights-source a:hover{ color: var(--blue-deep); }.saas-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.saas-scope .resources-grid{
+    }.saas-scope .highlights-source a:hover{ color: var(--blue-deep); }.saas-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.saas-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2012,5 +2012,19 @@ const saasBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .saas-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .saas-scope .lede-text-col { padding-top: 8px; }
+    .saas-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .saas-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .saas-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .saas-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .saas-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .saas-scope section { padding: 48px 0; } }
 </style>
 

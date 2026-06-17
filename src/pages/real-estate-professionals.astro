@@ -757,7 +757,7 @@ const realprofBody = `
       display: inline-block;
     }.realprof-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -896,7 +896,7 @@ const realprofBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.realprof-scope .btn-arrow:hover{ gap: var(--s-3); }.realprof-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.realprof-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.realprof-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -953,7 +953,7 @@ const realprofBody = `
     }.realprof-scope .section-tinted{ background: var(--paper-2); }.realprof-scope .section-dark{ background: var(--ink); color: var(--paper); }.realprof-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.realprof-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.realprof-scope .section-header h2{ margin-bottom: var(--s-5); }.realprof-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.realprof-scope .lede-section{ padding: var(--s-9) 0; }.realprof-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.realprof-scope .data-table{
+    }.realprof-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.realprof-scope .section-header h2{ margin-bottom: var(--s-5); }.realprof-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.realprof-scope .lede-section{ padding: 64px 0; }.realprof-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.realprof-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1412,7 +1412,7 @@ const realprofBody = `
     }.realprof-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.realprof-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.realprof-scope .sources-grid{
+    }.realprof-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.realprof-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1473,7 +1473,7 @@ const realprofBody = `
     }.realprof-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.realprof-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.realprof-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1513,7 +1513,7 @@ const realprofBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.realprof-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.realprof-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.realprof-scope .highlights-list{
+    }.realprof-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.realprof-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.realprof-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1548,7 +1548,7 @@ const realprofBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.realprof-scope .highlights-source a:hover{ color: var(--blue-deep); }.realprof-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.realprof-scope .resources-grid{
+    }.realprof-scope .highlights-source a:hover{ color: var(--blue-deep); }.realprof-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.realprof-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -1896,5 +1896,6 @@ const realprofBody = `
   border-bottom-color: var(--blue);
 }
 
+    @media (max-width: 720px) { .realprof-scope section { padding: 48px 0; } }
 </style>
 

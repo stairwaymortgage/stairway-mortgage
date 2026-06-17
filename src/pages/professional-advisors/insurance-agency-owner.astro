@@ -59,7 +59,7 @@ const iagencyBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Florida insurance agency owners operate at the intersection of <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter626" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Statutes Chapter 626</a> regulated licensure, the post-2022 Florida property insurance ecosystem, and distinctive renewal-stream commission economics. <strong>Florida insurance agent licensure regulated by the <a href="https://www.myfloridacfo.com/division/agents" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Department of Financial Services (DFS) Bureau of Licensing</a> establishes multiple license tiers each with distinct scope: 2-20 General Lines license (Property &amp; Casualty including homeowners, auto, commercial property, commercial casualty, surety) commonly held by agency owners + producers, 2-15 Life Health &amp; Variable Annuity license (life insurance, health insurance, fixed and variable annuities, long-term care) often dual-licensed with 2-20, 20-44 Personal Lines license (P&amp;C limited to personal lines), 0-55 Service Representative, 4-40 Customer Representative, and supervisory Designated Primary Agent (DPA) role responsible for agency oversight. Florida insurance carriers regulated separately by the <a href="https://www.floir.com/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Office of Insurance Regulation (FOIR)</a> &mdash; distinct from agent licensing under DFS. Practice income features renewal-stream dominated multi-source mix: new business commission (typical 12-15% of P&amp;C premium on new policy issuance, varies by line + carrier + agency contract), renewal commission (typical 10-12% of premium on each annual renewal, creating substantial recurring revenue as book of business matures over 5-10+ years), profit sharing / contingency commissions from carriers based on annual loss ratio + volume metrics (typical $5K-$100K+ annual depending on agency size + carrier mix), sub-agent / producer overrides on commissions earned by licensed producers supervised by agency owner / DPA, ancillary fees from policy services + bond writing + specialty engagements, and agency equity build representing book of business asset value typically valued at 2-4x annual revenue at sale (varies by quality + carrier mix + geographic concentration). The recurring revenue characteristic of renewal commission distinguishes insurance agency income from transaction-only commission professions and supports robust continuity narrative under <a href="https://selling-guide.fanniemae.com/sel/b3-3.1-01/general-income-information" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Fannie Mae B3-3.1-01</a></strong>. The 2022 Florida property insurance crisis (Citizens Property Insurance Corporation surge to 1.4M+ policyholders at peak, multiple carrier insolvencies + withdrawals from Florida market, sustained premium increases statewide), 2022 Senate Bill 2A reforms + 2023 Senate Bill 7052 reforms reshaping market structure, growth of Excess &amp; Surplus (E&amp;S) lines market handling non-admitted risk, and Hurricane Ian 2022 ($109B+ damages) impact on reinsurance environment created substantial Florida agency revenue volume sustained through 2025-2026. Florida agencies adapted carrier mix + product offerings + service models through crisis period. For mortgage qualifying, the multi-source commission + agency equity income synthesizes under B3-3.1-01 for commission + override components with 24-month averaging + continuity narrative leveraging renewal book stability, <a href="https://selling-guide.fanniemae.com/sel/b3-3.4-02/analyzing-returns-partnership-or-s-corporation" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">B3-3.4-02</a> partnership / S-corp documentation for agency equity K-1 distributions, and Form 1084 cash-flow analysis at agency entity level adding back depreciation + business use of office + entity non-cash expenses. <strong>Stairway Mortgage handles Florida insurance agency owner borrowers across all license tiers + agency structures with deep understanding of renewal commission mechanics, agency equity K-1 documentation, post-2022 crisis continuity narrative, and multi-source synthesis.</strong> Or skip ahead: <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Jumbo loan details</a>, <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">mortgage calculators</a>, or <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
     </div>
@@ -199,7 +199,7 @@ const iagencyBody = `
   </section>
 
   <!-- ============ H2 #4: POST-2022 FL INSURANCE CRISIS DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/7821486/pexels-photo-7821486.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/7821486/pexels-photo-7821486.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; Post-2022 Florida property insurance crisis context</div>
@@ -975,7 +975,7 @@ const iagencyBody = `
       display: inline-block;
     }.iagency-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1114,7 +1114,7 @@ const iagencyBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.iagency-scope .btn-arrow:hover{ gap: var(--s-3); }.iagency-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.iagency-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.iagency-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1171,7 +1171,7 @@ const iagencyBody = `
     }.iagency-scope .section-tinted{ background: var(--paper-2); }.iagency-scope .section-dark{ background: var(--ink); color: var(--paper); }.iagency-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.iagency-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.iagency-scope .section-header h2{ margin-bottom: var(--s-5); }.iagency-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.iagency-scope .lede-section{ padding: var(--s-9) 0; }.iagency-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.iagency-scope .data-table{
+    }.iagency-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.iagency-scope .section-header h2{ margin-bottom: var(--s-5); }.iagency-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.iagency-scope .lede-section{ padding: 64px 0; }.iagency-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.iagency-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1630,7 +1630,7 @@ const iagencyBody = `
     }.iagency-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.iagency-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.iagency-scope .sources-grid{
+    }.iagency-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.iagency-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1691,7 +1691,7 @@ const iagencyBody = `
     }.iagency-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.iagency-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.iagency-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1731,7 +1731,7 @@ const iagencyBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.iagency-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.iagency-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.iagency-scope .highlights-list{
+    }.iagency-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.iagency-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.iagency-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1766,7 +1766,7 @@ const iagencyBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.iagency-scope .highlights-source a:hover{ color: var(--blue-deep); }.iagency-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.iagency-scope .resources-grid{
+    }.iagency-scope .highlights-source a:hover{ color: var(--blue-deep); }.iagency-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.iagency-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2114,5 +2114,19 @@ const iagencyBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .iagency-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .iagency-scope .lede-text-col { padding-top: 8px; }
+    .iagency-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .iagency-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .iagency-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .iagency-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .iagency-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .iagency-scope section { padding: 48px 0; } }
 </style>
 

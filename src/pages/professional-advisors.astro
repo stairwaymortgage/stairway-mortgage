@@ -759,7 +759,7 @@ const padvisorsBody = `
       display: inline-block;
     }.padvisors-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -898,7 +898,7 @@ const padvisorsBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.padvisors-scope .btn-arrow:hover{ gap: var(--s-3); }.padvisors-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.padvisors-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.padvisors-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -955,7 +955,7 @@ const padvisorsBody = `
     }.padvisors-scope .section-tinted{ background: var(--paper-2); }.padvisors-scope .section-dark{ background: var(--ink); color: var(--paper); }.padvisors-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.padvisors-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.padvisors-scope .section-header h2{ margin-bottom: var(--s-5); }.padvisors-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.padvisors-scope .lede-section{ padding: var(--s-9) 0; }.padvisors-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.padvisors-scope .data-table{
+    }.padvisors-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.padvisors-scope .section-header h2{ margin-bottom: var(--s-5); }.padvisors-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.padvisors-scope .lede-section{ padding: 64px 0; }.padvisors-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.padvisors-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1414,7 +1414,7 @@ const padvisorsBody = `
     }.padvisors-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.padvisors-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.padvisors-scope .sources-grid{
+    }.padvisors-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.padvisors-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1475,7 +1475,7 @@ const padvisorsBody = `
     }.padvisors-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.padvisors-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.padvisors-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1515,7 +1515,7 @@ const padvisorsBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.padvisors-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.padvisors-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.padvisors-scope .highlights-list{
+    }.padvisors-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.padvisors-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.padvisors-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1550,7 +1550,7 @@ const padvisorsBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.padvisors-scope .highlights-source a:hover{ color: var(--blue-deep); }.padvisors-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.padvisors-scope .resources-grid{
+    }.padvisors-scope .highlights-source a:hover{ color: var(--blue-deep); }.padvisors-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.padvisors-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -1898,5 +1898,6 @@ const padvisorsBody = `
   border-bottom-color: var(--blue);
 }
 
+    @media (max-width: 720px) { .padvisors-scope section { padding: 48px 0; } }
 </style>
 

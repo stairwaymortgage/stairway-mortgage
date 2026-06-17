@@ -59,7 +59,7 @@ const csBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Stairway Mortgage qualifies C-suite executives on the full comp package &mdash; <strong>not just the base salary line that&rsquo;s 20% of what you actually earn</strong>. A newly-promoted CFO with two years of RSU vesting at a public company, a CEO of a mid-cap consumer brand with $800K base plus $2.4M in annual equity vest, a Chief Revenue Officer with a 409A deferred comp election spreading current bonus across future years, and a Chief Product Officer post-acquisition with both legacy equity and a new RSU grant from the acquirer each get qualified using the methods that fit their comp structure. We pick the right door before we quote. Or skip ahead: browse <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, run numbers on <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">100+ mortgage calculators</a>, or check <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>. For the parent hub and other executive paths, see our <a href="https://stairwaymortgage.com/corporate-executives/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">corporate executives mortgage hub</a>.</p>
     </div>
@@ -196,7 +196,7 @@ const csBody = `
   </section>
 
   <!-- ============ H2 #4: DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; What generalist underwriting misses</div>
@@ -881,7 +881,7 @@ const csBody = `
       display: inline-block;
     }.cs-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1020,7 +1020,7 @@ const csBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.cs-scope .btn-arrow:hover{ gap: var(--s-3); }.cs-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.cs-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.cs-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1077,7 +1077,7 @@ const csBody = `
     }.cs-scope .section-tinted{ background: var(--paper-2); }.cs-scope .section-dark{ background: var(--ink); color: var(--paper); }.cs-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.cs-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.cs-scope .section-header h2{ margin-bottom: var(--s-5); }.cs-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.cs-scope .lede-section{ padding: var(--s-9) 0; }.cs-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.cs-scope .data-table{
+    }.cs-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.cs-scope .section-header h2{ margin-bottom: var(--s-5); }.cs-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.cs-scope .lede-section{ padding: 64px 0; }.cs-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.cs-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1536,7 +1536,7 @@ const csBody = `
     }.cs-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.cs-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.cs-scope .sources-grid{
+    }.cs-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.cs-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1597,7 +1597,7 @@ const csBody = `
     }.cs-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.cs-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.cs-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1637,7 +1637,7 @@ const csBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.cs-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.cs-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.cs-scope .highlights-list{
+    }.cs-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.cs-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.cs-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1672,7 +1672,7 @@ const csBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.cs-scope .highlights-source a:hover{ color: var(--blue-deep); }.cs-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.cs-scope .resources-grid{
+    }.cs-scope .highlights-source a:hover{ color: var(--blue-deep); }.cs-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.cs-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2020,5 +2020,19 @@ const csBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .cs-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .cs-scope .lede-text-col { padding-top: 8px; }
+    .cs-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .cs-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .cs-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .cs-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cs-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .cs-scope section { padding: 48px 0; } }
 </style>
 

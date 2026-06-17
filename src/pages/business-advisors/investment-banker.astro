@@ -59,7 +59,7 @@ const ibankerBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Florida investment bankers and buy-side professionals operate at the intersection of bonus-heavy + deferred-compensation-complex compensation structures, the rapidly-expanding Miami financial services hub, and Florida no-state-income-tax positioning attracting substantial financial services migration. <strong>Florida investment banking + buy-side practice spans bulge bracket MD roles at Goldman Sachs + Morgan Stanley + JPMorgan + Citi + Bank of America + Barclays + Deutsche Bank Miami offices typically focused on $1B+ M&amp;A + capital markets + leveraged finance transactions across financial services + healthcare + technology + Latin American business sectors; middle market MD roles at Houlihan Lokey + Lazard + William Blair + Stifel + Jefferies + Raymond James + Piper Sandler focused on $50M-$1B transaction range with strong restructuring + private capital practice mix; boutique IB partner roles at sector-focused boutiques (energy + healthcare + tech + financial services specialty firms) or generalist boutiques (Ardea Partners, Centerview, Evercore Miami, others) with equity stake + partnership K-1 + transaction fee participation; buy-side professional roles at hedge fund (Citadel, Two Sigma, Millennium, Point72, others), private equity (Apollo, Blackstone, KKR, Bain Capital, others), private credit (Ares, Sixth Street, Oaktree, others), venture capital (Founders Fund, Sequoia, a16z FL offices), or family office investment teams; family office CIO / investment professional roles at single-family offices ($500M-$10B+ AUM serving UHNW principals) or multi-family offices ($25M-$500M+ per family across MFO platform). Compensation structures vary substantially across roles: bulge bracket MD compensation features W-2 base $300K-$500K + annual bonus typically 100-300% of base (heavily skewed performance + revenue generation + deal closing) + deferred compensation 3-7 year vesting (cash deferred + restricted stock awards) + restricted stock with multi-year vesting + sometimes producer credit for senior MDs; middle market MD compensation similar structure scaled to firm economics; boutique partner compensation: partnership K-1 + transaction fee participation + sometimes carry on principal investments; buy-side hedge fund / PE compensation: W-2 base $200K-$400K + annual bonus + management fee participation + carried interest (typically 20% of fund profits above hurdle, vesting over fund life 8-10+ years, distributions occurring after fund returns capital to LPs); family office CIO compensation: W-2 base $300K-$600K + bonus + retention bonuses + sometimes carry on direct investments. Miami financial hub expansion accelerated dramatically post-2020 with <a href="https://www.citadel.com/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Citadel</a> headquarters relocation to Miami October 2022 (from Chicago) representing major hedge fund + market making firm migration, Apollo Global Management Florida office expansion, Blackstone Miami office growth, Goldman Sachs Asset Management Miami presence, multiple individual hedge fund founder relocations from New York + Connecticut to Florida (Ken Griffin Citadel, Steven Cohen Point72 FL exposure, others), Palm Beach hedge fund ecosystem maturation with substantial fund formation activity, and substantial PE + private credit firm Florida office expansion</strong>. Florida no state income tax driving substantial financial services migration combined with quality of life + business environment + Latin American business hub positioning. Cuban-American + Venezuelan + Argentine + Brazilian client base supporting substantial Latin American M&amp;A + capital markets + private wealth advisory practice. <a href="https://www.finra.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">FINRA</a> oversight for broker-dealer registered representatives + Series 7 + 79 (IB representative) + 63 + 65/66 licenses. <a href="https://www.sec.gov/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">SEC</a> registration for investment advisers (PE + hedge fund + buy-side firms typically). For mortgage qualifying, the multi-source IB income synthesizes under B3-3.1-01 variable income for W-2 base + annual bonus + production credits with 24-month averaging + continuity narrative, B3-3.4-02 partnership / S-corp for boutique IB equity partners + PE / hedge fund GPs with K-1 distributions, and specialty treatment for deferred compensation (vested vs unvested) + carried interest (episodic large recoveries requiring multi-year averaging extended to 36-60 months for accurate picture). Bonus deferral mechanics critical: vested deferred compensation counts in 2-year income picture, unvested generally excluded, carry vesting over fund life requires multi-year averaging treatment. <strong>Stairway Mortgage handles Florida investment banker borrowers across all five practice categories with deep understanding of bonus deferral mechanics, carry vesting treatment, K-1 entity-level analysis, and multi-source synthesis.</strong> Or skip ahead: <a href="https://stairwaymortgage.com/loan-programs/jumbo-loan/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Jumbo loan details</a>, <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">mortgage calculators</a>, or <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
     </div>
@@ -199,7 +199,7 @@ const ibankerBody = `
   </section>
 
   <!-- ============ H2 #4: MIAMI FINANCIAL HUB DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/7681090/pexels-photo-7681090.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/7681090/pexels-photo-7681090.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; Miami financial hub + post-2020 migration context</div>
@@ -972,7 +972,7 @@ const ibankerBody = `
       display: inline-block;
     }.ibanker-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1111,7 +1111,7 @@ const ibankerBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.ibanker-scope .btn-arrow:hover{ gap: var(--s-3); }.ibanker-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.ibanker-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.ibanker-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1168,7 +1168,7 @@ const ibankerBody = `
     }.ibanker-scope .section-tinted{ background: var(--paper-2); }.ibanker-scope .section-dark{ background: var(--ink); color: var(--paper); }.ibanker-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.ibanker-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.ibanker-scope .section-header h2{ margin-bottom: var(--s-5); }.ibanker-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.ibanker-scope .lede-section{ padding: var(--s-9) 0; }.ibanker-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.ibanker-scope .data-table{
+    }.ibanker-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.ibanker-scope .section-header h2{ margin-bottom: var(--s-5); }.ibanker-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.ibanker-scope .lede-section{ padding: 64px 0; }.ibanker-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.ibanker-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1627,7 +1627,7 @@ const ibankerBody = `
     }.ibanker-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.ibanker-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.ibanker-scope .sources-grid{
+    }.ibanker-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.ibanker-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1688,7 +1688,7 @@ const ibankerBody = `
     }.ibanker-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.ibanker-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.ibanker-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1728,7 +1728,7 @@ const ibankerBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.ibanker-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.ibanker-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.ibanker-scope .highlights-list{
+    }.ibanker-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.ibanker-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.ibanker-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1763,7 +1763,7 @@ const ibankerBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.ibanker-scope .highlights-source a:hover{ color: var(--blue-deep); }.ibanker-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.ibanker-scope .resources-grid{
+    }.ibanker-scope .highlights-source a:hover{ color: var(--blue-deep); }.ibanker-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.ibanker-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2111,5 +2111,19 @@ const ibankerBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .ibanker-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .ibanker-scope .lede-text-col { padding-top: 8px; }
+    .ibanker-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .ibanker-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .ibanker-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .ibanker-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .ibanker-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .ibanker-scope section { padding: 48px 0; } }
 </style>
 

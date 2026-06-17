@@ -59,7 +59,7 @@ const hinspectorBody = `
   </section>
 
   <!-- ============ LEDE ============ -->
-  <section class="lede-section">
+  <section class="lede-section lede-section--with-image">
     <div class="container-narrow">
       <p class="lede">Florida home inspectors operate at the intersection of property transaction inspection + Florida-specific insurance ecosystem + ongoing structural safety reform demand. <strong>Florida home inspector licensure under <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter468" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Florida Statutes Chapter 468 Part XV</a> regulated by Florida DBPR requires 120 hours pre-licensing education + State examination + general liability insurance + 14 hours continuing education biennially. Distinct from real estate broker / appraiser licensure under Chapter 475. Professional credentials beyond state licensure include <a href="https://www.nachi.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">InterNACHI (International Association of Certified Home Inspectors)</a> certification, <a href="https://www.homeinspector.org/" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">ASHI (American Society of Home Inspectors)</a> membership + ASHI Certified Inspector (ACI) designation, and Florida-specific specialty certifications. Practice income features per-inspection fee economics across multiple Florida-specific inspection categories: standard residential general inspection ($350-$650 typical, higher for larger properties + Florida HNW custom homes), wind mitigation inspection ($75-$150 add-on documenting hurricane-resistant features for insurance premium discount), 4-point insurance inspection ($75-$125 add-on covering roof + electrical + plumbing + HVAC required by Florida insurance carriers for older homes typically 30+ years before policy issuance), <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter553" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">SB 4-D milestone structural inspection</a> ($1,500-$15,000+ depending on building scope + complexity at 25-year and 30-year intervals for buildings 3+ stories), and specialty inspections (mold, radon, termite, pool, seawall, dock, sprinkler) at per-engagement premium fees. Volume-driven practice with established inspectors completing 5-15 inspections daily during peak transaction season. Business structures span solo Schedule C / single-member LLC for most independent inspectors, S-corp election for established practices with substantial volume, partnership for multi-inspector firms, and W-2 employee inspector for inspectors working under brokerage or large multi-inspector firm</strong>. The 2022 Florida property insurance crisis (Citizens Property Insurance surge, carrier withdrawals, sustained premium increases) plus 2022 <a href="https://www.flsenate.gov/Laws/Statutes/2024/Chapter718" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">SB 4-D condo safety reform</a> plus ongoing hurricane reconstruction cycles (Ian 2022, Idalia 2023) created substantial Florida-specialty inspection demand sustained through 2025-2026. For mortgage qualifying, the per-inspection fee income synthesizes under <a href="https://selling-guide.fanniemae.com/sel/b3-3.2-01/underwriting-factors-and-documentation-for-a-self-employed-borrower" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Fannie Mae B3-3.2-01</a> self-employed framework with 2-year personal returns + business returns if S-corp / partnership + CPA-prepared YTD P&amp;L + <a href="https://singlefamily.fanniemae.com/media/document/pdf/cash-flow-analysis-form-1084-fannie-mae" target="_blank" rel="noopener noreferrer" style="color: var(--blue); text-decoration: underline;">Form 1084 cash-flow analysis</a>. Form 1084 adds back substantial business mileage (inspectors frequently drive 40K-60K+ annual miles visiting multiple properties daily), business use of home (typical given home office for report preparation + scheduling + administrative work), and Section 179 expensing on inspection technology (thermal imaging cameras, drones, moisture meters, gas detection equipment, vehicles). Bank Statement Non-QM alternative for inspectors with substantial add-back profiles. <strong>Stairway Mortgage handles Florida home inspector borrowers across all specialty practice areas with deep understanding of FL-specific inspection demand drivers + Form 1084 mechanics + Bank Statement Non-QM positioning + multi-source synthesis combining inspector practice + spouse W-2 if applicable.</strong> Or skip ahead: <a href="https://stairwaymortgage.com/loan-programs/bank-statement-loan/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">Bank Statement Non-QM details</a>, <a href="https://stairwaymortgage.com/loan-programs/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">every loan program</a>, <a href="https://stairwaymortgage.com/loan-calculator/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">mortgage calculators</a>, or <a href="https://stairwaymortgage.com/current-rates/" style="color: var(--blue); text-decoration: underline; text-underline-offset: 2px;">today&apos;s rates</a>.</p>
     </div>
@@ -199,7 +199,7 @@ const hinspectorBody = `
   </section>
 
   <!-- ============ H2 #4: WIND MITIGATION + SB 4-D DARK SECTION ============ -->
-  <section class="per-diem-section per-diem-section--bg" style="background-image: url('https://images.pexels.com/photos/8961070/pexels-photo-8961070.jpeg?auto=compress&cs=tinysrgb&w=1800');">
+  <section class="per-diem-section per-diem-section--bg qualifying--bg section-dark" style="background-image: url('https://images.pexels.com/photos/8961070/pexels-photo-8961070.jpeg?auto=compress&cs=tinysrgb&w=1800');">
     <div class="container">
       <div class="section-header" style="max-width: 760px;">
         <div class="eyebrow eyebrow-light">04 &middot; Florida-specific inspection demand drivers</div>
@@ -978,7 +978,7 @@ const hinspectorBody = `
       display: inline-block;
     }.hinspector-scope .display-1{
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+      font-size: clamp(1.875rem, 4vw, 3rem);
       font-weight: 400;
       line-height: 1.0;
       letter-spacing: -0.025em;
@@ -1117,7 +1117,7 @@ const hinspectorBody = `
       color: var(--blue); font-weight: 500;
       transition: gap 0.18s;
     }.hinspector-scope .btn-arrow:hover{ gap: var(--s-3); }.hinspector-scope .btn-arrow::after{ content: '→'; font-family: var(--sans); }.hinspector-scope .hero{
-      padding: var(--s-9) 0 var(--s-8);
+      padding: 64px 0 48px;
       border-bottom: 1px solid var(--border);
     }.hinspector-scope .breadcrumb{
       display: flex; gap: var(--s-2);
@@ -1174,7 +1174,7 @@ const hinspectorBody = `
     }.hinspector-scope .section-tinted{ background: var(--paper-2); }.hinspector-scope .section-dark{ background: var(--ink); color: var(--paper); }.hinspector-scope .section-header{
       max-width: 720px;
       margin-bottom: var(--s-8);
-    }.hinspector-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.hinspector-scope .section-header h2{ margin-bottom: var(--s-5); }.hinspector-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.hinspector-scope .lede-section{ padding: var(--s-9) 0; }.hinspector-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.hinspector-scope .data-table{
+    }.hinspector-scope .section-header .eyebrow{ margin-bottom: var(--s-4); }.hinspector-scope .section-header h2{ margin-bottom: var(--s-5); }.hinspector-scope .section-header p{ font-size: var(--text-lg); color: var(--ink-2); }.hinspector-scope .lede-section{ padding: 64px 0; }.hinspector-scope .lede-section .lede + .lede{ margin-top: var(--s-5); }.hinspector-scope .data-table{
       width: 100%;
       border-collapse: collapse;
       font-size: var(--text-sm);
@@ -1633,7 +1633,7 @@ const hinspectorBody = `
     }.hinspector-scope .faq-a{
       color: var(--ink-2);
       line-height: 1.65;
-    }.hinspector-scope .sources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.hinspector-scope .sources-grid{
+    }.hinspector-scope .sources-section{ padding: 64px 0; background: var(--paper-2); }.hinspector-scope .sources-grid{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--s-7);
@@ -1694,7 +1694,7 @@ const hinspectorBody = `
     }.hinspector-scope .btn-on-dark-secondary:hover{ border-color: var(--paper); }.hinspector-scope .footer{
       background: var(--ink-2);
       color: var(--paper);
-      padding: var(--s-9) 0 var(--s-5);
+      padding: 64px 0 24px;
     }.hinspector-scope .footer-grid{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1734,7 +1734,7 @@ const hinspectorBody = `
       @keyframes fadeIn {
         to { opacity: 1; transform: translateY(0); }
       }
-    }.hinspector-scope .highlights-section{ padding: var(--s-9) 0; background: var(--paper); }.hinspector-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.hinspector-scope .highlights-list{
+    }.hinspector-scope .highlights-section{ padding: 64px 0; background: var(--paper); }.hinspector-scope .highlights-intro{ max-width: 720px; margin-bottom: var(--s-7); }.hinspector-scope .highlights-list{
       list-style: none;
       padding: 0;
       max-width: 920px;
@@ -1769,7 +1769,7 @@ const hinspectorBody = `
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       transition: color 0.15s;
-    }.hinspector-scope .highlights-source a:hover{ color: var(--blue-deep); }.hinspector-scope .resources-section{ padding: var(--s-9) 0; background: var(--paper-2); }.hinspector-scope .resources-grid{
+    }.hinspector-scope .highlights-source a:hover{ color: var(--blue-deep); }.hinspector-scope .resources-section{ padding: 64px 0; background: var(--paper-2); }.hinspector-scope .resources-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
@@ -2117,5 +2117,19 @@ const hinspectorBody = `
   border-bottom-color: var(--blue);
 }
 
+
+    .hinspector-scope .lede-section--with-image .lede-grid {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 5vw, 72px); align-items: start;
+    }
+    .hinspector-scope .lede-text-col { padding-top: 8px; }
+    .hinspector-scope .lede-image { margin: 0; border-radius: 4px; overflow: hidden; position: sticky; top: 32px; }
+    .hinspector-scope .lede-image img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%; }
+    .hinspector-scope .lede-image-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); padding: 14px 4px 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .hinspector-scope .lede-section--with-image .lede-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hinspector-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
+    }
+    @media (max-width: 720px) { .hinspector-scope section { padding: 48px 0; } }
 </style>
 
