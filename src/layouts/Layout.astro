@@ -77,30 +77,34 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString(
     gtag('config', 'G-JKZV58GRQK');
   </script>
 
-  <!-- Schema.org LocalBusiness for SEO -->
+  <!-- Schema.org Organization / MortgageBroker (sitewide) -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "MortgageBroker",
+    "@id": `${siteUrl}#organization`,
     "name": "Stairway Mortgage",
-    "alternateName": "Jim Blackburn Mortgage",
-    "url": "https://stairwaymortgage.com",
-    "logo": "https://stairwaymortgage.com/logo.svg",
-    "description": "Florida's #1 trusted mortgage broker with 300+ lenders. Division of NEXA Mortgage LLC.",
+    "legalName": "NEXA Mortgage LLC dba Stairway Mortgage",
+    "url": siteUrl,
+    "logo": `${siteUrl}/logo.svg`,
+    "image": `${siteUrl}/logo.svg`,
     "telephone": "+1-954-993-1625",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "5559 S Sossaman Rd, Bldg #1 Ste #101",
-      "addressLocality": "Mesa",
-      "addressRegion": "AZ",
-      "postalCode": "85212",
-      "addressCountry": "US"
+    "areaServed": "US",
+    "slogan": "Leverage Wisely. Grow Wealthy.",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "NMLS",
+      "value": "1660690"
     },
     "founder": {
       "@type": "Person",
-      "name": "Jim Blackburn"
+      "name": "Jim Blackburn",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "1072866"
+      }
     },
-    "areaServed": "United States",
-    "slogan": "Leverage wisely. Grow wealthy."
+    "sameAs": []
   })} />
 </head>
 <body>
