@@ -480,6 +480,29 @@ const icons: Record<string, string> = {
                 <span class="journey-num" style="margin-right:.4rem">{step.num}</span>{step.title}
               </a>
             ))
+          ) : m.flyout ? (
+            m.columns.flatMap(c => c.links).map(link => (
+              link.live === false ? (
+                <span class="hdr-drawer__link hdr-drawer__link--soon">{link.title} <span class="mega__soon-badge">SOON</span></span>
+              ) : link.subs ? (
+                <details class="hdr-drawer__cat">
+                  <summary class="hdr-drawer__cat-summary">
+                    {link.title}
+                    <svg class="hdr-drawer__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </summary>
+                  <div class="hdr-drawer__subs">
+                    <a href={link.href} class="hdr-drawer__sub-link" style="font-weight:600;">View {link.title} &rarr;</a>
+                    {link.subs.map(sub => (
+                      sub.live === false
+                        ? <span class="hdr-drawer__sub-link is-soon">{sub.title} · Soon</span>
+                        : <a href={sub.href} class="hdr-drawer__sub-link">{sub.title}</a>
+                    ))}
+                  </div>
+                </details>
+              ) : (
+                <a href={link.href} class="hdr-drawer__link">{link.title}</a>
+              )
+            ))
           ) : (
             m.columns.flatMap(c => c.links).map(link => (
               link.live === false ? (
@@ -889,6 +912,28 @@ const icons: Record<string, string> = {
     font-size: 13.5px;
     color: var(--color-mute);
   }
+
+  /* Mobile accordion for Our Programs (flyout menus) */
+  .hdr-drawer__cat { border-bottom: 1px solid var(--color-bone, #e3e0d6); }
+  .hdr-drawer__cat-summary {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 0.5rem; cursor: pointer; list-style: none;
+    font-size: 15px; font-weight: 600; color: var(--color-ink);
+  }
+  .hdr-drawer__cat-summary::-webkit-details-marker { display: none; }
+  .hdr-drawer__chevron { transition: transform 0.18s; color: var(--color-mute, #6b7770); }
+  .hdr-drawer__cat[open] .hdr-drawer__chevron { transform: rotate(180deg); }
+  .hdr-drawer__subs {
+    padding: 0.2rem 0 0.6rem 0.5rem;
+    display: flex; flex-direction: column; gap: 0.1rem;
+  }
+  .hdr-drawer__subs .hdr-drawer__sub-link {
+    display: block; padding: 0.5rem 0.6rem; font-size: 14px;
+    color: var(--color-ink, #1a2420); text-decoration: none; border-radius: 6px;
+    padding-left: 0.6rem;
+  }
+  .hdr-drawer__subs .hdr-drawer__sub-link:hover { background: var(--color-paper-tint); }
+  .hdr-drawer__subs .is-soon { color: var(--color-mute, #6b7770); pointer-events: none; font-style: italic; }
 
   /* Journey CTA in Your Journey menu */
   .mega__journey-cta {
