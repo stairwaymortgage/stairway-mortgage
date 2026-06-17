@@ -337,43 +337,36 @@ const icons: Record<string, string> = {
               ))}
             </div>
           ) : m.flyout ? (
-          <div class="mega__cols">
-            {m.columns.map((col) => (
-              <div class="mega__col">
-                <h3 class="mega__heading">{col.heading}</h3>
-                <ul class={`mega__list ${col.links.length > 4 ? 'mega__list--flyout' : ''}`}>
-                  {col.links.map((link) => (
-                    <li class="mega__cat">
-                      <a href={link.href} class="mega__link">
-                        <span class="mega__icon" aria-hidden="true">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d={icons[link.icon] || icons.home}/>
-                          </svg>
-                        </span>
-                        <span class="mega__link-text">
-                          <strong>{link.title}</strong>
-                        </span>
-                        {link.subs && <span class="mega__caret" aria-hidden="true">&rsaquo;</span>}
-                      </a>
-                      {link.subs && (
-                        <div class="mega__flyout" role="menu">
-                          <p class="mega__flyout-title">{link.title}</p>
-                          <ul>
-                            {link.subs.map((sub) => (
-                              <li>{sub.live === false
-                                ? <span class="mega__sub-link mega__sub-link--soon">{sub.title} · Soon</span>
-                                : <a href={sub.href} class="mega__sub-link" role="menuitem">{sub.title}</a>
-                              }</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <ul class="mega__list mega__list--flyout mega__cats-2x5">
+            {m.columns.flatMap(col => col.links).map((link) => (
+              <li class="mega__cat">
+                <a href={link.href} class="mega__link">
+                  <span class="mega__icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d={icons[link.icon] || icons.home}/>
+                    </svg>
+                  </span>
+                  <span class="mega__link-text">
+                    <strong>{link.title}</strong>
+                  </span>
+                  {link.subs && <span class="mega__caret" aria-hidden="true">&rsaquo;</span>}
+                </a>
+                {link.subs && (
+                  <div class="mega__flyout" role="menu">
+                    <p class="mega__flyout-title">{link.title}</p>
+                    <ul>
+                      {link.subs.map((sub) => (
+                        <li>{sub.live === false
+                          ? <span class="mega__sub-link mega__sub-link--soon">{sub.title} · Soon</span>
+                          : <a href={sub.href} class="mega__sub-link" role="menuitem">{sub.title}</a>
+                        }</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </li>
             ))}
-          </div>
+          </ul>
           ) : (
           <div class="mega__cols">
             {m.columns.map((col) => (
@@ -850,6 +843,11 @@ const icons: Record<string, string> = {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.15rem 1.25rem;
     list-style: none; margin: 0; padding: 0;
+  }
+  .mega__cats-2x5 {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(2rem, 6vw, 6rem);
   }
   .mega__cat { position: relative; }
   .mega__cat > .mega__link { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.6rem; border-radius: 8px; text-decoration: none; color: var(--color-ink); transition: background 0.15s; }
