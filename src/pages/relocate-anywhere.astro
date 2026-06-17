@@ -357,7 +357,7 @@ function logoCard(brand,state,i){
   const first = LOGO_BASE+slug+'.'+LOGO_EXT[0];
   const onerr = "var x=this,e=JSON.parse(x.dataset.ext),n=++x.dataset.i|0;"
               + "if(n<e.length){x.src='"+LOGO_BASE+slug+".'+e[n];}else{x.parentNode.classList.add('has-text');x.remove();}";
-  const img = '<img class="logo-img" src="'+first+'" alt="'+brand.n+' logo" '
+  const img = '<img class="logo-img" src="'+first+'" alt="'+brand.n+' logo" width="160" height="60" '
             + 'data-ext='+"'"+JSON.stringify(LOGO_EXT)+"'"+' data-i="0" '
             + 'onerror="'+onerr+'">';
   return '<div class="logo-card" style="animation-delay:'+(i*0.03)+'s">'
