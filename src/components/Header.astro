@@ -125,7 +125,7 @@ const menus = [
               { title: 'C-Suite Executive',          href: '/corporate-executives/c-suite-executive/' },
               { title: 'Tech Equity Compensation',   href: '/corporate-executives/pre-ipo-equity-holder/' },
               { title: 'International Executive',    href: '/corporate-executives/relocating-executive/' },
-              { title: 'Finance Executive',          live: false },
+              { title: 'Finance Executive',          href: '/corporate-executives/finance-executive/' },
             ] },
           { icon: 'user',    title: 'Professional Advisors', href: '/professional-advisors/', live: true,
             subs: [
@@ -141,7 +141,7 @@ const menus = [
               { title: 'Builder / Contractor',   href: '/real-estate-professionals/builder-contractor/' },
               { title: 'Real Estate Broker',     href: '/real-estate-professionals/real-estate-broker/' },
               { title: 'Home Inspector',         href: '/real-estate-professionals/home-inspector/' },
-              { title: 'Appraiser',              live: false },
+              { title: 'Appraiser',              href: '/real-estate-professionals/appraiser/' },
             ] },
           { icon: 'file',    title: 'Business Advisors', href: '/business-advisors/', live: true,
             subs: [
@@ -154,7 +154,7 @@ const menus = [
           { icon: 'pen',     title: 'Creative Earners', href: '/creative-earners/', live: true,
             subs: [
               { title: 'Actor / Celebrity',            href: '/creative-earners/commercial-talent/' },
-              { title: 'Professional Athlete',         live: false },
+              { title: 'Professional Athlete',         href: '/creative-earners/professional-athlete/' },
               { title: 'Musician / Recording Artist',  href: '/creative-earners/recording-artist-musician/' },
               { title: 'Content Creator / Influencer', href: '/creative-earners/content-creator-influencer/' },
               { title: 'Author / Screenwriter',        href: '/creative-earners/author-writer/' },
@@ -164,8 +164,8 @@ const menus = [
             subs: [
               { title: 'Medical / Pharmaceutical Sales', href: '/sales-professionals/pharma-medical-device-sales/' },
               { title: 'Software / SaaS Sales',          href: '/sales-professionals/software-saas-sales/' },
-              { title: 'Luxury Goods Broker',            live: false },
-              { title: 'Auto Dealership Owner',          live: false },
+              { title: 'Luxury Goods Broker',            href: '/sales-professionals/luxury-goods-broker/' },
+              { title: 'Auto Dealership Owner',          href: '/sales-professionals/auto-dealership-owner/' },
             ] },
         ],
       },
@@ -259,7 +259,7 @@ const icons: Record<string, string> = {
 
       <!-- Logo -->
       <a href="/" class="hdr-logo" aria-label="Stairway Mortgage — home">
-        <img src="/logo-header.png" alt="Stairway Mortgage" class="hdr-logo__img" />
+        <img src="/logo-header.png" alt="Stairway Mortgage" class="hdr-logo__img" width="198" height="54" />
       </a>
 
       <!-- Desktop mega-menu triggers -->
@@ -443,7 +443,7 @@ const icons: Record<string, string> = {
   <div class="container-page">
     <div class="hdr-sticky__inner">
       <a href="/" class="hdr-logo hdr-logo--sm" aria-label="Home">
-        <img src="/logo-header.png" alt="Stairway Mortgage" class="hdr-logo__img" />
+        <img src="/logo-header.png" alt="Stairway Mortgage" class="hdr-logo__img" width="198" height="54" />
       </a>
       <div class="hdr-sticky__right">
         <a href="tel:+19549931625" class="hdr-phone hdr-phone--sm" aria-label="Call">
