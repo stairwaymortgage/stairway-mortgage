@@ -1,0 +1,9 @@
+---
+// src/pages/jim-blackburn-mortgage.astro
+// Preserves the old WP permalink /jim-blackburn-mortgage/ exactly (slug is sacred).
+// All content lives in the data file; layout in LoProfile.astro.
+// To add another officer: copy this file, swap the import + prop, change the slug.
+import LoProfile from '../components/LoProfile.astro';
+import { jimBlackburn } from '../data/officers/jim-blackburn.ts';
+---
+<LoProfile officer={jimBlackburn} />

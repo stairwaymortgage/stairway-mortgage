@@ -1,0 +1,250 @@
+---
+/**
+ * CityHub.astro — Reusable branch/city hub layout.
+ *
+ * Drives a single branch page from a `branch` data object (see
+ * src/data/branches/*.ts). Add a new city by creating a new data file +
+ * a thin page wrapper at src/pages/branches/{city}.astro — no edits here.
+ *
+ * COMPLIANCE (locked rules, enforced in markup below):
+ *   - Jim individual NMLS #1072866 → body trust signals (appears 3x).
+ *   - NEXA company NMLS #1660690 + branch NMLS → FOOTER ONLY (handled by
+ *     Layout/Footer.astro, NOT printed in this component's body).
+ *   - "48 states" attributed to NEXA, never Jim. (Not used on this page.)
+ *   - CTAs are "Talk to Our Team" / "See My Options" — never "Talk to Jim."
+ *     Jim's name appears only in founder/story copy and in reviews.
+ *   - Defensible stat: $500M+ closed (NOT the old page's $350M).
+ *   - All <img> need onerror fallback to placehold.co.
+ *   - Phone: (954) 993-1625.
+ */
+import Layout from '../layouts/Layout.astro';
+
+const { branch } = Astro.props;
+
+const {
+  city,
+  state,
+  cityState,           // e.g. "Fort Lauderdale, FL"
+  title,               // SEO <title>
+  metaDescription,
+  heroEyebrow,         // e.g. "Fort Lauderdale Branch"
+  heroHeadline,
+  heroLede,
+  intro,               // array of paragraph strings
+  specialties,         // [{ icon, title, body }]
+  neighborhoods,       // optional string[] used in copy / chips
+  testimonials,        // [{ quote, name, meta, photo }]
+  faqs,                // [{ q, a }]
+  founderNmls = '1072866',
+  phone = '(954) 993-1625',
+  phoneHref = 'tel:+19549931625',
+} = branch;
+
+const canonicalPath = `/branches/${city.toLowerCase().replace(/[^a-z0-9]+/g, '-')}/`;
+const placeholder = 'https://placehold.co/200x200/EAE7DE/0A0E1A?text=Client';
+---
+
+<Layout title={title} description={metaDescription} canonical={canonicalPath}>
+  <main class="cityhub-scope">
+
+    <!-- HERO -->
+    <section class="section ch-hero">
+      <div class="container-page">
+        <p class="eyebrow eyebrow-blue">{heroEyebrow}</p>
+        <h1 class="display-xl">{heroHeadline}</h1>
+        <p class="lede">{heroLede}</p>
+        <div class="ch-hero-actions">
+          <a href="/get-a-local-introduction/" class="btn btn-blue">See My Options — Same-Day Pre-Approval</a>
+          <a href={phoneHref} class="btn btn-ghost">{phone}</a>
+        </div>
+        <p class="ch-trust mono">
+          Led by a Scotsman Guide Top Producer · NMLS #{founderNmls} · $500M+ closed
+        </p>
+      </div>
+    </section>
+
+    <!-- INTRO / ABOUT THE BRANCH -->
+    <section class="section section-tinted">
+      <div class="container-prose">
+        <p class="eyebrow">About the {city} Team</p>
+        <div class="prose-editorial">
+          {intro.map((p) => <p>{p}</p>)}
+        </div>
+        <p class="ch-nmls-inline mono">
+          Your loans are originated under founder NMLS #{founderNmls}.
+        </p>
+      </div>
+    </section>
+
+    <!-- SPECIALTIES -->
+    <section class="section">
+      <div class="container-page">
+        <div class="section-header">
+          <p class="eyebrow eyebrow-rust">What This Branch Specializes In</p>
+          <h2 class="display-md">Built for {cityState}'s complex borrowers</h2>
+        </div>
+        <div class="ch-spec-grid">
+          {specialties.map((s) => (
+            <article class="ch-spec-card">
+              <div class="ch-spec-icon" aria-hidden="true">{s.icon}</div>
+              <h3 class="ch-spec-title">{s.title}</h3>
+              <p>{s.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section-tinted">
+      <div class="container-page">
+        <div class="section-header">
+          <p class="eyebrow">Real Comments, Real People</p>
+          <h2 class="display-md">From past clients of our founder</h2>
+        </div>
+        <div class="ch-testim-grid">
+          {testimonials.map((t) => (
+            <article class="testim-card">
+              <img
+                class="ch-testim-photo"
+                src={t.photo}
+                alt={`${t.name} headshot`}
+                loading="lazy"
+                width="64" height="64"
+                onerror={`this.onerror=null;this.src='${placeholder}'`}
+              />
+              <blockquote class="testim-quote">{t.quote}</blockquote>
+              <p class="testim-name">{t.name}</p>
+              <p class="testim-meta">{t.meta}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container-prose">
+        <div class="section-header">
+          <p class="eyebrow eyebrow-blue">Common Questions</p>
+          <h2 class="display-md">{city} mortgage questions, answered</h2>
+        </div>
+        <div class="ch-faq">
+          {faqs.map((f, i) => (
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span class="faq-num">{String(i + 1).padStart(2, '0')}</span>
+                {f.q}
+              </summary>
+              <div class="faq-a"><p set:html={f.a} /></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="section ch-cta">
+      <div class="container-page">
+        <h2 class="display-lg">Ready to talk through your options?</h2>
+        <p class="lede">No pressure, no jargon — a real conversation about what's possible for you in {cityState}.</p>
+        <div class="ch-hero-actions">
+          <a href="/get-a-local-introduction/" class="btn btn-blue">Talk to Our Team</a>
+          <a href={phoneHref} class="btn btn-ghost">{phone}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LocalBusiness structured data (domain-agnostic; resolves at runtime) -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'MortgageBroker',
+      name: `Stairway Mortgage — ${cityState}`,
+      telephone: phone,
+      areaServed: cityState,
+      address: { '@type': 'PostalAddress', addressLocality: city, addressRegion: state, addressCountry: 'US' },
+    })} />
+  </main>
+</Layout>
+
+<style>
+  .cityhub-scope { --ch-gap: clamp(1rem, 2vw, 1.5rem); }
+
+  .cityhub-scope .ch-hero .display-xl {
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    line-height: 1.04;
+    max-width: 16ch;
+  }
+  .cityhub-scope .lede { max-width: 60ch; }
+
+  /* Classes used in markup but not present in global.css — scoped here so the
+     component is self-sufficient and no section renders unstyled. */
+  .cityhub-scope .section-tinted { background: var(--color-paper-tint); }
+  .cityhub-scope .section-header { margin-bottom: 2rem; max-width: 56ch; }
+  .cityhub-scope .section-header h2 { margin-top: 0.5rem; }
+  .cityhub-scope .testim-card {
+    background: var(--color-paper); border: 1px solid var(--color-bone);
+    border-radius: 4px; padding: 1.5rem; display: flex; flex-direction: column;
+  }
+  .cityhub-scope .testim-quote {
+    font-family: var(--stw-display); font-size: 1.05rem; line-height: 1.5;
+    margin: 0 0 1rem; color: var(--color-ink);
+  }
+  .cityhub-scope .testim-name { font-weight: 600; margin: 0; }
+  .cityhub-scope .testim-meta {
+    font-family: var(--stw-mono); font-size: 0.75rem; color: var(--color-mute);
+    margin: 0.25rem 0 0; letter-spacing: 0.02em;
+  }
+
+  .ch-hero { padding-block: clamp(3rem, 7vw, 6rem); }
+  .ch-hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+  .ch-trust { margin-top: 1.25rem; color: var(--color-mute); font-size: 0.85rem; letter-spacing: 0.02em; }
+  .ch-nmls-inline { margin-top: 1.5rem; color: var(--color-mute); font-size: 0.8rem; }
+
+  .ch-spec-grid {
+    display: grid; gap: var(--ch-gap);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    margin-top: 2rem;
+  }
+  .ch-spec-card {
+    background: var(--color-paper); border: 1px solid var(--color-bone);
+    border-radius: 4px; padding: 1.5rem; position: relative; overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .ch-spec-card::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+    background: var(--color-blue); transform: scaleY(0); transform-origin: bottom;
+    transition: transform 0.25s ease;
+  }
+  .ch-spec-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px #0A0E1A12; }
+  .ch-spec-card:hover::after { transform: scaleY(1); }
+  .ch-spec-icon {
+    width: 56px; height: 56px; background: var(--color-paper-tint);
+    border-radius: 4px; display: flex; align-items: center; justify-content: center;
+    font-size: 30px; margin-bottom: 0.9rem;
+  }
+  .ch-spec-title { font-family: var(--stw-display); font-size: 1.15rem; margin-bottom: 0.5rem; }
+
+  .ch-testim-grid {
+    display: grid; gap: var(--ch-gap);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: 2rem;
+  }
+  .ch-testim-photo {
+    width: 64px; height: 64px; border-radius: 50%;
+    object-fit: cover; object-position: 50% 25%; margin-bottom: 1rem;
+  }
+
+  .ch-faq { margin-top: 1.5rem; }
+  .ch-faq .faq-item { border-bottom: 1px solid var(--color-bone); padding: 1rem 0; }
+  .ch-faq .faq-q {
+    cursor: pointer; display: flex; gap: 0.75rem; align-items: baseline;
+    font-family: var(--stw-display); font-size: 1.05rem; list-style: none;
+  }
+  .ch-faq .faq-q::-webkit-details-marker { display: none; }
+  .ch-faq .faq-num { font-family: var(--stw-mono); color: var(--color-blue); font-size: 0.8rem; }
+  .ch-faq .faq-a { padding-top: 0.75rem; color: var(--color-mute); }
+
+  .ch-cta { text-align: center; padding-block: clamp(3rem, 6vw, 5rem); }
+  .ch-cta .ch-hero-actions { justify-content: center; }
+</style>

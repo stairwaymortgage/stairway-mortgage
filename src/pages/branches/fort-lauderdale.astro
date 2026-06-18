@@ -1,0 +1,8 @@
+---
+// src/pages/branches/fort-lauderdale.astro
+// Thin wrapper — all content lives in the data file; layout in CityHub.astro.
+// To add another city: copy this file, swap the import + prop.
+import CityHub from '../../components/CityHub.astro';
+import { fortLauderdale } from '../../data/branches/fort-lauderdale.ts';
+---
+<CityHub branch={fortLauderdale} />

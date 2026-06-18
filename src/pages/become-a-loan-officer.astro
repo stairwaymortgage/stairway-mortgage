@@ -1,0 +1,228 @@
+---
+/**
+ * become-a-loan-officer.astro — LO self-registration + personal-link generator.
+ *
+ * FLOW:
+ *   LO fills name / email / phone / NMLS → clicks "Generate My Link" →
+ *   a collision-proof random loid is created in-browser → personal share link
+ *   is shown with a Copy button. That link feeds the existing attribution system
+ *   (LoAttribution.astro): stairwaymortgage.com/?loid=<id>
+ *
+ * ⚠️ CURRENT STATE — FRONT-END ONLY (no GHL yet):
+ *   - Nothing is saved anywhere. The form does NOT submit to GHL/CRM.
+ *   - The generated loid is NOT yet added to LO_MAP (so the officer's NAME won't
+ *     auto-appear in attribution until LO_MAP is updated — see TODO below).
+ *   - When the GHL form ID is provided, replace the in-browser generator with a
+ *     real GHL form submit + workflow that (a) stores the LO, (b) assigns/returns
+ *     the loid, (c) updates LO_MAP. Marked with GHL-TODO below.
+ *
+ * ID SCHEME: collision-proof random (NOT NMLS). Format: 8 digits, timestamp-seeded
+ *   so two officers registering are practically guaranteed unique without a backend.
+ *   NMLS is collected for display/records only; it is NOT the loid.
+ *
+ * COMPLIANCE: recruitment page, not client-facing sales. NEXA NMLS #1660690 stays
+ *   in the footer only (Footer.astro). No rate/approval promises. "48 states"
+ *   (if used) attributed to NEXA, not Jim. No "Talk to Jim" CTA.
+ *
+ * DOMAIN-AGNOSTIC: the share link is built from location.origin at runtime, so it
+ *   self-corrects across the .vercel.app → stairwaymortgage.com cutover.
+ */
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Become a Loan Officer | Stairway Mortgage"
+  description="Join the Stairway Mortgage team. Register to get your personal referral link and start sending clients today."
+  canonical="/become-a-loan-officer/"
+>
+  <main class="loreg-scope">
+    <section class="section">
+      <div class="container-prose">
+        <p class="eyebrow eyebrow-blue">Join the Team</p>
+        <h1 class="display-xl">Become a Stairway loan officer</h1>
+        <p class="lede">
+          Register below to generate your personal referral link. Share it with
+          clients and partners — every lead from your link is automatically
+          credited to you.
+        </p>
+
+        <!-- ===== REGISTRATION FORM (front-end only for now) ===== -->
+        <!-- GHL-TODO: replace this block with the GHL form embed once the form ID
+             is available. The GHL workflow should store the LO and assign the loid. -->
+        <div class="loreg-card" id="loreg-form">
+          <div class="loreg-field">
+            <label for="lo-name">Full name</label>
+            <input id="lo-name" type="text" autocomplete="name" required />
+          </div>
+          <div class="loreg-field">
+            <label for="lo-email">Email</label>
+            <input id="lo-email" type="email" autocomplete="email" required />
+          </div>
+          <div class="loreg-field">
+            <label for="lo-phone">Phone</label>
+            <input id="lo-phone" type="tel" autocomplete="tel" />
+          </div>
+          <div class="loreg-field">
+            <label for="lo-nmls">NMLS # <span class="loreg-hint">(for our records)</span></label>
+            <input id="lo-nmls" type="text" inputmode="numeric" />
+          </div>
+
+          <!-- honeypot: bots fill this, humans don't (autofill-blocking attrs) -->
+          <div class="loreg-hp" aria-hidden="true">
+            <label>Company website
+              <input id="lo-hp" type="text" tabindex="-1" autocomplete="off"
+                     name="company_website_hp" />
+            </label>
+          </div>
+
+          <button type="button" id="loreg-generate" class="btn btn-blue">Generate My Link</button>
+          <p class="loreg-error" id="loreg-error" hidden></p>
+        </div>
+
+        <!-- ===== RESULT (hidden until generated) ===== -->
+        <div class="loreg-result" id="loreg-result" hidden>
+          <p class="eyebrow eyebrow-rust">Your personal link is ready</p>
+          <h2 class="display-md" id="loreg-greeting">You're all set.</h2>
+          <p>Share this link anywhere — email, social, your business card QR code:</p>
+          <div class="loreg-linkrow">
+            <input id="loreg-link" type="text" readonly />
+            <button type="button" id="loreg-copy" class="btn btn-ghost">Copy</button>
+          </div>
+          <p class="loreg-meta mono" id="loreg-idnote"></p>
+          <p class="loreg-note">
+            Save this link now. (Right now this page generates your link only —
+            your details are not yet stored on our end. Once registration is live,
+            we'll confirm your account by email.)
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script is:inline>
+(function () {
+  var btn   = document.getElementById('loreg-generate');
+  if (!btn) return;
+  var form  = document.getElementById('loreg-form');
+  var result = document.getElementById('loreg-result');
+  var errEl = document.getElementById('loreg-error');
+
+  function showError(msg) {
+    errEl.textContent = msg; errEl.hidden = false;
+  }
+  function clearError() { errEl.hidden = true; }
+
+  // Collision-proof random loid: timestamp tail + random, clamped to 8 digits.
+  // No backend needed; practically unique per registration.
+  function makeLoid() {
+    var t = Date.now().toString();              // ms timestamp
+    var tail = t.slice(-5);                     // last 5 digits of time
+    var rnd = Math.floor(100 + Math.random() * 900).toString(); // 3 random digits
+    return tail + rnd;                          // 8-digit string
+  }
+
+  btn.addEventListener('click', function () {
+    clearError();
+
+    // honeypot: if filled, silently stop (bot)
+    var hp = document.getElementById('lo-hp');
+    if (hp && hp.value) return;
+
+    var name  = (document.getElementById('lo-name').value || '').trim();
+    var email = (document.getElementById('lo-email').value || '').trim();
+
+    if (!name)  { showError('Please enter your full name.'); return; }
+    if (!email || email.indexOf('@') === -1) { showError('Please enter a valid email.'); return; }
+
+    var loid = makeLoid();
+    var link = location.origin + '/?loid=' + encodeURIComponent(loid);
+
+    // populate result
+    document.getElementById('loreg-link').value = link;
+    document.getElementById('loreg-greeting').textContent =
+      'You\u2019re all set, ' + name.split(' ')[0] + '.';
+    document.getElementById('loreg-idnote').textContent = 'Your LO ID: ' + loid;
+
+    // GHL-TODO: here is where a GHL form submit / webhook POST would go, e.g.
+    //   fetch('<ghl webhook url>', { method:'POST', body: JSON.stringify({
+    //     name: name, email: email, phone: ..., nmls: ..., loid: loid,
+    //     form_source: 'lo_registration'
+    //   })});
+    // and the workflow would add { loid: { name, slug } } to LO_MAP.
+
+    form.hidden = true;
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Copy button
+  var copyBtn = document.getElementById('loreg-copy');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var input = document.getElementById('loreg-link');
+      input.select();
+      try {
+        navigator.clipboard.writeText(input.value).then(function () {
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800);
+        });
+      } catch (e) {
+        document.execCommand('copy'); // fallback
+        copyBtn.textContent = 'Copied!';
+        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800);
+      }
+    });
+  }
+
+  // Enter-key submit guard: Enter in a field triggers generate, not page reload
+  form.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); btn.click(); }
+  });
+})();
+</script>
+
+<style>
+  /* Tame the display-xl hero so descenders don't overlap the next line. */
+  .loreg-scope .display-xl {
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    line-height: 1.04;
+    max-width: 18ch;
+  }
+  .loreg-scope .lede { max-width: 60ch; }
+
+  .loreg-scope .loreg-card {
+    background: var(--color-paper); border: 1px solid var(--color-bone);
+    border-radius: 4px; padding: 1.75rem; margin-top: 2rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .loreg-scope .loreg-field { display: flex; flex-direction: column; gap: 0.35rem; }
+  .loreg-scope label { font-family: var(--stw-mono); font-size: 0.78rem; letter-spacing: 0.03em; color: var(--color-ink); }
+  .loreg-scope .loreg-hint { color: var(--color-mute); text-transform: none; letter-spacing: 0; }
+  .loreg-scope input[type="text"],
+  .loreg-scope input[type="email"],
+  .loreg-scope input[type="tel"] {
+    border: 1px solid var(--color-bone); border-radius: 4px;
+    padding: 0.7rem 0.85rem; font: inherit; background: var(--color-paper);
+  }
+  .loreg-scope input:focus { outline: 2px solid var(--color-blue); outline-offset: 1px; }
+
+  /* honeypot — visually hidden, off-screen, not display:none (so bots still fill) */
+  .loreg-scope .loreg-hp {
+    position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;
+  }
+
+  .loreg-scope .loreg-error { color: var(--color-rust); font-size: 0.9rem; margin: 0; }
+
+  .loreg-scope .loreg-result {
+    margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--color-bone);
+  }
+  .loreg-scope .loreg-linkrow { display: flex; gap: 0.5rem; margin: 1rem 0; }
+  .loreg-scope .loreg-linkrow input {
+    flex: 1; border: 1px solid var(--color-bone); border-radius: 4px;
+    padding: 0.7rem 0.85rem; font-family: var(--stw-mono); font-size: 0.85rem;
+    background: var(--color-paper-tint);
+  }
+  .loreg-scope .loreg-meta { color: var(--color-mute); font-size: 0.8rem; margin-top: 0.5rem; }
+  .loreg-scope .loreg-note { color: var(--color-mute); font-size: 0.82rem; margin-top: 1.25rem; }
+</style>

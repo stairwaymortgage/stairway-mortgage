@@ -1,0 +1,327 @@
+---
+/**
+ * LoProfile.astro — Reusable loan-officer profile page layout.
+ *
+ * Drives a single LO profile from an `officer` data object
+ * (see src/data/officers/*.ts). Add a new officer = new data file + a thin
+ * page wrapper; no edits here.
+ *
+ * Rebuilt from old WP page `jim-blackburn-mortgage`. This is FOUNDER / STORY
+ * copy, so the officer's own name IS allowed throughout (locked rule:
+ * "Jim's name only in reviews and founder/story copy" — a profile page is
+ * exactly that).
+ *
+ * COMPLIANCE (locked):
+ *   - Founder/officer individual NMLS → body trust signals (here, in stats +
+ *     FAQ + hero). NEXA company NMLS #1660690 → FOOTER ONLY (Footer.astro);
+ *     not printed in body. Old page printed $350M — corrected to officer.stat
+ *     ($500M+ for Jim). "48 states" (if used) attributed to NEXA, not the LO.
+ *   - Page-level CTAs use team language ("See My Options" / "Talk to Our Team");
+ *     the officer's NAME is fine in this founder context.
+ *   - Testimonial <img> need onerror fallback to placehold.co; circular avatars.
+ *
+ * DOMAIN-AGNOSTIC: relative links only; structured data uses no hardcoded origin.
+ */
+import Layout from '../layouts/Layout.astro';
+
+const { officer } = Astro.props;
+const {
+  name,
+  nmls,
+  title,                 // SEO <title>
+  metaDescription,
+  canonical,             // e.g. "/jim-blackburn-mortgage/"
+  slug,                  // e.g. "jim-blackburn"
+  role,                  // e.g. "Founder & Originating Branch Manager"
+  heroEyebrow,
+  heroHeadline,
+  heroLede,
+  phone = '(954) 993-1625',
+  phoneHref = 'tel:+19549931625',
+  stats,                 // [{ value, label }]
+  bio,                   // array of paragraph strings
+  specialties,           // [{ icon, title, body, bullets? }]
+  localExpertise,        // { heading, intro, bullets: [{label, body}] }
+  process,               // [{ step, title, body }]
+  credentials,           // [{ title, body }]
+  testimonials,          // [{ quote, name, meta, photo }]
+  faqs,                  // [{ q, a }]
+} = officer;
+
+const placeholder = 'https://placehold.co/200x200/EAE7DE/0A0E1A?text=Client';
+---
+
+<Layout title={title} description={metaDescription} canonical={canonical}>
+  <main class="loprofile-scope">
+
+    <!-- HERO -->
+    <section class="section lp-hero">
+      <div class="container-page">
+        <p class="eyebrow eyebrow-blue">{heroEyebrow}</p>
+        <h1 class="display-xl">{heroHeadline}</h1>
+        <p class="lede">{heroLede}</p>
+        <div class="lp-actions">
+          <a href="/get-a-local-introduction/" class="btn btn-blue">See My Options — Same-Day Pre-Approval</a>
+          <a href={phoneHref} class="btn btn-ghost">{phone}</a>
+        </div>
+        {stats && (
+          <div class="lp-stats">
+            {stats.map((s) => (
+              <div class="lp-stat">
+                <div class="lp-stat-num">{s.value}</div>
+                <div class="lp-stat-label mono">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- BIO / STORY -->
+    <section class="section section-tinted">
+      <div class="container-prose">
+        <p class="eyebrow">The Story</p>
+        <div class="prose-editorial">
+          {bio.map((p) => <p>{p}</p>)}
+        </div>
+        <p class="lp-nmls mono">NMLS #{nmls} · verify at nmlsconsumeraccess.org</p>
+      </div>
+    </section>
+
+    <!-- SPECIALTIES -->
+    <section class="section">
+      <div class="container-page">
+        <div class="section-header">
+          <p class="eyebrow eyebrow-rust">Areas of Focus</p>
+          <h2 class="display-md">What {name.split(' ')[0]} specializes in</h2>
+        </div>
+        <div class="lp-spec-grid">
+          {specialties.map((s) => (
+            <article class="lp-spec-card">
+              <div class="lp-spec-icon" aria-hidden="true">{s.icon}</div>
+              <h3 class="lp-spec-title">{s.title}</h3>
+              <p>{s.body}</p>
+              {s.bullets && (
+                <ul class="lp-spec-bullets">
+                  {s.bullets.map((b) => <li>{b}</li>)}
+                </ul>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCAL EXPERTISE -->
+    {localExpertise && (
+      <section class="section section-tinted">
+        <div class="container-prose">
+          <div class="section-header">
+            <p class="eyebrow eyebrow-blue">Local Knowledge</p>
+            <h2 class="display-md">{localExpertise.heading}</h2>
+          </div>
+          <p class="lede">{localExpertise.intro}</p>
+          <ul class="lp-expertise">
+            {localExpertise.bullets.map((b) => (
+              <li><strong>{b.label}:</strong> {b.body}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    <!-- PROCESS -->
+    <section class="section">
+      <div class="container-page">
+        <div class="section-header">
+          <p class="eyebrow eyebrow-rust">The Process</p>
+          <h2 class="display-md">What to expect</h2>
+        </div>
+        <div class="lp-process">
+          {process.map((p) => (
+            <article class="lp-step">
+              <div class="lp-step-num mono">{p.step}</div>
+              <div>
+                <h3 class="lp-step-title">{p.title}</h3>
+                <p>{p.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    {credentials && (
+      <section class="section section-tinted">
+        <div class="container-page">
+          <div class="section-header">
+            <p class="eyebrow">Background & Credentials</p>
+          </div>
+          <div class="lp-cred-grid">
+            {credentials.map((c) => (
+              <article class="lp-cred">
+                <h3 class="lp-cred-title">{c.title}</h3>
+                <p>{c.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- TESTIMONIALS -->
+    <section class="section">
+      <div class="container-page">
+        <div class="section-header">
+          <p class="eyebrow">Real Comments, Real People</p>
+          <h2 class="display-md">From past clients</h2>
+        </div>
+        <div class="lp-testim-grid">
+          {testimonials.map((t) => (
+            <article class="testim-card">
+              <img
+                class="lp-testim-photo"
+                src={t.photo}
+                alt={`${t.name} headshot`}
+                loading="lazy"
+                width="64" height="64"
+                onerror={`this.onerror=null;this.src='${placeholder}'`}
+              />
+              <blockquote class="testim-quote">{t.quote}</blockquote>
+              <p class="testim-name">{t.name}</p>
+              <p class="testim-meta">{t.meta}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-tinted">
+      <div class="container-prose">
+        <div class="section-header">
+          <p class="eyebrow eyebrow-blue">Common Questions</p>
+          <h2 class="display-md">Frequently asked questions</h2>
+        </div>
+        <div class="lp-faq">
+          {faqs.map((f, i) => (
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span class="faq-num">{String(i + 1).padStart(2, '0')}</span>
+                {f.q}
+              </summary>
+              <div class="faq-a"><p set:html={f.a} /></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="section lp-cta">
+      <div class="container-page">
+        <h2 class="display-lg">Ready to talk through your options?</h2>
+        <p class="lede">A real conversation about what's possible — no pressure, no jargon.</p>
+        <div class="lp-actions">
+          <a href="/get-a-local-introduction/" class="btn btn-blue">Talk to Our Team</a>
+          <a href={phoneHref} class="btn btn-ghost">{phone}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Person structured data (domain-agnostic) -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: name,
+      jobTitle: role,
+      identifier: { '@type': 'PropertyValue', propertyID: 'NMLS', value: nmls },
+      worksFor: { '@type': 'Organization', name: 'Stairway Mortgage' },
+      telephone: phone,
+    })} />
+  </main>
+</Layout>
+
+<style>
+  .loprofile-scope { --lp-gap: clamp(1rem, 2vw, 1.5rem); }
+
+  .loprofile-scope .lp-hero .display-xl {
+    font-size: clamp(2.75rem, 6vw, 5rem); line-height: 1.04; max-width: 18ch;
+  }
+  .loprofile-scope .lede { max-width: 62ch; }
+  .loprofile-scope .lp-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+
+  .loprofile-scope .lp-stats {
+    display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 2.5rem;
+    padding-top: 2rem; border-top: 1px solid var(--color-bone);
+  }
+  .loprofile-scope .lp-stat-num { font-family: var(--stw-display); font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1; }
+  .loprofile-scope .lp-stat-label { color: var(--color-mute); font-size: 0.72rem; letter-spacing: 0.04em; margin-top: 0.4rem; }
+
+  .loprofile-scope .lp-nmls { margin-top: 1.5rem; color: var(--color-mute); font-size: 0.8rem; }
+
+  /* section styled classes (not in global.css) */
+  .loprofile-scope .section-tinted { background: var(--color-paper-tint); }
+  .loprofile-scope .section-header { margin-bottom: 2rem; max-width: 56ch; }
+  .loprofile-scope .section-header h2 { margin-top: 0.5rem; }
+  .loprofile-scope .prose-editorial p { margin-bottom: 1rem; }
+
+  .loprofile-scope .lp-spec-grid,
+  .loprofile-scope .lp-cred-grid {
+    display: grid; gap: var(--lp-gap);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 2rem;
+  }
+  .loprofile-scope .lp-spec-card, .loprofile-scope .lp-cred {
+    background: var(--color-paper); border: 1px solid var(--color-bone);
+    border-radius: 4px; padding: 1.5rem;
+  }
+  .loprofile-scope .lp-spec-icon {
+    width: 56px; height: 56px; background: var(--color-paper-tint); border-radius: 4px;
+    display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 0.9rem;
+  }
+  .loprofile-scope .lp-spec-title, .loprofile-scope .lp-cred-title {
+    font-family: var(--stw-display); font-size: 1.15rem; margin-bottom: 0.5rem;
+  }
+  .loprofile-scope .lp-spec-bullets { margin: 0.75rem 0 0 1.1rem; color: var(--color-mute); }
+  .loprofile-scope .lp-spec-bullets li { margin-bottom: 0.3rem; }
+
+  .loprofile-scope .lp-expertise { margin: 1.5rem 0 0 1.1rem; }
+  .loprofile-scope .lp-expertise li { margin-bottom: 0.75rem; }
+
+  .loprofile-scope .lp-process { display: grid; gap: 1.25rem; margin-top: 2rem; }
+  .loprofile-scope .lp-step { display: flex; gap: 1rem; align-items: baseline; }
+  .loprofile-scope .lp-step-num {
+    color: var(--color-blue); font-size: 1.1rem; flex-shrink: 0; min-width: 2.5rem;
+  }
+  .loprofile-scope .lp-step-title { font-family: var(--stw-display); font-size: 1.1rem; margin-bottom: 0.3rem; }
+
+  .loprofile-scope .lp-testim-grid {
+    display: grid; gap: var(--lp-gap);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 2rem;
+  }
+  .loprofile-scope .testim-card {
+    background: var(--color-paper); border: 1px solid var(--color-bone);
+    border-radius: 4px; padding: 1.5rem; display: flex; flex-direction: column;
+  }
+  .loprofile-scope .lp-testim-photo {
+    width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
+    object-position: 50% 25%; margin-bottom: 1rem;
+  }
+  .loprofile-scope .testim-quote { font-family: var(--stw-display); font-size: 1.02rem; line-height: 1.5; margin: 0 0 1rem; }
+  .loprofile-scope .testim-name { font-weight: 600; margin: 0; }
+  .loprofile-scope .testim-meta { font-family: var(--stw-mono); font-size: 0.72rem; color: var(--color-mute); margin: 0.25rem 0 0; letter-spacing: 0.02em; }
+
+  .loprofile-scope .lp-faq { margin-top: 1.5rem; }
+  .loprofile-scope .lp-faq .faq-item { border-bottom: 1px solid var(--color-bone); padding: 1rem 0; }
+  .loprofile-scope .lp-faq .faq-q {
+    cursor: pointer; display: flex; gap: 0.75rem; align-items: baseline;
+    font-family: var(--stw-display); font-size: 1.05rem; list-style: none;
+  }
+  .loprofile-scope .lp-faq .faq-q::-webkit-details-marker { display: none; }
+  .loprofile-scope .lp-faq .faq-num { font-family: var(--stw-mono); color: var(--color-blue); font-size: 0.8rem; }
+  .loprofile-scope .lp-faq .faq-a { padding-top: 0.75rem; color: var(--color-mute); }
+
+  .loprofile-scope .lp-cta { text-align: center; padding-block: clamp(3rem, 6vw, 5rem); }
+  .loprofile-scope .lp-cta .lp-actions { justify-content: center; }
+</style>
