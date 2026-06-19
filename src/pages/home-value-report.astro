@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { GHL_WEBHOOK_URL } from '../lib/ghl';
 ---
 <Layout title="Home Value Report — Stairway Mortgage" description="See what your home is worth today. Free equity report from our team — no obligation.">
 
@@ -21,10 +22,16 @@ import Layout from '../layouts/Layout.astro';
           <div class="card p-8 lg:p-10" id="hvr-wrap">
             <h2 class="font-display text-xl mb-1">Request your free report</h2>
             <p class="text-[14px] text-[var(--color-mute)] mb-6">Our team will prepare a personalized equity analysis.</p>
-            <div class="space-y-4" id="hvr-form">
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" id="hvr-name" placeholder="First" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" id="hvr-email" placeholder="you@email.com" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+            <div class="space-y-4" id="hvr-form" data-ghl-endpoint={GHL_WEBHOOK_URL}>
+              <div class="grid grid-cols-2 gap-3">
+                <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" id="hvr-first" placeholder="First" autocomplete="given-name" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+                <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Last name</label><input type="text" id="hvr-last" placeholder="Last" autocomplete="family-name" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              </div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" id="hvr-email" placeholder="you@email.com" autocomplete="email" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Phone</label><input type="tel" id="hvr-phone" placeholder="(555) 555-5555" autocomplete="tel" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
               <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Property address</label><input type="text" id="hvr-address" placeholder="123 Main St, City, State" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <input type="text" name="_gotcha" id="hvr-gotcha" style="position:absolute;left:-9999px;opacity:0;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <p class="text-[13px] text-red-600 hidden" id="hvr-error"></p>
               <button class="btn btn-blue w-full text-center text-base py-3.5" type="button" id="hvr-submit">Get My Report</button>
               <p class="text-[11px] text-[var(--color-mute)] text-center">Free, no obligation. We do not sell your information.</p>
             </div>
@@ -33,7 +40,6 @@ import Layout from '../layouts/Layout.astro';
               <p class="font-display text-xl mb-2">Request received.</p>
               <p class="text-[14px] text-[var(--color-mute)]">Our team will prepare your equity report and reach out within 24 hours.</p>
             </div>
-            <!-- TODO: Wire to /api/lead -->
           </div>
         </div>
       </div>
@@ -45,5 +51,45 @@ import Layout from '../layouts/Layout.astro';
 <style>.hvr-hero{position:relative;}.hvr-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}</style>
 
 <script is:inline>
-(function(){var b=document.getElementById('hvr-submit');if(!b)return;b.addEventListener('click',function(){var n=document.getElementById('hvr-name').value.trim(),e=document.getElementById('hvr-email').value.trim();if(!n||!e){alert('Please enter your name and email.');return;}document.getElementById('hvr-form').style.display='none';document.getElementById('hvr-success').style.display='block';});})();
+(function(){
+  var wrap=document.getElementById('hvr-form');
+  if(!wrap)return;
+  var ENDPOINT=wrap.getAttribute('data-ghl-endpoint')||'';
+  var btn=document.getElementById('hvr-submit');
+  var errEl=document.getElementById('hvr-error');
+  var sending=false;
+
+  function showErr(m){errEl.textContent=m;errEl.classList.remove('hidden');}
+
+  btn.addEventListener('click',function(){
+    if(sending)return;
+    var gotcha=document.getElementById('hvr-gotcha');
+    if(gotcha&&gotcha.value.trim()!==''){document.getElementById('hvr-form').style.display='none';document.getElementById('hvr-success').style.display='block';return;}
+
+    var first=document.getElementById('hvr-first').value.trim();
+    var last=document.getElementById('hvr-last').value.trim();
+    var email=document.getElementById('hvr-email').value.trim();
+    var phone=document.getElementById('hvr-phone').value.trim();
+    var address=document.getElementById('hvr-address').value.trim();
+
+    if(!first||!last)return showErr('Please enter your first and last name.');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return showErr('Please enter a valid email.');
+    if(phone.replace(/\D/g,'').length<10)return showErr('Please enter a valid phone number.');
+    errEl.classList.add('hidden');
+
+    var payload={
+      first_name:first, last_name:last, full_name:(first+' '+last).trim(),
+      email:email, phone:phone,
+      form_source:'home_value_report', form_name:'Home Value Report',
+      page_url:window.location.href, submitted_at:new Date().toISOString(),
+      notes:'Property address: '+address
+    };
+
+    sending=true; btn.disabled=true; btn.textContent='Sending\u2026';
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(){document.getElementById('hvr-form').style.display='none';document.getElementById('hvr-success').style.display='block';})
+      .catch(function(){showErr('Something went wrong. Please try again or call us.');})
+      .then(function(){sending=false;btn.disabled=false;btn.textContent='Get My Report';});
+  });
+})();
 </script>

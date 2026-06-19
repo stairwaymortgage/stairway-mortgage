@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { GHL_WEBHOOK_URL } from '../lib/ghl';
 ---
 <Layout title="Contact Us — Stairway Mortgage" description="Talk to our team. Schedule a call or reach us at (954) 993-1625. Available 7 days a week.">
 
@@ -47,14 +48,16 @@ import Layout from '../layouts/Layout.astro';
           <div class="card p-8 lg:p-10" id="cu-wrap">
             <h2 class="font-display text-xl mb-1">Send us a message</h2>
             <p class="text-[14px] text-[var(--color-mute)] mb-6">We will get back to you within 24 hours.</p>
-            <div class="space-y-4" id="cu-form">
+            <div class="space-y-4" id="cu-form" data-ghl-endpoint={GHL_WEBHOOK_URL}>
               <div class="grid grid-cols-2 gap-3">
-                <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" id="cu-fname" placeholder="First" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-                <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Last name</label><input type="text" id="cu-lname" placeholder="Last" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+                <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" id="cu-fname" placeholder="First" autocomplete="given-name" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+                <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Last name</label><input type="text" id="cu-lname" placeholder="Last" autocomplete="family-name" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
               </div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" id="cu-email" placeholder="you@email.com" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Phone (optional)</label><input type="tel" placeholder="(555) 000-0000" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">How can we help?</label><textarea placeholder="Tell us about your situation..." class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base h-24"></textarea></div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" id="cu-email" placeholder="you@email.com" autocomplete="email" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Phone</label><input type="tel" id="cu-phone" placeholder="(555) 000-0000" autocomplete="tel" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
+              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">How can we help?</label><textarea id="cu-message" placeholder="Tell us about your situation..." class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base h-24"></textarea></div>
+              <input type="text" name="_gotcha" id="cu-gotcha" style="position:absolute;left:-9999px;opacity:0;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <p class="text-[13px] text-red-600 hidden" id="cu-error"></p>
               <button class="btn btn-blue w-full text-center text-base py-3.5" type="button" id="cu-submit">Send Message</button>
               <p class="text-[11px] text-[var(--color-mute)] text-center">No obligation. Not a commitment to lend.</p>
             </div>
@@ -63,7 +66,6 @@ import Layout from '../layouts/Layout.astro';
               <p class="font-display text-xl mb-2">Message sent.</p>
               <p class="text-[14px] text-[var(--color-mute)]">Our team will respond within 24 hours.</p>
             </div>
-            <!-- TODO: Wire to /api/lead → HubSpot/Supabase -->
           </div>
         </div>
       </div>
@@ -78,13 +80,43 @@ import Layout from '../layouts/Layout.astro';
 
 <script is:inline>
 (function(){
-  var btn=document.getElementById('cu-submit');if(!btn)return;
+  var wrap=document.getElementById('cu-form');
+  if(!wrap)return;
+  var ENDPOINT=wrap.getAttribute('data-ghl-endpoint')||'';
+  var btn=document.getElementById('cu-submit');
+  var errEl=document.getElementById('cu-error');
+  var sending=false;
+
+  function showErr(m){errEl.textContent=m;errEl.classList.remove('hidden');}
+
   btn.addEventListener('click',function(){
-    var n=document.getElementById('cu-fname').value.trim();
-    var e=document.getElementById('cu-email').value.trim();
-    if(!n||!e){alert('Please enter your name and email.');return;}
-    document.getElementById('cu-form').style.display='none';
-    document.getElementById('cu-success').style.display='block';
+    if(sending)return;
+    var gotcha=document.getElementById('cu-gotcha');
+    if(gotcha&&gotcha.value.trim()!==''){document.getElementById('cu-form').style.display='none';document.getElementById('cu-success').style.display='block';return;}
+
+    var first=document.getElementById('cu-fname').value.trim();
+    var last=document.getElementById('cu-lname').value.trim();
+    var email=document.getElementById('cu-email').value.trim();
+    var phone=document.getElementById('cu-phone').value.trim();
+    var message=(document.getElementById('cu-message').value||'').trim();
+
+    if(!first||!last)return showErr('Please enter your first and last name.');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return showErr('Please enter a valid email.');
+    errEl.classList.add('hidden');
+
+    var payload={
+      first_name:first, last_name:last, full_name:(first+' '+last).trim(),
+      email:email, phone:phone,
+      form_source:'contact_us', form_name:'Contact Us',
+      page_url:window.location.href, submitted_at:new Date().toISOString(),
+      notes:message
+    };
+
+    sending=true; btn.disabled=true; btn.textContent='Sending\u2026';
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(){document.getElementById('cu-form').style.display='none';document.getElementById('cu-success').style.display='block';})
+      .catch(function(){showErr('Something went wrong. Please try again or call us.');})
+      .then(function(){sending=false;btn.disabled=false;btn.textContent='Send Message';});
   });
 })();
 </script>

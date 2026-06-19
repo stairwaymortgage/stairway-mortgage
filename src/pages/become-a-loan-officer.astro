@@ -8,13 +8,10 @@
  *   is shown with a Copy button. That link feeds the existing attribution system
  *   (LoAttribution.astro): stairwaymortgage.com/?loid=<id>
  *
- * ⚠️ CURRENT STATE — FRONT-END ONLY (no GHL yet):
- *   - Nothing is saved anywhere. The form does NOT submit to GHL/CRM.
- *   - The generated loid is NOT yet added to LO_MAP (so the officer's NAME won't
- *     auto-appear in attribution until LO_MAP is updated — see TODO below).
- *   - When the GHL form ID is provided, replace the in-browser generator with a
- *     real GHL form submit + workflow that (a) stores the LO, (b) assigns/returns
- *     the loid, (c) updates LO_MAP. Marked with GHL-TODO below.
+ * CURRENT STATE:
+ *   - Form submits to GHL webhook (fire-and-forget, parallel with link generation).
+ *   - The generated loid is NOT yet added to LO_MAP automatically (the officer's
+ *     NAME won't auto-appear in attribution until LO_MAP is updated manually).
  *
  * ID SCHEME: collision-proof random (NOT NMLS). Format: 8 digits, timestamp-seeded
  *   so two officers registering are practically guaranteed unique without a backend.
@@ -28,6 +25,7 @@
  *   self-corrects across the .vercel.app → stairwaymortgage.com cutover.
  */
 import Layout from '../layouts/Layout.astro';
+import { GHL_WEBHOOK_URL } from '../lib/ghl';
 ---
 
 <Layout
@@ -46,10 +44,8 @@ import Layout from '../layouts/Layout.astro';
           credited to you.
         </p>
 
-        <!-- ===== REGISTRATION FORM (front-end only for now) ===== -->
-        <!-- GHL-TODO: replace this block with the GHL form embed once the form ID
-             is available. The GHL workflow should store the LO and assign the loid. -->
-        <div class="loreg-card" id="loreg-form">
+        <!-- ===== REGISTRATION FORM ===== -->
+        <div class="loreg-card" id="loreg-form" data-ghl-endpoint={GHL_WEBHOOK_URL}>
           <div class="loreg-field">
             <label for="lo-name">Full name</label>
             <input id="lo-name" type="text" autocomplete="name" required />
@@ -105,6 +101,7 @@ import Layout from '../layouts/Layout.astro';
   var btn   = document.getElementById('loreg-generate');
   if (!btn) return;
   var form  = document.getElementById('loreg-form');
+  var ENDPOINT = form.getAttribute('data-ghl-endpoint') || '';
   var result = document.getElementById('loreg-result');
   var errEl = document.getElementById('loreg-error');
 
@@ -114,12 +111,11 @@ import Layout from '../layouts/Layout.astro';
   function clearError() { errEl.hidden = true; }
 
   // Collision-proof random loid: timestamp tail + random, clamped to 8 digits.
-  // No backend needed; practically unique per registration.
   function makeLoid() {
-    var t = Date.now().toString();              // ms timestamp
-    var tail = t.slice(-5);                     // last 5 digits of time
-    var rnd = Math.floor(100 + Math.random() * 900).toString(); // 3 random digits
-    return tail + rnd;                          // 8-digit string
+    var t = Date.now().toString();
+    var tail = t.slice(-5);
+    var rnd = Math.floor(100 + Math.random() * 900).toString();
+    return tail + rnd;
   }
 
   btn.addEventListener('click', function () {
@@ -131,6 +127,8 @@ import Layout from '../layouts/Layout.astro';
 
     var name  = (document.getElementById('lo-name').value || '').trim();
     var email = (document.getElementById('lo-email').value || '').trim();
+    var phone = (document.getElementById('lo-phone').value || '').trim();
+    var nmls  = (document.getElementById('lo-nmls').value || '').trim();
 
     if (!name)  { showError('Please enter your full name.'); return; }
     if (!email || email.indexOf('@') === -1) { showError('Please enter a valid email.'); return; }
@@ -144,12 +142,23 @@ import Layout from '../layouts/Layout.astro';
       'You\u2019re all set, ' + name.split(' ')[0] + '.';
     document.getElementById('loreg-idnote').textContent = 'Your LO ID: ' + loid;
 
-    // GHL-TODO: here is where a GHL form submit / webhook POST would go, e.g.
-    //   fetch('<ghl webhook url>', { method:'POST', body: JSON.stringify({
-    //     name: name, email: email, phone: ..., nmls: ..., loid: loid,
-    //     form_source: 'lo_registration'
-    //   })});
-    // and the workflow would add { loid: { name, slug } } to LO_MAP.
+    // Fire GHL POST in parallel (fire-and-forget — link generation continues regardless)
+    var parts = name.split(' ');
+    var firstName = parts[0] || '';
+    var lastName = parts.slice(1).join(' ') || '';
+    if (ENDPOINT) {
+      fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name: firstName, last_name: lastName, full_name: name,
+          email: email, phone: phone,
+          form_source: 'lo_registration', form_name: 'LO Registration',
+          page_url: window.location.href, submitted_at: new Date().toISOString(),
+          nmls: nmls, loid: loid
+        })
+      }).catch(function () { /* fire-and-forget */ });
+    }
 
     form.hidden = true;
     result.hidden = false;
