@@ -49,6 +49,18 @@ const {
 } = officer;
 
 const placeholder = 'https://placehold.co/200x200/EAE7DE/0A0E1A?text=Client';
+
+// Inline SVG line-icon map (path data only; wrapped in <svg> at render).
+const ICONS = {
+  briefcase: '<path d="M3 7h18v12H3z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
+  home:      '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>',
+  building:  '<path d="M4 21V4h10v17"/><path d="M14 9h6v12h-6"/><path d="M7 8h2M7 12h2M7 16h2"/>',
+  money:     '<path d="M3 6h18v12H3z"/><circle cx="12" cy="12" r="3"/>',
+  key:       '<circle cx="8" cy="14" r="4"/><path d="M11 11l8-8M17 5l2 2"/>',
+  globe:     '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/>',
+  gem:       '<path d="M6 3h12l4 6-10 12L2 9z"/>',
+  shield:    '<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/>'
+};
 ---
 
 <Layout title={title} description={metaDescription} canonical={canonical}>
@@ -98,7 +110,11 @@ const placeholder = 'https://placehold.co/200x200/EAE7DE/0A0E1A?text=Client';
         <div class="lp-spec-grid">
           {specialties.map((s) => (
             <article class="lp-spec-card">
-              <div class="lp-spec-icon" aria-hidden="true">{s.icon}</div>
+              <span class="lp-spec-icon" aria-hidden="true" set:html={
+                `<svg viewBox="0 0 24 24" width="24" height="24" fill="none"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round">${ICONS[s.iconKey] || ICONS.briefcase}</svg>`
+              }></span>
               <h3 class="lp-spec-title">{s.title}</h3>
               <p>{s.body}</p>
               {s.bullets && (
@@ -267,7 +283,12 @@ const placeholder = 'https://placehold.co/200x200/EAE7DE/0A0E1A?text=Client';
   .loprofile-scope .section-header h2 { margin-top: 0.5rem; }
   .loprofile-scope .prose-editorial p { margin-bottom: 1rem; }
 
-  .loprofile-scope .lp-spec-grid,
+  .loprofile-scope .lp-spec-grid {
+    display: grid; gap: var(--lp-gap);
+    grid-template-columns: repeat(3, 1fr); margin-top: 2rem;
+  }
+  @media (max-width: 860px) { .loprofile-scope .lp-spec-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .loprofile-scope .lp-spec-grid { grid-template-columns: 1fr; } }
   .loprofile-scope .lp-cred-grid {
     display: grid; gap: var(--lp-gap);
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 2rem;
@@ -280,6 +301,7 @@ const placeholder = 'https://placehold.co/200x200/EAE7DE/0A0E1A?text=Client';
     width: 56px; height: 56px; background: var(--color-paper-tint); border-radius: 4px;
     display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 0.9rem;
   }
+  .loprofile-scope .lp-spec-icon svg { color: var(--color-blue); }
   .loprofile-scope .lp-spec-title, .loprofile-scope .lp-cred-title {
     font-family: var(--stw-display); font-size: 1.15rem; margin-bottom: 0.5rem;
   }

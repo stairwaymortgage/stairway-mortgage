@@ -34,27 +34,27 @@ export const fortLauderdale = {
 
   specialties: [
     {
-      icon: '\uD83D\uDCBC',
+      iconKey: 'briefcase',
       title: 'Self-Employed & Business Owner Lending',
       body: 'Fort Lauderdale\u2019s entrepreneurial economy means many of our clients are self-employed. Bank statement programs use 12 or 24 months of deposits \u2014 no tax returns. P&L statement programs add even more flexibility.',
     },
     {
-      icon: '\uD83C\uDFD8\uFE0F',
+      iconKey: 'home',
       title: 'Real Estate Investor Financing',
       body: 'From single-family rentals in Oakland Park to multi-family in Progresso Village to vacation rentals near the beach. DSCR loans qualify on rental income \u2014 no personal income verification required.',
     },
     {
-      icon: '\uD83C\uDFE2',
+      iconKey: 'building',
       title: 'Condo Financing',
       body: 'Fort Lauderdale\u2019s condo market along the Intracoastal and beach corridors includes many non-warrantable buildings. Our 300+ lender network includes multiple non-warrantable condo specialists.',
     },
     {
-      icon: '\uD83D\uDCB0',
+      iconKey: 'money',
       title: 'Luxury & Jumbo Lending',
       body: 'Harbor Beach, Las Olas Isles, Rio Vista \u2014 jumbo and super-jumbo programs with as little as 10% down for qualified buyers.',
     },
     {
-      icon: '\uD83C\uDF0E',
+      iconKey: 'globe',
       title: 'Foreign National Programs',
       body: 'Programs with 25\u201330% down, no U.S. credit requirement, and closings in a personal name or through an LLC.',
     },
@@ -68,17 +68,17 @@ export const fortLauderdale = {
   testimonials: [
     {
       quote:
-        'I recently refinanced with the team and was so pleased with how easy and quick the whole process was. They were very responsive, and I feel confident I got the best rate \u2014 and shaved nine years off my mortgage.',
-      name: 'Alexis Kulick',
-      meta: 'Director of Digital Campaign, UBS \u2014 California \u00B7 via Facebook',
-      photo: '/testimonials/alexis-kulick.jpg',
+        'Jim and his team were great through the whole process \u2014 prompt replies, and they secured the best rate. We dropped a 30 to a 15, took cash out for a renovation, and consolidated our first and second mortgage into one.',
+      name: 'Brian Robertson',
+      meta: 'President, Circadia Group Inc. \u2014 New Jersey \u00B7 via Zillow',
+      photo: '/testimonials/brian-robertson.jpg',
     },
     {
       quote:
-        'Our situation is a bit complex. Rather than turn us away for some added work, they dug in to get it done right. They like the complexity, whereas other lenders don\u2019t want to roll up their sleeves. Highly recommend.',
-      name: 'Julian Einfrank',
-      meta: 'Sr. Wealth Advisor, CliftonLarsonAllen \u2014 Illinois \u00B7 via Facebook',
-      photo: '/testimonials/julian-einfrank.jpg',
+        'This is the second loan I\u2019ve done with Jim and again they exceeded my expectations. This time a multi-family unit \u2014 best possible service, job done. I\u2019ll definitely recommend family and friends.',
+      name: 'Syed Saqib',
+      meta: 'Chief Investment Officer, Zstep Capital \u2014 Illinois \u00B7 via Google',
+      photo: '/testimonials/syed-saqib.jpg',
     },
     {
       quote:

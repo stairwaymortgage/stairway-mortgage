@@ -41,12 +41,12 @@ export const jimBlackburn = {
 
   specialties: [
     {
-      icon: '\uD83D\uDCBC',
+      iconKey: 'briefcase',
       title: 'Self-Employed & Business Owner Lending',
       body: 'Bank statement programs using 12 or 24 months of deposits \u2014 no tax returns required. P&L statement programs also available for maximum flexibility.',
     },
     {
-      icon: '\uD83C\uDFD8\uFE0F',
+      iconKey: 'home',
       title: 'Real Estate Investor Financing',
       body: 'DSCR loans that qualify on rental income, not personal income \u2014 no W-2s, no tax returns.',
       bullets: [
@@ -57,12 +57,12 @@ export const jimBlackburn = {
       ],
     },
     {
-      icon: '\uD83D\uDC8E',
+      iconKey: 'gem',
       title: 'High-Net-Worth & Asset-Based Lending',
       body: 'Asset depletion and asset-based programs for retirees, trust beneficiaries, recently-sold business owners, and executives between roles.',
     },
     {
-      icon: '\uD83D\uDD11',
+      iconKey: 'key',
       title: 'Non-QM Mortgage Solutions',
       body: 'Alternative-documentation programs for borrowers traditional lenders decline.',
       bullets: [
@@ -74,7 +74,7 @@ export const jimBlackburn = {
       ],
     },
     {
-      icon: '\uD83C\uDFE6',
+      iconKey: 'building',
       title: 'Conventional, FHA, VA & Government Loans',
       body: 'Full spectrum of residential mortgage products with rate shopping across 300+ lenders.',
     },
@@ -109,16 +109,16 @@ export const jimBlackburn = {
 
   testimonials: [
     {
-      quote: 'I refinanced with the team and was so pleased with how easy and quick it was. They were very responsive, and I shaved nine years off my mortgage.',
-      name: 'Alexis Kulick',
-      meta: 'Director of Digital Campaign, UBS \u2014 California \u00B7 via Facebook',
-      photo: '/testimonials/alexis-kulick.jpg',
+      quote: 'We had a difficult jumbo loan scenario most lenders couldn\u2019t close. Jim\u2019s team not only closed our refinance \u2014 now we can pursue our dream home in the Florida Keys. We\u2019ll use them again.',
+      name: 'Chad Brocato',
+      meta: 'Public Speaker & Retired Fire Chief \u2014 Florida \u00B7 via Google',
+      photo: '/testimonials/chad-brocato.jpg',
     },
     {
-      quote: 'Our situation is a bit complex. Rather than turn us away, they dug in to get it done right. They like the complexity, whereas other lenders don\u2019t want to roll up their sleeves.',
-      name: 'Julian Einfrank',
-      meta: 'Sr. Wealth Advisor, CliftonLarsonAllen \u2014 Illinois \u00B7 via Facebook',
-      photo: '/testimonials/julian-einfrank.jpg',
+      quote: 'I\u2019m an RE investor with tons of properties, living in China with unique income \u2014 he made it work. He even called me at 1 AM to close a deal. Now on our third deal together.',
+      name: 'Dennis Nikolaev',
+      meta: 'Real Estate Investor \u00B7 via Facebook',
+      photo: '/testimonials/dennis-nikolaev.jpg',
     },
     {
       quote: 'We closed within 19 days \u2014 just in time for Thanksgiving. We\u2019d started with a different office whose rate and down payment were ridiculous. We\u2019ve been referring the team ever since.',
