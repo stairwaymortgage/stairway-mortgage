@@ -336,7 +336,7 @@ const icons: Record<string, string> = {
                 </div>
               ))}
             </div>
-          ) : m.flyout ? (
+          ) : m.flyout ? (<>
           <ul class="mega__list mega__list--flyout mega__cats-2x5">
             {m.columns.flatMap(col => col.links).map((link) => (
               <li class="mega__cat">
@@ -367,7 +367,50 @@ const icons: Record<string, string> = {
               </li>
             ))}
           </ul>
-          ) : (
+
+          {/* ─── American Heroes featured plate (below 2x5 grid) ─── */}
+          {m.flyout && (
+          <div class="heroes-plate">
+            <a href="/american-heroes/" class="heroes-plate__head">
+              <span class="heroes-plate__crest" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M12 2.5l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.8 7.2 18.2l.9-5.4L4.2 9l5.4-.8L12 2.5z" stroke="#C49A3A" stroke-width="1.3" stroke-linejoin="round" fill="rgba(196,154,58,.18)"/></svg>
+              </span>
+              <span class="heroes-plate__title">
+                <span class="heroes-plate__eyebrow">Those who serve</span>
+                <span class="heroes-plate__name">American Heroes</span>
+              </span>
+              <span class="heroes-plate__cue">
+                <span class="heroes-plate__link">Explore programs &rarr;</span>
+                <span class="heroes-plate__chevron" aria-hidden="true">&rsaquo;</span>
+              </span>
+            </a>
+            <div class="heroes-plate__body">
+              <div class="heroes-plate__col heroes-plate__col--mil">
+                <h4>Military &amp; Veterans <span class="heroes-plate__tier heroes-plate__tier--mil">VA-eligible</span></h4>
+                <div class="heroes-plate__links">
+                  <a href="/american-heroes/army/">US Army</a>
+                  <a href="/american-heroes/navy/">US Navy</a>
+                  <a href="/american-heroes/air-force/">US Air Force</a>
+                  <a href="/american-heroes/marine-corps/">US Marine Corps</a>
+                  <a href="/american-heroes/coast-guard/">US Coast Guard</a>
+                  <a href="/american-heroes/space-force/">US Space Force</a>
+                </div>
+              </div>
+              <div class="heroes-plate__col heroes-plate__col--civ">
+                <h4>Civilian Heroes <span class="heroes-plate__tier heroes-plate__tier--civ">Hero benefits</span></h4>
+                <div class="heroes-plate__links">
+                  <a href="/american-heroes/police-officers/">Police Officers</a>
+                  <a href="/american-heroes/firefighters/">Firefighters</a>
+                  <a href="/american-heroes/emt-paramedics/">EMT / Paramedics</a>
+                  <a href="/american-heroes/teachers/">Teachers</a>
+                  <a href="/american-heroes/corrections-officers/">Corrections Officers</a>
+                  <a href="/american-heroes/federal-law-enforcement/">Federal Law Enforcement</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          )}
+          </>) : (
           <div class="mega__cols">
             {m.columns.map((col) => (
               <div class="mega__col">
@@ -522,6 +565,33 @@ const icons: Record<string, string> = {
         </div>
       </details>
     ))}
+
+    {/* ─── American Heroes mobile accordion ─── */}
+    <details class="hdr-drawer__section hdr-drawer__heroes">
+      <summary class="hdr-drawer__summary font-display">
+        American Heroes
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="hdr-drawer__plus" aria-hidden="true">
+          <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </summary>
+      <div class="hdr-drawer__links">
+        <a href="/american-heroes/" class="hdr-drawer__link" style="font-weight:600;">View American Heroes &rarr;</a>
+        <p class="hdr-drawer__heroes-group">Military &amp; Veterans</p>
+        <a href="/american-heroes/army/" class="hdr-drawer__link hdr-drawer__sub-link">US Army</a>
+        <a href="/american-heroes/navy/" class="hdr-drawer__link hdr-drawer__sub-link">US Navy</a>
+        <a href="/american-heroes/air-force/" class="hdr-drawer__link hdr-drawer__sub-link">US Air Force</a>
+        <a href="/american-heroes/marine-corps/" class="hdr-drawer__link hdr-drawer__sub-link">US Marine Corps</a>
+        <a href="/american-heroes/coast-guard/" class="hdr-drawer__link hdr-drawer__sub-link">US Coast Guard</a>
+        <a href="/american-heroes/space-force/" class="hdr-drawer__link hdr-drawer__sub-link">US Space Force</a>
+        <p class="hdr-drawer__heroes-group">Civilian Heroes</p>
+        <a href="/american-heroes/police-officers/" class="hdr-drawer__link hdr-drawer__sub-link">Police Officers</a>
+        <a href="/american-heroes/firefighters/" class="hdr-drawer__link hdr-drawer__sub-link">Firefighters</a>
+        <a href="/american-heroes/emt-paramedics/" class="hdr-drawer__link hdr-drawer__sub-link">EMT / Paramedics</a>
+        <a href="/american-heroes/teachers/" class="hdr-drawer__link hdr-drawer__sub-link">Teachers</a>
+        <a href="/american-heroes/corrections-officers/" class="hdr-drawer__link hdr-drawer__sub-link">Corrections Officers</a>
+        <a href="/american-heroes/federal-law-enforcement/" class="hdr-drawer__link hdr-drawer__sub-link">Federal Law Enforcement</a>
+      </div>
+    </details>
   </nav>
   <div class="hdr-drawer__bottom">
     <a href="tel:+19549931625" class="btn btn-ghost hdr-drawer__call">
@@ -1129,6 +1199,35 @@ const icons: Record<string, string> = {
     .hdr-trust__item:nth-child(n+2) { display: none; }
     .hdr-trust__item:first-child { display: inline-flex; }
   }
+
+  /* ─── American Heroes featured plate (desktop mega-menu) ─── */
+  .heroes-plate{margin-top:20px;border-radius:10px;background:linear-gradient(115deg,#11243F 0%,#1a3257 100%);color:#fff;overflow:hidden;border:1px solid #21385c;box-shadow:0 10px 28px -16px rgba(17,36,63,.7);cursor:pointer;}
+  .heroes-plate__head{display:flex;align-items:center;gap:16px;padding:18px 22px;text-decoration:none;color:#fff;position:relative;}
+  .heroes-plate__head::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#C49A3A,transparent);opacity:.8;}
+  .heroes-plate__crest{width:42px;height:42px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 35%,rgba(196,154,58,.28),rgba(196,154,58,.08));border:1px solid rgba(196,154,58,.55);}
+  .heroes-plate__title{flex:1;}
+  .heroes-plate__eyebrow{display:block;font-family:var(--stw-mono,'JetBrains Mono'),monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#C49A3A;margin-bottom:2px;}
+  .heroes-plate__name{font-family:var(--stw-display,'Fraunces'),Georgia,serif;font-size:1.2rem;font-weight:600;line-height:1.05;}
+  .heroes-plate__cue{display:flex;align-items:center;gap:12px;}
+  .heroes-plate__link{font-family:var(--stw-mono,'JetBrains Mono'),monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.32);padding:8px 14px;border-radius:5px;white-space:nowrap;transition:.18s;}
+  .heroes-plate:hover .heroes-plate__link{border-color:#C49A3A;color:#C49A3A;}
+  .heroes-plate__chevron{font-size:1.1rem;color:#8fa2c0;transition:transform .25s ease,color .2s;}
+  .heroes-plate:hover .heroes-plate__chevron{transform:rotate(90deg);color:#C49A3A;}
+
+  .heroes-plate__body{display:grid;grid-template-columns:1fr 1fr;max-height:0;opacity:0;overflow:hidden;background:rgba(0,0,0,.16);transition:max-height .3s ease,opacity .22s ease;}
+  .heroes-plate:hover .heroes-plate__body{max-height:320px;opacity:1;border-top:1px solid rgba(255,255,255,.08);}
+  .heroes-plate__col{padding:16px 22px 18px;}
+  .heroes-plate__col + .heroes-plate__col{border-left:1px solid rgba(255,255,255,.09);}
+  .heroes-plate__col h4{font-family:var(--stw-mono,'JetBrains Mono'),monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#aeb9cc;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .heroes-plate__tier{font-size:.55rem;letter-spacing:.08em;padding:2px 7px;border-radius:3px;}
+  .heroes-plate__tier--mil{background:rgba(196,154,58,.2);color:#C49A3A;}
+  .heroes-plate__tier--civ{background:rgba(255,255,255,.12);color:#cfd6e6;}
+  .heroes-plate__links{display:grid;grid-template-columns:1fr 1fr;gap:3px 14px;}
+  .heroes-plate__links a{font-size:.88rem;color:#e6ebf3;text-decoration:none;padding:6px 8px;border-radius:5px;transition:.14s;}
+  .heroes-plate__links a:hover{background:rgba(255,255,255,.09);color:#fff;}
+
+  /* ─── American Heroes mobile accordion ─── */
+  .hdr-drawer__heroes-group{font-family:var(--stw-mono,'JetBrains Mono'),monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--color-mute,#6B7280);margin:12px 0 4px;padding:0 0 0 4px;}
 </style>
 
 <!-- -
