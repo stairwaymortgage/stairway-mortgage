@@ -51,6 +51,9 @@
   var LINK_CLASS  = "stm-append-loid"; // links with this class also get params appended
   var COOKIE_NAME = "first_touch_loid";
   var COOKIE_DAYS = 90;                // GTM used 90
+  var UMTID_COOKIE = "umtid";
+  var UMTID_PARAM  = "umtid";
+  var UMTID_DAYS   = 90;
 
   // LOID (numeric) -> officer info. Add officers as: "NMLS": { name, slug }.
   var LO_MAP = {
@@ -91,6 +94,14 @@
     var p = (location.pathname || "/").replace(/^\/+|\/+$/g, "");
     return p === "" ? "home" : p;
   }
+  function cleanUmtid(v) {
+    if (!v) return "";
+    var s = String(v).replace(/[^A-Za-z0-9_-]/g, "");
+    return s.slice(0, 40);
+  }
+  function resolveUmtid() {
+    return cleanUmtid(qs(UMTID_PARAM)) || cleanUmtid(getCookie(UMTID_COOKIE)) || "";
+  }
   function setIfEmpty(el, val) {
     if (val == null || val === "") return;
     if (!("value" in el) || el.value) return;
@@ -102,12 +113,18 @@
   // ===== PART 1: COOKIE WRITER (ports GTM "Cookicapture") =====
   // Reads loid from the URL and writes the first_touch_loid cookie.
   function writeCookie() {
+    // LOID
     var p = parseLoidAny(
       qs("loid") || qs("loid_") || qs("lo_id") || qs("first_touch_loid")
     );
-    if (!p) return;
-    if (FIRST_TOUCH && getCookie(COOKIE_NAME)) return; // first-touch lock
-    setCookie(COOKIE_NAME, p.raw, COOKIE_DAYS);        // last-touch: always overwrite
+    if (p && !(FIRST_TOUCH && getCookie(COOKIE_NAME))) {
+      setCookie(COOKIE_NAME, p.raw, COOKIE_DAYS);
+    }
+    // UMTID (independent)
+    var u = cleanUmtid(qs(UMTID_PARAM));
+    if (u && !(FIRST_TOUCH && getCookie(UMTID_COOKIE))) {
+      setCookie(UMTID_COOKIE, u, UMTID_DAYS);
+    }
   }
 
   // ===== PART 2: GHL FORM-EMBED SCRIPT ENRICHMENT (ports WP "Lead Router") =====
@@ -150,6 +167,7 @@
     var loidNum = chosen ? chosen.num : "";
     var mapInfo = (chosen && LO_MAP[loidNum]) || {};
     var officerName = mapInfo.name || qs("loan_officer_name") || "";
+    var umtid = resolveUmtid();
 
     // --- links: class targets + GHL hosted survey links ---
     document.querySelectorAll("a[href]").forEach(function (a) {
@@ -163,6 +181,7 @@
         if (loidNum) u.searchParams.set("loid", loidNum); // numeric, for survey field compat
         if (officerName) u.searchParams.set("loan_officer_name", officerName);
         if (slug)        u.searchParams.set("slug", slug);
+        if (umtid) u.searchParams.set(UMTID_PARAM, umtid);
         a.setAttribute("href", u.toString());
       } catch (e) {}
     });
@@ -185,6 +204,9 @@
       root.querySelectorAll(
         'input[name="slug"], [data-query-key="slug"]'
       ).forEach(function (el) { setIfEmpty(el, slug); });
+      root.querySelectorAll(
+        'input[name="umtid"], [data-query-key="umtid"], #form-field-umtid'
+      ).forEach(function (el) { setIfEmpty(el, umtid); });
     }
     function fillIframes() {
       document.querySelectorAll("iframe").forEach(function (ifr) {
