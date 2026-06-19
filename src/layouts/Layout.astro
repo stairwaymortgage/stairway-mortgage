@@ -1,6 +1,8 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import LoAttribution from '../components/LoAttribution.astro';
 import '../styles/global.css';
 import seoData from '../data/seo.json';
 
@@ -68,14 +70,10 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString(
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" />
 
-  <!-- GA4 (preserved from WP snippet 46878) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKZV58GRQK"></script>
-  <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-JKZV58GRQK');
-  </script>
+  <!-- Analytics (GA4 G-JKZV58GRQK direct) + LO attribution — consolidated WS2.
+       Replaces the former inline GA4 snippet to avoid double-loading GA4. -->
+  <Analytics />
+  <LoAttribution />
 
   <!-- Schema.org Organization / MortgageBroker (sitewide) -->
   <script type="application/ld+json" set:html={JSON.stringify({

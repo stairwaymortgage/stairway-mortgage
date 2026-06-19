@@ -1,0 +1,218 @@
+---
+/**
+ * LoAttribution.astro — LO-ID attribution + GHL/Elementor form enrichment.
+ *
+ * Ports the live behaviour from BOTH the old WordPress Elementor head snippets
+ * AND the old GTM container (GTM-TXQSMLW2) tags that actually ran the system:
+ *   - GTM "Cookicapture" (active)  → writes the first_touch_loid cookie.
+ *   - GTM "Form Injection (DOM Ready)" (active) → fills the LOID form field.
+ *   - GTM "LOID Internal Link Propagation" (was PAUSED) → link propagation.
+ *   - WP "Lead Router" + "for_loan_officer" snippets → GHL form/survey enrichment.
+ *
+ * This component is now SELF-CONTAINED: it writes the cookie itself (replacing
+ * the GTM Cookicapture tag), reads it, fills form fields, and stamps links.
+ * You do NOT need to re-create those three GTM tags on the new site.
+ *
+ * ── COOKIE CONTRACT (matches old GTM exactly) ───────────────────────────────
+ *   cookie name : first_touch_loid
+ *   cookie value: "loid_1072866"  (loid_ prefix + numeric NMLS-style id)
+ *   lifetime    : 90 days  (GTM used 90; not 180)
+ *   policy      : last-touch — a ?loid= in the URL always overwrites
+ *   URL inputs  : ?loid=1072866  OR  ?loid_1072866  (also ?lo_id=, ?first_touch_loid=)
+ *
+ * ── FORM FIELDS FILLED (both old + new names, for safety) ───────────────────
+ *   Elementor (old): #form-field-loid , input[name="form_fields[loid]"]
+ *   New/GHL        : input[name="loid"] , input[name="first_touch_loid"],
+ *                    [data-query-key="loid"], [data-query-key="first_touch_loid"]
+ *   Also fills loan_officer_name + slug when name attrs/query-keys exist.
+ *
+ * ── DEPENDENCIES NOW SEPARATE ───────────────────────────────────────────────
+ *   GA4 (G-JKZV58GRQK) and GTM (GTM-TXQSMLW2) are ANALYTICS, not attribution,
+ *   and are handled separately (see Analytics.astro / run prompt). This file
+ *   does not load GA/GTM.
+ *
+ * ── USAGE ───────────────────────────────────────────────────────────────────
+ *   Render ONCE in Layout.astro <head>:  <LoAttribution />
+ *
+ * ── DOMAIN-AGNOSTIC ─────────────────────────────────────────────────────────
+ *   No hardcoded origins. Uses location.href / location.origin only.
+ *   Survives stairway-vercel.vercel.app → stairwaymortgage.com cutover.
+ *
+ * ── COMPLIANCE ──────────────────────────────────────────────────────────────
+ *   Backend attribution only. No user-facing copy, no "Talk to Jim", no
+ *   NEXA/branch NMLS printed in body. LO_MAP ids are internal identifiers.
+ */
+---
+
+<script is:inline>
+(function () {
+  // ===== SETTINGS =====
+  var FIRST_TOUCH = false;             // false = last-touch (URL overwrites); matches old GTM Cookicapture
+  var LINK_CLASS  = "stm-append-loid"; // links with this class also get params appended
+  var COOKIE_NAME = "first_touch_loid";
+  var COOKIE_DAYS = 90;                // GTM used 90
+
+  // LOID (numeric) -> officer info. Add officers as: "NMLS": { name, slug }.
+  var LO_MAP = {
+    "1072866": { name: "Jim Blackburn",  slug: "jim-blackburn" },
+    "1072877": { name: "Dhruv Parashar", slug: "dhruv-parashar" }
+  };
+
+  // ===== HELPERS =====
+  function qs(name) {
+    try { return new URL(location.href).searchParams.get(name) || null; }
+    catch (e) { return null; }
+  }
+  function getCookie(name) {
+    var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]+)'));
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+  function setCookie(name, val, days) {
+    var maxAge = (days || 90) * 24 * 60 * 60;
+    document.cookie = name + '=' + encodeURIComponent(val)
+      + '; path=/'
+      + '; max-age=' + maxAge
+      + '; SameSite=Lax'
+      + (location.protocol === 'https:' ? '; Secure' : '');
+  }
+  function parseLoidAny(v) {
+    // accepts "loid_1072866" OR "1072866" -> { raw:"loid_1072866", num:"1072866" }
+    if (!v) return null;
+    var s = String(v);
+    var m1 = s.match(/loid_(\d{3,})/i);
+    if (m1) return { raw: "loid_" + m1[1], num: m1[1] };
+    var m2 = s.match(/(\d{3,})/);
+    if (m2) return { raw: "loid_" + m2[1], num: m2[1] };
+    return null;
+  }
+  function pageSlug() {
+    // current page path -> slug, e.g. "/aviation-professionals/pilot/" ->
+    // "aviation-professionals/pilot". Home "/" -> "home".
+    var p = (location.pathname || "/").replace(/^\/+|\/+$/g, "");
+    return p === "" ? "home" : p;
+  }
+  function setIfEmpty(el, val) {
+    if (val == null || val === "") return;
+    if (!("value" in el) || el.value) return;
+    el.value = val;
+    el.dispatchEvent(new Event("input",  { bubbles: true }));
+    el.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+
+  // ===== PART 1: COOKIE WRITER (ports GTM "Cookicapture") =====
+  // Reads loid from the URL and writes the first_touch_loid cookie.
+  function writeCookie() {
+    var p = parseLoidAny(
+      qs("loid") || qs("loid_") || qs("lo_id") || qs("first_touch_loid")
+    );
+    if (!p) return;
+    if (FIRST_TOUCH && getCookie(COOKIE_NAME)) return; // first-touch lock
+    setCookie(COOKIE_NAME, p.raw, COOKIE_DAYS);        // last-touch: always overwrite
+  }
+
+  // ===== PART 2: GHL FORM-EMBED SCRIPT ENRICHMENT (ports WP "Lead Router") =====
+  // Appends lo_id + landing_page to GHL form-embed <script src> tags.
+  function enrichGhlFormScripts() {
+    var cookieParsed = parseLoidAny(getCookie(COOKIE_NAME));
+    var loId = cookieParsed ? cookieParsed.num : null;
+    var landing = location.href;
+    var scripts = document.querySelectorAll(
+      'script[src*="leadconnectorhq.com/widget/form"],' +
+      'script[src*="api.gohighlevel.com/widget/form"],' +
+      'script[src*="api.leadconnectorhq.com/widget/form"]'
+    );
+    scripts.forEach(function (s) {
+      try {
+        var u = new URL(s.src);
+        if (loId) u.searchParams.set("lo_id", loId);
+        u.searchParams.set("landing_page", landing);
+        if (s.src !== u.toString()) s.src = u.toString();
+      } catch (e) {}
+    });
+  }
+
+  // ===== PART 3: LINK + FORM STAMPING (ports "for_loan_officer" + "Form Injection") =====
+  function resolveChosen() {
+    var urlParsed    = parseLoidAny(qs("first_touch_loid") || qs("loid") || qs("loid_"));
+    var cookieParsed = parseLoidAny(getCookie(COOKIE_NAME));
+    return FIRST_TOUCH ? (cookieParsed || urlParsed) : (urlParsed || cookieParsed);
+  }
+
+  function stampLinksAndForms() {
+    var chosen = resolveChosen();
+
+    // slug = the CURRENT PAGE the form was filled from (NOT the officer's slug).
+    // Always set (page-origin tracking), even if no LO is attributed.
+    var slug = pageSlug() || qs("slug") || "";
+
+    // LO fields are optional — only present if a loid was found.
+    var loidRaw = chosen ? chosen.raw : "";
+    var loidNum = chosen ? chosen.num : "";
+    var mapInfo = (chosen && LO_MAP[loidNum]) || {};
+    var officerName = mapInfo.name || qs("loan_officer_name") || "";
+
+    // --- links: class targets + GHL hosted survey links ---
+    document.querySelectorAll("a[href]").forEach(function (a) {
+      var href = a.getAttribute("href");
+      if (!href) return;
+      var isTarget = a.classList.contains(LINK_CLASS) || href.indexOf("/widget/survey/") !== -1;
+      if (!isTarget) return;
+      try {
+        var u = new URL(href, location.origin);
+        if (loidRaw) u.searchParams.set("first_touch_loid", loidRaw);
+        if (loidNum) u.searchParams.set("loid", loidNum); // numeric, for survey field compat
+        if (officerName) u.searchParams.set("loan_officer_name", officerName);
+        if (slug)        u.searchParams.set("slug", slug);
+        a.setAttribute("href", u.toString());
+      } catch (e) {}
+    });
+
+    // --- form fields: old Elementor names + new/GHL names, both supported ---
+    function fillForms(root) {
+      root = root || document;
+      // raw "loid_xxxx" value fields
+      root.querySelectorAll(
+        'input[name="first_touch_loid"], [data-query-key="first_touch_loid"]'
+      ).forEach(function (el) { setIfEmpty(el, loidRaw); });
+      // "loid" fields — old Elementor (#form-field-loid / form_fields[loid]) + new
+      root.querySelectorAll(
+        '#form-field-loid, input[name="form_fields[loid]"], input[name="loid"], [data-query-key="loid"]'
+      ).forEach(function (el) { setIfEmpty(el, loidRaw); });
+      // officer name + slug
+      root.querySelectorAll(
+        'input[name="loan_officer_name"], [data-query-key="loan_officer_name"]'
+      ).forEach(function (el) { setIfEmpty(el, officerName); });
+      root.querySelectorAll(
+        'input[name="slug"], [data-query-key="slug"]'
+      ).forEach(function (el) { setIfEmpty(el, slug); });
+    }
+    function fillIframes() {
+      document.querySelectorAll("iframe").forEach(function (ifr) {
+        try { var d = ifr.contentDocument; if (d) fillForms(d); } catch (e) {}
+      });
+    }
+    fillForms();
+    fillIframes();
+    return { fillForms: fillForms, fillIframes: fillIframes };
+  }
+
+  // ===== RUN =====
+  function runAll() {
+    writeCookie();            // 1) persist cookie from URL (Cookicapture)
+    enrichGhlFormScripts();   // 2) enrich GHL form-embed scripts (Lead Router)
+    var s = stampLinksAndForms(); // 3) stamp links + forms (for_loan_officer + Form Injection)
+    if (s) s.fillIframes();
+  }
+
+  runAll();
+  document.addEventListener("DOMContentLoaded", runAll);
+
+  // catch GHL/Elementor dynamic content, late iframes
+  var mo = new MutationObserver(runAll);
+  mo.observe(document.documentElement, { childList: true, subtree: true });
+  setInterval(function () { var s = stampLinksAndForms(); if (s) s.fillIframes(); }, 1500);
+
+  // re-fill on any submit (GTM Form Injection did this too)
+  document.addEventListener("submit", function () { try { stampLinksAndForms(); } catch (e) {} }, true);
+})();
+</script>

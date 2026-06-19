@@ -1,0 +1,44 @@
+---
+/**
+ * Analytics.astro — GA4 + (optional) GTM loader. Separate from attribution.
+ *
+ * From the old setup:
+ *   - GA4 measurement ID : G-JKZV58GRQK
+ *   - GTM container      : GTM-TXQSMLW2
+ *
+ * IMPORTANT — pick ONE approach, don't double-count:
+ *   (A) DIRECT GA4 (recommended for the new static site): loads gtag with
+ *       G-JKZV58GRQK only. Attribution is handled entirely by LoAttribution.astro,
+ *       so GTM is not needed. This is the default below (USE_GTM = false).
+ *   (B) GTM: if you still want to manage tags (Apollo pixel, Instantly pixel,
+ *       GA4 events) in GTM, set USE_GTM = true. Then DO NOT also load direct GA4
+ *       here — configure GA4 inside GTM instead, or you'll double-count pageviews.
+ *
+ * Render ONCE in Layout.astro <head> (GTM also needs a <body> noscript — see below).
+ * Domain-agnostic: no origins hardcoded.
+ */
+const USE_GTM = false;            // false = direct GA4 (recommended). true = load GTM.
+const GA4_ID  = 'G-JKZV58GRQK';
+const GTM_ID  = 'GTM-TXQSMLW2';
+---
+
+{!USE_GTM && (
+  <Fragment>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+    <script is:inline define:vars={{ GA4_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', GA4_ID);
+    </script>
+  </Fragment>
+)}
+
+{USE_GTM && (
+  <script is:inline define:vars={{ GTM_ID }}>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',GTM_ID);
+  </script>
+)}
