@@ -90,6 +90,20 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
     var captured = { slug: '', notes: '', title: '' };
     var sending  = false;
 
+    // ---------- attribution (umtid + loid) ----------
+    // This form POSTs a JSON payload built from JS vars, so LoAttribution.astro
+    // (which only fills name="umtid" DOM inputs) can't reach it — read here.
+    function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+    function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+    function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+    function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+    function _resolveLoid(){
+      // numeric loid from ?loid / ?lo_id / first_touch_loid cookie ("loid_123" or "123")
+      var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
+      var m = String(raw).match(/(\d{3,})/);
+      return m ? m[1] : '';
+    }
+
     // Hybrid GHL routing: if a calculator's slug has a dedicated GHL custom field,
     // its snapshot string is sent under THAT field key; otherwise it falls back to
     // the generic "notes" key. Slugs not listed here intentionally use the "notes"
@@ -359,7 +373,10 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
         form_source: 'calc_' + captured.slug,
         form_name: captured.title,
         page_url: location.href,
-        submitted_at: new Date().toISOString()
+        submitted_at: new Date().toISOString(),
+        umtid: _resolveUmtid(),
+        loid: _resolveLoid(),
+        source_url: location.href
       };
       // Snapshot goes under the slug's dedicated GHL field key if mapped, else "notes".
       payload[FIELD_MAP[captured.slug] || 'notes'] = captured.notes;
