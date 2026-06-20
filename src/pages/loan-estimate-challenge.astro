@@ -1,0 +1,764 @@
+---
+// ============================================================================
+//  /loan-estimate-challenge/  —  "The Loan Estimate Challenge"
+//  Conversion landing page. Upload your Loan Estimate → side-by-side compare →
+//  book a call → answers within the hour.
+//
+//  NAV LABEL recommendation: "Compare & Save"  (H1 carries the full name)
+//
+//  COMPLIANCE (enforced):
+//   • Jim individual NMLS #1072866  → body/hero/trust signals (≥3×)
+//   • NEXA company NMLS #1660690    → FOOTER ONLY (lives in Layout/Footer)
+//   • "48 states"                   → attributed to NEXA only
+//   • CTAs: "See My Options" / "Talk to Our Team"  (never "Talk to Jim")
+//   • No rate/APR promises, no approval guarantees. Savings framed as "may"/"might".
+//
+//  Uses your shared Layout + global tokens. Scoped styles live in .le-scope.
+// ============================================================================
+import Layout from '../layouts/Layout.astro';
+import { GHL_WEBHOOK_URL } from '../lib/ghl';
+
+const PHONE = '(954) 993-1625';
+const PHONE_HREF = 'tel:+19549931625';
+const BOOKING = 'https://forms.stairwaymortgage.com/widget/booking/m4nLhwwXhgZ89EYPS65L';
+
+const steps = [
+  {
+    n: '01',
+    t: 'Upload your Loan Estimate',
+    d: 'Drag in the PDF the other lender sent you — page 1 is all we need. No login, no credit pull, no commitment.',
+  },
+  {
+    n: '02',
+    t: 'Pick a time on the calendar',
+    d: 'Grab any slot that works. We read your numbers before the call so we are not wasting your minute.',
+  },
+  {
+    n: '03',
+    t: 'Get a straight, side-by-side answer',
+    d: 'Within the hour, you will know whether you are getting a fair deal — and where you may be leaving money on the table.',
+  },
+];
+
+const compareRows = [
+  { label: 'Interest rate & APR', note: 'The headline number — and the one underneath it that actually reflects cost.' },
+  { label: 'Lender & origination fees', note: 'Points, processing, underwriting, "junk" fees. This is where quotes quietly diverge.' },
+  { label: 'Third-party & prepaid costs', note: 'Appraisal, title, escrow, prepaids — what is shoppable vs. fixed.' },
+  { label: 'Cash to close', note: 'The real out-of-pocket number, lined up apples-to-apples.' },
+  { label: 'Loan structure', note: 'Term, type, PMI, buydowns — whether the product even fits your goal.' },
+  { label: 'The fine print', note: 'Lock terms, expiration, anything that changes before you sign.' },
+];
+
+const faqs = [
+  {
+    q: 'What is a Loan Estimate, and where do I find mine?',
+    a: 'A Loan Estimate is the standardized 3-page form a lender must give you within three business days of applying. It lists your rate, fees, and cash to close. If you have applied with anyone, it is in your email or your lender portal. Page 1 is all we need to run the comparison.',
+  },
+  {
+    q: 'Does uploading my Loan Estimate pull my credit or commit me to anything?',
+    a: 'No. Uploading is just sharing a document. There is no credit pull, no application, and no obligation. You are simply asking for a second set of eyes on numbers another lender already gave you.',
+  },
+  {
+    q: 'I am already under contract and closing soon. Is it too late to compare?',
+    a: 'Usually not. Many buyers compare while under contract — that is exactly when a Loan Estimate exists to compare against. The sooner you send it, the more room there is to act if a better option is available. Even days before closing, it is often worth a one-minute check.',
+  },
+  {
+    q: 'Will you really get back to me within an hour?',
+    a: 'That is the goal of the challenge. When you book a slot, we review your Loan Estimate ahead of time so the conversation is about answers, not data entry. If something needs deeper digging, we will tell you that on the call rather than leave you waiting.',
+  },
+  {
+    q: 'What if my current lender is actually the best deal?',
+    a: 'Then we will tell you so, plainly. A fair comparison sometimes confirms you are already in a good spot — and knowing that with confidence is worth a minute too. We would rather you sign the right loan than switch for the sake of switching.',
+  },
+  {
+    q: 'Can I really save around $2,000?',
+    a: 'Some borrowers find differences in that range or larger once fees and rate are lined up side by side; others find their current quote is competitive. We cannot promise a number before seeing your file — what we can promise is an honest, itemized comparison so you decide with full information.',
+  },
+  {
+    q: 'I am refinancing, not buying. Can I still do this?',
+    a: 'Absolutely. Refinances are one of the most common comparisons we run. Send the Loan Estimate from your current refi quote and we will show you the side-by-side.',
+  },
+  {
+    q: 'Who is reviewing my numbers?',
+    a: 'Jim Blackburn (NMLS #1072866) and his team. With $500M+ in closed loans and seven Scotsman Guide Top Producer years, the review you get is from people who price these loans every day across 300+ lenders.',
+  },
+];
+---
+
+<Layout
+  title="The Loan Estimate Challenge — Compare & You Might Save $2,000"
+  description="Already talking to a lender? Upload your Loan Estimate, book a time, and get a straight side-by-side comparison within the hour. One minute of work. You just might save $2,000."
+>
+  <div class="le-scope">
+
+    <!-- ============================== HERO ============================== -->
+    <section class="le-hero">
+      <div class="container">
+        <div class="le-hero-grid">
+          <div class="le-hero-copy">
+            <span class="eyebrow le-eyebrow-gold">The Loan Estimate Challenge</span>
+            <h1 class="display-1">
+              $2,000 for one&nbsp;minute of work?
+              <span class="le-hero-accent">No-brainer.</span>
+            </h1>
+            <p class="lede le-hero-sub">
+              Already talking to another lender? Under contract? Shopping a refinance?
+              Upload the Loan Estimate they sent you, pick a time on the calendar, and
+              get a straight, side-by-side answer — usually within the hour.
+            </p>
+            <div class="hero-actions">
+              <a href="#challenge" class="btn btn-primary btn-large">See My Options</a>
+              <a href={PHONE_HREF} class="btn btn-secondary btn-large">Talk to Our Team</a>
+            </div>
+            <p class="hero-trust">
+              <span class="trust-dot"></span>
+              Reviewed by Jim Blackburn · NMLS #1072866 · 5.0★ across 600+ reviews
+            </p>
+          </div>
+
+          <aside class="le-hero-card" aria-label="How the challenge works at a glance">
+            <div class="le-card-tag">The challenge</div>
+            <div class="le-card-line"><span class="le-card-num">1 min</span><span>to upload your Loan Estimate</span></div>
+            <div class="le-card-line"><span class="le-card-num">1 hr</span><span>to a side-by-side answer</span></div>
+            <div class="le-card-line le-card-line--hl"><span class="le-card-num">$2,000?</span><span>what a fair comparison might save you</span></div>
+            <a href="#challenge" class="btn btn-light le-card-btn">Take the challenge →</a>
+            <p class="le-card-fine">No credit pull. No application. No obligation.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== STAKES ============================== -->
+    <section class="le-stakes">
+      <div class="container-narrow">
+        <span class="eyebrow">Why one minute matters</span>
+        <h2>You only see the real deal when the numbers sit side&nbsp;by&nbsp;side.</h2>
+        <p class="lead">
+          A single rate quote tells you almost nothing on its own. The same loan amount can
+          carry hundreds — sometimes thousands — of dollars in different fees, points, and
+          structure depending on who is pricing it. The only way to know if you are getting
+          a fair deal is to compare your Loan Estimate against a second, honest one. That is
+          the whole challenge: one minute of uploading, against a number that could matter on
+          the day you sign.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== HOW IT WORKS ============================== -->
+    <section class="le-steps">
+      <div class="container">
+        <div class="le-section-head">
+          <span class="eyebrow le-eyebrow-gold">Three steps · about a minute</span>
+          <h2>How the Loan Estimate Challenge works</h2>
+        </div>
+        <div class="le-steps-grid">
+          {steps.map((s) => (
+            <div class="le-step">
+              <div class="le-step-num text-mono">{s.n}</div>
+              <h3>{s.t}</h3>
+              <p class="body-text">{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== UPLOAD + BOOK (GHL) ============================== -->
+    <section class="le-challenge" id="challenge">
+      <div class="container">
+        <div class="le-challenge-grid">
+          <div class="le-challenge-copy">
+            <span class="eyebrow le-eyebrow-onblue">Take the challenge</span>
+            <h2 class="le-challenge-h">Upload your Loan Estimate. Book a time. Get answers.</h2>
+            <p class="le-challenge-lead">
+              Drop in the Loan Estimate your current lender sent you and grab a slot on the
+              calendar. We review your file before the call, so by the time we talk you get a
+              clear, itemized, side-by-side comparison — and a straight answer on whether you
+              are getting a fair deal.
+            </p>
+            <ul class="le-checklist">
+              <li>Page 1 of the Loan Estimate PDF is all we need</li>
+              <li>No credit pull, no application, no obligation</li>
+              <li>Honest comparison — even if your current quote wins</li>
+              <li>Reviewed by Jim Blackburn, NMLS #1072866</li>
+            </ul>
+          </div>
+
+          <!-- ====== CONTACT FORM SLOT ======================= -->
+          <div class="le-upload-slot">
+            <div class="le-upload-head">
+              <span class="le-upload-step text-mono">STEP 1 / 2</span>
+              <h3>Upload your Loan Estimate</h3>
+            </div>
+
+            <div id="lec-form" data-ghl-endpoint={GHL_WEBHOOK_URL}>
+              <div class="lec-field-grid">
+                <div class="lec-field">
+                  <label class="lec-label" for="lec-first">First name</label>
+                  <input type="text" id="lec-first" placeholder="First" autocomplete="given-name" class="lec-input" />
+                </div>
+                <div class="lec-field">
+                  <label class="lec-label" for="lec-last">Last name</label>
+                  <input type="text" id="lec-last" placeholder="Last" autocomplete="family-name" class="lec-input" />
+                </div>
+              </div>
+              <div class="lec-field">
+                <label class="lec-label" for="lec-email">Email</label>
+                <input type="email" id="lec-email" placeholder="you@email.com" autocomplete="email" class="lec-input" />
+              </div>
+              <div class="lec-field">
+                <label class="lec-label" for="lec-phone">Phone</label>
+                <input type="tel" id="lec-phone" placeholder="(555) 555-5555" autocomplete="tel" class="lec-input" />
+              </div>
+              <div class="lec-field">
+                <label class="lec-label" for="lec-message">Tell us about your loan</label>
+                <textarea id="lec-message" placeholder="Which lender sent the estimate? Purchase or refinance? Any details that help us compare faster." rows="4" class="lec-input lec-textarea"></textarea>
+              </div>
+              <input type="text" name="_gotcha" id="lec-gotcha" style="position:absolute;left:-9999px;opacity:0;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <p class="lec-error" id="lec-error" style="display:none;"></p>
+              <button type="button" id="lec-submit" class="btn btn-primary lec-submit-btn">Submit My Loan Estimate</button>
+              <p class="lec-fine-inline">No credit pull. No application. No obligation.</p>
+            </div>
+
+            <div id="lec-success" style="display:none;" class="lec-success">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lec-success-icon" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <p class="lec-success-title">We'll review your loan estimate.</p>
+              <p class="lec-success-sub">Expect to hear from Jim's team within the hour. We'll have your numbers ready before the call.</p>
+            </div>
+
+            <p class="le-upload-fine">
+              Your document is shared only with Jim Blackburn's team for the purpose of
+              your comparison. This is not a credit application or a commitment to lend.
+            </p>
+          </div>
+          <!-- ====== /CONTACT FORM SLOT ====================== -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== WHAT WE COMPARE ============================== -->
+    <section class="le-compare">
+      <div class="container">
+        <div class="le-section-head">
+          <span class="eyebrow">Side by side, line by line</span>
+          <h2>What we put your Loan Estimate up against</h2>
+          <p class="lead le-compare-lead">
+            A quote is one number. A comparison is the whole picture. Here is what we line up
+            against the Loan Estimate you upload.
+          </p>
+        </div>
+        <div class="le-compare-grid">
+          {compareRows.map((r) => (
+            <div class="le-compare-row">
+              <div class="le-compare-check" aria-hidden="true">✓</div>
+              <div>
+                <h4>{r.label}</h4>
+                <p class="body-text text-small">{r.note}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PROOF ============================== -->
+    <section class="le-proof">
+      <div class="container">
+        <div class="le-section-head le-section-head--center">
+          <span class="eyebrow le-eyebrow-gold">They compared, then switched</span>
+          <h2>People who took a second look — and won</h2>
+        </div>
+
+        <div class="le-proof-grid">
+          <!-- Elizabeth Torres — the bullseye: was already with another lender, switched, closed in 19 days -->
+          <figure class="le-proof-card le-proof-card--lead">
+            <div class="le-proof-avatar">
+              <img src="/testimonials/elizabeth-torres.jpg" alt="Elizabeth Torres"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.src='https://i.pravatar.cc/300?img=45';this.parentElement.style.objectPosition='50% 25%';">
+            </div>
+            <blockquote class="le-proof-quote">
+              "We closed our loan within 19 days — just in time for Thanksgiving. We had gone
+              with a different loan office first, and the rate and down payment were ridiculous.
+              We were referred to Jim, and the experience was amazing. We got a much better deal."
+            </blockquote>
+            <figcaption class="le-proof-by">
+              <strong>Elizabeth Torres</strong>
+              <span>Senior Branch Manager, JPMorgan Chase · Illinois</span>
+            </figcaption>
+          </figure>
+
+          <!-- Chris Richardson — beat every other company's rate on a refi -->
+          <figure class="le-proof-card">
+            <div class="le-proof-avatar">
+              <img src="/testimonials/chris-richardson.jpg" alt="Chris Richardson"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.src='https://i.pravatar.cc/300?img=12';this.parentElement.style.objectPosition='50% 25%';">
+            </div>
+            <blockquote class="le-proof-quote">
+              "If you want to take advantage of the rates for a refinance, Jim is your man. His
+              team got my refinance done in under 30 days, with rates beating every other
+              company, and was thorough with state requirements."
+            </blockquote>
+            <figcaption class="le-proof-by">
+              <strong>Chris Richardson</strong>
+              <span>Former LT, U.S. Army · Nevada</span>
+            </figcaption>
+          </figure>
+
+          <!-- Christopher Provost — ran 3-4 scenarios so he could pick the best -->
+          <figure class="le-proof-card">
+            <div class="le-proof-avatar">
+              <img src="/testimonials/christopher-provost.jpg" alt="Christopher Provost"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.src='https://i.pravatar.cc/300?img=33';this.parentElement.style.objectPosition='50% 25%';">
+            </div>
+            <blockquote class="le-proof-quote">
+              "Jim and his team were very responsive and creative — they ran three or four
+              different loan scenarios before I settled on the best option. Highly recommended."
+            </blockquote>
+            <figcaption class="le-proof-by">
+              <strong>Christopher Provost</strong>
+              <span>Attorney · Alaska</span>
+            </figcaption>
+          </figure>
+        </div>
+        <p class="le-proof-credit text-small text-muted">
+          Real client reviews. Individual results vary; comparisons are based on each borrower's
+          own numbers. Reviewed by Jim Blackburn, NMLS #1072866.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== FAQ ============================== -->
+    <section class="le-faq">
+      <div class="container-narrow">
+        <div class="le-section-head">
+          <span class="eyebrow">Before you upload</span>
+          <h2>Loan Estimate Challenge — common questions</h2>
+        </div>
+        <div class="faq-list">
+          {faqs.map((f, i) => (
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span class="faq-num text-mono">{String(i + 1).padStart(2, '0')}</span>
+                <span>{f.q}</span>
+              </summary>
+              <div class="faq-a body-text">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FINAL CTA ============================== -->
+    <section class="le-final">
+      <div class="container-narrow le-final-inner">
+        <span class="eyebrow le-eyebrow-onblue">One minute. One number that might matter.</span>
+        <h2 class="le-final-h">Take the Loan Estimate Challenge.</h2>
+        <p class="le-final-p">
+          Upload the Loan Estimate you already have, book a time, and get an honest
+          side-by-side answer — usually within the hour, on the day it matters.
+        </p>
+        <div class="le-final-actions">
+          <a href="#challenge" class="btn btn-light btn-large">See My Options</a>
+          <a href={PHONE_HREF} class="btn le-btn-ghost btn-large">Talk to Our Team · {PHONE}</a>
+        </div>
+        <p class="le-final-fine text-mono">
+          Reviewed by Jim Blackburn · NMLS #1072866 · Not a commitment to lend.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <style>
+    /* ============================================================
+       .le-scope — scoped styles for the Loan Estimate Challenge page.
+       Reuses global tokens (--ink, --paper, --blue, etc.). Gold accent
+       (--gold) used sparingly for the "challenge / prize" feel.
+       border-radius: 4px throughout (matches v13 spec).
+    ============================================================ */
+    .le-scope { --le-gold: #B8860B; --le-gold-soft: #FBF3DE; }
+
+    /* ---------- HERO ---------- */
+    .le-hero {
+      padding: var(--s-9) 0 var(--s-8);
+      background:
+        radial-gradient(120% 90% at 85% 0%, var(--le-gold-soft) 0%, transparent 55%),
+        var(--paper);
+      border-bottom: 1px solid var(--border);
+    }
+    .le-hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: var(--s-8);
+      align-items: center;
+    }
+    .le-eyebrow-gold { color: var(--le-gold); }
+    .le-hero-copy h1 { margin: var(--s-5) 0 var(--s-6); max-width: 16ch; }
+    .le-hero-accent { display: block; color: var(--blue); }
+    .le-hero-sub { max-width: 54ch; margin-bottom: var(--s-7); color: var(--ink-2); }
+
+    .le-hero-card {
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      box-shadow: 0 18px 50px -28px rgba(10,14,26,0.55);
+    }
+    .le-card-tag {
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--le-gold);
+    }
+    .le-card-line {
+      display: flex; align-items: baseline; gap: var(--s-4);
+      padding-bottom: var(--s-4);
+      border-bottom: 1px solid var(--ink-3);
+      font-size: var(--text-sm);
+      color: rgba(250,250,247,0.78);
+    }
+    .le-card-num {
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      color: var(--paper);
+      min-width: 4.5ch;
+      font-variation-settings: "opsz" 30;
+    }
+    .le-card-line--hl .le-card-num { color: var(--le-gold); }
+    .le-card-btn { width: 100%; justify-content: center; margin-top: var(--s-2); }
+    .le-card-fine {
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.04em;
+      color: rgba(250,250,247,0.5);
+      text-align: center;
+      margin: 0;
+    }
+
+    /* ---------- STAKES ---------- */
+    .le-stakes { padding: var(--s-9) 0; }
+    .le-stakes h2 { margin: var(--s-4) 0 var(--s-5); max-width: 20ch; }
+
+    /* ---------- SECTION HEADS ---------- */
+    .le-section-head { margin-bottom: var(--s-7); max-width: 42ch; }
+    .le-section-head h2 { margin: var(--s-4) 0 0; }
+    .le-section-head--center { margin-left: auto; margin-right: auto; text-align: center; max-width: 36ch; }
+
+    /* ---------- STEPS ---------- */
+    .le-steps { padding: 0 0 var(--s-9); }
+    .le-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+    }
+    .le-step {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      border-top: 3px solid var(--le-gold);
+    }
+    .le-step-num {
+      font-size: var(--text-lg);
+      color: var(--le-gold);
+      letter-spacing: 0.05em;
+      margin-bottom: var(--s-4);
+    }
+    .le-step h3 { margin-bottom: var(--s-3); }
+
+    /* ---------- CHALLENGE (upload + book) ---------- */
+    .le-challenge {
+      background: var(--blue);
+      color: var(--paper);
+      padding: var(--s-9) 0;
+    }
+    .le-challenge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-8);
+      align-items: start;
+    }
+    .le-eyebrow-onblue { color: #BFD0FF; }
+    .le-challenge-h { color: var(--paper); margin: var(--s-4) 0 var(--s-5); }
+    .le-challenge-lead { color: rgba(255,255,255,0.85); font-size: var(--text-md); }
+    .le-checklist { list-style: none; margin-top: var(--s-6); display: grid; gap: var(--s-3); }
+    .le-checklist li {
+      position: relative; padding-left: var(--s-6);
+      color: rgba(255,255,255,0.92); font-size: var(--text-sm);
+    }
+    .le-checklist li::before {
+      content: '✓'; position: absolute; left: 0; top: 0;
+      color: var(--le-gold); font-weight: 700;
+    }
+
+    .le-upload-slot {
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 4px;
+      padding: var(--s-6);
+      box-shadow: 0 24px 60px -30px rgba(0,0,0,0.5);
+    }
+    .le-upload-head { margin-bottom: var(--s-5); }
+    .le-upload-step {
+      font-size: var(--text-2xs);
+      letter-spacing: 0.14em;
+      color: var(--blue);
+      display: block;
+      margin-bottom: var(--s-2);
+    }
+    .le-upload-head h3 { margin: 0; }
+
+    /* ---------- CONTACT FORM ---------- */
+    #lec-form { display: grid; gap: var(--s-4); }
+    .lec-field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-3);
+    }
+    .lec-field { display: flex; flex-direction: column; gap: var(--s-2); }
+    .lec-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-2);
+    }
+    .lec-input {
+      width: 100%;
+      padding: var(--s-3) var(--s-4);
+      border: 1px solid var(--border-strong);
+      border-radius: 4px;
+      font-size: var(--text-base);
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--white);
+      box-sizing: border-box;
+      transition: border-color 0.15s;
+    }
+    .lec-input:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(var(--blue-rgb, 30,80,220), 0.1);
+    }
+    .lec-textarea { resize: vertical; min-height: 96px; }
+    .lec-error {
+      font-size: var(--text-sm);
+      color: #c0392b;
+      margin: 0;
+    }
+    .lec-submit-btn { width: 100%; justify-content: center; }
+    .lec-fine-inline {
+      font-family: var(--mono);
+      font-size: var(--text-2xs);
+      letter-spacing: 0.04em;
+      color: var(--ink-lighter);
+      text-align: center;
+      margin: 0;
+    }
+
+    /* ---------- SUCCESS STATE ---------- */
+    .lec-success {
+      text-align: center;
+      padding: var(--s-7) var(--s-4);
+    }
+    .lec-success-icon {
+      color: #2ecc71;
+      margin: 0 auto var(--s-4);
+      display: block;
+    }
+    .lec-success-title {
+      font-family: var(--serif);
+      font-size: var(--text-xl);
+      font-variation-settings: "opsz" 30;
+      margin-bottom: var(--s-3);
+    }
+    .lec-success-sub {
+      font-size: var(--text-sm);
+      color: var(--ink-2);
+      max-width: 36ch;
+      margin: 0 auto;
+    }
+
+    .le-upload-fine {
+      font-size: var(--text-xs); color: var(--ink-lighter);
+      margin-top: var(--s-4); line-height: 1.5;
+    }
+
+    /* ---------- COMPARE ---------- */
+    .le-compare { padding: var(--s-9) 0; }
+    .le-compare-lead { margin-top: var(--s-4); max-width: 50ch; }
+    .le-compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--s-5);
+      margin-top: var(--s-2);
+    }
+    .le-compare-row {
+      display: flex; gap: var(--s-4);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-5);
+    }
+    .le-compare-check {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--le-gold-soft);
+      color: var(--le-gold);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: var(--text-sm);
+    }
+    .le-compare-row h4 { margin-bottom: var(--s-2); }
+
+    /* ---------- PROOF ---------- */
+    .le-proof { padding: var(--s-9) 0; background: var(--paper-2); }
+    .le-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s-5);
+      align-items: stretch;
+    }
+    .le-proof-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: var(--s-6);
+      display: flex; flex-direction: column; gap: var(--s-5);
+      margin: 0;
+    }
+    .le-proof-card--lead { border-top: 3px solid var(--le-gold); }
+    .le-proof-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      overflow: hidden; background: var(--ink-lighter); flex-shrink: 0;
+    }
+    .le-proof-avatar img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: 50% 25%; display: block;
+    }
+    .le-proof-quote {
+      font-family: var(--serif);
+      font-size: var(--text-md);
+      line-height: 1.5;
+      color: var(--ink);
+      margin: 0;
+      font-variation-settings: "opsz" 30;
+    }
+    .le-proof-by { display: flex; flex-direction: column; gap: 2px; margin-top: auto; }
+    .le-proof-by strong { font-size: var(--text-base); }
+    .le-proof-by span { font-size: var(--text-xs); color: var(--ink-lighter); }
+    .le-proof-credit { text-align: center; margin-top: var(--s-6); }
+
+    /* ---------- FAQ ---------- */
+    .le-faq { padding: var(--s-9) 0; }
+    .faq-list { border-bottom: 1px solid var(--border); }
+    .faq-item { border-top: 1px solid var(--border); }
+    .faq-q {
+      display: flex; gap: var(--s-4); align-items: flex-start;
+      padding: var(--s-5) 0;
+      font-family: var(--serif);
+      font-size: var(--text-lg);
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
+      font-variation-settings: "opsz" 30;
+    }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-q::after {
+      content: '+'; margin-left: auto;
+      font-family: var(--sans); color: var(--blue);
+      font-size: var(--text-xl); line-height: 1;
+    }
+    details[open] .faq-q::after { content: '–'; }
+    .faq-num { color: var(--le-gold); font-size: var(--text-sm); padding-top: 4px; }
+    .faq-a { padding: 0 0 var(--s-5) calc(var(--s-4) + 2.5ch); max-width: 64ch; }
+
+    /* ---------- FINAL CTA ---------- */
+    .le-final { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; }
+    .le-final-inner { text-align: center; }
+    .le-final-h { color: var(--paper); margin: var(--s-4) auto var(--s-5); max-width: 20ch; }
+    .le-final-p { color: rgba(250,250,247,0.78); font-size: var(--text-lg); max-width: 52ch; margin: 0 auto var(--s-7); }
+    .le-final-actions { display: flex; gap: var(--s-3); justify-content: center; flex-wrap: wrap; }
+    .le-btn-ghost { background: transparent; color: var(--paper); border: 1px solid rgba(250,250,247,0.3); }
+    .le-btn-ghost:hover { border-color: var(--paper); }
+    .le-final-fine {
+      font-size: var(--text-2xs); letter-spacing: 0.06em;
+      color: rgba(250,250,247,0.5); margin-top: var(--s-6);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .le-hero-grid,
+      .le-challenge-grid { grid-template-columns: 1fr; gap: var(--s-7); }
+      .le-steps-grid,
+      .le-compare-grid,
+      .le-proof-grid { grid-template-columns: 1fr; }
+      .le-hero-card { order: 2; }
+      .lec-field-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</Layout>
+
+<script is:inline>
+(function(){
+  var form=document.getElementById('lec-form');
+  if(!form)return;
+  var ENDPOINT=form.getAttribute('data-ghl-endpoint')||'';
+  var btn=document.getElementById('lec-submit');
+  var errEl=document.getElementById('lec-error');
+  var sending=false;
+
+  function showErr(m){errEl.textContent=m;errEl.style.display='block';}
+  function hideErr(){errEl.style.display='none';}
+
+  btn.addEventListener('click',function(){
+    if(sending)return;
+
+    var gotcha=document.getElementById('lec-gotcha');
+    if(gotcha&&gotcha.value.trim()!==''){
+      document.getElementById('lec-form').style.display='none';
+      document.getElementById('lec-success').style.display='block';
+      return;
+    }
+
+    var first=document.getElementById('lec-first').value.trim();
+    var last=document.getElementById('lec-last').value.trim();
+    var email=document.getElementById('lec-email').value.trim();
+    var phone=document.getElementById('lec-phone').value.trim();
+    var message=document.getElementById('lec-message').value.trim();
+
+    if(!first||!last)return showErr('Please enter your first and last name.');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return showErr('Please enter a valid email address.');
+    if(phone.replace(/\D/g,'').length<10)return showErr('Please enter a valid phone number.');
+    hideErr();
+
+    var payload={
+      first_name:first, last_name:last, full_name:(first+' '+last).trim(),
+      email:email, phone:phone,
+      message:message,
+      form_source:'loan_estimate_challenge', form_name:'Loan Estimate Challenge',
+      page_url:window.location.href, submitted_at:new Date().toISOString()
+    };
+
+    sending=true; btn.disabled=true; btn.textContent='Sending\u2026';
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(){
+        document.getElementById('lec-form').style.display='none';
+        document.getElementById('lec-success').style.display='block';
+      })
+      .catch(function(){
+        showErr('Something went wrong. Please try again or call us directly.');
+      })
+      .then(function(){
+        sending=false; btn.disabled=false; btn.textContent='Submit My Loan Estimate';
+      });
+  });
+})();
+</script>

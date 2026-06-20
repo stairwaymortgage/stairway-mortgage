@@ -22,7 +22,7 @@
  *   (if used) attributed to NEXA, not Jim. No "Talk to Jim" CTA.
  *
  * DOMAIN-AGNOSTIC: the share link is built from location.origin at runtime, so it
- *   self-corrects across the .vercel.app → stairwaymortgage.com cutover.
+ *   self-corrects across domain changes (uses location.origin at runtime).
  */
 import Layout from '../layouts/Layout.astro';
 import { GHL_WEBHOOK_URL } from '../lib/ghl';
