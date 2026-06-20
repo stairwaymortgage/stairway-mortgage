@@ -336,7 +336,7 @@ const icons: Record<string, string> = {
                 </div>
               ))}
             </div>
-          ) : m.flyout ? (<>
+          ) : m.flyout ? (
           <ul class="mega__list mega__list--flyout mega__cats-2x5">
             {m.columns.flatMap(col => col.links).map((link) => (
               <li class="mega__cat">
@@ -368,49 +368,7 @@ const icons: Record<string, string> = {
             ))}
           </ul>
 
-          {/* ─── American Heroes featured plate (below 2x5 grid) ─── */}
-          {m.flyout && (
-          <div class="heroes-plate">
-            <a href="/american-heroes/" class="heroes-plate__head">
-              <span class="heroes-plate__crest" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M12 2.5l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.8 7.2 18.2l.9-5.4L4.2 9l5.4-.8L12 2.5z" stroke="#C49A3A" stroke-width="1.3" stroke-linejoin="round" fill="rgba(196,154,58,.18)"/></svg>
-              </span>
-              <span class="heroes-plate__title">
-                <span class="heroes-plate__eyebrow">Those who serve</span>
-                <span class="heroes-plate__name">American Heroes</span>
-              </span>
-              <span class="heroes-plate__cue">
-                <span class="heroes-plate__link">Explore programs &rarr;</span>
-                <span class="heroes-plate__chevron" aria-hidden="true">&rsaquo;</span>
-              </span>
-            </a>
-            <div class="heroes-plate__body">
-              <div class="heroes-plate__col heroes-plate__col--mil">
-                <h4>Military &amp; Veterans <span class="heroes-plate__tier heroes-plate__tier--mil">VA-eligible</span></h4>
-                <div class="heroes-plate__links">
-                  <a href="/american-heroes/army/">US Army</a>
-                  <a href="/american-heroes/navy/">US Navy</a>
-                  <a href="/american-heroes/air-force/">US Air Force</a>
-                  <a href="/american-heroes/marine-corps/">US Marine Corps</a>
-                  <a href="/american-heroes/coast-guard/">US Coast Guard</a>
-                  <a href="/american-heroes/space-force/">US Space Force</a>
-                </div>
-              </div>
-              <div class="heroes-plate__col heroes-plate__col--civ">
-                <h4>Civilian Heroes <span class="heroes-plate__tier heroes-plate__tier--civ">Hero benefits</span></h4>
-                <div class="heroes-plate__links">
-                  <a href="/american-heroes/police-officers/">Police Officers</a>
-                  <a href="/american-heroes/firefighters/">Firefighters</a>
-                  <a href="/american-heroes/emt-paramedics/">EMT / Paramedics</a>
-                  <a href="/american-heroes/teachers/">Teachers</a>
-                  <a href="/american-heroes/corrections-officers/">Corrections Officers</a>
-                  <a href="/american-heroes/federal-law-enforcement/">Federal Law Enforcement</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          )}
-          </>) : (
+          ) : (
           <div class="mega__cols">
             {m.columns.map((col) => (
               <div class="mega__col">
@@ -465,6 +423,50 @@ const icons: Record<string, string> = {
             </div>
           </div>
         </div>
+
+        {/* ─── American Heroes featured plate (full-width, below mega__grid) ─── */}
+        {m.flyout && (
+        <div class="heroes-plate">
+          <a href="/american-heroes/" class="heroes-plate__head">
+            <span class="heroes-plate__crest" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M12 2.5l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.8 7.2 18.2l.9-5.4L4.2 9l5.4-.8L12 2.5z" stroke="#C49A3A" stroke-width="1.3" stroke-linejoin="round" fill="rgba(196,154,58,.18)"/></svg>
+            </span>
+            <span class="heroes-plate__title">
+              <span class="heroes-plate__eyebrow">Those who serve</span>
+              <span class="heroes-plate__name">American Heroes</span>
+            </span>
+            <span class="heroes-plate__cue">
+              <span class="heroes-plate__link">Explore programs &rarr;</span>
+              <span class="heroes-plate__chevron" aria-hidden="true">&rsaquo;</span>
+            </span>
+          </a>
+          <div class="heroes-plate__body">
+            <div class="heroes-plate__col heroes-plate__col--mil">
+              <h4>Military &amp; Veterans <span class="heroes-plate__tier heroes-plate__tier--mil">VA-eligible</span></h4>
+              <div class="heroes-plate__links">
+                <a href="/american-heroes/army/">US Army</a>
+                <a href="/american-heroes/navy/">US Navy</a>
+                <a href="/american-heroes/air-force/">US Air Force</a>
+                <a href="/american-heroes/marine-corps/">US Marine Corps</a>
+                <a href="/american-heroes/coast-guard/">US Coast Guard</a>
+                <a href="/american-heroes/space-force/">US Space Force</a>
+              </div>
+            </div>
+            <div class="heroes-plate__col heroes-plate__col--civ">
+              <h4>Civilian Heroes <span class="heroes-plate__tier heroes-plate__tier--civ">Hero benefits</span></h4>
+              <div class="heroes-plate__links">
+                <a href="/american-heroes/police-officers/">Police Officers</a>
+                <a href="/american-heroes/firefighters/">Firefighters</a>
+                <a href="/american-heroes/emt-paramedics/">EMT / Paramedics</a>
+                <a href="/american-heroes/teachers/">Teachers</a>
+                <a href="/american-heroes/corrections-officers/">Corrections Officers</a>
+                <a href="/american-heroes/federal-law-enforcement/">Federal Law Enforcement</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        )}
+
         {/* Quick-quote chips (only on Get a Mortgage) */}
         {m.quickQuotes && (
           <div class="mega__quotes">
