@@ -170,7 +170,7 @@ const menus = [
         ],
       },
     ],
-    feature: { title: 'Specialized lending for complex income.', cta: { label: 'See All Programs', href: '/loan-programs/' } },
+    feature: { title: 'See All Loan Programs', subtitle: 'Specialized lending for complex income.', cta: { label: 'See All Loan Programs', href: '/loan-programs/' }, promoStyle: 'black' },
   },
   {
     id: 'mega-tools',
@@ -307,7 +307,7 @@ const icons: Record<string, string> = {
     <div class="mega" id={m.id} role="region" aria-label={m.label + ' menu'}>
       <div class="container-page">
         {m.id === 'mega-journey' && (
-          <a href="/your-journey/" class="mega__journey-cta">
+          <a href="/the-8-steps/" class="mega__journey-cta">
             <span class="mega__journey-icon" aria-hidden="true">&#x2302;</span>
             <span class="mega__journey-text">
               <strong>Not sure where you fit?</strong>
@@ -417,10 +417,11 @@ const icons: Record<string, string> = {
           )}
           {/* Feature card */}
           <div class="mega__feature">
-            <div class="mega__feature-card">
+            <a href={m.feature.cta.href} class={`mega__feature-card${m.feature.promoStyle === 'black' ? ' mega__feature-card--black' : ''}`}>
               <p class="mega__feature-title font-display">{m.feature.title}</p>
-              <a href={m.feature.cta.href} class="btn btn-blue mega__feature-btn">{m.feature.cta.label}</a>
-            </div>
+              {m.feature.subtitle && <p class="mega__feature-sub">{m.feature.subtitle}</p>}
+              <span class={`btn mega__feature-btn${m.feature.promoStyle === 'black' ? ' mega__feature-btn--on-dark' : ' btn-blue'}`}>{m.feature.cta.label}</span>
+            </a>
           </div>
         </div>
 
@@ -881,11 +882,31 @@ const icons: Record<string, string> = {
     letter-spacing: -0.015em;
     margin-bottom: 1.25rem;
   }
+  .mega__feature-card { text-decoration: none; }
   .mega__feature-btn {
     width: 100%;
     text-align: center;
     font-size: 14px !important;
     padding: 0.7rem 1rem !important;
+  }
+  .mega__feature-sub {
+    font-size: 13.5px;
+    color: rgba(250,250,247,0.6);
+    line-height: 1.45;
+    margin-bottom: 1.25rem;
+  }
+  .mega__feature-card--black {
+    background: var(--color-ink, #0A0E1A);
+    color: var(--color-paper, #FAFAF7);
+  }
+  .mega__feature-btn--on-dark {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+  .mega__feature-btn--on-dark:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.1);
   }
 
   /* - Coming Soon items - */
