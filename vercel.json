@@ -34,6 +34,26 @@
   ],
   "redirects": [
     {
+      "source": "/house_guide",
+      "destination": "https://drive.google.com/file/d/1XzDcMqUwlX2MWRuh8f12gP3CM_7fyRop/view?usp=drive_link",
+      "permanent": true
+    },
+    {
+      "source": "/house_guide/",
+      "destination": "https://drive.google.com/file/d/1XzDcMqUwlX2MWRuh8f12gP3CM_7fyRop/view?usp=drive_link",
+      "permanent": true
+    },
+    {
+      "source": "/city-violation-acknowledgement-form",
+      "destination": "https://forms.stairwaymortgage.com/documents/doc-form/6a29b0ce1ce725e8411218f4?locale=en_US",
+      "permanent": true
+    },
+    {
+      "source": "/city-violation-acknowledgement-form/",
+      "destination": "https://forms.stairwaymortgage.com/documents/doc-form/6a29b0ce1ce725e8411218f4?locale=en_US",
+      "permanent": true
+    },
+    {
       "source": "/your-journey/",
       "destination": "/the-8-steps/",
       "permanent": true
