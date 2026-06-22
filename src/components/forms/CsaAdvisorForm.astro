@@ -1,0 +1,330 @@
+---
+// CSA Advisor application — native multi-step modal form.
+// Pattern: clone of GetLocalIntroForm (.gli-*), OTP removed, CSA fields.
+// Opens via any element with [data-open-csa]. Posts to shared GHL webhook.
+---
+<div class="gli-overlay" id="csa-overlay" hidden>
+  <div class="aic gli" role="dialog" aria-modal="true" aria-label="Apply for Certified Stairway Advisor">
+    <span class="aic__aurora aic__aurora--1"></span>
+    <span class="aic__aurora aic__aurora--2"></span>
+
+    <div class="aic__header">
+      <span class="aic__spark">✦</span>
+      <div class="aic__brand">
+        <div class="aic__title">Apply for CSA <span class="aic__badge">Stairway</span></div>
+        <div class="aic__live"><span class="aic__dot"></span> Certified Stairway Advisor™</div>
+      </div>
+      <button type="button" class="aic__close" id="csa-close" aria-label="Close">✕</button>
+    </div>
+
+    <div class="gli-progress"><div class="gli-progress__bar" id="csa-bar"></div></div>
+    <div class="gli-stepcount mono" id="csa-stepcount"></div>
+
+    <div class="aic__body">
+      <form id="csa-form" novalidate>
+        <!-- honeypot -->
+        <input type="text" id="csa-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"
+          style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true" />
+
+        <!-- STEP 1 — classes interested in (radio, single) -->
+        <div class="gli-slide" data-step="1">
+          <div class="aic__msg aic__msg--bot">Which classes are you interested in?</div>
+          <div class="gli-chips">
+            <label class="gli-chip"><input type="radio" name="classes_interested" value="CSA-MFS: Mortgage & Financial Strategy" /><span>CSA-MFS: Mortgage &amp; Financial Strategy</span></label>
+            <label class="gli-chip"><input type="radio" name="classes_interested" value="CSA-REI: Real Estate Investing" /><span>CSA-REI: Real Estate Investing</span></label>
+            <label class="gli-chip"><input type="radio" name="classes_interested" value="Both" /><span>Both</span></label>
+          </div>
+          <p class="gli-err" data-err-for="classes_interested"></p>
+        </div>
+
+        <!-- STEP 2 — professions (checkbox, multi) -->
+        <div class="gli-slide" data-step="2" hidden>
+          <div class="aic__msg aic__msg--bot">Which professions do you represent?</div>
+          <div class="gli-chips">
+            <label class="gli-chip"><input type="checkbox" name="professions" value="Mortgage Broker / Banker" /><span>Mortgage Broker / Banker</span></label>
+            <label class="gli-chip"><input type="checkbox" name="professions" value="Real Estate Broker / Team Leader" /><span>Real Estate Broker / Team Leader</span></label>
+            <label class="gli-chip"><input type="checkbox" name="professions" value="Financial Planner" /><span>Financial Planner</span></label>
+            <label class="gli-chip"><input type="checkbox" name="professions" value="Accountant / CPA" /><span>Accountant / CPA</span></label>
+            <label class="gli-chip"><input type="checkbox" name="professions" value="Insurance Broker" /><span>Insurance Broker</span></label>
+            <label class="gli-chip"><input type="checkbox" name="professions" value="Real Estate Attorney" /><span>Real Estate Attorney</span></label>
+            <label class="gli-chip"><input type="checkbox" name="professions" value="Builder GC" /><span>Builder GC</span></label>
+            <label class="gli-chip"><input type="checkbox" name="professions" value="Subcontractor" /><span>Subcontractor</span></label>
+            <label class="gli-chip"><input type="checkbox" name="professions" value="Property Manager" /><span>Property Manager</span></label>
+            <label class="gli-chip"><input type="checkbox" name="professions" value="Private Lender" /><span>Private Lender</span></label>
+          </div>
+          <p class="gli-err" data-err-for="professions"></p>
+        </div>
+
+        <!-- STEP 3 — primary business name -->
+        <div class="gli-slide" data-step="3" hidden>
+          <div class="aic__msg aic__msg--bot">What is the name of your primary business?</div>
+          <input class="gli-input" type="text" name="primary_business" placeholder="Business name" autocomplete="organization" />
+          <p class="gli-err" data-err-for="primary_business"></p>
+        </div>
+
+        <!-- STEP 4 — state -->
+        <div class="gli-slide" data-step="4" hidden>
+          <div class="aic__msg aic__msg--bot">Which state is your primary business location?</div>
+          <input class="gli-input" type="text" name="business_state" placeholder="e.g. Florida" autocomplete="address-level1" />
+          <p class="gli-err" data-err-for="business_state"></p>
+        </div>
+
+        <!-- STEP 5 — years licensed -->
+        <div class="gli-slide" data-step="5" hidden>
+          <div class="aic__msg aic__msg--bot">How many years have you been licensed in your profession?</div>
+          <input class="gli-input" type="text" inputmode="numeric" name="years_licensed" placeholder="e.g. 8" />
+          <p class="gli-err" data-err-for="years_licensed"></p>
+        </div>
+
+        <!-- STEP 6 — NMLS (optional) -->
+        <div class="gli-slide" data-step="6" hidden>
+          <div class="aic__msg aic__msg--bot">What is your NMLS # <em>(if applicable)</em>?</div>
+          <input class="gli-input" type="text" name="nmls_number" placeholder="Optional" />
+        </div>
+
+        <!-- STEP 7 — licensed pros in office -->
+        <div class="gli-slide" data-step="7" hidden>
+          <div class="aic__msg aic__msg--bot">How many licensed professionals are in your office?</div>
+          <input class="gli-input" type="text" inputmode="numeric" name="office_pros" placeholder="e.g. 12" />
+          <p class="gli-err" data-err-for="office_pros"></p>
+        </div>
+
+        <!-- STEP 8 — anticipated enrollments -->
+        <div class="gli-slide" data-step="8" hidden>
+          <div class="aic__msg aic__msg--bot">How many of them do you anticipate enrolling in the courses?</div>
+          <input class="gli-input" type="text" inputmode="numeric" name="anticipated_enrollments" placeholder="e.g. 5" />
+          <p class="gli-err" data-err-for="anticipated_enrollments"></p>
+        </div>
+
+        <!-- STEP 9 — full name -->
+        <div class="gli-slide" data-step="9" hidden>
+          <div class="aic__msg aic__msg--bot">Great. What's your full name?</div>
+          <input class="gli-input" type="text" name="full_name" id="csa-name" placeholder="First and last name" autocomplete="name" />
+          <p class="gli-err" data-err-for="full_name"></p>
+        </div>
+
+        <!-- STEP 10 — email -->
+        <div class="gli-slide" data-step="10" hidden>
+          <div class="aic__msg aic__msg--bot">What email should we use?</div>
+          <input class="gli-input" type="email" name="email" id="csa-email" placeholder="you@email.com" autocomplete="email" />
+          <p class="gli-err" data-err-for="email"></p>
+        </div>
+
+        <!-- STEP 11 — phone -->
+        <div class="gli-slide" data-step="11" hidden>
+          <div class="aic__msg aic__msg--bot">And the best number to reach you?</div>
+          <input class="gli-input" type="tel" name="phone" id="csa-phone" placeholder="(954) 993-1625" autocomplete="tel" />
+          <p class="gli-err" data-err-for="phone"></p>
+        </div>
+
+        <!-- STEP 12 — consent + submit -->
+        <div class="gli-slide" data-step="12" hidden>
+          <div class="aic__msg aic__msg--bot">Last thing — your consent so we can reach out.</div>
+          <label class="gli-consent">
+            <input type="checkbox" name="sms_consent" id="csa-consent" />
+            <span>I Consent to Receive SMS Notifications, Alerts &amp; Occasional Marketing Communication from company. Message frequency varies. Message &amp; data rates may apply. Text HELP to (954) 993-1625 for assistance. You can reply STOP to unsubscribe at any time.</span>
+          </label>
+          <p class="gli-err" data-err-for="sms_consent"></p>
+          <p class="gli-fine mono">Stairway Mortgage is a division of NEXA Mortgage LLC. <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a></p>
+        </div>
+
+        <!-- hidden attribution -->
+        <input type="hidden" name="lo_id" /><input type="hidden" name="lo_name" />
+        <input type="hidden" name="utm_source" /><input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_campaign" /><input type="hidden" name="fbclid" />
+        <input type="hidden" name="source_url" />
+
+        <div class="gli-nav">
+          <button type="button" class="gli-btn gli-btn--ghost" id="csa-prev" hidden>← Back</button>
+          <button type="button" class="gli-btn gli-btn--go" id="csa-next">Next →</button>
+          <button type="submit" class="gli-btn gli-btn--go" id="csa-submit" hidden>Submit Application</button>
+        </div>
+      </form>
+
+      <div class="gli-success" id="csa-success" hidden>
+        <div class="gli-success__mark">✓</div>
+        <h3 class="gli-success__h" id="csa-success-h">Thank you — application received.</h3>
+        <p class="gli-success__p">We've received your interest in the Certified Stairway Advisor™ program. Our team is reviewing your details and will reach out shortly with next steps for enrollment.</p>
+        <p class="gli-success__closer" id="csa-success-closer">We're looking forward to having you in the program.</p>
+        <a class="gli-btn gli-btn--ghost" href="/">Back to home page</a>
+      </div>
+    </div>
+
+    <div class="aic__footer">Certified Stairway Advisor™ · CSA-MFS · CSA-REI</div>
+  </div>
+</div>
+
+<style is:global>
+  /* CSA modal reuses the .gli-* / .aic.* design system. If GetLocalIntroForm is on the
+     same page these rules are duplicated harmlessly; if used alone they self-contain. */
+  .gli-overlay[hidden] { display: none; }
+  .gli-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(10,14,26,.62); backdrop-filter: blur(6px); display: grid; place-items: center; padding: 1.25rem; animation: gli-fade .25s ease; }
+  @keyframes gli-fade { from { opacity: 0 } to { opacity: 1 } }
+  .aic.gli { --color-ink:#0A0E1A; --color-paper:#FAFAF7; --color-blue:#1845D6; --serif:'Fraunces',Georgia,serif; --sans:'IBM Plex Sans',sans-serif; --mono:'JetBrains Mono',monospace; position: relative; width: 100%; max-width: 480px; max-height: 90vh; overflow: hidden auto; background: linear-gradient(180deg,#0e1322,#0a0e1a); color: var(--color-paper); border-radius: 18px; box-shadow: 0 32px 80px -24px rgba(10,14,26,.5), 0 0 0 1px #ffffff0f; isolation: isolate; font-family: var(--sans); animation: gli-pop .35s cubic-bezier(.2,.8,.2,1); }
+  @keyframes gli-pop { from { transform: translateY(16px) scale(.97); opacity: 0 } to { transform: none; opacity: 1 } }
+  .aic__aurora { position: absolute; width: 320px; height: 320px; border-radius: 50%; filter: blur(70px); opacity: .5; z-index: 0; animation: aic-drift 14s ease-in-out infinite; }
+  .aic__aurora--1 { background: #1845D6; top: -120px; right: -80px; }
+  .aic__aurora--2 { background: #6F46FF; bottom: -140px; left: -100px; animation-delay: -7s; }
+  @keyframes aic-drift { 0%,100% { transform: translate(0,0) } 50% { transform: translate(-30px,30px) } }
+  .aic__header { position: relative; z-index: 1; display: flex; align-items: center; gap: .7rem; padding: 1.1rem 1.25rem .9rem; }
+  .aic__spark { color: #9DB2FF; font-size: 1.2rem; animation: aic-sparkle 6s linear infinite; }
+  @keyframes aic-sparkle { to { transform: rotate(360deg) } }
+  .aic__brand { display: flex; flex-direction: column; gap: .15rem; flex: 1; }
+  .aic__title { font-family: var(--serif); font-size: 1.02rem; font-weight: 500; display: flex; align-items: center; gap: .5rem; }
+  .aic__badge { font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; background: #1845D6; color: #fff; padding: .12rem .4rem; border-radius: 5px; }
+  .aic__live { font-family: var(--mono); font-size: .66rem; color: #9aa6c4; display: flex; align-items: center; gap: .4rem; letter-spacing: .03em; }
+  .aic__dot { width: 7px; height: 7px; border-radius: 50%; background: #2E9E2E; animation: aic-pulse 2s ease-in-out infinite; }
+  @keyframes aic-pulse { 0%,100% { box-shadow: 0 0 0 0 #2E9E2E80 } 50% { box-shadow: 0 0 0 5px #2E9E2E00 } }
+  .aic__close { margin-left: auto; background: #ffffff14; border: 0; color: #c7cee0; width: 28px; height: 28px; border-radius: 8px; cursor: pointer; font-size: .8rem; }
+  .aic__close:hover { background: #ffffff24; }
+  .gli-progress { position: relative; z-index: 1; height: 3px; background: #ffffff14; margin: 0 1.25rem; border-radius: 99px; overflow: hidden; }
+  .gli-progress__bar { height: 100%; width: 8%; background: linear-gradient(90deg,#1845D6,#6F46FF); transition: width .4s cubic-bezier(.4,0,.2,1); }
+  .gli-stepcount { position: relative; z-index: 1; font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; color: #8a96b4; margin: .55rem 1.25rem 0; text-transform: uppercase; }
+  .aic__body { position: relative; z-index: 1; padding: 1rem 1.25rem 1.25rem; }
+  .aic__msg { font-size: .98rem; line-height: 1.5; margin-bottom: 1rem; animation: aic-msg-in .4s ease; }
+  .aic__msg--bot { color: #e6e9f2; }
+  .aic__msg em { color: #9DB2FF; font-style: normal; }
+  @keyframes aic-msg-in { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+  .gli-chips { display: flex; flex-direction: column; gap: .5rem; }
+  .gli-chip { display: flex; cursor: pointer; }
+  .gli-chip input { position: absolute; opacity: 0; }
+  .gli-chip span { flex: 1; padding: .7rem .9rem; border-radius: 10px; background: #ffffff0a; border: 1.5px solid #ffffff14; font-size: .9rem; transition: all .18s; display: flex; flex-direction: column; gap: .1rem; }
+  .gli-chip:hover span { border-color: #1845D6; background: #1845D61a; }
+  .gli-chip input:checked + span { border-color: #6F46FF; background: #6F46FF24; box-shadow: 0 0 0 1px #6F46FF; }
+  .gli-input { width: 100%; box-sizing: border-box; font-family: var(--sans); font-size: 1rem; padding: .8rem .9rem; border-radius: 10px; background: #ffffff0d; border: 1.5px solid #ffffff1f; color: #fff; transition: border-color .18s, box-shadow .18s; }
+  .gli-input::placeholder { color: #76819c; }
+  .gli-input:focus { outline: none; border-color: #6F46FF; box-shadow: 0 0 0 3px #6F46FF33; }
+  .gli-consent { display: flex; gap: .6rem; align-items: flex-start; font-size: .82rem; line-height: 1.5; color: #b8c0d6; cursor: pointer; }
+  .gli-consent input { margin-top: .15rem; accent-color: #6F46FF; flex-shrink: 0; }
+  .gli-fine { font-family: var(--mono); font-size: .62rem; color: #76819c; margin: 1rem 0 0; line-height: 1.6; }
+  .gli-fine a { color: #9DB2FF; text-decoration: none; }
+  .gli-err { color: #ff8b8b; font-size: .78rem; margin: .5rem 0 0; min-height: .9rem; }
+  .gli-nav { display: flex; justify-content: space-between; gap: .75rem; margin-top: 1.4rem; }
+  .gli-btn { font-family: var(--sans); font-weight: 600; font-size: .9rem; padding: .75rem 1.4rem; border-radius: 10px; cursor: pointer; border: 1.5px solid transparent; transition: background .18s, transform .1s; }
+  .gli-btn:active { transform: translateY(1px); }
+  .gli-btn--go { background: #1845D6; color: #fff; margin-left: auto; }
+  .gli-btn--go:hover { background: #0F2EA0; }
+  .gli-btn--go:disabled { opacity: .6; cursor: not-allowed; }
+  .gli-btn--ghost { background: #ffffff10; color: #c7cee0; border-color: #ffffff24; }
+  .aic__footer { position: relative; z-index: 1; font-family: var(--mono); font-size: .62rem; color: #6b7591; text-align: center; padding: .9rem 1.25rem; border-top: 1px solid #ffffff0f; letter-spacing: .03em; }
+  .gli-success { text-align: center; padding: 1rem 0 .5rem; animation: aic-msg-in .4s ease; }
+  .gli-success__mark { width: 56px; height: 56px; margin: 0 auto 1rem; border-radius: 50%; background: #2E9E2E; color: #fff; font-size: 1.6rem; display: grid; place-items: center; }
+  .gli-success__h { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 0 0 .75rem; color: #fff; }
+  .gli-success__p { font-size: .92rem; line-height: 1.6; color: #b8c0d6; margin: 0 0 1rem; }
+  .gli-success__closer { font-size: .95rem; color: #e6e9f2; margin: 0 0 1.25rem; }
+</style>
+
+<script is:inline>
+  (function () {
+    var overlay = document.getElementById('csa-overlay');
+    var form = document.getElementById('csa-form');
+    if (!overlay || !form) return;
+
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest('[data-open-csa]');
+      if (t) { e.preventDefault(); overlay.hidden = false; document.body.style.overflow = 'hidden'; }
+    });
+    function close() { overlay.hidden = true; document.body.style.overflow = ''; }
+    document.getElementById('csa-close').addEventListener('click', close);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) close(); });
+
+    var slides = Array.prototype.slice.call(form.querySelectorAll('.gli-slide'));
+    var total = slides.length;
+    var bar = document.getElementById('csa-bar');
+    var stepCount = document.getElementById('csa-stepcount');
+    var prevBtn = document.getElementById('csa-prev');
+    var nextBtn = document.getElementById('csa-next');
+    var submitBtn = document.getElementById('csa-submit');
+    var successEl = document.getElementById('csa-success');
+    var current = 0;
+
+    var params = new URLSearchParams(window.location.search);
+    function cookie(n) { var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)'); return m ? decodeURIComponent(m.pop()) : ''; }
+    ['lo_id','lo_name','utm_source','utm_medium','utm_campaign','fbclid','source_url'].forEach(function (k) {
+      var el = form.querySelector('[name="' + k + '"]'); if (el) el.value = params.get(k) || cookie(k) || '';
+    });
+    var src = form.querySelector('[name="source_url"]'); if (src && !src.value) src.value = window.location.href;
+
+    function showStep(i) {
+      slides.forEach(function (s, idx) { s.hidden = idx !== i; });
+      current = i;
+      bar.style.width = ((i + 1) / total) * 100 + '%';
+      stepCount.textContent = 'Step ' + (i + 1) + ' of ' + total;
+      prevBtn.hidden = i === 0;
+      var last = i === total - 1;
+      nextBtn.hidden = last; submitBtn.hidden = !last;
+    }
+    function setErr(n, m) { var el = form.querySelector('[data-err-for="' + n + '"]'); if (el) el.textContent = m; }
+    function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+    function isPhone(v) { return v.replace(/\D/g, '').length >= 10; }
+    function nonEmpty(name) { var el = form.querySelector('[name="' + name + '"]'); return el && el.value.trim() !== ''; }
+
+    function validateStep(i) {
+      var step = slides[i].getAttribute('data-step');
+      if (step === '1') { if (!form.querySelectorAll('[name="classes_interested"]:checked').length) { setErr('classes_interested', 'Please pick one.'); return false; } setErr('classes_interested',''); }
+      if (step === '2') { if (!form.querySelectorAll('[name="professions"]:checked').length) { setErr('professions', 'Please pick at least one.'); return false; } setErr('professions',''); }
+      if (step === '3') { if (!nonEmpty('primary_business')) { setErr('primary_business','Please enter your business name.'); return false; } setErr('primary_business',''); }
+      if (step === '4') { if (!nonEmpty('business_state')) { setErr('business_state','Please enter your state.'); return false; } setErr('business_state',''); }
+      if (step === '5') { if (!nonEmpty('years_licensed')) { setErr('years_licensed','Please enter a number.'); return false; } setErr('years_licensed',''); }
+      if (step === '7') { if (!nonEmpty('office_pros')) { setErr('office_pros','Please enter a number.'); return false; } setErr('office_pros',''); }
+      if (step === '8') { if (!nonEmpty('anticipated_enrollments')) { setErr('anticipated_enrollments','Please enter a number.'); return false; } setErr('anticipated_enrollments',''); }
+      if (step === '9') { if (!nonEmpty('full_name')) { setErr('full_name','Please enter your name.'); return false; } setErr('full_name',''); }
+      if (step === '10') { if (!isEmail(form.querySelector('[name="email"]').value)) { setErr('email','Please enter a valid email.'); return false; } setErr('email',''); }
+      if (step === '11') { if (!isPhone(form.querySelector('[name="phone"]').value)) { setErr('phone','Please enter a valid phone number.'); return false; } setErr('phone',''); }
+      if (step === '12') { if (!form.querySelector('[name="sms_consent"]').checked) { setErr('sms_consent','Please check the box to continue.'); return false; } setErr('sms_consent',''); }
+      return true;
+    }
+
+    nextBtn.addEventListener('click', function () { if (validateStep(current) && current < total - 1) showStep(current + 1); });
+    prevBtn.addEventListener('click', function () { if (current > 0) showStep(current - 1); });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (current < total - 1) { if (validateStep(current)) showStep(current + 1); return; }
+      if (!validateStep(current)) return;
+      var honeypot = document.getElementById('csa-gotcha').value;
+
+      var fd = new FormData(form);
+      var data = {};
+      fd.forEach(function (val, key) { if (data[key] !== undefined) { data[key] = data[key] + ', ' + val; } else { data[key] = String(val); } });
+      var fullName = (data.full_name || '').trim();
+      var sp = fullName.indexOf(' ');
+      var first = sp === -1 ? fullName : fullName.slice(0, sp);
+      var last = sp === -1 ? '' : fullName.slice(sp + 1);
+
+      function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+      function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+      function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+      function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+      function _resolveLoid(){ var raw=_qs('loid')||_qs('lo_id')||_qs('first_touch_loid')||_getCookie('first_touch_loid')||''; var m=String(raw).match(/(\d{3,})/); return m?m[1]:''; }
+
+      var payload = Object.assign({}, data, {
+        form_source: 'certified_stairway_advisor', form_name: 'Certified Stairway Advisor Application',
+        first_name: first, last_name: last, email: data.email || '', phone: data.phone || '',
+        tags: 'CSA Survey',
+        page_url: window.location.href, submitted_at: new Date().toISOString(),
+        umtid: _resolveUmtid(), loid: _resolveLoid()
+      });
+
+      function done() {
+        form.hidden = true; successEl.hidden = false;
+        if (first) {
+          document.getElementById('csa-success-h').textContent = 'Thank you ' + first + ' — application received.';
+          document.getElementById('csa-success-closer').textContent = 'We’re looking forward to having you in the program, ' + first + '.';
+        }
+      }
+      if (honeypot && honeypot.trim() !== '') { done(); return; }
+
+      submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
+      fetch('https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/fd7a3b30-ddf9-4415-b751-bfa88beda702', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+      }).then(done).catch(function () {
+        submitBtn.disabled = false; submitBtn.textContent = 'Submit Application';
+        setErr('sms_consent', 'Something went wrong. Please try again or call (954) 993-1625.');
+      });
+    });
+
+    showStep(0);
+  })();
+</script>

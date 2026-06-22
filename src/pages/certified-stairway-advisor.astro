@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CsaAdvisorForm from '../components/forms/CsaAdvisorForm.astro';
 const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Certified Stairway Advisor"}]};
 ---
 
@@ -36,7 +37,7 @@ Powerful Credential.</h3>
 					</h3>
 									<p>
 						If you’re mentoring other professionals or shaping the next generation of wealth advisors, we support your mission with content and systems that scale. 					</p>
-					<a href="https://forms.stairwaymortgage.com/widget/survey/qNRPVwh8d85O0I8F1Muq">
+					<a href="#apply" data-open-csa role="button">
 									Apply for CSA Today
 					</a>
 															<img width="200" height="300" src="/wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-200x300.jpg" alt="" srcset="/wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-200x300.jpg 200w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-683x1024.jpg 683w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-768x1152.jpg 768w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-1024x1536.jpg 1024w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-1365x2048.jpg 1365w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-473x710.jpg 473w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-scaled.jpg 1707w" sizes="(max-width: 200px) 100vw, 200px" />															
@@ -78,7 +79,7 @@ Designation</h2>
 					</h3>
 									<p>
 						Guiding clients to wealth builds loyalty. This certification helps you become the person they call—not just for the deal, but for the plan.  					</p>
-					<a href="https://forms.stairwaymortgage.com/widget/survey/qNRPVwh8d85O0I8F1Muq">
+					<a href="#apply" data-open-csa role="button">
 									Get More Info Today
 					</a>
 					<h2>What It Takes To Become a Certified Stairway Advisor™
@@ -125,9 +126,10 @@ Designation</h2>
 					<h2>Are You Ready to Become the Advisor Clients Trust for Life?
 </h2>				
 		<p>Join the CSA™ Program and Start Building Generational Wealth—For You and Your Clients.</p>		
-					<a href="https://forms.stairwaymortgage.com/widget/survey/qNRPVwh8d85O0I8F1Muq">
+					<a href="#apply" data-open-csa role="button">
 									Get More Info Now
 					</a>`} />
+  <CsaAdvisorForm />
 </Layout>
 
 <style>
