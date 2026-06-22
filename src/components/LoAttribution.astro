@@ -125,6 +125,16 @@
     if (u && !(FIRST_TOUCH && getCookie(UMTID_COOKIE))) {
       setCookie(UMTID_COOKIE, u, UMTID_DAYS);
     }
+    // UTM params (last-touch — overwrite if present in URL, 90 days)
+    var UTM_KEYS = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
+    UTM_KEYS.forEach(function (k) {
+      var v = qs(k);
+      if (v) setCookie(k, v, 90);
+    });
+    // Landing URL (first-touch — preserve the original entry URL)
+    if (!getCookie("first_touch_url")) {
+      setCookie("first_touch_url", location.href, 90);
+    }
   }
 
   // ===== PART 2: GHL FORM-EMBED SCRIPT ENRICHMENT (ports WP "Lead Router") =====

@@ -94,7 +94,12 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       notes:'Search location: '+loc,
       umtid: _resolveUmtid(),
       loid: _resolveLoid(),
-      source_url: location.href
+      utm_source: _qs('utm_source')||_getCookie('utm_source')||'',
+      utm_medium: _qs('utm_medium')||_getCookie('utm_medium')||'',
+      utm_campaign: _qs('utm_campaign')||_getCookie('utm_campaign')||'',
+      utm_term: _qs('utm_term')||_getCookie('utm_term')||'',
+      utm_content: _qs('utm_content')||_getCookie('utm_content')||'',
+      source_url: _getCookie('first_touch_url')||location.href
     };
 
     sending=true; btn.disabled=true; btn.textContent='Sending\u2026';

@@ -203,8 +203,8 @@
     function attributionFields(){
       var num=loidNum(); var lo=num&&LO_MAP[num]?LO_MAP[num]:null;
       return { lo_id:num||"", lo_name:lo?lo.name:"", lo_slug:lo?lo.slug:"", umtid:getCookie('umtid')||qs('umtid')||"",
-        utm_source:qs('utm_source')||"", utm_medium:qs('utm_medium')||"", utm_campaign:qs('utm_campaign')||"",
-        utm_term:qs('utm_term')||"", utm_content:qs('utm_content')||"", source_url:window.location.href };
+        utm_source:qs('utm_source')||getCookie('utm_source')||"", utm_medium:qs('utm_medium')||getCookie('utm_medium')||"", utm_campaign:qs('utm_campaign')||getCookie('utm_campaign')||"",
+        utm_term:qs('utm_term')||getCookie('utm_term')||"", utm_content:qs('utm_content')||getCookie('utm_content')||"", source_url:getCookie('first_touch_url')||window.location.href };
     }
 
 
