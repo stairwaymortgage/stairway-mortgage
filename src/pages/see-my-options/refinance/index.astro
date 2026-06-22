@@ -1,0 +1,22 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import RefinanceForm from '../../../components/RefinanceForm.astro';
+---
+
+<Layout title="Refinance Quote — See My Options | Stairway Mortgage" description="See your refinance options in about a minute. Lower your rate, shorten your term, or tap equity — no credit pull, 300+ lenders.">
+  <section class="section relative overflow-hidden">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">See My Options · Refinance</span>
+        <h1 class="display-xl mt-6 mb-6">Refinance to a <em class="italic text-[var(--color-blue)]">better rate</em>.</h1>
+        <p class="lede max-w-xl mx-auto mb-8">Tell us about your current mortgage and what you want to improve. Our team compares across 300+ lenders and reaches out same-day.</p>
+        <div class="flex flex-wrap gap-3 justify-center mt-10">
+          <button data-rf-open class="btn btn-blue btn-arrow text-base px-6 py-3.5">See My Options</button>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
+        </div>
+        <p class="mono text-[11px] text-[var(--color-mute)] mt-4">NMLS #1072866 · Not a commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+  <RefinanceForm />
+</Layout>

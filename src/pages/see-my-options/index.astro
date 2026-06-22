@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PurchaseForm from '../../components/PurchaseForm.astro';
+import RefinanceForm from '../../components/RefinanceForm.astro';
+import HelocForm from '../../components/HelocForm.astro';
+import RealReverseForm from '../../components/RealReverseForm.astro';
+---
+
+<Layout title="See My Options — Stairway Mortgage" description="Tell us your goal and see your mortgage options in about a minute. Purchase, refinance, HELOC, or reverse mortgage — 300+ lenders, same-day answers.">
+
+  <section class="section relative overflow-hidden smo-hero-wash">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">Free · About 1 minute · No credit pull</span>
+        <h1 class="display-xl mt-6 mb-6">What can we help you <em class="italic text-[var(--color-blue)]">with</em>?</h1>
+        <p class="lede max-w-xl mx-auto mb-12">Pick the path that fits your goal. Answer a few quick questions and our team will reach out same-day with your options — compared across 300+ lenders.</p>
+      </div>
+
+      <div class="smo-grid">
+        <button data-pf-open class="smo-card group">
+          <span class="smo-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </span>
+          <h3 class="smo-card__title font-display">Purchase</h3>
+          <p class="smo-card__desc">Buying a home — first-time or next.</p>
+          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
+        </button>
+
+        <button data-rf-open class="smo-card group">
+          <span class="smo-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M20.49 15A9 9 0 115.64 5.64L1 10"/></svg>
+          </span>
+          <h3 class="smo-card__title font-display">Refinance</h3>
+          <p class="smo-card__desc">Lower your rate or change your term.</p>
+          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
+        </button>
+
+        <button data-hf-open class="smo-card group">
+          <span class="smo-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </span>
+          <h3 class="smo-card__title font-display">HELOC</h3>
+          <p class="smo-card__desc">Tap your home equity as a credit line.</p>
+          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
+        </button>
+
+        <button data-rm-open class="smo-card group">
+          <span class="smo-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <h3 class="smo-card__title font-display">Reverse Mortgage</h3>
+          <p class="smo-card__desc">Income from your home, age 55+.</p>
+          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
+        </button>
+      </div>
+
+      <p class="smo-trust mono">
+        Reviewed by Jim Blackburn · NMLS #1072866 · Not a commitment to lend.
+      </p>
+    </div>
+  </section>
+
+  <PurchaseForm />
+  <RefinanceForm />
+  <HelocForm />
+  <RealReverseForm />
+</Layout>
+
+<style>
+  .smo-hero-wash { position:relative; }
+  .smo-hero-wash::before { content:''; position:absolute; top:0; left:0; right:0; height:200px; background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%); opacity:0.3; pointer-events:none; z-index:0; }
+
+  .smo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  @media (max-width: 820px) { .smo-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .smo-grid { grid-template-columns: 1fr; } }
+
+  .smo-card {
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--color-bone);
+    border-radius: 14px;
+    background: var(--color-paper);
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  }
+  .smo-card:hover {
+    border-color: var(--color-blue);
+    box-shadow: 0 8px 24px -12px rgba(24,69,214,0.15);
+    transform: translateY(-2px);
+  }
+  .smo-card__icon {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    background: var(--color-blue-tint, #F2F5FF);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-blue);
+  }
+  .smo-card__title { font-size: 1.15rem; font-weight: 500; color: var(--color-ink); }
+  .smo-card__desc { font-size: 13.5px; color: var(--color-mute); line-height: 1.5; }
+  .smo-card__cta {
+    font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-blue);
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+  .smo-trust {
+    text-align: center;
+    font-size: 11px;
+    color: var(--color-mute);
+    margin-top: 2.5rem;
+    letter-spacing: 0.03em;
+  }
+</style>

@@ -1,0 +1,22 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import PurchaseForm from '../../../components/PurchaseForm.astro';
+---
+
+<Layout title="Purchase Quote — See My Options | Stairway Mortgage" description="Tell us about the home you want to buy. See your purchase options in about a minute — no credit pull, 300+ lenders.">
+  <section class="section relative overflow-hidden">
+    <div class="container-page">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <span class="eyebrow eyebrow-blue mb-6">See My Options · Purchase</span>
+        <h1 class="display-xl mt-6 mb-6">Buy a home with <em class="italic text-[var(--color-blue)]">confidence</em>.</h1>
+        <p class="lede max-w-xl mx-auto mb-8">Answer a few quick questions about the home you want to buy. Our team reviews your scenario same-day — no credit pull to start.</p>
+        <div class="flex flex-wrap gap-3 justify-center mt-10">
+          <button data-pf-open class="btn btn-blue btn-arrow text-base px-6 py-3.5">See My Options</button>
+          <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
+        </div>
+        <p class="mono text-[11px] text-[var(--color-mute)] mt-4">NMLS #1072866 · Not a commitment to lend.</p>
+      </div>
+    </div>
+  </section>
+  <PurchaseForm />
+</Layout>

@@ -1,0 +1,403 @@
+---
+// PurchaseForm.astro  —  Stairway Mortgage conversational funnel (Purchase)
+// AUTO-GENERATED from gen.py — do not hand-edit; edit the generator + re-run.
+// Self-contained: own prefixed modal + is:global styles + is:inline plain JS.
+// Clone of the proven ReverseMortgageForm.astro pattern. Fires ONCE at Submit to the main
+// GHL webhook, routed by loan_purpose="purchase". form_source="purchase".
+//
+// USAGE:
+//   import PurchaseForm from "../components/PurchaseForm.astro";
+//   <button data-pf-open>See My Options</button>
+//   <PurchaseForm />
+//
+// TODO BEFORE GO-LIVE:
+//   - BOOKING_URL ("#") → real Calendly/GHL booking link (marked in script).
+//   - Confirm the main GHL workflow maps loan_purpose + the purchase answer keys.
+---
+
+<div id="pf-overlay" class="pf-overlay" aria-hidden="true">
+  <div class="pf-modal" role="dialog" aria-modal="true" aria-label="Purchase">
+    <button type="button" class="pf-close" data-pf-close aria-label="Close">&times;</button>
+    <div class="pf-progress-wrap" id="pf-progress-wrap">
+      <div class="pf-progress-track"><div class="pf-progress-bar" id="pf-progress-bar"></div></div>
+      <div class="pf-progress-pct" id="pf-progress-pct">0%</div>
+    </div>
+    <div class="pf-nav" id="pf-nav">
+      <button type="button" class="pf-nav-btn pf-prev" id="pf-prev">&larr; Previous</button>
+      <button type="button" class="pf-nav-btn pf-next" id="pf-next">Next &rarr;</button>
+    </div>
+    <input type="text" id="pf-hp" name="pf_hp_field" tabindex="-1" autocomplete="new-password"
+           class="pf-hp" aria-hidden="true" data-lpignore="true" data-1p-ignore data-form-type="other" />
+    <div class="pf-stage" id="pf-stage"></div>
+  </div>
+</div>
+
+<style is:global>
+  .pf-overlay,.pf-overlay *{ box-sizing:border-box; }
+  .pf-overlay{ position:fixed; inset:0; z-index:99999; display:none; background:rgba(10,14,26,.55);
+    backdrop-filter:blur(3px); align-items:center; justify-content:center; padding:20px;
+    font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif; }
+  .pf-overlay.pf-active{ display:flex; }
+  .pf-hp{ position:absolute !important; left:-9999px !important; width:1px !important; height:1px !important; opacity:0 !important; }
+  .pf-modal{ position:relative; width:100%; max-width:720px; max-height:92vh; overflow-y:auto;
+    background:#fff; border-radius:20px; box-shadow:0 30px 90px rgba(0,0,0,.38);
+    padding:52px 44px 56px; color:#0A0E1A; text-align:center; }
+  @media(max-width:560px){ .pf-modal{ padding:44px 20px 46px; border-radius:16px; } }
+  .pf-close{ position:absolute; top:16px; right:20px; border:0; background:none; font-size:30px;
+    line-height:1; color:#0A0E1A; cursor:pointer; opacity:.45; padding:0; }
+  .pf-close:hover{ opacity:1; }
+  .pf-progress-wrap{ margin:0 auto 30px; max-width:480px; }
+  .pf-progress-track{ height:8px; border-radius:99px; background:#ececE6; overflow:hidden; }
+  .pf-progress-bar{ height:100%; width:0%; background:#0A0E1A; border-radius:99px; transition:width .4s cubic-bezier(.4,0,.2,1); }
+  .pf-progress-pct{ font-family:'JetBrains Mono',ui-monospace,monospace; font-size:12px; letter-spacing:.04em; color:#9a9a93; margin-top:10px; }
+  .pf-nav{ display:flex; justify-content:space-between; align-items:center; max-width:560px; margin:0 auto 28px; }
+  .pf-nav-btn{ border:0; background:none; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:15px; color:#0A0E1A; padding:6px 2px; letter-spacing:.01em; }
+  .pf-nav-btn:disabled{ opacity:.25; cursor:default; }
+  .pf-nav-btn:hover:not(:disabled){ color:#2d2350; }
+  .pf-next{ font-weight:600; }
+  .pf-stage{ max-width:600px; margin:0 auto; }
+  .pf-step{ display:none; }
+  .pf-step.pf-show{ display:block; animation:pfFade .32s ease; }
+  @keyframes pfFade{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+  .pf-q{ font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:31px; line-height:1.22; margin:6px 0 8px; letter-spacing:-.01em; color:#0A0E1A; }
+  @media(max-width:560px){ .pf-q{ font-size:25px; } }
+  .pf-sub{ font-family:'Fraunces',Georgia,serif; font-style:italic; font-weight:400; font-size:18px; color:#6b6b63; margin:0 0 30px; line-height:1.45; max-width:520px; margin-left:auto; margin-right:auto; }
+  .pf-q + .pf-options, .pf-q + .pf-slider-wrap, .pf-q + .pf-input, .pf-q + .pf-contact, .pf-q + .pf-locwrap{ margin-top:30px; }
+  .pf-options{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+  .pf-opt{ display:inline-flex; align-items:center; gap:13px; cursor:pointer; border:1.5px solid #d9d9d1; border-radius:14px; padding:17px 24px; background:#fff; font-size:16px; line-height:1.3; color:#0A0E1A; transition:border-color .15s ease, background .15s ease, box-shadow .15s ease, transform .08s ease; user-select:none; text-align:left; }
+  .pf-opt:hover{ border-color:#0A0E1A; background:#faf9f6; }
+  .pf-opt:active{ transform:scale(.985); }
+  .pf-circle{ width:22px; height:22px; border-radius:50%; border:2px solid #c2c2b8; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; transition:border-color .15s ease; background:#fff; }
+  .pf-circle::after{ content:''; width:10px; height:10px; border-radius:50%; background:transparent; transition:background .15s ease, transform .15s ease; transform:scale(.4); }
+  .pf-opt.pf-sel{ border-color:#0A0E1A; background:#0A0E1A; color:#fff; box-shadow:0 8px 22px rgba(10,14,26,.18); }
+  .pf-opt.pf-sel .pf-circle{ border-color:#fff; }
+  .pf-opt.pf-sel .pf-circle::after{ background:#fff; transform:scale(1); }
+  .pf-input{ width:100%; max-width:540px; margin:0 auto; display:block; border:1.5px solid #d9d9d1; border-radius:12px; padding:17px 20px; font-size:16px; font-family:'IBM Plex Sans',sans-serif; color:#0A0E1A; background:#fff; outline:none; transition:border-color .15s ease, box-shadow .15s ease; }
+  .pf-input::placeholder{ color:#a6a6a0; }
+  .pf-input:focus{ border-color:#0A0E1A; box-shadow:0 0 0 4px rgba(45,35,80,.12); }
+  .pf-locwrap{ max-width:540px; margin:0 auto; }
+  .pf-addr-conf{ margin:14px auto 0; max-width:540px; font-size:14px; color:#2E9E2E; font-family:'JetBrains Mono',ui-monospace,monospace; text-align:left; }
+  /* Google Places dropdown — styled to match the Stairway popup */
+  .pac-container{ z-index:100000 !important; border-radius:12px; margin-top:6px; border:1.5px solid #d9d9d1;
+    box-shadow:0 16px 40px rgba(10,14,26,.18); font-family:'IBM Plex Sans',sans-serif; overflow:hidden; }
+  .pac-item{ padding:11px 16px; font-size:14.5px; color:#0A0E1A; cursor:pointer; border-top:1px solid #f0f0ea; }
+  .pac-item:first-child{ border-top:0; }
+  .pac-item:hover,.pac-item-selected{ background:#faf9f6; }
+  .pac-item-query{ font-size:14.5px; color:#0A0E1A; }
+  .pac-matched{ font-weight:600; }
+  .pac-icon{ display:none; }
+  .pf-grid2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:16px auto 0; text-align:left; }
+  @media(max-width:480px){ .pf-grid2{ grid-template-columns:1fr; } }
+  .pf-grid2 .pf-input{ margin:0; }
+  .pf-contact{ max-width:540px; margin:0 auto; text-align:left; }
+  .pf-contact .pf-input{ margin:0; }
+  .pf-input-label{ display:block; margin:18px 0 7px; font-size:12.5px; font-weight:600; letter-spacing:.02em; color:#3a3a35; }
+  .pf-input-label:first-child{ margin-top:0; }
+  .pf-req{ color:#8B2C2C; }
+  .pf-slider-wrap{ max-width:540px; margin:0 auto; }
+  .pf-slider-val{ display:inline-block; border:1.5px solid #0A0E1A; border-radius:9px; padding:7px 18px; font-size:16px; font-family:'JetBrains Mono',ui-monospace,monospace; margin-bottom:22px; min-width:70px; }
+  .pf-slider-val .pf-pct{ color:#1845D6; margin-left:6px; }
+  .pf-slider{ -webkit-appearance:none; appearance:none; width:100%; height:5px; border-radius:99px; background:linear-gradient(#0A0E1A,#0A0E1A) no-repeat, #e4e4dd; background-size:50% 100%; outline:none; }
+  .pf-slider::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:28px; height:28px; border-radius:50%; background:#0A0E1A; cursor:pointer; box-shadow:0 3px 10px rgba(0,0,0,.28); border:3px solid #fff; }
+  .pf-slider::-moz-range-thumb{ width:28px; height:28px; border:3px solid #fff; border-radius:50%; background:#0A0E1A; cursor:pointer; }
+  .pf-slider-ends{ display:flex; justify-content:space-between; margin-top:16px; }
+  .pf-slider-end{ background:#f0f0ea; border-radius:8px; padding:6px 14px; font-size:13px; color:#5a5a52; font-family:'JetBrains Mono',ui-monospace,monospace; }
+  .pf-consent{ max-width:540px; margin:24px auto 0; font-size:12.5px; line-height:1.6; color:#7a7a72; text-align:left; }
+  .pf-consent a{ color:#1845D6; text-decoration:underline; }
+  .pf-trust{ max-width:540px; margin:18px auto 0; font-size:12px; color:#9a9a93; font-family:'JetBrains Mono',ui-monospace,monospace; text-align:center; }
+  .pf-err{ color:#8B2C2C; font-size:13px; margin-top:12px; min-height:16px; text-align:left; max-width:540px; margin-left:auto; margin-right:auto; }
+  .pf-thanks h2{ font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:30px; line-height:1.25; margin:8px 0 18px; }
+  .pf-thanks p{ font-size:18px; color:#3a3a35; margin:0 0 28px; line-height:1.5; }
+  .pf-thanks .pf-link{ color:#1845D6; font-weight:600; text-decoration:none; }
+  .pf-thanks .pf-link:hover{ text-decoration:underline; }
+</style>
+
+<script is:inline>
+  (function () {
+    var WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/fd7a3b30-ddf9-4415-b751-bfa88beda702";
+    var FORM_SOURCE  = "purchase";
+    var LOAN_PURPOSE = "purchase";
+    var BOOKING_URL  = "https://www.stairwaymortgage.com/schedule-call/";
+
+    // ---- Attribution (LOID / UMTID / UTM / source_url) ----------------------
+    // Canonical block — identical to the live standalone forms (private-home-search,
+    // home-value-report). Captures last-touch attribution so leads carry UMTID + LOID
+    // + source URL into GHL. DO NOT diverge from the standalone pattern.
+    function getCookie(name){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+name+'=([^;]+)'));return m?decodeURIComponent(m[1]):null;}
+    function qs(name){try{return new URL(location.href).searchParams.get(name)||null;}catch(e){return null;}}
+    var LO_MAP = { "1072866": { name:"Jim Blackburn", slug:"jim-blackburn" }, "1072877": { name:"Dhruv Parashar", slug:"dhruv-parashar" } };
+    function loidNum(){ var raw=getCookie('first_touch_loid')||qs('lo_id')||qs('loid'); if(!raw) return null; var m=String(raw).match(/(\d{3,})/); return m?m[1]:null; }
+    function attributionFields(){
+      var num=loidNum(); var lo=num&&LO_MAP[num]?LO_MAP[num]:null;
+      return { lo_id:num||"", lo_name:lo?lo.name:"", lo_slug:lo?lo.slug:"", umtid:getCookie('umtid')||qs('umtid')||"",
+        utm_source:qs('utm_source')||"", utm_medium:qs('utm_medium')||"", utm_campaign:qs('utm_campaign')||"",
+        utm_term:qs('utm_term')||"", utm_content:qs('utm_content')||"", source_url:window.location.href };
+    }
+
+
+    // ---- Google Places (address autocomplete) -------------------------------
+    // Loaded once per page, shared by all funnels via window.__STW_PLACES.
+    // SECURITY: restrict this key in Google Cloud Console to your domains
+    // (HTTP referrers) + Maps JavaScript API + Places API only.
+    var GOOGLE_PLACES_KEY = "AIzaSyA72a6nAbAUZoeE718Z5_PtvZkDhPLL3v0"; // TODO: confirm restricted to stairwaymortgage.com / *.vercel.app
+    function STW_loadPlaces(cb){
+      if(window.google && window.google.maps && window.google.maps.places){ cb(); return; }
+      window.__STW_PLACES = window.__STW_PLACES || { loading:false, queue:[] };
+      window.__STW_PLACES.queue.push(cb);
+      if(window.__STW_PLACES.loading) return;
+      window.__STW_PLACES.loading = true;
+      window.__stwPlacesReady = function(){
+        (window.__STW_PLACES.queue||[]).forEach(function(fn){ try{ fn(); }catch(e){} });
+        window.__STW_PLACES.queue = [];
+      };
+      var s = document.createElement("script");
+      s.src = "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_PLACES_KEY+"&libraries=places&callback=__stwPlacesReady&loading=async";
+      s.async = true; s.defer = true;
+      s.onerror = function(){ /* graceful fallback: plain text field still works */ };
+      document.head.appendChild(s);
+    }
+    function STW_attachPlaces(input, conf, state){
+      STW_loadPlaces(function(){
+        try{
+          var ac = new google.maps.places.Autocomplete(input, {
+            types:["address"], componentRestrictions:{country:"us"},
+            fields:["address_components","formatted_address","geometry"]
+          });
+          ac.addListener("place_changed", function(){
+            var p = ac.getPlace();
+            if(!p || !p.address_components) return;
+            var get=function(type,short){
+              for(var i=0;i<p.address_components.length;i++){
+                var c=p.address_components[i];
+                if(c.types.indexOf(type)>=0) return short ? c.short_name : c.long_name;
+              }
+              return "";
+            };
+            var streetNo=get("street_number"), route=get("route");
+            state.addr_street = (streetNo?streetNo+" ":"")+route;
+            state.loc_city  = get("locality") || get("sublocality") || get("postal_town");
+            state.loc_state = get("administrative_area_level_1", true);
+            state.loc_zip   = get("postal_code");
+            state.loc_county= get("administrative_area_level_2");
+            if(p.geometry && p.geometry.location){
+              state.addr_lat = p.geometry.location.lat();
+              state.addr_lng = p.geometry.location.lng();
+            }
+            var full = p.formatted_address || ((state.addr_street?state.addr_street+", ":"")+state.loc_city+", "+state.loc_state+" "+state.loc_zip);
+            input.value = full;
+            state[input.getAttribute("data-key")||"property_location"] = full;
+            state.property_location = full;
+            state.addr_confirmed = full;
+            if(conf){ conf.innerHTML = "\u2713 "+full; conf.style.display="block"; }
+          });
+          // store key for the input so handler can write back to the right state field
+        }catch(e){ /* fallback: plain text input */ }
+      });
+    }
+
+    var steps = [{"key": "property_type", "type": "choice", "q": "What type of property are you purchasing?", "options": ["Single Family", "Condominium", "Town Home", "Multi-Family"], "required": true}, {"key": "occupancy", "type": "choice", "q": "How will you use this property?", "options": ["Primary Home", "Secondary Home", "Rental Property"], "required": true}, {"key": "first_time_buyer", "type": "choice", "q": "Is this your first time purchasing property?", "options": ["Yes", "No"], "required": true}, {"key": "buying_stage", "type": "choice", "q": "Where are you in the home buying process?", "options": ["Signed a Purchase Agreement", "Buying in 2-6 months", "Offer Pending / Found Property", "Researching Options"], "required": true}, {"key": "want_agent", "type": "choice", "q": "Would you like to be connected with a trusted real estate agent in your area?", "options": ["Yes", "No"], "required": true}, {"key": "property_location", "type": "location", "q": "Where is the property located?", "placeholder": "Start typing your address…", "required": true}, {"key": "property_price", "type": "slider", "q": "What is the estimated price of the property?", "min": 50000, "max": 10000000, "start": 400000, "step": 5000, "fmt": "money", "required": true}, {"key": "down_payment", "type": "slider", "q": "What is your estimated down payment?", "min": 0, "max": 100, "start": 20, "step": 1, "fmt": "pct", "pctOf": "property_price", "required": true}, {"key": "credit_score", "type": "choice", "q": "What is your estimated credit score?", "options": ["780+", "740 - 779", "700 - 739", "660 - 699", "620 - 659", "580 - 619", "Below 580"], "required": true}, {"key": "military_service", "type": "choice", "q": "Are you or your spouse an active military member, reserve member or veteran?", "options": ["Active Service", "Veteran", "Non Active Reserve National Guard", "None"], "required": true}, {"key": "employment_status", "type": "choice", "q": "What’s your employment status?", "options": ["Employed", "Self Employed / 1099 Independent Contractor", "Retired"], "required": true}, {"key": "annual_income", "type": "text", "q": "What is the gross annual income of the borrower or borrowers?", "placeholder": "$", "inputmode": "numeric", "required": true}, {"key": "bankruptcy_7yr", "type": "choice", "q": "Have you filed for bankruptcy in the last 7 years?", "options": ["Yes", "No"], "required": true}, {"key": "foreclosure_7yr", "type": "choice", "q": "Have you filed for foreclosure in the last 7 years?", "options": ["Yes", "No"], "required": true}, {"key": "contact", "type": "contact", "q": "Almost done — how can we reach you with your options?", "required": true}];
+    var state = {"property_type": "", "occupancy": "", "first_time_buyer": "", "buying_stage": "", "want_agent": "", "property_location": "", "addr_street": "", "loc_city": "", "loc_state": "", "loc_zip": "", "loc_county": "", "addr_lat": "", "addr_lng": "", "addr_confirmed": "", "property_price": "", "down_payment": "", "credit_score": "", "military_service": "", "employment_status": "", "annual_income": "", "bankruptcy_7yr": "", "foreclosure_7yr": "", "full_name": "", "email": "", "phone": ""};
+    var idx = 0;
+
+    var overlay  = document.getElementById("pf-overlay");
+    var stage    = document.getElementById("pf-stage");
+    var bar      = document.getElementById("pf-progress-bar");
+    var pct      = document.getElementById("pf-progress-pct");
+    var prevBtn  = document.getElementById("pf-prev");
+    var nextBtn  = document.getElementById("pf-next");
+    var nav      = document.getElementById("pf-nav");
+    var progWrap = document.getElementById("pf-progress-wrap");
+    var hp       = document.getElementById("pf-hp");
+    if(hp){
+      hp.addEventListener("focus", function(){ hp.setAttribute("data-touched","1"); });
+      setTimeout(function(){ if(hp.getAttribute("data-touched")!=="1"){ hp.value=""; } }, 1200);
+    }
+
+    function commas(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+    function fmtVal(s, v){
+      if(s.fmt==="k"){ return v>=1000 ? "$"+commas(Math.round(v/1000))+"K" : "$"+commas(v); }
+      if(s.fmt==="money"){ return "$"+commas(v); }
+      if(s.fmt==="ratepct"){ return (Math.round(v*1000)/1000)+"%"; }
+      if(s.fmt==="pct"){
+        var base = s.pctOf ? Number(state[s.pctOf]||0) : 0;
+        if(s.pctOf){ var d=Math.round(base*(v/100)); return '$'+commas(d)+' <span class="pf-pct">('+v+'%)</span>'; }
+        return v+"%";
+      }
+      return String(v);
+    }
+    function esc(t){ var d=document.createElement("div"); d.textContent=(t==null?"":t); return d.innerHTML; }
+    function el(tag, cls){ var n=document.createElement(tag); if(cls) n.className=cls; return n; }
+
+    function render(){
+      var s = steps[idx];
+      stage.innerHTML = "";
+      var wrap = el("div","pf-step pf-show");
+      var head = el("div");
+      head.innerHTML = '<div class="pf-q">'+esc(s.q)+'</div>' + (s.sub ? '<div class="pf-sub">'+esc(s.sub)+'</div>' : '');
+      wrap.appendChild(head);
+
+      if(s.type==="choice"){
+        var box = el("div","pf-options");
+        s.options.forEach(function(opt){
+          var o = el("div","pf-opt"+(state[s.key]===opt?" pf-sel":""));
+          o.innerHTML = '<span class="pf-circle"></span><span>'+esc(opt)+'</span>';
+          o.addEventListener("click", function(){
+            state[s.key]=opt;
+            // show the selected (filled) state briefly, then auto-advance — no Next click needed
+            Array.prototype.forEach.call(box.querySelectorAll(".pf-opt"), function(n){ n.classList.remove("pf-sel"); });
+            o.classList.add("pf-sel");
+            setTimeout(function(){ goNext(); }, 220);
+          });
+          box.appendChild(o);
+        });
+        wrap.appendChild(box);
+      }
+      else if(s.type==="text"){
+        var input = el("input","pf-input");
+        input.type="text"; input.placeholder=s.placeholder||""; input.value=state[s.key]||"";
+        if(s.inputmode){ input.setAttribute("inputmode", s.inputmode); }
+        input.addEventListener("input", function(){ state[s.key]=input.value; });
+        input.addEventListener("keydown", enterGuard);
+        wrap.appendChild(input);
+        setTimeout(function(){ input.focus(); }, 50);
+      }
+      else if(s.type==="location"){
+        var lw = el("div","pf-locwrap");
+        var li = el("input","pf-input");
+        li.type="text"; li.placeholder=s.placeholder||"Start typing your address\u2026"; li.value=state[s.key]||"";
+        li.setAttribute("autocomplete","off");
+        li.addEventListener("input", function(){
+          state[s.key]=li.value;
+          // if the user edits after a pick, the parsed fields may be stale; mark unconfirmed
+          state.addr_confirmed = "";
+        });
+        li.addEventListener("keydown", function(e){
+          // Don't let Enter submit while the Places dropdown is open / mid-type
+          if(e.key==="Enter"){ e.preventDefault(); }
+        });
+        lw.appendChild(li);
+        // small confirmation line shown after a valid pick
+        var conf = el("div","pf-addr-conf"); conf.id="pf-addr-conf";
+        conf.innerHTML = state.addr_confirmed ? ('\u2713 '+esc(state.addr_confirmed)) : "";
+        conf.style.display = state.addr_confirmed ? "block" : "none";
+        lw.appendChild(conf);
+        wrap.appendChild(lw);
+        setTimeout(function(){ li.focus(); }, 50);
+        // attach Google Places autocomplete (loads the script on first use)
+        STW_attachPlaces(li, conf, state);
+      }
+      else if(s.type==="slider"){
+        var sw = el("div","pf-slider-wrap");
+        var cur = (state[s.key]!=="" && state[s.key]!=null) ? Number(state[s.key]) : s.start;
+        state[s.key]=String(cur);
+        var valBox = el("div","pf-slider-val"); valBox.innerHTML=fmtVal(s,cur);
+        var sl = el("input","pf-slider");
+        sl.type="range"; sl.min=s.min; sl.max=s.max; sl.step=s.step||1; sl.value=cur;
+        function paint(){ var p=((Number(sl.value)-s.min)/(s.max-s.min))*100; sl.style.backgroundSize=p+"% 100%"; }
+        paint();
+        sl.addEventListener("input", function(){ state[s.key]=sl.value; valBox.innerHTML=fmtVal(s,Number(sl.value)); paint(); });
+        var ends = el("div","pf-slider-ends");
+        ends.innerHTML = '<span class="pf-slider-end">'+fmtVal(s,s.min)+'</span><span class="pf-slider-end">'+fmtVal(s,s.max)+'</span>';
+        sw.appendChild(valBox); sw.appendChild(sl); sw.appendChild(ends);
+        wrap.appendChild(sw);
+      }
+      else if(s.type==="contact"){
+        var c = el("div","pf-contact");
+        c.innerHTML =
+          '<label class="pf-input-label">Full Name <span class="pf-req">*</span></label>'+
+          '<input class="pf-input" id="pf-fn" type="text" placeholder="Your full name" value="'+esc(state.full_name)+'">'+
+          '<label class="pf-input-label">Email <span class="pf-req">*</span></label>'+
+          '<input class="pf-input" id="pf-em" type="email" placeholder="you@email.com" value="'+esc(state.email)+'">'+
+          '<label class="pf-input-label">Mobile Phone Number <span class="pf-req">*</span></label>'+
+          '<input class="pf-input" id="pf-ph" type="tel" placeholder="(555) 555-5555" value="'+esc(state.phone)+'">'+
+          '<div class="pf-consent">By clicking "See My Options," I agree to Stairway Mortgage\'s <a href="/terms/" target="_blank" rel="noopener">Terms of Use</a> and <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. I also consent to receive calls, text messages, and/or pre-recorded voicemails via automated technology—even if I\'m on a Do Not Call list. Consent is not a condition of purchase. I can opt out any time by replying "STOP."</div>'+
+          '<div class="pf-trust">Jim Blackburn · NMLS #1072866</div>'+
+          '<div class="pf-err" id="pf-contact-err"></div>';
+        wrap.appendChild(c);
+        var fn=c.querySelector("#pf-fn"), em=c.querySelector("#pf-em"), ph=c.querySelector("#pf-ph");
+        fn.addEventListener("input", function(){ state.full_name=fn.value; });
+        em.addEventListener("input", function(){ state.email=em.value; });
+        ph.addEventListener("input", function(){ state.phone=ph.value; });
+        [fn,em,ph].forEach(function(n){ n.addEventListener("keydown", enterGuard); });
+      }
+
+      stage.appendChild(wrap);
+      var total = steps.length;
+      var p = (idx===total-1) ? 100 : Math.round(((idx+1)/total)*100);
+      bar.style.width=p+"%"; pct.textContent=p+"%";
+      prevBtn.disabled = (idx===0);
+      nextBtn.innerHTML = (idx===total-1) ? 'Submit &#10003;' : 'Next &rarr;';
+    }
+
+    function enterGuard(e){ if(e.key==="Enter"){ e.preventDefault(); goNext(); } }
+
+    function validateCurrent(){
+      var s = steps[idx];
+      if(!s.required) return true;
+      if(s.type==="choice"){ return !!state[s.key]; }
+      if(s.type==="text"){ return !!(state[s.key]&&state[s.key].trim()); }
+      if(s.type==="location"){ return !!(state[s.key] && state[s.key].trim()); }
+      if(s.type==="slider"){ return state[s.key]!==""; }
+      if(s.type==="contact"){
+        var err=document.getElementById("pf-contact-err");
+        if(!state.full_name.trim()){ if(err) err.textContent="Please enter your full name."; return false; }
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email.trim())){ if(err) err.textContent="Please enter a valid email."; return false; }
+        if(state.phone.replace(/\D/g,"").length<10){ if(err) err.textContent="Please enter a valid phone number."; return false; }
+        if(err) err.textContent=""; return true;
+      }
+      return true;
+    }
+
+    function goNext(){
+      if(!validateCurrent()){ if(steps[idx].type!=="contact"){ flashError(); } return; }
+      if(idx===steps.length-1){ submit(); return; }
+      idx++; render();
+    }
+    function goPrev(){ if(idx>0){ idx--; render(); } }
+    function flashError(){ stage.style.transition="none"; stage.style.opacity="0.4"; setTimeout(function(){ stage.style.transition="opacity .25s"; stage.style.opacity="1"; },60); }
+
+    function submit(){
+      if(hp && hp.value && hp.getAttribute("data-touched")==="1"){ return; }
+      var parts=(state.full_name||"").trim().split(/\s+/);
+      var first=parts.shift()||""; var last=parts.join(" ")||"";
+      var payload = {
+        form_source:FORM_SOURCE, loan_purpose:LOAN_PURPOSE,
+        first_name:first, last_name:last, full_name:(state.full_name||"").trim(),
+        email:(state.email||"").trim(), phone:(state.phone||"").trim(),
+        page_url:window.location.origin+window.location.pathname
+      };
+      var skip = {full_name:1,email:1,phone:1};
+      for(var k in state){ if(state.hasOwnProperty(k) && !skip[k]){ payload[k]=(state[k]==null?"":state[k]); } }
+      var attr = attributionFields();
+      payload.lo_id=attr.lo_id; payload.lo_name=attr.lo_name; payload.lo_slug=attr.lo_slug; payload.umtid=attr.umtid;
+      payload.utm_source=attr.utm_source; payload.utm_medium=attr.utm_medium; payload.utm_campaign=attr.utm_campaign;
+      payload.utm_term=attr.utm_term; payload.utm_content=attr.utm_content; payload.source_url=attr.source_url;
+
+      try{ fetch(WEBHOOK_URL,{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), keepalive:true }).catch(function(){}); }catch(e){}
+      showThanks(first,last);
+    }
+
+    function showThanks(first,last){
+      progWrap.style.display="none"; nav.style.display="none";
+      var name=(first+" "+last).trim();
+      stage.innerHTML =
+        '<div class="pf-thanks pf-step pf-show">'+
+          '<h2>Congratulations on taking your 1st step'+(name?" "+esc(name):"")+'!</h2>'+
+          '<p>Please <a class="pf-link" href="'+BOOKING_URL+'" data-booking-url target="_blank" rel="noopener">click here</a> to schedule your review call, or our team will reach out shortly.</p>'+
+        '</div>';
+    }
+
+    function openModal(){ idx=0; progWrap.style.display=""; nav.style.display=""; render(); overlay.classList.add("pf-active"); overlay.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; }
+    function closeModal(){ overlay.classList.remove("pf-active"); overlay.setAttribute("aria-hidden","true"); document.body.style.overflow=""; }
+    window.STW_OPEN_pf = openModal;
+
+    nextBtn.addEventListener("click", goNext);
+    prevBtn.addEventListener("click", goPrev);
+    document.addEventListener("click", function(e){
+      var o=e.target.closest?e.target.closest("[data-pf-open]"):null; if(o){ e.preventDefault(); openModal(); }
+      var c=e.target.closest?e.target.closest("[data-pf-close]"):null; if(c){ e.preventDefault(); closeModal(); }
+    });
+    overlay.addEventListener("click", function(e){ if(e.target===overlay){ closeModal(); } });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape"&&overlay.classList.contains("pf-active")){ closeModal(); } });
+  })();
+</script>
