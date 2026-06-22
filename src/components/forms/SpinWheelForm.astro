@@ -324,6 +324,15 @@
       var last = sp===-1?'':name.slice(sp+1);
       state.first=first; state.last=last;
 
+      function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+      function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+      function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+      function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+      function _resolveLoid(){
+        var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
+        var m = String(raw).match(/(\d{3,})/);
+        return m ? m[1] : '';
+      }
       var payload = {
         form_source:'spin-the-wheel', form_name:'Spin the Wheel',
         first_name:first, last_name:last, email:email, phone:phone,
@@ -331,7 +340,10 @@
         prize:'$500 Tax Strategy Call', prize_segment:'Tax Analysis',
         full_name_og:name, first_name_og:first, last_name_og:last,
         quiz_name_og:'Spin the Wheel', lead_source_og:'Website - Spin the Wheel',
-        page_url: window.location.href, submitted_at: new Date().toISOString()
+        page_url: window.location.href, submitted_at: new Date().toISOString(),
+        umtid: _resolveUmtid(),
+        loid: _resolveLoid(),
+        source_url: location.href
       };
 
       var btn=document.getElementById('sw-to-wheel');

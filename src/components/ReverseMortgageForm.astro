@@ -377,6 +377,15 @@
       var parts=(state.full_name||"").trim().split(/\s+/);
       var first=parts.shift()||""; var last=parts.join(" ")||"";
       var reasonFinal = state.reason || (state.reason_other ? ("Other: "+state.reason_other) : "");
+      function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+      function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+      function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+      function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+      function _resolveLoid(){
+        var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
+        var m = String(raw).match(/(\d{3,})/);
+        return m ? m[1] : '';
+      }
       var payload = {
         form_source:FORM_SOURCE, first_name:first, last_name:last, full_name:(state.full_name||"").trim(),
         email:(state.email||"").trim(), phone:(state.phone||"").trim(),
@@ -385,7 +394,10 @@
         military_service:state.military_service||"", home_address:state.home_address||"",
         annual_income:state.annual_income||"", credit_score:state.credit_score||"",
         free_credit_report:state.free_credit_report||"", date_of_birth:state.date_of_birth||"",
-        anything_else:state.anything_else||"", page_url:window.location.origin+window.location.pathname
+        anything_else:state.anything_else||"", page_url:window.location.origin+window.location.pathname,
+        umtid: _resolveUmtid(),
+        loid: _resolveLoid(),
+        source_url: location.href
       };
       try{ fetch(WEBHOOK_URL,{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), keepalive:true }).catch(function(){}); }catch(e){}
       showThanks(first,last);

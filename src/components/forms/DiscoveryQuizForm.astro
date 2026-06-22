@@ -684,6 +684,15 @@
       var sp = name.indexOf(' ');
       var first = sp === -1 ? name : name.slice(0,sp);
       var last = sp === -1 ? '' : name.slice(sp+1);
+      function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+      function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+      function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+      function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+      function _resolveLoid(){
+        var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
+        var m = String(raw).match(/(\d{3,})/);
+        return m ? m[1] : '';
+      }
       var data = {
         form_source: 'discovery-quiz', form_name: 'Stairway Discovery Quiz',
         first_name: first, last_name: last, email: email, phone: phone,
@@ -698,7 +707,10 @@
         guidance_gap_count: result.gaps.length,
         guidance_gaps: result.gaps.map(function(g){ return g.label; }).join(', '),
         recommended_intros: result.introList.join(', '),
-        page_url: window.location.href, submitted_at: new Date().toISOString()
+        page_url: window.location.href, submitted_at: new Date().toISOString(),
+        umtid: _resolveUmtid(),
+        loid: _resolveLoid(),
+        source_url: location.href
       };
       // each answer -> its exact GHL custom field key (fallback to q_<id> if unmapped)
       var summary = [];

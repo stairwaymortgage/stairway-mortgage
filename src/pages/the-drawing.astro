@@ -701,6 +701,15 @@ const cards = [
         '\n\nCARD DRAWN\n' + card.subtitle + '. ' + card.name + ' — ' + card.prize +
         '\n\nBIRTHDAY\n' + state.birthday;
 
+      function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+      function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+      function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+      function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+      function _resolveLoid(){
+        var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
+        var m = String(raw).match(/(\d{3,})/);
+        return m ? m[1] : '';
+      }
       var payload = {
         first_name: firstName,
         last_name: lastName,
@@ -718,7 +727,10 @@ const cards = [
         card_prize: card.prize,
         notes: notes,
         page_url: typeof window !== 'undefined' ? window.location.href : '',
-        submitted_at: new Date().toISOString()
+        submitted_at: new Date().toISOString(),
+        umtid: _resolveUmtid(),
+        loid: _resolveLoid(),
+        source_url: location.href
       };
 
       try {

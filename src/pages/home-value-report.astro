@@ -77,12 +77,24 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
     if(phone.replace(/\D/g,'').length<10)return showErr('Please enter a valid phone number.');
     errEl.classList.add('hidden');
 
+    function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+    function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+    function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+    function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+    function _resolveLoid(){
+      var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
+      var m = String(raw).match(/(\d{3,})/);
+      return m ? m[1] : '';
+    }
     var payload={
       first_name:first, last_name:last, full_name:(first+' '+last).trim(),
       email:email, phone:phone,
       form_source:'home_value_report', form_name:'Home Value Report',
       page_url:window.location.href, submitted_at:new Date().toISOString(),
-      notes:'Property address: '+address
+      notes:'Property address: '+address,
+      umtid: _resolveUmtid(),
+      loid: _resolveLoid(),
+      source_url: location.href
     };
 
     sending=true; btn.disabled=true; btn.textContent='Sending\u2026';

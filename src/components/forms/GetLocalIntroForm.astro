@@ -370,10 +370,24 @@
       var first = sp === -1 ? fullName : fullName.slice(0, sp);
       var last = sp === -1 ? '' : fullName.slice(sp + 1);
 
+      function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+      function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+      function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+      function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+      function _resolveLoid(){
+        var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
+        var m = String(raw).match(/(\d{3,})/);
+        return m ? m[1] : '';
+      }
+
+      // source_url already arrives via the hidden form field (read from URL/cookie above) —
+      // do NOT re-add it here; only add umtid + the numeric inbound loid.
       var payload = Object.assign({}, data, {
         form_source: 'get-a-local-introduction', form_name: 'Get a Local Introduction',
         first_name: first, last_name: last, email: data.email || '', phone: data.phone || '',
-        page_url: window.location.href, submitted_at: new Date().toISOString()
+        page_url: window.location.href, submitted_at: new Date().toISOString(),
+        umtid: _resolveUmtid(),
+        loid: _resolveLoid()
       });
 
       function done() {
