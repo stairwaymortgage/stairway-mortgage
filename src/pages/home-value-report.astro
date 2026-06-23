@@ -2,96 +2,560 @@
 import Layout from '../layouts/Layout.astro';
 import { GHL_WEBHOOK_URL } from '../lib/ghl';
 ---
-<Layout title="Home Value Report — Stairway Mortgage" description="See what your home is worth today. Free equity report from our team — no obligation.">
+<Layout title="Home Value Report — Stairway Mortgage" description="See what your home is worth today — plus your equity, what you can do with it, neighborhood trends, and a private hub to manage your home. Free, no obligation.">
 
-  <section class="section relative overflow-hidden hvr-hero">
-    <div class="container-page">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="reveal">
-          <span class="eyebrow eyebrow-blue mb-6">Tools · Home Value</span>
-          <h1 class="display-lg mt-5 mb-5">What is your home <em class="italic text-[var(--color-blue)]">worth today</em>?</h1>
-          <p class="lede max-w-xl mb-8">Get a free equity report from our team. We analyze comparable sales, market trends, and your specific property — then show you what you can do with that equity.</p>
-          <div class="space-y-4 mb-8">
-            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Comparable sales analysis for your area</span></div>
-            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">How much equity you can access</span></div>
-            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Refinance, HELOC, and cash-out options</span></div>
+<div class="hvr-scope">
+
+<!-- HERO -->
+<section class="hvr-hero">
+  <div class="hvr-container">
+    <div class="hvr-hero-grid">
+      <div>
+        <span class="hvr-eyebrow">Free Tools · Home Value</span>
+        <h1>What is your home<br><em>worth today?</em></h1>
+        <p class="hvr-lede">Get an instant home value report — then go deeper. See your equity, what you can do with it, what's happening in your neighborhood, and a private hub to manage your home. All in one place, all free.</p>
+        <ul class="hvr-hero-points">
+          <li>Live value estimate with low–high range, updated monthly</li>
+          <li>Your equity and what it can do — refinance, cash-out, invest</li>
+          <li>Neighborhood trends, school ratings, and project ROI</li>
+        </ul>
+        <p class="hvr-trust-line">Jim Blackburn · NMLS&nbsp;#1072866 · 5.0★ · Free, no obligation</p>
+      </div>
+      <div class="hvr-formcard" id="hvr-top">
+        <h2>Get your free report</h2>
+        <p class="hvr-form-sub">Enter your details and we'll send you instant access to your full home value report.</p>
+        <div id="hvr-form" data-ghl-endpoint={GHL_WEBHOOK_URL}>
+          <div class="hvr-error hvr-hidden" id="hvr-error"></div>
+          <div class="hvr-field hvr-field-row">
+            <div><label class="hvr-label" for="hvr-first">First name</label><input class="hvr-input" type="text" id="hvr-first" placeholder="First" autocomplete="given-name"></div>
+            <div><label class="hvr-label" for="hvr-last">Last name</label><input class="hvr-input" type="text" id="hvr-last" placeholder="Last" autocomplete="family-name"></div>
           </div>
-          <p class="mono text-[11px] text-[var(--color-mute)]">NMLS #1072866 · Free, no obligation</p>
+          <div class="hvr-field"><label class="hvr-label" for="hvr-email">Email</label><input class="hvr-input" type="email" id="hvr-email" placeholder="you@email.com" autocomplete="email"></div>
+          <div class="hvr-field"><label class="hvr-label" for="hvr-address">Property address</label><input class="hvr-input hvr-address-input" type="text" id="hvr-address" placeholder="Start typing your address…" autocomplete="off"></div>
+          <div class="hvr-field"><label class="hvr-label" for="hvr-phone">Phone <span class="hvr-opt">— optional</span></label><input class="hvr-input" type="tel" id="hvr-phone" placeholder="(555) 555-5555" autocomplete="tel"><p class="hvr-opt-note">Only if you want us to call you. No pressure — leave it blank otherwise.</p></div>
+          <input type="text" name="_gotcha" id="hvr-gotcha" style="position:absolute;left:-9999px;opacity:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="hvr-btn" type="button" id="hvr-submit">See My Home Value
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+          <p class="hvr-form-foot">Free, no obligation. We do not sell your information.</p>
         </div>
-        <div class="reveal" style="transition-delay:100ms;">
-          <div class="card p-8 lg:p-10" id="hvr-wrap">
-            <h2 class="font-display text-xl mb-1">Request your free report</h2>
-            <p class="text-[14px] text-[var(--color-mute)] mb-6">Our team will prepare a personalized equity analysis.</p>
-            <div class="space-y-4" id="hvr-form" data-ghl-endpoint={GHL_WEBHOOK_URL}>
-              <div class="grid grid-cols-2 gap-3">
-                <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" id="hvr-first" placeholder="First" autocomplete="given-name" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-                <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Last name</label><input type="text" id="hvr-last" placeholder="Last" autocomplete="family-name" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              </div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" id="hvr-email" placeholder="you@email.com" autocomplete="email" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Phone</label><input type="tel" id="hvr-phone" placeholder="(555) 555-5555" autocomplete="tel" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Property address</label><input type="text" id="hvr-address" placeholder="123 Main St, City, State" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <input type="text" name="_gotcha" id="hvr-gotcha" style="position:absolute;left:-9999px;opacity:0;" tabindex="-1" autocomplete="off" aria-hidden="true" />
-              <p class="text-[13px] text-red-600 hidden" id="hvr-error"></p>
-              <button class="btn btn-blue w-full text-center text-base py-3.5" type="button" id="hvr-submit">Get My Report</button>
-              <p class="text-[11px] text-[var(--color-mute)] text-center">Free, no obligation. We do not sell your information.</p>
+        <div class="hvr-success hvr-hidden" id="hvr-success">
+          <div class="hvr-check"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <h3>Check your email.</h3>
+          <p>We've sent a verification link to confirm your email. Here's what happens next:</p>
+          <div class="hvr-step"><div class="hvr-step-n">1</div><p>Open the email from us and click <strong>verify</strong>.</p></div>
+          <div class="hvr-step"><div class="hvr-step-n">2</div><p>We'll send your private report link.</p></div>
+          <div class="hvr-step"><div class="hvr-step-n">3</div><p>See your full home value report instantly.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE REPORT — split section -->
+<section class="hvr-section">
+  <div class="hvr-container">
+    <div class="hvr-split">
+      <div>
+        <span class="hvr-eyebrow">The Report</span>
+        <h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1.08;letter-spacing:-0.015em;margin:18px 0 0;">More than a number. <em style="font-style:italic;color:var(--blue);font-weight:500;">A full picture.</em></h2>
+        <p style="font-size:1.125rem;color:var(--ink-light);margin:18px 0 0;">Most "what's my home worth" tools hand you a single estimate and stop. Yours opens a complete view of your home as a financial asset — value, equity, and exactly what you can do with it.</p>
+        <ul class="hvr-deliver">
+          <li><span class="n">01</span><div><div class="t">Live value estimate + range</div><div class="d">A current market value with a low–high range, plus how it's changed since you bought. Refreshed every month automatically.</div></div></li>
+          <li><span class="n">02</span><div><div class="t">Your equity, calculated</div><div class="d">How much equity you've built, shown as a dollar figure and a percentage of your home's value.</div></div></li>
+          <li><span class="n">03</span><div><div class="t">What your equity can do</div><div class="d">Purchasing power for a new home, a cash-out, or an investment property — and ideas like consolidating debt or funding a project.</div></div></li>
+          <li><span class="n">04</span><div><div class="t">Refinance &amp; payment breakdown</div><div class="d">See principal vs. interest, lifetime interest, and what extra payments or a refinance could save you.</div></div></li>
+        </ul>
+      </div>
+      <div class="hvr-split-visual">
+        <div class="hvr-dash">
+          <div class="hvr-dash-tag">Sample report</div>
+          <div class="hvr-dash-bar"><i></i><i></i><i></i><span class="hvr-dash-url">your-home-value-report</span></div>
+          <div class="hvr-dash-body">
+            <div class="hvr-dash-addr">Your Home · Current Estimate</div>
+            <div class="hvr-dash-value">$487,500</div>
+            <div class="hvr-dash-delta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg> +$42,300 since purchase</div>
+            <div class="hvr-dash-range">Low $451,200 — High $523,800 · Updated monthly</div>
+            <div class="hvr-spark">
+              <svg viewBox="0 0 320 90" width="100%" height="90" preserveAspectRatio="none" role="img" aria-label="Estimated value trend over time">
+                <defs><linearGradient id="hvrGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1845D6" stop-opacity="0.18"/><stop offset="100%" stop-color="#1845D6" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,70 L40,66 L80,58 L120,60 L160,48 L200,42 L240,34 L280,26 L320,18 L320,90 L0,90 Z" fill="url(#hvrGrad)"/>
+                <path d="M0,70 L40,66 L80,58 L120,60 L160,48 L200,42 L240,34 L280,26 L320,18" fill="none" stroke="#1845D6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="320" cy="18" r="4" fill="#1845D6"/>
+              </svg>
             </div>
-            <div class="text-center py-10" id="hvr-success" style="display:none;">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <p class="font-display text-xl mb-2">Request received.</p>
-              <p class="text-[14px] text-[var(--color-mute)]">Our team will prepare your equity report and reach out within 24 hours.</p>
+            <div class="hvr-dash-cards">
+              <div class="hvr-dash-card"><div class="l">Your Equity</div><div class="n">$163,900</div></div>
+              <div class="hvr-dash-card"><div class="l">Cash-Out Power</div><div class="n">$98,500</div></div>
+              <div class="hvr-dash-card"><div class="l">Remodel Upside</div><div class="n">$71,200</div></div>
+              <div class="hvr-dash-card"><div class="l">New-Home Power</div><div class="n">$612K</div></div>
             </div>
+          </div>
+        </div>
+        <p style="font-family:var(--mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--mute);text-align:center;margin-top:14px;">Sample figures shown · your real numbers after sign-up</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUITY DONUT + BAR CHARTS -->
+<section class="hvr-section hvr-section-tint">
+  <div class="hvr-container">
+    <div class="hvr-split rev">
+      <div class="hvr-split-visual">
+        <div class="hvr-viz" style="margin-bottom:18px;">
+          <div class="hvr-viz-title">Equity in your home</div>
+          <div class="hvr-donut-wrap">
+            <div class="hvr-donut">
+              <svg viewBox="0 0 42 42" width="132" height="132">
+                <circle cx="21" cy="21" r="15.915" fill="none" stroke="#EDEDE5" stroke-width="6"></circle>
+                <circle cx="21" cy="21" r="15.915" fill="none" stroke="#2E9E2E" stroke-width="6" stroke-dasharray="34 66" stroke-dashoffset="25" stroke-linecap="round"></circle>
+              </svg>
+              <div class="center"><b>34%</b><span>Equity</span></div>
+            </div>
+            <div class="hvr-donut-legend">
+              <div><i style="background:#2E9E2E;"></i> Your equity — $163,900</div>
+              <div><i style="background:#EDEDE5;"></i> Remaining balance — $323,600</div>
+            </div>
+          </div>
+        </div>
+        <div class="hvr-viz">
+          <div class="hvr-viz-title">What your equity can do</div>
+          <div class="hvr-bars">
+            <div><div class="hvr-bar-top"><span>New-home purchasing power</span><b>$612K</b></div><div class="hvr-bar-track"><div class="hvr-bar-fill" style="width:100%;"></div></div></div>
+            <div><div class="hvr-bar-top"><span>Cash-out available</span><b>$98.5K</b></div><div class="hvr-bar-track"><div class="hvr-bar-fill" style="width:42%;"></div></div></div>
+            <div><div class="hvr-bar-top"><span>Investment property down</span><b>$80K</b></div><div class="hvr-bar-track"><div class="hvr-bar-fill" style="width:34%;"></div></div></div>
+            <div><div class="hvr-bar-top"><span>Debt you could consolidate</span><b>$36K</b></div><div class="hvr-bar-track"><div class="hvr-bar-fill" style="width:18%;background:var(--gold);"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="hvr-eyebrow">Build Wealth</span>
+        <h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1.08;letter-spacing:-0.015em;margin:18px 0 0;">Your equity is doing <em style="font-style:italic;color:var(--blue);font-weight:500;">more than you think.</em></h2>
+        <p style="font-size:1.125rem;color:var(--ink-light);margin:18px 0 0;">Equity sitting in your home is a tool — for a move, an investment, a renovation, or wiping out high-interest debt. Your report shows exactly how much you have and lays out, in plain numbers, what each path looks like for <em>your</em> home.</p>
+        <p style="font-size:1.0625rem;color:var(--ink-2);margin:18px 0 0;">And when you want to talk through the smartest move, our team is one click away — no pressure, no obligation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPROVE & COMPARE -->
+<section class="hvr-section">
+  <div class="hvr-container">
+    <div class="hvr-split">
+      <div>
+        <span class="hvr-eyebrow">Improve &amp; Compare</span>
+        <h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1.08;letter-spacing:-0.015em;margin:18px 0 0;">Know which upgrades <em style="font-style:italic;color:var(--blue);font-weight:500;">pay you back.</em></h2>
+        <p style="font-size:1.125rem;color:var(--ink-light);margin:18px 0 0;">Thinking about a remodel? Your report ranks projects by real return on investment and estimates local costs — so you spend where it counts. Plus a live read on your neighborhood's market so you always know where you stand.</p>
+        <ul class="hvr-deliver">
+          <li><span class="n">→</span><div><div class="t">Project ROI, ranked</div><div class="d">See potential value added by each upgrade, highest-return first.</div></div></li>
+          <li><span class="n">→</span><div><div class="t">Local cost estimates</div><div class="d">Budget accurately with estimates tuned to your area.</div></div></li>
+          <li><span class="n">→</span><div><div class="t">Neighborhood market trends</div><div class="d">Median prices, days on market, and buyer-vs-seller demand.</div></div></li>
+        </ul>
+      </div>
+      <div class="hvr-split-visual">
+        <div class="hvr-viz" style="margin-bottom:18px;">
+          <div class="hvr-viz-title">Top projects by return</div>
+          <div class="hvr-roi">
+            <div class="hvr-roi-row"><div class="hvr-roi-label"><span>Add a full bath</span><b>+$37,870 · 10.2%</b></div><div class="hvr-roi-track"><div class="hvr-roi-fill" style="width:100%;"></div></div></div>
+            <div class="hvr-roi-row"><div class="hvr-roi-label"><span>Luxury kitchen remodel</span><b>+$17,025 · 4.6%</b></div><div class="hvr-roi-track"><div class="hvr-roi-fill" style="width:45%;"></div></div></div>
+            <div class="hvr-roi-row"><div class="hvr-roi-label"><span>Luxury bath remodel</span><b>+$14,540 · 3.9%</b></div><div class="hvr-roi-track"><div class="hvr-roi-fill" style="width:38%;"></div></div></div>
+            <div class="hvr-roi-row"><div class="hvr-roi-label"><span>Add a bedroom</span><b>+$12,166 · 3.3%</b></div><div class="hvr-roi-track"><div class="hvr-roi-fill" style="width:32%;"></div></div></div>
+            <div class="hvr-roi-row"><div class="hvr-roi-label"><span>Attached one-car garage</span><b>+$6,305 · 1.7%</b></div><div class="hvr-roi-track"><div class="hvr-roi-fill" style="width:17%;"></div></div></div>
+          </div>
+        </div>
+        <div class="hvr-viz">
+          <div class="hvr-viz-title">Your neighborhood right now</div>
+          <div class="hvr-market">
+            <div class="hvr-market-cell"><div class="l">Median list price</div><div class="n">$439,695</div></div>
+            <div class="hvr-market-cell"><div class="l">Days on market</div><div class="n">59</div></div>
+            <div class="hvr-market-cell"><div class="l">Active inventory</div><div class="n">88</div></div>
+            <div class="hvr-market-cell"><div class="l">Market demand</div><div class="n" style="font-size:1.05rem;">Balanced</div><div class="s">Stable conditions</div></div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- INCLUDED FREE — 6 image cards -->
+<section class="hvr-section hvr-section-tint">
+  <div class="hvr-container">
+    <div class="hvr-section-head">
+      <span class="hvr-eyebrow">Included Free</span>
+      <h2>And it doesn't stop at the <em>value.</em></h2>
+      <p>Your report comes with a private hub to understand your neighborhood, plan smart projects, and manage your home year-round. Here's everything waiting on the other side.</p>
+    </div>
+    <div class="hvr-grid">
+      <div class="hvr-fcard">
+        <img class="hvr-fcard-img" src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Suburban neighborhood homes" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/720x450/1845D6/FFFFFF/png?text=Neighborhood+Trends';">
+        <div class="hvr-fcard-body"><h3>Neighborhood trends</h3><p>See what's really happening on your street and ZIP.</p><ul><li>Median list &amp; sale prices, price per sq ft</li><li>Days on market and current inventory</li><li>Buyer vs. seller market demand</li></ul></div>
+      </div>
+      <div class="hvr-fcard">
+        <img class="hvr-fcard-img" src="https://images.pexels.com/photos/8500355/pexels-photo-8500355.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Students walking to school" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/720x450/1845D6/FFFFFF/png?text=School+Ratings';">
+        <div class="hvr-fcard-body"><h3>School &amp; lifestyle scores</h3><p>The data buyers and families care about most.</p><ul><li>District score and individual school ratings</li><li>Walkability, family-friendly, and more</li><li>Student–teacher ratios and spending</li></ul></div>
+      </div>
+      <div class="hvr-fcard">
+        <img class="hvr-fcard-img" src="https://images.pexels.com/photos/1599791/pexels-photo-1599791.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Modern renovated kitchen" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/720x450/1845D6/FFFFFF/png?text=Project+ROI';">
+        <div class="hvr-fcard-body"><h3>Project value &amp; ROI</h3><p>Know which upgrades actually pay you back.</p><ul><li>Current value vs. potential after remodel</li><li>Ranked projects by return on investment</li><li>Local project cost estimates for your area</li></ul></div>
+      </div>
+      <div class="hvr-fcard">
+        <img class="hvr-fcard-img" src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Family home exterior" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/720x450/1845D6/FFFFFF/png?text=Manage+Your+Home';">
+        <div class="hvr-fcard-body"><h3>Your home, managed</h3><p>One place for everything you own.</p><ul><li>Property timeline: history, sales, taxes</li><li>Home inventory with maintenance reminders</li><li>Repair tracking and document storage</li></ul></div>
+      </div>
+      <div class="hvr-fcard">
+        <img class="hvr-fcard-img" src="https://images.pexels.com/photos/8961065/pexels-photo-8961065.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Contractor at work" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/720x450/1845D6/FFFFFF/png?text=Vetted+Local+Pros';">
+        <div class="hvr-fcard-body"><h3>Vetted local pros</h3><p>Trusted help when you need it.</p><ul><li>Plumbers, electricians, contractors, cleaners</li><li>Recommended by your advisors</li><li>Compare and connect in a click</li></ul></div>
+      </div>
+      <div class="hvr-fcard">
+        <img class="hvr-fcard-img" src="https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Advisor reviewing finances with clients" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/720x450/1845D6/FFFFFF/png?text=Mortgage+Guidance';">
+        <div class="hvr-fcard-body"><h3>Mortgage &amp; refi guidance</h3><p>Real answers from a real loan officer.</p><ul><li>Payment and extra-payment savings tools</li><li>Refinance scenarios for your situation</li><li>Direct line to our team — when you want it</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section class="hvr-section hvr-section-ink">
+  <div class="hvr-container">
+    <div class="hvr-stats">
+      <div class="hvr-stat"><div class="num"><em>$500M+</em></div><div class="label">In closed loans</div></div>
+      <div class="hvr-stat"><div class="num">7×</div><div class="label">Scotsman Guide Top Producer</div></div>
+      <div class="hvr-stat"><div class="num">5.0★</div><div class="label">Client rating</div></div>
+      <div class="hvr-stat"><div class="num">24<span style="font-size:1.4rem;">hr</span></div><div class="label">Typical response</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MID-PAGE 2ND CAPTURE FORM -->
+<section class="hvr-section">
+  <div class="hvr-container">
+    <div class="hvr-capture2">
+      <div>
+        <span class="hvr-eyebrow">Ready When You Are</span>
+        <h2>See your full report in <em>about a minute.</em></h2>
+        <p class="lede">No cost, no commitment, and we never sell your information. Just your home's real numbers and everything you need to make smart moves with them.</p>
+        <ul class="pts"><li>Instant value, equity, and what it can do</li><li>Neighborhood, schools, and project ROI</li><li>A private hub to manage your home all year</li></ul>
+      </div>
+      <div class="hvr-formcard" style="color:var(--ink);">
+        <h2 style="font-size:1.6rem;">Start your free report</h2>
+        <p class="hvr-form-sub">Takes under a minute. We'll email your private report link.</p>
+        <div class="hvr-field hvr-field-row">
+          <div><label class="hvr-label" for="hvr2-first">First name</label><input class="hvr-input" type="text" id="hvr2-first" placeholder="First" autocomplete="given-name"></div>
+          <div><label class="hvr-label" for="hvr2-last">Last name</label><input class="hvr-input" type="text" id="hvr2-last" placeholder="Last" autocomplete="family-name"></div>
+        </div>
+        <div class="hvr-field"><label class="hvr-label" for="hvr2-email">Email</label><input class="hvr-input" type="email" id="hvr2-email" placeholder="you@email.com" autocomplete="email"></div>
+        <div class="hvr-field"><label class="hvr-label" for="hvr2-address">Property address</label><input class="hvr-input hvr-address-input" type="text" id="hvr2-address" placeholder="Start typing your address…" autocomplete="off"></div>
+        <div class="hvr-field"><label class="hvr-label" for="hvr2-phone">Phone <span class="hvr-opt">— optional</span></label><input class="hvr-input" type="tel" id="hvr2-phone" placeholder="(555) 555-5555" autocomplete="tel"><p class="hvr-opt-note">Only if you want us to call you.</p></div>
+        <button class="hvr-btn" type="button" id="hvr2-submit">See My Home Value
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+        <p class="hvr-form-foot">Free, no obligation. We do not sell your information. NMLS&nbsp;#1072866.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="hvr-section hvr-section-tint">
+  <div class="hvr-container">
+    <div class="hvr-section-head"><span class="hvr-eyebrow">Good To Know</span><h2>Questions, <em>answered.</em></h2></div>
+    <div class="hvr-faq">
+      <div class="hvr-faq-item"><p class="hvr-faq-q">Is this really free?</p><p class="hvr-faq-a">Yes — completely. There's no cost, no obligation, and no credit pull. The report and the home management hub are free for you to use as long as you like.</p></div>
+      <div class="hvr-faq-item"><p class="hvr-faq-q">How accurate is the value estimate?</p><p class="hvr-faq-a">It's a market-based estimate drawn from comparable sales and current conditions, shown with a low–high range. It's a strong starting point — and when you want a precise figure, our team can prepare a personalized analysis for your exact property.</p></div>
+      <div class="hvr-faq-item"><p class="hvr-faq-q">Do I have to talk to anyone?</p><p class="hvr-faq-a">Not at all. Phone is optional — leave it blank and you'll still get your full report. If you'd like to talk through your options, add your number and we'll reach out. Your call.</p></div>
+      <div class="hvr-faq-item"><p class="hvr-faq-q">Will you sell my information?</p><p class="hvr-faq-a">Never. Your details stay with our team and are used only to deliver your report and follow up if you ask us to.</p></div>
+      <div class="hvr-faq-item"><p class="hvr-faq-q">What happens after I enter my email?</p><p class="hvr-faq-a">We'll send a quick verification link to confirm it's you. Click it, and we'll send your private report link — your full report opens instantly.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="hvr-final">
+  <img class="hvr-final-bg" src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Beautiful home at dusk" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1800x900/0A0E1A/1845D6/png?text=Your+Home';">
+  <div class="hvr-final-overlay"></div>
+  <div class="hvr-final-inner">
+    <span class="hvr-eyebrow">Your Home, By The Numbers</span>
+    <h2>See what your home is <em>worth today.</em></h2>
+    <p>Your value, your equity, your neighborhood, and a hub to manage it all — free, in about a minute.</p>
+    <a class="hvr-anchor-btn" href="#hvr-top">Get My Free Report
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </a>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<section style="padding:48px 0 64px;">
+  <div class="hvr-container">
+    <p class="hvr-disclaimer">Home value estimates are generated from automated valuation models using comparable sales, public records, and current market data. Estimates can vary by source and are provided for informational purposes only — they are not an appraisal and do not constitute legal, tax, or financial advice. Sample figures and charts shown on this page are illustrative. For a precise valuation, consult a licensed appraiser or real estate professional. Jim Blackburn, NMLS&nbsp;#1072866.</p>
+  </div>
+</section>
+
+</div><!-- /.hvr-scope -->
 </Layout>
 
-<style>.hvr-hero{position:relative;}.hvr-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}</style>
+<style is:global>
+/* HOME VALUE REPORT — image-rich v2. Scoped .hvr-scope for Astro Layout.
+   Working GHL webhook + LOID/UMTID/UTM attribution preserved. Phone OPTIONAL.
+   Google Places autocomplete on address fields (graceful fallback to plain text).
+   All report visuals are ORIGINAL CSS/SVG mockups w/ sample data — zero brand leak.
+   Photos: Pexels w/ onerror -> placehold.co (verify in real browser). */
+.hvr-scope {
+  --ink:#0A0E1A; --ink-2:#1E2433; --ink-light:#4A5568; --mute:#6B7280;
+  --paper:#FAFAF7; --paper-2:#F4F2EC; --paper-3:#EDEDE5; --bone:#EAE7DE; --white:#FFFFFF;
+  --blue:#1845D6; --blue-deep:#0F2EA0; --blue-soft:#E8EEFF; --blue-tint:#F2F5FF;
+  --green:#2E9E2E; --green-soft:#E7F6E7; --rust:#8B2C2C; --gold:#B8860B;
+  --border:#E5E5DE; --border-strong:#D4D4C8;
+  --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+  --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
+  font-family:var(--sans); color:var(--ink); background:var(--paper); -webkit-font-smoothing:antialiased; line-height:1.6;
+}
+.hvr-scope * { box-sizing:border-box; }
+.hvr-scope img { max-width:100%; display:block; }
+.hvr-scope .hvr-container { width:100%; max-width:1180px; margin:0 auto; padding:0 24px; }
+.hvr-scope .hvr-eyebrow { font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--blue); display:inline-flex; align-items:center; gap:10px; }
+.hvr-scope .hvr-eyebrow::before { content:""; width:28px; height:1px; background:var(--blue); display:inline-block; }
 
+.hvr-scope .hvr-hero { position:relative; background:var(--paper-2); border-bottom:1px solid var(--border); padding:72px 0 80px; overflow:hidden; }
+.hvr-scope .hvr-hero-grid { position:relative; z-index:2; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
+.hvr-scope .hvr-hero h1 { font-family:var(--serif); font-weight:400; font-size:clamp(2.75rem,6vw,4.5rem); line-height:1.02; letter-spacing:-0.02em; margin:22px 0 0; color:var(--ink); }
+.hvr-scope .hvr-hero h1 em { font-style:italic; color:var(--blue); font-weight:500; }
+.hvr-scope .hvr-lede { font-size:1.1875rem; line-height:1.6; color:var(--ink-light); margin:24px 0 0; max-width:30em; }
+.hvr-scope .hvr-hero-points { list-style:none; margin:28px 0 0; padding:0; display:grid; gap:12px; }
+.hvr-scope .hvr-hero-points li { position:relative; padding-left:28px; font-size:1rem; color:var(--ink-2); }
+.hvr-scope .hvr-hero-points li::before { content:""; position:absolute; left:0; top:9px; width:8px; height:8px; border-radius:50%; background:var(--green); }
+.hvr-scope .hvr-trust-line { margin-top:30px; font-family:var(--mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--mute); }
+
+.hvr-scope .hvr-dash { position:relative; background:var(--white); border:1px solid var(--border-strong); border-radius:16px; box-shadow:0 30px 70px -30px rgba(10,14,26,0.32); overflow:hidden; }
+.hvr-scope .hvr-dash-bar { display:flex; align-items:center; gap:8px; padding:12px 16px; border-bottom:1px solid var(--border); background:var(--paper-2); }
+.hvr-scope .hvr-dash-bar i { width:10px; height:10px; border-radius:50%; background:var(--border-strong); display:inline-block; }
+.hvr-scope .hvr-dash-url { margin-left:10px; font-family:var(--mono); font-size:11px; letter-spacing:0.04em; color:var(--mute); }
+.hvr-scope .hvr-dash-body { padding:24px; }
+.hvr-scope .hvr-dash-addr { font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mute); }
+.hvr-scope .hvr-dash-value { font-family:var(--serif); font-size:3rem; line-height:1; color:var(--ink); font-weight:500; margin-top:6px; }
+.hvr-scope .hvr-dash-delta { display:inline-flex; align-items:center; gap:6px; margin-top:8px; font-size:13px; color:var(--green); font-weight:500; }
+.hvr-scope .hvr-dash-range { font-size:12px; color:var(--mute); margin-top:4px; }
+.hvr-scope .hvr-spark { margin-top:18px; }
+.hvr-scope .hvr-dash-cards { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px; }
+.hvr-scope .hvr-dash-card { background:var(--paper-2); border:1px solid var(--border); border-radius:10px; padding:14px; }
+.hvr-scope .hvr-dash-card .l { font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--mute); }
+.hvr-scope .hvr-dash-card .n { font-family:var(--serif); font-size:1.35rem; color:var(--ink); margin-top:4px; }
+.hvr-scope .hvr-dash-tag { position:absolute; top:16px; right:16px; z-index:3; background:var(--blue); color:#fff; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:5px 10px; border-radius:100px; }
+
+.hvr-scope .hvr-formcard { background:var(--white); border:1px solid var(--border-strong); border-radius:16px; padding:30px; box-shadow:0 24px 60px -30px rgba(10,14,26,0.25); }
+.hvr-scope .hvr-formcard h2 { font-family:var(--serif); font-weight:500; font-size:1.9rem; line-height:1.1; margin:0; }
+.hvr-scope .hvr-formcard .hvr-form-sub { color:var(--mute); font-size:0.95rem; margin:8px 0 22px; }
+.hvr-scope .hvr-field { margin-bottom:16px; position:relative; }
+.hvr-scope .hvr-field-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.hvr-scope .hvr-label { display:block; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--mute); margin-bottom:7px; }
+.hvr-scope .hvr-label .hvr-opt { color:var(--blue); font-weight:500; text-transform:none; letter-spacing:0; margin-left:6px; }
+.hvr-scope .hvr-input { width:100%; padding:12px 14px; border:1px solid var(--bone); border-radius:10px; font-family:var(--sans); font-size:1rem; color:var(--ink); background:var(--paper); transition:border-color 0.16s, box-shadow 0.16s; }
+.hvr-scope .hvr-input:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px var(--blue-soft); background:var(--white); }
+.hvr-scope .hvr-input::placeholder { color:#9AA0AC; }
+.hvr-scope .hvr-opt-note { font-size:12px; color:var(--mute); margin-top:6px; }
+.hvr-scope .hvr-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:15px 22px; border:none; border-radius:10px; cursor:pointer; background:var(--blue); color:var(--white); font-family:var(--sans); font-size:1.0625rem; font-weight:600; transition:background 0.16s, transform 0.16s; }
+.hvr-scope .hvr-btn:hover { background:var(--blue-deep); transform:translateY(-1px); }
+.hvr-scope .hvr-btn:disabled { opacity:0.7; cursor:default; transform:none; }
+.hvr-scope .hvr-form-foot { font-size:12px; color:var(--mute); text-align:center; margin-top:14px; }
+.hvr-scope .hvr-error { background:#FBEAEA; border:1px solid #E7C3C3; color:var(--rust); border-radius:8px; padding:10px 12px; font-size:13px; margin-bottom:14px; }
+.hvr-scope .hvr-hidden { display:none !important; }
+.hvr-scope .hvr-success { text-align:center; padding:26px 8px; }
+.hvr-scope .hvr-success .hvr-check { width:52px; height:52px; border-radius:50%; background:var(--green-soft); color:var(--green); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
+.hvr-scope .hvr-success h3 { font-family:var(--serif); font-weight:500; font-size:1.5rem; margin:0 0 8px; }
+.hvr-scope .hvr-success > p { color:var(--ink-light); font-size:0.95rem; margin:0 auto; max-width:30em; }
+.hvr-scope .hvr-success .hvr-step { display:flex; align-items:flex-start; gap:12px; text-align:left; max-width:360px; margin:18px auto 0; }
+.hvr-scope .hvr-success .hvr-step .hvr-step-n { flex:none; width:26px; height:26px; border-radius:50%; background:var(--blue-soft); color:var(--blue); font-family:var(--mono); font-size:12px; font-weight:500; display:flex; align-items:center; justify-content:center; }
+.hvr-scope .hvr-success .hvr-step p { font-size:14px; margin:2px 0 0; }
+.pac-container { z-index:100000 !important; }
+
+.hvr-scope .hvr-section { padding:84px 0; }
+.hvr-scope .hvr-section-tint { background:var(--paper-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.hvr-scope .hvr-section-ink { background:var(--ink); color:var(--paper); }
+.hvr-scope .hvr-section-head { max-width:680px; margin-bottom:48px; }
+.hvr-scope .hvr-section-head h2 { font-family:var(--serif); font-weight:400; font-size:clamp(2rem,4vw,3rem); line-height:1.08; letter-spacing:-0.015em; margin:18px 0 0; }
+.hvr-scope .hvr-section-head h2 em { font-style:italic; color:var(--blue); font-weight:500; }
+.hvr-scope .hvr-section-ink .hvr-section-head h2 em { color:#9DB2FF; }
+.hvr-scope .hvr-section-head p { font-size:1.125rem; color:var(--ink-light); margin:18px 0 0; }
+.hvr-scope .hvr-section-ink .hvr-section-head p { color:rgba(250,250,247,0.72); }
+
+.hvr-scope .hvr-split { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+.hvr-scope .hvr-split.rev .hvr-split-visual { order:-1; }
+.hvr-scope .hvr-deliver { list-style:none; margin:24px 0 0; padding:0; display:grid; gap:2px; }
+.hvr-scope .hvr-deliver li { display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--border); align-items:flex-start; }
+.hvr-scope .hvr-deliver li:last-child { border-bottom:none; }
+.hvr-scope .hvr-deliver .n { flex:none; font-family:var(--mono); font-size:12px; color:var(--blue); padding-top:4px; min-width:28px; }
+.hvr-scope .hvr-deliver .t { font-family:var(--serif); font-size:1.15rem; color:var(--ink); }
+.hvr-scope .hvr-deliver .d { font-size:0.92rem; color:var(--ink-light); margin-top:3px; }
+
+.hvr-scope .hvr-viz { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:24px; box-shadow:0 16px 40px -28px rgba(10,14,26,0.25); }
+.hvr-scope .hvr-viz-title { font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mute); margin-bottom:14px; }
+.hvr-scope .hvr-donut-wrap { display:flex; align-items:center; gap:22px; }
+.hvr-scope .hvr-donut { position:relative; width:132px; height:132px; flex:none; }
+.hvr-scope .hvr-donut .center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.hvr-scope .hvr-donut .center b { font-family:var(--serif); font-size:1.5rem; color:var(--ink); }
+.hvr-scope .hvr-donut .center span { font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--mute); }
+.hvr-scope .hvr-donut-legend { display:grid; gap:10px; }
+.hvr-scope .hvr-donut-legend div { display:flex; align-items:center; gap:10px; font-size:0.9rem; color:var(--ink-2); }
+.hvr-scope .hvr-donut-legend i { width:12px; height:12px; border-radius:3px; flex:none; }
+.hvr-scope .hvr-bars { display:grid; gap:14px; }
+.hvr-scope .hvr-bar-top { display:flex; justify-content:space-between; font-size:0.9rem; margin-bottom:6px; }
+.hvr-scope .hvr-bar-top b { font-family:var(--mono); color:var(--ink); font-weight:500; }
+.hvr-scope .hvr-bar-track { height:12px; background:var(--paper-3); border-radius:100px; overflow:hidden; }
+.hvr-scope .hvr-bar-fill { height:100%; border-radius:100px; background:var(--blue); }
+.hvr-scope .hvr-roi { display:grid; gap:12px; }
+.hvr-scope .hvr-roi-row { display:grid; grid-template-columns:1fr; gap:5px; }
+.hvr-scope .hvr-roi-label { display:flex; justify-content:space-between; font-size:0.88rem; color:var(--ink-2); }
+.hvr-scope .hvr-roi-label b { font-family:var(--mono); color:var(--green); font-weight:500; }
+.hvr-scope .hvr-roi-track { height:10px; background:var(--paper-3); border-radius:100px; overflow:hidden; }
+.hvr-scope .hvr-roi-fill { height:100%; background:linear-gradient(90deg,var(--green),#57c257); border-radius:100px; }
+.hvr-scope .hvr-market { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.hvr-scope .hvr-market-cell { background:var(--paper-2); border:1px solid var(--border); border-radius:10px; padding:14px; }
+.hvr-scope .hvr-market-cell .l { font-size:10.5px; text-transform:uppercase; letter-spacing:0.07em; color:var(--mute); }
+.hvr-scope .hvr-market-cell .n { font-family:var(--serif); font-size:1.4rem; color:var(--ink); margin-top:3px; }
+.hvr-scope .hvr-market-cell .s { font-size:11px; color:var(--green); margin-top:2px; }
+
+.hvr-scope .hvr-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.hvr-scope .hvr-fcard { background:var(--white); border:1px solid var(--border); border-radius:14px; overflow:hidden; transition:transform 0.18s, box-shadow 0.18s, border-color 0.18s; }
+.hvr-scope .hvr-fcard:hover { transform:translateY(-3px); box-shadow:0 18px 40px -26px rgba(10,14,26,0.3); border-color:var(--border-strong); }
+.hvr-scope .hvr-fcard-img { aspect-ratio:16/10; width:100%; object-fit:cover; background:var(--paper-3); }
+.hvr-scope .hvr-fcard-body { padding:22px 24px 26px; }
+.hvr-scope .hvr-fcard h3 { font-family:var(--serif); font-weight:500; font-size:1.25rem; margin:0 0 8px; line-height:1.2; }
+.hvr-scope .hvr-fcard p { font-size:0.93rem; color:var(--ink-light); margin:0; }
+.hvr-scope .hvr-fcard ul { list-style:none; margin:14px 0 0; padding:0; display:grid; gap:8px; }
+.hvr-scope .hvr-fcard ul li { position:relative; padding-left:20px; font-size:0.88rem; color:var(--ink-2); }
+.hvr-scope .hvr-fcard ul li::before { content:""; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--blue); }
+
+.hvr-scope .hvr-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+.hvr-scope .hvr-stat .num { font-family:var(--serif); font-weight:500; font-size:2.6rem; line-height:1; color:var(--paper); }
+.hvr-scope .hvr-stat .num em { font-style:italic; color:#9DB2FF; }
+.hvr-scope .hvr-stat .label { font-family:var(--mono); font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:rgba(250,250,247,0.6); margin-top:12px; }
+
+.hvr-scope .hvr-capture2 { background:var(--blue); color:var(--white); border-radius:20px; padding:56px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; position:relative; overflow:hidden; }
+.hvr-scope .hvr-capture2 .hvr-eyebrow { color:rgba(255,255,255,0.75); }
+.hvr-scope .hvr-capture2 .hvr-eyebrow::before { background:rgba(255,255,255,0.5); }
+.hvr-scope .hvr-capture2 h2 { font-family:var(--serif); font-weight:400; font-size:clamp(1.9rem,3.4vw,2.7rem); line-height:1.08; margin:16px 0 0; }
+.hvr-scope .hvr-capture2 h2 em { font-style:italic; }
+.hvr-scope .hvr-capture2 .lede { color:rgba(255,255,255,0.85); font-size:1.0625rem; margin:18px 0 0; }
+.hvr-scope .hvr-capture2 .pts { list-style:none; margin:22px 0 0; padding:0; display:grid; gap:10px; }
+.hvr-scope .hvr-capture2 .pts li { position:relative; padding-left:26px; color:rgba(255,255,255,0.92); font-size:0.97rem; }
+.hvr-scope .hvr-capture2 .pts li::before { content:"✓"; position:absolute; left:0; top:0; color:#fff; font-weight:600; }
+
+.hvr-scope .hvr-faq { max-width:760px; }
+.hvr-scope .hvr-faq-item { border-bottom:1px solid var(--border); padding:22px 0; }
+.hvr-scope .hvr-faq-q { font-family:var(--serif); font-size:1.2rem; color:var(--ink); margin:0 0 8px; }
+.hvr-scope .hvr-faq-a { color:var(--ink-light); font-size:0.97rem; margin:0; }
+
+.hvr-scope .hvr-final { position:relative; padding:110px 0; text-align:center; color:#fff; overflow:hidden; }
+.hvr-scope .hvr-final-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.hvr-scope .hvr-final-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,14,26,0.78),rgba(10,14,26,0.88)); z-index:1; }
+.hvr-scope .hvr-final-inner { position:relative; z-index:2; max-width:640px; margin:0 auto; padding:0 24px; }
+.hvr-scope .hvr-final h2 { font-family:var(--serif); font-weight:400; font-size:clamp(2rem,4vw,3.2rem); line-height:1.08; margin:18px 0 0; }
+.hvr-scope .hvr-final h2 em { font-style:italic; color:#9DB2FF; font-weight:500; }
+.hvr-scope .hvr-final p { font-size:1.125rem; color:rgba(255,255,255,0.85); margin:18px auto 28px; }
+.hvr-scope .hvr-final .hvr-eyebrow { color:rgba(255,255,255,0.8); justify-content:center; }
+.hvr-scope .hvr-final .hvr-eyebrow::before { background:rgba(255,255,255,0.6); }
+.hvr-scope .hvr-anchor-btn { display:inline-flex; align-items:center; gap:10px; padding:16px 30px; background:var(--white); color:var(--blue-deep); border-radius:10px; font-weight:600; font-size:1.0625rem; text-decoration:none; transition:transform 0.16s, box-shadow 0.16s; }
+.hvr-scope .hvr-anchor-btn:hover { transform:translateY(-2px); box-shadow:0 14px 30px -12px rgba(0,0,0,0.4); }
+.hvr-scope .hvr-disclaimer { font-size:12px; color:var(--mute); line-height:1.6; max-width:760px; margin:0 auto; }
+
+@media (max-width:920px) {
+  .hvr-scope .hvr-hero-grid { grid-template-columns:1fr; gap:40px; }
+  .hvr-scope .hvr-split { grid-template-columns:1fr; gap:36px; }
+  .hvr-scope .hvr-split.rev .hvr-split-visual { order:0; }
+  .hvr-scope .hvr-capture2 { grid-template-columns:1fr; gap:32px; padding:40px 32px; }
+  .hvr-scope .hvr-grid { grid-template-columns:1fr 1fr; }
+  .hvr-scope .hvr-stats { grid-template-columns:1fr 1fr; gap:32px; }
+}
+@media (max-width:600px) {
+  .hvr-scope .hvr-hero { padding:48px 0 56px; }
+  .hvr-scope .hvr-section { padding:60px 0; }
+  .hvr-scope .hvr-grid { grid-template-columns:1fr; }
+  .hvr-scope .hvr-field-row { grid-template-columns:1fr; }
+  .hvr-scope .hvr-dash-cards { grid-template-columns:1fr; }
+  .hvr-scope .hvr-formcard, .hvr-scope .hvr-capture2 { padding:26px 22px; }
+  .hvr-scope .hvr-donut-wrap { flex-direction:column; align-items:flex-start; }
+}
+@media (prefers-reduced-motion:reduce) { .hvr-scope * { transition:none !important; } }
+</style>
+
+<!-- GOOGLE PLACES AUTOCOMPLETE -->
+<script is:inline>
+(function(){
+  var GOOGLE_PLACES_KEY = "AIzaSyA72a6nAbAUZoeE718Z5_PtvZkDhPLL3v0";
+  function loadPlaces(cb){
+    if(window.google && window.google.maps && window.google.maps.places){ cb(); return; }
+    window.__STW_PLACES = window.__STW_PLACES || { loading:false, queue:[] };
+    window.__STW_PLACES.queue.push(cb);
+    if(window.__STW_PLACES.loading) return;
+    window.__STW_PLACES.loading = true;
+    window.__stwPlacesReady = function(){
+      (window.__STW_PLACES.queue||[]).forEach(function(fn){ try{ fn(); }catch(e){} });
+      window.__STW_PLACES.queue = [];
+    };
+    var s = document.createElement("script");
+    s.src = "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_PLACES_KEY+"&libraries=places&callback=__stwPlacesReady&loading=async";
+    s.async = true; s.defer = true;
+    s.onerror = function(){};
+    document.head.appendChild(s);
+  }
+  function attachPlaces(input){
+    loadPlaces(function(){
+      try{
+        var ac = new google.maps.places.Autocomplete(input, {
+          types:['address'], componentRestrictions:{country:'us'},
+          fields:['formatted_address']
+        });
+        ac.addListener('place_changed', function(){ var p=ac.getPlace(); if(p&&p.formatted_address) input.value=p.formatted_address; });
+        input.addEventListener('keydown', function(e){ if(e.key==='Enter') e.preventDefault(); });
+      }catch(e){}
+    });
+  }
+  document.querySelectorAll('.hvr-address-input').forEach(attachPlaces);
+})();
+</script>
+
+<!-- FORM SUBMISSION + ATTRIBUTION -->
 <script is:inline>
 (function(){
   var wrap=document.getElementById('hvr-form');
   if(!wrap)return;
   var ENDPOINT=wrap.getAttribute('data-ghl-endpoint')||'';
-  var btn=document.getElementById('hvr-submit');
   var errEl=document.getElementById('hvr-error');
   var sending=false;
 
-  function showErr(m){errEl.textContent=m;errEl.classList.remove('hidden');}
+  function showErr(m){errEl.textContent=m;errEl.classList.remove('hvr-hidden');}
 
-  btn.addEventListener('click',function(){
+  function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+  function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+  function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+  function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+  function _resolveLoid(){
+    var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
+    var m = String(raw).match(/(\d{3,})/);
+    return m ? m[1] : '';
+  }
+
+  function submitForm(ids){
     if(sending)return;
     var gotcha=document.getElementById('hvr-gotcha');
-    if(gotcha&&gotcha.value.trim()!==''){document.getElementById('hvr-form').style.display='none';document.getElementById('hvr-success').style.display='block';return;}
+    if(gotcha&&gotcha.value.trim()!==''){showSuccess();return;}
 
-    var first=document.getElementById('hvr-first').value.trim();
-    var last=document.getElementById('hvr-last').value.trim();
-    var email=document.getElementById('hvr-email').value.trim();
-    var phone=document.getElementById('hvr-phone').value.trim();
-    var address=document.getElementById('hvr-address').value.trim();
+    function val(id){var el=document.getElementById(id);return el&&el.value?el.value.trim():'';}
+    var first=val(ids.first),last=val(ids.last),email=val(ids.email),phone=val(ids.phone),address=val(ids.address);
 
     if(!first||!last)return showErr('Please enter your first and last name.');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return showErr('Please enter a valid email.');
-    if(phone.replace(/\D/g,'').length<10)return showErr('Please enter a valid phone number.');
-    errEl.classList.add('hidden');
+    if(!address)return showErr('Please enter your property address.');
+    if(phone&&phone.replace(/\D/g,'').length<10)return showErr('That phone number looks incomplete — leave it blank if you prefer not to share it.');
+    errEl.classList.add('hvr-hidden');
 
-    function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
-    function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
-    function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
-    function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
-    function _resolveLoid(){
-      var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
-      var m = String(raw).match(/(\d{3,})/);
-      return m ? m[1] : '';
-    }
     var payload={
       first_name:first, last_name:last, full_name:(first+' '+last).trim(),
       email:email, phone:phone,
       form_source:'home_value_report', form_name:'Home Value Report',
       page_url:window.location.href, submitted_at:new Date().toISOString(),
-      notes:'Property address: '+address,
+      notes:'Property address: '+address+(phone?'':' | (no phone — opted out of call)'),
       umtid: _resolveUmtid(),
       loid: _resolveLoid(),
       utm_source: _qs('utm_source')||_getCookie('utm_source')||'',
@@ -102,11 +566,23 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       source_url: _getCookie('first_touch_url')||location.href
     };
 
-    sending=true; btn.disabled=true; btn.textContent='Sending\u2026';
+    sending=true;
+    if(ids.btn){ids.btn.disabled=true;ids.btn.dataset.label=ids.btn.textContent;ids.btn.textContent='Sending\u2026';}
     fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(){document.getElementById('hvr-form').style.display='none';document.getElementById('hvr-success').style.display='block';})
+      .then(function(){showSuccess();})
       .catch(function(){showErr('Something went wrong. Please try again or call us.');})
-      .then(function(){sending=false;btn.disabled=false;btn.textContent='Get My Report';});
-  });
+      .then(function(){sending=false;if(ids.btn){ids.btn.disabled=false;ids.btn.textContent=ids.btn.dataset.label||'See My Home Value';}});
+  }
+
+  function showSuccess(){
+    var form=document.getElementById('hvr-form');if(form)form.style.display='none';
+    var s=document.getElementById('hvr-success');if(s)s.classList.remove('hvr-hidden');
+    var top=document.getElementById('hvr-top');if(top&&top.scrollIntoView)top.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  var topBtn=document.getElementById('hvr-submit');
+  if(topBtn)topBtn.addEventListener('click',function(){submitForm({first:'hvr-first',last:'hvr-last',email:'hvr-email',phone:'hvr-phone',address:'hvr-address',btn:topBtn});});
+  var sndBtn=document.getElementById('hvr2-submit');
+  if(sndBtn)sndBtn.addEventListener('click',function(){submitForm({first:'hvr2-first',last:'hvr2-last',email:'hvr2-email',phone:'hvr2-phone',address:'hvr2-address',btn:sndBtn});});
 })();
 </script>

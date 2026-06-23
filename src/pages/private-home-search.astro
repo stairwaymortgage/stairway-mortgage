@@ -2,43 +2,181 @@
 import Layout from '../layouts/Layout.astro';
 import { GHL_WEBHOOK_URL } from '../lib/ghl';
 ---
-<Layout title="Private Home Search — Stairway Mortgage" description="Search homes privately. No spam, no lead-selling. Full MLS access with pre-approval ready.">
 
-  <section class="section relative overflow-hidden phs-hero">
-    <div class="container-page">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="reveal">
-          <span class="eyebrow eyebrow-blue mb-6">Tools · Home Search</span>
-          <h1 class="display-lg mt-5 mb-5">Search homes <em class="italic text-[var(--color-blue)]">privately</em>.</h1>
-          <p class="lede max-w-xl mb-8">Full MLS access without the spam, the pop-ups, or your information sold to 10 agents. Browse listings on your terms — when you find the one, your pre-approval is already in hand.</p>
-          <div class="space-y-4 mb-8">
-            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">No ads, no lead-selling, no spam calls</span></div>
-            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Real MLS data, updated daily</span></div>
-            <div class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-green)] shrink-0"></span><span class="text-[15px]">Get pre-approved first so you are ready to offer</span></div>
-          </div>
-          <p class="mono text-[11px] text-[var(--color-mute)]">NMLS #1072866</p>
-        </div>
-        <div class="reveal" style="transition-delay:100ms;">
-          <div class="card p-8 lg:p-10" id="phs-wrap">
-            <h2 class="font-display text-xl mb-1">Get private search access</h2>
-            <p class="text-[14px] text-[var(--color-mute)] mb-6">Tell us where you are looking. We set up your private portal.</p>
-            <div class="space-y-4" id="phs-form" data-ghl-endpoint={GHL_WEBHOOK_URL}>
-              <div class="grid grid-cols-2 gap-3">
-                <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">First name</label><input type="text" id="phs-first" placeholder="First" autocomplete="given-name" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-                <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Last name</label><input type="text" id="phs-last" placeholder="Last" autocomplete="family-name" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              </div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Email</label><input type="email" id="phs-email" placeholder="you@email.com" autocomplete="email" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Phone</label><input type="tel" id="phs-phone" placeholder="(555) 555-5555" autocomplete="tel" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <div><label class="block text-[12px] font-semibold uppercase tracking-wider text-[var(--color-mute)] mb-2">Where are you looking?</label><input type="text" id="phs-location" placeholder="City, State or ZIP" class="w-full p-3 border border-[var(--color-bone)] rounded-lg text-base" /></div>
-              <input type="text" name="_gotcha" id="phs-gotcha" style="position:absolute;left:-9999px;opacity:0;" tabindex="-1" autocomplete="off" aria-hidden="true" />
-              <p class="text-[13px] text-red-600 hidden" id="phs-error"></p>
-              <button class="btn btn-blue w-full text-center text-base py-3.5" type="button" id="phs-submit">Set Up My Search</button>
-              <p class="text-[11px] text-[var(--color-mute)] text-center">Free. No spam. We do not sell your data.</p>
+<Layout title="Private Home Search — Stairway Mortgage" description="Search homes privately on a professional-grade portal — no spam, no agents turned loose on you. Plus a hand-picked shortlist of top local agents, matched to you. Free, no obligation.">
+
+<div class="phs-scope" id="phs-top">
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="phs-hero">
+    <div class="phs-hero-inner phs-container">
+
+      <!-- LEFT COPY -->
+      <div class="phs-hero-copy">
+        <p class="phs-eyebrow">Free Tools &middot; Home Search</p>
+        <h1 class="phs-h1">Search homes<br><em>privately.</em></h1>
+        <p class="phs-lede">A professional-grade home search portal — the real MLS, 3D tours, and instant alerts — with no spam and no agents turned loose on you. Plus a hand-picked shortlist of top local agents, matched to you. All free.</p>
+        <ul class="phs-bullets">
+          <li>
+            <span class="phs-bullet-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#1B4FD8"/><path d="M5 9.5L7.5 12L13 6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Private portal access — no ads, no lead-selling, no spam calls
+          </li>
+          <li>
+            <span class="phs-bullet-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#1B4FD8"/><path d="M5 9.5L7.5 12L13 6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            A shortlist of vetted local agents, chosen for your criteria
+          </li>
+          <li>
+            <span class="phs-bullet-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#1B4FD8"/><path d="M5 9.5L7.5 12L13 6.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Pre-approval ready, so the home you love becomes an offer you win
+          </li>
+        </ul>
+        <p class="phs-trust-line">Jim Blackburn &middot; NMLS&nbsp;#1072866 &middot; 5.0&#9733; &middot; Free, no obligation</p>
+      </div>
+
+      <!-- RIGHT FORM CARD -->
+      <div class="phs-formcard">
+        <h2 class="phs-formcard-heading">Get private search access</h2>
+        <p class="phs-formcard-sub">Tell us where you're looking. We'll set up your private portal and prepare your agent shortlist.</p>
+
+        <div id="phs-form" data-ghl-endpoint={GHL_WEBHOOK_URL}>
+          <div class="phs-field-row">
+            <div class="phs-field">
+              <label class="phs-label" for="phs-first">First Name</label>
+              <input class="phs-input" id="phs-first" name="first_name" type="text" placeholder="Jane" autocomplete="given-name" />
             </div>
-            <div class="text-center py-10" id="phs-success" style="display:none;">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <p class="font-display text-xl mb-2">You are all set.</p>
-              <p class="text-[14px] text-[var(--color-mute)]">We will send your private search portal link within 24 hours.</p>
+            <div class="phs-field">
+              <label class="phs-label" for="phs-last">Last Name</label>
+              <input class="phs-input" id="phs-last" name="last_name" type="text" placeholder="Smith" autocomplete="family-name" />
+            </div>
+          </div>
+          <div class="phs-field">
+            <label class="phs-label" for="phs-email">Email</label>
+            <input class="phs-input" id="phs-email" name="email" type="email" placeholder="jane@example.com" autocomplete="email" />
+          </div>
+          <div class="phs-field">
+            <label class="phs-label" for="phs-location">Where are you looking?</label>
+            <input class="phs-input" id="phs-location" name="location" type="text" placeholder="City, neighborhood, or ZIP" />
+          </div>
+          <div class="phs-field">
+            <label class="phs-label" for="phs-phone">Phone <span class="phs-optional">(Optional)</span></label>
+            <input class="phs-input" id="phs-phone" name="phone" type="tel" placeholder="(555) 000-0000" autocomplete="tel" />
+            <p class="phs-field-note">We will not call you unless you want us to.</p>
+          </div>
+
+          <p id="phs-error" class="phs-error phs-hidden" role="alert"></p>
+
+          <!-- Honeypot -->
+          <input type="text" id="phs-gotcha" name="gotcha" aria-hidden="true" tabindex="-1" autocomplete="off" style="display:none;" />
+
+          <button id="phs-submit" class="phs-btn-primary phs-btn-full" type="button">
+            Set Up My Search
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.75 9h10.5M9.75 4.5L14.25 9l-4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div id="phs-success" class="phs-success phs-hidden" role="status">
+          <div class="phs-success-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#1B4FD8"/><path d="M11 21L16.5 26.5L29 13.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="phs-success-heading">You're in.</h3>
+          <p class="phs-success-body">Here's what happens next:</p>
+          <ol class="phs-success-steps">
+            <li><strong>Portal setup</strong> — We configure your private home search with your criteria. No ads, no lead brokers.</li>
+            <li><strong>Agent shortlist</strong> — We hand-pick 2–3 local agents matched to your area and goals.</li>
+            <li><strong>You're in control</strong> — Browse on your schedule. Reach out when you're ready.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHAT YOU UNLOCK — split section
+  ============================================================ -->
+  <section class="phs-section phs-unlock">
+    <div class="phs-container phs-split">
+      <div class="phs-split-copy">
+        <p class="phs-eyebrow phs-eyebrow-dark">What you unlock</p>
+        <h2 class="phs-h2">A private portal built for serious buyers.</h2>
+        <p class="phs-body-text">Public search sites sell your information the moment you register. Your private portal does the opposite — it's built on a professional MLS feed and configured just for you, with no ads, no data brokering, and no flood of agent calls.</p>
+        <ul class="phs-deliver">
+          <li>
+            <span class="phs-deliver-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#1B4FD8"/><path d="M6 10.5L8.5 13L14 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Real MLS data — the same listings agents see, updated every few minutes
+          </li>
+          <li>
+            <span class="phs-deliver-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#1B4FD8"/><path d="M6 10.5L8.5 13L14 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            3D tours, floor plans, and detailed photos without a showing commitment
+          </li>
+          <li>
+            <span class="phs-deliver-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#1B4FD8"/><path d="M6 10.5L8.5 13L14 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Instant alerts the moment a matching home hits the market
+          </li>
+          <li>
+            <span class="phs-deliver-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#1B4FD8"/><path d="M6 10.5L8.5 13L14 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Neighborhood insights, school data, and walkability scores
+          </li>
+          <li>
+            <span class="phs-deliver-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#1B4FD8"/><path d="M6 10.5L8.5 13L14 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Your information stays private — we never sell or share your data
+          </li>
+        </ul>
+      </div>
+      <!-- Dark portal mockup -->
+      <div class="phs-split-visual">
+        <div class="phs-dash" role="img" aria-label="Private home search portal mockup">
+          <div class="phs-dash-topbar">
+            <span class="phs-dash-dot phs-dot-red"></span>
+            <span class="phs-dash-dot phs-dot-yellow"></span>
+            <span class="phs-dash-dot phs-dot-green"></span>
+            <span class="phs-dash-title">My Private Search</span>
+          </div>
+          <div class="phs-dash-body">
+            <div class="phs-dash-listings">
+              <div class="phs-dash-listing" style="background-image:url('https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                <span class="phs-dash-price">$489,000</span>
+                <span class="phs-dash-badge">New</span>
+              </div>
+              <div class="phs-dash-listing" style="background-image:url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                <span class="phs-dash-price">$562,500</span>
+              </div>
+              <div class="phs-dash-listing" style="background-image:url('https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=600')">
+                <span class="phs-dash-price">$374,900</span>
+              </div>
+            </div>
+            <div class="phs-dash-map">
+              <div class="phs-map-pin phs-pin-1" aria-hidden="true">
+                <svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M7 0C3.13 0 0 3.13 0 7c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7z" fill="#1B4FD8"/><circle cx="7" cy="7" r="2.5" fill="#fff"/></svg>
+              </div>
+              <div class="phs-map-pin phs-pin-2" aria-hidden="true">
+                <svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M7 0C3.13 0 0 3.13 0 7c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7z" fill="#1B4FD8"/><circle cx="7" cy="7" r="2.5" fill="#fff"/></svg>
+              </div>
+              <div class="phs-map-pin phs-pin-3" aria-hidden="true">
+                <svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M7 0C3.13 0 0 3.13 0 7c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7z" fill="#1B4FD8"/><circle cx="7" cy="7" r="2.5" fill="#fff"/></svg>
+              </div>
+              <div class="phs-dash-ai-chip">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1" fill="#1B4FD8"/><path d="M1 4h1M1 8h1M10 4h1M10 8h1M4 1v1M8 1v1M4 10v1M8 10v1" stroke="#1B4FD8" stroke-width="1" stroke-linecap="round"/></svg>
+                AI match
+              </div>
             </div>
           </div>
         </div>
@@ -46,52 +184,1672 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
     </div>
   </section>
 
+  <!-- ============================================================
+       INSIDE YOUR PORTAL — 6-card feature grid
+  ============================================================ -->
+  <section class="phs-section phs-section-tint phs-features">
+    <div class="phs-container">
+      <p class="phs-eyebrow phs-eyebrow-center">Inside your portal</p>
+      <h2 class="phs-h2 phs-center">Everything serious buyers actually need.</h2>
+      <div class="phs-fcard-grid">
+        <div class="phs-fcard">
+          <div class="phs-fcard-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="4" width="24" height="20" rx="3" stroke="#1B4FD8" stroke-width="2"/><path d="M2 10h24" stroke="#1B4FD8" stroke-width="2"/><path d="M8 7V2M20 7V2" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round"/><rect x="7" y="14" width="4" height="4" rx="1" fill="#1B4FD8"/><rect x="13" y="14" width="4" height="4" rx="1" fill="#1B4FD8"/></svg>
+          </div>
+          <h3 class="phs-fcard-title">Real MLS Feed</h3>
+          <p class="phs-fcard-body">The same listings your agent sees — updated every few minutes, not hours. No Zillow delay, no missing listings.</p>
+        </div>
+        <div class="phs-fcard">
+          <div class="phs-fcard-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#1B4FD8" stroke-width="2"/><path d="M14 8v6l4 2" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="phs-fcard-title">Instant Alerts</h3>
+          <p class="phs-fcard-body">Be notified the moment a matching home hits the market. In competitive markets, hours matter.</p>
+        </div>
+        <div class="phs-fcard">
+          <div class="phs-fcard-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="3" stroke="#1B4FD8" stroke-width="2"/><path d="M9 10h10M9 14h10M9 18h6" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="phs-fcard-title">3D Tours &amp; Floor Plans</h3>
+          <p class="phs-fcard-body">Walk through homes virtually before scheduling a showing. Save your time for the homes that truly fit.</p>
+        </div>
+        <div class="phs-fcard">
+          <div class="phs-fcard-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3L17.09 9.26L24 10.27L19 15.14L20.18 22.02L14 18.77L7.82 22.02L9 15.14L4 10.27L10.91 9.26L14 3Z" stroke="#1B4FD8" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="phs-fcard-title">Saved Favorites</h3>
+          <p class="phs-fcard-body">Bookmark and compare homes privately. Your list, your timeline — no agent pressure to move faster than you want.</p>
+        </div>
+        <div class="phs-fcard">
+          <div class="phs-fcard-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4C9.58 4 6 7.58 6 12c0 6 8 14 8 14s8-8 8-14c0-4.42-3.58-8-8-8z" stroke="#1B4FD8" stroke-width="2"/><circle cx="14" cy="12" r="3" stroke="#1B4FD8" stroke-width="2"/></svg>
+          </div>
+          <h3 class="phs-fcard-title">Neighborhood Insights</h3>
+          <p class="phs-fcard-body">School ratings, walkability, commute times, and local market trends — all in one place, before you ever schedule a visit.</p>
+        </div>
+        <div class="phs-fcard">
+          <div class="phs-fcard-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="14" height="18" rx="2" stroke="#1B4FD8" stroke-width="2"/><path d="M18 8h4a2 2 0 012 2v12a2 2 0 01-2 2h-4" stroke="#1B4FD8" stroke-width="2"/><path d="M8 11h6M8 15h6M8 19h4" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="phs-fcard-title">Market Reports</h3>
+          <p class="phs-fcard-body">Median prices, days on market, list-to-sale ratios — the data you need to make a confident offer, not an emotional one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRIVACY DARK CARD
+  ============================================================ -->
+  <section class="phs-section phs-privacy">
+    <div class="phs-container">
+      <div class="phs-privacy-card">
+        <div class="phs-privacy-copy">
+          <p class="phs-eyebrow phs-eyebrow-light">Your privacy</p>
+          <h2 class="phs-h2 phs-light">Search in peace.</h2>
+          <p class="phs-body-text phs-light-muted">When you register on public sites, your information is sold as a lead. Within hours you're fielding calls from agents who know nothing about you except that you clicked on a house. Your private portal works differently.</p>
+          <p class="phs-privacy-trust">Jim Blackburn &middot; NMLS&nbsp;#1072866 &middot; Your info stays with us, full stop.</p>
+        </div>
+        <div class="phs-privacy-noise">
+          <div class="phs-noise-heading">What you'll never get from us</div>
+          <div class="phs-noise-row phs-noise-row--crossed">
+            <svg class="phs-noise-x" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+            Cold calls from agents you never contacted
+          </div>
+          <div class="phs-noise-row phs-noise-row--crossed">
+            <svg class="phs-noise-x" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+            Your email sold to listing alert services
+          </div>
+          <div class="phs-noise-row phs-noise-row--crossed">
+            <svg class="phs-noise-x" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+            Retargeting ads following you across the internet
+          </div>
+          <div class="phs-noise-row phs-noise-row--crossed">
+            <svg class="phs-noise-x" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+            "Just checking in" texts from strangers
+          </div>
+          <div class="phs-noise-row phs-noise-row--crossed">
+            <svg class="phs-noise-x" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+            Your data brokered to anyone, ever
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE QUIET ADVANTAGE — 3-step
+  ============================================================ -->
+  <section class="phs-section phs-section-tint phs-quiet">
+    <div class="phs-container phs-split phs-split-reverse">
+      <div class="phs-split-visual phs-quiet-visual">
+        <img
+          src="https://images.pexels.com/photos/1370704/pexels-photo-1370704.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Couple reviewing home details on a laptop, quietly, without pressure"
+          class="phs-quiet-img"
+          loading="lazy"
+          onerror="this.src='https://placehold.co/600x420/e2e8f0/64748b?text=Home+Search'"
+        />
+      </div>
+      <div class="phs-split-copy">
+        <p class="phs-eyebrow phs-eyebrow-dark">The quiet advantage</p>
+        <h2 class="phs-h2">Shop on your schedule. Move when you're ready.</h2>
+        <p class="phs-body-text">The biggest mistake buyers make is rushing because they feel watched. Your private portal removes that pressure. Browse freely, save what you love, and reach out only when you have a real question.</p>
+        <ol class="phs-deliver phs-deliver-numbered">
+          <li>
+            <span class="phs-deliver-num">1</span>
+            <div>
+              <strong>Set your criteria</strong> — bedrooms, budget, neighborhood, must-haves. We configure the portal to match.
+            </div>
+          </li>
+          <li>
+            <span class="phs-deliver-num">2</span>
+            <div>
+              <strong>Browse in private</strong> — no one is watching what you save, how many times you view a listing, or when you log in.
+            </div>
+          </li>
+          <li>
+            <span class="phs-deliver-num">3</span>
+            <div>
+              <strong>Reach out on your terms</strong> — when you find something you love, we introduce you to a vetted local agent who already knows your criteria.
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       AGENT SHORTLIST REPORT CARD
+  ============================================================ -->
+  <section class="phs-section phs-agent-section">
+    <div class="phs-container phs-split">
+      <div class="phs-split-copy">
+        <p class="phs-eyebrow phs-eyebrow-dark">Agent shortlist</p>
+        <h2 class="phs-h2">The right agent. Chosen for you. No auditions.</h2>
+        <p class="phs-body-text">Finding a good buyer's agent is harder than it looks. We maintain relationships with top local agents in markets across the country — and we match you to the right one based on your area, price range, and transaction type.</p>
+        <ol class="phs-deliver phs-deliver-numbered">
+          <li>
+            <span class="phs-deliver-num">1</span>
+            <div><strong>Tell us your criteria</strong> — area, budget, timeline, any special circumstances (investor, relocation, first-time buyer).</div>
+          </li>
+          <li>
+            <span class="phs-deliver-num">2</span>
+            <div><strong>We vet the field</strong> — transaction volume, local knowledge, communication style, buyer reviews.</div>
+          </li>
+          <li>
+            <span class="phs-deliver-num">3</span>
+            <div><strong>You get a shortlist</strong> — 2–3 agents who meet the bar, with a brief on each. You choose, or ask us who we'd pick.</div>
+          </li>
+          <li>
+            <span class="phs-deliver-num">4</span>
+            <div><strong>Introduction on your schedule</strong> — when you're ready to connect, not before.</div>
+          </li>
+        </ol>
+      </div>
+      <!-- Report card mockup -->
+      <div class="phs-split-visual">
+        <div class="phs-report-card">
+          <div class="phs-rc-header">
+            <span class="phs-rc-label">Your Agent Shortlist</span>
+            <span class="phs-rc-badge">Confidential</span>
+          </div>
+          <div class="phs-rc-agent">
+            <div class="phs-rc-avatar" aria-hidden="true">SR</div>
+            <div class="phs-rc-info">
+              <div class="phs-rc-name">Sarah R.</div>
+              <div class="phs-rc-meta">127 transactions &middot; North Denver</div>
+              <div class="phs-rc-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <div class="phs-rc-match">Top Pick</div>
+          </div>
+          <div class="phs-rc-agent">
+            <div class="phs-rc-avatar phs-rc-avatar-2" aria-hidden="true">MK</div>
+            <div class="phs-rc-info">
+              <div class="phs-rc-name">Marcus K.</div>
+              <div class="phs-rc-meta">89 transactions &middot; Aurora / Stapleton</div>
+              <div class="phs-rc-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <div class="phs-rc-match phs-rc-match-2">Strong fit</div>
+          </div>
+          <div class="phs-rc-agent">
+            <div class="phs-rc-avatar phs-rc-avatar-3" aria-hidden="true">TL</div>
+            <div class="phs-rc-info">
+              <div class="phs-rc-name">Tanya L.</div>
+              <div class="phs-rc-meta">64 transactions &middot; Lakewood / Arvada</div>
+              <div class="phs-rc-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+            <div class="phs-rc-match phs-rc-match-3">Good fit</div>
+          </div>
+          <div class="phs-rc-footer">Prepared by Jim Blackburn &middot; NMLS&nbsp;#1072866</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS BAND
+  ============================================================ -->
+  <section class="phs-section phs-section-ink phs-stats-band">
+    <div class="phs-container">
+      <div class="phs-stats-grid">
+        <div class="phs-stat">
+          <div class="phs-stat-value">5.0&#9733;</div>
+          <div class="phs-stat-label">/ 624 reviews</div>
+        </div>
+        <div class="phs-stat">
+          <div class="phs-stat-value">$500M+</div>
+          <div class="phs-stat-label">in home loans closed</div>
+        </div>
+        <div class="phs-stat">
+          <div class="phs-stat-value">300+</div>
+          <div class="phs-stat-label">lender partners</div>
+        </div>
+        <div class="phs-stat">
+          <div class="phs-stat-value">0</div>
+          <div class="phs-stat-label">times we sell your info</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMPARISON TABLE
+  ============================================================ -->
+  <section class="phs-section phs-section-tint phs-compare">
+    <div class="phs-container phs-compare-inner">
+      <p class="phs-eyebrow phs-eyebrow-center">Side by side</p>
+      <h2 class="phs-h2 phs-center">Public sites vs. your private portal.</h2>
+      <div class="phs-table-wrap">
+        <table class="phs-table" role="table">
+          <thead>
+            <tr>
+              <th class="phs-th phs-th-feature" scope="col">Feature</th>
+              <th class="phs-th phs-th-public" scope="col">Public Sites</th>
+              <th class="phs-th phs-th-private" scope="col">Your Private Portal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="phs-tr">
+              <td class="phs-td phs-td-feature">MLS data freshness</td>
+              <td class="phs-td phs-td-public">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+                Hours-old
+              </td>
+              <td class="phs-td phs-td-private">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.5 12L13 5" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Minutes-fresh
+              </td>
+            </tr>
+            <tr class="phs-tr phs-tr-alt">
+              <td class="phs-td phs-td-feature">Sells your info</td>
+              <td class="phs-td phs-td-public">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+                Yes — instantly
+              </td>
+              <td class="phs-td phs-td-private">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.5 12L13 5" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Never
+              </td>
+            </tr>
+            <tr class="phs-tr">
+              <td class="phs-td phs-td-feature">Spam calls after sign-up</td>
+              <td class="phs-td phs-td-public">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+                Guaranteed
+              </td>
+              <td class="phs-td phs-td-private">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.5 12L13 5" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Zero
+              </td>
+            </tr>
+            <tr class="phs-tr phs-tr-alt">
+              <td class="phs-td phs-td-feature">3D tours &amp; floor plans</td>
+              <td class="phs-td phs-td-public">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+                Sometimes
+              </td>
+              <td class="phs-td phs-td-private">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.5 12L13 5" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                When available
+              </td>
+            </tr>
+            <tr class="phs-tr">
+              <td class="phs-td phs-td-feature">Vetted agent shortlist</td>
+              <td class="phs-td phs-td-public">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+                Paid placement
+              </td>
+              <td class="phs-td phs-td-private">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.5 12L13 5" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Hand-picked for you
+              </td>
+            </tr>
+            <tr class="phs-tr phs-tr-alt">
+              <td class="phs-td phs-td-feature">Pre-approval coordination</td>
+              <td class="phs-td phs-td-public">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+                Not included
+              </td>
+              <td class="phs-td phs-td-private">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.5 12L13 5" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Included, free
+              </td>
+            </tr>
+            <tr class="phs-tr">
+              <td class="phs-td phs-td-feature">Retargeting ads</td>
+              <td class="phs-td phs-td-public">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+                Follows you everywhere
+              </td>
+              <td class="phs-td phs-td-private">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.5 12L13 5" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                None
+              </td>
+            </tr>
+            <tr class="phs-tr phs-tr-alt">
+              <td class="phs-td phs-td-feature">Cost to you</td>
+              <td class="phs-td phs-td-public">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#e53e3e" stroke-width="2" stroke-linecap="round"/></svg>
+                Your privacy
+              </td>
+              <td class="phs-td phs-td-private">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.5 12L13 5" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Free
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+       NOTE: Photos are Pexels stock images — Jim to verify
+  ============================================================ -->
+  <section class="phs-section phs-testimonials">
+    <div class="phs-container">
+      <p class="phs-eyebrow phs-eyebrow-center">What buyers say</p>
+      <h2 class="phs-h2 phs-center">Real people. Real searches. No pressure.</h2>
+      <div class="phs-tcard-grid">
+
+        <div class="phs-tcard">
+          <div class="phs-tcard-top">
+            <img
+              src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=120"
+              alt="Abhii S."
+              class="phs-tcard-avatar"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/60x60/e2e8f0/64748b?text=AS'"
+            />
+            <div class="phs-tcard-meta">
+              <div class="phs-tcard-name">Abhii S.</div>
+              <div class="phs-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+          </div>
+          <blockquote class="phs-tcard-quote">"I signed up on Zillow once and my phone did not stop ringing for two weeks. This was completely different — I got portal access, browsed for three weeks on my own, and only talked to someone when I was actually ready. Bought in 45 days."</blockquote>
+        </div>
+
+        <div class="phs-tcard">
+          <div class="phs-tcard-top">
+            <img
+              src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=120"
+              alt="Amanda S."
+              class="phs-tcard-avatar"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/60x60/e2e8f0/64748b?text=AS'"
+            />
+            <div class="phs-tcard-meta">
+              <div class="phs-tcard-name">Amanda S.</div>
+              <div class="phs-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+          </div>
+          <blockquote class="phs-tcard-quote">"The agent shortlist was the best part. I had tried to find a buyer's agent on my own and kept getting people who felt more interested in a quick commission than finding the right home. The agent I was matched with was incredible — found our home in a neighborhood I hadn't even considered."</blockquote>
+        </div>
+
+        <div class="phs-tcard">
+          <div class="phs-tcard-top">
+            <img
+              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=120"
+              alt="David L."
+              class="phs-tcard-avatar"
+              loading="lazy"
+              onerror="this.src='https://placehold.co/60x60/e2e8f0/64748b?text=DL'"
+            />
+            <div class="phs-tcard-meta">
+              <div class="phs-tcard-name">David L.</div>
+              <div class="phs-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+          </div>
+          <blockquote class="phs-tcard-quote">"We were relocating from out of state and had no idea how to approach the local market. The private portal let us do serious research for weeks before we ever visited. By the time we flew out, we had a clear top five and made an offer on day two. Closed in 28 days."</blockquote>
+        </div>
+
+      </div>
+      <p class="phs-testimonials-note">Photos above are stock images. Testimonials reflect client experiences. Results vary.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MID CAPTURE
+  ============================================================ -->
+  <section class="phs-section phs-section-tint phs-mid-capture">
+    <div class="phs-container phs-mid-capture-inner">
+      <div class="phs-mid-capture-card">
+        <p class="phs-eyebrow phs-eyebrow-light">Ready when you are</p>
+        <h2 class="phs-h2 phs-light">Set up your private search today.</h2>
+        <p class="phs-body-text phs-light-muted">It takes 60 seconds. No phone call required. No obligation. Just a private portal configured for your criteria and a shortlist of vetted agents when you want one.</p>
+        <a href="#phs-top" class="phs-btn-primary phs-btn-anchor">
+          Get Private Search Access
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.75 9h10.5M9.75 4.5L14.25 9l-4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FINAL CTA
+  ============================================================ -->
+  <section class="phs-final-cta" aria-label="Final call to action">
+    <div class="phs-final-cta-bg" aria-hidden="true">
+      <img
+        src="https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        alt=""
+        class="phs-final-cta-img"
+        loading="lazy"
+        onerror="this.src='https://placehold.co/1600x600/0A0E1A/ffffff?text='"
+      />
+      <div class="phs-final-cta-overlay" aria-hidden="true"></div>
+    </div>
+    <div class="phs-container phs-final-cta-inner">
+      <h2 class="phs-h2 phs-light">Your home is out there.<br>Find it on your terms.</h2>
+      <p class="phs-body-text phs-light-muted">Free setup. No pressure. No spam. Just a private portal built for the way serious buyers actually want to search.</p>
+      <a href="#phs-top" class="phs-btn-primary phs-btn-anchor phs-btn-large">
+        Set Up My Private Search
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DISCLAIMER
+  ============================================================ -->
+  <section class="phs-disclaimer">
+    <div class="phs-container">
+      <p class="phs-disclaimer-text">Jim Blackburn &middot; NMLS&nbsp;#1072866 &middot; Stairway Mortgage &middot; Licensed in multiple states. This page is for informational purposes only and does not constitute a commitment to lend. Home search portal access and agent matching services are provided as a free convenience and are subject to availability. Testimonials may not reflect the experience of all clients. Pexels stock photos used for illustrative purposes — please verify suitability before publishing. Equal Housing Lender.</p>
+    </div>
+  </section>
+
+</div><!-- /.phs-scope -->
 </Layout>
 
-<style>.phs-hero{position:relative;}.phs-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%);opacity:0.3;pointer-events:none;z-index:0;}</style>
+<style is:global>
+  /* ============================================================
+     PHS DESIGN TOKENS
+  ============================================================ */
+  .phs-scope {
+    --ink: #0A0E1A;
+    --ink-muted: #3D4459;
+    --ink-subtle: #64748B;
+    --blue: #1B4FD8;
+    --blue-dark: #1540B0;
+    --blue-light: #EEF2FF;
+    --surface: #FFFFFF;
+    --tint: #F7F8FB;
+    --border: #E2E8F0;
+    --gold: #D4A017;
+    --red-soft: #FEF2F2;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.10), 0 1px 4px rgba(0,0,0,.06);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,.14), 0 4px 12px rgba(0,0,0,.08);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+  }
+
+  /* ============================================================
+     LAYOUT UTILITIES
+  ============================================================ */
+  .phs-scope .phs-container {
+    max-width: 1120px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+  }
+
+  .phs-scope .phs-section {
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .phs-scope .phs-section-tint {
+    background: var(--tint);
+  }
+
+  .phs-scope .phs-section-ink {
+    background: var(--ink);
+  }
+
+  .phs-scope .phs-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+  }
+
+  .phs-scope .phs-split-reverse {
+    direction: rtl;
+  }
+
+  .phs-scope .phs-split-reverse > * {
+    direction: ltr;
+  }
+
+  /* ============================================================
+     TYPOGRAPHY
+  ============================================================ */
+  .phs-scope .phs-eyebrow {
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin: 0 0 .75rem;
+  }
+
+  .phs-scope .phs-eyebrow-dark {
+    color: var(--blue);
+  }
+
+  .phs-scope .phs-eyebrow-light {
+    color: rgba(255,255,255,.7);
+  }
+
+  .phs-scope .phs-eyebrow-center {
+    text-align: center;
+  }
+
+  .phs-scope .phs-h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    color: var(--ink);
+    margin: 0 0 1.25rem;
+  }
+
+  .phs-scope .phs-h1 em {
+    font-style: italic;
+    color: var(--blue);
+  }
+
+  .phs-scope .phs-h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    color: var(--ink);
+    margin: 0 0 1rem;
+  }
+
+  .phs-scope .phs-h2.phs-light {
+    color: #fff;
+  }
+
+  .phs-scope .phs-h2.phs-center {
+    text-align: center;
+  }
+
+  .phs-scope .phs-lede {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin: 0 0 1.5rem;
+    max-width: 52ch;
+  }
+
+  .phs-scope .phs-body-text {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    margin: 0 0 1.5rem;
+  }
+
+  .phs-scope .phs-body-text.phs-light-muted {
+    color: rgba(255,255,255,.72);
+  }
+
+  .phs-scope .phs-center {
+    text-align: center;
+  }
+
+  .phs-scope .phs-light {
+    color: #fff;
+  }
+
+  /* ============================================================
+     BUTTONS
+  ============================================================ */
+  .phs-scope .phs-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: var(--blue);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: .875rem 1.75rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .18s, transform .14s, box-shadow .18s;
+    box-shadow: 0 2px 8px rgba(27,79,216,.25);
+    font-family: inherit;
+  }
+
+  .phs-scope .phs-btn-primary:hover,
+  .phs-scope .phs-btn-primary:focus-visible {
+    background: var(--blue-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(27,79,216,.35);
+  }
+
+  .phs-scope .phs-btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .phs-scope .phs-btn-primary:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+  }
+
+  .phs-scope .phs-btn-full {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .phs-scope .phs-btn-anchor {
+    text-decoration: none;
+  }
+
+  .phs-scope .phs-btn-large {
+    font-size: 1.1rem;
+    padding: 1rem 2.25rem;
+  }
+
+  /* ============================================================
+     HERO
+  ============================================================ */
+  .phs-scope .phs-hero {
+    background: linear-gradient(135deg, var(--blue-light) 0%, #fff 60%);
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phs-scope .phs-hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .phs-scope .phs-hero-copy {
+    padding-top: 1rem;
+  }
+
+  .phs-scope .phs-bullets {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .phs-scope .phs-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: .625rem;
+    font-size: .95rem;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+
+  .phs-scope .phs-bullet-icon {
+    flex-shrink: 0;
+    margin-top: .05em;
+  }
+
+  .phs-scope .phs-trust-line {
+    font-size: .85rem;
+    color: var(--ink-subtle);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* FORM CARD */
+  .phs-scope .phs-formcard {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border: 1px solid var(--border);
+  }
+
+  .phs-scope .phs-formcard-heading {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 .375rem;
+    letter-spacing: -.01em;
+  }
+
+  .phs-scope .phs-formcard-sub {
+    font-size: .9rem;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    margin: 0 0 1.5rem;
+  }
+
+  .phs-scope .phs-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+  }
+
+  .phs-scope .phs-field {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    margin-bottom: .875rem;
+  }
+
+  .phs-scope .phs-label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: .01em;
+  }
+
+  .phs-scope .phs-optional {
+    font-weight: 400;
+    color: var(--ink-subtle);
+    font-size: .78rem;
+  }
+
+  .phs-scope .phs-input {
+    width: 100%;
+    padding: .625rem .875rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: .95rem;
+    color: var(--ink);
+    background: var(--surface);
+    transition: border-color .15s, box-shadow .15s;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+
+  .phs-scope .phs-input::placeholder {
+    color: #a0aec0;
+  }
+
+  .phs-scope .phs-input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(27,79,216,.12);
+  }
+
+  .phs-scope .phs-field-note {
+    font-size: .75rem;
+    color: var(--ink-subtle);
+    margin: .25rem 0 0;
+  }
+
+  .phs-scope .phs-error {
+    font-size: .85rem;
+    color: #c53030;
+    background: var(--red-soft);
+    border: 1px solid #feb2b2;
+    border-radius: var(--radius-sm);
+    padding: .625rem .875rem;
+    margin: 0 0 .875rem;
+  }
+
+  .phs-scope .phs-hidden {
+    display: none !important;
+  }
+
+  /* SUCCESS */
+  .phs-scope .phs-success {
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .phs-scope .phs-success-icon {
+    margin-bottom: 1rem;
+  }
+
+  .phs-scope .phs-success-heading {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 .5rem;
+  }
+
+  .phs-scope .phs-success-body {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    margin: 0 0 1rem;
+  }
+
+  .phs-scope .phs-success-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    counter-reset: success-step;
+  }
+
+  .phs-scope .phs-success-steps li {
+    font-size: .9rem;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    padding-left: .5rem;
+  }
+
+  .phs-scope .phs-success-steps li strong {
+    color: var(--ink);
+  }
+
+  /* ============================================================
+     PORTAL MOCKUP
+  ============================================================ */
+  .phs-scope .phs-unlock {
+    background: #fff;
+  }
+
+  .phs-scope .phs-dash {
+    background: #0D1117;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  .phs-scope .phs-dash-topbar {
+    background: #161B22;
+    padding: .625rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+
+  .phs-scope .phs-dash-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .phs-scope .phs-dot-red  { background: #FF5F57; }
+  .phs-scope .phs-dot-yellow { background: #FEBC2E; }
+  .phs-scope .phs-dot-green  { background: #28C840; }
+
+  .phs-scope .phs-dash-title {
+    font-size: .75rem;
+    color: rgba(255,255,255,.5);
+    font-weight: 500;
+    margin-left: .5rem;
+    letter-spacing: .02em;
+  }
+
+  .phs-scope .phs-dash-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 260px;
+  }
+
+  .phs-scope .phs-dash-listings {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: .75rem .5rem .75rem .75rem;
+  }
+
+  .phs-scope .phs-dash-listing {
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--radius-sm);
+    height: 72px;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+  }
+
+  .phs-scope .phs-dash-listing::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 60%);
+    border-radius: inherit;
+  }
+
+  .phs-scope .phs-dash-price {
+    position: absolute;
+    bottom: .4rem;
+    left: .5rem;
+    font-size: .7rem;
+    font-weight: 700;
+    color: #fff;
+    z-index: 1;
+    text-shadow: 0 1px 3px rgba(0,0,0,.6);
+  }
+
+  .phs-scope .phs-dash-badge {
+    position: absolute;
+    top: .4rem;
+    right: .4rem;
+    background: var(--blue);
+    color: #fff;
+    font-size: .6rem;
+    font-weight: 700;
+    padding: .15rem .4rem;
+    border-radius: 4px;
+    z-index: 1;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  .phs-scope .phs-dash-map {
+    background: #1A1F2E;
+    margin: .75rem .75rem .75rem .5rem;
+    border-radius: var(--radius-sm);
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+  }
+
+  .phs-scope .phs-dash-map::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(27,79,216,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(27,79,216,.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .phs-scope .phs-map-pin {
+    position: absolute;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,.4));
+  }
+
+  .phs-scope .phs-pin-1 { top: 30%; left: 35%; }
+  .phs-scope .phs-pin-2 { top: 55%; left: 60%; }
+  .phs-scope .phs-pin-3 { top: 20%; left: 65%; }
+
+  .phs-scope .phs-dash-ai-chip {
+    position: absolute;
+    bottom: .75rem;
+    right: .75rem;
+    background: rgba(27,79,216,.15);
+    border: 1px solid rgba(27,79,216,.3);
+    color: #7DA0FF;
+    font-size: .65rem;
+    font-weight: 600;
+    padding: .3rem .6rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    backdrop-filter: blur(4px);
+  }
+
+  /* DELIVER LIST */
+  .phs-scope .phs-deliver {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .875rem;
+  }
+
+  .phs-scope .phs-deliver li {
+    display: flex;
+    align-items: flex-start;
+    gap: .625rem;
+    font-size: .95rem;
+    color: var(--ink-muted);
+    line-height: 1.55;
+  }
+
+  .phs-scope .phs-deliver-icon {
+    flex-shrink: 0;
+    margin-top: .1em;
+  }
+
+  .phs-scope .phs-deliver-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--blue);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .78rem;
+    font-weight: 800;
+    margin-top: .05em;
+  }
+
+  .phs-scope .phs-deliver-numbered li strong {
+    color: var(--ink);
+  }
+
+  /* ============================================================
+     6-CARD FEATURE GRID
+  ============================================================ */
+  .phs-scope .phs-fcard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .phs-scope .phs-fcard {
+    background: #fff;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .2s, transform .2s;
+  }
+
+  .phs-scope .phs-fcard:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .phs-scope .phs-fcard-icon {
+    margin-bottom: 1rem;
+    background: var(--blue-light);
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .phs-scope .phs-fcard-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 .5rem;
+  }
+
+  .phs-scope .phs-fcard-body {
+    font-size: .875rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ============================================================
+     PRIVACY DARK CARD
+  ============================================================ */
+  .phs-scope .phs-privacy {
+    background: var(--ink);
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .phs-scope .phs-privacy-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .phs-scope .phs-privacy-copy .phs-h2 {
+    color: #fff;
+  }
+
+  .phs-scope .phs-privacy-trust {
+    font-size: .82rem;
+    color: rgba(255,255,255,.45);
+    font-weight: 500;
+    margin: 1.5rem 0 0;
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 1rem;
+  }
+
+  .phs-scope .phs-privacy-noise {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+
+  .phs-scope .phs-noise-heading {
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+    margin-bottom: 1rem;
+  }
+
+  .phs-scope .phs-noise-row {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    padding: .625rem 0;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    font-size: .9rem;
+    color: rgba(255,255,255,.75);
+    line-height: 1.4;
+  }
+
+  .phs-scope .phs-noise-row:last-child {
+    border-bottom: none;
+  }
+
+  .phs-scope .phs-noise-row--crossed {
+    text-decoration: line-through;
+    text-decoration-color: rgba(229,62,62,.5);
+    color: rgba(255,255,255,.45);
+  }
+
+  .phs-scope .phs-noise-x {
+    flex-shrink: 0;
+  }
+
+  /* ============================================================
+     QUIET ADVANTAGE
+  ============================================================ */
+  .phs-scope .phs-quiet-img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    display: block;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  /* ============================================================
+     AGENT REPORT CARD
+  ============================================================ */
+  .phs-scope .phs-agent-section {
+    background: #fff;
+  }
+
+  .phs-scope .phs-report-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .phs-scope .phs-rc-header {
+    background: var(--ink);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .phs-scope .phs-rc-label {
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.7);
+  }
+
+  .phs-scope .phs-rc-badge {
+    background: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.6);
+    font-size: .7rem;
+    font-weight: 600;
+    padding: .2rem .6rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    border: 1px solid rgba(255,255,255,.15);
+  }
+
+  .phs-scope .phs-rc-agent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phs-scope .phs-rc-agent:last-of-type {
+    border-bottom: none;
+  }
+
+  .phs-scope .phs-rc-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .75rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    letter-spacing: .02em;
+  }
+
+  .phs-scope .phs-rc-avatar-2 { background: #059669; }
+  .phs-scope .phs-rc-avatar-3 { background: #7C3AED; }
+
+  .phs-scope .phs-rc-info {
+    flex: 1;
+  }
+
+  .phs-scope .phs-rc-name {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: .15rem;
+  }
+
+  .phs-scope .phs-rc-meta {
+    font-size: .75rem;
+    color: var(--ink-subtle);
+    margin-bottom: .2rem;
+  }
+
+  .phs-scope .phs-rc-stars {
+    color: var(--ink);
+    font-size: .75rem;
+    letter-spacing: .05em;
+  }
+
+  .phs-scope .phs-rc-match {
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .25rem .7rem;
+    border-radius: 20px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    border: 1px solid rgba(27,79,216,.2);
+  }
+
+  .phs-scope .phs-rc-match-2 {
+    background: #ECFDF5;
+    color: #065F46;
+    border-color: rgba(5,150,105,.2);
+  }
+
+  .phs-scope .phs-rc-match-3 {
+    background: #F5F3FF;
+    color: #5B21B6;
+    border-color: rgba(124,58,237,.2);
+  }
+
+  .phs-scope .phs-rc-footer {
+    padding: .75rem 1.5rem;
+    background: var(--tint);
+    font-size: .75rem;
+    color: var(--ink-subtle);
+    font-weight: 500;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ============================================================
+     STATS BAND
+  ============================================================ */
+  .phs-scope .phs-stats-band {
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .phs-scope .phs-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .phs-scope .phs-stat-value {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: .4rem;
+    letter-spacing: -.02em;
+  }
+
+  .phs-scope .phs-stat-label {
+    font-size: .8rem;
+    color: rgba(255,255,255,.55);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  /* ============================================================
+     COMPARISON TABLE
+  ============================================================ */
+  .phs-scope .phs-compare-inner {
+    max-width: 860px;
+  }
+
+  .phs-scope .phs-table-wrap {
+    margin-top: 2.5rem;
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+  }
+
+  .phs-scope .phs-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+  }
+
+  .phs-scope .phs-th {
+    padding: .875rem 1.25rem;
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    background: var(--ink);
+    color: rgba(255,255,255,.8);
+    text-align: left;
+  }
+
+  .phs-scope .phs-th-feature {
+    color: rgba(255,255,255,.55);
+  }
+
+  .phs-scope .phs-th-private {
+    color: #93C5FD;
+    background: #1340A0;
+  }
+
+  .phs-scope .phs-td {
+    padding: .875rem 1.25rem;
+    font-size: .9rem;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  .phs-scope .phs-td-feature {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .phs-scope .phs-td-public {
+    color: #9B2C2C;
+  }
+
+  .phs-scope .phs-td-private {
+    color: var(--blue);
+    font-weight: 600;
+    background: #F0F4FF;
+  }
+
+  .phs-scope .phs-td svg {
+    display: inline;
+    vertical-align: middle;
+    margin-right: .3rem;
+  }
+
+  .phs-scope .phs-tr-alt .phs-td {
+    background: var(--tint);
+  }
+
+  .phs-scope .phs-tr-alt .phs-td-private {
+    background: #EAF0FF;
+  }
+
+  /* ============================================================
+     TESTIMONIALS
+     CRITICAL: .phs-stars color is var(--ink) = BLACK, NOT gold
+  ============================================================ */
+  .phs-scope .phs-testimonials {
+    background: #fff;
+  }
+
+  .phs-scope .phs-tcard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .phs-scope .phs-tcard {
+    background: var(--tint);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .phs-scope .phs-tcard-top {
+    display: flex;
+    align-items: center;
+    gap: .875rem;
+  }
+
+  .phs-scope .phs-tcard-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--border);
+  }
+
+  .phs-scope .phs-tcard-name {
+    font-size: .9rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: .2rem;
+  }
+
+  /* STARS: BLACK (#0A0E1A), NOT gold */
+  .phs-scope .phs-stars {
+    color: var(--ink);
+    font-size: .85rem;
+    letter-spacing: .08em;
+  }
+
+  .phs-scope .phs-tcard-quote {
+    font-size: .875rem;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .phs-scope .phs-testimonials-note {
+    font-size: .75rem;
+    color: var(--ink-subtle);
+    text-align: center;
+    margin-top: 2rem;
+    font-style: italic;
+  }
+
+  /* ============================================================
+     MID CAPTURE
+  ============================================================ */
+  .phs-scope .phs-mid-capture {
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .phs-scope .phs-mid-capture-inner {
+    display: flex;
+    justify-content: center;
+  }
+
+  .phs-scope .phs-mid-capture-card {
+    background: var(--blue);
+    border-radius: var(--radius-lg);
+    padding: clamp(2rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem);
+    max-width: 680px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .phs-scope .phs-mid-capture-card .phs-h2 {
+    color: #fff;
+  }
+
+  /* ============================================================
+     FINAL CTA
+  ============================================================ */
+  .phs-scope .phs-final-cta {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(4rem, 8vw, 6rem);
+  }
+
+  .phs-scope .phs-final-cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .phs-scope .phs-final-cta-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .phs-scope .phs-final-cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,14,26,.78);
+  }
+
+  .phs-scope .phs-final-cta-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .phs-scope .phs-final-cta-inner .phs-body-text {
+    max-width: 52ch;
+    margin-inline: auto;
+  }
+
+  .phs-scope .phs-final-cta-inner .phs-btn-primary {
+    margin-top: .5rem;
+  }
+
+  /* ============================================================
+     DISCLAIMER
+  ============================================================ */
+  .phs-scope .phs-disclaimer {
+    background: var(--tint);
+    border-top: 1px solid var(--border);
+    padding-block: 2rem;
+  }
+
+  .phs-scope .phs-disclaimer-text {
+    font-size: .75rem;
+    color: var(--ink-subtle);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 900px;
+  }
+
+  /* ============================================================
+     RESPONSIVE
+  ============================================================ */
+  @media (max-width: 900px) {
+    .phs-scope .phs-hero-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .phs-scope .phs-split {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+
+    .phs-scope .phs-split-reverse {
+      direction: ltr;
+    }
+
+    .phs-scope .phs-privacy-card {
+      grid-template-columns: 1fr;
+    }
+
+    .phs-scope .phs-fcard-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .phs-scope .phs-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .phs-scope .phs-tcard-grid {
+      grid-template-columns: 1fr;
+      max-width: 540px;
+      margin-inline: auto;
+    }
+
+    .phs-scope .phs-dash-body {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .phs-scope .phs-dash-map {
+      min-height: 160px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .phs-scope .phs-field-row {
+      grid-template-columns: 1fr;
+    }
+
+    .phs-scope .phs-fcard-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .phs-scope .phs-stats-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .phs-scope .phs-mid-capture-card {
+      border-radius: var(--radius-md);
+    }
+  }
+</style>
 
 <script is:inline>
 (function(){
   var wrap=document.getElementById('phs-form');
   if(!wrap)return;
   var ENDPOINT=wrap.getAttribute('data-ghl-endpoint')||'';
-  var btn=document.getElementById('phs-submit');
   var errEl=document.getElementById('phs-error');
   var sending=false;
 
-  function showErr(m){errEl.textContent=m;errEl.classList.remove('hidden');}
+  function showErr(m){errEl.textContent=m;errEl.classList.remove('phs-hidden');}
 
-  btn.addEventListener('click',function(){
+  function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+  function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+  function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+  function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+  function _resolveLoid(){
+    var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
+    var m = String(raw).match(/(\d{3,})/);
+    return m ? m[1] : '';
+  }
+
+  function showSuccess(){
+    var form=document.getElementById('phs-form');if(form)form.style.display='none';
+    var s=document.getElementById('phs-success');if(s)s.classList.remove('phs-hidden');
+    var top=document.getElementById('phs-top');if(top&&top.scrollIntoView)top.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  function submitForm(btn){
     if(sending)return;
     var gotcha=document.getElementById('phs-gotcha');
-    if(gotcha&&gotcha.value.trim()!==''){document.getElementById('phs-form').style.display='none';document.getElementById('phs-success').style.display='block';return;}
+    if(gotcha&&gotcha.value.trim()!==''){showSuccess();return;}
 
-    var first=document.getElementById('phs-first').value.trim();
-    var last=document.getElementById('phs-last').value.trim();
-    var email=document.getElementById('phs-email').value.trim();
-    var phone=document.getElementById('phs-phone').value.trim();
-    var loc=document.getElementById('phs-location').value.trim();
+    function val(id){var el=document.getElementById(id);return el&&el.value?el.value.trim():'';}
+    var first=val('phs-first'),last=val('phs-last'),email=val('phs-email'),loc=val('phs-location'),phone=val('phs-phone');
 
     if(!first||!last)return showErr('Please enter your first and last name.');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return showErr('Please enter a valid email.');
-    if(phone.replace(/\D/g,'').length<10)return showErr('Please enter a valid phone number.');
-    errEl.classList.add('hidden');
+    if(!loc)return showErr('Please tell us where you are looking.');
+    if(phone&&phone.replace(/\D/g,'').length<10)return showErr('That phone number looks incomplete — leave it blank if you prefer not to share it.');
+    errEl.classList.add('phs-hidden');
 
-    function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
-    function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
-    function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
-    function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
-    function _resolveLoid(){
-      var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
-      var m = String(raw).match(/(\d{3,})/);
-      return m ? m[1] : '';
-    }
     var payload={
       first_name:first, last_name:last, full_name:(first+' '+last).trim(),
       email:email, phone:phone,
       form_source:'private_home_search', form_name:'Private Home Search',
       page_url:window.location.href, submitted_at:new Date().toISOString(),
-      notes:'Search location: '+loc,
+      notes:'Search location: '+loc+(phone?'':' | (no phone — opted out of call)'),
       umtid: _resolveUmtid(),
       loid: _resolveLoid(),
       utm_source: _qs('utm_source')||_getCookie('utm_source')||'',
@@ -102,11 +1860,21 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       source_url: _getCookie('first_touch_url')||location.href
     };
 
-    sending=true; btn.disabled=true; btn.textContent='Sending\u2026';
+    sending=true;
+    if(btn){btn.disabled=true;btn.dataset.label=btn.textContent;btn.textContent='Sending\u2026';}
     fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(){document.getElementById('phs-form').style.display='none';document.getElementById('phs-success').style.display='block';})
+      .then(function(){showSuccess();})
       .catch(function(){showErr('Something went wrong. Please try again or call us.');})
-      .then(function(){sending=false;btn.disabled=false;btn.textContent='Set Up My Search';});
+      .then(function(){sending=false;if(btn){btn.disabled=false;btn.textContent=btn.dataset.label||'Set Up My Search';}});
+  }
+
+  var btn=document.getElementById('phs-submit');
+  if(btn)btn.addEventListener('click',function(){submitForm(btn);});
+
+  // Enter-key submit guard on all fields
+  ['phs-first','phs-last','phs-email','phs-location','phs-phone'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)el.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();submitForm(btn);}});
   });
 })();
 </script>
