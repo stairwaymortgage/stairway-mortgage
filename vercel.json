@@ -34,6 +34,51 @@
   ],
   "redirects": [
     {
+      "source": "/professional-services",
+      "destination": "/professional-advisors/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-services/",
+      "destination": "/professional-advisors/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-services/attorneys/",
+      "destination": "/professional-advisors/attorney/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-services/cpas-accountants/",
+      "destination": "/professional-advisors/cpas-accountant/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-services/financial-advisors/",
+      "destination": "/professional-advisors/financial-planner/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-services/architects-engineers/",
+      "destination": "/real-estate-professionals/architect-designer/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-services/business-acquirers/",
+      "destination": "/business-advisors/business-acquirer/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-services/consultants/",
+      "destination": "/business-advisors/consultant/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-services/entrepreneurs/",
+      "destination": "/professional-advisors/",
+      "permanent": true
+    },
+    {
       "source": "/get-approved",
       "destination": "https://stairwaymortgage.my1003app.com",
       "permanent": true
