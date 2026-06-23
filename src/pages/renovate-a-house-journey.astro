@@ -2,11 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 
 const trustNumbers = [
-  { value: 5.0,   suffix: '★',  label: 'Client rating' },
-  { value: 624,   suffix: '',   label: 'Verified reviews' },
-  { value: 300,   suffix: '+',  label: 'Lender network' },
-  { value: 48,    suffix: '',   label: 'States (NEXA)' },
-  { value: 19,    suffix: '',   label: 'Days — fastest close' },
+  { value: 5.0,   suffix: '★',  label: 'Client rating',       display: '5.0★' },
+  { value: 624,   suffix: '',   label: 'Verified reviews',     display: '624' },
+  { value: 300,   suffix: '+',  label: 'Lender network',       display: '300+' },
+  { value: 48,    suffix: '',   label: 'States (NEXA)',         display: '48' },
+  { value: 19,    suffix: '',   label: 'Days — fastest close',  display: '19' },
 ];
 
 const programs = [
@@ -50,7 +50,7 @@ const reviews = [
       <div class="trust-ribbon reveal" style="transition-delay:200ms;">
         {trustNumbers.map((t) => (
           <div class="trust-ribbon__item">
-            <span class="trust-ribbon__num font-display" data-countup={t.value} data-suffix={t.suffix}>0{t.suffix}</span>
+            <span class="trust-ribbon__num font-display" data-countup={t.value} data-suffix={t.suffix}>{t.display}</span>
             <span class="trust-ribbon__label">{t.label}</span>
           </div>
         ))}
@@ -191,11 +191,11 @@ const reviews = [
   <section class="section-tight bg-gradient-to-b from-[var(--color-blue-tint)] to-[var(--color-paper)]">
     <div class="container-page">
       <div class="stat-band reveal">
-        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="500" data-suffix="M+" data-prefix="$">$0</span><span class="stat-band__label">Loans closed</span></div>
-        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="19" data-suffix=" days">0</span><span class="stat-band__label">Fastest close</span></div>
-        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="300" data-suffix="+">0</span><span class="stat-band__label">Lenders</span></div>
-        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="48">0</span><span class="stat-band__label">States (NEXA)</span></div>
-        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="5.0" data-suffix="★" data-decimals="1">0</span><span class="stat-band__label">624 reviews</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="500" data-suffix="M+" data-prefix="$">$500M+</span><span class="stat-band__label">Loans closed</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="19" data-suffix=" days">19 days</span><span class="stat-band__label">Fastest close</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="300" data-suffix="+">300+</span><span class="stat-band__label">Lenders</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="48">48</span><span class="stat-band__label">States (NEXA)</span></div>
+        <div class="stat-band__item"><span class="stat-band__num font-display" data-countup="5.0" data-suffix="★" data-decimals="1">5.0★</span><span class="stat-band__label">624 reviews</span></div>
       </div>
     </div>
   </section>
