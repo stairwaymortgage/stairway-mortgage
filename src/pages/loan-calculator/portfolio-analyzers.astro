@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import FinancialPlannersForm from '../../components/forms/FinancialPlannersForm.astro';
 
 const metaTitle = "Portfolio Analyzers | Stairway Mortgage";
 const metaDescription = "Enter your holdings across cash, real estate, commodities, bonds, and stocks to instantly see your total portfolio and your allocation across each asset class. Built by Jim Blackburn, NMLS #1072866.";
@@ -50,7 +51,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">U.S. Large-Cap Stocks</span><span class="result-value" id="rLarge">20.0%</span></div>
           <div class="result"><span class="result-label">U.S. Small/Mid-Cap Stocks</span><span class="result-value" id="rSmid">5.0%</span></div>
           <div class="result"><span class="result-label">International Stocks</span><span class="result-value" id="rIntl">5.0%</span></div>
-          <a class="cta-primary" href="https://forms.stairwaymortgage.com/widget/survey/AepgdRkM7HMhrzkZ0AsO" target="_blank" rel="noopener">Request a Free Consultation</a>
+          <a class="cta-primary" href="#fp" data-open-fp role="button">Request a Free Consultation</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
       </div>
@@ -159,4 +160,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <FinancialPlannersForm />
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FinancialPlannersForm from '../components/forms/FinancialPlannersForm.astro';
 const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Financial Planners"}]};
 ---
 
@@ -15,7 +16,7 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   <article class="container-prose prose-editorial ft-body" set:html={`<h2>Financial Planners
 </h2>				
 		<p>Strategic minds. Wealth-building allies. Unlock more from every move you make.</p>		
-					<a href="https://forms.stairwaymortgage.com/widget/survey/AepgdRkM7HMhrzkZ0AsO">
+					<a href="#fp" data-open-fp role="button">
 									Get A Local Intro
 					</a>
 					<h2>Making real estate moves without a financial strategy?
@@ -40,7 +41,7 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
 																<a href="https://stairwaymortgage.com/schedule-call/">
 							<img width="1536" height="1024" src="/wp-content/uploads/2025/05/ChatGPT-Image-May-27-2025-06_00_04-PM.png" alt="" srcset="/wp-content/uploads/2025/05/ChatGPT-Image-May-27-2025-06_00_04-PM.png 1536w, /wp-content/uploads/2025/05/ChatGPT-Image-May-27-2025-06_00_04-PM-300x200.png 300w" sizes="(max-width: 1536px) 100vw, 1536px" />								</a>
 		<p>One of our clients had over \$500,000 in home equity and no clear direction. Working alongside a Certified Financial Planner from our partner network, she was able to refinance a property, unlock \$200K in equity, and redeploy it into a mix of real estate syndications and Roth IRAs for tax-advantaged growth—all while keeping a safety net.</p><b>Are YOU in the same position?</b>
-A CFP can make the difference between spinning your wheels… and climbing the next step on your Stairway. <a href="https://forms.stairwaymortgage.com/widget/survey/AepgdRkM7HMhrzkZ0AsO">Get a local introduction today.</a>		
+A CFP can make the difference between spinning your wheels… and climbing the next step on your Stairway. <a href="#fp" data-open-fp role="button">Get a local introduction today.</a>		
 					<h3>Where a Certified Financial Planner Adds the Most Value</h3>				
 		<p>High-impact scenarios in debt, equity, or housing decisions that change plan outcomes.</p>		
 									<h3>
@@ -200,6 +201,7 @@ Together, we offer clients better data, smarter lending options, and a more holi
 					<a href="https://stairwaymortgage.com/join-our-partner-network/">
 									 Join Our Partner Network
 					</a>`} />
+  <FinancialPlannersForm />
 </Layout>
 
 <style>
