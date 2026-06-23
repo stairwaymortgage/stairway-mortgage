@@ -26,7 +26,7 @@ const reviews = [
     <div class="container-page">
       <div class="max-w-3xl mx-auto text-center reveal">
         <span class="eyebrow eyebrow-blue mb-6">How We Serve · Sell a Home</span>
-        <h1 class="display-xl mt-6 mb-8">Sell smart — and land your next home <em class="italic text-[var(--color-blue)]">without the gap</em>.</h1>
+        <h1 class="display-xl mt-6 mb-8">Sell smart — and land your next home <em class="not-italic text-[var(--color-blue)]">without the gap</em>.</h1>
         <div class="flex flex-wrap gap-3 justify-center mb-12">
           <a href="https://stairwaymortgage.my1003app.com/" rel="noopener" class="btn btn-primary btn-arrow text-base px-6 py-3.5">See My Options</a>
           <a href="tel:+19549931625" class="btn btn-ghost text-base px-6 py-3.5">Call (954) 993-1625</a>
@@ -44,7 +44,7 @@ const reviews = [
     <div class="container-page">
       <div class="text-center max-w-2xl mx-auto mb-10 reveal">
         <span class="eyebrow eyebrow-rust mb-5 text-[var(--color-paper)]">Net proceeds</span>
-        <h2 class="display-lg mt-5 text-[var(--color-paper)]">What will you <em class="italic font-light">actually walk away with</em>?</h2>
+        <h2 class="display-lg mt-5 text-[var(--color-paper)]">What will you <em class="not-italic font-light">actually walk away with</em>?</h2>
       </div>
       <div class="sell-flow reveal" style="transition-delay:100ms;">
         <div class="sell-flow__step"><span class="sell-flow__label mono">Sale price</span><span class="sell-flow__val font-display">$550,000</span></div>
@@ -101,7 +101,7 @@ const reviews = [
   <!-- REVIEWS -->
   <section class="section-dark section">
     <div class="container-page">
-      <div class="text-center max-w-2xl mx-auto mb-14 reveal"><span class="eyebrow mb-5">The receipts</span><h2 class="display-lg mt-5 text-[var(--color-paper)]">Smooth transitions. <em class="italic font-light">Real closings.</em></h2></div>
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal"><span class="eyebrow mb-5">The receipts</span><h2 class="display-lg mt-5 text-[var(--color-paper)]">Smooth transitions. <em class="not-italic font-light">Real closings.</em></h2></div>
       <div class="reviews-scroll no-scrollbar" id="reviews-scroll"><div class="reviews-track" id="reviews-track">
         {reviews.map((r) => (
           <figure class="review-card"><div class="review-card__avatar"><span class="review-card__initials">{r.name.split(' ').map(n=>n[0]).join('')}</span></div><blockquote class="review-card__text font-display">{r.text}</blockquote><figcaption class="review-card__meta"><strong>{r.name}</strong><span>{r.loc}</span><span class="review-card__source mono">{r.source}</span></figcaption></figure>
@@ -116,7 +116,7 @@ const reviews = [
       <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
         <div class="summit-glow" aria-hidden="true"><div class="summit-glow__blob summit-glow__blob--blue"></div><div class="summit-glow__blob summit-glow__blob--rust"></div></div>
         <div class="relative reveal">
-          <h2 class="display-lg text-[var(--color-paper)] mb-4">Selling + buying in one <em class="italic font-light text-[var(--color-blue-tint)]">seamless move</em>.</h2>
+          <h2 class="display-lg text-[var(--color-paper)] mb-4">Selling + buying in one <em class="not-italic font-light text-[var(--color-blue-tint)]">seamless move</em>.</h2>
           <div class="flex flex-wrap gap-3 justify-center mt-8">
             <a href="/contact-us/" class="btn btn-blue btn-arrow text-base px-7 py-3.5">Talk to Our Team</a>
             <a href="tel:+19549931625" class="btn bg-transparent border border-[var(--color-paper)]/30 text-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-base px-7 py-3.5">Call now · (954) 993-1625</a>

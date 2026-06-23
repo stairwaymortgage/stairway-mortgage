@@ -495,3 +495,11 @@ h3 {
   }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Curly font eliminated site-wide — no italic Fraunces anywhere, including quotes/testimonials */
+h1,h2,h3,h4,h5,h6,
+em, i, cite, q, blockquote,
+.tcard p, .bio-quote, [class*="quote"], [class*="testimonial"] {
+  font-style: normal !important;
+}
+:root, body { font-synthesis: none; }
