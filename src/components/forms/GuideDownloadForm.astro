@@ -1,123 +1,85 @@
 ---
-// Financial Planners intro — native multi-step modal form.
-// Pattern: clone of CsaAdvisorForm (.gli-*), OTP removed, FP fields.
-// Opens via any element with [data-open-fp]. Posts to shared GHL webhook.
+// Guide download — single shared native modal form (.gli-* design system).
+// Cloned from ArchitectsDesignersForm: same modal shell, honeypot, utm/umtid/loid
+// capture, Enter-key guard, and webhook POST. SIMPLER: only name/email/phone/consent.
+// Takes NO props. ANY element with [data-open-guide] opens it; the trigger's
+// data-guide attribute supplies the requested guide name at runtime.
 ---
-<div class="gli-overlay" id="fp-overlay" hidden>
-  <div class="aic gli" role="dialog" aria-modal="true" aria-label="Connect with a Financial Planning Team">
+<div class="gli-overlay" id="gdl-overlay" hidden>
+  <div class="aic gli" role="dialog" aria-modal="true" aria-label="Get your free guide">
     <span class="aic__aurora aic__aurora--1"></span>
     <span class="aic__aurora aic__aurora--2"></span>
 
     <div class="aic__header">
       <span class="aic__spark">✦</span>
       <div class="aic__brand">
-        <div class="aic__title">Financial Planning <span class="aic__badge">Stairway</span></div>
-        <div class="aic__live"><span class="aic__dot"></span> Local Planning Team</div>
+        <div class="aic__title">Free Guide <span class="aic__badge">Stairway</span></div>
+        <div class="aic__live"><span class="aic__dot"></span> Instant download</div>
       </div>
-      <button type="button" class="aic__close" id="fp-close" aria-label="Close">✕</button>
+      <button type="button" class="aic__close" id="gdl-close" aria-label="Close">✕</button>
     </div>
 
-    <div class="gli-progress"><div class="gli-progress__bar" id="fp-bar"></div></div>
-    <div class="gli-stepcount mono" id="fp-stepcount"></div>
+    <div class="gli-progress"><div class="gli-progress__bar" id="gdl-bar"></div></div>
+    <div class="gli-stepcount mono" id="gdl-stepcount"></div>
 
     <div class="aic__body">
-      <form id="fp-form" novalidate>
-        <input type="text" id="fp-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"
+      <p class="gdl-requesting" id="gdl-requesting" hidden>You're requesting: <strong id="gdl-guide-name"></strong></p>
+
+      <form id="gdl-form" novalidate>
+        <input type="text" id="gdl-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"
           style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true" />
 
-        <!-- STEP 1 — help with (checkbox, max 3) -->
+        <!-- STEP 1 — full name -->
         <div class="gli-slide" data-step="1">
-          <div class="aic__msg aic__msg--bot">What would you like the local Financial Planning Team to help you with? <em>(top 3)</em></div>
-          <div class="gli-chips" data-max="3">
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="401k Rollover" /><span>401k Rollover</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Inheritance or Estate Planning" /><span>Inheritance or Estate Planning</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Business Exit or Succession Strategy" /><span>Business Exit or Succession Strategy</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Retirement Planning" /><span>Retirement Planning</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Investment Advice" /><span>Investment Advice</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Tax Efficiency & Wealth Protection" /><span>Tax Efficiency &amp; Wealth Protection</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Life or Disability Insurance" /><span>Life or Disability Insurance</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Budgeting or Cash Flow Planning" /><span>Budgeting or Cash Flow Planning</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="College or Education Savings" /><span>College or Education Savings</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="I prefer to discuss" /><span>I prefer to discuss</span></label>
-          </div>
-          <p class="gli-hint mono">Up to 3</p>
-          <p class="gli-err" data-err-for="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3"></p>
-        </div>
-
-        <!-- STEP 2 — most important (checkbox, max 3) -->
-        <div class="gli-slide" data-step="2" hidden>
-          <div class="aic__msg aic__msg--bot">What is MOST important to you? <em>(pick up to 3)</em></div>
-          <div class="gli-chips" data-max="3">
-            <label class="gli-chip"><input type="checkbox" name="what_is_most_important_to_you_pick_up_to_3" value="Trust in the person or team I'm working with" /><span>Trust in the person or team</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_is_most_important_to_you_pick_up_to_3" value="Confidence I'm making the right decision" /><span>Confidence in the decision</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_is_most_important_to_you_pick_up_to_3" value="Fast response and clear communication" /><span>Fast response &amp; clear communication</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_is_most_important_to_you_pick_up_to_3" value="A smooth, stress-free process" /><span>Smooth, stress-free process</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_is_most_important_to_you_pick_up_to_3" value="Personalized advice for my situation" /><span>Personalized advice</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_is_most_important_to_you_pick_up_to_3" value="Transparent pricing and no surprises" /><span>Transparent pricing</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_is_most_important_to_you_pick_up_to_3" value="Deep expertise and industry knowledge" /><span>Deep expertise</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_is_most_important_to_you_pick_up_to_3" value="Help navigating complex paperwork or red tape" /><span>Help with paperwork</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_is_most_important_to_you_pick_up_to_3" value="Creative solutions or out-of-the-box strategies" /><span>Creative solutions</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_is_most_important_to_you_pick_up_to_3" value="Long-term support beyond this transaction" /><span>Long-term support</span></label>
-          </div>
-          <p class="gli-hint mono">Up to 3</p>
-          <p class="gli-err" data-err-for="what_is_most_important_to_you_pick_up_to_3"></p>
-        </div>
-
-        <!-- STEP 3 — anything else (textarea) -->
-        <div class="gli-slide" data-step="3" hidden>
-          <div class="aic__msg aic__msg--bot">Anything else you'd like to share?</div>
-          <textarea class="gli-input gli-textarea" name="anything_else" rows="3" placeholder="Optional"></textarea>
-        </div>
-
-        <!-- STEP 4 — full name -->
-        <div class="gli-slide" data-step="4" hidden>
-          <div class="aic__msg aic__msg--bot">Great. What's your full name?</div>
-          <input class="gli-input" type="text" name="full_name" id="fp-name" placeholder="First and last name" autocomplete="name" />
+          <div class="aic__msg aic__msg--bot">Great choice. What's your full name?</div>
+          <input class="gli-input" type="text" name="full_name" id="gdl-name" placeholder="First and last name" autocomplete="name" />
           <p class="gli-err" data-err-for="full_name"></p>
         </div>
 
-        <!-- STEP 5 — email -->
-        <div class="gli-slide" data-step="5" hidden>
-          <div class="aic__msg aic__msg--bot">Where should we send your introduction?</div>
-          <input class="gli-input" type="email" name="email" id="fp-email" placeholder="you@email.com" autocomplete="email" />
+        <!-- STEP 2 — email -->
+        <div class="gli-slide" data-step="2" hidden>
+          <div class="aic__msg aic__msg--bot">Where should we send your guide?</div>
+          <input class="gli-input" type="email" name="email" id="gdl-email" placeholder="you@email.com" autocomplete="email" />
           <p class="gli-err" data-err-for="email"></p>
         </div>
 
-        <!-- STEP 6 — phone -->
-        <div class="gli-slide" data-step="6" hidden>
+        <!-- STEP 3 — phone -->
+        <div class="gli-slide" data-step="3" hidden>
           <div class="aic__msg aic__msg--bot">And the best number to reach you?</div>
-          <input class="gli-input" type="tel" name="phone" id="fp-phone" placeholder="(954) 993-1625" autocomplete="tel" />
+          <input class="gli-input" type="tel" name="phone" id="gdl-phone" placeholder="(954) 993-1625" autocomplete="tel" />
           <p class="gli-err" data-err-for="phone"></p>
         </div>
 
-        <!-- STEP 7 — consent + submit -->
-        <div class="gli-slide" data-step="7" hidden>
-          <div class="aic__msg aic__msg--bot">Last thing — your consent so we can reach out.</div>
+        <!-- STEP 4 — consent + submit -->
+        <div class="gli-slide" data-step="4" hidden>
+          <div class="aic__msg aic__msg--bot">Last thing — your consent so we can send it over.</div>
           <label class="gli-consent">
-            <input type="checkbox" name="sms_consent" id="fp-consent" />
+            <input type="checkbox" name="sms_consent" id="gdl-consent" />
             <span>I Consent to Receive SMS Notifications, Alerts &amp; Occasional Marketing Communication from company. Message frequency varies. Message &amp; data rates may apply. Text HELP to (954) 993-1625 for assistance. You can reply STOP to unsubscribe at any time.</span>
           </label>
           <p class="gli-err" data-err-for="sms_consent"></p>
           <p class="gli-fine mono">Stairway Mortgage is a division of NEXA Mortgage LLC. <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a></p>
         </div>
 
+        <input type="hidden" name="guide_requested" id="gdl-guide-input" />
+        <input type="hidden" name="form_source" value="guides_download" />
         <input type="hidden" name="lo_id" /><input type="hidden" name="lo_name" />
         <input type="hidden" name="utm_source" /><input type="hidden" name="utm_medium" />
         <input type="hidden" name="utm_campaign" /><input type="hidden" name="fbclid" />
         <input type="hidden" name="source_url" />
 
         <div class="gli-nav">
-          <button type="button" class="gli-btn gli-btn--ghost" id="fp-prev" hidden>← Back</button>
-          <button type="button" class="gli-btn gli-btn--go" id="fp-next">Next →</button>
-          <button type="submit" class="gli-btn gli-btn--go" id="fp-submit" hidden>See My Options</button>
+          <button type="button" class="gli-btn gli-btn--ghost" id="gdl-prev" hidden>← Back</button>
+          <button type="button" class="gli-btn gli-btn--go" id="gdl-next">Next →</button>
+          <button type="submit" class="gli-btn gli-btn--go" id="gdl-submit" hidden>Send My Guide</button>
         </div>
       </form>
 
-      <div class="gli-success" id="fp-success" hidden>
+      <div class="gli-success" id="gdl-success" hidden>
         <div class="gli-success__mark">✓</div>
-        <h3 class="gli-success__h" id="fp-success-h">Thank you — we're on it.</h3>
-        <p class="gli-success__p">We've received your request to connect with a trusted local financial planning professional. Our team is reviewing your details and preparing to introduce you to someone who aligns with your goals.</p>
-        <p class="gli-success__closer" id="fp-success-closer">We're here to help you take the next step.</p>
+        <h3 class="gli-success__h" id="gdl-success-h">Thank you — it's on the way.</h3>
+        <p class="gli-success__p">We've received your request. Check your inbox shortly for your free guide, and keep an eye out for a quick note from our team.</p>
+        <p class="gli-success__closer" id="gdl-success-closer">We're here to help you take the next step.</p>
         <a class="gli-btn gli-btn--ghost" href="/">Back to home page</a>
       </div>
     </div>
@@ -151,6 +113,8 @@
   .gli-progress__bar { height: 100%; width: 14%; background: linear-gradient(90deg,#1845D6,#6F46FF); transition: width .4s cubic-bezier(.4,0,.2,1); }
   .gli-stepcount { position: relative; z-index: 1; font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; color: #8a96b4; margin: .55rem 1.25rem 0; text-transform: uppercase; }
   .aic__body { position: relative; z-index: 1; padding: 1rem 1.25rem 1.25rem; }
+  .gdl-requesting { font-size: .82rem; line-height: 1.5; color: #9aa6c4; margin: 0 0 1rem; padding: .55rem .8rem; background: #ffffff0a; border: 1px solid #ffffff14; border-radius: 10px; }
+  .gdl-requesting strong { color: #e6e9f2; font-weight: 600; }
   .aic__msg { font-size: .98rem; line-height: 1.5; margin-bottom: 1rem; animation: aic-msg-in .4s ease; }
   .aic__msg--bot { color: #e6e9f2; }
   .aic__msg em { color: #9DB2FF; font-style: normal; }
@@ -184,31 +148,46 @@
   .gli-success__h { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; margin: 0 0 .75rem; color: #fff; }
   .gli-success__p { font-size: .92rem; line-height: 1.6; color: #b8c0d6; margin: 0 0 1rem; }
   .gli-success__closer { font-size: .95rem; color: #e6e9f2; margin: 0 0 1.25rem; }
+
+  /* Triggers on the guides page are <button class="g-btn">; reset native chrome so
+     they render identically to the old <a class="g-btn"> links. */
+  button.g-btn { border: 0; cursor: pointer; }
 </style>
 
 <script is:inline>
   (function () {
-    var overlay = document.getElementById('fp-overlay');
-    var form = document.getElementById('fp-form');
+    var overlay = document.getElementById('gdl-overlay');
+    var form = document.getElementById('gdl-form');
     if (!overlay || !form) return;
 
+    var guideInput = document.getElementById('gdl-guide-input');
+    var guideNameEl = document.getElementById('gdl-guide-name');
+    var requestingEl = document.getElementById('gdl-requesting');
+
     document.addEventListener('click', function (e) {
-      var t = e.target.closest('[data-open-fp]');
-      if (t) { e.preventDefault(); overlay.hidden = false; document.body.style.overflow = 'hidden'; }
+      var t = e.target.closest('[data-open-guide]');
+      if (t) {
+        e.preventDefault();
+        var guide = t.getAttribute('data-guide') || '';
+        guideInput.value = guide;
+        if (guide) { guideNameEl.textContent = guide; requestingEl.hidden = false; }
+        else { requestingEl.hidden = true; }
+        overlay.hidden = false; document.body.style.overflow = 'hidden';
+      }
     });
     function close() { overlay.hidden = true; document.body.style.overflow = ''; }
-    document.getElementById('fp-close').addEventListener('click', close);
+    document.getElementById('gdl-close').addEventListener('click', close);
     overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) close(); });
 
     var slides = Array.prototype.slice.call(form.querySelectorAll('.gli-slide'));
     var total = slides.length;
-    var bar = document.getElementById('fp-bar');
-    var stepCount = document.getElementById('fp-stepcount');
-    var prevBtn = document.getElementById('fp-prev');
-    var nextBtn = document.getElementById('fp-next');
-    var submitBtn = document.getElementById('fp-submit');
-    var successEl = document.getElementById('fp-success');
+    var bar = document.getElementById('gdl-bar');
+    var stepCount = document.getElementById('gdl-stepcount');
+    var prevBtn = document.getElementById('gdl-prev');
+    var nextBtn = document.getElementById('gdl-next');
+    var submitBtn = document.getElementById('gdl-submit');
+    var successEl = document.getElementById('gdl-success');
     var current = 0;
 
     var params = new URLSearchParams(window.location.search);
@@ -217,14 +196,6 @@
       var el = form.querySelector('[name="' + k + '"]'); if (el) el.value = params.get(k) || cookie(k) || '';
     });
     var src = form.querySelector('[name="source_url"]'); if (src && !src.value) src.value = window.location.href;
-
-    form.querySelectorAll('.gli-chips[data-max]').forEach(function (grid) {
-      var max = parseInt(grid.getAttribute('data-max'), 10);
-      grid.addEventListener('change', function (ev) {
-        var checked = grid.querySelectorAll('input:checked');
-        if (checked.length > max && ev.target && ev.target.checked) { ev.target.checked = false; }
-      });
-    });
 
     function showStep(i) {
       slides.forEach(function (s, idx) { s.hidden = idx !== i; });
@@ -241,12 +212,10 @@
 
     function validateStep(i) {
       var step = slides[i].getAttribute('data-step');
-      if (step === '1') { if (!form.querySelectorAll('[name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3"]:checked').length) { setErr('what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3', 'Please pick at least one.'); return false; } setErr('what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3',''); }
-      if (step === '2') { if (!form.querySelectorAll('[name="what_is_most_important_to_you_pick_up_to_3"]:checked').length) { setErr('what_is_most_important_to_you_pick_up_to_3', 'Please pick at least one.'); return false; } setErr('what_is_most_important_to_you_pick_up_to_3',''); }
-      if (step === '4') { if (!form.querySelector('[name="full_name"]').value.trim()) { setErr('full_name','Please enter your name.'); return false; } setErr('full_name',''); }
-      if (step === '5') { if (!isEmail(form.querySelector('[name="email"]').value)) { setErr('email','Please enter a valid email.'); return false; } setErr('email',''); }
-      if (step === '6') { if (!isPhone(form.querySelector('[name="phone"]').value)) { setErr('phone','Please enter a valid phone number.'); return false; } setErr('phone',''); }
-      if (step === '7') { if (!form.querySelector('[name="sms_consent"]').checked) { setErr('sms_consent','Please check the box to continue.'); return false; } setErr('sms_consent',''); }
+      if (step === '1') { if (!form.querySelector('[name="full_name"]').value.trim()) { setErr('full_name','Please enter your name.'); return false; } setErr('full_name',''); }
+      if (step === '2') { if (!isEmail(form.querySelector('[name="email"]').value)) { setErr('email','Please enter a valid email.'); return false; } setErr('email',''); }
+      if (step === '3') { if (!isPhone(form.querySelector('[name="phone"]').value)) { setErr('phone','Please enter a valid phone number.'); return false; } setErr('phone',''); }
+      if (step === '4') { if (!form.querySelector('[name="sms_consent"]').checked) { setErr('sms_consent','Please check the box to continue.'); return false; } setErr('sms_consent',''); }
       return true;
     }
 
@@ -257,7 +226,7 @@
       e.preventDefault();
       if (current < total - 1) { if (validateStep(current)) showStep(current + 1); return; }
       if (!validateStep(current)) return;
-      var honeypot = document.getElementById('fp-gotcha').value;
+      var honeypot = document.getElementById('gdl-gotcha').value;
 
       var fd = new FormData(form);
       var data = {};
@@ -274,17 +243,17 @@
       function _resolveLoid(){ var raw=_qs('loid')||_qs('lo_id')||_qs('first_touch_loid')||_getCookie('first_touch_loid')||''; var m=String(raw).match(/(\d{3,})/); return m?m[1]:''; }
 
       var payload = Object.assign({}, data, {
-        form_source: 'financial_planners', form_name: 'Financial Planners Introduction',
+        form_source: 'guides_download', form_name: 'Guide Download',
         first_name: first, last_name: last, email: data.email || '', phone: data.phone || '',
         page_url: window.location.href, submitted_at: new Date().toISOString(),
         umtid: _resolveUmtid(), loid: _resolveLoid()
       });
 
       function done() {
-        form.hidden = true; successEl.hidden = false;
+        form.hidden = true; if (requestingEl) requestingEl.hidden = true; successEl.hidden = false;
         if (first) {
-          document.getElementById('fp-success-h').textContent = 'Thank you ' + first + ' — we’re on it.';
-          document.getElementById('fp-success-closer').textContent = 'We’re here to help you take the next step, ' + first + '.';
+          document.getElementById('gdl-success-h').textContent = 'Thank you ' + first + ' — it’s on the way.';
+          document.getElementById('gdl-success-closer').textContent = 'We’re here to help you take the next step, ' + first + '.';
         }
       }
       if (honeypot && honeypot.trim() !== '') { done(); return; }
@@ -293,7 +262,7 @@
       fetch('https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/fd7a3b30-ddf9-4415-b751-bfa88beda702', {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
       }).then(done).catch(function () {
-        submitBtn.disabled = false; submitBtn.textContent = 'See My Options';
+        submitBtn.disabled = false; submitBtn.textContent = 'Send My Guide';
         setErr('sms_consent', 'Something went wrong. Please try again or call (954) 993-1625.');
       });
     });

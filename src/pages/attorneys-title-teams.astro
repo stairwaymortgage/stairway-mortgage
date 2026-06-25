@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AttorneysTitleForm from '../components/forms/AttorneysTitleForm.astro';
 const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Attorney Title Teams"}]};
 ---
 
@@ -15,7 +16,7 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   <article class="container-prose prose-editorial ft-body" set:html={`<h2>Attorneys &amp; Title Teams
 </h2>				
 		<p>Protecting the Deal. Preserving the Dream.</p>		
-					<a href="https://forms.stairwaymortgage.com/widget/survey/k33BfCMtInKR8oAfYb5y">
+					<a href="#attorney" data-open-at role="button">
 									Get A Local Intro
 					</a>
 															<img width="1024" height="1024" src="/wp-content/uploads/2025/05/ChatGPT-Image-May-15-2025-11_00_25-AM.png" alt="" srcset="/wp-content/uploads/2025/05/ChatGPT-Image-May-15-2025-11_00_25-AM.png 1024w, /wp-content/uploads/2025/05/ChatGPT-Image-May-15-2025-11_00_25-AM-300x300.png 300w, /wp-content/uploads/2025/05/ChatGPT-Image-May-15-2025-11_00_25-AM-150x150.png 150w, /wp-content/uploads/2025/05/ChatGPT-Image-May-15-2025-11_00_25-AM-768x768.png 768w, /wp-content/uploads/2025/05/ChatGPT-Image-May-15-2025-11_00_25-AM-710x710.png 710w, /wp-content/uploads/2025/05/ChatGPT-Image-May-15-2025-11_00_25-AM-600x600.png 600w" sizes="(max-width: 1024px) 100vw, 1024px" />															
@@ -113,7 +114,7 @@ Catch encumbrances and fraud early—protecting your closing and future resale.	
 						</ul>
 					<h2>Result: “Adding a bedroom increases equity by \$X on average.”<br>
 Want to see what works best in your zip code?</h2>				
-					<a href="https://forms.stairwaymortgage.com/widget/survey/k33BfCMtInKR8oAfYb5y">
+					<a href="#attorney" data-open-at role="button">
 									Get A Local Intro
 					</a>
 															<img src="/wp-content/uploads/2024/05/qute.png" title="" alt="" loading="lazy" width="80" height="80"															
@@ -202,6 +203,7 @@ Together, we help buyers, sellers, and investors close with confidence — and a
 					<a href="https://stairwaymortgage.com/join-our-partner-network/">
 									Join Our Partner Network
 					</a>`} />
+  <AttorneysTitleForm />
 </Layout>
 
 <style>

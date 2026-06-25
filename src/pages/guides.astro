@@ -3,6 +3,7 @@
 // Rebuilt from WordPress XML: 1 Roadmap hero + 11 guide cards, each with its own
 // 3D book cover (R2) and its own GHL download form. Forest palette + Fraunces/Inter.
 import Layout from '../layouts/Layout.astro';
+import GuideDownloadForm from '../components/forms/GuideDownloadForm.astro';
 
 const HERO = {
   name: `The Stairway Roadmap`,
@@ -196,9 +197,9 @@ const GUIDES = [
             <ul class="g-roadmap__bullets">
               {HERO.bullets.map(b => <li set:html={b}></li>)}
             </ul>
-            <a class="g-btn g-btn--lg" href={HERO.form} target="_blank" rel="noopener">
+            <button class="g-btn g-btn--lg" type="button" data-open-guide data-guide={HERO.name}>
               Get the Roadmap &rarr;
-            </a>
+            </button>
           </div>
           <div class="g-roadmap__stack">
             <img src="https://pub-9f05e4d14a8440e08d1b243082a7dc01.r2.dev/guides/stairway%20left%20facing.png" alt="The Stairway Roadmap" width="800" height="600""width:100%;height:100%;object-fit:cover;border-radius:8px;" />
@@ -233,9 +234,9 @@ const GUIDES = [
               <ul class="g-card__bullets">
                 {g.bullets.slice(0,3).map(b => <li set:html={b}></li>)}
               </ul>
-              <a class="g-btn" href={g.form} target="_blank" rel="noopener">
+              <button class="g-btn" type="button" data-open-guide data-guide={g.name}>
                 Download free &rarr;
-              </a>
+              </button>
             </div>
           </article>
         ))}
@@ -350,4 +351,6 @@ const GUIDES = [
       .g-grid { grid-template-columns: 1fr; }
     }
   </style>
+
+  <GuideDownloadForm />
 </Layout>

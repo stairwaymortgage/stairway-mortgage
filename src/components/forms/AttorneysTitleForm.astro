@@ -1,47 +1,48 @@
 ---
-// Financial Planners intro — native multi-step modal form.
-// Pattern: clone of CsaAdvisorForm (.gli-*), OTP removed, FP fields.
-// Opens via any element with [data-open-fp]. Posts to shared GHL webhook.
+// Attorneys / Title Teams intro — native multi-step modal form.
+// Clone of FinancialPlannersForm (.gli-*), attorney fields. Opens via [data-open-at].
 ---
-<div class="gli-overlay" id="fp-overlay" hidden>
-  <div class="aic gli" role="dialog" aria-modal="true" aria-label="Connect with a Financial Planning Team">
+<div class="gli-overlay" id="at-overlay" hidden>
+  <div class="aic gli" role="dialog" aria-modal="true" aria-label="Connect with an Attorney or Title Team">
     <span class="aic__aurora aic__aurora--1"></span>
     <span class="aic__aurora aic__aurora--2"></span>
 
     <div class="aic__header">
       <span class="aic__spark">✦</span>
       <div class="aic__brand">
-        <div class="aic__title">Financial Planning <span class="aic__badge">Stairway</span></div>
-        <div class="aic__live"><span class="aic__dot"></span> Local Planning Team</div>
+        <div class="aic__title">Attorney / Title <span class="aic__badge">Stairway</span></div>
+        <div class="aic__live"><span class="aic__dot"></span> Local Attorney &amp; Title Team</div>
       </div>
-      <button type="button" class="aic__close" id="fp-close" aria-label="Close">✕</button>
+      <button type="button" class="aic__close" id="at-close" aria-label="Close">✕</button>
     </div>
 
-    <div class="gli-progress"><div class="gli-progress__bar" id="fp-bar"></div></div>
-    <div class="gli-stepcount mono" id="fp-stepcount"></div>
+    <div class="gli-progress"><div class="gli-progress__bar" id="at-bar"></div></div>
+    <div class="gli-stepcount mono" id="at-stepcount"></div>
 
     <div class="aic__body">
-      <form id="fp-form" novalidate>
-        <input type="text" id="fp-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"
+      <form id="at-form" novalidate>
+        <input type="text" id="at-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"
           style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true" />
 
         <!-- STEP 1 — help with (checkbox, max 3) -->
         <div class="gli-slide" data-step="1">
-          <div class="aic__msg aic__msg--bot">What would you like the local Financial Planning Team to help you with? <em>(top 3)</em></div>
+          <div class="aic__msg aic__msg--bot">What would you like the local Attorney / Title Team to help you with? <em>(top 3)</em></div>
           <div class="gli-chips" data-max="3">
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="401k Rollover" /><span>401k Rollover</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Inheritance or Estate Planning" /><span>Inheritance or Estate Planning</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Business Exit or Succession Strategy" /><span>Business Exit or Succession Strategy</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Retirement Planning" /><span>Retirement Planning</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Investment Advice" /><span>Investment Advice</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Tax Efficiency & Wealth Protection" /><span>Tax Efficiency &amp; Wealth Protection</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Life or Disability Insurance" /><span>Life or Disability Insurance</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="Budgeting or Cash Flow Planning" /><span>Budgeting or Cash Flow Planning</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="College or Education Savings" /><span>College or Education Savings</span></label>
-            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3" value="I prefer to discuss" /><span>I prefer to discuss</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="Draft Contract / Review Documents" /><span>Draft Contract / Review Documents</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="Title Search & Insurance" /><span>Title Search &amp; Insurance</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="Escrow & Funds Handling" /><span>Escrow &amp; Funds Handling</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="Escrow or Funds Disbursement" /><span>Escrow or Funds Disbursement</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="Entity Formation (LLC, Trust)" /><span>Entity Formation (LLC, Trust)</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="Clearing Title or Liens" /><span>Clearing Title or Liens</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="Probate or Estate Transfer" /><span>Probate or Estate Transfer</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="For Sale by Owner Listing" /><span>For Sale by Owner Listing</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="Off-Market Deals" /><span>Off-Market Deals</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="Mobile or Remote Closing" /><span>Mobile or Remote Closing</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="1035 Exchange" /><span>1035 Exchange</span></label>
+            <label class="gli-chip"><input type="checkbox" name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3" value="I prefer to discuss" /><span>I prefer to discuss</span></label>
           </div>
           <p class="gli-hint mono">Up to 3</p>
-          <p class="gli-err" data-err-for="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3"></p>
+          <p class="gli-err" data-err-for="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3"></p>
         </div>
 
         <!-- STEP 2 — most important (checkbox, max 3) -->
@@ -63,7 +64,7 @@
           <p class="gli-err" data-err-for="what_is_most_important_to_you_pick_up_to_3"></p>
         </div>
 
-        <!-- STEP 3 — anything else (textarea) -->
+        <!-- STEP 3 — anything else -->
         <div class="gli-slide" data-step="3" hidden>
           <div class="aic__msg aic__msg--bot">Anything else you'd like to share?</div>
           <textarea class="gli-input gli-textarea" name="anything_else" rows="3" placeholder="Optional"></textarea>
@@ -72,21 +73,21 @@
         <!-- STEP 4 — full name -->
         <div class="gli-slide" data-step="4" hidden>
           <div class="aic__msg aic__msg--bot">Great. What's your full name?</div>
-          <input class="gli-input" type="text" name="full_name" id="fp-name" placeholder="First and last name" autocomplete="name" />
+          <input class="gli-input" type="text" name="full_name" id="at-name" placeholder="First and last name" autocomplete="name" />
           <p class="gli-err" data-err-for="full_name"></p>
         </div>
 
         <!-- STEP 5 — email -->
         <div class="gli-slide" data-step="5" hidden>
           <div class="aic__msg aic__msg--bot">Where should we send your introduction?</div>
-          <input class="gli-input" type="email" name="email" id="fp-email" placeholder="you@email.com" autocomplete="email" />
+          <input class="gli-input" type="email" name="email" id="at-email" placeholder="you@email.com" autocomplete="email" />
           <p class="gli-err" data-err-for="email"></p>
         </div>
 
         <!-- STEP 6 — phone -->
         <div class="gli-slide" data-step="6" hidden>
           <div class="aic__msg aic__msg--bot">And the best number to reach you?</div>
-          <input class="gli-input" type="tel" name="phone" id="fp-phone" placeholder="(954) 993-1625" autocomplete="tel" />
+          <input class="gli-input" type="tel" name="phone" id="at-phone" placeholder="(954) 993-1625" autocomplete="tel" />
           <p class="gli-err" data-err-for="phone"></p>
         </div>
 
@@ -94,7 +95,7 @@
         <div class="gli-slide" data-step="7" hidden>
           <div class="aic__msg aic__msg--bot">Last thing — your consent so we can reach out.</div>
           <label class="gli-consent">
-            <input type="checkbox" name="sms_consent" id="fp-consent" />
+            <input type="checkbox" name="sms_consent" id="at-consent" />
             <span>I Consent to Receive SMS Notifications, Alerts &amp; Occasional Marketing Communication from company. Message frequency varies. Message &amp; data rates may apply. Text HELP to (954) 993-1625 for assistance. You can reply STOP to unsubscribe at any time.</span>
           </label>
           <p class="gli-err" data-err-for="sms_consent"></p>
@@ -107,17 +108,17 @@
         <input type="hidden" name="source_url" />
 
         <div class="gli-nav">
-          <button type="button" class="gli-btn gli-btn--ghost" id="fp-prev" hidden>← Back</button>
-          <button type="button" class="gli-btn gli-btn--go" id="fp-next">Next →</button>
-          <button type="submit" class="gli-btn gli-btn--go" id="fp-submit" hidden>See My Options</button>
+          <button type="button" class="gli-btn gli-btn--ghost" id="at-prev" hidden>← Back</button>
+          <button type="button" class="gli-btn gli-btn--go" id="at-next">Next →</button>
+          <button type="submit" class="gli-btn gli-btn--go" id="at-submit" hidden>See My Options</button>
         </div>
       </form>
 
-      <div class="gli-success" id="fp-success" hidden>
+      <div class="gli-success" id="at-success" hidden>
         <div class="gli-success__mark">✓</div>
-        <h3 class="gli-success__h" id="fp-success-h">Thank you — we're on it.</h3>
-        <p class="gli-success__p">We've received your request to connect with a trusted local financial planning professional. Our team is reviewing your details and preparing to introduce you to someone who aligns with your goals.</p>
-        <p class="gli-success__closer" id="fp-success-closer">We're here to help you take the next step.</p>
+        <h3 class="gli-success__h" id="at-success-h">Thank you — we're on it.</h3>
+        <p class="gli-success__p">We've received your request to connect with a trusted local attorney or title professional. Our team is reviewing your details and preparing your introduction.</p>
+        <p class="gli-success__closer" id="at-success-closer">We're here to help you take the next step.</p>
         <a class="gli-btn gli-btn--ghost" href="/">Back to home page</a>
       </div>
     </div>
@@ -188,27 +189,27 @@
 
 <script is:inline>
   (function () {
-    var overlay = document.getElementById('fp-overlay');
-    var form = document.getElementById('fp-form');
+    var overlay = document.getElementById('at-overlay');
+    var form = document.getElementById('at-form');
     if (!overlay || !form) return;
 
     document.addEventListener('click', function (e) {
-      var t = e.target.closest('[data-open-fp]');
+      var t = e.target.closest('[data-open-at]');
       if (t) { e.preventDefault(); overlay.hidden = false; document.body.style.overflow = 'hidden'; }
     });
     function close() { overlay.hidden = true; document.body.style.overflow = ''; }
-    document.getElementById('fp-close').addEventListener('click', close);
+    document.getElementById('at-close').addEventListener('click', close);
     overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) close(); });
 
     var slides = Array.prototype.slice.call(form.querySelectorAll('.gli-slide'));
     var total = slides.length;
-    var bar = document.getElementById('fp-bar');
-    var stepCount = document.getElementById('fp-stepcount');
-    var prevBtn = document.getElementById('fp-prev');
-    var nextBtn = document.getElementById('fp-next');
-    var submitBtn = document.getElementById('fp-submit');
-    var successEl = document.getElementById('fp-success');
+    var bar = document.getElementById('at-bar');
+    var stepCount = document.getElementById('at-stepcount');
+    var prevBtn = document.getElementById('at-prev');
+    var nextBtn = document.getElementById('at-next');
+    var submitBtn = document.getElementById('at-submit');
+    var successEl = document.getElementById('at-success');
     var current = 0;
 
     var params = new URLSearchParams(window.location.search);
@@ -241,7 +242,7 @@
 
     function validateStep(i) {
       var step = slides[i].getAttribute('data-step');
-      if (step === '1') { if (!form.querySelectorAll('[name="what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3"]:checked').length) { setErr('what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3', 'Please pick at least one.'); return false; } setErr('what_would_you_like_the_local_financial_planning_team_to_help_you_with_top_3',''); }
+      if (step === '1') { if (!form.querySelectorAll('[name="what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3"]:checked').length) { setErr('what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3', 'Please pick at least one.'); return false; } setErr('what_would_you_like_the_local_attorney__title_team_to_help_you_with_top_3',''); }
       if (step === '2') { if (!form.querySelectorAll('[name="what_is_most_important_to_you_pick_up_to_3"]:checked').length) { setErr('what_is_most_important_to_you_pick_up_to_3', 'Please pick at least one.'); return false; } setErr('what_is_most_important_to_you_pick_up_to_3',''); }
       if (step === '4') { if (!form.querySelector('[name="full_name"]').value.trim()) { setErr('full_name','Please enter your name.'); return false; } setErr('full_name',''); }
       if (step === '5') { if (!isEmail(form.querySelector('[name="email"]').value)) { setErr('email','Please enter a valid email.'); return false; } setErr('email',''); }
@@ -257,7 +258,7 @@
       e.preventDefault();
       if (current < total - 1) { if (validateStep(current)) showStep(current + 1); return; }
       if (!validateStep(current)) return;
-      var honeypot = document.getElementById('fp-gotcha').value;
+      var honeypot = document.getElementById('at-gotcha').value;
 
       var fd = new FormData(form);
       var data = {};
@@ -274,7 +275,7 @@
       function _resolveLoid(){ var raw=_qs('loid')||_qs('lo_id')||_qs('first_touch_loid')||_getCookie('first_touch_loid')||''; var m=String(raw).match(/(\d{3,})/); return m?m[1]:''; }
 
       var payload = Object.assign({}, data, {
-        form_source: 'financial_planners', form_name: 'Financial Planners Introduction',
+        form_source: 'attorneys_title_teams', form_name: 'Attorneys / Title Teams Introduction',
         first_name: first, last_name: last, email: data.email || '', phone: data.phone || '',
         page_url: window.location.href, submitted_at: new Date().toISOString(),
         umtid: _resolveUmtid(), loid: _resolveLoid()
@@ -283,8 +284,8 @@
       function done() {
         form.hidden = true; successEl.hidden = false;
         if (first) {
-          document.getElementById('fp-success-h').textContent = 'Thank you ' + first + ' — we’re on it.';
-          document.getElementById('fp-success-closer').textContent = 'We’re here to help you take the next step, ' + first + '.';
+          document.getElementById('at-success-h').textContent = 'Thank you ' + first + ' — we’re on it.';
+          document.getElementById('at-success-closer').textContent = 'We’re here to help you take the next step, ' + first + '.';
         }
       }
       if (honeypot && honeypot.trim() !== '') { done(); return; }

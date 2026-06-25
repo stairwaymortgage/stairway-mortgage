@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import InsuranceBrokerForm from '../../components/forms/InsuranceBrokerForm.astro';
 
 const metaTitle = "Flood Insurance Calculator | Stairway Mortgage";
 const metaDescription = "Estimate your annual flood and hazard insurance cost from your home size, rebuild cost, coverage, deductible, and coastal risk. Built by Jim Blackburn, NMLS #1072866.";
@@ -63,7 +64,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           <div class="result"><span class="result-label">Loss of Use (Cov D)</span><span class="result-value" id="rCovD">$80,000</span><span class="result-note">20% of dwelling coverage.</span></div>
           <p class="summary-sub">Estimated Cost</p>
           <div class="result result--primary"><span class="result-label">Premium Estimate (Annual)</span><span class="result-value" id="rPremium">$3,500</span><span class="result-note">Ballpark estimate only — get an official quote.</span></div>
-          <a class="cta-primary" href="https://forms.stairwaymortgage.com/widget/survey/XzCpnkhMlNI93HTtcdD6" target="_blank" rel="noopener">Get an Official Quote</a>
+          <a class="cta-primary" href="#insurance" data-open-ib role="button">Get an Official Quote</a>
           <a class="cta-secondary" href="https://stairwaymortgage.com/purchase-inquiry">See My Options</a>
           <p class="micro">Estimates only — not a commitment to lend.</p>
         </div>
@@ -174,4 +175,5 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
   .cta-card a:hover{background:var(--blue);}
   .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
   </style>
+  <InsuranceBrokerForm />
 </Layout>
