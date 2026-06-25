@@ -1,0 +1,643 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="How to Start a Mortgage Business or Brokerage (2026 Guide)"
+  description="How to start a mortgage business or brokerage: the two real paths, what licensing and bonding it takes, costs, and the smart way to build — from a 7x Scotsman Guide Top Producer with $500M+ closed."
+>
+
+<style is:global>
+  /* ============ MORTGAGE CAREER — scoped to .mc-scope ============ */
+  /* Self-contained design tokens + page CSS, namespaced so bare selectors
+     (.container, .btn, .hero, h2, p, a, *) do not leak into the global site. */
+  .mc-scope {
+    color-scheme: light only;
+    --ink: #0A0E1A;
+    --ink-2: #1E2433;
+    --ink-3: #2C3548;
+    --ink-light: #4A5568;
+    --ink-lighter: #6B7280;
+    --paper: #FAFAF7;
+    --paper-2: #F4F4EE;
+    --paper-3: #EDEDE5;
+    --white: #FFFFFF;
+    --blue: #1845D6;
+    --blue-deep: #0F2EA0;
+    --blue-soft: #E8EEFF;
+    --blue-tint: #F2F5FF;
+    --gold: #B8860B;
+    --gold-soft: #F5EBD0;
+    --rust: #8B2C2C;
+    --green: #2E9E2E;
+    --border: #E5E5DE;
+    --border-strong: #D4D4C8;
+    --border-dark: #2C3548;
+
+    --text-2xs: 0.6875rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1.0625rem;
+    --text-md: 1.1875rem;
+    --text-lg: 1.375rem;
+    --text-xl: 1.625rem;
+    --text-2xl: 2rem;
+    --text-3xl: 2.75rem;
+    --text-4xl: 3.75rem;
+    --text-5xl: 5rem;
+
+    --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+    --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4rem;
+    --s-9: 6rem; --s-10: 8rem; --s-11: 10rem;
+
+    --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    font-family: var(--sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .mc-scope { background-color: #FAFAF7 !important; color: #0A0E1A !important; color-scheme: light only !important; }
+    .mc-scope * { forced-color-adjust: none; }
+  }
+
+  .mc-scope *, .mc-scope *::before, .mc-scope *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .mc-scope { scroll-behavior: smooth; }
+  .mc-scope img, .mc-scope svg { display: block; max-width: 100%; }
+  .mc-scope a { color: inherit; text-decoration: none; }
+  .mc-scope button { font: inherit; cursor: pointer; border: 0; background: none; }
+
+  .mc-scope .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-wide { max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }
+
+  /* ============ TYPOGRAPHY ============ */
+  .mc-scope .eyebrow {
+    font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue); font-weight: 500; display: inline-block;
+  }
+  .mc-scope .eyebrow-gold { color: var(--gold); }
+  .mc-scope .display-1 {
+    font-family: var(--serif); font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+    font-weight: 400; line-height: 1.0; letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 144, "SOFT" 30; color: var(--ink);
+  }
+  .mc-scope .display-2 {
+    font-family: var(--serif); font-size: clamp(2rem, 5vw, var(--text-3xl));
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 100, "SOFT" 50; color: var(--ink);
+  }
+  .mc-scope h2 {
+    font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+    font-weight: 450; line-height: 1.1; letter-spacing: -0.015em;
+    color: var(--ink); margin-bottom: var(--s-5);
+    font-variation-settings: "opsz" 60, "SOFT" 50;
+  }
+  .mc-scope h3 {
+    font-family: var(--serif); font-size: var(--text-xl); font-weight: 500;
+    line-height: 1.25; letter-spacing: -0.01em; color: var(--ink);
+    margin-bottom: var(--s-4); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope h4 {
+    font-family: var(--sans); font-size: var(--text-md); font-weight: 600;
+    line-height: 1.3; color: var(--ink); margin-bottom: var(--s-3); letter-spacing: -0.005em;
+  }
+  .mc-scope p { margin-bottom: var(--s-4); }
+  .mc-scope p:last-child { margin-bottom: 0; }
+  .mc-scope p.lead { font-size: var(--text-lg); line-height: 1.55; color: var(--ink-2); font-weight: 350; }
+  .mc-scope p.lede {
+    font-family: var(--serif); font-size: var(--text-xl); line-height: 1.45;
+    color: var(--ink); font-weight: 350; font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .body-text { color: var(--ink-2); }
+  .mc-scope .text-muted { color: var(--ink-lighter); }
+  .mc-scope .text-small { font-size: var(--text-sm); }
+  .mc-scope .text-mono { font-family: var(--mono); font-feature-settings: 'tnum' 1; }
+  .mc-scope strong, .mc-scope b { font-weight: 600; color: var(--ink); }
+  .mc-scope em, .mc-scope i { font-style: normal; }
+  .mc-scope a.inline-link { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  .mc-scope a.inline-link:hover { color: var(--blue-deep); }
+
+  /* ============ BUTTONS ============ */
+  .mc-scope .btn {
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    padding: var(--s-3) var(--s-5); font-family: var(--sans);
+    font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.005em;
+    border-radius: 100px; transition: all 0.18s ease; white-space: nowrap;
+  }
+  .mc-scope .btn-primary { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+  .mc-scope .btn-primary:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-1px); }
+  .mc-scope .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border-strong); }
+  .mc-scope .btn-secondary:hover { border-color: var(--ink); }
+  .mc-scope .btn-light { background: var(--white); color: var(--ink); border: 1px solid var(--border); }
+  .mc-scope .btn-light:hover { background: var(--paper-2); }
+  .mc-scope .btn-large { padding: var(--s-4) var(--s-6); font-size: var(--text-base); }
+  .mc-scope .btn-arrow { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--blue); font-weight: 500; transition: gap 0.18s; }
+  .mc-scope .btn-arrow:hover { gap: var(--s-3); }
+  .mc-scope .btn-arrow::after { content: '→'; font-family: var(--sans); }
+
+  /* ============ HERO ============ */
+  .mc-scope .hero { padding: var(--s-9) 0 var(--s-8); border-bottom: 1px solid var(--border); }
+  .mc-scope .breadcrumb {
+    display: flex; gap: var(--s-2); font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.08em; color: var(--ink-lighter); text-transform: uppercase; margin-bottom: var(--s-7);
+  }
+  .mc-scope .breadcrumb a { color: var(--ink-lighter); }
+  .mc-scope .breadcrumb a:hover { color: var(--blue); }
+  .mc-scope .breadcrumb span:last-child { color: var(--ink); }
+  .mc-scope .hero-eyebrow { margin-bottom: var(--s-5); }
+  .mc-scope .hero h1 { margin-bottom: var(--s-6); max-width: 20ch; }
+  .mc-scope .hero-subtitle { max-width: 60ch; margin-bottom: var(--s-7); }
+  .mc-scope .hero-actions { display: flex; gap: var(--s-3); align-items: center; flex-wrap: wrap; margin-bottom: var(--s-6); }
+  .mc-scope .hero-trust {
+    font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-lighter);
+    letter-spacing: 0.02em; display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap;
+  }
+  .mc-scope .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+  /* ============ 3-DOOR ROUTER ============ */
+  .mc-scope .doors { padding: var(--s-8) 0; background: var(--paper-2); border-bottom: 1px solid var(--border); }
+  .mc-scope .doors-head { text-align: center; max-width: 50ch; margin: 0 auto var(--s-7); }
+  .mc-scope .door-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+  .mc-scope .door {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease; position: relative; overflow: hidden;
+  }
+  .mc-scope .door:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(10,14,26,0.08); }
+  .mc-scope .door-num { font-family: var(--mono); font-size: var(--text-xs); color: var(--blue); letter-spacing: 0.1em; margin-bottom: var(--s-4); display: block; }
+  .mc-scope .door h3 { margin-bottom: var(--s-3); }
+  .mc-scope .door p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-5); }
+  .mc-scope .door .door-cta { font-family: var(--sans); font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; align-items: center; gap: var(--s-2); }
+  .mc-scope .door .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .door:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 860px) { .mc-scope .door-grid { grid-template-columns: 1fr; } }
+
+  /* ============ SECTION ============ */
+  .mc-scope .section { padding: var(--s-9) 0; }
+  .mc-scope .section-tint { background: var(--paper-2); }
+  .mc-scope .section-ink { background: var(--ink); color: var(--paper); }
+  .mc-scope .section-ink h2, .mc-scope .section-ink h3, .mc-scope .section-ink h4 { color: var(--white); }
+  .mc-scope .section-ink .text-muted { color: #9CA3AF; }
+  .mc-scope .section-head { max-width: 60ch; margin-bottom: var(--s-8); }
+  .mc-scope .section-head .eyebrow { margin-bottom: var(--s-4); }
+
+  /* ============ STEPS ============ */
+  .mc-scope .steps { display: grid; gap: var(--s-5); }
+  .mc-scope .step {
+    display: grid; grid-template-columns: 60px 1fr; gap: var(--s-5);
+    padding: var(--s-6); background: var(--white); border: 1px solid var(--border); border-radius: 6px;
+  }
+  .mc-scope .step-num {
+    font-family: var(--serif); font-size: var(--text-2xl); color: var(--blue);
+    font-variation-settings: "opsz" 60; line-height: 1;
+  }
+  .mc-scope .step h4 { margin-bottom: var(--s-2); }
+  .mc-scope .step p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .step p + p { margin-top: var(--s-3); }
+
+  /* ============ ROLE GRID ============ */
+  .mc-scope .role-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+  .mc-scope .role-card {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease;
+  }
+  .mc-scope .role-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10,14,26,0.06); }
+  .mc-scope .role-tag {
+    font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 100px; display: inline-block; margin-bottom: var(--s-4);
+  }
+  .mc-scope .role-tag.licensed { background: var(--blue-soft); color: var(--blue-deep); }
+  .mc-scope .role-tag.industry { background: var(--paper-3); color: var(--ink-light); }
+  .mc-scope .role-card h3 { font-size: var(--text-lg); margin-bottom: var(--s-2); }
+  .mc-scope .role-card p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-4); }
+  .mc-scope .role-card .door-cta { font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; gap: var(--s-2); align-items: center; }
+  .mc-scope .role-card .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .role-card:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 760px) { .mc-scope .role-grid { grid-template-columns: 1fr; } }
+
+  /* ============ STORY INTERLUDE ============ */
+  .mc-scope .story { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; }
+  .mc-scope .story .container-narrow { position: relative; }
+  .mc-scope .story .eyebrow { color: var(--gold); margin-bottom: var(--s-5); }
+  .mc-scope .story p { color: #D8DCE4; font-size: var(--text-md); line-height: 1.7; margin-bottom: var(--s-5); }
+  .mc-scope .story p.story-lede { font-family: var(--serif); font-size: var(--text-xl); color: var(--white); font-variation-settings: "opsz" 30; line-height: 1.45; }
+  .mc-scope .story strong { color: var(--white); }
+  .mc-scope .story-photo {
+    width: 100%; max-width: 420px; border-radius: 6px; margin: var(--s-6) 0;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .mc-scope .story-caption { font-family: var(--mono); font-size: var(--text-xs); color: #9CA3AF; letter-spacing: 0.04em; margin-top: var(--s-2); }
+  .mc-scope .story-rule { width: 40px; height: 2px; background: var(--gold); margin-bottom: var(--s-6); }
+
+  /* ============ STATS BAR ============ */
+  .mc-scope .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-5); padding: var(--s-7) 0; }
+  .mc-scope .stat { text-align: center; }
+  .mc-scope .stat-num { font-family: var(--serif); font-size: var(--text-3xl); color: var(--ink); font-variation-settings: "opsz" 80; line-height: 1; margin-bottom: var(--s-2); }
+  .mc-scope .section-ink .stat-num { color: var(--white); }
+  .mc-scope .stat-label { font-family: var(--mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-lighter); }
+  @media (max-width: 760px) { .mc-scope .stats-bar { grid-template-columns: repeat(2, 1fr); gap: var(--s-6); } }
+
+  /* ============ FEATURE COLUMNS ============ */
+  .mc-scope .cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); }
+  .mc-scope .cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-7); }
+  .mc-scope .feature h4 { margin-bottom: var(--s-3); }
+  .mc-scope .feature p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .feature-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--blue-soft); display: flex; align-items: center; justify-content: center; margin-bottom: var(--s-4); color: var(--blue); font-family: var(--serif); font-size: var(--text-lg); }
+  @media (max-width: 860px) { .mc-scope .cols-3 { grid-template-columns: 1fr; } .mc-scope .cols-2 { grid-template-columns: 1fr; } }
+
+  /* ============ TESTIMONIAL ============ */
+  .mc-scope .quote-card { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 6px; padding: var(--s-7); }
+  .mc-scope .quote-card blockquote { font-family: var(--serif); font-size: var(--text-lg); line-height: 1.5; color: var(--ink); font-variation-settings: "opsz" 40; margin-bottom: var(--s-5); }
+  .mc-scope .quote-author { display: flex; align-items: center; gap: var(--s-4); }
+  .mc-scope .quote-author img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 1px solid var(--border); }
+  .mc-scope .quote-author .qa-name { font-weight: 600; font-size: var(--text-sm); }
+  .mc-scope .quote-author .qa-title { font-size: var(--text-xs); color: var(--ink-lighter); font-family: var(--mono); }
+
+  /* ============ LEAD MAGNET / EMAIL ============ */
+  .mc-scope .magnet { background: var(--blue-tint); border: 1px solid var(--blue-soft); border-radius: 8px; padding: var(--s-8); }
+  .mc-scope .magnet-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--s-8); align-items: center; }
+  .mc-scope .magnet h2 { margin-bottom: var(--s-4); }
+  .mc-scope .magnet p { color: var(--ink-light); }
+  .mc-scope .magnet-form { display: flex; flex-direction: column; gap: var(--s-3); }
+  .mc-scope .magnet-form input {
+    padding: var(--s-4); border: 1px solid var(--border-strong); border-radius: 6px;
+    font-family: var(--sans); font-size: var(--text-base); background: var(--white);
+  }
+  .mc-scope .magnet-form input:focus { outline: 2px solid var(--blue); border-color: var(--blue); }
+  .mc-scope .form-note { font-size: var(--text-xs); color: var(--ink-lighter); }
+  @media (max-width: 860px) { .mc-scope .magnet-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+
+  /* ============ FAQ ============ */
+  .mc-scope .faq-list { border-top: 1px solid var(--border); }
+  .mc-scope .faq-item { border-bottom: 1px solid var(--border); }
+  .mc-scope .faq-q {
+    width: 100%; text-align: left; padding: var(--s-5) 0; display: flex;
+    justify-content: space-between; align-items: center; gap: var(--s-4);
+    font-family: var(--serif); font-size: var(--text-md); font-weight: 500;
+    color: var(--ink); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .faq-q:hover { color: var(--blue); }
+  .mc-scope .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; transition: transform 0.2s; }
+  .mc-scope .faq-icon::before, .mc-scope .faq-icon::after { content: ''; position: absolute; background: var(--blue); border-radius: 2px; }
+  .mc-scope .faq-icon::before { top: 9px; left: 0; width: 20px; height: 2px; }
+  .mc-scope .faq-icon::after { top: 0; left: 9px; width: 2px; height: 20px; transition: transform 0.2s; }
+  .mc-scope .faq-item.open .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+  .mc-scope .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+  .mc-scope .faq-a-inner { padding: 0 0 var(--s-5); color: var(--ink-light); font-size: var(--text-sm); line-height: 1.65; max-width: 70ch; }
+  .mc-scope .faq-item.open .faq-a { max-height: 600px; }
+
+  /* ============ CTA BAND ============ */
+  .mc-scope .cta-band { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; text-align: center; }
+  .mc-scope .cta-band h2 { color: var(--white); max-width: 22ch; margin: 0 auto var(--s-5); }
+  .mc-scope .cta-band p { color: #B8BEC9; max-width: 54ch; margin: 0 auto var(--s-7); }
+  .mc-scope .cta-band .hero-actions { justify-content: center; }
+  .mc-scope .cta-band .btn-primary { background: var(--white); color: var(--ink); border-color: var(--white); }
+  .mc-scope .cta-band .btn-primary:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .mc-scope .cta-band .btn-secondary { color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .mc-scope .cta-band .btn-secondary:hover { border-color: var(--white); }
+
+  /* ============ COMPLIANCE / DISCLAIMER ============ */
+  .mc-scope .disclaimer { padding: var(--s-7) 0; background: var(--paper-2); border-top: 1px solid var(--border); }
+  .mc-scope .disclaimer p { font-size: var(--text-xs); color: var(--ink-lighter); line-height: 1.6; max-width: 90ch; margin-bottom: var(--s-3); }
+
+  .mc-scope .mt-5 { margin-top: var(--s-5); }
+  .mc-scope .mt-7 { margin-top: var(--s-7); }
+</style>
+
+<!-- ============ JSON-LD: FAQ ============ -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do I start a mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Most people start a mortgage business by first getting licensed as an originator and joining an established brokerage to learn the craft, then opening their own brokerage once they understand the business. Starting your own shop requires a company-level state license, a surety bond, and lender relationships on top of your individual license."}},
+    {"@type":"Question","name":"How do I start a mortgage brokerage?","acceptedAnswer":{"@type":"Answer","text":"To start a mortgage brokerage you obtain a company mortgage broker license in each state where you'll operate, post a surety bond, establish the business entity, and set up wholesale lender relationships. Many originators do this after building experience and a book of business under another company first."}},
+    {"@type":"Question","name":"Do I need to own a brokerage to be a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"No. You can operate as a mortgage broker by originating under an existing brokerage's license without owning your own company. Many people build a successful independent career this way and never open their own shop, while others use it as a stepping stone to ownership later."}},
+    {"@type":"Question","name":"How much does it cost to start a mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Beyond your individual licensing, starting a brokerage adds company-level state license fees, a surety bond, entity formation, technology, and operating costs. The total varies widely by state and scale. Joining an established platform that provides the company license and infrastructure can dramatically lower your startup cost."}},
+    {"@type":"Question","name":"Can I start a mortgage business with no money?","acceptedAnswer":{"@type":"Answer","text":"Starting a fully independent brokerage with no capital is difficult because of licensing, bonding, and operating costs. However, you can effectively run your own brand and book of business with minimal startup cost by originating under an established company's license and infrastructure — getting the independence without the full overhead."}},
+    {"@type":"Question","name":"How do I join a mortgage brokerage?","acceptedAnswer":{"@type":"Answer","text":"You join a mortgage brokerage by getting licensed, then having that company sponsor your license through the NMLS. The right brokerage gives you mentorship, lender access, technology, and a brand on day one. Choosing where to join is the most important early decision in building your mortgage business."}},
+    {"@type":"Question","name":"What's the difference between joining and starting a brokerage?","acceptedAnswer":{"@type":"Answer","text":"Joining means originating under an existing company's license and infrastructure — lower cost, faster start, built-in support. Starting means licensing your own company, posting a bond, and building infrastructure yourself — more control and economics, but more cost and responsibility. Many people join first, then start their own later."}},
+    {"@type":"Question","name":"Do I need a license to start a mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Yes, two layers. You need your individual mortgage loan originator license, and if you own the company, the business needs a company-level mortgage broker license in each state it operates, plus a surety bond. The individual license comes first; the company license applies only to owners."}},
+    {"@type":"Question","name":"What is a net branch in the mortgage business?","acceptedAnswer":{"@type":"Answer","text":"A net branch arrangement lets you operate a branch under a larger company's licenses and infrastructure while running it somewhat like your own. It can be a middle path between joining and fully starting your own brokerage. Terms vary widely, so the details and economics matter a lot."}},
+    {"@type":"Question","name":"How long does it take to start a mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Getting individually licensed takes a few weeks to a couple of months. Standing up your own brokerage — company licensing, bonding, lender approvals, and setup — can take additional months. Joining an established platform to run your own brand is far faster, often as quick as your individual license."}},
+    {"@type":"Question","name":"Do I need experience to start a mortgage business?","acceptedAnswer":{"@type":"Answer","text":"To originate, no prior experience is required. To run your own brokerage well, experience helps enormously, which is why most people originate under a strong company first to learn the business before going fully independent. Skipping that step is possible but harder."}},
+    {"@type":"Question","name":"What licenses does a mortgage brokerage need?","acceptedAnswer":{"@type":"Answer","text":"A brokerage needs a company mortgage broker license in each state where it does business, plus a surety bond per state. Every originator in the company also needs their individual license. State requirements vary, so multi-state operations involve maintaining multiple company licenses and bonds."}},
+    {"@type":"Question","name":"How do mortgage brokerages make money?","acceptedAnswer":{"@type":"Answer","text":"A brokerage earns from the loans its originators close, paid in a compliant, disclosed manner. As an owner, you earn on your own production and can earn an override on the production of originators working under your company. Building a team is how many broker-owners scale income."}},
+    {"@type":"Question","name":"Can I build a team when I start a mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Yes. Many broker-owners grow by recruiting and sponsoring other loan officers under their company's license and brand. This is a primary growth path: originate yourself, then build a team whose production adds to your business. It requires leadership and systems, not just origination skill."}},
+    {"@type":"Question","name":"What do I need besides a license to start a mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Beyond licensing and bonding, you need wholesale lender relationships, loan-origination technology, compliance processes, a brand, and a way to generate leads. The operational side is what makes a brokerage succeed or struggle, which is why infrastructure and support matter as much as the license."}},
+    {"@type":"Question","name":"Is it better to start my own brokerage or join one?","acceptedAnswer":{"@type":"Answer","text":"For most people, joining a strong company first is the smarter move: you get mentorship, lender access, technology, and a brand without the cost and risk of building them. You can always start your own later. The exception is experienced originators ready for full ownership."}},
+    {"@type":"Question","name":"How do I get lender relationships for my mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Wholesale lenders approve brokerages to submit loans after a vetting process. Building a broad lender network takes time and volume. Joining an established platform gives you instant access to its existing lender relationships — often hundreds — rather than building them one approval at a time."}},
+    {"@type":"Question","name":"What is a surety bond and why does my brokerage need one?","acceptedAnswer":{"@type":"Answer","text":"A surety bond is a financial guarantee required of licensed mortgage brokerage companies that protects consumers if the broker violates regulations. Each state sets its own bond amount. An individual originating under a company is typically covered by the company's bond and doesn't post their own."}},
+    {"@type":"Question","name":"Can I start a mortgage business part-time?","acceptedAnswer":{"@type":"Answer","text":"You can originate part-time under an existing company while keeping another job, which is a common low-risk start. Running your own fully independent brokerage part-time is harder given the operational demands. Many people start part-time as originators and scale into ownership as the business grows."}},
+    {"@type":"Question","name":"How do I market a new mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Marketing a mortgage business centers on referral relationships with real-estate agents and past clients, plus a strong personal brand. Building durable referral sources matters more than paid advertising for most originators. A memorable brand and consistent client service are the foundation of sustainable growth."}},
+    {"@type":"Question","name":"What's the biggest mistake people make starting a mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Going fully independent too soon, before learning the craft and building a book of business. Owning a brokerage adds operational and compliance burden that's hard to carry while you're still learning to originate. Most successful broker-owners built experience under a strong company first."}},
+    {"@type":"Question","name":"How do I keep my mortgage business compliant?","acceptedAnswer":{"@type":"Answer","text":"Compliance means maintaining your licenses and continuing education, following federal and state origination rules, proper disclosures, and sound recordkeeping. As a brokerage owner, you're responsible for company-wide compliance. Strong systems and an experienced support structure make this manageable rather than overwhelming."}},
+    {"@type":"Question","name":"Can I run my own brand without owning the company?","acceptedAnswer":{"@type":"Answer","text":"Often, yes. Many platforms let you operate under your own brand and build your own book of business while originating under the company's license and infrastructure. This gives you much of the independence and identity of ownership with far less cost and risk."}},
+    {"@type":"Question","name":"How do I scale a mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Scaling usually means increasing your own production, then recruiting and supporting other originators whose production adds to the business. It also means systems, technology, and a brand that attracts both clients and talent. Mentorship and a proven model shorten the path to scale."}},
+    {"@type":"Question","name":"What's the smartest first step to start a mortgage business?","acceptedAnswer":{"@type":"Answer","text":"Get licensed and join a strong company that gives you mentorship, lender access, and a brand — ideally one that lets you build your own identity and grow toward ownership. Learn the craft and build a book first; the infrastructure to own a brokerage is far easier to add once you've proven you can produce."}}
+  ]
+}
+</script>
+
+<div class="mc-scope">
+
+  <section class="hero">
+    <div class="container">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/mortgage-career/">Mortgage Career</a> <span>/</span> <span>Start a Mortgage Business</span></nav>
+      <span class="eyebrow hero-eyebrow">Mortgage Career &middot; Build Your Own</span>
+      <h1 class="display-1">How to Start a Mortgage Business</h1>
+      <p class="lead hero-subtitle">Ready to build something that's yours? Here's the honest path to starting a mortgage business &mdash; whether that means opening your own brokerage or running your own brand and book of business under an established platform, without the full overhead.</p>
+      <div class="hero-actions">
+        <a href="#start" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <a href="#paths" class="btn btn-secondary btn-large">See Your Options</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-dot"></span><span>Jim Blackburn &middot; NMLS #1072866</span>
+        <span class="trust-dot"></span><span>7&times; Scotsman Guide Top Producer</span>
+        <span class="trust-dot"></span><span>$500M+ Closed</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cols-2">
+        <div>
+          <span class="eyebrow">The Short Version</span>
+          <h2 class="mt-5">You don't have to choose between independence and support</h2>
+          <p class="lede">Starting a mortgage business can mean owning a brokerage outright &mdash; or running your own brand and book under a platform that carries the infrastructure. There's a smart path for each.</p>
+        </div>
+        <div class="body-text">
+          <p>If you want to start a mortgage business, the first thing to know is that "owning your own thing" comes in two forms. You can fully license and operate your own brokerage, or you can build your own brand and book of business while originating under an established company's license and lender network &mdash; the independence without the full cost and overhead.</p>
+          <p>Either way, you start with your individual license: the 20-hour course, the <a class="inline-link" href="/mortgage-career/safe-mlo-exam/">SAFE MLO exam</a>, and the steps in our <a class="inline-link" href="/mortgage-career/mortgage-license/">mortgage license guide</a>. The independent originator path is detailed in <a class="inline-link" href="/mortgage-career/mortgage-broker/">how to become a mortgage broker</a>.</p>
+          <p>Below: the two paths, what each requires, and the smartest way to build.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="paths">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Two Paths</span>
+        <h2 class="mt-5">Joining vs. starting your own brokerage</h2>
+        <p class="text-muted">For most people, the answer is sequential: build under support, then own.</p>
+      </div>
+      <div class="cols-2">
+        <div class="quote-card" style="border-left-color: var(--blue);">
+          <h3>Build Under a Platform</h3>
+          <p class="body-text"><strong>Lower cost, faster start.</strong> Originate under an established company's license and lender network while building your own brand and book of business. You get mentorship, hundreds of lenders, technology, and compliance support &mdash; without company licensing, bonding, or overhead.</p>
+          <p class="body-text">Best if you want independence and your own identity without the full cost and risk of ownership.</p>
+        </div>
+        <div class="quote-card" style="border-left-color: var(--gold);">
+          <h3>Own Your Own Brokerage</h3>
+          <p class="body-text"><strong>Full control, full responsibility.</strong> License your own company in each state, post a surety bond, build lender relationships, and stand up your own infrastructure. You keep more of the economics and can recruit a team &mdash; but you carry the cost and compliance burden.</p>
+          <p class="body-text">Best for experienced originators ready for true ownership.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tiers">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Meet You Where You Are</span>
+        <h2 class="mt-5">Three ways to build with us &mdash; based on where you are now</h2>
+        <p class="text-muted">Whether you're just getting licensed or already a high producer with your own brand, there's a path designed for your stage.</p>
+      </div>
+      <div class="role-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="role-card">
+          <span class="role-tag industry">Producing under $12M / year</span>
+          <h3>Join as a Loan Officer</h3>
+          <p>Get the support to grow fast. Ideal if you're newer, building a pipeline, or want a team behind you.</p>
+          <p class="body-text" style="font-size:var(--text-sm); margin-bottom: var(--s-5);"><strong>What you get:</strong> uncapped earning potential, warm leads, remote flexibility, a powerful AI CRM, growth paths to leadership, and Jim's sales &amp; accountability coaching.</p>
+          <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="door-cta">Apply as a Loan Officer</a>
+        </div>
+        <div class="role-card" style="border-color: var(--blue);">
+          <span class="role-tag licensed">Producing $12M+ / year</span>
+          <h3>Launch a Stairway Branch</h3>
+          <p>Run your own branch in your market with the brand and infrastructure already built for you.</p>
+          <p class="body-text" style="font-size:var(--text-sm); margin-bottom: var(--s-5);"><strong>What you get:</strong> a powerful brand that attracts clients, your own local website with strong SEO, branded materials for your market, educational lead-gen content, streamlined operations and processing, and Jim's leadership &amp; accountability coaching.</p>
+          <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="door-cta">Apply to Launch a Branch</a>
+        </div>
+        <div class="role-card" style="border-color: var(--gold);">
+          <span class="role-tag licensed">Producing $50M+ with your own brand</span>
+          <h3>Bring Your Brand Aboard</h3>
+          <p>Keep the brand you've built and plug into a deeper ecosystem of lenders, support, and community.</p>
+          <p class="body-text" style="font-size:var(--text-sm); margin-bottom: var(--s-5);"><strong>What you get:</strong> 300+ wholesale lender relationships, a national network of top professionals, discounted third-party vendors, regularly planned industry events, and access to Jim's personal brand coaching.</p>
+          <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="door-cta">Apply to Plug In</a>
+        </div>
+      </div>
+      <p class="text-muted text-small mt-5">Not sure which tier fits you? <a class="inline-link" href="/branches-careers-internships/">See all career opportunities at Stairway</a> or reach out and we'll help you find the right path.</p>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The Smart Build</span>
+        <h2 class="mt-5">How to start a mortgage business the smart way</h2>
+        <p class="text-muted">The path that minimizes risk and maximizes your odds of lasting success.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><div>
+          <h4>Get licensed and learn the craft</h4>
+          <p>Get your individual mortgage license and originate under a strong company first. You can't run a business you don't yet understand. This is where you learn deal structure, compliance, and client service &mdash; the foundation of any mortgage business.</p>
+        </div></div>
+        <div class="step"><span class="step-num">2</span><div>
+          <h4>Build your own brand and book of business</h4>
+          <p>Under the right platform, you can run your own brand and grow your own client base while the company carries the license, lender network, and infrastructure. This is starting a mortgage business with the overhead removed &mdash; independence without the full cost.</p>
+        </div></div>
+        <div class="step"><span class="step-num">3</span><div>
+          <h4>Scale &mdash; and own when you're ready</h4>
+          <p>Grow your production, then recruit and support other originators whose business adds to yours. When you've proven you can produce and lead, full brokerage ownership becomes a far easier, lower-risk step. Build first, own second.</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="container-narrow">
+      <span class="eyebrow">I Built One</span>
+      <div class="story-rule"></div>
+      <p class="story-lede">Build the book first. The business gets easier after that.</p>
+      <p>I didn't start by owning anything. I came from about ten years in financial advising, jumped to mortgages in 2008, got my license (NMLS #1072866), and learned the craft before I built a brand of my own. That order mattered. The originators I've seen struggle are the ones who tried to run a business before they could reliably produce.</p>
+      <p>Seven Scotsman Guide Top Producer honors and $500M+ in closed loans later, here's my honest advice for starting a mortgage business: build your book under strong support, develop a brand people remember, and grow toward ownership from a position of strength. I broker to 300+ lenders, and I'd rather help you build the right way than watch you carry overhead you're not ready for.</p>
+    </div>
+  </section>
+
+  <section class="section section-ink">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-gold">Build It With Us</span>
+        <h2 class="mt-5">Your own brand, our infrastructure behind it</h2>
+        <p class="text-muted">Run your own book of business with the support, lender access, and mentorship that make it work.</p>
+      </div>
+      <div class="cols-3">
+        <div class="feature"><div class="feature-icon">&#9650;</div><h4>Mentorship from a top producer</h4><p class="text-muted">Build under Jim Blackburn (NMLS #1072866), a 7&times; Scotsman Guide Top Producer with $500M+ closed.</p></div>
+        <div class="feature"><div class="feature-icon">&#9671;</div><h4>Your brand, not a cubicle</h4><p class="text-muted">Run your own identity and book of business with infrastructure that carries the heavy lifting.</p></div>
+        <div class="feature"><div class="feature-icon">&#9678;</div><h4>300+ lenders, day one</h4><p class="text-muted">Skip years of lender-approval grind. Access a deep lender network from the start.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container container-narrow">
+      <div class="section-head" style="margin-bottom: var(--s-7);">
+        <span class="eyebrow">Questions</span>
+        <h2 class="mt-5">Start a mortgage business: 25 questions, answered</h2>
+        <p class="text-muted">The real answers about starting, joining, and owning in the mortgage business.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">How do I start a mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Most people start a mortgage business by first getting licensed as an originator and joining an established brokerage to learn the craft, then opening their own brokerage once they understand the business. Starting your own shop requires a company-level state license, a surety bond, and lender relationships on top of your individual license.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I start a mortgage brokerage?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">To start a mortgage brokerage you obtain a company mortgage broker license in each state where you'll operate, post a surety bond, establish the business entity, and set up wholesale lender relationships. Many originators do this after building experience and a book of business under another company first.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need to own a brokerage to be a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. You can operate as a mortgage broker by originating under an existing brokerage's license without owning your own company. Many people build a successful independent career this way and never open their own shop, while others use it as a stepping stone to ownership later.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How much does it cost to start a mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Beyond your individual licensing, starting a brokerage adds company-level state license fees, a surety bond, entity formation, technology, and operating costs. The total varies widely by state and scale. Joining an established platform that provides the company license and infrastructure can dramatically lower your startup cost.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I start a mortgage business with no money?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Starting a fully independent brokerage with no capital is difficult because of licensing, bonding, and operating costs. However, you can effectively run your own brand and book of business with minimal startup cost by originating under an established company's license and infrastructure &mdash; getting the independence without the full overhead.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I join a mortgage brokerage?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">You join a mortgage brokerage by getting licensed, then having that company sponsor your license through the NMLS. The right brokerage gives you mentorship, lender access, technology, and a brand on day one. Choosing where to join is the most important early decision in building your mortgage business.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the difference between joining and starting a brokerage?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Joining means originating under an existing company's license and infrastructure &mdash; lower cost, faster start, built-in support. Starting means licensing your own company, posting a bond, and building infrastructure yourself &mdash; more control and economics, but more cost and responsibility. Many people join first, then start their own later.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need a license to start a mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes, two layers. You need your individual mortgage loan originator license, and if you own the company, the business needs a company-level mortgage broker license in each state it operates, plus a surety bond. The individual license comes first; the company license applies only to owners.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is a net branch in the mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A net branch arrangement lets you operate a branch under a larger company's licenses and infrastructure while running it somewhat like your own. It can be a middle path between joining and fully starting your own brokerage. Terms vary widely, so the details and economics matter a lot.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How long does it take to start a mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Getting individually licensed takes a few weeks to a couple of months. Standing up your own brokerage &mdash; company licensing, bonding, lender approvals, and setup &mdash; can take additional months. Joining an established platform to run your own brand is far faster, often as quick as your individual license.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need experience to start a mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">To originate, no prior experience is required. To run your own brokerage well, experience helps enormously, which is why most people originate under a strong company first to learn the business before going fully independent. Skipping that step is possible but harder.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What licenses does a mortgage brokerage need?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A brokerage needs a company mortgage broker license in each state where it does business, plus a surety bond per state. Every originator in the company also needs their individual license. State requirements vary, so multi-state operations involve maintaining multiple company licenses and bonds.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do mortgage brokerages make money?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A brokerage earns from the loans its originators close, paid in a compliant, disclosed manner. As an owner, you earn on your own production and can earn an override on the production of originators working under your company. Building a team is how many broker-owners scale income.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I build a team when I start a mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Many broker-owners grow by recruiting and sponsoring other loan officers under their company's license and brand. This is a primary growth path: originate yourself, then build a team whose production adds to your business. It requires leadership and systems, not just origination skill.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What do I need besides a license to start a mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Beyond licensing and bonding, you need wholesale lender relationships, loan-origination technology, compliance processes, a brand, and a way to generate leads. The operational side is what makes a brokerage succeed or struggle, which is why infrastructure and support matter as much as the license.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is it better to start my own brokerage or join one?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">For most people, joining a strong company first is the smarter move: you get mentorship, lender access, technology, and a brand without the cost and risk of building them. You can always start your own later. The exception is experienced originators ready for full ownership.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I get lender relationships for my mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Wholesale lenders approve brokerages to submit loans after a vetting process. Building a broad lender network takes time and volume. Joining an established platform gives you instant access to its existing lender relationships &mdash; often hundreds &mdash; rather than building them one approval at a time.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is a surety bond and why does my brokerage need one?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A surety bond is a financial guarantee required of licensed mortgage brokerage companies that protects consumers if the broker violates regulations. Each state sets its own bond amount. An individual originating under a company is typically covered by the company's bond and doesn't post their own.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I start a mortgage business part-time?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">You can originate part-time under an existing company while keeping another job, which is a common low-risk start. Running your own fully independent brokerage part-time is harder given the operational demands. Many people start part-time as originators and scale into ownership as the business grows.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I market a new mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Marketing a mortgage business centers on referral relationships with real-estate agents and past clients, plus a strong personal brand. Building durable referral sources matters more than paid advertising for most originators. A memorable brand and consistent client service are the foundation of sustainable growth.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the biggest mistake people make starting a mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Going fully independent too soon, before learning the craft and building a book of business. Owning a brokerage adds operational and compliance burden that's hard to carry while you're still learning to originate. Most successful broker-owners built experience under a strong company first.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I keep my mortgage business compliant?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Compliance means maintaining your licenses and continuing education, following federal and state origination rules, proper disclosures, and sound recordkeeping. As a brokerage owner, you're responsible for company-wide compliance. Strong systems and an experienced support structure make this manageable rather than overwhelming.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I run my own brand without owning the company?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Often, yes. Many platforms let you operate under your own brand and build your own book of business while originating under the company's license and infrastructure. This gives you much of the independence and identity of ownership with far less cost and risk.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I scale a mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Scaling usually means increasing your own production, then recruiting and supporting other originators whose production adds to the business. It also means systems, technology, and a brand that attracts both clients and talent. Mentorship and a proven model shorten the path to scale.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the smartest first step to start a mortgage business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Get licensed and join a strong company that gives you mentorship, lender access, and a brand &mdash; ideally one that lets you build your own identity and grow toward ownership. Learn the craft and build a book first; the infrastructure to own a brokerage is far easier to add once you've proven you can produce.</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-band" id="start">
+    <div class="container">
+      <span class="eyebrow eyebrow-gold">Ready When You Are</span>
+      <h2 class="mt-5">Build a mortgage business that's truly yours</h2>
+      <p>Whether you want to run your own brand under a strong platform or work toward full ownership, the smart first step is a conversation about the right path for you. No pressure &mdash; just an honest plan for building something of your own.</p>
+      <div class="hero-actions">
+        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <a href="/mortgage-career/mortgage-broker/" class="btn btn-secondary btn-large">Read the Broker Guide</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Keep Reading</span><h2 class="mt-5">More on building a mortgage career</h2></div>
+      <div class="role-grid">
+        <a href="/mortgage-career/mortgage-broker/" class="role-card"><span class="role-tag licensed">Licensed</span><h3>How to Become a Mortgage Broker</h3><p>The independent originator path, start to finish.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/loan-officer/" class="role-card"><span class="role-tag licensed">Licensed</span><h3>How to Become a Loan Officer</h3><p>Where almost everyone starts before owning.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/mortgage-marketing/" class="role-card"><span class="role-tag industry">Grow</span><h3>Mortgage Marketing &amp; Branding</h3><p>How to build the brand your business runs on.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/" class="role-card"><span class="role-tag industry">Hub</span><h3>Mortgage Career Guide</h3><p>Every role and how to choose your path.</p><span class="door-cta">Back to the hub</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="disclaimer">
+    <div class="container">
+      <p>Stairway Mortgage is a division of NEXA Mortgage LLC. This page is an educational resource about building a mortgage business. Company and individual licensing, surety bond, and operating requirements are set by the federal SAFE Act, the NMLS, and individual state regulators and are subject to change; this is not legal, tax, or business-formation advice. Confirm current requirements at the official <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS Consumer Access</a>. Income references are illustrative and not a promise of earnings.</p>
+    </div>
+  </section>
+
+</div>
+
+<script is:inline>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
+  });
+</script>
+
+</Layout>

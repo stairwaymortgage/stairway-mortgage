@@ -1,0 +1,758 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="How to Become a Mortgage Broker or Loan Officer | Mortgage Career Guide"
+  description="The complete, no-cost guide to a mortgage career: how to become a mortgage broker or loan officer, get your NMLS license, pass the SAFE MLO exam, and build a real business. Learn the path from a 7× Scotsman Guide Top Producer."
+>
+
+<style is:global>
+  /* ============ MORTGAGE CAREER HUB — scoped to .mc-scope ============ */
+  /* Self-contained design tokens + page CSS, namespaced so bare selectors
+     (.container, .btn, .hero, h2, p, a, *) do not leak into the global site. */
+  .mc-scope {
+    color-scheme: light only;
+    --ink: #0A0E1A;
+    --ink-2: #1E2433;
+    --ink-3: #2C3548;
+    --ink-light: #4A5568;
+    --ink-lighter: #6B7280;
+    --paper: #FAFAF7;
+    --paper-2: #F4F4EE;
+    --paper-3: #EDEDE5;
+    --white: #FFFFFF;
+    --blue: #1845D6;
+    --blue-deep: #0F2EA0;
+    --blue-soft: #E8EEFF;
+    --blue-tint: #F2F5FF;
+    --gold: #B8860B;
+    --gold-soft: #F5EBD0;
+    --rust: #8B2C2C;
+    --green: #2E9E2E;
+    --border: #E5E5DE;
+    --border-strong: #D4D4C8;
+    --border-dark: #2C3548;
+
+    --text-2xs: 0.6875rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1.0625rem;
+    --text-md: 1.1875rem;
+    --text-lg: 1.375rem;
+    --text-xl: 1.625rem;
+    --text-2xl: 2rem;
+    --text-3xl: 2.75rem;
+    --text-4xl: 3.75rem;
+    --text-5xl: 5rem;
+
+    --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+    --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4rem;
+    --s-9: 6rem; --s-10: 8rem; --s-11: 10rem;
+
+    --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    font-family: var(--sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .mc-scope { background-color: #FAFAF7 !important; color: #0A0E1A !important; color-scheme: light only !important; }
+    .mc-scope * { forced-color-adjust: none; }
+  }
+
+  .mc-scope *, .mc-scope *::before, .mc-scope *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .mc-scope { scroll-behavior: smooth; }
+  .mc-scope img, .mc-scope svg { display: block; max-width: 100%; }
+  .mc-scope a { color: inherit; text-decoration: none; }
+  .mc-scope button { font: inherit; cursor: pointer; border: 0; background: none; }
+
+  .mc-scope .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-wide { max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }
+
+  /* ============ TYPOGRAPHY ============ */
+  .mc-scope .eyebrow {
+    font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue); font-weight: 500; display: inline-block;
+  }
+  .mc-scope .eyebrow-gold { color: var(--gold); }
+  .mc-scope .display-1 {
+    font-family: var(--serif); font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+    font-weight: 400; line-height: 1.0; letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 144, "SOFT" 30; color: var(--ink);
+  }
+  .mc-scope .display-2 {
+    font-family: var(--serif); font-size: clamp(2rem, 5vw, var(--text-3xl));
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 100, "SOFT" 50; color: var(--ink);
+  }
+  .mc-scope h2 {
+    font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+    font-weight: 450; line-height: 1.1; letter-spacing: -0.015em;
+    color: var(--ink); margin-bottom: var(--s-5);
+    font-variation-settings: "opsz" 60, "SOFT" 50;
+  }
+  .mc-scope h3 {
+    font-family: var(--serif); font-size: var(--text-xl); font-weight: 500;
+    line-height: 1.25; letter-spacing: -0.01em; color: var(--ink);
+    margin-bottom: var(--s-4); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope h4 {
+    font-family: var(--sans); font-size: var(--text-md); font-weight: 600;
+    line-height: 1.3; color: var(--ink); margin-bottom: var(--s-3); letter-spacing: -0.005em;
+  }
+  .mc-scope p { margin-bottom: var(--s-4); }
+  .mc-scope p:last-child { margin-bottom: 0; }
+  .mc-scope p.lead { font-size: var(--text-lg); line-height: 1.55; color: var(--ink-2); font-weight: 350; }
+  .mc-scope p.lede {
+    font-family: var(--serif); font-size: var(--text-xl); line-height: 1.45;
+    color: var(--ink); font-weight: 350; font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .body-text { color: var(--ink-2); }
+  .mc-scope .text-muted { color: var(--ink-lighter); }
+  .mc-scope .text-small { font-size: var(--text-sm); }
+  .mc-scope .text-mono { font-family: var(--mono); font-feature-settings: 'tnum' 1; }
+  .mc-scope strong, .mc-scope b { font-weight: 600; color: var(--ink); }
+  .mc-scope em, .mc-scope i { font-style: normal; }
+  .mc-scope a.inline-link { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  .mc-scope a.inline-link:hover { color: var(--blue-deep); }
+
+  /* ============ BUTTONS ============ */
+  .mc-scope .btn {
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    padding: var(--s-3) var(--s-5); font-family: var(--sans);
+    font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.005em;
+    border-radius: 100px; transition: all 0.18s ease; white-space: nowrap;
+  }
+  .mc-scope .btn-primary { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+  .mc-scope .btn-primary:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-1px); }
+  .mc-scope .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border-strong); }
+  .mc-scope .btn-secondary:hover { border-color: var(--ink); }
+  .mc-scope .btn-light { background: var(--white); color: var(--ink); border: 1px solid var(--border); }
+  .mc-scope .btn-light:hover { background: var(--paper-2); }
+  .mc-scope .btn-large { padding: var(--s-4) var(--s-6); font-size: var(--text-base); }
+  .mc-scope .btn-arrow { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--blue); font-weight: 500; transition: gap 0.18s; }
+  .mc-scope .btn-arrow:hover { gap: var(--s-3); }
+  .mc-scope .btn-arrow::after { content: '→'; font-family: var(--sans); }
+
+  /* ============ HERO ============ */
+  .mc-scope .hero { padding: var(--s-9) 0 var(--s-8); border-bottom: 1px solid var(--border); }
+  .mc-scope .breadcrumb {
+    display: flex; gap: var(--s-2); font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.08em; color: var(--ink-lighter); text-transform: uppercase; margin-bottom: var(--s-7);
+  }
+  .mc-scope .breadcrumb a { color: var(--ink-lighter); }
+  .mc-scope .breadcrumb a:hover { color: var(--blue); }
+  .mc-scope .breadcrumb span:last-child { color: var(--ink); }
+  .mc-scope .hero-eyebrow { margin-bottom: var(--s-5); }
+  .mc-scope .hero h1 { margin-bottom: var(--s-6); max-width: 20ch; }
+  .mc-scope .hero-subtitle { max-width: 60ch; margin-bottom: var(--s-7); }
+  .mc-scope .hero-actions { display: flex; gap: var(--s-3); align-items: center; flex-wrap: wrap; margin-bottom: var(--s-6); }
+  .mc-scope .hero-trust {
+    font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-lighter);
+    letter-spacing: 0.02em; display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap;
+  }
+  .mc-scope .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+  /* ============ 3-DOOR ROUTER ============ */
+  .mc-scope .doors { padding: var(--s-8) 0; background: var(--paper-2); border-bottom: 1px solid var(--border); }
+  .mc-scope .doors-head { text-align: center; max-width: 50ch; margin: 0 auto var(--s-7); }
+  .mc-scope .door-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+  .mc-scope .door {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease; position: relative; overflow: hidden;
+  }
+  .mc-scope .door:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(10,14,26,0.08); }
+  .mc-scope .door-num { font-family: var(--mono); font-size: var(--text-xs); color: var(--blue); letter-spacing: 0.1em; margin-bottom: var(--s-4); display: block; }
+  .mc-scope .door h3 { margin-bottom: var(--s-3); }
+  .mc-scope .door p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-5); }
+  .mc-scope .door .door-cta { font-family: var(--sans); font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; align-items: center; gap: var(--s-2); }
+  .mc-scope .door .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .door:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 860px) { .mc-scope .door-grid { grid-template-columns: 1fr; } }
+
+  /* ============ SECTION ============ */
+  .mc-scope .section { padding: var(--s-9) 0; }
+  .mc-scope .section-tint { background: var(--paper-2); }
+  .mc-scope .section-ink { background: var(--ink); color: var(--paper); }
+  .mc-scope .section-ink h2, .mc-scope .section-ink h3, .mc-scope .section-ink h4 { color: var(--white); }
+  .mc-scope .section-ink .text-muted { color: #9CA3AF; }
+  .mc-scope .section-head { max-width: 60ch; margin-bottom: var(--s-8); }
+  .mc-scope .section-head .eyebrow { margin-bottom: var(--s-4); }
+
+  /* ============ STEPS ============ */
+  .mc-scope .steps { display: grid; gap: var(--s-5); }
+  .mc-scope .step {
+    display: grid; grid-template-columns: 60px 1fr; gap: var(--s-5);
+    padding: var(--s-6); background: var(--white); border: 1px solid var(--border); border-radius: 6px;
+  }
+  .mc-scope .step-num {
+    font-family: var(--serif); font-size: var(--text-2xl); color: var(--blue);
+    font-variation-settings: "opsz" 60; line-height: 1;
+  }
+  .mc-scope .step h4 { margin-bottom: var(--s-2); }
+  .mc-scope .step p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .step p + p { margin-top: var(--s-3); }
+
+  /* ============ ROLE GRID ============ */
+  .mc-scope .role-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+  .mc-scope .role-card {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease;
+  }
+  .mc-scope .role-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10,14,26,0.06); }
+  .mc-scope .role-tag {
+    font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 100px; display: inline-block; margin-bottom: var(--s-4);
+  }
+  .mc-scope .role-tag.licensed { background: var(--blue-soft); color: var(--blue-deep); }
+  .mc-scope .role-tag.industry { background: var(--paper-3); color: var(--ink-light); }
+  .mc-scope .role-card h3 { font-size: var(--text-lg); margin-bottom: var(--s-2); }
+  .mc-scope .role-card p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-4); }
+  .mc-scope .role-card .door-cta { font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; gap: var(--s-2); align-items: center; }
+  .mc-scope .role-card .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .role-card:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 760px) { .mc-scope .role-grid { grid-template-columns: 1fr; } }
+
+  /* ============ STORY INTERLUDE ============ */
+  .mc-scope .story { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; }
+  .mc-scope .story .container-narrow { position: relative; }
+  .mc-scope .story .eyebrow { color: var(--gold); margin-bottom: var(--s-5); }
+  .mc-scope .story p { color: #D8DCE4; font-size: var(--text-md); line-height: 1.7; margin-bottom: var(--s-5); }
+  .mc-scope .story p.story-lede { font-family: var(--serif); font-size: var(--text-xl); color: var(--white); font-variation-settings: "opsz" 30; line-height: 1.45; }
+  .mc-scope .story strong { color: var(--white); }
+  .mc-scope .story-photo {
+    width: 100%; max-width: 420px; border-radius: 6px; margin: var(--s-6) 0;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .mc-scope .story-caption { font-family: var(--mono); font-size: var(--text-xs); color: #9CA3AF; letter-spacing: 0.04em; margin-top: var(--s-2); }
+  .mc-scope .story-rule { width: 40px; height: 2px; background: var(--gold); margin-bottom: var(--s-6); }
+
+  /* ============ STATS BAR ============ */
+  .mc-scope .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-5); padding: var(--s-7) 0; }
+  .mc-scope .stat { text-align: center; }
+  .mc-scope .stat-num { font-family: var(--serif); font-size: var(--text-3xl); color: var(--ink); font-variation-settings: "opsz" 80; line-height: 1; margin-bottom: var(--s-2); }
+  .mc-scope .section-ink .stat-num { color: var(--white); }
+  .mc-scope .stat-label { font-family: var(--mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-lighter); }
+  @media (max-width: 760px) { .mc-scope .stats-bar { grid-template-columns: repeat(2, 1fr); gap: var(--s-6); } }
+
+  /* ============ FEATURE COLUMNS ============ */
+  .mc-scope .cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); }
+  .mc-scope .cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-7); }
+  .mc-scope .feature h4 { margin-bottom: var(--s-3); }
+  .mc-scope .feature p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .feature-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--blue-soft); display: flex; align-items: center; justify-content: center; margin-bottom: var(--s-4); color: var(--blue); font-family: var(--serif); font-size: var(--text-lg); }
+  @media (max-width: 860px) { .mc-scope .cols-3 { grid-template-columns: 1fr; } .mc-scope .cols-2 { grid-template-columns: 1fr; } }
+
+  /* ============ TESTIMONIAL ============ */
+  .mc-scope .quote-card { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 6px; padding: var(--s-7); }
+  .mc-scope .quote-card blockquote { font-family: var(--serif); font-size: var(--text-lg); line-height: 1.5; color: var(--ink); font-variation-settings: "opsz" 40; margin-bottom: var(--s-5); }
+  .mc-scope .quote-author { display: flex; align-items: center; gap: var(--s-4); }
+  .mc-scope .quote-author img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 1px solid var(--border); }
+  .mc-scope .quote-author .qa-name { font-weight: 600; font-size: var(--text-sm); }
+  .mc-scope .quote-author .qa-title { font-size: var(--text-xs); color: var(--ink-lighter); font-family: var(--mono); }
+
+  /* ============ LEAD MAGNET / EMAIL ============ */
+  .mc-scope .magnet { background: var(--blue-tint); border: 1px solid var(--blue-soft); border-radius: 8px; padding: var(--s-8); }
+  .mc-scope .magnet-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--s-8); align-items: center; }
+  .mc-scope .magnet h2 { margin-bottom: var(--s-4); }
+  .mc-scope .magnet p { color: var(--ink-light); }
+  .mc-scope .magnet-form { display: flex; flex-direction: column; gap: var(--s-3); }
+  .mc-scope .magnet-form input {
+    padding: var(--s-4); border: 1px solid var(--border-strong); border-radius: 6px;
+    font-family: var(--sans); font-size: var(--text-base); background: var(--white);
+  }
+  .mc-scope .magnet-form input:focus { outline: 2px solid var(--blue); border-color: var(--blue); }
+  .mc-scope .form-note { font-size: var(--text-xs); color: var(--ink-lighter); }
+  @media (max-width: 860px) { .mc-scope .magnet-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+
+  /* ============ FAQ ============ */
+  .mc-scope .faq-list { border-top: 1px solid var(--border); }
+  .mc-scope .faq-item { border-bottom: 1px solid var(--border); }
+  .mc-scope .faq-q {
+    width: 100%; text-align: left; padding: var(--s-5) 0; display: flex;
+    justify-content: space-between; align-items: center; gap: var(--s-4);
+    font-family: var(--serif); font-size: var(--text-md); font-weight: 500;
+    color: var(--ink); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .faq-q:hover { color: var(--blue); }
+  .mc-scope .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; transition: transform 0.2s; }
+  .mc-scope .faq-icon::before, .mc-scope .faq-icon::after { content: ''; position: absolute; background: var(--blue); border-radius: 2px; }
+  .mc-scope .faq-icon::before { top: 9px; left: 0; width: 20px; height: 2px; }
+  .mc-scope .faq-icon::after { top: 0; left: 9px; width: 2px; height: 20px; transition: transform 0.2s; }
+  .mc-scope .faq-item.open .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+  .mc-scope .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+  .mc-scope .faq-a-inner { padding: 0 0 var(--s-5); color: var(--ink-light); font-size: var(--text-sm); line-height: 1.65; max-width: 70ch; }
+  .mc-scope .faq-item.open .faq-a { max-height: 600px; }
+
+  /* ============ CTA BAND ============ */
+  .mc-scope .cta-band { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; text-align: center; }
+  .mc-scope .cta-band h2 { color: var(--white); max-width: 22ch; margin: 0 auto var(--s-5); }
+  .mc-scope .cta-band p { color: #B8BEC9; max-width: 54ch; margin: 0 auto var(--s-7); }
+  .mc-scope .cta-band .hero-actions { justify-content: center; }
+  .mc-scope .cta-band .btn-primary { background: var(--white); color: var(--ink); border-color: var(--white); }
+  .mc-scope .cta-band .btn-primary:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .mc-scope .cta-band .btn-secondary { color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .mc-scope .cta-band .btn-secondary:hover { border-color: var(--white); }
+
+  /* ============ COMPLIANCE / DISCLAIMER ============ */
+  .mc-scope .disclaimer { padding: var(--s-7) 0; background: var(--paper-2); border-top: 1px solid var(--border); }
+  .mc-scope .disclaimer p { font-size: var(--text-xs); color: var(--ink-lighter); line-height: 1.6; max-width: 90ch; margin-bottom: var(--s-3); }
+
+  .mc-scope .mt-5 { margin-top: var(--s-5); }
+  .mc-scope .mt-7 { margin-top: var(--s-7); }
+</style>
+
+<!-- ============ JSON-LD: FAQ ============ -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do you become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"To become a mortgage broker or loan officer you register with the Nationwide Multistate Licensing System (NMLS), complete the required 20 hours of NMLS-approved pre-licensure education, pass the SAFE MLO national exam, clear a background and credit check, and have your application sponsored by a licensed mortgage company. Most people complete the process in a matter of weeks."}},
+    {"@type":"Question","name":"Do you need a college degree to become a loan officer?","acceptedAnswer":{"@type":"Answer","text":"No. There is no college-degree requirement to become a mortgage loan officer. The requirement is the 20-hour SAFE pre-licensure course, a passing score on the SAFE MLO exam, and meeting your state's licensing standards. Many of the most successful loan officers came from entirely different careers."}},
+    {"@type":"Question","name":"How long does it take to get a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"Many people complete pre-licensure education, sit for the SAFE MLO exam, and receive their license within a few weeks to a couple of months, depending on how quickly they finish the 20-hour course, schedule the exam, and how long their state and the background/credit checks take to process."}},
+    {"@type":"Question","name":"How much does it cost to become a mortgage loan officer?","acceptedAnswer":{"@type":"Answer","text":"Core costs typically include the 20-hour SAFE pre-licensure course, the SAFE MLO exam fee, the MU4 application fee, and background and credit check fees. Total out-of-pocket commonly starts around a few hundred dollars and varies by state. Some sponsoring companies cover or reimburse parts of the process."}},
+    {"@type":"Question","name":"What is the SAFE MLO exam?","acceptedAnswer":{"@type":"Answer","text":"The SAFE MLO exam is the national licensing test created under the federal SAFE Act and administered through the NMLS. It covers federal mortgage law, general mortgage knowledge, mortgage loan origination activities, ethics, and a uniform state content section. You must pass it to be licensed as a mortgage loan originator."}},
+    {"@type":"Question","name":"Can you become a loan officer with no experience?","acceptedAnswer":{"@type":"Answer","text":"Yes. The mortgage industry routinely welcomes career-changers with no prior mortgage experience. What matters is completing the licensing requirements and then learning the craft on the job. Strong mentorship and a supportive brokerage make the difference for someone starting fresh."}},
+    {"@type":"Question","name":"What is the difference between a mortgage broker and a loan officer?","acceptedAnswer":{"@type":"Answer","text":"A mortgage loan officer is the licensed professional who works directly with borrowers to originate a loan. A mortgage broker is an independent business that can shop a borrower's loan across many wholesale lenders rather than offering a single institution's products. Many loan officers operate within or as independent mortgage brokerages."}}
+  ]
+}
+</script>
+
+<div class="mc-scope">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/">Home</a> <span>/</span> <span>Mortgage Career</span>
+      </nav>
+      <span class="eyebrow hero-eyebrow">Mortgage Career &middot; The Complete Guide</span>
+      <h1 class="display-1">How to Become a Mortgage Broker or Loan Officer</h1>
+      <p class="lead hero-subtitle">Everything you need to start a mortgage career &mdash; how to get your NMLS license, pass the SAFE MLO exam, choose your path, and build a real business. Free, organized, and taught by someone who has actually done it: a 7&times; Scotsman Guide Top Producer with over $500M closed.</p>
+      <div class="hero-actions">
+        <a href="#start" class="btn btn-primary btn-large">See My Options</a>
+        <a href="#roles" class="btn btn-secondary btn-large">Explore Mortgage Careers</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-dot"></span>
+        <span>Jim Blackburn &middot; NMLS #1072866</span>
+        <span class="trust-dot"></span>
+        <span>7&times; Scotsman Guide Top Producer</span>
+        <span class="trust-dot"></span>
+        <span>$500M+ Closed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3-DOOR ROUTER ============ -->
+  <section class="doors" id="start">
+    <div class="container">
+      <div class="doors-head">
+        <span class="eyebrow">Start Here</span>
+        <h2 class="mt-5">Which one sounds like you?</h2>
+        <p class="text-muted">Pick the door that fits where you are right now. Each path is built for your starting point &mdash; and every one of them leads to the same place: a real mortgage career, taught step by step.</p>
+      </div>
+      <div class="door-grid">
+        <a href="/mortgage-career/career-change/" class="door">
+          <span class="door-num">PATH 01</span>
+          <h3>Changing Careers?</h3>
+          <p>You don't need a finance background or a college degree. People come into this business from nursing, IT, retail, the military &mdash; everywhere. Here's the honest, complete on-ramp.</p>
+          <span class="door-cta">Start a mortgage career</span>
+        </a>
+        <a href="/mortgage-career/for-licensed-professionals/" class="door">
+          <span class="door-num">PATH 02</span>
+          <h3>Already Licensed?</h3>
+          <p>Realtor, insurance agent, financial advisor, or attorney? You already have the relationships. Adding a mortgage license can turn your existing network into a second income stream.</p>
+          <span class="door-cta">See the licensed-pro path</span>
+        </a>
+        <a href="/mortgage-career/start-a-mortgage-business/" class="door">
+          <span class="door-num">PATH 03</span>
+          <h3>Already a Loan Officer?</h3>
+          <p>Working retail and feeling capped? Learn what it takes to go independent in the wholesale channel &mdash; more products, more control, and a brand that's actually yours.</p>
+          <span class="door-cta">Explore going independent</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IS THIS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="cols-2">
+        <div>
+          <span class="eyebrow">The Short Version</span>
+          <h2 class="mt-5">Becoming a mortgage loan officer is simpler than most people think</h2>
+          <p class="lede">There's a myth that you need a finance degree, years of banking experience, or some special connection to break into the mortgage business. You don't.</p>
+        </div>
+        <div class="body-text">
+          <p>A <strong>mortgage loan officer</strong> (also called a mortgage loan originator, or MLO) is the licensed professional who helps people get a home loan &mdash; reviewing their situation, matching them to the right program, and guiding them from application to closing.</p>
+          <p>To do it legally, you complete a short list of requirements set by the federal <a class="inline-link" href="https://www.consumerfinance.gov/" target="_blank" rel="noopener">SAFE Act</a> and administered through the <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS</a>: a 20-hour pre-licensure course, a national exam, and a background and credit check. Most people finish in a matter of weeks.</p>
+          <p>The licensing is the easy part. The real career &mdash; building relationships, earning trust, and growing a book of business &mdash; is what we actually teach here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6 STEPS ============ -->
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The Path</span>
+        <h2 class="mt-5">How to become a mortgage loan officer, step by step</h2>
+        <p class="text-muted">Six steps from where you are today to your first closed loan. None of them require a degree, and you can do most of it from home.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>
+            <h4>Confirm you're eligible &amp; register with the NMLS</h4>
+            <p>Create your account in the Nationwide Multistate Licensing System and request your unique NMLS ID. This is the federal registry that tracks every licensed mortgage professional in the country.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>
+            <h4>Complete your 20 hours of pre-licensure education</h4>
+            <p>Take the NMLS-approved 20-hour SAFE course. It covers federal mortgage law, general mortgage knowledge, loan origination, ethics, and a uniform state component. You can take it live or self-paced &mdash; <a class="inline-link" href="/mortgage-career/safe-mlo-exam/">here's how the course and exam work</a>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div>
+            <h4>Pass the SAFE MLO exam</h4>
+            <p>Sit for the national licensing exam through the NMLS. With good prep materials and practice tests, most people pass on their first or second attempt. We'll point you to strong, affordable prep.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <div>
+            <h4>Clear your background &amp; credit check and file your application</h4>
+            <p>Submit your MU4 application, fingerprints, and authorize the background and credit review. There's no minimum credit score required to be licensed &mdash; the review is about disclosure and history, not a score cutoff.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">5</span>
+          <div>
+            <h4>Get sponsored by a licensed mortgage company</h4>
+            <p>Your license has to be sponsored by a licensed company to become active. This is where joining the right team matters most &mdash; the difference between a license and a <em>career</em> is the mentorship, brand, and lender access behind you.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">6</span>
+          <div>
+            <h4>Learn the business &mdash; and start closing</h4>
+            <p>Licensing gets you in the door. Knowing how to find clients, structure deals, and build a brand is what makes you successful. That's the part we coach &mdash; the same playbook behind $500M+ in closed loans.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STORY INTERLUDE: THE HUDDLE ============ -->
+  <section class="story">
+    <div class="container-narrow">
+      <span class="eyebrow">A Quick Story &mdash; Because It's the Whole Philosophy</span>
+      <div class="story-rule"></div>
+      <p class="story-lede">You don't learn this business from the stands. You learn it in the huddle.</p>
+      <p>I'm a Michigan kid. I grew up next door to another Michigan kid named Mat Ishbia, and we both ended up at Michigan State. When the team won the national championship in 2000, I was in the stands &mdash; and Mat was the walk-on who'd get sent in for the last couple of minutes. Easy to overlook.</p>
+      <p>But here's what I noticed: between whistles, he wasn't drifting. He was in every huddle, right next to one of the best coaches in the game. While everyone watched the scoreboard, he was &mdash; as I saw it &mdash; quietly learning the thing that actually compounds.</p>
+
+      <!-- PHOTO SLOT: Jim + Mat. Replace src when located. -->
+      <img class="story-photo"
+           src="PEXELS_ID_OR_REAL_PHOTO_jim_and_mat"
+           alt="Jim Blackburn with Mat Ishbia"
+           onerror="this.style.display='none'; var c=this.nextElementSibling; if(c) c.style.display='none';">
+      <div class="story-caption" style="display:none;">Jim and Mat, back in the Michigan days.</div>
+
+      <p>I took my own winding road. I spent about ten years as a financial advisor. When the market fell apart in 2008, I jumped to the mortgage side to learn it from the ground up &mdash; got my own license (NMLS #1072866) and never looked back. Twenty-some years later, I looked up one day and realized one of the largest wholesale mortgage lenders in the country was headquartered right near the town I grew up in. Full circle.</p>
+      <p>I send most of my business to that lender today. In my experience they're the best at what they do &mdash; but no single lender does everything. That's exactly why I broker to <strong>300+ lenders</strong>, so no client ever goes unhelped. And it's why what I teach isn't "how to pass a test." It's how to build a business and a brand that's truly yours.</p>
+      <p><strong>Make of the timeline what you want.</strong> To me the lesson was never about basketball. It's that where you choose to stand &mdash; and who you choose to stand next to &mdash; matters far more than how many minutes you get early on. Stand in the huddle.</p>
+    </div>
+  </section>
+
+  <!-- ============ THREE PATHS FRAMEWORK ============ -->
+  <section class="section section-tint" id="paths">
+    <div class="container">
+      <div class="section-head" style="max-width: 60ch;">
+        <span class="eyebrow">Find Your Path</span>
+        <h2 class="mt-5">Three paths into a mortgage career &mdash; which one is you?</h2>
+        <p class="text-muted">You don't have to know your exact job yet. The mortgage business has three main on-ramps, each suited to a different kind of person. Find the one that fits how you're wired.</p>
+      </div>
+      <div class="door-grid">
+        <a href="/mortgage-career/inside-sales/" class="door">
+          <span class="door-num">PATH &mdash; SALES</span>
+          <h3>The Phone Path</h3>
+          <p>For the outgoing and resilient. You like talking to people, building rapport, and you can handle rejection. This is the sales track &mdash; it starts in inside sales and leads to becoming a loan officer, the highest-earning role in the business.</p>
+          <span class="door-cta">Explore the sales path</span>
+        </a>
+        <a href="/mortgage-career/marketing-careers/" class="door">
+          <span class="door-num">PATH &mdash; CREATIVE</span>
+          <h3>The Creative Path</h3>
+          <p>For the makers. You love designing, writing, making videos, and using AI to create &mdash; but you'd rather build the brand than make sales calls. Marketing careers are the creative engine that generates the leads everyone else closes.</p>
+          <span class="door-cta">Explore the creative path</span>
+        </a>
+        <a href="/mortgage-career/loan-processor/" class="door">
+          <span class="door-num">PATH &mdash; ANALYTICAL</span>
+          <h3>The Analytical Path</h3>
+          <p>For the detail-driven. You're comfortable with financial documents and precision &mdash; maybe a former bookkeeper or accountant. Processing, underwriting, and closing are where methodical people make every deal actually fund.</p>
+          <span class="door-cta">Explore the analytical path</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROLES IN THE INDUSTRY ============ -->
+  <section class="section" id="roles">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Careers in Mortgage</span>
+        <h2 class="mt-5">Every role in the mortgage business &mdash; and how to get there</h2>
+        <p class="text-muted">The mortgage industry isn't one job; it's a whole ecosystem. Here are the main career paths. The licensed origination roles are where the income potential is highest &mdash; and where we focus.</p>
+      </div>
+
+      <h3 style="margin-bottom: var(--s-5);">Licensed origination roles</h3>
+      <div class="role-grid" style="margin-bottom: var(--s-8);">
+        <a href="/mortgage-career/mortgage-broker/" class="role-card">
+          <span class="role-tag licensed">Licensed &middot; Highest Potential</span>
+          <h3>How to Become a Mortgage Broker</h3>
+          <p>Run your own independent business and shop loans across hundreds of lenders. The most freedom and the highest ceiling in the industry.</p>
+          <span class="door-cta">Read the guide</span>
+        </a>
+        <a href="/mortgage-career/loan-officer/" class="role-card">
+          <span class="role-tag licensed">Licensed &middot; Best Starting Point</span>
+          <h3>How to Become a Loan Officer</h3>
+          <p>The front line of the mortgage business. Work directly with borrowers, earn on commission, and control your own income.</p>
+          <span class="door-cta">Read the guide</span>
+        </a>
+      </div>
+
+      <h3 style="margin-bottom: var(--s-5);">Other roles in the industry</h3>
+      <div class="role-grid">
+        <a href="/mortgage-career/loan-processor/" class="role-card">
+          <span class="role-tag industry">Support Role</span>
+          <h3>How to Become a Loan Processor</h3>
+          <p>The organized engine behind every closing. A great entry point &mdash; and a common stepping stone toward becoming a licensed loan officer.</p>
+          <span class="door-cta">Read the guide</span>
+        </a>
+        <a href="/mortgage-career/mortgage-underwriter/" class="role-card">
+          <span class="role-tag industry">Decision Role</span>
+          <h3>How to Become a Mortgage Underwriter</h3>
+          <p>The decision-maker who evaluates risk and approves loans. Detail-driven, analytical, and in steady demand across lenders.</p>
+          <span class="door-cta">Read the guide</span>
+        </a>
+        <a href="/mortgage-career/mortgage-closer/" class="role-card">
+          <span class="role-tag industry">Closing Role</span>
+          <h3>How to Become a Mortgage Closer</h3>
+          <p>The person who brings the deal across the finish line &mdash; preparing final documents and coordinating the closing.</p>
+          <span class="door-cta">Read the guide</span>
+        </a>
+        <a href="/mortgage-career/loan-officer-assistant/" class="role-card">
+          <span class="role-tag industry">Entry Role</span>
+          <h3>How to Become a Loan Officer Assistant</h3>
+          <p>Support a producing loan officer while you learn the ropes. One of the fastest ways to break in and decide if origination is for you.</p>
+          <span class="door-cta">Read the guide</span>
+        </a>
+        <a href="/mortgage-career/inside-sales/" class="role-card">
+          <span class="role-tag industry">Sales Entry</span>
+          <h3>Inside Sales &amp; Telemarketing</h3>
+          <p>The phone-based starting point for the sales path. Where nearly every loan officer began &mdash; building the trust skills that originate loans.</p>
+          <span class="door-cta">Read the guide</span>
+        </a>
+        <a href="/mortgage-career/marketing-careers/" class="role-card">
+          <span class="role-tag industry">Creative Entry</span>
+          <h3>Mortgage Marketing Careers</h3>
+          <p>The creative path for designers, writers, and content makers who'd rather build the brand than make sales calls.</p>
+          <span class="door-cta">Read the guide</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY LEARN HERE / STATS ============ -->
+  <section class="section section-ink">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-gold">Why Learn Here</span>
+        <h2 class="mt-5">Anyone can sell you a course. We teach you the business.</h2>
+        <p class="text-muted">There are plenty of places to pay for a prep course and pass an exam. What's rare is learning the actual craft &mdash; branding, lead generation, deal structure, trust &mdash; from someone with a real track record.</p>
+      </div>
+      <div class="cols-3">
+        <div class="feature">
+          <div class="feature-icon">&#9650;</div>
+          <h4>Mentorship from a top producer</h4>
+          <p class="text-muted">Learn from a 7&times; Scotsman Guide Top Producer with $500M+ in closed loans &mdash; not a faceless training portal.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">&#9671;</div>
+          <h4>A brand worth standing behind</h4>
+          <p class="text-muted">Stairway's brand and systems are built to make you memorable. Most loan officers are forgettable. You won't be.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">&#9678;</div>
+          <h4>300+ lenders behind you</h4>
+          <p class="text-muted">As a broker shop, you'll have access to a deep bench of lenders &mdash; so you can always find an answer for your client.</p>
+        </div>
+      </div>
+      <div class="stats-bar mt-7">
+        <div class="stat"><div class="stat-num">$500M+</div><div class="stat-label">Closed Volume</div></div>
+        <div class="stat"><div class="stat-num">7&times;</div><div class="stat-label">Top Producer</div></div>
+        <div class="stat"><div class="stat-num">300+</div><div class="stat-label">Lenders</div></div>
+        <div class="stat"><div class="stat-num">5.0&#9733;</div><div class="stat-label">624 Reviews</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROOF OF CRAFT (borrower testimonial, framed) ============ -->
+  <section class="section">
+    <div class="container container-narrow">
+      <div class="section-head" style="text-align:center; margin: 0 auto var(--s-7);">
+        <span class="eyebrow">The Standard You'll Learn</span>
+        <h2 class="mt-5">This is the kind of work you'll be trained to do</h2>
+      </div>
+      <div class="quote-card">
+        <blockquote>&ldquo;Run, don't walk to work with Jim and his team. Jim helped us get financing when it seemed like an impossible feat &mdash; managing a home purchase 2,000 miles away, in a competitive market, while self-employed. He consistently went above and beyond.&rdquo;</blockquote>
+        <div class="quote-author">
+          <img src="https://i.pravatar.cc/96?img=12" alt="David L." onerror="this.src='https://placehold.co/96x96/EAE7DE/6B7280?text=DL';">
+          <div>
+            <div class="qa-name">David L.</div>
+            <div class="qa-title">Founder &middot; California</div>
+          </div>
+        </div>
+      </div>
+      <p class="text-muted text-small mt-5" style="text-align:center;">Reviews reflect the mortgage work of Jim Blackburn (NMLS #1072866). They're here to show the standard of service you'll be trained to deliver.</p>
+    </div>
+  </section>
+
+  <!-- ============ LEAD MAGNET (EMAIL CAPTURE) ============ -->
+  <section class="section section-tint">
+    <div class="container">
+      <div class="magnet">
+        <div class="magnet-grid">
+          <div>
+            <span class="eyebrow">Free Guide</span>
+            <h2 class="mt-5">Get the complete &ldquo;How to Become a Mortgage Loan Officer&rdquo; guide</h2>
+            <p>The full roadmap in one PDF &mdash; every step, every cost, every requirement, plus the questions to ask before you choose where to hang your license. No cost, no pressure, no calls unless you ask for one.</p>
+          </div>
+          <div>
+            <form class="magnet-form" id="leadMagnetForm" data-form-source="mortgage-career-hub-lead-magnet">
+              <input type="text" name="firstName" placeholder="First name" required autocomplete="given-name">
+              <input type="email" name="email" placeholder="Email address" required autocomplete="email">
+              <button type="submit" class="btn btn-primary btn-large" style="justify-content:center;">Send Me the Guide</button>
+              <span class="form-note">We'll email the guide right away. Unsubscribe anytime.</span>
+            </form>
+            <div id="leadMagnetSuccess" style="display:none;">
+              <p class="lede">Check your inbox &mdash; the guide is on its way.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section">
+    <div class="container container-narrow">
+      <div class="section-head" style="margin-bottom: var(--s-7);">
+        <span class="eyebrow">Questions</span>
+        <h2 class="mt-5">How to become a mortgage broker: your questions, answered</h2>
+        <p class="text-muted">The real answers to what people actually ask before starting a mortgage career.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">How do you become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">To become a mortgage broker or loan officer, you register with the NMLS, complete 20 hours of NMLS-approved pre-licensure education, pass the SAFE MLO national exam, clear a background and credit check, and have your application sponsored by a licensed mortgage company. Most people complete the process in a matter of weeks. <a class="inline-link" href="/mortgage-career/mortgage-broker/">See the full mortgage broker guide</a>.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you need a college degree to become a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. There is no college-degree requirement to become a mortgage loan officer. The requirement is the 20-hour SAFE pre-licensure course, a passing score on the SAFE MLO exam, and meeting your state's standards. Many of the most successful loan officers came from completely different careers.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How long does it take to get a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Many people go from start to licensed within a few weeks to a couple of months. The variables are how quickly you complete the 20-hour course, when you schedule the SAFE exam, and how long your state plus the background and credit checks take to process.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How much does it cost to become a mortgage loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Core costs include the 20-hour SAFE pre-licensure course, the SAFE MLO exam fee, the MU4 application fee, and background and credit check fees. Out-of-pocket commonly starts around a few hundred dollars and varies by state. Some sponsoring companies cover or reimburse parts of the process &mdash; worth asking before you commit.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is the SAFE MLO exam, and how hard is it?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The SAFE MLO exam is the national licensing test created under the federal SAFE Act and administered through the NMLS. It covers federal mortgage law, general mortgage knowledge, loan origination activities, ethics, and a uniform state section. It's a serious exam, but with good study materials and practice tests, most candidates pass. <a class="inline-link" href="/mortgage-career/safe-mlo-exam/">See our SAFE MLO exam guide</a>.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can you become a loan officer with no experience?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. The mortgage industry routinely welcomes career-changers with zero prior mortgage experience. What matters is completing the licensing requirements and then learning the craft on the job. Strong mentorship and a supportive brokerage are what make the difference for someone starting fresh.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the difference between a mortgage broker and a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A mortgage loan officer is the licensed professional who works directly with borrowers to originate a loan. A mortgage broker is an independent business that can shop a borrower's loan across many wholesale lenders rather than offering a single institution's products. Many loan officers operate within or as independent mortgage brokerages. <a class="inline-link" href="/mortgage-career/mortgage-broker-vs-loan-officer/">Compare the two in detail</a>.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is becoming a mortgage broker worth it?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">For the right person, it can be one of the more rewarding career paths in financial services &mdash; flexible schedule, uncapped commission-based income, and the satisfaction of helping people buy homes. It rewards work ethic and relationship-building over credentials. It's not passive or guaranteed; income depends on the business you build.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How much do loan officers make?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Loan officer income is typically commission-based, so it varies widely with experience, market, and effort. New officers building a pipeline earn less while established producers can earn well into six figures. Because pay is performance-linked, your ceiling is largely set by the business you build. <a class="inline-link" href="/mortgage-career/loan-officer-salary/">See our loan officer salary breakdown</a>.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I do this part-time or while changing careers?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Many people start a mortgage career part-time or as a transition from another field. The licensing can be completed around a full-time job, and once licensed and sponsored, you can scale your hours as your pipeline grows. If you're already licensed in real estate, insurance, or financial services, you may have a natural head start. <a class="inline-link" href="/mortgage-career/for-licensed-professionals/">See the path for licensed professionals</a>.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BAND ============ -->
+  <section class="cta-band">
+    <div class="container">
+      <span class="eyebrow eyebrow-gold">Ready When You Are</span>
+      <h2 class="mt-5">Start your mortgage career in the huddle &mdash; not the stands</h2>
+      <p>Whether you're just exploring or ready to get licensed, the next step is a conversation. No pressure, no script &mdash; just an honest look at whether this path is right for you.</p>
+      <div class="hero-actions">
+        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <a href="/schedule-call/" class="btn btn-secondary btn-large">Talk to Our Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DISCLAIMER ============ -->
+  <section class="disclaimer">
+    <div class="container">
+      <p>Stairway Mortgage is a division of NEXA Mortgage LLC. This page is an educational resource about careers in the mortgage industry. Licensing requirements are set by the federal SAFE Act, the NMLS, and individual state regulators; always confirm current requirements for your state at the official <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS Resource Center</a>. Income figures are illustrative and not a promise of earnings; mortgage loan originator compensation is commission-based and varies. Pre-licensure education and the SAFE MLO exam are administered by independent, NMLS-approved providers.</p>
+    </div>
+  </section>
+
+</div>
+
+<script is:inline>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      item.classList.toggle('open');
+    });
+  });
+
+  // Lead magnet form (UI-only; no webhook wiring on career pages)
+  var lmForm = document.getElementById('leadMagnetForm');
+  if (lmForm) {
+    lmForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      lmForm.style.display = 'none';
+      document.getElementById('leadMagnetSuccess').style.display = 'block';
+    });
+  }
+</script>
+
+</Layout>

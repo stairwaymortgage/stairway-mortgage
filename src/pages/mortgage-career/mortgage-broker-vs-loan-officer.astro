@@ -1,0 +1,611 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="Mortgage Broker vs Loan Officer: Key Differences Explained (2026)"
+  description="Mortgage broker vs loan officer: same license, different path. Compare the roles, pay, independence, and career trajectory — and learn which path fits you, from a 7x Scotsman Guide Top Producer."
+>
+
+<style is:global>
+  /* ============ MORTGAGE CAREER — scoped to .mc-scope ============ */
+  /* Self-contained design tokens + page CSS, namespaced so bare selectors
+     (.container, .btn, .hero, h2, p, a, *) do not leak into the global site. */
+  .mc-scope {
+    color-scheme: light only;
+    --ink: #0A0E1A;
+    --ink-2: #1E2433;
+    --ink-3: #2C3548;
+    --ink-light: #4A5568;
+    --ink-lighter: #6B7280;
+    --paper: #FAFAF7;
+    --paper-2: #F4F4EE;
+    --paper-3: #EDEDE5;
+    --white: #FFFFFF;
+    --blue: #1845D6;
+    --blue-deep: #0F2EA0;
+    --blue-soft: #E8EEFF;
+    --blue-tint: #F2F5FF;
+    --gold: #B8860B;
+    --gold-soft: #F5EBD0;
+    --rust: #8B2C2C;
+    --green: #2E9E2E;
+    --border: #E5E5DE;
+    --border-strong: #D4D4C8;
+    --border-dark: #2C3548;
+
+    --text-2xs: 0.6875rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1.0625rem;
+    --text-md: 1.1875rem;
+    --text-lg: 1.375rem;
+    --text-xl: 1.625rem;
+    --text-2xl: 2rem;
+    --text-3xl: 2.75rem;
+    --text-4xl: 3.75rem;
+    --text-5xl: 5rem;
+
+    --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+    --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4rem;
+    --s-9: 6rem; --s-10: 8rem; --s-11: 10rem;
+
+    --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    font-family: var(--sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .mc-scope { background-color: #FAFAF7 !important; color: #0A0E1A !important; color-scheme: light only !important; }
+    .mc-scope * { forced-color-adjust: none; }
+  }
+
+  .mc-scope *, .mc-scope *::before, .mc-scope *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .mc-scope { scroll-behavior: smooth; }
+  .mc-scope img, .mc-scope svg { display: block; max-width: 100%; }
+  .mc-scope a { color: inherit; text-decoration: none; }
+  .mc-scope button { font: inherit; cursor: pointer; border: 0; background: none; }
+
+  .mc-scope .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-wide { max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }
+
+  /* ============ TYPOGRAPHY ============ */
+  .mc-scope .eyebrow {
+    font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue); font-weight: 500; display: inline-block;
+  }
+  .mc-scope .eyebrow-gold { color: var(--gold); }
+  .mc-scope .display-1 {
+    font-family: var(--serif); font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+    font-weight: 400; line-height: 1.0; letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 144, "SOFT" 30; color: var(--ink);
+  }
+  .mc-scope .display-2 {
+    font-family: var(--serif); font-size: clamp(2rem, 5vw, var(--text-3xl));
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 100, "SOFT" 50; color: var(--ink);
+  }
+  .mc-scope h2 {
+    font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+    font-weight: 450; line-height: 1.1; letter-spacing: -0.015em;
+    color: var(--ink); margin-bottom: var(--s-5);
+    font-variation-settings: "opsz" 60, "SOFT" 50;
+  }
+  .mc-scope h3 {
+    font-family: var(--serif); font-size: var(--text-xl); font-weight: 500;
+    line-height: 1.25; letter-spacing: -0.01em; color: var(--ink);
+    margin-bottom: var(--s-4); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope h4 {
+    font-family: var(--sans); font-size: var(--text-md); font-weight: 600;
+    line-height: 1.3; color: var(--ink); margin-bottom: var(--s-3); letter-spacing: -0.005em;
+  }
+  .mc-scope p { margin-bottom: var(--s-4); }
+  .mc-scope p:last-child { margin-bottom: 0; }
+  .mc-scope p.lead { font-size: var(--text-lg); line-height: 1.55; color: var(--ink-2); font-weight: 350; }
+  .mc-scope p.lede {
+    font-family: var(--serif); font-size: var(--text-xl); line-height: 1.45;
+    color: var(--ink); font-weight: 350; font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .body-text { color: var(--ink-2); }
+  .mc-scope .text-muted { color: var(--ink-lighter); }
+  .mc-scope .text-small { font-size: var(--text-sm); }
+  .mc-scope .text-mono { font-family: var(--mono); font-feature-settings: 'tnum' 1; }
+  .mc-scope strong, .mc-scope b { font-weight: 600; color: var(--ink); }
+  .mc-scope em, .mc-scope i { font-style: normal; }
+  .mc-scope a.inline-link { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  .mc-scope a.inline-link:hover { color: var(--blue-deep); }
+
+  /* ============ BUTTONS ============ */
+  .mc-scope .btn {
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    padding: var(--s-3) var(--s-5); font-family: var(--sans);
+    font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.005em;
+    border-radius: 100px; transition: all 0.18s ease; white-space: nowrap;
+  }
+  .mc-scope .btn-primary { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+  .mc-scope .btn-primary:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-1px); }
+  .mc-scope .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border-strong); }
+  .mc-scope .btn-secondary:hover { border-color: var(--ink); }
+  .mc-scope .btn-light { background: var(--white); color: var(--ink); border: 1px solid var(--border); }
+  .mc-scope .btn-light:hover { background: var(--paper-2); }
+  .mc-scope .btn-large { padding: var(--s-4) var(--s-6); font-size: var(--text-base); }
+  .mc-scope .btn-arrow { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--blue); font-weight: 500; transition: gap 0.18s; }
+  .mc-scope .btn-arrow:hover { gap: var(--s-3); }
+  .mc-scope .btn-arrow::after { content: '→'; font-family: var(--sans); }
+
+  /* ============ HERO ============ */
+  .mc-scope .hero { padding: var(--s-9) 0 var(--s-8); border-bottom: 1px solid var(--border); }
+  .mc-scope .breadcrumb {
+    display: flex; gap: var(--s-2); font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.08em; color: var(--ink-lighter); text-transform: uppercase; margin-bottom: var(--s-7);
+  }
+  .mc-scope .breadcrumb a { color: var(--ink-lighter); }
+  .mc-scope .breadcrumb a:hover { color: var(--blue); }
+  .mc-scope .breadcrumb span:last-child { color: var(--ink); }
+  .mc-scope .hero-eyebrow { margin-bottom: var(--s-5); }
+  .mc-scope .hero h1 { margin-bottom: var(--s-6); max-width: 20ch; }
+  .mc-scope .hero-subtitle { max-width: 60ch; margin-bottom: var(--s-7); }
+  .mc-scope .hero-actions { display: flex; gap: var(--s-3); align-items: center; flex-wrap: wrap; margin-bottom: var(--s-6); }
+  .mc-scope .hero-trust {
+    font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-lighter);
+    letter-spacing: 0.02em; display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap;
+  }
+  .mc-scope .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+  /* ============ 3-DOOR ROUTER ============ */
+  .mc-scope .doors { padding: var(--s-8) 0; background: var(--paper-2); border-bottom: 1px solid var(--border); }
+  .mc-scope .doors-head { text-align: center; max-width: 50ch; margin: 0 auto var(--s-7); }
+  .mc-scope .door-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+  .mc-scope .door {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease; position: relative; overflow: hidden;
+  }
+  .mc-scope .door:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(10,14,26,0.08); }
+  .mc-scope .door-num { font-family: var(--mono); font-size: var(--text-xs); color: var(--blue); letter-spacing: 0.1em; margin-bottom: var(--s-4); display: block; }
+  .mc-scope .door h3 { margin-bottom: var(--s-3); }
+  .mc-scope .door p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-5); }
+  .mc-scope .door .door-cta { font-family: var(--sans); font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; align-items: center; gap: var(--s-2); }
+  .mc-scope .door .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .door:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 860px) { .mc-scope .door-grid { grid-template-columns: 1fr; } }
+
+  /* ============ SECTION ============ */
+  .mc-scope .section { padding: var(--s-9) 0; }
+  .mc-scope .section-tint { background: var(--paper-2); }
+  .mc-scope .section-ink { background: var(--ink); color: var(--paper); }
+  .mc-scope .section-ink h2, .mc-scope .section-ink h3, .mc-scope .section-ink h4 { color: var(--white); }
+  .mc-scope .section-ink .text-muted { color: #9CA3AF; }
+  .mc-scope .section-head { max-width: 60ch; margin-bottom: var(--s-8); }
+  .mc-scope .section-head .eyebrow { margin-bottom: var(--s-4); }
+
+  /* ============ STEPS ============ */
+  .mc-scope .steps { display: grid; gap: var(--s-5); }
+  .mc-scope .step {
+    display: grid; grid-template-columns: 60px 1fr; gap: var(--s-5);
+    padding: var(--s-6); background: var(--white); border: 1px solid var(--border); border-radius: 6px;
+  }
+  .mc-scope .step-num {
+    font-family: var(--serif); font-size: var(--text-2xl); color: var(--blue);
+    font-variation-settings: "opsz" 60; line-height: 1;
+  }
+  .mc-scope .step h4 { margin-bottom: var(--s-2); }
+  .mc-scope .step p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .step p + p { margin-top: var(--s-3); }
+
+  /* ============ ROLE GRID ============ */
+  .mc-scope .role-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+  .mc-scope .role-card {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease;
+  }
+  .mc-scope .role-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10,14,26,0.06); }
+  .mc-scope .role-tag {
+    font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 100px; display: inline-block; margin-bottom: var(--s-4);
+  }
+  .mc-scope .role-tag.licensed { background: var(--blue-soft); color: var(--blue-deep); }
+  .mc-scope .role-tag.industry { background: var(--paper-3); color: var(--ink-light); }
+  .mc-scope .role-card h3 { font-size: var(--text-lg); margin-bottom: var(--s-2); }
+  .mc-scope .role-card p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-4); }
+  .mc-scope .role-card .door-cta { font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; gap: var(--s-2); align-items: center; }
+  .mc-scope .role-card .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .role-card:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 760px) { .mc-scope .role-grid { grid-template-columns: 1fr; } }
+
+  /* ============ STORY INTERLUDE ============ */
+  .mc-scope .story { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; }
+  .mc-scope .story .container-narrow { position: relative; }
+  .mc-scope .story .eyebrow { color: var(--gold); margin-bottom: var(--s-5); }
+  .mc-scope .story p { color: #D8DCE4; font-size: var(--text-md); line-height: 1.7; margin-bottom: var(--s-5); }
+  .mc-scope .story p.story-lede { font-family: var(--serif); font-size: var(--text-xl); color: var(--white); font-variation-settings: "opsz" 30; line-height: 1.45; }
+  .mc-scope .story strong { color: var(--white); }
+  .mc-scope .story-photo {
+    width: 100%; max-width: 420px; border-radius: 6px; margin: var(--s-6) 0;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .mc-scope .story-caption { font-family: var(--mono); font-size: var(--text-xs); color: #9CA3AF; letter-spacing: 0.04em; margin-top: var(--s-2); }
+  .mc-scope .story-rule { width: 40px; height: 2px; background: var(--gold); margin-bottom: var(--s-6); }
+
+  /* ============ STATS BAR ============ */
+  .mc-scope .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-5); padding: var(--s-7) 0; }
+  .mc-scope .stat { text-align: center; }
+  .mc-scope .stat-num { font-family: var(--serif); font-size: var(--text-3xl); color: var(--ink); font-variation-settings: "opsz" 80; line-height: 1; margin-bottom: var(--s-2); }
+  .mc-scope .section-ink .stat-num { color: var(--white); }
+  .mc-scope .stat-label { font-family: var(--mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-lighter); }
+  @media (max-width: 760px) { .mc-scope .stats-bar { grid-template-columns: repeat(2, 1fr); gap: var(--s-6); } }
+
+  /* ============ FEATURE COLUMNS ============ */
+  .mc-scope .cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); }
+  .mc-scope .cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-7); }
+  .mc-scope .feature h4 { margin-bottom: var(--s-3); }
+  .mc-scope .feature p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .feature-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--blue-soft); display: flex; align-items: center; justify-content: center; margin-bottom: var(--s-4); color: var(--blue); font-family: var(--serif); font-size: var(--text-lg); }
+  @media (max-width: 860px) { .mc-scope .cols-3 { grid-template-columns: 1fr; } .mc-scope .cols-2 { grid-template-columns: 1fr; } }
+
+  /* ============ TESTIMONIAL ============ */
+  .mc-scope .quote-card { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 6px; padding: var(--s-7); }
+  .mc-scope .quote-card blockquote { font-family: var(--serif); font-size: var(--text-lg); line-height: 1.5; color: var(--ink); font-variation-settings: "opsz" 40; margin-bottom: var(--s-5); }
+  .mc-scope .quote-author { display: flex; align-items: center; gap: var(--s-4); }
+  .mc-scope .quote-author img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 1px solid var(--border); }
+  .mc-scope .quote-author .qa-name { font-weight: 600; font-size: var(--text-sm); }
+  .mc-scope .quote-author .qa-title { font-size: var(--text-xs); color: var(--ink-lighter); font-family: var(--mono); }
+
+  /* ============ LEAD MAGNET / EMAIL ============ */
+  .mc-scope .magnet { background: var(--blue-tint); border: 1px solid var(--blue-soft); border-radius: 8px; padding: var(--s-8); }
+  .mc-scope .magnet-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--s-8); align-items: center; }
+  .mc-scope .magnet h2 { margin-bottom: var(--s-4); }
+  .mc-scope .magnet p { color: var(--ink-light); }
+  .mc-scope .magnet-form { display: flex; flex-direction: column; gap: var(--s-3); }
+  .mc-scope .magnet-form input {
+    padding: var(--s-4); border: 1px solid var(--border-strong); border-radius: 6px;
+    font-family: var(--sans); font-size: var(--text-base); background: var(--white);
+  }
+  .mc-scope .magnet-form input:focus { outline: 2px solid var(--blue); border-color: var(--blue); }
+  .mc-scope .form-note { font-size: var(--text-xs); color: var(--ink-lighter); }
+  @media (max-width: 860px) { .mc-scope .magnet-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+
+  /* ============ FAQ ============ */
+  .mc-scope .faq-list { border-top: 1px solid var(--border); }
+  .mc-scope .faq-item { border-bottom: 1px solid var(--border); }
+  .mc-scope .faq-q {
+    width: 100%; text-align: left; padding: var(--s-5) 0; display: flex;
+    justify-content: space-between; align-items: center; gap: var(--s-4);
+    font-family: var(--serif); font-size: var(--text-md); font-weight: 500;
+    color: var(--ink); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .faq-q:hover { color: var(--blue); }
+  .mc-scope .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; transition: transform 0.2s; }
+  .mc-scope .faq-icon::before, .mc-scope .faq-icon::after { content: ''; position: absolute; background: var(--blue); border-radius: 2px; }
+  .mc-scope .faq-icon::before { top: 9px; left: 0; width: 20px; height: 2px; }
+  .mc-scope .faq-icon::after { top: 0; left: 9px; width: 2px; height: 20px; transition: transform 0.2s; }
+  .mc-scope .faq-item.open .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+  .mc-scope .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+  .mc-scope .faq-a-inner { padding: 0 0 var(--s-5); color: var(--ink-light); font-size: var(--text-sm); line-height: 1.65; max-width: 70ch; }
+  .mc-scope .faq-item.open .faq-a { max-height: 600px; }
+
+  /* ============ CTA BAND ============ */
+  .mc-scope .cta-band { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; text-align: center; }
+  .mc-scope .cta-band h2 { color: var(--white); max-width: 22ch; margin: 0 auto var(--s-5); }
+  .mc-scope .cta-band p { color: #B8BEC9; max-width: 54ch; margin: 0 auto var(--s-7); }
+  .mc-scope .cta-band .hero-actions { justify-content: center; }
+  .mc-scope .cta-band .btn-primary { background: var(--white); color: var(--ink); border-color: var(--white); }
+  .mc-scope .cta-band .btn-primary:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .mc-scope .cta-band .btn-secondary { color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .mc-scope .cta-band .btn-secondary:hover { border-color: var(--white); }
+
+  /* ============ COMPLIANCE / DISCLAIMER ============ */
+  .mc-scope .disclaimer { padding: var(--s-7) 0; background: var(--paper-2); border-top: 1px solid var(--border); }
+  .mc-scope .disclaimer p { font-size: var(--text-xs); color: var(--ink-lighter); line-height: 1.6; max-width: 90ch; margin-bottom: var(--s-3); }
+
+  .mc-scope .mt-5 { margin-top: var(--s-5); }
+  .mc-scope .mt-7 { margin-top: var(--s-7); }
+</style>
+
+<!-- ============ JSON-LD: FAQ ============ -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is the difference between a mortgage broker and a loan officer?","acceptedAnswer":{"@type":"Answer","text":"A loan officer is the licensed individual who originates loans for borrowers. A mortgage broker is an independent business that shops a borrower's loan across many wholesale lenders. In practice, a broker is a loan officer who works independently, with access to many lenders rather than one institution's product menu."}},
+    {"@type":"Question","name":"Is a mortgage broker the same as a loan officer?","acceptedAnswer":{"@type":"Answer","text":"Not exactly. Every mortgage broker performs loan officer work, but not every loan officer is a broker. The license is the same; the difference is independence. A loan officer can work at a bank, a retail lender, or a brokerage, while a broker specifically operates independently across many lenders."}},
+    {"@type":"Question","name":"Do mortgage brokers and loan officers need the same license?","acceptedAnswer":{"@type":"Answer","text":"Yes. Both complete the identical individual licensing under the SAFE Act: 20 hours of education, the SAFE MLO exam, and background and credit checks through the NMLS. The distinction isn't the license itself but how each one operates once licensed."}},
+    {"@type":"Question","name":"Who makes more money, a mortgage broker or a loan officer?","acceptedAnswer":{"@type":"Answer","text":"A broker who owns their book and shops many lenders generally has a higher earning ceiling, because they keep more of the economics and can place more deals. A captive loan officer at a single lender may have a lower ceiling. Both are commission-driven, and actual income depends on the business each builds."}},
+    {"@type":"Question","name":"Should I become a mortgage broker or a loan officer first?","acceptedAnswer":{"@type":"Answer","text":"Most people start as a loan officer under an established company to learn the craft, then some go independent as brokers later. Starting under a strong mentor gives you systems and lender access on day one. There's no rule against aiming straight for the independent path, but the foundation matters."}},
+    {"@type":"Question","name":"Does a loan officer work for the borrower or the lender?","acceptedAnswer":{"@type":"Answer","text":"It depends on where they work. A loan officer at a single lender offers that lender's products. A mortgage broker, by contrast, shops across many lenders on the borrower's behalf, which is the defining advantage of the independent broker model over a captive role."}},
+    {"@type":"Question","name":"Can a loan officer become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"Yes, and many do. Because the license is the same, a loan officer can move into the independent broker channel, or eventually open their own brokerage, without re-licensing. The transition is about changing how you operate and where you hang your license, not earning a new credential."}},
+    {"@type":"Question","name":"What does a mortgage broker do that a loan officer doesn't?","acceptedAnswer":{"@type":"Answer","text":"A broker shops a borrower's file across a wide network of wholesale lenders to find the best fit, rather than offering one institution's products. An independent broker also runs the business side — their own brand, pipeline, and lender relationships — which a captive loan officer typically doesn't."}},
+    {"@type":"Question","name":"Is it better to use a mortgage broker or a loan officer?","acceptedAnswer":{"@type":"Answer","text":"For a borrower, a broker offers more lender options and often more flexibility, while a bank's loan officer offers that one institution's products. As a career choice, the broker path offers more independence and a higher ceiling, while a salaried loan officer role can offer more structure early on."}},
+    {"@type":"Question","name":"Do mortgage brokers and loan officers take the same exam?","acceptedAnswer":{"@type":"Answer","text":"Yes. Both must pass the national SAFE MLO exam, which is the same test for every originator regardless of how they later operate. The format, passing score, and study approach are covered in our SAFE MLO exam guide."}},
+    {"@type":"Question","name":"What's the career path from loan officer to broker?","acceptedAnswer":{"@type":"Answer","text":"A common path is: get licensed, originate under a company as a loan officer to learn the craft and build relationships, then move into the independent wholesale channel as a broker, and eventually open your own brokerage. Each step builds on the same license and a growing book of business."}},
+    {"@type":"Question","name":"Are mortgage brokers regulated differently than loan officers?","acceptedAnswer":{"@type":"Answer","text":"The individual originator is regulated the same way under the SAFE Act. A brokerage business carries additional company-level licensing and a surety bond in each state, which a solo loan officer working under someone else's company does not. The personal licensing standard is identical."}},
+    {"@type":"Question","name":"Why would someone choose to be a loan officer instead of a broker?","acceptedAnswer":{"@type":"Answer","text":"Some prefer the structure, base pay, or built-in lead flow that a larger retail employer can offer, especially when starting out. Others simply aren't ready to run an independent business. The loan officer role is the natural entry point, and going independent can come later."}},
+    {"@type":"Question","name":"Why would someone choose to be a mortgage broker instead of a loan officer?","acceptedAnswer":{"@type":"Answer","text":"Independence, a higher earning ceiling, and the ability to shop many lenders to serve clients better. Brokers control their brand, pipeline, and economics. For people who want to build something of their own, the broker path is the draw."}},
+    {"@type":"Question","name":"Do borrowers prefer mortgage brokers or loan officers?","acceptedAnswer":{"@type":"Answer","text":"Many borrowers value a broker's ability to compare many lenders, especially for unique situations where one bank might say no. Others prefer the familiarity of a known institution's loan officer. Neither is universally better; it depends on the borrower's needs and the originator's skill."}},
+    {"@type":"Question","name":"Is a mortgage broker self-employed and a loan officer an employee?","acceptedAnswer":{"@type":"Answer","text":"Often, but not always. Independent brokers are typically running their own business, while many loan officers are employees of a lender or brokerage. Arrangements vary, and some originators work as independent contractors. The license is the same regardless of employment structure."}},
+    {"@type":"Question","name":"Can I do both broker and loan officer work?","acceptedAnswer":{"@type":"Answer","text":"In a sense, yes — operating as an independent broker means you're doing loan officer work with broker independence. The terms describe a spectrum of how you operate under one license, not two separate jobs you'd hold simultaneously."}},
+    {"@type":"Question","name":"Which has more job security, broker or loan officer?","acceptedAnswer":{"@type":"Answer","text":"Both are commission-driven and tied to market volume, so neither offers traditional salaried security. A broker's security comes from owning their referral relationships and brand; a captive loan officer relies partly on their employer's lead flow. Durable referral relationships are the real security in either path."}},
+    {"@type":"Question","name":"Do mortgage brokers and loan officers earn commission the same way?","acceptedAnswer":{"@type":"Answer","text":"Both earn commission tied to loans closed, paid in a compliant, disclosed manner. The difference is in the economics: an independent broker often keeps a larger share, while a captive loan officer's split is set by their employer. Plans vary widely by company."}},
+    {"@type":"Question","name":"Is becoming a broker harder than becoming a loan officer?","acceptedAnswer":{"@type":"Answer","text":"Getting licensed is identical for both. Running an independent brokerage is harder than originating under someone else's company, because you take on the business side too. That's why many start as a loan officer and grow into the broker role as they gain experience."}},
+    {"@type":"Question","name":"What should I consider when choosing between the two paths?","acceptedAnswer":{"@type":"Answer","text":"Consider how much independence you want, your appetite for running a business, your need for early income stability, and the mentorship available to you. Many people find the answer is sequential: start as a loan officer, then become a broker once you've learned the craft."}},
+    {"@type":"Question","name":"Does the difference matter when I'm just getting licensed?","acceptedAnswer":{"@type":"Answer","text":"Not for the licensing itself — the requirements are the same. It matters most when you choose where to hang your license, because a company that supports the independent broker path gives you room to grow into it. Decide the path you want before you choose your sponsor."}},
+    {"@type":"Question","name":"Can a mortgage broker hire loan officers?","acceptedAnswer":{"@type":"Answer","text":"Yes. A broker who owns a brokerage often employs or sponsors other loan officers, becoming a broker-owner. This is a common growth path: originate yourself, then build a team of originators working under your company's license and brand."}},
+    {"@type":"Question","name":"Which path is better for a career changer?","acceptedAnswer":{"@type":"Answer","text":"Most career changers start as a loan officer to learn the business with support, then consider the independent broker path once established. Already-licensed professionals like realtors or advisors sometimes move faster. The right first step is choosing a sponsor who supports where you ultimately want to go."}},
+    {"@type":"Question","name":"Bottom line: broker or loan officer?","acceptedAnswer":{"@type":"Answer","text":"Same license, different operating model. Loan officer is the role and the entry point; mortgage broker is the independent, higher-ceiling path many grow into. The smartest move is to learn the craft under strong mentorship first, then decide how independent you want to be."}}
+  ]
+}
+</script>
+
+<div class="mc-scope">
+
+  <section class="hero">
+    <div class="container">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/mortgage-career/">Mortgage Career</a> <span>/</span> <span>Broker vs Loan Officer</span></nav>
+      <span class="eyebrow hero-eyebrow">Mortgage Career &middot; Compare</span>
+      <h1 class="display-1">Mortgage Broker vs Loan Officer: What's the Difference?</h1>
+      <p class="lead hero-subtitle">Same license, different path. A loan officer originates loans; a mortgage broker does it independently across many lenders. Here's the real difference &mdash; and how to choose which one fits you.</p>
+      <div class="hero-actions">
+        <a href="#compare" class="btn btn-primary btn-large">See the Comparison</a>
+        <a href="#choose" class="btn btn-secondary btn-large">Which Fits You?</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-dot"></span><span>Jim Blackburn &middot; NMLS #1072866</span>
+        <span class="trust-dot"></span><span>7&times; Scotsman Guide Top Producer</span>
+        <span class="trust-dot"></span><span>$500M+ Closed</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cols-2">
+        <div>
+          <span class="eyebrow">The Short Version</span>
+          <h2 class="mt-5">It's the same license &mdash; the difference is independence</h2>
+          <p class="lede">Every mortgage broker is a loan officer. Not every loan officer is a broker. The credential is identical; what changes is how you operate once you have it.</p>
+        </div>
+        <div class="body-text">
+          <p>If you're weighing mortgage broker vs loan officer, the most important thing to understand up front is that the licensing is the same for both. Both complete the 20-hour education, pass the <a class="inline-link" href="/mortgage-career/safe-mlo-exam/">SAFE MLO exam</a>, and clear the background and credit checks covered in our <a class="inline-link" href="/mortgage-career/mortgage-license/">mortgage license guide</a>.</p>
+          <p>The difference is what you do with the license. A <strong>loan officer</strong> originates loans, often at a bank, retail lender, or brokerage. A <strong>mortgage broker</strong> originates independently, shopping each borrower's file across many wholesale lenders. Read the full paths in <a class="inline-link" href="/mortgage-career/loan-officer/">how to become a loan officer</a> and <a class="inline-link" href="/mortgage-career/mortgage-broker/">how to become a mortgage broker</a>.</p>
+          <p>Below: a side-by-side comparison, and an honest guide to which path fits where you are.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="compare">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Side by Side</span>
+        <h2 class="mt-5">Mortgage broker vs loan officer, compared</h2>
+        <p class="text-muted">The same credential, two ways to operate.</p>
+      </div>
+      <div class="cols-2">
+        <div class="quote-card" style="border-left-color: var(--blue);">
+          <h3>Loan Officer</h3>
+          <p class="body-text"><strong>The role and entry point.</strong> Works at a bank, retail lender, or brokerage. Often offers one institution's products. Can have base pay or built-in lead flow, especially at larger employers. The natural place almost everyone starts.</p>
+          <p class="body-text">Best if you want structure, support, and a clear on-ramp while you learn the craft.</p>
+          <a href="/mortgage-career/loan-officer/" class="door-cta">How to become a loan officer</a>
+        </div>
+        <div class="quote-card" style="border-left-color: var(--gold);">
+          <h3>Mortgage Broker</h3>
+          <p class="body-text"><strong>The independent path.</strong> Operates independently, shopping many wholesale lenders on the borrower's behalf. Controls their own brand, pipeline, and economics. Higher earning ceiling, more autonomy, more responsibility.</p>
+          <p class="body-text">Best if you want independence, the widest lender access, and to build something of your own.</p>
+          <a href="/mortgage-career/mortgage-broker/" class="door-cta">How to become a mortgage broker</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="choose">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Which Fits You</span>
+        <h2 class="mt-5">How to choose between broker and loan officer</h2>
+        <p class="text-muted">For most people the answer is sequential, not either-or.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><div>
+          <h4>Start as a loan officer to learn the craft</h4>
+          <p>Originating under an established company gives you mentorship, systems, and lender access while you build your first relationships. Most successful brokers began here. The loan officer role is the proving ground.</p>
+        </div></div>
+        <div class="step"><span class="step-num">2</span><div>
+          <h4>Grow into the independent broker path</h4>
+          <p>Once you understand the business and have a referral base, the independent wholesale channel offers more lender options and a higher ceiling. Many originators make this move as they mature, without ever re-licensing.</p>
+        </div></div>
+        <div class="step"><span class="step-num">3</span><div>
+          <h4>Choose a sponsor that supports where you're headed</h4>
+          <p>The single most important decision is where you hang your license. A company that supports the independent broker path gives you room to grow into it. Decide the path you want before you choose your sponsor &mdash; that's the move that compounds.</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="container-narrow">
+      <span class="eyebrow">My Take</span>
+      <div class="story-rule"></div>
+      <p class="story-lede">Learn the craft first. Choose your independence second.</p>
+      <p>People ask me whether they should aim to be a loan officer or a broker. My honest answer: the label matters less than the mentorship behind you. The same license can lead to a forgettable career or a thriving independent business &mdash; what makes the difference is what you learn and who you learn it from.</p>
+      <p>I took the long road: about ten years as a financial advisor, then mortgages in 2008, my own license (NMLS #1072866), and years of building before it compounded. Seven Scotsman Guide Top Producer honors and $500M+ in closed loans later, I broker to 300+ lenders independently &mdash; but I got there by learning the craft first. Pick the path you want, then pick the people who'll get you there.</p>
+    </div>
+  </section>
+
+  <section class="section section-ink">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-gold">Either Path, One Decision</span>
+        <h2 class="mt-5">Broker or loan officer, the right team matters most</h2>
+        <p class="text-muted">Whichever path you choose, the company you join shapes how far and how fast you go.</p>
+      </div>
+      <div class="cols-3">
+        <div class="feature"><div class="feature-icon">&#9650;</div><h4>Mentorship from a top producer</h4><p class="text-muted">Learn under Jim Blackburn (NMLS #1072866), a 7&times; Scotsman Guide Top Producer with $500M+ closed.</p></div>
+        <div class="feature"><div class="feature-icon">&#9671;</div><h4>Room to go independent</h4><p class="text-muted">Start as a loan officer, grow into the broker path &mdash; with a team that supports the move when you're ready.</p></div>
+        <div class="feature"><div class="feature-icon">&#9678;</div><h4>300+ lenders behind you</h4><p class="text-muted">The broker advantage, available to you from the start: shop many lenders, close more files.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container container-narrow">
+      <div class="section-head" style="margin-bottom: var(--s-7);">
+        <span class="eyebrow">Questions</span>
+        <h2 class="mt-5">Mortgage broker vs loan officer: 25 questions, answered</h2>
+        <p class="text-muted">The real differences people ask about before choosing a path.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">What is the difference between a mortgage broker and a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A loan officer is the licensed individual who originates loans for borrowers. A mortgage broker is an independent business that shops a borrower's loan across many wholesale lenders. In practice, a broker is a loan officer who works independently, with access to many lenders rather than one institution's product menu.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is a mortgage broker the same as a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Not exactly. Every mortgage broker performs loan officer work, but not every loan officer is a broker. The license is the same; the difference is independence. A loan officer can work at a bank, a retail lender, or a brokerage, while a broker specifically operates independently across many lenders.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do mortgage brokers and loan officers need the same license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Both complete the identical individual licensing under the SAFE Act: 20 hours of education, the SAFE MLO exam, and background and credit checks through the NMLS. The distinction isn't the license itself but how each one operates once licensed.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Who makes more money, a mortgage broker or a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A broker who owns their book and shops many lenders generally has a higher earning ceiling, because they keep more of the economics and can place more deals. A captive loan officer at a single lender may have a lower ceiling. Both are commission-driven, and actual income depends on the business each builds.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Should I become a mortgage broker or a loan officer first?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Most people start as a loan officer under an established company to learn the craft, then some go independent as brokers later. Starting under a strong mentor gives you systems and lender access on day one. There's no rule against aiming straight for the independent path, but the foundation matters.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Does a loan officer work for the borrower or the lender?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">It depends on where they work. A loan officer at a single lender offers that lender's products. A mortgage broker, by contrast, shops across many lenders on the borrower's behalf, which is the defining advantage of the independent broker model over a captive role.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can a loan officer become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes, and many do. Because the license is the same, a loan officer can move into the independent broker channel, or eventually open their own brokerage, without re-licensing. The transition is about changing how you operate and where you hang your license, not earning a new credential.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What does a mortgage broker do that a loan officer doesn't?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A broker shops a borrower's file across a wide network of wholesale lenders to find the best fit, rather than offering one institution's products. An independent broker also runs the business side &mdash; their own brand, pipeline, and lender relationships &mdash; which a captive loan officer typically doesn't.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is it better to use a mortgage broker or a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">For a borrower, a broker offers more lender options and often more flexibility, while a bank's loan officer offers that one institution's products. As a career choice, the broker path offers more independence and a higher ceiling, while a salaried loan officer role can offer more structure early on.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do mortgage brokers and loan officers take the same exam?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Both must pass the national SAFE MLO exam, which is the same test for every originator regardless of how they later operate. The format, passing score, and study approach are covered in our SAFE MLO exam guide.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the career path from loan officer to broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A common path is: get licensed, originate under a company as a loan officer to learn the craft and build relationships, then move into the independent wholesale channel as a broker, and eventually open your own brokerage. Each step builds on the same license and a growing book of business.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Are mortgage brokers regulated differently than loan officers?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The individual originator is regulated the same way under the SAFE Act. A brokerage business carries additional company-level licensing and a surety bond in each state, which a solo loan officer working under someone else's company does not. The personal licensing standard is identical.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Why would someone choose to be a loan officer instead of a broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Some prefer the structure, base pay, or built-in lead flow that a larger retail employer can offer, especially when starting out. Others simply aren't ready to run an independent business. The loan officer role is the natural entry point, and going independent can come later.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Why would someone choose to be a mortgage broker instead of a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Independence, a higher earning ceiling, and the ability to shop many lenders to serve clients better. Brokers control their brand, pipeline, and economics. For people who want to build something of their own, the broker path is the draw.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do borrowers prefer mortgage brokers or loan officers?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Many borrowers value a broker's ability to compare many lenders, especially for unique situations where one bank might say no. Others prefer the familiarity of a known institution's loan officer. Neither is universally better; it depends on the borrower's needs and the originator's skill.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is a mortgage broker self-employed and a loan officer an employee?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Often, but not always. Independent brokers are typically running their own business, while many loan officers are employees of a lender or brokerage. Arrangements vary, and some originators work as independent contractors. The license is the same regardless of employment structure.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I do both broker and loan officer work?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">In a sense, yes &mdash; operating as an independent broker means you're doing loan officer work with broker independence. The terms describe a spectrum of how you operate under one license, not two separate jobs you'd hold simultaneously.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Which has more job security, broker or loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Both are commission-driven and tied to market volume, so neither offers traditional salaried security. A broker's security comes from owning their referral relationships and brand; a captive loan officer relies partly on their employer's lead flow. Durable referral relationships are the real security in either path.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do mortgage brokers and loan officers earn commission the same way?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Both earn commission tied to loans closed, paid in a compliant, disclosed manner. The difference is in the economics: an independent broker often keeps a larger share, while a captive loan officer's split is set by their employer. Plans vary widely by company.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is becoming a broker harder than becoming a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Getting licensed is identical for both. Running an independent brokerage is harder than originating under someone else's company, because you take on the business side too. That's why many start as a loan officer and grow into the broker role as they gain experience.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What should I consider when choosing between the two paths?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Consider how much independence you want, your appetite for running a business, your need for early income stability, and the mentorship available to you. Many people find the answer is sequential: start as a loan officer, then become a broker once you've learned the craft.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Does the difference matter when I'm just getting licensed?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Not for the licensing itself &mdash; the requirements are the same. It matters most when you choose where to hang your license, because a company that supports the independent broker path gives you room to grow into it. Decide the path you want before you choose your sponsor.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can a mortgage broker hire loan officers?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. A broker who owns a brokerage often employs or sponsors other loan officers, becoming a broker-owner. This is a common growth path: originate yourself, then build a team of originators working under your company's license and brand.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Which path is better for a career changer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Most career changers start as a loan officer to learn the business with support, then consider the independent broker path once established. Already-licensed professionals like realtors or advisors sometimes move faster. The right first step is choosing a sponsor who supports where you ultimately want to go.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Bottom line: broker or loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Same license, different operating model. Loan officer is the role and the entry point; mortgage broker is the independent, higher-ceiling path many grow into. The smartest move is to learn the craft under strong mentorship first, then decide how independent you want to be.</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-band" id="start">
+    <div class="container">
+      <span class="eyebrow eyebrow-gold">Ready When You Are</span>
+      <h2 class="mt-5">Not sure which path? Let's figure it out together</h2>
+      <p>Broker or loan officer, the right first move is a conversation about where you want to end up. No pressure &mdash; just an honest look at which path fits you and how to get there.</p>
+      <div class="hero-actions">
+        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <a href="/schedule-call/" class="btn btn-secondary btn-large">Talk to Our Team</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Keep Reading</span><h2 class="mt-5">More on building a mortgage career</h2></div>
+      <div class="role-grid">
+        <a href="/mortgage-career/loan-officer/" class="role-card"><span class="role-tag licensed">Licensed</span><h3>How to Become a Loan Officer</h3><p>The role and the entry point, start to finish.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/mortgage-broker/" class="role-card"><span class="role-tag licensed">Licensed</span><h3>How to Become a Mortgage Broker</h3><p>The independent, own-your-business path.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/loan-officer-salary/" class="role-card"><span class="role-tag industry">Income</span><h3>Loan Officer Salary</h3><p>What each path really earns, honestly.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/" class="role-card"><span class="role-tag industry">Hub</span><h3>Mortgage Career Guide</h3><p>Every role and how to choose your path.</p><span class="door-cta">Back to the hub</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="disclaimer">
+    <div class="container">
+      <p>Stairway Mortgage is a division of NEXA Mortgage LLC. This page is an educational resource comparing mortgage career paths. Licensing is governed by the federal SAFE Act, the NMLS, and individual state regulators and is subject to change; confirm current requirements at the official <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS Consumer Access</a>. Income references are illustrative and not a promise of earnings; originator compensation is commission-based and varies.</p>
+    </div>
+  </section>
+
+</div>
+
+<script is:inline>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
+  });
+</script>
+
+</Layout>

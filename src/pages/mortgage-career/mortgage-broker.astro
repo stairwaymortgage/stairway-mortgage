@@ -1,0 +1,651 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="How to Become a Mortgage Broker: Step-by-Step Guide (2026)"
+  description="How to become a mortgage broker, step by step: NMLS registration, the 20-hour SAFE course, passing the SAFE MLO exam, licensing costs, and how to build a real brokerage. Learn from a 7x Scotsman Guide Top Producer."
+>
+
+<style is:global>
+  /* ============ MORTGAGE CAREER — scoped to .mc-scope ============ */
+  /* Self-contained design tokens + page CSS, namespaced so bare selectors
+     (.container, .btn, .hero, h2, p, a, *) do not leak into the global site. */
+  .mc-scope {
+    color-scheme: light only;
+    --ink: #0A0E1A;
+    --ink-2: #1E2433;
+    --ink-3: #2C3548;
+    --ink-light: #4A5568;
+    --ink-lighter: #6B7280;
+    --paper: #FAFAF7;
+    --paper-2: #F4F4EE;
+    --paper-3: #EDEDE5;
+    --white: #FFFFFF;
+    --blue: #1845D6;
+    --blue-deep: #0F2EA0;
+    --blue-soft: #E8EEFF;
+    --blue-tint: #F2F5FF;
+    --gold: #B8860B;
+    --gold-soft: #F5EBD0;
+    --rust: #8B2C2C;
+    --green: #2E9E2E;
+    --border: #E5E5DE;
+    --border-strong: #D4D4C8;
+    --border-dark: #2C3548;
+
+    --text-2xs: 0.6875rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1.0625rem;
+    --text-md: 1.1875rem;
+    --text-lg: 1.375rem;
+    --text-xl: 1.625rem;
+    --text-2xl: 2rem;
+    --text-3xl: 2.75rem;
+    --text-4xl: 3.75rem;
+    --text-5xl: 5rem;
+
+    --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+    --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4rem;
+    --s-9: 6rem; --s-10: 8rem; --s-11: 10rem;
+
+    --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    font-family: var(--sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .mc-scope { background-color: #FAFAF7 !important; color: #0A0E1A !important; color-scheme: light only !important; }
+    .mc-scope * { forced-color-adjust: none; }
+  }
+
+  .mc-scope *, .mc-scope *::before, .mc-scope *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .mc-scope { scroll-behavior: smooth; }
+  .mc-scope img, .mc-scope svg { display: block; max-width: 100%; }
+  .mc-scope a { color: inherit; text-decoration: none; }
+  .mc-scope button { font: inherit; cursor: pointer; border: 0; background: none; }
+
+  .mc-scope .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-wide { max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }
+
+  /* ============ TYPOGRAPHY ============ */
+  .mc-scope .eyebrow {
+    font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue); font-weight: 500; display: inline-block;
+  }
+  .mc-scope .eyebrow-gold { color: var(--gold); }
+  .mc-scope .display-1 {
+    font-family: var(--serif); font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+    font-weight: 400; line-height: 1.0; letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 144, "SOFT" 30; color: var(--ink);
+  }
+  .mc-scope .display-2 {
+    font-family: var(--serif); font-size: clamp(2rem, 5vw, var(--text-3xl));
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 100, "SOFT" 50; color: var(--ink);
+  }
+  .mc-scope h2 {
+    font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+    font-weight: 450; line-height: 1.1; letter-spacing: -0.015em;
+    color: var(--ink); margin-bottom: var(--s-5);
+    font-variation-settings: "opsz" 60, "SOFT" 50;
+  }
+  .mc-scope h3 {
+    font-family: var(--serif); font-size: var(--text-xl); font-weight: 500;
+    line-height: 1.25; letter-spacing: -0.01em; color: var(--ink);
+    margin-bottom: var(--s-4); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope h4 {
+    font-family: var(--sans); font-size: var(--text-md); font-weight: 600;
+    line-height: 1.3; color: var(--ink); margin-bottom: var(--s-3); letter-spacing: -0.005em;
+  }
+  .mc-scope p { margin-bottom: var(--s-4); }
+  .mc-scope p:last-child { margin-bottom: 0; }
+  .mc-scope p.lead { font-size: var(--text-lg); line-height: 1.55; color: var(--ink-2); font-weight: 350; }
+  .mc-scope p.lede {
+    font-family: var(--serif); font-size: var(--text-xl); line-height: 1.45;
+    color: var(--ink); font-weight: 350; font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .body-text { color: var(--ink-2); }
+  .mc-scope .text-muted { color: var(--ink-lighter); }
+  .mc-scope .text-small { font-size: var(--text-sm); }
+  .mc-scope .text-mono { font-family: var(--mono); font-feature-settings: 'tnum' 1; }
+  .mc-scope strong, .mc-scope b { font-weight: 600; color: var(--ink); }
+  .mc-scope em, .mc-scope i { font-style: normal; }
+  .mc-scope a.inline-link { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  .mc-scope a.inline-link:hover { color: var(--blue-deep); }
+
+  /* ============ BUTTONS ============ */
+  .mc-scope .btn {
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    padding: var(--s-3) var(--s-5); font-family: var(--sans);
+    font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.005em;
+    border-radius: 100px; transition: all 0.18s ease; white-space: nowrap;
+  }
+  .mc-scope .btn-primary { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+  .mc-scope .btn-primary:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-1px); }
+  .mc-scope .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border-strong); }
+  .mc-scope .btn-secondary:hover { border-color: var(--ink); }
+  .mc-scope .btn-light { background: var(--white); color: var(--ink); border: 1px solid var(--border); }
+  .mc-scope .btn-light:hover { background: var(--paper-2); }
+  .mc-scope .btn-large { padding: var(--s-4) var(--s-6); font-size: var(--text-base); }
+  .mc-scope .btn-arrow { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--blue); font-weight: 500; transition: gap 0.18s; }
+  .mc-scope .btn-arrow:hover { gap: var(--s-3); }
+  .mc-scope .btn-arrow::after { content: '→'; font-family: var(--sans); }
+
+  /* ============ HERO ============ */
+  .mc-scope .hero { padding: var(--s-9) 0 var(--s-8); border-bottom: 1px solid var(--border); }
+  .mc-scope .breadcrumb {
+    display: flex; gap: var(--s-2); font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.08em; color: var(--ink-lighter); text-transform: uppercase; margin-bottom: var(--s-7);
+  }
+  .mc-scope .breadcrumb a { color: var(--ink-lighter); }
+  .mc-scope .breadcrumb a:hover { color: var(--blue); }
+  .mc-scope .breadcrumb span:last-child { color: var(--ink); }
+  .mc-scope .hero-eyebrow { margin-bottom: var(--s-5); }
+  .mc-scope .hero h1 { margin-bottom: var(--s-6); max-width: 20ch; }
+  .mc-scope .hero-subtitle { max-width: 60ch; margin-bottom: var(--s-7); }
+  .mc-scope .hero-actions { display: flex; gap: var(--s-3); align-items: center; flex-wrap: wrap; margin-bottom: var(--s-6); }
+  .mc-scope .hero-trust {
+    font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-lighter);
+    letter-spacing: 0.02em; display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap;
+  }
+  .mc-scope .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+  /* ============ 3-DOOR ROUTER ============ */
+  .mc-scope .doors { padding: var(--s-8) 0; background: var(--paper-2); border-bottom: 1px solid var(--border); }
+  .mc-scope .doors-head { text-align: center; max-width: 50ch; margin: 0 auto var(--s-7); }
+  .mc-scope .door-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+  .mc-scope .door {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease; position: relative; overflow: hidden;
+  }
+  .mc-scope .door:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(10,14,26,0.08); }
+  .mc-scope .door-num { font-family: var(--mono); font-size: var(--text-xs); color: var(--blue); letter-spacing: 0.1em; margin-bottom: var(--s-4); display: block; }
+  .mc-scope .door h3 { margin-bottom: var(--s-3); }
+  .mc-scope .door p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-5); }
+  .mc-scope .door .door-cta { font-family: var(--sans); font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; align-items: center; gap: var(--s-2); }
+  .mc-scope .door .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .door:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 860px) { .mc-scope .door-grid { grid-template-columns: 1fr; } }
+
+  /* ============ SECTION ============ */
+  .mc-scope .section { padding: var(--s-9) 0; }
+  .mc-scope .section-tint { background: var(--paper-2); }
+  .mc-scope .section-ink { background: var(--ink); color: var(--paper); }
+  .mc-scope .section-ink h2, .mc-scope .section-ink h3, .mc-scope .section-ink h4 { color: var(--white); }
+  .mc-scope .section-ink .text-muted { color: #9CA3AF; }
+  .mc-scope .section-head { max-width: 60ch; margin-bottom: var(--s-8); }
+  .mc-scope .section-head .eyebrow { margin-bottom: var(--s-4); }
+
+  /* ============ STEPS ============ */
+  .mc-scope .steps { display: grid; gap: var(--s-5); }
+  .mc-scope .step {
+    display: grid; grid-template-columns: 60px 1fr; gap: var(--s-5);
+    padding: var(--s-6); background: var(--white); border: 1px solid var(--border); border-radius: 6px;
+  }
+  .mc-scope .step-num {
+    font-family: var(--serif); font-size: var(--text-2xl); color: var(--blue);
+    font-variation-settings: "opsz" 60; line-height: 1;
+  }
+  .mc-scope .step h4 { margin-bottom: var(--s-2); }
+  .mc-scope .step p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .step p + p { margin-top: var(--s-3); }
+
+  /* ============ ROLE GRID ============ */
+  .mc-scope .role-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+  .mc-scope .role-card {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease;
+  }
+  .mc-scope .role-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10,14,26,0.06); }
+  .mc-scope .role-tag {
+    font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 100px; display: inline-block; margin-bottom: var(--s-4);
+  }
+  .mc-scope .role-tag.licensed { background: var(--blue-soft); color: var(--blue-deep); }
+  .mc-scope .role-tag.industry { background: var(--paper-3); color: var(--ink-light); }
+  .mc-scope .role-card h3 { font-size: var(--text-lg); margin-bottom: var(--s-2); }
+  .mc-scope .role-card p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-4); }
+  .mc-scope .role-card .door-cta { font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; gap: var(--s-2); align-items: center; }
+  .mc-scope .role-card .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .role-card:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 760px) { .mc-scope .role-grid { grid-template-columns: 1fr; } }
+
+  /* ============ STORY INTERLUDE ============ */
+  .mc-scope .story { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; }
+  .mc-scope .story .container-narrow { position: relative; }
+  .mc-scope .story .eyebrow { color: var(--gold); margin-bottom: var(--s-5); }
+  .mc-scope .story p { color: #D8DCE4; font-size: var(--text-md); line-height: 1.7; margin-bottom: var(--s-5); }
+  .mc-scope .story p.story-lede { font-family: var(--serif); font-size: var(--text-xl); color: var(--white); font-variation-settings: "opsz" 30; line-height: 1.45; }
+  .mc-scope .story strong { color: var(--white); }
+  .mc-scope .story-photo {
+    width: 100%; max-width: 420px; border-radius: 6px; margin: var(--s-6) 0;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .mc-scope .story-caption { font-family: var(--mono); font-size: var(--text-xs); color: #9CA3AF; letter-spacing: 0.04em; margin-top: var(--s-2); }
+  .mc-scope .story-rule { width: 40px; height: 2px; background: var(--gold); margin-bottom: var(--s-6); }
+
+  /* ============ STATS BAR ============ */
+  .mc-scope .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-5); padding: var(--s-7) 0; }
+  .mc-scope .stat { text-align: center; }
+  .mc-scope .stat-num { font-family: var(--serif); font-size: var(--text-3xl); color: var(--ink); font-variation-settings: "opsz" 80; line-height: 1; margin-bottom: var(--s-2); }
+  .mc-scope .section-ink .stat-num { color: var(--white); }
+  .mc-scope .stat-label { font-family: var(--mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-lighter); }
+  @media (max-width: 760px) { .mc-scope .stats-bar { grid-template-columns: repeat(2, 1fr); gap: var(--s-6); } }
+
+  /* ============ FEATURE COLUMNS ============ */
+  .mc-scope .cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); }
+  .mc-scope .cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-7); }
+  .mc-scope .feature h4 { margin-bottom: var(--s-3); }
+  .mc-scope .feature p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .feature-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--blue-soft); display: flex; align-items: center; justify-content: center; margin-bottom: var(--s-4); color: var(--blue); font-family: var(--serif); font-size: var(--text-lg); }
+  @media (max-width: 860px) { .mc-scope .cols-3 { grid-template-columns: 1fr; } .mc-scope .cols-2 { grid-template-columns: 1fr; } }
+
+  /* ============ TESTIMONIAL ============ */
+  .mc-scope .quote-card { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 6px; padding: var(--s-7); }
+  .mc-scope .quote-card blockquote { font-family: var(--serif); font-size: var(--text-lg); line-height: 1.5; color: var(--ink); font-variation-settings: "opsz" 40; margin-bottom: var(--s-5); }
+  .mc-scope .quote-author { display: flex; align-items: center; gap: var(--s-4); }
+  .mc-scope .quote-author img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 1px solid var(--border); }
+  .mc-scope .quote-author .qa-name { font-weight: 600; font-size: var(--text-sm); }
+  .mc-scope .quote-author .qa-title { font-size: var(--text-xs); color: var(--ink-lighter); font-family: var(--mono); }
+
+  /* ============ LEAD MAGNET / EMAIL ============ */
+  .mc-scope .magnet { background: var(--blue-tint); border: 1px solid var(--blue-soft); border-radius: 8px; padding: var(--s-8); }
+  .mc-scope .magnet-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--s-8); align-items: center; }
+  .mc-scope .magnet h2 { margin-bottom: var(--s-4); }
+  .mc-scope .magnet p { color: var(--ink-light); }
+  .mc-scope .magnet-form { display: flex; flex-direction: column; gap: var(--s-3); }
+  .mc-scope .magnet-form input {
+    padding: var(--s-4); border: 1px solid var(--border-strong); border-radius: 6px;
+    font-family: var(--sans); font-size: var(--text-base); background: var(--white);
+  }
+  .mc-scope .magnet-form input:focus { outline: 2px solid var(--blue); border-color: var(--blue); }
+  .mc-scope .form-note { font-size: var(--text-xs); color: var(--ink-lighter); }
+  @media (max-width: 860px) { .mc-scope .magnet-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+
+  /* ============ FAQ ============ */
+  .mc-scope .faq-list { border-top: 1px solid var(--border); }
+  .mc-scope .faq-item { border-bottom: 1px solid var(--border); }
+  .mc-scope .faq-q {
+    width: 100%; text-align: left; padding: var(--s-5) 0; display: flex;
+    justify-content: space-between; align-items: center; gap: var(--s-4);
+    font-family: var(--serif); font-size: var(--text-md); font-weight: 500;
+    color: var(--ink); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .faq-q:hover { color: var(--blue); }
+  .mc-scope .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; transition: transform 0.2s; }
+  .mc-scope .faq-icon::before, .mc-scope .faq-icon::after { content: ''; position: absolute; background: var(--blue); border-radius: 2px; }
+  .mc-scope .faq-icon::before { top: 9px; left: 0; width: 20px; height: 2px; }
+  .mc-scope .faq-icon::after { top: 0; left: 9px; width: 2px; height: 20px; transition: transform 0.2s; }
+  .mc-scope .faq-item.open .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+  .mc-scope .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+  .mc-scope .faq-a-inner { padding: 0 0 var(--s-5); color: var(--ink-light); font-size: var(--text-sm); line-height: 1.65; max-width: 70ch; }
+  .mc-scope .faq-item.open .faq-a { max-height: 600px; }
+
+  /* ============ CTA BAND ============ */
+  .mc-scope .cta-band { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; text-align: center; }
+  .mc-scope .cta-band h2 { color: var(--white); max-width: 22ch; margin: 0 auto var(--s-5); }
+  .mc-scope .cta-band p { color: #B8BEC9; max-width: 54ch; margin: 0 auto var(--s-7); }
+  .mc-scope .cta-band .hero-actions { justify-content: center; }
+  .mc-scope .cta-band .btn-primary { background: var(--white); color: var(--ink); border-color: var(--white); }
+  .mc-scope .cta-band .btn-primary:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .mc-scope .cta-band .btn-secondary { color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .mc-scope .cta-band .btn-secondary:hover { border-color: var(--white); }
+
+  /* ============ COMPLIANCE / DISCLAIMER ============ */
+  .mc-scope .disclaimer { padding: var(--s-7) 0; background: var(--paper-2); border-top: 1px solid var(--border); }
+  .mc-scope .disclaimer p { font-size: var(--text-xs); color: var(--ink-lighter); line-height: 1.6; max-width: 90ch; margin-bottom: var(--s-3); }
+
+  .mc-scope .mt-5 { margin-top: var(--s-5); }
+  .mc-scope .mt-7 { margin-top: var(--s-7); }
+</style>
+
+<!-- ============ JSON-LD: FAQ ============ -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do you become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"You register with the NMLS for a unique ID, complete 20 hours of NMLS-approved pre-licensure education, pass the SAFE MLO national exam, clear a background and credit check, file your MU4 application, and obtain sponsorship from a licensed mortgage company. Running your own independent shop adds a few business steps, but the licensing path is the same one every mortgage loan originator follows."}},
+    {"@type":"Question","name":"How long does it take to become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"Most people get licensed within a few weeks to a couple of months. The 20-hour course can be finished in days to a few weeks depending on the format, the SAFE MLO exam is scheduled at your convenience, and the background and credit checks plus state processing add the rest. Moving faster mostly comes down to how quickly you finish the course and book your exam."}},
+    {"@type":"Question","name":"Do you need a college degree to become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"No. There is no college-degree requirement. You need the 20-hour SAFE course, a passing SAFE MLO exam score, and to meet your state's licensing standards. Plenty of successful originators came into the field after careers in real estate, insurance, sales, the military, or the trades with no finance degree at all."}},
+    {"@type":"Question","name":"How much does it cost to become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"Expect to pay for the 20-hour pre-licensure course, the SAFE MLO exam fee, the MU4 application fee, and fingerprint and credit-check fees. Out-of-pocket commonly starts around a few hundred dollars and varies by state. If you intend to own an independent brokerage, add state company-license fees and a surety bond; if you originate under an existing shop, those business costs don't apply to you."}},
+    {"@type":"Question","name":"What is the SAFE MLO exam and how hard is it?","acceptedAnswer":{"@type":"Answer","text":"It's the national licensing test you must pass to get your license. It contains 125 questions (115 scored), runs 90 minutes, and requires a 75% score to pass. It covers federal mortgage law, general mortgage knowledge, loan origination activities, ethics, and uniform state content. The first-time pass rate is roughly 60%, so it's a serious exam, but with quality prep most candidates pass."}},
+    {"@type":"Question","name":"What happens if I fail the SAFE MLO exam?","acceptedAnswer":{"@type":"Answer","text":"If you don't pass on your first try, you wait 30 days before retaking it. After three consecutive failures, a 180-day waiting period applies. Failing once is common and not a barrier; most people who use good practice tests pass on the first or second attempt. The exam simply confirms you understand the rules you'll work under."}},
+    {"@type":"Question","name":"Is there a minimum credit score to become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"No. Your application authorizes the NMLS to pull a credit report, but the review looks at your financial responsibility and history rather than a hard score threshold. Items like past bankruptcies or judgments may require an explanation. Many people with imperfect credit have been licensed successfully."}},
+    {"@type":"Question","name":"Do I need a background check to become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"Yes. You submit fingerprints through the NMLS for a criminal background check as part of your MU4 application. Certain felony convictions, particularly financial crimes, can disqualify an applicant, but most backgrounds clear without issue. The check exists to protect consumers and is a standard step."}},
+    {"@type":"Question","name":"What's the difference between a mortgage broker and a loan officer?","acceptedAnswer":{"@type":"Answer","text":"A loan officer is the licensed individual who originates loans for borrowers. A mortgage broker is an independent business that shops a borrower's loan across many wholesale lenders instead of selling one institution's products. In practice, the broker role is a loan officer who works independently, or within an independent brokerage, with access to many lenders rather than a single product menu."}},
+    {"@type":"Question","name":"What is the difference between a mortgage broker and a banker?","acceptedAnswer":{"@type":"Answer","text":"A mortgage banker works for one lender and offers that lender's products. A broker instead works on the borrower's behalf and can compare options across hundreds of wholesale lenders. That independence is the central advantage of the broker model: you're not limited to one company's rates, programs, or guidelines."}},
+    {"@type":"Question","name":"Can I become a mortgage broker part-time?","acceptedAnswer":{"@type":"Answer","text":"Yes, many people start part-time, especially while transitioning from another career. The licensing can be completed around a full-time job, and once you're licensed and sponsored, you can scale your hours as your pipeline grows. If you already hold a real estate, insurance, or financial-services license, the role layers naturally onto your existing relationships."}},
+    {"@type":"Question","name":"Can I become a mortgage broker with no experience?","acceptedAnswer":{"@type":"Answer","text":"Yes. The industry regularly welcomes people with zero prior mortgage experience. The licensing requirements are the same for everyone, and the craft is learned on the job. What separates the people who thrive is mentorship, a strong brand, and access to many lenders, not years of prior background."}},
+    {"@type":"Question","name":"Do I need to join a brokerage to become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"To activate your license you need sponsorship from a licensed mortgage company, so most people join an established brokerage first and can start their own shop later. Joining a strong team early gives you mentorship, systems, lender access, and a brand on day one, rather than building all of that from scratch alone."}},
+    {"@type":"Question","name":"How do mortgage brokers get paid?","acceptedAnswer":{"@type":"Answer","text":"Compensation is commission-based and tied to the loans you close, paid in a compliant, disclosed manner under federal rules. There's no salary cap, which is why the uncapped, performance-linked income draws so many people to the field. Earnings depend entirely on the business you build; new originators earn less while they grow a pipeline, and established producers can earn substantial incomes."}},
+    {"@type":"Question","name":"How much do mortgage brokers make?","acceptedAnswer":{"@type":"Answer","text":"Income varies widely with market, effort, and experience because pay is commission-based. New originators building a book earn modestly at first, while established brokers can earn well into six figures. The ceiling is largely set by the relationships and brand you build, not by a fixed pay grade."}},
+    {"@type":"Question","name":"What licenses do I need to become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"You need an individual MLO license endorsement obtained through the NMLS, which requires the SAFE MLO exam, 20 hours of pre-licensure education, and a clean background and credit review. If you want to own a brokerage rather than originate under one, your business will also need a company-level license in each state where it operates, plus a surety bond."}},
+    {"@type":"Question","name":"Is becoming a mortgage broker worth it?","acceptedAnswer":{"@type":"Answer","text":"For the right person, it can be one of the more rewarding paths in financial services: a flexible schedule, uncapped income, and the satisfaction of helping people buy homes. It rewards work ethic and relationship-building over credentials. It is not passive or guaranteed; the value comes from the business you're willing to build."}},
+    {"@type":"Question","name":"What skills do I need to become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"The most successful originators are organized, trustworthy, and genuinely enjoy helping people through a major financial decision. Attention to detail matters because you'll handle documentation and compliance. Communication and follow-through matter even more, because the business runs on relationships and referrals. None of these require a special background to begin; they're built over time."}},
+    {"@type":"Question","name":"Can a realtor become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"Yes, and it's a natural fit. Realtors already understand the transaction and have a network of buyers, so many add a mortgage license for a second, complementary income stream. You must follow the rules separating the two roles on the same transaction, but holding both licenses is common, and existing relationships often mean a fast ramp."}},
+    {"@type":"Question","name":"Can an insurance agent or financial advisor become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"Yes. Insurance agents, financial advisors, and other licensed professionals frequently add a mortgage license because they already advise clients on money and hold trust-based relationships. Doing so lets you serve those same clients on home financing, turning an existing book of business into new revenue with minimal added prospecting."}},
+    {"@type":"Question","name":"How do I get clients after I become a mortgage broker?","acceptedAnswer":{"@type":"Answer","text":"Clients come from referral relationships, real-estate-agent partnerships, your existing network, and a memorable personal brand. The licensing teaches the rules; growing the business is a separate skill set built around trust, consistency, and marketing. This is exactly where strong mentorship pays off, because lead generation determines how far you go."}},
+    {"@type":"Question","name":"What is the NMLS and why does it matter?","acceptedAnswer":{"@type":"Answer","text":"The Nationwide Multistate Licensing System and Registry (NMLS) is the federal system that licenses and tracks every mortgage professional. You create an NMLS account, complete your education and exam through it, and file your application there. Consumers can look you up on NMLS Consumer Access, which is part of why the credential carries real professional credibility."}},
+    {"@type":"Question","name":"Do mortgage brokers need continuing education?","acceptedAnswer":{"@type":"Answer","text":"Yes. The SAFE Act requires 8 hours of NMLS-approved continuing education each year to renew your license, including ongoing instruction on federal law, ethics, and nontraditional lending. It keeps you current on the rules and is a routine, manageable part of maintaining your license."}},
+    {"@type":"Question","name":"Can I become a mortgage broker in multiple states?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once you're licensed in your home state, you can add licenses in additional states through the NMLS, each with its own education and fee requirements. Many originators expand their footprint over time. Joining a company already licensed in many states makes serving clients across state lines far simpler because the company's licensing supports your reach."}},
+    {"@type":"Question","name":"What's the first step to become a mortgage broker today?","acceptedAnswer":{"@type":"Answer","text":"The practical first step is to create your NMLS account and enroll in a 20-hour pre-licensure course. But the smarter first step is choosing where you'll hang your license, because mentorship and lender access shape your entire career. Talk to a team before you start so the path is built around a real plan, not just a passed exam."}}
+  ]
+}
+</script>
+
+<div class="mc-scope">
+
+  <section class="hero">
+    <div class="container">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/mortgage-career/">Mortgage Career</a> <span>/</span> <span>Mortgage Broker</span></nav>
+      <span class="eyebrow hero-eyebrow">Mortgage Career &middot; Licensed Origination</span>
+      <h1 class="display-1">How to Become a Mortgage Broker</h1>
+      <p class="lead hero-subtitle">A complete, honest guide to becoming a mortgage broker &mdash; how to register with the NMLS, finish the 20-hour SAFE course, pass the SAFE MLO exam, and turn your license into a real business. Written by a 7&times; Scotsman Guide Top Producer with $500M+ closed, not a course-selling middleman.</p>
+      <div class="hero-actions">
+        <a href="#start" class="btn btn-primary btn-large">See My Options</a>
+        <a href="#steps" class="btn btn-secondary btn-large">See the 6 Steps</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-dot"></span><span>Jim Blackburn &middot; NMLS #1072866</span>
+        <span class="trust-dot"></span><span>7&times; Scotsman Guide Top Producer</span>
+        <span class="trust-dot"></span><span>$500M+ Closed</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cols-2">
+        <div>
+          <span class="eyebrow">The Short Version</span>
+          <h2 class="mt-5">A mortgage broker works for the borrower &mdash; not for a bank</h2>
+          <p class="lede">This is the independent path. A broker isn't an employee pushing one lender's products; a broker runs their own book of business and shops every loan across many lenders to find the borrower the best fit.</p>
+        </div>
+        <div class="body-text">
+          <p>If you've been searching how to become a mortgage broker, you're usually after something bigger than a job &mdash; you want independence: your own clients, your own brand, and the freedom to place a loan wherever it fits best. This page is the honest path to that, including the part nobody else explains: how to turn a license into a business you own.</p>
+          <p>It helps to be clear on the distinction up front. A <strong>loan officer</strong> is the licensed person who originates loans. A <strong>mortgage broker</strong> is independent &mdash; not tied to one institution's rates or guidelines &mdash; and can shop a borrower's file across hundreds of wholesale lenders. If you're not sure which path fits you, our <a class="inline-link" href="/mortgage-career/mortgage-broker-vs-loan-officer/">mortgage broker vs loan officer guide</a> breaks it down. If you simply want to start in the business, the <a class="inline-link" href="/mortgage-career/loan-officer/">how to become a loan officer guide</a> is the better starting point.</p>
+          <p>The licensing is identical for both and is governed by the federal <a class="inline-link" href="https://www.consumerfinance.gov/" target="_blank" rel="noopener">SAFE Act of 2008</a>, administered through the <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS</a>. What sets the broker path apart is what you do <em>with</em> the license &mdash; so this guide focuses there.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container container-narrow">
+      <span class="eyebrow">Definition</span>
+      <h2 class="mt-5">What does a mortgage broker actually do?</h2>
+      <p class="body-text">The job is to sit on the same side of the table as the borrower. You review someone's financial picture, identify which loan programs fit, and shop that loan across a wide network of wholesale lenders to find competitive terms. Unlike a bank loan officer, a broker is not tied to one institution's rates or guidelines &mdash; that's the defining difference.</p>
+      <p class="body-text">Day to day, the work means building referral relationships, taking loan applications, gathering and reviewing documentation, matching borrowers to programs, and guiding each client from pre-approval through closing. It rewards organization and trustworthiness, but above all it rewards relationships. The originators who win are the ones borrowers and real-estate agents remember and refer.</p>
+      <p class="body-text">Choosing this path over a retail role at a single lender means trading a narrow product menu for breadth: instead of one company's offerings, you can place a loan with whichever lender best fits the client &mdash; an advantage that compounds over a career.</p>
+    </div>
+  </section>
+
+  <section class="section" id="steps">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The Path</span>
+        <h2 class="mt-5">How to become a mortgage broker in 6 steps</h2>
+        <p class="text-muted">This is the actual licensing sequence. None of it requires a degree, and most of it can be done from home.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><div>
+          <h4>Register with the NMLS and get your unique ID</h4>
+          <p>The first step is creating an account in the Nationwide Multistate Licensing System and Registry to obtain your NMLS unique ID. This federal registry tracks every licensed mortgage professional in the country, and every later step routes through it.</p>
+        </div></div>
+        <div class="step"><span class="step-num">2</span><div>
+          <h4>Complete 20 hours of NMLS-approved pre-licensure education</h4>
+          <p>The SAFE Act requires a 20-hour pre-licensure course: 3 hours of federal law, 3 hours of ethics (fraud, consumer protection, fair lending), 2 hours on nontraditional mortgage products, and 12 hours of general origination instruction. Take it live or self-paced. <a class="inline-link" href="/mortgage-career/safe-mlo-exam/">See how the course and exam connect</a>.</p>
+        </div></div>
+        <div class="step"><span class="step-num">3</span><div>
+          <h4>Pass the SAFE MLO exam</h4>
+          <p>You must pass the national SAFE MLO test &mdash; the same exam every licensed originator takes. With quality practice tests most candidates pass, and it's very retakeable if you don't on the first try. We cover the format, the passing score, and how to prep in the dedicated <a class="inline-link" href="/mortgage-career/safe-mlo-exam/">SAFE MLO exam guide</a>.</p>
+        </div></div>
+        <div class="step"><span class="step-num">4</span><div>
+          <h4>Submit your MU4 application, fingerprints, and credit authorization</h4>
+          <p>File the Individual (MU4) form through the NMLS, submit fingerprints for a background check, and authorize a credit report. There is no minimum credit score required; the review looks at financial responsibility and disclosures, not a score cutoff.</p>
+        </div></div>
+        <div class="step"><span class="step-num">5</span><div>
+          <h4>Get sponsored by a licensed mortgage company</h4>
+          <p>Your license stays inactive until a licensed company requests sponsorship through the NMLS. This is the most important decision on the path to become a mortgage broker: the company you join determines your mentorship, lender access, technology, and the brand you operate under from day one.</p>
+        </div></div>
+        <div class="step"><span class="step-num">6</span><div>
+          <h4>Learn the business &mdash; and start closing loans</h4>
+          <p>Licensing gets you in the door on paper. Knowing how to generate leads, structure deals, and build a brand is what makes you successful. That's the part we coach &mdash; the same playbook behind $500M+ in closed loans and seven Scotsman Guide Top Producer honors.</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container container-narrow">
+      <span class="eyebrow">The Numbers</span>
+      <h2 class="mt-5">How much does it cost to become a mortgage broker?</h2>
+      <p class="body-text">The honest answer: less than most people expect if you originate under a company, and more if you intend to own a brokerage.</p>
+      <p class="body-text"><strong>Originating under a company:</strong> you'll pay for the 20-hour pre-licensure course, the SAFE MLO exam fee, the MU4 application fee, and fingerprint and credit-check fees. Total out-of-pocket commonly starts around a few hundred dollars and varies by state. Some sponsoring companies cover or reimburse parts of this &mdash; always worth asking before you commit.</p>
+      <p class="body-text"><strong>Owning a brokerage:</strong> add company-level state license fees and a surety bond on top of the individual licensing. Most people start by originating under an established shop first, then open their own later once they understand the business. There's no rule that you must own a brokerage to hold the title.</p>
+      <p class="text-muted text-small">Costs vary by state. Confirm current fees at the official <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS Resource Center</a> before you begin.</p>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="container-narrow">
+      <span class="eyebrow">Why Where You Start Matters</span>
+      <div class="story-rule"></div>
+      <p class="story-lede">You don't learn this business from the stands. You learn it in the huddle.</p>
+      <p>Here's what nobody tells you about going independent: the license is the easy 10%. The other 90% &mdash; winning clients, structuring deals across many lenders, and building a brand people seek out &mdash; is what actually makes an independent broker succeed, and it's learned next to someone who's already built it.</p>
+      <p>I'm a Michigan kid who took a winding road into this business: about ten years as a financial advisor, then a jump to the mortgage side when the market fell apart in 2008. I got my own license (NMLS #1072866) and learned the craft from the ground up. Seven Scotsman Guide Top Producer honors and $500M+ in closed loans later, the single biggest lesson I'd pass along is this: <strong>where you choose to stand, and who you stand next to, matters more than how fast you start.</strong></p>
+      <p>That's why I broker to <strong>300+ lenders</strong> &mdash; so no client ever goes unhelped &mdash; and it's why what I teach the people on my team isn't "how to pass a test." It's how to build a business and a brand that's truly theirs.</p>
+    </div>
+  </section>
+
+  <section class="section section-ink">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-gold">Why Become a Mortgage Broker With Us</span>
+        <h2 class="mt-5">Anyone can sell you a course. We teach you the business.</h2>
+        <p class="text-muted">There are plenty of places to get licensed on paper. What's rare is learning the craft &mdash; branding, lead generation, deal structure, trust &mdash; from someone with a real track record.</p>
+      </div>
+      <div class="cols-3">
+        <div class="feature"><div class="feature-icon">&#9650;</div><h4>Mentorship from a top producer</h4><p class="text-muted">Learn under Jim Blackburn (NMLS #1072866), a 7&times; Scotsman Guide Top Producer with $500M+ closed &mdash; not a faceless portal.</p></div>
+        <div class="feature"><div class="feature-icon">&#9671;</div><h4>A brand you own &mdash; not a cubicle</h4><p class="text-muted">Independence only works if people remember you. Stairway gives you a brand built to make an independent broker stand out.</p></div>
+        <div class="feature"><div class="feature-icon">&#9678;</div><h4>300+ lenders, one independent you</h4><p class="text-muted">The whole point of going independent is choice. A deep lender bench means you can place any client, not just the easy ones.</p></div>
+      </div>
+      <div class="stats-bar mt-7">
+        <div class="stat"><div class="stat-num">$500M+</div><div class="stat-label">Closed Volume</div></div>
+        <div class="stat"><div class="stat-num">7&times;</div><div class="stat-label">Top Producer</div></div>
+        <div class="stat"><div class="stat-num">300+</div><div class="stat-label">Lenders</div></div>
+        <div class="stat"><div class="stat-num">5.0&#9733;</div><div class="stat-label">624 Reviews</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Who This Is For</span>
+        <h2 class="mt-5">Who decides to become a mortgage broker?</h2>
+        <p class="text-muted">There's no single background. Some of the best in the business came from completely unrelated careers.</p>
+      </div>
+      <div class="role-grid">
+        <a href="/mortgage-career/for-licensed-professionals/" class="role-card">
+          <span class="role-tag licensed">Highest Head Start</span>
+          <h3>Licensed professionals</h3>
+          <p>Realtors, insurance agents, financial advisors, and attorneys can turn an existing book of relationships into a second income stream by adding a mortgage license.</p>
+          <span class="door-cta">See the licensed-pro path</span>
+        </a>
+        <a href="/mortgage-career/career-change/" class="role-card">
+          <span class="role-tag industry">Fresh Start</span>
+          <h3>Career changers</h3>
+          <p>No finance background needed. Many come into the field as a second career, drawn by flexibility, uncapped income, and meaningful work.</p>
+          <span class="door-cta">See the career-change path</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container container-narrow">
+      <div class="section-head" style="margin-bottom: var(--s-7);">
+        <span class="eyebrow">Questions</span>
+        <h2 class="mt-5">How to become a mortgage broker: 25 questions, answered</h2>
+        <p class="text-muted">The real answers to what people actually ask before they get started.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">How do you become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">You register with the NMLS for a unique ID, complete 20 hours of NMLS-approved pre-licensure education, pass the SAFE MLO national exam, clear a background and credit check, file your MU4 application, and obtain sponsorship from a licensed mortgage company. Running your own independent shop adds a few business steps, but the licensing path is the same one every mortgage loan originator follows.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How long does it take to become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Most people get licensed within a few weeks to a couple of months. The 20-hour course can be finished in days to a few weeks depending on the format, the SAFE MLO exam is scheduled at your convenience, and the background and credit checks plus state processing add the rest. Moving faster mostly comes down to how quickly you finish the course and book your exam.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you need a college degree to become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. There is no college-degree requirement. You need the 20-hour SAFE course, a passing SAFE MLO exam score, and to meet your state's licensing standards. Plenty of successful originators came into the field after careers in real estate, insurance, sales, the military, or the trades with no finance degree at all.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How much does it cost to become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Expect to pay for the 20-hour pre-licensure course, the SAFE MLO exam fee, the MU4 application fee, and fingerprint and credit-check fees. Out-of-pocket commonly starts around a few hundred dollars and varies by state. If you intend to own an independent brokerage, add state company-license fees and a surety bond; if you originate under an existing shop, those business costs don't apply to you.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is the SAFE MLO exam and how hard is it?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">It's the national licensing test you must pass to get your license. It contains 125 questions (115 scored), runs 90 minutes, and requires a 75% score to pass. It covers federal mortgage law, general mortgage knowledge, loan origination activities, ethics, and uniform state content. The first-time pass rate is roughly 60%, so it's a serious exam, but with quality prep most candidates pass.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What happens if I fail the SAFE MLO exam?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">If you don't pass on your first try, you wait 30 days before retaking it. After three consecutive failures, a 180-day waiting period applies. Failing once is common and not a barrier; most people who use good practice tests pass on the first or second attempt. The exam simply confirms you understand the rules you'll work under.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is there a minimum credit score to become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. Your application authorizes the NMLS to pull a credit report, but the review looks at your financial responsibility and history rather than a hard score threshold. Items like past bankruptcies or judgments may require an explanation. Many people with imperfect credit have been licensed successfully.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need a background check to become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. You submit fingerprints through the NMLS for a criminal background check as part of your MU4 application. Certain felony convictions, particularly financial crimes, can disqualify an applicant, but most backgrounds clear without issue. The check exists to protect consumers and is a standard step.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the difference between a mortgage broker and a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A loan officer is the licensed individual who originates loans for borrowers. A mortgage broker is an independent business that shops a borrower's loan across many wholesale lenders instead of selling one institution's products. In practice, the broker role is a loan officer who works independently, or within an independent brokerage, with access to many lenders rather than a single product menu.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is the difference between a mortgage broker and a banker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A mortgage banker works for one lender and offers that lender's products. A broker instead works on the borrower's behalf and can compare options across hundreds of wholesale lenders. That independence is the central advantage of the broker model: you're not limited to one company's rates, programs, or guidelines.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I become a mortgage broker part-time?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes, many people start part-time, especially while transitioning from another career. The licensing can be completed around a full-time job, and once you're licensed and sponsored, you can scale your hours as your pipeline grows. If you already hold a real estate, insurance, or financial-services license, the role layers naturally onto your existing relationships.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I become a mortgage broker with no experience?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. The industry regularly welcomes people with zero prior mortgage experience. The licensing requirements are the same for everyone, and the craft is learned on the job. What separates the people who thrive is mentorship, a strong brand, and access to many lenders, not years of prior background.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need to join a brokerage to become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">To activate your license you need sponsorship from a licensed mortgage company, so most people join an established brokerage first and can start their own shop later. Joining a strong team early gives you mentorship, systems, lender access, and a brand on day one, rather than building all of that from scratch alone.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do mortgage brokers get paid?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Compensation is commission-based and tied to the loans you close, paid in a compliant, disclosed manner under federal rules. There's no salary cap, which is why the uncapped, performance-linked income draws so many people to the field. Earnings depend entirely on the business you build; new originators earn less while they grow a pipeline, and established producers can earn substantial incomes.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How much do mortgage brokers make?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Income varies widely with market, effort, and experience because pay is commission-based. New originators building a book earn modestly at first, while established brokers can earn well into six figures. The ceiling is largely set by the relationships and brand you build, not by a fixed pay grade.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What licenses do I need to become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">You need an individual MLO license endorsement obtained through the NMLS, which requires the SAFE MLO exam, 20 hours of pre-licensure education, and a clean background and credit review. If you want to own a brokerage rather than originate under one, your business will also need a company-level license in each state where it operates, plus a surety bond.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is becoming a mortgage broker worth it?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">For the right person, it can be one of the more rewarding paths in financial services: a flexible schedule, uncapped income, and the satisfaction of helping people buy homes. It rewards work ethic and relationship-building over credentials. It is not passive or guaranteed; the value comes from the business you're willing to build.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What skills do I need to become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The most successful originators are organized, trustworthy, and genuinely enjoy helping people through a major financial decision. Attention to detail matters because you'll handle documentation and compliance. Communication and follow-through matter even more, because the business runs on relationships and referrals. None of these require a special background to begin; they're built over time.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can a realtor become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes, and it's a natural fit. Realtors already understand the transaction and have a network of buyers, so many add a mortgage license for a second, complementary income stream. You must follow the rules separating the two roles on the same transaction, but holding both licenses is common, and existing relationships often mean a fast ramp.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can an insurance agent or financial advisor become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Insurance agents, financial advisors, and other licensed professionals frequently add a mortgage license because they already advise clients on money and hold trust-based relationships. Doing so lets you serve those same clients on home financing, turning an existing book of business into new revenue with minimal added prospecting.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I get clients after I become a mortgage broker?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Clients come from referral relationships, real-estate-agent partnerships, your existing network, and a memorable personal brand. The licensing teaches the rules; growing the business is a separate skill set built around trust, consistency, and marketing. This is exactly where strong mentorship pays off, because lead generation determines how far you go.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is the NMLS and why does it matter?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The Nationwide Multistate Licensing System and Registry (NMLS) is the federal system that licenses and tracks every mortgage professional. You create an NMLS account, complete your education and exam through it, and file your application there. Consumers can look you up on NMLS Consumer Access, which is part of why the credential carries real professional credibility.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do mortgage brokers need continuing education?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. The SAFE Act requires 8 hours of NMLS-approved continuing education each year to renew your license, including ongoing instruction on federal law, ethics, and nontraditional lending. It keeps you current on the rules and is a routine, manageable part of maintaining your license.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I become a mortgage broker in multiple states?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Once you're licensed in your home state, you can add licenses in additional states through the NMLS, each with its own education and fee requirements. Many originators expand their footprint over time. Joining a company already licensed in many states makes serving clients across state lines far simpler because the company's licensing supports your reach.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the first step to become a mortgage broker today?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The practical first step is to create your NMLS account and enroll in a 20-hour pre-licensure course. But the smarter first step is choosing where you'll hang your license, because mentorship and lender access shape your entire career. Talk to a team before you start so the path is built around a real plan, not just a passed exam.</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-band" id="start">
+    <div class="container">
+      <span class="eyebrow eyebrow-gold">Ready When You Are</span>
+      <h2 class="mt-5">Become a mortgage broker in the huddle &mdash; not the stands</h2>
+      <p>Whether you're just exploring or ready to get licensed, the next step is a conversation. No pressure, no script &mdash; just an honest look at whether this path is right for you.</p>
+      <div class="hero-actions">
+        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <a href="/schedule-call/" class="btn btn-secondary btn-large">Talk to Our Team</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Keep Reading</span><h2 class="mt-5">More on building a mortgage career</h2></div>
+      <div class="role-grid">
+        <a href="/mortgage-career/loan-officer/" class="role-card"><span class="role-tag licensed">Licensed</span><h3>How to Become a Loan Officer</h3><p>The front line of the business and the most common starting point.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/safe-mlo-exam/" class="role-card"><span class="role-tag industry">Exam</span><h3>SAFE MLO Exam Guide</h3><p>Everything about the test you must pass to get licensed.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/mortgage-broker-vs-loan-officer/" class="role-card"><span class="role-tag industry">Compare</span><h3>Mortgage Broker vs Loan Officer</h3><p>Understand the difference before you choose your path.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/loan-officer-salary/" class="role-card"><span class="role-tag industry">Income</span><h3>Loan Officer Salary</h3><p>What mortgage professionals actually earn, explained honestly.</p><span class="door-cta">Read the guide</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="disclaimer">
+    <div class="container">
+      <p>Stairway Mortgage is a division of NEXA Mortgage LLC. This page is an educational resource about how to become a mortgage broker and other careers in the mortgage industry. Licensing requirements are set by the federal SAFE Act, the NMLS, and individual state regulators and are subject to change; always confirm current requirements for your state at the official <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS Consumer Access</a> and <a class="inline-link" href="https://mortgage.nationwidelicensingsystem.org/" target="_blank" rel="noopener">NMLS Resource Center</a>. Income figures are illustrative and not a promise of earnings; mortgage broker compensation is commission-based and varies. Pre-licensure education and the SAFE MLO exam are administered by independent, NMLS-approved providers.</p>
+    </div>
+  </section>
+
+</div>
+
+<script is:inline>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
+  });
+</script>
+
+</Layout>

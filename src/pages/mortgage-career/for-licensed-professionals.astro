@@ -1,0 +1,588 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="Add a Mortgage License: For Realtors, Agents, Advisors & Attorneys"
+  description="Licensed professionals: realtors, insurance agents, financial advisors, and attorneys can add a mortgage license and turn existing client relationships into a second income stream. The honest path, the rules, and a faster ramp."
+>
+
+<style is:global>
+  /* ============ MORTGAGE CAREER — scoped to .mc-scope ============ */
+  /* Self-contained design tokens + page CSS, namespaced so bare selectors
+     (.container, .btn, .hero, h2, p, a, *) do not leak into the global site. */
+  .mc-scope {
+    color-scheme: light only;
+    --ink: #0A0E1A;
+    --ink-2: #1E2433;
+    --ink-3: #2C3548;
+    --ink-light: #4A5568;
+    --ink-lighter: #6B7280;
+    --paper: #FAFAF7;
+    --paper-2: #F4F4EE;
+    --paper-3: #EDEDE5;
+    --white: #FFFFFF;
+    --blue: #1845D6;
+    --blue-deep: #0F2EA0;
+    --blue-soft: #E8EEFF;
+    --blue-tint: #F2F5FF;
+    --gold: #B8860B;
+    --gold-soft: #F5EBD0;
+    --rust: #8B2C2C;
+    --green: #2E9E2E;
+    --border: #E5E5DE;
+    --border-strong: #D4D4C8;
+    --border-dark: #2C3548;
+
+    --text-2xs: 0.6875rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1.0625rem;
+    --text-md: 1.1875rem;
+    --text-lg: 1.375rem;
+    --text-xl: 1.625rem;
+    --text-2xl: 2rem;
+    --text-3xl: 2.75rem;
+    --text-4xl: 3.75rem;
+    --text-5xl: 5rem;
+
+    --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+    --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4rem;
+    --s-9: 6rem; --s-10: 8rem; --s-11: 10rem;
+
+    --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    font-family: var(--sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .mc-scope { background-color: #FAFAF7 !important; color: #0A0E1A !important; color-scheme: light only !important; }
+    .mc-scope * { forced-color-adjust: none; }
+  }
+
+  .mc-scope *, .mc-scope *::before, .mc-scope *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .mc-scope { scroll-behavior: smooth; }
+  .mc-scope img, .mc-scope svg { display: block; max-width: 100%; }
+  .mc-scope a { color: inherit; text-decoration: none; }
+  .mc-scope button { font: inherit; cursor: pointer; border: 0; background: none; }
+
+  .mc-scope .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-wide { max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }
+
+  /* ============ TYPOGRAPHY ============ */
+  .mc-scope .eyebrow {
+    font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue); font-weight: 500; display: inline-block;
+  }
+  .mc-scope .eyebrow-gold { color: var(--gold); }
+  .mc-scope .display-1 {
+    font-family: var(--serif); font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+    font-weight: 400; line-height: 1.0; letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 144, "SOFT" 30; color: var(--ink);
+  }
+  .mc-scope .display-2 {
+    font-family: var(--serif); font-size: clamp(2rem, 5vw, var(--text-3xl));
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 100, "SOFT" 50; color: var(--ink);
+  }
+  .mc-scope h2 {
+    font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+    font-weight: 450; line-height: 1.1; letter-spacing: -0.015em;
+    color: var(--ink); margin-bottom: var(--s-5);
+    font-variation-settings: "opsz" 60, "SOFT" 50;
+  }
+  .mc-scope h3 {
+    font-family: var(--serif); font-size: var(--text-xl); font-weight: 500;
+    line-height: 1.25; letter-spacing: -0.01em; color: var(--ink);
+    margin-bottom: var(--s-4); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope h4 {
+    font-family: var(--sans); font-size: var(--text-md); font-weight: 600;
+    line-height: 1.3; color: var(--ink); margin-bottom: var(--s-3); letter-spacing: -0.005em;
+  }
+  .mc-scope p { margin-bottom: var(--s-4); }
+  .mc-scope p:last-child { margin-bottom: 0; }
+  .mc-scope p.lead { font-size: var(--text-lg); line-height: 1.55; color: var(--ink-2); font-weight: 350; }
+  .mc-scope p.lede {
+    font-family: var(--serif); font-size: var(--text-xl); line-height: 1.45;
+    color: var(--ink); font-weight: 350; font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .body-text { color: var(--ink-2); }
+  .mc-scope .text-muted { color: var(--ink-lighter); }
+  .mc-scope .text-small { font-size: var(--text-sm); }
+  .mc-scope .text-mono { font-family: var(--mono); font-feature-settings: 'tnum' 1; }
+  .mc-scope strong, .mc-scope b { font-weight: 600; color: var(--ink); }
+  .mc-scope em, .mc-scope i { font-style: normal; }
+  .mc-scope a.inline-link { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  .mc-scope a.inline-link:hover { color: var(--blue-deep); }
+
+  /* ============ BUTTONS ============ */
+  .mc-scope .btn {
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    padding: var(--s-3) var(--s-5); font-family: var(--sans);
+    font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.005em;
+    border-radius: 100px; transition: all 0.18s ease; white-space: nowrap;
+  }
+  .mc-scope .btn-primary { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+  .mc-scope .btn-primary:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-1px); }
+  .mc-scope .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border-strong); }
+  .mc-scope .btn-secondary:hover { border-color: var(--ink); }
+  .mc-scope .btn-light { background: var(--white); color: var(--ink); border: 1px solid var(--border); }
+  .mc-scope .btn-light:hover { background: var(--paper-2); }
+  .mc-scope .btn-large { padding: var(--s-4) var(--s-6); font-size: var(--text-base); }
+  .mc-scope .btn-arrow { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--blue); font-weight: 500; transition: gap 0.18s; }
+  .mc-scope .btn-arrow:hover { gap: var(--s-3); }
+  .mc-scope .btn-arrow::after { content: '→'; font-family: var(--sans); }
+
+  /* ============ HERO ============ */
+  .mc-scope .hero { padding: var(--s-9) 0 var(--s-8); border-bottom: 1px solid var(--border); }
+  .mc-scope .breadcrumb {
+    display: flex; gap: var(--s-2); font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.08em; color: var(--ink-lighter); text-transform: uppercase; margin-bottom: var(--s-7);
+  }
+  .mc-scope .breadcrumb a { color: var(--ink-lighter); }
+  .mc-scope .breadcrumb a:hover { color: var(--blue); }
+  .mc-scope .breadcrumb span:last-child { color: var(--ink); }
+  .mc-scope .hero-eyebrow { margin-bottom: var(--s-5); }
+  .mc-scope .hero h1 { margin-bottom: var(--s-6); max-width: 20ch; }
+  .mc-scope .hero-subtitle { max-width: 60ch; margin-bottom: var(--s-7); }
+  .mc-scope .hero-actions { display: flex; gap: var(--s-3); align-items: center; flex-wrap: wrap; margin-bottom: var(--s-6); }
+  .mc-scope .hero-trust {
+    font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-lighter);
+    letter-spacing: 0.02em; display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap;
+  }
+  .mc-scope .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+  /* ============ 3-DOOR ROUTER ============ */
+  .mc-scope .doors { padding: var(--s-8) 0; background: var(--paper-2); border-bottom: 1px solid var(--border); }
+  .mc-scope .doors-head { text-align: center; max-width: 50ch; margin: 0 auto var(--s-7); }
+  .mc-scope .door-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+  .mc-scope .door {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease; position: relative; overflow: hidden;
+  }
+  .mc-scope .door:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(10,14,26,0.08); }
+  .mc-scope .door-num { font-family: var(--mono); font-size: var(--text-xs); color: var(--blue); letter-spacing: 0.1em; margin-bottom: var(--s-4); display: block; }
+  .mc-scope .door h3 { margin-bottom: var(--s-3); }
+  .mc-scope .door p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-5); }
+  .mc-scope .door .door-cta { font-family: var(--sans); font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; align-items: center; gap: var(--s-2); }
+  .mc-scope .door .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .door:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 860px) { .mc-scope .door-grid { grid-template-columns: 1fr; } }
+
+  /* ============ SECTION ============ */
+  .mc-scope .section { padding: var(--s-9) 0; }
+  .mc-scope .section-tint { background: var(--paper-2); }
+  .mc-scope .section-ink { background: var(--ink); color: var(--paper); }
+  .mc-scope .section-ink h2, .mc-scope .section-ink h3, .mc-scope .section-ink h4 { color: var(--white); }
+  .mc-scope .section-ink .text-muted { color: #9CA3AF; }
+  .mc-scope .section-head { max-width: 60ch; margin-bottom: var(--s-8); }
+  .mc-scope .section-head .eyebrow { margin-bottom: var(--s-4); }
+
+  /* ============ STEPS ============ */
+  .mc-scope .steps { display: grid; gap: var(--s-5); }
+  .mc-scope .step {
+    display: grid; grid-template-columns: 60px 1fr; gap: var(--s-5);
+    padding: var(--s-6); background: var(--white); border: 1px solid var(--border); border-radius: 6px;
+  }
+  .mc-scope .step-num {
+    font-family: var(--serif); font-size: var(--text-2xl); color: var(--blue);
+    font-variation-settings: "opsz" 60; line-height: 1;
+  }
+  .mc-scope .step h4 { margin-bottom: var(--s-2); }
+  .mc-scope .step p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .step p + p { margin-top: var(--s-3); }
+
+  /* ============ ROLE GRID ============ */
+  .mc-scope .role-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+  .mc-scope .role-card {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease;
+  }
+  .mc-scope .role-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10,14,26,0.06); }
+  .mc-scope .role-tag {
+    font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 100px; display: inline-block; margin-bottom: var(--s-4);
+  }
+  .mc-scope .role-tag.licensed { background: var(--blue-soft); color: var(--blue-deep); }
+  .mc-scope .role-tag.industry { background: var(--paper-3); color: var(--ink-light); }
+  .mc-scope .role-card h3 { font-size: var(--text-lg); margin-bottom: var(--s-2); }
+  .mc-scope .role-card p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-4); }
+  .mc-scope .role-card .door-cta { font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; gap: var(--s-2); align-items: center; }
+  .mc-scope .role-card .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .role-card:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 760px) { .mc-scope .role-grid { grid-template-columns: 1fr; } }
+
+  /* ============ STORY INTERLUDE ============ */
+  .mc-scope .story { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; }
+  .mc-scope .story .container-narrow { position: relative; }
+  .mc-scope .story .eyebrow { color: var(--gold); margin-bottom: var(--s-5); }
+  .mc-scope .story p { color: #D8DCE4; font-size: var(--text-md); line-height: 1.7; margin-bottom: var(--s-5); }
+  .mc-scope .story p.story-lede { font-family: var(--serif); font-size: var(--text-xl); color: var(--white); font-variation-settings: "opsz" 30; line-height: 1.45; }
+  .mc-scope .story strong { color: var(--white); }
+  .mc-scope .story-photo {
+    width: 100%; max-width: 420px; border-radius: 6px; margin: var(--s-6) 0;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .mc-scope .story-caption { font-family: var(--mono); font-size: var(--text-xs); color: #9CA3AF; letter-spacing: 0.04em; margin-top: var(--s-2); }
+  .mc-scope .story-rule { width: 40px; height: 2px; background: var(--gold); margin-bottom: var(--s-6); }
+
+  /* ============ STATS BAR ============ */
+  .mc-scope .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-5); padding: var(--s-7) 0; }
+  .mc-scope .stat { text-align: center; }
+  .mc-scope .stat-num { font-family: var(--serif); font-size: var(--text-3xl); color: var(--ink); font-variation-settings: "opsz" 80; line-height: 1; margin-bottom: var(--s-2); }
+  .mc-scope .section-ink .stat-num { color: var(--white); }
+  .mc-scope .stat-label { font-family: var(--mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-lighter); }
+  @media (max-width: 760px) { .mc-scope .stats-bar { grid-template-columns: repeat(2, 1fr); gap: var(--s-6); } }
+
+  /* ============ FEATURE COLUMNS ============ */
+  .mc-scope .cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); }
+  .mc-scope .cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-7); }
+  .mc-scope .feature h4 { margin-bottom: var(--s-3); }
+  .mc-scope .feature p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .feature-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--blue-soft); display: flex; align-items: center; justify-content: center; margin-bottom: var(--s-4); color: var(--blue); font-family: var(--serif); font-size: var(--text-lg); }
+  @media (max-width: 860px) { .mc-scope .cols-3 { grid-template-columns: 1fr; } .mc-scope .cols-2 { grid-template-columns: 1fr; } }
+
+  /* ============ TESTIMONIAL ============ */
+  .mc-scope .quote-card { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 6px; padding: var(--s-7); }
+  .mc-scope .quote-card blockquote { font-family: var(--serif); font-size: var(--text-lg); line-height: 1.5; color: var(--ink); font-variation-settings: "opsz" 40; margin-bottom: var(--s-5); }
+  .mc-scope .quote-author { display: flex; align-items: center; gap: var(--s-4); }
+  .mc-scope .quote-author img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 1px solid var(--border); }
+  .mc-scope .quote-author .qa-name { font-weight: 600; font-size: var(--text-sm); }
+  .mc-scope .quote-author .qa-title { font-size: var(--text-xs); color: var(--ink-lighter); font-family: var(--mono); }
+
+  /* ============ LEAD MAGNET / EMAIL ============ */
+  .mc-scope .magnet { background: var(--blue-tint); border: 1px solid var(--blue-soft); border-radius: 8px; padding: var(--s-8); }
+  .mc-scope .magnet-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--s-8); align-items: center; }
+  .mc-scope .magnet h2 { margin-bottom: var(--s-4); }
+  .mc-scope .magnet p { color: var(--ink-light); }
+  .mc-scope .magnet-form { display: flex; flex-direction: column; gap: var(--s-3); }
+  .mc-scope .magnet-form input {
+    padding: var(--s-4); border: 1px solid var(--border-strong); border-radius: 6px;
+    font-family: var(--sans); font-size: var(--text-base); background: var(--white);
+  }
+  .mc-scope .magnet-form input:focus { outline: 2px solid var(--blue); border-color: var(--blue); }
+  .mc-scope .form-note { font-size: var(--text-xs); color: var(--ink-lighter); }
+  @media (max-width: 860px) { .mc-scope .magnet-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+
+  /* ============ FAQ ============ */
+  .mc-scope .faq-list { border-top: 1px solid var(--border); }
+  .mc-scope .faq-item { border-bottom: 1px solid var(--border); }
+  .mc-scope .faq-q {
+    width: 100%; text-align: left; padding: var(--s-5) 0; display: flex;
+    justify-content: space-between; align-items: center; gap: var(--s-4);
+    font-family: var(--serif); font-size: var(--text-md); font-weight: 500;
+    color: var(--ink); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .faq-q:hover { color: var(--blue); }
+  .mc-scope .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; transition: transform 0.2s; }
+  .mc-scope .faq-icon::before, .mc-scope .faq-icon::after { content: ''; position: absolute; background: var(--blue); border-radius: 2px; }
+  .mc-scope .faq-icon::before { top: 9px; left: 0; width: 20px; height: 2px; }
+  .mc-scope .faq-icon::after { top: 0; left: 9px; width: 2px; height: 20px; transition: transform 0.2s; }
+  .mc-scope .faq-item.open .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+  .mc-scope .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+  .mc-scope .faq-a-inner { padding: 0 0 var(--s-5); color: var(--ink-light); font-size: var(--text-sm); line-height: 1.65; max-width: 70ch; }
+  .mc-scope .faq-item.open .faq-a { max-height: 600px; }
+
+  /* ============ CTA BAND ============ */
+  .mc-scope .cta-band { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; text-align: center; }
+  .mc-scope .cta-band h2 { color: var(--white); max-width: 22ch; margin: 0 auto var(--s-5); }
+  .mc-scope .cta-band p { color: #B8BEC9; max-width: 54ch; margin: 0 auto var(--s-7); }
+  .mc-scope .cta-band .hero-actions { justify-content: center; }
+  .mc-scope .cta-band .btn-primary { background: var(--white); color: var(--ink); border-color: var(--white); }
+  .mc-scope .cta-band .btn-primary:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .mc-scope .cta-band .btn-secondary { color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .mc-scope .cta-band .btn-secondary:hover { border-color: var(--white); }
+
+  /* ============ COMPLIANCE / DISCLAIMER ============ */
+  .mc-scope .disclaimer { padding: var(--s-7) 0; background: var(--paper-2); border-top: 1px solid var(--border); }
+  .mc-scope .disclaimer p { font-size: var(--text-xs); color: var(--ink-lighter); line-height: 1.6; max-width: 90ch; margin-bottom: var(--s-3); }
+
+  .mc-scope .mt-5 { margin-top: var(--s-5); }
+  .mc-scope .mt-7 { margin-top: var(--s-7); }
+</style>
+
+<!-- ============ JSON-LD: FAQ ============ -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Can a realtor become a loan officer?","acceptedAnswer":{"@type":"Answer","text":"Yes, and it's one of the most natural moves in the business. Realtors already understand the transaction and have a network of buyers, so adding a mortgage license lets you earn on the financing side too. You'll follow rules separating the two roles on the same deal, but holding both licenses is common and often ramps quickly."}},
+    {"@type":"Question","name":"Can an insurance agent become a loan officer?","acceptedAnswer":{"@type":"Answer","text":"Yes. Insurance agents already advise clients on major financial decisions and hold trust-based relationships, which transfer directly to mortgage origination. Adding a mortgage license lets you serve the same clients on home financing, turning an existing book of business into a new revenue stream."}},
+    {"@type":"Question","name":"Can a financial advisor become a loan officer?","acceptedAnswer":{"@type":"Answer","text":"Yes. Financial advisors are a strong fit because they already guide clients on money and have deep, trusting relationships. A mortgage license lets you help those clients with one of their largest financial decisions, adding value and a new income source without starting from scratch on prospecting."}},
+    {"@type":"Question","name":"Can an attorney become a loan officer?","acceptedAnswer":{"@type":"Answer","text":"Yes. Attorneys — especially those in real estate, estate planning, or family law — often have clients facing home-financing decisions. Adding a mortgage license can complement an existing practice. As with any dual role, you'll observe the rules governing conflicts and disclosures."}},
+    {"@type":"Question","name":"Why should a licensed professional add a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"Because you already have the hardest asset to build: trusting relationships. Most new originators spend years building a network from scratch. Licensed professionals start with one, which means a mortgage license can monetize relationships you already have, often with a faster ramp than someone starting cold."}},
+    {"@type":"Question","name":"How fast can a licensed professional ramp as a loan officer?","acceptedAnswer":{"@type":"Answer","text":"Often faster than a cold-start career-changer, because you already have a client base and referral relationships. Some licensed professionals close their first loans within months by serving people who already trust them. Your ramp depends on your network's size and how naturally mortgage fits your existing work."}},
+    {"@type":"Question","name":"Do I have to give up my current license to add a mortgage one?","acceptedAnswer":{"@type":"Answer","text":"Usually not. Many professionals hold a mortgage license alongside a real estate, insurance, or other license. You'll follow the rules that govern dual roles — particularly disclosure and conflict-of-interest rules when two services touch the same transaction — but dual licensing is widely practiced."}},
+    {"@type":"Question","name":"Is it legal to be both a realtor and a loan officer on the same deal?","acceptedAnswer":{"@type":"Answer","text":"Dual licensing is legal, but originating the loan and representing the buyer on the same transaction is subject to specific disclosure rules and some restrictions. Many dual-licensed professionals simply route one side to a trusted partner on shared deals. The rules vary, so confirm your state's specifics."}},
+    {"@type":"Question","name":"What's the licensing process for an already-licensed professional?","acceptedAnswer":{"@type":"Answer","text":"It's the same as for anyone: register with the NMLS, complete 20 hours of pre-licensure education, pass the SAFE MLO exam, and clear background and credit checks. Your existing professional discipline often makes the coursework and exam feel manageable. See our mortgage license guide for the full path."}},
+    {"@type":"Question","name":"Will my existing clients become mortgage clients?","acceptedAnswer":{"@type":"Answer","text":"Many can. People who already trust you for real estate, insurance, financial, or legal advice are natural candidates when they need a mortgage. The key is positioning the new service appropriately and following the rules for cross-selling. Your existing trust is the advantage."}},
+    {"@type":"Question","name":"How much more can a licensed professional earn by adding mortgages?","acceptedAnswer":{"@type":"Answer","text":"It varies, but adding mortgage origination can create a meaningful second income stream from clients you already serve. Because you skip much of the network-building that slows new originators, the earnings can come sooner. Income is commission-based and depends on volume, so figures vary by person."}},
+    {"@type":"Question","name":"Is adding a mortgage license worth it for a busy professional?","acceptedAnswer":{"@type":"Answer","text":"If you already have client relationships and they regularly face financing decisions, it often is. The licensing investment is modest, and the upside is monetizing existing trust. The main question is bandwidth — whether you can serve the new role well alongside your current one, possibly with team support."}},
+    {"@type":"Question","name":"Do realtors who add a mortgage license have an unfair advantage?","acceptedAnswer":{"@type":"Answer","text":"They have a natural advantage: deep familiarity with the transaction and a built-in buyer network. It's not unfair, just efficient. Rules govern how the two roles interact on a shared deal, but the underlying advantage — relationships and transaction knowledge — is exactly what makes the move smart."}},
+    {"@type":"Question","name":"Can I add a mortgage license part-time alongside my main career?","acceptedAnswer":{"@type":"Answer","text":"Yes. Many professionals originate part-time, serving clients who come to them for financing while maintaining their primary practice. It's a flexible way to add income without abandoning your existing career. You can always scale up if the mortgage side grows."}},
+    {"@type":"Question","name":"What rules apply when I hold two financial licenses?","acceptedAnswer":{"@type":"Answer","text":"Disclosure, conflict-of-interest, and anti-steering rules are the main considerations, especially when two services touch the same client or transaction. The specifics depend on your state and the license types involved. A good sponsoring company helps you stay compliant while serving clients across both roles."}},
+    {"@type":"Question","name":"Which licensed professionals benefit most from a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"Realtors, insurance agents, and financial advisors tend to benefit most, because home financing intersects directly with what they already do and who they already serve. Attorneys in real estate or estate planning also fit well. Any professional with a trusting client base facing home-buying decisions is a strong candidate."}},
+    {"@type":"Question","name":"Do I need to start over to add a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"No. You keep your existing career and relationships and layer mortgage origination on top. The licensing is a defined, short process, and your professional experience often accelerates it. You're adding a capability, not restarting a career."}},
+    {"@type":"Question","name":"How do I tell my clients I now do mortgages?","acceptedAnswer":{"@type":"Answer","text":"Positioning matters. Most professionals introduce the new service as an extension of the trusted advice they already provide, following the disclosure rules for their license types. A strong personal brand and a clear, compliant message make the addition feel natural to existing clients."}},
+    {"@type":"Question","name":"Will adding mortgages hurt my current business?","acceptedAnswer":{"@type":"Answer","text":"Done well, it complements rather than competes. Serving a client's financing need can deepen the relationship and create more touchpoints. The risk is spreading yourself too thin, which is why many professionals add the license with support or a team rather than going it entirely alone."}},
+    {"@type":"Question","name":"Can I refer mortgage business instead of originating it myself?","acceptedAnswer":{"@type":"Answer","text":"You can, but holding the license lets you capture the value yourself rather than handing it off. Many professionals get licensed precisely so they stop referring away income they could earn. Whether to originate or refer on a given deal can depend on the rules and your bandwidth."}},
+    {"@type":"Question","name":"How long does it take a licensed professional to get a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"The same few weeks to a couple of months as anyone, depending on how quickly you finish the 20-hour course and pass the exam. Your existing professional discipline often makes that timeline shorter in practice. The licensing itself isn't the slow part — building a pipeline is, and you already have a head start."}},
+    {"@type":"Question","name":"Is there a conflict between being a financial advisor and a loan officer?","acceptedAnswer":{"@type":"Answer","text":"There can be considerations around disclosure and acting in a client's best interest when advice and a product intersect. Many advisors manage this transparently and successfully. The specifics depend on your other license and regulator, so it's worth confirming the rules for your situation."}},
+    {"@type":"Question","name":"What support do licensed professionals need to add mortgages well?","acceptedAnswer":{"@type":"Answer","text":"Mentorship on the mortgage craft, compliance guidance for operating across two licenses, and lender access. The right sponsoring company provides all three, so you can serve your existing clients on financing confidently and compliantly from the start."}},
+    {"@type":"Question","name":"Do I keep my commissions from my other license?","acceptedAnswer":{"@type":"Answer","text":"Yes. Adding a mortgage license doesn't affect the income from your existing career. You earn mortgage commission on the loans you originate in addition to whatever you already earn, subject to the rules governing your specific license combination."}},
+    {"@type":"Question","name":"What's the first step for a licensed professional to add mortgages?","acceptedAnswer":{"@type":"Answer","text":"Register with the NMLS and enroll in a 20-hour course — but first, talk to an experienced team about how to integrate origination with your existing practice compliantly. Because your network is already built, the right plan can turn your current relationships into mortgage income quickly."}}
+  ]
+}
+</script>
+
+<div class="mc-scope">
+
+  <section class="hero">
+    <div class="container">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/mortgage-career/">Mortgage Career</a> <span>/</span> <span>For Licensed Professionals</span></nav>
+      <span class="eyebrow hero-eyebrow">Mortgage Career &middot; Already Licensed</span>
+      <h1 class="display-1">For Licensed Professionals: Add a Mortgage License</h1>
+      <p class="lead hero-subtitle">Realtor, insurance agent, financial advisor, or attorney? You already own the hardest asset in this business &mdash; trusting relationships. Adding a mortgage license can turn the network you already have into a second income stream, often with a faster ramp than starting cold.</p>
+      <div class="hero-actions">
+        <a href="#start" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <a href="#why" class="btn btn-secondary btn-large">Why You Have an Edge</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-dot"></span><span>Jim Blackburn &middot; NMLS #1072866</span>
+        <span class="trust-dot"></span><span>7&times; Scotsman Guide Top Producer</span>
+        <span class="trust-dot"></span><span>$500M+ Closed</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cols-2">
+        <div>
+          <span class="eyebrow">The Short Version</span>
+          <h2 class="mt-5">You already did the hard part: you built trust</h2>
+          <p class="lede">Most new originators spend years building a network from zero. As a licensed professional, you start with one &mdash; which is exactly why adding a mortgage license can pay off fast.</p>
+        </div>
+        <div class="body-text">
+          <p>If you're a realtor, insurance agent, financial advisor, or attorney, you're in the highest-leverage position to add a mortgage license. Your clients already trust you with major decisions, and home financing intersects directly with what you do. The licensing is the same short path as anyone's &mdash; the 20-hour course, the <a class="inline-link" href="/mortgage-career/safe-mlo-exam/">SAFE MLO exam</a>, and the steps in our <a class="inline-link" href="/mortgage-career/mortgage-license/">mortgage license guide</a>.</p>
+          <p>The difference is what happens after. While career-changers build a network from scratch, you can serve people who already trust you, which is why licensed professionals often ramp faster. The role itself is covered in <a class="inline-link" href="/mortgage-career/loan-officer/">how to become a loan officer</a>.</p>
+          <p>Below: why your existing license is an edge, the rules to know, and how to add origination the right way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="why">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Your Edge</span>
+        <h2 class="mt-5">Why licensed professionals ramp faster</h2>
+        <p class="text-muted">The advantage isn't the license &mdash; it's the relationships you already have.</p>
+      </div>
+      <div class="cols-2">
+        <div class="role-card"><span class="role-tag licensed">Realtors</span><h3>Realtors</h3><p class="body-text">You already understand the transaction and have a buyer network. Adding a mortgage license lets you capture financing income on deals you already touch &mdash; following the rules that govern dual roles on a shared transaction.</p></div>
+        <div class="role-card"><span class="role-tag licensed">Insurance</span><h3>Insurance Agents</h3><p class="body-text">You advise on major financial protection decisions and hold trust-based relationships. Home financing is a natural extension, letting you serve the same clients on one of their biggest purchases.</p></div>
+        <div class="role-card"><span class="role-tag licensed">Advisors</span><h3>Financial Advisors</h3><p class="body-text">You already guide clients on money and have deep trust. A mortgage license lets you help with home financing &mdash; adding value and income while observing best-interest and disclosure considerations.</p></div>
+        <div class="role-card"><span class="role-tag licensed">Attorneys</span><h3>Attorneys</h3><p class="body-text">Real estate, estate planning, and family law attorneys often have clients facing financing decisions. A mortgage license can complement your practice, with the usual attention to conflicts and disclosures.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-narrow">
+      <span class="eyebrow">Know the Rules</span>
+      <h2 class="mt-5">Dual licensing, done right</h2>
+      <p class="body-text">Holding a mortgage license alongside another license is widely practiced and legal, but it comes with rules &mdash; mainly around disclosure, conflicts of interest, and anti-steering when two services touch the same client or transaction. For example, a realtor originating the loan on a deal where they also represent the buyer is subject to specific disclosure requirements and some restrictions.</p>
+      <p class="body-text">None of this is a barrier; it's just something to do correctly. Many dual-licensed professionals route one side of a shared transaction to a trusted partner, or serve financing for clients on deals where they're not the agent. The specifics vary by state and license type, which is exactly why the right sponsoring company &mdash; one that provides compliance guidance &mdash; matters so much when you add origination to an existing practice.</p>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="container-narrow">
+      <span class="eyebrow">I Came From Advice, Too</span>
+      <div class="story-rule"></div>
+      <p class="story-lede">Your relationships are worth more than you realize.</p>
+      <p>I spent about ten years as a financial advisor before I moved into mortgages in 2008. I know firsthand how valuable a book of trusting relationships is &mdash; and how much faster you move when you're serving people who already believe in you, rather than cold-prospecting strangers.</p>
+      <p>I got my own license (NMLS #1072866) and built from there. Seven Scotsman Guide Top Producer honors and $500M+ in closed loans later, here's what I'd tell any licensed professional: you're sitting on the asset most originators spend years trying to build. Add the license, learn the craft from someone who's done it, and your existing network can become mortgage income faster than you'd expect. I broker to 300+ lenders so you can serve any client who comes to you.</p>
+    </div>
+  </section>
+
+  <section class="section section-ink">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-gold">Add It The Right Way</span>
+        <h2 class="mt-5">The right team makes dual licensing simple</h2>
+        <p class="text-muted">Mentorship on the craft, compliance guidance across two licenses, and the lender access to serve any client.</p>
+      </div>
+      <div class="cols-3">
+        <div class="feature"><div class="feature-icon">&#9650;</div><h4>Mentorship from a top producer</h4><p class="text-muted">Learn the mortgage craft under Jim Blackburn (NMLS #1072866), a 7&times; Scotsman Guide Top Producer who came from financial advising.</p></div>
+        <div class="feature"><div class="feature-icon">&#9671;</div><h4>Compliance guidance for dual roles</h4><p class="text-muted">Operating across two licenses takes care. A strong team helps you serve clients compliantly from day one.</p></div>
+        <div class="feature"><div class="feature-icon">&#9678;</div><h4>300+ lenders behind you</h4><p class="text-muted">Serve any client who trusts you, even the tough files, with the widest lender access in the business.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container container-narrow">
+      <div class="section-head" style="margin-bottom: var(--s-7);">
+        <span class="eyebrow">Questions</span>
+        <h2 class="mt-5">For licensed professionals: 25 questions, answered</h2>
+        <p class="text-muted">Everything realtors, agents, advisors, and attorneys ask about adding a mortgage license.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Can a realtor become a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes, and it's one of the most natural moves in the business. Realtors already understand the transaction and have a network of buyers, so adding a mortgage license lets you earn on the financing side too. You'll follow rules separating the two roles on the same deal, but holding both licenses is common and often ramps quickly.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can an insurance agent become a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Insurance agents already advise clients on major financial decisions and hold trust-based relationships, which transfer directly to mortgage origination. Adding a mortgage license lets you serve the same clients on home financing, turning an existing book of business into a new revenue stream.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can a financial advisor become a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Financial advisors are a strong fit because they already guide clients on money and have deep, trusting relationships. A mortgage license lets you help those clients with one of their largest financial decisions, adding value and a new income source without starting from scratch on prospecting.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can an attorney become a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Attorneys &mdash; especially those in real estate, estate planning, or family law &mdash; often have clients facing home-financing decisions. Adding a mortgage license can complement an existing practice. As with any dual role, you'll observe the rules governing conflicts and disclosures.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Why should a licensed professional add a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Because you already have the hardest asset to build: trusting relationships. Most new originators spend years building a network from scratch. Licensed professionals start with one, which means a mortgage license can monetize relationships you already have, often with a faster ramp than someone starting cold.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How fast can a licensed professional ramp as a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Often faster than a cold-start career-changer, because you already have a client base and referral relationships. Some licensed professionals close their first loans within months by serving people who already trust them. Your ramp depends on your network's size and how naturally mortgage fits your existing work.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I have to give up my current license to add a mortgage one?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Usually not. Many professionals hold a mortgage license alongside a real estate, insurance, or other license. You'll follow the rules that govern dual roles &mdash; particularly disclosure and conflict-of-interest rules when two services touch the same transaction &mdash; but dual licensing is widely practiced.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is it legal to be both a realtor and a loan officer on the same deal?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Dual licensing is legal, but originating the loan and representing the buyer on the same transaction is subject to specific disclosure rules and some restrictions. Many dual-licensed professionals simply route one side to a trusted partner on shared deals. The rules vary, so confirm your state's specifics.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the licensing process for an already-licensed professional?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">It's the same as for anyone: register with the NMLS, complete 20 hours of pre-licensure education, pass the SAFE MLO exam, and clear background and credit checks. Your existing professional discipline often makes the coursework and exam feel manageable. See our mortgage license guide for the full path.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Will my existing clients become mortgage clients?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Many can. People who already trust you for real estate, insurance, financial, or legal advice are natural candidates when they need a mortgage. The key is positioning the new service appropriately and following the rules for cross-selling. Your existing trust is the advantage.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How much more can a licensed professional earn by adding mortgages?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">It varies, but adding mortgage origination can create a meaningful second income stream from clients you already serve. Because you skip much of the network-building that slows new originators, the earnings can come sooner. Income is commission-based and depends on volume, so figures vary by person.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is adding a mortgage license worth it for a busy professional?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">If you already have client relationships and they regularly face financing decisions, it often is. The licensing investment is modest, and the upside is monetizing existing trust. The main question is bandwidth &mdash; whether you can serve the new role well alongside your current one, possibly with team support.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do realtors who add a mortgage license have an unfair advantage?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">They have a natural advantage: deep familiarity with the transaction and a built-in buyer network. It's not unfair, just efficient. Rules govern how the two roles interact on a shared deal, but the underlying advantage &mdash; relationships and transaction knowledge &mdash; is exactly what makes the move smart.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I add a mortgage license part-time alongside my main career?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Many professionals originate part-time, serving clients who come to them for financing while maintaining their primary practice. It's a flexible way to add income without abandoning your existing career. You can always scale up if the mortgage side grows.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What rules apply when I hold two financial licenses?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Disclosure, conflict-of-interest, and anti-steering rules are the main considerations, especially when two services touch the same client or transaction. The specifics depend on your state and the license types involved. A good sponsoring company helps you stay compliant while serving clients across both roles.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Which licensed professionals benefit most from a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Realtors, insurance agents, and financial advisors tend to benefit most, because home financing intersects directly with what they already do and who they already serve. Attorneys in real estate or estate planning also fit well. Any professional with a trusting client base facing home-buying decisions is a strong candidate.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need to start over to add a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. You keep your existing career and relationships and layer mortgage origination on top. The licensing is a defined, short process, and your professional experience often accelerates it. You're adding a capability, not restarting a career.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I tell my clients I now do mortgages?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Positioning matters. Most professionals introduce the new service as an extension of the trusted advice they already provide, following the disclosure rules for their license types. A strong personal brand and a clear, compliant message make the addition feel natural to existing clients.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Will adding mortgages hurt my current business?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Done well, it complements rather than competes. Serving a client's financing need can deepen the relationship and create more touchpoints. The risk is spreading yourself too thin, which is why many professionals add the license with support or a team rather than going it entirely alone.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I refer mortgage business instead of originating it myself?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">You can, but holding the license lets you capture the value yourself rather than handing it off. Many professionals get licensed precisely so they stop referring away income they could earn. Whether to originate or refer on a given deal can depend on the rules and your bandwidth.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How long does it take a licensed professional to get a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The same few weeks to a couple of months as anyone, depending on how quickly you finish the 20-hour course and pass the exam. Your existing professional discipline often makes that timeline shorter in practice. The licensing itself isn't the slow part &mdash; building a pipeline is, and you already have a head start.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is there a conflict between being a financial advisor and a loan officer?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">There can be considerations around disclosure and acting in a client's best interest when advice and a product intersect. Many advisors manage this transparently and successfully. The specifics depend on your other license and regulator, so it's worth confirming the rules for your situation.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What support do licensed professionals need to add mortgages well?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Mentorship on the mortgage craft, compliance guidance for operating across two licenses, and lender access. The right sponsoring company provides all three, so you can serve your existing clients on financing confidently and compliantly from the start.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I keep my commissions from my other license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Adding a mortgage license doesn't affect the income from your existing career. You earn mortgage commission on the loans you originate in addition to whatever you already earn, subject to the rules governing your specific license combination.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the first step for a licensed professional to add mortgages?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Register with the NMLS and enroll in a 20-hour course &mdash; but first, talk to an experienced team about how to integrate origination with your existing practice compliantly. Because your network is already built, the right plan can turn your current relationships into mortgage income quickly.</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-band" id="start">
+    <div class="container">
+      <span class="eyebrow eyebrow-gold">Ready When You Are</span>
+      <h2 class="mt-5">Turn the relationships you have into mortgage income</h2>
+      <p>If you already hold a professional license, you're closer to a second income than you think. Let's talk about how to add origination to your practice compliantly &mdash; and how to turn your existing clients into mortgage business.</p>
+      <div class="hero-actions">
+        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <a href="/mortgage-career/loan-officer-salary/" class="btn btn-secondary btn-large">See the Income Potential</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Keep Reading</span><h2 class="mt-5">More on building a mortgage career</h2></div>
+      <div class="role-grid">
+        <a href="/mortgage-career/loan-officer/" class="role-card"><span class="role-tag licensed">Licensed</span><h3>How to Become a Loan Officer</h3><p>The role you'd be adding, start to finish.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/mortgage-broker/" class="role-card"><span class="role-tag licensed">Licensed</span><h3>How to Become a Mortgage Broker</h3><p>The independent path, for when you want to own it.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/loan-officer-salary/" class="role-card"><span class="role-tag industry">Income</span><h3>Loan Officer Salary</h3><p>What the second income stream can look like.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/" class="role-card"><span class="role-tag industry">Hub</span><h3>Mortgage Career Guide</h3><p>Every role and how to choose your path.</p><span class="door-cta">Back to the hub</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="disclaimer">
+    <div class="container">
+      <p>Stairway Mortgage is a division of NEXA Mortgage LLC. This page is an educational resource for licensed professionals considering mortgage origination. Holding multiple licenses involves disclosure, conflict-of-interest, and anti-steering rules that vary by state and license type; this is not legal or compliance advice &mdash; confirm the rules for your situation. Licensing is governed by the federal SAFE Act, the NMLS, and individual state regulators; confirm current requirements at the official <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS Consumer Access</a>. Income references are illustrative and not a promise of earnings.</p>
+    </div>
+  </section>
+
+</div>
+
+<script is:inline>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
+  });
+</script>
+
+</Layout>

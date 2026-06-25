@@ -1,0 +1,632 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="How to Get a Mortgage License: NMLS Requirements, Cost & Steps (2026)"
+  description="How to get a mortgage license: NMLS requirements, the 20-hour pre-licensure education, the SAFE MLO exam, costs, timeline, background and credit checks, and renewal. The complete mortgage license guide."
+>
+
+<style is:global>
+  /* ============ MORTGAGE CAREER — scoped to .mc-scope ============ */
+  /* Self-contained design tokens + page CSS, namespaced so bare selectors
+     (.container, .btn, .hero, h2, p, a, *) do not leak into the global site. */
+  .mc-scope {
+    color-scheme: light only;
+    --ink: #0A0E1A;
+    --ink-2: #1E2433;
+    --ink-3: #2C3548;
+    --ink-light: #4A5568;
+    --ink-lighter: #6B7280;
+    --paper: #FAFAF7;
+    --paper-2: #F4F4EE;
+    --paper-3: #EDEDE5;
+    --white: #FFFFFF;
+    --blue: #1845D6;
+    --blue-deep: #0F2EA0;
+    --blue-soft: #E8EEFF;
+    --blue-tint: #F2F5FF;
+    --gold: #B8860B;
+    --gold-soft: #F5EBD0;
+    --rust: #8B2C2C;
+    --green: #2E9E2E;
+    --border: #E5E5DE;
+    --border-strong: #D4D4C8;
+    --border-dark: #2C3548;
+
+    --text-2xs: 0.6875rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1.0625rem;
+    --text-md: 1.1875rem;
+    --text-lg: 1.375rem;
+    --text-xl: 1.625rem;
+    --text-2xl: 2rem;
+    --text-3xl: 2.75rem;
+    --text-4xl: 3.75rem;
+    --text-5xl: 5rem;
+
+    --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+    --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4rem;
+    --s-9: 6rem; --s-10: 8rem; --s-11: 10rem;
+
+    --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    font-family: var(--sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .mc-scope { background-color: #FAFAF7 !important; color: #0A0E1A !important; color-scheme: light only !important; }
+    .mc-scope * { forced-color-adjust: none; }
+  }
+
+  .mc-scope *, .mc-scope *::before, .mc-scope *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .mc-scope { scroll-behavior: smooth; }
+  .mc-scope img, .mc-scope svg { display: block; max-width: 100%; }
+  .mc-scope a { color: inherit; text-decoration: none; }
+  .mc-scope button { font: inherit; cursor: pointer; border: 0; background: none; }
+
+  .mc-scope .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 var(--s-6); }
+  .mc-scope .container-wide { max-width: 1340px; margin: 0 auto; padding: 0 var(--s-6); }
+
+  /* ============ TYPOGRAPHY ============ */
+  .mc-scope .eyebrow {
+    font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue); font-weight: 500; display: inline-block;
+  }
+  .mc-scope .eyebrow-gold { color: var(--gold); }
+  .mc-scope .display-1 {
+    font-family: var(--serif); font-size: clamp(2.5rem, 7vw, var(--text-5xl));
+    font-weight: 400; line-height: 1.0; letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 144, "SOFT" 30; color: var(--ink);
+  }
+  .mc-scope .display-2 {
+    font-family: var(--serif); font-size: clamp(2rem, 5vw, var(--text-3xl));
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 100, "SOFT" 50; color: var(--ink);
+  }
+  .mc-scope h2 {
+    font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, var(--text-2xl));
+    font-weight: 450; line-height: 1.1; letter-spacing: -0.015em;
+    color: var(--ink); margin-bottom: var(--s-5);
+    font-variation-settings: "opsz" 60, "SOFT" 50;
+  }
+  .mc-scope h3 {
+    font-family: var(--serif); font-size: var(--text-xl); font-weight: 500;
+    line-height: 1.25; letter-spacing: -0.01em; color: var(--ink);
+    margin-bottom: var(--s-4); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope h4 {
+    font-family: var(--sans); font-size: var(--text-md); font-weight: 600;
+    line-height: 1.3; color: var(--ink); margin-bottom: var(--s-3); letter-spacing: -0.005em;
+  }
+  .mc-scope p { margin-bottom: var(--s-4); }
+  .mc-scope p:last-child { margin-bottom: 0; }
+  .mc-scope p.lead { font-size: var(--text-lg); line-height: 1.55; color: var(--ink-2); font-weight: 350; }
+  .mc-scope p.lede {
+    font-family: var(--serif); font-size: var(--text-xl); line-height: 1.45;
+    color: var(--ink); font-weight: 350; font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .body-text { color: var(--ink-2); }
+  .mc-scope .text-muted { color: var(--ink-lighter); }
+  .mc-scope .text-small { font-size: var(--text-sm); }
+  .mc-scope .text-mono { font-family: var(--mono); font-feature-settings: 'tnum' 1; }
+  .mc-scope strong, .mc-scope b { font-weight: 600; color: var(--ink); }
+  .mc-scope em, .mc-scope i { font-style: normal; }
+  .mc-scope a.inline-link { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+  .mc-scope a.inline-link:hover { color: var(--blue-deep); }
+
+  /* ============ BUTTONS ============ */
+  .mc-scope .btn {
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    padding: var(--s-3) var(--s-5); font-family: var(--sans);
+    font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.005em;
+    border-radius: 100px; transition: all 0.18s ease; white-space: nowrap;
+  }
+  .mc-scope .btn-primary { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+  .mc-scope .btn-primary:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-1px); }
+  .mc-scope .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border-strong); }
+  .mc-scope .btn-secondary:hover { border-color: var(--ink); }
+  .mc-scope .btn-light { background: var(--white); color: var(--ink); border: 1px solid var(--border); }
+  .mc-scope .btn-light:hover { background: var(--paper-2); }
+  .mc-scope .btn-large { padding: var(--s-4) var(--s-6); font-size: var(--text-base); }
+  .mc-scope .btn-arrow { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--blue); font-weight: 500; transition: gap 0.18s; }
+  .mc-scope .btn-arrow:hover { gap: var(--s-3); }
+  .mc-scope .btn-arrow::after { content: '→'; font-family: var(--sans); }
+
+  /* ============ HERO ============ */
+  .mc-scope .hero { padding: var(--s-9) 0 var(--s-8); border-bottom: 1px solid var(--border); }
+  .mc-scope .breadcrumb {
+    display: flex; gap: var(--s-2); font-family: var(--mono); font-size: var(--text-xs);
+    letter-spacing: 0.08em; color: var(--ink-lighter); text-transform: uppercase; margin-bottom: var(--s-7);
+  }
+  .mc-scope .breadcrumb a { color: var(--ink-lighter); }
+  .mc-scope .breadcrumb a:hover { color: var(--blue); }
+  .mc-scope .breadcrumb span:last-child { color: var(--ink); }
+  .mc-scope .hero-eyebrow { margin-bottom: var(--s-5); }
+  .mc-scope .hero h1 { margin-bottom: var(--s-6); max-width: 20ch; }
+  .mc-scope .hero-subtitle { max-width: 60ch; margin-bottom: var(--s-7); }
+  .mc-scope .hero-actions { display: flex; gap: var(--s-3); align-items: center; flex-wrap: wrap; margin-bottom: var(--s-6); }
+  .mc-scope .hero-trust {
+    font-family: var(--mono); font-size: var(--text-xs); color: var(--ink-lighter);
+    letter-spacing: 0.02em; display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap;
+  }
+  .mc-scope .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+
+  /* ============ 3-DOOR ROUTER ============ */
+  .mc-scope .doors { padding: var(--s-8) 0; background: var(--paper-2); border-bottom: 1px solid var(--border); }
+  .mc-scope .doors-head { text-align: center; max-width: 50ch; margin: 0 auto var(--s-7); }
+  .mc-scope .door-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+  .mc-scope .door {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease; position: relative; overflow: hidden;
+  }
+  .mc-scope .door:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(10,14,26,0.08); }
+  .mc-scope .door-num { font-family: var(--mono); font-size: var(--text-xs); color: var(--blue); letter-spacing: 0.1em; margin-bottom: var(--s-4); display: block; }
+  .mc-scope .door h3 { margin-bottom: var(--s-3); }
+  .mc-scope .door p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-5); }
+  .mc-scope .door .door-cta { font-family: var(--sans); font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; align-items: center; gap: var(--s-2); }
+  .mc-scope .door .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .door:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 860px) { .mc-scope .door-grid { grid-template-columns: 1fr; } }
+
+  /* ============ SECTION ============ */
+  .mc-scope .section { padding: var(--s-9) 0; }
+  .mc-scope .section-tint { background: var(--paper-2); }
+  .mc-scope .section-ink { background: var(--ink); color: var(--paper); }
+  .mc-scope .section-ink h2, .mc-scope .section-ink h3, .mc-scope .section-ink h4 { color: var(--white); }
+  .mc-scope .section-ink .text-muted { color: #9CA3AF; }
+  .mc-scope .section-head { max-width: 60ch; margin-bottom: var(--s-8); }
+  .mc-scope .section-head .eyebrow { margin-bottom: var(--s-4); }
+
+  /* ============ STEPS ============ */
+  .mc-scope .steps { display: grid; gap: var(--s-5); }
+  .mc-scope .step {
+    display: grid; grid-template-columns: 60px 1fr; gap: var(--s-5);
+    padding: var(--s-6); background: var(--white); border: 1px solid var(--border); border-radius: 6px;
+  }
+  .mc-scope .step-num {
+    font-family: var(--serif); font-size: var(--text-2xl); color: var(--blue);
+    font-variation-settings: "opsz" 60; line-height: 1;
+  }
+  .mc-scope .step h4 { margin-bottom: var(--s-2); }
+  .mc-scope .step p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .step p + p { margin-top: var(--s-3); }
+
+  /* ============ ROLE GRID ============ */
+  .mc-scope .role-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+  .mc-scope .role-card {
+    display: block; background: var(--white); border: 1px solid var(--border);
+    border-radius: 6px; padding: var(--s-6); transition: all 0.18s ease;
+  }
+  .mc-scope .role-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10,14,26,0.06); }
+  .mc-scope .role-tag {
+    font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 100px; display: inline-block; margin-bottom: var(--s-4);
+  }
+  .mc-scope .role-tag.licensed { background: var(--blue-soft); color: var(--blue-deep); }
+  .mc-scope .role-tag.industry { background: var(--paper-3); color: var(--ink-light); }
+  .mc-scope .role-card h3 { font-size: var(--text-lg); margin-bottom: var(--s-2); }
+  .mc-scope .role-card p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: var(--s-4); }
+  .mc-scope .role-card .door-cta { font-size: var(--text-sm); font-weight: 500; color: var(--blue); display: inline-flex; gap: var(--s-2); align-items: center; }
+  .mc-scope .role-card .door-cta::after { content: '→'; transition: transform 0.18s; }
+  .mc-scope .role-card:hover .door-cta::after { transform: translateX(3px); }
+  @media (max-width: 760px) { .mc-scope .role-grid { grid-template-columns: 1fr; } }
+
+  /* ============ STORY INTERLUDE ============ */
+  .mc-scope .story { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; }
+  .mc-scope .story .container-narrow { position: relative; }
+  .mc-scope .story .eyebrow { color: var(--gold); margin-bottom: var(--s-5); }
+  .mc-scope .story p { color: #D8DCE4; font-size: var(--text-md); line-height: 1.7; margin-bottom: var(--s-5); }
+  .mc-scope .story p.story-lede { font-family: var(--serif); font-size: var(--text-xl); color: var(--white); font-variation-settings: "opsz" 30; line-height: 1.45; }
+  .mc-scope .story strong { color: var(--white); }
+  .mc-scope .story-photo {
+    width: 100%; max-width: 420px; border-radius: 6px; margin: var(--s-6) 0;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .mc-scope .story-caption { font-family: var(--mono); font-size: var(--text-xs); color: #9CA3AF; letter-spacing: 0.04em; margin-top: var(--s-2); }
+  .mc-scope .story-rule { width: 40px; height: 2px; background: var(--gold); margin-bottom: var(--s-6); }
+
+  /* ============ STATS BAR ============ */
+  .mc-scope .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-5); padding: var(--s-7) 0; }
+  .mc-scope .stat { text-align: center; }
+  .mc-scope .stat-num { font-family: var(--serif); font-size: var(--text-3xl); color: var(--ink); font-variation-settings: "opsz" 80; line-height: 1; margin-bottom: var(--s-2); }
+  .mc-scope .section-ink .stat-num { color: var(--white); }
+  .mc-scope .stat-label { font-family: var(--mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-lighter); }
+  @media (max-width: 760px) { .mc-scope .stats-bar { grid-template-columns: repeat(2, 1fr); gap: var(--s-6); } }
+
+  /* ============ FEATURE COLUMNS ============ */
+  .mc-scope .cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); }
+  .mc-scope .cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-7); }
+  .mc-scope .feature h4 { margin-bottom: var(--s-3); }
+  .mc-scope .feature p { color: var(--ink-light); font-size: var(--text-sm); margin-bottom: 0; }
+  .mc-scope .feature-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--blue-soft); display: flex; align-items: center; justify-content: center; margin-bottom: var(--s-4); color: var(--blue); font-family: var(--serif); font-size: var(--text-lg); }
+  @media (max-width: 860px) { .mc-scope .cols-3 { grid-template-columns: 1fr; } .mc-scope .cols-2 { grid-template-columns: 1fr; } }
+
+  /* ============ TESTIMONIAL ============ */
+  .mc-scope .quote-card { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 6px; padding: var(--s-7); }
+  .mc-scope .quote-card blockquote { font-family: var(--serif); font-size: var(--text-lg); line-height: 1.5; color: var(--ink); font-variation-settings: "opsz" 40; margin-bottom: var(--s-5); }
+  .mc-scope .quote-author { display: flex; align-items: center; gap: var(--s-4); }
+  .mc-scope .quote-author img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 1px solid var(--border); }
+  .mc-scope .quote-author .qa-name { font-weight: 600; font-size: var(--text-sm); }
+  .mc-scope .quote-author .qa-title { font-size: var(--text-xs); color: var(--ink-lighter); font-family: var(--mono); }
+
+  /* ============ LEAD MAGNET / EMAIL ============ */
+  .mc-scope .magnet { background: var(--blue-tint); border: 1px solid var(--blue-soft); border-radius: 8px; padding: var(--s-8); }
+  .mc-scope .magnet-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--s-8); align-items: center; }
+  .mc-scope .magnet h2 { margin-bottom: var(--s-4); }
+  .mc-scope .magnet p { color: var(--ink-light); }
+  .mc-scope .magnet-form { display: flex; flex-direction: column; gap: var(--s-3); }
+  .mc-scope .magnet-form input {
+    padding: var(--s-4); border: 1px solid var(--border-strong); border-radius: 6px;
+    font-family: var(--sans); font-size: var(--text-base); background: var(--white);
+  }
+  .mc-scope .magnet-form input:focus { outline: 2px solid var(--blue); border-color: var(--blue); }
+  .mc-scope .form-note { font-size: var(--text-xs); color: var(--ink-lighter); }
+  @media (max-width: 860px) { .mc-scope .magnet-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+
+  /* ============ FAQ ============ */
+  .mc-scope .faq-list { border-top: 1px solid var(--border); }
+  .mc-scope .faq-item { border-bottom: 1px solid var(--border); }
+  .mc-scope .faq-q {
+    width: 100%; text-align: left; padding: var(--s-5) 0; display: flex;
+    justify-content: space-between; align-items: center; gap: var(--s-4);
+    font-family: var(--serif); font-size: var(--text-md); font-weight: 500;
+    color: var(--ink); font-variation-settings: "opsz" 30;
+  }
+  .mc-scope .faq-q:hover { color: var(--blue); }
+  .mc-scope .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; transition: transform 0.2s; }
+  .mc-scope .faq-icon::before, .mc-scope .faq-icon::after { content: ''; position: absolute; background: var(--blue); border-radius: 2px; }
+  .mc-scope .faq-icon::before { top: 9px; left: 0; width: 20px; height: 2px; }
+  .mc-scope .faq-icon::after { top: 0; left: 9px; width: 2px; height: 20px; transition: transform 0.2s; }
+  .mc-scope .faq-item.open .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+  .mc-scope .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+  .mc-scope .faq-a-inner { padding: 0 0 var(--s-5); color: var(--ink-light); font-size: var(--text-sm); line-height: 1.65; max-width: 70ch; }
+  .mc-scope .faq-item.open .faq-a { max-height: 600px; }
+
+  /* ============ CTA BAND ============ */
+  .mc-scope .cta-band { background: var(--ink); color: var(--paper); padding: var(--s-10) 0; text-align: center; }
+  .mc-scope .cta-band h2 { color: var(--white); max-width: 22ch; margin: 0 auto var(--s-5); }
+  .mc-scope .cta-band p { color: #B8BEC9; max-width: 54ch; margin: 0 auto var(--s-7); }
+  .mc-scope .cta-band .hero-actions { justify-content: center; }
+  .mc-scope .cta-band .btn-primary { background: var(--white); color: var(--ink); border-color: var(--white); }
+  .mc-scope .cta-band .btn-primary:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .mc-scope .cta-band .btn-secondary { color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .mc-scope .cta-band .btn-secondary:hover { border-color: var(--white); }
+
+  /* ============ COMPLIANCE / DISCLAIMER ============ */
+  .mc-scope .disclaimer { padding: var(--s-7) 0; background: var(--paper-2); border-top: 1px solid var(--border); }
+  .mc-scope .disclaimer p { font-size: var(--text-xs); color: var(--ink-lighter); line-height: 1.6; max-width: 90ch; margin-bottom: var(--s-3); }
+
+  .mc-scope .mt-5 { margin-top: var(--s-5); }
+  .mc-scope .mt-7 { margin-top: var(--s-7); }
+</style>
+
+<!-- ============ JSON-LD: FAQ ============ -->
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do I get a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"You register with the NMLS for a unique ID, complete 20 hours of pre-licensure education, pass the SAFE MLO national exam, submit your MU4 application with fingerprints and a credit authorization, and get sponsored by a licensed mortgage company. Once the company requests sponsorship and your application is approved, your license becomes active."}},
+    {"@type":"Question","name":"What are the NMLS license requirements?","acceptedAnswer":{"@type":"Answer","text":"The core requirements are a clean MU4 application, 20 hours of NMLS-approved pre-licensure education, a passing SAFE MLO exam score, a criminal background check via fingerprints, a credit report review, and sponsorship from a licensed company. Individual states may add their own education hours or rules on top of this federal baseline."}},
+    {"@type":"Question","name":"How much does a mortgage license cost?","acceptedAnswer":{"@type":"Answer","text":"Expect to pay for the 20-hour pre-licensure course, the SAFE MLO exam fee, the MU4 application fee, and fingerprint and credit-check fees. Total out-of-pocket commonly starts around a few hundred dollars and varies by state. Owning a brokerage adds company-level fees and a surety bond, but originating under a company does not."}},
+    {"@type":"Question","name":"How long does it take to get a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"Many people go from start to active in a few weeks to a couple of months. The pace depends on how quickly you finish the 20-hour course, when you schedule and pass the exam, and how long your state plus the background and credit checks take to process."}},
+    {"@type":"Question","name":"What is the 20-hour pre-licensure education requirement?","acceptedAnswer":{"@type":"Answer","text":"The SAFE Act requires 20 hours of NMLS-approved pre-licensure education before your application is submitted: 3 hours of federal law, 3 hours of ethics covering fraud, consumer protection, and fair lending, 2 hours on nontraditional mortgage products, and 12 hours of general origination instruction. Some states require additional hours."}},
+    {"@type":"Question","name":"Do I need a background check for a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"Yes. You submit fingerprints through the NMLS for a criminal background check as part of the application. Certain felony convictions, especially financial crimes, can disqualify an applicant, but most backgrounds clear without issue. The check is a consumer-protection requirement of the SAFE Act."}},
+    {"@type":"Question","name":"Is there a credit check for a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your application authorizes the NMLS to pull a credit report. There's no minimum score, but the review weighs financial responsibility and history. Items like past bankruptcies, collections, or judgments may require a written explanation. Many people with imperfect credit are still approved."}},
+    {"@type":"Question","name":"What is the MU4 application?","acceptedAnswer":{"@type":"Answer","text":"The MU4 is the individual application form you file through the NMLS to request your mortgage loan originator license. It collects your personal and employment history, disclosure questions, and authorizes your background and credit checks. It's the central document in getting licensed."}},
+    {"@type":"Question","name":"Do I need a sponsor to activate my mortgage license?","acceptedAnswer":{"@type":"Answer","text":"Yes. Even after you pass the exam and your application is approved, your license stays inactive until a licensed mortgage company requests sponsorship through the NMLS. Choosing the right sponsoring company is the most important decision in the process, because it shapes your mentorship, lender access, and career."}},
+    {"@type":"Question","name":"Can I get a mortgage license in multiple states?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once you hold a license in your home state, you can add licenses in additional states through the NMLS, each with its own education hours and fees. Many originators expand over time. Joining a company licensed in many states makes multi-state work far simpler, since the company's licensing supports your reach."}},
+    {"@type":"Question","name":"Do mortgage licenses need to be renewed?","acceptedAnswer":{"@type":"Answer","text":"Yes. Licenses renew annually, and renewal requires 8 hours of NMLS-approved continuing education each year: federal law, ethics, nontraditional lending, and undefined mortgage origination. Renewal windows typically open late in the year, and missing the deadline can deactivate your license until you catch up."}},
+    {"@type":"Question","name":"What is continuing education for a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"Continuing education (CE) is the 8 hours of annual NMLS-approved coursework required to renew your license. It keeps you current on federal law, ethics, and lending standards. It's separate from your initial 20-hour pre-licensure education and is a routine, manageable part of staying licensed."}},
+    {"@type":"Question","name":"Do I need a college degree for a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"No. There's no degree requirement. The requirements are the 20-hour course, a passing SAFE MLO exam score, the background and credit review, and sponsorship. Many licensed originators came in from unrelated fields with no finance background at all."}},
+    {"@type":"Question","name":"What's the difference between a license and a registration?","acceptedAnswer":{"@type":"Answer","text":"State-licensed mortgage loan originators, the kind that work at independent brokerages, must complete the full SAFE Act licensing including the exam and education. Originators employed by certain federally regulated banks are instead federally registered with the NMLS and don't take the SAFE exam. The independent broker path requires full licensing."}},
+    {"@type":"Question","name":"Can I get a mortgage license with a criminal record?","acceptedAnswer":{"@type":"Answer","text":"It depends on the offense. Certain felonies, particularly those involving fraud, dishonesty, or breach of trust, are disqualifying for a set period or permanently under the SAFE Act. Many other records do not automatically bar licensing, though you'll disclose them and may need to explain. When in doubt, check your state's specifics."}},
+    {"@type":"Question","name":"Do I need a surety bond for a mortgage license?","acceptedAnswer":{"@type":"Answer","text":"An individual originating under a sponsoring company is typically covered by the company's bond and does not post their own. If you license your own brokerage, the company will need a surety bond in each state where it operates, with the amount set by that state. The bond protects consumers, not the broker."}},
+    {"@type":"Question","name":"What is the SAFE Act?","acceptedAnswer":{"@type":"Answer","text":"The Secure and Fair Enforcement for Mortgage Licensing Act of 2008 is the federal law that created uniform licensing standards for mortgage loan originators and established the NMLS. It set the 20-hour education requirement, the national exam, and the background and credit standards that every state-licensed originator follows."}},
+    {"@type":"Question","name":"Where do I take pre-licensure education?","acceptedAnswer":{"@type":"Answer","text":"Pre-licensure education is offered by independent NMLS-approved course providers, available live, online instructor-led, or self-paced. The NMLS maintains a list of approved providers. Any approved 20-hour course satisfies the federal requirement, though your state may require specific additional hours."}},
+    {"@type":"Question","name":"Do I have to finish my education before applying?","acceptedAnswer":{"@type":"Answer","text":"You can take the SAFE MLO exam before completing your 20 hours, but the education must be finished before your license application is submitted for approval. In practice, most people complete the course first because it's the best preparation for the exam."}},
+    {"@type":"Question","name":"How do I check the status of my mortgage license?","acceptedAnswer":{"@type":"Answer","text":"You track your application and license status inside your NMLS account, which shows each requirement as it clears. The public can verify any licensed originator through NMLS Consumer Access, which displays license status and history. Keeping your record clean and current is part of staying credible."}},
+    {"@type":"Question","name":"Is the licensing process the same for brokers and loan officers?","acceptedAnswer":{"@type":"Answer","text":"The individual licensing is identical: both originate under the same SAFE Act requirements. The difference comes later in how you operate. A loan officer works under a company's license, while a mortgage broker who owns a brokerage also holds a company-level license and bond. The exam, education, and checks are the same."}},
+    {"@type":"Question","name":"What happens if my mortgage license lapses?","acceptedAnswer":{"@type":"Answer","text":"If you miss annual renewal or let your license go inactive, you generally can't originate loans until it's reinstated, which may require completing late CE or, after a long gap, retaking the exam. Keeping continuing education current each year avoids the problem entirely."}},
+    {"@type":"Question","name":"How much pre-licensure education does my state require?","acceptedAnswer":{"@type":"Answer","text":"Every state requires at least the federal 20 hours, and some require additional state-specific hours on top. For example, certain states add a few hours of state law. Always confirm your state's exact requirement through the NMLS before enrolling so you complete the right course the first time."}},
+    {"@type":"Question","name":"Can I start the licensing process while working another job?","acceptedAnswer":{"@type":"Answer","text":"Yes. The education and exam can be completed around a full-time job, which is how most career-changers get licensed. Once your license is active and sponsored, you can scale into the work at your own pace. Many people keep their existing income while they build a pipeline."}},
+    {"@type":"Question","name":"What's the smartest first step toward getting licensed?","acceptedAnswer":{"@type":"Answer","text":"Create your NMLS account and enroll in an approved 20-hour course. But the smarter first move is choosing your sponsoring company early, because the right mentorship and lender access shape everything that follows. Talk to a team before you start so your license lands somewhere that sets you up to succeed."}}
+  ]
+}
+</script>
+
+<div class="mc-scope">
+
+  <section class="hero">
+    <div class="container">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/mortgage-career/">Mortgage Career</a> <span>/</span> <span>Mortgage License</span></nav>
+      <span class="eyebrow hero-eyebrow">Mortgage Career &middot; Licensing</span>
+      <h1 class="display-1">How to Get a Mortgage License</h1>
+      <p class="lead hero-subtitle">The complete guide to getting your mortgage license &mdash; every NMLS requirement, the 20-hour education, the SAFE MLO exam, what it costs, how long it takes, and how to keep your license active. The one page that explains licensing start to finish.</p>
+      <div class="hero-actions">
+        <a href="#requirements" class="btn btn-primary btn-large">See the Requirements</a>
+        <a href="#cost" class="btn btn-secondary btn-large">Cost &amp; Timeline</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-dot"></span><span>Jim Blackburn &middot; NMLS #1072866</span>
+        <span class="trust-dot"></span><span>7&times; Scotsman Guide Top Producer</span>
+        <span class="trust-dot"></span><span>$500M+ Closed</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cols-2">
+        <div>
+          <span class="eyebrow">The Short Version</span>
+          <h2 class="mt-5">A mortgage license is a defined checklist &mdash; not a mystery</h2>
+          <p class="lede">Education, exam, application, background and credit checks, sponsorship. Five things. Finish them in order and you're licensed.</p>
+        </div>
+        <div class="body-text">
+          <p>If you've been searching how to get a mortgage license, the honest answer is that the path is well-defined and the same for everyone. The license that lets you originate loans is the individual mortgage loan originator (MLO) license, issued through the <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS</a> under the federal <a class="inline-link" href="https://www.consumerfinance.gov/" target="_blank" rel="noopener">SAFE Act of 2008</a>.</p>
+          <p>This page owns the licensing detail for the whole guide: the NMLS requirements, the pre-licensure education, the costs, the timeline, and renewal. The <a class="inline-link" href="/mortgage-career/safe-mlo-exam/">SAFE MLO exam guide</a> covers the test itself, and the role pages explain what you do once licensed &mdash; <a class="inline-link" href="/mortgage-career/loan-officer/">become a loan officer</a> or <a class="inline-link" href="/mortgage-career/mortgage-broker/">become a mortgage broker</a>.</p>
+          <p>Below: the exact requirements, what a mortgage license costs, how long it takes, and how renewal works.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUIREMENTS -->
+  <section class="section section-tint" id="requirements">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The Checklist</span>
+        <h2 class="mt-5">NMLS mortgage license requirements</h2>
+        <p class="text-muted">Everything you must complete to get a mortgage license, in order.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><div>
+          <h4>Register with the NMLS</h4>
+          <p>Create an account in the Nationwide Multistate Licensing System and Registry to get your unique NMLS ID. Every later requirement for your mortgage license routes through this account, including your education, exam, and application.</p>
+        </div></div>
+        <div class="step"><span class="step-num">2</span><div>
+          <h4>Complete 20 hours of pre-licensure education</h4>
+          <p>Take an NMLS-approved 20-hour course: 3 hours federal law, 3 hours ethics (fraud, consumer protection, fair lending), 2 hours nontraditional mortgage products, and 12 hours general origination. Some states require extra hours. This education must be finished before your application is submitted.</p>
+        </div></div>
+        <div class="step"><span class="step-num">3</span><div>
+          <h4>Pass the SAFE MLO exam</h4>
+          <p>Pass the national licensing test &mdash; a 75% score is required. It's the same exam for every mortgage license. The format, pass rate, and a study plan live in the <a class="inline-link" href="/mortgage-career/safe-mlo-exam/">SAFE MLO exam guide</a>.</p>
+        </div></div>
+        <div class="step"><span class="step-num">4</span><div>
+          <h4>File your MU4 application with fingerprints and credit authorization</h4>
+          <p>Submit the individual MU4 form through the NMLS, provide fingerprints for a criminal background check, and authorize a credit report. There's no minimum credit score for a mortgage license; the review weighs financial responsibility, not a cutoff.</p>
+        </div></div>
+        <div class="step"><span class="step-num">5</span><div>
+          <h4>Get sponsored by a licensed company</h4>
+          <p>Your mortgage license stays inactive until a licensed mortgage company requests sponsorship through the NMLS. This activates the license &mdash; and the company you choose determines your mentorship, lender access, and the brand you build under.</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST & TIMELINE -->
+  <section class="section" id="cost">
+    <div class="container">
+      <div class="cols-2">
+        <div class="body-text">
+          <span class="eyebrow">The Numbers</span>
+          <h2 class="mt-5">What a mortgage license costs</h2>
+          <p>Getting a mortgage license as an originator is affordable. You'll pay for the 20-hour pre-licensure course, the SAFE MLO exam fee, the MU4 application fee, and fingerprint and credit-check fees. Total out-of-pocket commonly starts around a few hundred dollars and varies by state.</p>
+          <p>If you intend to own a brokerage rather than originate under a company, add company-level state license fees and a surety bond. Most people get their individual mortgage license first and originate under an established shop before opening their own.</p>
+        </div>
+        <div class="body-text">
+          <span class="eyebrow">The Clock</span>
+          <h2 class="mt-5">How long it takes</h2>
+          <p>Many people go from starting their education to an active mortgage license in a few weeks to a couple of months. The variables are how fast you complete the 20-hour course, when you schedule and pass the exam, and how long your state plus the background and credit checks take.</p>
+          <p>Moving efficiently mostly comes down to finishing the course promptly and booking the exam as soon as you're prepared. There's no mandatory waiting period built into getting a mortgage license beyond exam retakes.</p>
+        </div>
+      </div>
+      <p class="text-muted text-small mt-5">Costs, fees, and timelines vary by state and are subject to change. Confirm current requirements at the official <a class="inline-link" href="https://mortgage.nationwidelicensingsystem.org/" target="_blank" rel="noopener">NMLS Resource Center</a> before you begin.</p>
+    </div>
+  </section>
+
+  <!-- RENEWAL -->
+  <section class="section section-tint">
+    <div class="container container-narrow">
+      <span class="eyebrow">Staying Licensed</span>
+      <h2 class="mt-5">Keeping your mortgage license active</h2>
+      <p class="body-text">A mortgage license isn't one-and-done. Licenses renew annually, and renewal requires 8 hours of NMLS-approved continuing education each year &mdash; covering federal law, ethics, and lending standards. Renewal windows typically open late in the year.</p>
+      <p class="body-text">Letting a mortgage license lapse means you can't originate loans until it's reinstated, and a long gap can even require retaking the exam. Staying current on continuing education each year is simple insurance against losing the license you worked to earn. A good sponsoring company keeps you on track with renewal so it never becomes a problem.</p>
+    </div>
+  </section>
+
+  <!-- STORY ECHO (license-specific) -->
+  <section class="story">
+    <div class="container-narrow">
+      <span class="eyebrow">Where the License Takes You</span>
+      <div class="story-rule"></div>
+      <p class="story-lede">The license opens the door. What you build after is the career.</p>
+      <p>A mortgage license is a credential, not a business. I learned that firsthand: about ten years as a financial advisor, then a jump to mortgages in 2008 when the market fell apart, my own license (NMLS #1072866), and years of learning the real work on the floor rather than in a textbook.</p>
+      <p>Seven Scotsman Guide Top Producer honors and $500M+ in closed loans later, here's the truth about a mortgage license: it's the easy part. The career is built on what you do with it &mdash; the clients you earn, the trust you keep, the brand you build. That's the part worth learning from someone who's done it, and it's why I broker to 300+ lenders so no client ever goes unhelped.</p>
+    </div>
+  </section>
+
+  <!-- WHY HERE -->
+  <section class="section section-ink">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-gold">After You're Licensed</span>
+        <h2 class="mt-5">Your license needs a home &mdash; choose it well</h2>
+        <p class="text-muted">A mortgage license only activates with a sponsoring company. That choice shapes your entire career, so it's worth making deliberately.</p>
+      </div>
+      <div class="cols-3">
+        <div class="feature"><div class="feature-icon">&#9650;</div><h4>Mentorship from a top producer</h4><p class="text-muted">Hang your license with Jim Blackburn (NMLS #1072866), a 7&times; Scotsman Guide Top Producer with $500M+ closed.</p></div>
+        <div class="feature"><div class="feature-icon">&#9671;</div><h4>A brand that gets remembered</h4><p class="text-muted">A license makes you legal. A brand makes you chosen. We build that with you from day one.</p></div>
+        <div class="feature"><div class="feature-icon">&#9678;</div><h4>300+ lenders behind you</h4><p class="text-muted">A deep lender bench means your license can serve any client, not just the easy files.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container container-narrow">
+      <div class="section-head" style="margin-bottom: var(--s-7);">
+        <span class="eyebrow">Questions</span>
+        <h2 class="mt-5">Mortgage license: 25 questions, answered</h2>
+        <p class="text-muted">The real answers to what people ask about getting and keeping a mortgage license.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">How do I get a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">You register with the NMLS for a unique ID, complete 20 hours of pre-licensure education, pass the SAFE MLO national exam, submit your MU4 application with fingerprints and a credit authorization, and get sponsored by a licensed mortgage company. Once the company requests sponsorship and your application is approved, your license becomes active.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What are the NMLS license requirements?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The core requirements are a clean MU4 application, 20 hours of NMLS-approved pre-licensure education, a passing SAFE MLO exam score, a criminal background check via fingerprints, a credit report review, and sponsorship from a licensed company. Individual states may add their own education hours or rules on top of this federal baseline.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How much does a mortgage license cost?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Expect to pay for the 20-hour pre-licensure course, the SAFE MLO exam fee, the MU4 application fee, and fingerprint and credit-check fees. Total out-of-pocket commonly starts around a few hundred dollars and varies by state. Owning a brokerage adds company-level fees and a surety bond, but originating under a company does not.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How long does it take to get a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Many people go from start to active in a few weeks to a couple of months. The pace depends on how quickly you finish the 20-hour course, when you schedule and pass the exam, and how long your state plus the background and credit checks take to process.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is the 20-hour pre-licensure education requirement?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The SAFE Act requires 20 hours of NMLS-approved pre-licensure education before your application is submitted: 3 hours of federal law, 3 hours of ethics covering fraud, consumer protection, and fair lending, 2 hours on nontraditional mortgage products, and 12 hours of general origination instruction. Some states require additional hours.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need a background check for a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. You submit fingerprints through the NMLS for a criminal background check as part of the application. Certain felony convictions, especially financial crimes, can disqualify an applicant, but most backgrounds clear without issue. The check is a consumer-protection requirement of the SAFE Act.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is there a credit check for a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Your application authorizes the NMLS to pull a credit report. There's no minimum score, but the review weighs financial responsibility and history. Items like past bankruptcies, collections, or judgments may require a written explanation. Many people with imperfect credit are still approved.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is the MU4 application?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The MU4 is the individual application form you file through the NMLS to request your mortgage loan originator license. It collects your personal and employment history, disclosure questions, and authorizes your background and credit checks. It's the central document in getting licensed.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need a sponsor to activate my mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Even after you pass the exam and your application is approved, your license stays inactive until a licensed mortgage company requests sponsorship through the NMLS. Choosing the right sponsoring company is the most important decision in the process, because it shapes your mentorship, lender access, and career.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I get a mortgage license in multiple states?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Once you hold a license in your home state, you can add licenses in additional states through the NMLS, each with its own education hours and fees. Many originators expand over time. Joining a company licensed in many states makes multi-state work far simpler, since the company's licensing supports your reach.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do mortgage licenses need to be renewed?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Licenses renew annually, and renewal requires 8 hours of NMLS-approved continuing education each year: federal law, ethics, nontraditional lending, and undefined mortgage origination. Renewal windows typically open late in the year, and missing the deadline can deactivate your license until you catch up.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is continuing education for a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Continuing education (CE) is the 8 hours of annual NMLS-approved coursework required to renew your license. It keeps you current on federal law, ethics, and lending standards. It's separate from your initial 20-hour pre-licensure education and is a routine, manageable part of staying licensed.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need a college degree for a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. There's no degree requirement. The requirements are the 20-hour course, a passing SAFE MLO exam score, the background and credit review, and sponsorship. Many licensed originators came in from unrelated fields with no finance background at all.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the difference between a license and a registration?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">State-licensed mortgage loan originators, the kind that work at independent brokerages, must complete the full SAFE Act licensing including the exam and education. Originators employed by certain federally regulated banks are instead federally registered with the NMLS and don't take the SAFE exam. The independent broker path requires full licensing.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I get a mortgage license with a criminal record?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">It depends on the offense. Certain felonies, particularly those involving fraud, dishonesty, or breach of trust, are disqualifying for a set period or permanently under the SAFE Act. Many other records do not automatically bar licensing, though you'll disclose them and may need to explain. When in doubt, check your state's specifics.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need a surety bond for a mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">An individual originating under a sponsoring company is typically covered by the company's bond and does not post their own. If you license your own brokerage, the company will need a surety bond in each state where it operates, with the amount set by that state. The bond protects consumers, not the broker.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is the SAFE Act?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The Secure and Fair Enforcement for Mortgage Licensing Act of 2008 is the federal law that created uniform licensing standards for mortgage loan originators and established the NMLS. It set the 20-hour education requirement, the national exam, and the background and credit standards that every state-licensed originator follows.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Where do I take pre-licensure education?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Pre-licensure education is offered by independent NMLS-approved course providers, available live, online instructor-led, or self-paced. The NMLS maintains a list of approved providers. Any approved 20-hour course satisfies the federal requirement, though your state may require specific additional hours.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I have to finish my education before applying?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">You can take the SAFE MLO exam before completing your 20 hours, but the education must be finished before your license application is submitted for approval. In practice, most people complete the course first because it's the best preparation for the exam.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I check the status of my mortgage license?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">You track your application and license status inside your NMLS account, which shows each requirement as it clears. The public can verify any licensed originator through NMLS Consumer Access, which displays license status and history. Keeping your record clean and current is part of staying credible.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is the licensing process the same for brokers and loan officers?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">The individual licensing is identical: both originate under the same SAFE Act requirements. The difference comes later in how you operate. A loan officer works under a company's license, while a mortgage broker who owns a brokerage also holds a company-level license and bond. The exam, education, and checks are the same.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What happens if my mortgage license lapses?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">If you miss annual renewal or let your license go inactive, you generally can't originate loans until it's reinstated, which may require completing late CE or, after a long gap, retaking the exam. Keeping continuing education current each year avoids the problem entirely.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How much pre-licensure education does my state require?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Every state requires at least the federal 20 hours, and some require additional state-specific hours on top. For example, certain states add a few hours of state law. Always confirm your state's exact requirement through the NMLS before enrolling so you complete the right course the first time.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I start the licensing process while working another job?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. The education and exam can be completed around a full-time job, which is how most career-changers get licensed. Once your license is active and sponsored, you can scale into the work at your own pace. Many people keep their existing income while they build a pipeline.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What's the smartest first step toward getting licensed?<span class="faq-icon"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Create your NMLS account and enroll in an approved 20-hour course. But the smarter first move is choosing your sponsoring company early, because the right mentorship and lender access shape everything that follows. Talk to a team before you start so your license lands somewhere that sets you up to succeed.</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" id="start">
+    <div class="container">
+      <span class="eyebrow eyebrow-gold">Ready When You Are</span>
+      <h2 class="mt-5">Get licensed &mdash; and put it somewhere that grows you</h2>
+      <p>Mapping out your mortgage license is the right first move. The next one is choosing where it lands. Let's talk about the path and where your license can take you.</p>
+      <div class="hero-actions">
+        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <a href="/schedule-call/" class="btn btn-secondary btn-large">Talk to Our Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow">Keep Reading</span><h2 class="mt-5">More on getting licensed</h2></div>
+      <div class="role-grid">
+        <a href="/mortgage-career/safe-mlo-exam/" class="role-card"><span class="role-tag industry">Exam</span><h3>SAFE MLO Exam Guide</h3><p>Format, pass rate, and a study plan for the licensing test.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/loan-officer/" class="role-card"><span class="role-tag licensed">Licensed</span><h3>How to Become a Loan Officer</h3><p>What the front-line role is really like, start to finish.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/mortgage-broker/" class="role-card"><span class="role-tag licensed">Licensed</span><h3>How to Become a Mortgage Broker</h3><p>Go independent and run your own book of business.</p><span class="door-cta">Read the guide</span></a>
+        <a href="/mortgage-career/" class="role-card"><span class="role-tag industry">Hub</span><h3>Mortgage Career Guide</h3><p>Every role in the industry and how to choose your path.</p><span class="door-cta">Back to the hub</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="disclaimer">
+    <div class="container">
+      <p>Stairway Mortgage is a division of NEXA Mortgage LLC. This page is an educational resource about mortgage licensing. Mortgage license requirements, fees, and timelines are set by the federal SAFE Act, the NMLS, and individual state regulators and are subject to change; always confirm current requirements for your state at the official <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS Consumer Access</a> and <a class="inline-link" href="https://mortgage.nationwidelicensingsystem.org/" target="_blank" rel="noopener">NMLS Resource Center</a>. Pre-licensure education and the SAFE MLO exam are administered by independent, NMLS-approved providers.</p>
+    </div>
+  </section>
+
+</div>
+
+<script is:inline>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
+  });
+</script>
+
+</Layout>
