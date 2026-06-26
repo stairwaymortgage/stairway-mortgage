@@ -70,6 +70,7 @@ const reviews = [
   { text: "Dwayne has used Jim three times. Each transaction was smoother than the last. He now refers every friend and colleague to Stairway.", name: 'Dwayne Lee', loc: 'Illinois', source: 'Facebook', img: '/testimonials/dwayne-lee.jpg' },
   { text: "Carolina did a purchase and a refi within the same year. Jim found savings on both that added up to over $400/month.", name: 'Carolina Forsyth', loc: 'New Jersey', source: 'Google', img: '/testimonials/carolina-forsyth.jpg' },
 ];
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 
 <Layout title="Buy a Home — Stairway Mortgage" description="Your path to buying a home wisely. 300+ lenders competing for your loan. Pre-approved in as fast as 24 hours.">
@@ -546,6 +547,8 @@ const reviews = [
     </div>
   </section>
 
+
+<HomeReviews />
 </Layout>
 
 <!-- Mobile sticky bottom CTA -->

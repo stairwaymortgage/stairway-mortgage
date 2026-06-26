@@ -388,9 +388,12 @@ const ceBody = `
 
 
 `;
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 <Layout title="Corporate Executive Mortgage · C-Suite, VPs, Directors, Pre-IPO, Relocating Executives" description="Corporate executive mortgage for C-suite officers, senior VPs, directors, pre-IPO equity holders, and relocating executives. We read your offer letter, RSU vesting schedule, deferred comp election, and relo package to qualify on real total compensation." canonical="https://stairwaymortgage.com/corporate-executives/">
   <div class="ce-scope" set:html={ceBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

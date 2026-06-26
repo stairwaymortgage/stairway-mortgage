@@ -811,9 +811,12 @@ const authorBody = `
 
 
 `;
+import HomeReviews from '../../components/HomeReviews.astro';
 ---
 <Layout title="Author Mortgage · Book Advances, Royalty Long-Tail, Self-Publishing &amp; Loan-Out S-Corp Specialist" description="Author mortgage for working novelists, non-fiction writers, self-publishing entrepreneurs, ghost writers, and established backlist authors. Book advance staggered milestones (signing/D&amp;A/publication/paperback), backlist royalty long-tail, subsidiary rights (translation, foreign, audio), self-publishing KDP/Apple/Kobo/IngramSpark royalties, film and TV option payments, speaking fees, Loan-Out S-corporation under IRC Section 1361. Schedule C self-employed, bank-statement Non-QM, asset-depletion. Coverage of TCJA permanent suspension of W-2 employee business deductions, IRC Section 174 research expense deduction, and the Schedule C vs Schedule E royalty distinction." canonical="https://stairwaymortgage.com/creative-earners/author-writer/">
   <div class="author-scope" set:html={authorBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

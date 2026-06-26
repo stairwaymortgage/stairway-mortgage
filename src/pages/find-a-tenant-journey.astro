@@ -11,6 +11,7 @@ const reviews = [
   { text: "This is the second loan I am doing with Jim and once again he and his team have exceeded my expectations. This time it was a multi-family unit. I can attest he provides the best possible service and gets the job done.", name: 'Syed Saqib', title: 'Chief Investment Officer, Zstep Capital', loc: 'Illinois', source: 'Zillow' },
   { text: "I'm an RE investor. Had multiple loan officers but one really stands out — JIM BLACKBURN. I have tons of properties and live in China with unique income (he made it work!). He called me in China at 1 AM to get information to close the deal.", name: 'Dennis Nikolaev', title: 'RE Investor, Studio Leader', loc: 'China', source: 'Facebook' },
 ];
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 <Layout title="Find a Tenant — Stairway Mortgage" description="We help you find a quality tenant — free. Property owners get expert screening, marketing, and placement at no cost.">
 
@@ -116,6 +117,8 @@ const reviews = [
       </div>
     </div>
   </section>
+
+<HomeReviews />
 </Layout>
 
 <style>

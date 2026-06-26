@@ -421,9 +421,12 @@ const dwBody = `
 
 
 `;
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 <Layout title="Dental & Wellness Professional Mortgage · Dentists, Specialists, Chiropractors, Acupuncturists" description="Dental and wellness professional mortgage for dentists, specialists, chiropractors, acupuncturists, nutritionists, and wellness practice owners. We read your S-corp distribution, K-1, and IBR student loan statement to qualify on real take-home." canonical="https://stairwaymortgage.com/dental-wellness-professionals/">
   <div class="dw-scope" set:html={dwBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

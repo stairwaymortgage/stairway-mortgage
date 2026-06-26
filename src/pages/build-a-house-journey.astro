@@ -48,6 +48,7 @@ const reviews = [
   { text: "These guys are amazing! Jim's team took a chance on me although my situation was almost hopeless. They secured a loan for me (nobody else would do it) and they closed in less than 30 days!", name: 'Andreea Grigorie', title: 'Complex financing', loc: 'Illinois', source: 'Facebook', tag: 'Complex financing' },
   { text: "We had a difficult jumbo loan scenario that most mortgage lenders were unable to close. Not only did Jim Blackburn's mortgage team close our refinance, but now we are able to pursue the purchase of our dream home in the Florida Keys.", name: 'Chad Brocato', title: 'Jumbo/Complex', loc: 'Florida', source: 'Google', tag: 'Complex financing' },
 ];
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 
 <Layout title="Build a Home — Stairway Mortgage" description="Construction-to-permanent financing. One close, one loan, one team. 300+ lenders competing for your build.">
@@ -356,6 +357,8 @@ const reviews = [
     </div>
   </section>
 
+
+<HomeReviews />
 </Layout>
 
 <!-- Mobile sticky bottom CTA -->

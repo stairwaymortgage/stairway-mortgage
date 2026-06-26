@@ -30,6 +30,7 @@ const reviews = [
   { text: "Had a great experience working with Jim and team on a refi. Was able to do virtually everything by email and text. When an issue arose, Jim made sure it got escalated and handled properly.", name: 'Christopher Tragasz', title: 'Senior Branch Manager, JP Morgan Chase', loc: 'Illinois', source: 'Angi' },
   { text: "This is the second loan I am doing with Jim and once again he and his team have exceeded my expectations. This time it was a multi-family unit. I can attest he provides the best possible service and gets the job done.", name: 'Syed Saqib', title: 'Chief Investment Officer, Zstep Capital', loc: 'Illinois', source: 'Zillow' },
 ];
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 
 <Layout title="Renovate a Home — Stairway Mortgage" description="Finance your renovation against your home's future value. 300+ lenders competing for your project.">
@@ -274,6 +275,8 @@ const reviews = [
     </div>
   </section>
 
+
+<HomeReviews />
 </Layout>
 
 <style>

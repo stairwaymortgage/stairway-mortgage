@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { GHL_WEBHOOK_URL } from '../lib/ghl';
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 <Layout title="Home Value Report — Stairway Mortgage" description="See what your home is worth today — plus your equity, what you can do with it, neighborhood trends, and a private hub to manage your home. Free, no obligation.">
 
@@ -292,6 +293,8 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
 </section>
 
 </div><!-- /.hvr-scope -->
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

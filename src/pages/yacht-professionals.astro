@@ -380,9 +380,12 @@ const ypBody = `
 
 
 `;
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 <Layout title="Yacht Professional Mortgage · Captains, Crew, Surveyors" description="Yacht crew mortgage for captains, deck and interior crew, and marine surveyors. We qualify foreign-flag pay, charter tips, and rotation correctly." canonical="https://stairwaymortgage.com/yacht-professionals/">
   <div class="yp-scope" set:html={ypBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

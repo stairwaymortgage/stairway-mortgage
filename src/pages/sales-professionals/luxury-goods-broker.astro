@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 const title = "Luxury Goods Broker Mortgage Guide — Watches, Jewelry, Handbags, Fine Art";
 const description = "Luxury goods broker mortgage guide. We qualify commission income on Rolex / Patek / AP watches, fine jewelry, Birkin handbags, exotic cars, fine art, and rare collectibles — structuring around lumpy high-ticket revenue and consignment vs. ownership models.";
 const canonical = "https://stairwaymortgage.com/sales-professionals/luxury-goods-broker/";
+import HomeReviews from '../../components/HomeReviews.astro';
 ---
 
 <Layout title={title} description={description} canonical={canonical}>
@@ -426,4 +427,6 @@ const canonical = "https://stairwaymortgage.com/sales-professionals/luxury-goods
   }
     @media (max-width: 720px) { .luxury-broker-scope section { padding: 48px 0; } }
 </style>
+
+<HomeReviews />
 </Layout>

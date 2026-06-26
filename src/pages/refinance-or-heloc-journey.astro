@@ -24,6 +24,7 @@ const reviews = [
   { text: "We had a difficult jumbo loan scenario that most mortgage lenders were unable to close. Not only did Jim Blackburn's mortgage team close our refinance, but now we are able to pursue the purchase of our dream home in the Florida Keys.", name: 'Chad Brocato', title: 'Jumbo/Complex Refi', loc: 'Florida', source: 'Google' },
   { text: "Had a great experience working with Jim and team on a refi. Was able to do virtually everything by email and text.", name: 'Ashwin Pandith', title: 'Director, Bank of America', loc: 'New York', source: 'Google' },
 ];
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 
 <Layout title="Refinance or HELOC — Stairway Mortgage" description="Lower your rate or unlock your home equity. 300+ lenders competing for your loan. Break-even calculated before you decide.">
@@ -382,6 +383,8 @@ const reviews = [
     </div>
   </section>
 
+
+<HomeReviews />
 </Layout>
 
 <!-- Mobile sticky bottom CTA -->

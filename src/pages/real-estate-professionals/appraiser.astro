@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 const title = "Appraiser Mortgage Guide — How Real Estate Appraisers Qualify";
 const description = "Real estate appraiser mortgage guide. We qualify Schedule C income, per-appraisal fees, staff vs independent contractor structures, E&O insurance deductions, and Certified Residential / Certified General appraiser pay correctly.";
 const canonical = "https://stairwaymortgage.com/real-estate-professionals/appraiser/";
+import HomeReviews from '../../components/HomeReviews.astro';
 ---
 
 <Layout title={title} description={description} canonical={canonical}>
@@ -453,4 +454,6 @@ const canonical = "https://stairwaymortgage.com/real-estate-professionals/apprai
   }
     @media (max-width: 720px) { .appraiser-scope section { padding: 48px 0; } }
 </style>
+
+<HomeReviews />
 </Layout>

@@ -424,9 +424,12 @@ const crBody = `
 
 
 `;
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 <Layout title="Creative Earner Mortgage · Content Creators, Freelancers, Musicians, Film/TV, Authors" description="Creative earner mortgage for content creators, freelance creatives, recording artists, film/TV professionals, and authors. We read your LLC return, royalty schedule, and platform statements to qualify on real income with bank-statement, 1099-only, or conventional programs." canonical="https://stairwaymortgage.com/creative-earners/">
   <div class="cr-scope" set:html={crBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

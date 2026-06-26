@@ -806,9 +806,12 @@ const surveyorBody = `
 
 
 `;
+import HomeReviews from '../../components/HomeReviews.astro';
 ---
 <Layout title="Yacht Surveyor Mortgage · SAMS AMS, NAMS CMS, Schedule C Self-Employed Specialist" description="Yacht surveyor mortgage for SAMS Accredited Marine Surveyor (AMS) and NAMS Certified Marine Surveyor (CMS) practitioners with Schedule C self-employed income, S-corp election, depreciation addbacks, insurance carrier panel revenue, and former-yacht-career transition documentation." canonical="https://stairwaymortgage.com/yacht-professionals/surveyor/">
   <div class="surveyor-scope" set:html={surveyorBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

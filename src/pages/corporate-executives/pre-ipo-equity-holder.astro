@@ -805,9 +805,12 @@ const preipoBody = `
 
 
 `;
+import HomeReviews from '../../components/HomeReviews.astro';
 ---
 <Layout title="Pre-IPO Equity Holder Mortgage · Asset-Depletion, Tender Offers, 83(b) &amp; QSBS Specialist" description="Pre-IPO equity holder mortgage for founders, early employees, and late-stage executives at private companies. Asset-depletion against tender-offer and secondary-marketplace proceeds, pledged-asset against public portfolios, bank-statement Non-QM, specialty Non-QM with 409A acceptance, base-only conventional. Coverage of ISO/NSO/RSU grants, 83(b) elections, AMT exposure, and QSBS Section 1202." canonical="https://stairwaymortgage.com/corporate-executives/pre-ipo-equity-holder/">
   <div class="preipo-scope" set:html={preipoBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

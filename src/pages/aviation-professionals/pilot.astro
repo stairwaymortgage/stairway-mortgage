@@ -1182,9 +1182,12 @@ const avBody = `
 
 
 `;
+import HomeReviews from '../../components/HomeReviews.astro';
 ---
 <Layout title="Pilot Mortgage Guide for Airlines &amp; Military Pilots" description="Pilot mortgage guide for regionals, majors, and military-transition pilots. We qualify per diem, credit hours, MGTH, and future Captain pay correctly." canonical="https://stairwaymortgage.com/aviation-professionals/pilot/">
   <div class="av-scope" set:html={avBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

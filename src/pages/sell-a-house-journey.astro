@@ -20,6 +20,7 @@ const reviews = [
   { text: "I have now completed five mortgages with Jim. He and his team are true professionals that you can count on. Numbers always spot on, accurate, and on time.", name: 'Gary Koval', title: 'Regional Manager, Hyundai', loc: 'Colorado', source: 'Google' },
   { text: "We were blessed to buy a wonderful home because Jim and his team made it happen — in record timing! But for Jim, I would have missed an opportunity to lower my rate by a full 1%.", name: 'Peter & Maria Brin', loc: 'New Jersey', source: 'Google' },
 ];
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 <Layout title="Sell a Home — Stairway Mortgage" description="Sell smart — and land your next home without the gap. Bridge loans, timing strategy, and 300+ lenders.">
   <section class="section relative overflow-hidden sell-hero-wash">
@@ -125,6 +126,8 @@ const reviews = [
       </div>
     </div>
   </section>
+
+<HomeReviews />
 </Layout>
 
 <style>

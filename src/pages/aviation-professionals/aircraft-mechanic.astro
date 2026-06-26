@@ -1063,9 +1063,12 @@ const avBody = `
   </section>
 
 `;
+import HomeReviews from '../../components/HomeReviews.astro';
 ---
 <Layout title="Aircraft Mechanic Mortgage Guide | Stairway Mortgage" description="Aircraft mechanic mortgage guide: how to qualify with overtime, A&amp;P premiums, IA pay, and contract income. FAA-aware underwriting from Stairway." canonical="https://stairwaymortgage.com/aviation-professionals/aircraft-mechanic/">
   <div class="av-scope" set:html={avBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

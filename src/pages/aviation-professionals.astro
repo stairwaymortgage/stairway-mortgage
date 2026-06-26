@@ -575,9 +575,12 @@ const avBody = `
   </section>
 
 `;
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 <Layout title="Aviation Mortgage · Pilots, FAs, Mechanics, ATCs" description="Aviation mortgage for pilots, flight attendants, aircraft mechanics, and air traffic controllers. We read your contract and qualify you on real income." canonical="https://stairwaymortgage.com/aviation-professionals/">
   <div class="av-scope" set:html={avBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

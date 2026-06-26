@@ -461,9 +461,12 @@ const mpBody = `
 
 
 `;
+import HomeReviews from '../components/HomeReviews.astro';
 ---
 <Layout title="Medical Professional Mortgage · Physicians, Surgeons, Residents, NPs, PAs, Pharmacists, Vets" description="Medical professional mortgage for physicians, surgeons, residents, NPs, PAs, pharmacists, and veterinarians. We read your contract, IDR statement, and locum 1099 to qualify on real income with physician-loan or conventional programs." canonical="https://stairwaymortgage.com/medical-professionals/">
   <div class="mp-scope" set:html={mpBody} />
+
+<HomeReviews />
 </Layout>
 
 <style is:global>

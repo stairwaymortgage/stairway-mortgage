@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 const title = "Finance Executive Mortgage Guide — CFO, VP Finance, Treasurer, Controller";
 const description = "Finance executive mortgage guide. We qualify base + cash bonus + RSUs + LTI + ESPP + deferred comp + signing bonuses + retention payments correctly — the way finance comp is actually structured.";
 const canonical = "https://stairwaymortgage.com/corporate-executives/finance-executive/";
+import HomeReviews from '../../components/HomeReviews.astro';
 ---
 
 <Layout title={title} description={description} canonical={canonical}>
@@ -426,4 +427,6 @@ const canonical = "https://stairwaymortgage.com/corporate-executives/finance-exe
   }
     @media (max-width: 720px) { .finance-exec-scope section { padding: 48px 0; } }
 </style>
+
+<HomeReviews />
 </Layout>
