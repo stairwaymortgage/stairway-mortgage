@@ -39,6 +39,7 @@ const tags = Object.entries(taxonomy.tags)
       <button type="submit" class="btn btn-blue ps-news__btn">Subscribe</button>
       <input type="text" name="ps_news_hp" id="ps-news-hp" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore data-form-type="other" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;" />
     </form>
+    <p class="ps-news__thanks" id="ps-news-thanks" hidden>Thanks — you're subscribed. Check your inbox for new posts and insights.</p>
   </div>
 
   <!-- Stairway Academy e-book promo -->
@@ -132,7 +133,7 @@ const tags = Object.entries(taxonomy.tags)
       };
 
       // POST to the shared GHL inbound webhook — same proven fetch() pattern as the
-      // other 12 site forms. Awaited (keepalive lets it finish through the redirect).
+      // other 12 site forms. Awaited (keepalive lets it finish before the UI swap).
       try {
         await fetch(ENDPOINT, {
           method: 'POST',
@@ -140,10 +141,13 @@ const tags = Object.entries(taxonomy.tags)
           body: JSON.stringify(payload),
           keepalive: true
         });
-      } catch (err) { /* swallow — still redirect so UX isn't blocked */ }
+      } catch (err) { /* swallow — still confirm so UX isn't blocked */ }
 
-      // Redirect to the hosted newsletter form (carries the email through).
-      window.location.href = 'https://forms.stairwaymortgage.com/widget/form/newsletter?email=' + encodeURIComponent(email);
+      // Swap the form for an inline thank-you. Outside the try/catch so it always
+      // runs even if the POST throws.
+      var thanks = document.getElementById('ps-news-thanks');
+      if (form) form.setAttribute('hidden', '');
+      if (thanks) thanks.removeAttribute('hidden');
     });
   })();
 </script>
@@ -167,6 +171,7 @@ const tags = Object.entries(taxonomy.tags)
   .ps-news { display: flex; flex-direction: column; gap: 0.6rem; }
   .ps-card .ps-news__input { background: rgba(250,250,247,0.08); border-color: rgba(250,250,247,0.2); color: var(--color-paper); }
   .ps-card .ps-news__input::placeholder { color: rgba(250,250,247,0.5); }
+  .ps-news__thanks { font-size: 14px; line-height: 1.5; color: var(--color-paper); opacity: 0.72; margin: 0.35rem 0 0; }
 
   .ps-ebook {
     display: flex; flex-direction: column; gap: 0.5rem; text-decoration: none;
