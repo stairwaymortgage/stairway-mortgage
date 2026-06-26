@@ -5,6 +5,11 @@
     The three dropdowns are wired to the REAL taxonomy (11 categories / 79 tags)
     and navigate to crawlable /category/{slug}/ and /tag/{slug}/ archives.    */
 import taxonomy from '../data/taxonomy.json';
+// Webhook URL sourced from the single source of truth (ghl.ts). The submit
+// handler is is:inline plain-JS and can't import an ES module, so the URL is
+// passed to it via the form's data-ghl-endpoint attribute (same pattern as
+// CalcLeadForm.astro).
+import { GHL_WEBHOOK_URL } from '../lib/ghl';
 
 const categories = Object.entries(taxonomy.categories)
   // strip the leading "N. " ordering prefix for display, keep slug
@@ -29,9 +34,10 @@ const tags = Object.entries(taxonomy.tags)
   <div class="ps-block ps-card">
     <h3 class="display-sm ps-card__title">Subscribe to our newsletter</h3>
     <p class="ps-card__sub">Get new posts and insights in your inbox.</p>
-    <form class="ps-news" action="https://forms.stairwaymortgage.com/widget/form/newsletter" method="get">
-      <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" class="ps-news__input" required />
+    <form class="ps-news" id="ps-news-form" data-ghl-endpoint={GHL_WEBHOOK_URL} novalidate>
+      <input type="email" name="email" id="ps-news-email" placeholder="Enter your email" aria-label="Email address" class="ps-news__input" required />
       <button type="submit" class="btn btn-blue ps-news__btn">Subscribe</button>
+      <input type="text" name="ps_news_hp" id="ps-news-hp" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore data-form-type="other" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;" />
     </form>
   </div>
 
@@ -79,6 +85,71 @@ const tags = Object.entries(taxonomy.tags)
       window.location.href = base + this.value + '/';
     });
   });
+
+  // Newsletter — JS-handled submit to the GHL inbound webhook (no native GET
+  // navigation to forms.stairwaymortgage.com). Attribution helpers mirror
+  // CalcLeadForm.astro exactly; endpoint comes from the data attribute (ghl.ts).
+  (function () {
+    var form = document.getElementById('ps-news-form');
+    if (!form) return;
+    var ENDPOINT = form.getAttribute('data-ghl-endpoint') || '';
+    var hp = document.getElementById('ps-news-hp');
+    var emailEl = document.getElementById('ps-news-email');
+
+    // Autofill-blocking: only treat the honeypot as "filled" if a human focused it.
+    if (hp) {
+      hp.addEventListener('focus', function () { hp.setAttribute('data-touched', '1'); });
+      setTimeout(function () { if (hp && hp.getAttribute('data-touched') !== '1') hp.value = ''; }, 1200);
+    }
+
+    function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+    function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+    function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+    function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
+    function _resolveLoid(){
+      var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
+      var m = String(raw).match(/(\d{3,})/);
+      return m ? m[1] : '';
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Honeypot: only block if the field was genuinely focused + filled (bot).
+      if (hp && hp.value && hp.getAttribute('data-touched') === '1') return;
+
+      var email = (emailEl && emailEl.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { if (emailEl) emailEl.focus(); return; }
+
+      var payload = {
+        email: email,
+        form_source: 'blog_newsletter',
+        form_name: 'Blog Newsletter',
+        umtid: _resolveUmtid(),
+        loid: _resolveLoid(),
+        page_url: location.href,
+        source_url: location.href,
+        submitted_at: new Date().toISOString()
+      };
+
+      // Send to the shared GHL inbound webhook. sendBeacon survives the redirect
+      // below (fetch would be aborted on navigation); keepalive fetch is the fallback.
+      try {
+        var ok = navigator.sendBeacon(
+          ENDPOINT,
+          new Blob([JSON.stringify(payload)], { type: 'application/json' })
+        );
+        // Fallback for the rare browser where sendBeacon is unavailable or returns false:
+        if (!ok && window.fetch) {
+          fetch(ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload), keepalive: true }).catch(function(){});
+        }
+      } catch (err) {
+        if (window.fetch) { try { fetch(ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload), keepalive: true }).catch(function(){}); } catch(e){} }
+      }
+
+      // Redirect to the hosted newsletter form (carries the email through).
+      window.location.href = 'https://forms.stairwaymortgage.com/widget/form/newsletter?email=' + encodeURIComponent(email);
+    });
+  })();
 </script>
 
 <style>
