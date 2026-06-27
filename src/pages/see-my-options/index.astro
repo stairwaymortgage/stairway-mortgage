@@ -4,6 +4,7 @@ import PurchaseForm from '../../components/PurchaseForm.astro';
 import RefinanceForm from '../../components/RefinanceForm.astro';
 import HelocForm from '../../components/HelocForm.astro';
 import RealReverseForm from '../../components/RealReverseForm.astro';
+import { ARIVE_URLS } from '../../lib/arive';
 ---
 
 <Layout title="See My Options — Stairway Mortgage" description="Tell us your goal and see your mortgage options in about a minute. Purchase, refinance, HELOC, or reverse mortgage — 300+ lenders, same-day answers.">
@@ -57,6 +58,23 @@ import RealReverseForm from '../../components/RealReverseForm.astro';
           <p class="smo-card__desc">Income from your home, age 55+.</p>
           <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
         </button>
+      </div>
+
+      <div class="smo-tier2-sep" aria-hidden="true">
+        <span class="smo-tier2-sep__line"></span>
+        <span class="smo-tier2-sep__label">Ready to move forward now</span>
+        <span class="smo-tier2-sep__line"></span>
+      </div>
+
+      <div class="smo-tier2-panel">
+        <span class="smo-tier2-eyebrow">Full Application</span>
+        <h2 class="smo-tier2-title font-display">Need an approval letter today? Start your full application.</h2>
+        <p class="smo-tier2-body">
+          For people who've decided and are ready — making an offer, on a deadline, or who want a fully
+          customized loan estimate. This is the complete application that gets a real pre-approval.
+        </p>
+        <p class="smo-tier2-note">Includes a credit review (hard pull) · The fastest path to an approval letter.</p>
+        <a href={ARIVE_URLS.apply} target="_blank" rel="noopener" class="btn btn-blue smo-tier2-btn">Get Approved Now</a>
       </div>
 
       <p class="smo-trust mono">
@@ -133,5 +151,80 @@ import RealReverseForm from '../../components/RealReverseForm.astro';
     color: var(--color-mute);
     margin-top: 2.5rem;
     letter-spacing: 0.03em;
+  }
+
+  /* - Tier 2: full-application separator + dark panel - */
+  .smo-tier2-sep {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 720px;
+    margin: 3.5rem auto 1.5rem;
+  }
+  .smo-tier2-sep__line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-bone);
+  }
+  .smo-tier2-sep__label {
+    font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    white-space: nowrap;
+  }
+
+  .smo-tier2-panel {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--color-ink, #0A0E1A);
+    color: var(--color-paper);
+    border-radius: 18px;
+    padding: 2.75rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 18px 50px rgba(10, 14, 26, 0.22);
+  }
+  .smo-tier2-eyebrow {
+    display: inline-block;
+    font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-blue-tint, #F2F5FF);
+    opacity: 0.85;
+    margin-bottom: 1rem;
+  }
+  .smo-tier2-title {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--color-paper);
+    margin: 0 auto 1rem;
+    max-width: 30ch;
+  }
+  .smo-tier2-body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(250, 250, 247, 0.78);
+    max-width: 48ch;
+    margin: 0 auto 1.25rem;
+  }
+  .smo-tier2-note {
+    font-size: 12.5px;
+    color: rgba(250, 250, 247, 0.55);
+    margin: 0 auto 1.75rem;
+  }
+  .smo-tier2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    .smo-tier2-panel { padding: 2rem 1.5rem; }
+    .smo-tier2-title { font-size: 1.35rem; }
+    .smo-tier2-btn { width: 100%; }
   }
 </style>
