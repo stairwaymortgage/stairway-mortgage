@@ -51,6 +51,12 @@ Counts updated periodically. Both platforms independently host their reviews —
 .reviews-disclosure{max-width:720px;margin:2.5rem auto 0;text-align:center;color:var(--color-mute);font-size:12.5px;line-height:1.55;font-style:italic}
 @media(max-width:768px){.reviews-platform{padding:22px 20px;gap:16px;flex-direction:column;text-align:center}.reviews-platform__top{justify-content:center}.reviews-rating-big{display:flex;flex-direction:column;gap:8px;align-items:center}.reviews-star-big{width:24px;height:24px}}
 .reviews-carousel{margin:4rem auto 0;display:flex;flex-direction:column;gap:18px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee{display:flex;overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,#0000 0%,#000 6% 94%,#0000 100%);mask-image:linear-gradient(90deg,#0000,#000 6% 94%,#0000)}
+.marquee__track{display:flex;gap:18px;width:max-content;will-change:transform}
+.marquee--left .marquee__track{animation:marquee-left 22s linear infinite}
+.marquee--right .marquee__track{animation:marquee-right 26s linear infinite}
+@keyframes marquee-left{0%{transform:translate(0)}to{transform:translate(-50%)}}
+@keyframes marquee-right{0%{transform:translate(-50%)}to{transform:translate(0)}}
 .reviews-carousel:hover .marquee__track{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){.marquee--left .marquee__track,.marquee--right .marquee__track{animation:none}.reviews-carousel{-webkit-mask-image:none;mask-image:none;overflow-x:auto}}
 .testimonial-card{flex:0 0 360px;width:360px;background:var(--color-paper);border:1px solid var(--color-bone);border-radius:16px;padding:22px 22px 20px;display:flex;flex-direction:column;position:relative;transition:all .25s ease}
