@@ -215,6 +215,10 @@ import HomeReviews from '../components/HomeReviews.astro';
                 <label class="lec-label" for="lec-message">Tell us about your loan</label>
                 <textarea id="lec-message" placeholder="Which lender sent the estimate? Purchase or refinance? Any details that help us compare faster." rows="4" class="lec-input lec-textarea"></textarea>
               </div>
+              <div class="lec-field">
+                <label class="lec-label" for="lec-file">Upload your current Loan Estimate (PDF or image) — optional</label>
+                <input type="file" id="lec-file" accept=".pdf,.jpg,.jpeg,.png,.webp" class="lec-input lec-file" />
+              </div>
               <input type="text" name="_gotcha" id="lec-gotcha" style="position:absolute;left:-9999px;opacity:0;" tabindex="-1" autocomplete="off" aria-hidden="true" />
               <p class="lec-error" id="lec-error" style="display:none;"></p>
               <button type="button" id="lec-submit" class="btn btn-primary lec-submit-btn">Submit My Loan Estimate</button>
@@ -728,6 +732,21 @@ import HomeReviews from '../components/HomeReviews.astro';
       box-shadow: 0 0 0 3px rgba(var(--blue-rgb, 30,80,220), 0.1);
     }
     .lec-textarea { resize: vertical; min-height: 96px; }
+    .lec-file { padding: var(--s-3); font-size: var(--text-sm); cursor: pointer; line-height: 1.4; }
+    .lec-file::file-selector-button {
+      font-family: var(--sans);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      margin-right: var(--s-3);
+      padding: var(--s-2) var(--s-3);
+      border: 1px solid var(--border-strong);
+      border-radius: 4px;
+      background: var(--paper-2);
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .lec-file::file-selector-button:hover { background: var(--paper-3); border-color: var(--ink); }
     .lec-error {
       font-size: var(--text-sm);
       color: #c0392b;
@@ -938,21 +957,51 @@ import HomeReviews from '../components/HomeReviews.astro';
       page_url:window.location.href, submitted_at:new Date().toISOString(),
       umtid: _resolveUmtid(),
       loid: _resolveLoid(),
-      source_url: location.href
+      source_url: location.href,
+      loan_estimate_url: ''
     };
 
-    sending=true; btn.disabled=true; btn.textContent='Sending\u2026';
-    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(){
-        document.getElementById('lec-form').style.display='none';
-        document.getElementById('lec-success').style.display='block';
-      })
-      .catch(function(){
-        showErr('Something went wrong. Please try again or call us directly.');
-      })
-      .then(function(){
-        sending=false; btn.disabled=false; btn.textContent='Submit My Loan Estimate';
-      });
+    var UPLOAD_ENDPOINT='https://stairway-upload.jimb-3a9.workers.dev';
+    var fileInput=document.getElementById('lec-file');
+    var file=(fileInput&&fileInput.files&&fileInput.files[0])?fileInput.files[0]:null;
+
+    sending=true; btn.disabled=true;
+
+    function postLead(loanUrl){
+      payload.loan_estimate_url=loanUrl||'';
+      btn.textContent='Sending\u2026';
+      fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+        .then(function(){
+          document.getElementById('lec-form').style.display='none';
+          document.getElementById('lec-success').style.display='block';
+        })
+        .catch(function(){
+          showErr('Something went wrong. Please try again or call us directly.');
+        })
+        .then(function(){
+          sending=false; btn.disabled=false; btn.textContent='Submit My Loan Estimate';
+        });
+    }
+
+    if(file){
+      // Upload the document to the R2 Worker FIRST, then send the lead with its URL.
+      // Note: do NOT set Content-Type \u2014 the browser sets the multipart boundary.
+      btn.textContent='Uploading\u2026';
+      var fd=new FormData();
+      fd.append('file',file);
+      fd.append('folder','loan-estimates');
+      fetch(UPLOAD_ENDPOINT,{method:'POST',body:fd})
+        .then(function(res){ if(!res.ok) throw new Error('upload '+res.status); return res.json(); })
+        .then(function(data){ postLead(data&&data.url?data.url:''); })
+        .catch(function(){
+          // Upload failed: don't hard-block the lead. Let the user retry, or
+          // remove the file and submit again to continue without it.
+          sending=false; btn.disabled=false; btn.textContent='Submit My Loan Estimate';
+          showErr('We couldn\u2019t upload that file \u2014 please try again, or remove it and submit without it.');
+        });
+    } else {
+      postLead('');
+    }
   });
 })();
 </script>
