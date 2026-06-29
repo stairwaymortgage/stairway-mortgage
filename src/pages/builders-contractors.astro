@@ -33,7 +33,7 @@ import Layout from '../layouts/Layout.astro';
 .adp-scope .adp-btn--ghost:hover{background:rgba(250,250,247,.1);border-color:var(--stw-paper);}
 .adp-scope .adp-btn--light{background:var(--stw-paper);color:var(--stw-ink);}
 .adp-scope .adp-btn--light:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.25);}
-.adp-scope .adp-hero{background:var(--stw-ink);color:var(--stw-paper);padding:96px 0 0;overflow:hidden;}
+.adp-scope .adp-hero{background:var(--stw-ink);color:var(--stw-paper);padding:96px 0 64px;overflow:hidden;}
 .adp-scope .adp-hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
 .adp-scope .adp-hero h1{color:var(--stw-paper);}
 .adp-scope .adp-hero .adp-eyebrow{color:#6f8cf0;}
@@ -41,8 +41,8 @@ import Layout from '../layouts/Layout.astro';
 .adp-scope .adp-hero__lead{color:rgba(250,250,247,.8);font-size:clamp(1.05rem,2vw,1.25rem);margin:22px 0 32px;max-width:30ch;}
 .adp-scope .adp-hero__cta{display:flex;gap:14px;flex-wrap:wrap;}
 .adp-scope .adp-hero__trust{margin-top:30px;font-family:var(--stw-mono);font-size:12.5px;letter-spacing:.04em;color:rgba(250,250,247,.55);}
-.adp-scope .adp-hero__media{position:relative;align-self:stretch;min-height:480px;border-radius:14px 14px 0 0;overflow:hidden;background:linear-gradient(160deg,#1b2236,#0A0E1A);}
-.adp-scope .adp-hero__media img{width:100%;height:100%;object-fit:cover;}
+.adp-scope .adp-hero__media{position:relative;aspect-ratio:4/5;min-height:480px;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#1b2236,#0A0E1A);}
+.adp-scope .adp-hero__media img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block;}
 @media(max-width:880px){.adp-scope .adp-hero{padding-top:64px;}.adp-scope .adp-hero__grid{grid-template-columns:1fr;gap:36px;}.adp-scope .adp-hero__media{min-height:300px;border-radius:12px;}}
 .adp-scope .adp-questions{background:var(--stw-paper);}
 .adp-scope .adp-qgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;margin-top:40px;}
@@ -141,8 +141,8 @@ import Layout from '../layouts/Layout.astro';
           <p class="adp-hero__trust">Jim Blackburn &middot; NMLS #1072866 &middot; (954) 993-1625 &middot; $500M+ closed</p>
         </div>
         <div class="adp-hero__media">
-          <!-- stw-img: Pexels 3990359. VERIFY IN BROWSER. -->
-          <img src="https://images.pexels.com/photos/3990359/pexels-photo-3990359.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="Home renovation and construction in progress" loading="eager" onerror="this.onerror=null;this.src='https://placehold.co/720x540/0A0E1A/FAFAF7?text=Stairway';">
+          <!-- stw-img: Pexels 8487760. VERIFY IN BROWSER. -->
+          <img src="https://images.pexels.com/photos/8487760/pexels-photo-8487760.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="Contractor on site" loading="eager" onerror="this.onerror=null;this.src='https://placehold.co/720x540/0A0E1A/FAFAF7?text=Stairway';">
         </div>
       </div>
     </div>
