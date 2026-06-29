@@ -1,0 +1,135 @@
+---
+// LenderLogoMarquee.astro — continuous auto-scrolling strip of partner-lender logos.
+// Mirrors the HomeReviews marquee approach (duplicated track → seamless loop), but
+// fully self-contained: component-scoped CSS + its own `llm-scroll` keyframe.
+// Logos live in /public/lender-logos/. Each <img> has alt text + a placehold.co onerror.
+//
+// USAGE:
+//   import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
+//   <LenderLogoMarquee />
+
+const logos = [
+  { src: '/lender-logos/UWM.webp',           name: 'United Wholesale Mortgage (UWM)', short: 'UWM' },
+  { src: '/lender-logos/newrez.webp',        name: 'Newrez Wholesale',                short: 'Newrez' },
+  { src: '/lender-logos/New-Project-5.webp', name: 'Freedom Mortgage Wholesale',      short: 'Freedom' },
+  { src: '/lender-logos/New-Project-2.png',  name: 'Gold Star Wholesale',             short: 'Gold Star' },
+  { src: '/lender-logos/New-Project-3.png',  name: 'HomeBridge Wholesale',            short: 'HomeBridge' },
+  { src: '/lender-logos/lead.webp',          name: 'Lead+ Wholesale Lending',         short: 'Lead+' },
+  { src: '/lender-logos/MUTUAL.webp',        name: 'Mutual Mortgage Wholesale',       short: 'Mutual' },
+  { src: '/lender-logos/omana.webp',         name: 'Mutual of Omaha Reverse Wholesale', short: 'Omaha' },
+  { src: '/lender-logos/community.webp',     name: 'Community Wholesale Lending',      short: 'Community' },
+  { src: '/lender-logos/NEWdi.webp',         name: 'Newfi Wholesale',                 short: 'Newfi' },
+  { src: '/lender-logos/WD.webp',            name: 'Wholesale Mortgage Direct',       short: 'WMD' },
+  { src: '/lender-logos/EPM.webp',           name: 'EPM Wholesale',                   short: 'EPM' },
+];
+
+const ph = (s: string) => `this.src='https://placehold.co/160x60/ffffff/1a2332?text=${encodeURIComponent(s)}';this.onerror=null`;
+---
+
+<section class="llm-section">
+  <div class="container-page">
+    <div class="llm-head reveal">
+      <span class="eyebrow eyebrow-blue mb-3">As the #1 Mortgage Broker in U.S.</span>
+      <h2 class="display-md llm-title">The Nation's Top Lenders Compete for Our Business</h2>
+      <p class="llm-sub">
+        We partnered with 300+ lenders — all standing by to compete for your loan. Here's a glimpse of
+        just 12 of our top partners delivering unbeatable pricing, cutting-edge technology, and
+        lightning-fast closings.
+      </p>
+    </div>
+  </div>
+
+  <div class="llm-marquee" role="group" aria-label="Partner lender logos">
+    <div class="llm-track">
+      {logos.map((l) => (
+        <div class="llm-card">
+          <img class="llm-logo" src={l.src} alt={`${l.name} logo`} loading="lazy" decoding="async"
+               width="160" height="60" onerror={ph(l.short)} />
+        </div>
+      ))}
+      {/* duplicate set for a seamless loop (-50% translate) */}
+      {logos.map((l) => (
+        <div class="llm-card" aria-hidden="true">
+          <img class="llm-logo" src={l.src} alt="" loading="lazy" decoding="async"
+               width="160" height="60" onerror={ph(l.short)} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .llm-section {
+    padding: 4.5rem 0 4rem;
+    background: var(--color-paper, #FAFAF7);
+    border-top: 1px solid var(--color-bone, #E5E5DE);
+    border-bottom: 1px solid var(--color-bone, #E5E5DE);
+    overflow: hidden;
+  }
+  .llm-head { max-width: 680px; margin: 0 auto 2.75rem; text-align: center; }
+  .llm-title { margin: 0.5rem 0 1rem; font-style: normal; }
+  .llm-sub {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-mute, #6B7280);
+    max-width: 60ch;
+    margin: 0 auto;
+  }
+
+  /* marquee viewport — fade edges, same masking idea as HomeReviews */
+  .llm-marquee {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .llm-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    will-change: transform;
+    animation: llm-scroll 50s linear infinite;
+  }
+  .llm-marquee:hover .llm-track { animation-play-state: paused; }
+
+  .llm-card {
+    flex: 0 0 auto;
+    width: 190px;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid var(--color-bone, #E5E5DE);
+    border-radius: 14px;
+    padding: 18px 24px;
+    box-shadow: 0 6px 18px -12px rgba(10, 14, 26, 0.18);
+  }
+  .llm-logo {
+    max-height: 52px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* one full duplicated set = 50% of the track */
+  @keyframes llm-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .llm-track { animation: none; }
+    .llm-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  }
+
+  @media (max-width: 600px) {
+    .llm-section { padding: 3.25rem 0 3rem; }
+    .llm-track { gap: 16px; }
+    .llm-card { width: 142px; height: 74px; padding: 14px 18px; border-radius: 12px; }
+    .llm-logo { max-height: 40px; }
+  }
+</style>
