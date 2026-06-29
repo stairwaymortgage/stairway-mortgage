@@ -1,0 +1,460 @@
+---
+// NewConstructionForm.astro  —  Stairway Mortgage conversational funnel (New Construction)
+// AUTO-GENERATED from gen.py — do not hand-edit; edit the generator + re-run.
+// Self-contained: own prefixed modal + is:global styles + is:inline plain JS.
+// Clone of the proven ReverseMortgageForm.astro pattern. Fires ONCE at Submit to the main
+// GHL webhook, routed by loan_purpose="new-construction". form_source="new-construction".
+//
+// USAGE:
+//   import NewConstructionForm from "../components/NewConstructionForm.astro";
+//   <button data-nc-open>See My Options</button>
+//   <NewConstructionForm />
+//
+// TODO BEFORE GO-LIVE:
+//   - BOOKING_URL ("#") → real Calendly/GHL booking link (marked in script).
+//   - Confirm the main GHL workflow maps loan_purpose + the new-construction answer keys.
+---
+
+<div id="nc-overlay" class="nc-overlay" aria-hidden="true">
+  <div class="nc-modal" role="dialog" aria-modal="true" aria-label="New Construction">
+    <button type="button" class="nc-close" data-nc-close aria-label="Close">&times;</button>
+    <div class="nc-progress-wrap" id="nc-progress-wrap">
+      <div class="nc-progress-track"><div class="nc-progress-bar" id="nc-progress-bar"></div></div>
+      <div class="nc-progress-pct" id="nc-progress-pct">0%</div>
+    </div>
+    <div class="nc-nav" id="nc-nav">
+      <button type="button" class="nc-nav-btn nc-prev" id="nc-prev">&larr; Previous</button>
+      <button type="button" class="nc-nav-btn nc-next" id="nc-next">Next &rarr;</button>
+    </div>
+    <input type="text" id="nc-hp" name="nc_hp_field" tabindex="-1" autocomplete="new-password"
+           class="nc-hp" aria-hidden="true" data-lpignore="true" data-1p-ignore data-form-type="other" />
+    <div class="nc-stage" id="nc-stage"></div>
+  </div>
+</div>
+
+<style is:global>
+  .nc-overlay,.nc-overlay *{ box-sizing:border-box; }
+  .nc-overlay{ position:fixed; inset:0; z-index:99999; display:none; background:rgba(10,14,26,.55);
+    backdrop-filter:blur(3px); align-items:center; justify-content:center; padding:20px;
+    font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif; }
+  .nc-overlay.nc-active{ display:flex; }
+  .nc-hp{ position:absolute !important; left:-9999px !important; width:1px !important; height:1px !important; opacity:0 !important; }
+  .nc-modal{ position:relative; width:100%; max-width:720px; max-height:92vh; overflow-y:auto;
+    background:#fff; border-radius:20px; box-shadow:0 30px 90px rgba(0,0,0,.38);
+    padding:52px 44px 56px; color:#0A0E1A; text-align:center; }
+  @media(max-width:560px){ .nc-modal{ padding:44px 20px 46px; border-radius:16px; } }
+  .nc-close{ position:absolute; top:16px; right:20px; border:0; background:none; font-size:30px;
+    line-height:1; color:#0A0E1A; cursor:pointer; opacity:.45; padding:0; }
+  .nc-close:hover{ opacity:1; }
+  .nc-progress-wrap{ margin:0 auto 30px; max-width:480px; }
+  .nc-progress-track{ height:8px; border-radius:99px; background:#ececE6; overflow:hidden; }
+  .nc-progress-bar{ height:100%; width:0%; background:#0A0E1A; border-radius:99px; transition:width .4s cubic-bezier(.4,0,.2,1); }
+  .nc-progress-pct{ font-family:'JetBrains Mono',ui-monospace,monospace; font-size:12px; letter-spacing:.04em; color:#9a9a93; margin-top:10px; }
+  .nc-nav{ display:flex; justify-content:space-between; align-items:center; max-width:560px; margin:0 auto 28px; }
+  .nc-nav-btn{ border:0; background:none; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; font-size:15px; color:#0A0E1A; padding:6px 2px; letter-spacing:.01em; }
+  .nc-nav-btn:disabled{ opacity:.25; cursor:default; }
+  .nc-nav-btn:hover:not(:disabled){ color:#2d2350; }
+  .nc-next{ font-weight:600; }
+  .nc-stage{ max-width:600px; margin:0 auto; }
+  .nc-step{ display:none; }
+  .nc-step.nc-show{ display:block; animation:ncFade .32s ease; }
+  @keyframes ncFade{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+  .nc-q{ font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:31px; line-height:1.22; margin:6px 0 8px; letter-spacing:-.01em; color:#0A0E1A; }
+  @media(max-width:560px){ .nc-q{ font-size:25px; } }
+  .nc-sub{ font-family:'Fraunces',Georgia,serif; font-style:italic; font-weight:400; font-size:18px; color:#6b6b63; margin:0 0 30px; line-height:1.45; max-width:520px; margin-left:auto; margin-right:auto; }
+  .nc-q + .nc-options, .nc-q + .nc-slider-wrap, .nc-q + .nc-input, .nc-q + .nc-contact, .nc-q + .nc-locwrap{ margin-top:30px; }
+  .nc-options{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+  .nc-opt{ display:inline-flex; align-items:center; gap:13px; cursor:pointer; border:1.5px solid #d9d9d1; border-radius:14px; padding:17px 24px; background:#fff; font-size:16px; line-height:1.3; color:#0A0E1A; transition:border-color .15s ease, background .15s ease, box-shadow .15s ease, transform .08s ease; user-select:none; text-align:left; }
+  .nc-opt:hover{ border-color:#0A0E1A; background:#faf9f6; }
+  .nc-opt:active{ transform:scale(.985); }
+  .nc-circle{ width:22px; height:22px; border-radius:50%; border:2px solid #c2c2b8; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; transition:border-color .15s ease; background:#fff; }
+  .nc-circle::after{ content:''; width:10px; height:10px; border-radius:50%; background:transparent; transition:background .15s ease, transform .15s ease; transform:scale(.4); }
+  .nc-opt.nc-sel{ border-color:#0A0E1A; background:#0A0E1A; color:#fff; box-shadow:0 8px 22px rgba(10,14,26,.18); }
+  .nc-opt.nc-sel .nc-circle{ border-color:#fff; }
+  .nc-opt.nc-sel .nc-circle::after{ background:#fff; transform:scale(1); }
+  .nc-check{ width:22px; height:22px; border-radius:6px; border:2px solid #c2c2b8; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; transition:border-color .15s ease, background .15s ease; background:#fff; position:relative; }
+  .nc-check::after{ content:''; width:11px; height:6px; border-left:2.5px solid transparent; border-bottom:2.5px solid transparent; transform:rotate(-45deg) translateY(-1px); transition:border-color .15s ease; }
+  .nc-opt.nc-sel .nc-check{ border-color:#fff; }
+  .nc-opt.nc-sel .nc-check::after{ border-left-color:#fff; border-bottom-color:#fff; }
+  .nc-input{ width:100%; max-width:540px; margin:0 auto; display:block; border:1.5px solid #d9d9d1; border-radius:12px; padding:17px 20px; font-size:16px; font-family:'IBM Plex Sans',sans-serif; color:#0A0E1A; background:#fff; outline:none; transition:border-color .15s ease, box-shadow .15s ease; }
+  .nc-input::placeholder{ color:#a6a6a0; }
+  .nc-input:focus{ border-color:#0A0E1A; box-shadow:0 0 0 4px rgba(45,35,80,.12); }
+  .nc-locwrap{ max-width:540px; margin:0 auto; }
+  .nc-addr-conf{ margin:14px auto 0; max-width:540px; font-size:14px; color:#2E9E2E; font-family:'JetBrains Mono',ui-monospace,monospace; text-align:left; }
+  /* Google Places dropdown — styled to match the Stairway popup */
+  .pac-container{ z-index:100000 !important; border-radius:12px; margin-top:6px; border:1.5px solid #d9d9d1;
+    box-shadow:0 16px 40px rgba(10,14,26,.18); font-family:'IBM Plex Sans',sans-serif; overflow:hidden; }
+  .pac-item{ padding:11px 16px; font-size:14.5px; color:#0A0E1A; cursor:pointer; border-top:1px solid #f0f0ea; }
+  .pac-item:first-child{ border-top:0; }
+  .pac-item:hover,.pac-item-selected{ background:#faf9f6; }
+  .pac-item-query{ font-size:14.5px; color:#0A0E1A; }
+  .pac-matched{ font-weight:600; }
+  .pac-icon{ display:none; }
+  .nc-grid2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:16px auto 0; text-align:left; }
+  @media(max-width:480px){ .nc-grid2{ grid-template-columns:1fr; } }
+  .nc-grid2 .nc-input{ margin:0; }
+  .nc-contact{ max-width:540px; margin:0 auto; text-align:left; }
+  .nc-contact .nc-input{ margin:0; }
+  .nc-input-label{ display:block; margin:18px 0 7px; font-size:12.5px; font-weight:600; letter-spacing:.02em; color:#3a3a35; }
+  .nc-input-label:first-child{ margin-top:0; }
+  .nc-req{ color:#8B2C2C; }
+  .nc-slider-wrap{ max-width:540px; margin:0 auto; }
+  .nc-slider-val{ display:inline-block; border:1.5px solid #0A0E1A; border-radius:9px; padding:7px 18px; font-size:16px; font-family:'JetBrains Mono',ui-monospace,monospace; margin-bottom:22px; min-width:70px; }
+  .nc-slider-val .nc-pct{ color:#1845D6; margin-left:6px; }
+  .nc-slider{ -webkit-appearance:none; appearance:none; width:100%; height:5px; border-radius:99px; background:linear-gradient(#0A0E1A,#0A0E1A) no-repeat, #e4e4dd; background-size:50% 100%; outline:none; }
+  .nc-slider::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none; width:28px; height:28px; border-radius:50%; background:#0A0E1A; cursor:pointer; box-shadow:0 3px 10px rgba(0,0,0,.28); border:3px solid #fff; }
+  .nc-slider::-moz-range-thumb{ width:28px; height:28px; border:3px solid #fff; border-radius:50%; background:#0A0E1A; cursor:pointer; }
+  .nc-slider-ends{ display:flex; justify-content:space-between; margin-top:16px; }
+  .nc-slider-end{ background:#f0f0ea; border-radius:8px; padding:6px 14px; font-size:13px; color:#5a5a52; font-family:'JetBrains Mono',ui-monospace,monospace; }
+  .nc-consent{ max-width:540px; margin:24px auto 0; font-size:12.5px; line-height:1.6; color:#7a7a72; text-align:left; }
+  .nc-consent a{ color:#1845D6; text-decoration:underline; }
+  .nc-trust{ max-width:540px; margin:18px auto 0; font-size:12px; color:#9a9a93; font-family:'JetBrains Mono',ui-monospace,monospace; text-align:center; }
+  .nc-err{ color:#8B2C2C; font-size:13px; margin-top:12px; min-height:16px; text-align:left; max-width:540px; margin-left:auto; margin-right:auto; }
+  .nc-continue-wrap{ margin:34px auto 0; max-width:540px; }
+  .nc-continue{ display:inline-flex; align-items:center; gap:8px; border:0; cursor:pointer;
+    background:#1845D6; color:#fff; border-radius:99px; padding:16px 44px; font-size:16px; font-weight:600;
+    font-family:'IBM Plex Sans',sans-serif; transition:background .15s ease, transform .08s ease, box-shadow .15s ease;
+    box-shadow:0 8px 24px rgba(24,69,214,.26); }
+  .nc-continue:hover{ background:#1238b0; box-shadow:0 12px 30px rgba(24,69,214,.34); }
+  .nc-continue:active{ transform:scale(.98); }
+  .nc-thanks h2{ font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:30px; line-height:1.25; margin:8px 0 18px; }
+  .nc-thanks p{ font-size:18px; color:#3a3a35; margin:0 0 28px; line-height:1.5; }
+  .nc-thanks .nc-link{ color:#1845D6; font-weight:600; text-decoration:none; }
+  .nc-thanks .nc-link:hover{ text-decoration:underline; }
+</style>
+
+<script is:inline>
+  (function () {
+    var WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/fd7a3b30-ddf9-4415-b751-bfa88beda702";
+    var FORM_SOURCE  = "new-construction";
+    var LOAN_PURPOSE = "new-construction";
+    var BOOKING_URL  = "https://www.stairwaymortgage.com/schedule-call/";
+
+    // ---- Google Places (address autocomplete) -------------------------------
+    // Loaded once per page, shared by all funnels via window.__STW_PLACES.
+    // SECURITY: restrict this key in Google Cloud Console to your domains
+    // (HTTP referrers) + Maps JavaScript API + Places API only.
+    var GOOGLE_PLACES_KEY = "AIzaSyA72a6nAbAUZoeE718Z5_PtvZkDhPLL3v0"; // TODO: confirm restricted to stairwaymortgage.com / *.vercel.app
+    function STW_loadPlaces(cb){
+      if(window.google && window.google.maps && window.google.maps.places){ cb(); return; }
+      window.__STW_PLACES = window.__STW_PLACES || { loading:false, queue:[] };
+      window.__STW_PLACES.queue.push(cb);
+      if(window.__STW_PLACES.loading) return;
+      window.__STW_PLACES.loading = true;
+      window.__stwPlacesReady = function(){
+        (window.__STW_PLACES.queue||[]).forEach(function(fn){ try{ fn(); }catch(e){} });
+        window.__STW_PLACES.queue = [];
+      };
+      var s = document.createElement("script");
+      s.src = "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_PLACES_KEY+"&libraries=places&callback=__stwPlacesReady&loading=async";
+      s.async = true; s.defer = true;
+      s.onerror = function(){ /* graceful fallback: plain text field still works */ };
+      document.head.appendChild(s);
+    }
+    function STW_attachPlaces(input, conf, state){
+      STW_loadPlaces(function(){
+        try{
+          var ac = new google.maps.places.Autocomplete(input, {
+            types:["address"], componentRestrictions:{country:"us"},
+            fields:["address_components","formatted_address","geometry"]
+          });
+          ac.addListener("place_changed", function(){
+            var p = ac.getPlace();
+            if(!p || !p.address_components) return;
+            var get=function(type,short){
+              for(var i=0;i<p.address_components.length;i++){
+                var c=p.address_components[i];
+                if(c.types.indexOf(type)>=0) return short ? c.short_name : c.long_name;
+              }
+              return "";
+            };
+            var streetNo=get("street_number"), route=get("route");
+            state.addr_street = (streetNo?streetNo+" ":"")+route;
+            state.loc_city  = get("locality") || get("sublocality") || get("postal_town");
+            state.loc_state = get("administrative_area_level_1", true);
+            state.loc_zip   = get("postal_code");
+            state.loc_county= get("administrative_area_level_2");
+            if(p.geometry && p.geometry.location){
+              state.addr_lat = p.geometry.location.lat();
+              state.addr_lng = p.geometry.location.lng();
+            }
+            var full = p.formatted_address || ((state.addr_street?state.addr_street+", ":"")+state.loc_city+", "+state.loc_state+" "+state.loc_zip);
+            input.value = full;
+            var dk = input.getAttribute("data-key") || "property_location";
+            state[dk] = full;
+            state.addr_confirmed = full;
+            if(conf){ conf.innerHTML = "\u2713 "+full; conf.style.display="block"; }
+          });
+          // store key for the input so handler can write back to the right state field
+        }catch(e){ /* fallback: plain text input */ }
+      });
+    }
+
+    var steps = [{"key": "break_ground", "type": "choice", "q": "How soon are you looking to break ground?", "options": ["As soon as possible", "In about 3 months", "In about 6 months", "In about 9 months", "12+ months out"], "required": true}, {"key": "own_land", "type": "choice", "q": "Do you already own the land?", "options": ["Yes, I own the land", "No, I still need to find it", "Under contract — closing soon"], "required": true}, {"key": "land_purchase_date", "type": "monthyear", "q": "When did you buy the land?", "showIf": {"key": "own_land", "in": ["Yes, I own the land"]}, "required": true}, {"key": "land_price_paid", "type": "slider", "q": "What price did you pay for the land?", "min": 0, "max": 2000000, "start": 100000, "step": 5000, "fmt": "money", "showIf": {"key": "own_land", "in": ["Yes, I own the land"]}, "required": true}, {"key": "land_value_today", "type": "slider", "q": "What’s the land worth today?", "min": 0, "max": 3000000, "start": 150000, "step": 5000, "fmt": "money", "showIf": {"key": "own_land", "in": ["Yes, I own the land"]}, "required": true}, {"key": "land_location", "type": "location", "q": "Where is the land located?", "placeholder": "Start typing the address…", "required": true}, {"key": "teardown", "type": "choice", "q": "Is there a house on the land that needs to be torn down?", "options": ["Yes", "No"], "required": true}, {"key": "builder_status", "type": "choice", "q": "Do you have a builder lined up?", "options": ["Yes, I have a builder under contract", "I need an introduction to a builder in your network", "I’m a licensed general contractor", "I’ll be building it myself"], "required": true}, {"key": "who_builds", "type": "choice", "q": "Who will be doing the building?", "options": ["I’m a licensed general contractor", "Hiring a builder / GC"], "required": true}, {"key": "construction_budget", "type": "slider", "q": "What’s your estimated total cost of construction?", "sub": "Your build budget — we’ll refine this together.", "min": 50000, "max": 5000000, "start": 400000, "step": 10000, "fmt": "money", "required": true}, {"key": "arv", "type": "slider", "q": "What’s the total estimated property value once it’s built?", "sub": "Also called ARV — the After Repair (completed) Value.", "min": 50000, "max": 10000000, "start": 600000, "step": 10000, "fmt": "money", "required": true}, {"key": "built_before", "type": "choice", "q": "Have you built a house before?", "options": ["Yes", "No"], "required": true}, {"key": "construction_loan_before", "type": "choice", "q": "Have you done a construction loan before?", "options": ["Yes", "This is my first time"], "required": true}, {"key": "credit_score", "type": "choice", "q": "What is your estimated credit score?", "options": ["780+", "740 - 779", "700 - 739", "660 - 699", "620 - 659", "580 - 619", "Below 580"], "required": true}, {"key": "military_service", "type": "choice", "q": "Are you or your spouse an active military member, reserve member or veteran?", "options": ["Active Service", "Veteran", "Non Active Reserve National Guard", "None"], "required": true}, {"key": "employment_status", "type": "choice", "q": "What’s your employment status?", "options": ["Employed", "Self Employed / 1099 Independent Contractor", "Retired"], "required": true}, {"key": "annual_income", "type": "text", "q": "What is the gross annual income of the borrower or borrowers?", "placeholder": "$", "inputmode": "numeric", "required": true}, {"key": "bankruptcy_7yr", "type": "choice", "q": "Have you filed for bankruptcy in the last 7 years?", "options": ["Yes", "No"], "required": true}, {"key": "foreclosure_7yr", "type": "choice", "q": "Have you filed for foreclosure in the last 7 years?", "options": ["Yes", "No"], "required": true}, {"key": "contact", "type": "contact", "q": "Almost done — how can we reach you with your options?", "required": true}];
+    var state = {"break_ground": "", "own_land": "", "land_purchase_date": "", "land_purchase_date_month": "", "land_purchase_date_year": "", "land_price_paid": "", "land_value_today": "", "land_location": "", "addr_street": "", "loc_city": "", "loc_state": "", "loc_zip": "", "loc_county": "", "addr_lat": "", "addr_lng": "", "addr_confirmed": "", "teardown": "", "builder_status": "", "who_builds": "", "construction_budget": "", "arv": "", "built_before": "", "construction_loan_before": "", "credit_score": "", "military_service": "", "employment_status": "", "annual_income": "", "bankruptcy_7yr": "", "foreclosure_7yr": "", "full_name": "", "email": "", "phone": ""};
+    var idx = 0;
+
+    var overlay  = document.getElementById("nc-overlay");
+    var stage    = document.getElementById("nc-stage");
+    var bar      = document.getElementById("nc-progress-bar");
+    var pct      = document.getElementById("nc-progress-pct");
+    var prevBtn  = document.getElementById("nc-prev");
+    var nextBtn  = document.getElementById("nc-next");
+    var nav      = document.getElementById("nc-nav");
+    var progWrap = document.getElementById("nc-progress-wrap");
+    var hp       = document.getElementById("nc-hp");
+    if(hp){
+      hp.addEventListener("focus", function(){ hp.setAttribute("data-touched","1"); });
+      setTimeout(function(){ if(hp.getAttribute("data-touched")!=="1"){ hp.value=""; } }, 1200);
+    }
+
+    function commas(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+    function fmtVal(s, v){
+      if(s.fmt==="k"){ return v>=1000 ? "$"+commas(Math.round(v/1000))+"K" : "$"+commas(v); }
+      if(s.fmt==="money"){ return "$"+commas(v); }
+      if(s.fmt==="ratepct"){ return (Math.round(v*1000)/1000)+"%"; }
+      if(s.fmt==="pct"){
+        var base = s.pctOf ? Number(state[s.pctOf]||0) : 0;
+        if(s.pctOf){ var d=Math.round(base*(v/100)); return '$'+commas(d)+' <span class="nc-pct">('+v+'%)</span>'; }
+        return v+"%";
+      }
+      return String(v);
+    }
+    function esc(t){ var d=document.createElement("div"); d.textContent=(t==null?"":t); return d.innerHTML; }
+    function el(tag, cls){ var n=document.createElement(tag); if(cls) n.className=cls; return n; }
+
+    function render(){
+      var s = steps[idx];
+      stage.innerHTML = "";
+      var wrap = el("div","nc-step nc-show");
+      var head = el("div");
+      head.innerHTML = '<div class="nc-q">'+esc(s.q)+'</div>' + (s.sub ? '<div class="nc-sub">'+esc(s.sub)+'</div>' : '');
+      wrap.appendChild(head);
+
+      if(s.type==="choice"){
+        var box = el("div","nc-options");
+        s.options.forEach(function(opt){
+          var o = el("div","nc-opt"+(state[s.key]===opt?" nc-sel":""));
+          o.innerHTML = '<span class="nc-circle"></span><span>'+esc(opt)+'</span>';
+          o.addEventListener("click", function(){
+            state[s.key]=opt;
+            // show the selected (filled) state briefly, then auto-advance — no Next click needed
+            Array.prototype.forEach.call(box.querySelectorAll(".nc-opt"), function(n){ n.classList.remove("nc-sel"); });
+            o.classList.add("nc-sel");
+            setTimeout(function(){ goNext(); }, 220);
+          });
+          box.appendChild(o);
+        });
+        wrap.appendChild(box);
+      }
+      else if(s.type==="text"){
+        var input = el("input","nc-input");
+        input.type="text"; input.placeholder=s.placeholder||""; input.value=state[s.key]||"";
+        if(s.inputmode){ input.setAttribute("inputmode", s.inputmode); }
+        input.addEventListener("input", function(){ state[s.key]=input.value; });
+        input.addEventListener("keydown", enterGuard);
+        wrap.appendChild(input);
+        setTimeout(function(){ input.focus(); }, 50);
+      }
+      else if(s.type==="multiselect"){
+        var msbox = el("div","nc-options");
+        if(!Array.isArray(state[s.key])){ state[s.key] = state[s.key] ? [state[s.key]] : []; }
+        s.options.forEach(function(opt){
+          var sel = state[s.key].indexOf(opt)>=0;
+          var o = el("div","nc-opt"+(sel?" nc-sel":""));
+          o.innerHTML = '<span class="nc-check"></span><span>'+esc(opt)+'</span>';
+          o.addEventListener("click", function(){
+            var i = state[s.key].indexOf(opt);
+            if(i>=0){ state[s.key].splice(i,1); o.classList.remove("nc-sel"); }
+            else { state[s.key].push(opt); o.classList.add("nc-sel"); }
+            // multiselect does NOT auto-advance — user picks several, then Next
+          });
+          msbox.appendChild(o);
+        });
+        wrap.appendChild(msbox);
+        var hint = el("div","nc-sub"); hint.style.marginTop="22px"; hint.style.fontSize="14px";
+        hint.textContent = "Select all that apply, then tap Next.";
+        wrap.appendChild(hint);
+      }
+      else if(s.type==="monthyear"){
+        var myWrap = el("div","nc-locwrap");
+        var grid = el("div","nc-grid2");
+        var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        var nowY = new Date().getFullYear();
+        var monthSel = '<div><label class="nc-input-label">Month</label><select class="nc-input" id="nc-my-month"><option value="">Month</option>';
+        months.forEach(function(m,i){ monthSel += '<option value="'+m+'"'+(state[s.key+"_month"]===m?" selected":"")+'>'+m+'</option>'; });
+        monthSel += '</select></div>';
+        var yearSel = '<div><label class="nc-input-label">Year</label><select class="nc-input" id="nc-my-year"><option value="">Year</option>';
+        for(var y=nowY; y>=nowY-40; y--){ yearSel += '<option value="'+y+'"'+(String(state[s.key+"_year"])===String(y)?" selected":"")+'>'+y+'</option>'; }
+        yearSel += '</select></div>';
+        grid.innerHTML = monthSel + yearSel;
+        myWrap.appendChild(grid); wrap.appendChild(myWrap);
+        var mEl = grid.querySelector("#nc-my-month"), yEl = grid.querySelector("#nc-my-year");
+        function syncMY(){ state[s.key+"_month"]=mEl.value; state[s.key+"_year"]=yEl.value; state[s.key]=(mEl.value&&yEl.value)?(mEl.value+" "+yEl.value):""; }
+        mEl.addEventListener("change", syncMY); yEl.addEventListener("change", syncMY);
+      }
+      else if(s.type==="location"){
+        var lw = el("div","nc-locwrap");
+        var li = el("input","nc-input");
+        li.type="text"; li.placeholder=s.placeholder||"Start typing your address\u2026"; li.value=state[s.key]||"";
+        li.setAttribute("autocomplete","off");
+        li.setAttribute("data-key", s.key);
+        li.addEventListener("input", function(){
+          state[s.key]=li.value;
+          // if the user edits after a pick, the parsed fields may be stale; mark unconfirmed
+          state.addr_confirmed = "";
+        });
+        li.addEventListener("keydown", function(e){
+          // Don't let Enter submit while the Places dropdown is open / mid-type
+          if(e.key==="Enter"){ e.preventDefault(); }
+        });
+        lw.appendChild(li);
+        // small confirmation line shown after a valid pick
+        var conf = el("div","nc-addr-conf"); conf.id="nc-addr-conf";
+        conf.innerHTML = state.addr_confirmed ? ('\u2713 '+esc(state.addr_confirmed)) : "";
+        conf.style.display = state.addr_confirmed ? "block" : "none";
+        lw.appendChild(conf);
+        wrap.appendChild(lw);
+        setTimeout(function(){ li.focus(); }, 50);
+        // attach Google Places autocomplete (loads the script on first use)
+        STW_attachPlaces(li, conf, state);
+      }
+      else if(s.type==="slider"){
+        var sw = el("div","nc-slider-wrap");
+        var cur = (state[s.key]!=="" && state[s.key]!=null) ? Number(state[s.key]) : s.start;
+        state[s.key]=String(cur);
+        var valBox = el("div","nc-slider-val"); valBox.innerHTML=fmtVal(s,cur);
+        var sl = el("input","nc-slider");
+        sl.type="range"; sl.min=s.min; sl.max=s.max; sl.step=s.step||1; sl.value=cur;
+        function paint(){ var p=((Number(sl.value)-s.min)/(s.max-s.min))*100; sl.style.backgroundSize=p+"% 100%"; }
+        paint();
+        sl.addEventListener("input", function(){ state[s.key]=sl.value; valBox.innerHTML=fmtVal(s,Number(sl.value)); paint(); });
+        var ends = el("div","nc-slider-ends");
+        ends.innerHTML = '<span class="nc-slider-end">'+fmtVal(s,s.min)+'</span><span class="nc-slider-end">'+fmtVal(s,s.max)+'</span>';
+        sw.appendChild(valBox); sw.appendChild(sl); sw.appendChild(ends);
+        wrap.appendChild(sw);
+      }
+      else if(s.type==="contact"){
+        var c = el("div","nc-contact");
+        c.innerHTML =
+          '<label class="nc-input-label">Full Name <span class="nc-req">*</span></label>'+
+          '<input class="nc-input" id="nc-fn" type="text" placeholder="Your full name" value="'+esc(state.full_name)+'">'+
+          '<label class="nc-input-label">Email <span class="nc-req">*</span></label>'+
+          '<input class="nc-input" id="nc-em" type="email" placeholder="you@email.com" value="'+esc(state.email)+'">'+
+          '<label class="nc-input-label">Mobile Phone Number <span class="nc-req">*</span></label>'+
+          '<input class="nc-input" id="nc-ph" type="tel" placeholder="(555) 555-5555" value="'+esc(state.phone)+'">'+
+          '<div class="nc-consent">By clicking "See My Options," I agree to Stairway Mortgage\'s <a href="/terms/" target="_blank" rel="noopener">Terms of Use</a> and <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. I also consent to receive calls, text messages, and/or pre-recorded voicemails via automated technology—even if I\'m on a Do Not Call list. Consent is not a condition of purchase. I can opt out any time by replying "STOP."</div>'+
+          '<div class="nc-trust">Jim Blackburn · NMLS #1072866</div>'+
+          '<div class="nc-err" id="nc-contact-err"></div>';
+        wrap.appendChild(c);
+        var fn=c.querySelector("#nc-fn"), em=c.querySelector("#nc-em"), ph=c.querySelector("#nc-ph");
+        fn.addEventListener("input", function(){ state.full_name=fn.value; });
+        em.addEventListener("input", function(){ state.email=em.value; });
+        ph.addEventListener("input", function(){ state.phone=ph.value; });
+        [fn,em,ph].forEach(function(n){ n.addEventListener("keydown", enterGuard); });
+      }
+
+      // Steps that DON'T auto-advance get a prominent bottom Continue button so it's
+      // obvious how to proceed (choices auto-advance and don't need this).
+      if(s.type!=="choice"){
+        var contWrap = el("div","nc-continue-wrap");
+        var contBtn = el("button","nc-continue");
+        contBtn.type="button";
+        contBtn.innerHTML = (nextVisible(idx) >= steps.length) ? 'Submit &#10003;' : 'Continue &rarr;';
+        contBtn.addEventListener("click", goNext);
+        contWrap.appendChild(contBtn);
+        wrap.appendChild(contWrap);
+      }
+
+      stage.appendChild(wrap);
+      // progress + submit based on VISIBLE steps (conditional steps may be hidden)
+      var visibleIdxs = []; for(var vi=0; vi<steps.length; vi++){ if(stepVisible(vi)) visibleIdxs.push(vi); }
+      var posInVisible = visibleIdxs.indexOf(idx);
+      var totalVisible = visibleIdxs.length;
+      var isLast = (nextVisible(idx) >= steps.length);
+      var p = isLast ? 100 : Math.round(((posInVisible+1)/totalVisible)*100);
+      bar.style.width=p+"%"; pct.textContent=p+"%";
+      prevBtn.disabled = (prevVisible(idx) < 0);
+      nextBtn.innerHTML = isLast ? 'Submit &#10003;' : 'Next &rarr;';
+    }
+
+    function enterGuard(e){ if(e.key==="Enter"){ e.preventDefault(); goNext(); } }
+
+    function validateCurrent(){
+      var s = steps[idx];
+      if(!s.required) return true;
+      if(s.type==="choice"){ return !!state[s.key]; }
+      if(s.type==="multiselect"){ return Array.isArray(state[s.key]) && state[s.key].length>0; }
+      if(s.type==="monthyear"){ return !!(state[s.key+"_month"] && state[s.key+"_year"]); }
+      if(s.type==="text"){ return !!(state[s.key]&&state[s.key].trim()); }
+      if(s.type==="location"){ return !!(state[s.key] && state[s.key].trim()); }
+      if(s.type==="slider"){ return state[s.key]!==""; }
+      if(s.type==="contact"){
+        var err=document.getElementById("nc-contact-err");
+        if(!state.full_name.trim()){ if(err) err.textContent="Please enter your full name."; return false; }
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email.trim())){ if(err) err.textContent="Please enter a valid email."; return false; }
+        if(state.phone.replace(/\D/g,"").length<10){ if(err) err.textContent="Please enter a valid phone number."; return false; }
+        if(err) err.textContent=""; return true;
+      }
+      return true;
+    }
+
+    // Conditional steps: a step may declare a showIf rule (key + allowed values) and is skipped when unmet.
+    function stepVisible(i){
+      var st = steps[i];
+      if(!st || !st.showIf) return true;
+      var v = state[st.showIf.key];
+      return st.showIf.in.indexOf(v) >= 0;
+    }
+    function nextVisible(from){ var i=from+1; while(i<steps.length && !stepVisible(i)){ i++; } return i; }
+    function prevVisible(from){ var i=from-1; while(i>=0 && !stepVisible(i)){ i--; } return i; }
+
+    function goNext(){
+      if(!validateCurrent()){ if(steps[idx].type!=="contact"){ flashError(); } return; }
+      var ni = nextVisible(idx);
+      if(ni>=steps.length){ submit(); return; }
+      idx=ni; render();
+    }
+    function goPrev(){ var pi=prevVisible(idx); if(pi>=0){ idx=pi; render(); } }
+    function flashError(){ stage.style.transition="none"; stage.style.opacity="0.4"; setTimeout(function(){ stage.style.transition="opacity .25s"; stage.style.opacity="1"; },60); }
+
+    function submit(){
+      if(hp && hp.value && hp.getAttribute("data-touched")==="1"){ return; }
+      var parts=(state.full_name||"").trim().split(/\s+/);
+      var first=parts.shift()||""; var last=parts.join(" ")||"";
+      var payload = {
+        form_source:FORM_SOURCE, loan_purpose:LOAN_PURPOSE,
+        first_name:first, last_name:last, full_name:(state.full_name||"").trim(),
+        email:(state.email||"").trim(), phone:(state.phone||"").trim(),
+        page_url:window.location.origin+window.location.pathname
+      };
+      var skip = {full_name:1,email:1,phone:1};
+      for(var k in state){ if(state.hasOwnProperty(k) && !skip[k]){ var vv=state[k]; if(Array.isArray(vv)){ vv=vv.join(", "); } payload[k]=(vv==null?"":vv); } }
+      try{ fetch(WEBHOOK_URL,{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), keepalive:true }).catch(function(){}); }catch(e){}
+      showThanks(first,last);
+    }
+
+    function showThanks(first,last){
+      progWrap.style.display="none"; nav.style.display="none";
+      var name=(first+" "+last).trim();
+      stage.innerHTML =
+        '<div class="nc-thanks nc-step nc-show">'+
+          '<h2>Congratulations on taking your 1st step'+(name?" "+esc(name):"")+'!</h2>'+
+          '<p>Please <a class="nc-link" href="'+BOOKING_URL+'" data-booking-url target="_blank" rel="noopener">click here</a> to schedule your review call, or our team will reach out shortly.</p>'+
+        '</div>';
+    }
+
+    function openModal(){ idx=0; progWrap.style.display=""; nav.style.display=""; render(); overlay.classList.add("nc-active"); overlay.setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; }
+    function closeModal(){ overlay.classList.remove("nc-active"); overlay.setAttribute("aria-hidden","true"); document.body.style.overflow=""; }
+    window.STW_OPEN_nc = openModal;
+
+    nextBtn.addEventListener("click", goNext);
+    prevBtn.addEventListener("click", goPrev);
+    document.addEventListener("click", function(e){
+      var o=e.target.closest?e.target.closest("[data-nc-open]"):null; if(o){ e.preventDefault(); openModal(); }
+      var c=e.target.closest?e.target.closest("[data-nc-close]"):null; if(c){ e.preventDefault(); closeModal(); }
+    });
+    overlay.addEventListener("click", function(e){ if(e.target===overlay){ closeModal(); } });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape"&&overlay.classList.contains("nc-active")){ closeModal(); } });
+  })();
+</script>

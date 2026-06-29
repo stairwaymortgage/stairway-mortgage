@@ -72,6 +72,10 @@
   .rf-opt.rf-sel{ border-color:#0A0E1A; background:#0A0E1A; color:#fff; box-shadow:0 8px 22px rgba(10,14,26,.18); }
   .rf-opt.rf-sel .rf-circle{ border-color:#fff; }
   .rf-opt.rf-sel .rf-circle::after{ background:#fff; transform:scale(1); }
+  .rf-check{ width:22px; height:22px; border-radius:6px; border:2px solid #c2c2b8; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; transition:border-color .15s ease, background .15s ease; background:#fff; position:relative; }
+  .rf-check::after{ content:''; width:11px; height:6px; border-left:2.5px solid transparent; border-bottom:2.5px solid transparent; transform:rotate(-45deg) translateY(-1px); transition:border-color .15s ease; }
+  .rf-opt.rf-sel .rf-check{ border-color:#fff; }
+  .rf-opt.rf-sel .rf-check::after{ border-left-color:#fff; border-bottom-color:#fff; }
   .rf-input{ width:100%; max-width:540px; margin:0 auto; display:block; border:1.5px solid #d9d9d1; border-radius:12px; padding:17px 20px; font-size:16px; font-family:'IBM Plex Sans',sans-serif; color:#0A0E1A; background:#fff; outline:none; transition:border-color .15s ease, box-shadow .15s ease; }
   .rf-input::placeholder{ color:#a6a6a0; }
   .rf-input:focus{ border-color:#0A0E1A; box-shadow:0 0 0 4px rgba(45,35,80,.12); }
@@ -106,6 +110,13 @@
   .rf-consent a{ color:#1845D6; text-decoration:underline; }
   .rf-trust{ max-width:540px; margin:18px auto 0; font-size:12px; color:#9a9a93; font-family:'JetBrains Mono',ui-monospace,monospace; text-align:center; }
   .rf-err{ color:#8B2C2C; font-size:13px; margin-top:12px; min-height:16px; text-align:left; max-width:540px; margin-left:auto; margin-right:auto; }
+  .rf-continue-wrap{ margin:34px auto 0; max-width:540px; }
+  .rf-continue{ display:inline-flex; align-items:center; gap:8px; border:0; cursor:pointer;
+    background:#1845D6; color:#fff; border-radius:99px; padding:16px 44px; font-size:16px; font-weight:600;
+    font-family:'IBM Plex Sans',sans-serif; transition:background .15s ease, transform .08s ease, box-shadow .15s ease;
+    box-shadow:0 8px 24px rgba(24,69,214,.26); }
+  .rf-continue:hover{ background:#1238b0; box-shadow:0 12px 30px rgba(24,69,214,.34); }
+  .rf-continue:active{ transform:scale(.98); }
   .rf-thanks h2{ font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:30px; line-height:1.25; margin:8px 0 18px; }
   .rf-thanks p{ font-size:18px; color:#3a3a35; margin:0 0 28px; line-height:1.5; }
   .rf-thanks .rf-link{ color:#1845D6; font-weight:600; text-decoration:none; }
@@ -118,22 +129,6 @@
     var FORM_SOURCE  = "refinance";
     var LOAN_PURPOSE = "refinance";
     var BOOKING_URL  = "https://www.stairwaymortgage.com/schedule-call/";
-
-    // ---- Attribution (LOID / UMTID / UTM / source_url) ----------------------
-    // Canonical block — identical to the live standalone forms (private-home-search,
-    // home-value-report). Captures last-touch attribution so leads carry UMTID + LOID
-    // + source URL into GHL. DO NOT diverge from the standalone pattern.
-    function getCookie(name){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+name+'=([^;]+)'));return m?decodeURIComponent(m[1]):null;}
-    function qs(name){try{return new URL(location.href).searchParams.get(name)||null;}catch(e){return null;}}
-    var LO_MAP = { "1072866": { name:"Jim Blackburn", slug:"jim-blackburn" }, "1072877": { name:"Dhruv Parashar", slug:"dhruv-parashar" } };
-    function loidNum(){ var raw=getCookie('first_touch_loid')||qs('lo_id')||qs('loid'); if(!raw) return null; var m=String(raw).match(/(\d{3,})/); return m?m[1]:null; }
-    function attributionFields(){
-      var num=loidNum(); var lo=num&&LO_MAP[num]?LO_MAP[num]:null;
-      return { lo_id:num||"", lo_name:lo?lo.name:"", lo_slug:lo?lo.slug:"", umtid:getCookie('umtid')||qs('umtid')||"",
-        utm_source:qs('utm_source')||getCookie('utm_source')||"", utm_medium:qs('utm_medium')||getCookie('utm_medium')||"", utm_campaign:qs('utm_campaign')||getCookie('utm_campaign')||"",
-        utm_term:qs('utm_term')||getCookie('utm_term')||"", utm_content:qs('utm_content')||getCookie('utm_content')||"", source_url:getCookie('first_touch_url')||window.location.href };
-    }
-
 
     // ---- Google Places (address autocomplete) -------------------------------
     // Loaded once per page, shared by all funnels via window.__STW_PLACES.
@@ -185,8 +180,8 @@
             }
             var full = p.formatted_address || ((state.addr_street?state.addr_street+", ":"")+state.loc_city+", "+state.loc_state+" "+state.loc_zip);
             input.value = full;
-            state[input.getAttribute("data-key")||"property_location"] = full;
-            state.property_location = full;
+            var dk = input.getAttribute("data-key") || "property_location";
+            state[dk] = full;
             state.addr_confirmed = full;
             if(conf){ conf.innerHTML = "\u2713 "+full; conf.style.display="block"; }
           });
@@ -261,11 +256,49 @@
         wrap.appendChild(input);
         setTimeout(function(){ input.focus(); }, 50);
       }
+      else if(s.type==="multiselect"){
+        var msbox = el("div","rf-options");
+        if(!Array.isArray(state[s.key])){ state[s.key] = state[s.key] ? [state[s.key]] : []; }
+        s.options.forEach(function(opt){
+          var sel = state[s.key].indexOf(opt)>=0;
+          var o = el("div","rf-opt"+(sel?" rf-sel":""));
+          o.innerHTML = '<span class="rf-check"></span><span>'+esc(opt)+'</span>';
+          o.addEventListener("click", function(){
+            var i = state[s.key].indexOf(opt);
+            if(i>=0){ state[s.key].splice(i,1); o.classList.remove("rf-sel"); }
+            else { state[s.key].push(opt); o.classList.add("rf-sel"); }
+            // multiselect does NOT auto-advance — user picks several, then Next
+          });
+          msbox.appendChild(o);
+        });
+        wrap.appendChild(msbox);
+        var hint = el("div","rf-sub"); hint.style.marginTop="22px"; hint.style.fontSize="14px";
+        hint.textContent = "Select all that apply, then tap Next.";
+        wrap.appendChild(hint);
+      }
+      else if(s.type==="monthyear"){
+        var myWrap = el("div","rf-locwrap");
+        var grid = el("div","rf-grid2");
+        var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        var nowY = new Date().getFullYear();
+        var monthSel = '<div><label class="rf-input-label">Month</label><select class="rf-input" id="rf-my-month"><option value="">Month</option>';
+        months.forEach(function(m,i){ monthSel += '<option value="'+m+'"'+(state[s.key+"_month"]===m?" selected":"")+'>'+m+'</option>'; });
+        monthSel += '</select></div>';
+        var yearSel = '<div><label class="rf-input-label">Year</label><select class="rf-input" id="rf-my-year"><option value="">Year</option>';
+        for(var y=nowY; y>=nowY-40; y--){ yearSel += '<option value="'+y+'"'+(String(state[s.key+"_year"])===String(y)?" selected":"")+'>'+y+'</option>'; }
+        yearSel += '</select></div>';
+        grid.innerHTML = monthSel + yearSel;
+        myWrap.appendChild(grid); wrap.appendChild(myWrap);
+        var mEl = grid.querySelector("#rf-my-month"), yEl = grid.querySelector("#rf-my-year");
+        function syncMY(){ state[s.key+"_month"]=mEl.value; state[s.key+"_year"]=yEl.value; state[s.key]=(mEl.value&&yEl.value)?(mEl.value+" "+yEl.value):""; }
+        mEl.addEventListener("change", syncMY); yEl.addEventListener("change", syncMY);
+      }
       else if(s.type==="location"){
         var lw = el("div","rf-locwrap");
         var li = el("input","rf-input");
         li.type="text"; li.placeholder=s.placeholder||"Start typing your address\u2026"; li.value=state[s.key]||"";
         li.setAttribute("autocomplete","off");
+        li.setAttribute("data-key", s.key);
         li.addEventListener("input", function(){
           state[s.key]=li.value;
           // if the user edits after a pick, the parsed fields may be stale; mark unconfirmed
@@ -321,12 +354,28 @@
         [fn,em,ph].forEach(function(n){ n.addEventListener("keydown", enterGuard); });
       }
 
+      // Steps that DON'T auto-advance get a prominent bottom Continue button so it's
+      // obvious how to proceed (choices auto-advance and don't need this).
+      if(s.type!=="choice"){
+        var contWrap = el("div","rf-continue-wrap");
+        var contBtn = el("button","rf-continue");
+        contBtn.type="button";
+        contBtn.innerHTML = (nextVisible(idx) >= steps.length) ? 'Submit &#10003;' : 'Continue &rarr;';
+        contBtn.addEventListener("click", goNext);
+        contWrap.appendChild(contBtn);
+        wrap.appendChild(contWrap);
+      }
+
       stage.appendChild(wrap);
-      var total = steps.length;
-      var p = (idx===total-1) ? 100 : Math.round(((idx+1)/total)*100);
+      // progress + submit based on VISIBLE steps (conditional steps may be hidden)
+      var visibleIdxs = []; for(var vi=0; vi<steps.length; vi++){ if(stepVisible(vi)) visibleIdxs.push(vi); }
+      var posInVisible = visibleIdxs.indexOf(idx);
+      var totalVisible = visibleIdxs.length;
+      var isLast = (nextVisible(idx) >= steps.length);
+      var p = isLast ? 100 : Math.round(((posInVisible+1)/totalVisible)*100);
       bar.style.width=p+"%"; pct.textContent=p+"%";
-      prevBtn.disabled = (idx===0);
-      nextBtn.innerHTML = (idx===total-1) ? 'Submit &#10003;' : 'Next &rarr;';
+      prevBtn.disabled = (prevVisible(idx) < 0);
+      nextBtn.innerHTML = isLast ? 'Submit &#10003;' : 'Next &rarr;';
     }
 
     function enterGuard(e){ if(e.key==="Enter"){ e.preventDefault(); goNext(); } }
@@ -335,6 +384,8 @@
       var s = steps[idx];
       if(!s.required) return true;
       if(s.type==="choice"){ return !!state[s.key]; }
+      if(s.type==="multiselect"){ return Array.isArray(state[s.key]) && state[s.key].length>0; }
+      if(s.type==="monthyear"){ return !!(state[s.key+"_month"] && state[s.key+"_year"]); }
       if(s.type==="text"){ return !!(state[s.key]&&state[s.key].trim()); }
       if(s.type==="location"){ return !!(state[s.key] && state[s.key].trim()); }
       if(s.type==="slider"){ return state[s.key]!==""; }
@@ -348,12 +399,23 @@
       return true;
     }
 
+    // Conditional steps: a step may declare a showIf rule (key + allowed values) and is skipped when unmet.
+    function stepVisible(i){
+      var st = steps[i];
+      if(!st || !st.showIf) return true;
+      var v = state[st.showIf.key];
+      return st.showIf.in.indexOf(v) >= 0;
+    }
+    function nextVisible(from){ var i=from+1; while(i<steps.length && !stepVisible(i)){ i++; } return i; }
+    function prevVisible(from){ var i=from-1; while(i>=0 && !stepVisible(i)){ i--; } return i; }
+
     function goNext(){
       if(!validateCurrent()){ if(steps[idx].type!=="contact"){ flashError(); } return; }
-      if(idx===steps.length-1){ submit(); return; }
-      idx++; render();
+      var ni = nextVisible(idx);
+      if(ni>=steps.length){ submit(); return; }
+      idx=ni; render();
     }
-    function goPrev(){ if(idx>0){ idx--; render(); } }
+    function goPrev(){ var pi=prevVisible(idx); if(pi>=0){ idx=pi; render(); } }
     function flashError(){ stage.style.transition="none"; stage.style.opacity="0.4"; setTimeout(function(){ stage.style.transition="opacity .25s"; stage.style.opacity="1"; },60); }
 
     function submit(){
@@ -367,12 +429,7 @@
         page_url:window.location.origin+window.location.pathname
       };
       var skip = {full_name:1,email:1,phone:1};
-      for(var k in state){ if(state.hasOwnProperty(k) && !skip[k]){ payload[k]=(state[k]==null?"":state[k]); } }
-      var attr = attributionFields();
-      payload.lo_id=attr.lo_id; payload.lo_name=attr.lo_name; payload.lo_slug=attr.lo_slug; payload.umtid=attr.umtid;
-      payload.utm_source=attr.utm_source; payload.utm_medium=attr.utm_medium; payload.utm_campaign=attr.utm_campaign;
-      payload.utm_term=attr.utm_term; payload.utm_content=attr.utm_content; payload.source_url=attr.source_url;
-
+      for(var k in state){ if(state.hasOwnProperty(k) && !skip[k]){ var vv=state[k]; if(Array.isArray(vv)){ vv=vv.join(", "); } payload[k]=(vv==null?"":vv); } }
       try{ fetch(WEBHOOK_URL,{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), keepalive:true }).catch(function(){}); }catch(e){}
       showThanks(first,last);
     }

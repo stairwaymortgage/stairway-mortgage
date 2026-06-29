@@ -99,7 +99,7 @@
     font-family:'Fraunces',Georgia,serif; font-style:italic; font-weight:400;
     font-size:18px; color:#6b6b63; margin:0 0 30px; line-height:1.45; max-width:520px; margin-left:auto; margin-right:auto;
   }
-  .rm-q + .rm-options, .rm-q + .rm-slider-wrap, .rm-q + .rm-input, .rm-q + .rm-contact, .rm-q + .rm-locwrap{ margin-top:30px; }
+  .rm-q + .rm-options, .rm-q + .rm-slider-wrap, .rm-q + .rm-input, .rm-q + .rm-contact{ margin-top:30px; }
 
   /* Option cards (circle radio + label) */
   .rm-options{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
@@ -140,18 +140,10 @@
   }
   .rm-input::placeholder{ color:#a6a6a0; }
   .rm-input:focus{ border-color:#0A0E1A; box-shadow:0 0 0 4px rgba(45,35,80,.12); }
-
-  /* Address autocomplete (Google Places) */
-  .rm-locwrap{ max-width:540px; margin:0 auto; }
-  .rm-addr-conf{ margin:14px auto 0; max-width:540px; font-size:14px; color:#2E9E2E; font-family:'JetBrains Mono',ui-monospace,monospace; text-align:left; }
-  /* Google Places dropdown — styled to match the Stairway popup */
-  .pac-container{ z-index:100000 !important; border-radius:12px; margin-top:6px; border:1.5px solid #d9d9d1;
-    box-shadow:0 16px 40px rgba(10,14,26,.18); font-family:'IBM Plex Sans',sans-serif; overflow:hidden; }
+  .pac-container{ z-index:100000 !important; border-radius:12px; margin-top:6px; border:1.5px solid #d9d9d1; box-shadow:0 16px 40px rgba(10,14,26,.18); font-family:'IBM Plex Sans',sans-serif; overflow:hidden; }
   .pac-item{ padding:11px 16px; font-size:14.5px; color:#0A0E1A; cursor:pointer; border-top:1px solid #f0f0ea; }
   .pac-item:first-child{ border-top:0; }
   .pac-item:hover,.pac-item-selected{ background:#faf9f6; }
-  .pac-item-query{ font-size:14.5px; color:#0A0E1A; }
-  .pac-matched{ font-weight:600; }
   .pac-icon{ display:none; }
 
   .rm-contact{ max-width:540px; margin:0 auto; text-align:left; }
@@ -189,6 +181,10 @@
   .rm-err{ color:#8B2C2C; font-size:13px; margin-top:12px; min-height:16px; text-align:left; max-width:540px; margin-left:auto; margin-right:auto; }
 
   /* Thank-you */
+  .rm-continue-wrap{ margin:34px auto 0; max-width:540px; }
+  .rm-continue{ display:inline-flex; align-items:center; gap:8px; border:0; cursor:pointer; background:#1845D6; color:#fff; border-radius:99px; padding:16px 44px; font-size:16px; font-weight:600; font-family:'IBM Plex Sans',sans-serif; transition:background .15s ease, transform .08s ease, box-shadow .15s ease; box-shadow:0 8px 24px rgba(24,69,214,.26); }
+  .rm-continue:hover{ background:#1238b0; box-shadow:0 12px 30px rgba(24,69,214,.34); }
+  .rm-continue:active{ transform:scale(.98); }
   .rm-thanks h2{ font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:30px; line-height:1.25; margin:8px 0 18px; }
   .rm-thanks p{ font-size:18px; color:#3a3a35; margin:0 0 28px; line-height:1.5; }
   .rm-thanks .rm-link{ color:#1845D6; font-weight:600; text-decoration:none; }
@@ -220,12 +216,8 @@
         utm_term:qs('utm_term')||getCookie('utm_term')||"", utm_content:qs('utm_content')||getCookie('utm_content')||"", source_url:getCookie('first_touch_url')||window.location.href };
     }
 
-
-    // ---- Google Places (address autocomplete) -------------------------------
-    // Loaded once per page, shared by all funnels via window.__STW_PLACES.
-    // SECURITY: restrict this key in Google Cloud Console to your domains
-    // (HTTP referrers) + Maps JavaScript API + Places API only.
-    var GOOGLE_PLACES_KEY = "AIzaSyA72a6nAbAUZoeE718Z5_PtvZkDhPLL3v0"; // TODO: confirm restricted to stairwaymortgage.com / *.vercel.app
+    // ---- Google Places (address autocomplete) ----
+    var GOOGLE_PLACES_KEY = "AIzaSyA72a6nAbAUZoeE718Z5_PtvZkDhPLL3v0";
     function STW_loadPlaces(cb){
       if(window.google && window.google.maps && window.google.maps.places){ cb(); return; }
       window.__STW_PLACES = window.__STW_PLACES || { loading:false, queue:[] };
@@ -236,13 +228,12 @@
         (window.__STW_PLACES.queue||[]).forEach(function(fn){ try{ fn(); }catch(e){} });
         window.__STW_PLACES.queue = [];
       };
-      var s = document.createElement("script");
-      s.src = "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_PLACES_KEY+"&libraries=places&callback=__stwPlacesReady&loading=async";
-      s.async = true; s.defer = true;
-      s.onerror = function(){ /* graceful fallback: plain text field still works */ };
-      document.head.appendChild(s);
+      var sc = document.createElement("script");
+      sc.src = "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_PLACES_KEY+"&libraries=places&callback=__stwPlacesReady&loading=async";
+      sc.async = true; sc.defer = true;
+      document.head.appendChild(sc);
     }
-    function STW_attachPlaces(input, conf, state){
+    function STW_attachPlaces(input, stKey){
       STW_loadPlaces(function(){
         try{
           var ac = new google.maps.places.Autocomplete(input, {
@@ -250,41 +241,39 @@
             fields:["address_components","formatted_address","geometry"]
           });
           ac.addListener("place_changed", function(){
-            var p = ac.getPlace();
-            if(!p || !p.address_components) return;
-            var get=function(type,short){
-              for(var i=0;i<p.address_components.length;i++){
-                var c=p.address_components[i];
-                if(c.types.indexOf(type)>=0) return short ? c.short_name : c.long_name;
-              }
-              return "";
-            };
-            var streetNo=get("street_number"), route=get("route");
-            state.addr_street = (streetNo?streetNo+" ":"")+route;
-            state.loc_city  = get("locality") || get("sublocality") || get("postal_town");
-            state.loc_state = get("administrative_area_level_1", true);
-            state.loc_zip   = get("postal_code");
-            state.loc_county= get("administrative_area_level_2");
+            var p = ac.getPlace(); if(!p) return;
+            if(p.address_components){
+              var get=function(type,short){
+                for(var i=0;i<p.address_components.length;i++){
+                  var c=p.address_components[i];
+                  if(c.types.indexOf(type)>=0) return short ? c.short_name : c.long_name;
+                }
+                return "";
+              };
+              var streetNo=get("street_number"), route=get("route");
+              state.addr_street = (streetNo?streetNo+" ":"")+route;
+              state.loc_city  = get("locality") || get("sublocality") || get("postal_town");
+              state.loc_state = get("administrative_area_level_1", true);
+              state.loc_zip   = get("postal_code");
+              state.loc_county= get("administrative_area_level_2");
+            }
+            var full = p.formatted_address || input.value;
+            input.value = full; state[stKey] = full;
             if(p.geometry && p.geometry.location){
               state.addr_lat = p.geometry.location.lat();
               state.addr_lng = p.geometry.location.lng();
             }
-            var full = p.formatted_address || ((state.addr_street?state.addr_street+", ":"")+state.loc_city+", "+state.loc_state+" "+state.loc_zip);
-            input.value = full;
-            state[input.getAttribute("data-key")||"property_location"] = full;
-            state.property_location = full;
-            state.addr_confirmed = full;
-            if(conf){ conf.innerHTML = "✓ "+full; conf.style.display="block"; }
           });
-          // store key for the input so handler can write back to the right state field
-        }catch(e){ /* fallback: plain text input */ }
+        }catch(e){}
       });
     }
 
     var state = {
       reason:"", reason_other:"", referrer:"", home_in_mind:"", youngest_spouse_age:"",
       military_service:"", home_address:"", annual_income:"", credit_score:"",
-      full_name:"", email:"", phone:"", free_credit_report:"", date_of_birth:"", anything_else:""
+      full_name:"", email:"", phone:"", free_credit_report:"", date_of_birth:"", anything_else:"",
+      addr_lat:"", addr_lng:"",
+      addr_street:"", loc_city:"", loc_state:"", loc_zip:"", loc_county:""
     };
     var idx = 0;
 
@@ -300,7 +289,7 @@
       { key:"military_service", type:"choice", q:"Military service for you or your spouse?",
         sub:"If yes, thank you sincerely for everything your family sacrificed. You are deeply loved and honored by our family at Stairway.",
         options:["Yes","No"], required:true },
-      { key:"home_address", type:"location", q:"Current home address?", sub:"Typically the address listed on your social security check. ;)",
+      { key:"home_address", type:"text", places:true, q:"Current home address?", sub:"Typically the address listed on your social security check. ;)",
         placeholder:"Begin typing the address", required:true },
       { key:"annual_income", type:"slider", q:"Annual income?", sub:"Estimate all borrowers employment and retirement income.",
         min:0, max:500000, start:25000, step:1000, fmt:"k", required:true },
@@ -384,37 +373,12 @@
         var input = el("input","rm-input");
         input.type="text"; input.placeholder=s.placeholder||""; input.value=state[s.key]||"";
         if(s.inputmode){ input.setAttribute("inputmode", s.inputmode); }
+        if(s.places){ input.setAttribute("autocomplete","off"); }
         input.addEventListener("input", function(){ state[s.key]=input.value; });
-        input.addEventListener("keydown", enterGuard);
+        input.addEventListener("keydown", s.places ? function(e){ if(e.key==="Enter"){ e.preventDefault(); } } : enterGuard);
         wrap.appendChild(input);
         setTimeout(function(){ input.focus(); }, 50);
-      }
-
-      else if(s.type==="location"){
-        var lw = el("div","rm-locwrap");
-        var li = el("input","rm-input");
-        li.type="text"; li.placeholder=s.placeholder||"Start typing your address…"; li.value=state[s.key]||"";
-        li.setAttribute("autocomplete","off");
-        li.setAttribute("data-key", s.key);
-        li.addEventListener("input", function(){
-          state[s.key]=li.value;
-          // if the user edits after a pick, the parsed fields may be stale; mark unconfirmed
-          state.addr_confirmed = "";
-        });
-        li.addEventListener("keydown", function(e){
-          // Don't let Enter submit while the Places dropdown is open / mid-type
-          if(e.key==="Enter"){ e.preventDefault(); }
-        });
-        lw.appendChild(li);
-        // small confirmation line shown after a valid pick
-        var conf = el("div","rm-addr-conf"); conf.id="rm-addr-conf";
-        conf.innerHTML = state.addr_confirmed ? ('✓ '+esc(state.addr_confirmed)) : "";
-        conf.style.display = state.addr_confirmed ? "block" : "none";
-        lw.appendChild(conf);
-        wrap.appendChild(lw);
-        setTimeout(function(){ li.focus(); }, 50);
-        // attach Google Places autocomplete (loads the script on first use)
-        STW_attachPlaces(li, conf, state);
+        if(s.places){ STW_attachPlaces(input, s.key); }
       }
 
       else if(s.type==="slider"){
@@ -456,6 +420,16 @@
         [fn,em,ph].forEach(function(n){ n.addEventListener("keydown", enterGuard); });
       }
 
+      // Non-choice steps get a prominent Continue button (choices auto-advance on tap).
+      if(s.type!=="choice"){
+        var rmContWrap = document.createElement("div"); rmContWrap.className="rm-continue-wrap";
+        var rmContBtn = document.createElement("button"); rmContBtn.type="button"; rmContBtn.className="rm-continue";
+        rmContBtn.innerHTML = (idx===steps.length-1) ? 'Submit &#10003;' : 'Continue &rarr;';
+        rmContBtn.addEventListener("click", goNext);
+        rmContWrap.appendChild(rmContBtn);
+        wrap.appendChild(rmContWrap);
+      }
+
       stage.appendChild(wrap);
 
       var total = steps.length;
@@ -472,7 +446,6 @@
       if(!s.required) return true;
       if(s.type==="choice"){ return s.key==="reason" ? !!(state.reason||state.reason_other) : !!state[s.key]; }
       if(s.type==="text"){ return !!(state[s.key]&&state[s.key].trim()); }
-      if(s.type==="location"){ return !!(state[s.key] && state[s.key].trim()); }
       if(s.type==="slider"){ return state[s.key]!==""; }
       if(s.type==="contact"){
         var err=document.getElementById("rm-contact-err");
@@ -505,6 +478,9 @@
         reason_for_reverse_mortgage:reasonFinal, referrer_name:state.referrer||"",
         home_in_mind:state.home_in_mind||"", youngest_spouse_age:state.youngest_spouse_age||"",
         military_service:state.military_service||"", home_address:state.home_address||"",
+        addr_street:state.addr_street||"", loc_city:state.loc_city||"", loc_state:state.loc_state||"",
+        loc_zip:state.loc_zip||"", loc_county:state.loc_county||"",
+        addr_lat:state.addr_lat||"", addr_lng:state.addr_lng||"",
         annual_income:state.annual_income||"", credit_score:state.credit_score||"",
         free_credit_report:state.free_credit_report||"", date_of_birth:state.date_of_birth||"",
         anything_else:state.anything_else||"", page_url:window.location.origin+window.location.pathname

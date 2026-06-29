@@ -4,6 +4,8 @@ import PurchaseForm from '../../components/PurchaseForm.astro';
 import RefinanceForm from '../../components/RefinanceForm.astro';
 import HelocForm from '../../components/HelocForm.astro';
 import RealReverseForm from '../../components/RealReverseForm.astro';
+import NewConstructionForm from '../../components/NewConstructionForm.astro';
+import RenovationForm from '../../components/RenovationForm.astro';
 import { ARIVE_URLS } from '../../lib/arive';
 ---
 
@@ -58,6 +60,24 @@ import { ARIVE_URLS } from '../../lib/arive';
           <p class="smo-card__desc">Income from your home, age 55+.</p>
           <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
         </button>
+
+        <button data-nc-open class="smo-card group">
+          <span class="smo-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V8l8-5 8 5v12"/><line x1="9" y1="20" x2="9" y2="13"/><line x1="15" y1="20" x2="15" y2="13"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+          </span>
+          <h3 class="smo-card__title font-display">New Construction</h3>
+          <p class="smo-card__desc">Financing a home you're building.</p>
+          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
+        </button>
+
+        <button data-rn-open class="smo-card group">
+          <span class="smo-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>
+          </span>
+          <h3 class="smo-card__title font-display">Renovation</h3>
+          <p class="smo-card__desc">Buy or refinance plus repair costs.</p>
+          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
+        </button>
       </div>
 
       <div class="smo-tier2-sep" aria-hidden="true">
@@ -87,6 +107,8 @@ import { ARIVE_URLS } from '../../lib/arive';
   <RefinanceForm />
   <HelocForm />
   <RealReverseForm />
+  <NewConstructionForm />
+  <RenovationForm />
 </Layout>
 
 <style>
