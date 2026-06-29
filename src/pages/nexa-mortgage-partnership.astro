@@ -1,261 +1,449 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "NEXA Mortgage Partnership"}]};
+import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/" },
+    { "@type": "ListItem", "position": 2, "name": "NEXA Mortgage Partnership" }
+  ]
+};
+
+const ph = (w, h, txt) => `this.onerror=null;this.src='https://placehold.co/${w}x${h}/F4F4EE/6B7280?text=${encodeURIComponent(txt)}'`;
+
+const nexaFeatures = [
+  { h: 'Wholesale Interest Rates', p: 'Conventional, VA, FHA, jumbo, DSCR, non-QM, and more.' },
+  { h: '300+ Lender Network', p: 'Mortgage network expanding all through the states.' },
+  { h: '3000+ Loan Officers', p: 'Trusted by thousands of loan officers nationwide.' },
+  { h: 'Integrated Tech', p: 'Lower costs. More savings. No retail markup.' },
+  { h: 'Industry Reputation', p: 'NEXA’s Loan Operating System speeds up every step.' },
+];
+
+const stairwayValues = [
+  'Turn principles into a plan',
+  'Use leverage responsibly',
+  'Think like investors',
+  'Protect assets & equity',
+  'Optimize tax & retirement',
+  'Create lasting legacy',
+];
+
+const stats = [
+  'Thousands of loan officers',
+  'A nationwide brokerage',
+  'Licensed across 48 states (NEXA Mortgage LLC)',
+  'One of the nation’s largest mortgage brokers',
+];
+
+const bios = [
+  { img: '/wp-content/uploads/2025/06/1.png', name: 'Mike Kortas', title: 'CEO of NEXA Mortgage',
+    bio: 'Mike Kortas, CEO and founder of NEXA Mortgage, has over 20 years of industry experience and has built NEXA into one of the nation’s largest mortgage brokers since its launch in 2017. With 2,500+ loan officers across 48 states, his bold, disruptive leadership is driving rapid growth and innovation. Focused on doubling the company’s size by 2025, Kortas is reshaping the mortgage landscape with relentless ambition and a clear vision for continued growth.' },
+  { img: '/wp-content/uploads/2025/06/6A5FE5.png', name: 'Paul Adams', title: 'CIO of NEXA Mortgage',
+    bio: 'Paul Adams, CIO at NEXA Mortgage, brings 40+ years of IT leadership, overseeing strategy, innovation, and AI integration across NEXA and Jet NEXA. He ensures enterprise efficiency, security, and compliance through certified expertise in SOC and cybersecurity. Paul has led major infrastructure transformations, including for the U.S. Air Force, and founded Arizona Onsite Computer Services. His work consistently enhances operational resilience and drives competitive growth through cutting-edge technology.' },
+  { img: '/wp-content/uploads/2025/06/2-2.png', name: 'Mike Neill', title: 'Director of NEXA Lending',
+    bio: 'With a proven track record in mortgage lending, I’ve helped grow a start-up to $18M in revenue and earned recognition as a top producer by Mortgage Broker Magazine. As a Loan Officer and Recruiter at NEXA Mortgage, I’ve consistently achieved Presidents Club honors while mentoring others. I also serve as Chairman of the Board at Broker’s Care/NEXA Cares and have supported the Boys & Girls Club of the East Valley for over 30 years. Now, as Director of the Non-Delegated Correspondent division at NEXA, I focus on building strong teams and simplifying processes to drive collective success.' },
+  { img: '/wp-content/uploads/2025/06/3-1.png', name: 'Chris Porter', title: 'General Counsel of NEXA Mortgage',
+    bio: 'Christopher “Chris” Porter, General Counsel at NEXA Mortgage, oversees all legal affairs, providing strategic guidance to the executive team and managing litigation, regulatory matters, and business operations. With deep experience in financial services and the mortgage industry, he brings expertise in contract negotiation, risk management, and compliance, playing a key role in supporting NEXA’s growth and governance.' },
+  { img: '/wp-content/uploads/2025/06/5-1.png', name: 'Dan Fouts', title: 'LOS Director of NEXA Mortgage',
+    bio: 'Dan Fouts began his career at NEXA Mortgage as a Loan Officer and quickly advanced to leadership, becoming Director of Loan Officer Support and NEXA University. He mentors loan officers across the company and leads training initiatives to enhance skills and drive performance. Through NEXA University, he curates educational webinars and resources that support loan officer growth and success nationwide. His leadership fosters a culture of collaboration and continued learning within NEXA.' },
+  { img: '/wp-content/uploads/2025/06/12.png', name: 'Rana Mortensen', title: 'Executive Director of NEXA Mortgage',
+    bio: 'Rana serves as Executive Director at NEXA Mortgage, working closely with CEO Mike Kortas to drive the company’s strategic vision and support all departments. She founded “Women of NEXA” (WON) to empower women within the organization and the industry. Known for her integrity and drive, Rana is committed to fostering excellence and long-term success for NEXA and its partners.' },
+  { img: '/wp-content/uploads/2025/06/6-1.png', name: 'Karen Enslin', title: 'BDM Director of NEXA Mortgage',
+    bio: 'With over 30 years in Real Estate and Finance, she began her career at NBT Bank and held roles at Navy Federal and Bank of America. Her passion for real estate led her to NEXA in 2020, where she now serves as Business Development Director for Corporate NEXA. In this role, she combines her coaching strengths and analytical skills to support growth across both industries.' },
+  { img: '/wp-content/uploads/2025/06/11.png', name: 'Apple Bugarin', title: 'Payroll and Ledger Director of NEXA Mortgage',
+    bio: 'Joining NEXA in March 2022 as an Accounting Specialist, she quickly rose through the ranks to become Director of the Ledger Department by January 2023. By July 2024, she expanded her leadership to include the Payroll Department, managing two critical functions of the business. Her rapid growth reflects her accounting expertise, leadership strength, and dedication to driving results and team collaboration.' },
+];
+
+const reviews = [
+  { img: '/wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349.jpg', name: 'Alexis Kulick', source: 'via Facebook', meta: 'Director of Digital Campaign at UBS · California',
+    quote: 'Easy and quick refinance with great rates and expert advice.',
+    body: 'I recently refinanced my existing mortgage with Jim and his team, and I was so pleased with how easy and quick the whole process was. Jim and his team were very responsive to my questions, and I feel confident that I got the best rate and shaved 9 years off my mortgage. He is very knowledgeable and helped me determine the best option for myself and my family. Definitely recommend him.' },
+  { img: '/wp-content/uploads/2025/03/Julian-Einfrank-e1742922797847.jpeg', name: 'Julian Einfrank', source: 'via Facebook', meta: 'Sr. Wealth Advisor, Clifton Larson Allen · Illinois',
+    quote: 'Complex loan scenario handled with expertise and care.',
+    body: 'The process went smoothly. Jim Blackburn is a lending saint. He knows the market well and cares about his clients tremendously. The team made it really easy to do business, uploading documents and getting forms signed. Our situation is a bit complex. Rather than turn us away for some added work, they dug in to get it done right. They like the complexity, whereas other lenders don’t want to roll up their sleeves. Highly recommend Jim Blackburn for new loans and refinances!' },
+  { img: '/wp-content/uploads/2025/03/Elizabeth-Torres.jpeg', name: 'Elizabeth Torres', source: 'via Facebook', meta: 'Senior Branch Mgr. at JP Morgan Chase · Illinois',
+    quote: 'Closed in time for Thanksgiving! Jim and his team were amazing, and we got a much stronger experience than our previous lender.',
+    body: 'We closed our loan within 19 days. Just in time for Thanksgiving!! Jim and his team are amazing! We initially had gone with a different loan office and the interest rate and down payment was ridiculous. The owner of the company where my husband works referred us to Jim and we are very grateful for that. We had such an amazing experience with Jim and his team! Since our transaction, we’ve been referring Jim to anyone we know that are thinking of purchasing a house.' },
+  { img: '/wp-content/uploads/2025/03/Livermore-David.png', name: 'David Livermore', source: 'via Google', meta: 'Founder, Cultural Intelligence · California',
+    quote: 'Secured financing despite market challenges and self-employment.',
+    body: 'Run, don’t walk to work with Jim and his team. Jim helped us get financing when it seemed like an impossible feat. It was hard enough to be managing a home purchase 2000 miles away, but add to that an extremely competitive market and being self-employed, and it seemed impossible until Jim’s team got involved. Jim was not only responsive; he consistently went above and beyond by making clear recommendations, working his magic, and ensuring that financing wasn’t a barrier for buying our dream house in one of the most competitive markets in the country.' },
+  { img: '/wp-content/uploads/2025/03/Christina-Curva-Carrasco-e1742922902463.jpg', name: 'Christina Curva Carrasco', source: 'via Facebook', meta: 'Owner at Curated Interiors · Washington DC',
+    quote: 'Smooth, fast, and hassle-free mortgage and refinance process.',
+    body: 'Jim and his team are great to work with! We have used Jim twice with our home mortgage. Both times, the process was smooth and uneventful (which is what I wanted). He has kept in touch with us and contacted us when he felt it was the right time for us to refinance! I was amazed at our refinancing process — it took them about a little over two weeks to process all our information and close! I love the new online process of submitting all the information they require — it made it super easy for me to organize and gather all the documents.' },
+];
+
+const verifyLogos = [
+  { img: '/wp-content/uploads/2026/02/New-Project.png',    alt: 'NEXA Mortgage listing on NMLS Consumer Access', label: 'NMLS Consumer Access', href: 'https://nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/1660690' },
+  { img: '/wp-content/uploads/2026/02/New-Project-1.png',  alt: 'NEXA Mortgage profile on Better Business Bureau', label: 'Better Business Bureau', href: 'https://www.bbb.org/us/az/chandler/profile/mortgage-broker/nexa-mortgage-1126-1000099747/' },
+  { img: '/wp-content/uploads/2026/02/New-Project-8.png',  alt: 'NEXA Mortgage on Trustpilot', label: 'Trustpilot', href: 'https://www.trustpilot.com/review/nexamortgage.com' },
+  { img: '/wp-content/uploads/2026/02/New-Project-9.png',  alt: 'NEXA Mortgage lender profile on Zillow', label: 'Zillow', href: 'https://www.zillow.com/lender-profile/NexaMortgageLLC/' },
+  { img: '/wp-content/uploads/2026/02/New-Project-5.png',  alt: 'NEXA Mortgage business profile on Seamless.ai', label: 'Seamless.ai', href: 'https://seamless.ai/b/nexa-mortgage-151140243' },
+  { img: '/wp-content/uploads/2026/02/New-Project-10.png', alt: 'NEXA Mortgage on Bloomberg', label: 'Bloomberg', href: 'https://www.bloomberg.com/profile/company/2547538D:US' },
+  { img: '/wp-content/uploads/2026/02/New-Project-11.png', alt: 'NEXA Mortgage on LeadIQ', label: 'LeadIQ', href: 'https://leadiq.com/c/nexa-mortgage/5c76a53e1d00008c011242f6' },
+  { img: '/wp-content/uploads/2026/02/New-Project-12.png', alt: 'NEXA Mortgage on Growjo', label: 'Growjo', href: 'https://growjo.com/company/NEXA_Mortgage' },
+];
+
+const STAR_PATH = 'M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z';
 ---
 
-<Layout title="NEXA Mortgage Partnership | National Network | Stairway" description="How our partnership with NEXA Mortgage gives you access to 300+ lenders while maintaining our local personal service and faith-based values." canonical="https://stairwaymortgage.com/nexa-mortgage-partnership/">
+<Layout
+  title="NEXA Mortgage Partnership | National Network | Stairway"
+  description="How our partnership with NEXA Mortgage gives you access to 300+ lenders while maintaining our local personal service and faith-based values."
+  canonical="https://stairwaymortgage.com/nexa-mortgage-partnership/"
+>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <nav class="container-page ft-breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a> <span>/</span> <span>NEXA Mortgage Partnership</span>
-  </nav>
-  <header class="container-prose ft-header">
-    <span class="eyebrow eyebrow-blue mb-4">Stairway</span>
-    <h1 class="display-md">NEXA Mortgage Partnership</h1>
-  </header>
-  <article class="container-prose prose-editorial ft-body" set:html={`<h2>NEXA Mortgage:  A Partnership Built for Clients, Powered by Strategy</h2>				
-		<p>300+ Lending Partners.  Flexible Loan Optons. And Now a <a href="https://stairwaymortgage.com/blog/nexa-mortgage-nexa-lending/">Direct Lender, NEXA Lending. </a></p>		
-															<img width="683" height="1024" src="/wp-content/uploads/2025/05/real-estate-agents-talking-about-documents-683x1024.jpg" alt="" srcset="/wp-content/uploads/2025/05/real-estate-agents-talking-about-documents-683x1024.jpg 683w, /wp-content/uploads/2025/05/real-estate-agents-talking-about-documents-200x300.jpg 200w, /wp-content/uploads/2025/05/real-estate-agents-talking-about-documents-768x1152.jpg 768w, /wp-content/uploads/2025/05/real-estate-agents-talking-about-documents-1024x1536.jpg 1024w, /wp-content/uploads/2025/05/real-estate-agents-talking-about-documents-1365x2048.jpg 1365w, /wp-content/uploads/2025/05/real-estate-agents-talking-about-documents-473x710.jpg 473w, /wp-content/uploads/2025/05/real-estate-agents-talking-about-documents-scaled.jpg 1707w" sizes="(max-width: 683px) 100vw, 683px" />															
-					<h2>Why We Partnered With NEXA Mortgage</h2>				
-		<p>At Stairway Mortgage, we focus on helping clients build real, lasting wealth through strategic real estate leverage. To do this well, we partnered with the most powerful mortgage brokerage platform in the country—<a href="https://nexamortgage.com/"><strong>NEXA Mortgage</strong></a>, founded by visionary leader Mike Kortas.</p><p>This partnership means:</p><ul><li>Competitively priced interest rates through wholesale lending</li><li>Faster closings through streamlined systems</li><li>More loan options for every financial scenario</li><li>Strategy-first support, not sales-first pressure</li></ul>		
-					<h2>Verify NEXA Mortgage Across Trusted Platforms</h2>				
-																<a href="https://nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/1660690" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project.png" alt="NEXA Mortgage listing on NMLS Consumer Access" />								</a>
-																<a href="https://www.bbb.org/us/az/chandler/profile/mortgage-broker/nexa-mortgage-1126-1000099747/" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-1.png" alt="NEXA Mortgage profile on Better Business Bureau" />								</a>
-																<a href="https://www.trustpilot.com/review/nexamortgage.com" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-8.png" alt="" />								</a>
-																<a href="https://www.zillow.com/lender-profile/NexaMortgageLLC/" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-9.png" alt="" />								</a>
-																<a href="https://seamless.ai/b/nexa-mortgage-151140243" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-5.png" alt="NEXA Mortgage business profile on Seamless.ai" />								</a>
-																<a href="https://www.bloomberg.com/profile/company/2547538D:US" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-10.png" alt="" />								</a>
-																<a href="https://leadiq.com/c/nexa-mortgage/5c76a53e1d00008c011242f6" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-11.png" alt="" />								</a>
-																<a href="https://growjo.com/company/NEXA_Mortgage" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-12.png" alt="" />								</a>
-					<h2>Verify NEXA Mortgage Across Trusted Platforms</h2>				
-																<a href="https://nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/1660690" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project.png" alt="NEXA Mortgage listing on NMLS Consumer Access" />								</a>
-																<a href="https://www.bbb.org/us/az/chandler/profile/mortgage-broker/nexa-mortgage-1126-1000099747/" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-1.png" alt="NEXA Mortgage profile on Better Business Bureau" />								</a>
-																<a href="https://www.trustpilot.com/review/nexamortgage.com" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-8.png" alt="" />								</a>
-																<a href="https://www.zillow.com/lender-profile/NexaMortgageLLC/" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-9.png" alt="" />								</a>
-																<a href="https://seamless.ai/b/nexa-mortgage-151140243" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-5.png" alt="NEXA Mortgage business profile on Seamless.ai" />								</a>
-																<a href="https://www.bloomberg.com/profile/company/2547538D:US" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-10.png" alt="" />								</a>
-																<a href="https://leadiq.com/c/nexa-mortgage/5c76a53e1d00008c011242f6" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-11.png" alt="" />								</a>
-																<a href="https://growjo.com/company/NEXA_Mortgage" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-12.png" alt="" />								</a>
-					<h3>What NEXA Mortgage Brings to the Table</h3>				
-									<h3>
-							Wholesale Interest Rates						
-					</h3>
-									<p>
-						Conventional, VA, FHA, jumbo, DSCR, non-QM, and more. 					</p>
-									<h3>
-							300+ Lender Network						
-					</h3>
-									<p>
-						Mortgage network expanding all through the states. 					</p>
-									<h3>
-							3000+ Loan Officers						
-					</h3>
-									<p>
-						Trusted by thousands of loan officers nationwide.					</p>
-									<h3>
-							Integrated Tech						
-					</h3>
-									<p>
-						Lower costs. More savings. No retail markup.					</p>
-									<h3>
-							Industry Reputation						
-					</h3>
-									<p>
-						NEXA’s Loan Operating System speeds up every step. 					</p>
-															<img width="1024" height="1024" src="/wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_29_54-AM.png" alt="Chatgpt Image Apr 24 2025 09_29_54 Am | Stairway Mortgage" srcset="/wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_29_54-AM.png 1024w, /wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_29_54-AM-300x300.png 300w, /wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_29_54-AM-150x150.png 150w, /wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_29_54-AM-768x768.png 768w, /wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_29_54-AM-710x710.png 710w, /wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_29_54-AM-600x600.png 600w" sizes="(max-width: 1024px) 100vw, 1024px" />															
-					<h2>What Stairway Brings to the Table</h2>				
-		<p><strong>Stairway Mortgage trains <a href="https://stairwaymortgage.com/certified-stairway-advisor/">Certified Stairway Advisors</a>™</strong> to go beyond traditional lending. We guide clients to make strategic financial decisions that grow wealth over time.</p><p>We teach our clients how to:</p><ul><li><strong>Turn principles into a plan</strong></li><li><strong>Use leverage responsibly</strong> </li><li><strong>Think like investors</strong></li><li><strong>Protect assets &amp; equity</strong></li><li><strong>Optimize tax &amp; retirement</strong></li><li><strong>Create lasting legacy</strong> </li></ul>		
-					<h3>NEXA Mortgage by the Numbers</h3>				
-												0
-						+											
-					<h3>Loan Officers</h3>								
-												0
-						B+											
-					<h3>in Annual Volume</h3>								
-												0
-					<h3>Licensed in 48 States</h3>								
-						#						0
-					<h3>#1 Broker Since 2021</h3>								
-		SMARTER TECH. SMOOTHER CLOSINGS.		
-					<h3>NEXA’s proprietary Loan Operating System connects everything—processors, underwriters, title, and even insurance—into a single platform. It’s modern, fast, and built to serve.</h3>				
-															<img width="1024" height="1024" src="/wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_56_18-AM-1.png" alt="Chatgpt Image Apr 24 2025 09_56_18 Am 1 | Stairway Mortgage" srcset="/wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_56_18-AM-1.png 1024w, /wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_56_18-AM-1-300x300.png 300w, /wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_56_18-AM-1-150x150.png 150w, /wp-content/uploads/2025/04/elementor/thumbs/ChatGPT-Image-Apr-24-2025-09_56_18-AM-1-r4u0cevil1pmsdi30qj93dwac5fip02kpoekfwrzzw.png 550w, /wp-content/uploads/2025/04/elementor/thumbs/ChatGPT-Image-Apr-24-2025-09_56_18-AM-1-r4u0cevhz4bezdf7ta3o1ch3thbpd4gprs3zd7jdzc.png 500w, /wp-content/uploads/2025/04/elementor/thumbs/ChatGPT-Image-Apr-24-2025-09_56_18-AM-1-r5errhfia3a1nl8p03hwmd10ubl25mgfxmftatoecg.png 400w" sizes="(max-width: 1024px) 100vw, 1024px" />															
-					<h2>The NEXUS of Financial Power</h2>				
-		<p>The name NEXA comes from the Latin nexus, meaning connection. To build on this, Jim Blackburn created the NEXA acronym—defining the core values of the types of elite financial professionals that we like to partner with:</p>		
-					<h3>Featured Bios</h3>				
-		<p>Visionaries Powering Your Process</p>		
-															<img width="500" height="500" src="/wp-content/uploads/2025/06/1.png" alt="1 | Stairway Mortgage" srcset="/wp-content/uploads/2025/06/1.png 500w, /wp-content/uploads/2025/06/1-300x300.png 300w, /wp-content/uploads/2025/06/1-150x150.png 150w" sizes="(max-width: 500px) 100vw, 500px" />															
-					<h5>Mike Kortas</h5>				
-		<p>CEO of NEXA Mortgage</p>Mike Kortas, CEO and founder of NEXA Mortgage, has over 20 years of industry experience and has built NEXA into the largest mortgage broker in the U.S. since its launch in 2017. With 2,500+ loan officers across 48 states, his bold, disruptive leadership is driving rapid growth and innovation. Focused on doubling the company’s size by 2025, Kortas is reshaping the mortgage landscape with relentless ambition and a clear vision for market dominance.
-															<img width="500" height="500" src="/wp-content/uploads/2025/06/6A5FE5.png" alt="6A5Fe5 | Stairway Mortgage" srcset="/wp-content/uploads/2025/06/6A5FE5.png 500w, /wp-content/uploads/2025/06/6A5FE5-300x300.png 300w, /wp-content/uploads/2025/06/6A5FE5-150x150.png 150w" sizes="(max-width: 500px) 100vw, 500px" />															
-					<h5>Paul Adams
-</h5>				
-		<p>CIO of NEXA Mortgage</p>Paul Adams, CIO at NEXA Mortgage, brings 40+ years of IT leadership, overseeing strategy, innovation, and AI integration across NEXA and Jet NEXA. He ensures enterprise efficiency, security, and compliance through certified expertise in SOC and cybersecurity. Paul has led major infrastructure transformations, including for the U.S. Air Force, and founded Arizona Onsite Computer Services. His work consistently enhances operational resilience and drives competitive growth through cutting-edge technology.		
-															<img width="500" height="500" src="/wp-content/uploads/2025/06/2-2.png" alt="2 2 | Stairway Mortgage" srcset="/wp-content/uploads/2025/06/2-2.png 500w, /wp-content/uploads/2025/06/2-2-300x300.png 300w, /wp-content/uploads/2025/06/2-2-150x150.png 150w" sizes="(max-width: 500px) 100vw, 500px" />															
-					<h5>Mike Neill
-</h5>				
-		<p>Director of NEXA Lending</p>With a proven track record in mortgage lending, I’ve helped grow a start-up to \$18M in revenue and earned recognition as a top producer by Mortgage Broker Magazine. As a Loan Officer and Recruiter at NEXA Mortgage, I’ve consistently achieved Presidents Club honors while mentoring others. I also serve as Chairman of the Board at Broker’s Care/NEXA Cares and have supported the Boys & Girls Club of the East Valley for over 30 years. Now, as Director of the Non-Delegated Correspondent division at NEXA, I focus on building strong teams and simplifying processes to drive collective success.		
-															<img width="500" height="500" src="/wp-content/uploads/2025/06/3-1.png" alt="3 1 | Stairway Mortgage" srcset="/wp-content/uploads/2025/06/3-1.png 500w, /wp-content/uploads/2025/06/3-1-300x300.png 300w, /wp-content/uploads/2025/06/3-1-150x150.png 150w" sizes="(max-width: 500px) 100vw, 500px" />															
-					<h5>Chris Porter
-</h5>				
-		<p>General Counsel of NEXA Mortgage</p>Christopher “Chris” Porter, General Counsel at NEXA Mortgage, oversees all legal affairs, providing strategic guidance to the executive team and managing litigation, regulatory matters, and business operations. With deep experience in financial services and the mortgage industry, he brings expertise in contract negotiation, risk management, and compliance, playing a key role in supporting NEXA’s growth and governance.
-															<img width="500" height="500" src="/wp-content/uploads/2025/06/5-1.png" alt="5 1 | Stairway Mortgage" srcset="/wp-content/uploads/2025/06/5-1.png 500w, /wp-content/uploads/2025/06/5-1-300x300.png 300w, /wp-content/uploads/2025/06/5-1-150x150.png 150w" sizes="(max-width: 500px) 100vw, 500px" />															
-					<h5>Dan Fouts
-</h5>				
-		<p>LOS Director of NEXA Mortgage</p>Dan Fouts began his career at NEXA Mortgage as a Loan Officer and quickly advanced to leadership, becoming Director of Loan Officer Support and NEXA University. He mentors loan officers across the company and leads training initiatives to enhance skills and drive performance. Through NEXA University, he curates educational webinars and resources that support loan officer growth and success nationwide. His leadership fosters a culture of collaboration and continued learning within NEXA.		
-															<img width="500" height="500" src="/wp-content/uploads/2025/06/12.png" alt="12 | Stairway Mortgage" srcset="/wp-content/uploads/2025/06/12.png 500w, /wp-content/uploads/2025/06/12-300x300.png 300w, /wp-content/uploads/2025/06/12-150x150.png 150w" sizes="(max-width: 500px) 100vw, 500px" />															
-					<h5>Rana Mortensenr
-</h5>				
-		<p>Executive Director of NEXA Mortgage</p>Rana serves as Executive Director at NEXA Mortgage, working closely with CEO Mike Kortas to drive the company’s strategic vision and support all departments. She founded “Women of NEXA” (WON) to empower women within the organization and the industry. Known for her integrity and drive, Rana is committed to fostering excellence and long-term success for NEXA and its partners.		
-															<img width="500" height="500" src="/wp-content/uploads/2025/06/6-1.png" alt="6 1 | Stairway Mortgage" srcset="/wp-content/uploads/2025/06/6-1.png 500w, /wp-content/uploads/2025/06/6-1-300x300.png 300w, /wp-content/uploads/2025/06/6-1-150x150.png 150w" sizes="(max-width: 500px) 100vw, 500px" />															
-					<h5>Karen Enslin
-</h5>				
-		<p>BDM Director of NEXA Mortgage</p>With over 30 years in Real Estate and Finance, she began her career at NBT Bank and held roles at Navy Federal and Bank of America. Her passion for real estate led her to NEXA in 2020, where she now serves as Business Development Director for Corporate NEXA. In this role, she combines her coaching strengths and analytical skills to support growth across both industries.
-															<img width="500" height="500" src="/wp-content/uploads/2025/06/11.png" alt="11 | Stairway Mortgage" srcset="/wp-content/uploads/2025/06/11.png 500w, /wp-content/uploads/2025/06/11-300x300.png 300w, /wp-content/uploads/2025/06/11-150x150.png 150w" sizes="(max-width: 500px) 100vw, 500px" />															
-					<h5>Apple Bugarin
-</h5>				
-		<p>Payroll and Ledger Director of NEXA Mortgage</p>Joining NEXA in March 2022 as an Accounting Specialist, she quickly rose through the ranks to become Director of the Ledger Department by January 2023. By July 2024, she expanded her leadership to include the Payroll Department, managing two critical functions of the business. Her rapid growth reflects her accounting expertise, leadership strength, and dedication to driving results and team collaboration.		
-					<h2>Trusted Industry References</h2>				
-																<a href="https://nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/1660690" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project.png" alt="NEXA Mortgage listing on NMLS Consumer Access" />								</a>
-																<a href="https://www.bbb.org/us/az/chandler/profile/mortgage-broker/nexa-mortgage-1126-1000099747/" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-1.png" alt="NEXA Mortgage profile on Better Business Bureau" />								</a>
-																<a href="https://www.trustpilot.com/review/nexamortgage.com" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-8.png" alt="" />								</a>
-																<a href="https://www.zillow.com/lender-profile/NexaMortgageLLC/" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-9.png" alt="" />								</a>
-																<a href="https://seamless.ai/b/nexa-mortgage-151140243" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-5.png" alt="NEXA Mortgage business profile on Seamless.ai" />								</a>
-																<a href="https://www.bloomberg.com/profile/company/2547538D:US" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-10.png" alt="" />								</a>
-																<a href="https://leadiq.com/c/nexa-mortgage/5c76a53e1d00008c011242f6" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-11.png" alt="" />								</a>
-																<a href="https://growjo.com/company/NEXA_Mortgage" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-12.png" alt="" />								</a>
-					<h2>Trusted Industry References</h2>				
-																<a href="https://nmlsconsumeraccess.org/EntityDetails.aspx/COMPANY/1660690" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project.png" alt="NEXA Mortgage listing on NMLS Consumer Access" />								</a>
-																<a href="https://www.bbb.org/us/az/chandler/profile/mortgage-broker/nexa-mortgage-1126-1000099747/" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-1.png" alt="NEXA Mortgage profile on Better Business Bureau" />								</a>
-																<a href="https://www.trustpilot.com/review/nexamortgage.com" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-8.png" alt="" />								</a>
-																<a href="https://www.zillow.com/lender-profile/NexaMortgageLLC/" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-9.png" alt="" />								</a>
-																<a href="https://seamless.ai/b/nexa-mortgage-151140243" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-5.png" alt="NEXA Mortgage business profile on Seamless.ai" />								</a>
-																<a href="https://www.bloomberg.com/profile/company/2547538D:US" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-10.png" alt="" />								</a>
-																<a href="https://leadiq.com/c/nexa-mortgage/5c76a53e1d00008c011242f6" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-11.png" alt="" />								</a>
-																<a href="https://growjo.com/company/NEXA_Mortgage" target="_blank">
-							<img width="300" height="150" src="/wp-content/uploads/2026/02/New-Project-12.png" alt="" />								</a>
-															<img src="/wp-content/uploads/2024/05/qute.png" title="" alt="" loading="lazy" width="80" height="80"															
-					<h2>100% Client Satisfaction
-</h2>				
-					<h2>Real Comments, Real People
-</h2>				
-					<h2>Hear From Some Past Clients of Stairway's Visionary
-</h2>				
-											<img width="70" height="70" src="/wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349.jpg" alt="Alexis Kulick E1742922763349 | Stairway Mortgage" srcset="/wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349.jpg 833w, /wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349-300x300.jpg 300w, /wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349-150x150.jpg 150w, /wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349-768x770.jpg 768w, /wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349-708x710.jpg 708w, /wp-content/uploads/2025/03/Alexis-Kulick-e1742922763349-600x600.jpg 600w" sizes="(max-width: 833px) 100vw, 833px" />										
-																		<strong>Alexis Kulick - via Faceook</strong>
-																											Director of Digital Campaign at UBS - CALIFORNIA
-																			<ul>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																			</ul>
-																		<p><b>Easy and quick refinance with great rates and expert advice.</b><br>
-<em>
-I recently refinanced my existing mortgage with Jim and his team, and I was so pleased with how easy and quick the whole process was. Jim and his team were very responsive to my questions, and I feel confident that I got the best rate and shaved 9 years off my mortgage. He is very knowledgeable and helped me determine the best option for myself and my family. Definitely recommend him.
-        </em></p>
-											<img width="70" height="70" src="/wp-content/uploads/2025/03/Julian-Einfrank-e1742922797847.jpeg" alt="Julian Einfrank E1742922797847 | Stairway Mortgage" />										
-																		<strong>Julian Einfrank - via Facebook</strong>
-																											Sr. Wealth Advisor Clifton Larson Allen - ILLINOIS
-																			<ul>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																			</ul>
-																		<p><b>Complex loan scenario handled with expertise and care.</b><br>
-<em>
-The process went smoothly. Jim Blackburn is a lending saint. He knows the market well and cares about his clients tremendously. The team made it really easy to do business, uploading documents and getting forms signed. Our situation is a bit complex. Rather than turn us away for some added work, they dug in to get it done right. They like the complexity, whereas other lenders don’t want to roll up their sleeves. Highly recommend Jim Blackburn for new loans and refinances!
-</em></p>
-											<img width="70" height="70" src="/wp-content/uploads/2025/03/Elizabeth-Torres.jpeg" alt="Elizabeth Torres | Stairway Mortgage" srcset="/wp-content/uploads/2025/03/Elizabeth-Torres.jpeg 200w, /wp-content/uploads/2025/03/Elizabeth-Torres-150x150.jpeg 150w" sizes="(max-width: 200px) 100vw, 200px" />										
-																		<strong>Elizabeth	Torres - via Facebook</strong>
-																											Senior Branch Mgr. at JP Morgan Chase - ILLINOIS
-																			<ul>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																			</ul>
-																		<p><b>Closed in time for Thanksgiving! Jim and his team were amazing, and we got a much better deal than previous lender.</b><br>
-<em>
-We closed our loan within 19 days. Just in time for Thanksgiving!! Jim and his team are amazing! We initially had gone with a different loan office and the interest rate and down payment was ridiculous. The owner of the company where my husband works referred us to Jim and we are very grateful for that. We had such an amazing experience with Jim and his team! Since our transaction, we’ve been referring Jim to anyone we know that are thinking of purchasing a house.        
-</em></p>
-											<img width="70" height="70" src="/wp-content/uploads/2025/03/Livermore-David.png" alt="Livermore David | Stairway Mortgage" />										
-																		<strong>David Livermore - via Google</strong>
-																											Founder Cultural Intelligence - CALIFORNIA
-																			<ul>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																			</ul>
-																		<p><b>Secured financing despite market challenges and self-employment.</b><br>
-<em>
-Run, don't walk to work with Jim and his team. Jim helped us get financing when it seemed like an impossible feat. It was hard enough to be managing a home purchase 2000 miles away, but add to that an extremely competitive market and being self-employed, and it seemed impossible until Jim's team got involved. Jim was not only responsive; he consistently went above and beyond by making clear recommendations, working his magic, and ensuring that financing wasn’t a barrier for buying our dream house in one of the most competitive markets in the country.          
-</em></p>
-											<img width="70" height="70" src="/wp-content/uploads/2025/03/Christina-Curva-Carrasco-e1742922902463.jpg" alt="Christina Curva Carrasco E1742922902463 | Stairway Mortgage" />										
-																		<strong>Christina	Curva Carrasco - via Facebook</strong>
-																											Owner at Curated Interiors - WASHINGTON DC
-																			<ul>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																					<li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></a></li>
-																			</ul>
-																		<p><b>Smooth, fast, and hassle-free mortgage and refinance process.</b><br>
-<em>
-Jim and his team are great to work with! We have used Jim twice with our home mortgage. Both times, the process was smooth and uneventful (which is what I wanted). He has kept in touch with us and contacted us when he felt it was the right time for us to refinance! I was amazed at our refinancing process – it took them about a little over two weeks to process all our information and close! I love the new online process of submitting all the information they require – it made it super easy for me to organize and gather all the documents.
-</em></p>`} />
+
+  <div class="nexa-scope">
+
+    <!-- ============================== HERO ============================== -->
+    <section class="nexa-hero">
+      <div class="container-page">
+        <nav class="nexa-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span>/</span> <span>NEXA Mortgage Partnership</span>
+        </nav>
+        <div class="nexa-hero-grid">
+          <div class="nexa-hero-copy">
+            <span class="eyebrow eyebrow-blue mb-3">A division of NEXA Mortgage</span>
+            <h1 class="display-lg nexa-h1">A partnership built for clients, powered by strategy.</h1>
+            <p class="nexa-lede">
+              300+ lending partners. Flexible loan options. And now a
+              <a href="/blog/nexa-mortgage-nexa-lending/">direct lender, NEXA Lending</a>. Our partnership
+              with NEXA Mortgage gives you wholesale pricing and a 300+ lender network — with the local,
+              personal service Stairway is known for.
+            </p>
+            <div class="nexa-actions">
+              <a href="/see-my-options/" class="btn btn-blue btn-arrow">See My Options</a>
+              <a href="/schedule-call/" class="btn btn-ghost">Talk to Our Team</a>
+            </div>
+            <p class="nexa-trust">Reviewed by Jim Blackburn · NMLS #1072866 · Stairway Mortgage</p>
+          </div>
+          <figure class="nexa-hero-photo">
+            <img src="/wp-content/uploads/2025/05/real-estate-agents-talking-about-documents-683x1024.jpg"
+                 alt="Stairway Mortgage advisors reviewing loan documents with a client"
+                 loading="eager" decoding="async" width="683" height="1024"
+                 onerror={ph(683, 1024, 'Stairway + NEXA')} />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 300+ lender marquee (own component, outside .nexa-scope) -->
+  <LenderLogoMarquee />
+
+  <div class="nexa-scope">
+
+    <!-- ===================== WHY WE PARTNERED ===================== -->
+    <section class="nexa-section">
+      <div class="container-page">
+        <div class="nexa-grid-2">
+          <div class="nexa-why">
+            <span class="eyebrow eyebrow-blue mb-3">Why we partnered</span>
+            <h2 class="display-md">Why we partnered with NEXA Mortgage</h2>
+            <p>
+              At Stairway Mortgage, we focus on helping clients build real, lasting wealth through strategic
+              real estate leverage. To do this well, we partnered with the most powerful mortgage brokerage
+              platform in the country — <a href="https://nexamortgage.com/" target="_blank" rel="noopener">NEXA Mortgage</a>,
+              founded by visionary leader Mike Kortas.
+            </p>
+            <ul class="nexa-checklist">
+              <li>Competitively priced interest rates through wholesale lending</li>
+              <li>Faster closings through streamlined systems</li>
+              <li>More loan options for every financial scenario</li>
+              <li>Strategy-first support, not sales-first pressure</li>
+            </ul>
+          </div>
+          <div class="nexa-why-media">
+            <img src="/wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_29_54-AM.png"
+                 alt="NEXA Mortgage national lender network illustration"
+                 loading="lazy" decoding="async" width="1024" height="1024"
+                 onerror={ph(640, 640, 'NEXA Network')} />
+          </div>
+        </div>
+
+        <h3 class="nexa-sub-h">What NEXA Mortgage brings to the table</h3>
+        <div class="nexa-features">
+          {nexaFeatures.map((f) => (
+            <div class="nexa-feature">
+              <h4>{f.h}</h4>
+              <p>{f.p}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WHAT STAIRWAY BRINGS ===================== -->
+    <section class="nexa-section nexa-section--tint">
+      <div class="container-page">
+        <div class="nexa-head">
+          <span class="eyebrow eyebrow-blue mb-3">What Stairway brings</span>
+          <h2 class="display-md">What Stairway brings to the table</h2>
+          <p class="nexa-sub">
+            Stairway Mortgage trains <a href="/certified-stairway-advisor/">Certified Stairway Advisors</a>™
+            to go beyond traditional lending. We guide clients to make strategic financial decisions that
+            grow wealth over time. We teach our clients how to:
+          </p>
+        </div>
+        <div class="nexa-values">
+          {stairwayValues.map((v) => (<span class="nexa-chip">{v}</span>))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STATS BAND (qualitative) ===================== -->
+    <section class="nexa-section">
+      <div class="container-page">
+        <div class="nexa-head nexa-head--center">
+          <span class="eyebrow eyebrow-blue mb-3">NEXA Mortgage by the numbers</span>
+          <h2 class="display-md">The platform behind your loan</h2>
+        </div>
+        <div class="nexa-stats">
+          {stats.map((s) => (<div class="nexa-stat">{s}</div>))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SMARTER TECH ===================== -->
+    <section class="nexa-section nexa-section--tint">
+      <div class="container-page">
+        <div class="nexa-grid-2 nexa-grid-2--rev">
+          <div class="nexa-why-media">
+            <img src="/wp-content/uploads/2025/04/ChatGPT-Image-Apr-24-2025-09_56_18-AM-1.png"
+                 alt="NEXA proprietary Loan Operating System platform illustration"
+                 loading="lazy" decoding="async" width="1024" height="1024"
+                 onerror={ph(640, 640, 'Loan OS')} />
+          </div>
+          <div class="nexa-why">
+            <span class="eyebrow eyebrow-blue mb-3">Smarter tech. Smoother closings.</span>
+            <h2 class="display-md">One platform, end to end</h2>
+            <p>
+              NEXA’s proprietary Loan Operating System connects everything — processors, underwriters,
+              title, and even insurance — into a single platform. It’s modern, fast, and built to serve.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NEXUS + LEADERSHIP BIOS ===================== -->
+    <section class="nexa-section">
+      <div class="container-page">
+        <div class="nexa-head nexa-head--center">
+          <span class="eyebrow eyebrow-blue mb-3">The NEXUS of financial power</span>
+          <h2 class="display-md">Visionaries powering your process</h2>
+          <p class="nexa-sub">
+            The name NEXA comes from the Latin <em>nexus</em>, meaning connection. To build on this,
+            Jim Blackburn created the NEXA acronym — defining the core values of the types of elite
+            financial professionals that we like to partner with.
+          </p>
+        </div>
+        <div class="nexa-bios">
+          {bios.map((b) => (
+            <article class="nexa-bio">
+              <div class="nexa-bio-head">
+                <img class="nexa-bio-photo" src={b.img} alt={`${b.name}, ${b.title}`}
+                     loading="lazy" decoding="async" width="110" height="110" onerror={ph(110, 110, b.name)} />
+                <div>
+                  <h4 class="nexa-bio-name">{b.name}</h4>
+                  <p class="nexa-bio-title">{b.title}</p>
+                </div>
+              </div>
+              <p class="nexa-bio-text">{b.bio}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS (homepage review style) ===================== -->
+    <section class="nexa-section nexa-section--tint">
+      <div class="container-page">
+        <div class="nexa-head nexa-head--center">
+          <span class="eyebrow eyebrow-blue mb-3">Real comments, real people</span>
+          <h2 class="display-md">Hear from past clients of Stairway’s visionary</h2>
+        </div>
+        <div class="nexa-reviews">
+          {reviews.map((r) => (
+            <article class="nexa-review">
+              <div class="nexa-stars" aria-label="5 out of 5 stars">
+                {[0,1,2,3,4].map(() => (
+                  <svg class="nexa-star" viewBox="0 0 576 512" fill="currentColor" aria-hidden="true"><path d={STAR_PATH} /></svg>
+                ))}
+              </div>
+              <p class="nexa-review-quote">{r.quote}</p>
+              <p class="nexa-review-body">{r.body}</p>
+              <div class="nexa-review-author">
+                <img class="nexa-review-avatar" src={r.img} alt={r.name}
+                     loading="lazy" decoding="async" width="44" height="44" onerror={ph(44, 44, r.name)} />
+                <div>
+                  <div class="nexa-review-name">{r.name}</div>
+                  <div class="nexa-review-meta">{r.source} · {r.meta}</div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== VERIFY NEXA (logo grid) ===================== -->
+    <section class="nexa-section">
+      <div class="container-page">
+        <div class="nexa-head nexa-head--center">
+          <span class="eyebrow eyebrow-blue mb-3">Independently verified</span>
+          <h2 class="display-md">Verify NEXA Mortgage across trusted platforms</h2>
+        </div>
+        <div class="nexa-verify">
+          {verifyLogos.map((l) => (
+            <a class="nexa-verify-card" href={l.href} target="_blank" rel="noopener" aria-label={`Verify NEXA Mortgage on ${l.label}`}>
+              <img src={l.img} alt={l.alt} loading="lazy" decoding="async" width="300" height="150" onerror={ph(200, 100, l.label)} />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CLOSING CTA ===================== -->
+    <section class="nexa-cta">
+      <div class="container-page">
+        <div class="nexa-cta-inner">
+          <span class="eyebrow eyebrow-on-dark mb-3">300+ lenders. One local team.</span>
+          <h2 class="display-md nexa-cta-h">Ready to see your options?</h2>
+          <p class="nexa-cta-p">
+            Get the strength of a national network with the personal service of a local advisor.
+            Let’s look at what fits your goals.
+          </p>
+          <div class="nexa-actions nexa-actions--center">
+            <a href="/see-my-options/" class="btn btn-blue btn-arrow">See My Options</a>
+            <a href="/schedule-call/" class="btn btn-ghost nexa-btn-on-dark">Talk to Our Team</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </Layout>
 
 <style>
-  .ft-breadcrumb { font-family:var(--stw-mono, 'JetBrains Mono'), monospace; font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
-  .ft-breadcrumb a { color:var(--color-mute); text-decoration:none; } .ft-breadcrumb a:hover { color:var(--color-blue); }
-  .ft-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
-  .ft-header { padding-top:0.5rem; padding-bottom:1rem; }
-  .ft-body { margin-top:1.5rem; padding-bottom:4rem; }
-  .ft-body :global(h2) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:clamp(1.4rem,2.5vw,1.9rem); margin-top:2.5rem; margin-bottom:1rem; }
-  .ft-body :global(h3) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:1.3rem; margin-top:1.75rem; margin-bottom:0.7rem; }
-  .ft-body :global(h2 b),.ft-body :global(h3 b) { font-weight:inherit; }
-  .ft-body :global(p) { font-size:16px; line-height:1.7; margin-bottom:1.1rem; color:var(--color-ink-light); }
-  .ft-body :global(ul),.ft-body :global(ol) { margin:0 0 1.4rem 1.25rem; display:flex; flex-direction:column; gap:0.45rem; }
-  .ft-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
-  .ft-body :global(img) { max-width:100%; height:auto; border-radius:10px; margin:1.5rem 0; }
-  .ft-body :global(table) { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:14px; }
-  .ft-body :global(th),.ft-body :global(td) { border:1px solid var(--color-bone); padding:0.6rem 0.8rem; text-align:left; }
-  .ft-body :global(th) { background:var(--color-paper-tint); font-weight:600; }
+  .nexa-scope {
+    --nx-ink: var(--color-ink, #0A0E1A);
+    --nx-ink-light: var(--color-ink-light, #4A5568);
+    --nx-paper: var(--color-paper, #FAFAF7);
+    --nx-paper-tint: var(--color-paper-tint, #F4F4EE);
+    --nx-bone: var(--color-bone, #E5E5DE);
+    --nx-mute: var(--color-mute, #6B7280);
+    --nx-blue: var(--color-blue, #1845D6);
+    --nx-gold: #B8860B;
+    --nx-serif: var(--stw-display, 'Fraunces'), Georgia, serif;
+    --nx-mono: var(--stw-mono, 'JetBrains Mono'), monospace;
+  }
+
+  /* ---------- HERO ---------- */
+  .nexa-hero { padding: 1rem 0 4.5rem; background: radial-gradient(120% 90% at 85% -10%, #F2F5FF 0%, transparent 55%), var(--nx-paper); border-bottom: 1px solid var(--nx-bone); }
+  .nexa-breadcrumb { font-family: var(--nx-mono); font-size: 12px; color: var(--nx-mute); padding: 2rem 0 1.75rem; }
+  .nexa-breadcrumb a { color: var(--nx-mute); text-decoration: none; }
+  .nexa-breadcrumb a:hover { color: var(--nx-blue); }
+  .nexa-breadcrumb span { margin-inline: 0.4rem; opacity: 0.5; }
+  .nexa-hero-grid { display: grid; grid-template-columns: 1.35fr 0.9fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
+  .nexa-h1 { margin: 0.5rem 0 1.25rem; font-style: normal; max-width: 18ch; }
+  .nexa-lede { font-size: 1.1875rem; line-height: 1.55; color: var(--nx-ink-light); max-width: 56ch; margin-bottom: 1.75rem; }
+  .nexa-lede a { color: var(--nx-blue); text-decoration: underline; text-underline-offset: 2px; }
+  .nexa-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
+  .nexa-actions--center { justify-content: center; }
+  .nexa-trust { font-family: var(--nx-mono); font-size: 12px; color: var(--nx-mute); margin-top: 1.5rem; letter-spacing: 0.02em; }
+  .nexa-hero-photo { margin: 0; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; border: 1px solid var(--nx-bone); box-shadow: 0 24px 60px -34px rgba(10,14,26,0.4); background: var(--nx-paper-tint); }
+  .nexa-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- SECTIONS ---------- */
+  .nexa-section { padding: 4.5rem 0; }
+  .nexa-section--tint { background: var(--nx-paper-tint); border-top: 1px solid var(--nx-bone); border-bottom: 1px solid var(--nx-bone); }
+  .nexa-head { max-width: 660px; margin: 0 auto 2.75rem; }
+  .nexa-head--center { text-align: center; }
+  .nexa-section h2 { font-style: normal; }
+  .nexa-sub, .nexa-section p { font-size: 1.0625rem; line-height: 1.7; color: var(--nx-ink-light); }
+  .nexa-sub { margin-top: 1rem; }
+  .nexa-sub a, .nexa-section .nexa-why a { color: var(--nx-blue); text-decoration: underline; text-underline-offset: 2px; }
+  .nexa-sub-h { font-family: var(--nx-serif); font-weight: 500; font-size: 1.5rem; color: var(--nx-ink); margin: 3rem 0 1.5rem; }
+
+  /* two-column copy + media */
+  .nexa-grid-2 { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+  .nexa-why h2 { margin: 0.5rem 0 1rem; }
+  .nexa-checklist { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 0.6rem; }
+  .nexa-checklist li { position: relative; padding-left: 1.6rem; font-size: 1rem; line-height: 1.5; color: var(--nx-ink-light); }
+  .nexa-checklist li::before { content: '✦'; position: absolute; left: 0; color: var(--nx-gold); }
+  .nexa-why-media { border-radius: 16px; overflow: hidden; border: 1px solid var(--nx-bone); background: var(--nx-paper-tint); aspect-ratio: 1/1; }
+  .nexa-why-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* feature cards */
+  .nexa-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .nexa-feature { background: var(--nx-paper); border: 1px solid var(--nx-bone); border-radius: 14px; padding: 1.5rem 1.4rem; border-top: 3px solid var(--nx-gold); }
+  .nexa-feature h4 { font-family: var(--nx-serif); font-weight: 500; font-size: 1.15rem; color: var(--nx-ink); margin: 0 0 0.5rem; }
+  .nexa-feature p { font-size: 14.5px; line-height: 1.55; color: var(--nx-mute); margin: 0; }
+
+  /* value chips */
+  .nexa-values { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+  .nexa-chip { font-family: var(--nx-mono); font-size: 12.5px; letter-spacing: 0.03em; color: var(--nx-ink); background: var(--nx-paper); border: 1px solid var(--nx-bone); border-radius: 100px; padding: 0.6rem 1.1rem; }
+
+  /* stat cards */
+  .nexa-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .nexa-stat { background: var(--nx-paper); border: 1px solid var(--nx-bone); border-radius: 14px; padding: 1.75rem 1.4rem; text-align: center; font-family: var(--nx-serif); font-size: 1.15rem; line-height: 1.3; color: var(--nx-ink); }
+
+  /* leadership bios */
+  .nexa-bios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .nexa-bio { background: var(--nx-paper); border: 1px solid var(--nx-bone); border-radius: 16px; padding: 1.75rem; }
+  .nexa-bio-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .nexa-bio-photo { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid var(--nx-bone); background: var(--nx-paper-tint); }
+  .nexa-bio-name { font-family: var(--nx-serif); font-weight: 500; font-size: 1.2rem; color: var(--nx-ink); margin: 0; }
+  .nexa-bio-title { font-family: var(--nx-mono); font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--nx-blue); margin: 0.35rem 0 0; }
+  .nexa-bio-text { font-size: 14.5px; line-height: 1.6; color: var(--nx-ink-light); margin: 0; }
+
+  /* testimonials — homepage review style */
+  .nexa-reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .nexa-review { background: var(--nx-paper); border: 1px solid var(--nx-bone); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; }
+  .nexa-stars { display: inline-flex; gap: 2px; color: #f5a623; margin-bottom: 0.9rem; }
+  .nexa-star { width: 15px; height: 15px; }
+  .nexa-review-quote { font-family: var(--nx-serif); font-size: 1.05rem; line-height: 1.4; color: var(--nx-ink); margin: 0 0 0.75rem; letter-spacing: -0.005em; }
+  .nexa-review-body { font-size: 14px; line-height: 1.6; color: var(--nx-ink-light); margin: 0 0 1.25rem; flex: 1; }
+  .nexa-review-author { display: flex; align-items: center; gap: 0.75rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--nx-bone); }
+  .nexa-review-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: center 25%; flex-shrink: 0; border: 1px solid var(--nx-bone); background: var(--nx-paper-tint); }
+  .nexa-review-name { font-size: 13.5px; font-weight: 600; color: var(--nx-ink); }
+  .nexa-review-meta { font-size: 11.5px; color: var(--nx-mute); margin-top: 2px; line-height: 1.3; }
+
+  /* verify logo grid */
+  .nexa-verify { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .nexa-verify-card { display: flex; align-items: center; justify-content: center; background: #fff; border: 1px solid var(--nx-bone); border-radius: 14px; padding: 1.5rem; min-height: 110px; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+  .nexa-verify-card:hover { border-color: var(--nx-blue); box-shadow: 0 12px 28px -18px rgba(10,14,26,0.25); transform: translateY(-2px); }
+  .nexa-verify-card img { max-width: 100%; max-height: 56px; width: auto; height: auto; object-fit: contain; display: block; }
+
+  /* closing CTA */
+  .nexa-cta { background: var(--nx-ink); color: var(--nx-paper); padding: 5.5rem 0; }
+  .nexa-cta-inner { max-width: 620px; margin: 0 auto; text-align: center; }
+  .nexa-cta-h { color: var(--nx-paper); margin: 0.75rem auto 1rem; font-style: normal; }
+  .nexa-cta-p { font-size: 1.0625rem; line-height: 1.6; color: rgba(250,250,247,0.78); margin: 0 auto 2rem; }
+  .nexa-btn-on-dark { color: var(--nx-paper); border-color: rgba(250,250,247,0.3); }
+  .nexa-btn-on-dark:hover { border-color: var(--nx-paper); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1000px) {
+    .nexa-features, .nexa-bios, .nexa-reviews { grid-template-columns: repeat(2, 1fr); }
+    .nexa-stats { grid-template-columns: repeat(2, 1fr); }
+    .nexa-verify { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .nexa-hero-grid, .nexa-grid-2 { grid-template-columns: 1fr; }
+    .nexa-grid-2--rev .nexa-why-media { order: 2; }
+    .nexa-hero-photo { order: -1; aspect-ratio: 16/11; max-width: 460px; }
+    .nexa-verify { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .nexa-features, .nexa-bios, .nexa-reviews, .nexa-stats { grid-template-columns: 1fr; }
+    .nexa-section { padding: 3.25rem 0; }
+    .nexa-actions { flex-direction: column; align-items: stretch; }
+    .nexa-actions .btn { justify-content: center; }
+    .nexa-bio-head { flex-direction: column; text-align: center; align-items: center; }
+  }
 </style>
