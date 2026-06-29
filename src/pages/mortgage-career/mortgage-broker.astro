@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CareerApplyForm from '../../components/CareerApplyForm.astro';
 ---
 <Layout
   title="How to Become a Mortgage Broker: Step-by-Step Guide (2026)"
@@ -616,7 +617,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="mt-5">Become a mortgage broker in the huddle &mdash; not the stands</h2>
       <p>Whether you're just exploring or ready to get licensed, the next step is a conversation. No pressure, no script &mdash; just an honest look at whether this path is right for you.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="/schedule-call/" class="btn btn-secondary btn-large">Talk to Our Team</a>
       </div>
     </div>
@@ -647,5 +648,7 @@ import Layout from '../../layouts/Layout.astro';
     btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
   });
 </script>
+
+<CareerApplyForm />
 
 </Layout>

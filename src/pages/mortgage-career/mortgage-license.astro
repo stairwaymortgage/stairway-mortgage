@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CareerApplyForm from '../../components/CareerApplyForm.astro';
 ---
 <Layout
   title="How to Get a Mortgage License: NMLS Requirements, Cost & Steps (2026)"
@@ -596,7 +597,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="mt-5">Get licensed &mdash; and put it somewhere that grows you</h2>
       <p>Mapping out your mortgage license is the right first move. The next one is choosing where it lands. Let's talk about the path and where your license can take you.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="/schedule-call/" class="btn btn-secondary btn-large">Talk to Our Team</a>
       </div>
     </div>
@@ -628,5 +629,7 @@ import Layout from '../../layouts/Layout.astro';
     btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
   });
 </script>
+
+<CareerApplyForm />
 
 </Layout>

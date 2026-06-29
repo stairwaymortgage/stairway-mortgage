@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CareerApplyForm from '../../components/CareerApplyForm.astro';
 ---
 <Layout
   title="Career Change to Mortgage: How to Become a Loan Officer (2026)"
@@ -356,7 +357,7 @@ import Layout from '../../layouts/Layout.astro';
       <h1 class="display-1">Career Change to Mortgage: Your Honest On-Ramp</h1>
       <p class="lead hero-subtitle">No finance degree. No prior experience. Just a clear path from where you are now to a flexible, uncapped career helping people buy homes. Here's how career-changers break into the mortgage business &mdash; and how to do it without leaping blind.</p>
       <div class="hero-actions">
-        <a href="#start" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="#path" class="btn btn-secondary btn-large">See the Transition Path</a>
       </div>
       <div class="hero-trust">
@@ -552,7 +553,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="mt-5">Start your mortgage career &mdash; without quitting blind</h2>
       <p>Curious whether this move fits your life? Let's talk through the path, the timing, and how to transition without risking your income. No pressure, no script &mdash; just honest guidance from people who've done it.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="/mortgage-career/for-licensed-professionals/" class="btn btn-secondary btn-large">Already Licensed? See This</a>
       </div>
     </div>
@@ -583,5 +584,7 @@ import Layout from '../../layouts/Layout.astro';
     btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
   });
 </script>
+
+<CareerApplyForm />
 
 </Layout>

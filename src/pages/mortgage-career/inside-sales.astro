@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CareerApplyForm from '../../components/CareerApplyForm.astro';
 ---
 <Layout
   title="Inside Sales & Telemarketing: The Path to Loan Officer (2026)"
@@ -356,7 +357,7 @@ import Layout from '../../layouts/Layout.astro';
       <h1 class="display-1">Inside Sales &amp; Telemarketing: The Sales Path Into Mortgage</h1>
       <p class="lead hero-subtitle">Every great loan officer started on the phone. Inside sales &mdash; what some call telemarketing &mdash; is the entry point to the highest-earning path in the mortgage business. If you're outgoing and can handle rejection, this is where a sales career begins.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="#path" class="btn btn-secondary btn-large">Why It's Step One</a>
       </div>
       <div class="hero-trust">
@@ -537,7 +538,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="mt-5">If you're built for sales, this is where it starts</h2>
       <p>Outgoing, resilient, and ready to earn based on what you put in? The phone path leads straight to uncapped income. Let's talk about starting in inside sales and growing into a loan officer.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="/schedule-call/" class="btn btn-secondary btn-large">Talk to Our Team</a>
       </div>
     </div>
@@ -568,5 +569,7 @@ import Layout from '../../layouts/Layout.astro';
     btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
   });
 </script>
+
+<CareerApplyForm />
 
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CareerApplyForm from '../../components/CareerApplyForm.astro';
 ---
 <Layout
   title="SAFE MLO Exam Guide: Questions, Pass Rate & How to Pass (2026)"
@@ -592,7 +593,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="mt-5">Pass the exam &mdash; then build the career</h2>
       <p>Already studying, or just mapping the path? The smartest move you can make before test day is choosing where you'll take your license. Let's talk about what comes after you pass.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="/schedule-call/" class="btn btn-secondary btn-large">Talk to Our Team</a>
       </div>
     </div>
@@ -624,5 +625,7 @@ import Layout from '../../layouts/Layout.astro';
     btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
   });
 </script>
+
+<CareerApplyForm />
 
 </Layout>

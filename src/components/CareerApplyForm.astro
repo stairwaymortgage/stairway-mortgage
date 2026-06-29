@@ -1,0 +1,425 @@
+---
+// CareerApplyForm.astro — Stairway Mortgage multi-step career application (MODAL).
+// PHASE 1 SKELETON: step engine + 4 sample step TYPES (file upload, multi-select,
+// text/email/tel, SMS-consent submit). Phase 2 adds the remaining ~18 steps.
+//
+// Opens as a centered overlay modal when any [data-caf-open] trigger is clicked
+// (mirrors the conversational popup forms: PurchaseForm/RealReverseForm). Closes on
+// the X, backdrop click, and Esc; body scroll locked while open. Hidden by default.
+//
+// Self-contained: own `.caf` scope + tokens (independent of the page's .mc-scope),
+// is:inline plain JS (NO TypeScript — TS breaks the Astro build).
+//
+// Resume upload reuses the live Worker (POST multipart {file, folder:"resumes"}
+// → JSON {url}); lead posts JSON to GHL_WEBHOOK_URL, mirroring the loan-estimate form.
+// Attribution mirrors the site-canonical attributionFields() (LO_MAP → lo_name etc.).
+//
+// USAGE:
+//   import CareerApplyForm from '../../components/CareerApplyForm.astro';
+//   <a data-caf-open>Start My Mortgage Career</a>   (any element with data-caf-open opens it)
+//   <CareerApplyForm />
+import { GHL_WEBHOOK_URL } from '../lib/ghl';
+---
+
+<div class="caf-overlay" id="caf-overlay" aria-hidden="true">
+  <div class="caf" id="caf-root" role="dialog" aria-modal="true" aria-label="Mortgage Career Application" data-ghl-endpoint={GHL_WEBHOOK_URL}>
+    <button type="button" class="caf-close" data-caf-close aria-label="Close">&times;</button>
+
+    <div class="caf-card" id="caf-form">
+      <div class="caf-progress" aria-hidden="true"><div class="caf-progress-bar" id="caf-bar"></div></div>
+      <div class="caf-progress-label text-mono" id="caf-steplabel">Step 1</div>
+
+      <div class="caf-stage" id="caf-stage"></div>
+
+      <p class="caf-error" id="caf-error" style="display:none;"></p>
+
+      <div class="caf-nav">
+        <button type="button" class="caf-btn caf-btn-ghost caf-prev" id="caf-prev">&larr; Back</button>
+        <button type="button" class="caf-btn caf-btn-primary caf-next" id="caf-next">Next &rarr;</button>
+      </div>
+
+      <!-- honeypot: bots fill this, humans don't -->
+      <input type="text" id="caf-hp" name="company_website_hp" tabindex="-1" autocomplete="off"
+             class="caf-hp" aria-hidden="true" />
+    </div>
+
+    <div class="caf-success" id="caf-success" style="display:none;">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="caf-success-icon" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <p class="caf-success-title">Application received.</p>
+      <p class="caf-success-sub">Thanks &mdash; our team will review it and reach out shortly about next steps.</p>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  /* ============ CareerApplyForm modal — scoped to .caf (self-contained tokens) ============ */
+  .caf-overlay, .caf-overlay * { box-sizing: border-box; }
+  .caf-overlay {
+    position: fixed; inset: 0; z-index: 99999; display: none;
+    background: rgba(10,14,26,0.55); backdrop-filter: blur(3px);
+    align-items: center; justify-content: center; padding: 20px;
+    font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  }
+  .caf-overlay.caf-active { display: flex; }
+
+  .caf {
+    --ink: #0A0E1A; --ink-2: #1E2433; --ink-lighter: #6B7280;
+    --paper: #FAFAF7; --paper-2: #F4F4EE; --paper-3: #EDEDE5; --white: #FFFFFF;
+    --blue: #1845D6; --blue-deep: #0F2EA0; --gold: #B8860B;
+    --border: #E5E5DE; --border-strong: #D4D4C8;
+    --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    position: relative; width: 100%; max-width: 560px; max-height: 92vh; overflow-y: auto;
+    background: var(--paper); border-radius: 16px; padding: 30px 30px 28px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.38); color: var(--ink);
+    font-family: var(--sans); text-align: left;
+  }
+  @media (max-width: 480px) { .caf { padding: 40px 18px 22px; border-radius: 14px; } }
+
+  .caf-close {
+    position: absolute; top: 14px; right: 18px; z-index: 2;
+    border: 0; background: none; font-size: 30px; line-height: 1; color: var(--ink);
+    cursor: pointer; opacity: .45; padding: 0;
+  }
+  .caf-close:hover { opacity: 1; }
+
+  .caf-progress { height: 6px; border-radius: 99px; background: var(--paper-3); overflow: hidden; margin-top: 4px; }
+  .caf-progress-bar { height: 100%; width: 0%; background: var(--blue); border-radius: 99px; transition: width .35s cubic-bezier(.4,0,.2,1); }
+  .caf-progress-label { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-lighter); margin: 12px 0 20px; }
+  .caf .text-mono { font-family: var(--mono); }
+
+  .caf-stage { min-height: 150px; }
+  .caf-q { font-family: var(--serif); font-size: 26px; font-weight: 500; line-height: 1.2; letter-spacing: -.01em; color: var(--ink); margin: 0 0 6px; }
+  .caf-sub { font-size: 14px; color: var(--ink-lighter); line-height: 1.5; margin: 0 0 22px; }
+  .caf-q:only-child { margin-bottom: 22px; }
+
+  .caf-field { margin-top: 6px; }
+  .caf-input {
+    width: 100%; padding: 14px 16px; border: 1px solid var(--border-strong); border-radius: 8px;
+    font-size: 16px; font-family: var(--sans); color: var(--ink); background: var(--white); outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .caf-input::placeholder { color: #a6a6a0; }
+  .caf-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(24,69,214,.12); }
+  .caf-textarea { resize: vertical; min-height: 110px; line-height: 1.5; }
+
+  /* file */
+  .caf-file { width: 100%; padding: 12px; border: 1px dashed var(--border-strong); border-radius: 8px; font-size: 14px; cursor: pointer; background: var(--white); }
+  .caf-file::file-selector-button {
+    font-family: var(--sans); font-size: 12px; font-weight: 600; margin-right: 12px; padding: 8px 12px;
+    border: 1px solid var(--border-strong); border-radius: 6px; background: var(--paper-2); color: var(--ink); cursor: pointer;
+  }
+  .caf-file::file-selector-button:hover { background: var(--paper-3); border-color: var(--ink); }
+  .caf-filenote { margin-top: 10px; font-family: var(--mono); font-size: 13px; color: #2E9E2E; }
+  .caf-skip { display: none; margin-top: 12px; background: none; border: 0; color: var(--blue); font-size: 13px; text-decoration: underline; cursor: pointer; padding: 0; font-family: var(--sans); }
+
+  /* multi-select */
+  .caf-options { display: grid; gap: 10px; }
+  .caf-opt {
+    display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none;
+    border: 1.5px solid var(--border-strong); border-radius: 10px; padding: 14px 16px;
+    background: var(--white); font-size: 15px; color: var(--ink); transition: border-color .15s, background .15s;
+  }
+  .caf-opt:hover { border-color: var(--ink); background: var(--paper-2); }
+  .caf-opt.caf-sel { border-color: var(--blue); background: #F2F5FF; }
+  .caf-opt input { width: 18px; height: 18px; accent-color: var(--blue); flex: 0 0 auto; }
+
+  /* consent */
+  .caf-consent-row { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-size: 13px; line-height: 1.55; color: var(--ink-2); }
+  .caf-consent-row input { width: 18px; height: 18px; accent-color: var(--blue); flex: 0 0 auto; margin-top: 2px; }
+  .caf-consent-links { margin-top: 14px; font-size: 12px; color: var(--ink-lighter); }
+  .caf-consent-links a { color: var(--blue); text-decoration: underline; }
+
+  .caf-error { font-size: 13px; color: #c0392b; margin: 16px 0 0; }
+
+  .caf-nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 26px; }
+  .caf-btn { font-family: var(--sans); font-size: 15px; font-weight: 500; border-radius: 100px; padding: 13px 26px; cursor: pointer; border: 1px solid transparent; transition: all .15s; }
+  .caf-btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .caf-btn-primary:hover:not(:disabled) { background: var(--blue); border-color: var(--blue); }
+  .caf-btn-primary:disabled { opacity: .4; cursor: default; }
+  .caf-btn-ghost { background: transparent; color: var(--ink); border-color: var(--border-strong); }
+  .caf-btn-ghost:hover { border-color: var(--ink); }
+
+  .caf-hp { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; opacity: 0 !important; }
+
+  .caf-success { text-align: center; padding: 34px 10px 24px; }
+  .caf-success-icon { color: #2ecc71; margin: 0 auto 16px; display: block; }
+  .caf-success-title { font-family: var(--serif); font-size: 24px; font-weight: 500; margin: 0 0 10px; color: var(--ink); }
+  .caf-success-sub { font-size: 15px; color: var(--ink-2); max-width: 38ch; margin: 0 auto; line-height: 1.5; }
+</style>
+
+<script is:inline>
+(function(){
+  var overlay=document.getElementById('caf-overlay');
+  var root=document.getElementById('caf-root');
+  if(!overlay||!root)return;
+  var ENDPOINT=root.getAttribute('data-ghl-endpoint')||'';
+  var UPLOAD_ENDPOINT='https://stairway-upload.jimb-3a9.workers.dev';
+
+  var formEl=document.getElementById('caf-form');
+  var successEl=document.getElementById('caf-success');
+  var stage=document.getElementById('caf-stage');
+  var bar=document.getElementById('caf-bar');
+  var stepLabel=document.getElementById('caf-steplabel');
+  var prevBtn=document.getElementById('caf-prev');
+  var nextBtn=document.getElementById('caf-next');
+  var errEl=document.getElementById('caf-error');
+
+  // ---- Full 22-step sequence (mirrors the original GHL survey order) ----
+  var steps=[
+    { key:'resume_url', type:'file', q:'Upload your resume', sub:'PDF, Word, or image. Optional — you can continue without it.', accept:'.pdf,.doc,.docx,.jpg,.jpeg,.png,.webp' },
+    { key:'applying_department', type:'multi', required:true, q:'Which department(s) are you applying for?', sub:'Select all that apply.',
+      options:['Social Media Marketing','Telemarketing','Business Development','Loan Sales','Loan Processing','Local Branch Manager'] },
+    { key:'work_state', type:'text', required:true, q:'Which state will you work from?', placeholder:'e.g. Florida' },
+    { key:'last_school', type:'text', q:'Last school attended', placeholder:'School name' },
+    { key:'degree_type', type:'radio', required:true, q:'Highest degree or education level?',
+      options:['High School','Some College','Bachelors Degree','Masters Degree','PHD','10+ years higher education'] },
+    { key:'licenses_held', type:'text', q:'Which licenses do you have?', sub:'If any — list them.', placeholder:'e.g. NMLS MLO, Real Estate, none' },
+    { key:'applicant_nmls', type:'text', q:'NMLS # (if applicable)', sub:'Optional.', placeholder:'Your NMLS number' },
+    { key:'loan_production', type:'multi', required:true, q:'Total loan production in the last 12 months?', sub:'Select all that apply.',
+      options:['< 6m','6-12m','13-24m','25-49m','50-99m','100m+'] },
+    { key:'hs_accomplishments', type:'textarea', q:'High school accomplishments', placeholder:'Anything you’re proud of from high school.' },
+    { key:'college_accomplishments', type:'textarea', q:'College accomplishments', placeholder:'Anything you’re proud of from college.' },
+    { key:'career_accomplishments', type:'textarea', q:'Career accomplishments', placeholder:'Wins, milestones, results.' },
+    { key:'creative_skills', type:'textarea', q:'Creative and artistic skills', placeholder:'Music, design, writing, video, etc.' },
+    { key:'extra_training', type:'textarea', q:'Trainings, courses, or retreats outside school', placeholder:'Anything that shaped you.' },
+    { key:'teaching_strength', type:'textarea', q:'Something you’re great at and would enjoy teaching others', placeholder:'What could you teach the team?' },
+    { key:'work_preference', type:'radio', q:'Which would you choose?', sub:'Be honest — there’s no wrong answer.',
+      options:['500 phone calls','500 data entries','Happy to do both and alternate days!','I wouldn’t be willing to do either even if I was asked.'] },
+    { key:'weekend_activities', type:'textarea', q:'What do you love to do on weekends?', placeholder:'Tell us about you.' },
+    { key:'recent_books', type:'textarea', q:'Last books you read outside of school', placeholder:'Titles, authors — anything.' },
+    { key:'challenge_story', type:'textarea', q:'Describe a challenge you faced and overcame', placeholder:'What happened, and how you got through it.' },
+    { key:'full_name', type:'text', required:true, q:'What’s your full name?', placeholder:'First and last' },
+    { key:'email', type:'email', required:true, q:'What’s your email?', placeholder:'you@email.com' },
+    { key:'phone', type:'tel', required:true, q:'What’s your mobile phone number?', placeholder:'(555) 555-5555' },
+    { key:'sms_consent', type:'consent', required:true, submit:true, q:'One last thing' }
+  ];
+
+  var state={
+    resume_url:'', applying_department:'', work_state:'', last_school:'', degree_type:'',
+    licenses_held:'', applicant_nmls:'', loan_production:'', hs_accomplishments:'', college_accomplishments:'',
+    career_accomplishments:'', creative_skills:'', extra_training:'', teaching_strength:'', work_preference:'',
+    weekend_activities:'', recent_books:'', challenge_story:'', full_name:'', email:'', phone:'', sms_consent:false
+  };
+  var idx=0, uploading=false, sending=false;
+
+  function el(tag,cls){ var n=document.createElement(tag); if(cls)n.className=cls; return n; }
+  function esc(t){ var d=document.createElement('div'); d.textContent=(t==null?'':t); return d.innerHTML; }
+  function showErr(m){ errEl.textContent=m; errEl.style.display='block'; }
+  function hideErr(){ errEl.style.display='none'; }
+
+  // ---- attribution (mirrors the site-canonical attributionFields() in PurchaseForm) ----
+  function getCookie(name){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+name+'=([^;]+)'));return m?decodeURIComponent(m[1]):null;}
+  function qs(name){try{return new URL(location.href).searchParams.get(name)||null;}catch(e){return null;}}
+  var LO_MAP={ "1072866": { name:"Jim Blackburn", slug:"jim-blackburn" }, "1072877": { name:"Dhruv Parashar", slug:"dhruv-parashar" } };
+  function loidNum(){ var raw=getCookie('first_touch_loid')||qs('lo_id')||qs('loid')||qs('first_touch_loid'); if(!raw) return null; var m=String(raw).match(/(\d{3,})/); return m?m[1]:null; }
+  function cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
+  function attributionFields(){
+    var num=loidNum(); var lo=num&&LO_MAP[num]?LO_MAP[num]:null;
+    return {
+      loid: num||"", lo_id: num||"", lo_name: lo?lo.name:"", lo_slug: lo?lo.slug:"",
+      loan_officer_name: lo?lo.name:"",                      // old survey carried loan_officer_name — captured dynamically, never hardcoded
+      umtid: cleanUmtid(qs('umtid'))||cleanUmtid(getCookie('umtid'))||"",
+      utm_source:qs('utm_source')||getCookie('utm_source')||"", utm_medium:qs('utm_medium')||getCookie('utm_medium')||"",
+      utm_campaign:qs('utm_campaign')||getCookie('utm_campaign')||"", utm_term:qs('utm_term')||getCookie('utm_term')||"",
+      utm_content:qs('utm_content')||getCookie('utm_content')||"",
+      source_url: getCookie('first_touch_url')||window.location.href
+    };
+  }
+
+  function isValid(){
+    var s=steps[idx]; var v=state[s.key];
+    if(s.type==='file') return true;                       // optional; upload happens on Next
+    if(s.type==='multi') return s.required?!!(v&&String(v).trim()):true;
+    if(s.type==='radio') return s.required?!!v:true;
+    if(s.type==='text'||s.type==='textarea') return s.required?!!(v&&String(v).trim()):true;
+    if(s.type==='email') return s.required?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((v||'').trim()):true;
+    if(s.type==='tel')   return s.required?((v||'').replace(/\D/g,'').length>=10):true;
+    if(s.type==='consent') return state.sms_consent===true;
+    return true;
+  }
+  function updateNext(){ nextBtn.disabled = (!isValid()) || uploading || sending; }
+
+  function enterGuard(e){
+    if(e.key!=='Enter') return;
+    e.preventDefault();
+    if(!steps[idx].submit && isValid()) goNext();   // Enter advances; never auto-submits
+  }
+
+  function render(){
+    var s=steps[idx];
+    stage.innerHTML='';
+    var head=el('div');
+    head.innerHTML='<div class="caf-q">'+esc(s.q)+'</div>'+(s.sub?'<div class="caf-sub">'+esc(s.sub)+'</div>':'');
+    stage.appendChild(head);
+    hideErr();
+
+    if(s.type==='file'){
+      var fwrap=el('div','caf-field');
+      var inp=el('input','caf-file'); inp.type='file'; inp.id='caf-file'; if(s.accept) inp.accept=s.accept;
+      inp.addEventListener('change',function(){ state.resume_url=''; hideErr(); var sk=document.getElementById('caf-skip'); if(sk)sk.style.display='none'; });
+      fwrap.appendChild(inp);
+      if(state.resume_url){ var ok=el('div','caf-filenote'); ok.textContent='✓ Uploaded'; fwrap.appendChild(ok); }
+      var skip=el('button','caf-skip'); skip.type='button'; skip.id='caf-skip'; skip.textContent='Continue without resume';
+      skip.addEventListener('click',function(){ advance(); });
+      fwrap.appendChild(skip);
+      stage.appendChild(fwrap);
+    }
+    else if(s.type==='multi'){
+      var box=el('div','caf-options');
+      var selected = state[s.key]?state[s.key].split(',').map(function(x){return x.trim();}).filter(Boolean):[];
+      s.options.forEach(function(opt){
+        var lab=el('label','caf-opt'+(selected.indexOf(opt)>=0?' caf-sel':''));
+        var cb=document.createElement('input'); cb.type='checkbox'; cb.value=opt; cb.checked=selected.indexOf(opt)>=0;
+        cb.addEventListener('change',function(){
+          var cur=state[s.key]?state[s.key].split(',').map(function(x){return x.trim();}).filter(Boolean):[];
+          if(cb.checked){ if(cur.indexOf(opt)<0) cur.push(opt); } else { cur=cur.filter(function(x){return x!==opt;}); }
+          state[s.key]=cur.join(', ');
+          lab.classList.toggle('caf-sel',cb.checked);
+          updateNext();
+        });
+        lab.appendChild(cb); var sp=document.createElement('span'); sp.textContent=opt; lab.appendChild(sp);
+        box.appendChild(lab);
+      });
+      stage.appendChild(box);
+    }
+    else if(s.type==='text'||s.type==='email'||s.type==='tel'){
+      var f=el('div','caf-field');
+      var input=el('input','caf-input');
+      input.type=(s.type==='text'?'text':s.type); input.placeholder=s.placeholder||''; input.value=state[s.key]||'';
+      if(s.type==='tel') input.setAttribute('inputmode','tel');
+      input.addEventListener('input',function(){ state[s.key]=input.value; updateNext(); });
+      input.addEventListener('keydown',enterGuard);
+      f.appendChild(input); stage.appendChild(f);
+      setTimeout(function(){ try{ input.focus(); }catch(e){} },50);
+    }
+    else if(s.type==='textarea'){
+      var tf=el('div','caf-field');
+      var ta=el('textarea','caf-input caf-textarea'); ta.placeholder=s.placeholder||''; ta.rows=4; ta.value=state[s.key]||'';
+      // No enterGuard on textareas — Enter inserts a newline, doesn't advance.
+      ta.addEventListener('input',function(){ state[s.key]=ta.value; updateNext(); });
+      tf.appendChild(ta); stage.appendChild(tf);
+      setTimeout(function(){ try{ ta.focus(); }catch(e){} },50);
+    }
+    else if(s.type==='radio'){
+      var rbox=el('div','caf-options');
+      s.options.forEach(function(opt){
+        var lab=el('label','caf-opt'+(state[s.key]===opt?' caf-sel':''));
+        var rb=document.createElement('input'); rb.type='radio'; rb.name='caf-radio-'+idx; rb.value=opt; rb.checked=(state[s.key]===opt);
+        rb.addEventListener('change',function(){
+          state[s.key]=opt;
+          Array.prototype.forEach.call(rbox.querySelectorAll('.caf-opt'),function(n){ n.classList.remove('caf-sel'); });
+          lab.classList.add('caf-sel');
+          updateNext();
+        });
+        lab.appendChild(rb); var sp=document.createElement('span'); sp.textContent=opt; lab.appendChild(sp);
+        rbox.appendChild(lab);
+      });
+      stage.appendChild(rbox);
+    }
+    else if(s.type==='consent'){
+      var c=el('div','caf-consent');
+      var lab=el('label','caf-consent-row');
+      var cb=document.createElement('input'); cb.type='checkbox'; cb.id='caf-consent-cb'; cb.checked=!!state.sms_consent;
+      cb.addEventListener('change',function(){ state.sms_consent=cb.checked; updateNext(); });
+      var txt=document.createElement('span');
+      txt.innerHTML='I consent to receive SMS notifications, alerts &amp; occasional marketing communication from Stairway Mortgage. Message frequency varies. Message &amp; data rates may apply. Text HELP to (954) 993-1625 for assistance. Reply STOP to unsubscribe.';
+      lab.appendChild(cb); lab.appendChild(txt); c.appendChild(lab);
+      var links=el('div','caf-consent-links');
+      links.innerHTML='<a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a> &middot; <a href="/terms/" target="_blank" rel="noopener">Terms</a>';
+      c.appendChild(links);
+      stage.appendChild(c);
+    }
+
+    var total=steps.length;
+    bar.style.width=Math.round(((idx+1)/total)*100)+'%';
+    stepLabel.textContent='Step '+(idx+1)+' of '+total;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    nextBtn.textContent = s.submit ? 'Submit Application' : 'Next →';
+    updateNext();
+  }
+
+  function advance(){ if(idx<steps.length-1){ idx++; render(); } }
+  function goPrev(){ if(idx>0){ idx--; render(); } }
+
+  function goNext(){
+    if(uploading||sending) return;
+    var s=steps[idx];
+    if(!isValid()) return;
+
+    if(s.type==='file'){
+      var fi=document.getElementById('caf-file');
+      var file=(fi&&fi.files&&fi.files[0])?fi.files[0]:null;
+      if(file && !state.resume_url){
+        // Upload to the R2 Worker FIRST, then advance. No manual Content-Type
+        // (browser sets the multipart boundary). folder="resumes".
+        uploading=true; updateNext(); nextBtn.textContent='Uploading…'; hideErr();
+        var fd=new FormData(); fd.append('file',file); fd.append('folder','resumes');
+        fetch(UPLOAD_ENDPOINT,{method:'POST',body:fd})
+          .then(function(res){ if(!res.ok) throw new Error('upload '+res.status); return res.json(); })
+          .then(function(data){ state.resume_url=(data&&data.url)?data.url:''; uploading=false; nextBtn.textContent='Next →'; advance(); })
+          .catch(function(){
+            uploading=false; nextBtn.textContent='Next →'; updateNext();
+            showErr('We couldn’t upload that file — try again, or continue without it.');
+            var sk=document.getElementById('caf-skip'); if(sk) sk.style.display='inline-block';
+          });
+        return;
+      }
+      advance(); return;
+    }
+
+    if(s.submit){ submit(); return; }
+    advance();
+  }
+
+  function submit(){
+    if(sending) return;
+    var hp=document.getElementById('caf-hp');
+    if(hp && hp.value.trim()!==''){ showSuccess(); return; }   // honeypot: fake success, no POST
+    if(!state.sms_consent){ showErr('Please agree to the SMS consent to submit.'); return; }
+
+    var parts=(state.full_name||'').trim().split(/\s+/);
+    var first=parts.shift()||''; var last=parts.join(' ')||'';
+    var attr=attributionFields();
+    var payload={
+      form_source:'mortgage_career_application', form_name:'Mortgage Career Application',
+      first_name:first, last_name:last, full_name:(state.full_name||'').trim(),
+      email:(state.email||'').trim(), phone:(state.phone||'').trim(),
+      page_url:window.location.href, submitted_at:new Date().toISOString()
+    };
+    // Copy every collected answer into the payload (resume_url, departments, essays, etc.)
+    var skip={ full_name:1, email:1, phone:1, sms_consent:1 };
+    for(var k in state){ if(state.hasOwnProperty(k) && !skip[k]){ payload[k]=(state[k]==null?'':state[k]); } }
+    payload.sms_consent = state.sms_consent ? 'yes' : 'no';
+    payload.loid=attr.loid; payload.lo_id=attr.lo_id; payload.lo_name=attr.lo_name; payload.lo_slug=attr.lo_slug;
+    payload.loan_officer_name=attr.loan_officer_name; payload.umtid=attr.umtid;
+    payload.utm_source=attr.utm_source; payload.utm_medium=attr.utm_medium; payload.utm_campaign=attr.utm_campaign;
+    payload.utm_term=attr.utm_term; payload.utm_content=attr.utm_content; payload.source_url=attr.source_url;
+
+    sending=true; nextBtn.disabled=true; nextBtn.textContent='Sending…';
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(){ showSuccess(); })
+      .catch(function(){ showErr('Something went wrong. Please try again, or call us at (954) 993-1625.'); })
+      .then(function(){ sending=false; nextBtn.disabled=false; nextBtn.textContent='Submit Application'; });
+  }
+
+  function showSuccess(){ formEl.style.display='none'; successEl.style.display='block'; }
+
+  // ---- modal open/close (mirrors PurchaseForm/RealReverseForm) ----
+  function openModal(){ overlay.classList.add('caf-active'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeModal(){ overlay.classList.remove('caf-active'); overlay.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  window.STW_OPEN_caf=openModal;
+
+  nextBtn.addEventListener('click',goNext);
+  prevBtn.addEventListener('click',goPrev);
+  document.addEventListener('click',function(e){
+    var o=e.target.closest?e.target.closest('[data-caf-open]'):null; if(o){ e.preventDefault(); openModal(); }
+    var c=e.target.closest?e.target.closest('[data-caf-close]'):null; if(c){ e.preventDefault(); closeModal(); }
+  });
+  overlay.addEventListener('click',function(e){ if(e.target===overlay){ closeModal(); } });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&overlay.classList.contains('caf-active')){ closeModal(); } });
+
+  render();   // pre-render step 1 (overlay stays hidden until a trigger opens it)
+})();
+</script>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CareerApplyForm from '../../components/CareerApplyForm.astro';
 ---
 <Layout
   title="Mortgage Broker vs Loan Officer: Key Differences Explained (2026)"
@@ -576,7 +577,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="mt-5">Not sure which path? Let's figure it out together</h2>
       <p>Broker or loan officer, the right first move is a conversation about where you want to end up. No pressure &mdash; just an honest look at which path fits you and how to get there.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="/schedule-call/" class="btn btn-secondary btn-large">Talk to Our Team</a>
       </div>
     </div>
@@ -607,5 +608,7 @@ import Layout from '../../layouts/Layout.astro';
     btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
   });
 </script>
+
+<CareerApplyForm />
 
 </Layout>

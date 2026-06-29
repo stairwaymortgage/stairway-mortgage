@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CareerApplyForm from '../../components/CareerApplyForm.astro';
 ---
 <Layout
   title="Add a Mortgage License: For Realtors, Agents, Advisors & Attorneys"
@@ -356,7 +357,7 @@ import Layout from '../../layouts/Layout.astro';
       <h1 class="display-1">For Licensed Professionals: Add a Mortgage License</h1>
       <p class="lead hero-subtitle">Realtor, insurance agent, financial advisor, or attorney? You already own the hardest asset in this business &mdash; trusting relationships. Adding a mortgage license can turn the network you already have into a second income stream, often with a faster ramp than starting cold.</p>
       <div class="hero-actions">
-        <a href="#start" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="#why" class="btn btn-secondary btn-large">Why You Have an Edge</a>
       </div>
       <div class="hero-trust">
@@ -553,7 +554,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="mt-5">Turn the relationships you have into mortgage income</h2>
       <p>If you already hold a professional license, you're closer to a second income than you think. Let's talk about how to add origination to your practice compliantly &mdash; and how to turn your existing clients into mortgage business.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="/mortgage-career/loan-officer-salary/" class="btn btn-secondary btn-large">See the Income Potential</a>
       </div>
     </div>
@@ -584,5 +585,7 @@ import Layout from '../../layouts/Layout.astro';
     btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
   });
 </script>
+
+<CareerApplyForm />
 
 </Layout>

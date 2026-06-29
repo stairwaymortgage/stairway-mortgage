@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CareerApplyForm from '../../components/CareerApplyForm.astro';
 ---
 <Layout
   title="How to Start a Mortgage Business or Brokerage (2026 Guide)"
@@ -356,7 +357,7 @@ import Layout from '../../layouts/Layout.astro';
       <h1 class="display-1">How to Start a Mortgage Business</h1>
       <p class="lead hero-subtitle">Ready to build something that's yours? Here's the honest path to starting a mortgage business &mdash; whether that means opening your own brokerage or running your own brand and book of business under an established platform, without the full overhead.</p>
       <div class="hero-actions">
-        <a href="#start" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="#paths" class="btn btn-secondary btn-large">See Your Options</a>
       </div>
       <div class="hero-trust">
@@ -608,7 +609,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="mt-5">Build a mortgage business that's truly yours</h2>
       <p>Whether you want to run your own brand under a strong platform or work toward full ownership, the smart first step is a conversation about the right path for you. No pressure &mdash; just an honest plan for building something of your own.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="/mortgage-career/mortgage-broker/" class="btn btn-secondary btn-large">Read the Broker Guide</a>
       </div>
     </div>
@@ -639,5 +640,7 @@ import Layout from '../../layouts/Layout.astro';
     btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
   });
 </script>
+
+<CareerApplyForm />
 
 </Layout>

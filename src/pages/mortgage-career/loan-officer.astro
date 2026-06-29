@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CareerApplyForm from '../../components/CareerApplyForm.astro';
 ---
 <Layout
   title="How to Become a Loan Officer: Step-by-Step Guide (2026)"
@@ -615,7 +616,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="mt-5">Become a loan officer in the huddle &mdash; not the stands</h2>
       <p>Whether you're just exploring or ready to get licensed, the next step is a conversation. No pressure, no script &mdash; just an honest look at whether this path is right for you.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="/schedule-call/" class="btn btn-secondary btn-large">Talk to Our Team</a>
       </div>
     </div>
@@ -640,6 +641,10 @@ import Layout from '../../layouts/Layout.astro';
   </section>
 
 </div>
+
+<!-- PHASE 1 PREVIEW: native multi-step career application (opens as a modal via [data-caf-open]).
+     Rendered OUTSIDE .mc-scope so the page's scoped element resets don't bleed into the modal. -->
+<CareerApplyForm />
 
 <script is:inline>
   document.querySelectorAll('.faq-q').forEach(function(btn){

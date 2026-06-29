@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CareerApplyForm from '../../components/CareerApplyForm.astro';
 ---
 <Layout
   title="How to Become a Loan Officer Assistant: Role, Pay & Path (2026)"
@@ -486,7 +487,7 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="mt-5">Want the role with no income ceiling?</h2>
       <p>If you're drawn to the mortgage business, it's worth knowing that the licensed origination path offers uncapped, commission-based income. If that appeals to you, let's talk about getting licensed &mdash; it's more achievable than you think.</p>
       <div class="hero-actions">
-        <a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9?slug=branches-careers-internships" class="btn btn-primary btn-large">Start My Mortgage Career</a>
+        <button type="button" data-caf-open class="btn btn-primary btn-large">Start My Mortgage Career</button>
         <a href="/mortgage-career/loan-officer/" class="btn btn-secondary btn-large">How to Become a Loan Officer</a>
       </div>
     </div>
@@ -517,5 +518,7 @@ import Layout from '../../layouts/Layout.astro';
     btn.addEventListener('click', function(){ btn.closest('.faq-item').classList.toggle('open'); });
   });
 </script>
+
+<CareerApplyForm />
 
 </Layout>
