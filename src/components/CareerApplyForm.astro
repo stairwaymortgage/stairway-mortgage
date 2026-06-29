@@ -388,9 +388,31 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       email:(state.email||'').trim(), phone:(state.phone||'').trim(),
       page_url:window.location.href, submitted_at:new Date().toISOString()
     };
-    // Copy every collected answer into the payload (resume_url, departments, essays, etc.)
+    // Map internal state keys → EXISTING GHL custom-field keys (Survey: Employment Application),
+    // so answers land directly in the configured GHL fields. Unmapped keys (resume_url,
+    // applicant_nmls) keep their own key.
+    var GHL_KEYS={
+      applying_department:'which_department_are_you_applying_for',
+      work_state:'which_state_will_you_work_from',
+      last_school:'which_school_did_you_last_attend',
+      degree_type:'what_type_of_degree_do_you_have',
+      licenses_held:'which_licenses_do_you_have',
+      applicant_nmls:'what_is_your_nmls__if_applicable',
+      loan_production:'what_was_your_total_loan_production_last_12_months',
+      hs_accomplishments:'which_high_school_accomplishments_are_you_most_proud_of',
+      college_accomplishments:'which_college_accomplishments_are_you_most_proud_of',
+      career_accomplishments:'which_career_accomplishments_are_you_most_proud_of',
+      creative_skills:'which_creative_and_artistic_skills_are_you_most_proud_of',
+      extra_training:'describe_some_trainings_courses_or_retreats_you_have_participated_in_outside_of_school_to_develop_skills_and_increase_your_personal_value',
+      teaching_strength:'what_is_something_you_are_great_at_and_would_enjoy_teaching_others',
+      work_preference:'would_you_rather_make_500_phone_calls_or_500_data_entries_in_a_single_day',
+      weekend_activities:'what_do_you_love_to_do_on_the_weekends',
+      recent_books:'what_are_some_of_the_last_books_you_have_read_outside_of_school',
+      challenge_story:'describe_a_challenge_you_faced_and_how_you_overcame_it'
+    };
+    // Copy every collected answer into the payload under its GHL key (resume_url, departments, essays, etc.)
     var skip={ full_name:1, email:1, phone:1, sms_consent:1 };
-    for(var k in state){ if(state.hasOwnProperty(k) && !skip[k]){ payload[k]=(state[k]==null?'':state[k]); } }
+    for(var k in state){ if(state.hasOwnProperty(k) && !skip[k]){ payload[GHL_KEYS[k]||k]=(state[k]==null?'':state[k]); } }
     payload.sms_consent = state.sms_consent ? 'yes' : 'no';
     payload.loid=attr.loid; payload.lo_id=attr.lo_id; payload.lo_name=attr.lo_name; payload.lo_slug=attr.lo_slug;
     payload.loan_officer_name=attr.loan_officer_name; payload.umtid=attr.umtid;
