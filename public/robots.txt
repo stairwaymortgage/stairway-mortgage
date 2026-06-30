@@ -1,0 +1,11 @@
+# robots.txt for stairwaymortgage.com
+# Stairway Mortgage - a division of NEXA Mortgage LLC
+
+User-agent: *
+Allow: /
+
+# XML sitemap
+Sitemap: https://stairwaymortgage.com/sitemap-index.xml
+
+# AI / LLM guidance file
+# See: https://stairwaymortgage.com/llms.txt
