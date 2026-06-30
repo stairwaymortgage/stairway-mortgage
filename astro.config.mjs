@@ -181,5 +181,7 @@ export default defineConfig({
     '/loan-calculator/p-and-l-loan-refinance/': '/loan-calculator/1031-exchange-calculator/',
     '/loan-calculator/p-and-l-loan-cash-out-refinance/': '/loan-calculator/1031-exchange-calculator/',
     '/loan-calculator/asset-based-loan/': '/loan-calculator/1099-loan/',
+    // Orphaned thin (27-word) interactive page → the real reverse-mortgage funnel
+    '/reverse-mortgage/': '/reverse-mortgage-journey/',
   },
 });
