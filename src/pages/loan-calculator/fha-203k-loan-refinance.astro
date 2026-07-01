@@ -125,7 +125,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     const ufmip = desired*0.0175;
     const final = desired + ufmip;
     const r=rate/1200;
-    const n = term===30 ? 360 : 180;
+    const n = term===30 ? 360 : (term === 20 ? 240 : 180);
     const pi = r>0 ? final*r/(1-Math.pow(1+r,-n)) : final/n;  // on FINAL loan
     const mi=(final*0.0075)/12;
     const total = pi + mins + mtax + 0 + mi;  // [Deleted Value]=0
