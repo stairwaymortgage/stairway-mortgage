@@ -119,7 +119,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     const financeable = 0.04*(totalProp+reserve) + (totalProp+reserve);
     const maxLoan = arv * 0.75;
     const desired = Math.min(financeable, maxLoan);
-    const r = rate/1200, n = (term===30)?360:180;
+    const r = rate/1200, n = (term === 30) ? 360 : (term === 20 ? 240 : 180);
     const pi = r>0 ? desired*r/(1-Math.pow(1+r,-n)) : desired/n;
     const total = pi + ins + tax;
     const cashNo = financeable - desired;
