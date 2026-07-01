@@ -178,8 +178,8 @@ export default defineConfig({
     '/loan-calculator/jumbo-construction-loan-acquisition/': '/loan-calculator/jumbo-construction-loan/',
     '/loan-calculator/jumbo-construction-to-perm-loan/': '/loan-calculator/jumbo-construction-loan/',
     '/loan-calculator/debt-consolidation-calculator/': '/loan-calculator/debt-ratio-calculator/',
-    '/loan-calculator/p-and-l-loan-refinance/': '/loan-calculator/1031-exchange-calculator/',
-    '/loan-calculator/p-and-l-loan-cash-out-refinance/': '/loan-calculator/1031-exchange-calculator/',
+    '/loan-calculator/p-and-l-loan-refinance/': '/loan-calculator/p-and-l-loan/',
+    '/loan-calculator/p-and-l-loan-cash-out-refinance/': '/loan-calculator/p-and-l-loan/',
     '/loan-calculator/asset-based-loan/': '/loan-calculator/1099-loan/',
     '/loan-calculator/va-loan-refinance/': '/loan-calculator/va-irrrl/',
     // Orphaned thin (27-word) interactive page → the real reverse-mortgage funnel
