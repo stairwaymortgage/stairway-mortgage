@@ -180,7 +180,6 @@ export default defineConfig({
     '/loan-calculator/debt-consolidation-calculator/': '/loan-calculator/debt-ratio-calculator/',
     '/loan-calculator/p-and-l-loan-refinance/': '/loan-calculator/p-and-l-loan/',
     '/loan-calculator/p-and-l-loan-cash-out-refinance/': '/loan-calculator/p-and-l-loan/',
-    '/loan-calculator/asset-based-loan/': '/loan-calculator/1099-loan/',
     '/loan-calculator/va-loan-refinance/': '/loan-calculator/va-irrrl/',
     // Orphaned thin (27-word) interactive page → the real reverse-mortgage funnel
     '/reverse-mortgage/': '/reverse-mortgage-journey/',
