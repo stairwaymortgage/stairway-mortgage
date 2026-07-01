@@ -6,7 +6,7 @@ const metaDescription = "Calculate your monthly payment, PMI, cash to close, and
 const canonical = "https://stairwaymortgage.com/loan-calculator/jumbo-loan/";
 const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"Jumbo Loan Calculator","item":canonical}]};
 const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"Jumbo Purchase Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
-const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a jumbo loan?","acceptedAnswer":{"@type":"Answer","text":"A jumbo loan finances an amount above the conforming loan limits set by Fannie Mae and Freddie Mac. It is used for higher-priced homes and typically requires a larger down payment, strong credit, and cash reserves."}},{"@type":"Question","name":"When do I have to pay PMI on a jumbo loan?","acceptedAnswer":{"@type":"Answer","text":"Private mortgage insurance may apply when your loan-to-value is above 80%. Jumbo guidelines vary by lender, and the estimated monthly cost rises as your down payment shrinks. PMI can typically be removed once you reach 20% equity."}},{"@type":"Question","name":"How much cash do I need to close?","acceptedAnswer":{"@type":"Answer","text":"Cash to close is roughly your down payment plus closing costs. This calculator shows three scenarios: without help, with a 3% seller credit, and with both a seller credit and down payment assistance."}}]};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a jumbo loan?","acceptedAnswer":{"@type":"Answer","text":"A jumbo loan finances an amount above the conforming loan limits set by Fannie Mae and Freddie Mac. It is used for higher-priced homes and typically requires a larger down payment, strong credit, and cash reserves."}},{"@type":"Question","name":"When do I have to pay PMI on a jumbo loan?","acceptedAnswer":{"@type":"Answer","text":"Private mortgage insurance may apply when your loan-to-value is above 80%. Jumbo guidelines vary by lender, and the estimated monthly cost rises as your down payment shrinks. PMI can typically be removed once you reach 20% equity."}},{"@type":"Question","name":"How much cash do I need to close?","acceptedAnswer":{"@type":"Answer","text":"Cash to close is roughly your down payment plus closing costs. This calculator shows two scenarios: without a seller credit, and with a 3% seller credit."}}]};
 ---
 <Layout title={metaTitle} description={metaDescription} canonical={canonical}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -105,9 +105,8 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
         <div class="result"><span class="result-label">Monthly PMI</span><span class="result-value" id="rPMI">$0</span><span class="result-note">Estimated private mortgage insurance based on the down payment. Jumbo mortgage insurance varies by lender.</span></div>
         <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
         <p class="summary-sub">Cash to Close</p>
-        <div class="result"><span class="result-label">Cash Out of Pocket — without seller credit or DPA</span><span class="result-value" id="rCashNo">$0</span><span class="result-note">Includes 6% estimated closing costs and varies state to state. This is NOT a Loan Estimate.</span></div>
+        <div class="result"><span class="result-label">Cash Out of Pocket — without seller credit</span><span class="result-value" id="rCashNo">$0</span><span class="result-note">Includes 6% estimated closing costs and varies state to state. This is NOT a Loan Estimate.</span></div>
         <div class="result"><span class="result-label">Cash Out of Pocket — with 3% seller credit</span><span class="result-value" id="rCashSC">$0</span><span class="result-note">Assumes a 3% seller credit toward closing costs and prepaids.</span></div>
-        <div class="result"><span class="result-label">Cash Out of Pocket — with seller credit + DPA</span><span class="result-value" id="rCashDPA">$0</span><span class="result-note">Assumes 3% down payment assistance + 3% seller credit. Note: many DPA programs require a refinance within 5 years.</span></div>
         <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$0</span><span class="result-note">Fannie Mae allows up to 50% DTI; Freddie Mac up to 45% with strong credit and reserves.</span></div>
         <a class="cta-primary" data-calc-cta data-calc-slug="jumbo-loan">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
@@ -180,7 +179,6 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     const total = pi + mIns + mTax + pmi;
     const cashNo = downpct*price*0.01 + 0.06*price;
     const cashSC = downpct*price*0.01 + 0.03*price;
-    const cashDPA = price*0.03;
     const income = (total + hoa) * 2;
     $('downVal').textContent = downpct + '%';
     $('rateVal').textContent = rate.toFixed(2) + '%';
@@ -194,7 +192,6 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     $('rHOA').textContent    = fmt0(hoa);
     $('rCashNo').textContent = fmt0(cashNo);
     $('rCashSC').textContent = fmt0(cashSC);
-    $('rCashDPA').textContent= fmt0(cashDPA);
     $('rIncome').textContent = fmt2(income);
   }
   document.querySelectorAll('input,select').forEach(el => { el.addEventListener('input', compute); el.addEventListener('change', compute); });
