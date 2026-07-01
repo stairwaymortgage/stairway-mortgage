@@ -1,198 +1,205 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CalcLeadForm from '../../components/CalcLeadForm.astro';
-const metaTitle = "USDA Refinance Interest Rate Reduction Loan Payment Calculator | Stairway Mortgage";
-const metaDescription = "Estimate your new USDA rate-reduction refinance payment, monthly and annual savings, total housing expense, and income to qualify. Built by Jim Blackburn, NMLS #1072866.";
+const metaTitle = "USDA Renovation Loan Payment Calculator: Estimate Your Monthly Payment, Guarantee Fee & Cash to Close | Stairway Mortgage";
+const metaDescription = "Calculate a USDA renovation purchase: buy and renovate an eligible rural or suburban home with $0 down, financing the costs into one loan. Estimate the guarantee fee (1% upfront, 0.35% annual), monthly payment, and cash to close. Built by Jim Blackburn, NMLS #1072866. Not a commitment to lend.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/usda-loan-renovation/";
-const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"USDA Refinance Interest Rate Reduction Loan Payment Calculator","item":canonical}]};
-const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"USDA Refinance Interest Rate Reduction Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
-const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a USDA rate-reduction refinance?","acceptedAnswer":{"@type":"Answer","text":"It refinances an existing USDA loan into a lower interest rate to reduce your monthly principal and interest payment, rolling the upfront guarantee fee and closing costs into the new loan."}},{"@type":"Question","name":"What fees does a USDA refinance include?","acceptedAnswer":{"@type":"Answer","text":"A 1% upfront guarantee fee and a 0.35% annual guarantee fee, plus estimated closing costs. The upfront fee and closing costs are typically financed into the loan."}},{"@type":"Question","name":"What income do I need to qualify?","acceptedAnswer":{"@type":"Answer","text":"USDA loans typically cap debt-to-income at 41%, though higher ratios up to 50% may be approved with strong credit, reserves, or a GUS Accept finding."}}]};
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"USDA Renovation Loan Calculator","item":canonical}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"USDA Renovation Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a USDA renovation loan?","acceptedAnswer":{"@type":"Answer","text":"A USDA renovation loan lets you finance the purchase of an eligible rural or suburban home plus the cost of renovating it in a single loan, with $0 down for qualified buyers."}},{"@type":"Question","name":"How much can I borrow?","acceptedAnswer":{"@type":"Answer","text":"The loan is generally capped at the lower of the after-repair appraised value or your total financeable costs, subject to USDA area loan limits and income eligibility."}},{"@type":"Question","name":"What fees does a USDA loan include?","acceptedAnswer":{"@type":"Answer","text":"USDA charges a 1% upfront guarantee fee, usually financed into the loan, plus a 0.35% annual guarantee fee collected monthly."}}]};
 ---
 <Layout title={metaTitle} description={metaDescription} canonical={canonical}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-  <main class="container-page">
-    <nav class="crumbs" aria-label="Breadcrumb">
-      <a href="/">Home</a> <span>/</span>
-      <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
-      <span aria-current="page">USDA Rate-Reduction Refinance Calculator</span>
-    </nav>
-    <header class="calc-head">
-      <p class="eyebrow">USDA · Rate-Reduction Refinance</p>
-      <h1 class="display-lg">USDA Refinance Interest Rate Reduction Loan Payment Calculator</h1>
-      <p class="lede">Grab your most recent mortgage statement. You'll need accurate numbers for the calculator to give you a real picture of your USDA rate reduction refinance options.</p>
-      <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
-    </header>
-    <section class="calc" aria-label="USDA Rate-Reduction Refinance Calculator">
-      <div class="calc-grid">
-        <div class="calc-inputs">
-          <div class="field"><label for="balance">Loan Balance</label><div class="input-money"><span>$</span><input id="balance" type="number" inputmode="numeric" value="300000" min="0" step="1000" /></div></div>
-          <div class="field"><label for="curpi">Monthly Principal &amp; Interest Payment</label><div class="input-money"><span>$</span><input id="curpi" type="number" inputmode="numeric" value="2100" min="0" step="10" /></div><p class="hint hint--mute">Your mortgage payment excluding taxes, insurance, and PMI.</p></div>
-          <div class="field-row">
-            <div class="field"><label for="ins">Monthly Homeowners Insurance</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="200" min="0" step="10" /></div><p class="hint hint--mute">Divide annual premium by 12 if needed.</p></div>
-            <div class="field"><label for="tax">Monthly Property Taxes</label><div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="300" min="0" step="10" /></div><p class="hint hint--mute">Or divide annual taxes by 12.</p></div>
-          </div>
-          <div class="field"><label for="hoa">Monthly HOA</label><div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="10" /></div><p class="hint hint--mute">Paid separately, outside the mortgage.</p></div>
-          <div class="field-row">
-            <div class="field"><label for="hvalue">Estimated Current Home Value</label><div class="input-money"><span>$</span><input id="hvalue" type="number" inputmode="numeric" value="500000" min="0" step="10000" /></div><p class="hint hint--mute">Appraisal, online estimate, or best guess.</p></div>
-            <div class="field"><label for="months">Months Remaining on Mortgage</label><div class="input-money"><span>$</span><input id="months" type="number" inputmode="numeric" value="300" min="0" step="1" /></div></div>
-          </div>
-          <div class="field"><label for="rate">Estimated New Interest Rate <span class="val" id="rateVal">7.00%</span></label><input id="rate" type="range" min="2.5" max="15" step="0.1" value="7" /></div>
-          <div class="field">
-            <span class="lbl">Are you thinking about buying another home in the future to continue your wealth journey?</span>
-            <div class="radios" role="radiogroup" aria-label="Buying another home in the future">
-              <label><input type="radio" name="wealth" value="1" /> Yes</label>
-              <label><input type="radio" name="wealth" value="2" checked /> No</label>
-            </div>
-            <p class="hint hint--mute">USDA loans are for primary residences only. Relocating 50+ miles for work or family may allow a second USDA purchase.</p>
+<main class="container-page">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span>
+    <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
+    <span aria-current="page">USDA Renovation Loan Calculator</span>
+  </nav>
+  <header class="calc-head">
+    <p class="eyebrow">USDA · Renovation Purchase</p>
+    <h1 class="display-lg">USDA Renovation Loan Payment Calculator</h1>
+    <p class="lede">Buy and renovate a USDA-eligible rural or suburban home with $0 down — costs rolled into one loan. Estimate your total project costs, maximum loan, full monthly payment with the guarantee fee, cash to close, and the income needed to qualify.</p>
+    <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
+  </header>
+  <section class="calc" aria-label="USDA Renovation Loan Payment Calculator">
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="field-row">
+          <div class="field"><label for="price">Purchase Price</label><div class="input-money"><span>$</span><input id="price" type="number" inputmode="numeric" value="300000" min="0" step="1000" /></div></div>
+          <div class="field"><label for="reno">Renovation Costs</label><div class="input-money"><span>$</span><input id="reno" type="number" inputmode="numeric" value="100000" min="0" step="1000" /></div></div>
+        </div>
+        <div class="field"><label for="arv">After Repair Value (ARV)</label><div class="input-money"><span>$</span><input id="arv" type="number" inputmode="numeric" value="400000" min="0" step="1000" /></div><p class="hint hint--mute">Estimate with sold comps in the last 6 months.</p></div>
+        <div class="field"><label for="down">Down Payment Percentage <span class="val" id="downVal">0%</span></label><input id="down" type="range" min="0" max="100" step="0.5" value="0" /><p class="hint hint--mute">$0 down for eligible USDA buyers (gift funds allowed).</p></div>
+        <div class="field"><label for="term">Term of Loan</label><div class="input-plain"><select id="term">
+          <option value="15">15 years</option>
+          <option value="20">20 years</option>
+          <option value="30" selected>30 years</option>
+        </select></div></div>
+        <div class="field-row">
+          <div class="field"><label for="ins">Annual Insurance</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="2400" min="0" step="100" /></div></div>
+          <div class="field"><label for="tax">Annual Taxes</label><div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="3600" min="0" step="100" /></div></div>
+        </div>
+        <div class="field"><label for="hoa">Monthly HOA</label><div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="10" /></div></div>
+        <div class="field"><label for="rate">Estimated New Interest Rate <span class="val" id="rateVal">7.0%</span></label><input id="rate" type="range" min="2.5" max="10" step="0.1" value="7" /></div>
+        <div class="field">
+          <span class="lbl">Are you thinking about buying another home to continue your wealth journey?</span>
+          <div class="radios" role="radiogroup" aria-label="Buying another home">
+            <label><input type="radio" name="wealth" value="1" /> Yes</label>
+            <label><input type="radio" name="wealth" value="2" checked /> No</label>
           </div>
         </div>
-        <div class="calc-results" aria-live="polite">
-          <p class="summary-title">Summary</p>
-          <p class="summary-sub">Loan</p>
-          <div class="result"><span class="result-label">Base Loan Amount</span><span class="result-value" id="rBase">$300,000</span><span class="result-note">Subject to USDA county loan limits.</span></div>
-          <div class="result"><span class="result-label">USDA Guarantee Fee</span><span class="result-value" id="rGfee">$3,000</span><span class="result-note">1% upfront guarantee fee.</span></div>
-          <div class="result"><span class="result-label">Final Loan Amount</span><span class="result-value" id="rFinal">$312,000</span><span class="result-note">Base + guarantee fee + 3% estimated closing costs.</span></div>
-          <p class="summary-sub">Payment Breakdown</p>
-          <div class="result"><span class="result-label">Principal &amp; Interest Payment</span><span class="result-value" id="rPI">$2,076</span></div>
-          <div class="result"><span class="result-label">Monthly Guarantee Fee</span><span class="result-value" id="rMGfee">$91</span><span class="result-note">0.35% annually, built into the payment.</span></div>
-          <div class="result"><span class="result-label">Monthly Insurance</span><span class="result-value" id="rIns">$200</span></div>
-          <div class="result"><span class="result-label">Monthly Taxes</span><span class="result-value" id="rTax">$300</span></div>
-          <div class="result"><span class="result-label">Monthly HOA (paid separately)</span><span class="result-value" id="rHOA">$0</span></div>
-          <div class="result result--primary"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$2,576</span></div>
-          <p class="summary-sub">Savings</p>
-          <div class="result result--primary"><span class="result-label">Monthly Savings</span><span class="result-value" id="rMSav">$24</span></div>
-          <div class="result result--primary"><span class="result-label">Annual Savings</span><span class="result-value" id="rASav">$291</span></div>
-          <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$6,282</span><span class="result-note">Based on a 41% USDA DTI cap.</span></div>
-          <a class="cta-primary" data-calc-cta data-calc-slug="usda-loan-renovation">See My Options</a>
-          <p class="micro">Estimates only — not a commitment to lend.</p>
-        </div>
       </div>
-    </section>
-    <section class="body-content">
-      <figure class="author">
-        <a href="https://www.linkedin.com/company/nexa-mortgage-jim-blackburn-team" target="_blank" rel="noopener">
-          <img width="120" height="120" src="/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
-        </a>
-        <h3><a href="https://www.linkedin.com/company/nexa-mortgage-jim-blackburn-team" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
-      </figure>
-      <div class="cta-card">
-        <h4>Ready to Take Your First Step?</h4>
-        <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
-        <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
-        <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+      <div class="calc-results" aria-live="polite">
+        <p class="summary-title">Summary</p>
+        <p class="summary-sub">Project Costs</p>
+        <div class="result"><span class="result-label">Total Property Costs</span><span class="result-value" id="rTotalProp">$0</span><span class="result-note">Purchase + renovation + 10% contingency.</span></div>
+        <div class="result"><span class="result-label">6 Months Interest Reserves</span><span class="result-value" id="rReserves">$0</span></div>
+        <div class="result"><span class="result-label">Total Financeable Costs</span><span class="result-value" id="rFinanceable">$0</span><span class="result-note">Includes ~4% estimated closing costs. Not a Loan Estimate.</span></div>
+        <p class="summary-sub">Loan</p>
+        <div class="result"><span class="result-label">Maximum USDA Loan Allowed</span><span class="result-value" id="rMaxLoan">$0</span><span class="result-note">Capped at the lower of appraised value (ARV) or total financeable costs.</span></div>
+        <div class="result result--primary"><span class="result-label">Desired Loan Amount</span><span class="result-value" id="rDesired">$0</span></div>
+        <div class="result"><span class="result-label">USDA Guarantee Fee (Upfront, 1%)</span><span class="result-value" id="rUpfront">$0</span></div>
+        <div class="result"><span class="result-label">Final Loan Amount</span><span class="result-value" id="rFinal">$0</span><span class="result-note">Base plus financed upfront guarantee fee.</span></div>
+        <p class="summary-sub">Payment Breakdown</p>
+        <div class="result"><span class="result-label">Principal &amp; Interest Payment</span><span class="result-value" id="rPI">$0</span></div>
+        <div class="result"><span class="result-label">Monthly Insurance</span><span class="result-value" id="rIns">$0</span></div>
+        <div class="result"><span class="result-label">Monthly Taxes</span><span class="result-value" id="rTax">$0</span></div>
+        <div class="result"><span class="result-label">Monthly Guarantee Fee (0.35%/yr)</span><span class="result-value" id="rGfee">$0</span></div>
+        <div class="result"><span class="result-label">HOA (paid separately)</span><span class="result-value" id="rHOA">$0</span></div>
+        <div class="result result--primary"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$0</span></div>
+        <p class="summary-sub">Cash to Close</p>
+        <div class="result result--primary"><span class="result-label">Without Seller Credit</span><span class="result-value" id="rCashNo">$0</span></div>
+        <div class="result"><span class="result-label">With 6% Seller Credit</span><span class="result-value" id="rCashSC">$0</span></div>
+        <div class="result"><span class="result-label">Monthly Income Target to Qualify</span><span class="result-value" id="rIncome">$0</span><span class="result-note">USDA typically caps DTI near 41%; higher may be approved with strong credit, reserves, or a GUS Accept.</span></div>
+        <a class="cta-primary" data-calc-cta data-calc-slug="usda-loan-renovation">See My Options</a>
+        <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
-      <div class="cta-card">
-        <h4>Thinking About a USDA Rate-Reduction Refi?</h4>
-        <p>Tell us about your current loan and your goals, and we'll connect you with the best refinance options for your scenario—fast.</p>
-        <ul><li>Only 2 minutes to complete</li><li>Quick turnaround</li><li>No credit score impact</li></ul>
-        <a href="https://stairwaymortgage.com/refinance-or-heloc-inquiry">See My Options</a>
-      </div>
-      <div class="cta-card">
-        <h4>Got a Few Questions First?</h4>
-        <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
-        <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
-      </div>
-      <h2>Important Disclaimer</h2>
-      <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed mortgage advisor before making financial decisions.</p>
-      <h2>Related Posts</h2>
-      <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
-    </section>
-  </main>
-
-  <script is:inline>
-  (function () {
-    const $ = (id) => document.getElementById(id);
-    const fmt0 = (n) => { const r=Math.round(n); return (r<0?'-$':'$') + Math.abs(r).toLocaleString('en-US'); };
-    function compute(){
-      const balance=+$('balance').value||0, curpi=+$('curpi').value||0, ins=+$('ins').value||0,
-            tax=+$('tax').value||0, hoa=+$('hoa').value||0, rate=+$('rate').value||0;
-      // Base Loan = balance
-      const base = balance;
-      // USDA Guarantee Fee = balance * 1%
-      const gfee = balance * 0.01;
-      // Final Loan = base + gfee + 3%*balance
-      const final = base + gfee + 0.03*balance;
-      // P&I = (final * (rate/100)/12) / (1 - (1+(rate/100)/12)^-360)  -- always 360, months input UNUSED
-      const i = (rate/100)/12;
-      const pi = i>0 ? (final*i)/(1-Math.pow(1+i,-360)) : final/360;
-      // Monthly Guarantee Fee = final * .35% / 12
-      const mgfee = final * 0.0035 / 12;
-      const mins = ins, mtax = tax, mhoa = hoa;
-      // Total Monthly Housing = SUM(P&I, Insurance, Taxes, [Deleted]=0)  -- excludes guarantee fee AND HOA (refs deleted field)
-      const total = pi + mins + mtax + 0;
-      // Monthly Savings = current P&I - new P&I
-      const msav = curpi - pi;
-      // Annual Savings = msav * 12
-      const asav = msav * 12;
-      // Income Target = (total + hoa)/0.41
-      const income = (total + hoa)/0.41;
-      $('rateVal').textContent = rate.toFixed(2)+'%';
-      $('rBase').textContent=fmt0(base); $('rGfee').textContent=fmt0(gfee); $('rFinal').textContent=fmt0(final);
-      $('rPI').textContent=fmt0(pi); $('rMGfee').textContent=fmt0(mgfee);
-      $('rIns').textContent=fmt0(mins); $('rTax').textContent=fmt0(mtax); $('rHOA').textContent=fmt0(mhoa);
-      $('rTotal').textContent=fmt0(total); $('rMSav').textContent=fmt0(msav); $('rASav').textContent=fmt0(asav);
-      $('rIncome').textContent=fmt0(income);
-    }
-    document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
-    compute();
-  })();
-  </script>
-
-  <style>
-  .crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
-  .crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
-  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
-  .display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
-  .lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
-  .trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
-  .calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
-  .calc::before{content:"";display:block;height:4px;background:var(--blue);}
-  .calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
-  @media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
-  .calc-inputs{padding:30px 30px 32px;}
-  .calc-results{padding:30px;background:var(--ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
-  .summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
-  .summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
-  .field{margin-bottom:20px;}
-  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  @media(max-width:520px){.field-row{grid-template-columns:1fr;}}
-  .lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
-  label .val{float:right;font-family:'JetBrains Mono',monospace;color:var(--blue);font-weight:600;}
-  .radios{display:flex;gap:20px;}
-  .radios label{font-weight:500;color:#2b3140;display:flex;align-items:center;gap:9px;margin:0;cursor:pointer;}
-  .radios input{accent-color:var(--blue);width:17px;height:17px;}
-  .input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
-  .input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
-  .input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
-  .input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
-  input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
-  .hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--mute);}
-  .result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
-  .result--primary{background:#fff;border-color:#fff;}
-  .result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
-  .result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
-  .result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
-  .result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
-  .cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
-  .cta-primary:hover{background:#2a57e6;}
-  .micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
-  .body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
-  .body-content p{color:#2b3140;}
-  .author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
-  .author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
-  .author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
-  .author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
-  .cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
-  .cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
-  .cta-card p{max-width:620px;margin:0 auto 18px;}
-  .cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
-  .cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
-  .cta-card a:hover{background:var(--blue);}
-  .related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
-  </style>
+    </div>
+  </section>
+  <section class="body-content">
+    <figure class="author">
+      <a href="https://www.linkedin.com/company/nexa-mortgage-jim-blackburn-team" target="_blank" rel="noopener">
+        <img width="120" height="120" src="/wp-content/uploads/2025/10/Untitled-design-3.png" alt="Jim Blackburn" />
+      </a>
+      <h3><a href="https://www.linkedin.com/company/nexa-mortgage-jim-blackburn-team" target="_blank" rel="noopener">By Jim Blackburn</a></h3>
+    </figure>
+    <div class="cta-card">
+      <h4>Ready to Take Your First Step?</h4>
+      <p><strong>Skip the guesswork.</strong> Take our quick Discovery Quiz to uncover your top financial priorities, so we can guide you toward the wealth-building strategies that fit your life.</p>
+      <ul><li>Takes just 5 minutes</li><li>Tailored results based on your answers</li><li>No credit check required</li></ul>
+      <a href="https://stairwaymortgage.com/discovery-quiz">Take the Discovery Quiz</a>
+    </div>
+    <div class="cta-card">
+      <h4>Need a Pre-Approval Letter—Fast?</h4>
+      <p>Buying a home soon? Complete our short form and we'll connect you with the loan options that fit your target property and financial situation—fast.</p>
+      <ul><li>Only 2 minutes to complete</li><li>Quick turnaround on pre-approval</li><li>No credit score impact</li></ul>
+      <a href="https://stairwaymortgage.com/purchase-inquiry">Get Pre-Approved Now</a>
+    </div>
+    <div class="cta-card">
+      <h4>Got a Few Questions First?</h4>
+      <p>Let's talk it through. Book a call and one of our friendly advisors will be in touch to guide you personally.</p>
+      <a href="https://stairwaymortgage.com/schedule-call">Schedule a Call</a>
+    </div>
+    <h2>Important Disclaimer</h2>
+    <p>This calculator is for illustrative purposes only and does not constitute financial, legal, or investment advice. Results are based on general assumptions and may not reflect actual performance or eligibility. This is not a loan estimate or approval. Please consult with a licensed mortgage advisor before making financial decisions.</p>
+    <h2>Related Posts</h2>
+    <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
+  </section>
+</main>
+<script is:inline>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const fmt0 = (n) => (n<0?'-$':'$') + Math.abs(Math.round(n)).toLocaleString('en-US');
+  function compute(){
+    const price=+$('price').value||0, reno=+$('reno').value||0, arv=+$('arv').value||0,
+          downpct=+$('down').value||0, term=+$('term').value||30, annIns=+$('ins').value||0,
+          annTax=+$('tax').value||0, hoa=+$('hoa').value||0, rate=+$('rate').value||0;
+    const totalProp = 0.10*reno + price + reno;
+    const reserves = rate*totalProp/100/12*6;
+    const financeable = 0.04*(totalProp+reserves) + totalProp + reserves;
+    const maxLoan = Math.min(arv*1.00, financeable*1.00);
+    const desired = Math.min(maxLoan, financeable - (financeable*downpct/100));
+    const usdaUpfront = desired*0.01;
+    const final = desired + usdaUpfront;
+    const r=rate/1200;
+    const n = term===30 ? 360 : (term === 20 ? 240 : 180);
+    const pi = r>0 ? final*r/(1-Math.pow(1+r,-n)) : final/n;
+    const mins=annIns/12, mtax=annTax/12;
+    const usdaAnnual=(final*0.0035)/12;
+    const total=pi+mins+mtax+usdaAnnual;
+    const cashNo=financeable-desired;
+    const cashSC=Math.max(cashNo-(price*0.06),0);
+    const income=(total+hoa)/0.41;
+    $('downVal').textContent=downpct+'%'; $('rateVal').textContent=rate.toFixed(1)+'%';
+    $('rTotalProp').textContent=fmt0(totalProp); $('rReserves').textContent=fmt0(reserves);
+    $('rFinanceable').textContent=fmt0(financeable); $('rMaxLoan').textContent=fmt0(maxLoan);
+    $('rDesired').textContent=fmt0(desired); $('rUpfront').textContent=fmt0(usdaUpfront); $('rFinal').textContent=fmt0(final);
+    $('rPI').textContent=fmt0(pi); $('rIns').textContent=fmt0(mins); $('rTax').textContent=fmt0(mtax);
+    $('rGfee').textContent=fmt0(usdaAnnual); $('rHOA').textContent=fmt0(hoa); $('rTotal').textContent=fmt0(total);
+    $('rCashNo').textContent=fmt0(cashNo); $('rCashSC').textContent=fmt0(cashSC);
+    $('rIncome').textContent=fmt0(income);
+  }
+  document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+  compute();
+})();
+</script>
+<style>
+.crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);margin-bottom:28px;}
+.crumbs a{color:var(--mute);text-decoration:none;} .crumbs a:hover{color:var(--blue);} .crumbs span{margin:0 6px;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin:0 0 10px;}
+.display-lg{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em;}
+.lede{font-size:18px;color:#2b3140;max-width:62ch;margin:0 0 14px;}
+.trust{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mute);border-top:1px solid var(--bone);padding-top:14px;margin:0;}
+.calc{margin:40px 0 56px;border:1px solid var(--bone);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--bone),0 24px 48px -32px rgba(10,14,26,.25);}
+.calc::before{content:"";display:block;height:4px;background:var(--blue);}
+.calc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;}
+@media(max-width:780px){.calc-grid{grid-template-columns:1fr;}}
+.calc-inputs{padding:30px 30px 32px;}
+.calc-results{padding:30px;background:var(--color-ink);color:#fff;display:flex;flex-direction:column;gap:12px;}
+.summary-title{font-family:'Fraunces',serif;font-weight:600;font-size:28px;margin:0 0 4px;color:#fff;}
+.summary-sub{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-size:11px;color:#aeb6c8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin:8px 0 0;}
+.field{margin-bottom:20px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+.lbl,label{display:block;font-size:13.5px;font-weight:600;color:#384055;margin-bottom:8px;}
+label .val{float:right;font-family:'JetBrains Mono',monospace;color:var(--blue);font-weight:600;}
+.radios{display:flex;gap:20px;}
+.radios label{font-weight:500;color:#2b3140;display:flex;align-items:center;gap:9px;margin:0;cursor:pointer;}
+.radios input{accent-color:var(--blue);width:17px;height:17px;}
+.input-money,.input-plain{display:flex;align-items:center;border:1px solid var(--bone);border-radius:10px;background:#fff;overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+.input-money:focus-within,.input-plain:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,69,214,.12);}
+.input-money span{padding:0 4px 0 14px;color:var(--mute);font-weight:600;}
+.input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain input,.input-plain select{flex:1;border:0;outline:0;padding:13px 6px 13px 14px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--ink);width:100%;}
+.input-plain .suffix{padding:0 14px 0 4px;color:var(--mute);font-weight:600;}
+input[type=range]{width:100%;accent-color:var(--blue);height:4px;margin:6px 0;}
+.hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--mute);}
+.result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
+.result--primary{background:#fff;border-color:#fff;}
+.result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--ink);} .result--primary .result-note{color:#6B7280;}
+.result-label{font-size:12.5px;color:#aeb6c8;font-weight:600;}
+.result-value{font-family:'Fraunces',serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#fff;}
+.result-note{font-size:10.5px;line-height:1.45;color:#8b93a6;}
+.cta-primary{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:10px;margin-top:6px;transition:background .15s;}
+.cta-primary:hover{background:#2a57e6;}
+.micro{font-size:11px;color:#8b93a6;text-align:center;margin:0;}
+.body-content h2{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:40px 0 12px;}
+.body-content p{color:#2b3140;}
+.author{display:flex;align-items:center;gap:16px;margin:0 0 32px;}
+.author img{width:64px;height:64px;border-radius:50%;object-fit:cover;}
+.author h3{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin:0;}
+.author a{color:var(--ink);text-decoration:none;} .author a:hover{color:var(--blue);}
+.cta-card{background:var(--paper-tint);border:1px solid var(--bone);border-radius:16px;padding:32px;text-align:center;margin:24px auto;max-width:760px;}
+.cta-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 12px;}
+.cta-card p{max-width:620px;margin:0 auto 18px;}
+.cta-card ul{list-style:none;padding:0;margin:18px 0;color:#384055;font-size:15px;}
+.cta-card a{display:inline-block;background:var(--ink);color:#fff;padding:13px 26px;border-radius:9px;text-decoration:none;font-weight:600;}
+.cta-card a:hover{background:var(--blue);}
+.related-placeholder{border:1px dashed var(--bone);border-radius:10px;padding:20px;color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
+</style>
   <CalcLeadForm />
 </Layout>
-</content>
