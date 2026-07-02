@@ -1,264 +1,145 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import PurchaseForm from '../../components/PurchaseForm.astro';
-import RefinanceForm from '../../components/RefinanceForm.astro';
-import HelocForm from '../../components/HelocForm.astro';
-import RealReverseForm from '../../components/RealReverseForm.astro';
-import NewConstructionForm from '../../components/NewConstructionForm.astro';
-import RenovationForm from '../../components/RenovationForm.astro';
-import { ARIVE_URLS } from '../../lib/arive';
+// see-my-options.astro — Stairway Mortgage "Choose Your Path" page.
+// This is the destination the site-wide header "See My Options" button links to.
+// It shows six inquiry paths (soft pull) + a prominent full-application path (hard pull).
+//
+// HEADER WIRING: point the header button here, e.g.
+//   <a href="/see-my-options/" class="btn btn-blue btn-arrow">See My Options</a>
+//
+// Each card opens its funnel via the funnel's exposed open fn (window.STW_OPEN_xx) or, for
+// reverse, its data-rm-open trigger. The funnel components are imported + mounted once below.
+import PurchaseForm        from "../../components/PurchaseForm.astro";
+import RefinanceForm       from "../../components/RefinanceForm.astro";
+import HelocForm           from "../../components/HelocForm.astro";
+import NewConstructionForm from "../../components/NewConstructionForm.astro";
+import RenovationForm      from "../../components/RenovationForm.astro";
+import ReverseMortgageForm from "../../components/ReverseMortgageForm.astro";
+import Layout              from "../../layouts/Layout.astro";
 ---
 
-<Layout title="See My Options — Stairway Mortgage" description="Tell us your goal and see your mortgage options in about a minute. Purchase, refinance, HELOC, or reverse mortgage — 300+ lenders, same-day answers.">
+<Layout title="See My Options — Stairway Mortgage" description="Choose your path — start a soft-inquiry funnel or begin a full application. NMLS #1072866.">
 
-  <section class="section relative overflow-hidden smo-hero-wash">
-    <div class="container-page">
-      <div class="max-w-3xl mx-auto text-center reveal">
-        <span class="eyebrow eyebrow-blue mb-6">Free · About 1 minute · No credit pull</span>
-        <h1 class="display-xl mt-6 mb-6">What can we help you <em class="not-italic text-[var(--color-blue)]">with</em>?</h1>
-        <p class="lede max-w-xl mx-auto mb-12">Pick the path that fits your goal. Answer a few quick questions and our team will reach out same-day with your options — compared across 300+ lenders.</p>
-      </div>
+<main class="smo-wrap">
+  <div class="smo-head">
+    <div class="smo-eyebrow">Let&rsquo;s get you to the right place</div>
+    <h1 class="smo-h1">What can we help you with?</h1>
+    <p class="smo-sub">Two ways to start &mdash; pick the one that fits where you are right now.</p>
+  </div>
 
-      <div class="smo-video" aria-label="Intro video coming soon">
-        <div class="smo-video__play" aria-hidden="true"></div>
-        <div class="smo-video__label">Intro video coming soon</div>
-      </div>
+  <!-- OPTIONAL VIDEO SLOT — replace this block with your embed (YouTube/Vimeo/MP4) when ready -->
+  <div class="smo-video">
+    <div class="smo-play"></div>
+    <div class="smo-video-ph">[ intro video goes here ]</div>
+  </div>
 
-      <div class="smo-grid">
-        <button data-pf-open class="smo-card group">
-          <span class="smo-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </span>
-          <h3 class="smo-card__title font-display">Purchase</h3>
-          <p class="smo-card__desc">Buying a home — first-time or next.</p>
-          <span class="smo-card-note">Soft credit check — won't affect your score</span>
-          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
-        </button>
+  <!-- TIER 1: inquiry -->
+  <div class="smo-tier">
+    <div class="smo-tier-line"></div>
+    <div class="smo-tier-label">Just exploring &middot; A few quick questions</div>
+    <div class="smo-tier-line"></div>
+  </div>
 
-        <button data-rf-open class="smo-card group">
-          <span class="smo-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M20.49 15A9 9 0 115.64 5.64L1 10"/></svg>
-          </span>
-          <h3 class="smo-card__title font-display">Refinance</h3>
-          <p class="smo-card__desc">Lower your rate or change your term.</p>
-          <span class="smo-card-note">Soft credit check — won't affect your score</span>
-          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
-        </button>
+  <div class="smo-grid">
+    <button class="smo-card" onclick="window.STW_OPEN_pf && window.STW_OPEN_pf()">
+      <h2>Purchase</h2><p>Buying a home &mdash; first or next.</p>
+      <span class="smo-start">Start &rarr;</span>
+      <span class="smo-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg> Soft inquiry &mdash; no credit pull</span>
+    </button>
+    <button class="smo-card" onclick="window.STW_OPEN_rf && window.STW_OPEN_rf()">
+      <h2>Refinance</h2><p>Lower your rate or change terms.</p>
+      <span class="smo-start">Start &rarr;</span>
+      <span class="smo-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg> Soft inquiry &mdash; no credit pull</span>
+    </button>
+    <button class="smo-card" onclick="window.STW_OPEN_hf && window.STW_OPEN_hf()">
+      <h2>HELOC</h2><p>Tap equity, keep your first mortgage.</p>
+      <span class="smo-start">Start &rarr;</span>
+      <span class="smo-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg> Soft inquiry &mdash; no credit pull</span>
+    </button>
+    <button class="smo-card" onclick="window.STW_OPEN_nc && window.STW_OPEN_nc()">
+      <h2>New Construction</h2><p>Build from the ground up.</p>
+      <span class="smo-start">Start &rarr;</span>
+      <span class="smo-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg> Soft inquiry &mdash; no credit pull</span>
+    </button>
+    <button class="smo-card" onclick="window.STW_OPEN_rn && window.STW_OPEN_rn()">
+      <h2>Renovation</h2><p>Fix, flip, or renovate to live in.</p>
+      <span class="smo-start">Start &rarr;</span>
+      <span class="smo-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg> Soft inquiry &mdash; no credit pull</span>
+    </button>
+    <button class="smo-card" data-rm-open>
+      <h2>Reverse Mortgage</h2><p>Age 62+ &mdash; access equity, no monthly payment.</p>
+      <span class="smo-start">Start &rarr;</span>
+      <span class="smo-pill"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg> Soft inquiry &mdash; no credit pull</span>
+    </button>
+  </div>
 
-        <button data-hf-open class="smo-card group">
-          <span class="smo-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-          </span>
-          <h3 class="smo-card__title font-display">HELOC</h3>
-          <p class="smo-card__desc">Tap your home equity as a credit line.</p>
-          <span class="smo-card-note">Soft credit check — won't affect your score</span>
-          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
-        </button>
+  <p class="smo-note">
+    Answer a few questions to get general ideas and start a conversation. There&rsquo;s no credit
+    check and no obligation &mdash; next you&rsquo;ll schedule a quick consultation, and together
+    we&rsquo;ll decide if it&rsquo;s the right time to move forward.
+  </p>
 
-        <button data-rm-open class="smo-card group">
-          <span class="smo-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
-          <h3 class="smo-card__title font-display">Reverse Mortgage</h3>
-          <p class="smo-card__desc">Income from your home, age 55+.</p>
-          <span class="smo-card-note">Soft credit check — won't affect your score</span>
-          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
-        </button>
+  <!-- TIER 2: full application -->
+  <div class="smo-tier">
+    <div class="smo-tier-line"></div>
+    <div class="smo-tier-label">Ready to move forward now</div>
+    <div class="smo-tier-line"></div>
+  </div>
 
-        <button data-nc-open class="smo-card group">
-          <span class="smo-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V8l8-5 8 5v12"/><line x1="9" y1="20" x2="9" y2="13"/><line x1="15" y1="20" x2="15" y2="13"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
-          </span>
-          <h3 class="smo-card__title font-display">New Construction</h3>
-          <p class="smo-card__desc">Financing a home you're building.</p>
-          <span class="smo-card-note">Soft credit check — won't affect your score</span>
-          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
-        </button>
-
-        <button data-rn-open class="smo-card group">
-          <span class="smo-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>
-          </span>
-          <h3 class="smo-card__title font-display">Renovation</h3>
-          <p class="smo-card__desc">Buy or refinance plus repair costs.</p>
-          <span class="smo-card-note">Soft credit check — won't affect your score</span>
-          <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
-        </button>
-      </div>
-
-      <div class="smo-tier2-sep" aria-hidden="true">
-        <span class="smo-tier2-sep__line"></span>
-        <span class="smo-tier2-sep__label">Ready to move forward now</span>
-        <span class="smo-tier2-sep__line"></span>
-      </div>
-
-      <div class="smo-tier2-panel">
-        <span class="smo-tier2-eyebrow">Full Application</span>
-        <h2 class="smo-tier2-title font-display">Need an approval letter today? Start your full application.</h2>
-        <p class="smo-tier2-body">
-          For people who've decided and are ready — making an offer, on a deadline, or who want a fully
-          customized loan estimate. This is the complete application that gets a real pre-approval.
-        </p>
-        <p class="smo-tier2-note">Includes a credit review (hard pull) · The fastest path to an approval letter.</p>
-        <a href="/get-approved" target="_blank" rel="noopener" class="btn btn-blue smo-tier2-btn">Get Approved Now</a>
-      </div>
-
-      <p class="smo-trust mono">
-        Reviewed by Jim Blackburn · NMLS #1072866 · Not a commitment to lend.
-      </p>
+  <div class="smo-fullapp">
+    <div class="smo-fullapp-copy">
+      <div class="smo-fa-eyebrow">Full Application</div>
+      <h3>Need an approval letter today? Start your full application.</h3>
+      <p>For when you&rsquo;ve decided and you&rsquo;re ready to go &mdash; making an offer, on a
+      deadline, or you want a fully customized loan estimate. This is the complete application that
+      gets you a real pre-approval.</p>
+      <div class="smo-hardnote">Includes a credit review (hard pull) &middot; The fastest path to an approval letter.</div>
     </div>
-  </section>
+    <a class="smo-fa-btn" href="/get-approved" target="_blank" rel="noopener">Get Approved Now</a>
+  </div>
+</main>
 
-  <PurchaseForm />
-  <RefinanceForm />
-  <HelocForm />
-  <RealReverseForm />
-  <NewConstructionForm />
-  <RenovationForm />
+<!-- mount the six funnels once -->
+<PurchaseForm />
+<RefinanceForm />
+<HelocForm />
+<NewConstructionForm />
+<RenovationForm />
+<ReverseMortgageForm />
+
 </Layout>
 
 <style>
-  .smo-hero-wash { position:relative; }
-  .smo-hero-wash::before { content:''; position:absolute; top:0; left:0; right:0; height:200px; background:linear-gradient(180deg,var(--color-blue-tint) 0%,transparent 100%); opacity:0.3; pointer-events:none; z-index:0; }
-
-  .smo-video { max-width:680px; margin:28px auto 6px; border-radius:18px; overflow:hidden; aspect-ratio:16/9; background:#0A0E1A; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; position:relative; box-shadow:0 18px 50px rgba(10,14,26,.22); }
-  .smo-video__play { width:62px; height:62px; border-radius:50%; background:rgba(255,255,255,.16); border:2px solid rgba(255,255,255,.55); display:flex; align-items:center; justify-content:center; }
-  .smo-video__play::after { content:''; border-left:18px solid #fff; border-top:11px solid transparent; border-bottom:11px solid transparent; margin-left:4px; }
-  .smo-video__label { color:#fff; opacity:.62; font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.06em; text-transform:uppercase; }
-
-  .smo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    max-width: 960px;
-    margin: 2.75rem auto 0;
-  }
-  @media (max-width: 820px) { .smo-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .smo-grid { grid-template-columns: 1fr; } }
-
-  .smo-card {
-    all: unset;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.75rem;
-    padding: 2rem 1.5rem;
-    border: 1px solid var(--color-bone);
-    border-radius: 14px;
-    background: var(--color-paper);
-    transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
-  }
-  .smo-card:hover {
-    border-color: var(--color-blue);
-    box-shadow: 0 8px 24px -12px rgba(24,69,214,0.15);
-    transform: translateY(-2px);
-  }
-  .smo-card__icon {
-    width: 56px; height: 56px;
-    border-radius: 14px;
-    background: var(--color-blue-tint, #F2F5FF);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--color-blue);
-  }
-  .smo-card__title { font-size: 1.15rem; font-weight: 500; color: var(--color-ink); }
-  .smo-card__desc { font-size: 13.5px; color: var(--color-mute); line-height: 1.5; }
-  .smo-card-note {
-    font-size: 11.5px;
-    color: var(--color-mute);
-    opacity: 0.85;
-    line-height: 1.4;
-  }
-  .smo-card__cta {
-    font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-blue);
-    margin-top: auto;
-    padding-top: 0.5rem;
-  }
-  .smo-trust {
-    text-align: center;
-    font-size: 11px;
-    color: var(--color-mute);
-    margin-top: 2.5rem;
-    letter-spacing: 0.03em;
-  }
-
-  /* - Tier 2: full-application separator + dark panel - */
-  .smo-tier2-sep {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    max-width: 720px;
-    margin: 3.5rem auto 1.5rem;
-  }
-  .smo-tier2-sep__line {
-    flex: 1;
-    height: 1px;
-    background: var(--color-bone);
-  }
-  .smo-tier2-sep__label {
-    font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    white-space: nowrap;
-  }
-
-  .smo-tier2-panel {
-    max-width: 720px;
-    margin: 0 auto;
-    background: var(--color-ink, #0A0E1A);
-    color: var(--color-paper);
-    border-radius: 18px;
-    padding: 2.75rem 2.5rem;
-    text-align: center;
-    box-shadow: 0 18px 50px rgba(10, 14, 26, 0.22);
-  }
-  .smo-tier2-eyebrow {
-    display: inline-block;
-    font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-blue-tint, #F2F5FF);
-    opacity: 0.85;
-    margin-bottom: 1rem;
-  }
-  .smo-tier2-title {
-    font-size: 1.6rem;
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.015em;
-    color: var(--color-paper);
-    margin: 0 auto 1rem;
-    max-width: 30ch;
-  }
-  .smo-tier2-body {
-    font-size: 15px;
-    line-height: 1.6;
-    color: rgba(250, 250, 247, 0.78);
-    max-width: 48ch;
-    margin: 0 auto 1.25rem;
-  }
-  .smo-tier2-note {
-    font-size: 12.5px;
-    color: rgba(250, 250, 247, 0.55);
-    margin: 0 auto 1.75rem;
-  }
-  .smo-tier2-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  @media (max-width: 480px) {
-    .smo-tier2-panel { padding: 2rem 1.5rem; }
-    .smo-tier2-title { font-size: 1.35rem; }
-    .smo-tier2-btn { width: 100%; }
-  }
+  .smo-wrap{ width:100%; max-width:920px; margin:0 auto; padding:48px 20px 64px;
+    font-family:'IBM Plex Sans',system-ui,sans-serif; color:#0A0E1A; }
+  .smo-head{ text-align:center; margin-bottom:8px; }
+  .smo-eyebrow{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#9a9a93; margin-bottom:16px; }
+  .smo-h1{ font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:clamp(2rem,5vw,3rem); line-height:1.12; letter-spacing:-.02em; margin:0 0 14px; }
+  .smo-sub{ font-family:'Fraunces',Georgia,serif; font-style:italic; font-size:18px; color:#6b6b63; margin:0 auto 8px; max-width:560px; }
+  .smo-video{ max-width:680px; margin:28px auto 6px; border-radius:18px; overflow:hidden; aspect-ratio:16/9; background:#0A0E1A; display:flex; align-items:center; justify-content:center; position:relative; box-shadow:0 18px 50px rgba(10,14,26,.22); }
+  .smo-video-ph{ color:#fff; opacity:.5; font-family:'JetBrains Mono',monospace; font-size:13px; position:absolute; bottom:12px; right:16px; }
+  .smo-play{ position:absolute; width:62px; height:62px; border-radius:50%; background:rgba(255,255,255,.16); border:2px solid rgba(255,255,255,.55); display:flex; align-items:center; justify-content:center; }
+  .smo-play::after{ content:''; border-left:18px solid #fff; border-top:11px solid transparent; border-bottom:11px solid transparent; margin-left:4px; }
+  .smo-tier{ display:flex; align-items:center; gap:14px; margin:42px 0 18px; }
+  .smo-tier-line{ flex:1; height:1px; background:#e2e2da; }
+  .smo-tier-label{ font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#9a9a93; white-space:nowrap; }
+  .smo-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  @media(max-width:760px){ .smo-grid{ grid-template-columns:1fr 1fr; } }
+  @media(max-width:480px){ .smo-grid{ grid-template-columns:1fr; } }
+  .smo-card{ display:flex; flex-direction:column; align-items:flex-start; gap:6px; text-align:left; border:1.5px solid #d9d9d1; border-radius:18px; padding:24px 24px 20px; background:#fff; cursor:pointer; transition:border-color .15s ease, box-shadow .18s ease, transform .08s ease; font-family:inherit; }
+  .smo-card:hover{ border-color:#0A0E1A; box-shadow:0 16px 40px rgba(10,14,26,.13); transform:translateY(-2px); }
+  .smo-card h2{ font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:21px; margin:0; }
+  .smo-card p{ font-size:13.5px; line-height:1.45; color:#6b6b63; margin:0; }
+  .smo-start{ margin-top:4px; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#1845D6; }
+  .smo-pill{ display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:5px 11px; border-radius:99px; background:#eef7ee; color:#2E7D32; font-size:11px; font-weight:600; line-height:1.2; }
+  .smo-pill svg{ width:12px; height:12px; flex:0 0 auto; }
+  .smo-note{ text-align:center; font-size:14px; color:#7a7a72; line-height:1.6; max-width:620px; margin:20px auto 0; }
+  .smo-fullapp{ margin-top:18px; border-radius:20px; padding:30px 32px; text-align:left; background:linear-gradient(135deg,#0A0E1A 0%,#16204a 100%); color:#fff; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap; box-shadow:0 22px 60px rgba(10,14,26,.30); }
+  .smo-fullapp-copy{ flex:1 1 320px; }
+  .smo-fa-eyebrow{ font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#8ea2ff; margin-bottom:10px; }
+  .smo-fullapp h3{ font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:25px; line-height:1.2; margin:0 0 10px; color:#fff; }
+  .smo-fullapp p{ font-size:14.5px; line-height:1.6; color:#c5cbe0; margin:0; max-width:440px; }
+  .smo-hardnote{ margin-top:12px; font-size:12.5px; color:#9aa6cf; }
+  .smo-fa-btn{ flex:0 0 auto; display:inline-flex; align-items:center; gap:10px; background:#fff; color:#0A0E1A; border-radius:99px; padding:18px 34px; font-size:16px; font-weight:600; text-decoration:none; white-space:nowrap; transition:transform .08s ease, box-shadow .15s ease; box-shadow:0 8px 24px rgba(0,0,0,.25); }
+  .smo-fa-btn:hover{ transform:translateY(-2px); box-shadow:0 14px 34px rgba(0,0,0,.34); }
+  .smo-fa-btn::after{ content:'\2192'; }
 </style>
