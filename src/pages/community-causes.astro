@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-// External GHL donation survey (receipt submission handled there — no in-page upload).
-const DONATE_URL = 'https://forms.stairwaymortgage.com/widget/survey/JaFWaMekf5ieavS4KUSb';
+import DonateForm from '../components/DonateForm.astro';
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -54,7 +52,7 @@ const values = [
             thriving future for all.
           </p>
           <div class="cc-actions">
-            <a href={DONATE_URL} class="btn btn-blue btn-arrow" target="_blank" rel="noopener">Donate Now</a>
+            <button type="button" data-donate-open class="btn btn-blue btn-arrow">Donate Now</button>
             <a href="/schedule-call/" class="btn btn-ghost">Talk to Our Team</a>
           </div>
           <p class="cc-trust">Reviewed by Jim Blackburn · NMLS #1072866 · Giving back is built into how we work.</p>
@@ -135,7 +133,7 @@ const values = [
             shared impact for the community.
           </p>
           <div class="cc-actions cc-actions--center">
-            <a href={DONATE_URL} class="btn btn-blue btn-arrow" target="_blank" rel="noopener">Donate Now</a>
+            <button type="button" data-donate-open class="btn btn-blue btn-arrow">Donate Now</button>
             <a href="/schedule-call/" class="btn btn-ghost cc-btn-on-dark">Talk to Our Team</a>
           </div>
         </div>
@@ -143,6 +141,8 @@ const values = [
     </section>
 
   </div>
+
+  <DonateForm />
 </Layout>
 
 <style>
