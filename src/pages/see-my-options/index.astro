@@ -31,6 +31,7 @@ import { ARIVE_URLS } from '../../lib/arive';
           </span>
           <h3 class="smo-card__title font-display">Purchase</h3>
           <p class="smo-card__desc">Buying a home — first-time or next.</p>
+          <span class="smo-card-note">Soft credit check — won't affect your score</span>
           <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
         </button>
 
@@ -40,6 +41,7 @@ import { ARIVE_URLS } from '../../lib/arive';
           </span>
           <h3 class="smo-card__title font-display">Refinance</h3>
           <p class="smo-card__desc">Lower your rate or change your term.</p>
+          <span class="smo-card-note">Soft credit check — won't affect your score</span>
           <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
         </button>
 
@@ -49,6 +51,7 @@ import { ARIVE_URLS } from '../../lib/arive';
           </span>
           <h3 class="smo-card__title font-display">HELOC</h3>
           <p class="smo-card__desc">Tap your home equity as a credit line.</p>
+          <span class="smo-card-note">Soft credit check — won't affect your score</span>
           <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
         </button>
 
@@ -58,6 +61,7 @@ import { ARIVE_URLS } from '../../lib/arive';
           </span>
           <h3 class="smo-card__title font-display">Reverse Mortgage</h3>
           <p class="smo-card__desc">Income from your home, age 55+.</p>
+          <span class="smo-card-note">Soft credit check — won't affect your score</span>
           <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
         </button>
 
@@ -67,6 +71,7 @@ import { ARIVE_URLS } from '../../lib/arive';
           </span>
           <h3 class="smo-card__title font-display">New Construction</h3>
           <p class="smo-card__desc">Financing a home you're building.</p>
+          <span class="smo-card-note">Soft credit check — won't affect your score</span>
           <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
         </button>
 
@@ -76,6 +81,7 @@ import { ARIVE_URLS } from '../../lib/arive';
           </span>
           <h3 class="smo-card__title font-display">Renovation</h3>
           <p class="smo-card__desc">Buy or refinance plus repair costs.</p>
+          <span class="smo-card-note">Soft credit check — won't affect your score</span>
           <span class="smo-card__cta">See My Options <span aria-hidden="true">&rarr;</span></span>
         </button>
       </div>
@@ -94,7 +100,7 @@ import { ARIVE_URLS } from '../../lib/arive';
           customized loan estimate. This is the complete application that gets a real pre-approval.
         </p>
         <p class="smo-tier2-note">Includes a credit review (hard pull) · The fastest path to an approval letter.</p>
-        <a href={ARIVE_URLS.apply} target="_blank" rel="noopener" class="btn btn-blue smo-tier2-btn">Get Approved Now</a>
+        <a href="/get-approved" target="_blank" rel="noopener" class="btn btn-blue smo-tier2-btn">Get Approved Now</a>
       </div>
 
       <p class="smo-trust mono">
@@ -158,6 +164,12 @@ import { ARIVE_URLS } from '../../lib/arive';
   }
   .smo-card__title { font-size: 1.15rem; font-weight: 500; color: var(--color-ink); }
   .smo-card__desc { font-size: 13.5px; color: var(--color-mute); line-height: 1.5; }
+  .smo-card-note {
+    font-size: 11.5px;
+    color: var(--color-mute);
+    opacity: 0.85;
+    line-height: 1.4;
+  }
   .smo-card__cta {
     font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
     font-size: 11px;
