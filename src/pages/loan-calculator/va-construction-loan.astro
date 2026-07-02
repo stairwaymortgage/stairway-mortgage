@@ -169,7 +169,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     const ffDisc = disabled===1 ? ff*-1 : 0;
     const final = desired + ff + ffDisc;
     const r=rate/1200;
-    const n = term===30 ? 360 : 180;
+    const n = term===30 ? 360 : (term === 20 ? 240 : 180);
     const pi = r>0 ? final*r/(1-Math.pow(1+r,-n)) : final/n;
     const mins=annIns/12, mtax=annTax/12;
     const mtaxDisc = disabled===1 ? mtax*-1 : 0;

@@ -990,6 +990,11 @@ import HomeReviews from '../components/HomeReviews.astro';
       var fd=new FormData();
       fd.append('file',file);
       fd.append('folder','loan-estimates');
+      fd.append('email',email);
+      fd.append('phone',phone);
+      fd.append('first_name',first);
+      fd.append('last_name',last);
+      fd.append('field_key','loan_estimate_document');
       fetch(UPLOAD_ENDPOINT,{method:'POST',body:fd})
         .then(function(res){ if(!res.ok) throw new Error('upload '+res.status); return res.json(); })
         .then(function(data){ postLead(data&&data.url?data.url:''); })

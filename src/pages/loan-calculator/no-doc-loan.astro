@@ -1,35 +1,36 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CalcLeadForm from '../../components/CalcLeadForm.astro';
-const metaTitle = "1099 Mortgage Calculator: Estimate Your Monthly Payment, Maximum Loan & Cash Needed to Close";
-const metaDescription = "Use this 1099 mortgage calculator to estimate qualifying income, maximum loan, monthly payment, and cash to close based on your last two years of 1099 earnings.";
+const metaTitle = "No-Doc Loan Payment Calculator: Estimate Your Monthly Payment, PMI & Cash to Close | Stairway Mortgage";
+const metaDescription = "Estimate your monthly payment, PMI, and cash to close for a no-doc purchase loan. No income or employment documentation required; qualification is based on credit, assets, and down payment. Built by Jim Blackburn, NMLS #1072866. Not a commitment to lend.";
 const canonical = "https://stairwaymortgage.com/loan-calculator/no-doc-loan/";
 const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Loan Calculators","item":"https://stairwaymortgage.com/loan-calculators/"},{"@type":"ListItem","position":3,"name":"No-Doc Loan Calculator","item":canonical}]};
-const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"1099 Mortgage Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
-const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is income calculated?","acceptedAnswer":{"@type":"Answer","text":"Qualifying income is generally the average of your two most recent years of 1099 earnings, divided across 24 months to get a monthly figure."}},{"@type":"Question","name":"How much can I borrow?","acceptedAnswer":{"@type":"Answer","text":"Your maximum loan is the lower of what your income supports (housing payment up to about 50% of income, minus other obligations) and the maximum allowed by loan-to-value for your property type."}},{"@type":"Question","name":"What down payment is required?","acceptedAnswer":{"@type":"Answer","text":"A 10% minimum down payment is typical on a primary residence, with higher requirements for second homes and investment properties."}}]};
+const appSchema = {"@context":"https://schema.org","@type":"WebApplication","name":"No-Doc Loan Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"All","url":canonical,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":metaDescription};
+const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a no-doc loan?","acceptedAnswer":{"@type":"Answer","text":"A no-doc loan qualifies you without income or employment documentation. Approval is based primarily on your credit, assets, down payment, and the property, rather than tax returns, pay stubs, or bank statements."}},{"@type":"Question","name":"When do I have to pay PMI on a no-doc loan?","acceptedAnswer":{"@type":"Answer","text":"Private mortgage insurance may apply when your loan-to-value is above 80%. No-doc guidelines vary by lender, and the estimated monthly cost rises as your down payment shrinks. PMI can typically be removed once you reach 20% equity."}},{"@type":"Question","name":"How much down payment do I need for a no-doc loan?","acceptedAnswer":{"@type":"Answer","text":"No-doc loans typically require a larger down payment because income is not documented, often 15% or more on a primary residence, with higher requirements for second homes and investment properties."}}]};
 ---
 <Layout title={metaTitle} description={metaDescription} canonical={canonical}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-<main class="container-page">
+
+  <section class="section">
+    <div class="container-page">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span>
     <a href="/loan-calculators/">Loan Calculators</a> <span>/</span>
     <span aria-current="page">No-Doc Loan Calculator</span>
   </nav>
+
   <header class="calc-head">
-    <p class="eyebrow">Self-Employed · No-Doc · Purchase</p>
-    <h1 class="display-lg">1099 Mortgage Calculator</h1>
-    <p class="lede">Estimate your qualifying income, maximum loan, monthly payment, and cash to close using your last two years of 1099 earnings.</p>
+    <p class="eyebrow">No-Doc · Home Purchase</p>
+    <h1 class="display-lg">No-Doc Loan Payment Calculator</h1>
+    <p class="lede">Estimate your monthly payment, PMI, and cash needed to close for a no-doc loan — qualified on your credit, assets, and down payment, with no income or employment documentation required.</p>
     <p class="trust">Built by Jim Blackburn · NMLS #1072866 · $500M+ closed · 7× Scotsman Guide Top Producer</p>
   </header>
-  <section class="calc" aria-label="1099 Mortgage Calculator">
+
+  <section class="calc" aria-label="No-Doc Loan Payment Calculator">
     <div class="calc-grid">
       <div class="calc-inputs">
-        <div class="field"><label for="inc1">What is your total 1099 income for most recent year?</label><div class="input-money"><span>$</span><input id="inc1" type="number" inputmode="numeric" value="100000" min="0" step="1000" /></div></div>
-        <div class="field"><label for="inc0">What is your total 1099 income for year prior?</label><div class="input-money"><span>$</span><input id="inc0" type="number" inputmode="numeric" value="140000" min="0" step="1000" /></div></div>
-        <div class="field"><label for="oblig">Estimated Monthly Obligations on Credit</label><div class="input-money"><span>$</span><input id="oblig" type="number" inputmode="numeric" value="500" min="0" step="10" /></div><p class="hint hint--mute">Car payment, credit cards, business loans not paid by the business for 12+ months.</p></div>
         <div class="field">
           <label for="ptype">What type of home will this be?</label>
           <select id="ptype">
@@ -41,15 +42,40 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
             <option value="6">Investment Rental (2-4 units)</option>
           </select>
         </div>
-        <div class="field"><label for="price">Purchase Price</label><div class="input-money"><span>$</span><input id="price" type="number" inputmode="numeric" value="500000" min="0" step="1000" /></div></div>
-        <div class="field"><label for="down">Down Payment Percentage <span class="val" id="downVal">10%</span></label><input id="down" type="range" min="0" max="100" step="1" value="10" /><p class="hint hint--mute">10% minimum.</p></div>
-        <div class="field"><label for="term">Term of Loan</label><select id="term"><option value="15">15 years</option><option value="20">20 years</option><option value="30" selected>30 years</option></select></div>
-        <div class="field-row">
-          <div class="field"><label for="ins">Annual Insurance</label><div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="2400" min="0" step="100" /></div></div>
-          <div class="field"><label for="tax">Annual Taxes</label><div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="5000" min="0" step="100" /></div></div>
+        <div class="field">
+          <label for="price">Purchase Price</label>
+          <div class="input-money"><span>$</span><input id="price" type="number" inputmode="numeric" value="500000" min="0" step="1000" /></div>
         </div>
-        <div class="field"><label for="hoa">Monthly HOA</label><div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="10" /></div></div>
-        <div class="field"><label for="rate">Estimated Interest Rate <span class="val" id="rateVal">7.49%</span></label><input id="rate" type="range" min="5" max="10" step="0.1" value="7.49" /></div>
+        <div class="field">
+          <label for="down">Down Payment Percentage <span class="val" id="downVal">15%</span></label>
+          <input id="down" type="range" min="0" max="100" step="1" value="15" />
+        </div>
+        <div class="field">
+          <label for="term">Term of Loan</label>
+          <select id="term">
+            <option value="15">15 years</option>
+            <option value="20">20 years</option>
+            <option value="30" selected>30 years</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="ins">Annual Insurance</label>
+            <div class="input-money"><span>$</span><input id="ins" type="number" inputmode="numeric" value="2400" min="0" step="100" /></div>
+          </div>
+          <div class="field">
+            <label for="tax">Annual Taxes</label>
+            <div class="input-money"><span>$</span><input id="tax" type="number" inputmode="numeric" value="5000" min="0" step="100" /></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="hoa">Monthly HOA</label>
+          <div class="input-money"><span>$</span><input id="hoa" type="number" inputmode="numeric" value="0" min="0" step="10" /></div>
+        </div>
+        <div class="field">
+          <label for="rate">Estimated Interest Rate <span class="val" id="rateVal">6.99%</span></label>
+          <input id="rate" type="range" min="5" max="10" step="0.1" value="6.99" />
+        </div>
         <div class="field">
           <span class="lbl">Are you thinking about buying another home after this one to continue your wealth journey?</span>
           <div class="radios" role="radiogroup" aria-label="Buying another home">
@@ -58,28 +84,36 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
           </div>
         </div>
       </div>
+
       <div class="calc-results" aria-live="polite">
         <p class="summary-title">Summary</p>
-        <div class="result result--primary"><span class="result-label">Total Monthly Income</span><span class="result-value" id="rIncome">$10,000</span><span class="result-note">Average of your two most recent years of 1099 income, over 24 months.</span></div>
-        <div class="result result--primary"><span class="result-label">Maximum Loan Allowed</span><span class="result-value" id="rMaxAllowed">$450,000</span><span class="result-note">The lower of what your income supports and the maximum allowed by loan-to-value.</span></div>
-        <div class="result result--primary"><span class="result-label">Total Monthly Housing Expense</span><span class="result-value" id="rTotal">$3,760</span></div>
-        <p class="summary-sub">Qualifying Detail</p>
-        <div class="result"><span class="result-label">Max Monthly Housing Payment Allowed</span><span class="result-value" id="rMaxHousing">$4,500</span><span class="result-note">50% of monthly income, less obligations.</span></div>
-        <div class="result"><span class="result-label">Max Monthly P&amp;I Payment Allowed</span><span class="result-value" id="rMaxPI">$3,883</span></div>
-        <div class="result"><span class="result-label">Desired Loan Amount</span><span class="result-value" id="rDesired">$450,000</span></div>
+        <div class="result result--primary">
+          <span class="result-label">Total Monthly Housing Expense</span>
+          <span class="result-value" id="rTotal">$0</span>
+          <span class="result-note">Principal &amp; interest, insurance, taxes, and PMI (PITI). HOA, if any, is paid separately.</span>
+        </div>
+        <div class="result">
+          <span class="result-label">Maximum Loan Amount (property type)</span>
+          <span class="result-value" id="rMaxLoan">$0</span>
+          <span class="result-note">No-doc loan-to-value caps by property type. No-doc guidelines vary by lender.</span>
+        </div>
         <p class="summary-sub">Payment Breakdown</p>
-        <div class="result"><span class="result-label">Principal &amp; Interest Payment</span><span class="result-value" id="rPI">$3,143</span></div>
-        <div class="result"><span class="result-label">Monthly Insurance</span><span class="result-value" id="rIns">$200</span></div>
-        <div class="result"><span class="result-label">Monthly Taxes</span><span class="result-value" id="rTax">$417</span></div>
+        <div class="result"><span class="result-label">Desired Loan Amount</span><span class="result-value" id="rDesired">$0</span></div>
+        <div class="result"><span class="result-label">Principal &amp; Interest Payment</span><span class="result-value" id="rPI">$0</span></div>
+        <div class="result"><span class="result-label">Monthly Insurance</span><span class="result-value" id="rIns">$0</span></div>
+        <div class="result"><span class="result-label">Monthly Taxes</span><span class="result-value" id="rTax">$0</span></div>
+        <div class="result"><span class="result-label">Monthly PMI</span><span class="result-value" id="rPMI">$0</span><span class="result-note">Estimated private mortgage insurance based on the down payment. No-doc mortgage insurance varies by lender.</span></div>
         <div class="result"><span class="result-label">HOA Paid Separately</span><span class="result-value" id="rHOA">$0</span></div>
         <p class="summary-sub">Cash to Close</p>
-        <div class="result"><span class="result-label">Cash Out of Pocket — without seller credit</span><span class="result-value" id="rCashNo">$80,000</span><span class="result-note">Includes 6% estimated closing costs; varies by state. Not a Loan Estimate.</span></div>
-        <div class="result"><span class="result-label">Cash Out of Pocket — with 3% seller credit</span><span class="result-value" id="rCashSC">$65,000</span></div>
+        <div class="result"><span class="result-label">Cash Out of Pocket — without seller credit</span><span class="result-value" id="rCashNo">$0</span><span class="result-note">Includes 6% estimated closing costs and varies state to state. This is NOT a Loan Estimate.</span></div>
+        <div class="result"><span class="result-label">Cash Out of Pocket — with 3% seller credit</span><span class="result-value" id="rCashSC">$0</span><span class="result-note">Assumes a 3% seller credit toward closing costs and prepaids.</span></div>
+        <div class="result"><span class="result-label">Monthly Income to Comfortably Afford</span><span class="result-value" id="rIncome">$0</span><span class="result-note">General affordability guide. No-doc loans require no income documentation; qualification is based on credit, assets, and down payment.</span></div>
         <a class="cta-primary" data-calc-cta data-calc-slug="no-doc-loan">See My Options</a>
         <p class="micro">Estimates only — not a commitment to lend.</p>
       </div>
     </div>
   </section>
+
   <section class="body-content">
     <figure class="author">
       <a href="https://www.linkedin.com/company/nexa-mortgage-jim-blackburn-team" target="_blank" rel="noopener">
@@ -95,7 +129,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     </div>
     <div class="cta-card">
       <h4>Need a Pre-Approval Letter—Fast?</h4>
-      <p>Buying a home soon? Complete our short form and we'll connect you with the best loan options for your target property and financial situation—fast.</p>
+      <p>Buying a home soon? Complete our short form and we'll connect you with the loan options that fit your target property and financial situation—fast.</p>
       <ul><li>Only 2 minutes to complete</li><li>Quick turnaround on pre-approval</li><li>No credit score impact</li></ul>
       <a href="https://stairwaymortgage.com/purchase-inquiry">Get Pre-Approved Now</a>
     </div>
@@ -109,41 +143,62 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     <h2>Related Posts</h2>
     <div class="related-placeholder">Related calculators module ([loan_calculator_box])</div>
   </section>
-</main>
+    </div>
+  </section>
+  <CalcLeadForm />
+</Layout>
+
 <script is:inline>
 (function () {
   const $ = (id) => document.getElementById(id);
-  const fmt0 = (n) => (n<0?'-$':'$') + Math.abs(Math.round(n)).toLocaleString('en-US');
-  function ltvFactor(p){return {1:0.90,2:0.85,3:0.80,4:0.90,5:0.75,6:0.75}[p] || 0;}
+  const fmt0 = (n) => '$' + Math.round(n).toLocaleString('en-US');
+  const fmt2 = (n) => '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+  function ltvFactor(p){return {1:0.85,2:0.80,3:0.75,4:0.80,5:0.75,6:0.75}[p] || 0;}
   function compute(){
-    const inc1=+$('inc1').value||0, inc0=+$('inc0').value||0, oblig=+$('oblig').value||0,
-          ptype=+$('ptype').value, price=+$('price').value||0, downpct=+$('down').value||0,
-          term=+$('term').value, annIns=+$('ins').value||0, annTax=+$('tax').value||0,
-          hoa=+$('hoa').value||0, rate=+$('rate').value||0;
-    const income=(inc1+inc0)/24;
-    const mIns=annIns/12, mTax=annTax/12, hoaSep=hoa;
-    const maxHousing=0.50*income - oblig;
-    const maxPI=maxHousing - mTax - mIns - hoaSep;
-    const maxLoanLtv=ltvFactor(ptype)*price;
-    const r=rate/1200, nmax=term*12;
-    const maxLoanPI = r>0 ? (maxPI*(1-Math.pow(1+r,-nmax)))/r : maxPI*nmax;
-    const maxAllowed=Math.min(maxLoanPI, maxLoanLtv);
-    const desired=Math.min(maxAllowed, price - price*(downpct/100));
-    const n=(term===30)?360:180;
-    const pi = r>0 ? desired*r/(1-Math.pow(1+r,-n)) : desired/n;
-    const total = pi+mIns+mTax;
+    const ptype = +$('ptype').value;
+    const price = +$('price').value || 0;
+    const downpct = +$('down').value || 0;
+    const term = +$('term').value;
+    const annIns = +$('ins').value || 0;
+    const annTax = +$('tax').value || 0;
+    const hoa = +$('hoa').value || 0;
+    const rate = +$('rate').value || 0;
+    const maxLoan = ltvFactor(ptype) * price;
+    const desired = Math.min(price - (price*downpct/100), maxLoan);
+    const r = rate/1200;
+    const n = (term === 30) ? 360 : (term === 20 ? 240 : 180);
+    const pi = r > 0 ? desired * r / (1 - Math.pow(1+r, -n)) : desired/n;
+    const mIns = annIns/12;
+    const mTax = annTax/12;
+    const l = price > 0 ? desired/price : 0;
+    let pmi = 0;
+    if (l > 0.801 && l <= 0.85) pmi = desired*0.0012/12;
+    else if (l > 0.851 && l <= 0.90) pmi = desired*0.0017/12;
+    else if (l > 0.901 && l <= 0.95) pmi = desired*0.0025/12;
+    else if (l > 0.951 && l <= 0.97) pmi = desired*0.0032/12;
+    const total = pi + mIns + mTax + pmi;
     const cashNo = downpct*price*0.01 + 0.06*price;
     const cashSC = downpct*price*0.01 + 0.03*price;
-    $('downVal').textContent=downpct+'%'; $('rateVal').textContent=rate.toFixed(2)+'%';
-    $('rIncome').textContent=fmt0(income); $('rMaxAllowed').textContent=fmt0(maxAllowed); $('rTotal').textContent=fmt0(total);
-    $('rMaxHousing').textContent=fmt0(maxHousing); $('rMaxPI').textContent=fmt0(maxPI); $('rDesired').textContent=fmt0(desired);
-    $('rPI').textContent=fmt0(pi); $('rIns').textContent=fmt0(mIns); $('rTax').textContent=fmt0(mTax); $('rHOA').textContent=fmt0(hoa);
-    $('rCashNo').textContent=fmt0(cashNo); $('rCashSC').textContent=fmt0(cashSC);
+    const income = (total + hoa) * 2;
+    $('downVal').textContent = downpct + '%';
+    $('rateVal').textContent = rate.toFixed(2) + '%';
+    $('rTotal').textContent  = fmt2(total);
+    $('rMaxLoan').textContent= fmt0(maxLoan);
+    $('rDesired').textContent= fmt0(desired);
+    $('rPI').textContent     = fmt2(pi);
+    $('rIns').textContent    = fmt2(mIns);
+    $('rTax').textContent    = fmt2(mTax);
+    $('rPMI').textContent    = fmt2(pmi);
+    $('rHOA').textContent    = fmt0(hoa);
+    $('rCashNo').textContent = fmt0(cashNo);
+    $('rCashSC').textContent = fmt0(cashSC);
+    $('rIncome').textContent = fmt2(income);
   }
-  document.querySelectorAll('input,select').forEach(el=>{el.addEventListener('input',compute);el.addEventListener('change',compute);});
+  document.querySelectorAll('input,select').forEach(el => { el.addEventListener('input', compute); el.addEventListener('change', compute); });
   compute();
 })();
 </script>
+
 <style>
 .crumbs{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-mute);margin-bottom:28px;}
 .crumbs a{color:var(--color-mute);text-decoration:none;} .crumbs a:hover{color:var(--color-blue);} .crumbs span{margin:0 6px;}
@@ -174,7 +229,6 @@ select:focus{outline:0;border-color:var(--color-blue);box-shadow:0 0 0 3px rgba(
 .input-money span{padding:0 4px 0 14px;color:var(--color-mute);font-weight:600;}
 .input-money input{flex:1;border:0;outline:0;padding:13px 14px 13px 4px;font-size:16px;font-family:'IBM Plex Sans',sans-serif;background:transparent;color:var(--color-ink);width:100%;}
 input[type=range]{width:100%;accent-color:var(--color-blue);height:4px;margin:6px 0;}
-.hint{font-size:12px;margin:6px 0 0;} .hint--mute{color:var(--color-mute);}
 .result{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);}
 .result--primary{background:#fff;border-color:#fff;}
 .result--primary .result-label{color:#384055;} .result--primary .result-value{color:var(--color-ink);} .result--primary .result-note{color:#6B7280;}
@@ -198,5 +252,3 @@ input[type=range]{width:100%;accent-color:var(--color-blue);height:4px;margin:6p
 .cta-card a:hover{background:var(--color-blue);}
 .related-placeholder{border:1px dashed var(--color-bone);border-radius:10px;padding:20px;color:var(--color-mute);font-family:'JetBrains Mono',monospace;font-size:13px;text-align:center;}
 </style>
-  <CalcLeadForm />
-</Layout>

@@ -131,7 +131,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     else maxLTV = 0;
     const desired = financeable - (financeable*downpct)/100;  // not capped by maxLTV
     const r=rate/1200;
-    const n = term===30 ? 360 : 180;
+    const n = term===30 ? 360 : (term === 20 ? 240 : 180);
     const pi = r>0 ? desired*r/(1-Math.pow(1+r,-n)) : desired/n;
     const mins=annIns/12, mtax=annTax/12;
     const total = pi + mins + mtax + hoa + 0;  // Monthly HOA + [Deleted]=0

@@ -122,7 +122,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     const financeable = 0.06*(totalProp+reserve) + (totalProp+reserve);
     const maxLoan = ltvFactor(ptype) * arv;
     const desired = Math.min(maxLoan, financeable - (financeable*downpct/100));
-    const r = rate/1200, n = (term===30)?360:180;
+    const r = rate/1200, n = (term === 30) ? 360 : (term === 20 ? 240 : 180);
     const pi = r>0 ? desired*r/(1-Math.pow(1+r,-n)) : desired/n;
     const mIns=annIns/12, mTax=annTax/12;
     const l = arv>0 ? desired/arv : 0;

@@ -12,8 +12,12 @@ interface Props {
 }
 const { currentSlug, cats, tags, limit = 4 } = Astro.props;
 
+// taxonomy slugs are dated permalinks (/2025/07/29/house-hacking/) while pages pass
+// currentSlug as /blog/<slug>/ — compare on last segment so a post excludes itself
+const lastSeg = (s: string) => s.replace(/\/+$/, '').split('/').pop();
+
 const scored = taxonomy.posts
-  .filter(p => p.slug !== currentSlug)
+  .filter(p => lastSeg(p.slug) !== lastSeg(currentSlug))
   .map(p => {
     const catOverlap = p.cats.filter(c => cats.includes(c)).length;
     const tagOverlap = p.tags.filter(t => tags.includes(t)).length;
@@ -25,6 +29,10 @@ const scored = taxonomy.posts
 
 const catName = (slug: string) =>
   (taxonomy.categories[slug] || slug).replace(/^\d+\.\s*/, '');
+
+// taxonomy slugs are old dated permalinks (/2025/07/29/house-hacking/) that 301 to
+// noindex redirect stubs; link to the canonical /blog/<slug>/ instead (matches tag/category pages)
+const blogUrl = (slug: string) => `/blog/${lastSeg(slug)}/`;
 ---
 
 {scored.length > 0 && (
@@ -33,7 +41,7 @@ const catName = (slug: string) =>
       <span class="eyebrow eyebrow-blue mb-6">Related Posts</span>
       <div class="related__grid">
         {scored.map(p => (
-          <a href={p.slug} class="card related__card">
+          <a href={blogUrl(p.slug)} class="card related__card">
             {p.cats[0] && <span class="related__cat mono">{catName(p.cats[0])}</span>}
             <h3 class="display-sm related__title">{p.title}</h3>
             <span class="related__more btn-link">Read more →</span>

@@ -134,7 +134,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
       // Final = base + ufmip
       const final = base + ufmip;
       // P&I uses BASE loan; n=360 if term==30 else 180 (20yr falls into 180 branch — widget bug, replicated)
-      const n = (term===30) ? 360 : 180;
+      const n = (term === 30) ? 360 : (term === 20 ? 240 : 180);
       const r = rate/1200;
       let pi = 0;
       if (r>0) pi = base*r/(1-Math.pow(1+r,-n));

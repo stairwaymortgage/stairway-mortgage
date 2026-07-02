@@ -167,7 +167,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
     const maxLoan = ltvFactor(ptype) * price;
     const desired = Math.min(price - (price*downpct/100), maxLoan);
     const r = rate/1200;
-    const n = (term === 30) ? 360 : 180;
+    const n = (term === 30) ? 360 : (term === 20 ? 240 : 180);
     const pi = r > 0 ? desired * r / (1 - Math.pow(1+r, -n)) : desired/n;
     const mIns = annIns/12;
     const mTax = annTax/12;
