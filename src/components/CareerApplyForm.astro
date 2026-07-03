@@ -18,11 +18,11 @@
 //   import CareerApplyForm from '../../components/CareerApplyForm.astro';
 //   <a data-caf-open>Start My Mortgage Career</a>   (any element with data-caf-open opens it)
 //   <CareerApplyForm />
-import { GHL_WEBHOOK_URL } from '../lib/ghl';
+import { CAREER_WEBHOOK_URL } from '../lib/ghl';
 ---
 
 <div class="caf-overlay" id="caf-overlay" aria-hidden="true">
-  <div class="caf" id="caf-root" role="dialog" aria-modal="true" aria-label="Mortgage Career Application" data-ghl-endpoint={GHL_WEBHOOK_URL}>
+  <div class="caf" id="caf-root" role="dialog" aria-modal="true" aria-label="Mortgage Career Application" data-ghl-endpoint={CAREER_WEBHOOK_URL}>
     <button type="button" class="caf-close" data-caf-close aria-label="Close">&times;</button>
 
     <div class="caf-card" id="caf-form">
