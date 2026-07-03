@@ -489,6 +489,16 @@
       "permanent": true
     },
     {
+      "source": "/loan-calculator",
+      "destination": "/loan-calculators",
+      "permanent": true
+    },
+    {
+      "source": "/loan-calculator/",
+      "destination": "/loan-calculators/",
+      "permanent": true
+    },
+    {
       "source": "/all-case-studies",
       "destination": "/case-studies",
       "permanent": true
