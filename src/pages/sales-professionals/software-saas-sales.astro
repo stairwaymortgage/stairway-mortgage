@@ -2029,5 +2029,11 @@ import HomeReviews from '../../components/HomeReviews.astro';
       .saas-scope .lede-image { position: static; max-width: 420px; margin-inline: auto; }
     }
     @media (max-width: 720px) { .saas-scope section { padding: 48px 0; } }
+    .saas-scope .dark-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); margin-top: var(--s-6); }
+    @media (max-width: 720px) { .saas-scope .dark-grid { grid-template-columns: 1fr; } }
+    .saas-scope .dark-card { background: rgba(255,255,255,0.05); padding: var(--s-5); border-radius: 4px; }
+    .saas-scope .dark-num { font-family: var(--mono); color: var(--blue-soft); margin-bottom: var(--s-2); }
+    .saas-scope .dark-card-title { font-family: var(--serif); font-size: var(--text-base); margin: 0 0 var(--s-3) 0; }
+    .saas-scope .dark-card-body { font-size: var(--text-sm); line-height: 1.55; margin: 0; }
 </style>
 
