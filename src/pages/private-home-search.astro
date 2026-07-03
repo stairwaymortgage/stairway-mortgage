@@ -1841,9 +1841,9 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
     var first=val('phs-first'),last=val('phs-last'),email=val('phs-email'),loc=val('phs-location'),phone=val('phs-phone');
 
     if(!first||!last)return showErr('Please enter your first and last name.');
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return showErr('Please enter a valid email.');
+    var _em=email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em))return showErr('Please enter a valid email.');
     if(!loc)return showErr('Please tell us where you are looking.');
-    if(phone&&phone.replace(/\D/g,'').length<10)return showErr('That phone number looks incomplete — leave it blank if you prefer not to share it.');
+    if(phone){var _pd=phone.replace(/\D/g,''); if(_pd.length<10||_pd.length>15)return showErr('That phone number looks incomplete — leave it blank if you prefer not to share it.');}
     errEl.classList.add('phs-hidden');
 
     var payload={

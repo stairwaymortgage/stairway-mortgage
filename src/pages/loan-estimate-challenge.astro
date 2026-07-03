@@ -936,8 +936,8 @@ import HomeReviews from '../components/HomeReviews.astro';
     var message=document.getElementById('lec-message').value.trim();
 
     if(!first||!last)return showErr('Please enter your first and last name.');
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return showErr('Please enter a valid email address.');
-    if(phone.replace(/\D/g,'').length<10)return showErr('Please enter a valid phone number.');
+    var _em=email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em))return showErr('Please enter a valid email address.');
+    var _pd=phone.replace(/\D/g,''); if(_pd.length<10||_pd.length>15)return showErr('Please enter a valid phone number.');
     hideErr();
 
     function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}

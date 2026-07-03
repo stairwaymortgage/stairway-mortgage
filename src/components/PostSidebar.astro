@@ -119,7 +119,7 @@ const tags = Object.entries(taxonomy.tags)
       if (hp && hp.value && hp.getAttribute('data-touched') === '1') return;
 
       var email = (emailEl && emailEl.value || '').trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { if (emailEl) emailEl.focus(); return; }
+      var _em=email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em)) { if (emailEl) emailEl.focus(); return; }
 
       var payload = {
         email: email,

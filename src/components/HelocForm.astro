@@ -392,8 +392,8 @@
       if(s.type==="contact"){
         var err=document.getElementById("hf-contact-err");
         if(!state.full_name.trim()){ if(err) err.textContent="Please enter your full name."; return false; }
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email.trim())){ if(err) err.textContent="Please enter a valid email."; return false; }
-        if(state.phone.replace(/\D/g,"").length<10){ if(err) err.textContent="Please enter a valid phone number."; return false; }
+        var _em=state.email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em)){ if(err) err.textContent="Please enter a valid email."; return false; }
+        var _pd=state.phone.replace(/\D/g,""); if(_pd.length<10||_pd.length>15){ if(err) err.textContent="Please enter a valid phone number."; return false; }
         if(err) err.textContent=""; return true;
       }
       return true;
@@ -422,6 +422,10 @@
       if(hp && hp.value && hp.getAttribute("data-touched")==="1"){ return; }
       var parts=(state.full_name||"").trim().split(/\s+/);
       var first=parts.shift()||""; var last=parts.join(" ")||"";
+      function _getCk(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
+      function _qp(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
+      function _resolveUmtid(){var v=_qp('umtid')||_getCk('umtid')||'';return v.replace(/[^A-Za-z0-9_-]/g,'').slice(0,40);}
+      function _resolveLoid(){var raw=_qp('loid')||_qp('lo_id')||_qp('first_touch_loid')||_getCk('first_touch_loid')||'';var m=String(raw).match(/(\d{3,})/);return m?m[1]:'';}
       var payload = {
         form_source:FORM_SOURCE, loan_purpose:LOAN_PURPOSE,
         first_name:first, last_name:last, full_name:(state.full_name||"").trim(),
@@ -430,6 +434,8 @@
       };
       var skip = {full_name:1,email:1,phone:1};
       for(var k in state){ if(state.hasOwnProperty(k) && !skip[k]){ var vv=state[k]; if(Array.isArray(vv)){ vv=vv.join(", "); } payload[k]=(vv==null?"":vv); } }
+      payload.umtid = _resolveUmtid();
+      payload.loid = _resolveLoid();
       try{ fetch(WEBHOOK_URL,{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), keepalive:true }).catch(function(){}); }catch(e){}
       showThanks(first,last);
     }

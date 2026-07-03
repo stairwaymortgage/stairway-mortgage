@@ -280,8 +280,8 @@
 
     function setErr(id,msg){ var el=document.getElementById(id); if(el) el.textContent=msg; }
     function setErrData(name,msg){ var el=document.querySelector('[data-err="'+name+'"]'); if(el) el.textContent=msg; }
-    function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
-    function isPhone(v){ return v.replace(/\D/g,'').length>=10; }
+    function isEmail(v){ var e=v.trim(); return /^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(e) && !/\.\./.test(e); }
+    function isPhone(v){ var d=v.replace(/\D/g,''); return d.length>=10 && d.length<=15; }
 
     // build wheels
     buildWheel(els.wheel, 280);

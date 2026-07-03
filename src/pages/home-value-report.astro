@@ -548,9 +548,9 @@ import HomeReviews from '../components/HomeReviews.astro';
     var first=val(ids.first),last=val(ids.last),email=val(ids.email),phone=val(ids.phone),address=val(ids.address);
 
     if(!first||!last)return showErr('Please enter your first and last name.');
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return showErr('Please enter a valid email.');
+    var _em=email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em))return showErr('Please enter a valid email.');
     if(!address)return showErr('Please enter your property address.');
-    if(phone&&phone.replace(/\D/g,'').length<10)return showErr('That phone number looks incomplete — leave it blank if you prefer not to share it.');
+    if(phone){var _pd=phone.replace(/\D/g,''); if(_pd.length<10||_pd.length>15)return showErr('That phone number looks incomplete — leave it blank if you prefer not to share it.');}
     errEl.classList.add('hvr-hidden');
 
     var payload={

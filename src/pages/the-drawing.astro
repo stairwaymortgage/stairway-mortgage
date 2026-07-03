@@ -557,8 +557,8 @@ const cards = [
       var em = clean(emailInput.value);
       var ph = clean(phoneInput.value);
       if (!nm) { showErr('name', true); ok = false; } else { showErr('name', false); }
-      if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { showErr('email', true); ok = false; } else { showErr('email', false); }
-      if (!ph || digits(ph).length < 10) { showErr('phone', true); ok = false; } else { showErr('phone', false); }
+      var _emt=em.trim(); if (!_emt || !/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_emt) || /\.\./.test(_emt)) { showErr('email', true); ok = false; } else { showErr('email', false); }
+      var _phd=digits(ph); if (!ph || _phd.length < 10 || _phd.length > 15) { showErr('phone', true); ok = false; } else { showErr('phone', false); }
       if (ok) { state.name = nm; state.email = em; state.phone = ph; }
       return ok;
     }

@@ -234,8 +234,8 @@
       nextBtn.hidden = last; submitBtn.hidden = !last;
     }
     function setErr(n, m) { var el = form.querySelector('[data-err-for="' + n + '"]'); if (el) el.textContent = m; }
-    function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
-    function isPhone(v) { return v.replace(/\D/g, '').length >= 10; }
+    function isEmail(v) { var e=v.trim(); return /^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(e) && !/\.\./.test(e); }
+    function isPhone(v) { var d=v.replace(/\D/g,''); return d.length>=10 && d.length<=15; }
 
     function validateStep(i) {
       var step = slides[i].getAttribute('data-step');

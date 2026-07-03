@@ -355,8 +355,8 @@
       if(s.type==="contact"){
         var err=document.getElementById("rm-contact-err");
         if(!state.full_name.trim()){ if(err) err.textContent="Please enter your full name."; return false; }
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email.trim())){ if(err) err.textContent="Please enter a valid email."; return false; }
-        if(state.phone.replace(/\D/g,"").length<10){ if(err) err.textContent="Please enter a valid phone number."; return false; }
+        var _em=state.email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em)){ if(err) err.textContent="Please enter a valid email."; return false; }
+        var _pd=state.phone.replace(/\D/g,""); if(_pd.length<10||_pd.length>15){ if(err) err.textContent="Please enter a valid phone number."; return false; }
         if(err) err.textContent=""; return true;
       }
       return true;

@@ -355,8 +355,8 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       var phone = cleanText(form.phone.value);
 
       if (!first || !last) return showError('Please enter your first and last name.');
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Please enter a valid email address.');
-      if (phone.replace(/\D/g, '').length < 10) return showError('Please enter a valid phone number.');
+      var _em=email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em)) return showError('Please enter a valid email address.');
+      var _pd=phone.replace(/\D/g,''); if(_pd.length<10||_pd.length>15) return showError('Please enter a valid phone number.');
       errorEl.hidden = true;
 
       // Key names mirror the confirmed-working GetLocalIntroForm payload exactly

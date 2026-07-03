@@ -101,7 +101,7 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
     var message=(document.getElementById('cu-message').value||'').trim();
 
     if(!first||!last)return showErr('Please enter your first and last name.');
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return showErr('Please enter a valid email.');
+    var _em=email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em))return showErr('Please enter a valid email.');
     errEl.classList.add('hidden');
 
     function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
