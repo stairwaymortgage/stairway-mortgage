@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { GHL_WEBHOOK_URL } from '../lib/ghl';
 ---
 
 <Layout title="Relocate Anywhere™ — Stairway Mortgage" description="Relocating? Trusted agents in all 50 states. Pre-approval first, then we connect you.">
@@ -18,7 +17,7 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       <div class="hstat"><div class="n">49</div><div class="l">States Covered</div></div>
     </div>
     <div class="hero-ctas">
-      <a href="#start" class="btn-primary">Get pre-approved &amp; speak with a Specialist &rarr;</a>
+      <a href="/see-my-options/" class="btn-primary">Get pre-approved &amp; speak with a Specialist &rarr;</a>
       <a href="#network" class="btn-ghost">Find an agent in my area</a>
     </div>
     <div class="trust-line">
@@ -31,7 +30,7 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
 <div class="funnel">
   <div class="container-page funnel-inner">
     <p><strong>Step one is always financing.</strong> &nbsp;Getting pre-approved first means your offer is taken seriously the moment you find the right home &mdash; and we match you to the right agent the moment you&rsquo;re ready.</p>
-    <a href="#start" class="btn-primary" style="background:rgba(255,255,255,.16);white-space:nowrap">Start with pre-approval &rarr;</a>
+    <a href="/see-my-options/" class="btn-primary" style="background:rgba(255,255,255,.16);white-space:nowrap">Start with pre-approval &rarr;</a>
   </div>
 </div>
 
@@ -75,13 +74,18 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       <p>Before introducing you to a local real estate professional, we help buyers understand their financing options and obtain a mortgage pre-approval whenever appropriate. Once prepared, we can connect clients with experienced real estate professionals throughout the United States.</p><p>The brokerages shown below are examples of companies whose agents have participated in referral transactions with our team or may receive referrals based on a client's location, property type, goals, and specific needs. We are not limited to any single brokerage network and strive to identify the best local real estate professional for each individual situation.</p>
     </div>
 
+    <div class="network-featured">
+      <p class="featured-label">A few of the brands in our referral network</p>
+      <div id="featuredGrid"></div>
+    </div>
+
     <div class="finder">
       <div class="finder-row">
         <div class="finder-field">
           <label>Where are you moving to?</label>
           <select id="stateSelect"><option value="">Select your destination state&hellip;</option></select>
         </div>
-        <a href="#start" class="btn-primary" style="white-space:nowrap">Get pre-approved first &rarr;</a>
+        <a href="/see-my-options/" class="btn-primary" style="white-space:nowrap">Get pre-approved first &rarr;</a>
       </div>
     </div>
 
@@ -109,7 +113,7 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
           <div class="big" id="savingsBig">$0</div>
           <div class="sub">estimated credit through the Stairway network &middot; eligibility applies</div>
         </div>
-        <p class="calc-cta">Ready to make it real? <a href="#start">Start with pre-approval &rarr;</a></p>
+        <p class="calc-cta">Ready to make it real? <a href="/see-my-options/">Start with pre-approval &rarr;</a></p>
       </div>
       <div class="calc">
         <span class="eyebrow">Calculator 02</span>
@@ -151,32 +155,13 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
 <!-- LEAD CAPTURE -->
 <section class="section lead-sec" id="start">
   <div class="aurora"><span class="orb orb-1"></span><span class="orb orb-2"></span></div>
-  <div class="container-page lead-wrap">
+  <div class="container-page lead-wrap" style="grid-template-columns:1fr;max-width:760px;text-align:center;justify-items:center">
     <div class="lead-copy">
       <span class="eyebrow" style="color:#0DBFB1;opacity:.9">Your First Step</span>
       <h2 class="display-md">Get pre-approved &amp; meet your Specialist</h2>
       <p class="lead">Tell us about your move. A Relocate Anywhere&trade; Specialist will start your pre-approval and line up a trusted local agent in your destination.</p>
       <span class="pre-badge">&#9679; Pre-approval is always step one</span>
-    </div>
-    <div class="lead-form" id="leadForm" data-ghl-endpoint={GHL_WEBHOOK_URL}>
-      <div class="row2">
-        <div class="field"><label>First name</label><input type="text" id="fName" placeholder="First"></div>
-        <div class="field"><label>Last name</label><input type="text" id="lName" placeholder="Last"></div>
-      </div>
-      <div class="field"><label>Email</label><input type="email" id="email" placeholder="you@email.com"></div>
-      <div class="field"><label>Phone</label><input type="tel" id="phone" placeholder="(555) 000-0000"></div>
-      <div class="row2">
-        <div class="field"><label>Moving from</label><input type="text" id="lfFrom" placeholder="City, State"></div>
-        <div class="field"><label>Moving to</label><input type="text" id="lfTo" placeholder="City, State"></div>
-      </div>
-      <input type="text" name="_gotcha" id="ra-gotcha" style="position:absolute;left:-9999px;opacity:0;" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <p class="text-red-500 hidden" id="ra-error" style="font-size:13px;color:#b42318;margin:0 0 8px;"></p>
-      <button onclick="submitLead()">Connect me with a Specialist &rarr;</button>
-      <p class="form-note">No obligation. This is not a commitment to lend.</p>
-    </div>
-    <div class="lead-form lead-success" id="leadSuccess">
-      <div class="big">You&rsquo;re all set.</div>
-      <p style="opacity:.85">A Relocate Anywhere&trade; Specialist will be in touch shortly to start your pre-approval. Prefer to talk now? Call <strong>(954)&nbsp;993-1625</strong>.</p>
+      <div style="margin-top:28px"><a href="/see-my-options/" class="btn-primary">See My Options &rarr;</a></div>
     </div>
   </div>
 </section>
@@ -265,20 +250,22 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
 .finder-field select:focus,.finder-field input:focus{outline:none;border-color:var(--color-blue)}
 
 .network-result{margin-top:40px}
-.nr-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:20px}
-.nr-head h3{font-family:var(--stw-display, 'Fraunces'), Georgia, serif;font-weight:400;font-size:1.8rem}
-.nr-head .count{font-family:var(--stw-mono, 'JetBrains Mono'), monospace;font-size:.78rem;letter-spacing:.08em;opacity:.6}
-.logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.logo-card{background:var(--color-paper);border:1px solid var(--color-bone);border-radius:10px;padding:22px 20px;min-height:104px;display:flex;flex-direction:column;justify-content:center;gap:6px;transition:transform .2s,box-shadow .2s,border-color .2s;animation:fadeUp .4s both}
-.logo-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(10,14,26,.1);border-color:var(--color-blue)}
+:global(.nr-head){display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+:global(.nr-head h3){font-family:var(--stw-display, 'Fraunces'), Georgia, serif;font-weight:400;font-size:1.8rem}
+:global(.nr-head .count){font-family:var(--stw-mono, 'JetBrains Mono'), monospace;font-size:.78rem;letter-spacing:.08em;opacity:.6}
+:global(.logo-grid){display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+:global(.logo-card){background:var(--color-paper);border:1px solid var(--color-bone);border-radius:10px;padding:22px 20px;min-height:104px;display:flex;flex-direction:column;justify-content:center;gap:6px;transition:transform .2s,box-shadow .2s,border-color .2s;animation:fadeUp .4s both}
+:global(.logo-card:hover){transform:translateY(-3px);box-shadow:0 14px 32px rgba(10,14,26,.1);border-color:var(--color-blue)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 /* the brand wordmark - styled placeholder, logo-ready */
-.logo-card .logo-img{max-width:100%;max-height:52px;width:auto;object-fit:contain;align-self:flex-start}
-.logo-card .wordmark{font-family:var(--stw-display, 'Fraunces'), Georgia, serif;font-size:1.18rem;line-height:1.15;color:var(--color-ink);display:none}
-.logo-card.has-text .wordmark{display:block}
-.logo-card .meta{font-family:var(--stw-mono, 'JetBrains Mono'), monospace;font-size:.68rem;letter-spacing:.06em;opacity:.55;text-transform:uppercase}
-.logo-card .state-tag{font-family:var(--stw-mono, 'JetBrains Mono'), monospace;font-size:.64rem;opacity:.45;letter-spacing:.08em}
+:global(.logo-card .logo-img){max-width:100%;max-height:52px;width:auto;object-fit:contain;align-self:flex-start}
+:global(.logo-card .wordmark){font-family:var(--stw-display, 'Fraunces'), Georgia, serif;font-size:1.18rem;line-height:1.15;color:var(--color-ink);display:none}
+:global(.logo-card.has-text .wordmark){display:block}
+:global(.logo-card .meta){font-family:var(--stw-mono, 'JetBrains Mono'), monospace;font-size:.68rem;letter-spacing:.06em;opacity:.55;text-transform:uppercase}
+:global(.logo-card .state-tag){font-family:var(--stw-mono, 'JetBrains Mono'), monospace;font-size:.64rem;opacity:.45;letter-spacing:.08em}
 .empty-note{opacity:.6;font-style:italic;padding:30px 0}
+.network-featured{margin-top:36px}
+.featured-label{font-family:var(--stw-mono, 'JetBrains Mono'), monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-bottom:16px}
 
 /* calculators */
 .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
@@ -375,6 +362,32 @@ function renderState(state){
   box.innerHTML=h;
 }
 
+// Featured brands — render on load; state browsing via the <select> below still works.
+const FEATURED=[
+  ['Florida','The Keyes Company'],
+  ['Florida','John R. Wood Christie’s International Real Estate'],
+  ['Connecticut','William Raveis Real Estate'],
+  ['Pennsylvania','Howard Hanna Real Estate Services'],
+  ['Virginia','Long & Foster Real Estate Inc.'],
+  ['Tennessee','CRYE-LEIKE, Realtors'],
+  ['New York','Brown Harris Stevens - NY/NJ/CT/The Hamptons'],
+  ['New Jersey','WEICHERT, REALTORS®'],
+  ['Texas','Ebby Halliday Companies'],
+  ['Washington','Windermere Real Estate - Seattle'],
+  ['North Carolina','Allen Tate/Beverly-Hanks Realtors'],
+  ['Illinois','@properties Christie’s International Real Estate']
+];
+(function renderFeatured(){
+  const box=document.getElementById('featuredGrid');
+  if(!box)return;
+  const cards=FEATURED.map(function(pair,i){
+    const d=PARTNERS[pair[0]];if(!d)return '';
+    const brand=d.brands.filter(function(b){return b.n===pair[1];})[0];
+    return brand?logoCard(brand,pair[0],i):'';
+  }).join('');
+  box.innerHTML='<div class="logo-grid">'+cards+'</div>';
+})();
+
 // Calc A
 const lp=document.getElementById('listPrice'),sRes=document.getElementById('savingsResult'),sBig=document.getElementById('savingsBig');
 lp.addEventListener('input',()=>{
@@ -398,53 +411,5 @@ async function runDistance(){
   }catch(e){dBig.textContent='—';dSub.textContent='Distance lookup unavailable right now.';}
 }
 
-// Lead
-var _raSending=false;
-function submitLead(){
-  if(_raSending)return;
-  var gotcha=document.getElementById('ra-gotcha');
-  if(gotcha&&gotcha.value.trim()!==''){document.getElementById('leadForm').style.display='none';document.getElementById('leadSuccess').classList.add('show');return;}
-
-  var errEl=document.getElementById('ra-error');
-  function showErr(m){errEl.textContent=m;errEl.style.display='block';}
-
-  var first=document.getElementById('fName').value.trim();
-  var last=document.getElementById('lName').value.trim();
-  var email=document.getElementById('email').value.trim();
-  var phone=document.getElementById('phone').value.trim();
-  var from=document.getElementById('lfFrom').value.trim();
-  var to=document.getElementById('lfTo').value.trim();
-
-  if(!first||!last){showErr('Please enter your first and last name.');return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showErr('Please enter a valid email.');return;}
-  if(phone.replace(/\D/g,'').length<10){showErr('Please enter a valid phone number.');return;}
-  errEl.style.display='none';
-
-  var ENDPOINT=document.getElementById('leadForm').getAttribute('data-ghl-endpoint')||'';
-  function _getCookie(n){var m=document.cookie.match(new RegExp('(?:^|;\\s*)'+n+'=([^;]+)'));return m?decodeURIComponent(m[1]):'';}
-  function _qs(n){try{return new URL(location.href).searchParams.get(n)||'';}catch(e){return '';}}
-  function _cleanUmtid(v){return v?String(v).replace(/[^A-Za-z0-9_-]/g,'').slice(0,40):'';}
-  function _resolveUmtid(){return _cleanUmtid(_qs('umtid'))||_cleanUmtid(_getCookie('umtid'))||'';}
-  function _resolveLoid(){
-    var raw = _qs('loid') || _qs('lo_id') || _qs('first_touch_loid') || _getCookie('first_touch_loid') || '';
-    var m = String(raw).match(/(\d{3,})/);
-    return m ? m[1] : '';
-  }
-  var payload={
-    first_name:first, last_name:last, full_name:(first+' '+last).trim(),
-    email:email, phone:phone,
-    form_source:'get-a-local-introduction', form_name:'Relocate Anywhere',
-    page_url:window.location.href, submitted_at:new Date().toISOString(),
-    notes:'Moving from: '+from+' | Moving to: '+to,
-    umtid: _resolveUmtid(),
-    loid: _resolveLoid(),
-    source_url: location.href
-  };
-
-  _raSending=true;
-  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-    .then(function(){document.getElementById('leadForm').style.display='none';document.getElementById('leadSuccess').classList.add('show');})
-    .catch(function(){showErr('Something went wrong. Please try again or call us.');})
-    .then(function(){_raSending=false;});
-}
+// (Lead form removed — the CTA now links to /see-my-options/.)
 </script>
