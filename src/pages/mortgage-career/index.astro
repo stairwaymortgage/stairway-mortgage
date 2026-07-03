@@ -333,25 +333,32 @@ import CareerApplyForm from '../../components/CareerApplyForm.astro';
 <div class="mc-scope">
 
   <!-- ============ HERO ============ -->
-  <section class="hero">
+  <section class="hero hero--with-image">
     <div class="container">
-      <nav class="breadcrumb">
-        <a href="/">Home</a> <span>/</span> <span>Mortgage Career</span>
-      </nav>
-      <span class="eyebrow hero-eyebrow">Mortgage Career &middot; The Complete Guide</span>
-      <h1 class="display-1">How to Become a Mortgage Broker or Loan Officer</h1>
-      <p class="lead hero-subtitle">Everything you need to start a mortgage career &mdash; how to get your NMLS license, pass the SAFE MLO exam, choose your path, and build a real business. Free, organized, and taught by someone who has actually done it: a 7&times; Scotsman Guide Top Producer with over $500M closed.</p>
-      <div class="hero-actions">
-        <a href="#start" class="btn btn-primary btn-large">See My Options</a>
-        <a href="#roles" class="btn btn-secondary btn-large">Explore Mortgage Careers</a>
-      </div>
-      <div class="hero-trust">
-        <span class="trust-dot"></span>
-        <span>Jim Blackburn &middot; NMLS #1072866</span>
-        <span class="trust-dot"></span>
-        <span>7&times; Scotsman Guide Top Producer</span>
-        <span class="trust-dot"></span>
-        <span>$500M+ Closed</span>
+      <div class="hero-grid">
+        <div>
+          <nav class="breadcrumb">
+            <a href="/">Home</a> <span>/</span> <span>Mortgage Career</span>
+          </nav>
+          <span class="eyebrow hero-eyebrow">Mortgage Career &middot; The Complete Guide</span>
+          <h1 class="display-1">How to Become a Mortgage Broker or Loan Officer</h1>
+          <p class="lead hero-subtitle">Everything you need to start a mortgage career &mdash; how to get your NMLS license, pass the SAFE MLO exam, choose your path, and build a real business. Free, organized, and taught by someone who has actually done it: a 7&times; Scotsman Guide Top Producer with over $500M closed.</p>
+          <div class="hero-actions">
+            <a href="#start" class="btn btn-primary btn-large">See My Options</a>
+            <a href="#roles" class="btn btn-secondary btn-large">Explore Mortgage Careers</a>
+          </div>
+          <div class="hero-trust">
+            <span class="trust-dot"></span>
+            <span>Jim Blackburn &middot; NMLS #1072866</span>
+            <span class="trust-dot"></span>
+            <span>7&times; Scotsman Guide Top Producer</span>
+            <span class="trust-dot"></span>
+            <span>$500M+ Closed</span>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img src="https://images.pexels.com/photos/5717546/pexels-photo-5717546.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Mortgage professional smiling confidently at their desk" loading="eager" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Mortgage+Career';">
+        </figure>
       </div>
     </div>
   </section>
@@ -400,6 +407,9 @@ import CareerApplyForm from '../../components/CareerApplyForm.astro';
           <p>A <strong>mortgage loan officer</strong> (also called a mortgage loan originator, or MLO) is the licensed professional who helps people get a home loan &mdash; reviewing their situation, matching them to the right program, and guiding them from application to closing.</p>
           <p>To do it legally, you complete a short list of requirements set by the federal <a class="inline-link" href="https://www.consumerfinance.gov/" target="_blank" rel="noopener">SAFE Act</a> and administered through the <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS</a>: a 20-hour pre-licensure course, a national exam, and a background and credit check. Most people finish in a matter of weeks.</p>
           <p>The licensing is the easy part. The real career &mdash; building relationships, earning trust, and growing a book of business &mdash; is what we actually teach here.</p>
+          <figure style="margin-top:var(--s-6); border-radius:8px; overflow:hidden; aspect-ratio:16/10;">
+            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=840" alt="Mortgage team collaborating around a conference table" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null;this.parentElement.style.display='none';">
+          </figure>
         </div>
       </div>
     </div>
@@ -469,12 +479,12 @@ import CareerApplyForm from '../../components/CareerApplyForm.astro';
       <p>I'm a Michigan kid. I grew up next door to another Michigan kid named Mat Ishbia, and we both ended up at Michigan State. When the team won the national championship in 2000, I was in the stands &mdash; and Mat was the walk-on who'd get sent in for the last couple of minutes. Easy to overlook.</p>
       <p>But here's what I noticed: between whistles, he wasn't drifting. He was in every huddle, right next to one of the best coaches in the game. While everyone watched the scoreboard, he was &mdash; as I saw it &mdash; quietly learning the thing that actually compounds.</p>
 
-      <!-- PHOTO SLOT: Jim + Mat. Replace src when located. -->
       <img class="story-photo"
-           src="PEXELS_ID_OR_REAL_PHOTO_jim_and_mat"
-           alt="Jim Blackburn with Mat Ishbia"
-           onerror="this.style.display='none'; var c=this.nextElementSibling; if(c) c.style.display='none';">
-      <div class="story-caption" style="display:none;">Jim and Mat, back in the Michigan days.</div>
+           src="https://images.pexels.com/photos/7551667/pexels-photo-7551667.jpeg?auto=compress&cs=tinysrgb&w=840"
+           alt="Mortgage mentor coaching a new loan officer at a whiteboard"
+           loading="lazy"
+           onerror="this.onerror=null;this.style.display='none';">
+      <div class="story-caption">Mentorship is how this business is really learned.</div>
 
       <p>I took my own winding road. I spent about ten years as a financial advisor. When the market fell apart in 2008, I jumped to the mortgage side to learn it from the ground up &mdash; got my own license (NMLS #1072866) and never looked back. Twenty-some years later, I looked up one day and realized one of the largest wholesale mortgage lenders in the country was headquartered right near the town I grew up in. Full circle.</p>
       <p>I send most of my business to that lender today. In my experience they're the best at what they do &mdash; but no single lender does everything. That's exactly why I broker to <strong>300+ lenders</strong>, so no client ever goes unhelped. And it's why what I teach isn't "how to pass a test." It's how to build a business and a brand that's truly yours.</p>
@@ -624,7 +634,7 @@ import CareerApplyForm from '../../components/CareerApplyForm.astro';
       <div class="quote-card">
         <blockquote>&ldquo;Run, don't walk to work with Jim and his team. Jim helped us get financing when it seemed like an impossible feat &mdash; managing a home purchase 2,000 miles away, in a competitive market, while self-employed. He consistently went above and beyond.&rdquo;</blockquote>
         <div class="quote-author">
-          <img src="https://i.pravatar.cc/96?img=12" alt="David L." onerror="this.src='https://placehold.co/96x96/EAE7DE/6B7280?text=DL';">
+          <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop" alt="David L." onerror="this.onerror=null;this.src='https://placehold.co/96x96/EAE7DE/6B7280?text=DL';">
           <div>
             <div class="qa-name">David L.</div>
             <div class="qa-title">Founder &middot; California</div>
