@@ -282,10 +282,20 @@ h3 {
 .lede {
   font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
   font-weight: 300;
-  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  font-size: clamp(1.0625rem, 1.4vw, 1.125rem);
   line-height: 1.55;
   letter-spacing: -0.008em;
   color: var(--color-ink-light);
+}
+
+/* ── Body-text guardrail ──────────────────────────────────
+   Caps .section-header intro paragraphs at --text-base.
+   Profession-scope pages override this in their own <style>;
+   the per-page rules below (Phase 2-C) align those too.    */
+.section-header p,
+.section-header .lead {
+  font-size: var(--text-base);
+  line-height: 1.55;
 }
 
 .prose-editorial p {
