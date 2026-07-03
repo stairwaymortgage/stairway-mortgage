@@ -1,151 +1,256 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CsaAdvisorForm from '../components/forms/CsaAdvisorForm.astro';
+import HomeReviews from '../components/HomeReviews.astro';
 const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Certified Stairway Advisor"}]};
+
+const tracks = [
+  {
+    title: 'CSA-MFS: Mortgage & Financial Strategy',
+    hours: '40 hours',
+    chapters: [
+      'Mortgage & Wealth-Building Fundamentals',
+      'Financial Strategy & Debt Restructuring',
+      'Understanding & Using Financial Calculators',
+      'Investment Property Financing & Tax Strategies',
+      'Retirement Planning & Real Estate',
+      'Professional Introductions to Financial Planners',
+      'Client Communication & Intelligent Conversations',
+      'Case Study Analysis & Application',
+      'Business Owners & Real Estate Leverage',
+    ],
+  },
+  {
+    title: 'CSA-REI: Real Estate Investing',
+    hours: '36–40 hours',
+    chapters: [
+      'Introduction to Real Estate as a Wealth Strategy',
+      'Types of Residential Real Estate Investors',
+      'Analyzing Deals Like a Pro',
+      'Understanding Property Management',
+      'Financing Strategies for Investors',
+      'Scaling Your Portfolio Strategically',
+      'Tax, Legal, and Insurance Considerations',
+      'Creating Investment Partnerships',
+      'Case Studies, Worksheets & Action Planning',
+    ],
+  },
+];
+
+const audiences = [
+  { title: 'Loan Officers & Mortgage Advisors', desc: 'If you\'re focused on more than just pre-approvals and want to build deeper, long-term relationships with your clients, this is built for you.' },
+  { title: 'Real Estate Professionals', desc: 'For agents and brokers helping investors grow — gain tools and insights that add value beyond transactions and set you apart in your market.' },
+  { title: 'Team Leaders & Trainers', desc: 'If you\'re mentoring other professionals or shaping the next generation of wealth advisors, we support your mission with content and systems that scale.' },
+];
+
+const benefits = [
+  { title: 'Speak the Language of Finance', desc: 'Master the terms and frameworks used by CFAs, investors, and CPAs — so you can confidently contribute to real wealth conversations.' },
+  { title: 'Collaborate Across Industries', desc: 'Be more than a closer. Position yourself as a connector who bridges finance, real estate, and tax strategy teams for better client outcomes.' },
+  { title: 'Build Lifelong Trust', desc: 'Guiding clients to wealth builds loyalty. This certification helps you become the person they call — not just for the deal, but for the plan.' },
+];
+
+const steps = [
+  'Enroll in Both Courses (CSA-MFS & CSA-REI)',
+  'Complete 70+ Hours of Training',
+  'Pass the Certification Exam',
+  'Maintain Annual Continuing Education',
+  'Represent the CSA™ Standard in All Client Work',
+];
+
+const faqs = [
+  { q: 'Do I need to be a licensed loan officer to enroll?', a: 'No. The CSA program is open to mortgage professionals, real estate agents, financial advisors, and anyone committed to advising clients at a higher level.' },
+  { q: 'Can I take the courses at my own pace?', a: 'Yes. Both tracks are self-paced, so you can fit the training around your existing schedule and client commitments.' },
+  { q: 'Will this help me attract more business?', a: 'Absolutely. The CSA designation signals expertise and trust — clients and referral partners recognize you as someone who goes beyond the transaction to deliver real financial strategy.' },
+];
 ---
 
-<Layout title="Certified Stairway Advisor Program | Advanced Training" description="Elite certification program for mortgage professionals. Advanced training specialized niches and exclusive tools to serve clients at the highest level." canonical="https://stairwaymortgage.com/certified-stairway-advisor/">
+<Layout title="Certified Stairway Advisor Program | Advanced Training" description="Elite certification program for mortgage professionals. 70+ hours of advanced training in mortgage strategy and real estate investing to serve clients at the highest level." canonical="https://stairwaymortgage.com/certified-stairway-advisor/">
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <nav class="container-page ft-breadcrumb" aria-label="Breadcrumb">
+
+  <!-- Breadcrumb -->
+  <nav class="container-page csa-breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a> <span>/</span> <span>Certified Stairway Advisor</span>
   </nav>
-  <header class="container-prose ft-header">
-    <span class="eyebrow eyebrow-blue mb-4">Stairway</span>
-    <h1 class="display-md">Certified Stairway Advisor</h1>
+
+  <!-- 1. HERO -->
+  <header class="csa-hero">
+    <div class="container-page csa-hero__inner">
+      <span class="eyebrow eyebrow-blue">Advanced Certification</span>
+      <h1 class="display-lg csa-hero__title">Certified Stairway Advisor™</h1>
+      <p class="lede csa-hero__lede">Unlock more than just a loan — get a financing plan built to grow your wealth. Two designations. One powerful credential. 70+ hours of advanced training for mortgage professionals who want to advise beyond the transaction.</p>
+      <div class="csa-hero__cta">
+        <button type="button" data-open-csa class="btn btn-blue btn-arrow">Apply for CSA Today</button>
+      </div>
+    </div>
   </header>
-  <article class="container-prose prose-editorial ft-body" set:html={`<h2>Certified Stairway Advisor
-</h2>				
-		<p>Unlock more than just a loan—get a financing plan built to grow your wealth. We combine mortgage expertise with smart financial strategy to move you forward with confidence.</p>		
-															<img width="300" height="200" src="/wp-content/uploads/2025/06/austin-distel-jpHw8ndwJ_Q-unsplash-300x200.jpg" alt="" srcset="/wp-content/uploads/2025/06/austin-distel-jpHw8ndwJ_Q-unsplash-300x200.jpg 300w, /wp-content/uploads/2025/06/austin-distel-jpHw8ndwJ_Q-unsplash-1024x683.jpg 1024w, /wp-content/uploads/2025/06/austin-distel-jpHw8ndwJ_Q-unsplash-768x512.jpg 768w, /wp-content/uploads/2025/06/austin-distel-jpHw8ndwJ_Q-unsplash-1536x1024.jpg 1536w, /wp-content/uploads/2025/06/austin-distel-jpHw8ndwJ_Q-unsplash-2048x1365.jpg 2048w, /wp-content/uploads/2025/06/austin-distel-jpHw8ndwJ_Q-unsplash-1065x710.jpg 1065w" sizes="(max-width: 300px) 100vw, 300px" />															
-					<h3>Two Designations. One
-Powerful Credential.</h3>				
-		<p>The <strong>Certified Stairway Advisor™</strong> designation is earned by completing two robust, strategy-packed courses:</p><ul><li><strong>CSA-MFS:</strong> Mortgage &amp; Financial Strategy (40 hours)</li><li><strong>CSA-REI:</strong> Real Estate Investing (36–40 hours)</li></ul><p>Together, they form a powerful, real-world education for mortgage professionals who want to advise beyond the transaction.</p>		
-					<h3>Who Is This For?
-</h3>				
-									<h3>
-							Loan Officers &amp; Mortgage Advisors						
-					</h3>
-									<p>
-						If you’re focused on more than just pre-approvals and want to build deeper, long-term relationships with your clients, this is built for you.  					</p>
-									<h3>
-							Real Estate Professionals						
-					</h3>
-									<p>
-						For agents and brokers helping investors grow, gain tools and insights that add value beyond transactions—and set you apart in your market.  					</p>
-									<h3>
-							Team Leaders &amp; Trainers						
-					</h3>
-									<p>
-						If you’re mentoring other professionals or shaping the next generation of wealth advisors, we support your mission with content and systems that scale. 					</p>
-					<a href="#apply" data-open-csa role="button">
-									Apply for CSA Today
-					</a>
-															<img width="200" height="300" src="/wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-200x300.jpg" alt="" srcset="/wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-200x300.jpg 200w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-683x1024.jpg 683w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-768x1152.jpg 768w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-1024x1536.jpg 1024w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-1365x2048.jpg 1365w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-473x710.jpg 473w, /wp-content/uploads/2025/06/maria-lupan-Qq5ml0tIZKc-unsplash-scaled.jpg 1707w" sizes="(max-width: 200px) 100vw, 200px" />															
-					<h2>
-Why We Created the CSA
-Designation</h2>				
-		<strong>Clients today don’t want salespeople</strong>—they want trusted advisors who understand both the mortgage and the money behind it.CSA graduates aren’t licensed financial planners, but they are fluent in:
-<ul><li style="list-style-type: none;"><ul><li>Mortgage as a financial tool</li><li>Real estate as a wealth strategy</li><li>Collaboration with CPAs, CFPs, and attorneys</li><li>Real conversations, not sales scripts</li></ul></li></ul>		
-					<h2>Two Tracks. Deep Training. Immediate Impact.
-</h2>				
-                        <a href="#collapse-5aad1a569229cb07b4e0" data-ekit-toggle="collapse" data-target="#Collapse-5aad1a569229cb07b4e0" aria-expanded="false" aria-controls="Collapse-5aad1a569229cb07b4e0">
-                            CSA-MFS: Mortgage &amp; Financial Strategy
-                                        <!-- Normal Icon -->
-                                        <!-- Active Icon -->
-                                                    </a>
-                            <ol><li>Mortgage &amp; Wealth-Building Fundamentals</li><li>Financial Strategy &amp; Debt Restructuring</li><li>Understanding &amp; Using Financial Calculators</li><li>Investment Property Financing &amp; Tax Strategies</li><li>Retirement Planning &amp; Real Estate</li><li>Professional Introductions to Financial Planners</li><li>Client Communication &amp; Intelligent Conversations</li><li>Case Study Analysis &amp; Application</li><li>Business Owners &amp; Real Estate Leverage</li></ol>                        
-                <!-- .elementskit-card END -->
-                        <a href="#collapse-f8f8dd369229cb07b4e0" data-ekit-toggle="collapse" data-target="#Collapse-f8f8dd369229cb07b4e0" aria-expanded="false" aria-controls="Collapse-f8f8dd369229cb07b4e0">
-                            CSA-REI – Chapters &amp; Time Breakdown:
-                                        <!-- Normal Icon -->
-                                        <!-- Active Icon -->
-                                                    </a>
-                            <ol><li>Introduction to Real Estate as a Wealth Strategy</li><li>Types of Residential Real Estate Investors</li><li>Analyzing Deals Like a Pro</li><li>Understanding Property Management</li><li>Financing Strategies for Investors</li><li>Scaling Your Portfolio Strategically</li><li>Tax, Legal, and Insurance Considerations</li><li>Creating Investment Partnerships</li><li>Case Studies, Worksheets &amp; Action Planning</li></ol>                        
-                <!-- .elementskit-card END -->
-					<h3>How This Certification Sets You Apart
-</h3>				
-									<h3>
-							Speak the Language of Finance						
-					</h3>
-									<p>
-						Master the terms and frameworks used by CFAs, investors, and CPAs—so you can confidently contribute to real wealth conversations.					</p>
-									<h3>
-							Collaborate Across Industries						
-					</h3>
-									<p>
-						Be more than a closer. Position yourself as a connector who bridges finance, real estate, and tax strategy teams for better client outcomes.					</p>
-									<h3>
-							Build Lifelong Trust						
-					</h3>
-									<p>
-						Guiding clients to wealth builds loyalty. This certification helps you become the person they call—not just for the deal, but for the plan.  					</p>
-					<a href="#apply" data-open-csa role="button">
-									Get More Info Today
-					</a>
-					<h2>What It Takes To Become a Certified Stairway Advisor™
-</h2>				
-							<ul>
-							<li>
-										Enroll in Both Courses (CSA-MFS &amp; CSA-REI)
-									</li>
-								<li>
-										Complete 70+ Hours of Training
-									</li>
-								<li>
-										Pass the Certification Exam
-									</li>
-								<li>
-										Maintain Annual Continuing Education
-									</li>
-								<li>
-										Represent the CSA™ Standard in All Client Work
-									</li>
-						</ul>
-					<h3>Common Questions About the CSA Program</h3>				
-                        <a href="#collapse-5aad1a569229cb0827c6" data-ekit-toggle="collapse" data-target="#Collapse-5aad1a569229cb0827c6" aria-expanded="false" aria-controls="Collapse-5aad1a569229cb0827c6">
-                            Do I need to be a licensed loan officer to enroll?
-                                        <!-- Normal Icon -->
-                                        <!-- Active Icon -->
-                                                    </a>
-                            <p>No, you don’t need to be licensed to enroll.</p>                        
-                <!-- .elementskit-card END -->
-                        <a href="#collapse-f8f8dd369229cb0827c6" data-ekit-toggle="collapse" data-target="#Collapse-f8f8dd369229cb0827c6" aria-expanded="false" aria-controls="Collapse-f8f8dd369229cb0827c6">
-                            Can I take the courses at my own pace?
-                                        <!-- Normal Icon -->
-                                        <!-- Active Icon -->
-                                                    </a>
-                            <p>Yes, you can take the courses at your own pace.</p><p> </p>                        
-                <!-- .elementskit-card END -->
-                        <a href="#collapse-960818269229cb0827c6" data-ekit-toggle="collapse" data-target="#Collapse-960818269229cb0827c6" aria-expanded="false" aria-controls="Collapse-960818269229cb0827c6">
-                            Will this help me attract more business?
-                                        <!-- Normal Icon -->
-                                        <!-- Active Icon -->
-                                                    </a>
-                            <p>Yes — using tailored, relatable visuals like these builds trust and instantly connects with your target audience, which can significantly increase engagement and attract more business.</p>                        
-                <!-- .elementskit-card END -->
-					<h2>Are You Ready to Become the Advisor Clients Trust for Life?
-</h2>				
-		<p>Join the CSA™ Program and Start Building Generational Wealth—For You and Your Clients.</p>		
-					<a href="#apply" data-open-csa role="button">
-									Get More Info Now
-					</a>`} />
+
+  <!-- 2. TWO DESIGNATIONS (dark) -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow mb-5">Two designations · One credential</span>
+        <h2 class="display-md mt-5 text-[var(--color-paper)]">Two Tracks. Deep Training. <em class="not-italic font-light">Immediate Impact.</em></h2>
+      </div>
+      <div class="csa-tracks">
+        {tracks.map((t) => (
+          <div class="csa-track">
+            <div class="csa-track__head">
+              <h3 class="csa-track__title">{t.title}</h3>
+              <span class="csa-track__hours mono">{t.hours}</span>
+            </div>
+            <ol class="csa-track__chapters">
+              {t.chapters.map((c) => <li>{c}</li>)}
+            </ol>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHO IS THIS FOR (paper) -->
+  <section class="section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">Who it's for</span>
+        <h2 class="display-md mt-5">Built for professionals who want to <em class="not-italic font-light">advise, not just close</em>.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {audiences.map((a, i) => (
+          <div class="card reveal" style={`transition-delay:${i * 80}ms;`}>
+            <h3 class="font-display text-xl font-medium mb-2">{a.title}</h3>
+            <p class="text-[15px] text-[var(--color-mute)] leading-relaxed">{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WHY WE CREATED CSA (paper-tint) -->
+  <section class="section-tight bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="max-w-2xl mx-auto reveal">
+        <span class="eyebrow eyebrow-rust mb-5">Why we created the CSA</span>
+        <h2 class="display-md mt-5 mb-6">Clients don't want salespeople — they want <em class="not-italic font-light">trusted advisors</em>.</h2>
+        <p class="text-[16px] text-[var(--color-ink-light)] leading-relaxed mb-6">CSA graduates aren't licensed financial planners, but they are fluent in the language that matters:</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="csa-fluent-item">Mortgage as a financial tool</div>
+          <div class="csa-fluent-item">Real estate as a wealth strategy</div>
+          <div class="csa-fluent-item">Collaboration with CPAs, CFPs, and attorneys</div>
+          <div class="csa-fluent-item">Real conversations, not sales scripts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. HOW THIS SETS YOU APART (paper) -->
+  <section class="section">
+    <div class="container-page">
+      <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+        <span class="eyebrow eyebrow-blue mb-5">The advantage</span>
+        <h2 class="display-md mt-5">How this certification <em class="not-italic font-light">sets you apart</em>.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {benefits.map((b, i) => (
+          <div class="card reveal" style={`transition-delay:${i * 80}ms;`}>
+            <h3 class="font-display text-xl font-medium mb-2">{b.title}</h3>
+            <p class="text-[15px] text-[var(--color-mute)] leading-relaxed">{b.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WHAT IT TAKES (dark) -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="max-w-2xl mx-auto text-center reveal">
+        <span class="eyebrow mb-5">Requirements</span>
+        <h2 class="display-md mt-5 text-[var(--color-paper)] mb-10">What it takes to become a <em class="not-italic font-light">Certified Stairway Advisor™</em>.</h2>
+        <div class="csa-steps">
+          {steps.map((s, i) => (
+            <div class="csa-step">
+              <span class="csa-step__num mono">{String(i + 1).padStart(2, '0')}</span>
+              <span class="csa-step__text">{s}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FAQ (paper-tint) -->
+  <section class="section bg-[var(--color-paper-tint)]">
+    <div class="container-page">
+      <div class="max-w-2xl mx-auto">
+        <span class="eyebrow eyebrow-blue mb-5">Common questions</span>
+        <h2 class="display-md mt-5 mb-8">About the CSA Program.</h2>
+        {faqs.map((f, i) => (
+          <details class="csa-faq">
+            <summary class="csa-faq__q">
+              <span class="csa-faq__num mono">{String(i + 1).padStart(2, '0')}</span>
+              <span>{f.q}</span>
+            </summary>
+            <p class="csa-faq__a">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FINAL CTA (dark) -->
+  <section class="section section-dark">
+    <div class="container-page">
+      <div class="relative rounded-3xl overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)] p-10 lg:p-16 text-center">
+        <div class="relative reveal">
+          <h2 class="display-md text-[var(--color-paper)] mb-4">Ready to become the advisor clients <em class="not-italic font-light text-[var(--color-blue-tint)]">trust for life</em>?</h2>
+          <p class="text-[15px] opacity-70 mb-8 max-w-lg mx-auto">Join the CSA™ Program and start building generational wealth — for you and your clients.</p>
+          <button type="button" data-open-csa class="btn btn-blue btn-arrow text-base px-7 py-3.5">Apply for CSA Today</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <HomeReviews />
   <CsaAdvisorForm />
 </Layout>
 
 <style>
-  .ft-breadcrumb { font-family:var(--stw-mono, 'JetBrains Mono'), monospace; font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
-  .ft-breadcrumb a { color:var(--color-mute); text-decoration:none; } .ft-breadcrumb a:hover { color:var(--color-blue); }
-  .ft-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
-  .ft-header { padding-top:0.5rem; padding-bottom:1rem; }
-  .ft-body { margin-top:1.5rem; padding-bottom:4rem; }
-  .ft-body :global(h2) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:clamp(1.4rem,2.5vw,1.9rem); margin-top:2.5rem; margin-bottom:1rem; }
-  .ft-body :global(h3) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:1.3rem; margin-top:1.75rem; margin-bottom:0.7rem; }
-  .ft-body :global(h2 b),.ft-body :global(h3 b) { font-weight:inherit; }
-  .ft-body :global(p) { font-size:16px; line-height:1.7; margin-bottom:1.1rem; color:var(--color-ink-light); }
-  .ft-body :global(ul),.ft-body :global(ol) { margin:0 0 1.4rem 1.25rem; display:flex; flex-direction:column; gap:0.45rem; }
-  .ft-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
-  .ft-body :global(img) { max-width:100%; height:auto; border-radius:10px; margin:1.5rem 0; }
-  .ft-body :global(table) { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:14px; }
-  .ft-body :global(th),.ft-body :global(td) { border:1px solid var(--color-bone); padding:0.6rem 0.8rem; text-align:left; }
-  .ft-body :global(th) { background:var(--color-paper-tint); font-weight:600; }
+  .csa-breadcrumb { font-family:var(--stw-mono, 'JetBrains Mono'), monospace; font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .csa-breadcrumb a { color:var(--color-mute); text-decoration:none; } .csa-breadcrumb a:hover { color:var(--color-blue); }
+  .csa-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+
+  .csa-hero { padding:clamp(2.5rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3rem); background:linear-gradient(180deg, var(--color-paper-tint), var(--color-paper)); border-bottom:1px solid var(--color-bone); }
+  .csa-hero__title { margin:0.75rem 0 1.25rem; }
+  .csa-hero__lede { max-width:56ch; margin-bottom:2rem; }
+  .csa-hero__cta { display:flex; gap:0.75rem; flex-wrap:wrap; }
+
+  /* Track cards */
+  .csa-tracks { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; max-width:900px; margin:0 auto; }
+  @media (max-width:700px) { .csa-tracks { grid-template-columns:1fr; } }
+  .csa-track { background:rgba(250,250,247,0.06); border:1px solid rgba(250,250,247,0.12); border-radius:16px; padding:2rem; }
+  .csa-track__head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1.25rem; padding-bottom:1rem; border-bottom:1px solid rgba(250,250,247,0.1); }
+  .csa-track__title { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-size:1.15rem; font-weight:500; color:var(--color-paper); }
+  .csa-track__hours { font-size:11px; color:rgba(250,250,247,0.5); letter-spacing:0.06em; }
+  .csa-track__chapters { list-style:none; padding:0; margin:0; counter-reset:ch; display:flex; flex-direction:column; gap:0.5rem; }
+  .csa-track__chapters li { counter-increment:ch; display:flex; align-items:flex-start; gap:0.6rem; font-size:14px; color:rgba(250,250,247,0.75); line-height:1.45; }
+  .csa-track__chapters li::before { content:counter(ch, decimal-leading-zero); font-family:var(--stw-mono, 'JetBrains Mono'), monospace; font-size:11px; color:var(--color-blue); padding-top:2px; flex-shrink:0; }
+
+  /* Fluent items */
+  .csa-fluent-item { padding:0.85rem 1.1rem; background:var(--color-paper); border:1px solid var(--color-bone); border-radius:10px; font-size:15px; color:var(--color-ink); display:flex; align-items:center; gap:0.6rem; }
+  .csa-fluent-item::before { content:'✓'; color:var(--color-green); font-weight:700; flex-shrink:0; }
+
+  /* Steps */
+  .csa-steps { display:flex; flex-direction:column; gap:0.75rem; text-align:left; max-width:500px; margin:0 auto; }
+  .csa-step { display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:rgba(250,250,247,0.06); border:1px solid rgba(250,250,247,0.1); border-radius:10px; }
+  .csa-step__num { font-size:12px; color:var(--color-blue); flex-shrink:0; }
+  .csa-step__text { font-size:15px; color:var(--color-paper); line-height:1.4; }
+
+  /* FAQ */
+  .csa-faq { border-bottom:1px solid var(--color-bone); }
+  .csa-faq__q { display:flex; align-items:flex-start; gap:0.75rem; padding:1.25rem 0; cursor:pointer; list-style:none; font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-size:1.1rem; font-weight:500; color:var(--color-ink); line-height:1.3; }
+  .csa-faq__q::-webkit-details-marker { display:none; }
+  .csa-faq__q::after { content:'+'; margin-left:auto; font-family:var(--stw-mono, 'JetBrains Mono'), monospace; font-size:1.1rem; color:var(--color-mute); flex-shrink:0; }
+  .csa-faq[open] .csa-faq__q::after { content:'−'; }
+  .csa-faq__num { font-size:12px; color:var(--color-blue); padding-top:3px; }
+  .csa-faq__a { font-size:15px; line-height:1.65; color:var(--color-ink-light); padding:0 0 1.25rem 2.25rem; }
 </style>
