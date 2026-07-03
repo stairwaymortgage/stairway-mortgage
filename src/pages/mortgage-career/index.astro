@@ -164,6 +164,50 @@ import CareerApplyForm from '../../components/CareerApplyForm.astro';
   }
   .mc-scope .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
 
+  .mc-scope .hero--with-image .hero-grid {
+    display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(40px, 5vw, 80px); align-items: center;
+  }
+  .mc-scope .hero--with-image h1 { max-width: 14ch; }
+  .mc-scope .hero--with-image .hero-subtitle { max-width: 48ch; }
+  .mc-scope .hero-image {
+    position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden;
+    background: radial-gradient(circle at 70% 30%, rgba(99,113,179,0.35) 0%, transparent 50%),
+                radial-gradient(circle at 30% 80%, rgba(184,134,11,0.18) 0%, transparent 55%),
+                linear-gradient(165deg, #1E2433 0%, #0A0E1A 65%, #050811 100%);
+    box-shadow: 0 30px 60px -25px rgba(10,14,26,0.25);
+  }
+  .mc-scope .hero-image img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+    display: block; filter: contrast(1.04) saturate(0.97); position: relative; z-index: 2;
+  }
+  .mc-scope .hero-image::after {
+    content: ''; position: absolute; inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); pointer-events: none; z-index: 3; border-radius: 4px;
+  }
+  @media (max-width: 900px) {
+    .mc-scope .hero--with-image .hero-grid { grid-template-columns: 1fr; gap: var(--s-7); }
+    .mc-scope .hero-image { aspect-ratio: 16/11; max-width: 100%; }
+  }
+
+  /* ── Section accent photos ── */
+  .mc-scope .section-photo {
+    border-radius: 6px; overflow: hidden; aspect-ratio: 21/9;
+    position: relative; margin-top: var(--s-8);
+  }
+  .mc-scope .section-photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;
+  }
+  .mc-scope .section-photo::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10,14,26,0.55) 100%); z-index: 1;
+  }
+  .mc-scope .section-photo-caption {
+    position: absolute; bottom: var(--s-5); left: var(--s-6); right: var(--s-6); z-index: 2;
+    font-family: var(--mono); font-size: var(--text-2xs); letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(250,250,247,0.85);
+  }
+  @media (max-width: 720px) { .mc-scope .section-photo { aspect-ratio: 4/3; } }
+
   /* ============ 3-DOOR ROUTER ============ */
   .mc-scope .doors { padding: var(--s-8) 0; background: var(--paper-2); border-bottom: 1px solid var(--border); }
   .mc-scope .doors-head { text-align: center; max-width: 50ch; margin: 0 auto var(--s-7); }
@@ -357,7 +401,7 @@ import CareerApplyForm from '../../components/CareerApplyForm.astro';
           </div>
         </div>
         <figure class="hero-image">
-          <img src="https://images.pexels.com/photos/5717546/pexels-photo-5717546.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Mortgage professional smiling confidently at their desk" loading="eager" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Mortgage+Career';">
+          <img src="https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Mortgage professional smiling at their desk with laptop" width="1200" height="1500" loading="eager" onerror="this.onerror=null;this.src='https://placehold.co/1200x1500/0A0E1A/E8EEFF/png?text=Mortgage+Career';">
         </figure>
       </div>
     </div>
@@ -407,9 +451,6 @@ import CareerApplyForm from '../../components/CareerApplyForm.astro';
           <p>A <strong>mortgage loan officer</strong> (also called a mortgage loan originator, or MLO) is the licensed professional who helps people get a home loan &mdash; reviewing their situation, matching them to the right program, and guiding them from application to closing.</p>
           <p>To do it legally, you complete a short list of requirements set by the federal <a class="inline-link" href="https://www.consumerfinance.gov/" target="_blank" rel="noopener">SAFE Act</a> and administered through the <a class="inline-link" href="https://nmlsconsumeraccess.org/" target="_blank" rel="noopener">NMLS</a>: a 20-hour pre-licensure course, a national exam, and a background and credit check. Most people finish in a matter of weeks.</p>
           <p>The licensing is the easy part. The real career &mdash; building relationships, earning trust, and growing a book of business &mdash; is what we actually teach here.</p>
-          <figure style="margin-top:var(--s-6); border-radius:8px; overflow:hidden; aspect-ratio:16/10;">
-            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=840" alt="Mortgage team collaborating around a conference table" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.onerror=null;this.parentElement.style.display='none';">
-          </figure>
         </div>
       </div>
     </div>
@@ -466,6 +507,11 @@ import CareerApplyForm from '../../components/CareerApplyForm.astro';
             <p>Licensing gets you in the door. Knowing how to find clients, structure deals, and build a brand is what makes you successful. That's the part we coach &mdash; the same playbook behind $500M+ in closed loans.</p>
           </div>
         </div>
+      </div>
+
+      <div class="section-photo">
+        <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Team of mortgage professionals collaborating at a whiteboard" loading="lazy" onerror="this.onerror=null;this.parentElement.style.display='none';">
+        <span class="section-photo-caption">The licensing is six steps. The career is built in the room.</span>
       </div>
     </div>
   </section>
@@ -586,6 +632,11 @@ import CareerApplyForm from '../../components/CareerApplyForm.astro';
           <p>The creative path for designers, writers, and content makers who'd rather build the brand than make sales calls.</p>
           <span class="door-cta">Read the guide</span>
         </a>
+      </div>
+
+      <div class="section-photo">
+        <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Loan officers reviewing documents together at a conference table" loading="lazy" onerror="this.onerror=null;this.parentElement.style.display='none';">
+        <span class="section-photo-caption">Every role matters. Find the one that fits you.</span>
       </div>
     </div>
   </section>
