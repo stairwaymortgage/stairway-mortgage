@@ -23,14 +23,6 @@ export const GHL_WEBHOOK_URL =
 export const GHL_WEBHOOK_THE_DRAWING =
   "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/63810884-486d-4190-a2cd-af9c63ef8e63";
 
-/**
- * Dedicated webhook for the Mortgage Career Application (CareerApplyForm) ONLY.
- * Split off from the shared GHL_WEBHOOK_URL because that workflow hit its branch
- * limit. Branch on form_source:'mortgage_career_application' in this workflow.
- */
-export const CAREER_WEBHOOK_URL =
-  "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/e8c4995a-513a-41ac-b1a8-051c7ef6bd96";
-
 /** Standard fields every form sends, plus arbitrary form-specific fields. */
 export interface LeadPayload {
   /** Which form this came from, e.g. "same-day-approval". REQUIRED — drives GHL routing. */
