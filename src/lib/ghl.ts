@@ -23,6 +23,15 @@ export const GHL_WEBHOOK_URL =
 export const GHL_WEBHOOK_THE_DRAWING =
   "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/63810884-486d-4190-a2cd-af9c63ef8e63";
 
+/**
+ * Webhook for the Build a Wealth Plan modal (WealthPlanForm) — posts to the
+ * e8c4995a GHL workflow (shared with the reverse-mortgage forms). The GHL
+ * workflow branches on form_source:'build_a_wealth_plan'. Separate from the
+ * shared GHL_WEBHOOK_URL above — do NOT collapse into it.
+ */
+export const WEALTH_WEBHOOK_URL =
+  "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/e8c4995a-513a-41ac-b1a8-051c7ef6bd96";
+
 /** Standard fields every form sends, plus arbitrary form-specific fields. */
 export interface LeadPayload {
   /** Which form this came from, e.g. "same-day-approval". REQUIRED — drives GHL routing. */

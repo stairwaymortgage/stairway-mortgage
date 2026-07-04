@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import WealthPlanForm from '../../components/WealthPlanForm.astro';
 const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does the Active Investor step mean?", "acceptedAnswer": {"@type": "Answer", "text": "Step six is scaling the portfolio. This is the hands-on growth phase: acquiring, refinancing to pull capital for the next deal, and structuring financing so each property fuels the next. It's where real estate becomes a serious wealth engine."}}, {"@type": "Question", "name": "Who is the Active Investor step for?", "acceptedAnswer": {"@type": "Answer", "text": "It's for investors with one or more properties ready to scale, and others making this transition. The shift is from one to many \u2014 from a single asset to a deliberately built portfolio."}}, {"@type": "Question", "name": "How do I move to the next step?", "acceptedAnswer": {"@type": "Answer", "text": "The next rung is Passive Investor \u2014 Operator to Allocator. We can help you take the next step when you're ready."}}]};
 const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "The 8 Steps", "item": "https://stairwaymortgage.com/the-8-steps/"}, {"@type": "ListItem", "position": 3, "name": "Active Investor"}]};
 ---
@@ -24,8 +25,10 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   <div class="container-prose"><div class="step-cta-card ">
     <h2 class="display-md">Ready for this step?</h2>
     <p class="lede">Scaling is a financing game as much as a real estate one. We help structure cash-out refinances, DSCR loans, and portfol</p>
-    <a href="/build-a-wealth-plan-journey/" class="btn btn-blue btn-arrow">Build a Wealth Plan</a>
+    <button type="button" data-wealth-open class="btn btn-blue btn-arrow">Build a Wealth Plan</button>
   </div></div>
+
+  <WealthPlanForm />
 
   <div class="container-prose"><a href="/the-8-steps/passive-investor/" class="step-next">
       <span class="step-next__label mono">The next rung &rarr;</span>

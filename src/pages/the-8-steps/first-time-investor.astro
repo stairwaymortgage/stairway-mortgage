@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import WealthPlanForm from '../../components/WealthPlanForm.astro';
 const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does the First-Time Investor step mean?", "acceptedAnswer": {"@type": "Answer", "text": "Step five is from consumer to owner of cash flow. Your first investment property is a different game: it's qualified on the property's income, structured for returns, and the start of a portfolio. It's the most important mindset shift on the whole Stairway."}}, {"@type": "Question", "name": "Who is the First-Time Investor step for?", "acceptedAnswer": {"@type": "Answer", "text": "It's for homeowners ready to buy their first rental, and others making this transition. The shift is from earning to owning income \u2014 from trading time for money to owning assets that pay you."}}, {"@type": "Question", "name": "How do I move to the next step?", "acceptedAnswer": {"@type": "Answer", "text": "The next rung is Active Investor \u2014 Scaling the Portfolio. We can help you take the next step when you're ready."}}]};
 const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "The 8 Steps", "item": "https://stairwaymortgage.com/the-8-steps/"}, {"@type": "ListItem", "position": 3, "name": "First-Time Investor"}]};
 ---
@@ -24,8 +25,10 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   <div class="container-prose"><div class="step-cta-card ">
     <h2 class="display-md">Ready for this step?</h2>
     <p class="lede">Investor financing (DSCR, bank-statement, portfolio loans) works differently from a primary residence. We match you to t</p>
-    <a href="/build-a-wealth-plan-journey/" class="btn btn-blue btn-arrow">Build a Wealth Plan</a>
+    <button type="button" data-wealth-open class="btn btn-blue btn-arrow">Build a Wealth Plan</button>
   </div></div>
+
+  <WealthPlanForm />
 
   <div class="container-prose"><a href="/the-8-steps/active-investor/" class="step-next">
       <span class="step-next__label mono">The next rung &rarr;</span>
