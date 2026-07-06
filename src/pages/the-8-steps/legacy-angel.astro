@@ -10,16 +10,18 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
 
   <header class="step-hero step-hero--summit">
     <div class="container-page step-hero__inner">
+      <div class="step-hero__text">
       <nav class="step-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/the-8-steps/">The 8 Steps</a> <span>/</span> <span>Legacy Angel</span></nav>
       <span class="step-num" style="color:#E0A96D">08</span>
       <span class="eyebrow" style="color:#E0A96D">The Summit · The Summit</span>
       <h1 class="display-xl step-hero__title">Legacy Angel</h1>
       <p class="lede step-hero__lede">The summit of the Stairway isn't about accumulating more — it's about what your wealth becomes after you're gone. The Legacy Angel rung is the culmination: using everything you've built to create lasting impact for your family, your community, and the causes you believe in.</p>
+      <div class="step-progress mono">Step 08 of 08 · The Legacy Builder</div>
+      </div>
       <!-- stw-img: Pexels 6148958 -->
       <figure class="step-hero__photo">
         <img src="https://images.pexels.com/photos/6148958/pexels-photo-6148958.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="Smiling multigenerational family embracing together" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x667/16335B/FAFAF9?text=Stairway';">
       </figure>
-      <div class="step-progress mono">Step 08 of 08 · The Legacy Builder</div>
     </div>
   </header>
 
@@ -143,8 +145,11 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   .step-hero__title { margin:.5rem 0 1.25rem; }
   .step-hero__lede { max-width:60ch; margin-bottom:1.5rem; }
   .step-progress { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--color-mute); }
-  .step-hero__photo { margin:1.75rem 0 0; max-width:640px; }
-  .step-hero__photo img { width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:14px; display:block; border:1px solid var(--color-bone); }
+  .step-hero__inner { display:grid; grid-template-columns:1.1fr 0.9fr; gap:clamp(1.5rem,4vw,3.5rem); align-items:center; }
+  .step-hero__text { min-width:0; }
+  .step-hero__photo { margin:0; max-width:none; }
+  .step-hero__photo img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:14px; display:block; border:1px solid var(--color-bone); }
+  @media (max-width:768px){ .step-hero__inner { grid-template-columns:1fr; gap:1.75rem; } .step-hero__photo { margin:1.75rem 0 0; } .step-hero__photo img { aspect-ratio:3/2; } }
   .step-hero--summit .step-hero__photo img { border-color:rgba(250,250,247,0.18); box-shadow:0 24px 60px -24px rgba(0,0,0,0.65); }
   .step-body { margin-top:2.5rem; }
   .step-body :global(h2) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:clamp(1.5rem,3vw,2.1rem); margin-top:2.75rem; margin-bottom:1rem; }
