@@ -326,9 +326,6 @@ const icons: Record<string, string> = {
                 </div>
               ))}
             </div>
-            <div class="mega__journey-bottom">
-              <a href="/the-8-steps/" class="mega__journey-bottom-link">See the full 8 steps here <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="vertical-align:middle;margin-left:4px;"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            </div>
           ) : m.flyout ? (
           <ul class="mega__list mega__list--flyout mega__cats-2x5">
             {m.columns.flatMap(col => col.links).map((link) => (
@@ -408,7 +405,8 @@ const icons: Record<string, string> = {
             ))}
           </div>
           )}
-          {/* Feature card */}
+          {/* Feature card (skip for journey — uses bottom bar instead) */}
+          {!m.journeyStages && (
           <div class="mega__feature">
             <a href={m.feature.cta.href} class={`mega__feature-card${m.feature.promoStyle === 'black' ? ' mega__feature-card--black' : ''}`}>
               <p class="mega__feature-title font-display">{m.feature.title}</p>
@@ -416,7 +414,34 @@ const icons: Record<string, string> = {
               <span class={`btn mega__feature-btn btn-blue`}>{m.feature.cta.label}</span>
             </a>
           </div>
+          )}
         </div>
+
+        {/* Journey bottom bar — full width under the grid */}
+        {m.journeyStages && (
+          <div class="mega__journey-bar">
+            <a href="/the-8-steps/" class="mega__journey-bar-link">
+              <span class="mega__journey-bar-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 13.5V4.5a1.5 1.5 0 011.5-1.5h9A1.5 1.5 0 0115 4.5v9a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 013 13.5z" stroke="currentColor" stroke-width="1.2"/><path d="M6.5 7h5M6.5 9.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </span>
+              <span class="mega__journey-bar-text">
+                <strong>See the full 8 steps here</strong>
+                <span>The complete Stairway Journey map</span>
+              </span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="mega__journey-bar-arrow"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/discovery-quiz/" class="mega__journey-bar-link mega__journey-bar-link--quiz">
+              <span class="mega__journey-bar-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M7.5 7a1.5 1.5 0 012.83.75c0 1-1.33 1.25-1.33 2.25" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="9" cy="12.5" r=".6" fill="currentColor"/></svg>
+              </span>
+              <span class="mega__journey-bar-text">
+                <strong>Not sure where you fit?</strong>
+                <span>Take the 2-minute Discovery Quiz</span>
+              </span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="mega__journey-bar-arrow"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        )}
 
         {/* ─── American Heroes featured plate (full-width, below mega__grid) ─── */}
         {m.flyout && (
@@ -1053,25 +1078,51 @@ const icons: Record<string, string> = {
   .mega__journey-arrow { flex-shrink: 0; opacity: 0.5; transition: opacity 0.15s; }
   .mega__journey-cta:hover .mega__journey-arrow { opacity: 1; }
 
-  /* Journey bottom link */
-  .mega__journey-bottom {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding-top: 1rem;
-    margin-top: 0.5rem;
+  /* Journey menu — full-width grid (no sidebar feature card) */
+  #mega-journey .mega__grid { grid-template-columns: 1fr; }
+
+  /* Journey bottom bar */
+  .mega__journey-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
     border-top: 1px solid var(--color-bone);
   }
-  .mega__journey-bottom-link {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--color-blue);
-    text-decoration: none;
-    display: inline-flex;
+  .mega__journey-bar-link {
+    display: flex;
     align-items: center;
-    transition: color 0.15s;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--color-ink);
+    background: var(--color-paper-tint);
+    border: 1px solid var(--color-bone);
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
   }
-  .mega__journey-bottom-link:hover { color: var(--color-ink); }
+  .mega__journey-bar-link:hover {
+    background: var(--color-blue-tint);
+    border-color: var(--color-blue);
+    transform: translateY(-1px);
+  }
+  .mega__journey-bar-icon {
+    width: 36px; height: 36px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--color-blue-tint);
+    border-radius: 8px; flex-shrink: 0;
+    color: var(--color-blue);
+  }
+  .mega__journey-bar-link:hover .mega__journey-bar-icon { background: #dce3ff; }
+  .mega__journey-bar-text {
+    display: flex; flex-direction: column; gap: 1px; flex: 1;
+  }
+  .mega__journey-bar-text strong { font-size: 13.5px; font-weight: 600; }
+  .mega__journey-bar-text span:last-child { font-size: 12px; color: var(--color-mute); }
+  .mega__journey-bar-arrow { flex-shrink: 0; opacity: 0.35; transition: opacity 0.15s; }
+  .mega__journey-bar-link:hover .mega__journey-bar-arrow { opacity: 1; }
+  @media (max-width: 640px) { .mega__journey-bar { grid-template-columns: 1fr; } }
 
   /* Quick-quote chips */
   .mega__quotes {
