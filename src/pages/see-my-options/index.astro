@@ -106,6 +106,33 @@ import Layout              from "../../layouts/Layout.astro";
 <RenovationForm />
 <ReverseMortgageForm />
 
+<script is:inline>
+  (function(){
+    var map = {
+      '#purchase': 'STW_OPEN_pf',
+      '#refinance': 'STW_OPEN_rf',
+      '#heloc': 'STW_OPEN_hf',
+      '#construction': 'STW_OPEN_nc',
+      '#renovation': 'STW_OPEN_rn',
+      '#reverse': null
+    };
+    var h = window.location.hash.toLowerCase();
+    if (!h || !map.hasOwnProperty(h)) return;
+    function tryOpen(attempts) {
+      if (h === '#reverse') {
+        var btn = document.querySelector('[data-rm-open]');
+        if (btn) { btn.click(); return; }
+      } else {
+        var fn = window[map[h]];
+        if (typeof fn === 'function') { fn(); return; }
+      }
+      if (attempts < 20) setTimeout(function(){ tryOpen(attempts + 1); }, 150);
+    }
+    if (document.readyState === 'complete') tryOpen(0);
+    else window.addEventListener('load', function(){ tryOpen(0); });
+  })();
+</script>
+
 </Layout>
 
 <style>
