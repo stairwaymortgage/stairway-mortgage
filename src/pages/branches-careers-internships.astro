@@ -1,403 +1,332 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Join the Stairway Team"}]};
+
+const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Join the Stairway Team"}]};
+
+const APPLY_URL = "https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9";
+
+const twoRoads = [
+  {
+    title: "Sales-Oriented Professionals",
+    points: [
+      "Build relationships, network, and close deals",
+      "Thrive on challenge, persuasion, and performance",
+      "High risk, high reward — six-figure potential",
+    ],
+  },
+  {
+    title: "Operations-Oriented Professionals",
+    points: [
+      "System-focused, organized, detail-oriented",
+      "Enjoy consistency, precision, and behind-the-scenes mastery",
+      "Career security with strong income potential",
+    ],
+  },
+];
+
+const whyJoin = [
+  { title: "Uncapped Earning Potential", desc: "You control your income. With our competitive model, your success determines your paycheck — no caps, no limits." },
+  { title: "Elite-Level Training", desc: "Access high-performance training that turns ambition into results. Learn from top producers and real-world experts." },
+  { title: "Leadership Growth Paths", desc: "Whether you're new or seasoned, we offer defined tracks to help you grow into leadership roles and expand your influence." },
+  { title: "Supportive Culture & Flexibility", desc: "Join a team that values collaboration, support, and the freedom to work from anywhere — with a community that's always got your back." },
+];
+
+const remote = {
+  intro: "Whether you're in the field or working from a café, we believe in results over hours.",
+  points: [
+    "Work remotely and control your schedule",
+    "Collaborate in your city through networking and outreach",
+    "Focus on performance — not micromanagement",
+  ],
+};
+
+const roleTiers = [
+  {
+    name: "Internships",
+    meta: "No experience · Part-time",
+    roles: [
+      { title: "Telemarketing", desc: "Learn persuasive calling skills and client outreach basics." },
+      { title: "Social Media Marketing", desc: "Assist with posting and campaign content creation." },
+      { title: "Loan Processing", desc: "Support file prep, document review, and checklist tracking." },
+    ],
+  },
+  {
+    name: "Entry-Level",
+    meta: "0–2 years",
+    roles: [
+      { title: "Junior Telemarketer", desc: "Call warm leads and log initial inquiries." },
+      { title: "Junior Social Media Marketer", desc: "Manage comments, stories, and growth tactics." },
+      { title: "Junior Loan Officer", desc: "Learn guidelines while assisting with client preapprovals." },
+      { title: "Junior Loan Processor", desc: "Help gather documents and complete application files." },
+    ],
+  },
+  {
+    name: "Senior-Level",
+    meta: "5+ years",
+    roles: [
+      { title: "Senior Telemarketer", desc: "Lead campaigns and mentor junior phone reps." },
+      { title: "Senior Social Media Marketer", desc: "Strategize brand presence and campaign performance." },
+      { title: "Senior Loan Officer", desc: "Manage complex files and high-volume closings." },
+      { title: "Senior Loan Processor", desc: "Lead high-efficiency processing for top producers." },
+      { title: "Senior Business Development Manager", desc: "Oversee growth strategy and major partnerships." },
+    ],
+  },
+  {
+    name: "Regional Support Team",
+    meta: "Cross-market roles",
+    roles: [
+      { title: "Telemarketer", desc: "Drive lead generation with persuasive outreach techniques." },
+      { title: "Social Media Marketer", desc: "Manage content calendar, strategy, and ad insights." },
+      { title: "Loan Officer", desc: "Advise borrowers and structure deals start-to-finish." },
+      { title: "Loan Processor", desc: "Oversee file flow and communicate with underwriters." },
+      { title: "Business Development Manager", desc: "Grow partnerships and expand referral networks." },
+    ],
+  },
+];
+
+const producingTiers = [
+  {
+    q: "Producing less than $12M annually?",
+    headline: "Apply for a Loan Officer position with Stairway",
+    tagline: "Connect. Learn. Grow.",
+    receiveLabel: "What you receive as a Loan Officer",
+    benefits: [
+      "Uncapped earning potential",
+      "Warm leads",
+      "Remote flexibility",
+      "#1 AI CRM in the space",
+      "Growth paths to leadership",
+      "Jim's sales & accountability coaching",
+    ],
+    cta: "Apply For Loan Officer",
+  },
+  {
+    q: "Already producing $12M+ annually?",
+    headline: "Apply to launch a Stairway branch in your market.",
+    tagline: "Leverage. Scale. Evolve.",
+    receiveLabel: "What you receive as a Branch Owner",
+    benefits: [
+      "Powerful brand that adds value & attracts",
+      "Local website with strong SEO presence",
+      "Branded materials for your local market",
+      "Educational content for lead generation",
+      "Streamlined operations & processing",
+      "Jim's leadership & accountability coaching",
+    ],
+    cta: "Apply For Branch",
+  },
+  {
+    q: "Already producing $50M+ with a brand you love?",
+    headline: "Apply to bring your brand to the NEXA ecosphere.",
+    tagline: "",
+    receiveLabel: "What you receive as a Brand Owner",
+    benefits: [
+      "250+ wholesale lender relationships",
+      'NEXA proprietary system "LOS"',
+      "National network of professionals",
+      "Discounted third party vendors",
+      "Regularly planned NEXA events",
+      "Access to Jim's personal brand coaching",
+    ],
+    cta: "Apply to Plug In",
+  },
+];
 ---
 
 <Layout title="Mortgage Careers & Branch Opportunities | Stairway" description="Build your mortgage career with training support and unlimited earning potential. Branch opportunities for experienced loan officers and teams." canonical="https://stairwaymortgage.com/branches-careers-internships/">
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <nav class="container-page ft-breadcrumb" aria-label="Breadcrumb">
-    <a href="/">Home</a> <span>/</span> <span>Join the Stairway Team</span>
-  </nav>
-  <header class="container-prose ft-header">
-    <span class="eyebrow eyebrow-blue mb-4">Stairway</span>
-    <h1 class="display-md">Join the Stairway Team</h1>
-  </header>
-  <article class="container-prose prose-editorial ft-body" set:html={`<h2>A High-Performance Culture for Ambitious Professionals
-</h2>				
-		<p><br />At Stairway Mortgage, we don’t just hire—we grow leaders. Our team is made up of driven, goal-oriented people who thrive under pressure and overcome challenges with grit. We value character, accountability, and discipline over experience—skills can be taught. If you’re committed to growth and excellence, you’ll feel right at home.</p>		
-					<h2>Two Roads. One Destination: Success.</h2>				
-									<h3>
-							Sales-Oriented Professionals						
-					</h3>
-									<p>
-						- Build relationships, network, and close deals<br>
-- Thrive on challenge, persuasion, and performance<br>
-- High risk, high reward—six-figure potential					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-									<h3>
-							Operations-Oriented Professionals						
-					</h3>
-									<p>
-						- System-focused, organized, detail-oriented<br>
-- Enjoy consistency, precision, and behind-the-scenes mastery<br>
-- Career security with strong income potential					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-					<h2>Flexible &amp; Remote Work
-Opportunities</h2>				
-		<p>Whether you’re in the field or working from a café, we believe in results over hours.</p><ul><li>Work remotely and control your schedule</li><li>Collaborate in your city through networking and outreach</li><li>Focus on performance—not micromanagement</li></ul>		
-					<h3>Why Join Stairway Mortgage?</h3>				
-									<h3>
-							Uncapped Earning Potential						
-					</h3>
-									<p>
-						You control your income. With our competitive model, your success determines your paycheck—no caps, no limits.					</p>
-									<h3>
-							Elite-Level Training						
-					</h3>
-									<p>
-						Access high-performance training that turns ambition into results. Learn from top producers and real-world experts. 					</p>
-									<h3>
-							Leadership Growth Paths						
-					</h3>
-									<p>
-						Whether you’re new or seasoned, we offer defined tracks to help you grow into leadership roles and expand your influence. 					</p>
-									<h3>
-							Supportive Culture &amp; Flexibility						
-					</h3>
-									<p>
-						Join a team that values collaboration, support, and the freedom to work from anywhere—with a community that’s always got your back.  					</p>
-					<h2>Career Opportunities at Stairway Mortgage</h2>				
-            <ul>
-                                    <li>
-                        <a id="content-dfd96be68ff055b999c8-tab" data-ekit-handler-id="internships-no-experience-part-time-" data-ekit-toggle="tab" data-target="#content-dfd96be68ff055b999c8" href="#Content-dfd96be68ff055b999c8"
-                            data-ekit-toggle-trigger="click"
-                            aria-describedby="Content-dfd96be68ff055b999c8">
-                                                         Internships (No Experience, Part-Time)
-                        </a>
-                    </li>
-                                        <li>
-                        <a id="content-3f964ab68ff055b999c8-tab" data-ekit-handler-id="entry-level-0-2-years-" data-ekit-toggle="tab" data-target="#content-3f964ab68ff055b999c8" href="#Content-3f964ab68ff055b999c8"
-                            data-ekit-toggle-trigger="click"
-                            aria-describedby="Content-3f964ab68ff055b999c8">
-                                                         Entry-Level (0–2 Years)
-                        </a>
-                    </li>
-                                        <li>
-                        <a id="content-066653868ff055b999c8-tab" data-ekit-handler-id="-mid-level-2-5-years-" data-ekit-toggle="tab" data-target="#content-066653868ff055b999c8" href="#Content-066653868ff055b999c8"
-                            data-ekit-toggle-trigger="click"
-                            aria-describedby="Content-066653868ff055b999c8">
-                                                          Mid-Level (2–5 Years)
-                        </a>
-                    </li>
-                                        <li>
-                        <a id="content-0643b8768ff055b999c8-tab" data-ekit-handler-id="senior-level-5-years-" data-ekit-toggle="tab" data-target="#content-0643b8768ff055b999c8" href="#Content-0643b8768ff055b999c8"
-                            data-ekit-toggle-trigger="click"
-                            aria-describedby="Content-0643b8768ff055b999c8">
-                                                         Senior-Level (5+ Years)
-                        </a>
-                    </li>
-                                        <li>
-                        <a id="content-2b8e41d68ff055b999c8-tab" data-ekit-handler-id="regional-support-team" data-ekit-toggle="tab" data-target="#content-2b8e41d68ff055b999c8" href="#Content-2b8e41d68ff055b999c8"
-                            data-ekit-toggle-trigger="click"
-                            aria-describedby="Content-2b8e41d68ff055b999c8">
-                                                         Regional Support Team
-                        </a>
-                    </li>
-                                </ul>
-                            <p><style>.elementor-36705 .elementor-element.elementor-element-5ba722a > .elementor-container{max-width:1300px;}.elementor-36705 .elementor-element.elementor-element-5ba722a:not(.elementor-motion-effects-element-type-background), .elementor-36705 .elementor-element.elementor-element-5ba722a > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#F5F5F5;}.elementor-36705 .elementor-element.elementor-element-5ba722a{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin-top:0px;margin-bottom:0px;padding:0px 0px 50px 0px;}.elementor-36705 .elementor-element.elementor-element-5ba722a > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36705 .elementor-element.elementor-element-bccb168 > .elementor-container{max-width:800px;}.elementor-36705 .elementor-element.elementor-element-bccb168{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36705 .elementor-element.elementor-element-4ca3b6a.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36705 .elementor-element.elementor-element-4ca3b6a.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36705 .elementor-element.elementor-element-4ca3b6a:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36705 .elementor-element.elementor-element-4ca3b6a > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36705 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated, .elementor-36705 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated > .elementor-background-overlay, .elementor-36705 .elementor-element.elementor-element-4ca3b6a > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36705 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36705 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36705 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-wrapper{text-align:left;}.elementor-36705 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36705 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title, .elementor-36705 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36705 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36705 .elementor-element.elementor-element-6a220b3 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36705 .elementor-element.elementor-element-bf32e13 .elementor-icon-wrapper{text-align:left;}.elementor-36705 .elementor-element.elementor-element-bf32e13.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36705 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon, .elementor-36705 .elementor-element.elementor-element-bf32e13.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36705 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon, .elementor-36705 .elementor-element.elementor-element-bf32e13.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36705 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36705 .elementor-element.elementor-element-bf32e13.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36705 .elementor-element.elementor-element-bf32e13 .elementor-icon{font-size:18px;}.elementor-36705 .elementor-element.elementor-element-bf32e13 .elementor-icon svg{height:18px;}.elementor-bc-flex-widget .elementor-36705 .elementor-element.elementor-element-fe77e85.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36705 .elementor-element.elementor-element-fe77e85.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36705 .elementor-element.elementor-element-fe77e85:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36705 .elementor-element.elementor-element-fe77e85 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36705 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated, .elementor-36705 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated > .elementor-background-overlay, .elementor-36705 .elementor-element.elementor-element-fe77e85 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36705 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36705 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36705 .elementor-element.elementor-element-ae704dd .elementor-icon-box-wrapper{text-align:left;}.elementor-36705 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title{margin-block-end:24px;}.elementor-36705 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title, .elementor-36705 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36705 .elementor-element.elementor-element-ae704dd .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36705 .elementor-element.elementor-element-ae704dd > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36705 .elementor-element.elementor-element-2a7860f .elementor-icon-wrapper{text-align:left;}.elementor-36705 .elementor-element.elementor-element-2a7860f.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36705 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon, .elementor-36705 .elementor-element.elementor-element-2a7860f.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36705 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon, .elementor-36705 .elementor-element.elementor-element-2a7860f.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36705 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36705 .elementor-element.elementor-element-2a7860f.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36705 .elementor-element.elementor-element-2a7860f .elementor-icon{font-size:18px;}.elementor-36705 .elementor-element.elementor-element-2a7860f .elementor-icon svg{height:18px;}.elementor-bc-flex-widget .elementor-36705 .elementor-element.elementor-element-1a528f1.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36705 .elementor-element.elementor-element-1a528f1.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36705 .elementor-element.elementor-element-1a528f1:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36705 .elementor-element.elementor-element-1a528f1 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36705 .elementor-element.elementor-element-1a528f1 > .elementor-element-populated, .elementor-36705 .elementor-element.elementor-element-1a528f1 > .elementor-element-populated > .elementor-background-overlay, .elementor-36705 .elementor-element.elementor-element-1a528f1 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36705 .elementor-element.elementor-element-1a528f1 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36705 .elementor-element.elementor-element-1a528f1 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36705 .elementor-element.elementor-element-57562cf .elementor-icon-box-wrapper{text-align:left;}.elementor-36705 .elementor-element.elementor-element-57562cf .elementor-icon-box-title{margin-block-end:24px;}.elementor-36705 .elementor-element.elementor-element-57562cf .elementor-icon-box-title, .elementor-36705 .elementor-element.elementor-element-57562cf .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36705 .elementor-element.elementor-element-57562cf .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36705 .elementor-element.elementor-element-57562cf > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36705 .elementor-element.elementor-element-c875bd0 .elementor-icon-wrapper{text-align:left;}.elementor-36705 .elementor-element.elementor-element-c875bd0.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36705 .elementor-element.elementor-element-c875bd0.elementor-view-framed .elementor-icon, .elementor-36705 .elementor-element.elementor-element-c875bd0.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36705 .elementor-element.elementor-element-c875bd0.elementor-view-framed .elementor-icon, .elementor-36705 .elementor-element.elementor-element-c875bd0.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36705 .elementor-element.elementor-element-c875bd0.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36705 .elementor-element.elementor-element-c875bd0.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36705 .elementor-element.elementor-element-c875bd0 .elementor-icon{font-size:18px;}.elementor-36705 .elementor-element.elementor-element-c875bd0 .elementor-icon svg{height:18px;}</style>		
-						<section data-id="5ba722a" data-element_type="section" data-settings="{background_background:classic}">
-						<section data-id="bccb168" data-element_type="section">
-									<h3>
-							Telemarketing						
-					</h3>
-									<p>
-						Learn persuasive calling skills and client outreach basics.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-									<h3>
-							Social Media Marketing						
-					</h3>
-									<p>
-						Assist with posting and campaign content creation.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-									<h3>
-							Loan Processing						
-					</h3>
-									<p>
-						Support file prep, document review, and checklist tracking.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-		</section>
-		</section>
-		</p>                        
-                            <p><style>.elementor-36718 .elementor-element.elementor-element-5ba722a > .elementor-container{max-width:1300px;}.elementor-36718 .elementor-element.elementor-element-5ba722a:not(.elementor-motion-effects-element-type-background), .elementor-36718 .elementor-element.elementor-element-5ba722a > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#F5F5F5;}.elementor-36718 .elementor-element.elementor-element-5ba722a{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin-top:0px;margin-bottom:0px;padding:0px 0px 50px 0px;}.elementor-36718 .elementor-element.elementor-element-5ba722a > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36718 .elementor-element.elementor-element-bccb168 > .elementor-container{max-width:800px;}.elementor-36718 .elementor-element.elementor-element-bccb168{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36718 .elementor-element.elementor-element-4ca3b6a.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36718 .elementor-element.elementor-element-4ca3b6a.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36718 .elementor-element.elementor-element-4ca3b6a:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36718 .elementor-element.elementor-element-4ca3b6a > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36718 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated, .elementor-36718 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated > .elementor-background-overlay, .elementor-36718 .elementor-element.elementor-element-4ca3b6a > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36718 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36718 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36718 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-wrapper{text-align:left;}.elementor-36718 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36718 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title, .elementor-36718 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36718 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36718 .elementor-element.elementor-element-6a220b3 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36718 .elementor-element.elementor-element-bf32e13 .elementor-icon-wrapper{text-align:left;}.elementor-36718 .elementor-element.elementor-element-bf32e13.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36718 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon, .elementor-36718 .elementor-element.elementor-element-bf32e13.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36718 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon, .elementor-36718 .elementor-element.elementor-element-bf32e13.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36718 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36718 .elementor-element.elementor-element-bf32e13.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36718 .elementor-element.elementor-element-bf32e13 .elementor-icon{font-size:18px;}.elementor-36718 .elementor-element.elementor-element-bf32e13 .elementor-icon svg{height:18px;}.elementor-bc-flex-widget .elementor-36718 .elementor-element.elementor-element-fe77e85.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36718 .elementor-element.elementor-element-fe77e85.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36718 .elementor-element.elementor-element-fe77e85:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36718 .elementor-element.elementor-element-fe77e85 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36718 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated, .elementor-36718 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated > .elementor-background-overlay, .elementor-36718 .elementor-element.elementor-element-fe77e85 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36718 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36718 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36718 .elementor-element.elementor-element-ae704dd .elementor-icon-box-wrapper{text-align:left;}.elementor-36718 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title{margin-block-end:24px;}.elementor-36718 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title, .elementor-36718 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36718 .elementor-element.elementor-element-ae704dd .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36718 .elementor-element.elementor-element-ae704dd > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36718 .elementor-element.elementor-element-2a7860f .elementor-icon-wrapper{text-align:left;}.elementor-36718 .elementor-element.elementor-element-2a7860f.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36718 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon, .elementor-36718 .elementor-element.elementor-element-2a7860f.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36718 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon, .elementor-36718 .elementor-element.elementor-element-2a7860f.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36718 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36718 .elementor-element.elementor-element-2a7860f.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36718 .elementor-element.elementor-element-2a7860f .elementor-icon{font-size:18px;}.elementor-36718 .elementor-element.elementor-element-2a7860f .elementor-icon svg{height:18px;}.elementor-36718 .elementor-element.elementor-element-27afa34 > .elementor-container{max-width:800px;}.elementor-36718 .elementor-element.elementor-element-27afa34{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36718 .elementor-element.elementor-element-3de6c46.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36718 .elementor-element.elementor-element-3de6c46.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36718 .elementor-element.elementor-element-3de6c46:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36718 .elementor-element.elementor-element-3de6c46 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36718 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated, .elementor-36718 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated > .elementor-background-overlay, .elementor-36718 .elementor-element.elementor-element-3de6c46 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36718 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36718 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36718 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-wrapper{text-align:left;}.elementor-36718 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-title{margin-block-end:24px;}.elementor-36718 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-title, .elementor-36718 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36718 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36718 .elementor-element.elementor-element-6f4e7ce > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36718 .elementor-element.elementor-element-2b83b8f .elementor-icon-wrapper{text-align:left;}.elementor-36718 .elementor-element.elementor-element-2b83b8f.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36718 .elementor-element.elementor-element-2b83b8f.elementor-view-framed .elementor-icon, .elementor-36718 .elementor-element.elementor-element-2b83b8f.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36718 .elementor-element.elementor-element-2b83b8f.elementor-view-framed .elementor-icon, .elementor-36718 .elementor-element.elementor-element-2b83b8f.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36718 .elementor-element.elementor-element-2b83b8f.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36718 .elementor-element.elementor-element-2b83b8f.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36718 .elementor-element.elementor-element-2b83b8f .elementor-icon{font-size:18px;}.elementor-36718 .elementor-element.elementor-element-2b83b8f .elementor-icon svg{height:18px;}.elementor-bc-flex-widget .elementor-36718 .elementor-element.elementor-element-901f33a.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36718 .elementor-element.elementor-element-901f33a.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36718 .elementor-element.elementor-element-901f33a:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36718 .elementor-element.elementor-element-901f33a > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36718 .elementor-element.elementor-element-901f33a > .elementor-element-populated, .elementor-36718 .elementor-element.elementor-element-901f33a > .elementor-element-populated > .elementor-background-overlay, .elementor-36718 .elementor-element.elementor-element-901f33a > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36718 .elementor-element.elementor-element-901f33a > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36718 .elementor-element.elementor-element-901f33a > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36718 .elementor-element.elementor-element-9f03204 .elementor-icon-box-wrapper{text-align:left;}.elementor-36718 .elementor-element.elementor-element-9f03204 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36718 .elementor-element.elementor-element-9f03204 .elementor-icon-box-title, .elementor-36718 .elementor-element.elementor-element-9f03204 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36718 .elementor-element.elementor-element-9f03204 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36718 .elementor-element.elementor-element-9f03204 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36718 .elementor-element.elementor-element-9795813 .elementor-icon-wrapper{text-align:left;}.elementor-36718 .elementor-element.elementor-element-9795813.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36718 .elementor-element.elementor-element-9795813.elementor-view-framed .elementor-icon, .elementor-36718 .elementor-element.elementor-element-9795813.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36718 .elementor-element.elementor-element-9795813.elementor-view-framed .elementor-icon, .elementor-36718 .elementor-element.elementor-element-9795813.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36718 .elementor-element.elementor-element-9795813.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36718 .elementor-element.elementor-element-9795813.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36718 .elementor-element.elementor-element-9795813 .elementor-icon{font-size:18px;}.elementor-36718 .elementor-element.elementor-element-9795813 .elementor-icon svg{height:18px;}</style>		
-						<section data-id="5ba722a" data-element_type="section" data-settings="{background_background:classic}">
-						<section data-id="bccb168" data-element_type="section">
-									<h3>
-							Junior Telemarketer						
-					</h3>
-									<p>
-						Call warm leads and log initial inquiries.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-									<h3>
-							Junior Social Media Marketer						
-					</h3>
-									<p>
-						Manage comments, stories, and growth tactics.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-		</section>
-				<section data-id="27afa34" data-element_type="section">
-									<h3>
-							Junior Loan Officer						
-					</h3>
-									<p>
-						Learn guidelines while assisting with client preapprovals.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-									<h3>
-							Junior Loan Processor						
-					</h3>
-									<p>
-						Help gather documents and complete application files.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-		</section>
-		</section>
-		</p>                        
-                            <p><style>.elementor-36373 .elementor-element.elementor-element-5c1877d > .elementor-container{max-width:1300px;}.elementor-36373 .elementor-element.elementor-element-5c1877d:not(.elementor-motion-effects-element-type-background), .elementor-36373 .elementor-element.elementor-element-5c1877d > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#F5F5F5;}.elementor-36373 .elementor-element.elementor-element-5c1877d{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin-top:0px;margin-bottom:0px;padding:0px 0px 50px 0px;}.elementor-36373 .elementor-element.elementor-element-5c1877d > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36373 .elementor-element.elementor-element-845c574 > .elementor-container{max-width:800px;}.elementor-36373 .elementor-element.elementor-element-845c574{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36373 .elementor-element.elementor-element-fb416e0.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36373 .elementor-element.elementor-element-fb416e0.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36373 .elementor-element.elementor-element-fb416e0:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36373 .elementor-element.elementor-element-fb416e0 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36373 .elementor-element.elementor-element-fb416e0 > .elementor-element-populated, .elementor-36373 .elementor-element.elementor-element-fb416e0 > .elementor-element-populated > .elementor-background-overlay, .elementor-36373 .elementor-element.elementor-element-fb416e0 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36373 .elementor-element.elementor-element-fb416e0 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36373 .elementor-element.elementor-element-fb416e0 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36373 .elementor-element.elementor-element-db8f214 .elementor-icon-box-wrapper{text-align:left;}.elementor-36373 .elementor-element.elementor-element-db8f214 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36373 .elementor-element.elementor-element-db8f214 .elementor-icon-box-title, .elementor-36373 .elementor-element.elementor-element-db8f214 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36373 .elementor-element.elementor-element-db8f214 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36373 .elementor-element.elementor-element-db8f214 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36373 .elementor-element.elementor-element-88e7ebf > .elementor-widget-container{padding:0px 0px 0px 20px;}.elementor-36373 .elementor-element.elementor-element-572e5ee .elementor-icon-wrapper{text-align:left;}.elementor-36373 .elementor-element.elementor-element-572e5ee.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36373 .elementor-element.elementor-element-572e5ee.elementor-view-framed .elementor-icon, .elementor-36373 .elementor-element.elementor-element-572e5ee.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36373 .elementor-element.elementor-element-572e5ee.elementor-view-framed .elementor-icon, .elementor-36373 .elementor-element.elementor-element-572e5ee.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36373 .elementor-element.elementor-element-572e5ee.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36373 .elementor-element.elementor-element-572e5ee.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36373 .elementor-element.elementor-element-572e5ee .elementor-icon{font-size:18px;}.elementor-36373 .elementor-element.elementor-element-572e5ee .elementor-icon svg{height:18px;}.elementor-36373 .elementor-element.elementor-element-c531ec9:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36373 .elementor-element.elementor-element-c531ec9 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36373 .elementor-element.elementor-element-c531ec9 > .elementor-element-populated, .elementor-36373 .elementor-element.elementor-element-c531ec9 > .elementor-element-populated > .elementor-background-overlay, .elementor-36373 .elementor-element.elementor-element-c531ec9 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36373 .elementor-element.elementor-element-c531ec9 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36373 .elementor-element.elementor-element-c531ec9 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36373 .elementor-element.elementor-element-f37002c .elementor-icon-box-wrapper{text-align:left;}.elementor-36373 .elementor-element.elementor-element-f37002c .elementor-icon-box-title{margin-block-end:24px;}.elementor-36373 .elementor-element.elementor-element-f37002c .elementor-icon-box-title, .elementor-36373 .elementor-element.elementor-element-f37002c .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36373 .elementor-element.elementor-element-f37002c .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36373 .elementor-element.elementor-element-f37002c > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36373 .elementor-element.elementor-element-0203200 > .elementor-widget-container{padding:0px 0px 0px 20px;}.elementor-36373 .elementor-element.elementor-element-7f910a9 .elementor-icon-wrapper{text-align:left;}.elementor-36373 .elementor-element.elementor-element-7f910a9.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36373 .elementor-element.elementor-element-7f910a9.elementor-view-framed .elementor-icon, .elementor-36373 .elementor-element.elementor-element-7f910a9.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36373 .elementor-element.elementor-element-7f910a9.elementor-view-framed .elementor-icon, .elementor-36373 .elementor-element.elementor-element-7f910a9.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36373 .elementor-element.elementor-element-7f910a9.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36373 .elementor-element.elementor-element-7f910a9.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36373 .elementor-element.elementor-element-7f910a9 .elementor-icon{font-size:18px;}.elementor-36373 .elementor-element.elementor-element-7f910a9 .elementor-icon svg{height:18px;}.elementor-36373 .elementor-element.elementor-element-d214a6b > .elementor-container{max-width:800px;}.elementor-36373 .elementor-element.elementor-element-d214a6b{padding:0px 0px 0px 0px;}.elementor-36373 .elementor-element.elementor-element-02d8cf5:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36373 .elementor-element.elementor-element-02d8cf5 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36373 .elementor-element.elementor-element-02d8cf5 > .elementor-element-populated, .elementor-36373 .elementor-element.elementor-element-02d8cf5 > .elementor-element-populated > .elementor-background-overlay, .elementor-36373 .elementor-element.elementor-element-02d8cf5 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36373 .elementor-element.elementor-element-02d8cf5 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36373 .elementor-element.elementor-element-02d8cf5 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36373 .elementor-element.elementor-element-d992241 .elementor-icon-box-wrapper{text-align:left;}.elementor-36373 .elementor-element.elementor-element-d992241 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36373 .elementor-element.elementor-element-d992241 .elementor-icon-box-title, .elementor-36373 .elementor-element.elementor-element-d992241 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36373 .elementor-element.elementor-element-d992241 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36373 .elementor-element.elementor-element-d992241 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36373 .elementor-element.elementor-element-601cfb0 > .elementor-widget-container{padding:0px 0px 0px 20px;}.elementor-36373 .elementor-element.elementor-element-1920e58 .elementor-icon-wrapper{text-align:left;}.elementor-36373 .elementor-element.elementor-element-1920e58.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36373 .elementor-element.elementor-element-1920e58.elementor-view-framed .elementor-icon, .elementor-36373 .elementor-element.elementor-element-1920e58.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36373 .elementor-element.elementor-element-1920e58.elementor-view-framed .elementor-icon, .elementor-36373 .elementor-element.elementor-element-1920e58.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36373 .elementor-element.elementor-element-1920e58.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36373 .elementor-element.elementor-element-1920e58.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36373 .elementor-element.elementor-element-1920e58 .elementor-icon{font-size:18px;}.elementor-36373 .elementor-element.elementor-element-1920e58 .elementor-icon svg{height:18px;}.elementor-36373 .elementor-element.elementor-element-341ac9e:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36373 .elementor-element.elementor-element-341ac9e > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36373 .elementor-element.elementor-element-341ac9e > .elementor-element-populated, .elementor-36373 .elementor-element.elementor-element-341ac9e > .elementor-element-populated > .elementor-background-overlay, .elementor-36373 .elementor-element.elementor-element-341ac9e > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36373 .elementor-element.elementor-element-341ac9e > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36373 .elementor-element.elementor-element-341ac9e > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36373 .elementor-element.elementor-element-c37157d .elementor-icon-box-wrapper{text-align:left;}.elementor-36373 .elementor-element.elementor-element-c37157d .elementor-icon-box-title{margin-block-end:24px;}.elementor-36373 .elementor-element.elementor-element-c37157d .elementor-icon-box-title, .elementor-36373 .elementor-element.elementor-element-c37157d .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36373 .elementor-element.elementor-element-c37157d .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36373 .elementor-element.elementor-element-c37157d > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36373 .elementor-element.elementor-element-a82bb97 > .elementor-widget-container{padding:0px 0px 0px 20px;}.elementor-36373 .elementor-element.elementor-element-cf52e67 .elementor-icon-wrapper{text-align:left;}.elementor-36373 .elementor-element.elementor-element-cf52e67.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36373 .elementor-element.elementor-element-cf52e67.elementor-view-framed .elementor-icon, .elementor-36373 .elementor-element.elementor-element-cf52e67.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36373 .elementor-element.elementor-element-cf52e67.elementor-view-framed .elementor-icon, .elementor-36373 .elementor-element.elementor-element-cf52e67.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36373 .elementor-element.elementor-element-cf52e67.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36373 .elementor-element.elementor-element-cf52e67.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36373 .elementor-element.elementor-element-cf52e67 .elementor-icon{font-size:18px;}.elementor-36373 .elementor-element.elementor-element-cf52e67 .elementor-icon svg{height:18px;}.elementor-36373 .elementor-element.elementor-element-01ece61 > .elementor-container{max-width:450px;}.elementor-36373 .elementor-element.elementor-element-01ece61{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36373 .elementor-element.elementor-element-8b22a48.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36373 .elementor-element.elementor-element-8b22a48.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36373 .elementor-element.elementor-element-8b22a48:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36373 .elementor-element.elementor-element-8b22a48 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36373 .elementor-element.elementor-element-8b22a48 > .elementor-element-populated, .elementor-36373 .elementor-element.elementor-element-8b22a48 > .elementor-element-populated > .elementor-background-overlay, .elementor-36373 .elementor-element.elementor-element-8b22a48 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36373 .elementor-element.elementor-element-8b22a48 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36373 .elementor-element.elementor-element-8b22a48 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36373 .elementor-element.elementor-element-9033343 .elementor-icon-box-wrapper{text-align:left;}.elementor-36373 .elementor-element.elementor-element-9033343 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36373 .elementor-element.elementor-element-9033343 .elementor-icon-box-title, .elementor-36373 .elementor-element.elementor-element-9033343 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36373 .elementor-element.elementor-element-9033343 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36373 .elementor-element.elementor-element-9033343 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36373 .elementor-element.elementor-element-beff8f4 .elementor-icon-wrapper{text-align:left;}.elementor-36373 .elementor-element.elementor-element-beff8f4.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36373 .elementor-element.elementor-element-beff8f4.elementor-view-framed .elementor-icon, .elementor-36373 .elementor-element.elementor-element-beff8f4.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36373 .elementor-element.elementor-element-beff8f4.elementor-view-framed .elementor-icon, .elementor-36373 .elementor-element.elementor-element-beff8f4.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36373 .elementor-element.elementor-element-beff8f4.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36373 .elementor-element.elementor-element-beff8f4.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36373 .elementor-element.elementor-element-beff8f4 .elementor-icon{font-size:18px;}.elementor-36373 .elementor-element.elementor-element-beff8f4 .elementor-icon svg{height:18px;}:root{--page-title-display:none;}</style>		
-						<section data-id="5c1877d" data-element_type="section" data-settings="{background_background:classic}">
-						<section data-id="845c574" data-element_type="section">
-									<h3>
-							VA IRRRL (Interest Rate Reduction Refinance Loan)						
-					</h3>
-									<p>
-						Streamlined refinance exclusively for VA borrowers—lower your rate with minimal documentation and no appraisal required.
-					</p>
-									<p>•<a href="https://stairwaymortgage.com/case-studies/va-irrrl/"> VA IRRRL case study</a> <br />•<a href="https://stairwaymortgage.com/loan-programs/va-irrrl/"> VA IRRRL program</a> <br />•<a href="https://stairwaymortgage.com/loan-calculators/va-irrrl"> VA IRRRL calculator</a> <br />•<a href="https://stairwaymortgage.com/tag/va-loan/"> All VA loan resources</a></p>								
-			<a href="https://stairwaymortgage.com/loan-strategies/va-home-loan-benefits-military-veterans/">
-						</a>
-									<h3>
-							VA Home Purchase Loan						
-					</h3>
-									<p>
-						Zero down payment financing for eligible veterans, active military, and qualifying spouses—competitive rates with no monthly mortgage insurance.
-					</p>
-									<p>•<a href="https://stairwaymortgage.com/case-studies/va-loan/"> VA loan purchase case study</a><br />•<a href="https://stairwaymortgage.com/loan-programs/va-loan/"> VA loan program</a> <br />•<a href="https://stairwaymortgage.com/loan-calculators/va-loan"> VA loan calculator</a> <br />•<a href="https://stairwaymortgage.com/tag/va-loan/"> All VA loan resources</a></p>								
-			<a href="https://stairwaymortgage.com/loan-strategies/va-loan-refinance-irrrl/">
-						</a>
-		</section>
-				<section data-id="d214a6b" data-element_type="section">
-									<h3>
-							VA Cash-Out Refinance						
-					</h3>
-									<p>
-						Access your home equity while leveraging VA loan benefits—tap cash for any purpose with competitive rates and no PMI.
-					</p>
-									<p>• <a href="https://stairwaymortgage.com/case-studies/va-loan-cash-out-refinance/">VA cash-out refinance case study</a><br /> •<a href="https://stairwaymortgage.com/loan-programs/va-loan/"> VA loan program</a> <br />•<a href="https://stairwaymortgage.com/loan-calculators/va-loan-cash-out-refinance"> VA cash-out calculator</a> <br />•<a href="https://stairwaymortgage.com/tag/va-loan/"> All VA loan resources</a></p>								
-			<a href="https://stairwaymortgage.com/loan-strategies/va-loan-cash-out-refinance/">
-						</a>
-									<h3>
-							VA Refinance Loan						
-					</h3>
-									<p>
-						Refinance into VA financing to lower your rate or payment—leverage military benefits for improved mortgage terms.
-					</p>
-									<p>•<a href="https://stairwaymortgage.com/case-studies/va-loan-refinance/"> VA refinance case study</a> <br />•<a href="https://stairwaymortgage.com/loan-programs/va-loan/"> VA loan program</a> <br />•<a href="https://stairwaymortgage.com/loan-calculators/va-loan-refinance"> VA refinance calculator</a> <br />•<a href="https://stairwaymortgage.com/tag/va-loan/"> All VA loan resources</a></p>								
-		</section>
-				<section data-id="01ece61" data-element_type="section">
-									<h3>
-							VA Renovation Loan						
-					</h3>
-									<p>
-						Finance home upgrades with your VA benefit.					</p>
-		</section>
-		</section>
-		</p>                        
-                            <p><style>.elementor-36731 .elementor-element.elementor-element-5ba722a > .elementor-container{max-width:1300px;}.elementor-36731 .elementor-element.elementor-element-5ba722a:not(.elementor-motion-effects-element-type-background), .elementor-36731 .elementor-element.elementor-element-5ba722a > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#F5F5F5;}.elementor-36731 .elementor-element.elementor-element-5ba722a{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin-top:0px;margin-bottom:0px;padding:0px 0px 50px 0px;}.elementor-36731 .elementor-element.elementor-element-5ba722a > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36731 .elementor-element.elementor-element-bccb168 > .elementor-container{max-width:800px;}.elementor-36731 .elementor-element.elementor-element-bccb168{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36731 .elementor-element.elementor-element-4ca3b6a.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36731 .elementor-element.elementor-element-4ca3b6a.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36731 .elementor-element.elementor-element-4ca3b6a:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36731 .elementor-element.elementor-element-4ca3b6a > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36731 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated, .elementor-36731 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated > .elementor-background-overlay, .elementor-36731 .elementor-element.elementor-element-4ca3b6a > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36731 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36731 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36731 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-wrapper{text-align:left;}.elementor-36731 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36731 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title, .elementor-36731 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36731 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36731 .elementor-element.elementor-element-6a220b3 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36731 .elementor-element.elementor-element-bf32e13 .elementor-icon-wrapper{text-align:left;}.elementor-36731 .elementor-element.elementor-element-bf32e13.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36731 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon, .elementor-36731 .elementor-element.elementor-element-bf32e13.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36731 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon, .elementor-36731 .elementor-element.elementor-element-bf32e13.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36731 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36731 .elementor-element.elementor-element-bf32e13.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36731 .elementor-element.elementor-element-bf32e13 .elementor-icon{font-size:18px;}.elementor-36731 .elementor-element.elementor-element-bf32e13 .elementor-icon svg{height:18px;}.elementor-bc-flex-widget .elementor-36731 .elementor-element.elementor-element-fe77e85.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36731 .elementor-element.elementor-element-fe77e85.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36731 .elementor-element.elementor-element-fe77e85:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36731 .elementor-element.elementor-element-fe77e85 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36731 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated, .elementor-36731 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated > .elementor-background-overlay, .elementor-36731 .elementor-element.elementor-element-fe77e85 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36731 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36731 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36731 .elementor-element.elementor-element-ae704dd .elementor-icon-box-wrapper{text-align:left;}.elementor-36731 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title{margin-block-end:24px;}.elementor-36731 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title, .elementor-36731 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36731 .elementor-element.elementor-element-ae704dd .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36731 .elementor-element.elementor-element-ae704dd > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36731 .elementor-element.elementor-element-2a7860f .elementor-icon-wrapper{text-align:left;}.elementor-36731 .elementor-element.elementor-element-2a7860f.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36731 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon, .elementor-36731 .elementor-element.elementor-element-2a7860f.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36731 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon, .elementor-36731 .elementor-element.elementor-element-2a7860f.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36731 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36731 .elementor-element.elementor-element-2a7860f.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36731 .elementor-element.elementor-element-2a7860f .elementor-icon{font-size:18px;}.elementor-36731 .elementor-element.elementor-element-2a7860f .elementor-icon svg{height:18px;}.elementor-36731 .elementor-element.elementor-element-27afa34 > .elementor-container{max-width:800px;}.elementor-36731 .elementor-element.elementor-element-27afa34{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36731 .elementor-element.elementor-element-3de6c46.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36731 .elementor-element.elementor-element-3de6c46.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36731 .elementor-element.elementor-element-3de6c46:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36731 .elementor-element.elementor-element-3de6c46 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36731 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated, .elementor-36731 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated > .elementor-background-overlay, .elementor-36731 .elementor-element.elementor-element-3de6c46 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36731 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36731 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36731 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-wrapper{text-align:left;}.elementor-36731 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-title{margin-block-end:24px;}.elementor-36731 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-title, .elementor-36731 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36731 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36731 .elementor-element.elementor-element-6f4e7ce > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36731 .elementor-element.elementor-element-2b83b8f .elementor-icon-wrapper{text-align:left;}.elementor-36731 .elementor-element.elementor-element-2b83b8f.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36731 .elementor-element.elementor-element-2b83b8f.elementor-view-framed .elementor-icon, .elementor-36731 .elementor-element.elementor-element-2b83b8f.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36731 .elementor-element.elementor-element-2b83b8f.elementor-view-framed .elementor-icon, .elementor-36731 .elementor-element.elementor-element-2b83b8f.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36731 .elementor-element.elementor-element-2b83b8f.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36731 .elementor-element.elementor-element-2b83b8f.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36731 .elementor-element.elementor-element-2b83b8f .elementor-icon{font-size:18px;}.elementor-36731 .elementor-element.elementor-element-2b83b8f .elementor-icon svg{height:18px;}.elementor-bc-flex-widget .elementor-36731 .elementor-element.elementor-element-901f33a.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36731 .elementor-element.elementor-element-901f33a.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36731 .elementor-element.elementor-element-901f33a:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36731 .elementor-element.elementor-element-901f33a > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36731 .elementor-element.elementor-element-901f33a > .elementor-element-populated, .elementor-36731 .elementor-element.elementor-element-901f33a > .elementor-element-populated > .elementor-background-overlay, .elementor-36731 .elementor-element.elementor-element-901f33a > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36731 .elementor-element.elementor-element-901f33a > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36731 .elementor-element.elementor-element-901f33a > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36731 .elementor-element.elementor-element-9f03204 .elementor-icon-box-wrapper{text-align:left;}.elementor-36731 .elementor-element.elementor-element-9f03204 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36731 .elementor-element.elementor-element-9f03204 .elementor-icon-box-title, .elementor-36731 .elementor-element.elementor-element-9f03204 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36731 .elementor-element.elementor-element-9f03204 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36731 .elementor-element.elementor-element-9f03204 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36731 .elementor-element.elementor-element-9795813 .elementor-icon-wrapper{text-align:left;}.elementor-36731 .elementor-element.elementor-element-9795813.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36731 .elementor-element.elementor-element-9795813.elementor-view-framed .elementor-icon, .elementor-36731 .elementor-element.elementor-element-9795813.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36731 .elementor-element.elementor-element-9795813.elementor-view-framed .elementor-icon, .elementor-36731 .elementor-element.elementor-element-9795813.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36731 .elementor-element.elementor-element-9795813.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36731 .elementor-element.elementor-element-9795813.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36731 .elementor-element.elementor-element-9795813 .elementor-icon{font-size:18px;}.elementor-36731 .elementor-element.elementor-element-9795813 .elementor-icon svg{height:18px;}.elementor-36731 .elementor-element.elementor-element-3d2a6ec > .elementor-container{max-width:800px;}.elementor-36731 .elementor-element.elementor-element-3d2a6ec{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36731 .elementor-element.elementor-element-0878eac.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36731 .elementor-element.elementor-element-0878eac.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36731 .elementor-element.elementor-element-0878eac:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36731 .elementor-element.elementor-element-0878eac > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36731 .elementor-element.elementor-element-0878eac > .elementor-element-populated, .elementor-36731 .elementor-element.elementor-element-0878eac > .elementor-element-populated > .elementor-background-overlay, .elementor-36731 .elementor-element.elementor-element-0878eac > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36731 .elementor-element.elementor-element-0878eac > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36731 .elementor-element.elementor-element-0878eac > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36731 .elementor-element.elementor-element-c5b4bd3 .elementor-icon-box-wrapper{text-align:left;}.elementor-36731 .elementor-element.elementor-element-c5b4bd3 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36731 .elementor-element.elementor-element-c5b4bd3 .elementor-icon-box-title, .elementor-36731 .elementor-element.elementor-element-c5b4bd3 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36731 .elementor-element.elementor-element-c5b4bd3 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36731 .elementor-element.elementor-element-c5b4bd3 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36731 .elementor-element.elementor-element-bd0442e .elementor-icon-wrapper{text-align:left;}.elementor-36731 .elementor-element.elementor-element-bd0442e.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36731 .elementor-element.elementor-element-bd0442e.elementor-view-framed .elementor-icon, .elementor-36731 .elementor-element.elementor-element-bd0442e.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36731 .elementor-element.elementor-element-bd0442e.elementor-view-framed .elementor-icon, .elementor-36731 .elementor-element.elementor-element-bd0442e.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36731 .elementor-element.elementor-element-bd0442e.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36731 .elementor-element.elementor-element-bd0442e.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36731 .elementor-element.elementor-element-bd0442e .elementor-icon{font-size:18px;}.elementor-36731 .elementor-element.elementor-element-bd0442e .elementor-icon svg{height:18px;}</style>		
-						<section data-id="5ba722a" data-element_type="section" data-settings="{background_background:classic}">
-						<section data-id="bccb168" data-element_type="section">
-									<h3>
-							Senior Telemarketer						
-					</h3>
-									<p>
-						Lead campaigns and mentor junior phone reps.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-									<h3>
-							Senior Social Media Marketer						
-					</h3>
-									<p>
-						Strategize brand presence and campaign performance.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-		</section>
-				<section data-id="27afa34" data-element_type="section">
-									<h3>
-							Senior Loan Officer						
-					</h3>
-									<p>
-						Manage complex files and high-volume closings.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-									<h3>
-							Senior Loan Processor						
-					</h3>
-									<p>
-						Lead high-efficiency processing for top producers.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-		</section>
-				<section data-id="3d2a6ec" data-element_type="section">
-									<h3>
-							Senior Business Development Manager						
-					</h3>
-									<p>
-						Oversee growth strategy and major partnerships.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-		</section>
-		</section>
-		</p>                        
-                            <p><style>.elementor-36740 .elementor-element.elementor-element-5ba722a > .elementor-container{max-width:1300px;}.elementor-36740 .elementor-element.elementor-element-5ba722a:not(.elementor-motion-effects-element-type-background), .elementor-36740 .elementor-element.elementor-element-5ba722a > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#F5F5F5;}.elementor-36740 .elementor-element.elementor-element-5ba722a{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin-top:0px;margin-bottom:0px;padding:0px 0px 50px 0px;}.elementor-36740 .elementor-element.elementor-element-5ba722a > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36740 .elementor-element.elementor-element-bccb168 > .elementor-container{max-width:800px;}.elementor-36740 .elementor-element.elementor-element-bccb168{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36740 .elementor-element.elementor-element-4ca3b6a.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36740 .elementor-element.elementor-element-4ca3b6a.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36740 .elementor-element.elementor-element-4ca3b6a:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36740 .elementor-element.elementor-element-4ca3b6a > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36740 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated, .elementor-36740 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated > .elementor-background-overlay, .elementor-36740 .elementor-element.elementor-element-4ca3b6a > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36740 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36740 .elementor-element.elementor-element-4ca3b6a > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36740 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-wrapper{text-align:left;}.elementor-36740 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36740 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title, .elementor-36740 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36740 .elementor-element.elementor-element-6a220b3 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36740 .elementor-element.elementor-element-6a220b3 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36740 .elementor-element.elementor-element-bf32e13 .elementor-icon-wrapper{text-align:left;}.elementor-36740 .elementor-element.elementor-element-bf32e13.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36740 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon, .elementor-36740 .elementor-element.elementor-element-bf32e13.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36740 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon, .elementor-36740 .elementor-element.elementor-element-bf32e13.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36740 .elementor-element.elementor-element-bf32e13.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36740 .elementor-element.elementor-element-bf32e13.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36740 .elementor-element.elementor-element-bf32e13 .elementor-icon{font-size:18px;}.elementor-36740 .elementor-element.elementor-element-bf32e13 .elementor-icon svg{height:18px;}.elementor-bc-flex-widget .elementor-36740 .elementor-element.elementor-element-fe77e85.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36740 .elementor-element.elementor-element-fe77e85.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36740 .elementor-element.elementor-element-fe77e85:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36740 .elementor-element.elementor-element-fe77e85 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36740 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated, .elementor-36740 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated > .elementor-background-overlay, .elementor-36740 .elementor-element.elementor-element-fe77e85 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36740 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36740 .elementor-element.elementor-element-fe77e85 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36740 .elementor-element.elementor-element-ae704dd .elementor-icon-box-wrapper{text-align:left;}.elementor-36740 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title{margin-block-end:24px;}.elementor-36740 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title, .elementor-36740 .elementor-element.elementor-element-ae704dd .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36740 .elementor-element.elementor-element-ae704dd .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36740 .elementor-element.elementor-element-ae704dd > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36740 .elementor-element.elementor-element-2a7860f .elementor-icon-wrapper{text-align:left;}.elementor-36740 .elementor-element.elementor-element-2a7860f.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36740 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon, .elementor-36740 .elementor-element.elementor-element-2a7860f.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36740 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon, .elementor-36740 .elementor-element.elementor-element-2a7860f.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36740 .elementor-element.elementor-element-2a7860f.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36740 .elementor-element.elementor-element-2a7860f.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36740 .elementor-element.elementor-element-2a7860f .elementor-icon{font-size:18px;}.elementor-36740 .elementor-element.elementor-element-2a7860f .elementor-icon svg{height:18px;}.elementor-36740 .elementor-element.elementor-element-27afa34 > .elementor-container{max-width:800px;}.elementor-36740 .elementor-element.elementor-element-27afa34{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36740 .elementor-element.elementor-element-3de6c46.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36740 .elementor-element.elementor-element-3de6c46.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36740 .elementor-element.elementor-element-3de6c46:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36740 .elementor-element.elementor-element-3de6c46 > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36740 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated, .elementor-36740 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated > .elementor-background-overlay, .elementor-36740 .elementor-element.elementor-element-3de6c46 > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36740 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36740 .elementor-element.elementor-element-3de6c46 > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36740 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-wrapper{text-align:left;}.elementor-36740 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-title{margin-block-end:24px;}.elementor-36740 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-title, .elementor-36740 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36740 .elementor-element.elementor-element-6f4e7ce .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36740 .elementor-element.elementor-element-6f4e7ce > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36740 .elementor-element.elementor-element-2b83b8f .elementor-icon-wrapper{text-align:left;}.elementor-36740 .elementor-element.elementor-element-2b83b8f.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36740 .elementor-element.elementor-element-2b83b8f.elementor-view-framed .elementor-icon, .elementor-36740 .elementor-element.elementor-element-2b83b8f.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36740 .elementor-element.elementor-element-2b83b8f.elementor-view-framed .elementor-icon, .elementor-36740 .elementor-element.elementor-element-2b83b8f.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36740 .elementor-element.elementor-element-2b83b8f.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36740 .elementor-element.elementor-element-2b83b8f.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36740 .elementor-element.elementor-element-2b83b8f .elementor-icon{font-size:18px;}.elementor-36740 .elementor-element.elementor-element-2b83b8f .elementor-icon svg{height:18px;}.elementor-bc-flex-widget .elementor-36740 .elementor-element.elementor-element-901f33a.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36740 .elementor-element.elementor-element-901f33a.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36740 .elementor-element.elementor-element-901f33a:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36740 .elementor-element.elementor-element-901f33a > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36740 .elementor-element.elementor-element-901f33a > .elementor-element-populated, .elementor-36740 .elementor-element.elementor-element-901f33a > .elementor-element-populated > .elementor-background-overlay, .elementor-36740 .elementor-element.elementor-element-901f33a > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36740 .elementor-element.elementor-element-901f33a > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36740 .elementor-element.elementor-element-901f33a > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36740 .elementor-element.elementor-element-9f03204 .elementor-icon-box-wrapper{text-align:left;}.elementor-36740 .elementor-element.elementor-element-9f03204 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36740 .elementor-element.elementor-element-9f03204 .elementor-icon-box-title, .elementor-36740 .elementor-element.elementor-element-9f03204 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36740 .elementor-element.elementor-element-9f03204 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36740 .elementor-element.elementor-element-9f03204 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36740 .elementor-element.elementor-element-9795813 .elementor-icon-wrapper{text-align:left;}.elementor-36740 .elementor-element.elementor-element-9795813.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36740 .elementor-element.elementor-element-9795813.elementor-view-framed .elementor-icon, .elementor-36740 .elementor-element.elementor-element-9795813.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36740 .elementor-element.elementor-element-9795813.elementor-view-framed .elementor-icon, .elementor-36740 .elementor-element.elementor-element-9795813.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36740 .elementor-element.elementor-element-9795813.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36740 .elementor-element.elementor-element-9795813.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36740 .elementor-element.elementor-element-9795813 .elementor-icon{font-size:18px;}.elementor-36740 .elementor-element.elementor-element-9795813 .elementor-icon svg{height:18px;}.elementor-36740 .elementor-element.elementor-element-3d2a6ec > .elementor-container{max-width:800px;}.elementor-36740 .elementor-element.elementor-element-3d2a6ec{padding:0px 0px 0px 0px;}.elementor-bc-flex-widget .elementor-36740 .elementor-element.elementor-element-0878eac.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-36740 .elementor-element.elementor-element-0878eac.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-36740 .elementor-element.elementor-element-0878eac:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap, .elementor-36740 .elementor-element.elementor-element-0878eac > .elementor-widget-wrap > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-36740 .elementor-element.elementor-element-0878eac > .elementor-element-populated, .elementor-36740 .elementor-element.elementor-element-0878eac > .elementor-element-populated > .elementor-background-overlay, .elementor-36740 .elementor-element.elementor-element-0878eac > .elementor-background-slideshow{border-radius:30px 30px 30px 30px;}.elementor-36740 .elementor-element.elementor-element-0878eac > .elementor-element-populated{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin:10px 10px 10px 10px;--e-column-margin-right:10px;--e-column-margin-left:10px;padding:20px 20px 20px 20px;}.elementor-36740 .elementor-element.elementor-element-0878eac > .elementor-element-populated > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-36740 .elementor-element.elementor-element-c5b4bd3 .elementor-icon-box-wrapper{text-align:left;}.elementor-36740 .elementor-element.elementor-element-c5b4bd3 .elementor-icon-box-title{margin-block-end:24px;}.elementor-36740 .elementor-element.elementor-element-c5b4bd3 .elementor-icon-box-title, .elementor-36740 .elementor-element.elementor-element-c5b4bd3 .elementor-icon-box-title a{font-family:"Poppins", Sans-serif;font-size:20px;}.elementor-36740 .elementor-element.elementor-element-c5b4bd3 .elementor-icon-box-description{font-family:"Poppins", Sans-serif;font-size:14px;}.elementor-36740 .elementor-element.elementor-element-c5b4bd3 > .elementor-widget-container{padding:0px 0px 15px 0px;}.elementor-36740 .elementor-element.elementor-element-bd0442e .elementor-icon-wrapper{text-align:left;}.elementor-36740 .elementor-element.elementor-element-bd0442e.elementor-view-stacked .elementor-icon{background-color:#E5E5E5;color:#000000;}.elementor-36740 .elementor-element.elementor-element-bd0442e.elementor-view-framed .elementor-icon, .elementor-36740 .elementor-element.elementor-element-bd0442e.elementor-view-default .elementor-icon{color:#E5E5E5;border-color:#E5E5E5;}.elementor-36740 .elementor-element.elementor-element-bd0442e.elementor-view-framed .elementor-icon, .elementor-36740 .elementor-element.elementor-element-bd0442e.elementor-view-default .elementor-icon svg{fill:#E5E5E5;}.elementor-36740 .elementor-element.elementor-element-bd0442e.elementor-view-framed .elementor-icon{background-color:#000000;}.elementor-36740 .elementor-element.elementor-element-bd0442e.elementor-view-stacked .elementor-icon svg{fill:#000000;}.elementor-36740 .elementor-element.elementor-element-bd0442e .elementor-icon{font-size:18px;}.elementor-36740 .elementor-element.elementor-element-bd0442e .elementor-icon svg{height:18px;}</style>		
-						<section data-id="5ba722a" data-element_type="section" data-settings="{background_background:classic}">
-						<section data-id="bccb168" data-element_type="section">
-									<h3>
-							Telemarketer						
-					</h3>
-									<p>
-						Drive lead generation with persuasive outreach techniques.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-									<h3>
-							Social Media Marketer						
-					</h3>
-									<p>
-						Manage content calendar, strategy, and ad insights.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-		</section>
-				<section data-id="27afa34" data-element_type="section">
-									<h3>
-							Loan Officer						
-					</h3>
-									<p>
-						Advise borrowers and structure deals start-to-finish.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-									<h3>
-							Loan Processor						
-					</h3>
-									<p>
-						Oversee file flow and communicate with underwriters.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-		</section>
-				<section data-id="3d2a6ec" data-element_type="section">
-									<h3>
-							Business Development Manager						
-					</h3>
-									<p>
-						Grow partnerships and expand referral networks.					</p>
-			<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-						</a>
-		</section>
-		</section>
-		</p>                        
-					<h6>Producing Less Than \$12M Annually?
-</h6>				
-					<h2>Apply for a Loan Officer position with Stairway</h2>				
-					<h2>Connect. Learn. Grow.
-</h2>				
-					<h2>What You Receive as a Loan Officer
-</h2>				
-							<ul>
-							<li>
-										Uncapped earning potential
-									</li>
-								<li>
-										Warm leads
-									</li>
-								<li>
-										Remote flexibility
-									</li>
-								<li>
-										 #1 AI CRM in the space
-									</li>
-								<li>
-										Growth paths to leadership
-									</li>
-								<li>
-										Jim's sales &amp; accountability coaching
-									</li>
-						</ul>
-					<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-									Apply For Loan Officer
-					</a>
-					<h6>Already Producing \$12M+ Annually?</h6>				
-					<h2>Apply to launch a Stairway branch in your market.</h2>				
-					<h2>Leverage. Scale. Evolve.</h2>				
-					<h2>What You Receive as a Branch Owner
-</h2>				
-							<ul>
-							<li>
-										Powerful brand that adds value &amp; attracts
-									</li>
-								<li>
-										Local website with strong SEO presence
-									</li>
-								<li>
-										Branded materials for your local market
-									</li>
-								<li>
-										Educational content for lead generation
-									</li>
-								<li>
-										Streamlined operations &amp; processing
-									</li>
-								<li>
-										 Jim's leadership &amp; accountability coaching
-									</li>
-						</ul>
-					<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-									Apply For Branch
-					</a>
-					<h6>Already Producing \$50M+ With A Brand You Love?</h6>				
-					<h2>Apply to bring your brand to the NEXA ecosphere.</h2>				
-					<h2>What You Receive as a Brand Owner</h2>				
-							<ul>
-							<li>
-										 250+ wholesale lender relationships
-									</li>
-								<li>
-										NEXA proprietary system "LOS"
-									</li>
-								<li>
-										National network of professionals
-									</li>
-								<li>
-										Discounted third party vendors
-									</li>
-								<li>
-										Regularly planned NEXA events
-									</li>
-								<li>
-										Access to Jim's personal brand coaching
-									</li>
-						</ul>
-					<a href="https://forms.stairwaymortgage.com/widget/survey/WGombd892PhSYF3yMwH9">
-									Apply to Plug In
-					</a>`} />
+
+  <div class="bci-scope">
+    <nav class="container-page bci-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>/</span> <span>Join the Stairway Team</span>
+    </nav>
+
+    <!-- HERO -->
+    <header class="bci-hero">
+      <div class="container-page bci-hero__inner">
+        <span class="eyebrow eyebrow-blue">Careers · Branches · Internships</span>
+        <h1 class="display-md bci-hero__title">Join the Stairway Team</h1>
+        <p class="bci-hero__sub">A high-performance culture for ambitious professionals.</p>
+        <p class="lede bci-hero__lede">At Stairway Mortgage, we don't just hire — we grow leaders. Our team is made up of driven, goal-oriented people who thrive under pressure and overcome challenges with grit. We value character, accountability, and discipline over experience — skills can be taught. If you're committed to growth and excellence, you'll feel right at home.</p>
+        <div class="bci-hero__cta">
+          <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" class="btn btn-blue btn-arrow">Apply Now</a>
+          <a href="#open-roles" class="btn btn-ghost">See Open Roles</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- TWO ROADS -->
+    <section class="bci-section">
+      <div class="container-page">
+        <div class="bci-section__head">
+          <span class="eyebrow eyebrow-blue">Two paths</span>
+          <h2 class="bci-section__title">Two Roads. One Destination: Success.</h2>
+          <p class="bci-section__lede">Whether you close deals or run the systems behind them, there's a track built for how you work.</p>
+        </div>
+        <div class="bci-grid bci-grid--2">
+          {twoRoads.map((road) => (
+            <div class="bci-card">
+              <h3 class="bci-card__title">{road.title}</h3>
+              <ul class="bci-card__list">
+                {road.points.map((p) => <li>{p}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY JOIN -->
+    <section class="bci-section bci-section--tint">
+      <div class="container-page">
+        <div class="bci-section__head">
+          <span class="eyebrow eyebrow-blue">Why Stairway</span>
+          <h2 class="bci-section__title">Why Join Stairway Mortgage?</h2>
+        </div>
+        <div class="bci-grid bci-grid--2">
+          {whyJoin.map((item) => (
+            <div class="bci-card">
+              <h3 class="bci-card__title">{item.title}</h3>
+              <p class="bci-card__desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- REMOTE -->
+    <section class="bci-section">
+      <div class="container-page">
+        <div class="bci-section__head">
+          <span class="eyebrow eyebrow-blue">How we work</span>
+          <h2 class="bci-section__title">Flexible &amp; Remote Work Opportunities</h2>
+          <p class="bci-section__lede">{remote.intro}</p>
+        </div>
+        <ul class="bci-card__list bci-remote-list">
+          {remote.points.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <!-- OPEN ROLES -->
+    <section id="open-roles" class="bci-section bci-section--tint">
+      <div class="container-page">
+        <div class="bci-section__head">
+          <span class="eyebrow eyebrow-blue">Open roles</span>
+          <h2 class="bci-section__title">Career Opportunities at Stairway Mortgage</h2>
+          <p class="bci-section__lede">Explore roles by experience level. Every role opens the same quick application — apply to the track that fits you.</p>
+        </div>
+        {roleTiers.map((tier) => (
+          <div class="bci-tier">
+            <div class="bci-tier__head">
+              <h3 class="bci-tier__name">{tier.name}</h3>
+              <span class="bci-tier__meta">{tier.meta}</span>
+            </div>
+            <div class="bci-grid bci-grid--3">
+              {tier.roles.map((role) => (
+                <div class="bci-role">
+                  <h4 class="bci-role__title">{role.title}</h4>
+                  <p class="bci-role__desc">{role.desc}</p>
+                  <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" class="bci-role__apply">Apply &rarr;</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- PRODUCING TIERS -->
+    <section class="bci-section">
+      <div class="container-page">
+        <div class="bci-section__head">
+          <span class="eyebrow eyebrow-blue">Grow with us</span>
+          <h2 class="bci-section__title">Loan Officer, Branch, or Brand — Find Your Level</h2>
+          <p class="bci-section__lede">Wherever you are in your career, there's a way to plug into the Stairway ecosystem.</p>
+        </div>
+        <div class="bci-grid bci-grid--3">
+          {producingTiers.map((tier) => (
+            <div class="bci-producing">
+              <span class="bci-producing__q">{tier.q}</span>
+              <h3 class="bci-producing__h">{tier.headline}</h3>
+              {tier.tagline && <p class="bci-producing__tag">{tier.tagline}</p>}
+              <p class="bci-producing__label">{tier.receiveLabel}</p>
+              <ul class="bci-card__list">
+                {tier.benefits.map((b) => <li>{b}</li>)}
+              </ul>
+              <div class="bci-producing__cta">
+                <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" class="btn btn-blue btn-arrow">{tier.cta}</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="bci-section bci-section--tint">
+      <div class="container-page bci-cta-band">
+        <h2 class="bci-section__title">Ready to take the next step?</h2>
+        <p class="bci-section__lede bci-cta-band__lede">Apply once and our team will point you to the right track.</p>
+        <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" class="btn btn-blue btn-arrow">Apply Now</a>
+      </div>
+    </section>
+  </div>
 </Layout>
 
 <style>
-  .ft-breadcrumb { font-family:var(--stw-mono, 'JetBrains Mono'), monospace; font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
-  .ft-breadcrumb a { color:var(--color-mute); text-decoration:none; } .ft-breadcrumb a:hover { color:var(--color-blue); }
-  .ft-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
-  .ft-header { padding-top:0.5rem; padding-bottom:1rem; }
-  .ft-body { margin-top:1.5rem; padding-bottom:4rem; }
-  .ft-body :global(h2) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:clamp(1.4rem,2.5vw,1.9rem); margin-top:2.5rem; margin-bottom:1rem; }
-  .ft-body :global(h3) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:1.3rem; margin-top:1.75rem; margin-bottom:0.7rem; }
-  .ft-body :global(h2 b),.ft-body :global(h3 b) { font-weight:inherit; }
-  .ft-body :global(p) { font-size:16px; line-height:1.7; margin-bottom:1.1rem; color:var(--color-ink-light); }
-  .ft-body :global(ul),.ft-body :global(ol) { margin:0 0 1.4rem 1.25rem; display:flex; flex-direction:column; gap:0.45rem; }
-  .ft-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
-  .ft-body :global(img) { max-width:100%; height:auto; border-radius:10px; margin:1.5rem 0; }
-  .ft-body :global(table) { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:14px; }
-  .ft-body :global(th),.ft-body :global(td) { border:1px solid var(--color-bone); padding:0.6rem 0.8rem; text-align:left; }
-  .ft-body :global(th) { background:var(--color-paper-tint); font-weight:600; }
+  .bci-breadcrumb { font-family:var(--stw-mono,'JetBrains Mono'),monospace; font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.25rem; }
+  .bci-breadcrumb a { color:var(--color-mute); text-decoration:none; }
+  .bci-breadcrumb a:hover { color:var(--color-blue); }
+  .bci-breadcrumb span { margin-inline:.4rem; opacity:.5; }
+
+  .bci-hero { padding: clamp(2.5rem,6vw,4.5rem) 0 clamp(2rem,4vw,3rem); background:linear-gradient(180deg,var(--color-paper-tint),var(--color-paper)); border-bottom:1px solid var(--color-bone); }
+  .bci-hero__title { margin:.5rem 0 .9rem; }
+  .bci-hero__sub { font-family:var(--stw-display,'Fraunces'),Georgia,serif; font-weight:500; font-size:clamp(1.2rem,2.2vw,1.5rem); color:var(--color-ink); margin-bottom:1rem; }
+  .bci-hero__lede { max-width:64ch; margin-bottom:1.75rem; }
+  .bci-hero__cta { display:flex; flex-wrap:wrap; gap:.75rem; }
+
+  .bci-section { padding: clamp(2.5rem,5vw,4rem) 0; }
+  .bci-section--tint { background:var(--color-paper-tint); border-top:1px solid var(--color-bone); border-bottom:1px solid var(--color-bone); }
+  .bci-section__head { max-width:62ch; margin-bottom:2rem; }
+  .bci-section__title { font-family:var(--stw-display,'Fraunces'),Georgia,serif; font-weight:500; font-size:clamp(1.5rem,3vw,2.1rem); margin:.4rem 0 .6rem; color:var(--color-ink); }
+  .bci-section__lede { font-size:16px; line-height:1.65; color:var(--color-mute); }
+
+  .bci-grid { display:grid; gap:1rem; }
+  .bci-grid--2 { grid-template-columns:repeat(2,1fr); }
+  .bci-grid--3 { grid-template-columns:repeat(3,1fr); }
+  @media(max-width:900px){ .bci-grid--3 { grid-template-columns:1fr 1fr; } }
+  @media(max-width:640px){ .bci-grid--2,.bci-grid--3 { grid-template-columns:1fr; } }
+
+  .bci-card { background:var(--color-paper); border:1px solid var(--color-bone); border-radius:14px; padding:1.5rem 1.6rem; display:flex; flex-direction:column; gap:.65rem; }
+  .bci-card__title { font-family:var(--stw-display,'Fraunces'),Georgia,serif; font-weight:500; font-size:1.2rem; color:var(--color-ink); }
+  .bci-card__desc { font-size:15px; line-height:1.6; color:var(--color-ink-light); }
+
+  .bci-card__list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; }
+  .bci-card__list li { position:relative; padding-left:1.15rem; font-size:15px; line-height:1.55; color:var(--color-ink-light); }
+  .bci-card__list li::before { content:''; position:absolute; left:0; top:.55em; width:5px; height:5px; border-radius:50%; background:var(--color-blue); }
+  .bci-remote-list { max-width:42rem; }
+
+  .bci-tier { margin-top:2.25rem; }
+  .bci-tier:first-of-type { margin-top:0; }
+  .bci-tier__head { display:flex; align-items:baseline; gap:.85rem; flex-wrap:wrap; margin-bottom:1.1rem; padding-bottom:.6rem; border-bottom:1px solid var(--color-bone); }
+  .bci-tier__name { font-family:var(--stw-display,'Fraunces'),Georgia,serif; font-weight:500; font-size:1.35rem; color:var(--color-ink); }
+  .bci-tier__meta { font-family:var(--stw-mono,'JetBrains Mono'),monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--color-mute); }
+
+  .bci-role { background:var(--color-paper); border:1px solid var(--color-bone); border-radius:12px; padding:1.25rem 1.35rem; display:flex; flex-direction:column; gap:.5rem; }
+  .bci-role__title { font-family:var(--stw-display,'Fraunces'),Georgia,serif; font-weight:500; font-size:1.05rem; color:var(--color-ink); }
+  .bci-role__desc { font-size:14px; line-height:1.55; color:var(--color-ink-light); flex:1; }
+  .bci-role__apply { align-self:flex-start; margin-top:.35rem; font-family:var(--stw-mono,'JetBrains Mono'),monospace; font-size:12px; letter-spacing:.04em; color:var(--color-blue); text-decoration:none; }
+  .bci-role__apply:hover { text-decoration:underline; text-underline-offset:2px; }
+
+  .bci-producing { background:var(--color-paper); border:1px solid var(--color-bone); border-radius:16px; padding:1.75rem; display:flex; flex-direction:column; gap:.7rem; }
+  .bci-producing__q { font-family:var(--stw-mono,'JetBrains Mono'),monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--color-blue); }
+  .bci-producing__h { font-family:var(--stw-display,'Fraunces'),Georgia,serif; font-weight:500; font-size:1.25rem; line-height:1.25; color:var(--color-ink); }
+  .bci-producing__tag { font-family:var(--stw-mono,'JetBrains Mono'),monospace; font-size:12px; color:var(--color-mute); }
+  .bci-producing__label { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--color-mute); margin-top:.4rem; }
+  .bci-producing__cta { margin-top:auto; padding-top:.6rem; }
+
+  .bci-cta-band { text-align:center; }
+  .bci-cta-band .bci-section__title { margin-bottom:.75rem; }
+  .bci-cta-band__lede { margin:0 auto 1.5rem; max-width:46ch; }
 </style>
