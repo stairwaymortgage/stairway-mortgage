@@ -15,6 +15,10 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
       <span class="eyebrow" style="color:var(--color-blue)">Phase 1 · Live in it · College Planning</span>
       <h1 class="display-xl step-hero__title">Smart Stewards</h1>
       <p class="lede step-hero__lede">The Stairway begins before you ever own a home. Smart Stewards is about teaching the next generation — and yourself — to treat money as something to steward wisely, not just spend. For families, it starts with college planning: funding education without derailing the wealth you're building.</p>
+      <!-- stw-img: Pexels 5481522 -->
+      <figure class="step-hero__photo">
+        <img src="https://images.pexels.com/photos/5481522/pexels-photo-5481522.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="Smiling young couple reviewing their finances on a laptop at their kitchen table" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/1000x667/16335B/FAFAF9?text=Stairway';">
+      </figure>
       <div class="step-progress mono">Step 01 of 08 · The Student</div>
     </div>
   </header>
@@ -148,6 +152,8 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   .step-hero__title { margin:.5rem 0 1.25rem; }
   .step-hero__lede { max-width:60ch; margin-bottom:1.5rem; }
   .step-progress { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--color-mute); }
+  .step-hero__photo { margin:1.75rem 0 0; max-width:640px; }
+  .step-hero__photo img { width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:14px; display:block; border:1px solid var(--color-bone); }
   .step-body { margin-top:2.5rem; }
   .step-body :global(h2) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:clamp(1.5rem,3vw,2.1rem); margin-top:2.75rem; margin-bottom:1rem; }
   .step-body :global(h3) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:1.3rem; margin-top:1.75rem; margin-bottom:.7rem; }
