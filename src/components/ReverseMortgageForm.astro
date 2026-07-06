@@ -263,7 +263,10 @@
           o.addEventListener("click", function(){
             state[s.key]=opt;
             if(s.key==="reason"){ state.reason_other=""; }
-            render();
+            // show the selected state briefly, then auto-advance
+            Array.prototype.forEach.call(box.querySelectorAll(".rm-opt"), function(n){ n.classList.remove("rm-sel"); });
+            o.classList.add("rm-sel");
+            setTimeout(function(){ goNext(); }, 220);
           });
           box.appendChild(o);
         });
