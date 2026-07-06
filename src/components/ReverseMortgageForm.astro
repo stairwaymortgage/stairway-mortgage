@@ -141,6 +141,9 @@
   .rm-input::placeholder{ color:#a6a6a0; }
   .rm-input:focus{ border-color:#0A0E1A; box-shadow:0 0 0 4px rgba(45,35,80,.12); }
 
+  .rm-locwrap{ max-width:540px; margin:0 auto; }
+  .rm-addr-conf{ font-size:13px; color:#2E7D32; margin-top:8px; }
+
   .rm-contact{ max-width:540px; margin:0 auto; text-align:left; }
   .rm-contact .rm-input{ margin:0; }
   .rm-input-label{ display:block; margin:18px 0 7px; font-size:12.5px; font-weight:600; letter-spacing:.02em; color:#3a3a35; }
@@ -192,10 +195,64 @@
     var FORM_SOURCE  = "reverse-mortgage";
     var BOOKING_URL  = "#"; // TODO: swap with real Calendly/GHL booking link
 
+    // ---- Google Places (address autocomplete) -------------------------------
+    var GOOGLE_PLACES_KEY = "AIzaSyA72a6nAbAUZoeE718Z5_PtvZkDhPLL3v0";
+    function STW_loadPlaces(cb){
+      if(window.google && window.google.maps && window.google.maps.places){ cb(); return; }
+      window.__STW_PLACES = window.__STW_PLACES || { loading:false, queue:[] };
+      window.__STW_PLACES.queue.push(cb);
+      if(window.__STW_PLACES.loading) return;
+      window.__STW_PLACES.loading = true;
+      window.__stwPlacesReady = function(){
+        (window.__STW_PLACES.queue||[]).forEach(function(fn){ try{ fn(); }catch(e){} });
+        window.__STW_PLACES.queue = [];
+      };
+      var s = document.createElement("script");
+      s.src = "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_PLACES_KEY+"&libraries=places&callback=__stwPlacesReady&loading=async";
+      s.async = true; s.defer = true;
+      s.onerror = function(){};
+      document.head.appendChild(s);
+    }
+    function STW_attachPlaces(input, conf, state){
+      STW_loadPlaces(function(){
+        try{
+          var ac = new google.maps.places.Autocomplete(input, {
+            types:["address"], componentRestrictions:{country:"us"},
+            fields:["address_components","formatted_address","geometry"]
+          });
+          ac.addListener("place_changed", function(){
+            var p = ac.getPlace();
+            if(!p || !p.address_components) return;
+            var get=function(type,short){
+              for(var i=0;i<p.address_components.length;i++){
+                var c=p.address_components[i];
+                if(c.types.indexOf(type)>=0) return short ? c.short_name : c.long_name;
+              }
+              return "";
+            };
+            var streetNo=get("street_number"), route=get("route");
+            state.addr_street = (streetNo?streetNo+" ":"")+route;
+            state.loc_city  = get("locality") || get("sublocality") || get("postal_town");
+            state.loc_state = get("administrative_area_level_1", true);
+            state.loc_zip   = get("postal_code");
+            state.loc_county= get("administrative_area_level_2");
+            state.home_address = p.formatted_address || input.value;
+            input.value = state.home_address;
+            if(conf){
+              conf.innerHTML = "\u2713 " + state.home_address;
+              conf.style.display = "block";
+            }
+            state.addr_confirmed = state.home_address;
+          });
+        }catch(e){}
+      });
+    }
+
     var state = {
       reason:"", reason_other:"", referrer:"", home_in_mind:"", youngest_spouse_age:"",
       military_service:"", home_address:"", annual_income:"", credit_score:"",
-      full_name:"", email:"", phone:"", free_credit_report:"", date_of_birth:"", anything_else:""
+      full_name:"", email:"", phone:"", free_credit_report:"", date_of_birth:"", anything_else:"",
+      addr_street:"", loc_city:"", loc_state:"", loc_zip:"", loc_county:"", addr_confirmed:""
     };
     var idx = 0;
 
@@ -211,7 +268,7 @@
       { key:"military_service", type:"choice", q:"Military service for you or your spouse?",
         sub:"If yes, thank you sincerely for everything your family sacrificed. You are deeply loved and honored by our family at Stairway.",
         options:["Yes","No"], required:true },
-      { key:"home_address", type:"text", q:"Current home address?", sub:"Typically the address listed on your social security check. ;)",
+      { key:"home_address", type:"location", q:"Current home address?", sub:"Typically the address listed on your social security check. ;)",
         placeholder:"Begin typing the address", required:true },
       { key:"annual_income", type:"slider", q:"Annual income?", sub:"Estimate all borrowers employment and retirement income.",
         min:0, max:500000, start:25000, step:1000, fmt:"k", required:true },
@@ -299,6 +356,28 @@
         setTimeout(function(){ input.focus(); }, 50);
       }
 
+      else if(s.type==="location"){
+        var lw = el("div","rm-locwrap");
+        var li = el("input","rm-input");
+        li.type="text"; li.placeholder=s.placeholder||"Start typing your address\u2026"; li.value=state[s.key]||"";
+        li.setAttribute("autocomplete","off");
+        li.addEventListener("input", function(){
+          state[s.key]=li.value;
+          state.addr_confirmed = "";
+        });
+        li.addEventListener("keydown", function(e){
+          if(e.key==="Enter"){ e.preventDefault(); }
+        });
+        lw.appendChild(li);
+        var conf = el("div","rm-addr-conf");
+        conf.innerHTML = state.addr_confirmed ? ("\u2713 " + esc(state.addr_confirmed)) : "";
+        conf.style.display = state.addr_confirmed ? "block" : "none";
+        lw.appendChild(conf);
+        wrap.appendChild(lw);
+        setTimeout(function(){ li.focus(); }, 50);
+        STW_attachPlaces(li, conf, state);
+      }
+
       else if(s.type==="slider"){
         var sw = el("div","rm-slider-wrap");
         var cur = state[s.key]!=="" ? Number(state[s.key]) : s.start;
@@ -354,6 +433,7 @@
       if(!s.required) return true;
       if(s.type==="choice"){ return s.key==="reason" ? !!(state.reason||state.reason_other) : !!state[s.key]; }
       if(s.type==="text"){ return !!(state[s.key]&&state[s.key].trim()); }
+      if(s.type==="location"){ return !!(state[s.key] && state[s.key].trim()); }
       if(s.type==="slider"){ return state[s.key]!==""; }
       if(s.type==="contact"){
         var err=document.getElementById("rm-contact-err");
@@ -395,6 +475,7 @@
         reason_for_reverse_mortgage:reasonFinal, referrer_name:state.referrer||"",
         home_in_mind:state.home_in_mind||"", youngest_spouse_age:state.youngest_spouse_age||"",
         military_service:state.military_service||"", home_address:state.home_address||"",
+        addr_street:state.addr_street||"", loc_city:state.loc_city||"", loc_state:state.loc_state||"", loc_zip:state.loc_zip||"", loc_county:state.loc_county||"",
         annual_income:state.annual_income||"", credit_score:state.credit_score||"",
         free_credit_report:state.free_credit_report||"", date_of_birth:state.date_of_birth||"",
         anything_else:state.anything_else||"", page_url:window.location.origin+window.location.pathname,
