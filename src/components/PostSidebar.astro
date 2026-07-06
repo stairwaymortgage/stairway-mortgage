@@ -8,8 +8,8 @@ import taxonomy from '../data/taxonomy.json';
 // Webhook URL sourced from the single source of truth (ghl.ts). The submit
 // handler is is:inline plain-JS and can't import an ES module, so the URL is
 // passed to it via the form's data-ghl-endpoint attribute (same pattern as
-// CalcLeadForm.astro).
-import { GHL_WEBHOOK_URL } from '../lib/ghl';
+// CalcLeadForm.astro). Newsletter uses its own dedicated webhook (not the shared one).
+import { GHL_WEBHOOK_NEWSLETTER } from '../lib/ghl';
 
 const categories = Object.entries(taxonomy.categories)
   // strip the leading "N. " ordering prefix for display, keep slug
@@ -34,7 +34,7 @@ const tags = Object.entries(taxonomy.tags)
   <div class="ps-block ps-card">
     <h3 class="display-sm ps-card__title">Subscribe to our newsletter</h3>
     <p class="ps-card__sub">Get new posts and insights in your inbox.</p>
-    <form class="ps-news" id="ps-news-form" data-ghl-endpoint={GHL_WEBHOOK_URL} novalidate>
+    <form class="ps-news" id="ps-news-form" data-ghl-endpoint={GHL_WEBHOOK_NEWSLETTER} novalidate>
       <input type="email" name="email" id="ps-news-email" placeholder="Enter your email" aria-label="Email address" class="ps-news__input" required />
       <button type="submit" class="btn btn-blue ps-news__btn">Subscribe</button>
       <input type="text" name="ps_news_hp" id="ps-news-hp" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore data-form-type="other" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;" />

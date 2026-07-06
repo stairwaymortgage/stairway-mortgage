@@ -32,6 +32,14 @@ export const GHL_WEBHOOK_THE_DRAWING =
 export const WEALTH_WEBHOOK_URL =
   "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/e8c4995a-513a-41ac-b1a8-051c7ef6bd96";
 
+/**
+ * Dedicated webhook for the sidebar newsletter form (PostSidebar.astro) ONLY —
+ * routes to its own GHL workflow, separate from the shared GHL_WEBHOOK_URL above.
+ * The payload still carries form_source:'blog_newsletter'. Do NOT use for other forms.
+ */
+export const GHL_WEBHOOK_NEWSLETTER =
+  "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/6c0d3e1a-1e3b-4688-8890-11a3e780f60c";
+
 /** Standard fields every form sends, plus arbitrary form-specific fields. */
 export interface LeadPayload {
   /** Which form this came from, e.g. "same-day-approval". REQUIRED — drives GHL routing. */
