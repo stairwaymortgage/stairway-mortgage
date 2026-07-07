@@ -32,6 +32,10 @@
       ]
     }
   ],
+  "rewrites": [
+    { "source": "/api/chat", "destination": "/api/chat" },
+    { "source": "/api/chat/", "destination": "/api/chat" }
+  ],
   "redirects": [
     {
       "source": "/professional-services",
