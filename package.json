@@ -11,9 +11,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.110.0",
     "@astrojs/sitemap": "^3.2.1",
+    "@supabase/supabase-js": "^2.110.1",
     "@tailwindcss/vite": "^4.1.7",
     "astro": "^5.7.13",
+    "openai": "^6.45.0",
     "tailwindcss": "^4.1.7"
   }
 }
