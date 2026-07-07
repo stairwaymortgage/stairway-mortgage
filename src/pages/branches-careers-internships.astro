@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CsaAdvisorForm from '../components/forms/CsaAdvisorForm.astro';
+import CareerApplyForm from '../components/CareerApplyForm.astro';
 
 const breadcrumbSchema = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Join the Stairway Team"}]};
 
@@ -148,7 +148,7 @@ const producingTiers = [
         <p class="bci-hero__sub">A high-performance culture for ambitious professionals.</p>
         <p class="lede bci-hero__lede">At Stairway Mortgage, we don't just hire — we grow leaders. Our team is made up of driven, goal-oriented people who thrive under pressure and overcome challenges with grit. We value character, accountability, and discipline over experience — skills can be taught. If you're committed to growth and excellence, you'll feel right at home.</p>
         <div class="bci-hero__cta">
-          <button type="button" data-open-csa class="btn btn-blue btn-arrow">Apply Now</button>
+          <button type="button" data-caf-open class="btn btn-blue btn-arrow">Apply Now</button>
           <a href="#open-roles" class="btn btn-ghost">See Open Roles</a>
         </div>
       </div>
@@ -226,7 +226,7 @@ const producingTiers = [
                 <div class="bci-role">
                   <h4 class="bci-role__title">{role.title}</h4>
                   <p class="bci-role__desc">{role.desc}</p>
-                  <button type="button" data-open-csa class="bci-role__apply">Apply &rarr;</button>
+                  <button type="button" data-caf-open class="bci-role__apply">Apply &rarr;</button>
                 </div>
               ))}
             </div>
@@ -254,7 +254,7 @@ const producingTiers = [
                 {tier.benefits.map((b) => <li>{b}</li>)}
               </ul>
               <div class="bci-producing__cta">
-                <button type="button" data-open-csa class="btn btn-blue btn-arrow">{tier.cta}</button>
+                <button type="button" data-caf-open class="btn btn-blue btn-arrow">{tier.cta}</button>
               </div>
             </div>
           ))}
@@ -267,12 +267,12 @@ const producingTiers = [
       <div class="container-page bci-cta-band">
         <h2 class="bci-section__title">Ready to take the next step?</h2>
         <p class="bci-section__lede bci-cta-band__lede">Apply once and our team will point you to the right track.</p>
-        <button type="button" data-open-csa class="btn btn-blue btn-arrow">Apply Now</button>
+        <button type="button" data-caf-open class="btn btn-blue btn-arrow">Apply Now</button>
       </div>
     </section>
   </div>
 
-  <CsaAdvisorForm />
+  <CareerApplyForm />
 </Layout>
 
 <style>
