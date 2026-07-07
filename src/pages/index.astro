@@ -349,12 +349,13 @@ Get cash out
   function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
   // ─── Send handler ───
+  // conversation history for this widget (persists across sends in-page)
+  let aicHistory = [];
+
   async function send(text) {
     if (!text.trim()) return;
     ensureConvoMode();
-    // remove any old reply chips
     convo.querySelectorAll('.aic-replies').forEach(r => r.remove());
-
     addMsg(esc(text), 'user');
     input.value = '';
 
@@ -368,16 +369,39 @@ Get cash out
       window.SWMemory.track('ai_chat_message', { text: intentText });
     }
 
-    const t = addTyping();
-    await new Promise(r => setTimeout(r, 650 + Math.random() * 350));
-    t.remove();
+    // record user turn
+    aicHistory.push({ role: 'user', content: text });
 
-    const intent = findIntent(text);
-    if (intent) {
-      addMsg(intent.reply(), 'bot');
-      renderReplies(intent.follow);
-    } else {
-      addMsg(fallback, 'bot');
+    const t = addTyping();
+
+    try {
+      const res = await fetch('/api/chat/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          history: aicHistory.slice(0, -1),
+        }),
+      });
+      t.remove();
+
+      if (!res.ok) throw new Error('bad status ' + res.status);
+      const data = await res.json();
+      const reply = (data.reply || '').trim();
+
+      addMsg(reply.replace(/\n/g, '<br>'), 'bot');
+      aicHistory.push({ role: 'assistant', content: reply });
+
+      if (data.capture && window.SWMemory) {
+        window.SWMemory.set({ ai_chat_capture_ready: true });
+        window.SWMemory.track('ai_chat_capture', { intent: text.slice(0, 200) });
+      }
+    } catch (e) {
+      t.remove();
+      addMsg(
+        "Sorry — I'm having trouble connecting right now. You can reach our team directly at (954) 993-1625.",
+        'bot'
+      );
     }
   }
 
@@ -1148,392 +1172,6 @@ No spam. No sequences. One conversation, on your terms.
 
   // ─── Make globally available ───
   window.SWMemory = SWMemory;
-})();
-</script>
-
-<script>
-(function() {
-  const root = document.querySelector('[data-aic]');
-  if (!root) return;
-
-  const welcome = root.querySelector('[data-welcome]');
-  const convo = root.querySelector('[data-convo]');
-  const form = root.querySelector('[data-form]');
-  const input = root.querySelector('[data-input]');
-  const prefix = root.querySelector('[data-prefix]');
-  const chipsWrap = root.querySelector('[data-chips]');
-  const resetBtn = root.querySelector('[data-reset]');
-  const micBtn = root.querySelector('[data-mic]');
-
-  let conversationStarted = false;
-  let detectedCity = null;
-
-  // ─── Rotating placeholder for AI feel ───
-  const placeholders = [
-    'my monthly payment…',
-    'if I can afford this house…',
-    'how to lower my rate…',
-    'my pre-approval amount…',
-    'if I should refinance…',
-    'cash-out options…',
-    'self-employed loan programs…',
-    'DSCR loans for investors…',
-  ];
-  let placeholderIdx = 0;
-  let placeholderTimer = setInterval(() => {
-    if (input === document.activeElement || input.value || conversationStarted) return;
-    placeholderIdx = (placeholderIdx + 1) % placeholders.length;
-    input.placeholder = placeholders[placeholderIdx];
-  }, 3200);
-
-  // ─── Location detection ───
-  fetch('https://ipapi.co/json/').then(r => r.json()).then(d => {
-    if (d && d.city && !d.error) detectedCity = d.city;
-  }).catch(() => {});
-  // URL override
-  const urlCity = new URLSearchParams(location.search).get('city');
-  if (urlCity) detectedCity = decodeURIComponent(urlCity).replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-
-  // Read from site-wide memory if available (loads after this script in some cases)
-  function syncFromMemory() {
-    const mem = window.SWMemory?.get?.() || {};
-    if (mem.city && !detectedCity) detectedCity = mem.city;
-  }
-  syncFromMemory();
-  window.addEventListener('sw:memory', syncFromMemory);
-
-  // ─── Market data for rate responses ───
-  const marketData = {
-    'Miami': '6.38%', 'Fort Lauderdale': '6.41%', 'Tampa': '6.40%', 'Orlando': '6.45%',
-    'Jacksonville': '6.50%', 'Naples': '6.36%', 'Phoenix': '6.55%', 'Mesa': '6.52%',
-    'Scottsdale': '6.48%', 'Los Angeles': '6.65%', 'San Francisco': '6.70%', 'San Diego': '6.62%',
-    'New York': '6.60%', 'Chicago': '6.42%', 'Houston': '6.48%', 'Dallas': '6.49%',
-    'Austin': '6.52%', 'Atlanta': '6.45%', 'Seattle': '6.58%', 'Denver': '6.52%',
-    'Boston': '6.55%', 'Las Vegas': '6.50%', 'Nashville': '6.46%', 'Charlotte': '6.44%', 'Raleigh': '6.44%',
-  };
-
-  // ─── 15 mortgage intents ───
-  const intents = [
-    {
-      keys: ['rate', 'interest', 'apr'],
-      reply: () => {
-        const r = (detectedCity && marketData[detectedCity]) || '6.48%';
-        const cityLine = detectedCity ? ` in <strong>${detectedCity}</strong>` : '';
-        return `<p>Today's wholesale rates${cityLine}:</p>
-                <div class="aic-card">
-                  <div><span>30-year fixed</span><strong>${r}</strong></div>
-                  <div><span>15-year fixed</span><strong>${(parseFloat(r) - 0.66).toFixed(2)}%</strong></div>
-                  <div><span>FHA 30yr</span><strong>${(parseFloat(r) - 0.15).toFixed(2)}%</strong></div>
-                  <div><span>DSCR (investor)</span><strong>${(parseFloat(r) + 0.75).toFixed(2)}%</strong></div>
-                </div>
-                <p class="aic-note">Subject to credit approval. Real rate quote takes 60 seconds →</p>`;
-      },
-      follow: ['Lock my rate', 'How much can I afford?', 'Talk to Our Team'],
-    },
-    {
-      keys: ['pre-approv', 'preapprov', 'pre approv', 'how fast', 'how long', 'how quick', 'how soon', '24 hour', 'speed'],
-      reply: () => `<p><strong>Same-day pre-approvals</strong> — letter in your hands within <strong>24 hours</strong>, 7 days a week.</p>
-                    <p>What I need to give you a real letter:</p>
-                    <ul class="aic-list">
-                      <li>2 recent pay stubs (or business returns if self-employed)</li>
-                      <li>2 years of W-2s or 1099s</li>
-                      <li>Last 2 months of bank statements</li>
-                      <li>Photo ID</li>
-                    </ul>
-                    <p>Ready when you are.</p>`,
-      follow: ['Start pre-approval now', 'What about self-employed?', 'Talk to Our Team'],
-    },
-    {
-      keys: ['afford', 'how much', 'budget', 'qualify', 'income', 'salary', 'price range'],
-      reply: () => `<p>Rule of thumb: most borrowers qualify for <strong>3-5× annual income</strong>, but it really depends on:</p>
-                    <ul class="aic-list">
-                      <li><strong>Credit score</strong> — drives the rate</li>
-                      <li><strong>Debt-to-income</strong> — target under 43%</li>
-                      <li><strong>Down payment</strong> — 3-20%+ depending on program</li>
-                      <li><strong>Loan type</strong> — FHA, Conventional, Jumbo, DSCR all qualify differently</li>
-                    </ul>
-                    <p>Want a real number? Our 60-second pre-qual gives you an exact range to shop with.</p>`,
-      follow: ['Get my exact number', 'Calculate payment', 'Talk to Our Team'],
-    },
-    {
-      keys: ['credit', 'score', 'fico', 'low credit', 'bad credit'],
-      reply: () => `<p>Minimum credit by program:</p>
-                    <div class="aic-card">
-                      <div><span>FHA</span><strong>580+</strong></div>
-                      <div><span>Conventional</span><strong>620+</strong></div>
-                      <div><span>VA</span><strong>580+</strong></div>
-                      <div><span>Jumbo</span><strong>700+</strong></div>
-                      <div><span>DSCR (investor)</span><strong>640+</strong></div>
-                    </div>
-                    <p>Lower than 580? We have <strong>non-QM</strong> programs for credit-challenged borrowers — let's talk through your scenario.</p>`,
-      follow: ['My score is below 580', 'FHA details', 'Talk to Our Team'],
-    },
-    {
-      keys: ['document', 'paperwork', 'paper work', 'need to provide', 'what do i need', 'docs'],
-      reply: () => `<p><strong>W-2 borrowers:</strong></p>
-                    <ul class="aic-list">
-                      <li>2 years W-2s + 30 days of pay stubs</li>
-                      <li>2 months of bank statements</li>
-                      <li>Photo ID + SSN</li>
-                    </ul>
-                    <p><strong>Self-employed:</strong></p>
-                    <ul class="aic-list">
-                      <li>2 years business + personal tax returns</li>
-                      <li>YTD profit & loss statement</li>
-                      <li>12 months of business bank statements</li>
-                    </ul>
-                    <p>Or use our <strong>bank-statement-only</strong> program — no tax returns required.</p>`,
-      follow: ['Bank statement loan', 'Start pre-approval', 'Talk to Our Team'],
-    },
-    {
-      keys: ['dscr', 'debt service', 'rental', 'investor loan', 'investment property'],
-      reply: () => `<p><strong>DSCR loans</strong> (Debt Service Coverage Ratio) are built for real estate investors — no W-2, no tax returns needed.</p>
-                    <p>You qualify based on the <strong>property's rental income</strong> covering the mortgage payment.</p>
-                    <div class="aic-card">
-                      <div><span>Min DSCR ratio</span><strong>1.0</strong></div>
-                      <div><span>Min credit</span><strong>640</strong></div>
-                      <div><span>Down payment</span><strong>20-25%</strong></div>
-                      <div><span>Properties allowed</span><strong>Unlimited</strong></div>
-                    </div>
-                    <p>Perfect for scaling a portfolio without W-2 income caps.</p>`,
-      follow: ['Get DSCR rates', 'Multi-property strategy', 'Talk to Our Team'],
-    },
-    {
-      keys: ['reverse', '55+', 'senior', 'retirement', 'hecm', 'age 55', 'age 62'],
-      reply: () => `<p><strong>Reverse mortgages</strong> let homeowners 55+ tap home equity — no monthly payments required.</p>
-                    <p>Use the funds for:</p>
-                    <ul class="aic-list">
-                      <li>Tax-free retirement income</li>
-                      <li>Paying off your existing mortgage</li>
-                      <li>Healthcare or in-home care costs</li>
-                      <li>Buying a new home (HECM for Purchase)</li>
-                    </ul>
-                    <p>You retain ownership and can stay in the home for life.</p>`,
-      follow: ['Eligibility check', 'How much can I unlock?', 'Talk to Our Team'],
-    },
-    {
-      keys: ['self-employ', 'self employ', '1099', 'freelance', 'business owner', 'entrepreneur', 'gig', 'no w2', 'no w-2'],
-      reply: () => `<p>Self-employed is our <strong>specialty</strong>. We have programs that don't require tax returns:</p>
-                    <ul class="aic-list">
-                      <li><strong>Bank Statement Loans</strong> — qualify on 12-24 months of deposits</li>
-                      <li><strong>P&L-Only Loans</strong> — CPA-prepared P&L is enough</li>
-                      <li><strong>Asset Depletion</strong> — qualify on assets, zero income docs</li>
-                      <li><strong>1099-Only loans</strong> — qualify on 1099 income alone</li>
-                    </ul>
-                    <p>If banks have said no, we likely can say yes.</p>`,
-      follow: ['Bank statement loan details', 'Pre-qualify me', 'Talk to Our Team'],
-    },
-    {
-      keys: ['refinance', 'refi', 'lower payment', 'lower rate', 'cash out', 'cash-out', 'heloc'],
-      reply: () => `<p>Refinancing makes sense if:</p>
-                    <ul class="aic-list">
-                      <li>Rates have dropped 0.5%+ since you closed</li>
-                      <li>You want to remove PMI (have 20%+ equity now)</li>
-                      <li>You want cash out for renovation, investment, or debt consolidation</li>
-                      <li>You want a HELOC for flexibility without resetting your first mortgage</li>
-                    </ul>
-                    <p>I'll run your numbers honestly — if it doesn't save you money, I'll tell you to wait.</p>`,
-      follow: ['Run my refi math', 'HELOC vs cash-out', 'Talk to Our Team'],
-    },
-    {
-      keys: ['fha', 'first time', 'first-time', 'low down', 'first home'],
-      reply: () => `<p><strong>FHA loans</strong> — best for first-time buyers and lower credit scores:</p>
-                    <ul class="aic-list">
-                      <li><strong>3.5% down</strong> minimum</li>
-                      <li><strong>580 credit</strong> minimum (compensating factors can go lower)</li>
-                      <li>More flexible DTI requirements</li>
-                      <li>Gift funds allowed for down payment</li>
-                    </ul>
-                    <p>Florida buyers: the <strong>Hometown Heroes</strong> program adds down-payment assistance for teachers, healthcare, first responders.</p>`,
-      follow: ['Hometown Heroes', 'FHA vs Conventional', 'Talk to Our Team'],
-    },
-    {
-      keys: ['closing cost', 'closing fee', 'fees', 'cost to close'],
-      reply: () => `<p>Closing costs run <strong>2-5% of the loan amount</strong>, including:</p>
-                    <ul class="aic-list">
-                      <li>Origination + processing fees</li>
-                      <li>Appraisal ($500-700)</li>
-                      <li>Title insurance + settlement</li>
-                      <li>Prepaid taxes & insurance (escrow)</li>
-                      <li>Recording fees</li>
-                    </ul>
-                    <p>You get a full <strong>Loan Estimate</strong> within 3 days of application — no surprises at closing.</p>`,
-      follow: ['Reduce closing costs', 'Seller credits explained', 'Talk to Our Team'],
-    },
-    {
-      keys: ['cash offer', 'compete', 'bidding war', 'multiple offer', 'cash buyer', 'all cash'],
-      reply: () => `<p>Yes — our <strong>Cash-Like Offers</strong> compete head-to-head with all-cash buyers:</p>
-                    <ul class="aic-list">
-                      <li>Pre-underwritten approval (not just pre-qualified)</li>
-                      <li>24-hour close commitment letter</li>
-                      <li>Sellers see your offer as cash-equivalent</li>
-                      <li>Win bidding wars without overpaying</li>
-                    </ul>
-                    <p>Critical in today's market — let's set you up.</p>`,
-      follow: ['Set up cash offer', 'Same-day approval', 'Talk to Our Team'],
-    },
-    {
-      keys: ['schedule', 'talk', 'call', 'speak', 'jim', 'human', 'agent', 'person', 'expert', 'real person'],
-      reply: () => `<p>Absolutely — Jim's team is available <strong>7 days a week</strong>, including evenings.</p>
-                    <div class="aic-cta-stack">
-                      <a href="/contact-us/" class="aic-cta aic-cta--primary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7"/></svg> Schedule a call</a>
-                      <a href="tel:+19549931625" class="aic-cta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg> (954) 993-1625</a>
-                      <a href="/same-day-approval/" class="aic-cta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg> Start pre-approval</a>
-                    </div>`,
-      follow: [],
-    },
-    {
-      keys: ['hello', 'hi ', 'hey', 'good morning', 'good afternoon', 'good evening', 'yo'],
-      reply: () => `<p>Hey 👋 I'm here to help with anything mortgage-related.</p><p>What's on your mind?</p>`,
-      follow: ['Today\'s rates', 'How much can I afford?', 'Talk to Our Team'],
-    },
-    {
-      keys: ['thank', 'thanks', 'great', 'awesome', 'cool', 'nice'],
-      reply: () => `<p>You're welcome! Anything else I can help with?</p><p>When you're ready for the next step, Jim's team is one click away.</p>`,
-      follow: ['Schedule a call', 'Start pre-approval'],
-    },
-  ];
-
-  const fallback = `<p>That's a great question — I want to get it right for your specific situation.</p>
-                    <p>Let me connect you with Jim's team directly:</p>
-                    <div class="aic-cta-stack">
-                      <a href="/contact-us/" class="aic-cta aic-cta--primary">Schedule a call</a>
-                      <a href="tel:+19549931625" class="aic-cta">(954) 993-1625</a>
-                    </div>`;
-
-  // ─── Intent matcher ───
-  function findIntent(text) {
-    const t = text.toLowerCase();
-    let best = null, bestScore = 0;
-    for (const it of intents) {
-      const score = it.keys.filter(k => t.includes(k.toLowerCase())).length;
-      if (score > bestScore) { bestScore = score; best = it; }
-    }
-    return best;
-  }
-
-  // ─── Conversation transition ───
-  function ensureConvoMode() {
-    if (conversationStarted) return;
-    conversationStarted = true;
-    welcome.classList.add('aic__welcome--gone');
-    chipsWrap.classList.add('aic__chips--gone');
-    setTimeout(() => {
-      welcome.style.display = 'none';
-      chipsWrap.style.display = 'none';
-    }, 250);
-    prefix.classList.add('aic__input-prefix--small');
-    input.placeholder = 'Ask anything else…';
-  }
-
-  function resetConvo() {
-    convo.innerHTML = '';
-    conversationStarted = false;
-    welcome.style.display = '';
-    chipsWrap.style.display = '';
-    welcome.classList.remove('aic__welcome--gone');
-    chipsWrap.classList.remove('aic__chips--gone');
-    prefix.classList.remove('aic__input-prefix--small');
-    input.placeholder = placeholders[placeholderIdx];
-    input.value = '';
-  }
-
-  // ─── Render messages ───
-  function addMsg(html, who) {
-    const m = document.createElement('div');
-    m.className = `aic-msg aic-msg--${who}`;
-    m.innerHTML = `<div class="aic-msg__b">${html}</div>`;
-    convo.appendChild(m);
-    convo.scrollTop = convo.scrollHeight;
-    return m;
-  }
-
-  function addTyping() {
-    const m = document.createElement('div');
-    m.className = 'aic-msg aic-msg--bot aic-msg--typing';
-    m.innerHTML = '<div class="aic-msg__b"><div class="aic-typing"><span></span><span></span><span></span></div></div>';
-    convo.appendChild(m);
-    convo.scrollTop = convo.scrollHeight;
-    return m;
-  }
-
-  function renderReplies(replies) {
-    if (!replies || !replies.length) return;
-    const wrap = document.createElement('div');
-    wrap.className = 'aic-replies';
-    replies.forEach(r => {
-      const b = document.createElement('button');
-      b.className = 'aic-reply';
-      b.textContent = r;
-      b.dataset.q = r;
-      wrap.appendChild(b);
-    });
-    convo.appendChild(wrap);
-    convo.scrollTop = convo.scrollHeight;
-  }
-
-  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-
-  // ─── Send handler ───
-  async function send(text) {
-    if (!text.trim()) return;
-    ensureConvoMode();
-    // remove any old reply chips
-    convo.querySelectorAll('.aic-replies').forEach(r => r.remove());
-
-    addMsg(esc(text), 'user');
-    input.value = '';
-
-    // ─── Write to site memory (silent data capture for GHL handoff) ───
-    if (window.SWMemory) {
-      const intentText = text.length > 200 ? text.slice(0, 200) : text;
-      window.SWMemory.set({
-        intent: intentText,
-        ai_chat_engaged: true,
-      });
-      window.SWMemory.track('ai_chat_message', { text: intentText });
-    }
-
-    const t = addTyping();
-    await new Promise(r => setTimeout(r, 650 + Math.random() * 350));
-    t.remove();
-
-    const intent = findIntent(text);
-    if (intent) {
-      addMsg(intent.reply(), 'bot');
-      renderReplies(intent.follow);
-    } else {
-      addMsg(fallback, 'bot');
-    }
-  }
-
-  // ─── Wire up ───
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    send(input.value);
-  });
-
-  chipsWrap.addEventListener('click', (e) => {
-    const c = e.target.closest('.aic__chip');
-    if (c && c.dataset.q) send(c.dataset.q);
-  });
-
-  convo.addEventListener('click', (e) => {
-    const r = e.target.closest('.aic-reply');
-    if (r && r.dataset.q) send(r.dataset.q);
-  });
-
-  resetBtn.addEventListener('click', resetConvo);
-
-  // Mic button placeholder (visual only for now)
-  micBtn.addEventListener('click', () => {
-    micBtn.classList.toggle('aic__icon-btn--active');
-    setTimeout(() => micBtn.classList.remove('aic__icon-btn--active'), 800);
-  });
-
-  // Input prefix shrinks when user focuses / types
-  input.addEventListener('focus', () => { if (!conversationStarted) prefix.classList.add('aic__input-prefix--active'); });
-  input.addEventListener('blur', () => { if (!input.value) prefix.classList.remove('aic__input-prefix--active'); });
 })();
 </script>
 
@@ -2351,6 +1989,9 @@ No spam. No sequences. One conversation, on your terms.
 
   function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
+  // conversation history for the floating widget
+  let aicfHistory = [];
+
   async function send(text) {
     if (!text.trim()) return;
     ensureConvo();
@@ -2358,16 +1999,39 @@ No spam. No sequences. One conversation, on your terms.
     addMsg(esc(text), 'user');
     input.value = '';
 
-    const t = addTyping();
-    await new Promise(r => setTimeout(r, 600 + Math.random() * 300));
-    t.remove();
+    // record user turn
+    aicfHistory.push({ role: 'user', content: text });
 
-    const intent = findIntent(text);
-    if (intent) {
-      addMsg(intent.reply(), 'bot');
-      renderReplies(intent.follow);
-    } else {
-      addMsg(fallback, 'bot');
+    const t = addTyping();
+
+    try {
+      const res = await fetch('/api/chat/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          history: aicfHistory.slice(0, -1),
+        }),
+      });
+      t.remove();
+
+      if (!res.ok) throw new Error('bad status ' + res.status);
+      const data = await res.json();
+      const reply = (data.reply || '').trim();
+
+      addMsg(reply.replace(/\n/g, '<br>'), 'bot');
+      aicfHistory.push({ role: 'assistant', content: reply });
+
+      if (data.capture && window.SWMemory) {
+        window.SWMemory.set({ ai_chat_capture_ready: true });
+        window.SWMemory.track('ai_chat_capture', { intent: text.slice(0, 200) });
+      }
+    } catch (e) {
+      t.remove();
+      addMsg(
+        "Sorry — I'm having trouble connecting right now. You can reach our team directly at (954) 993-1625.",
+        'bot'
+      );
     }
   }
 
