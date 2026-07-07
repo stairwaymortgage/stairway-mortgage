@@ -26,6 +26,8 @@ import Layout              from "../../layouts/Layout.astro";
     <p class="smo-sub">Two ways to start &mdash; pick the one that fits where you are right now.</p>
   </div>
 
+  <p class="smo-video-cta">Need a <a href="/same-day-approval/">same day approval</a>?</p>
+
   <!-- OPTIONAL VIDEO SLOT — replace this block with your embed (YouTube/Vimeo/MP4) when ready -->
   <div class="smo-video">
     <div class="smo-play"></div>
@@ -142,7 +144,10 @@ import Layout              from "../../layouts/Layout.astro";
   .smo-eyebrow{ font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#9a9a93; margin-bottom:16px; }
   .smo-h1{ font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:clamp(2rem,5vw,3rem); line-height:1.12; letter-spacing:-.02em; margin:0 0 14px; }
   .smo-sub{ font-family:'Fraunces',Georgia,serif; font-style:italic; font-size:18px; color:#6b6b63; margin:0 auto 8px; max-width:560px; }
-  .smo-video{ max-width:680px; margin:28px auto 6px; border-radius:18px; overflow:hidden; aspect-ratio:16/9; background:#0A0E1A; display:flex; align-items:center; justify-content:center; position:relative; box-shadow:0 18px 50px rgba(10,14,26,.22); }
+  .smo-video-cta{ text-align:center; font-family:'IBM Plex Sans',system-ui,sans-serif; font-size:15px; color:#6b6b63; margin:26px auto 0; max-width:560px; }
+  .smo-video-cta a{ color:#0A0E1A; text-decoration:underline; text-underline-offset:2px; }
+  .smo-video-cta a:hover{ opacity:.7; }
+  .smo-video{ max-width:680px; margin:12px auto 6px; border-radius:18px; overflow:hidden; aspect-ratio:16/9; background:#0A0E1A; display:flex; align-items:center; justify-content:center; position:relative; box-shadow:0 18px 50px rgba(10,14,26,.22); }
   .smo-video-ph{ color:#fff; opacity:.5; font-family:'JetBrains Mono',monospace; font-size:13px; position:absolute; bottom:12px; right:16px; }
   .smo-play{ position:absolute; width:62px; height:62px; border-radius:50%; background:rgba(255,255,255,.16); border:2px solid rgba(255,255,255,.55); display:flex; align-items:center; justify-content:center; }
   .smo-play::after{ content:''; border-left:18px solid #fff; border-top:11px solid transparent; border-bottom:11px solid transparent; margin-left:4px; }
