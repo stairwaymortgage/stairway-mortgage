@@ -75,32 +75,65 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString(
   <Analytics />
   <LoAttribution />
 
-  <!-- Schema.org Organization / MortgageBroker (sitewide) -->
+  <!-- Schema.org MortgageBroker (sitewide) — identity, geo, hours, rating for Map Pack + AI answers -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "MortgageBroker",
     "@id": `${siteUrl}#organization`,
     "name": "Stairway Mortgage",
-    "legalName": "NEXA Mortgage LLC dba Stairway Mortgage",
     "url": siteUrl,
     "logo": `${siteUrl}/logo.svg`,
     "image": `${siteUrl}/logo.svg`,
     "telephone": "+1-954-993-1625",
-    "areaServed": "US",
     "slogan": "Leverage Wisely. Grow Wealthy.",
-    "identifier": {
-      "@type": "PropertyValue",
-      "propertyID": "NMLS",
-      "value": "1660690"
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "NEXA Mortgage LLC",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "NMLS",
+        "value": "1660690"
+      }
     },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "912 SW 20th St",
+      "addressLocality": "Fort Lauderdale",
+      "addressRegion": "FL",
+      "postalCode": "33315",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "26.1084",
+      "longitude": "-80.1490"
+    },
+    "openingHours": "Mo-Sa 09:00-21:00",
+    "areaServed": [
+      { "@type": "City", "name": "Fort Lauderdale" },
+      { "@type": "AdministrativeArea", "name": "Broward County" },
+      { "@type": "State", "name": "Florida" }
+    ],
+    "knowsAbout": [
+      "Self-employed mortgages", "Bank statement loans", "DSCR investor loans",
+      "Jumbo loans", "Non-QM loans", "FHA loans", "VA loans", "Foreign national loans"
+    ],
     "founder": {
       "@type": "Person",
       "name": "Jim Blackburn",
+      "jobTitle": "Mortgage Broker",
       "identifier": {
         "@type": "PropertyValue",
         "propertyID": "NMLS",
         "value": "1072866"
       }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "88",
+      "bestRating": "5",
+      "worstRating": "1"
     },
     "sameAs": []
   })} />
