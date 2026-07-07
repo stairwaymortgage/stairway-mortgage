@@ -325,7 +325,7 @@ Get cash out
   function addTyping() {
     const m = document.createElement('div');
     m.className = 'aic-msg aic-msg--bot aic-msg--typing';
-    m.innerHTML = '<div class="aic-msg__b"><div class="aic-typing"><span></span><span></span><span></span></div></div>';
+    m.innerHTML = '<div class="aic-msg__b"><span style="opacity:.75;margin-right:8px;font-size:14px">Thinking…</span><span class="aic-typing"><span></span><span></span><span></span></span></div>';
     convo.appendChild(m);
     convo.scrollTop = convo.scrollHeight;
     return m;
@@ -1966,7 +1966,7 @@ No spam. No sequences. One conversation, on your terms.
   function addTyping() {
     const m = document.createElement('div');
     m.className = 'aicf-msg aicf-msg--bot aicf-msg--typing';
-    m.innerHTML = '<div class="aicf-msg__b"><div class="aicf-typing"><span></span><span></span><span></span></div></div>';
+    m.innerHTML = '<div class="aicf-msg__b"><span style="opacity:.75;margin-right:8px;font-size:14px">Thinking…</span><span class="aicf-typing"><span></span><span></span><span></span></span></div>';
     convo.appendChild(m);
     convo.scrollTop = convo.scrollHeight;
     return m;
