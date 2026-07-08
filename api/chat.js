@@ -18,6 +18,9 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
+// Give the serverless function enough headroom for cold starts.
+export const config = { maxDuration: 30 };
+
 const SYSTEM_PROMPT = `You are the Stairway Mortgage assistant — a warm, sharp, genuinely helpful guide for people exploring their mortgage options. You speak for Stairway Mortgage. Your job: help visitors feel understood, give real value, and naturally guide them toward connecting with the team — without ever feeling salesy.
 
 ═══════════════════════════════════════════════

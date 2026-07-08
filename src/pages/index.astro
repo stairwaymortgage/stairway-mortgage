@@ -435,6 +435,28 @@ Get cash out
   // conversation history for this widget (persists across sends in-page)
   let aicHistory = [];
 
+  async function callChatAPI(payload, attempt = 1) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 25000);
+    try {
+      const res = await fetch('/api/chat/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+      clearTimeout(timer);
+      if (!res.ok) throw new Error('bad status ' + res.status);
+      return await res.json();
+    } catch (e) {
+      clearTimeout(timer);
+      if (attempt < 2) {
+        return callChatAPI(payload, attempt + 1);  // retry once
+      }
+      throw e;
+    }
+  }
+
   async function send(text) {
     if (!text.trim()) return;
     ensureConvoMode();
@@ -458,18 +480,9 @@ Get cash out
     const t = addTyping();
 
     try {
-      const res = await fetch('/api/chat/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: text,
-          history: aicHistory.slice(0, -1),
-        }),
-      });
+      const data = await callChatAPI({ message: text, history: aicHistory.slice(0, -1) });
       t.remove();
 
-      if (!res.ok) throw new Error('bad status ' + res.status);
-      const data = await res.json();
       const reply = (data.reply || '').trim();
 
       addMsg(reply.replace(/\n/g, '<br>'), 'bot');
@@ -2172,6 +2185,28 @@ No spam. No sequences. One conversation, on your terms.
   // conversation history for the floating widget
   let aicfHistory = [];
 
+  async function callChatAPI(payload, attempt = 1) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 25000);
+    try {
+      const res = await fetch('/api/chat/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+      clearTimeout(timer);
+      if (!res.ok) throw new Error('bad status ' + res.status);
+      return await res.json();
+    } catch (e) {
+      clearTimeout(timer);
+      if (attempt < 2) {
+        return callChatAPI(payload, attempt + 1);  // retry once
+      }
+      throw e;
+    }
+  }
+
   async function send(text) {
     if (!text.trim()) return;
     ensureConvo();
@@ -2185,18 +2220,9 @@ No spam. No sequences. One conversation, on your terms.
     const t = addTyping();
 
     try {
-      const res = await fetch('/api/chat/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: text,
-          history: aicfHistory.slice(0, -1),
-        }),
-      });
+      const data = await callChatAPI({ message: text, history: aicfHistory.slice(0, -1) });
       t.remove();
 
-      if (!res.ok) throw new Error('bad status ' + res.status);
-      const data = await res.json();
       const reply = (data.reply || '').trim();
 
       addMsg(reply.replace(/\n/g, '<br>'), 'bot');
