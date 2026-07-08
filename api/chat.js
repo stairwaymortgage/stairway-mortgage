@@ -103,11 +103,11 @@ function complianceFilter(text) {
     out = out.replace(/\bbetter\b/gi, "stronger");
   }
 
-  // 2. bare rate promises like "3.5%" or "at 6.25 percent"
-  const ratePattern = /\b\d+(\.\d+)?\s?%/;
-  if (ratePattern.test(out)) {
+  // 2. Interest-rate promises only — a % tied to rate/apr/interest context.
+  // Does NOT flag general percentages like "10% down" or "80% cash-out".
+  const ratePromise = /\b(rate|apr|interest)\b[^.]{0,40}?\d+(\.\d+)?\s?%|\d+(\.\d+)?\s?%[^.]{0,25}?\b(rate|apr|interest)\b/i;
+  if (ratePromise.test(out)) {
     flagged = true;
-    // replace the whole reply with a safe fallback for rate mentions
     out =
       "Rates depend on your specific situation, so I can't quote one here — but our team can walk you through real numbers for your scenario. Want them to reach out?\n[[CAPTURE]]";
   }
