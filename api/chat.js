@@ -1,15 +1,17 @@
-// api/chat.js — Stairway Mortgage AI chat endpoint (Vercel serverless function)
+// api/chat.js — Stairway Mortgage AI chat endpoint (STREAMING via SSE)
 //
-// Flow: receive user message -> embed it (OpenAI) -> retrieve relevant chunks
-// from Supabase -> ask Claude with compliance system prompt + context ->
-// run a compliance safety filter on the reply -> log to Supabase -> return answer.
+// Streams Claude's reply sentence-by-sentence. Each complete sentence is run
+// through the compliance filter BEFORE being sent to the browser, so nothing
+// non-compliant ever reaches the screen. [[CAPTURE]] is detected across the
+// full text and signaled at the end.
 //
-// Env vars required (set in Vercel dashboard, NEVER in code):
-//   OPENAI_API_KEY, ANTHROPIC_API_KEY, SUPABASE_URL, SUPABASE_SERVICE_KEY
+// Env: OPENAI_API_KEY, ANTHROPIC_API_KEY, SUPABASE_URL, SUPABASE_SERVICE_KEY
 
 import OpenAI from "openai";
 import Anthropic from "@anthropic-ai/sdk";
 import { createClient } from "@supabase/supabase-js";
+
+export const config = { maxDuration: 30 };
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
@@ -17,9 +19,6 @@ const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_KEY
 );
-
-// Give the serverless function enough headroom for cold starts.
-export const config = { maxDuration: 30 };
 
 const SYSTEM_PROMPT = `You are the Stairway Mortgage assistant — a warm, sharp, genuinely helpful guide for people exploring their mortgage options. You speak for Stairway Mortgage. Your job: help visitors feel understood, give real value, and naturally guide them toward connecting with the team — without ever feeling salesy.
 
@@ -95,31 +94,22 @@ REMEMBER
 ═══════════════════════════════════════════════
 You are the friendly front door to Stairway. Be so helpful that giving their details feels like the obvious next step, not a price they pay. Educate freely from approved content, stay vague-but-warm on anything that needs their real numbers, protect compliance always, and guide every genuine conversation toward the team.`;
 
-// Compliance safety net — runs on Claude's output before it reaches the visitor.
+// Compliance filter — runs per sentence before it reaches the browser.
 function complianceFilter(text) {
-  let flagged = false;
   let out = text;
-
-  // 1. banned word "better" (whole word, case-insensitive)
-  if (/\bbetter\b/i.test(out)) {
-    flagged = true;
-    out = out.replace(/\bbetter\b/gi, "stronger");
-  }
-
-  // 2. Interest-rate promises only — a % tied to rate/apr/interest context.
-  // Does NOT flag general percentages like "10% down" or "80% cash-out".
-  const ratePromise = /\b(rate|apr|interest)\b[^.]{0,40}?\d+(\.\d+)?\s?%|\d+(\.\d+)?\s?%[^.]{0,25}?\b(rate|apr|interest)\b/i;
+  // banned word "better"
+  if (/\bbetter\b/i.test(out)) out = out.replace(/\bbetter\b/gi, "stronger");
+  // interest-rate promises only (% tied to rate/apr/interest), not "10% down"
+  const ratePromise =
+    /\b(rate|apr|interest)\b[^.]{0,40}?\d+(\.\d+)?\s?%|\d+(\.\d+)?\s?%[^.]{0,25}?\b(rate|apr|interest)\b/i;
   if (ratePromise.test(out)) {
-    flagged = true;
     out =
-      "Rates depend on your specific situation, so I can't quote one here — but our team can walk you through real numbers for your scenario. Want them to reach out?\n[[CAPTURE]]";
+      "Rates depend on your specific situation, so I can't quote one here — but our team can walk you through real numbers for your scenario.";
   }
-
-  return { text: out, flagged };
+  return out;
 }
 
 export default async function handler(req, res) {
-  // basic CORS + method guard
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -128,18 +118,18 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
 
   try {
-    const { message, history = [], session_id } = req.body || {};
+    const { message, history = [] } = req.body || {};
     if (!message || typeof message !== "string") {
       return res.status(400).json({ error: "Missing message" });
     }
 
-    // 1. embed the user's message
+    // 1. embed
     const emb = await openai.embeddings.create({
       model: "text-embedding-3-small",
       input: message,
     });
 
-    // 2. retrieve relevant knowledge chunks
+    // 2. retrieve
     const { data: chunks, error: matchErr } = await supabase.rpc(
       "match_knowledge",
       { query_embedding: emb.data[0].embedding, match_count: 5 }
@@ -151,47 +141,105 @@ export default async function handler(req, res) {
         ? chunks.map((c) => `[source: ${c.source}]\n${c.content}`).join("\n\n---\n\n")
         : "(no specific context found — offer to connect them with the team)";
 
-    // 3. build message history for Claude (last 6 turns max)
     const priorTurns = history.slice(-6).map((m) => ({
       role: m.role === "assistant" ? "assistant" : "user",
       content: String(m.content || ""),
     }));
 
-    // 4. ask Claude
-    const msg = await anthropic.messages.create({
+    // --- set up SSE streaming ---
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache, no-transform");
+    res.setHeader("Connection", "keep-alive");
+    res.flushHeaders?.();
+
+    const sendEvent = (obj) => {
+      res.write(`data: ${JSON.stringify(obj)}\n\n`);
+    };
+
+    let fullText = "";
+    let buffer = "";
+    let visibleForCapture = "";
+
+    // stream from Claude
+    const stream = await anthropic.messages.stream({
       model: "claude-sonnet-5",
       max_tokens: 600,
       system: SYSTEM_PROMPT + "\n\nCONTEXT:\n" + context,
       messages: [...priorTurns, { role: "user", content: message }],
     });
 
-    let reply = msg.content[0]?.text || "";
+    stream.on("text", (delta) => {
+      fullText += delta;
+      buffer += delta;
 
-    // 5. compliance filter
-    const { text: safeReply } = complianceFilter(reply);
+      // flush complete sentences (ending in . ! ? or newline)
+      let match;
+      const sentenceEnd = /[^.!?\n]*[.!?\n]+/;
+      while ((match = buffer.match(sentenceEnd))) {
+        let sentence = match[0];
+        buffer = buffer.slice(sentence.length);
 
-    // 6. detect capture signal, strip token from visible text
-    const wantsCapture = safeReply.includes("[[CAPTURE]]");
-    const visibleReply = safeReply.replace(/\[\[CAPTURE\]\]/g, "").trim();
+        // strip capture token from visible text, remember it fired
+        const hadCapture = sentence.includes("[[CAPTURE]]");
+        sentence = sentence.replace(/\[\[CAPTURE\]\]/g, "");
 
-    // 7. log conversation (best-effort; don't block the reply if logging fails)
+        // compliance per sentence
+        const clean = complianceFilter(sentence);
+        if (clean.trim()) {
+          visibleForCapture += clean;
+          sendEvent({ type: "chunk", text: clean });
+        }
+        if (hadCapture) visibleForCapture += "[[CAPTURE]]";
+      }
+    });
+
+    await stream.finalMessage();
+
+    // flush any remaining buffer (last partial sentence)
+    if (buffer.trim()) {
+      const hadCapture = buffer.includes("[[CAPTURE]]");
+      let tail = buffer.replace(/\[\[CAPTURE\]\]/g, "");
+      const clean = complianceFilter(tail);
+      if (clean.trim()) {
+        visibleForCapture += clean;
+        sendEvent({ type: "chunk", text: clean });
+      }
+      if (hadCapture) visibleForCapture += "[[CAPTURE]]";
+    }
+
+    const wantsCapture = fullText.includes("[[CAPTURE]]");
+    const finalVisible = visibleForCapture.replace(/\[\[CAPTURE\]\]/g, "").trim();
+
+    // signal done + capture flag
+    sendEvent({ type: "done", capture: wantsCapture });
+    res.end();
+
+    // log (best-effort, after response)
     try {
       await supabase.from("messages").insert([
         { conversation_id: null, role: "user", content: message },
-        { conversation_id: null, role: "assistant", content: visibleReply },
+        { conversation_id: null, role: "assistant", content: finalVisible },
       ]);
     } catch (_) {}
-
-    return res.status(200).json({
-      reply: visibleReply,
-      capture: wantsCapture,
-    });
   } catch (err) {
     console.error("chat error:", err);
-    return res.status(500).json({
-      reply:
-        "Sorry — something went wrong on my end. Please try again, or reach our team at (954) 993-1625.",
-      capture: false,
-    });
+    // if headers already sent (streaming started), send an error event; else JSON
+    try {
+      if (res.headersSent) {
+        res.write(
+          `data: ${JSON.stringify({
+            type: "error",
+            text: "Sorry — something went wrong. Please call (954) 993-1625.",
+          })}\n\n`
+        );
+        res.end();
+      } else {
+        res.status(500).json({
+          reply:
+            "Sorry — something went wrong on my end. Please try again, or reach our team at (954) 993-1625.",
+          capture: false,
+        });
+      }
+    } catch (_) {}
   }
 }

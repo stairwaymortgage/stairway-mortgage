@@ -435,9 +435,12 @@ Get cash out
   // conversation history for this widget (persists across sends in-page)
   let aicHistory = [];
 
-  async function callChatAPI(payload, attempt = 1) {
+  // Streams the reply. onChunk(text) is called for each piece; resolves with
+  // { capture } when done. Retries once on a hard failure before the first chunk.
+  async function streamChat(payload, onChunk, attempt = 1) {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 25000);
+    const timer = setTimeout(() => controller.abort(), 30000);
+    let gotAnyChunk = false;
     try {
       const res = await fetch('/api/chat/', {
         method: 'POST',
@@ -445,13 +448,46 @@ Get cash out
         body: JSON.stringify(payload),
         signal: controller.signal,
       });
+      if (!res.ok || !res.body) throw new Error('bad status ' + res.status);
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let sseBuf = '';
+      let capture = false;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        sseBuf += decoder.decode(value, { stream: true });
+
+        // process complete SSE lines
+        let idx;
+        while ((idx = sseBuf.indexOf('\n\n')) !== -1) {
+          const raw = sseBuf.slice(0, idx).trim();
+          sseBuf = sseBuf.slice(idx + 2);
+          if (!raw.startsWith('data:')) continue;
+          const jsonStr = raw.slice(5).trim();
+          if (!jsonStr) continue;
+          let evt;
+          try { evt = JSON.parse(jsonStr); } catch (e) { continue; }
+          if (evt.type === 'chunk' && evt.text) {
+            gotAnyChunk = true;
+            onChunk(evt.text);
+          } else if (evt.type === 'done') {
+            capture = !!evt.capture;
+          } else if (evt.type === 'error') {
+            gotAnyChunk = true;
+            onChunk('\n' + (evt.text || 'Something went wrong.'));
+          }
+        }
+      }
       clearTimeout(timer);
-      if (!res.ok) throw new Error('bad status ' + res.status);
-      return await res.json();
+      return { capture };
     } catch (e) {
       clearTimeout(timer);
-      if (attempt < 2) {
-        return callChatAPI(payload, attempt + 1);  // retry once
+      // retry once only if nothing was shown yet
+      if (attempt < 2 && !gotAnyChunk) {
+        return streamChat(payload, onChunk, attempt + 1);
       }
       throw e;
     }
@@ -478,17 +514,23 @@ Get cash out
     aicHistory.push({ role: 'user', content: text });
 
     const t = addTyping();
-
+    let bubble = null;
+    let acc = '';
     try {
-      const data = await callChatAPI({ message: text, history: aicHistory.slice(0, -1) });
-      t.remove();
+      const { capture } = await streamChat(
+        { message: text, history: aicHistory.slice(0, -1) },
+        (piece) => {
+          if (!bubble) { t.remove(); bubble = addMsg('', 'bot'); }
+          acc += piece;
+          const b = bubble.querySelector('.aic-msg__b') || bubble;
+          b.innerHTML = acc.replace(/\n/g, '<br>');
+          convo.scrollTop = convo.scrollHeight;
+        }
+      );
+      if (!bubble) { t.remove(); addMsg("I'm here — what would you like to know?", 'bot'); }
+      aicHistory.push({ role: 'assistant', content: acc });
 
-      const reply = (data.reply || '').trim();
-
-      addMsg(reply.replace(/\n/g, '<br>'), 'bot');
-      aicHistory.push({ role: 'assistant', content: reply });
-
-      if (data.capture) {
+      if (capture) {
         if (window.SWMemory) {
           window.SWMemory.set({ ai_chat_capture_ready: true });
           window.SWMemory.track('ai_chat_capture', { intent: text.slice(0, 200) });
@@ -497,10 +539,7 @@ Get cash out
       }
     } catch (e) {
       t.remove();
-      addMsg(
-        "Sorry — I'm having trouble connecting right now. You can reach our team directly at (954) 993-1625.",
-        'bot'
-      );
+      addMsg("Sorry — I'm having trouble connecting right now. You can reach our team directly at (954) 993-1625.", 'bot');
     }
   }
 
@@ -2154,6 +2193,7 @@ No spam. No sequences. One conversation, on your terms.
     m.innerHTML = `<div class="aicf-msg__b">${html}</div>`;
     convo.appendChild(m);
     convo.scrollTop = convo.scrollHeight;
+    return m;
   }
 
   function addTyping() {
@@ -2185,9 +2225,12 @@ No spam. No sequences. One conversation, on your terms.
   // conversation history for the floating widget
   let aicfHistory = [];
 
-  async function callChatAPI(payload, attempt = 1) {
+  // Streams the reply. onChunk(text) is called for each piece; resolves with
+  // { capture } when done. Retries once on a hard failure before the first chunk.
+  async function streamChat(payload, onChunk, attempt = 1) {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 25000);
+    const timer = setTimeout(() => controller.abort(), 30000);
+    let gotAnyChunk = false;
     try {
       const res = await fetch('/api/chat/', {
         method: 'POST',
@@ -2195,13 +2238,46 @@ No spam. No sequences. One conversation, on your terms.
         body: JSON.stringify(payload),
         signal: controller.signal,
       });
+      if (!res.ok || !res.body) throw new Error('bad status ' + res.status);
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let sseBuf = '';
+      let capture = false;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        sseBuf += decoder.decode(value, { stream: true });
+
+        // process complete SSE lines
+        let idx;
+        while ((idx = sseBuf.indexOf('\n\n')) !== -1) {
+          const raw = sseBuf.slice(0, idx).trim();
+          sseBuf = sseBuf.slice(idx + 2);
+          if (!raw.startsWith('data:')) continue;
+          const jsonStr = raw.slice(5).trim();
+          if (!jsonStr) continue;
+          let evt;
+          try { evt = JSON.parse(jsonStr); } catch (e) { continue; }
+          if (evt.type === 'chunk' && evt.text) {
+            gotAnyChunk = true;
+            onChunk(evt.text);
+          } else if (evt.type === 'done') {
+            capture = !!evt.capture;
+          } else if (evt.type === 'error') {
+            gotAnyChunk = true;
+            onChunk('\n' + (evt.text || 'Something went wrong.'));
+          }
+        }
+      }
       clearTimeout(timer);
-      if (!res.ok) throw new Error('bad status ' + res.status);
-      return await res.json();
+      return { capture };
     } catch (e) {
       clearTimeout(timer);
-      if (attempt < 2) {
-        return callChatAPI(payload, attempt + 1);  // retry once
+      // retry once only if nothing was shown yet
+      if (attempt < 2 && !gotAnyChunk) {
+        return streamChat(payload, onChunk, attempt + 1);
       }
       throw e;
     }
@@ -2218,17 +2294,22 @@ No spam. No sequences. One conversation, on your terms.
     aicfHistory.push({ role: 'user', content: text });
 
     const t = addTyping();
-
+    let bubble = null;
+    let acc = '';
     try {
-      const data = await callChatAPI({ message: text, history: aicfHistory.slice(0, -1) });
-      t.remove();
-
-      const reply = (data.reply || '').trim();
-
-      addMsg(reply.replace(/\n/g, '<br>'), 'bot');
-      aicfHistory.push({ role: 'assistant', content: reply });
-
-      if (data.capture) {
+      const { capture } = await streamChat(
+        { message: text, history: aicfHistory.slice(0, -1) },
+        (piece) => {
+          if (!bubble) { t.remove(); bubble = addMsg('', 'bot'); }
+          acc += piece;
+          const b = bubble.querySelector('.aicf-msg__b') || bubble;
+          b.innerHTML = acc.replace(/\n/g, '<br>');
+          convo.scrollTop = convo.scrollHeight;
+        }
+      );
+      if (!bubble) { t.remove(); addMsg("I'm here — what would you like to know?", 'bot'); }
+      aicfHistory.push({ role: 'assistant', content: acc });
+      if (capture) {
         if (window.SWMemory) {
           window.SWMemory.set({ ai_chat_capture_ready: true });
           window.SWMemory.track('ai_chat_capture', { intent: text.slice(0, 200) });
@@ -2237,10 +2318,7 @@ No spam. No sequences. One conversation, on your terms.
       }
     } catch (e) {
       t.remove();
-      addMsg(
-        "Sorry — I'm having trouble connecting right now. You can reach our team directly at (954) 993-1625.",
-        'bot'
-      );
+      addMsg("Sorry — I'm having trouble connecting right now. You can reach our team directly at (954) 993-1625.", 'bot');
     }
   }
 
