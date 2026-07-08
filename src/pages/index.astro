@@ -320,24 +320,25 @@ Get cash out
     if (aicCaptureShown) return;
     aicCaptureShown = true;
 
+    const inp = 'width:100%;box-sizing:border-box;padding:13px 14px;margin:0;border:1px solid rgba(255,255,255,.25);border-radius:10px;background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit;outline:none;display:block;';
     const m = document.createElement('div');
-    m.className = 'aic-msg aic-msg--bot aic-capture';
+    m.className = 'aic-msg aic-msg--bot';
     m.innerHTML =
-      '<div class="aic-msg__b">' +
-      '<div class="aic-cap">' +
-      '<p class="aic-cap__lead">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
-      '<input class="aic-cap__f" data-cap-name type="text" placeholder="Your name" autocomplete="name">' +
-      '<input class="aic-cap__f" data-cap-phone type="tel" placeholder="Phone" autocomplete="tel">' +
-      '<input class="aic-cap__f" data-cap-email type="email" placeholder="Email" autocomplete="email">' +
-      '<input class="aic-cap__hp" data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true">' +
-      '<button class="aic-cap__btn" data-cap-send>See My Options</button>' +
-      '<p class="aic-cap__note" data-cap-note></p>' +
-      '</div></div>';
+      '<div class="aic-msg__b" style="max-width:340px">' +
+        '<div style="display:flex;flex-direction:column;gap:10px;padding:2px 0">' +
+          '<p style="font-size:14.5px;line-height:1.45;margin:0 0 2px;color:#fff">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
+          '<input data-cap-name type="text" placeholder="Your name" autocomplete="name" style="' + inp + '">' +
+          '<input data-cap-phone type="tel" placeholder="Phone number" autocomplete="tel" style="' + inp + '">' +
+          '<input data-cap-email type="email" placeholder="Email address" autocomplete="email" style="' + inp + '">' +
+          '<input data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
+          '<button data-cap-send style="width:100%;box-sizing:border-box;padding:13px 16px;margin-top:2px;border:none;border-radius:10px;background:#1845D6;color:#fff;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;display:block">See My Options</button>' +
+          '<p data-cap-note style="font-size:12.5px;color:#ff9b9b;margin:0;min-height:0"></p>' +
+        '</div>' +
+      '</div>';
     convo.appendChild(m);
     convo.scrollTop = convo.scrollHeight;
 
-    const btn = m.querySelector('[data-cap-send]');
-    btn.addEventListener('click', () => submitCapture(m, intentSummary));
+    m.querySelector('[data-cap-send]').addEventListener('click', () => submitCapture(m, intentSummary));
   }
 
   async function submitCapture(formEl, intentSummary) {
@@ -384,8 +385,8 @@ Get cash out
         body: JSON.stringify(payload),
         keepalive: true,
       });
-      formEl.querySelector('.aic-cap').innerHTML =
-        '<p class="aic-cap__lead">Thanks, ' + esc(name) + ' — our team will reach out shortly.</p>';
+      const bubble = formEl.querySelector('.aic-msg__b') || formEl.querySelector('.aicf-msg__b');
+      if (bubble) bubble.innerHTML = '<p style="font-size:14.5px;line-height:1.45;margin:0;color:#fff">Thanks, ' + esc(name) + ' — our team will reach out shortly.</p>';
       if (window.SWMemory) window.SWMemory.track('ai_chat_lead_submitted', { intent: intentSummary });
     } catch (e) {
       note.textContent = 'Something went wrong — please call (954) 993-1625.';
@@ -2060,19 +2061,21 @@ No spam. No sequences. One conversation, on your terms.
     if (aicfCaptureShown) return;
     aicfCaptureShown = true;
 
+    const inp = 'width:100%;box-sizing:border-box;padding:13px 14px;margin:0;border:1px solid rgba(255,255,255,.25);border-radius:10px;background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit;outline:none;display:block;';
     const m = document.createElement('div');
-    m.className = 'aicf-msg aicf-msg--bot aicf-capture';
+    m.className = 'aicf-msg aicf-msg--bot';
     m.innerHTML =
-      '<div class="aicf-msg__b">' +
-      '<div class="aic-cap">' +
-      '<p class="aic-cap__lead">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
-      '<input class="aic-cap__f" data-cap-name type="text" placeholder="Your name" autocomplete="name">' +
-      '<input class="aic-cap__f" data-cap-phone type="tel" placeholder="Phone" autocomplete="tel">' +
-      '<input class="aic-cap__f" data-cap-email type="email" placeholder="Email" autocomplete="email">' +
-      '<input class="aic-cap__hp" data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true">' +
-      '<button class="aic-cap__btn" data-cap-send>See My Options</button>' +
-      '<p class="aic-cap__note" data-cap-note></p>' +
-      '</div></div>';
+      '<div class="aicf-msg__b" style="max-width:340px">' +
+        '<div style="display:flex;flex-direction:column;gap:10px;padding:2px 0">' +
+          '<p style="font-size:14.5px;line-height:1.45;margin:0 0 2px;color:#fff">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
+          '<input data-cap-name type="text" placeholder="Your name" autocomplete="name" style="' + inp + '">' +
+          '<input data-cap-phone type="tel" placeholder="Phone number" autocomplete="tel" style="' + inp + '">' +
+          '<input data-cap-email type="email" placeholder="Email address" autocomplete="email" style="' + inp + '">' +
+          '<input data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
+          '<button data-cap-send style="width:100%;box-sizing:border-box;padding:13px 16px;margin-top:2px;border:none;border-radius:10px;background:#1845D6;color:#fff;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;display:block">See My Options</button>' +
+          '<p data-cap-note style="font-size:12.5px;color:#ff9b9b;margin:0;min-height:0"></p>' +
+        '</div>' +
+      '</div>';
     convo.appendChild(m);
     convo.scrollTop = convo.scrollHeight;
 
@@ -2123,8 +2126,8 @@ No spam. No sequences. One conversation, on your terms.
         body: JSON.stringify(payload),
         keepalive: true,
       });
-      formEl.querySelector('.aic-cap').innerHTML =
-        '<p class="aic-cap__lead">Thanks, ' + esc(name) + ' — our team will reach out shortly.</p>';
+      const bubble = formEl.querySelector('.aic-msg__b') || formEl.querySelector('.aicf-msg__b');
+      if (bubble) bubble.innerHTML = '<p style="font-size:14.5px;line-height:1.45;margin:0;color:#fff">Thanks, ' + esc(name) + ' — our team will reach out shortly.</p>';
     } catch (e) {
       note.textContent = 'Something went wrong — please call (954) 993-1625.';
       btn.disabled = false;
