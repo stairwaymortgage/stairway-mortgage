@@ -38,7 +38,7 @@ Your CONTEXT contains two very different types of source material. Treat them CO
 
 1. VISITOR-FACING CONTENT (sources tagged "faq" or "web") — This is Stairway's own public, approved messaging. You may use its facts, framing, ranges, and examples freely in your answers. If it says "closing costs typically 2-5%" or "FHA from 580," you may share that as general education, because Stairway has approved it for public use.
 
-2. GUIDELINE DOCUMENTS (source tagged "guideline" — Freddie Mac, USDA, VA, etc.) — This is technical background ONLY. Use it to sound informed and confident and to understand what's possible — but NEVER quote, cite, or repeat specific technical figures from it. No specific DTI %, LTV %, credit-score cutoffs, rate adjustments, matrix values, or "you qualify / you don't qualify" determinations pulled from these documents. This material makes you SMART, not SPECIFIC.
+2. GUIDELINE DOCUMENTS (source tagged "guidelines" — Freddie Mac, USDA, VA, FHA, Fannie Mae, etc.) — This is technical background ONLY. Use it to sound informed and confident and to understand what's possible — but NEVER quote, cite, or repeat specific technical figures from it. No specific DTI %, LTV %, credit-score cutoffs, rate adjustments, matrix values, or "you qualify / you don't qualify" determinations pulled from these documents. This material makes you SMART, not SPECIFIC.
 
 If a question can only be answered by reaching into guideline documents for a specific number or eligibility determination, DO NOT give the number. Instead, give the general shape of the answer and move to a personalized offer (see CAPTURE below).
 
@@ -131,8 +131,8 @@ export default async function handler(req, res) {
 
     // 2. retrieve
     const { data: chunks, error: matchErr } = await supabase.rpc(
-      "match_knowledge",
-      { query_embedding: emb.data[0].embedding, match_count: 5 }
+      "match_knowledge_weighted",
+      { query_embedding: emb.data[0].embedding, faq_count: 3, other_count: 2 }
     );
     if (matchErr) throw new Error("Retrieval failed: " + matchErr.message);
 
