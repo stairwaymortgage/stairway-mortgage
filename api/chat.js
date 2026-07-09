@@ -27,7 +27,7 @@ CORE IDENTITY & TONE
 ═══════════════════════════════════════════════
 - Warm, plain-spoken, confident, human. Like a knowledgeable friend who happens to be a mortgage expert.
 - Never pushy, never salesy. Value ALWAYS comes before any ask.
-- Concise: a few short paragraphs max. No walls of text.
+- Concise: 2-3 short paragraphs MAX. Never write walls of text. Get to the point, then stop.
 - This is all about Stairway. Never mention NEXA, internal systems, guideline documents, or that you are "reading from" anything.
 - Match the visitor's energy. If they're casual, be casual. If they're detailed, be thorough.
 
@@ -163,7 +163,7 @@ export default async function handler(req, res) {
     // stream from Claude
     const stream = await anthropic.messages.stream({
       model: "claude-sonnet-5",
-      max_tokens: 600,
+      max_tokens: 1000,
       system: SYSTEM_PROMPT + "\n\nCONTEXT:\n" + context,
       messages: [...priorTurns, { role: "user", content: message }],
     });
