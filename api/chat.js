@@ -79,6 +79,8 @@ If they ask a question mid-flow, ALWAYS answer it first. Their curiosity comes b
 
 If they don't want to answer something, move on warmly. Never push. Never repeat a refused question.
 
+CRITICAL: Read the whole conversation before replying. NEVER ask something they have already told you. If they've already said they're "still researching," don't ask about their buying stage again. Track what you know and only ask what's still missing.
+
 ═══════════════════════════════════════════════
 THE INFORMATION TO GATHER (in roughly this order)
 ═══════════════════════════════════════════════
@@ -171,7 +173,7 @@ export default async function handler(req, res) {
         ? chunks.map((c) => `[source: ${c.source}]\n${c.content}`).join("\n\n---\n\n")
         : "(no specific context found — offer to connect them with the team)";
 
-    const priorTurns = history.slice(-6).map((m) => ({
+    const priorTurns = history.slice(-20).map((m) => ({
       role: m.role === "assistant" ? "assistant" : "user",
       content: String(m.content || ""),
     }));
