@@ -430,6 +430,23 @@ Get cash out
   }
 
   function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function renderMsg(text) {
+    // escape HTML first
+    var safe = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    // markdown links [label](/path) -> anchor (only allow internal / and http(s))
+    safe = safe.replace(/\[([^\]]+)\]\((\/[^)\s]*|https?:\/\/[^)\s]+)\)/g,
+      function (m, label, href) {
+        return '<a href="' + href + '" style="color:#7ab0ff;text-decoration:underline">' + label + '</a>';
+      });
+    // bold **text**
+    safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // newlines
+    safe = safe.replace(/\n/g, '<br>');
+    return safe;
+  }
 
   // ─── Send handler ───
   // conversation history for this widget (persists across sends in-page)
@@ -523,7 +540,7 @@ Get cash out
           if (!bubble) { t.remove(); bubble = addMsg('', 'bot'); }
           acc += piece;
           const b = bubble.querySelector('.aic-msg__b') || bubble;
-          b.innerHTML = acc.replace(/\n/g, '<br>');
+          b.innerHTML = renderMsg(acc);
           convo.scrollTop = convo.scrollHeight;
         }
       );
@@ -2221,6 +2238,23 @@ No spam. No sequences. One conversation, on your terms.
   }
 
   function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function renderMsg(text) {
+    // escape HTML first
+    var safe = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    // markdown links [label](/path) -> anchor (only allow internal / and http(s))
+    safe = safe.replace(/\[([^\]]+)\]\((\/[^)\s]*|https?:\/\/[^)\s]+)\)/g,
+      function (m, label, href) {
+        return '<a href="' + href + '" style="color:#7ab0ff;text-decoration:underline">' + label + '</a>';
+      });
+    // bold **text**
+    safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // newlines
+    safe = safe.replace(/\n/g, '<br>');
+    return safe;
+  }
 
   // conversation history for the floating widget
   let aicfHistory = [];
@@ -2303,7 +2337,7 @@ No spam. No sequences. One conversation, on your terms.
           if (!bubble) { t.remove(); bubble = addMsg('', 'bot'); }
           acc += piece;
           const b = bubble.querySelector('.aicf-msg__b') || bubble;
-          b.innerHTML = acc.replace(/\n/g, '<br>');
+          b.innerHTML = renderMsg(acc);
           convo.scrollTop = convo.scrollHeight;
         }
       );
