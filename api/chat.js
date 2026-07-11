@@ -25,24 +25,20 @@ const GHL_CHAT_WEBHOOK =
 
 // Extraction prompt: pull structured survey fields from the conversation.
 const EXTRACT_PROMPT = `You extract structured data from a mortgage chat conversation.
-Return ONLY a JSON object (no prose, no markdown fences) with EXACTLY these keys.
+Return ONLY a raw JSON object with no comments, no markdown, no prose — just the object.
 Use "" (empty string) for anything not clearly stated. Do not guess or infer beyond what was said.
 
-{
-  "loan_purpose": "",        // purchase | refinance | heloc/equity | new construction | renovation | reverse | ""
-  "property_type": "",       // single family | condo | town home | multi-family | manufactured | ""
-  "occupancy": "",           // primary | secondary | investment | ""
-  "first_time_buyer": "",    // yes | no | ""
-  "buying_stage": "",        // researching | found property | under contract | signed agreement | ""
-  "property_price": "",      // number or short text as stated, else ""
-  "down_payment": "",        // percent or amount as stated, else ""
-  "credit_score": "",        // range or number as stated, else ""
-  "military_service": "",    // active | veteran | reserve/guard | none | ""
-  "employment_status": "",   // employed | self-employed | 1099 | retired | ""
-  "annual_income": ""        // number or short text as stated, else ""
-}
+Allowed values (guidance only, do not include this in output):
+- loan_purpose: purchase, refinance, heloc/equity, new construction, renovation, reverse
+- property_type: single family, condo, town home, multi-family, manufactured
+- occupancy: primary, secondary, investment
+- first_time_buyer: yes, no
+- buying_stage: researching, found property, under contract, signed agreement
+- military_service: active, veteran, reserve/guard, none
+- employment_status: employed, self-employed, 1099, retired
 
-Return the JSON object only.`;
+Return exactly this shape:
+{"loan_purpose":"","property_type":"","occupancy":"","first_time_buyer":"","buying_stage":"","property_price":"","down_payment":"","credit_score":"","military_service":"","employment_status":"","annual_income":""}`;
 
 const SYSTEM_PROMPT = `You are the Stairway Mortgage assistant — a warm, sharp, genuinely helpful guide for people exploring their mortgage options. You speak for Stairway Mortgage.
 
@@ -225,17 +221,23 @@ export default async function handler(req, res) {
 
       // 1. extract structured fields
       let fields = {};
+      let ex;
       try {
-        const ex = await anthropic.messages.create({
+        ex = await anthropic.messages.create({
           model: "claude-sonnet-5",
           max_tokens: 500,
           system: EXTRACT_PROMPT,
           messages: [{ role: "user", content: transcript || "(no conversation)" }],
         });
-        const raw = (ex.content?.[0]?.text || "{}").trim()
-          .replace(/^\`\`\`json/i, "").replace(/^\`\`\`/, "").replace(/\`\`\`$/, "").trim();
-        fields = JSON.parse(raw);
+        const rawText = (ex.content?.[0]?.text || "").trim();
+        const match = rawText.match(/\{[\s\S]*\}/);
+        if (match) {
+          fields = JSON.parse(match[0]);
+        } else {
+          fields = {};
+        }
       } catch (e) {
+        console.error("Extraction parse failed:", e.message, "| raw:", (ex && ex.content?.[0]?.text || "").slice(0, 300));
         fields = {}; // extraction failed — still send contact + notes
       }
 
