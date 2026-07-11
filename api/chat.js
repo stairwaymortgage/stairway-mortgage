@@ -20,6 +20,30 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
+const GHL_CHAT_WEBHOOK =
+  "https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/32647e7f-dcc7-4545-bb0a-47d44d0744bc";
+
+// Extraction prompt: pull structured survey fields from the conversation.
+const EXTRACT_PROMPT = `You extract structured data from a mortgage chat conversation.
+Return ONLY a JSON object (no prose, no markdown fences) with EXACTLY these keys.
+Use "" (empty string) for anything not clearly stated. Do not guess or infer beyond what was said.
+
+{
+  "loan_purpose": "",        // purchase | refinance | heloc/equity | new construction | renovation | reverse | ""
+  "property_type": "",       // single family | condo | town home | multi-family | manufactured | ""
+  "occupancy": "",           // primary | secondary | investment | ""
+  "first_time_buyer": "",    // yes | no | ""
+  "buying_stage": "",        // researching | found property | under contract | signed agreement | ""
+  "property_price": "",      // number or short text as stated, else ""
+  "down_payment": "",        // percent or amount as stated, else ""
+  "credit_score": "",        // range or number as stated, else ""
+  "military_service": "",    // active | veteran | reserve/guard | none | ""
+  "employment_status": "",   // employed | self-employed | 1099 | retired | ""
+  "annual_income": ""        // number or short text as stated, else ""
+}
+
+Return the JSON object only.`;
+
 const SYSTEM_PROMPT = `You are the Stairway Mortgage assistant — a warm, sharp, genuinely helpful guide for people exploring their mortgage options. You speak for Stairway Mortgage.
 
 Your job has TWO parts, working together:
@@ -188,6 +212,84 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(200).end();
   if (req.method !== "POST")
     return res.status(405).json({ error: "Method not allowed" });
+
+  // --- structured extraction + GHL submit branch ---
+  if (req.body && req.body.action === "extract") {
+    try {
+      const { history = [], contact = {}, attribution = {} } = req.body;
+
+      // build a plain transcript for the extractor
+      const transcript = history
+        .map((m) => `${m.role === "assistant" ? "Assistant" : "Visitor"}: ${m.content}`)
+        .join("\n");
+
+      // 1. extract structured fields
+      let fields = {};
+      try {
+        const ex = await anthropic.messages.create({
+          model: "claude-sonnet-5",
+          max_tokens: 500,
+          system: EXTRACT_PROMPT,
+          messages: [{ role: "user", content: transcript || "(no conversation)" }],
+        });
+        const raw = (ex.content?.[0]?.text || "{}").trim()
+          .replace(/^\`\`\`json/i, "").replace(/^\`\`\`/, "").replace(/\`\`\`$/, "").trim();
+        fields = JSON.parse(raw);
+      } catch (e) {
+        fields = {}; // extraction failed — still send contact + notes
+      }
+
+      // 2. build a readable Q&A summary for notes
+      const notes =
+        "AI Chat conversation summary:\n\n" +
+        history
+          .map((m) => `${m.role === "assistant" ? "Assistant" : "Visitor"}: ${m.content}`)
+          .join("\n");
+
+      // 3. assemble GHL payload
+      const payload = {
+        form_source: "ai_chat",
+        full_name: contact.full_name || "",
+        email: contact.email || "",
+        phone: contact.phone || "",
+        source_url: contact.source_url || "",
+        // structured survey fields (prefixed to match GHL keys)
+        ai_chat_loan_purpose: fields.loan_purpose || "",
+        ai_chat_property_type: fields.property_type || "",
+        ai_chat_occupancy: fields.occupancy || "",
+        ai_chat_first_time_buyer: fields.first_time_buyer || "",
+        ai_chat_buying_stage: fields.buying_stage || "",
+        ai_chat_property_price: fields.property_price || "",
+        ai_chat_down_payment: fields.down_payment || "",
+        ai_chat_credit_score: fields.credit_score || "",
+        ai_chat_military_service: fields.military_service || "",
+        ai_chat_employment_status: fields.employment_status || "",
+        ai_chat_annual_income: fields.annual_income || "",
+        ai_chat_intent: contact.ai_chat_intent || "",
+        ai_chat_notes: notes,
+        // attribution
+        session_id: attribution.session_id || "",
+        utm_source: attribution.utm_source || "",
+        utm_medium: attribution.utm_medium || "",
+        utm_campaign: attribution.utm_campaign || "",
+        city: attribution.city || "",
+        persona: attribution.persona || "",
+      };
+
+      // 4. post to GHL (server-side)
+      await fetch(GHL_CHAT_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      return res.status(200).json({ ok: true });
+    } catch (e) {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      return res.status(200).json({ ok: false }); // never block the UI
+    }
+  }
 
   try {
     const { message, history = [] } = req.body || {};

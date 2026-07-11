@@ -364,22 +364,27 @@ Get cash out
     } catch (e) {}
 
     const payload = {
-      form_source: 'ai_chat',
-      full_name: name,
-      email: email,
-      phone: phone,
-      ai_chat_intent: intentSummary || '',
-      source_url: window.location.href,
-      session_id: attr.session_id || '',
-      utm_source: attr.utm_source || '',
-      utm_medium: attr.utm_medium || '',
-      utm_campaign: attr.utm_campaign || '',
-      city: attr.city || attr.region || '',
-      persona: attr.persona || '',
+      action: 'extract',
+      history: aicHistory,
+      contact: {
+        full_name: name,
+        email: email,
+        phone: phone,
+        source_url: window.location.href,
+        ai_chat_intent: intentSummary || '',
+      },
+      attribution: {
+        session_id: attr.session_id || '',
+        utm_source: attr.utm_source || '',
+        utm_medium: attr.utm_medium || '',
+        utm_campaign: attr.utm_campaign || '',
+        city: attr.city || attr.region || '',
+        persona: attr.persona || '',
+      },
     };
 
     try {
-      await fetch(CHAT_WEBHOOK_URL, {
+      await fetch('/api/chat/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -2174,22 +2179,27 @@ No spam. No sequences. One conversation, on your terms.
     } catch (e) {}
 
     const payload = {
-      form_source: 'ai_chat',
-      full_name: name,
-      email: email,
-      phone: phone,
-      ai_chat_intent: intentSummary || '',
-      source_url: window.location.href,
-      session_id: attr.session_id || '',
-      utm_source: attr.utm_source || '',
-      utm_medium: attr.utm_medium || '',
-      utm_campaign: attr.utm_campaign || '',
-      city: attr.city || attr.region || '',
-      persona: attr.persona || '',
+      action: 'extract',
+      history: aicfHistory,
+      contact: {
+        full_name: name,
+        email: email,
+        phone: phone,
+        source_url: window.location.href,
+        ai_chat_intent: intentSummary || '',
+      },
+      attribution: {
+        session_id: attr.session_id || '',
+        utm_source: attr.utm_source || '',
+        utm_medium: attr.utm_medium || '',
+        utm_campaign: attr.utm_campaign || '',
+        city: attr.city || attr.region || '',
+        persona: attr.persona || '',
+      },
     };
 
     try {
-      await fetch(CHAT_WEBHOOK_URL_F, {
+      await fetch('/api/chat/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
