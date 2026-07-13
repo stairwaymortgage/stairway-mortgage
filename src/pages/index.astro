@@ -583,11 +583,50 @@ Get cash out
 
   resetBtn.addEventListener('click', resetConvo);
 
-  // Mic button placeholder (visual only for now)
-  micBtn.addEventListener('click', () => {
-    micBtn.classList.toggle('aic__icon-btn--active');
-    setTimeout(() => micBtn.classList.remove('aic__icon-btn--active'), 800);
-  });
+  // Mic — free browser speech-to-text (webkitSpeechRecognition). Transcribes
+  // into the input; the user reviews and sends manually. Hidden if unsupported.
+  (function initVoiceHero() {
+    var micBtn = document.querySelector('[data-mic]');
+    var input = document.querySelector('[data-input]');
+    if (!micBtn || !input) return;
+
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { micBtn.style.display = 'none'; return; } // unsupported -> hide
+
+    var recog = new SR();
+    recog.lang = 'en-US';
+    recog.interimResults = true;
+    recog.continuous = false;
+    var listening = false;
+    var baseText = '';
+
+    function setActive(on) {
+      listening = on;
+      micBtn.style.opacity = on ? '1' : '';
+      micBtn.style.color = on ? '#ff5a5a' : '';
+      micBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+
+    micBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (listening) { recog.stop(); return; }
+      baseText = input.value ? input.value.trim() + ' ' : '';
+      try { recog.start(); } catch (err) {}
+    });
+
+    recog.onstart = function () { setActive(true); };
+    recog.onend = function () { setActive(false); };
+    recog.onerror = function () { setActive(false); };
+
+    recog.onresult = function (event) {
+      var transcript = '';
+      for (var i = event.resultIndex; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript;
+      }
+      input.value = baseText + transcript;
+      input.focus();
+    };
+  })();
 
   // Input prefix shrinks when user focuses / types
   input.addEventListener('focus', () => { if (!conversationStarted) prefix.classList.add('aic__input-prefix--active'); });
@@ -2392,5 +2431,51 @@ No spam. No sequences. One conversation, on your terms.
     const r = e.target.closest('.aicf-reply');
     if (r && r.dataset.q) send(r.dataset.q);
   });
+
+  // Mic — free browser speech-to-text (webkitSpeechRecognition). Transcribes
+  // into the input; the user reviews and sends manually. Hidden if unsupported.
+  // No-ops safely if the floating mic/input aren't in the DOM.
+  (function initVoiceFloating() {
+    var micBtn = document.querySelector('[data-aicf-mic]');
+    var input = document.querySelector('[data-aicf-input]');
+    if (!micBtn || !input) return;
+
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { micBtn.style.display = 'none'; return; } // unsupported -> hide
+
+    var recog = new SR();
+    recog.lang = 'en-US';
+    recog.interimResults = true;
+    recog.continuous = false;
+    var listening = false;
+    var baseText = '';
+
+    function setActive(on) {
+      listening = on;
+      micBtn.style.opacity = on ? '1' : '';
+      micBtn.style.color = on ? '#ff5a5a' : '';
+      micBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+
+    micBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (listening) { recog.stop(); return; }
+      baseText = input.value ? input.value.trim() + ' ' : '';
+      try { recog.start(); } catch (err) {}
+    });
+
+    recog.onstart = function () { setActive(true); };
+    recog.onend = function () { setActive(false); };
+    recog.onerror = function () { setActive(false); };
+
+    recog.onresult = function (event) {
+      var transcript = '';
+      for (var i = event.resultIndex; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript;
+      }
+      input.value = baseText + transcript;
+      input.focus();
+    };
+  })();
 })();
 </script>
