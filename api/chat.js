@@ -345,7 +345,7 @@ export default async function handler(req, res) {
     // stream from Claude
     const stream = await anthropic.messages.stream({
       model: "claude-sonnet-5",
-      max_tokens: 1000,
+      max_tokens: 400,
       system: SYSTEM_PROMPT + "\n\nCONTEXT:\n" + context,
       messages: [...priorTurns, { role: "user", content: message }],
     });
