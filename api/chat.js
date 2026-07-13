@@ -209,6 +209,12 @@ export default async function handler(req, res) {
   if (req.method !== "POST")
     return res.status(405).json({ error: "Method not allowed" });
 
+  // Warmup ping — keeps this lambda hot without running embed/Claude/GHL.
+  if (req.body && req.body.message === "__warmup__") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    return res.status(200).json({ ok: true, warm: true });
+  }
+
   // --- structured extraction + GHL submit branch ---
   if (req.body && req.body.action === "extract") {
     try {
