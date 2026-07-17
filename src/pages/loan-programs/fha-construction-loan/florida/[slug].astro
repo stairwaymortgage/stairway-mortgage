@@ -1,0 +1,489 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import counties from '../../../../data/counties.json';
+import faqBank from '../../../../data/faq-fha.json';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FHA Construction Loan — Florida county template.
+// One file → 67 pages (getStaticPaths from counties.json).
+// Same proven engine as the USDA Phase-1 template; FHA story per fha-alachua-county-v1.html.
+// FHA builds everywhere — no map, no income cap, no service requirement, county seat INCLUDED.
+// Headless: wrapped by Layout.astro. CSS scoped .fha-county-scope.
+// FAQ rotation: seed "{County}-FHA", per-category seeded shuffle, caps from the Alachua
+// reference (61 total), merge vars from counties.json. Server-rendered <details> + FAQPage
+// JSON-LD with all entries. Zero unmerged {VARS} may ship.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function getStaticPaths() {
+  return (counties as any[]).map((county) => ({
+    params: { slug: county.slug },
+    props: { county },
+  }));
+}
+
+const { county } = Astro.props as { county: any };
+
+// ── deterministic PRNG (xmur3 seed → mulberry32) ─────────────────────────────
+function xmur3(str: string) {
+  let h = 1779033703 ^ str.length;
+  for (let i = 0; i < str.length; i++) {
+    h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+    h = (h << 13) | (h >>> 19);
+  }
+  return function () {
+    h = Math.imul(h ^ (h >>> 16), 2246822507);
+    h = Math.imul(h ^ (h >>> 13), 3266489909);
+    h ^= h >>> 16;
+    return h >>> 0;
+  };
+}
+function mulberry32(a: number) {
+  return function () {
+    a |= 0; a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function makeRand(seed: string) { const s = xmur3(seed); return mulberry32(s()); }
+function shuffle<T>(arr: T[], rand: () => number): T[] {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// ── helpers / merge-variable context ─────────────────────────────────────────
+const fmtMoney = (v: string) => {
+  const n = Number(String(v).replace(/[^0-9.]/g, ''));
+  return isNaN(n) || n === 0 ? '' : '$' + n.toLocaleString('en-US');
+};
+const firstUrl = (v: string) => (String(v || '').split(/[;,\s]+/).find(Boolean) || '').trim();
+const hostOf = (v: string) => {
+  const u = firstUrl(v);
+  if (!u) return '';
+  return u.replace(/^https?:\/\//i, '').replace(/^www\./i, '').replace(/\/.*$/, '');
+};
+
+const seat = county['County Seat'] || county.County;
+const cities: string[] = (county.cities_list && county.cities_list.length ? county.cities_list : [seat]);
+const usdaEligible = /eligible areas/i.test(county['USDA Status'] || '');
+const FHA = fmtMoney(county['2026 FHA Limit (1-unit)']) || '$541,287';
+
+const ctx = {
+  county: county.County,
+  seat,
+  fha: FHA,
+};
+
+function merge(text: string, tri: string[]): string {
+  return String(text)
+    .replace(/\{COUNTY\}/g, ctx.county)
+    .replace(/\{SEAT\}/g, ctx.seat)
+    .replace(/\{FHA\}/g, ctx.fha)
+    .replace(/\{CITY1\}/g, tri[0])
+    .replace(/\{CITY2\}/g, tri[1])
+    .replace(/\{CITY3\}/g, tri[2]);
+}
+const cityTriple = (i: number): string[] => {
+  const n = cities.length;
+  return [cities[(i * 3) % n], cities[(i * 3 + 1) % n], cities[(i * 3 + 2) % n]];
+};
+
+// ── FAQ engine ───────────────────────────────────────────────────────────────
+const CAT_ORDER = [
+  'Program Basics', 'Eligibility & Credit', 'Property, Land & Site',
+  'Construction & Builders', 'Fees, Money & Timing', 'Process, Docs & Underwriting', 'Comparisons',
+];
+const CAPS: Record<string, number> = {
+  'Program Basics': 7, 'Eligibility & Credit': 8, 'Property, Land & Site': 7,
+  'Construction & Builders': 18, 'Fees, Money & Timing': 8, 'Process, Docs & Underwriting': 8, 'Comparisons': 5,
+};
+
+const rand = makeRand(`${county.County}-FHA`);
+const primary = (faqBank as any[]).filter((r) => r.role === 'PRIMARY');
+const byCat: Record<string, any[]> = {};
+for (const r of primary) (byCat[r.cat] ||= []).push(r);
+
+let faqIndex = 0;
+const faqCats: { cat: string; items: { q: string; a: string }[] }[] = [];
+const faqFlat: { q: string; a: string }[] = [];
+for (const cat of CAT_ORDER) {
+  const pool = byCat[cat] || [];
+  const picked = shuffle(pool, rand).slice(0, CAPS[cat] || 0);
+  const items = picked.map((r) => {
+    const tri = cityTriple(faqIndex++);
+    const item = { q: merge(r.q, tri), a: merge(r.a, tri) };
+    faqFlat.push(item);
+    return item;
+  });
+  if (items.length) faqCats.push({ cat, items });
+}
+const faqTotal = faqFlat.length;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqFlat.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+// ── build + civic resource cards (8 + 9 = 17, per spec rule #10) ─────────────
+type Card = { type: string; title: string; desc: string; url: string; alt?: string };
+const pick = (...keys: string[]) => { for (const k of keys) { const u = firstUrl(county[k]); if (u) return county[k]; } return ''; };
+
+const buildCards: Card[] = [
+  { type: 'Permits & Inspections', title: 'Building Department', desc: `Permits, inspections, and fees for a new-construction home in ${county.County} County.`, url: pick('Building / Permitting Portal', 'Planning & Zoning Dept', 'County Government Website') },
+  { type: 'Planning & Zoning', title: 'Planning Department', desc: `Setbacks, land use, and what your lot allows.`, url: pick('Planning & Zoning Dept', 'Building / Permitting Portal', 'County Government Website') },
+  { type: 'Parcels & Values', title: 'Property Appraiser', desc: `Parcel search and property records for every lot in the county.`, url: pick('Property Appraiser', 'GIS / Parcel Map') },
+  { type: 'Maps', title: 'GIS / Parcel Viewer', desc: `Zoom to any parcel — boundaries, zoning, and flood layers.`, url: pick('GIS / Parcel Map', 'Property Appraiser') },
+  { type: 'Septic Permits', title: 'Health Department', desc: `OSTDS (septic) permitting for lots outside sewer service.`, url: pick('Health Dept (Septic Permits)') },
+  { type: 'Well Permits', title: 'Water Management District', desc: `Well permitting for rural parcels.`, url: pick('Water Mgmt District (Wells)') },
+  { type: 'Deeds & Records', title: 'Clerk of Court', desc: `Deed recording once your land purchase closes.`, url: pick('Clerk of Court / Deed Recording', 'County Government Website') },
+  { type: 'Utilities', title: 'Utilities Authority', desc: `Power and water service areas — or where well & septic take over.`, url: pick('Utilities Authority', 'County Government Website') },
+];
+
+const civicCards: Card[] = [
+  { type: 'Government', title: 'County Government', desc: "The county's official site — commissioners, departments, services.", url: pick('County Government Website') },
+  { type: 'Taxes', title: 'Tax Collector', desc: 'Property taxes, titles, and registrations for your new address.', url: pick('Tax Collector', 'County Government Website') },
+  { type: 'Families', title: 'School District', desc: 'Zoning and enrollment for your new neighborhood.', url: pick('School District') },
+  { type: 'Civic', title: 'Supervisor of Elections', desc: 'Update your registration at your new address.', url: pick('Supervisor of Elections') },
+  { type: 'Safety', title: "Sheriff's Office", desc: `Law enforcement for unincorporated ${county.County} County.`, url: pick("Sheriff's Office") },
+  { type: 'Business', title: 'Chamber of Commerce', desc: 'The local business network — including builders and trades.', url: pick('Chamber of Commerce') },
+  { type: 'Explore', title: 'Visitors Bureau', desc: 'What living here is actually like.', url: pick('Tourism / Visitors Bureau') },
+  { type: 'News', title: 'Local Newspaper', desc: "The county's news of record.", url: pick('Local Newspaper') },
+  { type: 'Reference', title: 'Wikipedia & County Facebook', desc: 'History, demographics, and the official county feed.', url: pick('Wikipedia Page'), alt: firstUrl(county['County Facebook']) },
+];
+
+// ── county grid (all 67; FHA works everywhere — no ineligible marks) ─────────
+const allCounties = (counties as any[]).map((c) => ({
+  name: c.County, slug: c.slug, current: c.slug === county.slug,
+}));
+
+// ── SEO ──────────────────────────────────────────────────────────────────────
+const pageTitle = `FHA Construction Loans in ${county.County} County, FL — Build Anywhere with 3.5% Down | Stairway Mortgage`;
+const pageDesc = `Build a new home anywhere in ${county.County} County with 3.5% down. FHA One-Time Close construction loans up to ${FHA} (2026) — no map, no income cap. NMLS #1072866.`;
+---
+
+<Layout title={pageTitle} description={pageDesc}>
+  <div class="fha-county-scope">
+
+    <!-- FHA CLUSTER BAR — sticky sub-nav, shared across the FHA cluster -->
+    <nav class="cluster-bar" aria-label="FHA loan guides"><div class="cluster-bar-inner"><span class="cluster-label">FHA Loans</span><a href="/loan-programs/fha-loan/">FHA Program Guide</a><a href="/loan-programs/fha-loan/credit-requirements/">Credit &amp; Down Payment</a><a href="/loan-programs/fha-loan/loan-limits/">FL Loan Limits</a><a href="/loan-programs/fha-loan/closing-cost-calculator/">Closing Cost Calculator</a><a href="/loan-programs/usda-loan/usda-vs-fha/">USDA · FHA · VA · Conv</a><a href="/loan-programs/fha-construction-loan/florida/" class="active">FL Counties</a></div></nav>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="container">
+        <span class="status-pill">Every Address Qualifies</span>
+        <h1>FHA Construction Loans in <span class="accent">{county.County} County</span> — Build Anywhere with 3.5% Down</h1>
+        <p class="lede">No eligibility map. No income cap. No military service required. The FHA One-Time Close builds a brand-new home at any address in {county.County} County — inside {seat}, where USDA can't reach, or out in the county's acreage country — with land, construction, and your permanent mortgage in one closing.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://stairwaymortgage.com/see-my-options">See My Options</a>
+          <a class="btn btn-secondary" href="https://stairwaymortgage.com/schedule-call">Talk to Our Team</a>
+        </div>
+        <p class="trust-line">Jim Blackburn · NMLS #1072866 · 7× Scotsman Guide Top Producer · $500M+ closed · (954) 993-1625</p>
+      </div>
+    </div>
+
+    <!-- STAT BAND -->
+    <div class="stats">
+      <div class="container">
+        <div class="stat-grid">
+          <div class="stat"><div class="num">3.5%</div><div class="lbl">Minimum Down</div><div class="note">On the total acquisition cost — and gift funds from family can cover all of it.</div></div>
+          <div class="stat"><div class="num">{FHA}</div><div class="lbl">2026 {county.County} County FHA Limit</div><div class="note">The maximum one-unit FHA loan amount here — set by HUD, county by county.</div></div>
+          <div class="stat"><div class="num">Anywhere</div><div class="lbl">In the County</div><div class="note">{seat} and every town around it — FHA has no geographic restriction.</div></div>
+          <div class="stat"><div class="num">1</div><div class="lbl">Closing · Start to Finish</div><div class="note">One-Time Close: no payments during construction, automatic conversion at completion.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY FACTS -->
+    <section class="highlights-section">
+      <div class="container">
+        <span class="eyebrow">Key Facts &amp; Highlights</span>
+        <h2>Key facts about the FHA construction loan <span class="accent">in {county.County} County</span></h2>
+        <ul class="highlights-list">
+          <li>FHA financing works at every address in {county.County} County — there is no eligibility map, no income limit, and no first-time buyer requirement. <span class="highlights-source">(<a href="https://www.hud.gov/program_offices/housing/sfh/ins/203b--df" target="_blank" rel="noopener">HUD's 203(b) program</a>)</span></li>
+          <li>The 2026 FHA loan limit for a one-unit home in {county.County} County is {FHA} — HUD sets limits county by county, and this figure is {county.County}'s. <span class="highlights-source">(<a href="https://entp.hud.gov/idapp/html/hicostlook.cfm" target="_blank" rel="noopener">HUD county loan limit lookup</a>)</span></li>
+          <li>Minimum down payment is 3.5% with qualifying credit — and 100% of it can be gift funds from family. <span class="highlights-source">(<a href="https://www.hud.gov/sites/dfiles/OCHCO/documents/4000.1hsgh.pdf" target="_blank" rel="noopener">HUD Handbook 4000.1, down payment &amp; gift rules</a>)</span></li>
+          <li>New construction is fully eligible through the FHA One-Time Close: land, site work, and construction in a single closing that converts to the permanent mortgage. <span class="highlights-source">(<a href="https://www.fdic.gov/consumer-resource-center/affordable-mortgage-lending-guide" target="_blank" rel="noopener">FDIC Affordable Mortgage Lending Guide</a>)</span></li>
+          <li>FHA's credit flexibility is the widest of the three government programs — qualifying is possible at scores conventional lending turns away. <span class="highlights-source">(<a href="https://www.hud.gov/sites/dfiles/OCHCO/documents/4000.1hsgh.pdf" target="_blank" rel="noopener">HUD 4000.1 credit analysis guidelines</a>)</span></li>
+          <li>{county.County} County permits, inspections, and septic approvals run through the county offices linked below — the same offices your builder will work with. <span class="highlights-source">(<a href={firstUrl(county['Building / Permitting Portal']) || firstUrl(county['County Government Website']) || 'https://entp.hud.gov/idapp/html/hicostlook.cfm'} target="_blank" rel="noopener">{county.County} County permitting</a>)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EVERY CITY / EVERY ADDRESS -->
+    <section>
+      <div class="container">
+        <span class="eyebrow">Every City. Every Address.</span>
+        <h2>FHA builds in <span class="accent">all of {county.County} County</span> — no map to check</h2>
+        <p class="section-lede">This is FHA's superpower here: USDA's eligibility lines exclude the urban core, and VA requires service history. FHA asks neither. Every community below — urban, suburban, or rural — qualifies at the same 3.5% down.</p>
+        <div class="card">
+          <div class="city-cloud">
+            {cities.map((c) => <span class="city-chip">{c}</span>)}
+          </div>
+          {usdaEligible
+            ? <p class="tier-note" style="margin-top:.9rem;">Building outside {seat} with a household income under the county limit? Compare the <a href={`/loan-programs/usda-construction-loan/florida/${county.slug}/`} style="color:var(--blue);text-decoration:underline;">$0-down USDA construction loan in {county.County} County</a> before you commit — dual-qualified buyers should price both.</p>
+            : <p class="tier-note" style="margin-top:.9rem;">{county.County} County has no USDA-eligible areas — but veterans can still build with $0 down. Compare the <a href="/loan-programs/va-construction-loan/" style="color:var(--blue);text-decoration:underline;">VA construction loan</a> if you have service eligibility.</p>}
+        </div>
+      </div>
+    </section>
+
+    <!-- MONEY MATH -->
+    <section style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+      <div class="container">
+        <span class="eyebrow">The Money Math</span>
+        <h2>What 3.5% down looks like on a <span class="accent">{county.County} County build</span></h2>
+        <p class="section-lede">Hypothetical acquisition costs (land + construction), the minimum investment beside each — all inside {county.County}'s {FHA} limit. Every scenario reviewed personally by Jim Blackburn, NMLS #1072866:</p>
+        <table class="va-compare cost">
+          <thead><tr><th>Total project cost</th><th>3.5% minimum down</th></tr></thead>
+          <tbody>
+            <tr><td>$300,000 — starter build near {cities[0]}</td><td>$10,500</td></tr>
+            <tr><td>$400,000 — family home outside {cities[Math.min(1, cities.length - 1)]}</td><td>$14,000</td></tr>
+            <tr class="va-key-row"><td>$500,000 — custom build, {cities[Math.min(2, cities.length - 1)]} area</td><td>$17,500</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.78rem;color:var(--ink-lighter);margin-top:.9rem;max-width:620px;margin-left:auto;margin-right:auto;">Every dollar can be gift funds. Seller/builder credits up to 6% can cover closing costs on top. Hypothetical figures — your Loan Estimate is the real document. Full worksheet on the <a href="/loan-programs/fha-loan/closing-cost-calculator/" style="color:var(--blue);">FHA Closing Cost Calculator</a>.</p>
+      </div>
+    </section>
+
+    <!-- TRIANGLE INTERLINK — cross-program → hubs -->
+    <section>
+      <div class="container">
+        <span class="eyebrow">Three Programs, One County</span>
+        <h2>Is FHA the right door for <span class="accent">your {county.County} build?</span></h2>
+        <p class="section-lede">{county.County} County builders have up to three government-backed paths. The honest comparison:</p>
+        <table class="va-compare">
+          <thead><tr><th>Factor</th><th>FHA</th><th>USDA</th><th>VA</th></tr></thead>
+          <tbody>
+            <tr><td>Down payment</td><td>3.5%</td><td>$0</td><td>$0</td></tr>
+            <tr class="va-key-row"><td>Where in {county.County} County</td><td>Anywhere — {seat} included</td><td>Eligible areas only (address check)</td><td>Anywhere</td></tr>
+            <tr><td>Income cap</td><td>None</td><td>Yes — county household limit</td><td>None</td></tr>
+            <tr><td>Who can use it</td><td>Anyone who qualifies</td><td>Anyone within the income limit</td><td>Eligible service members, veterans &amp; surviving spouses</td></tr>
+            <tr><td>2026 loan ceiling</td><td>{FHA} (county limit)</td><td>No set maximum (income-driven)</td><td>No limit with full entitlement</td></tr>
+            <tr><td>Credit flexibility</td><td>Widest of the three</td><td>GUS ~640 marker, manual possible</td><td>No official minimum</td></tr>
+          </tbody>
+        </table>
+        <div class="res-grid" style="margin-top:1.4rem;">
+          <div class="res-card"><span class="res-type">$0 Down · Rural &amp; Suburban</span><h3>USDA in {county.County} County</h3><p>Under the income limit and outside the urban core? USDA builds with nothing down.</p><a href="/loan-programs/usda-construction-loan/">USDA construction loans →</a></div>
+          <div class="res-card"><span class="res-type">$0 Down · Veterans</span><h3>VA construction loans</h3><p>Service-connected? Your benefit builds anywhere in the county with no down payment and no loan limit.</p><a href="/loan-programs/va-construction-loan/">VA construction loans →</a></div>
+          <div class="res-card"><span class="res-type">The Junction</span><h3>USDA · FHA · VA compared</h3><p>The full three-way comparison — fees, ratios, geography, and construction paths side by side.</p><a href="/loan-programs/usda-loan/usda-vs-fha/">Compare all three programs →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILD RESOURCES -->
+    <section style="background:var(--white);border-top:1px solid var(--border);">
+      <div class="container">
+        <span class="eyebrow">Build Resources</span>
+        <h2>{county.County} County offices <span class="accent">you'll actually use</span> during a build</h2>
+        <div class="res-grid">
+          {buildCards.map((c) => (
+            <div class="res-card">
+              <span class="res-type">{c.type}</span>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+              {firstUrl(c.url)
+                ? <a href={firstUrl(c.url)} target="_blank" rel="noopener">{hostOf(c.url)}</a>
+                : <span style="font-size:.8125rem;color:var(--ink-lighter);">Contact us for the current office link.</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTY DIRECTORY -->
+    <section>
+      <div class="container">
+        <span class="eyebrow">County Directory</span>
+        <h2>Settling into <span class="accent">{county.County} County</span> — every office in one place</h2>
+        <p class="section-lede">Beyond the build: the civic links every new {county.County} County homeowner ends up needing.</p>
+        <div class="res-grid">
+          {civicCards.map((c) => (
+            <div class="res-card">
+              <span class="res-type">{c.type}</span>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+              {firstUrl(c.url)
+                ? (c.alt
+                    ? <><a href={firstUrl(c.url)} target="_blank" rel="noopener">{c.type === 'Reference' ? 'Wikipedia' : hostOf(c.url)}</a> · <a href={c.alt} target="_blank" rel="noopener">Facebook</a></>
+                    : <a href={firstUrl(c.url)} target="_blank" rel="noopener">{hostOf(c.url)}</a>)
+                : <span style="font-size:.8125rem;color:var(--ink-lighter);">Contact us for the current office link.</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <div class="container">
+        <span class="eyebrow">Common Questions</span>
+        <h2>{county.County} County FHA construction loan <span class="accent">FAQ</span> — {faqTotal} answers from the guidelines</h2>
+        <p class="section-lede">Sourced from HUD Handbook 4000.1 and the One-Time Close program guides, localized to {county.County} County. Reviewed by Jim Blackburn, NMLS #1072866. Click any question.</p>
+        {faqCats.map((group) => (
+          <div class="faq-cat">
+            <h3>{group.cat}<span class="cnt">{group.items.length} Q</span></h3>
+            {group.items.map((it) => (
+              <details class="faq"><summary>{it.q}</summary><div class="ans">{it.a}</div></details>
+            ))}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section style="padding-top:1rem;">
+      <div class="container" style="text-align:center;">
+        <h2>Ready to build <span class="accent">anywhere in {county.County} County?</span></h2>
+        <p class="section-lede" style="margin:1rem auto 1.5rem;">Jim Blackburn (NMLS #1072866) — $500M+ closed, construction lending done daily. Straight answers on your lot, your budget, and which of the three programs actually fits.</p>
+        <div class="cta-row" style="justify-content:center;">
+          <a class="btn btn-primary" href="https://stairwaymortgage.com/see-my-options">See My Options</a>
+          <a class="btn btn-secondary" href="https://stairwaymortgage.com/schedule-call">Talk to Our Team</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- OTHER COUNTIES GRID -->
+    <div class="county-links">
+      <div class="container">
+        <h2>FHA Construction Loans by Florida County</h2>
+        <div class="grid">
+          {allCounties.map((c) => (
+            c.current
+              ? <span class="current">{c.name} County</span>
+              : <a href={`/loan-programs/fha-construction-loan/florida/${c.slug}/`}>{c.name} County</a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- FHA SUBFOOTER — sits ABOVE the site's main footer (Layout.astro provides licensing / NMLS #1660690 / EHO) -->
+    <div style="background:var(--paper-2);border-top:1px solid var(--border);padding:1.6rem 0;">
+      <div class="container">
+        <p style="font-size:.75rem;color:var(--ink-lighter);line-height:1.7;margin:0;">
+          FHA loan limits are set by HUD and subject to change. Program guidelines and fees are subject to change. This page is educational and is not a commitment to lend or a guarantee of approval. Down payment shown is the program minimum with qualifying credit.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</Layout>
+
+<style>
+  .fha-county-scope{
+    --ink:#0A0E1A; --ink-2:#1E2433; --ink-light:#4A5568; --ink-lighter:#6B7280;
+    --paper:#FAFAF7; --paper-2:#F4F4EE; --paper-3:#EDEDE5; --white:#FFFFFF;
+    --blue:#1845D6; --blue-deep:#0F2EA0; --blue-soft:#E8EEFF; --blue-tint:#F2F5FF;
+    --green:#2E9E2E; --green-soft:#E9F7E9; --rust:#8B2C2C;
+    --border:#E5E5DE; --border-strong:#D4D4C8;
+    --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+    --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
+    font-family:var(--sans);font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;
+  }
+  .fha-county-scope *,.fha-county-scope *::before,.fha-county-scope *::after{box-sizing:border-box;margin:0;padding:0;}
+  .fha-county-scope a{color:inherit;text-decoration:none;}
+  .fha-county-scope .container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+  .fha-county-scope .eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500;display:inline-block;}
+  .fha-county-scope h1,.fha-county-scope h2,.fha-county-scope h3{font-family:var(--serif);font-weight:600;line-height:1.15;color:var(--ink);}
+  .fha-county-scope .accent{font-family:var(--serif);font-style:normal;color:var(--blue);}
+
+  /* Hero */
+  .fha-county-scope .hero{padding:5rem 0 3.5rem;background:linear-gradient(180deg,var(--blue-tint) 0%,var(--paper) 100%);border-bottom:1px solid var(--border);}
+  .fha-county-scope .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);margin:.9rem 0 1.1rem;max-width:820px;}
+  .fha-county-scope .hero p.lede{font-size:1.1875rem;color:var(--ink-light);max-width:680px;margin-bottom:1.8rem;}
+  .fha-county-scope .status-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--blue-soft);border:1px solid #BBCBF5;color:var(--blue-deep);border-radius:999px;padding:.4rem 1rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+  .fha-county-scope .status-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);}
+  .fha-county-scope .cta-row{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem;}
+  .fha-county-scope .btn{display:inline-block;padding:.85rem 1.7rem;border-radius:8px;font-weight:600;font-size:1rem;transition:transform .15s ease;}
+  .fha-county-scope .btn:hover{transform:translateY(-1px);}
+  .fha-county-scope .btn-primary{background:var(--blue);color:var(--white);}
+  .fha-county-scope .btn-secondary{background:var(--white);color:var(--ink);border:1.5px solid var(--border-strong);}
+  .fha-county-scope .trust-line{margin-top:1.4rem;font-size:.875rem;color:var(--ink-lighter);}
+
+  /* Stat band */
+  .fha-county-scope .stats{padding:3rem 0;background:var(--white);border-bottom:1px solid var(--border);}
+  .fha-county-scope .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;}
+  .fha-county-scope .stat{background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.5rem;}
+  .fha-county-scope .stat .num{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--ink);}
+  .fha-county-scope .stat .lbl{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-lighter);margin-top:.35rem;}
+  .fha-county-scope .stat .note{font-size:.8125rem;color:var(--ink-light);margin-top:.5rem;}
+
+  /* Sections */
+  .fha-county-scope section{padding:3.5rem 0;}
+  .fha-county-scope section h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin:.7rem 0 1rem;}
+  .fha-county-scope .section-lede{color:var(--ink-light);max-width:640px;margin-bottom:2rem;}
+  .fha-county-scope .card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.8rem;}
+  .fha-county-scope .card h3{font-size:1.25rem;margin-bottom:.7rem;}
+  .fha-county-scope .card p{color:var(--ink-light);font-size:.9688rem;}
+
+  /* Cities */
+  .fha-county-scope .city-cloud{display:flex;flex-wrap:wrap;gap:.6rem;}
+  .fha-county-scope .city-chip{background:var(--white);border:1px solid var(--border-strong);border-radius:999px;padding:.35rem 1rem;font-size:.875rem;color:var(--ink-2);}
+
+  .fha-county-scope .highlights-section{background:var(--white);border-bottom:1px solid var(--border);padding:3.2rem 0;}
+  .fha-county-scope .highlights-list{list-style:none;max-width:840px;}
+  .fha-county-scope .highlights-list li{padding:.85rem 0 .85rem 2rem;position:relative;border-bottom:1px dashed var(--border);font-size:.9688rem;color:var(--ink-2);}
+  .fha-county-scope .highlights-list li:last-child{border-bottom:0;}
+  .fha-county-scope .highlights-list li::before{content:"—";position:absolute;left:0;color:var(--blue);font-weight:700;}
+  .fha-county-scope .highlights-source{font-size:.8125rem;color:var(--ink-lighter);}
+  .fha-county-scope .highlights-source a{color:var(--blue);text-decoration:underline;}
+  .fha-county-scope .tier-note{font-size:.8125rem;color:var(--ink-lighter);margin-top:.55rem;}
+
+  .fha-county-scope .res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1.5rem;}
+  .fha-county-scope .res-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.3rem;}
+  .fha-county-scope .res-card .res-type{font-family:var(--mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:600;}
+  .fha-county-scope .res-card h3{font-size:1rem;font-family:var(--sans);font-weight:600;margin:.4rem 0 .3rem;}
+  .fha-county-scope .res-card p{font-size:.8125rem;color:var(--ink-light);}
+  .fha-county-scope .res-card a{color:var(--blue);font-size:.8125rem;font-weight:600;text-decoration:underline;}
+  .fha-county-scope .county-links{background:var(--paper-2);border-top:1px solid var(--border);padding:2.6rem 0 2.2rem;}
+  .fha-county-scope .county-links h2{font-size:1.05rem;font-family:var(--sans);font-weight:600;margin-bottom:1rem;color:var(--ink-2);}
+  .fha-county-scope .county-links .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.3rem .9rem;}
+  .fha-county-scope .county-links a{font-size:.8125rem;color:var(--ink-light);padding:.18rem 0;display:block;}
+  .fha-county-scope .county-links a:hover{color:var(--blue);text-decoration:underline;}
+  .fha-county-scope .county-links .current{font-weight:700;color:var(--ink);}
+
+  /* cluster bar (sticky sub-navigation) */
+  .fha-county-scope .cluster-bar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(10,14,26,.05);}
+  .fha-county-scope .cluster-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:.35rem;padding:.55rem 1.5rem;overflow-x:auto;scrollbar-width:none;}
+  .fha-county-scope .cluster-bar-inner::-webkit-scrollbar{display:none;}
+  .fha-county-scope .cluster-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.35rem;font-weight:600;}
+  .fha-county-scope .cluster-bar a{white-space:nowrap;font-size:.76rem;font-weight:500;color:var(--ink-2);text-decoration:none;padding:.36rem .62rem;border-radius:999px;transition:background .15s;}
+  .fha-county-scope .cluster-bar a:hover{background:var(--paper-2);color:var(--ink);}
+  .fha-county-scope .cluster-bar a.active{background:var(--blue);color:#fff;font-weight:600;}
+
+  .fha-county-scope .va-compare{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);
+    border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:.92rem;
+    box-shadow:0 1px 10px rgba(10,14,26,.05);}
+  .fha-county-scope .va-compare th,.fha-county-scope .va-compare td{padding:.9rem 1.15rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--border);}
+  .fha-county-scope .va-compare thead th{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;
+    color:#fff;background:var(--ink);border-bottom:2px solid var(--ink);}
+  .fha-county-scope .va-compare tbody tr:nth-child(even) td{background:#FBFBF8;}
+  .fha-county-scope .va-compare tbody tr:last-child td{border-bottom:none;}
+  .fha-county-scope .va-compare td:first-child{font-weight:600;color:var(--ink-2);width:26%;}
+  .fha-county-scope .va-compare.cost{max-width:620px;margin-left:auto;margin-right:auto;}
+  .fha-county-scope .va-compare.cost td:last-child,.fha-county-scope .va-compare.cost th:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;width:1%;padding-left:1.6rem;}
+  .fha-county-scope .va-compare.cost td:first-child{width:auto;font-weight:500;}
+  .fha-county-scope .va-key-row td{background:#F0F5FF !important;}
+  @media(max-width:720px){.fha-county-scope .va-compare{display:block;overflow-x:auto;}}
+
+  .fha-county-scope .faq-cat{margin-top:2.2rem;}
+  .fha-county-scope .faq-cat h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:.9rem;color:var(--ink);}
+  .fha-county-scope .faq-cat h3 .cnt{font-family:var(--mono);font-size:.7rem;color:var(--blue);vertical-align:middle;margin-left:.5rem;}
+  .fha-county-scope details.faq{background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:.55rem;overflow:hidden;}
+  .fha-county-scope details.faq summary{cursor:pointer;padding:.85rem 1.1rem;font-weight:600;color:var(--ink-2);list-style:none;display:flex;justify-content:space-between;gap:1rem;font-size:.94rem;}
+  .fha-county-scope details.faq summary::-webkit-details-marker{display:none;}
+  .fha-county-scope details.faq summary::after{content:'+';font-family:var(--mono);color:var(--blue);font-weight:600;}
+  .fha-county-scope details.faq[open] summary::after{content:'–';}
+  .fha-county-scope details.faq[open] summary{border-bottom:1px solid var(--border);}
+  .fha-county-scope details.faq .ans{padding:.9rem 1.1rem;font-size:.9rem;color:var(--ink-light);line-height:1.65;}
+</style>
