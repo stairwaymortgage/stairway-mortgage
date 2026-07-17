@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PostSidebar from '../../components/PostSidebar.astro';
+import counties from '../../data/counties.json';
 const productSchema={"@context": "https://schema.org", "@type": ["FinancialProduct", "Service"], "name": "Conventional Construction Loan", "description": "Finance new construction with conventional terms \u2014 land, build, and permanent mortgage.", "provider": {"@type": "Organization", "name": "Stairway Mortgage"}, "areaServed": "US"};
 const faqSchema={"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How are funds disbursed during construction?", "acceptedAnswer": {"@type": "Answer", "text": "In draws tied to construction milestones, so you pay interest only on what's been drawn, not the full loan amount."}}, {"@type": "Question", "name": "Is this a one-time or two-time close?", "acceptedAnswer": {"@type": "Answer", "text": "Both structures exist. A one-time close combines construction and permanent financing in a single closing; a two-time close separates them. We can compare which fits your project."}}, {"@type": "Question", "name": "What down payment is needed?", "acceptedAnswer": {"@type": "Answer", "text": "Conventional construction loans typically require a meaningful down payment; the exact amount varies by lender and project. We'll give you specifics for your scenario."}}]};
 const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stairwaymortgage.com/"}, {"@type": "ListItem", "position": 2, "name": "Loan Programs", "item": "https://stairwaymortgage.com/loan-programs/"}, {"@type": "ListItem", "position": 3, "name": "Conventional Construction Loan"}]};
@@ -10,6 +11,15 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <nav class="cluster-bar" aria-label="Construction loan programs">
+    <div class="cluster-bar-inner">
+      <span class="cluster-label">Conventional Construction</span>
+      <a href="/loan-programs/conventional-loan/">Conventional Program Guide</a>
+      <a href="/loan-programs/construction-loan/">← All Construction Loans</a>
+      <a href="/loan-programs/usda-loan/usda-vs-fha/">USDA · FHA · VA · Conv</a>
+      <a href="#fl-counties" class="active">FL Counties</a>
+    </div>
+  </nav>
   <nav class="container-page lp-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/loan-programs/">Loan Programs</a> <span>/</span> <span>Conventional Construction Loan</span></nav>
   <header class="container-prose lp-header">
     <span class="eyebrow eyebrow-blue mb-5">Loan Program</span>
@@ -22,6 +32,30 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
 
     <PostSidebar />
   </div>
+
+  <section class="county-links" id="fl-counties" aria-label="Conventional construction loans by Florida county">
+    <div class="hub-wrap">
+      <h2>Conventional Construction Loans by Florida County</h2>
+      <p class="county-intro">5% down common, the highest county limits, and PMI that cancels — every Florida county has its own conventional construction guide, with the county conforming limit, local offices, and builders. Guided by Jim Blackburn · <span class="mono">NMLS #1072866</span>.</p>
+      <div class="grid">
+        {counties.map((c) => (
+          <a href={`/loan-programs/conventional-construction-loan/florida/${c.slug}/`}>{c.County}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="hub-cross">
+    <div class="hub-wrap">
+      <h2>Not sure conventional is <span class="accent">your program?</span></h2>
+      <p>Jim Blackburn (NMLS #1072866) prices all four construction paths on your actual numbers — the strongest one wins, every time.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://stairwaymortgage.com/see-my-options">See My Options</a>
+        <a class="btn-outline" href="/loan-programs/construction-loan/">Compare All Four Programs →</a>
+      </div>
+    </div>
+  </section>
+
   <div class="container-prose"><p class="lp-compliance mono">This page is for educational purposes and is not a commitment to lend or an offer of a specific rate. Loan terms, rates, and qualification depend on your individual circumstances and are subject to underwriting approval. Stairway Mortgage is a division of NEXA Mortgage LLC.</p></div>
   <section class="section-tight lp-final-cta"><div class="container-prose"><div class="card lp-final-cta__card">
     <h2 class="display-md">Ready to explore this program?</h2>
@@ -47,4 +81,27 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
   .lp-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
   .lp-compliance { font-size:11px; line-height:1.6; color:var(--color-mute); padding:1.5rem 0; border-top:1px solid var(--color-bone); margin-top:2rem; }
   .lp-final-cta__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
+
+  /* Phase 5 hub additions: cluster bar + county grid + cross-sell */
+  .cluster-bar { position:sticky; top:0; z-index:50; background:var(--white); border-bottom:1px solid var(--border); box-shadow:0 1px 8px rgba(10,14,26,.05); }
+  .cluster-bar-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:.35rem; padding:.55rem 1.5rem; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .cluster-bar-inner::-webkit-scrollbar { display:none; }
+  .cluster-label { flex:0 0 auto; font-family:var(--mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--blue); white-space:nowrap; padding-right:.6rem; border-right:1px solid var(--border); margin-right:.35rem; font-weight:600; }
+  .cluster-bar a { flex:0 0 auto; white-space:nowrap; font-size:.76rem; font-weight:500; color:var(--ink-2); text-decoration:none; padding:.36rem .62rem; border-radius:999px; transition:background .15s; }
+  .cluster-bar a:hover { background:var(--paper-2); color:var(--ink); }
+  .cluster-bar a.active { background:var(--blue); color:#fff; font-weight:600; }
+  .hub-wrap { max-width:1100px; margin:0 auto; padding-inline:clamp(1.25rem,4vw,2.5rem); }
+  .county-links { background:var(--paper-2); border-top:1px solid var(--border); padding:2.6rem 0 2.2rem; margin-top:3rem; }
+  .county-links h2 { font-family:var(--serif); font-size:1.2rem; font-weight:600; margin-bottom:.35rem; color:var(--ink); }
+  .county-links .county-intro { font-size:.9rem; color:var(--ink-light); margin-bottom:1.2rem; max-width:640px; }
+  .county-links .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:.3rem .9rem; }
+  .county-links .grid a { font-size:.8125rem; color:var(--ink-light); padding:.18rem 0; display:block; text-decoration:none; }
+  .county-links .grid a:hover { color:var(--blue); text-decoration:underline; }
+  .hub-cross { padding:3rem 0 1rem; text-align:center; }
+  .hub-cross h2 { font-family:var(--serif); font-weight:600; font-size:clamp(1.4rem,3vw,1.9rem); margin-bottom:.6rem; }
+  .hub-cross .accent { color:var(--blue); }
+  .hub-cross p { color:var(--ink-light); max-width:560px; margin:0 auto 1.3rem; font-size:.95rem; }
+  .hub-cross .cta-row { display:flex; gap:.9rem; flex-wrap:wrap; justify-content:center; }
+  .hub-cross .btn-primary { display:inline-block; padding:.85rem 1.7rem; border-radius:8px; font-weight:600; background:var(--blue); color:#fff; text-decoration:none; }
+  .hub-cross .btn-outline { display:inline-block; padding:.85rem 1.7rem; border-radius:8px; font-weight:600; background:var(--white); color:var(--ink); border:1.5px solid var(--border-strong); text-decoration:none; }
 </style>

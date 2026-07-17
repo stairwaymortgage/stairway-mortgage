@@ -454,10 +454,10 @@ const pageDesc = `Build a new home anywhere in ${county.County} County with 3.5%
 
   /* cluster bar (sticky sub-navigation) */
   .fha-county-scope .cluster-bar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(10,14,26,.05);}
-  .fha-county-scope .cluster-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:.35rem;padding:.55rem 1.5rem;overflow-x:auto;scrollbar-width:none;}
+  .fha-county-scope .cluster-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:.35rem;padding:.55rem 1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
   .fha-county-scope .cluster-bar-inner::-webkit-scrollbar{display:none;}
-  .fha-county-scope .cluster-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.35rem;font-weight:600;}
-  .fha-county-scope .cluster-bar a{white-space:nowrap;font-size:.76rem;font-weight:500;color:var(--ink-2);text-decoration:none;padding:.36rem .62rem;border-radius:999px;transition:background .15s;}
+  .fha-county-scope .cluster-label{flex:0 0 auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.35rem;font-weight:600;}
+  .fha-county-scope .cluster-bar a{flex:0 0 auto;white-space:nowrap;font-size:.76rem;font-weight:500;color:var(--ink-2);text-decoration:none;padding:.36rem .62rem;border-radius:999px;transition:background .15s;}
   .fha-county-scope .cluster-bar a:hover{background:var(--paper-2);color:var(--ink);}
   .fha-county-scope .cluster-bar a.active{background:var(--blue);color:#fff;font-weight:600;}
 
