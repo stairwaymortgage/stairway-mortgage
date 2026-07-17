@@ -1,0 +1,1754 @@
+[
+ {
+  "cat": "Comparisons",
+  "role": "PRIMARY",
+  "q": "Conventional vs FHA construction loan in {COUNTY} County \u2014 which fits me?",
+  "a": "FHA takes 3.5% down with flexible credit but carries mortgage insurance that typically lasts the life of the loan. Conventional starts at 3\u20135% down, allows second homes and investment builds, and its PMI cancels as equity grows. Stronger credit and any land equity usually tip the math conventional in {COUNTY} County. We price both side by side and let the numbers decide."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "PRIMARY",
+  "q": "Conventional vs USDA construction loan in {COUNTY} County \u2014 how do I choose?",
+  "a": "USDA One-Time Close offers $0 down but requires an eligible rural address and household income under the county limit. Conventional works at any {COUNTY} County address with no income cap, allows second homes and investments, and its PMI cancels. Rural site plus moderate income? USDA is hard to beat. Otherwise conventional carries the day. Dual-eligible families should see both priced together."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "PRIMARY",
+  "q": "Conventional vs VA construction \u2014 what's the difference in {COUNTY} County?",
+  "a": "VA is exclusively for eligible veterans and service members: $0 down and no monthly mortgage insurance, an unbeatable combination when it applies. Conventional is open to everyone and adds second-home and investment builds VA doesn't cover. Veterans in {COUNTY} County should almost always look at VA first \u2014 and we'll show conventional beside it so the choice is proven, not assumed."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "PRIMARY",
+  "q": "New conventional construction loan vs HomeStyle Renovation in {COUNTY} County \u2014 which do I need?",
+  "a": "Ground-up on vacant land is construction-to-permanent territory. Buying or owning an existing {COUNTY} County home that needs transformation \u2014 additions, gut remodel, hurricane hardening \u2014 is HomeStyle Renovation, one loan covering purchase-plus-rehab on the after-improved value. Tear-down-and-rebuild scenarios can go either way; we structure whichever fits the project."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "PRIMARY",
+  "q": "What happens if my project cost exceeds the conforming limit in {COUNTY} County on a conventional construction loan?",
+  "a": "Above {CONF} (the 2026 one-unit limit in {COUNTY} County), the loan becomes jumbo construction \u2014 still very financeable, with larger down payments and full-documentation underwriting. Sometimes trimming the budget under the limit or applying more land equity keeps you conforming. We model both structures so you choose with the full picture."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "PRIMARY",
+  "q": "Building vs buying an existing home in {COUNTY} County \u2014 how does financing compare on a conventional construction loan?",
+  "a": "Financing effort is nearly identical with a One-Time Close \u2014 one approval, one closing, just like a purchase. Building adds the builder package and a longer runway but delivers new-code construction, current wind mitigation (real insurance savings in Florida), zero deferred maintenance, and exactly the floor plan you want. With {COUNTY} County resale inventory aging, the build math deserves a genuine look."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "VARIANT B",
+  "q": "Should I build with FHA or conventional in {COUNTY} County?",
+  "a": "FHA favors thinner credit and minimal cash; conventional wins on cancellable PMI, occupancy flexibility, and land-equity leverage. Around {CITY1} and {CITY2}, dual-qualified buyers usually see the long-term math favor conventional \u2014 but we run both, every time."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "VARIANT B",
+  "q": "Is USDA or conventional the right construction loan for me in {COUNTY} County?",
+  "a": "USDA: $0 down, rural map, income cap. Conventional: any address, any income, cancellable PMI, investor-friendly. If your {COUNTY} County site is USDA-eligible and income fits, compare both \u2014 the answer is math, not loyalty."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "VARIANT B",
+  "q": "I'm a veteran \u2014 should I still consider conventional construction in {COUNTY} County?",
+  "a": "Compare both: VA's $0 down and no monthly MI is formidable for a primary build, while conventional covers investment and second-home projects VA can't. {COUNTY} County veterans get both quotes from us as a rule."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "VARIANT B",
+  "q": "Should I renovate with HomeStyle or build new in {COUNTY} County on a conventional construction loan?",
+  "a": "Vacant land: construction loan. Existing structure worth saving: HomeStyle Renovation financing purchase and rehab together against after-improved value. Bring us the {COUNTY} County property and we'll match the tool to the job."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "VARIANT B",
+  "q": "Do jumbo construction loans exist for larger {COUNTY} County builds on a conventional construction loan?",
+  "a": "Yes \u2014 projects above the {CONF} conforming limit move to jumbo programs with stiffer down-payment and documentation standards. Sometimes budget or equity adjustments keep you conforming; we run both paths."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "VARIANT B",
+  "q": "Is it harder to finance a build than a purchase in {COUNTY} County on a conventional construction loan?",
+  "a": "Barely \u2014 single-close construction mirrors a purchase: one approval, one closing, plus builder paperwork we manage. What you gain is new-code construction and insurance-friendly wind ratings that aging {COUNTY} County resales can't match."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "VARIANT C",
+  "q": "Conventional vs FHA construction loan in {COUNTY} County \u2014 which fits me?",
+  "a": "FHA takes 3.5% down at a 650 score but carries mortgage insurance that typically lasts the life of the loan. Conventional takes 10% down at 680 \u2014 with cancellable PMI, second-home eligibility, and up to six draws. Stronger credit and more down usually favors Conventional; we price both side by side. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "VARIANT C",
+  "q": "Conventional vs USDA construction loan in {COUNTY} County \u2014 what's the difference?",
+  "a": "USDA offers $0 down but requires an eligible rural address and household income under the county limit. Conventional works on any eligible lot in {COUNTY} County with no income cap \u2014 and it's the only one of the two that allows second homes. Dual-eligible? The math decides."
+ },
+ {
+  "cat": "Comparisons",
+  "role": "VARIANT C",
+  "q": "Conventional vs VA construction loan in {COUNTY} County \u2014 how do I choose?",
+  "a": "If you have VA eligibility, VA usually leads: $0 down and no monthly mortgage insurance. Conventional wins when the build is a second home \u2014 something VA doesn't finance \u2014 or when preserving VA entitlement matters. Veterans around {SEAT} deserve both quotes before deciding."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What is a conventional One-Time Close construction loan in {COUNTY} County?",
+  "a": "It's one loan that covers buying the land, building the home, and your permanent mortgage \u2014 with a single closing before the first shovel hits dirt. Fannie Mae calls it single-closing construction-to-permanent; Freddie Mac calls it One-Time Close. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 it means one approval, one set of closing costs, and no second qualification after the build."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How much do I need down for a conventional construction loan in {COUNTY} County?",
+  "a": "As little as 5% down on a primary residence in most cases, and qualified first-time buyers may go to 3% down (97% LTV) on a fixed-rate single-close build. Second homes start at 10% down and investment builds at 15%. In {COUNTY} County, land equity you already hold can count toward that requirement."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "I already own my lot in {COUNTY} County \u2014 does that help my down payment on a conventional construction loan?",
+  "a": "Yes, significantly. The equity in your land counts toward your down payment on a conventional construction loan. And if you've owned the lot for 12 months or more before closing, Fannie Mae lets the loan be based on the as-completed appraised value rather than your cost \u2014 which often means little to no cash needed at closing on a {COUNTY} County build."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Do I make mortgage payments while my home is being built in {COUNTY} County on a conventional construction loan?",
+  "a": "During construction you typically make interest-only payments on the funds drawn so far \u2014 not the full mortgage payment. Some structures let interest accrue into the loan instead. Full principal-and-interest payments begin once the home is complete and the loan converts to permanent financing. We'll walk you through how your {COUNTY} County build would be structured."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How many closings are there with a conventional One-Time Close in {COUNTY} County?",
+  "a": "Exactly one. You sign the permanent note and security instrument at the start, the construction terms ride along as an addendum, and when the home is done the loan converts automatically or through a simple modification \u2014 no second closing, no second set of fees. That's the whole point of One-Time Close in {COUNTY} County."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What's the difference between single-close and two-close construction financing in {COUNTY} County on a conventional construction loan?",
+  "a": "Single-close: one loan, one closing, terms set before construction, no requalifying after the build. Two-close: a short-term construction loan first, then a completely separate permanent mortgage \u2014 two closings, two sets of costs, and you must qualify again at the end. Most {COUNTY} County families building near {CITY1} or {CITY2} choose single-close for the certainty."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Does my builder have to be approved for a conventional construction loan in {COUNTY} County?",
+  "a": "Yes \u2014 your builder must be licensed, insured, and registered with our construction partner before funds can flow. It's a straightforward package: license, insurance certificates, references, and financials. Most established {COUNTY} County builders complete it quickly, and we handle the coordination."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can I act as my own general contractor on a conventional build in {COUNTY} County?",
+  "a": "Generally no \u2014 conventional construction programs require a licensed, registered general contractor to run the build. Self-builds add risk that most investors won't purchase. If you're a licensed GC yourself building your own home, ask us \u2014 limited exceptions exist. Otherwise, hire a registered {COUNTY} County builder and stay involved as the owner."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How long can construction take on a conventional One-Time Close in {COUNTY} County?",
+  "a": "Construction periods commonly run 12 months, with some programs allowing up to 18 for larger projects. Your builder commits to a completion schedule in the construction contract before closing. Typical {COUNTY} County single-family builds around {CITY1} finish well inside the window."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What happens if my build runs past the deadline in {COUNTY} County on a conventional construction loan?",
+  "a": "Extensions exist. If weather, materials, or labor push a {COUNTY} County build past the construction period, the lender can typically extend the term \u2014 sometimes with a fee. The key is communicating early: a builder who flags a delay at month eight is a routine extension; silence until the deadline is a problem. We stay on top of it with you."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What can be rolled into a conventional construction loan in {COUNTY} County?",
+  "a": "The land purchase or lot payoff, hard construction costs, site prep, permits, builder fees, a contingency reserve, closing costs on a refinance structure, and often the interest that accrues during construction. The goal is one loan carrying the whole {COUNTY} County project so you're not writing separate checks along the way."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What is a contingency reserve on a conventional construction loan in {COUNTY} County?",
+  "a": "It's a cushion \u2014 commonly 5\u201310% of construction costs \u2014 set aside inside the loan for surprises: rock under the slab, a materials price jump, a code change. If your {COUNTY} County build never needs it, unused contingency typically pays down the loan balance. It's protection, not an extra cost."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How do construction draws work in {COUNTY} County on a conventional construction loan?",
+  "a": "Your builder completes a stage \u2014 foundation, framing, dry-in \u2014 and requests a draw. An inspector verifies the work is actually done, then funds are released for that stage. It repeats through completion. The draw schedule is agreed before closing, so everyone on your {COUNTY} County build knows exactly when money moves."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Who inspects the home during construction in {COUNTY} County on a conventional construction loan?",
+  "a": "Two tracks: the county's own building inspectors enforce code at each permit stage, and the lender's inspector verifies completed work before each draw is released. On a {COUNTY} County build you also get the appraiser's final inspection confirming the home matches the plans it was valued on. Multiple sets of professional eyes, none of them the builder's."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "When does my first full mortgage payment start in {COUNTY} County on a conventional construction loan?",
+  "a": "After the home is complete and the loan converts to permanent financing. During the build you're typically paying interest only on drawn funds; once your {COUNTY} County home gets its certificate of occupancy and the conversion happens, regular principal-and-interest payments begin \u2014 usually the first of the month after conversion."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can I build a manufactured home with a conventional construction loan in {COUNTY} County?",
+  "a": "Yes. A new manufactured home that has never been attached to a foundation can be financed with a conventional construction-to-permanent loan, covering the home purchase, foundation, and site work. Fannie Mae's MH Advantage program even allows up to 97% financing on qualifying homes. Underwriting must run through the automated systems, and we handle that on {COUNTY} County placements."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What's the difference between modular and manufactured for conventional loans in {COUNTY} County?",
+  "a": "Modular homes are built in sections, assembled on-site, and meet the same local building codes as stick-built houses \u2014 conventional lending treats them exactly like site-built homes. Manufactured homes are built to the federal HUD code on a permanent chassis and follow their own guideline set with a few extra rules. Both can be financed in {COUNTY} County; the paperwork path just differs."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can I build a barndominium with conventional financing in {COUNTY} County?",
+  "a": "Often yes \u2014 the keys are that it's built to residential code by a licensed builder, permitted as a dwelling, and the appraiser can find comparable sales. Barndos have gone mainstream, and comps in many {COUNTY} County markets now support them. We review the plans and the comp picture before you commit."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can I build a duplex or multi-unit with a conventional construction loan in {COUNTY} County?",
+  "a": "Yes \u2014 conventional construction-to-permanent financing covers 1\u20134 unit properties. A duplex you'll live in can be built with as little as 15% down under standard eligibility, and living in one unit while renting the others is a proven {COUNTY} County wealth-building play. Investment-only multi-unit builds work too, with larger down payments."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How is a home that doesn't exist yet appraised in {COUNTY} County on a conventional construction loan?",
+  "a": "From the plans. The appraiser reviews your blueprints, specifications, and cost breakdown, then values the home 'subject to completion' using comparable finished sales in {COUNTY} County. That as-completed value is what the loan is built on. A final inspection after construction confirms the home matches what was appraised."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What if the appraisal comes in below my total project cost in {COUNTY} County on a conventional construction loan?",
+  "a": "The loan gets sized on the lower number, so the gap becomes your responsibility \u2014 cover it in cash, trim the budget, or renegotiate with the builder. This is exactly why we review {COUNTY} County comps before you finalize plans: catching a value gap at the design stage costs nothing; catching it at appraisal costs real money."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Is my financing protected during the months of construction in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 that's the core advantage of a One-Time Close. Your permanent loan terms are established at closing, before ground breaks, and they carry through the entire build. Whatever the market does over the following months, your {COUNTY} County financing is already settled. Two-close structures can't promise that."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What happens when construction is finished in {COUNTY} County on a conventional construction loan?",
+  "a": "Three steps: final inspection confirms the home matches the appraised plans, the certificate of occupancy is issued, and the loan converts to permanent financing \u2014 automatically or via a simple modification agreement. Then you move in and regular payments begin. No second closing, no requalifying, no drama in {COUNTY} County."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Does my builder have to warranty the home in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes. Florida law implies warranties of fitness and workmanship on new construction, and your construction contract should spell out express warranty terms \u2014 commonly one year on workmanship, two on systems, and longer structural coverage. Many {COUNTY} County builders also carry third-party structural warranty programs. We make sure warranty terms are in the contract before closing."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Do I have to own land before applying for a conventional construction loan in {COUNTY} County?",
+  "a": "No \u2014 the land purchase can be part of the same loan. If you've found a {COUNTY} County lot near {CITY1} or {CITY2}, the single-close can buy it and fund the build in one transaction. Already own land? Even smoother \u2014 your equity goes to work as down payment."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can family gift me land to build on in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 gifted or inherited land is fully acceptable for a conventional construction loan, and its value can count toward your down payment and equity. Freddie Mac explicitly recognizes land acquired by gift, inheritance, or court award. A parcel carved off the family property in {COUNTY} County is one of the most common ways builds begin."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can well, septic, and driveway costs be financed in the conventional loan in {COUNTY} County?",
+  "a": "Yes \u2014 site preparation is an eligible use of construction funds, and that includes the well, septic system, driveway, utility runs, clearing, and grading. Rural {COUNTY} County parcels outside {SEAT} often need all of it, and it all rides inside the one loan with the rest of your budget."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can I include a garage or detached shop in my conventional build in {COUNTY} County?",
+  "a": "Yes \u2014 attached garages, detached garages, and shop buildings can be in the construction budget as long as they're on the plans, permitted, and reflected in the appraisal. The appraiser needs {COUNTY} County comps that support the value of larger outbuildings, so we review that before plans finalize."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can I include upgrades like solar in the construction budget in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 solar, impact windows, spray foam, generators, and other upgrades can be financed inside the construction budget when they're in the plans and cost breakdown. In {COUNTY} County, hurricane-rated and energy features often earn back value at appraisal and savings on insurance. Add them at the design stage, not as change orders later."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Who pays for cost overruns during construction in {COUNTY} County on a conventional construction loan?",
+  "a": "It depends on your contract and the cause. A fixed-price (turnkey) contract puts most overrun risk on the builder; a cost-plus contract leaves it with you. The contingency reserve inside the loan absorbs the first layer either way. This is why we push {COUNTY} County clients toward fixed-price contracts with a healthy contingency \u2014 the risk is decided before it happens."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can I make change orders once construction starts in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes, but with discipline. Change orders must be documented, priced, and approved \u2014 and if they raise the cost, the increase generally comes from contingency or your pocket, since the loan amount was set at closing. Small {COUNTY} County changes are routine; a mid-build redesign is not. Decide the big things before you close."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can I do some of the work myself to save money in {COUNTY} County on a conventional construction loan?",
+  "a": "Limited sweat equity is sometimes possible \u2014 think landscaping or painting after key inspections \u2014 but structural, electrical, plumbing, and anything requiring a licensed trade must go through your general contractor. Draw funds only release for verified professional work. Talk to us about which {COUNTY} County line items can realistically be owner-performed before you count the savings."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What paperwork does my builder need to provide in {COUNTY} County on a conventional construction loan?",
+  "a": "A signed construction contract, full plans and specifications, an itemized cost breakdown, proof of license and insurance, and the registration package for our construction partner. During the build: draw requests, lien waivers, and inspection sign-offs. Established {COUNTY} County builders produce this in days \u2014 we coordinate it so you don't chase paper."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How does my builder get paid on a conventional construction loan in {COUNTY} County?",
+  "a": "Through the draw system: complete a stage, pass inspection, receive funds \u2014 repeated through the build. Builders never receive the full contract up front, and a retainage portion is typically held until final completion. It keeps every {COUNTY} County project honest: money follows verified work, never promises."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What happens if my builder abandons the project in {COUNTY} County on a conventional construction loan?",
+  "a": "The draw system is your protection: the builder has only been paid for verified completed work, so the remaining funds are intact to bring in a replacement contractor. The lender works with you to register a new builder and restart draws. It's rare \u2014 builder vetting up front exists precisely so {COUNTY} County families never face this \u2014 but the structure protects you if it happens."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How is a conventional One-Time Close different from a bank construction line in {COUNTY} County?",
+  "a": "A traditional bank construction line is short-term, often variable, and ends with a balloon \u2014 you must find and qualify for a permanent mortgage all over again at completion. A conventional One-Time Close sets your permanent financing before construction starts. One approval, one closing, zero refinance risk at the end of your {COUNTY} County build."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Do conforming loan limits apply to construction loans in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 a conventional construction-to-permanent loan follows the same conforming limit as any conventional mortgage. In {COUNTY} County the 2026 one-unit limit is {CONF}, and multi-unit builds get higher limits. Total project cost above the limit moves you into jumbo construction territory, which we also handle."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can the builder cover closing costs on a conventional build in {COUNTY} County?",
+  "a": "Yes \u2014 builder contributions are treated as interested-party contributions, capped by your down payment tier: 3% of value with less than 10% down, 6% with 10\u201325% down, 9% above 25%. Investment builds cap at 2%. Builder-paid closing costs are a common negotiating point on {COUNTY} County contracts, and we make sure yours stays inside the limits."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Do I pay mortgage insurance during the construction phase in {COUNTY} County on a conventional construction loan?",
+  "a": "Typically no \u2014 PMI on a conventional loan generally begins when the loan converts to permanent financing, not during the build. And if you put 20% down or your land equity gets you there, there's no PMI at all. Even with less down, conventional PMI cancels once you reach the equity thresholds \u2014 a lasting edge over FHA on any {COUNTY} County build."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can I refinance after the home is built in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 once your loan converts to permanent financing it's a standard conventional mortgage, refinanceable any time it benefits you. New builds in appreciating {COUNTY} County markets often gain equity quickly, which can open PMI removal or a cash-out down the road. No lock-in, no penalty in most cases."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What standards must the finished home meet in {COUNTY} County on a conventional construction loan?",
+  "a": "Local building code (verified by county inspections and the certificate of occupancy), plus completion per the plans the appraisal was based on. All improvements must be fully complete before the loan converts \u2014 the final inspection and completion report confirm it. {COUNTY} County code plus Florida's wind requirements set a genuinely high bar for new construction."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How soon after completion can I move in in {COUNTY} County on a conventional construction loan?",
+  "a": "As soon as the certificate of occupancy is issued \u2014 that's the legal green light. The loan conversion paperwork runs in parallel and doesn't hold up your move. Most {COUNTY} County families are unpacking within days of the CO. On a primary-residence loan you're expected to occupy within 60 days, which is never the issue on a home you just built."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How does a conventional construction loan work from start to finish in {COUNTY} County?",
+  "a": "Pre-approval sizes your budget. You choose land and a builder, we register the builder, the appraiser values the plans, and you close once \u2014 permanent terms set. Construction runs on inspected draws for roughly 6\u201312 months. At completion: final inspection, certificate of occupancy, automatic conversion, move in. One loan carries the entire {COUNTY} County journey."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Who pays the interest that accrues during construction in {COUNTY} County on a conventional construction loan?",
+  "a": "You do, but there are two ways: pay it monthly as interest-only bills on drawn funds, or finance an interest reserve inside the loan that makes those payments for you. The reserve route means no construction-period payments at all \u2014 helpful when you're paying rent in {SEAT} while your {COUNTY} County home goes up."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Do I have to requalify after the home is built in {COUNTY} County on a conventional construction loan?",
+  "a": "No \u2014 that's the defining promise of a single-close. You qualified once, before construction; conversion at completion is administrative, not a re-underwrite. Fannie Mae even provides document-age flexibility for construction timelines. A job change or market shift mid-build doesn't reopen your approval on a {COUNTY} County One-Time Close."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can my builder get an advance at closing to get started in {COUNTY} County on a conventional construction loan?",
+  "a": "Programs vary \u2014 some allow a limited initial draw at closing for permits, materials deposits, and mobilization; others fund strictly on completed work. Any advance is documented in the draw schedule and offset against later draws. We set the expectation with your {COUNTY} County builder before closing so there's no day-one friction."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How many draws does a typical build use in {COUNTY} County on a conventional construction loan?",
+  "a": "Commonly four to seven, mapped to milestones: foundation, framing/dry-in, mechanicals, interior finish, and final. The exact schedule is customized to your builder's process and agreed before closing. A typical {COUNTY} County single-family build near {CITY1} runs five draws."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What kind of construction contract is required in {COUNTY} County on a conventional construction loan?",
+  "a": "A written, signed contract between you and a licensed general contractor, with full plans, specifications, an itemized cost breakdown, the price structure (fixed-price or cost-plus), timeline, and warranty terms. Fixed-price (turnkey) contracts are strongly preferred \u2014 they cap your risk. We review the {COUNTY} County contract before it goes to underwriting."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can construction start before the conventional loan closes in {COUNTY} County?",
+  "a": "No \u2014 ground broken before closing creates title and lien priority problems that can sink the loan. The mortgage must record before construction begins so the lender holds first position. Eager {COUNTY} County builders sometimes want to start early; the answer protects you both. Close first, build second."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What if some site work was already done on my land in {COUNTY} County on a conventional construction loan?",
+  "a": "Existing improvements \u2014 a cleared pad, a well, a culvert \u2014 usually aren't fatal, but they must be disclosed, documented, and confirmed lien-free with paid receipts or lien waivers before closing. Fresh construction on the house itself before closing is the real problem. Tell us exactly what's been done on the {COUNTY} County parcel and we'll map the path."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What is the cost breakdown form and why does it matter so much in {COUNTY} County on a conventional construction loan?",
+  "a": "It's the line-by-line budget of your entire build \u2014 sitework through final finish \u2014 signed by your builder. The appraisal leans on it, the loan amount is sized from it, and the draw schedule is built from it. A sloppy cost breakdown causes more construction-loan delays than any other document. We scrub it with your {COUNTY} County builder before underwriting sees it."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "I've owned my land over a year in {COUNTY} County \u2014 does that change my conventional loan?",
+  "a": "It can, meaningfully. When you've owned the lot 12+ months before closing, Fannie Mae allows the loan to be based on the as-completed appraised value rather than your actual cost. If {COUNTY} County land values have risen since you bought \u2014 and around {CITY1} they often have \u2014 that appreciation works like extra down payment you never wrote a check for."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How fast does my builder get paid after a draw request in {COUNTY} County on a conventional construction loan?",
+  "a": "Once the inspection confirms the work, funds are wired to the builder \u2014 often within 24 hours of approval, typically no more than a few days from request. Fast, predictable draws are why quality builders around {SEAT} like working with this program."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What does a turnkey contract actually mean in {COUNTY} County on a conventional construction loan?",
+  "a": "It means the builder is responsible for everything \u2014 the home, all site work, all improvements \u2014 delivered complete for one contracted price. You're not left coordinating subs or finishing items yourself. Turn the key, move in. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Are building permits required before draws in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 building permits must be submitted before any construction funds are drawn. Your builder handles permitting with the local authority in {COUNTY} County; the draw process simply verifies it happened."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What about panelized homes in {COUNTY} County on a conventional construction loan?",
+  "a": "Panelized homes are treated as site-built for program purposes \u2014 same draw structure, same 680 credit requirement, same 90% financing. A growing number of builds around {SEAT} use panelized systems for speed and precision."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Do draws go to my builder or to the subcontractors in {COUNTY} County on a conventional construction loan?",
+  "a": "Directly to your builder \u2014 the program doesn't disburse to individual subs. The one exception is a modular unit invoice, which can be paid directly to the manufacturer. Your builder manages sub payments under the turnkey contract. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What if the contract price changes before closing in {COUNTY} County on a conventional construction loan?",
+  "a": "Notify us immediately \u2014 the construction department recalculates the file so your closing figures stay accurate. Price changes before closing are manageable; surprises at the closing table are not. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What should I avoid doing while my home is under construction in {COUNTY} County on a conventional construction loan?",
+  "a": "Three things: don't take on new debt, don't change jobs without talking to us first, and don't let any other liens attach to the property. Keep your credit steady and the conversion to your permanent loan stays effortless. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "What if my credit score drops during construction in {COUNTY} County on a conventional construction loan?",
+  "a": "If requalification is triggered, a lower score can affect your permanent terms \u2014 which is exactly why we coach you to protect your credit from closing day to completion. Steady credit in, locked terms out. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can I pay the conventional loan down at completion in {COUNTY} County?",
+  "a": "Yes \u2014 at modification you can make an additional principal reduction, and the loan amount and payment are recalculated accordingly. Sold your previous home mid-build? That's the moment to put the proceeds to work. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can my rate improve if the market drops during construction in {COUNTY} County on a conventional construction loan?",
+  "a": "Possibly \u2014 within 30 days of the modification being signed, a float-down option can apply if the market has improved. The construction department runs the numbers to confirm it's viable. Locked protection on the way up, a window of opportunity on the way down. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "How is the modification paperwork handled in {COUNTY} County on a conventional construction loan?",
+  "a": "Electronically \u2014 the modification package is emailed for digital signature along with your first payment letter and escrow disclosure. No trip back to a closing table anywhere in {COUNTY} County."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "When do realtor commissions get paid on a construction deal in {COUNTY} County on a conventional construction loan?",
+  "a": "A commission paid by the land seller is paid at closing, when the land is paid off. A commission the builder owes per the contract pays at completion. Knowing the split keeps every party's expectations straight from day one. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Is someone inspecting the quality of my build in {COUNTY} County on a conventional construction loan?",
+  "a": "Every draw requires an independent third-party inspection with photos and a line-item completion report before funds release. It's progress verification rather than a code inspection \u2014 your local building department in {COUNTY} County handles code \u2014 but it means a professional set of eyes is on your project at every stage."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Does a DU approval mean my project is approved in {COUNTY} County on a conventional construction loan?",
+  "a": "Not by itself. Your credit file is underwritten through Fannie Mae's automated system, while the builder and project are reviewed separately by the construction department \u2014 and final project approval comes from them. Both green lights, then you close. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Can a builder use this program for a spec home in {COUNTY} County on a conventional construction loan?",
+  "a": "No \u2014 spec building isn't allowed. The program finances owner-occupied primary residences and second homes for the person who will own them. Builders benefit differently: a committed buyer, verified draws, and no construction-lending risk on their own books. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Why do builders in {COUNTY} County like conventional One-Time Close buyers?",
+  "a": "The buyer is fully underwritten and closed before ground breaks, draws fund reliably as work completes, and the builder isn't carrying a construction line on their own credit. For builders around {SEAT} and {CITY1}, that's a lower-risk, faster-certainty sale."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "My builder has never done a conventional One-Time Close loan \u2014 is that a problem in {COUNTY} County?",
+  "a": "Not at all. First-time program builders get approved every month \u2014 the review packet is straightforward, and we walk them through registration, the cost breakdown, and the draw process step by step. Have them Talk to Our Team and we'll take it from there. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "PRIMARY",
+  "q": "Who is my point of contact during the build in {COUNTY} County on a conventional construction loan?",
+  "a": "During construction, the loan-administration team is your builder's direct contact for draws and inspections, while our team stays with you on everything else \u2014 timeline, credit protection, and the modification at the end. You're never guessing who to call. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "How does a conventional One-Time Close work in {COUNTY} County?",
+  "a": "You close once, before construction starts. The loan funds the land and the build, then converts to your permanent mortgage when the home is finished \u2014 no second closing, no requalifying. Both Fannie Mae and Freddie Mac purchase these loans anywhere in {COUNTY} County."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "What's the minimum down payment on a conventional construction loan in {COUNTY} County?",
+  "a": "Typically 5% for a primary home, with a 3%-down path available for eligible first-time buyers on fixed-rate loans. Own your lot already? Its equity can cover some or all of the down payment on a {COUNTY} County build."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Does owning my land already reduce what I bring to closing in {COUNTY} County on a conventional construction loan?",
+  "a": "It usually does. Lot equity applies toward your down payment, and long-held land (12+ months) lets the loan be sized on appraised value instead of cost. Many {COUNTY} County landowners near {CITY1} close with very little additional cash."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "What do I pay each month during construction in {COUNTY} County on a conventional construction loan?",
+  "a": "Usually interest only, and only on what's been drawn \u2014 so payments start small and grow as the build progresses. Your regular mortgage payment starts after completion. The structure is set out clearly before you close on your {COUNTY} County project."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Is there a second closing after construction on a conventional single-close in {COUNTY} County?",
+  "a": "No. The permanent mortgage documents are signed up front, and conversion at completion happens by automatic conversion or a modification agreement \u2014 not a new closing. One set of closing costs, start to finish."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Should I do a one-time close or a two-time close build in {COUNTY} County on a conventional construction loan?",
+  "a": "One-time close gives you certainty \u2014 terms locked before the build, no second qualification. Two-time close adds flexibility to reshop the permanent loan but doubles the closings and re-opens qualification risk. We'll price your {COUNTY} County scenario both ways so the math decides."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Can any builder do my conventional construction loan build in {COUNTY} County?",
+  "a": "Any qualified builder can \u2014 they just need to complete a one-time registration showing license, insurance, and experience. It protects you as much as the lender. We walk {COUNTY} County builders through it routinely."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Is owner-builder allowed on conventional construction loans in {COUNTY} County?",
+  "a": "Almost never for the loan itself \u2014 a licensed general contractor must be in charge. Licensed professionals building their own residence may have a path; everyone else partners with a registered builder in {COUNTY} County."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "What's the construction time limit on a conventional single-close in {COUNTY} County?",
+  "a": "Most programs allow up to 12 months, sometimes longer for complex builds. The timeline is set in your builder contract up front, and inspections track progress along the way in {COUNTY} County."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Can the construction period be extended on my {COUNTY} County build on a conventional construction loan?",
+  "a": "Usually yes, for documented reasons like weather or supply delays. Extensions are requested before the deadline, not after. Early communication keeps it routine."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Can land, permits, and closing costs be financed in my conventional construction loan in {COUNTY} County?",
+  "a": "Yes \u2014 land acquisition or lien payoff, construction costs, site preparation, and (on refinance structures) closing costs can all be built into the single loan. Contingency and interim interest can often ride along too."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Why does my conventional construction loan include a contingency reserve in {COUNTY} County?",
+  "a": "Because builds hit surprises. A 5\u201310% reserve inside the loan absorbs overruns without a scramble for cash. Unused funds generally reduce your balance at the end."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "When does my builder get paid during construction in {COUNTY} County on a conventional construction loan?",
+  "a": "In stages, after inspection. Work gets verified first, funds release second \u2014 that order protects you. The schedule is fixed in writing before your {COUNTY} County project closes."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Are there independent inspections during a conventional build in {COUNTY} County?",
+  "a": "Yes \u2014 code inspections from the county plus lender draw inspections before any funds release, then a final completion certification. Your builder never signs off on their own work."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "When do regular payments begin on a construction-to-permanent loan in {COUNTY} County on a conventional construction loan?",
+  "a": "Once construction wraps and the loan converts \u2014 typically the month following completion. Until then it's interest-only on what's been drawn."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Do conventional construction loans cover manufactured homes in {COUNTY} County?",
+  "a": "They do \u2014 new units never previously installed qualify, with the loan covering the home, permanent foundation, and site prep. Qualifying MH Advantage homes reach 97% financing. {COUNTY} County land plus a new manufactured home is a common single-close combination."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Is a modular home treated like a site-built home for conventional financing in {COUNTY} County?",
+  "a": "Yes \u2014 modular equals site-built in the eyes of conventional guidelines, full stop. Manufactured (HUD-code) homes are also financeable but under their own rules. Either way, buildable in {COUNTY} County."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Are barndominiums eligible for conventional construction loans in {COUNTY} County?",
+  "a": "Frequently, if permitted as a residence and supported by comparable sales. The appraisal is the make-or-break, so we scout {COUNTY} County comps up front before you spend on plans."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Does conventional construction financing allow 2\u20134 unit builds in {COUNTY} County?",
+  "a": "It does \u2014 up to four units, owner-occupied or investment. House-hacking a new duplex near {CITY1} is one of the strongest first-property strategies in {COUNTY} County."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "What does the appraiser use to value my future home in {COUNTY} County on a conventional construction loan?",
+  "a": "Plans, specs, and the builder's cost breakdown, compared against recently sold finished homes nearby. The result is an as-completed value, verified by a final inspection when your {COUNTY} County build wraps."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "What happens when project costs exceed appraised value in {COUNTY} County on a conventional construction loan?",
+  "a": "You bridge the difference \u2014 with cash, budget cuts, or builder negotiation. The prevention is comp research before plans are final, which we do on every {COUNTY} County project."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Are my conventional loan terms locked while my home is being built in {COUNTY} County?",
+  "a": "With a single-close, yes \u2014 permanent terms are set at the one closing and the market can't touch them during construction. That certainty is why most {COUNTY} County builders' clients choose One-Time Close."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "How does my conventional loan convert after the build is done in {COUNTY} County?",
+  "a": "Final inspection, certificate of occupancy, then conversion by automatic terms or a one-page modification. You're a homeowner with a standard mortgage \u2014 the construction chapter simply closes."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "What warranty comes with a newly built home in {COUNTY} County on a conventional construction loan?",
+  "a": "Contract warranties on workmanship and systems, statutory implied warranties under Florida law, and often a multi-year structural warranty program. It all gets confirmed in the builder contract before your {COUNTY} County loan closes."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Can I buy the lot and build with one conventional loan in {COUNTY} County?",
+  "a": "Yes \u2014 lot purchase and construction combine into one single-close loan. Owning land first isn't required; it's just a head start if you do."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Does gifted family land work for a conventional construction loan in {COUNTY} County?",
+  "a": "Absolutely \u2014 gift, inheritance, or divorce award all qualify as valid land ownership, and the land's equity works in your favor. Family land near {CITY2} starts many {COUNTY} County builds."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Are site development costs covered by a conventional construction loan in {COUNTY} County?",
+  "a": "They are \u2014 well, septic, driveway, clearing, utilities, and grading are standard budget line items. One loan carries the whole {COUNTY} County site, not just the house."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Will my conventional construction loan cover a detached shop or garage in {COUNTY} County?",
+  "a": "Yes, when it's on the permitted plans and the appraised value supports it. Shops are common on {COUNTY} County acreage builds \u2014 the comp check is the one step we front-load."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Can energy and storm upgrades be financed in my {COUNTY} County build on a conventional construction loan?",
+  "a": "Yes \u2014 put solar, impact glazing, or a generator in the original plans and budget and they finance with everything else. Designing them in beats bolting them on afterward, on both cost and value."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "If my build goes over budget in {COUNTY} County, who covers it on a conventional construction loan?",
+  "a": "Your contract decides: fixed-price contracts hold the builder to the number; cost-plus passes overruns to you. The loan's contingency reserve is the buffer. Structure it right up front and overruns stay manageable."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Are mid-build changes allowed on a conventional construction loan in {COUNTY} County?",
+  "a": "Documented change orders are allowed; funding them comes from contingency or cash since the loan is already sized. Front-load your decisions \u2014 it's the single cheapest habit in construction."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Is sweat equity allowed on a conventional construction loan in {COUNTY} County?",
+  "a": "Only at the edges \u2014 finish work like paint or landscaping, sometimes. Licensed-trade work stays with the builder, and draws only fund verified work. Plan savings conservatively."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "What documents will the lender need from my builder in {COUNTY} County on a conventional construction loan?",
+  "a": "Contract, plans, specs, itemized cost breakdown, license, insurance, and a one-time registration \u2014 then lien waivers and draw paperwork during construction. We quarterback the collection with your {COUNTY} County builder."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Does the builder get all the money at closing in {COUNTY} County on a conventional construction loan?",
+  "a": "No \u2014 funds release in stages after inspections, with a final holdback until completion. Verified work first, payment second. That sequencing protects you for the whole {COUNTY} County build."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Am I protected if my builder walks off the job in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 undrawn funds stay in the loan, paid-out money matches inspected work, and a replacement builder can be registered to finish. The vetting process makes this rare; the draw structure makes it survivable."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Why choose conventional One-Time Close over a traditional construction loan in {COUNTY} County?",
+  "a": "Because the traditional route makes you qualify twice and absorb whatever the market looks like at completion. Single-close settles the permanent loan on day one. For most {COUNTY} County families, certainty wins."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "What's the maximum conventional construction loan in {COUNTY} County?",
+  "a": "The county conforming limit \u2014 {CONF} for a one-unit home in {COUNTY} County in 2026, higher for 2\u20134 units. Bigger projects shift to jumbo construction programs."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Are builder-paid closing costs allowed on conventional construction loans in {COUNTY} County?",
+  "a": "Allowed and common \u2014 3% to 9% of value depending on your down payment (2% on investment builds). It's real negotiating leverage with {COUNTY} County builders; we help you use it."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "When does PMI start on a construction-to-permanent loan in {COUNTY} County on a conventional construction loan?",
+  "a": "At conversion to the permanent loan, if your equity is under 20% \u2014 and it cancels later as equity grows. With 20% equity (cash plus land), no PMI ever. That math favors {COUNTY} County landowners."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Am I stuck with my conventional construction loan terms forever in {COUNTY} County?",
+  "a": "Not at all \u2014 after conversion it's a normal conventional mortgage. Refinance whenever the numbers make sense. Equity growth on new {COUNTY} County construction often creates the opening."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "How is completion verified on a conventional build in {COUNTY} County?",
+  "a": "County code inspections, the certificate of occupancy, and a final completion report confirming the home matches the appraised plans. Nothing converts to permanent financing until it's genuinely done."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "When can I get the keys after my {COUNTY} County build finishes on a conventional construction loan?",
+  "a": "At certificate of occupancy \u2014 conversion paperwork won't delay the move. Families building near {CITY1} are typically in within the week."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Walk me through the conventional construction loan process in {COUNTY} County.",
+  "a": "Budget and pre-approval \u2192 land and builder \u2192 plans appraised \u2192 one closing \u2192 inspected draws through the build \u2192 CO and conversion \u2192 keys. Around 6\u201312 months of construction, one loan the whole way through {COUNTY} County."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Can construction-period interest be built into the conventional loan in {COUNTY} County?",
+  "a": "Yes \u2014 an interest reserve inside the loan can cover payments during the build, or you can pay monthly interest-only on draws. Renters building in {COUNTY} County usually choose the reserve."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Will the lender re-check my credit and income after construction in {COUNTY} County on a conventional construction loan?",
+  "a": "Not on a single-close \u2014 approval happens once, up front, and conversion is paperwork. That protection is exactly why two-close structures feel riskier by comparison."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Is a startup draw available for my builder in {COUNTY} County on a conventional construction loan?",
+  "a": "Sometimes \u2014 a capped mobilization draw for permits and deposits can be structured, depending on the program. It's decided in the draw schedule before closing, never improvised."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "What does a standard draw schedule look like in {COUNTY} County on a conventional construction loan?",
+  "a": "Usually 4\u20137 milestone-based draws \u2014 foundation through final \u2014 set in writing before closing. Five is the {COUNTY} County norm for a single-family home."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Does my builder contract need specific terms for the conventional loan in {COUNTY} County?",
+  "a": "Yes \u2014 written contract, plans, itemized costs, timeline, and warranties, ideally fixed-price. We review it before underwriting so nothing bounces."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Why can't my builder break ground before closing in {COUNTY} County on a conventional construction loan?",
+  "a": "Lien priority \u2014 work performed before the mortgage records can jump ahead of the lender's lien and kill the deal. Closing always comes first; it's a hard rule, not a preference."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "I already cleared my lot \u2014 does that affect my conventional construction loan in {COUNTY} County?",
+  "a": "Usually workable \u2014 prior site work needs documentation and proof it's paid for, so no liens lurk. House construction before closing is the hard stop; a cleared {COUNTY} County lot is generally fine."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Why does the lender care so much about the builder's cost breakdown in {COUNTY} County on a conventional construction loan?",
+  "a": "Because everything downstream \u2014 appraisal, loan amount, draws \u2014 is built on it. Getting it complete and accurate up front is the single highest-leverage step in a {COUNTY} County construction loan."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT B",
+  "q": "Does long-term land ownership improve my conventional construction loan terms in {COUNTY} County?",
+  "a": "Owning the lot 12+ months lets the loan key off appraised value instead of cost \u2014 so land appreciation counts as equity. It's one of the strongest positions a {COUNTY} County landowner can build from."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "What is a Conventional One-Time Close construction loan in {COUNTY} County?",
+  "a": "It's one loan that covers your land, the entire build, and your permanent mortgage \u2014 closed in a single sitting before the first shovel hits dirt. When your home is finished in {COUNTY} County, the loan simply converts to a standard fixed-rate mortgage. No second closing, no second set of costs."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "How much do I need down for a Conventional construction loan in {COUNTY} County?",
+  "a": "10% down \u2014 the program allows up to 90% financing with a 680 credit score on a primary residence or second home. If you already own your lot, its equity can count toward that requirement, sometimes covering it entirely. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Do I make payments while my home is being built in {COUNTY} County on a conventional construction loan?",
+  "a": "You pay interest only on the funds actually drawn \u2014 not the full loan amount. Early in the build, when little has been disbursed, that payment is small. It grows as the home does, then converts to your regular payment at completion. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Is there really only one closing on a conventional construction loan in {COUNTY} County?",
+  "a": "One closing, one appraisal, one set of closing costs. You sign everything before construction begins, and at completion the loan is modified into its permanent phase \u2014 you never return to the closing table. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "What are the builder requirements for a Conventional construction loan in {COUNTY} County?",
+  "a": "Your builder must be a full-time, licensed builder in good standing with suppliers and past clients, and must pass a formal review \u2014 financials, licenses, insurance, references, and a background check \u2014 before your loan can close. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Can I act as my own general contractor in {COUNTY} County on a conventional construction loan?",
+  "a": "No \u2014 self-builds and owner-GC arrangements aren't allowed on this program. The builder must be an approved, licensed professional responsible for turnkey completion of the entire project. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "How long do I get to build in {COUNTY} County on a conventional construction loan?",
+  "a": "Construction terms run 6, 9, or 12 months. Your builder's realistic schedule decides which one to select \u2014 and choosing correctly matters, because the term affects your numbers at closing. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "What happens if construction runs past the deadline in {COUNTY} County on a conventional construction loan?",
+  "a": "A monthly extension fee applies and the locked rate is forfeited, meaning the loan reprices to market at completion. If the project passes 12 months, a credit requalification is also required. The fix is simple: pick a realistic term upfront \u2014 we help you and your builder pressure-test the schedule before closing. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "How do construction draws actually work in {COUNTY} County on a conventional construction loan?",
+  "a": "The builder requests a draw, an independent inspector visits the site and documents the percentage complete on each line item, and funds for verified work are wired to the builder \u2014 typically within a few days. Money follows work, never the other way around. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Who manages the draws and inspections on my build in {COUNTY} County on a conventional construction loan?",
+  "a": "An independent loan-administration service handles inspections, draw verification, and disbursement, working alongside the lender's construction department. Your builder deals with them directly during the build \u2014 which means a professional third party is watching your project's progress the entire time. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "When does my first regular mortgage payment start in {COUNTY} County on a conventional construction loan?",
+  "a": "The modification takes effect the first of the month after completion, and your first permanent payment is due the first of the following month. Finish construction January 10th, modification is effective February 1st, first payment March 1st. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Can I finance a manufactured home build in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 with a 700 credit score, doublewide or larger. Funding follows the unit: 10% at closing, 80% when the home is delivered and set on the property, and the final 10% when all site work is 100% complete. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Can I build a modular home with a Conventional construction loan in {COUNTY} County?",
+  "a": "Yes \u2014 modular homes are fully eligible, and a factory deposit of up to 10% of the unit cost can be funded at closing. The rest funds as the home is set and site work completes. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Can I build a barndominium in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 with conditions: one-unit single family, concrete slab foundation, no metal exterior siding or steel post-frame structure, at least 70% of square footage as living area, no agricultural use, and comparable sales within 5-10 miles. Send us the plans and we'll pre-screen them before you spend money on engineering. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "How does the appraisal work when the house doesn't exist yet in {COUNTY} County on a conventional construction loan?",
+  "a": "The appraiser values the home 'as completed' using your finalized construction contract, plans, specs, and plot plan \u2014 comparing against finished homes around {CITY1} and {CITY2}. The contract must be final before the appraisal, and appraisal transfers from other lenders aren't accepted."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Is my rate locked during construction in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 the permanent rate is locked at closing and held through the construction period, as long as the home is completed within the agreed term. That protection removes one of the biggest risks of building: not knowing what your mortgage will cost when the home is done. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "What happens when construction is finished in {COUNTY} County on a conventional construction loan?",
+  "a": "The loan converts to its permanent phase through a modification \u2014 paperwork handled electronically, no new closing. The modification takes effect the first of the month after completion, and your first regular payment follows the month after that. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "I inherited land \u2014 can I build on it in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes, and it's an advantage: land you own contributes its equity to the deal, often covering the down payment and even closing costs. Inherited and gifted lots around {CITY1} and {CITY3} turn into finished homes this way every year."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "What if my lot needs a well and septic in {COUNTY} County on a conventional construction loan?",
+  "a": "Fully financeable as part of the build \u2014 well and septic go in the cost breakdown like any other line item, and a well and septic certification is obtained before the loan converts to its permanent phase. Common all over unincorporated {COUNTY} County."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Can my build include a pool, barn, or guesthouse in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 pools, barns, and guesthouses are allowed when comparable sales support their value. That's flexibility the government construction programs don't offer. The appraisal on plans confirms the market in {COUNTY} County supports what you're building."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Can I do some of the work myself to save money in {COUNTY} County on a conventional construction loan?",
+  "a": "No \u2014 sweat equity and do-it-yourself work aren't permitted. The builder must complete 100% of the project under a turnkey contract. It keeps the collateral, the timeline, and the workmanship accountable to one licensed party. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "How does my builder get approved in {COUNTY} County on a conventional construction loan?",
+  "a": "The builder completes a review packet \u2014 company financials, licenses, general liability insurance, references, and an experience summary. The construction department verifies suppliers and subs, runs business and credit checks, and typically responds within a few business days. We walk your builder through it. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "conventional One-Time Close vs a traditional two-close construction loan in {COUNTY} County?",
+  "a": "Two-close means two approvals, two closings, two sets of costs \u2014 and your permanent rate is a mystery until the build is done. One-Time Close locks the permanent rate before ground breaks, closes once, and converts automatically at completion. Less cost, less risk, less paperwork. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Can the builder contribute to my closing costs in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 interested-party contributions are allowed under standard Conventional limits, typically up to 6% at construction-program financing levels. Builder-paid costs, points, and prepaids are all negotiable line items on your contract. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "When does PMI start on a conventional construction loan in {COUNTY} County?",
+  "a": "If your loan is above 80% of value, mortgage insurance activates at completion \u2014 not during construction. You're not paying PMI on a house that doesn't exist yet. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "How long does the whole process take from application to breaking ground in {COUNTY} County on a conventional construction loan?",
+  "a": "Plan on longer than a resale purchase: builder registration, project calculation, credit underwriting, the appraisal on plans, and project approval all run before closing. With an approved builder and complete documents, it moves briskly; the single biggest accelerator is starting the builder's registration on day one. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Can anything cover my interest payments during construction in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 two ways. If you own your lot, its equity can fund an interest reserve account that makes the payments for you. And the builder is allowed to pay your construction interest within Fannie Mae guidelines. Either way, your out-of-pocket during the build can shrink dramatically. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Do I have to requalify after construction in {COUNTY} County on a conventional construction loan?",
+  "a": "Not if your representative credit score is 700 or higher \u2014 requalification is waived unless the property value declines or the project runs past 12 months. Score between 680 and 699? Plan on a credit refresh at completion, and protect your file during the build. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Does the builder get money upfront at closing in {COUNTY} County on a conventional construction loan?",
+  "a": "Not for improvement work. A closing draw can cover soft costs, land payoff, and a modular deposit up to 10% of the unit cost \u2014 but construction funds release only as work is completed and verified. That discipline protects you. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "How many draws does my builder get in {COUNTY} County on a conventional construction loan?",
+  "a": "Up to six draws for a stick-built home and three for manufactured, with additional draws available at a per-draw cost. Each draw is verified by an independent third-party inspection before funds release. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "What kind of contract does my builder need in {COUNTY} County on a conventional construction loan?",
+  "a": "A fixed-price turnkey contract \u2014 the builder commits to a set price and full completion. Cost-plus contracts are considered only case by case and require a firm maximum-price cap. Fixed price protects you from budget drift mid-build. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "Can construction start before the conventional loan closes in {COUNTY} County?",
+  "a": "No \u2014 no work should be done by the builder or borrower prior to closing. Pre-starts are considered only on a case-by-case basis. If your builder is eager to break ground near {CITY3}, closing first is the rule that keeps your financing intact."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "My builder already poured the foundation \u2014 can I still get the conventional loan in {COUNTY} County?",
+  "a": "Maybe. Pre-starts are reviewed case by case on the Conventional program, which is more flexibility than the government construction programs offer. Bring us the details before anything else happens on site \u2014 the sooner we review it, the more options you keep. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Construction & Builders",
+  "role": "VARIANT C",
+  "q": "What is the cost breakdown form and why does it matter in {COUNTY} County on a conventional construction loan?",
+  "a": "It's the line-item budget your builder completes before closing \u2014 and it becomes the disbursement schedule for the entire build. Every draw is measured against it. An accurate, complete breakdown is one of the biggest factors in a smooth project. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "What credit score do I need for a conventional loan in {COUNTY} County?",
+  "a": "The published floor for manual underwriting is 620, and automated underwriting evaluates the full file rather than a single cutoff. Higher scores improve mortgage-insurance and pricing tiers, so there's a real payoff to each band you climb. If you're close but not there, we'll map the fastest score-building path before your {COUNTY} County build, not after."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "What's the maximum debt-to-income ratio on a conventional loan in {COUNTY} County?",
+  "a": "With an automated approval, DTI can reach 50%. Manually underwritten files cap at 36\u201345% depending on compensating factors like reserves and credit. Remember the ratio uses gross income, and on a construction loan we qualify you on the full future payment \u2014 so your {COUNTY} County budget is honest from day one."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "Are there income limits on conventional loans in {COUNTY} County?",
+  "a": "Standard conventional loans have no income limits at all \u2014 earn whatever you earn. Only the affordable programs (HomeReady/Home Possible) cap income, at 80% of area median, in exchange for their perks. So high earners aren't excluded and moderate earners get a discount lane. {COUNTY} County buyers fit somewhere on that spectrum, and we place you deliberately."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "Can self-employed borrowers get conventional construction loans in {COUNTY} County?",
+  "a": "Yes \u2014 self-employment is a documentation path, not a penalty. Generally two years of business history (sometimes one, with the right profile), tax returns, and stable or rising income. Depreciation and other paper write-offs often get added back, so qualifying income can exceed what your bottom line suggests. {COUNTY} County contractors and business owners build with conventional loans routinely."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "Can a co-signer who won't live in the home help me qualify in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 conventional loans allow non-occupant co-borrowers, with the loan capped at 95% LTV on automated approvals when their income is used. A parent's income helping a child build in {COUNTY} County is the classic setup. The co-borrower shares full legal responsibility, so it's a family decision worth making with clear eyes."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "How long after bankruptcy or foreclosure can I get a conventional loan in {COUNTY} County?",
+  "a": "General waiting periods: four years after a Chapter 7 discharge, two years after a Chapter 13 discharge, seven years after a foreclosure, and four after a deed-in-lieu or short sale \u2014 with shorter windows possible under documented extenuating circumstances. The clock has usually run longer than people assume. Bring us the dates and we'll tell you exactly where you stand for a {COUNTY} County build."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "Do I need cash reserves for a conventional construction loan in {COUNTY} County?",
+  "a": "Sometimes. Automated underwriting sets reserve requirements case by case \u2014 many primary-residence approvals need none, while manual underwriting, multi-unit builds, and investment properties can require two to six months of payments in the bank. Retirement accounts often count. We tell you the exact number for your {COUNTY} County scenario before you commit."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "Can rental or ADU income help me qualify in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 on a 2\u20134 unit build, projected rent from the other units counts as qualifying income per the appraiser's rent schedule. Accessory dwelling unit rent can be considered too under the right program. Build a duplex near {CITY1}, and the tenant's rent is helping you qualify before a single brick is laid in {COUNTY} County."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "I own several properties already \u2014 can I still build conventionally in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 conventional financing allows up to ten financed properties for investors, with reserve requirements that step up as the portfolio grows. Second-home and investment construction both work. This is where conventional runs laps around government programs, which are owner-occupied-only. {COUNTY} County portfolio builders live in conventional territory."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "Is manual underwriting available on the construction program in {COUNTY} County on a conventional construction loan?",
+  "a": "No \u2014 the file must have an automated approval through Fannie Mae's Desktop Underwriter. That makes the pre-qualification run we do upfront genuinely meaningful: the same engine that decides is the one we test. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "PRIMARY",
+  "q": "Does the conventional loan use my middle credit score in {COUNTY} County?",
+  "a": "The representative score drives the decision \u2014 and it matters twice on construction: 680 gets you approved, 700 or higher waives requalification at completion. If you're sitting at 690, a few months of targeted credit work before closing can simplify your entire build. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT B",
+  "q": "Is 620 really enough for a conventional loan in {COUNTY} County?",
+  "a": "It's the entry point, yes \u2014 approvals happen there when the rest of the file is solid. Each score tier above it improves your costs, so timing a build around a rising score can pay for itself."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT B",
+  "q": "How much debt is too much for a conventional loan in {COUNTY} County?",
+  "a": "Automated approvals stretch to 50% DTI; manual files run 36\u201345%. We calculate yours precisely \u2014 including the future construction-to-permanent payment \u2014 before you fall in love with plans."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT B",
+  "q": "Do I make too much money for a conventional loan in {COUNTY} County?",
+  "a": "Impossible \u2014 standard conventional has zero income caps. Income limits only exist on the optional affordable programs. Nobody out-earns conventional eligibility in {COUNTY} County."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT B",
+  "q": "How does self-employed income work for a conventional loan in {COUNTY} County?",
+  "a": "Tax-return based, usually two years, with add-backs for non-cash deductions like depreciation. Many self-employed {COUNTY} County borrowers qualify for more than they expect once the returns are read properly."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT B",
+  "q": "Can my parents co-sign my conventional construction loan in {COUNTY} County?",
+  "a": "They can \u2014 non-occupant co-borrowers are permitted up to 95% LTV with automated approval. It's one of conventional's most family-friendly features for {COUNTY} County first builds."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT B",
+  "q": "Does a past bankruptcy disqualify me from conventional financing in {COUNTY} County?",
+  "a": "No \u2014 it starts a waiting period: roughly 4 years (Ch. 7), 2 years (Ch. 13 discharge), 7 years (foreclosure), less with documented extenuating circumstances. Many {COUNTY} County borrowers are already past their date without realizing it."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT B",
+  "q": "How many months of reserves will my {COUNTY} County loan require on a conventional construction loan?",
+  "a": "Anywhere from zero to six months depending on the file \u2014 automated findings decide, and investment or multi-unit builds sit at the higher end. Retirement funds usually count toward it."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT B",
+  "q": "Will future rent from my duplex build count toward qualifying in {COUNTY} County on a conventional construction loan?",
+  "a": "It will \u2014 appraiser-projected market rent from additional units enters your qualifying income. That's the quiet engine behind {COUNTY} County house-hacking builds."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT B",
+  "q": "Is there a limit on financed properties for conventional loans in {COUNTY} County?",
+  "a": "Up to ten financed properties, with rising reserve requirements. Investors building rentals in {COUNTY} County do it on conventional because government programs won't touch non-owner-occupied."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT C",
+  "q": "What credit score do I need for a Conventional construction loan in {COUNTY} County?",
+  "a": "680 minimum for site-built and modular homes; 700 for manufactured. Those are entry points \u2014 stronger scores improve pricing and waive requalification at completion. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT C",
+  "q": "What debt-to-income ratio is allowed in {COUNTY} County on a conventional construction loan?",
+  "a": "The automated underwriting findings govern \u2014 there's no single hard cutoff. Strong compensating factors like reserves and credit depth stretch what's approvable. We run your actual numbers before you commit to a builder. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT C",
+  "q": "Is there an income limit on Conventional loans in {COUNTY} County?",
+  "a": "No. Unlike USDA, Conventional loans have no household income cap \u2014 high earners in {SEAT} and modest earners in {CITY3} play by the same rulebook. Your income only needs to support the payment."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT C",
+  "q": "Can self-employed buyers get a Conventional construction loan in {COUNTY} County?",
+  "a": "Absolutely \u2014 with the standard two-year self-employment documentation, typically tax returns. Plenty of business owners around {SEAT} build this way. The file takes more paper, not more luck; we structure it before underwriting ever sees it."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT C",
+  "q": "Can a co-borrower help me qualify in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 a co-borrower's income and credit join the file under standard Conventional rules. For construction, all borrowers are underwritten once, before closing, and the same requalification protections apply at completion. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Eligibility & Credit",
+  "role": "VARIANT C",
+  "q": "How long after a bankruptcy can I qualify in {COUNTY} County on a conventional construction loan?",
+  "a": "Generally four years after a Chapter 7 discharge and two years after a Chapter 13 discharge under Conventional guidelines, with shorter windows possible for documented extenuating circumstances. The clock may be further along than you think \u2014 we check for free. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "What is PMI and when does it go away in {COUNTY} County on a conventional construction loan?",
+  "a": "Private mortgage insurance protects the lender when you put less than 20% down \u2014 and unlike FHA's mortgage insurance, it's temporary. It cancels automatically at 78% of original value, can be requested at 80%, and rising {COUNTY} County values or a new-construction equity jump can end it sooner via appraisal. It's a bridge, not a life sentence."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "Can gift funds cover my down payment on a conventional loan in {COUNTY} County?",
+  "a": "Yes \u2014 gifts from family members can cover the entire down payment and closing costs on a primary residence, with a simple gift letter and paper trail. Combine a cash gift with gifted or discounted family land and a {COUNTY} County build can launch with remarkably little of your own savings."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "What closing costs come with a conventional construction loan in {COUNTY} County?",
+  "a": "The usual suspects \u2014 origination, appraisal, title, recording, prepaid taxes and insurance \u2014 plus construction-specific items like draw inspection fees and the slightly higher appraisal cost for plan review. The single-close advantage: you pay this once, not twice. Builder contributions can offset a chunk of it on {COUNTY} County contracts."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "How long does approval take for a conventional construction loan in {COUNTY} County?",
+  "a": "Pre-approval: usually a day or two. Full approval through closing: commonly 30\u201345 days once your builder's package and plans are complete, since the appraisal reviews the full plan set. The critical path is almost always builder paperwork, not your file \u2014 which is why we start the {COUNTY} County builder registration on day one."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "How are builder deposits handled on a conventional build in {COUNTY} County?",
+  "a": "Deposits you've paid the builder for plans or to reserve a slot are documented and credited to you within the transaction \u2014 they're part of your investment in the project, not lost money. Keep every receipt. Large deposits before loan approval carry risk, though: on a {COUNTY} County custom build, keep pre-closing deposits modest until financing is locked."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "Are points and temporary buydowns allowed on conventional loans in {COUNTY} County?",
+  "a": "Yes \u2014 discount points can permanently reduce your rate, and temporary buydowns (like 2-1 structures) can lower early payments, often funded by the builder as an incentive. On purchase-structured construction loans these are available within the interested-party contribution caps. We run the break-even math for your {COUNTY} County scenario so incentives are real, not cosmetic."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "How do property taxes and insurance work during construction in {COUNTY} County on a conventional construction loan?",
+  "a": "During the build you'll typically carry a builder's-risk insurance policy (often through the builder) and pay taxes on the land value only. At conversion, standard homeowner's insurance takes over and the escrow account begins collecting for {COUNTY} County taxes and premiums with your regular payment. We line up the insurance handoff so there's never a coverage gap."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "Who pays for the appraisal and draw inspections in {COUNTY} County on a conventional construction loan?",
+  "a": "The borrower, as with any loan \u2014 the plan-review appraisal runs somewhat above a standard appraisal, and each draw inspection carries a modest fee, all disclosed up front on your estimate. Some builders absorb inspection costs in the contract. No surprises: every {COUNTY} County fee is on paper before you commit."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "Can my closing costs be financed in {COUNTY} County on a conventional construction loan?",
+  "a": "If you own your lot, yes \u2014 closing costs can be financed through lot equity as long as the loan stays within 90% of value. Land you've held becomes working capital for the deal. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "Are escrows collected at closing in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 escrows are collected at the initial closing, with homeowner's insurance activated and paid at modification. Taxes that come due during the build are handled by you directly until the escrow account takes over. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "What does the extension fee cost if my build runs long in {COUNTY} County on a conventional construction loan?",
+  "a": "A monthly fee applies past the completion date, and the locked rate is forfeited to current market. The real cost of running long is the rate, not the fee \u2014 which is why the construction term you pick at closing deserves serious thought. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "PRIMARY",
+  "q": "How does the construction term affect my cash to close in {COUNTY} County on a conventional construction loan?",
+  "a": "Directly \u2014 the term drives the interest and soft-cost figures built into the transaction, so a 12-month selection costs more upfront than a 6-month one. We size the term to your builder's actual schedule, not a guess. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT B",
+  "q": "How do I get rid of PMI on a conventional loan in {COUNTY} County?",
+  "a": "Automatic cancellation at 78% LTV, by request at 80%, or earlier through appreciation with a new appraisal. New builds in growing {COUNTY} County markets often shed PMI years ahead of schedule."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT B",
+  "q": "Can my parents fund my down payment for a conventional loan in {COUNTY} County?",
+  "a": "They can fund all of it on a primary home \u2014 documented with a gift letter and transfer trail. Gifted cash plus family land is a time-honored {COUNTY} County formula."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT B",
+  "q": "Are closing costs higher on a conventional construction loan in {COUNTY} County?",
+  "a": "Modestly \u2014 plan-review appraisals and draw inspections add some cost, but one closing instead of two typically nets out ahead. Builder credits can cover part of it."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT B",
+  "q": "What's the timeline from application to closing on a {COUNTY} County conventional construction loan?",
+  "a": "Roughly 30\u201345 days with a complete builder package; pre-approval in days. Builder documents drive the schedule, so we chase them early."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT B",
+  "q": "I gave my builder a deposit \u2014 how does it count at closing in {COUNTY} County on a conventional construction loan?",
+  "a": "Documented deposits credit toward your side of the transaction. Keep receipts, and keep pre-approval deposits small \u2014 your leverage and protection are strongest once financing is settled."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT B",
+  "q": "Can my builder fund a rate buydown on my {COUNTY} County conventional construction loan?",
+  "a": "Often yes \u2014 builder-funded temporary buydowns and points are permitted within contribution limits on purchase transactions. We check whether the incentive genuinely pays before you take it."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT B",
+  "q": "Do I escrow taxes and insurance while building in {COUNTY} County on a conventional construction loan?",
+  "a": "Escrow starts at conversion; during construction it's builder's-risk coverage and land-only taxes. The insurance transition is coordinated so your {COUNTY} County home is never uncovered."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT B",
+  "q": "What do draw inspections cost on a {COUNTY} County conventional construction loan?",
+  "a": "A modest per-inspection fee, disclosed up front alongside the appraisal cost. Some builder contracts absorb them. Everything's itemized before closing \u2014 nothing appears mid-build."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT C",
+  "q": "What is PMI on a Conventional loan in {COUNTY} County?",
+  "a": "Private mortgage insurance \u2014 required when you put less than 20% down, and unlike FHA's mortgage insurance, it's removable. Once you reach enough equity, PMI can be cancelled and your payment drops. That's one of the biggest long-term advantages of going Conventional. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT C",
+  "q": "Are gift funds allowed on a Conventional construction loan in {COUNTY} County?",
+  "a": "Yes \u2014 gifts from family can help with the down payment and closing costs under standard Conventional gift rules. Combined with lot equity, gifts can shrink your true out-of-pocket substantially. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT C",
+  "q": "What closing costs should I expect on a Conventional construction loan in {COUNTY} County?",
+  "a": "The usual purchase items \u2014 appraisal, title, origination, recording, prepaids \u2014 plus construction-specific costs like the construction fee, draw inspections, a project feasibility review, and a modification fee at completion. Everything is disclosed upfront, and it's still one set of costs instead of the two a traditional build requires. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT C",
+  "q": "How long does a conventional construction loan take compared to a regular purchase in {COUNTY} County?",
+  "a": "Longer \u2014 builder approval, project review, and the appraisal on plans all add steps a resale purchase doesn't have. Buyers who bring their builder to us early close on schedule; buyers who wait discover the timeline the hard way. Start the builder registration first. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Fees, Money & Timing",
+  "role": "VARIANT C",
+  "q": "Who pays property taxes while the home is being built in {COUNTY} County on a conventional construction loan?",
+  "a": "You do \u2014 any taxes that come due during construction are the borrower's responsibility, since the escrow account activates at modification. We map those dates for your {COUNTY} County parcel upfront so nothing surprises you."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "What documents do I need to apply for a conventional construction loan in {COUNTY} County?",
+  "a": "Your side: pay stubs, W-2s or two years of tax returns if self-employed, bank statements, and ID. The project side: builder contract, plans and specs, cost breakdown, and land documentation (deed or purchase contract). We split the list cleanly between you and your {COUNTY} County builder so nobody duplicates effort."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "How is underwriting different for a conventional construction loan in {COUNTY} County?",
+  "a": "Your personal qualification is identical to any conventional loan. What's added is project underwriting: the builder's credentials, the contract, the cost breakdown, and an appraisal from plans. Think of it as approving the borrower and the build. Strong files with weak project documents stall \u2014 so we perfect both halves of every {COUNTY} County submission."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "Will my documents expire during the months of construction in {COUNTY} County on a conventional construction loan?",
+  "a": "Fannie Mae specifically allows extended document age on single-closing construction-to-permanent loans \u2014 credit and appraisal documents that would normally go stale are given room to accommodate build timelines. It's one of the quiet structural advantages of the single-close: your {COUNTY} County approval is built to survive the calendar."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "What actually happens at a conventional construction loan closing in {COUNTY} County?",
+  "a": "You sign the permanent note and mortgage with a construction addendum, the land is purchased or refinanced, initial funds position for the first draw, and title records the lender in first place. From that moment your terms are set and your builder is cleared to pull permits. It's one sitting \u2014 {COUNTY} County families are usually done within the hour."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "Can my conventional loan terms change between closing and completion in {COUNTY} County?",
+  "a": "Only in the narrow ways the guidelines allow \u2014 under Freddie Mac's One-Time Close, a single modification can adjust the balance for documented cost increases or convert an ARM to fixed, and terms may be modified only once. Otherwise, what you signed is what you keep. Nothing changes without your signature on a {COUNTY} County file."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "What are lien waivers and why do they matter on my build in {COUNTY} County on a conventional construction loan?",
+  "a": "Every draw, your builder signs a waiver confirming subcontractors and suppliers are paid for that stage \u2014 so nobody can later slap a lien on your {COUNTY} County home for a bill the builder skipped. Florida's construction lien law makes this protection essential. The draw process collects waivers automatically; it's the paperwork that guards your title."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "What is the final inspection and completion certification in {COUNTY} County on a conventional construction loan?",
+  "a": "After the certificate of occupancy, the appraiser (or an approved inspector) issues a completion report confirming the home was built to the plans the value was based on. That report is the trigger for conversion to permanent financing. It's the last checkpoint of your {COUNTY} County build \u2014 and the moment the project officially becomes your home loan."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "Is my conventional construction loan a purchase or a refinance in {COUNTY} County?",
+  "a": "It hinges on land ownership at closing: if you're acquiring the lot in the transaction, it's processed as a purchase; if you already own the {COUNTY} County land, it's structured as a refinance that pays off any lot lien and funds construction. Same single-close experience either way \u2014 the classification mainly steers which guideline set and contribution rules apply."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "What is the project calculation and why does it come first in {COUNTY} County on a conventional construction loan?",
+  "a": "It's the structured math of your entire deal \u2014 contract price, land, soft costs, interest, and term \u2014 run before underwriting so your loan amount and cash-to-close are right the first time. Deals structured correctly upfront don't blow up at the closing table. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "What happens between clear-to-close and closing day in {COUNTY} County on a conventional construction loan?",
+  "a": "Underwriting clears the credit file, the construction department gives final project approval, and closing figures are prepared from the verified construction numbers. At closing you bring down payment, escrows, and closing costs \u2014 lot equity can offset both. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "Can I switch lenders mid-process and keep my appraisal in {COUNTY} County on a conventional construction loan?",
+  "a": "No \u2014 appraisal transfers aren't accepted on this program; the as-completed appraisal is ordered fresh with the finalized contract and plans. If you're unhappy where you are, the restart is smaller than it feels. We'll show you the real timeline. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "PRIMARY",
+  "q": "How do I get started on a Conventional construction loan in {COUNTY} County?",
+  "a": "Two minutes: tap See My Options and answer a few questions, or Talk to Our Team. We'll pre-qualify your credit and income, screen your lot, and start your builder's registration \u2014 the three tracks that decide how fast you break ground in {COUNTY} County."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT B",
+  "q": "What paperwork starts a conventional construction loan in {COUNTY} County?",
+  "a": "Standard income and asset docs from you; contract, plans, and cost breakdown from your builder; deed or contract for the land. Two short lists, clearly divided \u2014 we manage both."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT B",
+  "q": "Does construction lending underwrite me differently in {COUNTY} County on a conventional construction loan?",
+  "a": "You're underwritten normally; the project gets its own review \u2014 builder, contract, budget, plan-based appraisal. Both halves must clear, and both are preparable in advance."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT B",
+  "q": "Do credit documents go stale during a long build in {COUNTY} County on a conventional construction loan?",
+  "a": "Single-close guidelines grant document-age exceptions precisely for construction timelines. The approval is designed to outlast the build \u2014 another reason the structure beats two-close."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT B",
+  "q": "What do I sign at a conventional One-Time Close closing in {COUNTY} County?",
+  "a": "The permanent loan documents plus a construction addendum, land transfer or payoff, and the draw agreement. One session, terms locked, builder greenlit."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT B",
+  "q": "Can the lender change my deal mid-construction in {COUNTY} County on a conventional construction loan?",
+  "a": "No \u2014 terms are contractual from closing. The only adjustments are guideline-permitted, borrower-signed modifications (like documented cost increases), and only once. Your deal is your deal."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT B",
+  "q": "How am I protected from subcontractor liens in {COUNTY} County on a conventional construction loan?",
+  "a": "Lien waivers collected at every draw \u2014 proof the trades are paid before more money moves. Under Florida lien law, that paper trail is what keeps your finished title clean."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT B",
+  "q": "What's the last step before my conventional construction loan converts in {COUNTY} County?",
+  "a": "The completion report: certification that the finished home matches the appraised plans, following the CO. Once filed, conversion proceeds and the build phase formally ends."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT B",
+  "q": "Does owning my land make my conventional construction loan a refinance in {COUNTY} County?",
+  "a": "Yes \u2014 own the land, it's a refinance structure; buy it at closing, it's a purchase. The experience is identical; the paperwork classification just follows the deed."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT C",
+  "q": "What documents do I need to start in {COUNTY} County on a conventional construction loan?",
+  "a": "Recent pay stubs, two years of W-2s (or tax returns if self-employed), two months of bank statements, and ID. For the construction side: your lot details and your builder's contact information. That's enough for us to map your whole path. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT C",
+  "q": "Can the conventional loan amount increase after closing in {COUNTY} County?",
+  "a": "No \u2014 the loan amount is fixed at closing and cannot grow afterward. Upgrades you decide on mid-build are between you and your builder in cash. That's why we pressure-test the budget and contract before you sign anything. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Process, Docs & Underwriting",
+  "role": "VARIANT C",
+  "q": "What's needed before the final draw releases in {COUNTY} County on a conventional construction loan?",
+  "a": "Evidence of insurance, a completion certificate signed by both you and the builder, and the final inspection from the appraiser. A title update and final survey are ordered as well. Then the modification package arrives for electronic signature. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "What is a conventional loan in {COUNTY} County?",
+  "a": "A mortgage that isn't government-insured \u2014 no FHA, VA, or USDA backing \u2014 typically sold to Fannie Mae or Freddie Mac under their guidelines. Down payments start at 3\u20135%, mortgage insurance is cancellable, and there are no income caps or geography rules. It's the most widely used financing in {COUNTY} County, for existing homes and new construction alike."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "Are conventional and conforming the same thing in {COUNTY} County?",
+  "a": "Close cousins. 'Conventional' means not government-insured. 'Conforming' means the loan also fits Fannie Mae/Freddie Mac rules and stays under the county loan limit \u2014 {CONF} for one unit in {COUNTY} County for 2026. Every conforming loan is conventional; a conventional loan above the limit is a jumbo."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "What is the conforming loan limit in {COUNTY} County on a conventional construction loan?",
+  "a": "For 2026, the one-unit conforming limit in {COUNTY} County is {CONF}, with higher limits for 2\u20134 unit properties. That's the ceiling for a standard conventional loan \u2014 including a construction-to-permanent loan \u2014 before jumbo pricing applies. It resets each year, so the number moves."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "Fannie Mae vs Freddie Mac \u2014 does it matter to me in {COUNTY} County on a conventional construction loan?",
+  "a": "Rarely in a way you'd feel. Both purchase conventional loans under similar guidelines, and both support single-close construction financing. Where their rules differ at the margins \u2014 income treatment, certain property types \u2014 we simply route your {COUNTY} County file to whichever set fits your situation. That routing is our job, not your worry."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "What is HomeReady and could it help me build in {COUNTY} County on a conventional construction loan?",
+  "a": "HomeReady is Fannie Mae's affordable conventional program: 3% down, reduced mortgage insurance, flexible funding sources like gifts and grants, and even boarder income counting toward qualification. It's for borrowers earning up to 80% of the area median income. Freddie's Home Possible is the sibling program. For qualifying {COUNTY} County buyers, it can pair with new-construction purchases too."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "Should I choose a fixed rate or an ARM for my build in {COUNTY} County on a conventional construction loan?",
+  "a": "Fixed-rate loans keep the payment identical for the full term \u2014 maximum certainty, and required for the 97% LTV option. ARMs start with a fixed period (5, 7, or 10 years) then adjust with the market. On construction loans, fixed is the {COUNTY} County default because you're already managing build-phase variables; but the right answer depends on how long you'll keep the home. We model both."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "What loan terms are available on conventional loans in {COUNTY} County?",
+  "a": "Fixed-rate terms of 10, 15, 20, and 30 years, plus 5-, 7-, and 10-year ARMs. The 30-year fixed is the most common on {COUNTY} County construction-to-permanent loans, but a 15- or 20-year term saves substantial interest for buyers with room in the budget. We show the amortization side by side and let you pick."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "What is automated underwriting (DU and LPA) in {COUNTY} County on a conventional construction loan?",
+  "a": "Desktop Underwriter (Fannie Mae) and Loan Product Advisor (Freddie Mac) are the engines that analyze your full file \u2014 credit, income, assets, the property \u2014 and issue a recommendation in minutes. An Approve/Eligible finding often unlocks flexibility no rulebook chart shows, including DTI room. Every {COUNTY} County file we build is run through them strategically, not just submitted blindly."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "Is a conventional loan only for people with perfect credit in {COUNTY} County?",
+  "a": "No \u2014 that's the most expensive myth in mortgages. Conventional loans start at a 620 credit score, and automated underwriting weighs your whole file: income stability, assets, equity, reserves. Plenty of {COUNTY} County buyers with mid-600s scores close conventional every month. Stronger credit improves pricing, but 'perfect' was never the requirement."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "Can first-time buyers use a conventional construction loan in {COUNTY} County?",
+  "a": "Absolutely \u2014 and there's a bonus: the 97% LTV option (just 3% down) on a fixed-rate loan requires at least one borrower to be a first-time buyer. Pair that with gifted funds or family land and a first home can be a brand-new build near {CITY1} or {CITY2}. First-time doesn't mean existing-home-only in {COUNTY} County."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "PRIMARY",
+  "q": "Who is a Conventional loan the strongest fit for in {COUNTY} County?",
+  "a": "Buyers with a 680+ score and roughly 10% or more to put down \u2014 especially anyone building a second home, wanting removable mortgage insurance, or sitting above USDA income limits. If that sounds like you, Conventional deserves a first look. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT B",
+  "q": "What does 'conventional loan' actually mean in {COUNTY} County?",
+  "a": "Private-market financing under Fannie Mae/Freddie Mac rules rather than a government insurance program. Flexible occupancy, cancellable mortgage insurance, no income limits \u2014 the workhorse loan of {COUNTY} County."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT B",
+  "q": "What's the difference between conforming and conventional in {COUNTY} County?",
+  "a": "Conventional = not government-backed. Conforming = conventional and inside Fannie/Freddie rules and the {COUNTY} County limit ({CONF} in 2026). Above the limit, it's jumbo."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT B",
+  "q": "How big can my conventional loan be in {COUNTY} County?",
+  "a": "Up to the 2026 county limit of {CONF} for a single unit (more for 2\u20134 units). Construction loans follow the same ceiling; beyond it, jumbo programs take over."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT B",
+  "q": "Should I care whether my conventional loan goes to Fannie Mae or Freddie Mac in {COUNTY} County?",
+  "a": "Not really \u2014 the guidelines overlap heavily and both handle construction-to-permanent. When an edge case favors one, we route the file there. You just see the outcome."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT B",
+  "q": "Who qualifies for HomeReady or Home Possible in {COUNTY} County on a conventional construction loan?",
+  "a": "Borrowers at or under 80% of area median income. You get 3% down, lighter mortgage insurance, and flexible down-payment sources. Worth checking before assuming you need a bigger down payment in {COUNTY} County."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT B",
+  "q": "Are ARMs available on conventional construction loans in {COUNTY} County?",
+  "a": "Yes \u2014 5-, 7-, and 10-year SOFR ARMs alongside fixed terms. Fixed dominates on builds for the certainty, but a planned 7-year hold can argue for an ARM. The math, not the label, should decide."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT B",
+  "q": "Can I get a 15-year term on a conventional construction loan in {COUNTY} County?",
+  "a": "Yes \u2014 10 through 30-year fixed terms and several ARM options all apply to construction-to-permanent loans. Shorter terms cut lifetime interest sharply if the payment fits."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT B",
+  "q": "What does DU Approve/Eligible mean for my {COUNTY} County loan on a conventional construction loan?",
+  "a": "It means Fannie Mae's automated system analyzed your complete file and approved the risk \u2014 often with flexibility beyond the printed charts. It's the green light most conventional loans in {COUNTY} County run on."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT B",
+  "q": "Can I get a conventional loan with average credit in {COUNTY} County?",
+  "a": "Yes \u2014 620 is the floor, and the automated systems judge the full picture, not one number. Mid-600s files close conventional in {COUNTY} County constantly."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT B",
+  "q": "Is building a home realistic for a first-time buyer in {COUNTY} County on a conventional construction loan?",
+  "a": "Very \u2014 the 3%-down 97% option is specifically reserved for first-time buyers on fixed-rate loans, and gifts plus family land stretch it further. Many {COUNTY} County first homes are new builds."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT C",
+  "q": "What exactly is a Conventional loan in {COUNTY} County?",
+  "a": "It's a mortgage that isn't insured by a government agency like FHA, VA, or USDA. Instead it follows Fannie Mae and Freddie Mac guidelines, which reward stronger credit with lower costs and more flexibility \u2014 including the ability to finance second homes. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT C",
+  "q": "Is a Conventional loan the same thing as a conforming loan in {COUNTY} County?",
+  "a": "Mostly, yes. A conforming loan is a Conventional loan that fits within Fannie Mae and Freddie Mac's loan limits and rules. In {COUNTY} County, the 2026 conforming limit is {CONF} \u2014 your file is sized against it."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT C",
+  "q": "What are the Conventional loan limits in {COUNTY} County?",
+  "a": "Conforming and high-balance limits apply \u2014 in {COUNTY} County the 2026 conforming limit is {CONF}. Need more house than the limit allows? Ask us about how the numbers structure for your build."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT C",
+  "q": "Can I choose a 15-year or 30-year term on a Conventional loan in {COUNTY} County?",
+  "a": "Yes \u2014 the construction program offers fixed-rate 15- and 30-year terms. The 30-year keeps the payment lighter during and after the build; the 15-year builds equity faster. We model both so you can see the trade-off in real numbers. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT C",
+  "q": "Do I need perfect credit for a Conventional loan in {COUNTY} County?",
+  "a": "No. Conventional lending starts well below perfect \u2014 and for the construction program, a 680 score opens the door. Stronger scores earn stronger pricing, but plenty of buyers in {COUNTY} County qualify without an 800."
+ },
+ {
+  "cat": "Program Basics",
+  "role": "VARIANT C",
+  "q": "Are Conventional loans only for first-time buyers in {COUNTY} County?",
+  "a": "No \u2014 first-timers, repeat buyers, move-up families, and people building brand-new homes all use Conventional financing. There's no first-time-buyer requirement anywhere in the program. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "PRIMARY",
+  "q": "Can I build anywhere in {COUNTY} County with a conventional loan?",
+  "a": "Yes \u2014 conventional financing has no geographic eligibility maps. City lot in {SEAT}, suburban parcel near {CITY1}, or acreage past {CITY2} \u2014 all fair game, provided zoning allows residential use and the appraiser can find comparable sales. That freedom is a core conventional advantage over USDA's rural-only rules."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "PRIMARY",
+  "q": "Is there an acreage limit for conventional loans in {COUNTY} County?",
+  "a": "No fixed cap \u2014 conventional guidelines care about the property being residential in character, not a working farm, with value supported by comparable sales. Large {COUNTY} County parcels finance regularly; the appraiser just needs similar acreage sales to lean on. We assess the comp landscape before you contract on big land."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "PRIMARY",
+  "q": "Can I use construction-to-permanent financing for a condo in {COUNTY} County on a conventional construction loan?",
+  "a": "No \u2014 attached condo units and co-ops are specifically excluded from construction-to-permanent financing under Fannie Mae guidelines. Detached homes, townhome-style attached units in PUDs, and 1\u20134 unit properties are the lane. If your {COUNTY} County plans involve a condo project, different financing structures apply and we'll walk you through them."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "PRIMARY",
+  "q": "Can I build a second home with a conventional construction loan in {COUNTY} County?",
+  "a": "Yes \u2014 second-home construction is fully supported, with as little as 10% down. This is territory government programs can't enter: FHA, VA, and USDA are owner-occupied-primary only. A vacation build near the water in {COUNTY} County runs on conventional financing, full stop."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "PRIMARY",
+  "q": "Can I build a rental property with a conventional construction loan in {COUNTY} County?",
+  "a": "Yes \u2014 investment-property construction works with 15% down on a one-unit build (25% on 2\u20134 unit investment). Projected market rent can support qualification, and building new often beats buying tired inventory on maintenance and insurability in {COUNTY} County. It's the investor lane no government program offers."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "PRIMARY",
+  "q": "Can I build on land subdivided from a family parcel in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes \u2014 once the split is legally recorded and your parcel has its own legal description, tax ID, and access, it's buildable land like any other. Gift-of-equity treatment can apply if family sells it to you under market value. The subdivision process runs through {COUNTY} County planning, and we'll tell you exactly what recorded documents underwriting needs."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "PRIMARY",
+  "q": "Can I include an ADU or in-law suite in my conventional build in {COUNTY} County?",
+  "a": "Yes \u2014 an accessory dwelling unit can be part of the plans on a one-unit build, and its rental income may even be considered in qualifying under the right program. Multigenerational living and rental offset are both strong {COUNTY} County plays. Zoning is the gatekeeper, so we confirm the parcel allows it before plans are drawn."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "PRIMARY",
+  "q": "Can I finance a tiny home in {COUNTY} County on a conventional construction loan?",
+  "a": "Tiny homes are treated as manufactured housing and must have at least 600 square feet of living area \u2014 which rules out most true tiny builds. If your plan clears 600 square feet on a permanent foundation, let's look at it. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT B",
+  "q": "Are there location restrictions on conventional construction loans in {COUNTY} County?",
+  "a": "None \u2014 no eligibility maps, no income-by-address rules. Any residentially zoned {COUNTY} County parcel with supportable comps works, from downtown {SEAT} to open acreage."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT B",
+  "q": "Can I build on 10+ acres with a conventional loan in {COUNTY} County?",
+  "a": "Yes \u2014 no acreage ceiling exists. The tests are residential use and appraisal support. Large-parcel builds close in {COUNTY} County routinely with the comp work done up front."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT B",
+  "q": "Are condos eligible for conventional One-Time Close construction loans in {COUNTY} County?",
+  "a": "Attached condos and co-ops are excluded from C2P by guideline. Site-built homes, PUD townhomes, and 1\u20134 unit builds are where single-close lives. Condo projects take a different route."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT B",
+  "q": "Does conventional financing cover vacation-home builds in {COUNTY} County?",
+  "a": "It's the only mainstream financing that does \u2014 10% down second-home construction, no government program competes. {COUNTY} County getaway builds are conventional by definition."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT B",
+  "q": "Can investors use conventional One-Time Close construction financing in {COUNTY} County?",
+  "a": "Yes \u2014 15% down on single-unit investment builds, with projected rents helping qualification. New-build rentals in {COUNTY} County are a conventional-only play, and a strong one."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT B",
+  "q": "My parents are splitting off land for me \u2014 can I build on it in {COUNTY} County on a conventional construction loan?",
+  "a": "Yes, once the subdivision is recorded with its own legal description and access. Family land splits start a huge share of {COUNTY} County builds \u2014 the paperwork sequence is the whole game."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT B",
+  "q": "Will a conventional construction loan finance a house with an ADU in {COUNTY} County?",
+  "a": "Yes \u2014 ADUs build right into the plans, and ADU rent can factor into qualifying in some programs. Check {COUNTY} County zoning first; financing is the easy part."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT C",
+  "q": "Can I build on rural land with a Conventional loan in {COUNTY} County?",
+  "a": "Yes \u2014 rural properties are allowed as long as the highest and best use is residential. Unlike USDA, there's no eligibility map to satisfy and no income cap. Country acreage outside {CITY2} works the same as an in-town lot."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT C",
+  "q": "How much land can I buy with a conventional construction loan in {COUNTY} County?",
+  "a": "Up to 10 acres. That covers most homesites in {COUNTY} County, from in-town lots near {SEAT} to acreage outside {CITY3}. Larger parcels need a different structure \u2014 ask us before you go under contract."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT C",
+  "q": "What property types are NOT eligible in {COUNTY} County on a conventional construction loan?",
+  "a": "Log homes, bamboo homes, metal and container homes, condos, post-frame homes, and 2-4 unit properties are out. One-unit single-family site-built, modular, panelized, and manufactured (doublewide+) homes are in. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT C",
+  "q": "Can I build a vacation home with a conventional construction loan in {COUNTY} County?",
+  "a": "Yes \u2014 Conventional is the only One-Time Close path that finances second homes. FHA, VA, and USDA construction loans are strictly primary-residence programs. If you're building a getaway near {CITY1}, Conventional is the lane."
+ },
+ {
+  "cat": "Property, Land & Site",
+  "role": "VARIANT C",
+  "q": "Can I get a Conventional construction loan for an investment property in {COUNTY} County?",
+  "a": "No \u2014 occupancy is limited to primary residences and second homes. Investment new-builds need a different structure; ask us and we'll map the alternatives for your situation. In {COUNTY} County \u2014 including around {CITY1} and {CITY2} \u2014 the same guideline applies."
+ }
+]
