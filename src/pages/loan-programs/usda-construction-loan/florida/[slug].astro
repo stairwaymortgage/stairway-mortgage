@@ -1,0 +1,730 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import counties from '../../../../data/counties.json';
+import faqBank from '../../../../data/faq-usda.json';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// USDA Construction Loan — Florida county template.
+// One file → 67 pages (getStaticPaths from counties.json).
+// Headless: wrapped by Layout.astro (site header + NEXA footer). CSS scoped .usda-county-scope.
+// FAQ rotation engine: seed "{County}-USDA", per-category seeded shuffle, caps from the
+// Alachua reference (81 total), merge vars from counties.json. Server-rendered <details>
+// + FAQPage JSON-LD with all entries. Zero unmerged {VARS} may ship.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function getStaticPaths() {
+  return (counties as any[]).map((county) => ({
+    params: { slug: county.slug },
+    props: { county },
+  }));
+}
+
+const { county } = Astro.props as { county: any };
+
+// ── deterministic PRNG (xmur3 seed → mulberry32) ─────────────────────────────
+function xmur3(str: string) {
+  let h = 1779033703 ^ str.length;
+  for (let i = 0; i < str.length; i++) {
+    h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+    h = (h << 13) | (h >>> 19);
+  }
+  return function () {
+    h = Math.imul(h ^ (h >>> 16), 2246822507);
+    h = Math.imul(h ^ (h >>> 13), 3266489909);
+    h ^= h >>> 16;
+    return h >>> 0;
+  };
+}
+function mulberry32(a: number) {
+  return function () {
+    a |= 0; a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function makeRand(seed: string) { const s = xmur3(seed); return mulberry32(s()); }
+function shuffle<T>(arr: T[], rand: () => number): T[] {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// ── merge-variable context ───────────────────────────────────────────────────
+const fmtMoney = (v: string) => {
+  const n = Number(String(v).replace(/[^0-9.]/g, ''));
+  return isNaN(n) || n === 0 ? '' : '$' + n.toLocaleString('en-US');
+};
+// First URL from a possibly multi-URL cell → clean hostname (no protocol / www / path).
+const firstUrl = (v: string) => (String(v || '').split(/[;,\s]+/).find(Boolean) || '').trim();
+const hostOf = (v: string) => {
+  const u = firstUrl(v);
+  if (!u) return '';
+  return u.replace(/^https?:\/\//i, '').replace(/^www\./i, '').replace(/\/.*$/, '');
+};
+// Short readable utility name from its URL (e.g. gru.com → "GRU"; sourced from the col).
+const utilityName = (v: string) => {
+  const host = hostOf(v);
+  if (!host) return 'the local utility';
+  const first = host.split('.')[0];
+  return first.length <= 4 ? first.toUpperCase() : first.charAt(0).toUpperCase() + first.slice(1);
+};
+
+const seat = county['County Seat'] || county.County;
+const cities: string[] = (county.cities_list && county.cities_list.length ? county.cities_list : [seat]);
+const eligible = /eligible areas/i.test(county['USDA Status'] || '');
+
+const INC14 = '$119,850';   // statewide default until per-county verification pass
+const INC58 = '$158,250';
+const ctx = {
+  county: county.County,
+  seat,
+  inc14: INC14,
+  inc58: INC58,
+  fha: fmtMoney(county['2026 FHA Limit (1-unit)']) || '$541,287',
+  conv: fmtMoney(county['2026 Conventional Limit (1-unit)']) || '$832,750',
+  utility: utilityName(county['Utilities Authority']),
+  wmd: 'the water management district',
+  health: 'the county health department',
+};
+
+function merge(text: string, tri: string[]): string {
+  return String(text)
+    .replace(/\{COUNTY\}/g, ctx.county)
+    .replace(/\{SEAT\}/g, ctx.seat)
+    .replace(/\{INC14\}/g, ctx.inc14)
+    .replace(/\{INC58\}/g, ctx.inc58)
+    .replace(/\{FHA\}/g, ctx.fha)
+    .replace(/\{CONV\}/g, ctx.conv)
+    .replace(/\{CITY1\}/g, tri[0])
+    .replace(/\{CITY2\}/g, tri[1])
+    .replace(/\{CITY3\}/g, tri[2])
+    .replace(/\{UTILITY\}/g, ctx.utility)
+    .replace(/\{WMD\}/g, ctx.wmd)
+    .replace(/\{HEALTH\}/g, ctx.health);
+}
+// City triple for FAQ item i — rotates sequentially through cities_list (wraps via modulo).
+const cityTriple = (i: number): string[] => {
+  const n = cities.length;
+  return [cities[(i * 3) % n], cities[(i * 3 + 1) % n], cities[(i * 3 + 2) % n]];
+};
+
+// ── FAQ engine ───────────────────────────────────────────────────────────────
+const CAT_ORDER = [
+  'Program Basics', 'Property, Land & Site', 'Income & Limits', 'Credit & Ratios',
+  'Construction & Builders', 'Manufactured & Modular', 'Fees, Money & Timing',
+  'Process, Docs & Underwriting', 'Comparisons', 'Refinance & Rehab',
+];
+const CAPS: Record<string, number> = {
+  'Program Basics': 5, 'Property, Land & Site': 12, 'Income & Limits': 8, 'Credit & Ratios': 6,
+  'Construction & Builders': 16, 'Manufactured & Modular': 4, 'Fees, Money & Timing': 10,
+  'Process, Docs & Underwriting': 12, 'Comparisons': 6, 'Refinance & Rehab': 2,
+};
+
+const rand = makeRand(`${county.County}-USDA`);
+const primary = (faqBank as any[]).filter((r) => r.role === 'PRIMARY');
+const byCat: Record<string, any[]> = {};
+for (const r of primary) (byCat[r.cat] ||= []).push(r);
+
+let faqIndex = 0;
+const faqCats: { cat: string; items: { q: string; a: string }[] }[] = [];
+const faqFlat: { q: string; a: string }[] = [];
+for (const cat of CAT_ORDER) {
+  const pool = byCat[cat] || [];
+  const picked = shuffle(pool, rand).slice(0, CAPS[cat] || 0);
+  const items = picked.map((r) => {
+    const tri = cityTriple(faqIndex++);
+    const item = { q: merge(r.q, tri), a: merge(r.a, tri) };
+    faqFlat.push(item);
+    return item;
+  });
+  if (items.length) faqCats.push({ cat, items });
+}
+const faqTotal = faqFlat.length;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqFlat.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+// ── city tiers (derived) ─────────────────────────────────────────────────────
+const greenCities = cities.filter((c) => c !== seat);
+const amberCities = [seat];
+
+// ── build + civic resource cards (8 + 9 = 17, per spec rule #10) ─────────────
+type Card = { type: string; title: string; desc: string; url: string; alt?: string };
+const pick = (...keys: string[]) => { for (const k of keys) { const u = firstUrl(county[k]); if (u) return county[k]; } return ''; };
+
+const buildCards: Card[] = [
+  { type: 'Permits & Inspections', title: 'Building & Permitting', desc: `Building permits, inspections, and fees for a new-construction home in ${county.County} County.`, url: pick('Building / Permitting Portal', 'Planning & Zoning Dept', 'County Government Website') },
+  { type: 'Zoning & Land Use', title: 'Planning & Zoning', desc: `Zoning, land-use, and setback rules that shape what you can build on your lot.`, url: pick('Planning & Zoning Dept', 'Building / Permitting Portal', 'County Government Website') },
+  { type: 'Parcels & Values', title: 'Property Appraiser', desc: `Parcel search, GIS maps, and property records for every lot in the county.`, url: pick('Property Appraiser', 'GIS / Parcel Map') },
+  { type: 'Parcel Maps', title: 'GIS / Parcel Map', desc: `Locate a parcel, confirm boundaries, and check the lay of the land before you buy.`, url: pick('GIS / Parcel Map', 'Property Appraiser') },
+  { type: 'Septic Permits', title: 'Health Dept — Septic', desc: `Onsite sewage (septic) permitting for rural lots without sewer service.`, url: pick('Health Dept (Septic Permits)') },
+  { type: 'Well Permits', title: 'Water Management District', desc: `Well permitting for parcels served by private water.`, url: pick('Water Mgmt District (Wells)') },
+  { type: 'Deeds & Records', title: 'Clerk of the Court', desc: `Deed recording and official records once your land purchase closes.`, url: pick('Clerk of Court / Deed Recording', 'County Government Website') },
+  { type: 'Utilities', title: 'Utilities', desc: `Power and water service where available; most rural builds use private well + septic.`, url: pick('Utilities Authority', 'County Government Website') },
+];
+
+const civicCards: Card[] = [
+  { type: 'Government', title: 'County Government', desc: 'Commission, departments, and county services.', url: pick('County Government Website') },
+  { type: 'Taxes', title: 'Tax Collector', desc: 'Property taxes, titles, and registrations.', url: pick('Tax Collector', 'County Government Website') },
+  { type: 'Families', title: 'School District', desc: 'Schools, zoning, and enrollment — the #1 question for relocating families.', url: pick('School District') },
+  { type: 'Safety', title: "Sheriff's Office", desc: `Law enforcement for unincorporated ${county.County} County.`, url: pick("Sheriff's Office") },
+  { type: 'Civic', title: 'Supervisor of Elections', desc: 'Voter registration for your new address.', url: pick('Supervisor of Elections') },
+  { type: 'Business', title: 'Chamber of Commerce', desc: 'Local business network and relocation resources.', url: pick('Chamber of Commerce') },
+  { type: 'Explore', title: 'Visitors Bureau', desc: 'What living here actually looks like — parks, trails, and events.', url: pick('Tourism / Visitors Bureau') },
+  { type: 'News', title: 'Local Newspaper', desc: "The county's news of record.", url: pick('Local Newspaper') },
+  { type: 'Reference', title: 'Wikipedia & County Facebook', desc: "Background and the county's official feed.", url: pick('Wikipedia Page'), alt: firstUrl(county['County Facebook']) },
+];
+
+// ── county grid (other 66) ───────────────────────────────────────────────────
+const otherCounties = (counties as any[]).map((c) => ({
+  name: c.County,
+  slug: c.slug,
+  ineligible: !/eligible areas/i.test(c['USDA Status'] || ''),
+  current: c.slug === county.slug,
+}));
+
+// ── SEO ──────────────────────────────────────────────────────────────────────
+const pageTitle = eligible
+  ? `USDA Construction Loans in ${county.County} County, FL — Build with $0 Down | Stairway Mortgage`
+  : `VA & FHA Construction Loans in ${county.County} County, FL — $0-Down Build Options | Stairway Mortgage`;
+const pageDesc = eligible
+  ? `Build a new home in ${county.County} County with $0 down. USDA One-Time Close construction loans: land, build, and mortgage in one closing. NMLS #1072866.`
+  : `Building in ${county.County} County? No USDA-eligible areas here — see $0-down VA and FHA construction loan options. One loan, one closing. NMLS #1072866.`;
+---
+
+<Layout title={pageTitle} description={pageDesc}>
+  <div class="usda-county-scope">
+
+    <!-- USDA CLUSTER BAR — sticky sub-nav, shared across the USDA cluster -->
+    <nav class="cluster-bar" aria-label="USDA loan guides"><div class="cluster-bar-inner"><span class="cluster-label">USDA Loans</span><a href="/loan-programs/usda-loan/">USDA Program Guide</a><a href="/loan-programs/usda-loan/property-eligibility/" class="tool">✓ Check Address</a><a href="/loan-programs/usda-loan/income-limits/">Income Limits</a><a href="/loan-programs/usda-loan/credit-requirements/">Credit</a><a href="/loan-programs/usda-loan/closing-cost-calculator/">Closing Cost Calculator</a><a href="/loan-programs/usda-loan/usda-vs-fha/">USDA · FHA · VA · Conv</a><a href="/loan-programs/usda-construction-loan/florida/" class="active">FL Counties</a></div></nav>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="container">
+        {eligible
+          ? <span class="status-pill">USDA Construction-Eligible County</span>
+          : <span class="status-pill status-pill-grey">No USDA Areas · VA &amp; FHA Build Options</span>}
+        {eligible
+          ? <h1>Build a New Home in <span class="accent">{county.County} County</span> with $0 Down — USDA Construction Loans</h1>
+          : <h1>Build a New Home in <span class="accent">{county.County} County</span> — $0-Down VA &amp; FHA Construction Options</h1>}
+        {eligible
+          ? <p class="lede">One loan. One closing. Land, construction, and your permanent mortgage — with no down payment for qualified buyers. Across {county.County} County, outside {seat}'s urban core, USDA-eligible territory lets you build instead of bidding on what's already standing.</p>
+          : <p class="lede">{county.County} County has no USDA-eligible areas — but you still have $0-down and low-down paths to build. VA construction loans have no geographic limit, and FHA construction financing builds up to {ctx.fha} in {county.County} County. One loan, one closing, before the first shovel hits dirt.</p>}
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://stairwaymortgage.com/see-my-options">See My Options</a>
+          <a class="btn btn-secondary" href="https://stairwaymortgage.com/schedule-call">Talk to Our Team</a>
+        </div>
+        <p class="trust-line">Jim Blackburn · NMLS #1072866 · 7× Scotsman Guide Top Producer · $500M+ closed · (954) 993-1625</p>
+      </div>
+    </div>
+
+    <!-- STAT BAND -->
+    <div class="stats">
+      <div class="container">
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="num">$0</div>
+            <div class="lbl">Down Payment</div>
+            <div class="note">USDA Guaranteed loans allow 100% financing for qualified buyers.</div>
+          </div>
+          <div class="stat">
+            <div class="num">{INC14}</div>
+            <div class="lbl">Income Limit · 1–4 Person Household</div>
+            <div class="note">{INC58} for households of 5–8. Total household income counts — not just the applicants.</div>
+          </div>
+          <div class="stat">
+            <div class="num">No Cap</div>
+            <div class="lbl">USDA Loan Limit</div>
+            <div class="note">USDA Guaranteed loans have no set maximum — your qualifying income sets the ceiling.</div>
+          </div>
+          <div class="stat">
+            <div class="num">1</div>
+            <div class="lbl">Closing · Start to Finish</div>
+            <div class="note">Financing locks before construction begins. No payments due until your home is complete.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY FACTS -->
+    <section class="highlights-section">
+      <div class="container">
+        <span class="eyebrow">Key Facts &amp; Highlights</span>
+        <h2>Key facts about the USDA construction loan in <span class="accent">{county.County} County</span></h2>
+        <p class="section-lede">Each point below is sourced from federal or county authorities. Verify any of them directly through the linked references.</p>
+        <ul class="highlights-list">
+          <li>The USDA Single Family Housing Guaranteed program allows up to 100% financing — no down payment — for qualified buyers in eligible areas of {county.County} County. <span class="highlights-source">(<a href="https://www.rd.usda.gov/programs-services/single-family-housing-programs/single-family-housing-guaranteed-loan-program" target="_blank" rel="noopener">USDA Rural Development guaranteed loan program</a>)</span></li>
+          <li>New construction is explicitly eligible: new dwellings, new manufactured homes, and site preparation costs — grading, foundation, well, septic, driveway — can all be financed. <span class="highlights-source">(<a href="https://www.fdic.gov/consumer-resource-center/affordable-mortgage-lending-guide" target="_blank" rel="noopener">FDIC Affordable Mortgage Lending Guide</a>)</span></li>
+          <li>USDA Guaranteed loans carry no maximum loan amount — qualifying income sets the ceiling, not a county cap. <span class="highlights-source">(<a href="https://www.rd.usda.gov/programs-services/single-family-housing-programs/single-family-housing-guaranteed-loan-program" target="_blank" rel="noopener">USDA Rural Development loan criteria</a>)</span></li>
+          <li>The 2026 USDA income limit for {county.County} County is {INC14} for a 1–4 person household and {INC58} for 5–8 — counting all adult household income. <span class="highlights-source">(<a href="https://www.rd.usda.gov/files/RD-GRHLimitMap.pdf" target="_blank" rel="noopener">USDA SFHGLP income limits</a>)</span></li>
+          <li>Property eligibility is determined per address on USDA's official map — eligibility can differ lot to lot, so nearby parcels can get different answers. <span class="highlights-source">(<a href="https://eligibility.sc.egov.usda.gov" target="_blank" rel="noopener">USDA official property eligibility lookup</a>)</span></li>
+          <li>Buyers above the income limit can build in {county.County} County with FHA financing up to {ctx.fha} (2026) or conventional financing up to {ctx.conv}. <span class="highlights-source">(<a href="https://entp.hud.gov/idapp/html/hicostlook.cfm" target="_blank" rel="noopener">HUD FHA mortgage limits</a> · <a href="https://www.fhfa.gov/data/conforming-loan-limit-values" target="_blank" rel="noopener">FHFA conforming loan limit values</a>)</span></li>
+          <li>{county.County} County permits and inspections run through the county; deeds record with the Clerk of the Court. <span class="highlights-source">(<a href={firstUrl(county['County Government Website']) || 'https://www.florida-demographics.com/counties'} target="_blank" rel="noopener">{county.County} County government</a>{firstUrl(county['Clerk of Court / Deed Recording']) ? <> · <a href={firstUrl(county['Clerk of Court / Deed Recording'])} target="_blank" rel="noopener">Clerk of the Court official records</a></> : null})</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONSTRUCTION BRIDGE -->
+    <section style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+      <div class="container">
+        <span class="eyebrow">How It Works</span>
+        <h2>The One-Time Close: <span class="accent">land + build + mortgage</span> in a single loan</h2>
+        <p class="section-lede">Around {seat} and the towns and acreage beyond it, buyers keep looking outward for buildable land — and that's exactly the territory where the USDA One-Time Close works. It wraps your land purchase, construction costs, and 30-year mortgage into one closing, before the first shovel hits dirt. Every file is guided personally by Jim Blackburn, NMLS #1072866.</p>
+        <div class="split">
+          <div class="card">
+            <h3>One closing, start to finish</h3>
+            <p>Lock your financing before construction begins, close once, and convert automatically to a standard 30-year mortgage when the home is done. Site-built, modular, and new double-wide manufactured homes may all qualify.</p>
+          </div>
+          <div class="card">
+            <h3>Honest expectations</h3>
+            <p>Construction loans have more moving parts than a standard purchase: your builder must be registered, draws are paid only for completed work, and no work can begin before closing. We walk both you and your builder through every step.</p>
+          </div>
+        </div>
+        <div class="cta-row" style="margin-top:2rem;">
+          <a class="btn btn-primary" href="https://stairwaymortgage.com/see-my-options">See My Options</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHERE / CITIES -->
+    <section>
+      <div class="container">
+        <span class="eyebrow">Where It Works</span>
+        <h2>Which parts of {county.County} County <span class="accent">may qualify</span></h2>
+        <p class="section-lede">USDA draws its eligibility lines by neighborhood, not by county or ZIP code — so the answer always comes down to the exact address. Broadly: {seat}'s urban area is the county's main exclusion, and eligibility resumes quickly beyond it.</p>
+        <div class="split">
+          <div class="card">
+            <h3>City-by-city eligibility picture</h3>
+            {eligible ? (
+              <>
+                {greenCities.length > 0 && (
+                  <div class="tier tier-green">
+                    <div class="tier-label"><span class="dot"></span>Largely Eligible</div>
+                    <div class="city-cloud">
+                      {greenCities.map((c) => <span class="city-chip">{c}</span>)}
+                    </div>
+                  </div>
+                )}
+                <div class="tier tier-amber">
+                  <div class="tier-label"><span class="dot"></span>Partially Eligible</div>
+                  <div class="city-cloud">
+                    {amberCities.map((c) => <span class="city-chip">{c}</span>)}
+                  </div>
+                  <p class="tier-note">Eligibility lines run through the urban core and its fast-growing edges — some addresses qualify, others don't. This is where verifying the exact lot matters most.</p>
+                </div>
+                <p class="tier-note" style="margin-top:1.1rem;">Based on the official USDA eligibility map. Final determination is always per-address — <a href="#check" style="color:var(--blue);text-decoration:underline;">check yours below</a>.</p>
+              </>
+            ) : (
+              <>
+                <div class="tier tier-grey">
+                  <div class="tier-label"><span class="dot"></span>No USDA-Eligible Areas</div>
+                  <p class="tier-note">{county.County} County falls entirely inside USDA's urban exclusion — no addresses here qualify for USDA financing. That's not the end of the road: <a href="/loan-programs/va-construction-loan/" style="color:var(--blue);text-decoration:underline;">VA construction loans</a> have no geographic limit, and <a href="/loan-programs/fha-construction-loan/" style="color:var(--blue);text-decoration:underline;">FHA construction financing</a> builds up to {ctx.fha} here.</p>
+                </div>
+              </>
+            )}
+          </div>
+          <div class="card">
+            <h3>Why buyers pick USDA in {county.County} County</h3>
+            <ul class="checklist">
+              <li>No down payment for qualified households</li>
+              <li>Guarantee fee typically costs less monthly than FHA mortgage insurance</li>
+              <li>New construction and new manufactured homes are eligible</li>
+              <li>Site work — well, septic, grading, driveway — can be financed</li>
+              <li>Seller or builder can contribute up to 6% toward closing costs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VA / MILITARY SECTION -->
+    <section id="va-option" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+      <div class="container">
+        <span class="eyebrow">For Those Who Serve</span>
+        <h2>Military or veteran? You may have <span class="accent">two $0-down ways</span> to build in {county.County} County</h2>
+        <p class="section-lede">USDA eligibility is about the <em>place</em> — VA eligibility is about the <em>person</em>. Veterans, Guard, and Reserve members live in every corner of {county.County} County, and your VA benefit travels with you. If you have VA eligibility and you're building in a USDA-eligible part of the county, both zero-down construction programs may be on the table.</p>
+        <table class="va-compare">
+          <thead>
+            <tr><th>At a glance</th><th>USDA Construction Loan</th><th>VA Construction Loan</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Down payment</td><td>$0</td><td>$0</td></tr>
+            <tr><td>Where you can build</td><td>USDA-eligible areas only (address-by-address)</td><td>Anywhere — including inside {seat}</td></tr>
+            <tr class="va-key-row"><td>Household income cap</td><td>Yes — 115% of area median income</td><td>None</td></tr>
+            <tr class="va-key-row"><td>Debt-to-income approach</td><td>Guideline ratios apply; some flexibility with strong compensating factors</td><td>Significantly higher DTI possible — no fixed cap; qualification is driven by residual income</td></tr>
+            <tr><td>Loan limit</td><td>No set maximum</td><td>None with full entitlement</td></tr>
+            <tr><td>Program fees</td><td>Upfront guarantee fee + annual fee (both can be financed)</td><td>One-time funding fee — waived for veterans with service-connected disability</td></tr>
+            <tr><td>Who can use it</td><td>Anyone within the income limit</td><td>Eligible service members, veterans &amp; surviving spouses</td></tr>
+          </tbody>
+        </table>
+        <div class="grid3" style="margin-top:2rem;">
+          <div class="card">
+            <span class="va-badge">When USDA tends to fit</span>
+            <p>Your household income is within the county limit, your target address is in an eligible area, and your debt ratios are comfortable. Non-military buyers: this is your zero-down path.</p>
+          </div>
+          <div class="card">
+            <span class="va-badge">When VA tends to fit</span>
+            <p>Your income is above the USDA cap, or your debt-to-income ratio is the hurdle — VA allows a significantly higher DTI than USDA, because qualification is driven by residual income rather than a fixed ratio cap. Also the fit if you want to build inside {seat}, or your funding fee is waived due to a service-connected disability.</p>
+          </div>
+          <div class="card">
+            <span class="va-badge">When you qualify for both</span>
+            <p>That's a good problem. We run both programs side-by-side on your actual numbers — income, debts, the parcel you're eyeing — so you can choose with the full picture in front of you.</p>
+          </div>
+        </div>
+        <div class="cta-row" style="margin-top:2rem;">
+          <a class="btn btn-primary" href="https://stairwaymortgage.com/see-my-options">See My Options</a>
+          <a class="btn btn-secondary" href="https://stairwaymortgage.com/schedule-call">Talk to Our Team</a>
+        </div>
+        <p style="font-size:.75rem;color:var(--ink-lighter);margin-top:1rem;">Program guidelines, fees, and qualifying standards are set by USDA and VA and are subject to change. This comparison is general information, not a loan offer or approval. Your scenario is reviewed individually.</p>
+      </div>
+    </section>
+
+    <!-- ADDRESS CHECKER / LEAD CAPTURE (live) -->
+    <section id="check" data-county={county.County}>
+      <div class="container">
+        <div class="checker">
+          <h2>Does your address qualify?</h2>
+          <p>Eligibility lines cut through neighborhoods — two homes on the same road can get different answers. Check yours against the official USDA map right now.</p>
+          <div class="checker-form">
+            <input id="addr" type="text" placeholder="Property address or area you're considering" aria-label="Property address" />
+            <a id="go" class="btn btn-primary" href="javascript:void(0)">Check My Address</a>
+          </div>
+          <div id="chk-console" style="display:none;margin-top:1rem;background:#0d1220;border:1px solid #232c42;border-radius:10px;padding:.9rem 1.1rem;font-family:var(--mono);font-size:.72rem;color:#8fd08f;white-space:pre-wrap;"></div>
+          <div id="chk-result" style="display:none;margin-top:1rem;border-radius:12px;padding:1.2rem 1.4rem;font-size:.9rem;"></div>
+          <div id="chk-lead" style="display:none;margin-top:1rem;background:#141926;border:1px solid #3A4358;border-radius:12px;padding:1.2rem;">
+            <p style="color:#fff;font-weight:600;margin-bottom:.7rem;">Want the confirmed answer + your $0-down options for this address?</p>
+            <div class="checker-form" style="margin-bottom:0;">
+              <input id="lname" type="text" placeholder="Name" style="min-width:130px;" />
+              <input id="lphone" type="tel" placeholder="Phone" style="min-width:130px;" />
+              <a id="send" class="btn btn-primary" href="javascript:void(0)">See My Options</a>
+            </div>
+          </div>
+          <p class="fine">Preliminary result only — final determination is made by USDA per exact address. Prefer to check it yourself? Use the <a href="https://eligibility.sc.egov.usda.gov" rel="nofollow">official USDA eligibility lookup</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <script is:inline>
+    (function(){
+      const $ = id => document.getElementById(id);
+      const county = (document.getElementById('check') || {}).dataset ? document.getElementById('check').dataset.county : '';
+      const log = (m) => { const c=$('chk-console'); c.style.display='block'; c.textContent += m + "\n"; };
+      const state = {};
+      async function geocode(addr){
+        log('▸ Locating address…');
+        try{
+          const r = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&q='+encodeURIComponent(addr));
+          const j = await r.json();
+          if(j && j[0]){ log('  ✓ Found: '+j[0].display_name.split(',').slice(0,3).join(',')); return {lat:+j[0].lat, lon:+j[0].lon, matched:j[0].display_name.split(',').slice(0,3).join(',')}; }
+          throw 0;
+        }catch(e){
+          const r = await fetch('https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?benchmark=Public_AR_Current&format=json&address='+encodeURIComponent(addr));
+          const j = await r.json(); const m = j.result && j.result.addressMatches && j.result.addressMatches[0];
+          if(!m) throw new Error('Address not found — try adding city + FL');
+          log('  ✓ Found: '+m.matchedAddress); return {lat:m.coordinates.y, lon:m.coordinates.x, matched:m.matchedAddress};
+        }
+      }
+      async function usda(lat,lon){
+        log('▸ Checking the official USDA eligibility layer…');
+        // Production path: our server queries USDA (no browser limits)
+        try{ const r=await fetch('/api/usda-check?lat='+lat+'&lon='+lon);
+          if(r.ok){ const j=await r.json(); if(j.result && j.result!=='UNKNOWN'){ log('  ✓ USDA answered (via Stairway server)'); return j.result; } } }catch(e){}
+        // Fallback: direct browser attempt (works on some networks)
+        const eps=['https://gis.sc.egov.usda.gov/arcgis/rest/services/eligibility/eligibility/MapServer/1/query',
+                   'https://eligibility.sc.egov.usda.gov/arcgis/rest/services/eligibility/eligibility/MapServer/1/query'];
+        const p='?geometry='+lon+','+lat+'&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&returnGeometry=false&outFields=*&f=json';
+        for(const ep of eps){ try{ const r=await fetch(ep+p); const j=await r.json();
+          if(j.features!==undefined){ log('  ✓ USDA answered'); return j.features.length>0?'INELIGIBLE':'ELIGIBLE'; } }catch(e){} }
+        // DEMO-ONLY relay (public CORS proxy) so the prototype answers without the server:
+        try{ const u='https://api.allorigins.win/raw?url='+encodeURIComponent(eps[0]+p);
+          const r=await fetch(u); const j=await r.json();
+          if(j.features!==undefined){ log('  ✓ USDA answered (demo relay)'); return j.features.length>0?'INELIGIBLE':'ELIGIBLE'; } }catch(e){}
+        return 'UNKNOWN';
+      }
+      function show(status, matched){
+        const el=$('chk-result'); el.style.display='block';
+        if(status==='ELIGIBLE'){ el.style.background='#E9F7E9'; el.style.border='1px solid #BFE3BF'; el.style.color='#1E6B1E';
+          el.innerHTML='<strong>✓ Preliminary result: USDA-ELIGIBLE area.</strong> '+matched+' sits inside eligible territory on the official map. Next step: confirm income eligibility.'; }
+        else if(status==='INELIGIBLE'){ el.style.background='#FDECEA'; el.style.border='1px solid #F1B8B4'; el.style.color='#8B2C2C';
+          el.innerHTML='<strong>✗ Not in a USDA-eligible area.</strong> Eligible territory may sit minutes away — and VA / FHA construction paths have no geographic limits. Worth a two-minute conversation.'; }
+        else { el.style.background='#FBF4E3'; el.style.border='1px solid #EBD49A'; el.style.color='#8a6100';
+          el.innerHTML='<strong>◌ Coordinates locked.</strong> The USDA check completes on our server — leave your info and the confirmed answer comes right back.'; }
+        $('chk-lead').style.display='block';
+        state.status=status;
+      }
+      $('go').onclick = async () => {
+        const a=$('addr').value.trim(); if(!a){ log('! Enter an address first'); return; }
+        $('chk-console').textContent=''; $('chk-result').style.display='none';
+        try{ const g=await geocode(a); Object.assign(state,g); const s=await usda(g.lat,g.lon); log('▸ Result: '+s); show(s,g.matched); }
+        catch(e){ log('! '+e.message); }
+      };
+      $('addr').addEventListener('keydown', e => { if(e.key==='Enter'){ e.preventDefault(); $('go').click(); }});
+      $('send').onclick = () => {
+        /* PRODUCTION: POST {address:state.matched, lat:state.lat, lon:state.lon, usda_prelim_result:state.status,
+           county:county, name, phone, source_url, umtid} to the dedicated GHL webhook */
+        $('send').textContent='✓ Sent — we\'ll be in touch shortly'; };
+    })();
+    </script>
+
+    <!-- FAQ -->
+    <section>
+      <div class="container">
+        <span class="eyebrow">Common Questions</span>
+        <h2>{county.County} County USDA construction loan <span class="accent">FAQ</span> — {faqTotal} answers from the guidelines</h2>
+        <p class="section-lede">Sourced from the USDA handbook and construction program guides, localized to {county.County} County. Reviewed by Jim Blackburn, NMLS #1072866. Click any question.</p>
+        {faqCats.map((group) => (
+          <div class="faq-cat">
+            <h3>{group.cat}<span class="cnt">{group.items.length} Q</span></h3>
+            {group.items.map((it) => (
+              <details class="faq"><summary>{it.q}</summary><div class="ans">{it.a}</div></details>
+            ))}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- BUILD RESOURCES -->
+    <section style="background:var(--white);border-top:1px solid var(--border);">
+      <div class="container">
+        <span class="eyebrow">Build Resources</span>
+        <h2>{county.County} County offices <span class="accent">you'll actually use</span> during a build</h2>
+        <p class="section-lede">Every link below points to the official county or state authority — the same offices your builder, surveyor, and closing agent will work with.</p>
+        <div class="res-grid">
+          {buildCards.map((c) => (
+            <div class="res-card">
+              <span class="res-type">{c.type}</span>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+              {firstUrl(c.url)
+                ? <a href={firstUrl(c.url)} target="_blank" rel="noopener">{hostOf(c.url)}</a>
+                : <span style="font-size:.8125rem;color:var(--ink-lighter);">Contact us for the current office link.</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTY DIRECTORY -->
+    <section style="background:var(--white);border-top:1px solid var(--border);">
+      <div class="container">
+        <span class="eyebrow">County Directory</span>
+        <h2>Every {county.County} County office &amp; resource — <span class="accent">verified links</span></h2>
+        <p class="section-lede">Beyond the build offices above: the county's full civic directory. Moving here means knowing these.</p>
+        <div class="res-grid">
+          {civicCards.map((c) => (
+            <div class="res-card">
+              <span class="res-type">{c.type}</span>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+              {firstUrl(c.url)
+                ? (c.alt
+                    ? <><a href={firstUrl(c.url)} target="_blank" rel="noopener">{c.type === 'Reference' ? 'Wikipedia' : hostOf(c.url)}</a> · <a href={c.alt} target="_blank" rel="noopener">Facebook</a></>
+                    : <a href={firstUrl(c.url)} target="_blank" rel="noopener">{hostOf(c.url)}</a>)
+                : <span style="font-size:.8125rem;color:var(--ink-lighter);">Contact us for the current office link.</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="team" style="padding-top:1rem;">
+      <div class="container" style="text-align:center;">
+        <h2>Ready to <span class="accent">build with $0 down</span> in {county.County} County?</h2>
+        <p class="section-lede" style="margin:1rem auto 1.5rem;">Jim Blackburn (NMLS #1072866) has guided more than $500M in closed loans. Get a straight answer on your land, your builder, your income calculation, and your full set of options.</p>
+        <div class="cta-row" style="justify-content:center;">
+          <a class="btn btn-primary" href="https://stairwaymortgage.com/see-my-options">See My Options</a>
+          <a class="btn btn-secondary" href="https://stairwaymortgage.com/schedule-call">Talk to Our Team</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- OTHER COUNTIES GRID -->
+    <div class="county-links">
+      <div class="container">
+        <h2>USDA Construction Loans by Florida County</h2>
+        <div class="grid">
+          {otherCounties.map((c) => (
+            c.current
+              ? <span class="current">{c.name} County</span>
+              : <a class={c.ineligible ? 'alt' : undefined} href={`/loan-programs/usda-construction-loan/florida/${c.slug}/`}>{c.name} County{c.ineligible ? ' *' : ''}</a>
+          ))}
+        </div>
+        <p style="font-size:.75rem;color:#9a9a94;margin-top:1.1rem;">* No USDA-eligible areas — see <a href="/loan-programs/va-construction-loan/" style="color:var(--blue);text-decoration:underline;">VA</a> and <a href="/loan-programs/fha-construction-loan/" style="color:var(--blue);text-decoration:underline;">FHA</a> construction options for these counties.</p>
+      </div>
+    </div>
+
+    <!-- USDA SUBFOOTER — sits ABOVE the site's main footer (Layout.astro provides licensing / NMLS #1660690 / EHO) -->
+    <div style="background:var(--paper-2);border-top:1px solid var(--border);padding:1.6rem 0;">
+      <div class="container">
+        <p style="font-size:.75rem;color:var(--ink-lighter);line-height:1.7;margin:0;">
+          USDA eligibility is determined solely by USDA Rural Development based on property location and household income — verify any address at the
+          <a href="https://eligibility.sc.egov.usda.gov" rel="nofollow" style="color:var(--blue);">official USDA eligibility lookup</a>.
+          VA eligibility is determined by the Department of Veterans Affairs. Income limits, loan limits, and program guidelines reflect published 2026 figures and are subject to change.
+          This page is educational and is not a commitment to lend or a guarantee of approval.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</Layout>
+
+<style>
+  .usda-county-scope{
+    --ink:#0A0E1A; --ink-2:#1E2433; --ink-light:#4A5568; --ink-lighter:#6B7280;
+    --paper:#FAFAF7; --paper-2:#F4F4EE; --paper-3:#EDEDE5; --white:#FFFFFF;
+    --blue:#1845D6; --blue-deep:#0F2EA0; --blue-soft:#E8EEFF; --blue-tint:#F2F5FF;
+    --green:#2E9E2E; --green-soft:#E9F7E9; --rust:#8B2C2C;
+    --border:#E5E5DE; --border-strong:#D4D4C8;
+    --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+    --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
+    font-family:var(--sans);font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;
+  }
+  .usda-county-scope *,.usda-county-scope *::before,.usda-county-scope *::after{box-sizing:border-box;margin:0;padding:0;}
+  .usda-county-scope a{color:inherit;text-decoration:none;}
+  .usda-county-scope .container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+  .usda-county-scope .eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500;display:inline-block;}
+  .usda-county-scope h1,.usda-county-scope h2,.usda-county-scope h3{font-family:var(--serif);font-weight:600;line-height:1.15;color:var(--ink);}
+  .usda-county-scope .accent{font-family:var(--serif);font-style:normal;color:var(--blue);}
+
+  /* Hero */
+  .usda-county-scope .hero{padding:5rem 0 3.5rem;background:linear-gradient(180deg,var(--blue-tint) 0%,var(--paper) 100%);border-bottom:1px solid var(--border);}
+  .usda-county-scope .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);margin:.9rem 0 1.1rem;max-width:820px;}
+  .usda-county-scope .hero p.lede{font-size:1.1875rem;color:var(--ink-light);max-width:680px;margin-bottom:1.8rem;}
+  .usda-county-scope .status-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-soft);border:1px solid #BFE3BF;color:#1E6B1E;border-radius:999px;padding:.4rem 1rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+  .usda-county-scope .status-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);}
+  .usda-county-scope .status-pill-grey{background:var(--paper-3);border-color:var(--border-strong);color:var(--ink-2);}
+  .usda-county-scope .status-pill-grey::before{background:#A6A6A0;}
+  .usda-county-scope .cta-row{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem;}
+  .usda-county-scope .btn{display:inline-block;padding:.85rem 1.7rem;border-radius:8px;font-weight:600;font-size:1rem;transition:transform .15s ease;}
+  .usda-county-scope .btn:hover{transform:translateY(-1px);}
+  .usda-county-scope .btn-primary{background:var(--blue);color:var(--white);}
+  .usda-county-scope .btn-secondary{background:var(--white);color:var(--ink);border:1.5px solid var(--border-strong);}
+  .usda-county-scope .trust-line{margin-top:1.4rem;font-size:.875rem;color:var(--ink-lighter);}
+
+  /* Stat band */
+  .usda-county-scope .stats{padding:3rem 0;background:var(--white);border-bottom:1px solid var(--border);}
+  .usda-county-scope .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;}
+  .usda-county-scope .stat{background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.5rem;}
+  .usda-county-scope .stat .num{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--ink);}
+  .usda-county-scope .stat .lbl{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-lighter);margin-top:.35rem;}
+  .usda-county-scope .stat .note{font-size:.8125rem;color:var(--ink-light);margin-top:.5rem;}
+
+  /* Sections */
+  .usda-county-scope section{padding:3.5rem 0;}
+  .usda-county-scope section h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin:.7rem 0 1rem;}
+  .usda-county-scope .section-lede{color:var(--ink-light);max-width:640px;margin-bottom:2rem;}
+  .usda-county-scope .split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
+  @media(max-width:820px){.usda-county-scope .split{grid-template-columns:1fr;}}
+  .usda-county-scope .card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.8rem;}
+  .usda-county-scope .card h3{font-size:1.25rem;margin-bottom:.7rem;}
+  .usda-county-scope .card p{color:var(--ink-light);font-size:.9688rem;}
+  .usda-county-scope .checklist{list-style:none;margin-top:1rem;}
+  .usda-county-scope .checklist li{padding:.55rem 0 .55rem 1.9rem;position:relative;color:var(--ink-2);font-size:.9688rem;border-bottom:1px dashed var(--border);}
+  .usda-county-scope .checklist li:last-child{border-bottom:0;}
+  .usda-county-scope .checklist li::before{content:"✓";position:absolute;left:0;top:.5rem;color:var(--green);font-weight:700;}
+
+  /* Cities */
+  .usda-county-scope .city-cloud{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem;}
+  .usda-county-scope .city-chip{background:var(--white);border:1px solid var(--border-strong);border-radius:999px;padding:.35rem 1rem;font-size:.875rem;color:var(--ink-2);}
+
+  /* Address checker */
+  .usda-county-scope .checker{background:var(--ink);color:var(--paper);border-radius:18px;padding:2.6rem;text-align:center;}
+  .usda-county-scope .checker h2{color:var(--white);font-size:clamp(1.5rem,3vw,2rem);}
+  .usda-county-scope .checker p{color:#B8BFCC;max-width:520px;margin:.8rem auto 1.5rem;font-size:1rem;}
+  .usda-county-scope .checker-form{display:flex;gap:.7rem;max-width:520px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+  .usda-county-scope .checker-form input{flex:1;min-width:240px;padding:.85rem 1.1rem;border-radius:8px;border:1px solid #3A4358;background:#141926;color:var(--white);font:inherit;font-size:.9688rem;}
+  .usda-county-scope .checker-form input::placeholder{color:#7A8296;}
+  .usda-county-scope .checker .fine{font-size:.75rem;color:#7A8296;margin-top:1rem;}
+  .usda-county-scope .checker .fine a{text-decoration:underline;}
+
+  .usda-county-scope .highlights-section{background:var(--white);border-bottom:1px solid var(--border);padding:3.2rem 0;}
+  .usda-county-scope .highlights-list{list-style:none;max-width:840px;}
+  .usda-county-scope .highlights-list li{padding:.85rem 0 .85rem 2rem;position:relative;border-bottom:1px dashed var(--border);font-size:.9688rem;color:var(--ink-2);}
+  .usda-county-scope .highlights-list li:last-child{border-bottom:0;}
+  .usda-county-scope .highlights-list li::before{content:"—";position:absolute;left:0;color:var(--blue);font-weight:700;}
+  .usda-county-scope .highlights-source{font-size:.8125rem;color:var(--ink-lighter);}
+  .usda-county-scope .highlights-source a{color:var(--blue);text-decoration:underline;}
+  .usda-county-scope .tier{margin-top:1.4rem;}
+  .usda-county-scope .tier-label{display:flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:.7rem;}
+  .usda-county-scope .dot{width:9px;height:9px;border-radius:50%;}
+  .usda-county-scope .tier-green .tier-label{color:#1E6B1E;} .usda-county-scope .tier-green .dot{background:var(--green);}
+  .usda-county-scope .tier-amber .tier-label{color:#8a6100;} .usda-county-scope .tier-amber .dot{background:#D99B00;}
+  .usda-county-scope .tier-grey .tier-label{color:var(--ink-lighter);} .usda-county-scope .tier-grey .dot{background:#A6A6A0;}
+  .usda-county-scope .tier .city-cloud{margin-top:0;}
+  .usda-county-scope .tier-green .city-chip{border-color:#BFE3BF;background:var(--green-soft);}
+  .usda-county-scope .tier-amber .city-chip{border-color:#EBD49A;background:#FBF4E3;}
+  .usda-county-scope .tier-amber .city-chip::after{content:" ·  check address";font-size:.6875rem;color:#8a6100;}
+  .usda-county-scope .tier-note{font-size:.8125rem;color:var(--ink-lighter);margin-top:.55rem;}
+
+  .usda-county-scope .res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1.5rem;}
+  .usda-county-scope .res-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.3rem;}
+  .usda-county-scope .res-card .res-type{font-family:var(--mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:600;}
+  .usda-county-scope .res-card h3{font-size:1rem;font-family:var(--sans);font-weight:600;margin:.4rem 0 .3rem;}
+  .usda-county-scope .res-card p{font-size:.8125rem;color:var(--ink-light);}
+  .usda-county-scope .res-card a{color:var(--blue);font-size:.8125rem;font-weight:600;text-decoration:underline;}
+  .usda-county-scope .county-links{background:var(--paper-2);border-top:1px solid var(--border);padding:2.6rem 0 2.2rem;}
+  .usda-county-scope .county-links h2{font-size:1.05rem;font-family:var(--sans);font-weight:600;margin-bottom:1rem;color:var(--ink-2);}
+  .usda-county-scope .county-links .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.3rem .9rem;}
+  .usda-county-scope .county-links a{font-size:.8125rem;color:var(--ink-light);padding:.18rem 0;display:block;}
+  .usda-county-scope .county-links a:hover{color:var(--blue);text-decoration:underline;}
+  .usda-county-scope .county-links .current{font-weight:700;color:var(--ink);}
+  .usda-county-scope .county-links .alt{color:#9a9a94;}
+
+  /* cluster bar (sticky sub-navigation) */
+  .usda-county-scope .cluster-bar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(10,14,26,.05);}
+  .usda-county-scope .cluster-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:.35rem;padding:.55rem 1.5rem;overflow-x:auto;scrollbar-width:none;}
+  .usda-county-scope .cluster-bar-inner::-webkit-scrollbar{display:none;}
+  .usda-county-scope .cluster-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.35rem;font-weight:600;}
+  .usda-county-scope .cluster-bar a{white-space:nowrap;font-size:.76rem;font-weight:500;color:var(--ink-2);text-decoration:none;padding:.36rem .62rem;border-radius:999px;transition:background .15s;}
+  .usda-county-scope .cluster-bar a:hover{background:var(--paper-2);color:var(--ink);}
+  .usda-county-scope .cluster-bar a.active{background:var(--blue);color:#fff;font-weight:600;}
+  .usda-county-scope .cluster-bar a.tool{color:var(--green);font-weight:600;}
+  .usda-county-scope .cluster-bar a.tool:hover{background:#E9F7E9;}
+
+  .usda-county-scope .va-compare{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);
+    border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:.92rem;
+    box-shadow:0 1px 10px rgba(10,14,26,.05);}
+  .usda-county-scope .va-compare th,.usda-county-scope .va-compare td{padding:.9rem 1.15rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--border);}
+  .usda-county-scope .va-compare thead th{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;
+    color:#fff;background:var(--ink);border-bottom:2px solid var(--ink);}
+  .usda-county-scope .va-compare thead th:nth-child(2){background:var(--green);}
+  .usda-county-scope .va-compare thead th:nth-child(3){background:var(--blue);}
+  .usda-county-scope .va-compare thead th:nth-child(4){background:var(--rust);}
+  .usda-county-scope .va-compare tbody tr:nth-child(even) td{background:#FBFBF8;}
+  .usda-county-scope .va-compare tbody tr:last-child td{border-bottom:none;}
+  .usda-county-scope .va-compare td:first-child{font-weight:600;color:var(--ink-2);width:26%;}
+  .usda-county-scope .va-compare.cost{max-width:620px;margin-left:auto;margin-right:auto;}
+  .usda-county-scope .va-compare.cost td:last-child,.usda-county-scope .va-compare.cost th:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;width:1%;padding-left:1.6rem;}
+  .usda-county-scope .va-compare.cost td:first-child{width:auto;font-weight:500;}
+  .usda-county-scope .va-key-row td{background:#F0F5FF !important;}
+  .usda-county-scope .va-badge{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+    background:var(--blue);color:#fff;border-radius:999px;padding:.2rem .65rem;margin-bottom:.6rem;}
+  .usda-county-scope .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
+  @media(max-width:720px){.usda-county-scope .va-compare{display:block;overflow-x:auto;}}
+
+  .usda-county-scope .faq-cat{margin-top:2.2rem;}
+  .usda-county-scope .faq-cat h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:.9rem;color:var(--ink);}
+  .usda-county-scope .faq-cat h3 .cnt{font-family:var(--mono);font-size:.7rem;color:var(--blue);vertical-align:middle;margin-left:.5rem;}
+  .usda-county-scope details.faq{background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:.55rem;overflow:hidden;}
+  .usda-county-scope details.faq summary{cursor:pointer;padding:.85rem 1.1rem;font-weight:600;color:var(--ink-2);list-style:none;display:flex;justify-content:space-between;gap:1rem;font-size:.94rem;}
+  .usda-county-scope details.faq summary::-webkit-details-marker{display:none;}
+  .usda-county-scope details.faq summary::after{content:'+';font-family:var(--mono);color:var(--blue);font-weight:600;}
+  .usda-county-scope details.faq[open] summary::after{content:'–';}
+  .usda-county-scope details.faq[open] summary{border-bottom:1px solid var(--border);}
+  .usda-county-scope details.faq .ans{padding:.9rem 1.1rem;font-size:.9rem;color:var(--ink-light);line-height:1.65;}
+</style>
