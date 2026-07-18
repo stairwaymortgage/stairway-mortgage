@@ -6,18 +6,18 @@
 // POST /api/usda-check  {lat, lon, address?, county?, name?, phone?, source_url?, umtid?}
 //      → also forwards the lead to the GHL webhook when name/phone present.
 //
-// USDA layer notes: the SFH "ineligible areas" polygons — a point INSIDE a polygon
-// is INELIGIBLE; outside all polygons is ELIGIBLE. Endpoint verified against the
-// same service that powers eligibility.sc.egov.usda.gov. If USDA renames the
-// service (they occasionally do), update USDA_ENDPOINTS — the function tries each
-// in order and reports UNKNOWN rather than guessing.
+// USDA layer notes: the RHS Single Family Housing "ineligible areas" polygons — a
+// point INSIDE a polygon is INELIGIBLE; outside all polygons is ELIGIBLE. This is the
+// same service that powers the current USDA eligibility map (the ArcGIS Experience app
+// linked from eligibility.sc.egov.usda.gov). Verified live 2026-07-18: Troy MI
+// (42.605,-83.12) → 1 feature → INELIGIBLE; rural Alachua FL (29.83,-82.60) → 0 → ELIGIBLE.
+// LAYER 4 = "RHS SFH MFH" is the correct layer (layer 1 on this service is "ELEC").
+// If USDA renames the service (they occasionally do), update USDA_ENDPOINTS — the
+// function tries each in order and reports UNKNOWN rather than guessing.
 
 const USDA_ENDPOINTS = [
-  // primary — SFH property eligibility (ineligible-area polygons), layer 1
-  "https://gis.sc.egov.usda.gov/arcgis/rest/services/eligibility/eligibility/MapServer/1/query",
-  // fallbacks — alternate hosts USDA has used
-  "https://eligibility.sc.egov.usda.gov/arcgis/rest/services/eligibility/eligibility/MapServer/1/query",
-  "https://gis.rd.usda.gov/arcgis/rest/services/eligibility/eligibility/MapServer/1/query",
+  // primary — RHS SFH/MFH property eligibility (ineligible-area polygons), layer 4
+  "https://rdgdwe.sc.egov.usda.gov/arcgis/rest/services/Eligibility/Eligibility/MapServer/4/query",
 ];
 
 const GHL_WEBHOOK = process.env.GHL_ADDRESS_CHECKER_WEBHOOK || ""; // set in Vercel env
@@ -38,12 +38,21 @@ async function queryUsda(lat, lon) {
         headers: { "User-Agent": "Mozilla/5.0 (StairwayMortgage eligibility check)" },
         signal: AbortSignal.timeout(8000),
       });
-      if (!r.ok) continue;
+      if (!r.ok) {
+        console.log(`[usda-check] upstream HTTP ${r.status} (non-ok) from ${ep} — skipping`);
+        continue;
+      }
       const j = await r.json();
       if (Array.isArray(j.features)) {
-        return j.features.length > 0 ? "INELIGIBLE" : "ELIGIBLE";
+        const result = j.features.length > 0 ? "INELIGIBLE" : "ELIGIBLE";
+        console.log(`[usda-check] upstream HTTP ${r.status}, features=${j.features.length} → ${result}`);
+        return result;
       }
-    } catch (_) { /* try next endpoint */ }
+      // 200 but not the expected shape — usually an ArcGIS {"error":{...}} body. Log it, don't guess.
+      console.log(`[usda-check] upstream HTTP ${r.status} but no features array — ${JSON.stringify(j.error || j).slice(0, 200)}`);
+    } catch (e) {
+      console.log(`[usda-check] upstream fetch failed for ${ep}: ${(e && e.name) || "Error"} ${(e && e.message) || ""}`);
+    }
   }
   return "UNKNOWN";
 }
@@ -61,6 +70,7 @@ export default async function handler(req, res) {
   }
 
   const result = await queryUsda(lat, lon);
+  console.log(`[usda-check] method=${req.method} lat=${lat} lon=${lon} → result=${result}`);
 
   // Lead forwarding (only when contact info present)
   if (req.method === "POST" && src.phone && GHL_WEBHOOK) {
