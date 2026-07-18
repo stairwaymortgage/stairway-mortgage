@@ -1,0 +1,157 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    { "@type": "Question", name: "What credit score do I need for a USDA loan?", acceptedAnswer: { "@type": "Answer", text: "There's no official minimum. Automated approvals commonly track around 640+, and manual underwriting can work below that with strong compensating factors." } },
+    { "@type": "Question", name: "Do medical collections kill my file?", acceptedAnswer: { "@type": "Answer", text: "Usually not by themselves — treatment of collections depends on type, size, and the overall file." } },
+    { "@type": "Question", name: "How do student loans count?", acceptedAnswer: { "@type": "Answer", text: "A payment is counted for every student loan — the exact figure depends on your repayment status and documentation." } },
+  ],
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://stairwaymortgage.com/" },
+    { "@type": "ListItem", position: 2, name: "Loan Programs", item: "https://stairwaymortgage.com/loan-programs/" },
+    { "@type": "ListItem", position: 3, name: "USDA Loan", item: "https://stairwaymortgage.com/loan-programs/usda-loan/" },
+    { "@type": "ListItem", position: 4, name: "USDA Credit Requirements" },
+  ],
+};
+---
+
+<Layout
+  title="USDA Credit Requirements — GUS, Scores & Manual Underwriting | Stairway Mortgage"
+  description="How USDA credit approval actually works: GUS automation, the ~640 marker, manual underwriting, debt ratios, and thin-credit paths."
+  canonical="https://stairwaymortgage.com/loan-programs/usda-loan/credit-requirements/">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="usda-spoke-scope">
+    <!-- USDA CLUSTER BAR — sticky, finger-swipeable sub-nav shared across the USDA cluster -->
+    <nav class="cluster-bar" aria-label="USDA loan guides"><div class="cluster-bar-inner"><span class="cluster-label">USDA Loans</span><a href="/loan-programs/usda-loan/">USDA Program Guide</a><a href="/loan-programs/usda-loan/income-limits/">Income Limits</a><a href="/loan-programs/usda-loan/credit-requirements/" class="active">Credit</a><a href="/loan-programs/usda-loan/closing-cost-calculator/">Closing Cost Calculator</a><a href="/loan-programs/construction-loan/">Compare Programs</a><a href="/loan-programs/usda-construction-loan/">FL Counties</a></div></nav>
+
+    <div class="hero"><div class="container">
+      <span class="status-pill">The Credit Picture</span>
+      <h1>USDA credit requirements, <span class="accent">honestly explained</span></h1>
+      <p class="lede">USDA publishes no absolute minimum credit score — approvals run through GUS, the program's automated system, with manual underwriting as the fallback. Here's how the credit conversation actually goes.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="/see-my-options/">See My Options</a>
+      <a class="btn btn-secondary" href="/schedule-call/">Talk to Our Team</a></div>
+      <p class="trust-line">Jim Blackburn · NMLS #1072866 · 7× Scotsman Guide Top Producer · $500M+ closed · (954) 993-1625</p>
+    </div></div>
+
+    <section><div class="container">
+      <span class="eyebrow">How Approval Works</span>
+      <h2>GUS first, <span class="accent">humans second</span></h2>
+      <p class="section-lede">Reviewed by Jim Blackburn, NMLS #1072866 — every file is read by a person, not just a machine.</p>
+      <div class="split" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+        <div class="card"><h3>The ~640 marker</h3><p>Files at 640+ typically flow through GUS automation cleanly. It's a practical marker, not a law.</p></div>
+        <div class="card"><h3>Below 640</h3><p>Manual underwriting is possible with compensating factors — larger reserves, low ratios, clean recent history.</p></div>
+        <div class="card"><h3>Debt ratios</h3><p>Baseline guidance runs about 29% housing / 41% total, with GUS regularly approving beyond it when the file is strong.</p></div>
+        <div class="card"><h3>Credit events</h3><p>Waiting periods apply after bankruptcy or foreclosure; recent clean history matters more than old scars.</p></div>
+        <div class="card"><h3>Thin credit</h3><p>Non-traditional credit (rent, utilities, insurance history) can build a file for borrowers without traditional tradelines.</p></div>
+        <div class="card"><h3>The honest note</h3><p>Guidelines flex file-by-file — the two-minute review beats any rule of thumb on the internet.</p></div>
+      </div>
+    </div></section>
+
+    <section style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);"><div class="container">
+      <span class="eyebrow">Common Questions</span>
+      <h2>FAQ</h2>
+      <div class="faq-item"><h3>What credit score do I need for a USDA loan?</h3><p>There's no official minimum. Automated approvals commonly track around 640+, and manual underwriting can work below that with strong compensating factors.</p></div>
+      <div class="faq-item"><h3>Do medical collections kill my file?</h3><p>Usually not by themselves — treatment of collections depends on type, size, and the overall file.</p></div>
+      <div class="faq-item"><h3>How do student loans count?</h3><p>A payment is counted for every student loan — the exact figure depends on your repayment status and documentation.</p></div>
+      <div class="cta-row" style="margin-top:1.6rem;"><a class="btn btn-primary" href="/see-my-options/">See My Options</a>
+      <a class="btn btn-secondary" href="/schedule-call/">Talk to Jim Blackburn, NMLS #1072866</a></div>
+    </div></section>
+
+    <!-- USDA SUBFOOTER — sits ABOVE the site's main footer (Layout.astro provides licensing / NMLS #1660690 / EHO) -->
+    <div style="background:var(--paper-2);border-top:1px solid var(--border);padding:1.6rem 0;">
+      <div class="container">
+        <p style="font-size:.75rem;color:var(--ink-lighter);line-height:1.7;margin:0;">
+          USDA eligibility is determined solely by USDA Rural Development based on property location and household income — verify any address at the
+          <a href="https://eligibility.sc.egov.usda.gov" rel="nofollow" style="color:var(--blue);">official USDA eligibility lookup</a>.
+          VA eligibility is determined by the Department of Veterans Affairs. Income limits, loan limits, and program guidelines reflect published 2026 figures and are subject to change.
+          This page is educational and is not a commitment to lend or a guarantee of approval.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .usda-spoke-scope{
+    --ink:#0A0E1A; --ink-2:#1E2433; --ink-light:#4A5568; --ink-lighter:#6B7280;
+    --paper:#FAFAF7; --paper-2:#F4F4EE; --paper-3:#EDEDE5; --white:#FFFFFF;
+    --blue:#1845D6; --blue-deep:#0F2EA0; --blue-soft:#E8EEFF; --blue-tint:#F2F5FF;
+    --green:#2E9E2E; --green-soft:#E9F7E9; --rust:#8B2C2C;
+    --border:#E5E5DE; --border-strong:#D4D4C8;
+    --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+    --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
+    font-family:var(--sans);font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;
+  }
+  .usda-spoke-scope *,.usda-spoke-scope *::before,.usda-spoke-scope *::after{box-sizing:border-box;margin:0;padding:0;}
+  .usda-spoke-scope a{color:inherit;text-decoration:none;}
+  .usda-spoke-scope .container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+  .usda-spoke-scope .eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500;display:inline-block;}
+  .usda-spoke-scope h1,.usda-spoke-scope h2,.usda-spoke-scope h3{font-family:var(--serif);font-weight:600;line-height:1.15;color:var(--ink);}
+  .usda-spoke-scope .accent{font-family:var(--serif);font-style:normal;color:var(--blue);}
+  /* Hero */
+  .usda-spoke-scope .hero{padding:5rem 0 3.5rem;background:linear-gradient(180deg,var(--blue-tint) 0%,var(--paper) 100%);border-bottom:1px solid var(--border);}
+  .usda-spoke-scope .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);margin:.9rem 0 1.1rem;max-width:820px;}
+  .usda-spoke-scope .hero p.lede{font-size:1.1875rem;color:var(--ink-light);max-width:680px;margin-bottom:1.8rem;}
+  .usda-spoke-scope .status-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-soft);border:1px solid #BFE3BF;color:#1E6B1E;border-radius:999px;padding:.4rem 1rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+  .usda-spoke-scope .status-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);}
+  .usda-spoke-scope .cta-row{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem;}
+  .usda-spoke-scope .btn{display:inline-block;padding:.85rem 1.7rem;border-radius:8px;font-weight:600;font-size:1rem;transition:transform .15s ease;}
+  .usda-spoke-scope .btn:hover{transform:translateY(-1px);}
+  .usda-spoke-scope .btn-primary{background:var(--blue);color:var(--white);}
+  .usda-spoke-scope .btn-secondary{background:var(--white);color:var(--ink);border:1.5px solid var(--border-strong);}
+  .usda-spoke-scope .trust-line{margin-top:1.4rem;font-size:.875rem;color:var(--ink-lighter);}
+  /* Sections */
+  .usda-spoke-scope section{padding:3.5rem 0;}
+  .usda-spoke-scope section h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin:.7rem 0 1rem;}
+  .usda-spoke-scope .section-lede{color:var(--ink-light);max-width:640px;margin-bottom:2rem;}
+  .usda-spoke-scope .split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
+  @media(max-width:820px){.usda-spoke-scope .split{grid-template-columns:1fr;}}
+  .usda-spoke-scope .card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.8rem;}
+  .usda-spoke-scope .card:hover{transform:none;box-shadow:none;border-color:var(--border);}
+  .usda-spoke-scope .card h3{font-size:1.25rem;margin-bottom:.7rem;}
+  .usda-spoke-scope .card p{color:var(--ink-light);font-size:.9688rem;}
+  /* FAQ */
+  .usda-spoke-scope .faq-item{border-bottom:1px solid var(--border);padding:1.3rem 0;}
+  .usda-spoke-scope .faq-item h3{font-size:1.125rem;font-family:var(--sans);font-weight:600;margin-bottom:.5rem;}
+  .usda-spoke-scope .faq-item p{color:var(--ink-light);font-size:.9688rem;max-width:720px;}
+  /* Checker form (calculator input row) */
+  .usda-spoke-scope .checker-form{display:flex;gap:.7rem;flex-wrap:wrap;}
+  .usda-spoke-scope .checker-form input{flex:1;min-width:240px;padding:.85rem 1.1rem;border-radius:8px;font:inherit;font-size:.9688rem;}
+  /* USDA cluster bar (sticky, finger-swipeable sub-nav) */
+  .usda-spoke-scope .cluster-bar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(10,14,26,.05);}
+  .usda-spoke-scope .cluster-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:.35rem;padding:.55rem 1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .usda-spoke-scope .cluster-bar-inner::-webkit-scrollbar{display:none;}
+  .usda-spoke-scope .cluster-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.35rem;font-weight:600;}
+  .usda-spoke-scope .cluster-bar a{white-space:nowrap;font-size:.76rem;font-weight:500;color:var(--ink-2);text-decoration:none;padding:.36rem .62rem;border-radius:999px;transition:background .15s;}
+  .usda-spoke-scope .cluster-bar a:hover{background:var(--paper-2);color:var(--ink);}
+  .usda-spoke-scope .cluster-bar a.active{background:var(--blue);color:#fff;font-weight:600;}
+  .usda-spoke-scope .cluster-bar a.tool{color:var(--green);font-weight:600;}
+  .usda-spoke-scope .cluster-bar a.tool:hover{background:#E9F7E9;}
+  /* Cost / comparison tables */
+  .usda-spoke-scope .va-compare{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:.92rem;box-shadow:0 1px 10px rgba(10,14,26,.05);}
+  .usda-spoke-scope .va-compare th,.usda-spoke-scope .va-compare td{padding:.9rem 1.15rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--border);}
+  .usda-spoke-scope .va-compare thead th{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:#fff;background:var(--ink);border-bottom:2px solid var(--ink);}
+  .usda-spoke-scope .va-compare thead th:nth-child(2){background:var(--green);}
+  .usda-spoke-scope .va-compare thead th:nth-child(3){background:var(--blue);}
+  .usda-spoke-scope .va-compare thead th:nth-child(4){background:var(--rust);}
+  .usda-spoke-scope .va-compare tbody tr:nth-child(even) td{background:#FBFBF8;}
+  .usda-spoke-scope .va-compare tbody tr:last-child td{border-bottom:none;}
+  .usda-spoke-scope .va-compare td:first-child{font-weight:600;color:var(--ink-2);width:26%;}
+  .usda-spoke-scope .va-compare.cost{max-width:620px;margin-left:auto;margin-right:auto;}
+  .usda-spoke-scope .va-compare.cost td:last-child,.usda-spoke-scope .va-compare.cost th:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;width:1%;padding-left:1.6rem;}
+  .usda-spoke-scope .va-compare.cost td:first-child{width:auto;font-weight:500;}
+  .usda-spoke-scope .va-key-row td{background:#F0F5FF !important;}
+  .usda-spoke-scope .va-total td{background:#FFF9E6 !important;font-weight:700;}
+  .usda-spoke-scope .va-good td{background:#E9F7E9 !important;font-weight:700;color:#1E6B1E;}
+  @media(max-width:720px){.usda-spoke-scope .va-compare{display:block;overflow-x:auto;}}
+</style>
