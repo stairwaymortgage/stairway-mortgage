@@ -34,7 +34,9 @@
   ],
   "rewrites": [
     { "source": "/api/chat", "destination": "/api/chat" },
-    { "source": "/api/chat/", "destination": "/api/chat" }
+    { "source": "/api/chat/", "destination": "/api/chat" },
+    { "source": "/api/usda-check", "destination": "/api/usda-check" },
+    { "source": "/api/usda-check/", "destination": "/api/usda-check" }
   ],
   "redirects": [
     {

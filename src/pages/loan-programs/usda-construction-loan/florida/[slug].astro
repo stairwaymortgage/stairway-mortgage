@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
 import counties from '../../../../data/counties.json';
+import countyNews from '../../../../data/county-news.json';
 import faqBank from '../../../../data/faq-usda.json';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -74,6 +75,11 @@ const utilityName = (v: string) => {
 };
 
 const seat = county['County Seat'] || county.County;
+
+// Local Pulse — daily local news injected by the n8n autopilot into county-news.json.
+// Self-hides: no entry or empty items ⇒ newsItems is [] and the section never renders.
+const newsEntry = (countyNews as Record<string, any>)[county.County];
+const newsItems: any[] = (newsEntry && Array.isArray(newsEntry.items)) ? newsEntry.items.slice(0, 3) : [];
 const cities: string[] = (county.cities_list && county.cities_list.length ? county.cities_list : [seat]);
 const eligible = /eligible areas/i.test(county['USDA Status'] || '');
 
@@ -538,6 +544,26 @@ const pageDesc = eligible
       </div>
     </section>
 
+    <!-- LOCAL PULSE — auto-populated daily from county-news.json; renders only when items exist, never otherwise -->
+    {newsItems.length > 0 && (
+      <section>
+        <div class="container">
+          <span class="eyebrow">Local Pulse</span>
+          <h2>What's happening in {county.County} County</h2>
+          {newsItems.map((n) => (
+            <div class="news-item">
+              <span class="news-date">{n.source} · {n.date}</span>
+              <div>
+                <h3><a href={n.url} target="_blank" rel="noopener nofollow" style="color:var(--blue);">{n.title}</a></h3>
+                <p>{n.summary}</p>
+              </div>
+            </div>
+          ))}
+          <p style="font-size:.72rem;color:var(--ink-lighter);margin-top:1rem;">Updated automatically — sources are original local publishers.</p>
+        </div>
+      </section>
+    )}
+
     <!-- FINAL CTA -->
     <section id="team" style="padding-top:1rem;">
       <div class="container" style="text-align:center;">
@@ -695,6 +721,12 @@ const pageDesc = eligible
   .usda-county-scope .cluster-bar a.active{background:var(--blue);color:#fff;font-weight:600;}
   .usda-county-scope .cluster-bar a.tool{color:var(--green);font-weight:600;}
   .usda-county-scope .cluster-bar a.tool:hover{background:#E9F7E9;}
+  /* Local Pulse news list */
+  .usda-county-scope .news-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);align-items:baseline;}
+  .usda-county-scope .news-item:last-child{border-bottom:0;}
+  .usda-county-scope .news-date{font-family:var(--mono);font-size:.6875rem;color:var(--ink-lighter);white-space:nowrap;}
+  .usda-county-scope .news-item h3{font-size:1rem;font-family:var(--sans);font-weight:600;}
+  .usda-county-scope .news-item p{font-size:.875rem;color:var(--ink-light);}
 
   .usda-county-scope .va-compare{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);
     border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:.92rem;
