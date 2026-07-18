@@ -24,7 +24,7 @@ const {
   title: propTitle,
   description: propDesc,
   canonical,
-  ogImage = '/og-default.svg'
+  ogImage,
 } = Astro.props;
 
 // Use page prop if explicitly set and differs from the generic default;
@@ -37,6 +37,7 @@ const description = (propDesc && propDesc !== defaultDesc ? propDesc : null)
 
 const siteUrl = 'https://stairwaymortgage.com';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+const ogImageUrl = ogImage || `${siteUrl}/social-card.png`;
 ---
 
 <!DOCTYPE html>
@@ -56,11 +57,12 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString(
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalUrl} />
-  <meta property="og:image" content={ogImage} />
+  <meta property="og:image" content={ogImageUrl} />
   <meta property="og:site_name" content="Stairway Mortgage" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={ogImageUrl} />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:creator" content="@mortgagemanjim" />
