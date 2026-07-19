@@ -1,0 +1,185 @@
+---
+// review.astro — gated review funnel
+// Route: /review  →  https://www.stairwaymortgage.com/review
+//
+// Thumbs up  → Google review link
+// Thumbs down → private feedback form (no public review link)
+//
+// Standalone page: renders its own full HTML doc, does NOT use the site Layout,
+// so it can't collide with Layout.astro (the shared/calculator file).
+//
+// CONFIG — the two values that make it work:
+const GOOGLE_REVIEW_URL = "https://g.page/r/CY-hVcux38EIEBM/review";
+const FEEDBACK_WEBHOOK_URL = ""; // optional: paste a GHL/n8n webhook to route thumbs-down feedback. Blank = logs only.
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>How was your experience? — Stairway Mortgage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0E1A; --paper:#FAFAF7; --blue:#1845D6; --gold:#C99A3B;
+    --green:#2E9E2E; --muted:#5A5F6B; --line:#E6E4DC; --card:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'IBM Plex Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+    min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;padding:24px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  }
+  .stair-mark{position:fixed;left:0;bottom:0;width:140px;height:140px;opacity:0.05;pointer-events:none;}
+  .stair-mark span{position:absolute;background:var(--ink);left:0;}
+  .wrap{width:100%;max-width:460px;text-align:center;animation:rise .5s cubic-bezier(0.16,1,0.3,1);}
+  @keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  .brand{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:28px;}
+  h1{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,7vw,38px);line-height:1.12;letter-spacing:-0.01em;margin-bottom:14px;}
+  .sub{color:var(--muted);font-size:16px;margin-bottom:40px;max-width:360px;margin-left:auto;margin-right:auto;}
+  .choices{display:flex;gap:16px;justify-content:center;}
+  .choice{flex:1;max-width:180px;background:var(--card);border:1.5px solid var(--line);border-radius:18px;
+    padding:30px 18px 24px;cursor:pointer;transition:transform .18s cubic-bezier(0.16,1,0.3,1),border-color .18s,box-shadow .18s;
+    font-family:inherit;color:inherit;display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .choice:hover,.choice:focus-visible{transform:translateY(-4px);box-shadow:0 12px 28px rgba(10,14,26,0.10);outline:none;}
+  .choice.up:hover,.choice.up:focus-visible{border-color:var(--green);}
+  .choice.down:hover,.choice.down:focus-visible{border-color:var(--muted);}
+  .choice .ico{width:52px;height:52px;display:flex;align-items:center;justify-content:center;}
+  .choice .ico svg{width:100%;height:100%;}
+  .choice .lbl{font-size:16px;font-weight:600;letter-spacing:-0.01em;}
+  .choice.up .lbl{color:var(--green);}
+  .choice.down .lbl{color:var(--muted);}
+  .screen{display:none;}
+  .screen.active{display:block;animation:rise .45s cubic-bezier(0.16,1,0.3,1);}
+  .big-btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;font-family:inherit;
+    font-size:16px;font-weight:600;border:none;border-radius:14px;padding:17px 30px;cursor:pointer;text-decoration:none;
+    transition:transform .15s,background .15s;box-shadow:0 8px 20px rgba(24,69,214,0.22);}
+  .big-btn:hover{transform:translateY(-2px);background:#1238b0;}
+  .big-btn svg{width:20px;height:20px;}
+  .stars{display:flex;gap:4px;justify-content:center;margin-bottom:22px;}
+  .stars svg{width:30px;height:30px;}
+  .stars svg path{fill:var(--gold);}
+  .redirect-note{margin-top:20px;font-size:13px;color:var(--muted);}
+  textarea{width:100%;min-height:130px;border:1.5px solid var(--line);border-radius:14px;padding:16px;
+    font-family:inherit;font-size:15px;color:var(--ink);resize:vertical;background:var(--card);margin-bottom:16px;transition:border-color .15s;}
+  textarea:focus{outline:none;border-color:var(--blue);}
+  .form-btn{width:100%;background:var(--ink);color:#fff;font-family:inherit;font-size:16px;font-weight:600;
+    border:none;border-radius:14px;padding:16px;cursor:pointer;transition:background .15s,transform .15s;}
+  .form-btn:hover{background:#05070f;transform:translateY(-1px);}
+  .form-btn:disabled{opacity:0.5;cursor:default;transform:none;}
+  .back{display:inline-block;margin-top:22px;font-size:13px;color:var(--muted);background:none;border:none;
+    cursor:pointer;font-family:inherit;text-decoration:underline;text-underline-offset:3px;}
+  .back:hover{color:var(--ink);}
+  .footer{margin-top:44px;font-size:12px;color:var(--muted);letter-spacing:0.01em;}
+  .footer .nmls{display:block;margin-top:4px;opacity:0.75;}
+  @media (max-width:380px){.choices{gap:12px;}.choice{padding:24px 12px 20px;}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="stair-mark" aria-hidden="true">
+  <span style="bottom:0;width:140px;height:20px;"></span>
+  <span style="bottom:20px;width:108px;height:20px;"></span>
+  <span style="bottom:40px;width:76px;height:20px;"></span>
+  <span style="bottom:60px;width:44px;height:20px;"></span>
+</div>
+
+<div class="wrap">
+  <div class="screen active" id="s-ask">
+    <div class="brand">Stairway Mortgage</div>
+    <h1>How was your experience?</h1>
+    <p class="sub">You just worked with our team on your home financing. We'd love to know how it went.</p>
+    <div class="choices">
+      <button class="choice up" id="btn-up" aria-label="Good experience">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 22V11M2 13v7a2 2 0 0 0 2 2h12.5a2 2 0 0 0 2-1.7l1.4-9A2 2 0 0 0 19.9 9H14V4a2 2 0 0 0-2-2l-3 7v13" stroke="#2E9E2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="lbl">Good</span>
+      </button>
+      <button class="choice down" id="btn-down" aria-label="Could be improved">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M17 2v11M22 11V4a2 2 0 0 0-2-2H7.5a2 2 0 0 0-2 1.7l-1.4 9A2 2 0 0 0 6.1 15H10v5a2 2 0 0 0 2 2l3-7V2" stroke="#5A5F6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="lbl">Could be better</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="screen" id="s-up">
+    <div class="stars" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+    </div>
+    <h1>That's wonderful to hear.</h1>
+    <p class="sub">Would you share a few words on Google? It takes a minute and means the world to our team.</p>
+    <a class="big-btn" id="google-link" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" fill="#fff"/></svg>
+      Leave a Google review
+    </a>
+    <p class="redirect-note" id="redirect-note"></p>
+  </div>
+
+  <div class="screen" id="s-down">
+    <h1>Thank you for your honesty.</h1>
+    <p class="sub">We take this seriously. Tell us what fell short — it comes straight to our team, and we'll make it right.</p>
+    <textarea id="fb-text" placeholder="What could we have done better?" aria-label="Your feedback"></textarea>
+    <button class="form-btn" id="fb-submit">Send feedback</button>
+    <button class="back" id="back-1">← Back</button>
+  </div>
+
+  <div class="screen" id="s-thanks">
+    <h1>We hear you.</h1>
+    <p class="sub">Thank you for telling us. A member of our team will be in touch personally.</p>
+  </div>
+
+  <div class="footer">
+    Stairway Mortgage · (954) 993-1625
+    <span class="nmls">Jim Blackburn · NMLS #1072866</span>
+  </div>
+</div>
+
+<script define:vars={{ GOOGLE_REVIEW_URL, FEEDBACK_WEBHOOK_URL }}>
+  var screens = {
+    ask: document.getElementById('s-ask'),
+    up: document.getElementById('s-up'),
+    down: document.getElementById('s-down'),
+    thanks: document.getElementById('s-thanks')
+  };
+  function show(name){
+    Object.values(screens).forEach(function(s){ s.classList.remove('active'); });
+    screens[name].classList.add('active');
+  }
+  document.getElementById('google-link').setAttribute('href', GOOGLE_REVIEW_URL);
+
+  document.getElementById('btn-up').addEventListener('click', function(){
+    show('up');
+    var n = 4;
+    var note = document.getElementById('redirect-note');
+    note.textContent = 'Taking you to Google in ' + n + '…';
+    var timer = setInterval(function(){
+      n--;
+      if (n <= 0){ clearInterval(timer); window.open(GOOGLE_REVIEW_URL,'_blank','noopener'); note.textContent=''; }
+      else { note.textContent = 'Taking you to Google in ' + n + '…'; }
+    }, 1000);
+  });
+
+  document.getElementById('btn-down').addEventListener('click', function(){ show('down'); });
+  document.getElementById('back-1').addEventListener('click', function(){ show('ask'); });
+
+  document.getElementById('fb-submit').addEventListener('click', function(){
+    var btn = this;
+    var text = document.getElementById('fb-text').value.trim();
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var payload = { feedback: text, rating: 'negative', ts: new Date().toISOString() };
+    function done(){ show('thanks'); }
+    if (FEEDBACK_WEBHOOK_URL){
+      fetch(FEEDBACK_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(done).catch(done);
+    } else { console.log('Feedback captured:', payload); setTimeout(done, 500); }
+  });
+</script>
+</body>
+</html>
