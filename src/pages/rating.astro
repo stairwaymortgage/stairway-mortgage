@@ -1,16 +1,22 @@
 ---
-// review.astro — gated review funnel
-// Route: /review  →  https://www.stairwaymortgage.com/review
+// rating.astro — gated review funnel
+// Route: /rating  →  https://www.stairwaymortgage.com/rating
 //
-// Thumbs up  → Google review link
-// Thumbs down → private feedback form (no public review link)
+// Thumbs up  → choice of 4 review platforms
+// Thumbs down → private feedback form (no public review links)
 //
-// Standalone page: renders its own full HTML doc, does NOT use the site Layout,
-// so it can't collide with Layout.astro (the shared/calculator file).
+// Standalone page — does NOT use the site Layout, so no collision with Layout.astro.
 //
-// CONFIG — the two values that make it work:
-const GOOGLE_REVIEW_URL = "https://g.page/r/CY-hVcux38EIEBM/review";
-const FEEDBACK_WEBHOOK_URL = ""; // optional: paste a GHL/n8n webhook to route thumbs-down feedback. Blank = logs only.
+// CONFIG — review links per platform:
+const GOOGLE_REVIEW_URL   = "https://g.page/r/CY-hVcux38EIEBM/review";
+const ZILLOW_REVIEW_URL    = "https://www.zillow.com/mortgage/lender-review/?screenName=mortgagemanjim";
+const FACEBOOK_REVIEW_URL  = "https://www.facebook.com/stairwaymortgage/reviews";
+// ⚠ PLACEHOLDER — replace with the customer-facing Yelp link from the PUBLIC listing:
+//    yelp.com listing → "Write a Review" → looks like https://www.yelp.com/writeareview/biz/XXXX
+//    (NOT a biz.yelp.com dashboard URL)
+const YELP_REVIEW_URL      = "https://www.yelp.com/writeareview/biz/REPLACE_WITH_REAL_YELP_BIZ_ID";
+
+const FEEDBACK_WEBHOOK_URL = ""; // optional: GHL/n8n webhook for thumbs-down feedback. Blank = logs only.
 ---
 
 <!DOCTYPE html>
@@ -37,11 +43,11 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: paste a GHL/n8n webhook to route t
   }
   .stair-mark{position:fixed;left:0;bottom:0;width:140px;height:140px;opacity:0.05;pointer-events:none;}
   .stair-mark span{position:absolute;background:var(--ink);left:0;}
-  .wrap{width:100%;max-width:460px;text-align:center;animation:rise .5s cubic-bezier(0.16,1,0.3,1);}
+  .wrap{width:100%;max-width:480px;text-align:center;animation:rise .5s cubic-bezier(0.16,1,0.3,1);}
   @keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
   .brand{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:28px;}
   h1{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,7vw,38px);line-height:1.12;letter-spacing:-0.01em;margin-bottom:14px;}
-  .sub{color:var(--muted);font-size:16px;margin-bottom:40px;max-width:360px;margin-left:auto;margin-right:auto;}
+  .sub{color:var(--muted);font-size:16px;margin-bottom:40px;max-width:380px;margin-left:auto;margin-right:auto;}
   .choices{display:flex;gap:16px;justify-content:center;}
   .choice{flex:1;max-width:180px;background:var(--card);border:1.5px solid var(--line);border-radius:18px;
     padding:30px 18px 24px;cursor:pointer;transition:transform .18s cubic-bezier(0.16,1,0.3,1),border-color .18s,box-shadow .18s;
@@ -56,15 +62,22 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: paste a GHL/n8n webhook to route t
   .choice.down .lbl{color:var(--muted);}
   .screen{display:none;}
   .screen.active{display:block;animation:rise .45s cubic-bezier(0.16,1,0.3,1);}
-  .big-btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;font-family:inherit;
-    font-size:16px;font-weight:600;border:none;border-radius:14px;padding:17px 30px;cursor:pointer;text-decoration:none;
-    transition:transform .15s,background .15s;box-shadow:0 8px 20px rgba(24,69,214,0.22);}
-  .big-btn:hover{transform:translateY(-2px);background:#1238b0;}
-  .big-btn svg{width:20px;height:20px;}
   .stars{display:flex;gap:4px;justify-content:center;margin-bottom:22px;}
   .stars svg{width:30px;height:30px;}
   .stars svg path{fill:var(--gold);}
-  .redirect-note{margin-top:20px;font-size:13px;color:var(--muted);}
+  /* platform buttons */
+  .platforms{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+  .plat{display:flex;align-items:center;gap:14px;width:100%;background:var(--card);border:1.5px solid var(--line);
+    border-radius:14px;padding:16px 20px;cursor:pointer;text-decoration:none;color:var(--ink);font-family:inherit;
+    font-size:16px;font-weight:600;transition:transform .15s,border-color .15s,box-shadow .15s;text-align:left;}
+  .plat:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,14,26,0.08);}
+  .plat .pico{width:26px;height:26px;flex:none;display:flex;align-items:center;justify-content:center;}
+  .plat .pico svg{width:100%;height:100%;}
+  .plat .arrow{margin-left:auto;color:var(--muted);font-size:18px;}
+  .plat.google:hover{border-color:#4285F4;}
+  .plat.zillow:hover{border-color:#006AFF;}
+  .plat.facebook:hover{border-color:#1877F2;}
+  .plat.yelp:hover{border-color:#D32323;}
   textarea{width:100%;min-height:130px;border:1.5px solid var(--line);border-radius:14px;padding:16px;
     font-family:inherit;font-size:15px;color:var(--ink);resize:vertical;background:var(--card);margin-bottom:16px;transition:border-color .15s;}
   textarea:focus{outline:none;border-color:var(--blue);}
@@ -90,6 +103,7 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: paste a GHL/n8n webhook to route t
 </div>
 
 <div class="wrap">
+  <!-- ASK -->
   <div class="screen active" id="s-ask">
     <div class="brand">Stairway Mortgage</div>
     <h1>How was your experience?</h1>
@@ -106,6 +120,7 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: paste a GHL/n8n webhook to route t
     </div>
   </div>
 
+  <!-- THUMBS UP → platform choice -->
   <div class="screen" id="s-up">
     <div class="stars" aria-hidden="true">
       <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
@@ -115,14 +130,28 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: paste a GHL/n8n webhook to route t
       <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
     </div>
     <h1>That's wonderful to hear.</h1>
-    <p class="sub">Would you share a few words on Google? It takes a minute and means the world to our team.</p>
-    <a class="big-btn" id="google-link" href="#" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" fill="#fff"/></svg>
-      Leave a Google review
-    </a>
-    <p class="redirect-note" id="redirect-note"></p>
+    <p class="sub">Pick wherever's easiest — a few words means the world to us.</p>
+    <div class="platforms">
+      <a class="plat google" id="lnk-google" href="#" target="_blank" rel="noopener">
+        <span class="pico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22.5 12.2c0-.7-.06-1.4-.18-2.06H12v3.9h5.9a5 5 0 0 1-2.19 3.3v2.7h3.54c2.07-1.9 3.25-4.72 3.25-7.84z" fill="#4285F4"/><path d="M12 23c2.94 0 5.4-.97 7.2-2.63l-3.54-2.7c-.98.66-2.23 1.05-3.66 1.05-2.82 0-5.2-1.9-6.06-4.46H2.3v2.8A11 11 0 0 0 12 23z" fill="#34A853"/><path d="M5.94 14.26a6.6 6.6 0 0 1 0-4.22v-2.8H2.3a11 11 0 0 0 0 9.82l3.64-2.8z" fill="#FBBC05"/><path d="M12 5.6c1.6 0 3 .55 4.13 1.62l3.1-3.1A11 11 0 0 0 12 1 11 11 0 0 0 2.3 7.04l3.64 2.8C6.8 7.5 9.18 5.6 12 5.6z" fill="#EA4335"/></svg></span>
+        Review on Google <span class="arrow">→</span>
+      </a>
+      <a class="plat zillow" id="lnk-zillow" href="#" target="_blank" rel="noopener">
+        <span class="pico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 2 9.2l2.1 2.7L12 6l7.9 5.9L22 9.2z" fill="#006AFF"/><path d="M12 8.5 5.5 13v7h13v-7z" fill="#006AFF" opacity=".55"/></svg></span>
+        Review on Zillow <span class="arrow">→</span>
+      </a>
+      <a class="plat facebook" id="lnk-facebook" href="#" target="_blank" rel="noopener">
+        <span class="pico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.88 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.68.24 2.68.24v2.95h-1.51c-1.49 0-1.95.92-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38A12 12 0 0 0 24 12z" fill="#1877F2"/></svg></span>
+        Review on Facebook <span class="arrow">→</span>
+      </a>
+      <a class="plat yelp" id="lnk-yelp" href="#" target="_blank" rel="noopener">
+        <span class="pico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.3 3.1c1-.3 3.3-.9 4 .1.3.5.3 1.4.3 2l.1 6.3c0 .6-.1 1.5-.7 1.8-.7.3-1.4-.3-1.9-.7l-3.6-3.3c-.4-.4-1-.9-.9-1.6.1-.9 1.7-4 2.6-4.4zM8.4 10.9c.6.2 1.2.9.9 1.6-.2.5-.9.7-1.4.9l-3 .9c-.5.1-1.4.4-1.9 0-.7-.6-.5-3 .1-3.7.5-.6 1.4-.3 2-.1l3.3.5zM10.5 15c.5-.3 1.2-.2 1.5.3.2.4 0 .9-.1 1.4l-1 3c-.2.5-.4 1.4-1.1 1.5-.9.1-2.5-1.6-2.6-2.5-.1-.7.5-1.1 1-1.5l2.3-2.2zM15.6 15.5c.4-.4 1.1-.6 1.6-.2l2.5 1.8c.4.3 1.1.7 1 1.5-.1.9-2.2 1.9-3.1 1.7-.7-.2-.9-1-1.1-1.6l-1-2.9c-.1-.1.1.1 0-.3zM15.6 12.5c-.5-.2-.8-.9-.5-1.4.2-.4.9-.5 1.4-.6l3-.7c.5-.1 1.4-.3 1.9.2.6.6.2 3-.5 3.5-.5.4-1.4 0-2-.2l-3.3-.8z" fill="#D32323"/></svg></span>
+        Review on Yelp <span class="arrow">→</span>
+      </a>
+    </div>
   </div>
 
+  <!-- THUMBS DOWN → private feedback -->
   <div class="screen" id="s-down">
     <h1>Thank you for your honesty.</h1>
     <p class="sub">We take this seriously. Tell us what fell short — it comes straight to our team, and we'll make it right.</p>
@@ -131,6 +160,7 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: paste a GHL/n8n webhook to route t
     <button class="back" id="back-1">← Back</button>
   </div>
 
+  <!-- FEEDBACK THANKS -->
   <div class="screen" id="s-thanks">
     <h1>We hear you.</h1>
     <p class="sub">Thank you for telling us. A member of our team will be in touch personally.</p>
@@ -142,7 +172,7 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: paste a GHL/n8n webhook to route t
   </div>
 </div>
 
-<script define:vars={{ GOOGLE_REVIEW_URL, FEEDBACK_WEBHOOK_URL }}>
+<script define:vars={{ GOOGLE_REVIEW_URL, ZILLOW_REVIEW_URL, FACEBOOK_REVIEW_URL, YELP_REVIEW_URL, FEEDBACK_WEBHOOK_URL }}>
   var screens = {
     ask: document.getElementById('s-ask'),
     up: document.getElementById('s-up'),
@@ -153,20 +183,13 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: paste a GHL/n8n webhook to route t
     Object.values(screens).forEach(function(s){ s.classList.remove('active'); });
     screens[name].classList.add('active');
   }
-  document.getElementById('google-link').setAttribute('href', GOOGLE_REVIEW_URL);
+  // wire platform links
+  document.getElementById('lnk-google').href   = GOOGLE_REVIEW_URL;
+  document.getElementById('lnk-zillow').href   = ZILLOW_REVIEW_URL;
+  document.getElementById('lnk-facebook').href = FACEBOOK_REVIEW_URL;
+  document.getElementById('lnk-yelp').href     = YELP_REVIEW_URL;
 
-  document.getElementById('btn-up').addEventListener('click', function(){
-    show('up');
-    var n = 4;
-    var note = document.getElementById('redirect-note');
-    note.textContent = 'Taking you to Google in ' + n + '…';
-    var timer = setInterval(function(){
-      n--;
-      if (n <= 0){ clearInterval(timer); window.open(GOOGLE_REVIEW_URL,'_blank','noopener'); note.textContent=''; }
-      else { note.textContent = 'Taking you to Google in ' + n + '…'; }
-    }, 1000);
-  });
-
+  document.getElementById('btn-up').addEventListener('click', function(){ show('up'); });
   document.getElementById('btn-down').addEventListener('click', function(){ show('down'); });
   document.getElementById('back-1').addEventListener('click', function(){ show('ask'); });
 
