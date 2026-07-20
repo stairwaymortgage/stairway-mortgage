@@ -1,0 +1,193 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import counties from '../../../data/counties.json';
+
+// ── helper (verbatim from the FHA county template) ───────────────────────────
+const fmtMoney = (v: string) => {
+  const n = Number(String(v).replace(/[^0-9.]/g, ''));
+  return isNaN(n) || n === 0 ? '' : '$' + n.toLocaleString('en-US');
+};
+
+// ── county rows — all 67, alphabetical by County ─────────────────────────────
+const rows = (counties as any[])
+  .map((c) => ({
+    county: c.County,
+    seat: c['County Seat'] || c.County,
+    slug: c.slug,
+    fha: fmtMoney(c['2026 FHA Limit (1-unit)']),
+  }))
+  .sort((a, b) => a.county.localeCompare(b.county));
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    { "@type": "Question", name: "How is the FHA loan limit set for my county?", acceptedAnswer: { "@type": "Answer", text: "HUD publishes a maximum FHA loan amount for every U.S. county each year, tied to local median home prices. Florida counties range from the statewide FHA floor up to the higher ceiling in high-cost areas such as Monroe County (the Keys)." } },
+    { "@type": "Question", name: "Do FHA construction loans use the same county limit as a regular FHA loan?", acceptedAnswer: { "@type": "Answer", text: "Yes. An FHA one-time-close construction loan is subject to the same HUD county loan limit as any other FHA mortgage — the limit caps the final loan amount, land and construction included." } },
+    { "@type": "Question", name: "Do the FHA county limits change?", acceptedAnswer: { "@type": "Answer", text: "Yes — HUD updates county limits annually. The figures on this page are the published 2026 amounts; verify your county's current limit with our team." } },
+  ],
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://stairwaymortgage.com/" },
+    { "@type": "ListItem", position: 2, name: "Loan Programs", item: "https://stairwaymortgage.com/loan-programs/" },
+    { "@type": "ListItem", position: 3, name: "FHA Construction Loan", item: "https://stairwaymortgage.com/loan-programs/fha-construction-loan/" },
+    { "@type": "ListItem", position: 4, name: "FHA Construction Loan Limits — Florida 2026" },
+  ],
+};
+---
+
+<Layout
+  title="2026 FHA Construction Loan Limits by Florida County | Stairway Mortgage"
+  description="The 2026 HUD one-unit FHA loan limit for every Florida county — the same ceiling that applies to FHA one-time-close construction loans."
+  canonical="https://stairwaymortgage.com/loan-programs/fha-construction-loan/loan-limits/">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="fha-spoke-scope">
+    <!-- FHA CLUSTER BAR — sticky, finger-swipeable sub-nav shared across the FHA construction cluster -->
+    <nav class="cluster-bar" aria-label="FHA construction loan guides"><div class="cluster-bar-inner"><span class="cluster-label">FHA Construction</span><a href="/loan-programs/fha-loan/">Program Guide</a><a href="/loan-programs/fha-construction-loan/loan-limits/" class="active">Loan Limits</a><a href="/loan-programs/construction-loan/">Compare Programs</a><a href="/loan-programs/fha-construction-loan/">FL Counties</a></div></nav>
+
+    <div class="hero"><div class="container">
+      <span class="status-pill">2026 Figures</span>
+      <h1>2026 FHA construction loan limits by <span class="accent">Florida county</span></h1>
+      <p class="lede">FHA sets a maximum loan amount for every Florida county — HUD's county loan limits — and the same ceiling applies to an FHA one-time-close construction loan, land and build included. Below is every Florida county's 2026 one-unit FHA limit.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="/see-my-options/">See My Options</a>
+      <a class="btn btn-secondary" href="/schedule-call/">Talk to Our Team</a></div>
+      <p class="trust-line">Jim Blackburn · NMLS #1072866 · 7× Scotsman Guide Top Producer · $500M+ closed · (954) 993-1625</p>
+    </div></div>
+
+    <section style="background:var(--white);border-bottom:1px solid var(--border);"><div class="container">
+      <span class="eyebrow">What This Means</span>
+      <h2>The county limit is the <span class="accent">ceiling on your loan</span>, not your home price</h2>
+      <p class="section-lede">For an FHA construction loan, the HUD county limit caps the total loan amount — the land purchase and the cost to build, combined. As long as your one-time-close construction financing lands at or under your county's figure, the FHA path is on the table. Homes that need more financing than the county limit allow move to conventional or jumbo construction options instead.</p>
+    </div></section>
+
+    <section><div class="container">
+      <span class="eyebrow">The Numbers</span>
+      <h2>Every Florida county's <span class="accent">2026 one-unit FHA limit</span></h2>
+      <p class="section-lede">Sorted alphabetically. Select a county to open its FHA construction loan page.</p>
+      <table class="va-compare limits"><thead><tr><th>County</th><th>County Seat</th><th>2026 FHA Limit (1-unit)</th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr>
+              <td><a href={`/loan-programs/fha-construction-loan/florida/${r.slug}/`}>{r.county} County</a></td>
+              <td>{r.seat}</td>
+              <td class="amt">{r.fha}</td>
+            </tr>
+          ))}
+        </tbody></table>
+      <p style="font-size:.8rem;color:var(--ink-lighter);margin-top:1rem;">Source: HUD FHA mortgage limits (2026 one-unit). Limits are set per county and update annually — verify your county's current figure at entp.hud.gov or with our team. Reviewed by Jim Blackburn, NMLS #1072866.</p>
+    </div></section>
+
+    <section style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);"><div class="container">
+      <span class="eyebrow">How Limits Are Set</span>
+      <h2>HUD sets the limits, and they <span class="accent">vary by county</span></h2>
+      <p class="section-lede">Every county's FHA limit is published by the U.S. Department of Housing and Urban Development, based on local median home prices. Most Florida counties sit at the statewide FHA floor, while higher-cost markets carry a higher ceiling — Monroe County (the Florida Keys) runs well above the rest of the state, and metros like Miami-Dade sit above the floor. A higher county limit means more of a build can be financed under FHA before you would need a conventional or jumbo construction loan. Every scenario is reviewed personally by Jim Blackburn, NMLS #1072866.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="/see-my-options/">See My Options</a></div>
+    </div></section>
+
+    <section><div class="container">
+      <span class="eyebrow">Common Questions</span>
+      <h2>FAQ</h2>
+      <div class="faq-item"><h3>How is the FHA loan limit set for my county?</h3><p>HUD publishes a maximum FHA loan amount for every U.S. county each year, tied to local median home prices. Florida counties range from the statewide FHA floor up to the higher ceiling in high-cost areas such as Monroe County (the Keys).</p></div>
+      <div class="faq-item"><h3>Do FHA construction loans use the same county limit as a regular FHA loan?</h3><p>Yes. An FHA one-time-close construction loan is subject to the same HUD county loan limit as any other FHA mortgage — the limit caps the final loan amount, land and construction included.</p></div>
+      <div class="faq-item"><h3>Do the FHA county limits change?</h3><p>Yes — HUD updates county limits annually. The figures above are the published 2026 amounts; verify your county's current limit with our team.</p></div>
+      <p class="section-lede" style="margin-top:1.6rem;">Questions on your county's exact figure or your build budget? <a href="/schedule-call/" style="color:var(--blue);text-decoration:underline;">Schedule a call</a> with our team.</p>
+    </div></section>
+
+    <!-- FHA SUBFOOTER — sits ABOVE the site's main footer (Layout.astro provides licensing / NMLS #1660690 / EHO) -->
+    <div style="background:var(--paper-2);border-top:1px solid var(--border);padding:1.6rem 0;">
+      <div class="container">
+        <p style="font-size:.75rem;color:var(--ink-lighter);line-height:1.7;margin:0;">
+          FHA loan limits are set by the U.S. Department of Housing and Urban Development and vary by county — verify any county's current figure through HUD before relying on it.
+          Loan limits and program guidelines reflect published 2026 figures and are subject to change.
+          Jim Blackburn, NMLS #1072866. This page is educational and is not a commitment to lend or a guarantee of approval.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .fha-spoke-scope{
+    --ink:#0A0E1A; --ink-2:#1E2433; --ink-light:#4A5568; --ink-lighter:#6B7280;
+    --paper:#FAFAF7; --paper-2:#F4F4EE; --paper-3:#EDEDE5; --white:#FFFFFF;
+    --blue:#1845D6; --blue-deep:#0F2EA0; --blue-soft:#E8EEFF; --blue-tint:#F2F5FF;
+    --green:#2E9E2E; --green-soft:#E9F7E9; --rust:#8B2C2C;
+    --border:#E5E5DE; --border-strong:#D4D4C8;
+    --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+    --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
+    font-family:var(--sans);font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;
+  }
+  .fha-spoke-scope *,.fha-spoke-scope *::before,.fha-spoke-scope *::after{box-sizing:border-box;margin:0;padding:0;}
+  .fha-spoke-scope a{color:inherit;text-decoration:none;}
+  .fha-spoke-scope .container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+  .fha-spoke-scope .eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500;display:inline-block;}
+  .fha-spoke-scope h1,.fha-spoke-scope h2,.fha-spoke-scope h3{font-family:var(--serif);font-weight:600;line-height:1.15;color:var(--ink);}
+  .fha-spoke-scope .accent{font-family:var(--serif);font-style:normal;color:var(--blue);}
+  /* Hero */
+  .fha-spoke-scope .hero{padding:5rem 0 3.5rem;background:linear-gradient(180deg,var(--blue-tint) 0%,var(--paper) 100%);border-bottom:1px solid var(--border);}
+  .fha-spoke-scope .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);margin:.9rem 0 1.1rem;max-width:820px;}
+  .fha-spoke-scope .hero p.lede{font-size:1.1875rem;color:var(--ink-light);max-width:680px;margin-bottom:1.8rem;}
+  .fha-spoke-scope .status-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-soft);border:1px solid #BFE3BF;color:#1E6B1E;border-radius:999px;padding:.4rem 1rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+  .fha-spoke-scope .status-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);}
+  .fha-spoke-scope .cta-row{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem;}
+  .fha-spoke-scope .btn{display:inline-block;padding:.85rem 1.7rem;border-radius:8px;font-weight:600;font-size:1rem;transition:transform .15s ease;}
+  .fha-spoke-scope .btn:hover{transform:translateY(-1px);}
+  .fha-spoke-scope .btn-primary{background:var(--blue);color:var(--white);}
+  .fha-spoke-scope .btn-secondary{background:var(--white);color:var(--ink);border:1.5px solid var(--border-strong);}
+  .fha-spoke-scope .trust-line{margin-top:1.4rem;font-size:.875rem;color:var(--ink-lighter);}
+  /* Sections */
+  .fha-spoke-scope section{padding:3.5rem 0;}
+  .fha-spoke-scope section h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin:.7rem 0 1rem;}
+  .fha-spoke-scope .section-lede{color:var(--ink-light);max-width:640px;margin-bottom:2rem;}
+  .fha-spoke-scope .split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
+  @media(max-width:820px){.fha-spoke-scope .split{grid-template-columns:1fr;}}
+  .fha-spoke-scope .card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.8rem;}
+  .fha-spoke-scope .card:hover{transform:none;box-shadow:none;border-color:var(--border);}
+  .fha-spoke-scope .card h3{font-size:1.25rem;margin-bottom:.7rem;}
+  .fha-spoke-scope .card p{color:var(--ink-light);font-size:.9688rem;}
+  /* FAQ */
+  .fha-spoke-scope .faq-item{border-bottom:1px solid var(--border);padding:1.3rem 0;}
+  .fha-spoke-scope .faq-item h3{font-size:1.125rem;font-family:var(--sans);font-weight:600;margin-bottom:.5rem;}
+  .fha-spoke-scope .faq-item p{color:var(--ink-light);font-size:.9688rem;max-width:720px;}
+  /* Checker form (calculator input row) */
+  .fha-spoke-scope .checker-form{display:flex;gap:.7rem;flex-wrap:wrap;}
+  .fha-spoke-scope .checker-form input{flex:1;min-width:240px;padding:.85rem 1.1rem;border-radius:8px;font:inherit;font-size:.9688rem;}
+  /* FHA cluster bar (sticky, finger-swipeable sub-nav) */
+  .fha-spoke-scope .cluster-bar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(10,14,26,.05);}
+  .fha-spoke-scope .cluster-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:.35rem;padding:.55rem 1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .fha-spoke-scope .cluster-bar-inner::-webkit-scrollbar{display:none;}
+  .fha-spoke-scope .cluster-label{flex:0 0 auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.35rem;font-weight:600;}
+  .fha-spoke-scope .cluster-bar a{flex:0 0 auto;white-space:nowrap;font-size:.76rem;font-weight:500;color:var(--ink-2);text-decoration:none;padding:.36rem .62rem;border-radius:999px;transition:background .15s;}
+  .fha-spoke-scope .cluster-bar a:hover{background:var(--paper-2);color:var(--ink);}
+  .fha-spoke-scope .cluster-bar a.active{background:var(--blue);color:#fff;font-weight:600;}
+  .fha-spoke-scope .cluster-bar a.tool{color:var(--green);font-weight:600;}
+  .fha-spoke-scope .cluster-bar a.tool:hover{background:#E9F7E9;}
+  /* Cost / comparison tables */
+  .fha-spoke-scope .va-compare{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:.92rem;box-shadow:0 1px 10px rgba(10,14,26,.05);}
+  .fha-spoke-scope .va-compare th,.fha-spoke-scope .va-compare td{padding:.9rem 1.15rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--border);}
+  .fha-spoke-scope .va-compare thead th{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:#fff;background:var(--ink);border-bottom:2px solid var(--ink);}
+  .fha-spoke-scope .va-compare thead th:nth-child(2){background:var(--green);}
+  .fha-spoke-scope .va-compare thead th:nth-child(3){background:var(--blue);}
+  .fha-spoke-scope .va-compare thead th:nth-child(4){background:var(--rust);}
+  .fha-spoke-scope .va-compare tbody tr:nth-child(even) td{background:#FBFBF8;}
+  .fha-spoke-scope .va-compare tbody tr:last-child td{border-bottom:none;}
+  .fha-spoke-scope .va-compare td:first-child{font-weight:600;color:var(--ink-2);width:26%;}
+  .fha-spoke-scope .va-compare.cost{max-width:620px;margin-left:auto;margin-right:auto;}
+  .fha-spoke-scope .va-compare.cost td:last-child,.fha-spoke-scope .va-compare.cost th:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;width:1%;padding-left:1.6rem;}
+  .fha-spoke-scope .va-compare.cost td:first-child{width:auto;font-weight:500;}
+  .fha-spoke-scope .va-key-row td{background:#F0F5FF !important;}
+  .fha-spoke-scope .va-total td{background:#FFF9E6 !important;font-weight:700;}
+  .fha-spoke-scope .va-good td{background:#E9F7E9 !important;font-weight:700;color:#1E6B1E;}
+  /* Limits table — neutral header (override the colored columns) + right-aligned amount + county links */
+  .fha-spoke-scope .va-compare.limits thead th{background:var(--ink);}
+  .fha-spoke-scope .va-compare.limits td.amt{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;color:var(--ink);}
+  .fha-spoke-scope .va-compare.limits td:first-child a{color:var(--blue);text-decoration:none;}
+  .fha-spoke-scope .va-compare.limits td:first-child a:hover{text-decoration:underline;}
+  @media(max-width:720px){.fha-spoke-scope .va-compare{display:block;overflow-x:auto;}}
+</style>
