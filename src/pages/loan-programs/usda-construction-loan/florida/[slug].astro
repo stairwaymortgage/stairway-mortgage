@@ -476,10 +476,36 @@ const pageDesc = eligible
         catch(e){ log('! '+e.message); }
       };
       $('addr').addEventListener('keydown', e => { if(e.key==='Enter'){ e.preventDefault(); $('go').click(); }});
-      $('send').onclick = () => {
-        /* PRODUCTION: POST {address:state.matched, lat:state.lat, lon:state.lon, usda_prelim_result:state.status,
-           county:county, name, phone, source_url, umtid} to the dedicated GHL webhook */
-        $('send').textContent='✓ Sent — we\'ll be in touch shortly'; };
+      $('send').onclick = async () => {
+        const btn=$('send');
+        if(btn.dataset.sending==='1') return;               // guard against double-submit
+        const name=$('lname').value.trim(), phone=$('lphone').value.trim();
+        if(!phone){ log('! Please add your phone so we can send your options'); return; }
+        const orig=btn.textContent;
+        btn.dataset.sending='1'; btn.style.pointerEvents='none'; btn.style.opacity='.7'; btn.textContent='Sending…';
+        try{
+          const r=await fetch('/api/usda-check',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({
+              name: name,
+              phone: phone,
+              address: state.matched,
+              lat: state.lat,
+              lon: state.lon,
+              usda_prelim_result: state.status,
+              county: county,
+              source_url: window.location.href,
+              umtid: ''
+            })
+          });
+          if(!r.ok) throw new Error('HTTP '+r.status);
+          btn.textContent='✓ Sent — we\'ll be in touch shortly';   // keep disabled on success
+        }catch(e){
+          btn.dataset.sending='0'; btn.style.pointerEvents=''; btn.style.opacity=''; btn.textContent=orig;
+          log('! Could not send just now — please try again or call (954) 993-1625');
+        }
+      };
     })();
     </script>
 
