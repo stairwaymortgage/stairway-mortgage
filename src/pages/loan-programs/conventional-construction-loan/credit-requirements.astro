@@ -1,0 +1,202 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+// ── Credit FAQ set — sourced from faq-conventional.json (Eligibility & Credit /
+//    Construction & Builders). County and city merge placeholders have been
+//    stripped so each answer reads as statewide Florida content. Educational
+//    only — credit decisions belong to automated underwriting review.
+const faqs = [
+  {
+    q: "What credit score do I need for a conventional loan?",
+    a: "The published floor for manual underwriting is 620, and automated underwriting evaluates the full file rather than a single cutoff. Higher score tiers generally improve mortgage-insurance and pricing tiers, so there's a real payoff to each band you climb. If you're close but not there, we can map a score-building path before your build, not after.",
+  },
+  {
+    q: "Does the conventional loan use my middle credit score?",
+    a: "The representative score drives the decision — and on a construction loan it can matter twice: a 680 generally gets you approved, and 700 or higher typically waives requalification at completion. If you're sitting around 690, a few months of targeted credit work before closing can simplify your entire build.",
+  },
+  {
+    q: "Do I have to requalify after construction?",
+    a: "Typically not, if your representative credit score is 700 or higher — requalification is generally waived unless the property value declines or the project runs past 12 months. In the 680–699 band, plan on a credit refresh at completion, and protect your file during the build. These are general single-close guidelines, and the lender's guidelines govern the final call.",
+  },
+  {
+    q: "What if my credit score drops during construction?",
+    a: "If requalification is triggered, a lower score can affect your permanent terms — which is exactly why we coach you to protect your credit from closing day to completion. Steady credit in, locked terms out.",
+  },
+  {
+    q: "What's the maximum debt-to-income ratio on a conventional loan?",
+    a: "With an automated approval, debt-to-income can reach 50%. Manually underwritten files typically cap at 36–45% depending on compensating factors like reserves and credit. The ratio uses gross income, and on a construction loan you're qualified on the full future payment — so your budget is honest from day one.",
+  },
+  {
+    q: "Is manual underwriting available on the construction program?",
+    a: "On the construction program, the file generally must have an automated approval through Fannie Mae's Desktop Underwriter — manual underwriting typically isn't available. That makes the pre-qualification run we do upfront genuinely meaningful: the same engine that decides is the one we test.",
+  },
+  {
+    q: "How long after bankruptcy or foreclosure can I get a conventional loan?",
+    a: "General waiting periods: four years after a Chapter 7 discharge, two years after a Chapter 13 discharge, seven years after a foreclosure, and four after a deed-in-lieu or short sale — with shorter windows possible under documented extenuating circumstances. The clock has usually run longer than people assume; bring us the dates and we'll tell you where you stand.",
+  },
+  {
+    q: "Is a conventional loan only for people with perfect credit?",
+    a: "No — that's the most expensive myth in mortgages. Conventional loans start at a 620 credit score, and automated underwriting weighs your whole file: income stability, assets, equity, and reserves. Plenty of buyers with mid-600s scores close conventional every month. Stronger credit improves pricing, but 'perfect' was never the requirement.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://stairwaymortgage.com/" },
+    { "@type": "ListItem", position: 2, name: "Loan Programs", item: "https://stairwaymortgage.com/loan-programs/" },
+    { "@type": "ListItem", position: 3, name: "Conventional Construction Loan", item: "https://stairwaymortgage.com/loan-programs/conventional-construction-loan/" },
+    { "@type": "ListItem", position: 4, name: "Conventional Construction Loan Credit Requirements" },
+  ],
+};
+---
+
+<Layout
+  title="Conventional Construction Loan Credit Requirements | Stairway Mortgage"
+  description="How credit is evaluated for a conventional one-time-close construction loan — automated underwriting, score tiers, requalification, and debt-to-income. Educational overview; eligibility is determined by underwriting."
+  canonical="https://stairwaymortgage.com/loan-programs/conventional-construction-loan/credit-requirements/">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="conv-spoke-scope">
+    <!-- CONVENTIONAL CLUSTER BAR — sticky, finger-swipeable sub-nav shared across the conventional construction cluster -->
+    <nav class="cluster-bar" aria-label="Conventional construction loan guides"><div class="cluster-bar-inner"><span class="cluster-label">Conventional Construction</span><a href="/loan-programs/conventional-loan/">Program Guide</a><a href="/loan-programs/conventional-construction-loan/loan-limits/">Loan Limits</a><a href="/loan-programs/conventional-construction-loan/credit-requirements/" class="active">Credit Requirements</a><a href="/loan-programs/construction-loan/">Compare Programs</a><a href="/loan-programs/conventional-construction-loan/">FL Counties</a></div></nav>
+
+    <div class="hero"><div class="container">
+      <span class="status-pill">Educational Guide</span>
+      <h1>Conventional construction loan <span class="accent">credit requirements</span></h1>
+      <p class="lede">Conventional financing generally weighs credit more heavily than FHA — your score, history, and debt-to-income shape both approval and pricing. This page covers how credit is generally evaluated for a conventional one-time-close construction loan, including the single-close requalification nuance. Final eligibility is determined by automated underwriting review.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="/see-my-options/">See My Options</a>
+      <a class="btn btn-secondary" href="/schedule-call/">Talk to Our Team</a></div>
+      <p class="trust-line">Jim Blackburn · NMLS #1072866 · 7× Scotsman Guide Top Producer · $500M+ closed · (954) 993-1625</p>
+    </div></div>
+
+    <section style="background:var(--white);border-bottom:1px solid var(--border);"><div class="container">
+      <span class="eyebrow">The Big Picture</span>
+      <h2>Automated underwriting reads the <span class="accent">whole file</span></h2>
+      <p class="section-lede">Conventional construction loans generally run through Fannie Mae's automated underwriting, which evaluates your complete financial picture rather than a single number — income stability, assets, equity, reserves, and credit together. A published score floor exists, but what actually qualifies a file is the automated finding on the whole picture. Reviewed by Jim Blackburn, NMLS #1072866.</p>
+    </div></section>
+
+    <section><div class="container">
+      <span class="eyebrow">How It's Evaluated</span>
+      <h2>Score, tiers, and the <span class="accent">single-close nuance</span></h2>
+      <p class="section-lede">A conventional credit review generally weighs several things together:</p>
+      <div class="split">
+        <div class="card">
+          <h3>Score floor and tiers</h3>
+          <p>The published floor for manual underwriting is generally 620. Above it, higher score bands typically improve mortgage-insurance and pricing tiers — so credit affects not just approval but cost. Final eligibility is determined by underwriting.</p>
+        </div>
+        <div class="card">
+          <h3>The single-close requalification nuance</h3>
+          <p>You qualify once, up front. As a general guideline, a representative score of 700 or higher typically waives requalification at completion, while a score in the 680–699 band may prompt a credit refresh. The lender's guidelines govern the final call.</p>
+        </div>
+        <div class="card">
+          <h3>Debt-to-income</h3>
+          <p>An automated approval can allow a higher debt-to-income ratio than a manual file — but the figure that actually qualifies depends on the strength of the overall picture, and you're qualified on the full future construction-to-permanent payment.</p>
+        </div>
+        <div class="card">
+          <h3>Protecting credit during the build</h3>
+          <p>Because a lower score can matter if requalification is triggered, keeping your credit steady from closing to completion helps protect your permanent terms. Steady credit in, locked terms out.</p>
+        </div>
+      </div>
+    </div></section>
+
+    <section style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);"><div class="container">
+      <span class="eyebrow">Past Events</span>
+      <h2>Bankruptcy and foreclosure have <span class="accent">waiting-period guidelines</span></h2>
+      <p class="section-lede">A past bankruptcy or foreclosure is generally a waiting period with a defined end date, not a permanent barrier. Under conventional guidelines the general windows are around four years from a Chapter 7 discharge, two years from a Chapter 13 discharge, seven years from a foreclosure, and four years from a deed-in-lieu or short sale — with documented extenuating circumstances sometimes shortening them. The clock has often run longer than people assume, so it's worth confirming your actual dates. Every scenario is reviewed personally by Jim Blackburn, NMLS #1072866, and final eligibility is determined by underwriting.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="/see-my-options/">See My Options</a></div>
+    </div></section>
+
+    <section><div class="container">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Credit <span class="accent">FAQ</span></h2>
+      <p class="section-lede">General guidance below reflects typical conventional program parameters. It is educational and not a commitment to lend — your file is evaluated individually by automated underwriting.</p>
+      <div class="faq-cat">
+        {faqs.map((f) => (
+          <details class="faq"><summary>{f.q}</summary><div class="ans">{f.a}</div></details>
+        ))}
+      </div>
+      <p class="section-lede" style="margin-top:1.6rem;">Want a straight read on your own credit picture? <a href="/schedule-call/" style="color:var(--blue);text-decoration:underline;">Schedule a call</a> with our team.</p>
+    </div></section>
+
+    <!-- CONVENTIONAL SUBFOOTER — sits ABOVE the site's main footer (Layout.astro provides licensing / NMLS #1660690 / EHO) -->
+    <div style="background:var(--paper-2);border-top:1px solid var(--border);padding:1.6rem 0;">
+      <div class="container">
+        <p style="font-size:.75rem;color:var(--ink-lighter);line-height:1.7;margin:0;">
+          Conventional (conforming) credit standards follow Fannie Mae and Freddie Mac guidelines, and individual lenders may apply additional requirements. Credit eligibility is determined by automated underwriting review of your complete file — the guidance on this page is educational and general. Program guidelines reflect published 2026 figures and are subject to change.
+          Jim Blackburn, NMLS #1072866. This page is not a commitment to lend or a guarantee of approval.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .conv-spoke-scope{
+    --ink:#0A0E1A; --ink-2:#1E2433; --ink-light:#4A5568; --ink-lighter:#6B7280;
+    --paper:#FAFAF7; --paper-2:#F4F4EE; --paper-3:#EDEDE5; --white:#FFFFFF;
+    --blue:#1845D6; --blue-deep:#0F2EA0; --blue-soft:#E8EEFF; --blue-tint:#F2F5FF;
+    --green:#2E9E2E; --green-soft:#E9F7E9; --rust:#8B2C2C;
+    --border:#E5E5DE; --border-strong:#D4D4C8;
+    --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+    --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
+    font-family:var(--sans);font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;
+  }
+  .conv-spoke-scope *,.conv-spoke-scope *::before,.conv-spoke-scope *::after{box-sizing:border-box;margin:0;padding:0;}
+  .conv-spoke-scope a{color:inherit;text-decoration:none;}
+  .conv-spoke-scope .container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+  .conv-spoke-scope .eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500;display:inline-block;}
+  .conv-spoke-scope h1,.conv-spoke-scope h2,.conv-spoke-scope h3{font-family:var(--serif);font-weight:600;line-height:1.15;color:var(--ink);}
+  .conv-spoke-scope .accent{font-family:var(--serif);font-style:normal;color:var(--blue);}
+  /* Hero */
+  .conv-spoke-scope .hero{padding:5rem 0 3.5rem;background:linear-gradient(180deg,var(--blue-tint) 0%,var(--paper) 100%);border-bottom:1px solid var(--border);}
+  .conv-spoke-scope .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);margin:.9rem 0 1.1rem;max-width:820px;}
+  .conv-spoke-scope .hero p.lede{font-size:1.1875rem;color:var(--ink-light);max-width:680px;margin-bottom:1.8rem;}
+  .conv-spoke-scope .status-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-soft);border:1px solid #BFE3BF;color:#1E6B1E;border-radius:999px;padding:.4rem 1rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+  .conv-spoke-scope .status-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);}
+  .conv-spoke-scope .cta-row{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem;}
+  .conv-spoke-scope .btn{display:inline-block;padding:.85rem 1.7rem;border-radius:8px;font-weight:600;font-size:1rem;transition:transform .15s ease;}
+  .conv-spoke-scope .btn:hover{transform:translateY(-1px);}
+  .conv-spoke-scope .btn-primary{background:var(--blue);color:var(--white);}
+  .conv-spoke-scope .btn-secondary{background:var(--white);color:var(--ink);border:1.5px solid var(--border-strong);}
+  .conv-spoke-scope .trust-line{margin-top:1.4rem;font-size:.875rem;color:var(--ink-lighter);}
+  /* Sections */
+  .conv-spoke-scope section{padding:3.5rem 0;}
+  .conv-spoke-scope section h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin:.7rem 0 1rem;}
+  .conv-spoke-scope .section-lede{color:var(--ink-light);max-width:660px;margin-bottom:2rem;}
+  .conv-spoke-scope .split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
+  @media(max-width:820px){.conv-spoke-scope .split{grid-template-columns:1fr;}}
+  .conv-spoke-scope .card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.8rem;}
+  .conv-spoke-scope .card:hover{transform:none;box-shadow:none;border-color:var(--border);}
+  .conv-spoke-scope .card h3{font-size:1.25rem;margin-bottom:.7rem;}
+  .conv-spoke-scope .card p{color:var(--ink-light);font-size:.9688rem;}
+  /* Conventional cluster bar (sticky, finger-swipeable sub-nav) */
+  .conv-spoke-scope .cluster-bar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(10,14,26,.05);}
+  .conv-spoke-scope .cluster-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:.35rem;padding:.55rem 1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .conv-spoke-scope .cluster-bar-inner::-webkit-scrollbar{display:none;}
+  .conv-spoke-scope .cluster-label{flex:0 0 auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.35rem;font-weight:600;}
+  .conv-spoke-scope .cluster-bar a{flex:0 0 auto;white-space:nowrap;font-size:.76rem;font-weight:500;color:var(--ink-2);text-decoration:none;padding:.36rem .62rem;border-radius:999px;transition:background .15s;}
+  .conv-spoke-scope .cluster-bar a:hover{background:var(--paper-2);color:var(--ink);}
+  .conv-spoke-scope .cluster-bar a.active{background:var(--blue);color:#fff;font-weight:600;}
+  /* FAQ accordions */
+  .conv-spoke-scope .faq-cat{margin-top:.5rem;}
+  .conv-spoke-scope details.faq{background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:.55rem;overflow:hidden;}
+  .conv-spoke-scope details.faq summary{cursor:pointer;padding:.85rem 1.1rem;font-weight:600;color:var(--ink-2);list-style:none;display:flex;justify-content:space-between;gap:1rem;font-size:.94rem;}
+  .conv-spoke-scope details.faq summary::-webkit-details-marker{display:none;}
+  .conv-spoke-scope details.faq summary::after{content:'+';font-family:var(--mono);color:var(--blue);font-weight:600;}
+  .conv-spoke-scope details.faq[open] summary::after{content:'–';}
+  .conv-spoke-scope details.faq[open] summary{border-bottom:1px solid var(--border);}
+  .conv-spoke-scope details.faq .ans{padding:.9rem 1.1rem;font-size:.9rem;color:var(--ink-light);line-height:1.65;}
+</style>
