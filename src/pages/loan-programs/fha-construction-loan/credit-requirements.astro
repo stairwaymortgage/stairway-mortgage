@@ -1,0 +1,202 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+// ── Credit FAQ set — sourced from faq-fha.json (Eligibility & Credit). County
+//    and city merge placeholders have been stripped so each answer reads as
+//    statewide Florida content. Educational only — credit decisions belong to
+//    underwriting review.
+const faqs = [
+  {
+    q: "What's the minimum credit score for an FHA loan?",
+    a: "FHA's published baseline is 580 for the 3.5% down payment tier, and scores of 500–579 may qualify with 10% down. Individual lenders and construction programs often set the bar somewhat higher, and final eligibility is always determined by underwriting review of your full file.",
+  },
+  {
+    q: "Can I get an FHA loan with no credit score?",
+    a: "Potentially yes — FHA allows non-traditional credit like rent, utilities, and insurance payment history in place of a score. It's a manual process, but it's a real path many programs simply don't offer.",
+  },
+  {
+    q: "What if I have limited credit history or no rent history?",
+    a: "Limited credit doesn't automatically disqualify you. When credit is thin, underwriting may request a verification of rent or 12 months of canceled checks to document your payment history another way.",
+  },
+  {
+    q: "How long after bankruptcy can I get an FHA loan?",
+    a: "Chapter 7: generally two years from discharge with re-established credit. Chapter 13 can work after just one year of on-time plan payments with court permission — one of FHA's most forgiving features.",
+  },
+  {
+    q: "How long after a foreclosure can I qualify for FHA?",
+    a: "Generally three years from the date the foreclosure completed, with documented extenuating circumstances sometimes shortening that. The clock has usually run down further than people think — it's worth checking your actual dates.",
+  },
+  {
+    q: "Do collections or charge-offs disqualify me from FHA?",
+    a: "Not automatically — many loans are approved with old collections still on the report. Larger collection balances may need a payment plan or a small monthly amount counted in your ratios, but they're rarely a dead end.",
+  },
+  {
+    q: "How does FHA count my student loans?",
+    a: "Your actual documented payment, or 0.5% of the balance if the report shows zero — a gentler formula than programs that use 1%. For buyers carrying student debt, this rule alone can be the difference in qualifying.",
+  },
+  {
+    q: "What's the maximum debt-to-income ratio for FHA?",
+    a: "With automated approval, debt-to-income ratios into the 50s are regularly approved when the rest of the file is strong. Manual underwrites cap lower, so compensating factors like reserves and residual income matter more there.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://stairwaymortgage.com/" },
+    { "@type": "ListItem", position: 2, name: "Loan Programs", item: "https://stairwaymortgage.com/loan-programs/" },
+    { "@type": "ListItem", position: 3, name: "FHA Construction Loan", item: "https://stairwaymortgage.com/loan-programs/fha-construction-loan/" },
+    { "@type": "ListItem", position: 4, name: "FHA Construction Loan Credit Requirements" },
+  ],
+};
+---
+
+<Layout
+  title="FHA Construction Loan Credit Requirements | Stairway Mortgage"
+  description="How credit is evaluated for FHA one-time-close construction loans — credit history, past events, and debt-to-income. Educational overview; eligibility is determined by underwriting."
+  canonical="https://stairwaymortgage.com/loan-programs/fha-construction-loan/credit-requirements/">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="fha-spoke-scope">
+    <!-- FHA CLUSTER BAR — sticky, finger-swipeable sub-nav shared across the FHA construction cluster -->
+    <nav class="cluster-bar" aria-label="FHA construction loan guides"><div class="cluster-bar-inner"><span class="cluster-label">FHA Construction</span><a href="/loan-programs/fha-loan/">Program Guide</a><a href="/loan-programs/fha-construction-loan/loan-limits/">Loan Limits</a><a href="/loan-programs/fha-construction-loan/credit-requirements/" class="active">Credit Requirements</a><a href="/loan-programs/construction-loan/">Compare Programs</a><a href="/loan-programs/fha-construction-loan/">FL Counties</a></div></nav>
+
+    <div class="hero"><div class="container">
+      <span class="status-pill">Educational Guide</span>
+      <h1>FHA construction loan <span class="accent">credit requirements</span></h1>
+      <p class="lede">FHA is known for more flexible credit guidelines than many programs, which is a big part of why it works for buyers still building their credit. This page covers how credit is generally evaluated for an FHA one-time-close construction loan — the history behind the number, past events, and debt-to-income. Final eligibility is always determined by underwriting review.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="/see-my-options/">See My Options</a>
+      <a class="btn btn-secondary" href="/schedule-call/">Talk to Our Team</a></div>
+      <p class="trust-line">Jim Blackburn · NMLS #1072866 · 7× Scotsman Guide Top Producer · $500M+ closed · (954) 993-1625</p>
+    </div></div>
+
+    <section style="background:var(--white);border-bottom:1px solid var(--border);"><div class="container">
+      <span class="eyebrow">The Big Picture</span>
+      <h2>FHA is designed to be <span class="accent">accessible</span></h2>
+      <p class="section-lede">The FHA program exists to open homeownership to buyers who may not fit a conventional profile — including those still building or rebuilding credit. FHA programs are generally known for accommodating lower credit scores than conventional financing, though individual lenders and construction programs may apply their own requirements on top of FHA's baseline. What actually qualifies a file is not a single number in isolation — it is the underwriter's review of the whole picture.</p>
+    </div></section>
+
+    <section><div class="container">
+      <span class="eyebrow">How It's Evaluated</span>
+      <h2>Lenders read the <span class="accent">whole credit picture</span></h2>
+      <p class="section-lede">A credit score is a starting point, not the entire story. Underwriting typically weighs several things together:</p>
+      <div class="split">
+        <div class="card">
+          <h3>History and recent activity</h3>
+          <p>How you've handled credit over time — and especially in the most recent months — generally carries more weight than a single old event. Recent on-time payments help tell a forward-looking story.</p>
+        </div>
+        <div class="card">
+          <h3>Debt-to-income</h3>
+          <p>Your monthly debts relative to your income are a core part of the review. FHA is often more flexible here than other programs, but the figure that qualifies depends on the strength of the overall file.</p>
+        </div>
+        <div class="card">
+          <h3>Depth of credit</h3>
+          <p>Thin or non-traditional credit doesn't automatically end the conversation — FHA may allow alternative records such as rent, utility, and insurance payment history when a traditional score is limited.</p>
+        </div>
+        <div class="card">
+          <h3>Compensating factors</h3>
+          <p>Cash reserves, stable employment, and residual income can support a file that might otherwise sit on the edge. These factors matter most in manual underwriting.</p>
+        </div>
+      </div>
+    </div></section>
+
+    <section style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);"><div class="container">
+      <span class="eyebrow">Past Events</span>
+      <h2>Bankruptcy and foreclosure have <span class="accent">waiting-period guidelines</span></h2>
+      <p class="section-lede">A past bankruptcy or foreclosure is generally a waiting period with a defined end date, not a permanent barrier. FHA typically looks for around two years from a Chapter 7 discharge (Chapter 13 can be shorter with court permission and on-time plan payments), and generally around three years from a completed foreclosure — with documented extenuating circumstances sometimes shortening those windows. Actual dates often surprise people, so it's worth confirming yours. Every scenario is reviewed personally by Jim Blackburn, NMLS #1072866, and final eligibility is determined by underwriting.</p>
+      <div class="cta-row"><a class="btn btn-primary" href="/see-my-options/">See My Options</a></div>
+    </div></section>
+
+    <section><div class="container">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Credit <span class="accent">FAQ</span></h2>
+      <p class="section-lede">General guidance below reflects typical FHA program parameters. It is educational and not a commitment to lend — your file is reviewed individually by underwriting.</p>
+      <div class="faq-cat">
+        {faqs.map((f) => (
+          <details class="faq"><summary>{f.q}</summary><div class="ans">{f.a}</div></details>
+        ))}
+      </div>
+      <p class="section-lede" style="margin-top:1.6rem;">Want a straight read on your own credit picture? <a href="/schedule-call/" style="color:var(--blue);text-decoration:underline;">Schedule a call</a> with our team.</p>
+    </div></section>
+
+    <!-- FHA SUBFOOTER — sits ABOVE the site's main footer (Layout.astro provides licensing / NMLS #1660690 / EHO) -->
+    <div style="background:var(--paper-2);border-top:1px solid var(--border);padding:1.6rem 0;">
+      <div class="container">
+        <p style="font-size:.75rem;color:var(--ink-lighter);line-height:1.7;margin:0;">
+          FHA credit standards are set by the U.S. Department of Housing and Urban Development, and individual lenders may apply additional requirements. Credit eligibility is determined by underwriting review of your complete file — the guidance on this page is educational and general. Program guidelines reflect published 2026 figures and are subject to change.
+          Jim Blackburn, NMLS #1072866. This page is not a commitment to lend or a guarantee of approval.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .fha-spoke-scope{
+    --ink:#0A0E1A; --ink-2:#1E2433; --ink-light:#4A5568; --ink-lighter:#6B7280;
+    --paper:#FAFAF7; --paper-2:#F4F4EE; --paper-3:#EDEDE5; --white:#FFFFFF;
+    --blue:#1845D6; --blue-deep:#0F2EA0; --blue-soft:#E8EEFF; --blue-tint:#F2F5FF;
+    --green:#2E9E2E; --green-soft:#E9F7E9; --rust:#8B2C2C;
+    --border:#E5E5DE; --border-strong:#D4D4C8;
+    --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+    --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
+    font-family:var(--sans);font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;
+  }
+  .fha-spoke-scope *,.fha-spoke-scope *::before,.fha-spoke-scope *::after{box-sizing:border-box;margin:0;padding:0;}
+  .fha-spoke-scope a{color:inherit;text-decoration:none;}
+  .fha-spoke-scope .container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+  .fha-spoke-scope .eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500;display:inline-block;}
+  .fha-spoke-scope h1,.fha-spoke-scope h2,.fha-spoke-scope h3{font-family:var(--serif);font-weight:600;line-height:1.15;color:var(--ink);}
+  .fha-spoke-scope .accent{font-family:var(--serif);font-style:normal;color:var(--blue);}
+  /* Hero */
+  .fha-spoke-scope .hero{padding:5rem 0 3.5rem;background:linear-gradient(180deg,var(--blue-tint) 0%,var(--paper) 100%);border-bottom:1px solid var(--border);}
+  .fha-spoke-scope .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);margin:.9rem 0 1.1rem;max-width:820px;}
+  .fha-spoke-scope .hero p.lede{font-size:1.1875rem;color:var(--ink-light);max-width:680px;margin-bottom:1.8rem;}
+  .fha-spoke-scope .status-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-soft);border:1px solid #BFE3BF;color:#1E6B1E;border-radius:999px;padding:.4rem 1rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+  .fha-spoke-scope .status-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);}
+  .fha-spoke-scope .cta-row{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem;}
+  .fha-spoke-scope .btn{display:inline-block;padding:.85rem 1.7rem;border-radius:8px;font-weight:600;font-size:1rem;transition:transform .15s ease;}
+  .fha-spoke-scope .btn:hover{transform:translateY(-1px);}
+  .fha-spoke-scope .btn-primary{background:var(--blue);color:var(--white);}
+  .fha-spoke-scope .btn-secondary{background:var(--white);color:var(--ink);border:1.5px solid var(--border-strong);}
+  .fha-spoke-scope .trust-line{margin-top:1.4rem;font-size:.875rem;color:var(--ink-lighter);}
+  /* Sections */
+  .fha-spoke-scope section{padding:3.5rem 0;}
+  .fha-spoke-scope section h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin:.7rem 0 1rem;}
+  .fha-spoke-scope .section-lede{color:var(--ink-light);max-width:640px;margin-bottom:2rem;}
+  .fha-spoke-scope .split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
+  @media(max-width:820px){.fha-spoke-scope .split{grid-template-columns:1fr;}}
+  .fha-spoke-scope .card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.8rem;}
+  .fha-spoke-scope .card:hover{transform:none;box-shadow:none;border-color:var(--border);}
+  .fha-spoke-scope .card h3{font-size:1.25rem;margin-bottom:.7rem;}
+  .fha-spoke-scope .card p{color:var(--ink-light);font-size:.9688rem;}
+  /* FHA cluster bar (sticky, finger-swipeable sub-nav) */
+  .fha-spoke-scope .cluster-bar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(10,14,26,.05);}
+  .fha-spoke-scope .cluster-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:.35rem;padding:.55rem 1.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .fha-spoke-scope .cluster-bar-inner::-webkit-scrollbar{display:none;}
+  .fha-spoke-scope .cluster-label{flex:0 0 auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--border);margin-right:.35rem;font-weight:600;}
+  .fha-spoke-scope .cluster-bar a{flex:0 0 auto;white-space:nowrap;font-size:.76rem;font-weight:500;color:var(--ink-2);text-decoration:none;padding:.36rem .62rem;border-radius:999px;transition:background .15s;}
+  .fha-spoke-scope .cluster-bar a:hover{background:var(--paper-2);color:var(--ink);}
+  .fha-spoke-scope .cluster-bar a.active{background:var(--blue);color:#fff;font-weight:600;}
+  /* FAQ accordions */
+  .fha-spoke-scope .faq-cat{margin-top:.5rem;}
+  .fha-spoke-scope details.faq{background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:.55rem;overflow:hidden;}
+  .fha-spoke-scope details.faq summary{cursor:pointer;padding:.85rem 1.1rem;font-weight:600;color:var(--ink-2);list-style:none;display:flex;justify-content:space-between;gap:1rem;font-size:.94rem;}
+  .fha-spoke-scope details.faq summary::-webkit-details-marker{display:none;}
+  .fha-spoke-scope details.faq summary::after{content:'+';font-family:var(--mono);color:var(--blue);font-weight:600;}
+  .fha-spoke-scope details.faq[open] summary::after{content:'–';}
+  .fha-spoke-scope details.faq[open] summary{border-bottom:1px solid var(--border);}
+  .fha-spoke-scope details.faq .ans{padding:.9rem 1.1rem;font-size:.9rem;color:var(--ink-light);line-height:1.65;}
+</style>
