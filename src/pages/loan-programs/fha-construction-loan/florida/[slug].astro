@@ -353,10 +353,8 @@ const pageDesc = `Build a new home anywhere in ${county.County} County with 3.5%
           {newsItems.map((n) => (
             <div class="news-item">
               <span class="news-date">{n.source} · {n.date}</span>
-              <div>
-                <h3><a href={n.url} target="_blank" rel="noopener nofollow" style="color:var(--blue);">{n.title}</a></h3>
-                <p>{n.summary}</p>
-              </div>
+              <h3><a href={n.url} target="_blank" rel="noopener noreferrer" style="color:var(--blue);">{n.title}</a></h3>
+              <p>{n.summary}</p>
             </div>
           ))}
           <p style="font-size:.72rem;color:var(--ink-lighter);margin-top:1rem;">Updated automatically — sources are original local publishers.</p>
@@ -513,9 +511,9 @@ const pageDesc = `Build a new home anywhere in ${county.County} County with 3.5%
   .fha-county-scope details.faq[open] summary{border-bottom:1px solid var(--border);}
   .fha-county-scope details.faq .ans{padding:.9rem 1.1rem;font-size:.9rem;color:var(--ink-light);line-height:1.65;}
   /* Local Pulse news list */
-  .fha-county-scope .news-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);align-items:baseline;}
+  .fha-county-scope .news-item{display:flex;flex-direction:column;gap:.25rem;padding:1rem 0;border-bottom:1px solid var(--border);}
   .fha-county-scope .news-item:last-child{border-bottom:0;}
-  .fha-county-scope .news-date{font-family:var(--mono);font-size:.6875rem;color:var(--ink-lighter);white-space:nowrap;}
-  .fha-county-scope .news-item h3{font-size:1rem;font-family:var(--sans);font-weight:600;}
-  .fha-county-scope .news-item p{font-size:.875rem;color:var(--ink-light);}
+  .fha-county-scope .news-date{font-family:var(--mono);font-size:.6875rem;color:var(--ink-lighter);}
+  .fha-county-scope .news-item h3{font-size:1rem;font-family:var(--sans);font-weight:600;margin:0;}
+  .fha-county-scope .news-item p{font-size:.875rem;color:var(--ink-light);margin:0;}
 </style>

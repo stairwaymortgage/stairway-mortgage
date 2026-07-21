@@ -579,10 +579,8 @@ const pageDesc = eligible
           {newsItems.map((n) => (
             <div class="news-item">
               <span class="news-date">{n.source} · {n.date}</span>
-              <div>
-                <h3><a href={n.url} target="_blank" rel="noopener nofollow" style="color:var(--blue);">{n.title}</a></h3>
-                <p>{n.summary}</p>
-              </div>
+              <h3><a href={n.url} target="_blank" rel="noopener noreferrer" style="color:var(--blue);">{n.title}</a></h3>
+              <p>{n.summary}</p>
             </div>
           ))}
           <p style="font-size:.72rem;color:var(--ink-lighter);margin-top:1rem;">Updated automatically — sources are original local publishers.</p>
@@ -748,11 +746,11 @@ const pageDesc = eligible
   .usda-county-scope .cluster-bar a.tool{color:var(--green);font-weight:600;}
   .usda-county-scope .cluster-bar a.tool:hover{background:#E9F7E9;}
   /* Local Pulse news list */
-  .usda-county-scope .news-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);align-items:baseline;}
+  .usda-county-scope .news-item{display:flex;flex-direction:column;gap:.25rem;padding:1rem 0;border-bottom:1px solid var(--border);}
   .usda-county-scope .news-item:last-child{border-bottom:0;}
-  .usda-county-scope .news-date{font-family:var(--mono);font-size:.6875rem;color:var(--ink-lighter);white-space:nowrap;}
-  .usda-county-scope .news-item h3{font-size:1rem;font-family:var(--sans);font-weight:600;}
-  .usda-county-scope .news-item p{font-size:.875rem;color:var(--ink-light);}
+  .usda-county-scope .news-date{font-family:var(--mono);font-size:.6875rem;color:var(--ink-lighter);}
+  .usda-county-scope .news-item h3{font-size:1rem;font-family:var(--sans);font-weight:600;margin:0;}
+  .usda-county-scope .news-item p{font-size:.875rem;color:var(--ink-light);margin:0;}
 
   .usda-county-scope .va-compare{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);
     border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:.92rem;
