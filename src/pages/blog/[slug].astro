@@ -1,0 +1,124 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PostSidebar from '../../components/PostSidebar.astro';
+import RelatedPosts from '../../components/RelatedPosts.astro';
+import taxonomy from '../../data/taxonomy.json';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { title, description, pubDate, cats, tags, heroImage, heroAlt, author, nmls, faq } = post.data;
+const slug = post.id;
+const canonical = `https://stairwaymortgage.com/blog/${slug}/`;
+
+// Build JSON-LD schemas
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  datePublished: pubDate.toISOString().split('T')[0],
+  author: { "@type": "Person", name: author, identifier: `NMLS #${nmls}` },
+  publisher: { "@type": "Organization", name: "Stairway Mortgage" },
+  mainEntityOfPage: canonical,
+  image: heroImage,
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://stairwaymortgage.com/" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://stairwaymortgage.com/blog/" },
+    { "@type": "ListItem", position: 3, name: title },
+  ],
+};
+
+const faqSchema = faq?.length ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map(f => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+} : null;
+
+const catName = (catSlug: string) => (taxonomy.categories[catSlug as keyof typeof taxonomy.categories] || catSlug).replace(/^\d+\.\s*/, '');
+const dateStr = pubDate.toISOString().split('T')[0];
+---
+
+<Layout title={title} description={description} canonical={canonical} ogImage={heroImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+
+  <nav class="container-page post-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a> <span>/</span> <span>{title.slice(0, 40)}</span>
+  </nav>
+
+  <header class="container-prose post-header">
+    {cats[0] && <span class="eyebrow eyebrow-blue mb-5">{catName(cats[0])}</span>}
+    <h1 class="display-lg post-title">{title}</h1>
+    <div class="post-byline">
+      <span class="mono">By {author} · NMLS #{nmls}</span>
+      <span class="post-byline__sep">·</span>
+      <time datetime={dateStr}>{dateStr}</time>
+    </div>
+  </header>
+
+  <figure class="container-prose post-hero">
+    <img src={heroImage} alt={heroAlt} width="1200" height="675" loading="eager" />
+  </figure>
+
+  <div class="container-page post-layout">
+    <div class="post-main">
+      <article class="prose-editorial post-body">
+        <Content />
+      </article>
+    </div>
+    <PostSidebar />
+  </div>
+
+  <RelatedPosts currentSlug={`/blog/${slug}/`} cats={cats} tags={tags} limit={4} />
+
+  <section class="section-tight post-cta">
+    <div class="container-prose"><div class="card post-cta__card">
+      <h2 class="display-md">Ready to take the next step?</h2>
+      <p class="lede">Talk through your scenario with our team — straight answers, no credit pull to start.</p>
+      <a href="/see-my-options/" class="btn btn-blue btn-arrow">See My Options</a>
+    </div></div>
+  </section>
+</Layout>
+
+<style>
+  .post-breadcrumb { font-family:var(--stw-mono, 'JetBrains Mono'), monospace; font-size:12px; color:var(--color-mute); padding-top:2rem; padding-bottom:1.5rem; }
+  .post-breadcrumb a { color:var(--color-mute); text-decoration:none; } .post-breadcrumb a:hover { color:var(--color-blue); }
+  .post-breadcrumb span { margin-inline:0.4rem; opacity:0.5; }
+  .post-title { margin-bottom:1.25rem; }
+  .post-byline { font-size:14px; color:var(--color-mute); display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+  .post-hero { margin-top:2.5rem; margin-bottom:3.5rem; }
+  .post-hero img { width:100%; height:auto; border-radius:12px; border:1px solid var(--color-bone); }
+  .post-layout { display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:3.5rem; align-items:start; }
+  .post-main { min-width:0; }
+  @media (max-width:980px) { .post-layout { grid-template-columns:1fr; } }
+  .post-body :global(h2) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-variation-settings:"opsz" 96; font-weight:500; font-size:clamp(1.6rem,3vw,2.25rem); line-height:1.15; margin-top:3rem; margin-bottom:1.1rem; }
+  .post-body :global(h3) { font-family:var(--stw-display, 'Fraunces'), Georgia, serif; font-weight:500; font-size:clamp(1.25rem,2vw,1.6rem); margin-top:2rem; margin-bottom:0.85rem; }
+  .post-body :global(h2 b),.post-body :global(h3 b) { font-weight:inherit; }
+  .post-body :global(p) { font-size:17px; line-height:1.75; margin-bottom:1.25rem; color:var(--color-ink-light); }
+  .post-body :global(ul),.post-body :global(ol) { margin:0 0 1.5rem 1.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .post-body :global(a) { color:var(--color-blue); text-decoration:underline; text-underline-offset:2px; }
+  .post-body :global(img) { max-width:100%; height:auto; border-radius:10px; margin:1.5rem 0; }
+  .post-body :global(figure) { margin:2rem 0; }
+  .post-body :global(table) { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:15px; }
+  .post-body :global(th),.post-body :global(td) { border:1px solid var(--color-bone); padding:0.65rem 0.85rem; text-align:left; }
+  .post-body :global(th) { background:var(--color-paper-tint); font-weight:600; }
+  .post-cta__card { text-align:center; display:flex; flex-direction:column; align-items:center; gap:1rem; padding:2.5rem; }
+</style>

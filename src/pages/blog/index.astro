@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+const collectionPosts = await getCollection('blog', ({ data }) => !data.draft);
 const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Blog"}]};
 const blogSchema={"@context":"https://schema.org","@type":"Blog","name":"Stairway Mortgage Blog","description":"Mortgage guides, investor strategies, and homebuying insights from Jim Blackburn and the Stairway team.","url":"https://stairwaymortgage.com/blog/"};
 ---
@@ -40,6 +42,14 @@ const blogSchema={"@context":"https://schema.org","@type":"Blog","name":"Stairwa
         <button class="bl-tab" data-cat="mortgage-faqs">Mortgage FAQs <span>1</span></button>
       </div>
       <div class="bl-grid" id="blGrid">
+        {collectionPosts.map(p => (
+          <a href={`/blog/${p.id}/`} class="bl-card" data-cat={p.data.cats[0] || ''} data-search={`${p.data.title.toLowerCase()} ${p.data.description.toLowerCase()} ${p.data.tags.join(' ')}`}>
+            <span class="bl-card__cat mono">{(p.data.cats[0] || '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</span>
+            <h3 class="bl-card__title">{p.data.title}</h3>
+            <p class="bl-card__desc">{p.data.description.slice(0, 120)}</p>
+            <span class="bl-card__date mono">{p.data.pubDate.toISOString().split('T')[0]}</span>
+          </a>
+        ))}
         <a href="/blog/nexa-mortgage-nexa-lending/" class="bl-card" data-cat="mortgage-faqs" data-search="nexa mortgage becomes nexa lending: what changed and what it means for loan officers and homebuyers nexa mortgage rebranded as nexa lending in 2025. discover what changed, why it matters for loan officers and borrowers,  mortgage-broker mortgage-lender nexa-lending nexa-mortgage stairway-mortgage">
           <span class="bl-card__cat mono">Mortgage FAQs</span>
           <h3 class="bl-card__title">NEXA Mortgage Becomes NEXA Lending: What Changed and What It Means for Loan Officers and Homebuyers</h3>
