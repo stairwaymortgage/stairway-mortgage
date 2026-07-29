@@ -91,12 +91,23 @@ const ICONS = {
 
     <!-- BIO / STORY -->
     <section class="section section-tinted">
-      <div class="container-prose">
-        <p class="eyebrow">The Story</p>
-        <div class="prose-editorial">
-          {bio.map((p) => <p>{p}</p>)}
+      <div class="container-page lp-story-grid">
+        <div class="lp-story-text">
+          <p class="eyebrow">The Story</p>
+          <div class="prose-editorial">
+            {bio.map((p) => <p>{p}</p>)}
+          </div>
+          <p class="lp-nmls mono">NMLS #{nmls} · verify at nmlsconsumeraccess.org</p>
         </div>
-        <p class="lp-nmls mono">NMLS #{nmls} · verify at nmlsconsumeraccess.org</p>
+        <div class="lp-story-photo">
+          <img
+            src={officer.storyPhoto || '/images/jim-blackburn-story.jpeg'}
+            alt={`${name} photo`}
+            loading="lazy"
+            width="480"
+            height="600"
+          />
+        </div>
       </div>
     </section>
 
@@ -276,6 +287,17 @@ const ICONS = {
   .loprofile-scope .lp-stat-label { color: var(--color-mute); font-size: 0.72rem; letter-spacing: 0.04em; margin-top: 0.4rem; }
 
   .loprofile-scope .lp-nmls { margin-top: 1.5rem; color: var(--color-mute); font-size: 0.8rem; }
+
+  .loprofile-scope .lp-story-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+  }
+  .loprofile-scope .lp-story-photo img {
+    width: 100%; height: auto; border-radius: 6px; object-fit: cover;
+  }
+  @media (max-width: 768px) {
+    .loprofile-scope .lp-story-grid { grid-template-columns: 1fr; }
+    .loprofile-scope .lp-story-photo { order: -1; max-width: 400px; }
+  }
 
   /* section styled classes (not in global.css) */
   .loprofile-scope .section-tinted { background: var(--color-paper-tint); }
