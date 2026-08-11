@@ -1,0 +1,15 @@
+---
+// src/pages/branches/fort-lauderdale/jim-blackburn-team.astro
+// Replaces the old WP permalink /branches/fl/fort-lauderdale/jim-blackburn-team/
+// with the new structure /branches/fort-lauderdale/jim-blackburn-team/.
+// All content lives in the officer data file; layout in LoProfile.astro.
+import LoProfile from '../../../components/LoProfile.astro';
+import { jimBlackburn } from '../../../data/officers/jim-blackburn.ts';
+
+// Override canonical to match this new URL path
+const officer = {
+  ...jimBlackburn,
+  canonical: '/branches/fort-lauderdale/jim-blackburn-team/',
+};
+---
+<LoProfile officer={officer} />
