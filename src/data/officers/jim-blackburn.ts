@@ -100,11 +100,43 @@ export const jimBlackburn = {
     { step: '05', title: 'Beyond the Close', body: 'Your relationship doesn\u2019t end at the closing table \u2014 annual mortgage reviews, refinance monitoring, and guidance for your next step on the Stairway Journey.' },
   ],
 
+  address: '912 SW 20th St, Fort Lauderdale, FL 33315',
+
+  socialLinks: {
+    facebook: 'https://www.facebook.com/mortgagejimb',
+    linkedin: 'https://www.linkedin.com/in/jimblackburn-mortgage',
+    youtube: 'https://www.youtube.com/channel/UChMNg_D8MEwLnFaRh3VSPkQ/',
+  },
+
+  heroPhoto: '/wp-content/uploads/2025/08/New-Project-20-1.png',
+
+  applyUrl: 'https://stairwaymortgage.my1003app.com/agent/jimblackburn1/register',
+  bookingUrl: 'https://forms.stairwaymortgage.com/widget/bookings/jim-blackburn',
+
+  philosophy: {
+    heading: 'Jim\u2019s Approach: The Stairway Philosophy',
+    intro: 'Jim doesn\u2019t view mortgage lending as a transaction. He views it as the foundational step in a client\u2019s wealth-building journey. That\u2019s why he created the Stairway Journey \u2014 an 8-stage framework guiding clients from financial foundations through generational wealth transfer.',
+    quote: '\u201CEvery client is somewhere on the stairway. My job isn\u2019t just to close today\u2019s loan \u2014 it\u2019s to help you see the next three steps and position you to take them.\u201D',
+    bullets: [
+      { label: 'Education first', body: 'Every option and tradeoff explained before you sign.' },
+      { label: 'Relationship over transaction', body: 'Most business comes from repeat clients and referrals.' },
+      { label: 'Strategic lending', body: 'Positioning you for your next investment and next step up.' },
+    ],
+  },
+
+  howToWork: [
+    { label: 'Buying a home', body: 'Pre-qualification, rate shopping across 300+ lenders, best options presented.' },
+    { label: 'Refinancing', body: 'Current loan analysis, savings modeling, and recommendation.' },
+    { label: 'Investing', body: 'Financing structured for cash flow and portfolio growth.' },
+    { label: 'Turned down elsewhere', body: 'Non-QM specialization + 300 lenders = almost always a path forward.' },
+  ],
+
   credentials: [
     { title: 'CFP coursework', body: 'A wealth-management perspective most originators lack.' },
     { title: '20+ years banking & finance', body: 'Underwriting, risk assessment, and financial planning.' },
     { title: 'Scotsman Guide Top Producer', body: '7 consecutive years among the nation\u2019s top originators.' },
     { title: 'Author & educator', body: 'Creator of the Stairway wealth-building framework.' },
+    { title: 'Commercial lending', body: 'Blackburn Business Capital.' },
   ],
 
   testimonials: [
@@ -131,6 +163,24 @@ export const jimBlackburn = {
       name: 'David Livermore',
       meta: 'Founder, Cultural Intelligence \u2014 California \u00B7 via Google',
       photo: '/testimonials/david-livermore.jpg',
+    },
+    {
+      quote: 'I recently refinanced my existing mortgage with Jim and his team, and I was so pleased with how easy and quick the whole process was. Jim and his team were very responsive to my questions, and I feel confident that I got the best rate and shaved 9 years off my mortgage. He is very knowledgeable and helped me determine the best option for myself and my family.',
+      name: 'Alexis Kulick',
+      meta: 'Director of Digital Campaign at UBS \u2014 California \u00B7 via Facebook',
+      photo: '/testimonials/alexis-kulick.jpg',
+    },
+    {
+      quote: 'Jim Blackburn is a lending saint. He knows the market well and cares about his clients tremendously. Our situation is a bit complex. Rather than turn us away for some added work, they dug in to get it done right. They like the complexity, whereas other lenders don\u2019t want to roll up their sleeves. Highly recommend Jim Blackburn for new loans and refinances!',
+      name: 'Julian Einfrank',
+      meta: 'Sr. Wealth Advisor, Clifton Larson Allen \u2014 Illinois \u00B7 via Facebook',
+      photo: '/testimonials/julian-einfrank.jpg',
+    },
+    {
+      quote: 'Jim and his team are great to work with! We have used Jim twice with our home mortgage. Both times, the process was smooth and uneventful. He contacted us when he felt it was the right time to refinance! The refinancing process took about two weeks to close. I love the online process of submitting all the information \u2014 it made it super easy.',
+      name: 'Christina Curva Carrasco',
+      meta: 'Owner, Curated Interiors \u2014 Washington DC \u00B7 via Facebook',
+      photo: '/testimonials/christina-curva-carrasco.jpg',
     },
   ],
 
