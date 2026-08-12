@@ -40,7 +40,7 @@ const groups = {};
 for (const c of calcs) { (groups[c.cat] ||= []).push(c); }
 const orderedCats = [...CATEGORIES.map(c=>c.key), 'other'].filter(k => groups[k]?.length);
 const totalCount = calcs.length;
-const canonical = "https://stairwaymortgage.com/loan-calculators/";
+const canonical = "https://www.stairwaymortgage.com/loan-calculators/";
 ---
 
 <Layout title="Free Mortgage Calculators | Stairway Mortgage" description="Free mortgage calculators — estimate payments, affordability, refinance savings, rental cash flow, and more. Guided by Jim Blackburn, NMLS #1072866." canonical={canonical}>

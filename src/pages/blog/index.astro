@@ -2,8 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 const collectionPosts = await getCollection('blog', ({ data }) => !data.draft);
-const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Blog"}]};
-const blogSchema={"@context":"https://schema.org","@type":"Blog","name":"Stairway Mortgage Blog","description":"Mortgage guides, investor strategies, and homebuying insights from Jim Blackburn and the Stairway team.","url":"https://stairwaymortgage.com/blog/"};
+const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.stairwaymortgage.com/"},{"@type":"ListItem","position":2,"name":"Blog"}]};
+const blogSchema={"@context":"https://schema.org","@type":"Blog","name":"Stairway Mortgage Blog","description":"Mortgage guides, investor strategies, and homebuying insights from Jim Blackburn and the Stairway team.","url":"https://www.stairwaymortgage.com/blog/"};
 ---
 
 <Layout
