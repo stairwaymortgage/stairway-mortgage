@@ -405,18 +405,8 @@
       "permanent": true
     },
     {
-      "source": "/fl/fort-lauderdale/mortgage-broker",
-      "destination": "/branches/fort-lauderdale/jim-blackburn-team/",
-      "permanent": true
-    },
-    {
-      "source": "/fl/fort-lauderdale/mortgage-broker/",
-      "destination": "/branches/fort-lauderdale/jim-blackburn-team/",
-      "permanent": true
-    },
-    {
-      "source": "/fl/fort-lauderdale/mortgage-broker/:path*",
-      "destination": "/branches/fort-lauderdale/jim-blackburn-team/",
+      "source": "/fl/fort-lauderdale/mortgage-broker/:path+",
+      "destination": "/fl/fort-lauderdale/mortgage-broker/",
       "permanent": true
     },
     {
@@ -435,18 +425,8 @@
       "permanent": true
     },
     {
-      "source": "/fl/fort-lauderdale/mortgage-lender",
-      "destination": "/branches/fort-lauderdale/jim-blackburn-team/",
-      "permanent": true
-    },
-    {
-      "source": "/fl/fort-lauderdale/mortgage-lender/",
-      "destination": "/branches/fort-lauderdale/jim-blackburn-team/",
-      "permanent": true
-    },
-    {
-      "source": "/fl/fort-lauderdale/mortgage-lender/:path*",
-      "destination": "/branches/fort-lauderdale/jim-blackburn-team/",
+      "source": "/fl/fort-lauderdale/mortgage-lender/:path+",
+      "destination": "/fl/fort-lauderdale/mortgage-lender/",
       "permanent": true
     },
     {
