@@ -33,10 +33,22 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/chat", "destination": "/api/chat" },
-    { "source": "/api/chat/", "destination": "/api/chat" },
-    { "source": "/api/usda-check", "destination": "/api/usda-check" },
-    { "source": "/api/usda-check/", "destination": "/api/usda-check" }
+    {
+      "source": "/api/chat",
+      "destination": "/api/chat"
+    },
+    {
+      "source": "/api/chat/",
+      "destination": "/api/chat"
+    },
+    {
+      "source": "/api/usda-check",
+      "destination": "/api/usda-check"
+    },
+    {
+      "source": "/api/usda-check/",
+      "destination": "/api/usda-check"
+    }
   ],
   "redirects": [
     {
@@ -1397,6 +1409,786 @@
     {
       "source": "/sales-professionals/real-estate-agent/",
       "destination": "/sales-professionals/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:path*",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug/",
+      "destination": "/blog/:slug/",
+      "permanent": true
+    },
+    {
+      "source": "/1031-exchange-delaware-statutory-trust/",
+      "destination": "/blog/1031-exchange-delaware-statutory-trust/",
+      "permanent": true
+    },
+    {
+      "source": "/1031-exchange-for-dummies/",
+      "destination": "/blog/1031-exchange-for-dummies/",
+      "permanent": true
+    },
+    {
+      "source": "/50-30-20-budget-rule/",
+      "destination": "/blog/50-30-20-budget-rule/",
+      "permanent": true
+    },
+    {
+      "source": "/55-plus-community/",
+      "destination": "/blog/55-plus-community/",
+      "permanent": true
+    },
+    {
+      "source": "/adu-financing-options/",
+      "destination": "/blog/adu-financing-options/",
+      "permanent": true
+    },
+    {
+      "source": "/advantages-of-a-living-trust/",
+      "destination": "/blog/advantages-of-a-living-trust/",
+      "permanent": true
+    },
+    {
+      "source": "/aging-in-place-modifications/",
+      "destination": "/blog/aging-in-place-modifications/",
+      "permanent": true
+    },
+    {
+      "source": "/appraisal-when-buying-a-house/",
+      "destination": "/blog/appraisal-when-buying-a-house/",
+      "permanent": true
+    },
+    {
+      "source": "/authorized-user-credit-card/",
+      "destination": "/blog/authorized-user-credit-card/",
+      "permanent": true
+    },
+    {
+      "source": "/best-mortgage-company/",
+      "destination": "/blog/best-mortgage-company/",
+      "permanent": true
+    },
+    {
+      "source": "/best-way-to-earn-a-passive-income/",
+      "destination": "/blog/best-way-to-earn-a-passive-income/",
+      "permanent": true
+    },
+    {
+      "source": "/bridge-loan-mortgage/",
+      "destination": "/blog/bridge-loan-mortgage/",
+      "permanent": true
+    },
+    {
+      "source": "/brrrr-method/",
+      "destination": "/blog/brrrr-method/",
+      "permanent": true
+    },
+    {
+      "source": "/building-a-real-estate-team/",
+      "destination": "/blog/building-a-real-estate-team/",
+      "permanent": true
+    },
+    {
+      "source": "/business-plan-for-investing-in-real-estate/",
+      "destination": "/blog/business-plan-for-investing-in-real-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/buying-first-rental-property-with-llc/",
+      "destination": "/blog/buying-first-rental-property-with-llc/",
+      "permanent": true
+    },
+    {
+      "source": "/buying-your-first-home/",
+      "destination": "/blog/buying-your-first-home/",
+      "permanent": true
+    },
+    {
+      "source": "/calculating-cap-rate-real-estate/",
+      "destination": "/blog/calculating-cap-rate-real-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/capital-partners/",
+      "destination": "/blog/capital-partners/",
+      "permanent": true
+    },
+    {
+      "source": "/cash-flow-real-estate-vs-appreciation-real-estate/",
+      "destination": "/blog/cash-flow-real-estate-vs-appreciation-real-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/cash-out-refinance-investment-property/",
+      "destination": "/blog/cash-out-refinance-investment-property/",
+      "permanent": true
+    },
+    {
+      "source": "/cash-out-refinance-vs-heloc/",
+      "destination": "/blog/cash-out-refinance-vs-heloc/",
+      "permanent": true
+    },
+    {
+      "source": "/charitable-donations-and-tax-deductions/",
+      "destination": "/blog/charitable-donations-and-tax-deductions/",
+      "permanent": true
+    },
+    {
+      "source": "/charitable-remainder-annuity-trust/",
+      "destination": "/blog/charitable-remainder-annuity-trust/",
+      "permanent": true
+    },
+    {
+      "source": "/closing-costs-for-buyers/",
+      "destination": "/blog/closing-costs-for-buyers/",
+      "permanent": true
+    },
+    {
+      "source": "/closing-on-a-house/",
+      "destination": "/blog/closing-on-a-house/",
+      "permanent": true
+    },
+    {
+      "source": "/college-savings/",
+      "destination": "/blog/college-savings/",
+      "permanent": true
+    },
+    {
+      "source": "/commercial-real-estate-analysis/",
+      "destination": "/blog/commercial-real-estate-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/conservation-easement-tax-deduction/",
+      "destination": "/blog/conservation-easement-tax-deduction/",
+      "permanent": true
+    },
+    {
+      "source": "/construction-to-permanent-loan/",
+      "destination": "/blog/construction-to-permanent-loan/",
+      "permanent": true
+    },
+    {
+      "source": "/cost-segregation-real-estate/",
+      "destination": "/blog/cost-segregation-real-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/creative-financing-real-estate/",
+      "destination": "/blog/creative-financing-real-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/crowd-funding-for-startup-company/",
+      "destination": "/blog/crowd-funding-for-startup-company/",
+      "permanent": true
+    },
+    {
+      "source": "/debt-consolidation-refinance/",
+      "destination": "/blog/debt-consolidation-refinance/",
+      "permanent": true
+    },
+    {
+      "source": "/divorce-mortgage/",
+      "destination": "/blog/divorce-mortgage/",
+      "permanent": true
+    },
+    {
+      "source": "/downsizing-home-for-seniors/",
+      "destination": "/blog/downsizing-home-for-seniors/",
+      "permanent": true
+    },
+    {
+      "source": "/dscr-loan-meaning/",
+      "destination": "/blog/dscr-loan-meaning/",
+      "permanent": true
+    },
+    {
+      "source": "/escrow-account/",
+      "destination": "/blog/escrow-account/",
+      "permanent": true
+    },
+    {
+      "source": "/family-limited-partnership/",
+      "destination": "/blog/family-limited-partnership/",
+      "permanent": true
+    },
+    {
+      "source": "/fha-loan-qualifications/",
+      "destination": "/blog/fha-loan-qualifications/",
+      "permanent": true
+    },
+    {
+      "source": "/fha-vs-conventional/",
+      "destination": "/blog/fha-vs-conventional/",
+      "permanent": true
+    },
+    {
+      "source": "/final-walkthrough-before-closing/",
+      "destination": "/blog/final-walkthrough-before-closing/",
+      "permanent": true
+    },
+    {
+      "source": "/first-credit-card/",
+      "destination": "/blog/first-credit-card/",
+      "permanent": true
+    },
+    {
+      "source": "/first-time-home-buyer-assistance/",
+      "destination": "/blog/first-time-home-buyer-assistance/",
+      "permanent": true
+    },
+    {
+      "source": "/first-time-home-buyer-down-payment-assistance/",
+      "destination": "/blog/first-time-home-buyer-down-payment-assistance/",
+      "permanent": true
+    },
+    {
+      "source": "/first-time-home-buyer-mistakes/",
+      "destination": "/blog/first-time-home-buyer-mistakes/",
+      "permanent": true
+    },
+    {
+      "source": "/first-time-home-buyer-programs/",
+      "destination": "/blog/first-time-home-buyer-programs/",
+      "permanent": true
+    },
+    {
+      "source": "/first-time-home-buyer-tips/",
+      "destination": "/blog/first-time-home-buyer-tips/",
+      "permanent": true
+    },
+    {
+      "source": "/first-time-homebuyer-checklist/",
+      "destination": "/blog/first-time-homebuyer-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/gift-money/",
+      "destination": "/blog/gift-money/",
+      "permanent": true
+    },
+    {
+      "source": "/hecm-for-purchase/",
+      "destination": "/blog/hecm-for-purchase/",
+      "permanent": true
+    },
+    {
+      "source": "/home-improvements-best-roi/",
+      "destination": "/blog/home-improvements-best-roi/",
+      "permanent": true
+    },
+    {
+      "source": "/home-inspection-checklist-for-buyers/",
+      "destination": "/blog/home-inspection-checklist-for-buyers/",
+      "permanent": true
+    },
+    {
+      "source": "/home-purchase-budget/",
+      "destination": "/blog/home-purchase-budget/",
+      "permanent": true
+    },
+    {
+      "source": "/home-renovation/",
+      "destination": "/blog/home-renovation/",
+      "permanent": true
+    },
+    {
+      "source": "/homeowner-maintenance-checklist/",
+      "destination": "/blog/homeowner-maintenance-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/homeowners-insurance-review/",
+      "destination": "/blog/homeowners-insurance-review/",
+      "permanent": true
+    },
+    {
+      "source": "/house-hacking/",
+      "destination": "/blog/house-hacking/",
+      "permanent": true
+    },
+    {
+      "source": "/house-renovation-cost/",
+      "destination": "/blog/house-renovation-cost/",
+      "permanent": true
+    },
+    {
+      "source": "/how-reverse-mortgage-works/",
+      "destination": "/blog/how-reverse-mortgage-works/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-find-investment-property/",
+      "destination": "/blog/how-to-find-investment-property/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-find-investors-for-real-estate/",
+      "destination": "/blog/how-to-find-investors-for-real-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-make-an-offer-on-a-house/",
+      "destination": "/blog/how-to-make-an-offer-on-a-house/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-qualify-for-mortgage/",
+      "destination": "/blog/how-to-qualify-for-mortgage/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-remove-pmi/",
+      "destination": "/blog/how-to-remove-pmi/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-save-for-a-house/",
+      "destination": "/blog/how-to-save-for-a-house/",
+      "permanent": true
+    },
+    {
+      "source": "/ideal-home/",
+      "destination": "/blog/ideal-home/",
+      "permanent": true
+    },
+    {
+      "source": "/improve-credit-score-for-mortgage/",
+      "destination": "/blog/improve-credit-score-for-mortgage/",
+      "permanent": true
+    },
+    {
+      "source": "/intentionally-defective-grantor-trust/",
+      "destination": "/blog/intentionally-defective-grantor-trust/",
+      "permanent": true
+    },
+    {
+      "source": "/invest-in-apartment-complexes/",
+      "destination": "/blog/invest-in-apartment-complexes/",
+      "permanent": true
+    },
+    {
+      "source": "/invest-in-commercial-real-estate/",
+      "destination": "/blog/invest-in-commercial-real-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/investment-property-analysis/",
+      "destination": "/blog/investment-property-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/irrevocable-asset-protection-trust/",
+      "destination": "/blog/irrevocable-asset-protection-trust/",
+      "permanent": true
+    },
+    {
+      "source": "/is-reverse-mortgage-income-taxable/",
+      "destination": "/blog/is-reverse-mortgage-income-taxable/",
+      "permanent": true
+    },
+    {
+      "source": "/landlord-insurance-for-rental-property/",
+      "destination": "/blog/landlord-insurance-for-rental-property/",
+      "permanent": true
+    },
+    {
+      "source": "/landlord-responsibilities/",
+      "destination": "/blog/landlord-responsibilities/",
+      "permanent": true
+    },
+    {
+      "source": "/lawyers-for-estates-and-wills/",
+      "destination": "/blog/lawyers-for-estates-and-wills/",
+      "permanent": true
+    },
+    {
+      "source": "/legacy-planning/",
+      "destination": "/blog/legacy-planning/",
+      "permanent": true
+    },
+    {
+      "source": "/life-insurance-into-a-trust/",
+      "destination": "/blog/life-insurance-into-a-trust/",
+      "permanent": true
+    },
+    {
+      "source": "/llc-s-corp-vs-llc-c-corp/",
+      "destination": "/blog/llc-s-corp-vs-llc-c-corp/",
+      "permanent": true
+    },
+    {
+      "source": "/loan-calculator/asset-based-loan-cash-out-refinance/",
+      "destination": "/case-studies/asset-based-loan-cash-out-refinance/",
+      "permanent": true
+    },
+    {
+      "source": "/loan-calculator/construction-loan/",
+      "destination": "/case-studies/construction-loan/",
+      "permanent": true
+    },
+    {
+      "source": "/loan-calculator/conventional-cash-out-refinance/",
+      "destination": "/loan-programs/conventional-cash-out-refinance/",
+      "permanent": true
+    },
+    {
+      "source": "/loan-calculator/conventional-refinance/",
+      "destination": "/loan-programs/conventional-refinance/",
+      "permanent": true
+    },
+    {
+      "source": "/loan-calculator/dscr-loan-cash-out-refinance/",
+      "destination": "/case-studies/dscr-loan-cash-out-refinance/",
+      "permanent": true
+    },
+    {
+      "source": "/loan-calculator/reverse-mortgage-refinance/",
+      "destination": "/case-studies/reverse-mortgage-refinance/",
+      "permanent": true
+    },
+    {
+      "source": "/long-term-care-financing/",
+      "destination": "/blog/long-term-care-financing/",
+      "permanent": true
+    },
+    {
+      "source": "/long-term-rental-vs-short-term-rental/",
+      "destination": "/blog/long-term-rental-vs-short-term-rental/",
+      "permanent": true
+    },
+    {
+      "source": "/market-cycles/",
+      "destination": "/blog/market-cycles/",
+      "permanent": true
+    },
+    {
+      "source": "/meaning-of-residuary-estate/",
+      "destination": "/blog/meaning-of-residuary-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-broker-fees/",
+      "destination": "/blog/mortgage-broker-fees/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-broker-vs-lender/",
+      "destination": "/blog/mortgage-broker-vs-lender/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-estimator-florida/",
+      "destination": "/blog/mortgage-estimator-florida/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-protection-insurance/",
+      "destination": "/blog/mortgage-protection-insurance/",
+      "permanent": true
+    },
+    {
+      "source": "/mortgage-recast/",
+      "destination": "/blog/mortgage-recast/",
+      "permanent": true
+    },
+    {
+      "source": "/moving-out-of-state/",
+      "destination": "/blog/moving-out-of-state/",
+      "permanent": true
+    },
+    {
+      "source": "/multifamily-market-analysis/",
+      "destination": "/blog/multifamily-market-analysis/",
+      "permanent": true
+    },
+    {
+      "source": "/multifamily-real-estate-investing/",
+      "destination": "/blog/multifamily-real-estate-investing/",
+      "permanent": true
+    },
+    {
+      "source": "/negotiating-real-estate-commission/",
+      "destination": "/blog/negotiating-real-estate-commission/",
+      "permanent": true
+    },
+    {
+      "source": "/new-construction-vs-existing-home/",
+      "destination": "/blog/new-construction-vs-existing-home/",
+      "permanent": true
+    },
+    {
+      "source": "/nexa-mortgage-nexa-lending/",
+      "destination": "/blog/nexa-mortgage-nexa-lending/",
+      "permanent": true
+    },
+    {
+      "source": "/opportunity-zone-funds/",
+      "destination": "/blog/opportunity-zone-funds/",
+      "permanent": true
+    },
+    {
+      "source": "/partnering-in-real-estate/",
+      "destination": "/blog/partnering-in-real-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/passive-activity-loss-limitations/",
+      "destination": "/blog/passive-activity-loss-limitations/",
+      "permanent": true
+    },
+    {
+      "source": "/passive-income-investments/",
+      "destination": "/blog/passive-income-investments/",
+      "permanent": true
+    },
+    {
+      "source": "/passive-portfolio-management/",
+      "destination": "/blog/passive-portfolio-management/",
+      "permanent": true
+    },
+    {
+      "source": "/pay-off-mortgage-early/",
+      "destination": "/blog/pay-off-mortgage-early/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-and-diversification/",
+      "destination": "/blog/portfolio-and-diversification/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-lending-real-estate-loans/",
+      "destination": "/blog/portfolio-lending-real-estate-loans/",
+      "permanent": true
+    },
+    {
+      "source": "/private-placement-life-insurance/",
+      "destination": "/blog/private-placement-life-insurance/",
+      "permanent": true
+    },
+    {
+      "source": "/property-management-checklist/",
+      "destination": "/blog/property-management-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/property-management-cost/",
+      "destination": "/blog/property-management-cost/",
+      "permanent": true
+    },
+    {
+      "source": "/property-management-for-landlords/",
+      "destination": "/blog/property-management-for-landlords/",
+      "permanent": true
+    },
+    {
+      "source": "/qualified-personal-residence-trust/",
+      "destination": "/blog/qualified-personal-residence-trust/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-due-diligence-checklist/",
+      "destination": "/blog/real-estate-due-diligence-checklist/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-investing-for-beginners/",
+      "destination": "/blog/real-estate-investing-for-beginners/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-investment-strategies/",
+      "destination": "/blog/real-estate-investment-strategies/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-syndication-attorney/",
+      "destination": "/blog/real-estate-syndication-attorney/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-syndication/",
+      "destination": "/blog/real-estate-syndication/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-tax-strategies/",
+      "destination": "/blog/real-estate-tax-strategies/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-team/",
+      "destination": "/blog/real-estate-team/",
+      "permanent": true
+    },
+    {
+      "source": "/real-estate-terminology/",
+      "destination": "/blog/real-estate-terminology/",
+      "permanent": true
+    },
+    {
+      "source": "/reits-that-pay-a-monthly-dividend/",
+      "destination": "/blog/reits-that-pay-a-monthly-dividend/",
+      "permanent": true
+    },
+    {
+      "source": "/rent-out-my-house/",
+      "destination": "/blog/rent-out-my-house/",
+      "permanent": true
+    },
+    {
+      "source": "/rent-vs-buy-calculator/",
+      "destination": "/blog/rent-vs-buy-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/retirement-income-planning/",
+      "destination": "/blog/retirement-income-planning/",
+      "permanent": true
+    },
+    {
+      "source": "/reverse-mortgage-death/",
+      "destination": "/blog/reverse-mortgage-death/",
+      "permanent": true
+    },
+    {
+      "source": "/reverse-mortgage-pitfalls/",
+      "destination": "/blog/reverse-mortgage-pitfalls/",
+      "permanent": true
+    },
+    {
+      "source": "/reverse-mortgage-pros-and-cons/",
+      "destination": "/blog/reverse-mortgage-pros-and-cons/",
+      "permanent": true
+    },
+    {
+      "source": "/reverse-mortgage-pros-cons/",
+      "destination": "/blog/reverse-mortgage-pros-cons/",
+      "permanent": true
+    },
+    {
+      "source": "/reverse-mortgage-qualification-requirements/",
+      "destination": "/blog/reverse-mortgage-qualification-requirements/",
+      "permanent": true
+    },
+    {
+      "source": "/reverse-mortgage-vs-heloc/",
+      "destination": "/blog/reverse-mortgage-vs-heloc/",
+      "permanent": true
+    },
+    {
+      "source": "/scaling-with-brrrr-strategy/",
+      "destination": "/blog/scaling-with-brrrr-strategy/",
+      "permanent": true
+    },
+    {
+      "source": "/self-directed-ira-real-estate/",
+      "destination": "/blog/self-directed-ira-real-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/self-employed-mortgage/",
+      "destination": "/blog/self-employed-mortgage/",
+      "permanent": true
+    },
+    {
+      "source": "/selling-a-house/",
+      "destination": "/blog/selling-a-house/",
+      "permanent": true
+    },
+    {
+      "source": "/selling-home/",
+      "destination": "/blog/selling-home/",
+      "permanent": true
+    },
+    {
+      "source": "/senior-property-tax-exemption/",
+      "destination": "/blog/senior-property-tax-exemption/",
+      "permanent": true
+    },
+    {
+      "source": "/side-hustles-to-make-money/",
+      "destination": "/blog/side-hustles-to-make-money/",
+      "permanent": true
+    },
+    {
+      "source": "/special-financing/",
+      "destination": "/blog/special-financing/",
+      "permanent": true
+    },
+    {
+      "source": "/states-without-estate-taxes/",
+      "destination": "/blog/states-without-estate-taxes/",
+      "permanent": true
+    },
+    {
+      "source": "/syndication-of-real-estate/",
+      "destination": "/blog/syndication-of-real-estate/",
+      "permanent": true
+    },
+    {
+      "source": "/tax-benefits-of-rental-property/",
+      "destination": "/blog/tax-benefits-of-rental-property/",
+      "permanent": true
+    },
+    {
+      "source": "/tax-break-for-buying-a-house/",
+      "destination": "/blog/tax-break-for-buying-a-house/",
+      "permanent": true
+    },
+    {
+      "source": "/the-great-wealth-transfer/",
+      "destination": "/blog/the-great-wealth-transfer/",
+      "permanent": true
+    },
+    {
+      "source": "/things-you-need-for-a-new-home/",
+      "destination": "/blog/things-you-need-for-a-new-home/",
+      "permanent": true
+    },
+    {
+      "source": "/true-cost-of-homeownership/",
+      "destination": "/blog/true-cost-of-homeownership/",
+      "permanent": true
+    },
+    {
+      "source": "/types-of-home-mortgage-loans/",
+      "destination": "/blog/types-of-home-mortgage-loans/",
+      "permanent": true
+    },
+    {
+      "source": "/types-of-investment-properties/",
+      "destination": "/blog/types-of-investment-properties/",
+      "permanent": true
+    },
+    {
+      "source": "/types-of-loans-for-flipping-houses/",
+      "destination": "/blog/types-of-loans-for-flipping-houses/",
+      "permanent": true
+    },
+    {
+      "source": "/vision-board-examples/",
+      "destination": "/blog/vision-board-examples/",
+      "permanent": true
+    },
+    {
+      "source": "/what-is-my-home-worth/",
+      "destination": "/blog/what-is-my-home-worth/",
+      "permanent": true
+    },
+    {
+      "source": "/when-to-refinance-mortgage/",
+      "destination": "/blog/when-to-refinance-mortgage/",
       "permanent": true
     }
   ]
