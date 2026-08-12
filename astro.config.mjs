@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://stairwaymortgage.com',
+  site: 'https://www.stairwaymortgage.com',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
