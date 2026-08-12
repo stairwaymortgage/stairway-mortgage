@@ -1,10 +1,10 @@
 ---
 /**
  * /fl/fort-lauderdale/mortgage-lender/
- * Rebuilt from old WP Elementor page — keyword-targeted local landing page.
+ * Production landing page — keyword-targeted local mortgage lender page.
  *
  * COMPLIANCE:
- *   - Stat corrected: $350M → $500M+ (locked).
+ *   - Stat: $500M+ (locked).
  *   - NEXA NMLS #1660690 → footer only (Layout/Footer.astro).
  *   - Jim individual NMLS #1072866 in body (founder context).
  *   - CTAs: "See My Options" / "Talk to Our Team".
@@ -15,58 +15,238 @@ const phone = '(954) 993-1625';
 const phoneHref = 'tel:+19549931625';
 
 const neighborhoods = [
-  { name: 'Las Olas Isles & Blvd', type: 'Jumbo / Super-Jumbo', range: '$2M–$8M+' },
-  { name: 'Harbor Beach', type: 'Super-Jumbo / Alt-Doc', range: '$3M–$15M+' },
-  { name: 'Rio Vista', type: 'Conventional / FHA 203k', range: '$800K–$3M' },
-  { name: 'Victoria Park', type: 'FHA / Conv / Physician', range: '$400K–$1.2M' },
-  { name: 'Flagler Village', type: 'Non-Warrantable Condo', range: '$300K–$800K' },
-  { name: 'Coral Ridge', type: 'Conventional / Jumbo', range: '$600K–$2.5M' },
-  { name: 'Progresso Village & Sailboat Bend', type: 'DSCR / Fix-and-Flip', range: '$250K–$600K' },
-  { name: 'Ft Lauderdale Beach / Galt Ocean Mile', type: 'Non-Warrantable / Foreign National', range: '$400K–$5M+' },
-  { name: 'Wilton Manors & Oakland Park', type: 'VA / DSCR / First-Time', range: '$350K–$900K' },
-  { name: 'Plantation, Weston & Davie', type: 'Conv / Bank Statement', range: '$400K–$1.5M' },
+  { name: 'Las Olas Isles & Blvd', type: 'Jumbo / Super-Jumbo', range: '$2M\u2013$8M+' },
+  { name: 'Harbor Beach', type: 'Super-Jumbo / Alt-Doc', range: '$3M\u2013$15M+' },
+  { name: 'Rio Vista', type: 'Conventional / FHA 203k', range: '$800K\u2013$3M' },
+  { name: 'Victoria Park', type: 'FHA / Conv / Physician', range: '$400K\u2013$1.2M' },
+  { name: 'Flagler Village', type: 'Non-Warrantable Condo', range: '$300K\u2013$800K' },
+  { name: 'Coral Ridge', type: 'Conventional / Jumbo', range: '$600K\u2013$2.5M' },
+  { name: 'Progresso Village & Sailboat Bend', type: 'DSCR / Fix-and-Flip', range: '$250K\u2013$600K' },
+  { name: 'Ft Lauderdale Beach / Galt Ocean Mile', type: 'Non-Warrantable / Foreign National', range: '$400K\u2013$5M+' },
+  { name: 'Wilton Manors & Oakland Park', type: 'VA / DSCR / First-Time', range: '$350K\u2013$900K' },
+  { name: 'Plantation, Weston & Davie', type: 'Conv / Bank Statement', range: '$400K\u2013$1.5M' },
 ];
+
+const lenderLogos = [
+  { src: '/lender-logos/UWM.webp', alt: 'UWM' },
+  { src: '/lender-logos/newrez.webp', alt: 'Newrez' },
+  { src: '/lender-logos/NEWdi.webp', alt: 'New Direction' },
+  { src: '/lender-logos/lead.webp', alt: 'Lead' },
+  { src: '/lender-logos/community.webp', alt: 'Community' },
+  { src: '/lender-logos/EPM.webp', alt: 'EPM' },
+  { src: '/lender-logos/omana.webp', alt: 'Omana' },
+];
+
+const faqs = [
+  {
+    q: 'What makes Stairway Mortgage different from other Fort Lauderdale mortgage lenders?',
+    a: 'Unlike a typical Fort Lauderdale mortgage lender that offers only their own products, Stairway Mortgage operates as both a direct lender and licensed broker with 300+ wholesale partners. You get in-house speed when it matters and wholesale rate shopping when savings matter.',
+  },
+  {
+    q: 'What types of mortgage loans are available in Fort Lauderdale?',
+    a: 'Conventional, FHA, VA, USDA, jumbo, bank statement, DSCR investor, asset-based, foreign national, and non-QM programs \u2014 all available through our direct and wholesale channels.',
+  },
+  {
+    q: 'How do I choose the right mortgage lender in Fort Lauderdale?',
+    a: 'Look for lending model access (direct + broker is ideal), local expertise in South Florida\'s specific challenges (condos, flood zones, international buyers), verifiable production volume, and a track record with complex scenarios.',
+  },
+  {
+    q: 'How fast can a Fort Lauderdale mortgage lender close my loan?',
+    a: 'Through our direct lending channel, we can close in as few as 14\u201321 days for straightforward purchase transactions. Complex scenarios typically close in 30\u201345 days.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FinancialService',
+  name: 'Stairway Mortgage \u2014 Fort Lauderdale Mortgage Lender',
+  telephone: phone,
+  areaServed: 'Fort Lauderdale, FL',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '912 SW 20th St',
+    addressLocality: 'Fort Lauderdale',
+    addressRegion: 'FL',
+    postalCode: '33315',
+    addressCountry: 'US',
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    bestRating: '5',
+    ratingCount: '150',
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://stairwaymortgage.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Fort Lauderdale', item: 'https://stairwaymortgage.com/fl/fort-lauderdale/' },
+    { '@type': 'ListItem', position: 3, name: 'Mortgage Lender', item: 'https://stairwaymortgage.com/fl/fort-lauderdale/mortgage-lender/' },
+  ],
+};
 ---
 
 <Layout
   title="Mortgage Lender in Fort Lauderdale | Stairway Mortgage | Direct Lending + 300 Wholesale Partners"
   description="Stairway Mortgage is a Fort Lauderdale direct mortgage lender and broker with access to 300+ wholesale lenders. In-house underwriting plus wholesale rate shopping."
   canonical="/fl/fort-lauderdale/mortgage-lender/"
+  ogImage="/wp-content/uploads/2025/11/A_photograph_captures_a_mortgage_consultation_meet.webp"
 >
   <main class="ml-scope">
 
-    <!-- HERO -->
-    <section class="section ml-hero">
+    <!-- BREADCRUMB -->
+    <nav class="ml-breadcrumb" aria-label="Breadcrumb">
       <div class="container-page">
-        <p class="eyebrow eyebrow-blue">Fort Lauderdale Mortgage Lender</p>
-        <h1 class="display-xl">Fort Lauderdale FL Mortgage Lender — Direct Funding, Local Expertise</h1>
-        <p class="lede">Stairway Mortgage is a Fort Lauderdale direct mortgage lender and broker with access to 300+ wholesale lenders. In-house underwriting when speed matters, wholesale rate shopping when savings matter — the best of both worlds.</p>
-        <div class="ml-actions">
-          <a href="/see-my-options/" class="btn btn-blue">See My Options — Same-Day Pre-Approval</a>
-          <a href={phoneHref} class="btn btn-ghost">{phone}</a>
+        <ol class="ml-breadcrumb-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/fl/fort-lauderdale/">Fort Lauderdale</a></li>
+          <li aria-current="page">Mortgage Lender</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         SECTION 1 — HERO
+         ============================================================ -->
+    <section class="ml-hero">
+      <div class="container-page ml-hero-inner">
+        <div class="ml-hero-content">
+          <p class="eyebrow ml-hero-eyebrow">Fort Lauderdale Mortgage Lender</p>
+          <h1 class="display-xl ml-hero-h1">Fort Lauderdale FL Mortgage Lender — Direct Funding, Local Expertise</h1>
+          <p class="ml-hero-lede">Stairway Mortgage is a Fort Lauderdale direct mortgage lender and broker with access to 300+ wholesale lenders. In-house underwriting when speed matters, wholesale rate shopping when savings matter — the best of both worlds.</p>
+          <div class="ml-actions">
+            <a href="/see-my-options/" class="btn btn-blue">See My Options — Same-Day Pre-Approval</a>
+            <a href={phoneHref} class="btn ml-btn-hero-ghost">Talk to Our Team: {phone}</a>
+          </div>
+        </div>
+        <div class="ml-hero-image">
+          <img
+            src="/wp-content/uploads/2025/11/A_photograph_captures_a_mortgage_consultation_meet.webp"
+            alt="Mortgage consultation meeting at Stairway Mortgage in Fort Lauderdale"
+            width="640" height="480"
+            loading="eager"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </div>
+      <!-- Stats bar -->
+      <div class="ml-stats-bar">
+        <div class="container-page ml-stats-inner">
+          <div class="ml-stat fade-in">
+            <span class="ml-stat-num" data-target="300">0</span><span class="ml-stat-plus">+</span>
+            <span class="ml-stat-label">Wholesale Lenders</span>
+          </div>
+          <div class="ml-stat fade-in">
+            <span class="ml-stat-prefix">$</span><span class="ml-stat-num" data-target="500">0</span><span class="ml-stat-plus">M+</span>
+            <span class="ml-stat-label">Loans Closed</span>
+          </div>
+          <div class="ml-stat fade-in">
+            <span class="ml-stat-num" data-target="14">0</span><span class="ml-stat-plus">-Day</span>
+            <span class="ml-stat-label">Close Possible</span>
+          </div>
+          <div class="ml-stat fade-in">
+            <span class="ml-stat-num" data-target="5" data-decimal="true">0</span><span class="ml-stat-plus">.0</span>
+            <span class="ml-stat-label">Google Rating</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- WHY CHOOSE -->
-    <section class="section section-tinted">
+    <!-- ============================================================
+         SECTION 2 — LENDER TRUST BAR
+         ============================================================ -->
+    <section class="ml-trust-bar fade-in">
       <div class="container-page">
-        <div class="section-header">
-          <p class="eyebrow eyebrow-rust">Why Stairway Mortgage</p>
-          <h2 class="display-md">Why choose Stairway Mortgage as your Fort Lauderdale mortgage lender</h2>
+        <p class="ml-trust-label">Trusted by 300+ wholesale lending partners</p>
+        <div class="ml-trust-logos">
+          {lenderLogos.map(logo => (
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              width="120" height="48"
+              loading="lazy"
+              class="ml-trust-logo"
+              onerror="this.style.display='none'"
+            />
+          ))}
         </div>
-        <p class="lede">Led by Jim Blackburn (NMLS #1072866), a Scotsman Guide Top Producer with $500M+ in personally closed loans and seven consecutive years among the nation's top originators.</p>
+      </div>
+    </section>
 
+    <!-- ============================================================
+         SECTION 3 — WHY CHOOSE STAIRWAY
+         ============================================================ -->
+    <section class="section ml-section-tinted">
+      <div class="container-page">
+        <div class="ml-section-header fade-in">
+          <p class="eyebrow eyebrow-rust">Why Stairway Mortgage</p>
+          <h2 class="display-md">Why Choose Stairway Mortgage as Your Fort Lauderdale Mortgage Lender</h2>
+        </div>
+
+        <!-- Jim profile -->
+        <div class="ml-leader fade-in">
+          <div class="ml-leader-photo">
+            <img
+              src="/wp-content/uploads/2026/03/jim-blackburn-fort-lauderdale.jpg.webp"
+              alt="Jim Blackburn — Fort Lauderdale mortgage lender, Scotsman Guide Top Producer"
+              width="280" height="350"
+              loading="lazy"
+              onerror="this.style.display='none'"
+            />
+          </div>
+          <div class="ml-leader-text">
+            <h3 class="ml-subtitle">Led by a Scotsman Guide Top Producer</h3>
+            <p class="ml-leader-nmls mono">NMLS #1072866</p>
+            <p>Jim Blackburn has closed over <strong>$500M+</strong> in loans across seven consecutive years as a Scotsman Guide Top Producer. Jim lives in Fort Lauderdale and serves clients nationwide — combining deep local market knowledge with nationwide lender access.</p>
+            <a href="/branches/fort-lauderdale/jim-blackburn-team/" class="ml-link">Meet the team &rarr;</a>
+          </div>
+        </div>
+
+        <!-- 3 cards -->
         <div class="ml-grid-3">
-          <article class="ml-card">
+          <article class="ml-card fade-in">
+            <div class="ml-card-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="8" fill="var(--color-royal-tint)"/>
+                <path d="M12 20L18 14L24 20L30 12" stroke="var(--color-royal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 28H30" stroke="var(--color-royal)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
             <h3 class="ml-card-title">Direct lender capabilities</h3>
             <p>In-house underwriting and funding means faster approvals, fewer conditions, and more control over your timeline. When speed matters, we fund directly.</p>
           </article>
-          <article class="ml-card">
+          <article class="ml-card fade-in">
+            <div class="ml-card-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="8" fill="var(--color-royal-tint)"/>
+                <path d="M20 10V30M14 16L20 10L26 16" stroke="var(--color-royal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13 26H27" stroke="var(--color-royal)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
             <h3 class="ml-card-title">300+ wholesale lender network</h3>
             <p>Access to specialized programs and competitive pricing from over 300 wholesale partners. When savings matter, we shop the entire market for you.</p>
           </article>
-          <article class="ml-card">
+          <article class="ml-card fade-in">
+            <div class="ml-card-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="8" fill="var(--color-royal-tint)"/>
+                <circle cx="20" cy="20" r="8" stroke="var(--color-royal)" stroke-width="2.5"/>
+                <path d="M20 16V20L23 23" stroke="var(--color-royal)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
             <h3 class="ml-card-title">Complex loan expertise</h3>
             <p>Bank statement loans, DSCR investor loans, asset-based lending, non-QM programs, jumbo, and FHA/VA/USDA conventional loans — all under one roof.</p>
           </article>
@@ -74,31 +254,39 @@ const neighborhoods = [
       </div>
     </section>
 
-    <!-- DUAL MODEL -->
+    <!-- ============================================================
+         SECTION 4 — DUAL LENDING MODEL (Timeline)
+         ============================================================ -->
     <section class="section">
-      <div class="container-prose">
-        <div class="section-header">
+      <div class="container-page">
+        <div class="ml-section-header fade-in" style="max-width:56ch;">
           <p class="eyebrow eyebrow-blue">The Dual Model</p>
-          <h2 class="display-md">How our dual lending model works for you</h2>
+          <h2 class="display-md">How Our Dual Lending Model Works</h2>
+          <p class="lede" style="margin-top:1rem;">Every loan runs through both channels so you always get the best possible outcome — speed or savings.</p>
         </div>
-        <div class="ml-process">
-          <article class="ml-step">
-            <div class="ml-step-num mono">01</div>
-            <div>
+
+        <div class="ml-timeline">
+          <div class="ml-timeline-line" aria-hidden="true"></div>
+
+          <article class="ml-timeline-step fade-in">
+            <div class="ml-timeline-marker"><span class="mono">01</span></div>
+            <div class="ml-timeline-content">
               <h3 class="ml-step-title">Check our direct channel first</h3>
               <p>We check our direct lending channel first for speed, pricing, and fit — can we fund this in-house faster and cheaper?</p>
             </div>
           </article>
-          <article class="ml-step">
-            <div class="ml-step-num mono">02</div>
-            <div>
+
+          <article class="ml-timeline-step fade-in">
+            <div class="ml-timeline-marker"><span class="mono">02</span></div>
+            <div class="ml-timeline-content">
               <h3 class="ml-step-title">Shop 300+ wholesale partners</h3>
               <p>We simultaneously shop our 300+ wholesale partners to compare rates, terms, and program features against our direct channel.</p>
             </div>
           </article>
-          <article class="ml-step">
-            <div class="ml-step-num mono">03</div>
-            <div>
+
+          <article class="ml-timeline-step fade-in">
+            <div class="ml-timeline-marker"><span class="mono">03</span></div>
+            <div class="ml-timeline-content">
               <h3 class="ml-step-title">Present the best option</h3>
               <p>We present you with the best option — period — regardless of which channel it comes from. Your interests come first.</p>
             </div>
@@ -107,27 +295,33 @@ const neighborhoods = [
       </div>
     </section>
 
-    <!-- MARKET CONTEXT -->
-    <section class="section section-tinted">
+    <!-- ============================================================
+         SECTION 5 — MARKET CONTEXT
+         ============================================================ -->
+    <section class="section ml-section-tinted">
       <div class="container-page">
-        <div class="section-header">
+        <div class="ml-section-header fade-in">
           <p class="eyebrow eyebrow-rust">Market Knowledge</p>
-          <h2 class="display-md">Why Fort Lauderdale borrowers need a specialized mortgage lender</h2>
+          <h2 class="display-md">Why Fort Lauderdale Borrowers Need a Specialized Mortgage Lender</h2>
         </div>
-        <div class="ml-grid-2">
-          <article class="ml-card">
-            <h3 class="ml-card-title">40%+ price growth since 2020</h3>
+        <div class="ml-grid-4">
+          <article class="ml-card ml-card-stat fade-in">
+            <div class="ml-card-stat-num">40%+</div>
+            <h3 class="ml-card-title">Price growth since 2020</h3>
             <p>Fort Lauderdale's rapid appreciation drives jumbo lending necessity — many properties now exceed conforming limits.</p>
           </article>
-          <article class="ml-card">
-            <h3 class="ml-card-title">Post-Surfside condo requirements</h3>
+          <article class="ml-card ml-card-stat fade-in">
+            <div class="ml-card-stat-num">Post-Surfside</div>
+            <h3 class="ml-card-title">Condo requirements</h3>
             <p>New structural requirements create non-warrantable financing challenges that require specialized lender relationships.</p>
           </article>
-          <article class="ml-card">
-            <h3 class="ml-card-title">$3K–$12K annual flood insurance</h3>
+          <article class="ml-card ml-card-stat fade-in">
+            <div class="ml-card-stat-num">$3K-$12K</div>
+            <h3 class="ml-card-title">Annual flood insurance</h3>
             <p>High flood insurance costs impact debt-to-income ratios — an experienced lender knows which programs account for this.</p>
           </article>
-          <article class="ml-card">
+          <article class="ml-card ml-card-stat fade-in">
+            <div class="ml-card-stat-num">Global</div>
             <h3 class="ml-card-title">International buyer demand</h3>
             <p>Fort Lauderdale's international buyer population requires foreign national and ITIN programs most lenders don't offer.</p>
           </article>
@@ -135,49 +329,78 @@ const neighborhoods = [
       </div>
     </section>
 
-    <!-- NEIGHBORHOODS -->
+    <!-- ============================================================
+         SECTION 6 — NEIGHBORHOODS TABLE
+         ============================================================ -->
     <section class="section">
       <div class="container-page">
-        <div class="section-header">
+        <div class="ml-section-header fade-in">
           <p class="eyebrow eyebrow-blue">Local Coverage</p>
-          <h2 class="display-md">Fort Lauderdale neighborhoods our mortgage lending team serves</h2>
+          <h2 class="display-md">Fort Lauderdale Neighborhoods Our Mortgage Lending Team Serves</h2>
         </div>
-        <div class="ml-table-wrap">
+        <div class="ml-table-wrap fade-in">
           <table class="ml-nbr-table">
             <thead>
               <tr><th>Neighborhood</th><th>Common Loan Type</th><th>Price Range</th></tr>
             </thead>
             <tbody>
-              {neighborhoods.map((n) => (
-                <tr><td>{n.name}</td><td>{n.type}</td><td class="mono">{n.range}</td></tr>
+              {neighborhoods.map((n, i) => (
+                <tr class={i % 2 === 1 ? 'ml-row-alt' : ''}>
+                  <td>{n.name}</td>
+                  <td>{n.type}</td>
+                  <td class="mono">{n.range}</td>
+                </tr>
               ))}
             </tbody>
           </table>
         </div>
+        <div class="ml-neighborhood-image fade-in">
+          <img
+            src="/wp-content/uploads/2025/05/laughing-couple-posing-kitchen-scaled.webp"
+            alt="Happy homeowners in their new Fort Lauderdale home after closing with Stairway Mortgage"
+            width="800" height="500"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          />
+        </div>
       </div>
     </section>
 
-    <!-- LOCAL EXPERTISE -->
-    <section class="section section-tinted">
+    <!-- ============================================================
+         SECTION 7 — LOCAL EXPERTISE
+         ============================================================ -->
+    <section class="section ml-section-tinted">
       <div class="container-page">
-        <div class="section-header">
+        <div class="ml-section-header fade-in">
           <p class="eyebrow eyebrow-rust">Expertise</p>
-          <h2 class="display-md">Fort Lauderdale mortgage lending — local expertise matters</h2>
+          <h2 class="display-md">Local Expertise Matters</h2>
         </div>
-        <div class="ml-grid-2">
-          <article class="ml-card">
+        <div class="ml-grid-4">
+          <article class="ml-card fade-in">
+            <div class="ml-card-icon-sm">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 10L12 3L21 10V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V10Z" stroke="var(--color-royal)" stroke-width="2" stroke-linejoin="round"/><path d="M9 21V12H15V21" stroke="var(--color-royal)" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
             <h3 class="ml-card-title">Condo financing</h3>
             <p>Warrantable and non-warrantable condo programs. Navigation of post-Surfside structural requirements and condo questionnaire challenges.</p>
           </article>
-          <article class="ml-card">
+          <article class="ml-card fade-in">
+            <div class="ml-card-icon-sm">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="var(--color-royal)" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
             <h3 class="ml-card-title">Foreign national lending</h3>
-            <p>Programs with 25–30% down, no U.S. credit requirement. Closings in personal name or through an LLC.</p>
+            <p>Programs with 25-30% down, no U.S. credit requirement. Closings in personal name or through an LLC.</p>
           </article>
-          <article class="ml-card">
+          <article class="ml-card fade-in">
+            <div class="ml-card-icon-sm">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="var(--color-royal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
             <h3 class="ml-card-title">Flood zone navigation</h3>
             <p>Understanding how flood insurance costs impact qualifying ratios and which lenders handle flood-zone properties best.</p>
           </article>
-          <article class="ml-card">
+          <article class="ml-card fade-in">
+            <div class="ml-card-icon-sm">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 21L12 3L21 21H3Z" stroke="var(--color-royal)" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
             <h3 class="ml-card-title">Investment property financing</h3>
             <p>DSCR underwriting calibrated to Fort Lauderdale rental yields, short-term rental financing, and multi-family investment strategies.</p>
           </article>
@@ -185,126 +408,830 @@ const neighborhoods = [
       </div>
     </section>
 
-    <!-- WHO WE SERVE -->
+    <!-- ============================================================
+         SECTION 8 — WHO WE SERVE
+         ============================================================ -->
     <section class="section">
-      <div class="container-prose">
-        <div class="section-header">
-          <p class="eyebrow eyebrow-blue">Who We Serve</p>
-          <h2 class="display-md">Borrowers we work with every day</h2>
-        </div>
-        <ul class="ml-serve-list">
-          <li><strong>Self-employed business owners</strong> needing bank statement or P&L qualifying</li>
-          <li><strong>Real estate investors</strong> scaling with DSCR and asset-based loans</li>
-          <li><strong>High-income professionals</strong> — physicians, attorneys, executives</li>
-          <li><strong>First-time homebuyers</strong> seeking FHA, VA, or down payment assistance</li>
-          <li><strong>Foreign nationals and expats</strong> purchasing South Florida real estate</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section section-tinted">
-      <div class="container-prose">
-        <div class="section-header">
-          <p class="eyebrow">Common Questions</p>
-          <h2 class="display-md">Frequently asked questions</h2>
-        </div>
-        <div class="ml-faq">
-          <details class="faq-item">
-            <summary class="faq-q"><span class="faq-num">01</span>What makes Stairway Mortgage different from other Fort Lauderdale mortgage lenders?</summary>
-            <div class="faq-a"><p>Unlike a typical Fort Lauderdale mortgage lender that offers only their own products, Stairway Mortgage operates as both a direct lender and licensed broker with 300+ wholesale partners. You get in-house speed when it matters and wholesale rate shopping when savings matter.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary class="faq-q"><span class="faq-num">02</span>What types of mortgage loans are available in Fort Lauderdale?</summary>
-            <div class="faq-a"><p>Conventional, FHA, VA, USDA, jumbo, bank statement, DSCR investor, asset-based, foreign national, and non-QM programs — all available through our direct and wholesale channels.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary class="faq-q"><span class="faq-num">03</span>How do I choose the right mortgage lender in Fort Lauderdale?</summary>
-            <div class="faq-a"><p>Look for lending model access (direct + broker is ideal), local expertise in South Florida's specific challenges (condos, flood zones, international buyers), verifiable production volume, and a track record with complex scenarios.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary class="faq-q"><span class="faq-num">04</span>How fast can a Fort Lauderdale mortgage lender close my loan?</summary>
-            <div class="faq-a"><p>Through our direct lending channel, we can close in as few as 14–21 days for straightforward purchase transactions. Complex scenarios typically close in 30–45 days.</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section ml-cta">
       <div class="container-page">
-        <h2 class="display-lg">Ready to work with a Fort Lauderdale mortgage lender who puts you first?</h2>
-        <p class="lede">Direct funding when speed matters. 300+ lenders when savings matter. No pressure, no jargon.</p>
-        <div class="ml-actions">
-          <a href="/see-my-options/" class="btn btn-blue">See My Options</a>
-          <a href={phoneHref} class="btn btn-ghost">{phone}</a>
+        <div class="ml-section-header fade-in">
+          <p class="eyebrow eyebrow-blue">Who We Serve</p>
+          <h2 class="display-md">Borrowers We Work With Every Day</h2>
+        </div>
+        <div class="ml-grid-serve">
+          <article class="ml-serve-card fade-in">
+            <div class="ml-serve-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="20" height="16" rx="2" stroke="var(--color-royal)" stroke-width="2"/><path d="M8 14h12M8 18h8" stroke="var(--color-royal)" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <h3 class="ml-serve-title">Self-employed business owners</h3>
+              <p>Bank statement or P&L qualifying for entrepreneurs who don't fit traditional income documentation.</p>
+            </div>
+          </article>
+          <article class="ml-serve-card fade-in">
+            <div class="ml-serve-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 24L14 4L24 24H4Z" stroke="var(--color-royal)" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3 class="ml-serve-title">Real estate investors</h3>
+              <p>Scaling portfolios with DSCR, asset-based, and fix-and-flip programs across South Florida.</p>
+            </div>
+          </article>
+          <article class="ml-serve-card fade-in">
+            <div class="ml-serve-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="10" r="5" stroke="var(--color-royal)" stroke-width="2"/><path d="M6 24c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="var(--color-royal)" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <h3 class="ml-serve-title">High-income professionals</h3>
+              <p>Physicians, attorneys, and executives with physician loans, jumbo options, and asset-based qualifying.</p>
+            </div>
+          </article>
+          <article class="ml-serve-card fade-in">
+            <div class="ml-serve-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4L4 10V18L14 24L24 18V10L14 4Z" stroke="var(--color-royal)" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3 class="ml-serve-title">First-time homebuyers</h3>
+              <p>FHA, VA, and down payment assistance programs with hands-on guidance through every step.</p>
+            </div>
+          </article>
+          <article class="ml-serve-card fade-in">
+            <div class="ml-serve-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="var(--color-royal)" stroke-width="2"/><path d="M4 14h20M14 4c-3 3-4.5 6.5-4.5 10s1.5 7 4.5 10c3-3 4.5-6.5 4.5-10S17 7 14 4z" stroke="var(--color-royal)" stroke-width="2"/></svg>
+            </div>
+            <div>
+              <h3 class="ml-serve-title">Foreign nationals & expats</h3>
+              <p>Purchasing South Florida real estate with specialized programs requiring no U.S. credit history.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Structured data -->
-    <script type="application/ld+json" is:inline set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'FinancialService',
-      name: 'Stairway Mortgage — Fort Lauderdale Mortgage Lender',
-      telephone: phone,
-      areaServed: 'Fort Lauderdale, FL',
-      address: { '@type': 'PostalAddress', streetAddress: '912 SW 20th St', addressLocality: 'Fort Lauderdale', addressRegion: 'FL', postalCode: '33315', addressCountry: 'US' },
-    })} />
+    <!-- ============================================================
+         SECTION 9 — FAQ
+         ============================================================ -->
+    <section class="section ml-section-tinted">
+      <div class="container-prose">
+        <div class="ml-section-header fade-in">
+          <p class="eyebrow">Common Questions</p>
+          <h2 class="display-md">Frequently Asked Questions</h2>
+        </div>
+        <div class="ml-faq fade-in">
+          {faqs.map((faq, i) => (
+            <details class="faq-item">
+              <summary class="faq-q">
+                <span class="faq-num mono">{String(i + 1).padStart(2, '0')}</span>
+                <span class="faq-q-text">{faq.q}</span>
+                <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </summary>
+              <div class="faq-a"><p>{faq.a}</p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 10 — CLOSING CTA
+         ============================================================ -->
+    <section class="ml-cta">
+      <div class="container-page ml-cta-inner">
+        <div class="ml-cta-content fade-in">
+          <p class="eyebrow ml-cta-eyebrow">Get Started Today</p>
+          <h2 class="display-lg ml-cta-h2">Ready to Work with a Fort Lauderdale Mortgage Lender Who Puts You First?</h2>
+          <p class="ml-cta-lede">Direct funding when speed matters. 300+ lenders when savings matter. No pressure, no jargon.</p>
+          <div class="ml-actions ml-cta-actions">
+            <a href="/see-my-options/" class="btn btn-blue">See My Options</a>
+            <a href={phoneHref} class="btn ml-btn-cta-ghost">Talk to Our Team: {phone}</a>
+          </div>
+        </div>
+        <div class="ml-cta-image">
+          <img
+            src="/wp-content/uploads/2025/05/House-keys.webp"
+            alt="House keys representing a successful mortgage closing"
+            width="400" height="300"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(localBusinessSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
   </main>
 </Layout>
 
 <style>
-  .ml-scope { --ml-gap: clamp(1rem, 2vw, 1.5rem); }
-  .ml-scope .section-tinted { background: var(--color-paper-tint); }
-  .ml-scope .section-header { margin-bottom: 2rem; max-width: 56ch; }
-  .ml-scope .section-header h2 { margin-top: 0.5rem; }
+  /* ============================================================
+     SCOPED STYLES — .ml-scope prefix for all selectors
+     ============================================================ */
 
-  .ml-hero .display-xl { font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.06; max-width: 22ch; }
-  .ml-scope .lede { max-width: 62ch; }
-  .ml-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+  .ml-scope {
+    --ml-gap: clamp(1rem, 2vw, 1.5rem);
+    --ml-dark: #0A0E1A;
+    --ml-card-radius: 8px;
+  }
 
+  /* ---------- Fade-in animation base ---------- */
+  .ml-scope .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .ml-scope .fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- Breadcrumb ---------- */
+  .ml-breadcrumb {
+    background: var(--color-paper-tint);
+    border-bottom: 1px solid var(--color-bone);
+    padding: 0.75rem 0;
+    font-size: 0.82rem;
+  }
+  .ml-breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--stw-mono);
+    color: var(--color-mute);
+  }
+  .ml-breadcrumb-list li:not(:last-child)::after {
+    content: '/';
+    margin-left: 0.5rem;
+    color: var(--color-bone);
+  }
+  .ml-breadcrumb-list a {
+    color: var(--color-mute);
+    text-decoration: none;
+  }
+  .ml-breadcrumb-list a:hover {
+    color: var(--color-royal);
+    text-decoration: underline;
+  }
+  .ml-breadcrumb-list li[aria-current="page"] {
+    color: var(--color-ink);
+  }
+
+  /* ---------- SECTION 1: Hero ---------- */
+  .ml-hero {
+    background: var(--ml-dark);
+    color: #f7f5ef;
+    padding-top: clamp(3rem, 7vw, 6rem);
+    overflow: hidden;
+  }
+  .ml-hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .ml-hero-eyebrow {
+    color: rgba(255,255,255,0.7);
+    font-family: var(--stw-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+  .ml-hero-h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.08;
+    max-width: 20ch;
+    color: #f7f5ef;
+    margin-bottom: 1.25rem;
+  }
+  .ml-hero-lede {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.65;
+    color: rgba(255,255,255,0.85);
+    max-width: 52ch;
+  }
+  .ml-hero .ml-actions {
+    margin-top: 2rem;
+  }
+  .ml-btn-hero-ghost {
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: #f7f5ef !important;
+    background: transparent;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .ml-btn-hero-ghost:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.08);
+  }
+  .ml-hero-image {
+    position: relative;
+  }
+  .ml-hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.35);
+    object-fit: cover;
+    max-height: 460px;
+  }
+  .ml-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  /* Stats bar */
+  .ml-stats-bar {
+    background: rgba(0,0,0,0.25);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding: 1.75rem 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .ml-stats-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .ml-stat-num {
+    font-family: var(--stw-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+  .ml-stat-prefix,
+  .ml-stat-plus {
+    font-family: var(--stw-display);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #fff;
+  }
+  .ml-stat-label {
+    display: block;
+    font-family: var(--stw-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.35rem;
+  }
+
+  /* ---------- SECTION 2: Trust bar ---------- */
+  .ml-trust-bar {
+    background: var(--color-paper);
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--color-bone);
+  }
+  .ml-trust-label {
+    text-align: center;
+    font-family: var(--stw-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-mute);
+    margin-bottom: 1.5rem;
+  }
+  .ml-trust-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+  }
+  .ml-trust-logo {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.55;
+    transition: filter 0.3s, opacity 0.3s;
+  }
+  .ml-trust-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  /* ---------- Shared section styles ---------- */
+  .ml-section-tinted {
+    background: var(--color-paper-tint);
+  }
+  .ml-section-header {
+    margin-bottom: 2.5rem;
+  }
+  .ml-section-header h2 {
+    margin-top: 0.5rem;
+  }
+  .ml-scope .lede {
+    max-width: 62ch;
+  }
+
+  /* ---------- Cards ---------- */
   .ml-grid-3 {
-    display: grid; gap: var(--ml-gap);
-    grid-template-columns: repeat(3, 1fr); margin-top: 2rem;
+    display: grid;
+    gap: var(--ml-gap);
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2.5rem;
   }
-  @media (max-width: 768px) { .ml-scope .ml-grid-3 { grid-template-columns: 1fr; } }
-
-  .ml-grid-2 {
-    display: grid; gap: var(--ml-gap);
-    grid-template-columns: repeat(2, 1fr); margin-top: 2rem;
+  .ml-grid-4 {
+    display: grid;
+    gap: var(--ml-gap);
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
   }
-  @media (max-width: 640px) { .ml-scope .ml-grid-2 { grid-template-columns: 1fr; } }
-
+  @media (min-width: 960px) {
+    .ml-grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media (max-width: 768px) {
+    .ml-grid-3 {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 640px) {
+    .ml-grid-4 {
+      grid-template-columns: 1fr;
+    }
+  }
   .ml-card {
-    background: var(--color-paper); border: 1px solid var(--color-bone);
-    border-radius: 4px; padding: 1.5rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-bone);
+    border-radius: var(--ml-card-radius);
+    padding: 1.75rem;
+    border-left: 3px solid transparent;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                border-left-color 0.3s;
   }
-  .ml-card-title { font-family: var(--stw-display); font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .ml-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    border-left-color: var(--color-royal);
+  }
+  .ml-card-icon {
+    margin-bottom: 1rem;
+  }
+  .ml-card-icon-sm {
+    margin-bottom: 0.75rem;
+    color: var(--color-royal);
+  }
+  .ml-card-title {
+    font-family: var(--stw-display);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-ink);
+  }
+  .ml-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-mute);
+  }
+  .ml-link {
+    display: inline-block;
+    font-family: var(--stw-mono);
+    font-size: 0.8rem;
+    color: var(--color-royal);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    margin-top: 0.75rem;
+    transition: color 0.2s;
+  }
+  .ml-link:hover {
+    color: var(--color-royal-deep);
+    text-decoration: underline;
+  }
 
-  .ml-process { display: grid; gap: 1.5rem; margin-top: 2rem; }
-  .ml-step { display: flex; gap: 1rem; align-items: baseline; }
-  .ml-step-num { color: var(--color-blue); font-size: 1.1rem; flex-shrink: 0; min-width: 2.5rem; }
-  .ml-step-title { font-family: var(--stw-display); font-size: 1.1rem; margin-bottom: 0.4rem; }
+  /* ---------- Stat cards ---------- */
+  .ml-card-stat .ml-card-stat-num {
+    font-family: var(--stw-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--color-royal);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
 
-  .ml-table-wrap { overflow-x: auto; margin-top: 2rem; }
-  .ml-nbr-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  /* ---------- SECTION 3: Leader profile ---------- */
+  .ml-leader {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 2.5rem;
+    background: var(--color-paper);
+    border-radius: var(--ml-card-radius);
+    border: 1px solid var(--color-bone);
+  }
+  .ml-leader-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--ml-card-radius);
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+  .ml-leader-nmls {
+    font-size: 0.78rem;
+    color: var(--color-royal);
+    margin-bottom: 0.75rem;
+  }
+  .ml-leader-text p {
+    line-height: 1.7;
+    color: var(--color-ink);
+  }
+  .ml-subtitle {
+    font-family: var(--stw-display);
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-ink);
+  }
+
+  /* ---------- SECTION 4: Timeline ---------- */
+  .ml-timeline {
+    position: relative;
+    margin-top: 3rem;
+    padding-left: 3rem;
+    max-width: 720px;
+  }
+  .ml-timeline-line {
+    position: absolute;
+    left: 1.25rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-royal), var(--color-bone));
+    border-radius: 2px;
+  }
+  .ml-timeline-step {
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .ml-timeline-step:last-child {
+    padding-bottom: 0;
+  }
+  .ml-timeline-marker {
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-royal);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 0 0 0 4px var(--color-paper);
+    z-index: 1;
+  }
+  .ml-timeline-content {
+    padding-left: 0.5rem;
+  }
+  .ml-step-title {
+    font-family: var(--stw-display);
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-ink);
+  }
+  .ml-timeline-content p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-mute);
+  }
+
+  /* ---------- SECTION 6: Neighborhood table ---------- */
+  .ml-table-wrap {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border-radius: var(--ml-card-radius);
+    border: 1px solid var(--color-bone);
+    background: var(--color-paper);
+  }
+  .ml-nbr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .ml-nbr-table thead {
+    background: var(--color-ink);
+    color: #fff;
+  }
   .ml-nbr-table th {
-    text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid var(--color-bone);
-    font-family: var(--stw-mono); font-size: 0.8rem; letter-spacing: 0.03em; color: var(--color-mute);
+    text-align: left;
+    padding: 1rem 1.25rem;
+    font-family: var(--stw-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
   }
-  .ml-nbr-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--color-bone); }
+  .ml-nbr-table td {
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid var(--color-bone);
+  }
+  .ml-nbr-table tbody tr {
+    transition: background 0.2s;
+  }
+  .ml-nbr-table tbody tr:hover {
+    background: var(--color-royal-tint);
+  }
+  .ml-nbr-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .ml-row-alt {
+    background: var(--color-paper-tint);
+  }
+  .ml-neighborhood-image {
+    margin-top: 2.5rem;
+    border-radius: var(--ml-card-radius);
+    overflow: hidden;
+    max-width: 720px;
+  }
+  .ml-neighborhood-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 400px;
+    border-radius: var(--ml-card-radius);
+  }
 
-  .ml-serve-list { margin: 1.5rem 0 0 1.1rem; }
-  .ml-serve-list li { margin-bottom: 0.75rem; }
+  /* ---------- SECTION 8: Who we serve ---------- */
+  .ml-grid-serve {
+    display: grid;
+    gap: var(--ml-gap);
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+  }
+  .ml-serve-card {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: var(--color-paper-tint);
+    border: 1px solid var(--color-bone);
+    border-radius: var(--ml-card-radius);
+    padding: 1.5rem;
+    border-left: 3px solid transparent;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                border-left-color 0.3s;
+  }
+  .ml-serve-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    border-left-color: var(--color-royal);
+  }
+  .ml-serve-icon {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    color: var(--color-royal);
+  }
+  .ml-serve-title {
+    font-family: var(--stw-display);
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+    color: var(--color-ink);
+  }
+  .ml-serve-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--color-mute);
+  }
+  @media (max-width: 640px) {
+    .ml-grid-serve {
+      grid-template-columns: 1fr;
+    }
+  }
 
-  .ml-faq { margin-top: 1.5rem; }
-  .ml-faq .faq-item { border-bottom: 1px solid var(--color-bone); padding: 1rem 0; }
-  .ml-faq .faq-q { cursor: pointer; display: flex; gap: 0.75rem; align-items: baseline; font-family: var(--stw-display); font-size: 1.05rem; list-style: none; }
-  .ml-faq .faq-q::-webkit-details-marker { display: none; }
-  .ml-faq .faq-num { font-family: var(--stw-mono); color: var(--color-blue); font-size: 0.8rem; }
-  .ml-faq .faq-a { padding-top: 0.75rem; color: var(--color-mute); }
+  /* ---------- SECTION 9: FAQ ---------- */
+  .ml-faq {
+    margin-top: 1.5rem;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--color-bone);
+    padding: 0;
+  }
+  .faq-q {
+    cursor: pointer;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    font-family: var(--stw-display);
+    font-size: 1.05rem;
+    list-style: none;
+    padding: 1.25rem 0;
+    color: var(--color-ink);
+    transition: color 0.2s;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q::marker { display: none; content: ''; }
+  .faq-q:hover { color: var(--color-royal); }
+  .faq-q-text { flex: 1; }
+  .faq-num {
+    font-family: var(--stw-mono);
+    color: var(--color-royal);
+    font-size: 0.78rem;
+    flex-shrink: 0;
+    min-width: 2rem;
+  }
+  .faq-chevron {
+    flex-shrink: 0;
+    transition: transform 0.3s;
+    color: var(--color-mute);
+  }
+  details[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+  .faq-a {
+    padding: 0 0 1.25rem 2.75rem;
+    color: var(--color-mute);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
 
-  .ml-cta { text-align: center; padding-block: clamp(3rem, 6vw, 5rem); }
-  .ml-cta .ml-actions { justify-content: center; }
+  /* ---------- SECTION 10: Closing CTA ---------- */
+  .ml-cta {
+    background: var(--ml-dark);
+    color: #f7f5ef;
+    padding: clamp(3.5rem, 8vw, 6rem) 0;
+    overflow: hidden;
+  }
+  .ml-cta-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .ml-cta-eyebrow {
+    color: rgba(255,255,255,0.5);
+    font-family: var(--stw-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.75rem;
+  }
+  .ml-cta-h2 {
+    color: #fff;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    line-height: 1.08;
+    max-width: 22ch;
+  }
+  .ml-cta-lede {
+    color: rgba(255,255,255,0.75);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 50ch;
+    margin-top: 1rem;
+  }
+  .ml-cta-actions {
+    margin-top: 2rem;
+  }
+  .ml-btn-cta-ghost {
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: #f7f5ef !important;
+    background: transparent;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .ml-btn-cta-ghost:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.07);
+  }
+  .ml-cta-image {
+    max-width: 340px;
+  }
+  .ml-cta-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    opacity: 0.85;
+    box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+  }
+
+  /* ============================================================
+     RESPONSIVE — Mobile
+     ============================================================ */
+  @media (max-width: 768px) {
+    .ml-hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .ml-hero-image {
+      order: -1;
+    }
+    .ml-hero-image img {
+      max-height: 280px;
+      border-radius: 8px;
+    }
+    .ml-stats-inner {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .ml-leader {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .ml-leader-photo img {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+    .ml-timeline {
+      padding-left: 2.5rem;
+    }
+    .ml-timeline-marker {
+      left: -2.5rem;
+      width: 2rem;
+      height: 2rem;
+      font-size: 0.65rem;
+    }
+    .ml-timeline-line {
+      left: 1rem;
+    }
+    .ml-cta-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .ml-cta-actions {
+      justify-content: center;
+    }
+    .ml-cta-image {
+      display: none;
+    }
+    .ml-trust-logos {
+      gap: 1.5rem;
+    }
+    .ml-trust-logo {
+      height: 28px;
+    }
+  }
+  @media (max-width: 480px) {
+    .ml-stats-inner {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .ml-hero-h1 {
+      font-size: 1.75rem;
+    }
+  }
 </style>
+
+<!-- ============================================================
+     CLIENT SCRIPTS — IntersectionObserver + Counter Animation
+     ============================================================ -->
+<script is:inline>
+  // Scroll-triggered fade-in
+  document.addEventListener('DOMContentLoaded', function() {
+    var fadeEls = document.querySelectorAll('.ml-scope .fade-in');
+    if (!fadeEls.length) return;
+
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      fadeEls.forEach(function(el) { obs.observe(el); });
+    } else {
+      // Fallback: show all
+      fadeEls.forEach(function(el) { el.classList.add('is-visible'); });
+    }
+
+    // Animated counters
+    var counters = document.querySelectorAll('.ml-stat-num[data-target]');
+    if (!counters.length) return;
+
+    var counterObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        var duration = 1800;
+        var start = performance.now();
+
+        function step(now) {
+          var progress = Math.min((now - start) / duration, 1);
+          // ease-out cubic
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target);
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        counterObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(function(c) { counterObs.observe(c); });
+  });
+</script>
