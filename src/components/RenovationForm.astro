@@ -183,7 +183,7 @@
             var dk = input.getAttribute("data-key") || "property_location";
             state[dk] = full;
             state.addr_confirmed = full;
-            if(conf){ conf.innerHTML = "\u2713 "+full; conf.style.display="block"; }
+            if(conf){ conf.innerHTML = "✓ "+full; conf.style.display="block"; }
           });
           // store key for the input so handler can write back to the right state field
         }catch(e){ /* fallback: plain text input */ }
@@ -296,7 +296,7 @@
       else if(s.type==="location"){
         var lw = el("div","rn-locwrap");
         var li = el("input","rn-input");
-        li.type="text"; li.placeholder=s.placeholder||"Start typing your address\u2026"; li.value=state[s.key]||"";
+        li.type="text"; li.placeholder=s.placeholder||"Start typing your address…"; li.value=state[s.key]||"";
         li.setAttribute("autocomplete","off");
         li.setAttribute("data-key", s.key);
         li.addEventListener("input", function(){
@@ -311,7 +311,7 @@
         lw.appendChild(li);
         // small confirmation line shown after a valid pick
         var conf = el("div","rn-addr-conf"); conf.id="rn-addr-conf";
-        conf.innerHTML = state.addr_confirmed ? ('\u2713 '+esc(state.addr_confirmed)) : "";
+        conf.innerHTML = state.addr_confirmed ? ('✓ '+esc(state.addr_confirmed)) : "";
         conf.style.display = state.addr_confirmed ? "block" : "none";
         lw.appendChild(conf);
         wrap.appendChild(lw);
@@ -343,7 +343,7 @@
           '<input class="rn-input" id="rn-em" type="email" placeholder="you@email.com" value="'+esc(state.email)+'">'+
           '<label class="rn-input-label">Mobile Phone Number <span class="rn-req">*</span></label>'+
           '<input class="rn-input" id="rn-ph" type="tel" placeholder="(555) 555-5555" value="'+esc(state.phone)+'">'+
-          '<div class="rn-consent">By clicking "See My Options," I agree to Stairway Mortgage\'s <a href="/terms/" target="_blank" rel="noopener">Terms of Use</a> and <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. I also consent to receive calls, text messages, and/or pre-recorded voicemails via automated technology—even if I\'m on a Do Not Call list. Consent is not a condition of purchase. I can opt out any time by replying "STOP."</div>'+
+          '<div class="rn-consent">By clicking "Submit," I agree to Stairway Mortgage\'s <a href="/terms/" target="_blank" rel="noopener">Terms of Use</a> and <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. I consent to receive calls, text messages, and/or pre-recorded voicemails from Stairway Mortgage via automated technology at the number provided, even if I\'m on a Do Not Call list. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. SMS consent is not shared with third parties.</div>'+
           '<div class="rn-trust">Jim Blackburn · NMLS #1072866</div>'+
           '<div class="rn-err" id="rn-contact-err"></div>';
         wrap.appendChild(c);
