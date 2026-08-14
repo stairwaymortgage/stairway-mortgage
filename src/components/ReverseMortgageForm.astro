@@ -239,7 +239,7 @@
             state.home_address = p.formatted_address || input.value;
             input.value = state.home_address;
             if(conf){
-              conf.innerHTML = "\u2713 " + state.home_address;
+              conf.innerHTML = "✓ " + state.home_address;
               conf.style.display = "block";
             }
             state.addr_confirmed = state.home_address;
@@ -359,7 +359,7 @@
       else if(s.type==="location"){
         var lw = el("div","rm-locwrap");
         var li = el("input","rm-input");
-        li.type="text"; li.placeholder=s.placeholder||"Start typing your address\u2026"; li.value=state[s.key]||"";
+        li.type="text"; li.placeholder=s.placeholder||"Start typing your address…"; li.value=state[s.key]||"";
         li.setAttribute("autocomplete","off");
         li.addEventListener("input", function(){
           state[s.key]=li.value;
@@ -370,7 +370,7 @@
         });
         lw.appendChild(li);
         var conf = el("div","rm-addr-conf");
-        conf.innerHTML = state.addr_confirmed ? ("\u2713 " + esc(state.addr_confirmed)) : "";
+        conf.innerHTML = state.addr_confirmed ? ("✓ " + esc(state.addr_confirmed)) : "";
         conf.style.display = state.addr_confirmed ? "block" : "none";
         lw.appendChild(conf);
         wrap.appendChild(lw);
@@ -403,11 +403,11 @@
           '<input class="rm-input" id="rm-em" type="email" placeholder="you@email.com" value="'+esc(state.email)+'">'+
           '<label class="rm-input-label">Mobile Phone Number <span class="rm-req">*</span></label>'+
           '<input class="rm-input" id="rm-ph" type="tel" placeholder="(555) 555-5555" value="'+esc(state.phone)+'">'+
-          '<div class="rm-consent">By clicking "Get Rates," I agree to Stairway Mortgage\'s '+
+          '<div class="rm-consent">By clicking "Submit," I agree to Stairway Mortgage\'s '+
           '<a href="/terms/" target="_blank" rel="noopener">Terms of Use</a> and '+
           '<a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. '+
-          'I also consent to receive calls, text messages, and/or pre-recorded voicemails via automated technology'+
-          '—even if I\'m on a Do Not Call list. Consent is not a condition of purchase. I can opt out any time by replying "STOP."</div>'+
+          'I consent to receive calls, text messages, and/or pre-recorded voicemails from Stairway Mortgage via automated technology at the number provided, '+
+          'even if I\'m on a Do Not Call list. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. SMS consent is not shared with third parties.</div>'+
           '<div class="rm-err" id="rm-contact-err"></div>';
         wrap.appendChild(c);
         var fn=c.querySelector("#rm-fn"), em=c.querySelector("#rm-em"), ph=c.querySelector("#rm-ph");
