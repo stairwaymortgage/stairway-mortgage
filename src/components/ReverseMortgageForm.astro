@@ -251,7 +251,7 @@
     var state = {
       reason:"", reason_other:"", referrer:"", home_in_mind:"", youngest_spouse_age:"",
       military_service:"", home_address:"", annual_income:"", credit_score:"",
-      full_name:"", email:"", phone:"", free_credit_report:"", date_of_birth:"", anything_else:"",
+      full_name:"", email:"", phone:"", free_credit_report:"", date_of_birth:"", anything_else:"", sms_optin:"",
       addr_street:"", loc_city:"", loc_state:"", loc_zip:"", loc_county:"", addr_confirmed:""
     };
     var idx = 0;
@@ -403,12 +403,8 @@
           '<input class="rm-input" id="rm-em" type="email" placeholder="you@email.com" value="'+esc(state.email)+'">'+
           '<label class="rm-input-label">Mobile Phone Number <span class="rm-req">*</span></label>'+
           '<input class="rm-input" id="rm-ph" type="tel" placeholder="(555) 555-5555" value="'+esc(state.phone)+'">'+
-          '<div class="rm-consent">By clicking "Submit," I agree to Stairway Mortgage\'s '+
-          '<a href="/terms/" target="_blank" rel="noopener">Terms of Use</a> and '+
-          '<a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. '+
-          'I consent to receive calls, text messages, and/or pre-recorded voicemails from Stairway Mortgage via automated technology at the number provided, '+
-          'even if I\'m on a Do Not Call list. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. SMS consent is not shared with third parties.</div>'+
-          '<label class="rm-smsopt" style="display:flex; gap:8px; align-items:flex-start; max-width:540px; margin:16px auto 0; font-size:12.5px; line-height:1.6; color:#7a7a72; text-align:left; cursor:pointer;"><input type="checkbox" id="rm-smsopt" style="margin-top:3px; flex:0 0 auto;"><span>By checking this box and providing my phone number, I agree to receive text messages from Stairway Mortgage regarding my inquiries and mortgage updates. Message frequency varies. Message and data rates may apply. Reply STOP to opt out, HELP for help. View our <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/terms/" target="_blank" rel="noopener">Terms of Use</a>.</span></label>'+
+          '<label class="rm-smsopt" style="display:flex; gap:8px; align-items:flex-start; max-width:540px; margin:24px auto 0; font-size:12.5px; line-height:1.6; color:#7a7a72; text-align:left; cursor:pointer;"><input type="checkbox" id="rm-smsopt"'+(state.sms_optin?' checked':'')+' style="margin-top:3px; flex:0 0 auto;"><span>By checking this box and providing my phone number, I agree to Stairway Mortgage\'s <a href="/terms/" target="_blank" rel="noopener">Terms of Use</a> and <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. I consent to receive calls, text messages, and/or pre-recorded voicemails from Stairway Mortgage via automated technology at the number provided regarding my inquiries and mortgage updates, even if I\'m on a Do Not Call list. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. SMS consent is not shared with third parties.</span></label>'+
+          '<div class="rm-trust" style="max-width:540px; margin:18px auto 0; font-size:12px; color:#9a9a93; font-family:\'JetBrains Mono\',ui-monospace,monospace; text-align:center;">Jim Blackburn · NMLS #1072866</div>'+
           '<div class="rm-err" id="rm-contact-err"></div>';
         wrap.appendChild(c);
         var fn=c.querySelector("#rm-fn"), em=c.querySelector("#rm-em"), ph=c.querySelector("#rm-ph");
@@ -416,6 +412,7 @@
         em.addEventListener("input", function(){ state.email=em.value; });
         ph.addEventListener("input", function(){ state.phone=ph.value; });
         [fn,em,ph].forEach(function(n){ n.addEventListener("keydown", enterGuard); });
+        var _sms=c.querySelector("#rm-smsopt"); if(_sms){ _sms.addEventListener("change", function(){ state.sms_optin=_sms.checked?"yes":""; if(_sms.checked){ var _e=document.getElementById("rm-contact-err"); if(_e) _e.textContent=""; } }); }
       }
 
       stage.appendChild(wrap);
@@ -441,6 +438,7 @@
         if(!state.full_name.trim()){ if(err) err.textContent="Please enter your full name."; return false; }
         var _em=state.email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em)){ if(err) err.textContent="Please enter a valid email."; return false; }
         var _pd=state.phone.replace(/\D/g,""); if(_pd.length<10||_pd.length>15){ if(err) err.textContent="Please enter a valid phone number."; return false; }
+        var _sms=document.getElementById("rm-smsopt"); if(_sms && !_sms.checked){ if(err) err.textContent="Please check the box to consent before continuing."; return false; }
         if(err) err.textContent=""; return true;
       }
       return true;
@@ -479,7 +477,7 @@
         addr_street:state.addr_street||"", loc_city:state.loc_city||"", loc_state:state.loc_state||"", loc_zip:state.loc_zip||"", loc_county:state.loc_county||"",
         annual_income:state.annual_income||"", credit_score:state.credit_score||"",
         free_credit_report:state.free_credit_report||"", date_of_birth:state.date_of_birth||"",
-        anything_else:state.anything_else||"", page_url:window.location.origin+window.location.pathname,
+        anything_else:state.anything_else||"", sms_optin:state.sms_optin||"", page_url:window.location.origin+window.location.pathname,
         umtid: _resolveUmtid(),
         loid: _resolveLoid(),
         source_url: location.href
