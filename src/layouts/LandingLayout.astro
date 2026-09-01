@@ -134,13 +134,13 @@ const ogImageUrl = ogImage || `${siteUrl}/social-card.png`;
 
 <style is:global>
   /* Landing page topbar */
-  .lp-topbar { background: var(--color-ink); color: #fff; padding: .6rem 1.25rem; }
+  .lp-topbar { background: rgba(250, 250, 247, 0.97); color: var(--color-ink, #1a2420); padding: .75rem 1.25rem; border-bottom: 1px solid var(--color-bone, #e3e0d6); backdrop-filter: blur(8px); }
   .lp-topbar__inner { max-width: var(--container-max, 1320px); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-  .lp-topbar__logo img { display: block; height: 36px; width: auto; }
+  .lp-topbar__logo img { display: block; height: 42px; width: auto; }
   .lp-topbar__right { display: flex; align-items: center; gap: 1.5rem; }
-  .lp-topbar__trust { font-size: .68rem; color: rgba(255,255,255,.65); letter-spacing: .04em; }
-  .lp-topbar__phone { font-family: var(--stw-mono), monospace; font-size: .82rem; font-weight: 600; color: #fff; text-decoration: none; padding: .45rem 1rem; border: 1px solid rgba(255,255,255,.25); border-radius: 8px; transition: background .15s; }
-  .lp-topbar__phone:hover { background: rgba(255,255,255,.1); }
+  .lp-topbar__trust { font-size: .68rem; color: var(--color-mute, #6b7770); letter-spacing: .04em; }
+  .lp-topbar__phone { font-family: var(--stw-mono), monospace; font-size: .82rem; font-weight: 600; color: var(--color-ink, #1a2420); text-decoration: none; padding: .45rem 1rem; border: 1px solid var(--color-bone, #e3e0d6); border-radius: 8px; transition: background .15s; }
+  .lp-topbar__phone:hover { background: rgba(0,0,0,.04); }
   @media(max-width:520px){ .lp-topbar__trust { display: none; } }
 
   /* Landing page footer */
