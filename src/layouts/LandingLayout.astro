@@ -1,0 +1,155 @@
+---
+import Analytics from '../components/Analytics.astro';
+import LoAttribution from '../components/LoAttribution.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const defaultDesc = "Florida mortgage broker with 300+ lenders. Leverage wisely. Grow wealthy.";
+const siteUrl = 'https://www.stairwaymortgage.com';
+
+const {
+  title: propTitle,
+  description: propDesc,
+  canonical,
+  ogImage,
+} = Astro.props;
+
+const title = propTitle || '';
+const description = propDesc || defaultDesc;
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+const ogImageUrl = ogImage || `${siteUrl}/social-card.png`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/favicon-180.png" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:site_name" content="Stairway Mortgage" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={ogImageUrl} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:creator" content="@mortgagemanjim" />
+
+  <!-- Font preconnect + load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+
+  <Analytics />
+  <LoAttribution />
+</head>
+<body>
+  <!-- Landing page top bar — logo + phone only, no nav -->
+  <header class="lp-topbar">
+    <div class="lp-topbar__inner">
+      <a href="/" class="lp-topbar__logo" aria-label="Stairway Mortgage — Home">
+        <img src="/logo-header.png" alt="Stairway Mortgage" width="198" height="54" />
+      </a>
+      <div class="lp-topbar__right">
+        <span class="lp-topbar__trust mono">5.0 ★ · 624 reviews</span>
+        <a href="tel:+19549931625" class="lp-topbar__phone">(954) 993-1625</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <!-- Minimal landing footer -->
+  <footer class="lp-footer">
+    <div class="lp-footer__inner">
+      <a href="/" class="lp-footer__logo">
+        <img src="/logo-footer.png" alt="Stairway Mortgage" width="180" height="49" loading="lazy" />
+      </a>
+      <p class="lp-footer__legal">
+        NEXA Mortgage LLC, NMLS #1660690, dba Stairway Mortgage · AZMB-0944059<br />
+        5559 S Sossaman Rd, Bldg #1 Ste #101, Mesa, AZ 85212<br />
+        Jim Blackburn · NMLS #1072866 · <a href="tel:+19549931625">(954) 993-1625</a><br />
+        Equal Housing Lender · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/state-licensing/">Licensing</a>
+      </p>
+      <div class="lp-footer__social">
+        <a href="https://www.facebook.com/StairwayMortgage" aria-label="Facebook" target="_blank" rel="noopener">FB</a>
+        <a href="https://www.linkedin.com/company/stairway-mortgage" aria-label="LinkedIn" target="_blank" rel="noopener">LI</a>
+        <a href="https://www.instagram.com/stairwaymortgage/" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
+        <a href="https://www.youtube.com/@stairwaymortgage" aria-label="YouTube" target="_blank" rel="noopener">YT</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lead Router — GHL LO attribution -->
+  <script is:inline>
+    (function() {
+      function qs(name){ return new URLSearchParams(window.location.search).get(name); }
+      function setCookie(n,v,d){ var e=""; if(d){ var t=new Date(); t.setTime(t.getTime()+d*24*60*60*1000); e="; expires="+t.toUTCString(); } document.cookie=n+"="+(v||"")+e+"; path=/"; }
+      function getCookie(n){ var ne=n+"="; var ca=document.cookie.split(';'); for(var i=0;i<ca.length;i++){ var c=ca[i].trim(); if(c.indexOf(ne)===0) return c.substring(ne.length,c.length); } return null; }
+      var loFromUrl = qs('lo_id');
+      var loFromDom = (function(){ var el = document.getElementById('lo-meta'); return el && el.dataset ? el.dataset.loId : null; })();
+      var loId = loFromUrl || loFromDom || getCookie('lo_id');
+      if (loId) setCookie('lo_id', loId, 180);
+    })();
+  </script>
+
+  <!-- Scroll reveal observer -->
+  <script is:inline>
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+    }
+  </script>
+</body>
+</html>
+
+<style is:global>
+  /* Landing page topbar */
+  .lp-topbar { background: var(--color-ink); color: #fff; padding: .6rem 1.25rem; }
+  .lp-topbar__inner { max-width: var(--container-max, 1320px); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .lp-topbar__logo img { display: block; height: 36px; width: auto; }
+  .lp-topbar__right { display: flex; align-items: center; gap: 1.5rem; }
+  .lp-topbar__trust { font-size: .68rem; color: rgba(255,255,255,.65); letter-spacing: .04em; }
+  .lp-topbar__phone { font-family: var(--stw-mono), monospace; font-size: .82rem; font-weight: 600; color: #fff; text-decoration: none; padding: .45rem 1rem; border: 1px solid rgba(255,255,255,.25); border-radius: 8px; transition: background .15s; }
+  .lp-topbar__phone:hover { background: rgba(255,255,255,.1); }
+  @media(max-width:520px){ .lp-topbar__trust { display: none; } }
+
+  /* Landing page footer */
+  .lp-footer { background: var(--color-ink); color: rgba(255,255,255,.55); padding: clamp(2rem,4vw,3rem) 1.25rem; text-align: center; }
+  .lp-footer__inner { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .lp-footer__logo img { height: 36px; width: auto; opacity: .6; }
+  .lp-footer__legal { font-size: .7rem; line-height: 1.7; }
+  .lp-footer__legal a { color: rgba(255,255,255,.55); text-decoration: underline; text-underline-offset: 2px; }
+  .lp-footer__social { display: flex; gap: .75rem; }
+  .lp-footer__social a { font-family: var(--stw-mono), monospace; font-size: .65rem; color: rgba(255,255,255,.4); text-decoration: none; padding: .3rem .5rem; border: 1px solid rgba(255,255,255,.15); border-radius: 6px; }
+  .lp-footer__social a:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+</style>
