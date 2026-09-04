@@ -533,9 +533,14 @@ const icons: Record<string, string> = {
       <details class="hdr-drawer__section">
         <summary class="hdr-drawer__summary font-display">
           {m.label}
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="hdr-drawer__plus" aria-hidden="true">
-            <path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <span class="hdr-drawer__summary-right">
+            {m.flyout && (
+              <a href="/loan-programs/" class="hdr-drawer__tab-link" onclick="event.stopPropagation()">All Programs</a>
+            )}
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="hdr-drawer__plus" aria-hidden="true">
+              <path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
         </summary>
         <div class="hdr-drawer__links">
           {m.journeyStages ? (
@@ -574,7 +579,6 @@ const icons: Record<string, string> = {
                   <a href={link.href} class="hdr-drawer__link">{link.title}</a>
                 )
               ))}
-              <a href="/loan-programs/" class="hdr-drawer__programs-btn">See All Loan Programs &rarr;</a>
             </Fragment>
           ) : (
             m.columns.flatMap(c => c.links).map(link => (
@@ -1325,22 +1329,31 @@ const icons: Record<string, string> = {
   .heroes-plate__links a{font-size:.88rem;color:#e6ebf3;text-decoration:none;padding:6px 8px;border-radius:5px;transition:.14s;}
   .heroes-plate__links a:hover{background:rgba(255,255,255,.09);color:#fff;}
 
-  /* ─── "See All Loan Programs" button in Our Programs mobile accordion ─── */
-  .hdr-drawer__programs-btn {
-    display: block;
-    margin: .75rem 0 .25rem;
-    padding: .8rem 1.2rem;
-    background: var(--color-ink, #1a2420);
-    color: #fff;
-    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: background .15s;
+  /* ─── Summary right-side wrapper (inline link + plus icon) ─── */
+  .hdr-drawer__summary-right {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-left: auto;
   }
-  .hdr-drawer__programs-btn:hover { background: var(--color-blue, #1845D6); }
+
+  /* ─── "All Programs" inline tab link in Our Programs summary row ─── */
+  .hdr-drawer__tab-link {
+    display: inline-block;
+    font-family: var(--stw-mono, 'JetBrains Mono'), monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    background: var(--color-ink, #1a2420);
+    padding: .35rem .7rem;
+    border-radius: 6px;
+    transition: background .15s;
+    white-space: nowrap;
+  }
+  .hdr-drawer__tab-link:hover { background: var(--color-blue, #1845D6); }
 
   /* ─── Journey extras (All 8 Steps + Discovery Quiz) in mobile ─── */
   .hdr-drawer__extras {
