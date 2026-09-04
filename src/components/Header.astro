@@ -539,34 +539,43 @@ const icons: Record<string, string> = {
         </summary>
         <div class="hdr-drawer__links">
           {m.journeyStages ? (
-            m.journeyStages.flatMap(s => s.steps).map(step => (
-              <a href={step.href} class="hdr-drawer__link">
-                <span class="journey-num" style="margin-right:.4rem">{step.num}</span>{step.title}
-              </a>
-            ))
+            <Fragment>
+              {m.journeyStages.flatMap(s => s.steps).map(step => (
+                <a href={step.href} class="hdr-drawer__link">
+                  <span class="journey-num" style="margin-right:.4rem">{step.num}</span>{step.title}
+                </a>
+              ))}
+              <div class="hdr-drawer__extras">
+                <a href="/the-8-steps/" class="hdr-drawer__link" style="font-weight:600;">See All 8 Steps &rarr;</a>
+                <a href="/discovery-quiz/" class="hdr-drawer__link" style="font-weight:600;">Find My Stage &rarr;</a>
+              </div>
+            </Fragment>
           ) : m.flyout ? (
-            m.columns.flatMap(c => c.links).map(link => (
-              link.live === false ? (
-                <span class="hdr-drawer__link hdr-drawer__link--soon">{link.title} <span class="mega__soon-badge">SOON</span></span>
-              ) : link.subs ? (
-                <details class="hdr-drawer__cat">
-                  <summary class="hdr-drawer__cat-summary">
-                    {link.title}
-                    <svg class="hdr-drawer__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </summary>
-                  <div class="hdr-drawer__subs">
-                    <a href={link.href} class="hdr-drawer__sub-link" style="font-weight:600;">View {link.title} &rarr;</a>
-                    {link.subs.map(sub => (
-                      sub.live === false
-                        ? <span class="hdr-drawer__sub-link is-soon">{sub.title} · Soon</span>
-                        : <a href={sub.href} class="hdr-drawer__sub-link">{sub.title}</a>
-                    ))}
-                  </div>
-                </details>
-              ) : (
-                <a href={link.href} class="hdr-drawer__link">{link.title}</a>
-              )
-            ))
+            <Fragment>
+              {m.columns.flatMap(c => c.links).map(link => (
+                link.live === false ? (
+                  <span class="hdr-drawer__link hdr-drawer__link--soon">{link.title} <span class="mega__soon-badge">SOON</span></span>
+                ) : link.subs ? (
+                  <details class="hdr-drawer__cat">
+                    <summary class="hdr-drawer__cat-summary">
+                      {link.title}
+                      <svg class="hdr-drawer__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </summary>
+                    <div class="hdr-drawer__subs">
+                      <a href={link.href} class="hdr-drawer__sub-link" style="font-weight:600;">View {link.title} &rarr;</a>
+                      {link.subs.map(sub => (
+                        sub.live === false
+                          ? <span class="hdr-drawer__sub-link is-soon">{sub.title} · Soon</span>
+                          : <a href={sub.href} class="hdr-drawer__sub-link">{sub.title}</a>
+                      ))}
+                    </div>
+                  </details>
+                ) : (
+                  <a href={link.href} class="hdr-drawer__link">{link.title}</a>
+                )
+              ))}
+              <a href="/loan-programs/" class="hdr-drawer__programs-btn">See All Loan Programs &rarr;</a>
+            </Fragment>
           ) : (
             m.columns.flatMap(c => c.links).map(link => (
               link.live === false ? (
@@ -1315,6 +1324,33 @@ const icons: Record<string, string> = {
   .heroes-plate__links{display:grid;grid-template-columns:1fr 1fr;gap:3px 14px;}
   .heroes-plate__links a{font-size:.88rem;color:#e6ebf3;text-decoration:none;padding:6px 8px;border-radius:5px;transition:.14s;}
   .heroes-plate__links a:hover{background:rgba(255,255,255,.09);color:#fff;}
+
+  /* ─── "See All Loan Programs" button in Our Programs mobile accordion ─── */
+  .hdr-drawer__programs-btn {
+    display: block;
+    margin: .75rem 0 .25rem;
+    padding: .8rem 1.2rem;
+    background: var(--color-ink, #1a2420);
+    color: #fff;
+    font-family: var(--stw-body, 'Inter'), system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background .15s;
+  }
+  .hdr-drawer__programs-btn:hover { background: var(--color-blue, #1845D6); }
+
+  /* ─── Journey extras (All 8 Steps + Discovery Quiz) in mobile ─── */
+  .hdr-drawer__extras {
+    margin-top: .5rem;
+    padding-top: .5rem;
+    border-top: 1px solid var(--color-bone, #e3e0d6);
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+  }
 
   /* ─── American Heroes mobile accordion ─── */
   .hdr-drawer__heroes-group{font-family:var(--stw-mono,'JetBrains Mono'),monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--color-mute,#6B7280);margin:12px 0 4px;padding:0 0 0 4px;}
