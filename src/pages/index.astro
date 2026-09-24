@@ -1666,43 +1666,54 @@ No spam. No sequences. One conversation, on your terms.
   }
 }
 
-/* Chat bubble colors */
-.hero-section .aic-msg--user {
-  background: #1845D6;
-  color: #fff;
-  margin-left: auto;
-  text-align: left;
+/* Chat bubble colors — scoped to hero white box */
+.hero-section .aic-msg--user .aic-msg__b {
+  background: #1845D6 !important;
+  color: #fff !important;
+  border-radius: 18px 18px 4px 18px !important;
 }
-.hero-section .aic-msg--bot {
-  background: rgba(0,0,0,0.04);
-  color: #1a1a2e;
+.hero-section .aic-msg--user {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+.hero-section .aic-msg--bot .aic-msg__b {
+  background: #f3f4f6 !important;
+  color: #1a1a2e !important;
+  border-radius: 18px 18px 18px 4px !important;
 }
 
 /* Numbered option buttons */
-.aic-opts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
+/* Numbered option pills — hero scoped */
+.hero-section .aic-opts {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-top: 8px !important;
 }
-.aic-opt {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(24,69,214,0.25);
-  background: rgba(24,69,214,0.06);
-  color: #1845D6;
-  font-size: 13px;
-  cursor: pointer;
-  transition: background 150ms, border-color 150ms;
+.hero-section .aic-opt {
+  display: inline-block !important;
+  padding: 7px 14px !important;
+  border-radius: 999px !important;
+  border: 1px solid #e5e7eb !important;
+  background: #fff !important;
+  color: #1845D6 !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+  transition: background 150ms, border-color 150ms !important;
+  font-weight: 500 !important;
 }
-.aic-opt:hover {
-  background: rgba(24,69,214,0.12);
-  border-color: #1845D6;
+.hero-section .aic-opt:hover {
+  background: #f0f4ff !important;
+  border-color: #1845D6 !important;
 }
-.aic-opt--disabled .aic-opt {
-  opacity: 0.4;
-  pointer-events: none;
+.hero-section .aic-opt--disabled .aic-opt,
+.hero-section .aic-opts.aic-opt--disabled .aic-opt {
+  opacity: 0.45 !important;
+  pointer-events: none !important;
+  background: #f9fafb !important;
+  border-color: #e5e7eb !important;
+  color: #6b7280 !important;
+  cursor: default !important;
 }
 
 /* Footer dot */
