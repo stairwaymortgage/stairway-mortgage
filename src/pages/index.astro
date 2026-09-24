@@ -620,20 +620,34 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     const b = bubble.querySelector('.aic-msg__b') || bubble;
     const cleanLines = lines.filter((_, i) => !optLines.includes(i));
     b.innerHTML = renderMsg(cleanLines.join('\n'));
-    // Disable older option sets
-    convo.querySelectorAll('.aic-opts:not(.aic-opt--disabled)').forEach(el => el.classList.add('aic-opt--disabled'));
-    // Create option buttons
+    // Disable older option sets — inline style to guarantee visibility
+    convo.querySelectorAll('.aic-opts:not(.aic-opt--disabled)').forEach(el => {
+      el.classList.add('aic-opt--disabled');
+      el.querySelectorAll('.aic-opt').forEach(b => {
+        b.style.opacity = '0.4';
+        b.style.pointerEvents = 'none';
+        b.style.background = '#f9fafb';
+        b.style.borderColor = '#e5e7eb';
+        b.style.color = '#6b7280';
+        b.style.cursor = 'default';
+      });
+    });
+    // Create option buttons — inline styles to beat site-wide dark-card CSS
     const wrap = document.createElement('div');
     wrap.className = 'aic-opts';
+    wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px';
     optLines.forEach(idx => {
       const optText = lines[idx].trim().replace(/^\d+\.\s+/, '');
       const btn = document.createElement('button');
       btn.className = 'aic-opt';
+      btn.style.cssText = 'display:inline-block;padding:7px 14px;border-radius:999px;border:1px solid #e5e7eb;background:#fff;color:#1845D6;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;line-height:1.2';
       btn.textContent = optText;
       btn.addEventListener('click', () => {
         if (wrap.classList.contains('aic-opt--disabled')) return;
         send(optText);
       });
+      btn.addEventListener('mouseenter', () => { btn.style.background = '#f0f4ff'; btn.style.borderColor = '#1845D6'; });
+      btn.addEventListener('mouseleave', () => { btn.style.background = '#fff'; btn.style.borderColor = '#e5e7eb'; });
       wrap.appendChild(btn);
     });
     bubble.appendChild(wrap);
