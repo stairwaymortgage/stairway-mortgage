@@ -245,7 +245,13 @@ const icons: Record<string, string> = {
         <span class="hdr-trust__sep">·</span>
         <span class="hdr-trust__item">Jim Blackburn · <span class="mono">NMLS #1072866</span></span>
       </div>
-      <span class="hdr-trust__right">Equal Housing Lender</span>
+      <span class="hdr-trust__right">
+        Equal Housing Lender
+        <button class="hdr-theme-toggle hdr-theme-toggle--desktop" data-theme-toggle aria-label="Toggle light/dark theme" title="Toggle theme">
+          <svg class="hdr-theme-toggle__sun" width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg class="hdr-theme-toggle__moon" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </span>
     </div>
   </div>
 </div>
@@ -293,12 +299,18 @@ const icons: Record<string, string> = {
         </div>
       </div>
 
-      <!-- Mobile hamburger -->
-      <button class="hdr-burger" aria-label="Open menu" aria-expanded="false" id="hdr-burger">
-        <span class="hdr-burger__line"></span>
-        <span class="hdr-burger__line"></span>
-        <span class="hdr-burger__line"></span>
-      </button>
+      <!-- Mobile: theme toggle + hamburger -->
+      <div class="hdr-mobile-right">
+        <button class="hdr-theme-toggle hdr-theme-toggle--mobile" data-theme-toggle aria-label="Toggle light/dark theme" title="Toggle theme">
+          <svg class="hdr-theme-toggle__sun" width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg class="hdr-theme-toggle__moon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="hdr-burger" aria-label="Open menu" aria-expanded="false" id="hdr-burger">
+          <span class="hdr-burger__line"></span>
+          <span class="hdr-burger__line"></span>
+          <span class="hdr-burger__line"></span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -1367,6 +1379,108 @@ const icons: Record<string, string> = {
 
   /* ─── American Heroes mobile accordion ─── */
   .hdr-drawer__heroes-group{font-family:var(--stw-mono,'JetBrains Mono'),monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--color-mute,#6B7280);margin:12px 0 4px;padding:0 0 0 4px;}
+
+  /* ════════════════════════════════════════════
+     DARK NAV (default) + LIGHT THEME HEADER
+     ════════════════════════════════════════════ */
+
+  /* Dark nav background by default */
+  .hdr-main {
+    background: rgba(13, 19, 48, 0.95) !important;
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+  }
+  .hdr-nav__trigger { color: #E8EEFF !important; }
+  .hdr-nav__trigger:hover,
+  .hdr-nav__trigger[aria-expanded="true"] { color: #fff !important; background: rgba(255,255,255,0.1) !important; }
+  .hdr-phone { color: #E8EEFF !important; }
+  .hdr-phone__number { color: #E8EEFF !important; }
+  .hdr-burger__line { background: #E8EEFF !important; }
+
+  /* Logo: CSS filter to make dark logo white on dark nav */
+  .hdr-logo__img { filter: brightness(0) invert(1); }
+
+  /* ─── Theme toggle button ─── */
+  .hdr-theme-toggle {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    color: #E8EEFF;
+    cursor: pointer;
+    padding: 4px 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s;
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+  .hdr-theme-toggle:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+  /* Show sun (click to go light), hide moon by default (dark mode) */
+  .hdr-theme-toggle__sun { display: block; }
+  .hdr-theme-toggle__moon { display: none; }
+  /* Desktop toggle: inline with Equal Housing text */
+  .hdr-theme-toggle--mobile { display: none; }
+  @media (max-width: 979px) {
+    .hdr-theme-toggle--desktop { display: none; }
+    .hdr-theme-toggle--mobile { display: inline-flex; }
+  }
+
+  /* Mobile right group */
+  .hdr-mobile-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  @media (min-width: 980px) {
+    .hdr-mobile-right { display: contents; }
+  }
+
+  /* ════════════════════════════════════════════
+     LIGHT THEME — header + hero only
+     Scoped: [data-theme="light"] .hdr-*
+     ════════════════════════════════════════════ */
+  [data-theme="light"] .hdr-trust {
+    background: #0A0E1A !important;
+  }
+  [data-theme="light"] .hdr-main {
+    background: rgba(250, 250, 247, 0.95) !important;
+    border-bottom-color: #D4D4C8 !important;
+  }
+  [data-theme="light"] .hdr-nav__trigger { color: #0A0E1A !important; }
+  [data-theme="light"] .hdr-nav__trigger:hover,
+  [data-theme="light"] .hdr-nav__trigger[aria-expanded="true"] { color: #1845D6 !important; background: var(--color-paper-tint, rgba(0,0,0,0.04)) !important; }
+  [data-theme="light"] .hdr-phone { color: #0A0E1A !important; }
+  [data-theme="light"] .hdr-phone__number { color: #0A0E1A !important; }
+  [data-theme="light"] .hdr-burger__line { background: #0A0E1A !important; }
+  /* Logo: remove filter to show original dark logo */
+  [data-theme="light"] .hdr-logo__img { filter: none; }
+  /* Theme toggle: show moon icon, hide sun */
+  [data-theme="light"] .hdr-theme-toggle {
+    border-color: rgba(10,14,26,0.2);
+    color: #0A0E1A;
+  }
+  [data-theme="light"] .hdr-theme-toggle:hover {
+    border-color: rgba(10,14,26,0.45);
+  }
+  [data-theme="light"] .hdr-theme-toggle__sun { display: none; }
+  [data-theme="light"] .hdr-theme-toggle__moon { display: block; }
+
+  /* ─── Sticky bar: dark by default ─── */
+  .hdr-sticky {
+    background: rgba(13, 19, 48, 0.95) !important;
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+  }
+  .hdr-sticky .hdr-phone,
+  .hdr-sticky .hdr-phone .mono { color: #E8EEFF !important; }
+
+  /* ─── Light theme sticky bar ─── */
+  [data-theme="light"] .hdr-sticky {
+    background: rgba(250, 250, 247, 0.95) !important;
+    border-bottom-color: #D4D4C8 !important;
+  }
+  [data-theme="light"] .hdr-sticky .hdr-phone,
+  [data-theme="light"] .hdr-sticky .hdr-phone .mono { color: #0A0E1A !important; }
+  [data-theme="light"] .hdr-sticky .hdr-logo__img { filter: none; }
 </style>
 
 <!-- -
@@ -1513,5 +1627,28 @@ const icons: Record<string, string> = {
       }
     }, { passive: true });
   }
+})();
+
+// ─── Theme toggle ───
+(function() {
+  var toggles = document.querySelectorAll('[data-theme-toggle]');
+  if (!toggles.length) return;
+  function getTheme() {
+    try { return localStorage.getItem('sw-theme') || 'dark'; } catch(e) { return 'dark'; }
+  }
+  function setTheme(t) {
+    if (t === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    try { localStorage.setItem('sw-theme', t); } catch(e) {}
+  }
+  toggles.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var next = getTheme() === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+    });
+  });
 })();
 </script>
