@@ -597,7 +597,7 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     // markdown links [label](/path) -> anchor (only allow internal / and http(s))
     safe = safe.replace(/\[([^\]]+)\]\((\/[^)\s]*|https?:\/\/[^)\s]+)\)/g,
       function (m, label, href) {
-        return '<a href="' + href + '" style="color:#7ab0ff;text-decoration:underline">' + label + '</a>';
+        return '<a href="' + href + '" style="color:#1845D6;text-decoration:underline">' + label + '</a>';
       });
     // bold **text**
     safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
@@ -2800,7 +2800,7 @@ No spam. No sequences. One conversation, on your terms.
     // markdown links [label](/path) -> anchor (only allow internal / and http(s))
     safe = safe.replace(/\[([^\]]+)\]\((\/[^)\s]*|https?:\/\/[^)\s]+)\)/g,
       function (m, label, href) {
-        return '<a href="' + href + '" style="color:#7ab0ff;text-decoration:underline">' + label + '</a>';
+        return '<a href="' + href + '" style="color:#1845D6;text-decoration:underline">' + label + '</a>';
       });
     // bold **text**
     safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');

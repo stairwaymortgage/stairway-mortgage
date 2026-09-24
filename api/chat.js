@@ -406,12 +406,12 @@ export default async function handler(req, res) {
       fullText += delta;
       buffer += delta;
 
-      // flush complete sentences (ending in . ! ? or newline)
-      let match;
-      const sentenceEnd = /[^.!?\n]*[.!?\n]+/;
-      while ((match = buffer.match(sentenceEnd))) {
-        let sentence = match[0];
-        buffer = buffer.slice(sentence.length);
+      // flush on newlines — preserves numbered list structure
+      // Each line is compliance-filtered individually
+      let nlIdx;
+      while ((nlIdx = buffer.indexOf('\n')) !== -1) {
+        let sentence = buffer.slice(0, nlIdx + 1);
+        buffer = buffer.slice(nlIdx + 1);
 
         // strip capture token from visible text, remember it fired
         const hadCapture = sentence.includes("[[CAPTURE]]");
