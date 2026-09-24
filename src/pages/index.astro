@@ -425,19 +425,19 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     if (aicCaptureShown) return;
     aicCaptureShown = true;
 
-    const inp = 'width:100%;box-sizing:border-box;padding:13px 14px;margin:0;border:1px solid rgba(255,255,255,.25);border-radius:10px;background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit;outline:none;display:block;';
+    const inp = 'width:100%;box-sizing:border-box;padding:12px 14px;margin:0;border:1px solid #d1d5db;border-radius:10px;background:#fff;color:#0A0E1A;font-size:14px;font-family:inherit;outline:none;display:block;';
     const m = document.createElement('div');
     m.className = 'aic-msg aic-msg--bot';
     m.innerHTML =
-      '<div class="aic-msg__b" style="max-width:340px">' +
-        '<div style="display:flex;flex-direction:column;gap:10px;padding:2px 0">' +
-          '<p style="font-size:14.5px;line-height:1.45;margin:0 0 2px;color:#fff">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
+      '<div class="aic-msg__b" style="max-width:360px;background:#f9fafb;border-radius:16px;padding:16px;border:1px solid #e5e7eb">' +
+        '<div style="display:flex;flex-direction:column;gap:10px;padding:0">' +
+          '<p style="font-size:14px;line-height:1.45;margin:0 0 4px;color:#374151;font-weight:500">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
           '<input data-cap-name type="text" placeholder="Your name" autocomplete="name" style="' + inp + '">' +
           '<input data-cap-phone type="tel" placeholder="Phone number" autocomplete="tel" style="' + inp + '">' +
           '<input data-cap-email type="email" placeholder="Email address" autocomplete="email" style="' + inp + '">' +
           '<input data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
           '<button data-cap-send style="width:100%;box-sizing:border-box;padding:13px 16px;margin-top:2px;border:none;border-radius:10px;background:#1845D6;color:#fff;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;display:block">See My Options</button>' +
-          '<p data-cap-note style="font-size:12.5px;color:#ff9b9b;margin:0;min-height:0"></p>' +
+          '<p data-cap-note style="font-size:12px;color:#dc2626;margin:0;min-height:0"></p>' +
         '</div>' +
       '</div>';
     convo.appendChild(m);
@@ -501,7 +501,7 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
       aicReExtractFired = false;
       aicUserDeclinedBonus = false;
       const bubble = formEl.querySelector('.aic-msg__b') || formEl.querySelector('.aicf-msg__b');
-      if (bubble) bubble.innerHTML = '<p style="font-size:14.5px;line-height:1.45;margin:0;color:#fff">Thanks, ' + esc(name) + ' — our team will reach out shortly.</p>';
+      if (bubble) bubble.innerHTML = '<p style="font-size:14px;line-height:1.45;margin:0;color:#374151;font-weight:500">Thanks, ' + esc(name) + ' — our team will reach out shortly.</p>';
       if (window.SWMemory) window.SWMemory.track('ai_chat_lead_submitted', { intent: intentSummary });
     } catch (e) {
       note.textContent = 'Something went wrong — please call (954) 993-1625.';
@@ -817,9 +817,6 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
   convo.addEventListener('click', (e) => {
     const r = e.target.closest('.aic-reply');
     if (r && r.dataset.q) send(r.dataset.q);
-    // Also handle .aic-opt clicks bubbled up
-    const opt = e.target.closest('.aic-opt');
-    if (opt && !opt.closest('.aic-opt--disabled')) send(opt.textContent.trim());
   });
 
   resetBtn.addEventListener('click', resetConvo);
