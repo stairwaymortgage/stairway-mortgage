@@ -42,9 +42,15 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
            </p>
          </div>
        </div>
-       <button class="aic__reset" data-reset aria-label="Start new conversation" title="New conversation">
-         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1015-6.7M21 4v5h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-       </button>
+       <div class="aic__header-actions">
+         <button class="aic__mute" data-mute aria-label="Toggle sound">
+           <svg class="aic__mute-on" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+           <svg class="aic__mute-off" width="14" height="14" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></line><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></line></svg>
+         </button>
+         <button class="aic__reset" data-reset aria-label="Start new conversation" title="New conversation">
+           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1015-6.7M21 4v5h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+         </button>
+       </div>
      </div>
 
      <!-- ─── BODY: welcome OR conversation ─── -->
@@ -55,6 +61,8 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
        </div>
        <!-- Conversation state (hidden until first message) -->
        <div class="aic__convo" data-convo></div>
+       <!-- Capture form panel (hidden until triggered) -->
+       <div class="aic__capture-panel" data-capture-panel style="display:none"></div>
      </div>
 
      <!-- ─── COMPOSER ─── -->
@@ -385,6 +393,110 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     return best;
   }
 
+  // ─── Sound system (Web Audio API, no files) ───
+  let aicAudioCtx = null;
+  let aicSoundEnabled = true;
+  try { aicSoundEnabled = localStorage.getItem('aic-sound') !== 'off'; } catch(e){}
+
+  const muteBtn = root.querySelector('[data-mute]');
+  const muteOnIcon = muteBtn?.querySelector('.aic__mute-on');
+  const muteOffIcon = muteBtn?.querySelector('.aic__mute-off');
+  function updateMuteUI() {
+    if (!muteBtn) return;
+    if (aicSoundEnabled) {
+      muteOnIcon.style.display = '';
+      muteOffIcon.style.display = 'none';
+    } else {
+      muteOnIcon.style.display = 'none';
+      muteOffIcon.style.display = '';
+    }
+  }
+  updateMuteUI();
+  muteBtn?.addEventListener('click', () => {
+    aicSoundEnabled = !aicSoundEnabled;
+    try { localStorage.setItem('aic-sound', aicSoundEnabled ? 'on' : 'off'); } catch(e){}
+    updateMuteUI();
+  });
+
+  function ensureAudioCtx() {
+    if (!aicAudioCtx) {
+      try { aicAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){}
+    }
+    if (aicAudioCtx && aicAudioCtx.state === 'suspended') {
+      try { aicAudioCtx.resume(); } catch(e){}
+    }
+  }
+
+  function playReplyChime() {
+    try {
+      if (!aicSoundEnabled || !aicAudioCtx) return;
+      var ctx = aicAudioCtx;
+      var now = ctx.currentTime;
+      function note(freq, start, gain) {
+        var osc = ctx.createOscillator();
+        var g = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        g.gain.setValueAtTime(0, start);
+        g.gain.linearRampToValueAtTime(gain, start + 0.006);
+        g.gain.exponentialRampToValueAtTime(0.0001, start + 0.22);
+        osc.connect(g); g.connect(ctx.destination);
+        osc.start(start); osc.stop(start + 0.35);
+      }
+      note(659.25, now, 0.07);
+      note(987.77, now + 0.07, 0.07);
+      // triangle shimmer
+      var osc2 = ctx.createOscillator();
+      var g2 = ctx.createGain();
+      osc2.type = 'triangle';
+      osc2.frequency.value = 1318.5;
+      g2.gain.setValueAtTime(0, now);
+      g2.gain.linearRampToValueAtTime(0.0175, now + 0.006);
+      g2.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      osc2.connect(g2); g2.connect(ctx.destination);
+      osc2.start(now); osc2.stop(now + 0.35);
+    } catch(e){}
+  }
+
+  function playSuccessChime() {
+    try {
+      if (!aicSoundEnabled || !aicAudioCtx) return;
+      var ctx = aicAudioCtx;
+      var now = ctx.currentTime;
+      [523.25, 659.25, 783.99].forEach(function(freq, i) {
+        var osc = ctx.createOscillator();
+        var g = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        var t = now + i * 0.08;
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(0.06, t + 0.006);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
+        osc.connect(g); g.connect(ctx.destination);
+        osc.start(t); osc.stop(t + 0.35);
+      });
+    } catch(e){}
+  }
+
+  // ─── Auto-scroll helper ───
+  let aicScrollRaf = 0;
+  function autoScroll(force) {
+    if (aicScrollRaf) return;
+    aicScrollRaf = requestAnimationFrame(() => {
+      aicScrollRaf = 0;
+      var gap = convo.scrollHeight - convo.scrollTop - convo.clientHeight;
+      if (force || gap < 80) {
+        convo.scrollTop = convo.scrollHeight;
+      }
+    });
+  }
+
+  // ─── Last sender tracking for bubble grouping ───
+  let lastSender = '';
+
+  // ─── Capture panel ref ───
+  const capturePanel = root.querySelector('[data-capture-panel]');
+
   // ─── Conversation transition ───
   function ensureConvoMode() {
     document.querySelector('[data-hero]')?.classList.add('aic-chatting');
@@ -398,12 +510,14 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     }, 250);
     prefix.classList.add('aic__input-prefix--small');
     input.placeholder = 'Ask anything else…';
+    ensureAudioCtx();
   }
 
   function resetConvo() {
     document.querySelector('[data-hero]')?.classList.remove('aic-chatting');
     convo.innerHTML = '';
     conversationStarted = false;
+    lastSender = '';
     welcome.style.display = '';
     chipsWrap.style.display = '';
     welcome.classList.remove('aic__welcome--gone');
@@ -411,6 +525,11 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     prefix.classList.remove('aic__input-prefix--small');
     input.placeholder = placeholders[placeholderIdx];
     input.value = '';
+    // Hide capture panel
+    capturePanel.style.display = 'none';
+    capturePanel.innerHTML = '';
+    convo.style.display = '';
+    root.querySelector('.aic__composer').style.display = '';
   }
 
   // ─── In-chat lead capture ───
@@ -425,25 +544,48 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     if (aicCaptureShown) return;
     aicCaptureShown = true;
 
-    const inp = 'width:100%;box-sizing:border-box;padding:12px 14px;margin:0;border:1px solid #d1d5db;border-radius:10px;background:#fff;color:#0A0E1A;font-size:14px;font-family:inherit;outline:none;display:block;';
-    const m = document.createElement('div');
-    m.className = 'aic-msg aic-msg--bot';
-    m.innerHTML =
-      '<div class="aic-msg__b" style="max-width:360px;background:#f9fafb;border-radius:16px;padding:16px;border:1px solid #e5e7eb">' +
-        '<div style="display:flex;flex-direction:column;gap:10px;padding:0">' +
-          '<p style="font-size:14px;line-height:1.45;margin:0 0 4px;color:#374151;font-weight:500">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
-          '<input data-cap-name type="text" placeholder="Your name" autocomplete="name" style="' + inp + '">' +
-          '<input data-cap-phone type="tel" placeholder="Phone number" autocomplete="tel" style="' + inp + '">' +
-          '<input data-cap-email type="email" placeholder="Email address" autocomplete="email" style="' + inp + '">' +
-          '<input data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
-          '<button data-cap-send style="width:100%;box-sizing:border-box;padding:13px 16px;margin-top:2px;border:none;border-radius:10px;background:#1845D6;color:#fff;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;display:block">See My Options</button>' +
-          '<p data-cap-note style="font-size:12px;color:#dc2626;margin:0;min-height:0"></p>' +
-        '</div>' +
-      '</div>';
-    convo.appendChild(m);
-    convo.scrollTop = convo.scrollHeight;
+    // Fade out conversation + composer
+    convo.style.opacity = '0';
+    convo.style.transition = 'opacity 180ms ease';
+    root.querySelector('.aic__composer').style.opacity = '0';
+    root.querySelector('.aic__composer').style.transition = 'opacity 180ms ease';
 
-    m.querySelector('[data-cap-send]').addEventListener('click', () => submitCapture(m, intentSummary));
+    setTimeout(() => {
+      convo.style.display = 'none';
+      root.querySelector('.aic__composer').style.display = 'none';
+
+      capturePanel.style.display = '';
+      capturePanel.innerHTML =
+        '<div class="aic-cap-panel">' +
+          '<button class="aic-cap-back" data-cap-back>&larr; Back to chat</button>' +
+          '<div class="aic-cap-inner">' +
+            '<span class="aic-cap-eyebrow">ALMOST DONE</span>' +
+            '<h3 class="aic-cap-title">Where should we send your options?</h3>' +
+            '<p class="aic-cap-sub">Our team will reach out &mdash; no credit pull, no obligation.</p>' +
+            '<div class="aic-cap-fields">' +
+              '<label class="aic-cap-label">Your name<input data-cap-name type="text" class="aic-cap-field" placeholder="Full name" autocomplete="name"></label>' +
+              '<label class="aic-cap-label">Phone<input data-cap-phone type="tel" class="aic-cap-field" placeholder="(555) 555-5555" autocomplete="tel"></label>' +
+              '<label class="aic-cap-label">Email<input data-cap-email type="email" class="aic-cap-field" placeholder="you@example.com" autocomplete="email"></label>' +
+              '<input data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
+            '</div>' +
+            '<button data-cap-send class="aic-cap-submit">See My Options</button>' +
+            '<p data-cap-note class="aic-cap-note"></p>' +
+            '<p class="aic-cap-disclaimer">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
+          '</div>' +
+        '</div>';
+      requestAnimationFrame(() => { capturePanel.querySelector('.aic-cap-panel').classList.add('aic-cap-panel--in'); });
+
+      capturePanel.querySelector('[data-cap-back]').addEventListener('click', () => {
+        capturePanel.style.display = 'none';
+        convo.style.display = '';
+        convo.style.opacity = '1';
+        root.querySelector('.aic__composer').style.display = '';
+        root.querySelector('.aic__composer').style.opacity = '1';
+        autoScroll(true);
+      });
+
+      capturePanel.querySelector('[data-cap-send]').addEventListener('click', () => submitCapture(capturePanel, intentSummary));
+    }, 180);
   }
 
   async function submitCapture(formEl, intentSummary) {
@@ -500,9 +642,24 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
       aicPostCaptureUserAnswers = 0;
       aicReExtractFired = false;
       aicUserDeclinedBonus = false;
-      const bubble = formEl.querySelector('.aic-msg__b') || formEl.querySelector('.aicf-msg__b');
-      if (bubble) bubble.innerHTML = '<p style="font-size:14px;line-height:1.45;margin:0;color:#374151;font-weight:500">Thanks, ' + esc(name) + ' — our team will reach out shortly.</p>';
+      playSuccessChime();
+      // Show success state in capture panel
+      var capInner = formEl.querySelector('.aic-cap-inner') || formEl.querySelector('.aic-msg__b') || formEl.querySelector('.aicf-msg__b');
+      if (capInner) {
+        var firstName = name.split(/\s+/)[0];
+        capInner.innerHTML = '<div class="aic-cap-success"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#22c55e" stroke-width="2.5"/><path d="M15 24l6 6 12-12" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><h3 class="aic-cap-title" style="margin-top:16px">You\'re all set, ' + esc(firstName) + '!</h3><p class="aic-cap-sub">Our team will reach out shortly.</p></div>';
+      }
       if (window.SWMemory) window.SWMemory.track('ai_chat_lead_submitted', { intent: intentSummary });
+      // After 1.2s fade back to chat
+      setTimeout(function() {
+        capturePanel.style.display = 'none';
+        capturePanel.innerHTML = '';
+        convo.style.display = '';
+        convo.style.opacity = '1';
+        root.querySelector('.aic__composer').style.display = '';
+        root.querySelector('.aic__composer').style.opacity = '1';
+        autoScroll(true);
+      }, 1200);
     } catch (e) {
       note.textContent = 'Something went wrong — please call (954) 993-1625.';
       btn.disabled = false;
@@ -555,20 +712,35 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
 
   // ─── Render messages ───
   function addMsg(html, who) {
+    // Sender-change spacing
+    var senderChanged = (lastSender !== who);
+    lastSender = who;
+
     const m = document.createElement('div');
-    m.className = `aic-msg aic-msg--${who}`;
-    m.innerHTML = `<div class="aic-msg__b">${html}</div>`;
+    m.className = 'aic-msg aic-msg--' + who;
+    if (senderChanged) m.classList.add('aic-msg--first');
+    m.innerHTML = '<div class="aic-msg__b">' + html + '</div>';
+    // Enter animation
+    m.style.opacity = '0';
+    m.style.transform = who === 'user' ? 'translateY(6px) scale(.96)' : 'translateY(6px)';
+    if (who === 'user') m.style.transformOrigin = 'bottom right';
     convo.appendChild(m);
-    convo.scrollTop = convo.scrollHeight;
+    requestAnimationFrame(() => {
+      m.style.transition = 'opacity 200ms cubic-bezier(.2,.8,.2,1), transform 200ms cubic-bezier(.2,.8,.2,1)';
+      m.style.opacity = '1';
+      m.style.transform = 'translateY(0) scale(1)';
+    });
+    autoScroll(true);
     return m;
   }
 
   function addTyping() {
+    lastSender = 'bot';
     const m = document.createElement('div');
-    m.className = 'aic-msg aic-msg--bot aic-msg--typing';
-    m.innerHTML = '<div class="aic-msg__b"><span style="opacity:.75;margin-right:8px;font-size:14px">Thinking…</span><span class="aic-typing"><span></span><span></span><span></span></span></div>';
+    m.className = 'aic-msg aic-msg--bot aic-msg--typing aic-msg--first';
+    m.innerHTML = '<div class="aic-msg__b"><span class="aic-typing-dots"><span></span><span></span><span></span></span></div>';
     convo.appendChild(m);
-    convo.scrollTop = convo.scrollHeight;
+    autoScroll(true);
     return m;
   }
 
@@ -584,7 +756,7 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
       wrap.appendChild(b);
     });
     convo.appendChild(wrap);
-    convo.scrollTop = convo.scrollHeight;
+    autoScroll(true);
   }
 
   function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -616,11 +788,18 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
       else break;
     }
     if (optLines.length < 2) return;
-    // Remove numbered lines from visible text
+    // Remove numbered lines from visible text; make last line bold
     const b = bubble.querySelector('.aic-msg__b') || bubble;
     const cleanLines = lines.filter((_, i) => !optLines.includes(i));
+    // Bold the last non-empty line before options
+    for (var li = cleanLines.length - 1; li >= 0; li--) {
+      if (cleanLines[li].trim()) {
+        if (!/^\*\*/.test(cleanLines[li].trim())) cleanLines[li] = '**' + cleanLines[li].trim() + '**';
+        break;
+      }
+    }
     b.innerHTML = renderMsg(cleanLines.join('\n'));
-    // Disable older option sets — inline style to guarantee visibility
+    // Disable older option sets
     convo.querySelectorAll('.aic-opts:not(.aic-opt--disabled)').forEach(el => {
       el.classList.add('aic-opt--disabled');
       el.querySelectorAll('.aic-opt').forEach(b => {
@@ -632,26 +811,42 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
         b.style.cursor = 'default';
       });
     });
-    // Create option buttons — inline styles to beat site-wide dark-card CSS
+    // Create option pills
     const wrap = document.createElement('div');
     wrap.className = 'aic-opts';
-    wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px;margin-top:8px';
-    optLines.forEach(idx => {
+    optLines.forEach((idx, oi) => {
       const optText = lines[idx].trim().replace(/^\d+\.\s+/, '');
       const btn = document.createElement('button');
       btn.className = 'aic-opt';
-      btn.style.cssText = 'display:inline-block;padding:7px 14px;border-radius:999px;border:1px solid #e5e7eb;background:#fff;color:#1845D6;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;line-height:1.2';
       btn.textContent = optText;
+      // Stagger enter animation
+      btn.style.opacity = '0';
+      btn.style.transform = 'translateY(8px)';
+      setTimeout(() => {
+        btn.style.transition = 'opacity 180ms ease, transform 180ms ease';
+        btn.style.opacity = '1';
+        btn.style.transform = 'translateY(0)';
+      }, 40 * oi);
       btn.addEventListener('click', () => {
         if (wrap.classList.contains('aic-opt--disabled')) return;
+        // Brief blue fill on tapped pill
+        btn.style.background = '#0A6CFF';
+        btn.style.color = '#fff';
+        btn.style.borderColor = '#0A6CFF';
+        // Fade out + collapse entire row
+        setTimeout(() => {
+          wrap.style.transition = 'opacity 150ms ease, max-height 150ms ease';
+          wrap.style.opacity = '0';
+          wrap.style.maxHeight = '0';
+          wrap.style.overflow = 'hidden';
+          setTimeout(() => { wrap.remove(); }, 150);
+        }, 80);
         send(optText);
       });
-      btn.addEventListener('mouseenter', () => { btn.style.background = '#f0f4ff'; btn.style.borderColor = '#1845D6'; });
-      btn.addEventListener('mouseleave', () => { btn.style.background = '#fff'; btn.style.borderColor = '#e5e7eb'; });
       wrap.appendChild(btn);
     });
     bubble.appendChild(wrap);
-    convo.scrollTop = convo.scrollHeight;
+    autoScroll(true);
   }
 
   // ─── Send handler ───
@@ -757,17 +952,51 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     const t = addTyping();
     let bubble = null;
     let acc = '';
+    let revealed = '';
+    let streamDone = false;
+    let replyChimePlayed = false;
+    let revealRaf = 0;
+
+    function drainRevealBuffer() {
+      revealRaf = 0;
+      if (revealed === acc && streamDone) return;
+      // Adaptive rate: reveal enough to never lag >300ms behind received
+      var charsToReveal = Math.max(1, Math.ceil((acc.length - revealed.length) * 0.35));
+      revealed = acc.slice(0, revealed.length + charsToReveal);
+      var b = bubble ? (bubble.querySelector('.aic-msg__b') || bubble) : null;
+      if (b) {
+        var caretHtml = (revealed.length < acc.length || !streamDone) ? '<span class="aic-stream-caret"></span>' : '';
+        b.innerHTML = renderMsg(revealed) + caretHtml;
+        autoScroll(false);
+      }
+      if (revealed.length < acc.length || !streamDone) {
+        revealRaf = requestAnimationFrame(drainRevealBuffer);
+      }
+    }
+
     try {
       const { capture } = await streamChat(
         { message: text, history: aicHistory.slice(0, -1) },
         (piece) => {
-          if (!bubble) { t.remove(); bubble = addMsg('', 'bot'); }
+          if (!bubble) {
+            t.remove();
+            bubble = addMsg('', 'bot');
+            // Play reply chime once on first chunk
+            if (!replyChimePlayed) { replyChimePlayed = true; playReplyChime(); }
+          }
           acc += piece;
-          const b = bubble.querySelector('.aic-msg__b') || bubble;
-          b.innerHTML = renderMsg(acc);
-          convo.scrollTop = convo.scrollHeight;
+          if (!revealRaf) revealRaf = requestAnimationFrame(drainRevealBuffer);
         }
       );
+      streamDone = true;
+      // Flush remaining text instantly
+      if (bubble) {
+        if (revealRaf) { cancelAnimationFrame(revealRaf); revealRaf = 0; }
+        revealed = acc;
+        var bf = bubble.querySelector('.aic-msg__b') || bubble;
+        bf.innerHTML = renderMsg(acc);
+        autoScroll(false);
+      }
       if (!bubble) { t.remove(); addMsg("I'm here — what would you like to know?", 'bot'); }
       aicHistory.push({ role: 'assistant', content: acc });
       renderNumberedOptions(acc, bubble);
@@ -809,6 +1038,7 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
   chipsWrap.addEventListener('click', (e) => {
     const c = e.target.closest('.aic__chip');
     if (c && c.dataset.q) {
+      ensureAudioCtx();
       if (c.dataset.goal) window.__aicGoal = c.dataset.goal;
       send(c.dataset.q);
     }
@@ -1553,199 +1783,369 @@ No spam. No sequences. One conversation, on your terms.
   max-width: 580px;
   margin: 0 auto 1.25rem;
 }
-/* Chat box — always white */
+
+/* ─── Chat box — always white, iMessage style ─── */
 .hero-section .aic {
   max-width: 900px;
   margin: 0 auto;
   background: #fff !important;
   border-radius: 22px;
   box-shadow: 0 8px 60px rgba(0,0,0,0.25), 0 2px 12px rgba(0,0,0,0.1);
-  color: #1a1a2e !important;
+  color: #111 !important;
   position: relative;
   overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: left;
 }
-/* Force aurora behind content in hero white box */
 .hero-section .aic__aurora { opacity: 0.04 !important; z-index: 0 !important; }
 .hero-section .aic__header,
 .hero-section .aic__body,
 .hero-section .aic__composer,
 .hero-section .aic__footer { position: relative; z-index: 1; }
-/* Dark text on white chat box — override site-wide dark-card styles */
-.hero-section .aic__header { background: rgba(0,0,0,0.02) !important; border-bottom: 1px solid rgba(0,0,0,0.06) !important; }
-.hero-section .aic__title span { color: #0A0E1A !important; }
-.hero-section .aic__badge { background: #1845D6 !important; color: #fff !important; }
+
+/* ─── Header ─── */
+.hero-section .aic__header {
+  background: rgba(0,0,0,0.02) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+}
+.hero-section .aic__title span { color: #111 !important; }
+.hero-section .aic__badge { background: #0A6CFF !important; color: #fff !important; }
 .hero-section .aic__sub { color: #6b7280 !important; }
 .hero-section .aic__live-dot { background: #22c55e !important; }
-.hero-section .aic__reset { color: #6b7280 !important; border-color: rgba(0,0,0,0.1) !important; }
-.hero-section .aic__reset:hover { color: #0A0E1A !important; }
-.hero-section .aic__sparkle { color: #1845D6 !important; background: rgba(24,69,214,0.08) !important; border-radius: 50% !important; width: 32px !important; height: 32px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; }
+.hero-section .aic__header-actions { display: flex; align-items: center; gap: 6px; }
+.hero-section .aic__mute {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1); background: transparent;
+  color: #6b7280; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center;
+  transition: color 150ms ease;
+}
+.hero-section .aic__mute:hover { color: #111; }
+.hero-section .aic__reset {
+  color: #6b7280 !important; border-color: rgba(0,0,0,0.1) !important;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1); background: transparent;
+  cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center;
+  transition: color 150ms ease;
+}
+.hero-section .aic__reset:hover { color: #111 !important; }
+.hero-section .aic__sparkle {
+  color: #0A6CFF !important; background: rgba(10,108,255,0.08) !important;
+  border-radius: 50% !important; width: 32px !important; height: 32px !important;
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+}
 .hero-section .aic__sparkle svg { width: 16px !important; height: 16px !important; }
+
+/* ─── Body ─── */
+.hero-section .aic__body { padding: 0 !important; min-height: 0 !important; }
+.hero-section .aic__welcome { background: transparent !important; text-align: center !important; padding: 14px 16px 8px !important; }
 .hero-section .aic__greet { color: #374151 !important; font-size: 0.92rem !important; font-weight: 500 !important; margin: 0 !important; }
 .hero-section .aic__wave { display: inline-block; animation: none; }
-.hero-section .aic__welcome { background: transparent !important; text-align: center !important; padding: 14px 16px 8px !important; }
-.hero-section .aic__body { padding: 0 !important; min-height: 0 !important; }
-/* Composer */
-.hero-section .aic__composer { padding: 4px 16px 10px !important; }
+
+/* ─── Composer ─── */
+.hero-section .aic__composer { padding: 4px 16px 10px !important; flex-shrink: 0; }
 .hero-section .aic__input-frame { background: #f9fafb !important; border-color: rgba(0,0,0,0.1) !important; }
-.hero-section .aic__input { color: #0A0E1A !important; background: transparent !important; }
+.hero-section .aic__input { color: #111 !important; background: transparent !important; font-size: 16px !important; }
 .hero-section .aic__input::placeholder { color: #9ca3af !important; }
 .hero-section .aic__input-prefix { color: #6b7280 !important; }
 .hero-section .aic__icon-btn { color: #6b7280 !important; }
-.hero-section .aic__send { background: #0A0E1A !important; color: #fff !important; }
-/* Chips — dark text on light pills */
+.hero-section .aic__send { background: #111 !important; color: #fff !important; }
+
+/* ─── Chips ─── */
 .hero-section .aic__chip {
-  background: #f3f4f6 !important;
-  color: #1a1a2e !important;
-  border: 1px solid #e5e7eb !important;
-  font-size: 12.5px !important;
-  padding: 8px 10px !important;
-  border-radius: 10px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 5px !important;
-  cursor: pointer !important;
-  transition: background 150ms, border-color 150ms !important;
+  background: #f3f4f6 !important; color: #111 !important;
+  border: 1px solid #e5e7eb !important; font-size: 12.5px !important;
+  padding: 8px 10px !important; border-radius: 10px !important;
+  display: flex !important; align-items: center !important; gap: 5px !important;
+  cursor: pointer !important; transition: background 150ms, border-color 150ms !important;
 }
-.hero-section .aic__chip:hover {
-  background: #e5e7eb !important;
-  border-color: #d1d5db !important;
-}
-.hero-section .aic__chip svg { color: #1845D6 !important; flex-shrink: 0; }
-/* Footer */
+.hero-section .aic__chip:hover { background: #e5e7eb !important; border-color: #d1d5db !important; }
+.hero-section .aic__chip svg { color: #0A6CFF !important; flex-shrink: 0; }
+
+/* ─── Footer ─── */
 .hero-section .aic__footer {
   background: rgba(0,0,0,0.02) !important;
   border-top: 1px solid rgba(0,0,0,0.06) !important;
+  flex-shrink: 0;
 }
 .hero-section .aic__creds { color: #6b7280 !important; }
-.hero-section .aic__schedule-link { color: #1845D6 !important; }
-/* Footer inline soft-inquiry note */
+.hero-section .aic__schedule-link { color: #0A6CFF !important; }
 .aic__footer-sep { opacity: 0.3; margin: 0 2px; }
 .aic__footer-soft { opacity: 0.7; }
+.aic__footer-dot { color: #22c55e; font-size: 8px; margin-right: 2px; }
+
+/* ─── Chat-mode layout ─── */
 .hero-section.aic-chatting .aic {
-  min-height: 70vh;
+  height: min(780px, calc(100dvh - 60px - 40px));
   display: flex;
   flex-direction: column;
 }
 .hero-section.aic-chatting .aic__body {
   flex: 1;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+}
+.hero-section.aic-chatting .aic__convo {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.hero-section.aic-chatting .aic__composer {
+  border-top: 1px solid #ECECEC;
+  background: #fff;
 }
 
-/* Below-chat CTA block */
+/* ─── iMessage bubbles ─── */
+.hero-section .aic-msg {
+  display: flex;
+  margin-bottom: 6px;
+}
+.hero-section .aic-msg--first { margin-top: 16px; }
+.hero-section .aic-msg--first:first-child { margin-top: 0; }
+.hero-section .aic-msg__b {
+  padding: 10px 14px;
+  font-size: 16px;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+/* Bot bubbles — left */
+.hero-section .aic-msg--bot {
+  justify-content: flex-start;
+}
+.hero-section .aic-msg--bot .aic-msg__b {
+  background: #E9E9EB !important;
+  color: #111 !important;
+  border-radius: 20px 20px 20px 20px;
+  max-width: 78%;
+}
+/* Last bot bubble in a group gets small bottom-left corner */
+.hero-section .aic-msg--bot + .aic-msg--bot .aic-msg__b { border-radius: 20px 20px 20px 20px; }
+.hero-section .aic-msg--bot:has(+ .aic-msg--user) .aic-msg__b,
+.hero-section .aic-msg--bot:has(+ .aic-msg--first) .aic-msg__b,
+.hero-section .aic-msg--bot:has(+ .aic-replies) .aic-msg__b,
+.hero-section .aic-msg--bot:has(+ .aic-opts) .aic-msg__b,
+.hero-section .aic-msg--bot:last-child .aic-msg__b {
+  border-radius: 20px 20px 20px 6px;
+}
+
+/* User bubbles — right */
+.hero-section .aic-msg--user {
+  justify-content: flex-end !important;
+}
+.hero-section .aic-msg--user .aic-msg__b {
+  background: linear-gradient(180deg,#3B8CFF,#0A6CFF) !important;
+  color: #fff !important;
+  border-radius: 20px 20px 20px 20px;
+  max-width: 70%;
+}
+.hero-section .aic-msg--user:has(+ .aic-msg--bot) .aic-msg__b,
+.hero-section .aic-msg--user:has(+ .aic-msg--first) .aic-msg__b,
+.hero-section .aic-msg--user:last-child .aic-msg__b {
+  border-radius: 20px 20px 6px 20px;
+}
+
+/* Links in bot bubbles */
+.hero-section .aic-msg--bot .aic-msg__b a {
+  color: #0A6CFF;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.hero-section .aic-msg--bot .aic-msg__b strong { font-weight: 600; }
+
+/* Hide [[CAPTURE]] token */
+.hero-section .aic-msg__b { }
+
+/* ─── Typing indicator (iMessage dots) ─── */
+.hero-section .aic-msg--typing .aic-msg__b {
+  padding: 12px 16px;
+  min-width: 56px;
+  display: flex;
+  align-items: center;
+}
+.aic-typing-dots {
+  display: flex; gap: 4px; align-items: center;
+}
+.aic-typing-dots span {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #999; display: block;
+  animation: aicDotBounce 1.4s ease-in-out infinite;
+}
+.aic-typing-dots span:nth-child(2) { animation-delay: 0.16s; }
+.aic-typing-dots span:nth-child(3) { animation-delay: 0.32s; }
+@keyframes aicDotBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ─── Streaming caret ─── */
+.aic-stream-caret {
+  display: inline-block;
+  width: 2px; height: 1em;
+  background: #999;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  animation: aicCaretBlink 600ms steps(2) infinite;
+}
+@keyframes aicCaretBlink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ─── Option pills ─── */
+.hero-section .aic-opts {
+  display: flex !important; flex-wrap: wrap; gap: 8px;
+  margin-top: 8px; padding-left: 0;
+}
+.hero-section .aic-opt {
+  height: 40px; padding: 0 16px; border-radius: 999px;
+  background: #fff; border: 1px solid #D0D5DD;
+  color: #111; font-size: 15px; font-weight: 500;
+  cursor: pointer; font-family: inherit; line-height: 1;
+  display: inline-flex; align-items: center;
+  transition: border-color 150ms, color 150ms, background 150ms, transform 80ms;
+}
+.hero-section .aic-opt:hover {
+  border-color: #0A6CFF; color: #0A6CFF; background: #F3F8FF;
+}
+.hero-section .aic-opt:active { transform: scale(0.97); }
+.hero-section .aic-opt--disabled .aic-opt,
+.hero-section .aic-opts.aic-opt--disabled .aic-opt {
+  opacity: 0.4; pointer-events: none;
+  background: #f9fafb; border-color: #e5e7eb;
+  color: #6b7280; cursor: default;
+}
+
+/* ─── Reply buttons ─── */
+.hero-section .aic-replies {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 8px; padding-left: 0;
+}
+.hero-section .aic-reply {
+  height: 36px; padding: 0 14px; border-radius: 999px;
+  background: #fff; border: 1px solid #D0D5DD;
+  color: #111; font-size: 14px; font-weight: 500;
+  cursor: pointer; font-family: inherit;
+  display: inline-flex; align-items: center;
+  transition: border-color 150ms, color 150ms, background 150ms;
+}
+.hero-section .aic-reply:hover {
+  border-color: #0A6CFF; color: #0A6CFF; background: #F3F8FF;
+}
+
+/* ─── Capture form panel ─── */
+.hero-section .aic__capture-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aic-cap-panel {
+  width: 100%; max-width: 420px;
+  padding: 32px 24px;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+.aic-cap-panel--in { opacity: 1; transform: translateY(0); }
+.aic-cap-back {
+  background: none; border: none; color: #6b7280;
+  font-size: 14px; cursor: pointer; padding: 0; margin-bottom: 16px;
+  font-family: inherit;
+  transition: color 150ms;
+}
+.aic-cap-back:hover { color: #111; }
+.aic-cap-eyebrow {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #6b7280; margin-bottom: 8px; display: block;
+}
+.aic-cap-title {
+  font-size: 22px; font-weight: 600; color: #111;
+  margin: 0 0 6px; line-height: 1.3;
+}
+.aic-cap-sub {
+  font-size: 14px; color: #667085; margin: 0 0 20px; line-height: 1.45;
+}
+.aic-cap-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+.aic-cap-label {
+  font-size: 13px; font-weight: 500; color: #374151;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.aic-cap-field {
+  height: 48px; border-radius: 12px; border: 1px solid #D0D5DD;
+  padding: 0 14px; font-size: 16px; font-family: inherit;
+  color: #111; background: #fff; outline: none;
+  transition: border-color 150ms, box-shadow 150ms;
+  box-sizing: border-box; width: 100%;
+}
+.aic-cap-field:focus {
+  border-color: #0A6CFF;
+  box-shadow: 0 0 0 3px rgba(10,108,255,0.2);
+}
+.aic-cap-submit {
+  width: 100%; height: 52px; border-radius: 999px;
+  background: #0A6CFF; color: #fff; border: none;
+  font-size: 16px; font-weight: 600; cursor: pointer;
+  font-family: inherit; transition: filter 150ms;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.aic-cap-submit:hover { filter: brightness(1.08); }
+.aic-cap-submit:disabled { opacity: 0.6; cursor: default; }
+.aic-cap-note {
+  font-size: 12px; color: #dc2626; margin: 8px 0 0; min-height: 0;
+}
+.aic-cap-disclaimer {
+  font-size: 12px; color: #667085; margin: 12px 0 0; line-height: 1.45;
+}
+.aic-cap-success {
+  text-align: center; padding: 20px 0;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* ─── Below-chat CTA block ─── */
 .hero-cta-block {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 900px; margin: 0 auto; text-align: center;
 }
 .hero-apply-btn {
-  display: inline-block;
-  padding: 11px 32px;
-  margin-top: 1rem;
-  background: #fff;
-  color: #0D1330;
-  font-weight: 700;
-  font-size: 0.95rem;
-  border-radius: 999px;
-  text-decoration: none;
+  display: inline-block; padding: 11px 32px; margin-top: 1rem;
+  background: #fff; color: #0D1330; font-weight: 700;
+  font-size: 0.95rem; border-radius: 999px; text-decoration: none;
   transition: transform 150ms ease, box-shadow 150ms ease;
   box-shadow: 0 2px 16px rgba(0,0,0,0.15);
 }
-.hero-apply-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-}
+.hero-apply-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
 .hero-apply-caption {
-  font-size: 11px;
-  color: rgba(232,238,255,0.45);
-  margin: 0.4rem 0 0;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 11px; color: rgba(232,238,255,0.45);
+  margin: 0.4rem auto 0; max-width: 500px;
 }
 
-/* 6-chip grid: 3 cols desktop, 2 cols mobile */
+/* 6-chip grid */
 .hero-section .aic__chips {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr);
-  gap: 7px;
-  margin-top: 8px !important;
-  padding: 0 !important;
+  gap: 7px; margin-top: 8px !important; padding: 0 !important;
 }
 @media (max-width: 640px) {
-  .hero-section .aic__chips {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Chat bubble colors — scoped to hero white box */
-.hero-section .aic-msg--user .aic-msg__b {
-  background: #1845D6 !important;
-  color: #fff !important;
-  border-radius: 18px 18px 4px 18px !important;
-}
-.hero-section .aic-msg--user {
-  display: flex !important;
-  justify-content: flex-end !important;
-}
-.hero-section .aic-msg--bot .aic-msg__b {
-  background: #f3f4f6 !important;
-  color: #1a1a2e !important;
-  border-radius: 18px 18px 18px 4px !important;
-}
-
-/* Numbered option buttons */
-/* Numbered option pills — hero scoped */
-.hero-section .aic-opts {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 6px !important;
-  margin-top: 8px !important;
-}
-.hero-section .aic-opt {
-  display: inline-block !important;
-  padding: 7px 14px !important;
-  border-radius: 999px !important;
-  border: 1px solid #e5e7eb !important;
-  background: #fff !important;
-  color: #1845D6 !important;
-  font-size: 13px !important;
-  cursor: pointer !important;
-  transition: background 150ms, border-color 150ms !important;
-  font-weight: 500 !important;
-}
-.hero-section .aic-opt:hover {
-  background: #f0f4ff !important;
-  border-color: #1845D6 !important;
-}
-.hero-section .aic-opt--disabled .aic-opt,
-.hero-section .aic-opts.aic-opt--disabled .aic-opt {
-  opacity: 0.45 !important;
-  pointer-events: none !important;
-  background: #f9fafb !important;
-  border-color: #e5e7eb !important;
-  color: #6b7280 !important;
-  cursor: default !important;
-}
-
-/* Footer dot */
-.aic__footer-dot {
-  color: #22c55e;
-  font-size: 8px;
-  margin-right: 2px;
+  .hero-section .aic__chips { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ─── Light theme hero overrides ─── */
-[data-theme="light"] .hero-section {
-  background: radial-gradient(ellipse at 50% 0%, #E8EEFF, #FAFAF7 70%) !important;
-}
-[data-theme="light"] .hero-eyebrow { color: #1845D6 !important; }
+[data-theme="light"] .hero-section { background: radial-gradient(ellipse at 50% 0%, #E8EEFF, #FAFAF7 70%) !important; }
+[data-theme="light"] .hero-eyebrow { color: #0A6CFF !important; }
 [data-theme="light"] .hero-h1 { color: #0A0E1A !important; }
-[data-theme="light"] .hero-h1__em { color: #1845D6 !important; }
+[data-theme="light"] .hero-h1__em { color: #0A6CFF !important; }
 [data-theme="light"] .hero-sub { color: #374151 !important; }
-[data-theme="light"] .hero-apply-btn {
-  background: #0D1330 !important;
-  color: #fff !important;
-}
+[data-theme="light"] .hero-apply-btn { background: #0D1330 !important; color: #fff !important; }
 [data-theme="light"] .hero-apply-caption { color: rgba(10,14,26,0.45) !important; }
 
 /* ─── Responsive ─── */
@@ -1759,6 +2159,28 @@ No spam. No sequences. One conversation, on your terms.
   .hero-eyebrow { font-size: 8px; margin-bottom: 0.25rem; }
   .hero-section .aic__chip { font-size: 11.5px !important; padding: 7px 8px !important; }
   .aic__footer-sep, .aic__footer-soft { display: none; }
+}
+@media (max-width: 640px) {
+  .hero-section.aic-chatting .aic {
+    width: 100%; border-radius: 16px;
+    height: calc(100dvh - 60px - 16px);
+  }
+  .hero-section .aic-msg--bot .aic-msg__b { max-width: 85%; }
+  .hero-section .aic-msg--user .aic-msg__b { max-width: 85%; }
+  .hero-section .aic__input { font-size: 16px !important; }
+  .aic-cap-field { font-size: 16px; }
+}
+
+/* ─── prefers-reduced-motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section .aic-msg,
+  .hero-section .aic-opt,
+  .aic-cap-panel,
+  .aic-typing-dots span,
+  .aic-stream-caret {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 /* ═══ END HERO SECTION STYLES ═══ */
 
