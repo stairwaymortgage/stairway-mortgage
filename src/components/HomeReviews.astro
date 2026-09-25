@@ -163,4 +163,131 @@ Counts updated periodically. Both platforms independently host their reviews —
 .marquee--right .marquee__track{animation:marquee-right 26s linear infinite}
 @keyframes marquee-left{0%{transform:translate(0)}to{transform:translate(-50%)}}
 @keyframes marquee-right{0%{transform:translate(-50%)}to{transform:translate(0)}}
+
+/* ─── Mobile: swipeable auto-scroll carousel ─── */
+@media(max-width:767px),(pointer:coarse){
+  .reviews-carousel{-webkit-mask-image:none;mask-image:none}
+  .reviews-carousel .marquee{-webkit-mask-image:none;mask-image:none;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;overscroll-behavior-x:contain;scrollbar-width:none}
+  .reviews-carousel .marquee::-webkit-scrollbar{display:none}
+  .reviews-carousel .marquee__track{animation:none!important}
+}
 </style>
+
+<script>
+(function(){
+  /* Reviews carousel — mobile time-based auto-scroll + native swipe
+     Desktop stays untouched (CSS keyframes). This JS only activates on
+     mobile (≤767px) or touch-primary (pointer:coarse) devices.
+
+     FIX v2:
+     - Cause #1 (self-pause loop): only user INPUT (touchstart, qualified
+       pointerdown, wheel) sets userActive. Scroll events from our own
+       scrollLeft writes are ignored. While userActive, 'scroll' events
+       debounce momentum; 2500ms after last scroll → userActive=false.
+     - Cause #2 (sub-pixel rounding): float accumulator (row.pos) drives
+       position. Never read scrollLeft back to compute the next frame.
+       On resume after user swipe, re-sync row.pos = row.el.scrollLeft.
+     - Cause #3 (loop start): visible defaults true, threshold 0, rAF
+       starts once unconditionally. */
+
+  if(typeof window==='undefined') return;
+  var mql=window.matchMedia('(max-width:767px),(pointer:coarse)');
+  if(!mql.matches) return;
+  var rmm=window.matchMedia('(prefers-reduced-motion:reduce)');
+  if(rmm.matches) return; /* swipe-only, no auto-scroll */
+
+  var carousel=document.querySelector('.reviews-carousel');
+  if(!carousel) return;
+  var marquees=carousel.querySelectorAll('.marquee');
+  if(marquees.length<2) return;
+
+  /*
+   * Current CSS speeds (px/s): row1 ≈ 120, row2 ≈ 101.
+   * 3× target: row1 = 360 px/s, row2 = 304 px/s.
+   */
+  var SPEEDS=[360,304];
+  var RESUME_MS=2500;
+  var rows=[];
+
+  marquees.forEach(function(m,i){
+    var track=m.querySelector('.marquee__track');
+    if(!track||!track.children.length) return;
+    var isLeft=m.classList.contains('marquee--left');
+    var halfCount=Math.floor(track.children.length/2);
+    var halfWidth=track.children[halfCount].offsetLeft;
+    if(halfWidth<=0) halfWidth=m.scrollWidth/2; /* fallback */
+
+    var initPos=isLeft?0:halfWidth;
+    m.scrollLeft=initPos;
+
+    var st={el:m,halfWidth:halfWidth,speed:SPEEDS[i]||360,
+            dir:isLeft?1:-1,pos:initPos,userActive:false,timer:null};
+
+    /* ── Only real user INPUT starts a pause ── */
+    function activate(){
+      st.userActive=true;
+      clearTimeout(st.timer);
+    }
+    function scheduleResume(){
+      clearTimeout(st.timer);
+      st.timer=setTimeout(function(){
+        st.userActive=false;
+        st.pos=m.scrollLeft; /* re-sync float pos from where user left off */
+      },RESUME_MS);
+    }
+
+    m.addEventListener('touchstart',activate,{passive:true});
+    m.addEventListener('pointerdown',function(e){
+      if(e.pointerType==='touch'||e.pointerType==='mouse') activate();
+    },{passive:true});
+    m.addEventListener('touchend',scheduleResume,{passive:true});
+    m.addEventListener('pointerup',function(e){
+      if(e.pointerType==='touch'||e.pointerType==='mouse') scheduleResume();
+    },{passive:true});
+
+    /* While userActive, momentum scroll events restart the resume timer.
+       When NOT userActive, scroll events (from our own writes) are ignored. */
+    m.addEventListener('scroll',function(){
+      if(st.userActive) scheduleResume();
+    },{passive:true});
+
+    rows.push(st);
+  });
+
+  /* ── Pause when section off-screen (saves battery) ── */
+  var visible=true;
+  new IntersectionObserver(function(e){
+    visible=e[0].isIntersecting;
+  },{threshold:0}).observe(carousel);
+
+  /* ── Pause when tab is hidden ── */
+  var tabVis=true;
+  document.addEventListener('visibilitychange',function(){
+    tabVis=!document.hidden;
+  });
+
+  /* ── Shared rAF loop (time-based, one loop for both rows) ── */
+  var last=0;
+  function tick(now){
+    if(rmm.matches) return; /* stop if user toggles reduced-motion */
+    if(last){
+      var dt=Math.min(now-last,100); /* cap to avoid jumps after tab-switch */
+      for(var i=0;i<rows.length;i++){
+        var r=rows[i];
+        if(r.userActive) continue;
+        if(!visible||!tabVis) continue;
+        /* Float accumulator — immune to sub-pixel rounding */
+        r.pos+=r.speed*r.dir*(dt/1000);
+        /* Seamless wrap using duplicated cards */
+        if(r.pos>=r.halfWidth) r.pos-=r.halfWidth;
+        else if(r.pos<0) r.pos+=r.halfWidth;
+        /* Write to DOM (never read back) */
+        r.el.scrollLeft=r.pos;
+      }
+    }
+    last=now;
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
