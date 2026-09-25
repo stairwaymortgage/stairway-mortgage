@@ -177,7 +177,19 @@ Counts updated periodically. Both platforms independently host their reviews —
 (function(){
   /* Reviews carousel — mobile time-based auto-scroll + native swipe
      Desktop stays untouched (CSS keyframes). This JS only activates on
-     mobile (≤767px) or touch-primary (pointer:coarse) devices. */
+     mobile (≤767px) or touch-primary (pointer:coarse) devices.
+
+     FIX v2:
+     - Cause #1 (self-pause loop): only user INPUT (touchstart, qualified
+       pointerdown, wheel) sets userActive. Scroll events from our own
+       scrollLeft writes are ignored. While userActive, 'scroll' events
+       debounce momentum; 2500ms after last scroll → userActive=false.
+     - Cause #2 (sub-pixel rounding): float accumulator (row.pos) drives
+       position. Never read scrollLeft back to compute the next frame.
+       On resume after user swipe, re-sync row.pos = row.el.scrollLeft.
+     - Cause #3 (loop start): visible defaults true, threshold 0, rAF
+       starts once unconditionally. */
+
   if(typeof window==='undefined') return;
   var mql=window.matchMedia('(max-width:767px),(pointer:coarse)');
   if(!mql.matches) return;
@@ -205,25 +217,38 @@ Counts updated periodically. Both platforms independently host their reviews —
     var halfWidth=track.children[halfCount].offsetLeft;
     if(halfWidth<=0) halfWidth=m.scrollWidth/2; /* fallback */
 
+    var initPos=isLeft?0:halfWidth;
+    m.scrollLeft=initPos;
+
     var st={el:m,halfWidth:halfWidth,speed:SPEEDS[i]||360,
-            dir:isLeft?1:-1,paused:false,timer:null};
+            dir:isLeft?1:-1,pos:initPos,userActive:false,timer:null};
 
-    /* Row 2 (right-scrolling): start midway so we can scroll backward */
-    if(!isLeft) m.scrollLeft=halfWidth;
-
-    /* ── Touch / pointer handlers (each row independent) ── */
-    function pause(){st.paused=true;clearTimeout(st.timer);}
+    /* ── Only real user INPUT starts a pause ── */
+    function activate(){
+      st.userActive=true;
+      clearTimeout(st.timer);
+    }
     function scheduleResume(){
       clearTimeout(st.timer);
-      st.timer=setTimeout(function(){st.paused=false;},RESUME_MS);
+      st.timer=setTimeout(function(){
+        st.userActive=false;
+        st.pos=m.scrollLeft; /* re-sync float pos from where user left off */
+      },RESUME_MS);
     }
-    m.addEventListener('touchstart',pause,{passive:true});
-    m.addEventListener('pointerdown',pause,{passive:true});
+
+    m.addEventListener('touchstart',activate,{passive:true});
+    m.addEventListener('pointerdown',function(e){
+      if(e.pointerType==='touch'||e.pointerType==='mouse') activate();
+    },{passive:true});
     m.addEventListener('touchend',scheduleResume,{passive:true});
-    m.addEventListener('pointerup',scheduleResume,{passive:true});
-    /* Debounce momentum scroll — restart resume timer while row is paused */
+    m.addEventListener('pointerup',function(e){
+      if(e.pointerType==='touch'||e.pointerType==='mouse') scheduleResume();
+    },{passive:true});
+
+    /* While userActive, momentum scroll events restart the resume timer.
+       When NOT userActive, scroll events (from our own writes) are ignored. */
     m.addEventListener('scroll',function(){
-      if(st.paused) scheduleResume();
+      if(st.userActive) scheduleResume();
     },{passive:true});
 
     rows.push(st);
@@ -249,14 +274,15 @@ Counts updated periodically. Both platforms independently host their reviews —
       var dt=Math.min(now-last,100); /* cap to avoid jumps after tab-switch */
       for(var i=0;i<rows.length;i++){
         var r=rows[i];
-        if(r.paused) continue;
-        /* Loop bounds — seamless wrap using duplicated cards */
-        if(r.el.scrollLeft>=r.halfWidth) r.el.scrollLeft-=r.halfWidth;
-        else if(r.dir===-1&&r.el.scrollLeft<=0) r.el.scrollLeft+=r.halfWidth;
-        /* Time-based scroll: px/s × seconds elapsed */
-        if(visible&&tabVis){
-          r.el.scrollLeft+=r.speed*r.dir*(dt/1000);
-        }
+        if(r.userActive) continue;
+        if(!visible||!tabVis) continue;
+        /* Float accumulator — immune to sub-pixel rounding */
+        r.pos+=r.speed*r.dir*(dt/1000);
+        /* Seamless wrap using duplicated cards */
+        if(r.pos>=r.halfWidth) r.pos-=r.halfWidth;
+        else if(r.pos<0) r.pos+=r.halfWidth;
+        /* Write to DOM (never read back) */
+        r.el.scrollLeft=r.pos;
       }
     }
     last=now;
