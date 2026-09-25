@@ -4,28 +4,135 @@ import HomeReviews from '../components/HomeReviews.astro';
 import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
 ---
 <Layout title="Stairway Mortgage — Leverage wisely. Grow wealthy. | Division of NEXA Mortgage LLC">
-   <section class="relative pt-10 lg:pt-14 pb-14 lg:pb-20 overflow-hidden"> <div class="absolute inset-0 pointer-events-none opacity-[0.022]" aria-hidden="true"> <svg width="100%" height="100%" preserveAspectRatio="none"><defs><pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M 64 0 L 0 0 0 64" fill="none" stroke="currentColor" stroke-width="1"></path></pattern></defs><rect width="100%" height="100%" fill="url(#grid)"></rect></svg> </div> <div class="container-page relative"> <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start"> <!-- Left: H1 + stats + trust signal --> <div class="lg:col-span-6 reveal pt-2 lg:pt-4"> <span class="eyebrow eyebrow-blue mb-7">A division of NEXA Mortgage</span> <h1 class="display-lg mb-3 max-w-2xl">
-First-Time Buyers. Investors. Legacy Builders.
-<span class="emph-blue">You belong here.</span> </h1> <p class="text-[var(--color-mute)] text-[15px] mb-7 font-medium"> <svg width="13" height="13" viewBox="0 0 24 24" fill="none" class="inline-block mr-1.5 -mt-0.5 align-middle opacity-70"> <path d="M12 22s-8-7.58-8-13a8 8 0 0116 0c0 5.42-8 13-8 13z" stroke="currentColor" stroke-width="1.5"></path> <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"></circle> </svg>
-Including buyers in <span data-personalize-city class="text-[var(--color-ink)] font-medium">your city</span> </p> <p class="lede max-w-xl mb-8">
-From first purchase to lasting legacy — we guide you through buying, renovating, leveraging equity, and planning retirement with the precision of a wealth strategist and the heart of a neighbor.
-</p> <div class="grid grid-cols-3 gap-6 pb-6 mb-7 border-b border-[var(--color-bone)]"> <div> <p class="font-display text-[2.25rem] lg:text-[2.75rem] text-[var(--color-ink)] leading-none mb-1.5 tracking-tight">$500M<span class="text-xl opacity-70 align-top">+</span></p> <p class="text-[11px] uppercase tracking-wider text-[var(--color-mute)]">closed loans</p> </div> <div> <p class="font-display text-[2.25rem] lg:text-[2.75rem] text-[var(--color-ink)] leading-none mb-1.5 tracking-tight">300<span class="text-xl opacity-70 align-top">+</span></p> <p class="text-[11px] uppercase tracking-wider text-[var(--color-mute)]">lenders compete</p> </div> <div> <p class="font-display text-[2.25rem] lg:text-[2.75rem] text-[var(--color-ink)] leading-none mb-1.5 tracking-tight">7<span class="text-xl opacity-70">×</span></p> <p class="text-[11px] uppercase tracking-wider text-[var(--color-mute)]">top producer</p> </div> </div> <!-- ─── Hero Reviews Badge (Batch 3) ─── --> <a href="#reviews" class="hero-reviews-badge group"> <span class="hero-reviews-badge__stars"> <svg viewBox="0 0 24 24" fill="currentColor" class="hero-reviews-badge__star"><path d="M12 2L14.85 8.62L22 9.41L16.5 14.32L18.06 21.5L12 17.77L5.94 21.5L7.5 14.32L2 9.41L9.15 8.62L12 2Z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor" class="hero-reviews-badge__star"><path d="M12 2L14.85 8.62L22 9.41L16.5 14.32L18.06 21.5L12 17.77L5.94 21.5L7.5 14.32L2 9.41L9.15 8.62L12 2Z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor" class="hero-reviews-badge__star"><path d="M12 2L14.85 8.62L22 9.41L16.5 14.32L18.06 21.5L12 17.77L5.94 21.5L7.5 14.32L2 9.41L9.15 8.62L12 2Z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor" class="hero-reviews-badge__star"><path d="M12 2L14.85 8.62L22 9.41L16.5 14.32L18.06 21.5L12 17.77L5.94 21.5L7.5 14.32L2 9.41L9.15 8.62L12 2Z"></path></svg><svg viewBox="0 0 24 24" fill="currentColor" class="hero-reviews-badge__star"><path d="M12 2L14.85 8.62L22 9.41L16.5 14.32L18.06 21.5L12 17.77L5.94 21.5L7.5 14.32L2 9.41L9.15 8.62L12 2Z"></path></svg> </span> <span class="hero-reviews-badge__rating">5.0</span> <span class="hero-reviews-badge__divider"></span> <span class="hero-reviews-badge__count"><strong>624</strong> reviews</span> <span class="hero-reviews-badge__on">on</span> <span class="hero-reviews-badge__platforms"> <span class="hero-reviews-badge__plat" style="--plat-accent:#4285F4"> Google + </span><span class="hero-reviews-badge__plat" style="--plat-accent:#00B5AD"> Birdeye </span><span class="hero-reviews-badge__plat" style="--plat-accent:#1877F2"> Facebook </span> </span> <svg class="hero-reviews-badge__arrow" width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> </a> <div class="flex items-center gap-3 mb-7"> <span class="relative inline-flex"> <span class="absolute inline-flex w-2 h-2 rounded-full bg-[var(--color-green)] opacity-80 animate-ping"></span> <span class="relative inline-flex w-2 h-2 rounded-full bg-[var(--color-green)]"></span> </span> <p class="text-[13.5px] text-[var(--color-ink-light)]"> <span class="font-medium" data-live-count>14</span> people in
-<span class="mono text-[var(--color-ink)]" data-personalize-city>your area</span>
-pre-approved this week
-</p> </div> <div class="flex items-center gap-4"> <div class="portrait-frame bg-[var(--color-paper-tint)] shrink-0"> <img src="/wp-content/uploads/2025/06/JIM-BLACKBURN-217x300.png" alt="Jim Blackburn" width="48" height="48" class="w-12 h-12 rounded-full object-cover" style="object-position:50% 20%" loading="eager" onerror="this.src='https://placehold.co/48x48/1a2332/white?text=JB';this.onerror=null"> </div> <div> <p class="font-display text-base leading-tight">Jim Blackburn</p> <p class="text-[12px] text-[var(--color-mute)] mono">NMLS #1072866 · Founder</p> </div> </div> </div> <!-- Right: AI Chat --> <div class="lg:col-span-6 reveal" style="transition-delay:120ms;"> <div class="aic" data-aic> <!-- ─── Ambient AI aurora glow (the "AI" feeling) ─── --> <div class="aic__aurora" aria-hidden="true"> <span class="aic__aurora-blob aic__aurora-blob--1"></span> <span class="aic__aurora-blob aic__aurora-blob--2"></span> <span class="aic__aurora-blob aic__aurora-blob--3"></span> </div> <!-- ─── HEADER: AI brand bar ─── --> <div class="aic__header"> <div class="aic__brand"> <span class="aic__sparkle" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none"> <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path> <path d="M19 3L19.7 5.3L22 6L19.7 6.7L19 9L18.3 6.7L16 6L18.3 5.3L19 3Z" fill="currentColor" opacity="0.6"></path> <path d="M5 17L5.5 18.5L7 19L5.5 19.5L5 21L4.5 19.5L3 19L4.5 18.5L5 17Z" fill="currentColor" opacity="0.4"></path> </svg> </span> <div class="aic__brand-text"> <p class="aic__title"> <span>AI mortgage assistant</span> <span class="aic__badge">AI</span> </p> <p class="aic__sub"> <span class="aic__live-dot"></span>
-Live · 300+ lenders connected
-</p> </div> </div> <button class="aic__reset" data-reset aria-label="Start new conversation" title="New conversation"> <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1015-6.7M21 4v5h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg> </button> </div> <!-- ─── BODY: welcome OR conversation ─── --> <div class="aic__body"> <!-- Welcome state --> <div class="aic__welcome" data-welcome> <p class="aic__greet">
-Hi <span class="aic__wave">👋</span> </p> <p class="aic__greet-line">
-I can answer mortgage questions, run numbers, and connect you to <span class="aic__greet-em">our team</span> when you're ready.
-</p> <p class="aic__greet-prompt">What can I help you figure out?</p> </div> <!-- Conversation state (hidden until first message) --> <div class="aic__convo" data-convo></div> </div> <!-- ─── COMPOSER ─── --> <div class="aic__composer"> <form class="aic__form" data-form> <div class="aic__input-frame"> <span class="aic__input-prefix" data-prefix>I want to figure out</span> <input type="text" class="aic__input" data-input placeholder="my monthly payment…" autocomplete="off" aria-label="Ask about mortgages"> <button type="button" class="aic__icon-btn" data-mic aria-label="Voice input"> <svg width="15" height="15" viewBox="0 0 24 24" fill="none"> <rect x="9" y="3" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.7"></rect> <path d="M5 11a7 7 0 0014 0M12 18v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path> </svg> </button> <button type="submit" class="aic__send" data-send aria-label="Send"> <svg width="15" height="15" viewBox="0 0 24 24" fill="none"> <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </button> </div> </form> <!-- Quick action chips (Better.com style) --> <div class="aic__chips" data-chips> <button class="aic__chip" data-q="What's my pre-approval amount and how fast can I get the letter?"> <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-Start pre-approval
-</button> <button class="aic__chip" data-q="How can I lower my mortgage rate or refinance?"> <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-Lower my rate
-</button> <button class="aic__chip" data-q="How much house can I afford?"> <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 6H9a3 3 0 000 6h6a3 3 0 010 6H7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-Affordability
-</button> <button class="aic__chip" data-q="Can I get cash out of my home with a refinance or HELOC?"> <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.7"></rect><circle cx="12" cy="12.5" r="2.5" stroke="currentColor" stroke-width="1.7"></circle></svg>
-Get cash out
-</button> </div> </div> <!-- ─── FOOTER: trust + escape ─── --> <div class="aic__footer"> <div class="aic__creds"> <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg> <span>Direct broker · Fannie Mae · Freddie Mac · 300+ lenders</span> </div> <a href="/contact-us/" class="aic__schedule-link">Talk to Our Team →</a> </div> </div> <script>
+   <section class="hero-section" id="hero-top" data-hero style="background: radial-gradient(ellipse 900px 500px at 50% 0%, #1A2352 0%, #0D1330 70%);">
+
+   <!-- ─── HERO IDLE: centered headline + subhead ─── -->
+   <div class="hero-idle">
+     <span class="hero-eyebrow">A DIVISION OF NEXA MORTGAGE</span>
+     <h1 class="hero-h1">First-Time Buyers. Investors.<br>Legacy Builders. <span class="hero-h1__em">You belong here.</span></h1>
+     <p class="hero-sub">Ask about buying, refinancing, or tapping equity. Get clear answers in seconds — then talk to our team when you're ready.</p>
+   </div>
+
+   <!-- ─── CHAT BOX (white card) ─── -->
+   <div class="aic" data-aic>
+     <!-- ─── Ambient AI aurora glow ─── -->
+     <div class="aic__aurora" aria-hidden="true">
+       <span class="aic__aurora-blob aic__aurora-blob--1"></span>
+       <span class="aic__aurora-blob aic__aurora-blob--2"></span>
+       <span class="aic__aurora-blob aic__aurora-blob--3"></span>
+     </div>
+
+     <!-- ─── HEADER: AI brand bar ─── -->
+     <div class="aic__header">
+       <div class="aic__brand">
+         <span class="aic__sparkle" aria-hidden="true">
+           <svg viewBox="0 0 24 24" fill="none">
+             <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path>
+             <path d="M19 3L19.7 5.3L22 6L19.7 6.7L19 9L18.3 6.7L16 6L18.3 5.3L19 3Z" fill="currentColor" opacity="0.6"></path>
+             <path d="M5 17L5.5 18.5L7 19L5.5 19.5L5 21L4.5 19.5L3 19L4.5 18.5L5 17Z" fill="currentColor" opacity="0.4"></path>
+           </svg>
+         </span>
+         <div class="aic__brand-text">
+           <p class="aic__title">
+             <span>Mortgage assistant</span>
+           </p>
+           <p class="aic__sub">
+             <span class="aic__live-dot"></span>
+             Live · 300+ lenders connected
+           </p>
+         </div>
+       </div>
+       <div class="aic__header-actions">
+         <button class="aic__mute" data-mute aria-label="Toggle sound">
+           <svg class="aic__mute-on" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+           <svg class="aic__mute-off" width="14" height="14" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></line><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></line></svg>
+         </button>
+         <button class="aic__reset" data-reset aria-label="Start new conversation" title="New conversation">
+           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1015-6.7M21 4v5h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+         </button>
+       </div>
+     </div>
+
+     <!-- ─── BODY: welcome OR conversation ─── -->
+     <div class="aic__body">
+       <!-- Welcome state -->
+       <div class="aic__welcome" data-welcome>
+         <p class="aic__greet">Hi <span class="aic__wave">👋</span> What can I help you figure out?</p>
+       </div>
+       <!-- Conversation state (hidden until first message) -->
+       <div class="aic__convo" data-convo></div>
+       <!-- Capture form panel (hidden until triggered) -->
+       <div class="aic__capture-panel" data-capture-panel style="display:none"></div>
+     </div>
+
+     <!-- ─── COMPOSER ─── -->
+     <div class="aic__composer">
+       <form class="aic__form" data-form>
+         <div class="aic__input-frame">
+           <span class="aic__input-prefix" data-prefix>I want to figure out</span>
+           <input type="text" class="aic__input" data-input placeholder="my monthly payment…" autocomplete="off" aria-label="Ask about mortgages">
+           <button type="button" class="aic__icon-btn" data-mic aria-label="Voice input">
+             <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+               <rect x="9" y="3" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.7"></rect>
+               <path d="M5 11a7 7 0 0014 0M12 18v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+             </svg>
+           </button>
+           <button type="submit" class="aic__send" data-send aria-label="Send">
+             <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+               <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+             </svg>
+           </button>
+         </div>
+       </form>
+
+       <!-- Quick action chips — 6 goals, 3×2 grid -->
+       <div class="aic__chips" data-chips>
+         <button class="aic__chip" data-q="I want to buy a home" data-goal="purchase">
+           <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8M5 9.5V20a1 1 0 001 1h12a1 1 0 001-1V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+           Purchase
+         </button>
+         <button class="aic__chip" data-q="I want to refinance my mortgage" data-goal="refinance">
+           <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+           Refinance
+         </button>
+         <button class="aic__chip" data-q="I want to tap into my home equity" data-goal="heloc">
+           <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.7"></rect><circle cx="12" cy="12.5" r="2.5" stroke="currentColor" stroke-width="1.7"></circle></svg>
+           HELOC
+         </button>
+         <button class="aic__chip" data-q="I want to build a new home" data-goal="construction">
+           <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M2 20h20M5 20V10l7-7 7 7v10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+           New Construction
+         </button>
+         <button class="aic__chip" data-q="I want to renovate or fix and flip" data-goal="renovation">
+           <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94L6.7 20.2a2 2 0 01-2.83-2.83l6.73-6.73A6 6 0 017.54 2.7l3.77 3.77" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+           Renovation
+         </button>
+         <button class="aic__chip" data-q="I want a reverse mortgage" data-goal="reverse">
+           <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"></circle><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+           Reverse Mortgage
+         </button>
+       </div>
+     </div>
+
+     <!-- ─── FOOTER: trust + escape ─── -->
+     <div class="aic__footer">
+       <div class="aic__creds">
+         <span class="aic__footer-dot">●</span>
+         <span>Live · Direct broker · Fannie Mae · Freddie Mac · 300+ lenders</span>
+         <span class="aic__footer-sep">·</span>
+         <span class="aic__footer-soft">No credit pull</span>
+       </div>
+       <a href="/contact-us/" class="aic__schedule-link">Talk to Our Team →</a>
+     </div>
+   </div>
+
+   <!-- ─── BELOW CHAT: Get Approved CTA ─── -->
+   <div class="hero-cta-block hero-idle">
+     <a href="/get-approved" class="hero-apply-btn">Get Approved Now →</a>
+     <p class="hero-apply-caption">Full application · credit review (hard pull) · fastest path to approval</p>
+   </div>
+
+   <script>
 (function() {
   const root = document.querySelector('[data-aic]');
   if (!root) return;
@@ -286,8 +393,113 @@ Get cash out
     return best;
   }
 
+  // ─── Sound system (Web Audio API, no files) ───
+  let aicAudioCtx = null;
+  let aicSoundEnabled = true;
+  try { aicSoundEnabled = localStorage.getItem('aic-sound') !== 'off'; } catch(e){}
+
+  const muteBtn = root.querySelector('[data-mute]');
+  const muteOnIcon = muteBtn?.querySelector('.aic__mute-on');
+  const muteOffIcon = muteBtn?.querySelector('.aic__mute-off');
+  function updateMuteUI() {
+    if (!muteBtn) return;
+    if (aicSoundEnabled) {
+      muteOnIcon.style.display = '';
+      muteOffIcon.style.display = 'none';
+    } else {
+      muteOnIcon.style.display = 'none';
+      muteOffIcon.style.display = '';
+    }
+  }
+  updateMuteUI();
+  muteBtn?.addEventListener('click', () => {
+    aicSoundEnabled = !aicSoundEnabled;
+    try { localStorage.setItem('aic-sound', aicSoundEnabled ? 'on' : 'off'); } catch(e){}
+    updateMuteUI();
+  });
+
+  function ensureAudioCtx() {
+    if (!aicAudioCtx) {
+      try { aicAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){}
+    }
+    if (aicAudioCtx && aicAudioCtx.state === 'suspended') {
+      try { aicAudioCtx.resume(); } catch(e){}
+    }
+  }
+
+  function playReplyChime() {
+    try {
+      if (!aicSoundEnabled || !aicAudioCtx) return;
+      var ctx = aicAudioCtx;
+      var now = ctx.currentTime;
+      function note(freq, start, gain) {
+        var osc = ctx.createOscillator();
+        var g = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        g.gain.setValueAtTime(0, start);
+        g.gain.linearRampToValueAtTime(gain, start + 0.006);
+        g.gain.exponentialRampToValueAtTime(0.0001, start + 0.22);
+        osc.connect(g); g.connect(ctx.destination);
+        osc.start(start); osc.stop(start + 0.35);
+      }
+      note(659.25, now, 0.07);
+      note(987.77, now + 0.07, 0.07);
+      // triangle shimmer
+      var osc2 = ctx.createOscillator();
+      var g2 = ctx.createGain();
+      osc2.type = 'triangle';
+      osc2.frequency.value = 1318.5;
+      g2.gain.setValueAtTime(0, now);
+      g2.gain.linearRampToValueAtTime(0.0175, now + 0.006);
+      g2.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      osc2.connect(g2); g2.connect(ctx.destination);
+      osc2.start(now); osc2.stop(now + 0.35);
+    } catch(e){}
+  }
+
+  function playSuccessChime() {
+    try {
+      if (!aicSoundEnabled || !aicAudioCtx) return;
+      var ctx = aicAudioCtx;
+      var now = ctx.currentTime;
+      [523.25, 659.25, 783.99].forEach(function(freq, i) {
+        var osc = ctx.createOscillator();
+        var g = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        var t = now + i * 0.08;
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(0.06, t + 0.006);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
+        osc.connect(g); g.connect(ctx.destination);
+        osc.start(t); osc.stop(t + 0.35);
+      });
+    } catch(e){}
+  }
+
+  // ─── Auto-scroll helper ───
+  let aicScrollRaf = 0;
+  function autoScroll(force) {
+    if (aicScrollRaf) return;
+    aicScrollRaf = requestAnimationFrame(() => {
+      aicScrollRaf = 0;
+      var gap = convo.scrollHeight - convo.scrollTop - convo.clientHeight;
+      if (force || gap < 80) {
+        convo.scrollTop = convo.scrollHeight;
+      }
+    });
+  }
+
+  // ─── Last sender tracking for bubble grouping ───
+  let lastSender = '';
+
+  // ─── Capture panel ref ───
+  const capturePanel = root.querySelector('[data-capture-panel]');
+
   // ─── Conversation transition ───
   function ensureConvoMode() {
+    document.querySelector('[data-hero]')?.classList.add('aic-chatting');
     if (conversationStarted) return;
     conversationStarted = true;
     welcome.classList.add('aic__welcome--gone');
@@ -298,11 +510,14 @@ Get cash out
     }, 250);
     prefix.classList.add('aic__input-prefix--small');
     input.placeholder = 'Ask anything else…';
+    ensureAudioCtx();
   }
 
   function resetConvo() {
+    document.querySelector('[data-hero]')?.classList.remove('aic-chatting');
     convo.innerHTML = '';
     conversationStarted = false;
+    lastSender = '';
     welcome.style.display = '';
     chipsWrap.style.display = '';
     welcome.classList.remove('aic__welcome--gone');
@@ -310,35 +525,67 @@ Get cash out
     prefix.classList.remove('aic__input-prefix--small');
     input.placeholder = placeholders[placeholderIdx];
     input.value = '';
+    // Hide capture panel
+    capturePanel.style.display = 'none';
+    capturePanel.innerHTML = '';
+    convo.style.display = '';
+    root.querySelector('.aic__composer').style.display = '';
   }
 
   // ─── In-chat lead capture ───
   const CHAT_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/32647e7f-dcc7-4545-bb0a-47d44d0744bc';
   let aicCaptureShown = false;
+  let aicCaptureContact = null; // stored contact info for re-extract after bonus Qs
+  let aicPostCaptureUserAnswers = 0; // count USER turns after capture
+  let aicReExtractFired = false; // guard: fire at most once per session
+  let aicUserDeclinedBonus = false; // user said "No thanks" to bonus Qs
 
   function showCaptureForm(intentSummary) {
     if (aicCaptureShown) return;
     aicCaptureShown = true;
 
-    const inp = 'width:100%;box-sizing:border-box;padding:13px 14px;margin:0;border:1px solid rgba(255,255,255,.25);border-radius:10px;background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-family:inherit;outline:none;display:block;';
-    const m = document.createElement('div');
-    m.className = 'aic-msg aic-msg--bot';
-    m.innerHTML =
-      '<div class="aic-msg__b" style="max-width:340px">' +
-        '<div style="display:flex;flex-direction:column;gap:10px;padding:2px 0">' +
-          '<p style="font-size:14.5px;line-height:1.45;margin:0 0 2px;color:#fff">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
-          '<input data-cap-name type="text" placeholder="Your name" autocomplete="name" style="' + inp + '">' +
-          '<input data-cap-phone type="tel" placeholder="Phone number" autocomplete="tel" style="' + inp + '">' +
-          '<input data-cap-email type="email" placeholder="Email address" autocomplete="email" style="' + inp + '">' +
-          '<input data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
-          '<button data-cap-send style="width:100%;box-sizing:border-box;padding:13px 16px;margin-top:2px;border:none;border-radius:10px;background:#1845D6;color:#fff;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;display:block">See My Options</button>' +
-          '<p data-cap-note style="font-size:12.5px;color:#ff9b9b;margin:0;min-height:0"></p>' +
-        '</div>' +
-      '</div>';
-    convo.appendChild(m);
-    convo.scrollTop = convo.scrollHeight;
+    // Fade out conversation + composer
+    convo.style.opacity = '0';
+    convo.style.transition = 'opacity 180ms ease';
+    root.querySelector('.aic__composer').style.opacity = '0';
+    root.querySelector('.aic__composer').style.transition = 'opacity 180ms ease';
 
-    m.querySelector('[data-cap-send]').addEventListener('click', () => submitCapture(m, intentSummary));
+    setTimeout(() => {
+      convo.style.display = 'none';
+      root.querySelector('.aic__composer').style.display = 'none';
+
+      capturePanel.style.display = '';
+      capturePanel.innerHTML =
+        '<div class="aic-cap-panel">' +
+          '<button class="aic-cap-back" data-cap-back>&larr; Back to chat</button>' +
+          '<div class="aic-cap-inner">' +
+            '<span class="aic-cap-eyebrow">ALMOST DONE</span>' +
+            '<h3 class="aic-cap-title">Where should we send your options?</h3>' +
+            '<p class="aic-cap-sub">Our team will reach out &mdash; no credit pull, no obligation.</p>' +
+            '<div class="aic-cap-fields">' +
+              '<label class="aic-cap-label">Your name<input data-cap-name type="text" class="aic-cap-field" placeholder="Full name" autocomplete="name"></label>' +
+              '<label class="aic-cap-label">Phone<input data-cap-phone type="tel" class="aic-cap-field" placeholder="(555) 555-5555" autocomplete="tel"></label>' +
+              '<label class="aic-cap-label">Email<input data-cap-email type="email" class="aic-cap-field" placeholder="you@example.com" autocomplete="email"></label>' +
+              '<input data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
+            '</div>' +
+            '<button data-cap-send class="aic-cap-submit">See My Options</button>' +
+            '<p data-cap-note class="aic-cap-note"></p>' +
+            '<p class="aic-cap-disclaimer">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
+          '</div>' +
+        '</div>';
+      requestAnimationFrame(() => { capturePanel.querySelector('.aic-cap-panel').classList.add('aic-cap-panel--in'); });
+
+      capturePanel.querySelector('[data-cap-back]').addEventListener('click', () => {
+        capturePanel.style.display = 'none';
+        convo.style.display = '';
+        convo.style.opacity = '1';
+        root.querySelector('.aic__composer').style.display = '';
+        root.querySelector('.aic__composer').style.opacity = '1';
+        autoScroll(true);
+      });
+
+      capturePanel.querySelector('[data-cap-send]').addEventListener('click', () => submitCapture(capturePanel, intentSummary));
+    }, 180);
   }
 
   async function submitCapture(formEl, intentSummary) {
@@ -390,9 +637,29 @@ Get cash out
         body: JSON.stringify(payload),
         keepalive: true,
       });
-      const bubble = formEl.querySelector('.aic-msg__b') || formEl.querySelector('.aicf-msg__b');
-      if (bubble) bubble.innerHTML = '<p style="font-size:14.5px;line-height:1.45;margin:0;color:#fff">Thanks, ' + esc(name) + ' — our team will reach out shortly.</p>';
+      // Store contact for post-capture re-extract
+      aicCaptureContact = payload.contact;
+      aicPostCaptureUserAnswers = 0;
+      aicReExtractFired = false;
+      aicUserDeclinedBonus = false;
+      playSuccessChime();
+      // Show success state in capture panel
+      var capInner = formEl.querySelector('.aic-cap-inner') || formEl.querySelector('.aic-msg__b') || formEl.querySelector('.aicf-msg__b');
+      if (capInner) {
+        var firstName = name.split(/\s+/)[0];
+        capInner.innerHTML = '<div class="aic-cap-success"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="#22c55e" stroke-width="2.5"/><path d="M15 24l6 6 12-12" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><h3 class="aic-cap-title" style="margin-top:16px">You\'re all set, ' + esc(firstName) + '!</h3><p class="aic-cap-sub">Our team will reach out shortly.</p></div>';
+      }
       if (window.SWMemory) window.SWMemory.track('ai_chat_lead_submitted', { intent: intentSummary });
+      // After 1.2s fade back to chat
+      setTimeout(function() {
+        capturePanel.style.display = 'none';
+        capturePanel.innerHTML = '';
+        convo.style.display = '';
+        convo.style.opacity = '1';
+        root.querySelector('.aic__composer').style.display = '';
+        root.querySelector('.aic__composer').style.opacity = '1';
+        autoScroll(true);
+      }, 1200);
     } catch (e) {
       note.textContent = 'Something went wrong — please call (954) 993-1625.';
       btn.disabled = false;
@@ -400,22 +667,80 @@ Get cash out
     }
   }
 
+  // ─── Post-capture re-extract helper (fires at most once) ───
+  function firePostCaptureExtract() {
+    if (aicReExtractFired || !aicCaptureContact) return;
+    aicReExtractFired = true;
+    var attr2 = {};
+    try { if (window.SWMemory && window.SWMemory.get) attr2 = window.SWMemory.get() || {}; } catch(e){}
+    var body = JSON.stringify({
+      action: 'extract',
+      history: aicHistory,
+      contact: aicCaptureContact,
+      attribution: { session_id: attr2.session_id||'', utm_source: attr2.utm_source||'', utm_medium: attr2.utm_medium||'', utm_campaign: attr2.utm_campaign||'', city: attr2.city||attr2.region||'', persona: attr2.persona||'' },
+    });
+    fetch('/api/chat/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: body,
+      keepalive: true,
+    }).catch(function(){});
+  }
+
+  // ─── Fallback: fire re-extract on 60s idle or tab hidden ───
+  var postCaptureIdleTimer = null;
+  function startPostCaptureIdleTimer() {
+    if (postCaptureIdleTimer) clearTimeout(postCaptureIdleTimer);
+    if (!aicCaptureContact || aicReExtractFired || aicUserDeclinedBonus || aicPostCaptureUserAnswers < 1) return;
+    postCaptureIdleTimer = setTimeout(function() { firePostCaptureExtract(); }, 60000);
+  }
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden' && aicCaptureContact && !aicReExtractFired && !aicUserDeclinedBonus && aicPostCaptureUserAnswers >= 1) {
+      // Use sendBeacon for reliability on tab close
+      var attr2 = {};
+      try { if (window.SWMemory && window.SWMemory.get) attr2 = window.SWMemory.get() || {}; } catch(e){}
+      var body = JSON.stringify({
+        action: 'extract',
+        history: aicHistory,
+        contact: aicCaptureContact,
+        attribution: { session_id: attr2.session_id||'', utm_source: attr2.utm_source||'', utm_medium: attr2.utm_medium||'', utm_campaign: attr2.utm_campaign||'', city: attr2.city||attr2.region||'', persona: attr2.persona||'' },
+      });
+      var sent = navigator.sendBeacon('/api/chat/', new Blob([body], { type: 'application/json' }));
+      if (sent) aicReExtractFired = true;
+    }
+  });
+
   // ─── Render messages ───
   function addMsg(html, who) {
+    // Sender-change spacing
+    var senderChanged = (lastSender !== who);
+    lastSender = who;
+
     const m = document.createElement('div');
-    m.className = `aic-msg aic-msg--${who}`;
-    m.innerHTML = `<div class="aic-msg__b">${html}</div>`;
+    m.className = 'aic-msg aic-msg--' + who;
+    if (senderChanged) m.classList.add('aic-msg--first');
+    m.innerHTML = '<div class="aic-msg__b">' + html + '</div>';
+    // Enter animation
+    m.style.opacity = '0';
+    m.style.transform = who === 'user' ? 'translateY(6px) scale(.96)' : 'translateY(6px)';
+    if (who === 'user') m.style.transformOrigin = 'bottom right';
     convo.appendChild(m);
-    convo.scrollTop = convo.scrollHeight;
+    requestAnimationFrame(() => {
+      m.style.transition = 'opacity 200ms cubic-bezier(.2,.8,.2,1), transform 200ms cubic-bezier(.2,.8,.2,1)';
+      m.style.opacity = '1';
+      m.style.transform = 'translateY(0) scale(1)';
+    });
+    autoScroll(true);
     return m;
   }
 
   function addTyping() {
+    lastSender = 'bot';
     const m = document.createElement('div');
-    m.className = 'aic-msg aic-msg--bot aic-msg--typing';
-    m.innerHTML = '<div class="aic-msg__b"><span style="opacity:.75;margin-right:8px;font-size:14px">Thinking…</span><span class="aic-typing"><span></span><span></span><span></span></span></div>';
+    m.className = 'aic-msg aic-msg--bot aic-msg--typing aic-msg--first';
+    m.innerHTML = '<div class="aic-msg__b"><span class="aic-typing-dots"><span></span><span></span><span></span></span></div>';
     convo.appendChild(m);
-    convo.scrollTop = convo.scrollHeight;
+    autoScroll(true);
     return m;
   }
 
@@ -431,7 +756,7 @@ Get cash out
       wrap.appendChild(b);
     });
     convo.appendChild(wrap);
-    convo.scrollTop = convo.scrollHeight;
+    autoScroll(true);
   }
 
   function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -444,13 +769,84 @@ Get cash out
     // markdown links [label](/path) -> anchor (only allow internal / and http(s))
     safe = safe.replace(/\[([^\]]+)\]\((\/[^)\s]*|https?:\/\/[^)\s]+)\)/g,
       function (m, label, href) {
-        return '<a href="' + href + '" style="color:#7ab0ff;text-decoration:underline">' + label + '</a>';
+        return '<a href="' + href + '" style="color:#1845D6;text-decoration:underline">' + label + '</a>';
       });
     // bold **text**
     safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     // newlines
     safe = safe.replace(/\n/g, '<br>');
     return safe;
+  }
+
+  // ─── Numbered-option buttons ───
+  function renderNumberedOptions(text, bubble) {
+    if (!bubble) return;
+    const lines = text.split('\n');
+    const optLines = [];
+    for (let i = lines.length - 1; i >= 0; i--) {
+      if (/^\d+\.\s+.+/.test(lines[i].trim())) optLines.unshift(i);
+      else break;
+    }
+    if (optLines.length < 2) return;
+    // Remove numbered lines from visible text; make last line bold
+    const b = bubble.querySelector('.aic-msg__b') || bubble;
+    const cleanLines = lines.filter((_, i) => !optLines.includes(i));
+    // Bold the last non-empty line before options
+    for (var li = cleanLines.length - 1; li >= 0; li--) {
+      if (cleanLines[li].trim()) {
+        if (!/^\*\*/.test(cleanLines[li].trim())) cleanLines[li] = '**' + cleanLines[li].trim() + '**';
+        break;
+      }
+    }
+    b.innerHTML = renderMsg(cleanLines.join('\n'));
+    // Disable older option sets
+    convo.querySelectorAll('.aic-opts:not(.aic-opt--disabled)').forEach(el => {
+      el.classList.add('aic-opt--disabled');
+      el.querySelectorAll('.aic-opt').forEach(b => {
+        b.style.opacity = '0.4';
+        b.style.pointerEvents = 'none';
+        b.style.background = '#f9fafb';
+        b.style.borderColor = '#e5e7eb';
+        b.style.color = '#6b7280';
+        b.style.cursor = 'default';
+      });
+    });
+    // Create option pills
+    const wrap = document.createElement('div');
+    wrap.className = 'aic-opts';
+    optLines.forEach((idx, oi) => {
+      const optText = lines[idx].trim().replace(/^\d+\.\s+/, '');
+      const btn = document.createElement('button');
+      btn.className = 'aic-opt';
+      btn.textContent = optText;
+      // Stagger enter animation
+      btn.style.opacity = '0';
+      btn.style.transform = 'translateY(8px)';
+      setTimeout(() => {
+        btn.style.transition = 'opacity 180ms ease, transform 180ms ease';
+        btn.style.opacity = '1';
+        btn.style.transform = 'translateY(0)';
+      }, 40 * oi);
+      btn.addEventListener('click', () => {
+        if (wrap.classList.contains('aic-opt--disabled')) return;
+        // Brief blue fill on tapped pill
+        btn.style.background = '#0A6CFF';
+        btn.style.color = '#fff';
+        btn.style.borderColor = '#0A6CFF';
+        // Fade out + collapse entire row
+        setTimeout(() => {
+          wrap.style.transition = 'opacity 150ms ease, max-height 150ms ease';
+          wrap.style.opacity = '0';
+          wrap.style.maxHeight = '0';
+          wrap.style.overflow = 'hidden';
+          setTimeout(() => { wrap.remove(); }, 150);
+        }, 80);
+        send(optText);
+      });
+      wrap.appendChild(btn);
+    });
+    bubble.appendChild(wrap);
+    autoScroll(true);
   }
 
   // ─── Send handler ───
@@ -517,6 +913,16 @@ Get cash out
 
   async function send(text) {
     if (!text.trim()) return;
+    // ─── Number shortcut: "3" → pick option 3 from the latest options ───
+    var numMatch = text.trim().match(/^(\d)$/);
+    if (numMatch) {
+      var activeOpts = convo.querySelector('.aic-opts:not(.aic-opt--disabled)');
+      if (activeOpts) {
+        var btns = activeOpts.querySelectorAll('.aic-opt');
+        var idx = parseInt(numMatch[1]) - 1;
+        if (btns[idx]) { text = btns[idx].textContent.trim(); }
+      }
+    }
     ensureConvoMode();
     convo.querySelectorAll('.aic-replies').forEach(r => r.remove());
     addMsg(esc(text), 'user');
@@ -535,22 +941,80 @@ Get cash out
     // record user turn
     aicHistory.push({ role: 'user', content: text });
 
+    // ─── Post-capture: detect "No thanks" from user, start idle timer ───
+    if (aicCaptureShown && aicCaptureContact && !aicReExtractFired) {
+      if (/^no\s*thanks?$/i.test(text.trim())) {
+        aicUserDeclinedBonus = true;
+      }
+      startPostCaptureIdleTimer();
+    }
+
     const t = addTyping();
     let bubble = null;
     let acc = '';
+    let revealed = '';
+    let streamDone = false;
+    let replyChimePlayed = false;
+    let revealRaf = 0;
+
+    function drainRevealBuffer() {
+      revealRaf = 0;
+      if (revealed === acc && streamDone) return;
+      // Adaptive rate: reveal enough to never lag >300ms behind received
+      var charsToReveal = Math.max(1, Math.ceil((acc.length - revealed.length) * 0.35));
+      revealed = acc.slice(0, revealed.length + charsToReveal);
+      var b = bubble ? (bubble.querySelector('.aic-msg__b') || bubble) : null;
+      if (b) {
+        var caretHtml = (revealed.length < acc.length || !streamDone) ? '<span class="aic-stream-caret"></span>' : '';
+        b.innerHTML = renderMsg(revealed) + caretHtml;
+        autoScroll(false);
+      }
+      if (revealed.length < acc.length || !streamDone) {
+        revealRaf = requestAnimationFrame(drainRevealBuffer);
+      }
+    }
+
     try {
       const { capture } = await streamChat(
         { message: text, history: aicHistory.slice(0, -1) },
         (piece) => {
-          if (!bubble) { t.remove(); bubble = addMsg('', 'bot'); }
+          if (!bubble) {
+            t.remove();
+            bubble = addMsg('', 'bot');
+            // Play reply chime once on first chunk
+            if (!replyChimePlayed) { replyChimePlayed = true; playReplyChime(); }
+          }
           acc += piece;
-          const b = bubble.querySelector('.aic-msg__b') || bubble;
-          b.innerHTML = renderMsg(acc);
-          convo.scrollTop = convo.scrollHeight;
+          if (!revealRaf) revealRaf = requestAnimationFrame(drainRevealBuffer);
         }
       );
+      streamDone = true;
+      // Flush remaining text instantly
+      if (bubble) {
+        if (revealRaf) { cancelAnimationFrame(revealRaf); revealRaf = 0; }
+        revealed = acc;
+        var bf = bubble.querySelector('.aic-msg__b') || bubble;
+        bf.innerHTML = renderMsg(acc);
+        autoScroll(false);
+      }
       if (!bubble) { t.remove(); addMsg("I'm here — what would you like to know?", 'bot'); }
       aicHistory.push({ role: 'assistant', content: acc });
+      renderNumberedOptions(acc, bubble);
+
+      // ─── Post-capture re-extract: fire once after 3rd bonus answer ───
+      if (aicCaptureContact && aicCaptureShown && !aicReExtractFired && !aicUserDeclinedBonus) {
+        // This runs after each assistant reply; the USER answer was already pushed
+        // Count user messages AFTER capture by counting user turns after the capture form
+        aicPostCaptureUserAnswers++;
+        // Fire on the 3rd user answer (after assistant processes B3 down-payment)
+        // aicPostCaptureUserAnswers: 1="Sure", 2=first-time, 3=occupancy... but
+        // the counting happens per assistant reply which follows each user answer.
+        // User answers: "Sure"(1), first-time(2), occupancy(3), down-payment(4)
+        // We fire after the 4th user answer (which includes "Sure" + 3 bonus answers)
+        if (aicPostCaptureUserAnswers >= 4) {
+          firePostCaptureExtract();
+        }
+      }
 
       if (capture) {
         if (window.SWMemory) {
@@ -573,7 +1037,11 @@ Get cash out
 
   chipsWrap.addEventListener('click', (e) => {
     const c = e.target.closest('.aic__chip');
-    if (c && c.dataset.q) send(c.dataset.q);
+    if (c && c.dataset.q) {
+      ensureAudioCtx();
+      if (c.dataset.goal) window.__aicGoal = c.dataset.goal;
+      send(c.dataset.q);
+    }
   });
 
   convo.addEventListener('click', (e) => {
@@ -632,7 +1100,10 @@ Get cash out
   input.addEventListener('focus', () => { if (!conversationStarted) prefix.classList.add('aic__input-prefix--active'); });
   input.addEventListener('blur', () => { if (!input.value) prefix.classList.remove('aic__input-prefix--active'); });
 })();
-</script>  </div> </div> </div> </section>  <LenderLogoMarquee />  <section class="journey-section" id="journey"> <div class="journey-aurora" aria-hidden="true"> <span class="journey-aurora__blob journey-aurora__blob--1"></span> <span class="journey-aurora__blob journey-aurora__blob--2"></span> <span class="journey-aurora__blob journey-aurora__blob--3"></span> </div> <div class="container-page relative"> <div class="journey-header reveal"> <span class="eyebrow eyebrow-on-dark mb-3">The Stairway Journey™</span> <h2 class="display-md mt-3 mb-4 text-[var(--color-paper)]">
+</script>
+   </section>
+
+   <LenderLogoMarquee />  <section class="journey-section" id="journey"> <div class="journey-aurora" aria-hidden="true"> <span class="journey-aurora__blob journey-aurora__blob--1"></span> <span class="journey-aurora__blob journey-aurora__blob--2"></span> <span class="journey-aurora__blob journey-aurora__blob--3"></span> </div> <div class="container-page relative"> <div class="journey-header reveal"> <span class="eyebrow eyebrow-on-dark mb-3">The Stairway Journey™</span> <h2 class="display-md mt-3 mb-4 text-[var(--color-paper)]">
 Pick the stage you're in. <span class="emph-paper">We'll show you exactly what's possible.</span> </h2> <div class="journey-live-pill"> <span class="journey-live-pill__pulse"></span> <span><span data-explore-count>184</span> people exploring their stage right now</span> </div> </div> <div class="journey-grid"> <button class="jcard" data-persona="smart-steward" data-module="smart-steward" data-idx="0" style="--card-color:#7B61FF; --card-gradient:linear-gradient(135deg, #5B47C8 0%, #2A1B6B 100%); --card-delay:0ms; --photo-url:url(https://images.pexels.com/photos/4348078/pexels-photo-4348078.jpeg?auto=compress&#38;cs=tinysrgb&#38;w=800);" aria-label="Open Smart Steward interactive guide"> <div class="jcard__photo"></div> <div class="jcard__overlay"></div> <div class="jcard__accent"></div> <div class="jcard__top"> <span class="jcard__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3L2 8l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 10.5v4c0 1.5 2.7 3 6 3s6-1.5 6-3v-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span> <span class="jcard__pulse" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none"> <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path> </svg> </span> </div> <div class="jcard__body"> <span class="jcard__num">01</span> <h3 class="jcard__title">Smart Steward</h3> <div class="jcard__taglines" data-taglines="[&#34;Still building credit?&#34;,&#34;On the road to your first place?&#34;,&#34;Want a 4-year head start?&#34;]"> <p class="jcard__tagline active">Plan early. Build the foundation.</p> </div> </div> <div class="jcard__bottom"> <div class="jcard__ticker" data-tickers="[&#34;Daniel, 22 · started at 720 FICO&#34;,&#34;Maya, 19 · authorized user → +85 pts&#34;,&#34;Alex, 24 · 580 → 740 in 8 months&#34;]"> <span class="jcard__ticker-dot"></span> <span class="jcard__ticker-text">Daniel, 22 · started at 720 FICO</span> </div> <span class="jcard__cta"> <span class="jcard__cta-label">I'm here</span> <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> </div> </button><button class="jcard" data-persona="first-time-buyer" data-module="first-time-buyer" data-idx="1" style="--card-color:#1845D6; --card-gradient:linear-gradient(135deg, #1845D6 0%, #0A1F6B 100%); --card-delay:70ms; --photo-url:url(https://images.pexels.com/photos/7641834/pexels-photo-7641834.jpeg?auto=compress&#38;cs=tinysrgb&#38;w=800);" aria-label="Open First-Time Buyer interactive guide"> <div class="jcard__photo"></div> <div class="jcard__overlay"></div> <div class="jcard__accent"></div> <div class="jcard__top"> <span class="jcard__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M13 13l8 8M17 17l2-2M19 19l2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span> <span class="jcard__pulse" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none"> <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path> </svg> </span> </div> <div class="jcard__body"> <span class="jcard__num">02</span> <h3 class="jcard__title">First-Time Buyer</h3> <div class="jcard__taglines" data-taglines="[&#34;Ready to stop renting?&#34;,&#34;First home — where do you start?&#34;,&#34;What can you actually afford?&#34;]"> <p class="jcard__tagline active">Ready to stop renting.</p> </div> </div> <div class="jcard__bottom"> <div class="jcard__ticker" data-tickers="[&#34;Maria &#38; James · approved $385K · Tampa&#34;,&#34;Sarah, 28 · closed in 21 days&#34;,&#34;Marcus · FHA at 6.10% · Miami&#34;]"> <span class="jcard__ticker-dot"></span> <span class="jcard__ticker-text">Maria &amp; James · approved $385K · Tampa</span> </div> <span class="jcard__cta"> <span class="jcard__cta-label">I'm here</span> <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> </div> </button><button class="jcard" data-persona="homeowner" data-module="homeowner" data-idx="2" style="--card-color:#2E9E2E; --card-gradient:linear-gradient(135deg, #2E9E2E 0%, #14401A 100%); --card-delay:140ms; --photo-url:url(https://images.pexels.com/photos/7902904/pexels-photo-7902904.jpeg?auto=compress&#38;cs=tinysrgb&#38;w=800);" aria-label="Open Homeowner interactive guide"> <div class="jcard__photo"></div> <div class="jcard__overlay"></div> <div class="jcard__accent"></div> <div class="jcard__top"> <span class="jcard__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5 9.5V20a1 1 0 001 1h12a1 1 0 001-1V9.5" stroke="currentColor" stroke-width="1.6"/></svg></span> <span class="jcard__pulse" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none"> <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path> </svg> </span> </div> <div class="jcard__body"> <span class="jcard__num">03</span> <h3 class="jcard__title">Homeowner</h3> <div class="jcard__taglines" data-taglines="[&#34;Have equity, untapped?&#34;,&#34;Sitting on more value than you think?&#34;,&#34;Time to make your home work?&#34;]"> <p class="jcard__tagline active">Put your equity to work.</p> </div> </div> <div class="jcard__bottom"> <div class="jcard__ticker" data-tickers="[&#34;Sarah unlocked $187K equity&#34;,&#34;The Chens · refi saved $410/mo&#34;,&#34;Robert · kitchen reno + cash out&#34;]"> <span class="jcard__ticker-dot"></span> <span class="jcard__ticker-text">Sarah unlocked $187K equity</span> </div> <span class="jcard__cta"> <span class="jcard__cta-label">I'm here</span> <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> </div> </button><button class="jcard" data-persona="senior-55" data-module="senior-55" data-idx="3" style="--card-color:#D4A547; --card-gradient:linear-gradient(135deg, #C89A40 0%, #4A3815 100%); --card-delay:210ms; --photo-url:url(https://images.pexels.com/photos/2050994/pexels-photo-2050994.jpeg?auto=compress&#38;cs=tinysrgb&#38;w=800);" aria-label="Open Senior 55+ interactive guide"> <div class="jcard__photo"></div> <div class="jcard__overlay"></div> <div class="jcard__accent"></div> <div class="jcard__top"> <span class="jcard__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span> <span class="jcard__pulse" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none"> <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path> </svg> </span> </div> <div class="jcard__body"> <span class="jcard__num">04</span> <h3 class="jcard__title">Senior 55+</h3> <div class="jcard__taglines" data-taglines="[&#34;Eliminate your mortgage payment?&#34;,&#34;Downsize and pocket the difference?&#34;,&#34;Two doors at 55+&#34;]"> <p class="jcard__tagline active">Turn equity into income.</p> </div> </div> <div class="jcard__bottom"> <div class="jcard__ticker" data-tickers="[&#34;John, 67 · eliminated $2,400/mo&#34;,&#34;Linda, 62 · pocketed $94K downsizing&#34;,&#34;The Garcías · reverse + travel&#34;]"> <span class="jcard__ticker-dot"></span> <span class="jcard__ticker-text">John, 67 · eliminated $2,400/mo</span> </div> <span class="jcard__cta"> <span class="jcard__cta-label">I'm here</span> <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> </div> </button><button class="jcard" data-persona="first-investor" data-module="first-investor" data-idx="4" style="--card-color:#0EA5A4; --card-gradient:linear-gradient(135deg, #0EA5A4 0%, #073C3B 100%); --card-delay:280ms; --photo-url:url(https://images.pexels.com/photos/7972568/pexels-photo-7972568.jpeg?auto=compress&#38;cs=tinysrgb&#38;w=800);" aria-label="Open First-Time Investor interactive guide"> <div class="jcard__photo"></div> <div class="jcard__overlay"></div> <div class="jcard__accent"></div> <div class="jcard__top"> <span class="jcard__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8M21 7v6M21 7h-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span> <span class="jcard__pulse" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none"> <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path> </svg> </span> </div> <div class="jcard__body"> <span class="jcard__num">05</span> <h3 class="jcard__title">First-Time Investor</h3> <div class="jcard__taglines" data-taglines="[&#34;Curious about real estate income?&#34;,&#34;See $100K control $400K?&#34;,&#34;Your first rental, demystified&#34;]"> <p class="jcard__tagline active">Your first rental, done right.</p> </div> </div> <div class="jcard__bottom"> <div class="jcard__ticker" data-tickers="[&#34;Alex · 1st rental · $1,250/mo cashflow&#34;,&#34;Priya · DSCR loan at 7.0% · Houston&#34;,&#34;The Walkers · 4-plex in Phoenix&#34;]"> <span class="jcard__ticker-dot"></span> <span class="jcard__ticker-text">Alex · 1st rental · $1,250/mo cashflow</span> </div> <span class="jcard__cta"> <span class="jcard__cta-label">I'm here</span> <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> </div> </button><button class="jcard" data-persona="active-investor" data-module="active-investor" data-idx="5" style="--card-color:#8B2C2C; --card-gradient:linear-gradient(135deg, #8B2C2C 0%, #3B0F0F 100%); --card-delay:350ms; --photo-url:url(https://images.pexels.com/photos/5439379/pexels-photo-5439379.jpeg?auto=compress&#38;cs=tinysrgb&#38;w=800);" aria-label="Open Active Investor interactive guide"> <div class="jcard__photo"></div> <div class="jcard__overlay"></div> <div class="jcard__accent"></div> <div class="jcard__top"> <span class="jcard__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M14 4l4 4-4 4M10 12l-4 4 4 4M18 8H8M16 16H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span> <span class="jcard__pulse" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none"> <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path> </svg> </span> </div> <div class="jcard__body"> <span class="jcard__num">06</span> <h3 class="jcard__title">Active Investor</h3> <div class="jcard__taglines" data-taglines="[&#34;Flip math in 30 seconds?&#34;,&#34;Need a fast pre-approval letter?&#34;,&#34;Fund purchase + 100% of rehab&#34;]"> <p class="jcard__tagline active">Flip and scale faster.</p> </div> </div> <div class="jcard__bottom"> <div class="jcard__ticker" data-tickers="[&#34;Carlos · funded purchase + rehab Day 3&#34;,&#34;Tia · 4 flips this year · $190K net&#34;,&#34;The Park brothers · 12-unit BRRRR&#34;]"> <span class="jcard__ticker-dot"></span> <span class="jcard__ticker-text">Carlos · funded purchase + rehab Day 3</span> </div> <span class="jcard__cta"> <span class="jcard__cta-label">I'm here</span> <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> </div> </button><button class="jcard" data-persona="passive-investor" data-module="passive-investor" data-idx="6" style="--card-color:#64748B; --card-gradient:linear-gradient(135deg, #475569 0%, #1E2632 100%); --card-delay:420ms; --photo-url:url(https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&#38;cs=tinysrgb&#38;w=800);" aria-label="Open Passive Investor interactive guide"> <div class="jcard__photo"></div> <div class="jcard__overlay"></div> <div class="jcard__accent"></div> <div class="jcard__top"> <span class="jcard__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span> <span class="jcard__pulse" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none"> <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path> </svg> </span> </div> <div class="jcard__body"> <span class="jcard__num">07</span> <h3 class="jcard__title">Passive Investor</h3> <div class="jcard__taglines" data-taglines="[&#34;Cash earning 5%?&#34;,&#34;Could it be earning 12%?&#34;,&#34;Yield without the hassle&#34;]"> <p class="jcard__tagline active">Yield without the headaches.</p> </div> </div> <div class="jcard__bottom"> <div class="jcard__ticker" data-tickers="[&#34;Lin · $250K deployed · 12% blended&#34;,&#34;The Cohens · accredited · multifamily&#34;,&#34;Wei · passive, no toilets, no tenants&#34;]"> <span class="jcard__ticker-dot"></span> <span class="jcard__ticker-text">Lin · $250K deployed · 12% blended</span> </div> <span class="jcard__cta"> <span class="jcard__cta-label">I'm here</span> <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> </div> </button><button class="jcard" data-persona="legacy-angel" data-module="legacy-angel" data-idx="7" style="--card-color:#4F46E5; --card-gradient:linear-gradient(135deg, #4F46E5 0%, #1E1B4B 100%); --card-delay:490ms; --photo-url:url(https://images.pexels.com/photos/6995237/pexels-photo-6995237.jpeg?auto=compress&#38;cs=tinysrgb&#38;w=800);" aria-label="Open Legacy Angel interactive guide"> <div class="jcard__photo"></div> <div class="jcard__overlay"></div> <div class="jcard__accent"></div> <div class="jcard__top"> <span class="jcard__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span> <span class="jcard__pulse" aria-hidden="true"> <svg viewBox="0 0 24 24" fill="none"> <path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path> </svg> </span> </div> <div class="jcard__body"> <span class="jcard__num">08</span> <h3 class="jcard__title">Legacy Angel</h3> <div class="jcard__taglines" data-taglines="[&#34;What will your money mean?&#34;,&#34;Leave more than wealth — leave impact&#34;,&#34;Structure beats accumulation&#34;]"> <p class="jcard__tagline active">Structure that protects your legacy.</p> </div> </div> <div class="jcard__bottom"> <div class="jcard__ticker" data-tickers="[&#34;The Hartman Foundation · structured at 58&#34;,&#34;Eleanor · 480K meals funded · forever&#34;,&#34;The Singh trust · 3 generations&#34;]"> <span class="jcard__ticker-dot"></span> <span class="jcard__ticker-text">The Hartman Foundation · structured at 58</span> </div> <span class="jcard__cta"> <span class="jcard__cta-label">I'm here</span> <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> </div> </button> </div> </div> </section> <!-- ═══════════════════════════════════════════════════════════════
      MODAL — contains all 8 interactive modules
      ═══════════════════════════════════════════════════════════════ --> <div class="jm" data-jm role="dialog" aria-hidden="true"> <div class="jm__backdrop" data-jm-backdrop></div> <div class="jm__panel" data-jm-panel> <button class="jm__close" data-jm-close aria-label="Close"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg> </button> <!-- ═══ MODULE 01: SMART STEWARD ═══ --> <div class="jm__module" data-jm-module="smart-steward"> <div class="jm__head"> <span class="eyebrow eyebrow-blue">Smart Steward · Module 01</span> <h2 class="jm__title">The Four-Year Head Start</h2> <p class="jm__hook">Most haven't even thought about credit yet. Worth knowing what those years are actually worth?</p> </div> <div class="jm__body"> <div class="jm__step active" data-step="1"> <p class="m1__big-q">Are you <strong>18-25</strong> and just getting started?</p> <div class="m1__yn"> <button class="m1__yn-btn m1__yn-btn--yes" data-m1-answer="yes">Yes, that's me</button> <button class="m1__yn-btn" data-m1-answer="no">Not quite</button> </div> </div> <div class="jm__step" data-step="2-yes"> <div class="m1__output"> <p class="m1__time-line">You have ~<strong class="m1__years">11 years</strong> before typical first-home age.</p> <p class="m1__money-line">Smart credit work now =</p> <p class="m1__money-amount">$75,600 saved</p> <p class="m1__money-context">on your first mortgage.</p> </div> <div class="m1__breakdown"> <p class="m1__breakdown-label">The math behind it</p> <div class="m1__rate-compare"> <div class="m1__rate-side"> <p class="m1__rate-side-label">Smart-built credit</p> <p class="m1__rate-side-rate">~ 6.25%</p> </div> <div class="m1__rate-side m1__rate-side--alt"> <p class="m1__rate-side-label">Starting cold</p> <p class="m1__rate-side-rate">~ 7.20%</p> </div> </div> <p class="m1__breakdown-detail">On a $350K first home with 5% down: <strong>$210/mo</strong> more in payment × 360 months = $75,600 lifetime cost of waiting.</p> </div> <p class="jm__bridge">
@@ -1261,6 +1732,458 @@ No spam. No sequences. One conversation, on your terms.
 </Layout>
 
 <style is:global>
+/* ═══ HERO SECTION — dark centered layout ═══ */
+.hero-section {
+  position: relative;
+  padding: 2rem 1.25rem 1.5rem;
+  overflow: hidden;
+  text-align: center;
+  color: #E8EEFF;
+}
+.hero-idle {
+  max-width: 1100px;
+  margin: 0 auto;
+  transition: opacity 300ms ease, max-height 300ms ease;
+  overflow: hidden;
+}
+.hero-section.aic-chatting .hero-idle {
+  opacity: 0;
+  max-height: 0;
+  pointer-events: none;
+  margin: 0 auto;
+  padding: 0;
+}
+.hero-eyebrow {
+  display: inline-block;
+  font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8FA8FF;
+  margin-bottom: 0.6rem;
+}
+.hero-h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(18px, 2.6vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 auto 0.75rem;
+  color: #fff;
+}
+.hero-h1__em {
+  color: #8FA8FF;
+  text-decoration: underline;
+  text-decoration-color: rgba(143,168,255,0.35);
+  text-underline-offset: 4px;
+}
+.hero-sub {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(232,238,255,0.72);
+  max-width: 580px;
+  margin: 0 auto 1.25rem;
+}
+
+/* ─── Chat box — always white, iMessage style ─── */
+.hero-section .aic {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff !important;
+  border-radius: 22px;
+  box-shadow: 0 8px 60px rgba(0,0,0,0.25), 0 2px 12px rgba(0,0,0,0.1);
+  color: #111 !important;
+  position: relative;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  text-align: left;
+}
+.hero-section .aic__aurora { opacity: 0.04 !important; z-index: 0 !important; }
+.hero-section .aic__header,
+.hero-section .aic__body,
+.hero-section .aic__composer,
+.hero-section .aic__footer { position: relative; z-index: 1; }
+
+/* ─── Header ─── */
+.hero-section .aic__header {
+  background: rgba(0,0,0,0.02) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+}
+.hero-section .aic__title span { color: #111 !important; }
+.hero-section .aic__badge { background: #0A6CFF !important; color: #fff !important; }
+.hero-section .aic__sub { color: #6b7280 !important; }
+.hero-section .aic__live-dot { background: #22c55e !important; }
+.hero-section .aic__header-actions { display: flex; align-items: center; gap: 6px; }
+.hero-section .aic__mute {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1); background: transparent;
+  color: #6b7280; cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center;
+  transition: color 150ms ease;
+}
+.hero-section .aic__mute:hover { color: #111; }
+.hero-section .aic__reset {
+  color: #6b7280 !important; border-color: rgba(0,0,0,0.1) !important;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1); background: transparent;
+  cursor: pointer; display: inline-flex;
+  align-items: center; justify-content: center;
+  transition: color 150ms ease;
+}
+.hero-section .aic__reset:hover { color: #111 !important; }
+.hero-section .aic__sparkle {
+  color: #0A6CFF !important; background: rgba(10,108,255,0.08) !important;
+  border-radius: 50% !important; width: 32px !important; height: 32px !important;
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+}
+.hero-section .aic__sparkle svg { width: 16px !important; height: 16px !important; }
+
+/* ─── Body ─── */
+.hero-section .aic__body { padding: 0 !important; min-height: 0 !important; }
+.hero-section .aic__welcome { background: transparent !important; text-align: center !important; padding: 14px 16px 8px !important; }
+.hero-section .aic__greet { color: #374151 !important; font-size: 0.92rem !important; font-weight: 500 !important; margin: 0 !important; }
+.hero-section .aic__wave { display: inline-block; animation: none; }
+
+/* ─── Composer ─── */
+.hero-section .aic__composer { padding: 4px 16px 10px !important; flex-shrink: 0; }
+.hero-section .aic__input-frame { background: #f9fafb !important; border-color: rgba(0,0,0,0.1) !important; }
+.hero-section .aic__input { color: #111 !important; background: transparent !important; font-size: 16px !important; }
+.hero-section .aic__input::placeholder { color: #9ca3af !important; }
+.hero-section .aic__input-prefix { color: #6b7280 !important; }
+.hero-section .aic__icon-btn { color: #6b7280 !important; }
+.hero-section .aic__send { background: #111 !important; color: #fff !important; }
+
+/* ─── Chips ─── */
+.hero-section .aic__chip {
+  background: #f3f4f6 !important; color: #111 !important;
+  border: 1px solid #e5e7eb !important; font-size: 12.5px !important;
+  padding: 8px 10px !important; border-radius: 10px !important;
+  display: flex !important; align-items: center !important; gap: 5px !important;
+  cursor: pointer !important; transition: background 150ms, border-color 150ms !important;
+}
+.hero-section .aic__chip:hover { background: #e5e7eb !important; border-color: #d1d5db !important; }
+.hero-section .aic__chip svg { color: #0A6CFF !important; flex-shrink: 0; }
+
+/* ─── Footer ─── */
+.hero-section .aic__footer {
+  background: rgba(0,0,0,0.02) !important;
+  border-top: 1px solid rgba(0,0,0,0.06) !important;
+  flex-shrink: 0;
+}
+.hero-section .aic__creds { color: #6b7280 !important; }
+.hero-section .aic__schedule-link { color: #0A6CFF !important; }
+.aic__footer-sep { opacity: 0.3; margin: 0 2px; }
+.aic__footer-soft { opacity: 0.7; }
+.aic__footer-dot { color: #22c55e; font-size: 8px; margin-right: 2px; }
+
+/* ─── Chat-mode layout ─── */
+.hero-section.aic-chatting .aic {
+  height: min(780px, calc(100dvh - 60px - 40px));
+  display: flex;
+  flex-direction: column;
+}
+.hero-section.aic-chatting .aic__body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+}
+.hero-section.aic-chatting .aic__convo {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.hero-section.aic-chatting .aic__composer {
+  border-top: 1px solid #ECECEC;
+  background: #fff;
+}
+
+/* ─── iMessage bubbles ─── */
+.hero-section .aic-msg {
+  display: flex;
+  margin-bottom: 6px;
+}
+.hero-section .aic-msg--first { margin-top: 16px; }
+.hero-section .aic-msg--first:first-child { margin-top: 0; }
+.hero-section .aic-msg__b {
+  padding: 10px 14px;
+  font-size: 16px;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+/* Bot bubbles — left */
+.hero-section .aic-msg--bot {
+  justify-content: flex-start;
+}
+.hero-section .aic-msg--bot .aic-msg__b {
+  background: #E9E9EB !important;
+  color: #111 !important;
+  border-radius: 20px 20px 20px 20px;
+  max-width: 78%;
+}
+/* Last bot bubble in a group gets small bottom-left corner */
+.hero-section .aic-msg--bot + .aic-msg--bot .aic-msg__b { border-radius: 20px 20px 20px 20px; }
+.hero-section .aic-msg--bot:has(+ .aic-msg--user) .aic-msg__b,
+.hero-section .aic-msg--bot:has(+ .aic-msg--first) .aic-msg__b,
+.hero-section .aic-msg--bot:has(+ .aic-replies) .aic-msg__b,
+.hero-section .aic-msg--bot:has(+ .aic-opts) .aic-msg__b,
+.hero-section .aic-msg--bot:last-child .aic-msg__b {
+  border-radius: 20px 20px 20px 6px;
+}
+
+/* User bubbles — right */
+.hero-section .aic-msg--user {
+  justify-content: flex-end !important;
+}
+.hero-section .aic-msg--user .aic-msg__b {
+  background: linear-gradient(180deg,#3B8CFF,#0A6CFF) !important;
+  color: #fff !important;
+  border-radius: 20px 20px 20px 20px;
+  max-width: 70%;
+}
+.hero-section .aic-msg--user:has(+ .aic-msg--bot) .aic-msg__b,
+.hero-section .aic-msg--user:has(+ .aic-msg--first) .aic-msg__b,
+.hero-section .aic-msg--user:last-child .aic-msg__b {
+  border-radius: 20px 20px 6px 20px;
+}
+
+/* Links in bot bubbles */
+.hero-section .aic-msg--bot .aic-msg__b a {
+  color: #0A6CFF;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.hero-section .aic-msg--bot .aic-msg__b strong { font-weight: 600; }
+
+/* Hide [[CAPTURE]] token */
+.hero-section .aic-msg__b { }
+
+/* ─── Typing indicator (iMessage dots) ─── */
+.hero-section .aic-msg--typing .aic-msg__b {
+  padding: 12px 16px;
+  min-width: 56px;
+  display: flex;
+  align-items: center;
+}
+.aic-typing-dots {
+  display: flex; gap: 4px; align-items: center;
+}
+.aic-typing-dots span {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #999; display: block;
+  animation: aicDotBounce 1.4s ease-in-out infinite;
+}
+.aic-typing-dots span:nth-child(2) { animation-delay: 0.16s; }
+.aic-typing-dots span:nth-child(3) { animation-delay: 0.32s; }
+@keyframes aicDotBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ─── Streaming caret ─── */
+.aic-stream-caret {
+  display: inline-block;
+  width: 2px; height: 1em;
+  background: #999;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  animation: aicCaretBlink 600ms steps(2) infinite;
+}
+@keyframes aicCaretBlink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ─── Option pills ─── */
+.hero-section .aic-opts {
+  display: flex !important; flex-wrap: wrap; gap: 8px;
+  margin-top: 8px; padding-left: 0;
+}
+.hero-section .aic-opt {
+  height: 40px; padding: 0 16px; border-radius: 999px;
+  background: #fff; border: 1px solid #D0D5DD;
+  color: #111; font-size: 15px; font-weight: 500;
+  cursor: pointer; font-family: inherit; line-height: 1;
+  display: inline-flex; align-items: center;
+  transition: border-color 150ms, color 150ms, background 150ms, transform 80ms;
+}
+.hero-section .aic-opt:hover {
+  border-color: #0A6CFF; color: #0A6CFF; background: #F3F8FF;
+}
+.hero-section .aic-opt:active { transform: scale(0.97); }
+.hero-section .aic-opt--disabled .aic-opt,
+.hero-section .aic-opts.aic-opt--disabled .aic-opt {
+  opacity: 0.4; pointer-events: none;
+  background: #f9fafb; border-color: #e5e7eb;
+  color: #6b7280; cursor: default;
+}
+
+/* ─── Reply buttons ─── */
+.hero-section .aic-replies {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 8px; padding-left: 0;
+}
+.hero-section .aic-reply {
+  height: 36px; padding: 0 14px; border-radius: 999px;
+  background: #fff; border: 1px solid #D0D5DD;
+  color: #111; font-size: 14px; font-weight: 500;
+  cursor: pointer; font-family: inherit;
+  display: inline-flex; align-items: center;
+  transition: border-color 150ms, color 150ms, background 150ms;
+}
+.hero-section .aic-reply:hover {
+  border-color: #0A6CFF; color: #0A6CFF; background: #F3F8FF;
+}
+
+/* ─── Capture form panel ─── */
+.hero-section .aic__capture-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aic-cap-panel {
+  width: 100%; max-width: 420px;
+  padding: 32px 24px;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+.aic-cap-panel--in { opacity: 1; transform: translateY(0); }
+.aic-cap-back {
+  background: none; border: none; color: #6b7280;
+  font-size: 14px; cursor: pointer; padding: 0; margin-bottom: 16px;
+  font-family: inherit;
+  transition: color 150ms;
+}
+.aic-cap-back:hover { color: #111; }
+.aic-cap-eyebrow {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #6b7280; margin-bottom: 8px; display: block;
+}
+.aic-cap-title {
+  font-size: 22px; font-weight: 600; color: #111;
+  margin: 0 0 6px; line-height: 1.3;
+}
+.aic-cap-sub {
+  font-size: 14px; color: #667085; margin: 0 0 20px; line-height: 1.45;
+}
+.aic-cap-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+.aic-cap-label {
+  font-size: 13px; font-weight: 500; color: #374151;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.aic-cap-field {
+  height: 48px; border-radius: 12px; border: 1px solid #D0D5DD;
+  padding: 0 14px; font-size: 16px; font-family: inherit;
+  color: #111; background: #fff; outline: none;
+  transition: border-color 150ms, box-shadow 150ms;
+  box-sizing: border-box; width: 100%;
+}
+.aic-cap-field:focus {
+  border-color: #0A6CFF;
+  box-shadow: 0 0 0 3px rgba(10,108,255,0.2);
+}
+.aic-cap-submit {
+  width: 100%; height: 52px; border-radius: 999px;
+  background: #0A6CFF; color: #fff; border: none;
+  font-size: 16px; font-weight: 600; cursor: pointer;
+  font-family: inherit; transition: filter 150ms;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.aic-cap-submit:hover { filter: brightness(1.08); }
+.aic-cap-submit:disabled { opacity: 0.6; cursor: default; }
+.aic-cap-note {
+  font-size: 12px; color: #dc2626; margin: 8px 0 0; min-height: 0;
+}
+.aic-cap-disclaimer {
+  font-size: 12px; color: #667085; margin: 12px 0 0; line-height: 1.45;
+}
+.aic-cap-success {
+  text-align: center; padding: 20px 0;
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* ─── Below-chat CTA block ─── */
+.hero-cta-block {
+  max-width: 900px; margin: 0 auto; text-align: center;
+}
+.hero-apply-btn {
+  display: inline-block; padding: 11px 32px; margin-top: 1rem;
+  background: #fff; color: #0D1330; font-weight: 700;
+  font-size: 0.95rem; border-radius: 999px; text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+}
+.hero-apply-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
+.hero-apply-caption {
+  font-size: 11px; color: rgba(232,238,255,0.45);
+  margin: 0.4rem auto 0; max-width: 500px;
+}
+
+/* 6-chip grid */
+.hero-section .aic__chips {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px; margin-top: 8px !important; padding: 0 !important;
+}
+@media (max-width: 640px) {
+  .hero-section .aic__chips { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─── Light theme hero overrides ─── */
+[data-theme="light"] .hero-section { background: radial-gradient(ellipse at 50% 0%, #E8EEFF, #FAFAF7 70%) !important; }
+[data-theme="light"] .hero-eyebrow { color: #0A6CFF !important; }
+[data-theme="light"] .hero-h1 { color: #0A0E1A !important; }
+[data-theme="light"] .hero-h1__em { color: #0A6CFF !important; }
+[data-theme="light"] .hero-sub { color: #374151 !important; }
+[data-theme="light"] .hero-apply-btn { background: #0D1330 !important; color: #fff !important; }
+[data-theme="light"] .hero-apply-caption { color: rgba(10,14,26,0.45) !important; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .hero-section { padding: 1rem 0.75rem 0.75rem; }
+  .hero-h1 { font-size: 20px; max-width: 100%; }
+  .hero-h1 br { display: none; }
+  .hero-sub { font-size: 0.82rem; margin-bottom: 0.6rem; }
+  .hero-apply-btn { padding: 10px 24px; font-size: 0.85rem; margin-top: 0.75rem; }
+  .hero-apply-caption { font-size: 9px; }
+  .hero-eyebrow { font-size: 8px; margin-bottom: 0.25rem; }
+  .hero-section .aic__chip { font-size: 11.5px !important; padding: 7px 8px !important; }
+  .aic__footer-sep, .aic__footer-soft { display: none; }
+}
+@media (max-width: 640px) {
+  .hero-section.aic-chatting .aic {
+    width: 100%; border-radius: 16px;
+    height: calc(100dvh - 60px - 16px);
+  }
+  .hero-section .aic-msg--bot .aic-msg__b { max-width: 85%; }
+  .hero-section .aic-msg--user .aic-msg__b { max-width: 85%; }
+  .hero-section .aic__input { font-size: 16px !important; }
+  .aic-cap-field { font-size: 16px; }
+}
+
+/* ─── prefers-reduced-motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section .aic-msg,
+  .hero-section .aic-opt,
+  .aic-cap-panel,
+  .aic-typing-dots span,
+  .aic-stream-caret {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* ═══ END HERO SECTION STYLES ═══ */
+
 .aic-cap{display:flex;flex-direction:column;gap:8px;max-width:320px}
 .aic-cap__lead{font-size:14px;line-height:1.4;margin:0 0 4px;color:#fafaf7}
 .aic-cap__f{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fafaf7;font-size:14px;outline:none;width:100%;box-sizing:border-box}
@@ -2296,7 +3219,7 @@ No spam. No sequences. One conversation, on your terms.
     // markdown links [label](/path) -> anchor (only allow internal / and http(s))
     safe = safe.replace(/\[([^\]]+)\]\((\/[^)\s]*|https?:\/\/[^)\s]+)\)/g,
       function (m, label, href) {
-        return '<a href="' + href + '" style="color:#7ab0ff;text-decoration:underline">' + label + '</a>';
+        return '<a href="' + href + '" style="color:#1845D6;text-decoration:underline">' + label + '</a>';
       });
     // bold **text**
     safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');

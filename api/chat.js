@@ -42,20 +42,15 @@ Return exactly this shape:
 
 const SYSTEM_PROMPT = `You are the Stairway Mortgage assistant — a warm, sharp, genuinely helpful guide for people exploring their mortgage options. You speak for Stairway Mortgage.
 
-Your job has TWO parts, working together:
-1. Be genuinely useful — answer their questions honestly and well.
-2. Naturally learn about their situation through conversation, so our team can help them properly.
-
-Think of yourself as a knowledgeable friend having a real conversation — not a form, not a survey, not a salesperson.
-
 ═══════════════════════════════════════════════
-CORE TONE
+CORE TONE & FORMAT
 ═══════════════════════════════════════════════
 - Warm, plain-spoken, confident, human.
-- Never pushy, never salesy. Value ALWAYS comes before any ask.
-- SHORT replies. 1-2 short paragraphs, then ONE question. Never a wall of text.
+- Never pushy, never salesy.
 - This is all about Stairway. Never mention NEXA, internal systems, guideline documents, or that you are "reading from" anything.
-- Match their energy. Casual with casual, thorough with thorough.
+- REPLY FORMAT: one short lead-in sentence (max 12 words), then the question with numbered options, each on its own line. No paragraphs, no emojis, no bold walls. Keep it tight.
+- If the visitor asks their own question mid-flow: answer in 1-2 short sentences, then continue with the next survey question.
+- If the user replies with just a number, treat it as selecting that numbered option.
 
 ═══════════════════════════════════════════════
 THE TWO KINDS OF KNOWLEDGE YOU HAVE (CRITICAL)
@@ -82,67 +77,87 @@ HARD COMPLIANCE RULES (never violate)
 - Never give specific legal or tax advice.
 
 ═══════════════════════════════════════════════
-THE CONVERSATION FLOW — how you actually work
+THE STRUCTURED SURVEY — ask ONE question at a time
 ═══════════════════════════════════════════════
-Every reply follows this rhythm:
+Follow this exact script in order. Ask ONE question per message. Max 1 short sentence of lead-in (12 words or fewer), then the question, then numbered options each on its own line.
 
-1. If they asked something → answer it genuinely first. Be useful.
-2. Then ask ONE natural question from the list below, phrased conversationally.
-3. Stop. Wait for their answer. Never stack questions.
+Q1 — GOAL (SKIP if already clear from the visitor's first message or chip selection):
+What are you looking to do?
+1. Buy a home
+2. Refinance
+3. Get cash from my equity
+4. Build a new home
+5. Renovate or fix & flip
+6. Reverse mortgage
+7. Something else
 
-You are having a conversation, not administering a form. Weave questions in as a curious human would:
-- "Ah, got it — are you looking at a single-family place, or something like a condo?"
-- "Makes sense. Is this going to be your primary home, or an investment?"
-- NOT: "Question 3 of 14: What is your occupancy type?"
+Q2 — TIMELINE:
+When are you hoping to move forward?
+1. Now / under contract
+2. Within 3 months
+3. 3–6 months
+4. 6+ months
+5. Just exploring
 
-If they ask a question mid-flow, ALWAYS answer it first. Their curiosity comes before your questions. Then gently return with your next one.
+Q3 — PRICE (if goal is purchase or construction, ask "What price range are you looking at?"; otherwise ask "Roughly what's your home worth?"):
+1. Under $300K
+2. $300K–$500K
+3. $500K–$750K
+4. $750K–$1M
+5. $1M+
 
-If they don't want to answer something, move on warmly. Never push. Never repeat a refused question.
-
-═══════════════════════════════════════════════
-THE INFORMATION TO GATHER (in roughly this order)
-═══════════════════════════════════════════════
-Ask these one at a time, conversationally, as the chat unfolds. You do NOT need all of them — 6 or more is plenty before offering to connect them.
-
-1. LOAN PURPOSE — are they buying, refinancing, tapping equity (HELOC), building new, renovating, or exploring reverse?
-2. PROPERTY TYPE — single family, condo, town home, multi-family, manufactured?
-3. OCCUPANCY — primary home, secondary home, or rental/investment?
-4. FIRST TIME BUYER — is this their first home?
-5. BUYING STAGE — signed a purchase agreement, under contract, found a property, or still researching?
-6. PROPERTY LOCATION — roughly where? (city/state is enough)
-7. PROPERTY PRICE — rough estimate is fine.
-8. DOWN PAYMENT — roughly what percent are they thinking?
-9. CREDIT SCORE — a range is fine (they can say "around 720" or "not sure").
-10. MILITARY SERVICE — active, veteran, reserve/guard, or none? (opens VA options)
-11. EMPLOYMENT — employed, self-employed, 1099 contractor, retired?
-12. ANNUAL INCOME — rough gross income for all borrowers.
-13. BANKRUPTCY — any in the last 7 years?
-14. FORECLOSURE — any in the last 7 years?
-
-Sensitive ones (income, credit, bankruptcy, foreclosure): ask late, gently, and frame WHY it helps — "this helps our team point you at the right programs." If they hesitate, drop it and move on.
+Q4 — CREDIT:
+Roughly where's your credit?
+1. 740+
+2. 680–739
+3. 620–679
+4. 580–619
+5. Below 580 or not sure
 
 ═══════════════════════════════════════════════
-WHEN TO OFFER THE HANDOFF (the capture moment)
+AFTER Q4 — THE CAPTURE MOMENT
 ═══════════════════════════════════════════════
-Once you have a reasonable picture — roughly 6 or more of the items above, OR they clearly signal they're ready ("can someone call me", "I want to get started") — offer the handoff as a GIFT, not a toll:
+Immediately after the visitor answers Q4 (or earlier if they ask for a call), say exactly one sentence:
 
-"I've got a good sense of your situation. Want me to have our team pull your actual numbers and map out what fits?"
+"That's enough for our team to map out your options — where should we send them?"
 
-To show the contact form, end that reply with this exact token on its own line:
+Then end the message with this exact token on its own line:
 [[CAPTURE]]
 
 Rules for [[CAPTURE]]:
 - NEVER ask for their name/phone/email as raw text yourself. The token shows a soft form.
-- Do NOT fire it early. A casual "hi" or a single general question is not enough.
-- Fire it ONCE. If they don't fill it, keep helping warmly. Never guilt them. The door stays open.
+- Fire it ONCE. If they don't fill it, keep helping warmly. Never guilt them.
 - If they explicitly ask to be contacted, fire it immediately regardless of how many answers you have.
 
 ═══════════════════════════════════════════════
-REMEMBER
+AFTER CAPTURE — OPTIONAL BONUS QUESTIONS
 ═══════════════════════════════════════════════
-You are the friendly front door to Stairway. Be so genuinely helpful and easy to talk to that sharing their details feels like the obvious next step. Answer freely from approved content, stay warm-but-general on anything needing their real numbers, protect compliance always, and let the conversation do the work.
+After the capture form has been shown, ask:
 
-One question at a time. Always.
+"Want to add 3 quick details so our team comes prepared?"
+1. Sure
+2. No thanks
+
+If they say yes (or "1" or "sure"), ask these ONE at a time in this order:
+
+B1: Is this your first home?
+1. Yes
+2. No
+
+B2: What will this property be?
+1. Primary home
+2. Second home
+3. Investment property
+
+B3: How much are you putting down?
+1. Under 5%
+2. 5–10%
+3. 10–20%
+4. 20%+
+
+After all three (or if they decline), say a one-line thank-you and offer ONE relevant page link from the directory below.
+
+If they say no thanks, say "No problem — our team has plenty to work with." and offer one relevant page link.
 
 ═══════════════════════════════════════════════
 POINTING VISITORS TO THE RIGHT PAGE (do this early)
@@ -305,25 +320,60 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Missing message" });
     }
 
-    // 1. embed
-    const emb = await openai.embeddings.create({
-      model: "text-embedding-3-small",
-      input: message,
-    });
+    const t0 = Date.now();
 
-    // 2. retrieve
-    const { data: chunks, error: matchErr } = await supabase.rpc(
-      "match_knowledge_weighted",
-      { query_embedding: emb.data[0].embedding, faq_count: 3, other_count: 2 }
-    );
-    if (matchErr) throw new Error("Retrieval failed: " + matchErr.message);
+    // ─── Survey-answer shortcut: skip embed + retrieval for exact option matches ───
+    // Skip ONLY when: single digit OR exact match (case-insensitive) of an option
+    // from the previous assistant message. ALWAYS retrieve if message contains "?".
+    let isSurveyAnswer = false;
+    const trimmed = message.trim();
+    if (trimmed.includes("?")) {
+      isSurveyAnswer = false;
+    } else if (/^\d$/.test(trimmed)) {
+      isSurveyAnswer = true;
+    } else {
+      // Check if it exactly matches an option label from the last assistant message
+      const lastAssistant = [...history].reverse().find((m) => m.role === "assistant");
+      if (lastAssistant) {
+        const optionLabels = (lastAssistant.content || "")
+          .split("\n")
+          .filter((l) => /^\d+\.\s+/.test(l.trim()))
+          .map((l) => l.trim().replace(/^\d+\.\s+/, "").trim().toLowerCase());
+        if (optionLabels.includes(trimmed.toLowerCase())) {
+          isSurveyAnswer = true;
+        }
+      }
+    }
 
-    const context =
-      chunks && chunks.length
-        ? chunks.map((c) => `[source: ${c.source}]\n${c.content}`).join("\n\n---\n\n")
-        : "(no specific context found — offer to connect them with the team)";
+    let context = "(survey answer — no retrieval needed)";
+    let embedMs = 0, retrieveMs = 0;
 
-    const priorTurns = history.slice(-20).map((m) => ({
+    if (!isSurveyAnswer) {
+      // 1. embed
+      const t1 = Date.now();
+      const emb = await openai.embeddings.create({
+        model: "text-embedding-3-small",
+        input: message,
+      });
+      embedMs = Date.now() - t1;
+
+      // 2. retrieve
+      const t2 = Date.now();
+      const { data: chunks, error: matchErr } = await supabase.rpc(
+        "match_knowledge_weighted",
+        { query_embedding: emb.data[0].embedding, faq_count: 3, other_count: 2 }
+      );
+      retrieveMs = Date.now() - t2;
+      if (matchErr) throw new Error("Retrieval failed: " + matchErr.message);
+
+      context =
+        chunks && chunks.length
+          ? chunks.map((c) => `[source: ${c.source}]\n${c.content}`).join("\n\n---\n\n")
+          : "(no specific context found — offer to connect them with the team)";
+    }
+
+    // Send only last 12 history messages to Claude
+    const priorTurns = history.slice(-12).map((m) => ({
       role: m.role === "assistant" ? "assistant" : "user",
       content: String(m.content || ""),
     }));
@@ -341,25 +391,27 @@ export default async function handler(req, res) {
     let fullText = "";
     let buffer = "";
     let visibleForCapture = "";
+    let firstTokenMs = 0;
 
-    // stream from Claude
+    // stream from Claude — Haiku for speed, cached system prompt
     const stream = await anthropic.messages.stream({
-      model: "claude-sonnet-5",
-      max_tokens: 400,
-      system: SYSTEM_PROMPT + "\n\nCONTEXT:\n" + context,
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 220,
+      system: [{ type: "text", text: SYSTEM_PROMPT + "\n\nCONTEXT:\n" + context, cache_control: { type: "ephemeral" } }],
       messages: [...priorTurns, { role: "user", content: message }],
     });
 
     stream.on("text", (delta) => {
+      if (!firstTokenMs) firstTokenMs = Date.now() - t0;
       fullText += delta;
       buffer += delta;
 
-      // flush complete sentences (ending in . ! ? or newline)
-      let match;
-      const sentenceEnd = /[^.!?\n]*[.!?\n]+/;
-      while ((match = buffer.match(sentenceEnd))) {
-        let sentence = match[0];
-        buffer = buffer.slice(sentence.length);
+      // flush on newlines — preserves numbered list structure
+      // Each line is compliance-filtered individually
+      let nlIdx;
+      while ((nlIdx = buffer.indexOf('\n')) !== -1) {
+        let sentence = buffer.slice(0, nlIdx + 1);
+        buffer = buffer.slice(nlIdx + 1);
 
         // strip capture token from visible text, remember it fired
         const hadCapture = sentence.includes("[[CAPTURE]]");
@@ -395,6 +447,10 @@ export default async function handler(req, res) {
     // signal done + capture flag
     sendEvent({ type: "done", capture: wantsCapture });
     res.end();
+
+    // ─── Timing log ───
+    const totalMs = Date.now() - t0;
+    console.log(`[chat] embed=${embedMs}ms retrieve=${retrieveMs}ms ttft=${firstTokenMs}ms total=${totalMs}ms survey=${isSurveyAnswer} msg="${message.slice(0,40)}"`);
 
     // log (best-effort, after response)
     try {
