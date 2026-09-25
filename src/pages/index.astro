@@ -526,6 +526,7 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     input.placeholder = placeholders[placeholderIdx];
     input.value = '';
     // Hide capture panel
+    if (capturePanel._vvCleanup) capturePanel._vvCleanup();
     capturePanel.style.display = 'none';
     capturePanel.innerHTML = '';
     convo.style.display = '';
@@ -555,12 +556,13 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
       root.querySelector('.aic__composer').style.display = 'none';
 
       capturePanel.style.display = '';
+      capturePanel.scrollTop = 0;
       capturePanel.innerHTML =
         '<div class="aic-cap-panel">' +
           '<button class="aic-cap-back" data-cap-back>&larr; Back to chat</button>' +
           '<div class="aic-cap-inner">' +
             '<span class="aic-cap-eyebrow">ALMOST DONE</span>' +
-            '<h3 class="aic-cap-title">Where should we send your options?</h3>' +
+            '<h3 class="aic-cap-title">Let\'s check out your options.</h3>' +
             '<p class="aic-cap-sub">Our team will reach out &mdash; no credit pull, no obligation.</p>' +
             '<div class="aic-cap-fields">' +
               '<label class="aic-cap-label">Your name<input data-cap-name type="text" class="aic-cap-field" placeholder="Full name" autocomplete="name"></label>' +
@@ -571,11 +573,13 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
             '<button data-cap-send class="aic-cap-submit">See My Options</button>' +
             '<p data-cap-note class="aic-cap-note"></p>' +
             '<p class="aic-cap-disclaimer">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
+            '<p class="aic-cap-disclaimer">Our team typically gets back to you within 30 minutes to 24 hours.</p>' +
           '</div>' +
         '</div>';
       requestAnimationFrame(() => { capturePanel.querySelector('.aic-cap-panel').classList.add('aic-cap-panel--in'); });
 
       capturePanel.querySelector('[data-cap-back]').addEventListener('click', () => {
+        if (capturePanel._vvCleanup) capturePanel._vvCleanup();
         capturePanel.style.display = 'none';
         convo.style.display = '';
         convo.style.opacity = '1';
@@ -585,6 +589,21 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
       });
 
       capturePanel.querySelector('[data-cap-send]').addEventListener('click', () => submitCapture(capturePanel, intentSummary));
+
+      // iOS keyboard: keep focused field visible
+      if (window.visualViewport) {
+        var vvHandler = function() {
+          var active = document.activeElement;
+          if (active && active.closest('.aic-cap-panel')) {
+            active.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        };
+        window.visualViewport.addEventListener('resize', vvHandler);
+        // Clean up when panel closes
+        capturePanel._vvCleanup = function() {
+          window.visualViewport.removeEventListener('resize', vvHandler);
+        };
+      }
     }, 180);
   }
 
@@ -1907,6 +1926,8 @@ No spam. No sequences. One conversation, on your terms.
 /* ─── iMessage bubbles ─── */
 .hero-section .aic-msg {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 6px;
 }
 .hero-section .aic-msg--first { margin-top: 16px; }
@@ -1940,7 +1961,7 @@ No spam. No sequences. One conversation, on your terms.
 
 /* User bubbles — right */
 .hero-section .aic-msg--user {
-  justify-content: flex-end !important;
+  align-items: flex-end !important;
 }
 .hero-section .aic-msg--user .aic-msg__b {
   background: linear-gradient(180deg,#3B8CFF,#0A6CFF) !important;
@@ -2004,7 +2025,7 @@ No spam. No sequences. One conversation, on your terms.
 /* ─── Option pills ─── */
 .hero-section .aic-opts {
   display: flex !important; flex-wrap: wrap; gap: 8px;
-  margin-top: 8px; padding-left: 0;
+  margin-top: 8px; padding-left: 0; width: 100%;
 }
 .hero-section .aic-opt {
   height: 40px; padding: 0 16px; border-radius: 999px;
@@ -2048,14 +2069,19 @@ No spam. No sequences. One conversation, on your terms.
   inset: 0;
   z-index: 5;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  min-height: 0;
 }
 .aic-cap-panel {
   width: 100%; max-width: 420px;
+  margin: auto 0;
   padding: 32px 24px;
   opacity: 0; transform: translateY(12px);
   transition: opacity 250ms ease, transform 250ms ease;
+  align-self: center;
 }
 .aic-cap-panel--in { opacity: 1; transform: translateY(0); }
 .aic-cap-back {
@@ -2169,6 +2195,20 @@ No spam. No sequences. One conversation, on your terms.
   .hero-section .aic-msg--user .aic-msg__b { max-width: 85%; }
   .hero-section .aic__input { font-size: 16px !important; }
   .aic-cap-field { font-size: 16px; }
+  .aic-cap-eyebrow { display: none; }
+  .aic-cap-title { font-size: 20px; line-height: 1.2; }
+  .aic-cap-sub { font-size: 14px; }
+  .aic-cap-fields { gap: 10px; }
+  .aic-cap-field { height: 44px; font-size: 16px; }
+  .aic-cap-panel { padding: 16px; }
+  .aic-cap-submit { height: 48px; }
+  .hero-section .aic-opt {
+    white-space: normal;
+    text-align: left;
+    min-height: 40px;
+    height: auto;
+    padding: 8px 14px;
+  }
 }
 
 /* ─── prefers-reduced-motion ─── */
