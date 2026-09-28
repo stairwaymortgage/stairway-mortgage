@@ -463,14 +463,71 @@ const icons: Record<string, string> = {
             </span>
             <span class="heroes-plate__title">
               <span class="heroes-plate__eyebrow">Those who serve</span>
-              <span class="heroes-plate__name">American Heroes
+              <span class="heroes-plate__name">American Heroes</span>
+            </span>
+            <span class="heroes-plate__cue">
+              <span class="heroes-plate__link">Explore programs &rarr;</span>
+              <span class="heroes-plate__chevron" aria-hidden="true">&rsaquo;</span>
+            </span>
+          </a>
+          <div class="heroes-plate__body">
+            <div class="heroes-plate__col heroes-plate__col--mil">
+              <h4>Military &amp; Veterans <span class="heroes-plate__tier heroes-plate__tier--mil">VA-eligible</span></h4>
+              <div class="heroes-plate__links">
+                <a href="/american-heroes/army/">US Army</a>
+                <a href="/american-heroes/navy/">US Navy</a>
+                <a href="/american-heroes/air-force/">US Air Force</a>
+                <a href="/american-heroes/marine-corps/">US Marine Corps</a>
+                <a href="/american-heroes/coast-guard/">US Coast Guard</a>
+                <a href="/american-heroes/space-force/">US Space Force</a>
+              </div>
+            </div>
+            <div class="heroes-plate__col heroes-plate__col--civ">
+              <h4>Civilian Heroes <span class="heroes-plate__tier heroes-plate__tier--civ">Hero benefits</span></h4>
+              <div class="heroes-plate__links">
+                <a href="/american-heroes/police-officers/">Police Officers</a>
+                <a href="/american-heroes/firefighters/">Firefighters</a>
+                <a href="/american-heroes/emt-paramedics/">EMT / Paramedics</a>
+                <a href="/american-heroes/teachers/">Teachers</a>
+                <a href="/american-heroes/corrections-officers/">Corrections Officers</a>
+                <a href="/american-heroes/federal-law-enforcement/">Federal Law Enforcement</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        )}
+
+        {/* Quick-quote chips (only on Get a Mortgage) */}
+        {m.quickQuotes && (
+          <div class="mega__quotes">
+            <span class="mega__quotes-label">Quick quotes:</span>
+            {m.quickQuotes.map((q) => (
+              <a href={q.href} class="mega__quote-chip">{q.label}</a>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  ))}
+</header>
+
+<!-- -
+     LAYER 3 — Sticky Condensed Bar (appears on scroll)
+     - -->
+<div class="hdr-sticky" id="hdr-sticky" aria-hidden="true">
+  <div class="container-page">
+    <div class="hdr-sticky__inner">
+      <a href="/" class="hdr-logo hdr-logo--sm" aria-label="Home">
+        <img src="/logo-header.png" alt="Stairway Mortgage" class="hdr-logo__img" width="198" height="54" />
+      </a>
+      <div class="hdr-sticky__right">
+        <a href="tel:+19549931625" class="hdr-phone hdr-phone--sm" aria-label="Call">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 3l-1.4-.7c-.5-.3-1.2-.1-1.5.3L2 4.2c-.4.6-.3 1.5.2 2C4 8.3 7.7 12 9.8 13.8c.5.4 1.3.5 1.9.1l1.6-1.1c.5-.3.6-1 .3-1.5L13 10l-2.5-.3-1.2 1.2c-.8-.5-2.5-2.2-3-3l1.2-1.2L6 3z"/></svg>
           <span class="mono">(954) 993-1625</span>
         </a>
         <a href="/see-my-options/" class="btn btn-blue hdr-cta hdr-cta--sm">See My Options</a>
       </div>
     </div>
-  </div>
-</div>
 
 <!-- -
      MOBILE DRAWER
@@ -555,7 +612,7 @@ const icons: Record<string, string> = {
     {/* ─── American Heroes mobile accordion ─── */}
     <details class="hdr-drawer__section hdr-drawer__heroes">
       <summary class="hdr-drawer__summary font-display">
-        American Heroes <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="10" style="display:inline-block;vertical-align:middle;margin-left:6px"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#b22234"/><path d="M0,3.46 h60 M0,8.08 h60 M0,12.69 h60 M0,17.31 h60 M0,21.92 h60 M0,26.54 h60" stroke="#fff" stroke-width="2.31"/><path d="M0,0 h24 v16.15 h-24 z" fill="#3c3b6e"/><g fill="#fff" clip-path="url(#t)"><g id="usd"><g id="usc"><g id="usb"><g id="usa"><path id="us0" d="M1.2,1.4 l0.618,1.9 -1.618,-1.176 h2 L0.582,3.3 z" transform="scale(0.75)"/><use href="#us0" x="8"/></g><use href="#usa" x="16"/></g><use href="#usb" x="32"/></g><use href="#usc" y="4.62"/></g><use href="#usd" y="9.24"/></g></g></g></svg>
+        American Heroes
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="hdr-drawer__plus" aria-hidden="true">
           <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
