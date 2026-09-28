@@ -566,7 +566,7 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
             '<p class="aic-cap-sub">Our team will reach out &mdash; no credit pull, no obligation.</p>' +
             '<div class="aic-cap-fields">' +
               '<label class="aic-cap-label">Your name<input data-cap-name type="text" class="aic-cap-field" placeholder="Full name" autocomplete="name"></label>' +
-              '<label class="aic-cap-label">Phone<input data-cap-phone type="tel" class="aic-cap-field" placeholder="(555) 555-5555" autocomplete="tel"></label>' +
+              '<label class="aic-cap-label">Phone<input data-cap-phone type="tel" class="aic-cap-field" placeholder="(555) 555-5555" autocomplete="tel" maxlength="14"></label>' +
               '<label class="aic-cap-label">Email<input data-cap-email type="email" class="aic-cap-field" placeholder="you@example.com" autocomplete="email"></label>' +
               '<input data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
             '</div>' +
@@ -615,6 +615,11 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     const note = formEl.querySelector('[data-cap-note]');
 
     if (company) { formEl.remove(); return; }
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phone && phoneDigits.length !== 10) {
+      note.textContent = 'Please enter a valid 10-digit phone number.';
+      return;
+    }
     if (!name || (!phone && !email)) {
       note.textContent = 'Please add your name and a phone or email.';
       return;
@@ -3145,7 +3150,7 @@ No spam. No sequences. One conversation, on your terms.
         '<div style="display:flex;flex-direction:column;gap:10px;padding:2px 0">' +
           '<p style="font-size:14.5px;line-height:1.45;margin:0 0 2px;color:#fff">Want our team to pull exact numbers for your situation? Drop your details and they\'ll reach out.</p>' +
           '<input data-cap-name type="text" placeholder="Your name" autocomplete="name" style="' + inp + '">' +
-          '<input data-cap-phone type="tel" placeholder="Phone number" autocomplete="tel" style="' + inp + '">' +
+          '<input data-cap-phone type="tel" placeholder="Phone number" autocomplete="tel" maxlength="14" style="' + inp + '">' +
           '<input data-cap-email type="email" placeholder="Email address" autocomplete="email" style="' + inp + '">' +
           '<input data-cap-company type="text" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
           '<button data-cap-send style="width:100%;box-sizing:border-box;padding:13px 16px;margin-top:2px;border:none;border-radius:10px;background:#1845D6;color:#fff;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;display:block">See My Options</button>' +
@@ -3166,6 +3171,11 @@ No spam. No sequences. One conversation, on your terms.
     const note = formEl.querySelector('[data-cap-note]');
 
     if (company) { formEl.remove(); return; }
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phone && phoneDigits.length !== 10) {
+      note.textContent = 'Please enter a valid 10-digit phone number.';
+      return;
+    }
     if (!name || (!phone && !email)) {
       note.textContent = 'Please add your name and a phone or email.';
       return;
