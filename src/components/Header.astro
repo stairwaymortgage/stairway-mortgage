@@ -697,7 +697,7 @@ const icons: Record<string, string> = {
   /* - Main bar - */
   .hdr-main {
     position: sticky;
-    top: 0; padding-top: 98px; /* space for header */
+    top: 98px; /* trust strip 34 + main bar 64 */
     z-index: 51;
     background: rgba(250, 250, 247, 0.92);
     backdrop-filter: blur(12px);
@@ -1191,7 +1191,7 @@ const icons: Record<string, string> = {
   /* - Sticky condensed bar - */
   .hdr-sticky {
     position: fixed;
-    top: 0; padding-top: 98px; /* space for header */
+    top: 98px; /* trust strip 34 + main bar 64 */
     left: 0;
     right: 0;
     z-index: 55;
@@ -1224,7 +1224,7 @@ const icons: Record<string, string> = {
   /* - Mobile drawer - */
   .hdr-drawer {
     position: fixed;
-    top: 0; padding-top: 98px; /* space for header */
+    top: 98px; /* trust strip 34 + main bar 64 */
     left: 0;
     right: 0;
     bottom: 0;
@@ -1238,7 +1238,7 @@ const icons: Record<string, string> = {
     flex-direction: column;
   }
   @media (min-width: 980px) { .hdr-drawer { display: none !important; } }
-  .hdr-drawer.is-open { transform: translateX(0); }
+  .hdr-drawer.is-open { transform: translateX(0); overscroll-behavior: contain; }
   .hdr-drawer__top {
     padding: 1.5rem 1.25rem;
     text-align: center;
@@ -1302,7 +1302,7 @@ const icons: Record<string, string> = {
   }
 
   /* - Body lock when drawer open - */
-  :global(body.menu-open) { overflow: hidden; position: fixed; width: 100%; height: 100%; }
+  :global(body.menu-open) { overflow: hidden; overscroll-behavior: none; }
 
   /* - Hide elements on mobile / desktop - */
   @media (max-width: 979px) {
