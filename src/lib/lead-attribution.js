@@ -71,7 +71,10 @@
   /**
    * Fire the GA4 `generate_lead` event. Call ONCE, only after a successful
    * (response.ok) webhook POST. Never sends PII (no email/phone/name).
-   * @param {{profession?:string, county?:string, umtid?:string}} opts
+   * @param {{profession?:string, county?:string, umtid?:string, form_source?:string}} opts
+   *   form_source is optional and purely informational (e.g. "check_chat" for a
+   *   1-Minute Check completed inside the AI chat vs "check_<page>" on-site) —
+   *   existing callers that omit it are unaffected.
    */
   function fireGenerateLead(opts) {
     opts = opts || {};
@@ -81,7 +84,8 @@
         page_path: (typeof location !== "undefined" ? location.pathname : ""),
         profession: opts.profession || "",
         county: opts.county || "",
-        umtid: opts.umtid || ""
+        umtid: opts.umtid || "",
+        form_source: opts.form_source || ""
       });
     } catch (e) { /* analytics must never break a submit */ }
   }

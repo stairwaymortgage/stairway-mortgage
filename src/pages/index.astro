@@ -87,6 +87,10 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
 
        <!-- Quick action chips — 6 goals, 3×2 grid -->
        <div class="aic__chips" data-chips>
+         <button class="aic__chip aic__chip--check" data-check-start="1">
+           <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"></circle><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+           Check my approval chances (1 min)
+         </button>
          <button class="aic__chip" data-q="I want to buy a home" data-goal="purchase">
            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8M5 9.5V20a1 1 0 001 1h12a1 1 0 001-1V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
            Purchase
@@ -531,6 +535,11 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     capturePanel.innerHTML = '';
     convo.style.display = '';
     root.querySelector('.aic__composer').style.display = '';
+    // Reset 1-Minute Check state
+    aicCheckState = 'idle';
+    aicCheckOfferShown = false;
+    aicCheckCompleted = false;
+    aicCheckData = { range: '', tier: '', name: '', email: '', phone: '' };
   }
 
   // ─── In-chat lead capture ───
@@ -1025,6 +1034,9 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
       aicHistory.push({ role: 'assistant', content: acc });
       renderNumberedOptions(acc, bubble);
 
+      // ─── 1-Minute Check: offer it inline when the user asks a qualifying/rate/credit question ───
+      if (!capture) maybeOfferCheck(text);
+
       // ─── Post-capture re-extract: fire once after 3rd bonus answer ───
       if (aicCaptureContact && aicCaptureShown && !aicReExtractFired && !aicUserDeclinedBonus) {
         // This runs after each assistant reply; the USER answer was already pushed
@@ -1053,13 +1065,253 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     }
   }
 
+  // ─── 1-Minute Check (chat-native scripted flow) ───
+  // Same tier logic/copy as the on-site Check: below 580 = low chances, 580+ = high chances.
+  const CHECK_TIERS = {
+    'Below 580': { tier: 'low' },
+    '580–679':   { tier: 'high' },
+    '680+':      { tier: 'high' },
+  };
+  const CHECK_TIER_MESSAGE = {
+    high: "Good news — based on the score you entered, your chances of approval are high across several of our lender programs. Let's get your details so a licensed loan officer can confirm your exact conditions.",
+    low: "You've got a path. Approval is tougher at most lenders, but our network has programs for lower scores. Let's get your details so a licensed loan officer can review your full situation and map your options.",
+  };
+  const CHECK_OFFER_KEYS = ['qualify', 'qualifying', 'qualifies', 'qualification', 'get approved', 'approved', 'approval', 'credit score', 'my credit', 'interest rate', 'the rate', 'rates', 'afford', 'how much can i'];
+
+  let aicCheckState = 'idle'; // idle | range | name | email | phone | submitting
+  let aicCheckOfferShown = false;
+  let aicCheckCompleted = false;
+  let aicCheckData = { range: '', tier: '', name: '', email: '', phone: '' };
+
+  function disableOldOptionSets() {
+    convo.querySelectorAll('.aic-opts:not(.aic-opt--disabled)').forEach(el => {
+      el.classList.add('aic-opt--disabled');
+      el.querySelectorAll('.aic-opt').forEach(b => {
+        b.style.opacity = '0.4'; b.style.pointerEvents = 'none';
+        b.style.background = '#f9fafb'; b.style.borderColor = '#e5e7eb';
+        b.style.color = '#6b7280'; b.style.cursor = 'default';
+      });
+    });
+  }
+
+  function clearCheckBackLinks() {
+    convo.querySelectorAll('.aic-check-back').forEach(b => b.remove());
+  }
+
+  function addCheckBackLink() {
+    clearCheckBackLinks();
+    const back = document.createElement('button');
+    back.type = 'button';
+    back.className = 'aic-check-back';
+    back.textContent = '← Back to chat';
+    back.addEventListener('click', cancelCheck);
+    convo.appendChild(back);
+    autoScroll(true);
+  }
+
+  function cancelCheck() {
+    clearCheckBackLinks();
+    aicCheckState = 'idle';
+    input.placeholder = 'Ask anything else…';
+    addMsg('No problem — what else can I help with?', 'bot');
+  }
+
+  function startCheck(fromChip) {
+    if (aicCheckState !== 'idle') return;
+    ensureConvoMode();
+    convo.querySelectorAll('.aic-replies').forEach(r => r.remove());
+    if (fromChip) addMsg(esc('Check my approval chances (1 min)'), 'user');
+    askCreditRange();
+  }
+
+  function askCreditRange() {
+    aicCheckState = 'range';
+    const bubble = addMsg(renderMsg("No credit pull. What's your estimated credit score?"), 'bot');
+    disableOldOptionSets();
+    const wrap = document.createElement('div');
+    wrap.className = 'aic-opts';
+    Object.keys(CHECK_TIERS).forEach((label, oi) => {
+      const btn = document.createElement('button');
+      btn.className = 'aic-opt';
+      btn.textContent = label;
+      btn.style.opacity = '0'; btn.style.transform = 'translateY(8px)';
+      setTimeout(() => {
+        btn.style.transition = 'opacity 180ms ease, transform 180ms ease';
+        btn.style.opacity = '1'; btn.style.transform = 'translateY(0)';
+      }, 40 * oi);
+      btn.addEventListener('click', () => {
+        if (wrap.classList.contains('aic-opt--disabled')) return;
+        btn.style.background = '#0A6CFF'; btn.style.color = '#fff'; btn.style.borderColor = '#0A6CFF';
+        setTimeout(() => {
+          wrap.style.transition = 'opacity 150ms ease, max-height 150ms ease';
+          wrap.style.opacity = '0'; wrap.style.maxHeight = '0'; wrap.style.overflow = 'hidden';
+          setTimeout(() => wrap.remove(), 150);
+        }, 80);
+        onCreditRangeSelected(label);
+      });
+      wrap.appendChild(btn);
+    });
+    bubble.querySelector('.aic-msg__b').appendChild(wrap);
+    autoScroll(true);
+  }
+
+  function onCreditRangeSelected(label) {
+    const info = CHECK_TIERS[label];
+    aicCheckData.range = label;
+    aicCheckData.tier = info.tier;
+    addMsg(esc(label), 'user');
+    addMsg(renderMsg(CHECK_TIER_MESSAGE[info.tier]), 'bot');
+    setTimeout(askCheckName, 350);
+  }
+
+  function askCheckName() {
+    aicCheckState = 'name';
+    addMsg("What's your full name?", 'bot');
+    addCheckBackLink();
+    input.placeholder = 'Full name';
+    input.focus();
+  }
+
+  function askCheckEmail() {
+    aicCheckState = 'email';
+    addMsg("What's the best email for your results?", 'bot');
+    addCheckBackLink();
+    input.placeholder = 'you@example.com';
+    input.focus();
+  }
+
+  function askCheckPhone() {
+    aicCheckState = 'phone';
+    addMsg('And a phone number so a loan officer can reach you?', 'bot');
+    addCheckBackLink();
+    input.placeholder = '(555) 555-5555';
+    input.focus();
+  }
+
+  function handleCheckAnswer(raw) {
+    const text = (raw || '').trim();
+    if (!text) return;
+    if (aicCheckState === 'name') {
+      if (text.length < 2) { addMsg("Mind sharing your full name?", 'bot'); return; }
+      addMsg(esc(text), 'user');
+      aicCheckData.name = text;
+      askCheckEmail();
+    } else if (aicCheckState === 'email') {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text)) {
+        addMsg("That doesn't look like a valid email — mind double-checking?", 'bot');
+        return;
+      }
+      addMsg(esc(text), 'user');
+      aicCheckData.email = text;
+      askCheckPhone();
+    } else if (aicCheckState === 'phone') {
+      const digits = text.replace(/\D/g, '');
+      if (digits.length !== 10) {
+        addMsg('That needs to be a 10-digit phone number — mind re-entering it?', 'bot');
+        return;
+      }
+      addMsg(esc(text), 'user');
+      aicCheckData.phone = text;
+      clearCheckBackLinks();
+      submitCheck();
+    }
+  }
+
+  async function submitCheck() {
+    aicCheckState = 'submitting';
+    const t = addTyping();
+    let attr = {};
+    try { if (window.SWMemory && window.SWMemory.get) attr = window.SWMemory.get() || {}; } catch (e) {}
+    let leadAttr = {};
+    try { if (window.STW_leadAttribution) leadAttr = window.STW_leadAttribution() || {}; } catch (e) {}
+
+    const payload = {
+      action: 'check_submit',
+      tier: aicCheckData.tier,
+      credit_range: aicCheckData.range,
+      contact: {
+        full_name: aicCheckData.name,
+        email: aicCheckData.email,
+        phone: aicCheckData.phone,
+        source_url: window.location.href,
+      },
+      notes: 'Tier: ' + aicCheckData.range + ' (' + aicCheckData.tier + ') — via AI chat',
+      attribution: {
+        session_id: attr.session_id || '',
+        utm_source: leadAttr.utm_source || attr.utm_source || '',
+        utm_medium: leadAttr.utm_medium || attr.utm_medium || '',
+        utm_campaign: leadAttr.utm_campaign || attr.utm_campaign || '',
+        utm_term: leadAttr.utm_term || '',
+        utm_content: leadAttr.utm_content || '',
+        umtid: leadAttr.umtid || '',
+        loid: leadAttr.loid || '',
+        landing_page: leadAttr.landing_page || '',
+        city: attr.city || attr.region || '',
+        persona: attr.persona || '',
+      },
+    };
+
+    try {
+      const r = await fetch('/api/chat/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      });
+      t.remove();
+      if (r && r.ok) {
+        playSuccessChime();
+        addMsg("You're all set — a licensed loan officer will reach out shortly with your exact conditions. Anything else I can help with?", 'bot');
+        if (window.STW_fireGenerateLead) {
+          window.STW_fireGenerateLead({ profession: '', county: attr.city || '', umtid: leadAttr.umtid || '', form_source: 'check_chat' });
+        }
+        if (window.SWMemory) window.SWMemory.track('ai_chat_check_submitted', { tier: aicCheckData.tier, range: aicCheckData.range });
+        aicCheckCompleted = true;
+      } else {
+        addMsg('Something went wrong on my end — you can reach our team directly at (954) 993-1625.', 'bot');
+      }
+    } catch (e) {
+      t.remove();
+      addMsg('Something went wrong on my end — you can reach our team directly at (954) 993-1625.', 'bot');
+    }
+    aicCheckState = 'idle';
+    input.placeholder = 'Ask anything else…';
+  }
+
+  function maybeOfferCheck(userText) {
+    if (aicCheckOfferShown || aicCheckCompleted || aicCheckState !== 'idle') return;
+    const t = (userText || '').toLowerCase();
+    if (!CHECK_OFFER_KEYS.some(k => t.includes(k))) return;
+    aicCheckOfferShown = true;
+    setTimeout(() => {
+      const bubble = addMsg(renderMsg('Want a quick read on your chances? I can run a 1-minute check — no credit pull.'), 'bot');
+      const wrap = document.createElement('div');
+      wrap.className = 'aic-opts';
+      const btn = document.createElement('button');
+      btn.className = 'aic-opt';
+      btn.textContent = 'Check my approval chances';
+      btn.addEventListener('click', () => { wrap.remove(); startCheck(false); });
+      wrap.appendChild(btn);
+      bubble.querySelector('.aic-msg__b').appendChild(wrap);
+      autoScroll(true);
+    }, 450);
+  }
+
   // ─── Wire up ───
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    send(input.value);
+    const val = input.value;
+    input.value = '';
+    if (aicCheckState !== 'idle' && aicCheckState !== 'submitting') {
+      handleCheckAnswer(val);
+    } else {
+      send(val);
+    }
   });
 
   chipsWrap.addEventListener('click', (e) => {
+    const chk = e.target.closest('[data-check-start]');
+    if (chk) { ensureAudioCtx(); startCheck(true); return; }
     const c = e.target.closest('.aic__chip');
     if (c && c.dataset.q) {
       ensureAudioCtx();
@@ -1892,6 +2144,22 @@ No spam. No sequences. One conversation, on your terms.
 }
 .hero-section .aic__chip:hover { background: #e5e7eb !important; border-color: #d1d5db !important; }
 .hero-section .aic__chip svg { color: #0A6CFF !important; flex-shrink: 0; }
+.hero-section .aic__chip--check {
+  grid-column: 1 / -1 !important;
+  background: #0A6CFF !important; color: #fff !important;
+  border-color: #0A6CFF !important; font-weight: 600 !important;
+  justify-content: center !important;
+}
+.hero-section .aic__chip--check:hover { background: #0958D9 !important; border-color: #0958D9 !important; }
+.hero-section .aic__chip--check svg { color: #fff !important; }
+
+/* ─── 1-Minute Check: back-to-chat link ─── */
+.hero-section .aic-check-back {
+  display: inline-block; margin: 2px 0 4px; padding: 0;
+  background: none; border: none; color: #6b7280; font-size: 12.5px;
+  font-family: inherit; cursor: pointer; text-decoration: underline;
+}
+.hero-section .aic-check-back:hover { color: #111; }
 
 /* ─── Footer ─── */
 .hero-section .aic__footer {

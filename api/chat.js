@@ -318,6 +318,52 @@ export default async function handler(req, res) {
     }
   }
 
+  // --- 1-Minute Check branch: deterministic, no Claude call ---
+  // The credit-range → tier → contact flow is fully scripted client-side (same
+  // tier logic/copy as the on-site 1-Minute Check), so this just posts the
+  // already-collected, already-validated lead straight to GHL with its own
+  // form_source so it's distinguishable from both "ai_chat" and the on-site
+  // "check_<page>" leads.
+  if (req.body && req.body.action === "check_submit") {
+    try {
+      const { tier = "", credit_range = "", contact = {}, notes = "", attribution = {} } = req.body;
+
+      const payload = {
+        form_source: "check_chat",
+        full_name: contact.full_name || "",
+        email: contact.email || "",
+        phone: contact.phone || "",
+        source_url: contact.source_url || "",
+        check_chat_tier: tier,
+        check_chat_credit_range: credit_range,
+        check_chat_notes: notes,
+        session_id: attribution.session_id || "",
+        utm_source: attribution.utm_source || "",
+        utm_medium: attribution.utm_medium || "",
+        utm_campaign: attribution.utm_campaign || "",
+        utm_term: attribution.utm_term || "",
+        utm_content: attribution.utm_content || "",
+        umtid: attribution.umtid || "",
+        loid: attribution.loid || "",
+        landing_page: attribution.landing_page || "",
+        city: attribution.city || "",
+        persona: attribution.persona || "",
+      };
+
+      await fetch(GHL_CHAT_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      return res.status(200).json({ ok: true });
+    } catch (e) {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      return res.status(200).json({ ok: false }); // never block the UI
+    }
+  }
+
   try {
     const { message, history = [] } = req.body || {};
     if (!message || typeof message !== "string") {
