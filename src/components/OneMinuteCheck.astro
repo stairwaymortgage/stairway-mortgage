@@ -1,0 +1,530 @@
+---
+/**
+ * OneMinuteCheck — the "1-Minute Check" self-reported-credit-score tool.
+ * --------------------------------------------------------------------
+ * A value-ADD offer that sits ALONGSIDE existing content. It never hides,
+ * blurs, locks or gates anything. It captures name/email/phone into the
+ * existing GHL lead pipeline using the EXACT submit path CalcLeadForm uses.
+ *
+ * Two forms, one component, driven by `variant`:
+ *   - variant="inline"  → a quiet band/card embedded in a page.
+ *   - variant="modal"   → a floating button that opens the Check in a dialog.
+ *
+ * Flow: prompt (3 score ranges) → 2s "checking" spinner → tier result
+ * (580+ = high chances / below 580 = custom review) → name/email/phone
+ * capture → POST to GHL_WEBHOOK_URL → success. On response.ok it fires
+ * window.STW_fireGenerateLead(...) exactly like the other forms.
+ *
+ * The webhook URL is imported from the single source of truth (ghl.ts) and
+ * injected into the is:inline script via define:vars (an is:inline script
+ * can't import an ES module — same constraint CalcLeadForm solves with a
+ * data-attribute). We do NOT add a new webhook.
+ *
+ * Design tokens are hardcoded (ink #0A0E1A, blue #1845D6, paper #FAFAF7,
+ * Fraunces/IBM Plex Sans) so the component never depends on per-page CSS vars.
+ */
+import { GHL_WEBHOOK_URL } from '../lib/ghl';
+
+interface Props {
+  /** "inline" = embedded band; "modal" = floating button + dialog. */
+  variant?: 'inline' | 'modal';
+  /** Short token for form_source → `check_<source>` (profession|county|blog|calculator|floating). */
+  source?: string;
+  /** Optional context carried into notes + generate_lead. */
+  profession?: string;
+  county?: string;
+  /** Optional small eyebrow line above the prompt (e.g. the calculator strip line). */
+  eyebrow?: string;
+}
+
+const {
+  variant = 'inline',
+  source = 'inline',
+  profession = '',
+  county = '',
+  eyebrow = '',
+} = Astro.props;
+
+// Unique id per instance so the inline script scopes to its own root and two
+// instances on one page (e.g. an inline band + the floating modal) never clash.
+const uid = 'omc-' + Math.random().toString(36).slice(2, 9);
+const formSource = 'check_' + source;
+const titleId = uid + '-title';
+
+// The inner flow markup, shared verbatim by both the inline band and the modal
+// dialog. Rendered via set:html so it isn't duplicated. Copy is Step 3 verbatim.
+const eyebrowHtml = eyebrow ? `<p class="omc-eyebrow">${eyebrow}</p>` : '';
+const flow = `
+  <!-- STAGE 1 — prompt -->
+  <div data-omc-stage="prompt">
+    ${eyebrowHtml}
+    <h2 class="omc-h" id="${titleId}">Check your approval chances in 1 minute. No credit pull.</h2>
+    <p class="omc-sub">Pick your estimated credit score — we'll show you where you stand. Licensed loan officer, NMLS #1072866.</p>
+    <div class="omc-scores">
+      <button type="button" class="omc-score" data-omc-score data-omc-tier="low"  data-omc-label="Below 580">Below 580</button>
+      <button type="button" class="omc-score" data-omc-score data-omc-tier="high" data-omc-label="580–679">580–679</button>
+      <button type="button" class="omc-score" data-omc-score data-omc-tier="high" data-omc-label="680+">680+</button>
+    </div>
+  </div>
+
+  <!-- STAGE 2 — checking -->
+  <div data-omc-stage="checking" hidden>
+    <div class="omc-spinner" aria-hidden="true"></div>
+    <p class="omc-checking-text">Checking your options across our lender network…</p>
+  </div>
+
+  <!-- STAGE 3 — result + capture -->
+  <div data-omc-stage="result" tabindex="-1" hidden>
+    <div data-omc-result="high" hidden>
+      <h3 class="omc-result-head">Good news — your credit puts you in a strong position.</h3>
+      <p class="omc-result-body">Based on the score you entered, your chances of approval are high across several of our lender programs. Share your details and a licensed loan officer will confirm your exact conditions.</p>
+    </div>
+    <div data-omc-result="low" hidden>
+      <h3 class="omc-result-head">You've got a path — let's find it together.</h3>
+      <p class="omc-result-body">Based on the score you entered, approval is tougher at most lenders, but our network has programs for lower scores. A licensed loan officer will review your full situation and map your options.</p>
+    </div>
+
+    <form data-omc-form novalidate>
+      <p class="omc-cap-h">See your results — where should we send them?</p>
+      <div class="omc-field">
+        <label for="${uid}-name">Full name</label>
+        <input id="${uid}-name" data-omc-name type="text" autocomplete="name" required />
+      </div>
+      <div class="omc-field">
+        <label for="${uid}-email">Email address</label>
+        <input id="${uid}-email" data-omc-email type="email" autocomplete="email" required />
+      </div>
+      <div class="omc-field">
+        <label for="${uid}-phone">Phone number</label>
+        <input id="${uid}-phone" data-omc-phone type="tel" inputmode="numeric" autocomplete="tel" placeholder="(555) 555-5555" required />
+      </div>
+      <!-- Honeypot: real users never fill this. -->
+      <input class="omc-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <p class="omc-error" data-omc-error hidden></p>
+      <button type="submit" class="omc-submit" data-omc-submit>See My Chances</button>
+      <p class="omc-micro">No credit pull. We'll never share your info. Msg &amp; data rates may apply.</p>
+    </form>
+  </div>
+
+  <!-- STAGE 4 — success -->
+  <div data-omc-stage="success" tabindex="-1" hidden>
+    <span class="omc-check" aria-hidden="true">&#10003;</span>
+    <p class="omc-success-text">You're all set. A licensed loan officer will reach out shortly with your exact conditions.</p>
+  </div>
+`;
+---
+
+{variant === 'modal' ? (
+  <div class="omc-fab-wrap" id={uid} data-omc-root data-variant="modal" data-source={source}>
+    <!-- Floating launcher -->
+    <div class="omc-fab" data-omc-fab hidden>
+      <button type="button" class="omc-fab__btn" data-omc-open aria-haspopup="dialog">
+        <span class="omc-fab__spark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 2L13.5 9L20 10.5L13.5 12L12 19L10.5 12L4 10.5L10.5 9L12 2Z" fill="currentColor"></path></svg>
+        </span>
+        <span class="omc-fab__label">1-Min Approval Check</span>
+      </button>
+      <button type="button" class="omc-fab__dismiss" data-omc-dismiss aria-label="Dismiss for now">&times;</button>
+    </div>
+
+    <!-- Modal dialog -->
+    <div class="omc-overlay" data-omc-overlay aria-hidden="true">
+      <div class="omc-dialog" role="dialog" aria-modal="true" aria-labelledby={titleId}>
+        <button type="button" class="omc-x" data-omc-close aria-label="Close">&times;</button>
+        <div class="omc-flow" data-omc-flow set:html={flow} />
+      </div>
+    </div>
+  </div>
+) : (
+  <section class="omc-band" id={uid} data-omc-root data-variant="inline" data-source={source} data-check-anchor aria-label="1-Minute approval check">
+    <div class="omc-flow" data-omc-flow set:html={flow} />
+  </section>
+)}
+
+<script
+  is:inline
+  define:vars={{ uid, endpoint: GHL_WEBHOOK_URL, variant, source, profession, county, formSource }}
+>
+  (function () {
+    var root = document.getElementById(uid);
+    if (!root || root.dataset.omcInit === '1') return;
+    root.dataset.omcInit = '1';
+
+    var flow     = root.querySelector('[data-omc-flow]');
+    var stages   = {
+      prompt:   flow.querySelector('[data-omc-stage="prompt"]'),
+      checking: flow.querySelector('[data-omc-stage="checking"]'),
+      result:   flow.querySelector('[data-omc-stage="result"]'),
+      success:  flow.querySelector('[data-omc-stage="success"]')
+    };
+    var scoreBtns = flow.querySelectorAll('[data-omc-score]');
+    var form      = flow.querySelector('[data-omc-form]');
+    var nameEl    = flow.querySelector('[data-omc-name]');
+    var emailEl   = flow.querySelector('[data-omc-email]');
+    var phoneEl   = flow.querySelector('[data-omc-phone]');
+    var gotcha    = flow.querySelector('[name="_gotcha"]');
+    var errorEl   = flow.querySelector('[data-omc-error]');
+    var submitBtn = flow.querySelector('[data-omc-submit]');
+    var resultHi  = flow.querySelector('[data-omc-result="high"]');
+    var resultLo  = flow.querySelector('[data-omc-result="low"]');
+
+    var captured = { tier: '', label: '' };
+    var sending  = false;
+    var checkTimer = null;
+
+    function showStage(name) {
+      Object.keys(stages).forEach(function (k) {
+        if (stages[k]) stages[k].hidden = (k !== name);
+      });
+    }
+
+    function resetFlow() {
+      if (checkTimer) { clearTimeout(checkTimer); checkTimer = null; }
+      captured = { tier: '', label: '' };
+      if (errorEl) errorEl.hidden = true;
+      if (form) form.reset();
+      if (resultHi) resultHi.hidden = true;
+      if (resultLo) resultLo.hidden = true;
+      showStage('prompt');
+    }
+
+    // ---------- score pick → checking → result ----------
+    function pick(tier, label) {
+      captured.tier = tier;
+      captured.label = label;
+      showStage('checking');
+      checkTimer = setTimeout(function () {
+        checkTimer = null;
+        if (resultHi) resultHi.hidden = (tier !== 'high');
+        if (resultLo) resultLo.hidden = (tier !== 'low');
+        showStage('result');
+        // Move focus to the result region for screen-reader + keyboard users.
+        if (stages.result) { try { stages.result.focus(); } catch (e) {} }
+      }, 2000);
+    }
+    for (var i = 0; i < scoreBtns.length; i++) {
+      scoreBtns[i].addEventListener('click', function () {
+        pick(this.getAttribute('data-omc-tier'), this.getAttribute('data-omc-label'));
+      });
+    }
+
+    // ---------- phone auto-format → (xxx) xxx-xxxx ----------
+    if (phoneEl) {
+      phoneEl.addEventListener('input', function () {
+        var d = this.value.replace(/\D/g, '').slice(0, 10);
+        var out = d;
+        if (d.length > 6)      out = '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
+        else if (d.length > 3) out = '(' + d.slice(0, 3) + ') ' + d.slice(3);
+        else if (d.length > 0) out = '(' + d;
+        this.value = out;
+      });
+    }
+
+    // ---------- submit ----------
+    function showError(msg, el) {
+      if (errorEl) { errorEl.textContent = msg; errorEl.hidden = false; }
+      if (el) { try { el.focus(); } catch (e) {} }
+    }
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (sending) return;
+
+        // Honeypot — silently "succeed".
+        if (gotcha && gotcha.value.trim() !== '') { showStage('success'); return; }
+
+        var fullName = (nameEl && nameEl.value || '').replace(/\s+/g, ' ').trim();
+        var email    = (emailEl && emailEl.value || '').trim();
+        var phone    = (phoneEl && phoneEl.value || '').trim();
+
+        // Name: needs first + last.
+        var parts = fullName.split(' ').filter(Boolean);
+        if (parts.length < 2) return showError('Please enter your first and last name.', nameEl);
+        var first = parts[0];
+        var last  = parts.slice(1).join(' ');
+
+        // Email: same pattern as CalcLeadForm, no double dots.
+        if (!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(email) || /\.\./.test(email))
+          return showError('Please enter a valid email address.', emailEl);
+
+        // Phone: exactly 10 digits.
+        var pd = phone.replace(/\D/g, '');
+        if (pd.length !== 10) return showError('Please enter a valid 10-digit phone number.', phoneEl);
+
+        if (errorEl) errorEl.hidden = true;
+
+        var notes = 'Tier: ' + captured.label + ' (' + captured.tier + ')';
+        if (profession) notes += ' — Profession: ' + profession;
+        if (county)     notes += ' — County: ' + county;
+
+        // snake_case keys GHL expects — mirrors CalcLeadForm exactly.
+        var payload = {
+          first_name: first,
+          last_name: last,
+          full_name: (first + ' ' + last).trim(),
+          email: email,
+          phone: phone,
+          form_source: formSource,
+          form_name: '1-Minute Check',
+          notes: notes,
+          page_url: location.href,
+          source_url: location.href,
+          submitted_at: new Date().toISOString()
+        };
+        // Attribution (landing_page, five utm_*, umtid, loid) from the shared helper.
+        var la = (window.STW_leadAttribution && window.STW_leadAttribution()) || {};
+        payload.umtid = la.umtid || '';
+        payload.loid = la.loid || '';
+        payload.landing_page = la.landing_page || '';
+        payload.utm_source = la.utm_source || ''; payload.utm_medium = la.utm_medium || '';
+        payload.utm_campaign = la.utm_campaign || ''; payload.utm_term = la.utm_term || '';
+        payload.utm_content = la.utm_content || '';
+
+        sending = true;
+        submitBtn.disabled = true;
+        var oldLabel = submitBtn.textContent;
+        submitBtn.textContent = 'Sending…';
+
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) {
+            if (r && r.ok) {
+              if (window.STW_fireGenerateLead) {
+                window.STW_fireGenerateLead({ profession: profession, county: county, umtid: payload.umtid });
+              }
+              showStage('success');
+              if (stages.success) { try { stages.success.focus(); } catch (e) {} }
+            } else {
+              console.warn('[lead] ' + formSource + ' submit failed:', r && r.status);
+              showError('Something went wrong. Please try again or call us.');
+            }
+          })
+          .catch(function (err) {
+            console.warn('[lead] ' + formSource + ' submit error:', err);
+            showError('Something went wrong. Please try again or call us.');
+          })
+          .then(function () {
+            sending = false;
+            submitBtn.disabled = false;
+            submitBtn.textContent = oldLabel;
+          });
+      });
+    }
+
+    // ============ modal variant: open/close + visibility logic ============
+    if (variant === 'modal') {
+      var fab      = root.querySelector('[data-omc-fab]');
+      var overlay  = root.querySelector('[data-omc-overlay]');
+      var openBtn  = root.querySelector('[data-omc-open]');
+      var dismissBtn = root.querySelector('[data-omc-dismiss]');
+      var closeEls = root.querySelectorAll('[data-omc-close]');
+      var isOpen   = false;
+      var dismissed = false;
+      var DKEY = 'omc-fab-dismissed';
+      try { dismissed = sessionStorage.getItem(DKEY) === '1'; } catch (e) {}
+
+      function openModal() {
+        resetFlow();
+        overlay.setAttribute('aria-hidden', 'false');
+        root.classList.add('omc--open');
+        document.body.style.overflow = 'hidden';
+        isOpen = true;
+        updateFab();
+        var firstBtn = root.querySelector('[data-omc-score]');
+        if (firstBtn) setTimeout(function () { try { firstBtn.focus(); } catch (e) {} }, 30);
+      }
+      function closeModal() {
+        overlay.setAttribute('aria-hidden', 'true');
+        root.classList.remove('omc--open');
+        document.body.style.overflow = '';
+        isOpen = false;
+        updateFab();
+        if (openBtn) { try { openBtn.focus(); } catch (e) {} }
+      }
+
+      if (openBtn) openBtn.addEventListener('click', openModal);
+      for (var c = 0; c < closeEls.length; c++) closeEls[c].addEventListener('click', closeModal);
+      if (overlay) overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeModal(); });
+
+      if (dismissBtn) dismissBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dismissed = true;
+        try { sessionStorage.setItem(DKEY, '1'); } catch (e2) {}
+        updateFab();
+      });
+
+      // ---- visibility: show the FAB only when there's no other way to act ----
+      // Hidden when: dismissed, modal open, the chat is on screen, or any
+      // [data-check-anchor] (inline Check / primary CTA) is in the viewport.
+      var anchorsVisible = 0;
+
+      function chatOnScreen() {
+        // In-repo custom chat (homepage): launcher visible or panel open.
+        if (document.querySelector('.aicf--open')) return true;
+        var chatBtn = document.querySelector('.aicf-btn');
+        if (chatBtn && chatBtn.classList.contains('aicf-btn--visible')) return true;
+        return false;
+      }
+
+      function updateFab() {
+        if (!fab) return;
+        var hide = dismissed || isOpen || anchorsVisible > 0 || chatOnScreen();
+        fab.hidden = hide;
+        fab.classList.toggle('omc-fab--visible', !hide);
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) anchorsVisible++;
+            else anchorsVisible = Math.max(0, anchorsVisible - 1);
+          });
+          updateFab();
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-check-anchor]').forEach(function (a) { io.observe(a); });
+      }
+
+      // Watch the chat launcher's class changes (homepage) so we react when it
+      // shows/hides or the panel opens.
+      var chatEl = document.querySelector('.aicf-btn');
+      if (chatEl && 'MutationObserver' in window) {
+        new MutationObserver(updateFab).observe(chatEl, { attributes: true, attributeFilter: ['class'] });
+      }
+      // Belt-and-suspenders: if any chat launcher is clicked, re-evaluate.
+      document.addEventListener('click', function (e) {
+        if (e.target && e.target.closest && e.target.closest('.aicf-btn')) setTimeout(updateFab, 50);
+      });
+
+      updateFab();
+    }
+  })();
+</script>
+
+<style is:global>
+  /* ---- shared design tokens (hardcoded; no per-page CSS var dependency) ---- */
+  [data-omc-root] {
+    --omc-ink:#0A0E1A; --omc-paper:#FAFAF7; --omc-blue:#1845D6; --omc-bone:#E7E4DA; --omc-mute:#6B7280;
+    font-family:'IBM Plex Sans',system-ui,sans-serif; color:var(--omc-ink);
+  }
+  [data-omc-root] *, [data-omc-root] *::before, [data-omc-root] *::after { box-sizing:border-box; }
+
+  /* ---- flow internals (shared by inline + modal) ---- */
+  [data-omc-root] .omc-eyebrow { font-family:'IBM Plex Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--omc-blue); margin:0 0 10px; }
+  [data-omc-root] .omc-h { font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:22px; line-height:1.15; margin:0 0 6px; color:var(--omc-ink); }
+  [data-omc-root] .omc-sub { font-size:13.5px; line-height:1.5; color:var(--omc-mute); margin:0 0 18px; }
+  [data-omc-root] .omc-scores { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  @media(max-width:420px){ [data-omc-root] .omc-scores{ grid-template-columns:1fr; } }
+  [data-omc-root] .omc-score {
+    border:1px solid var(--omc-bone); background:#fff; color:var(--omc-ink); cursor:pointer;
+    font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:15px; padding:16px 10px; border-radius:12px;
+    transition:border-color .15s, box-shadow .15s, transform .1s;
+  }
+  [data-omc-root] .omc-score:hover { border-color:var(--omc-blue); box-shadow:0 0 0 3px rgba(24,69,214,.1); }
+  [data-omc-root] .omc-score:active { transform:translateY(1px); }
+  [data-omc-root] .omc-score:focus-visible { outline:2px solid var(--omc-blue); outline-offset:2px; }
+
+  [data-omc-root] [data-omc-stage="checking"] { text-align:center; padding:24px 8px; }
+  [data-omc-root] .omc-spinner {
+    width:34px; height:34px; border-radius:50%; margin:0 auto 14px;
+    border:3px solid rgba(24,69,214,.18); border-top-color:var(--omc-blue); animation:omc-spin .8s linear infinite;
+  }
+  @keyframes omc-spin { to { transform:rotate(360deg); } }
+  [data-omc-root] .omc-checking-text { font-size:14px; color:var(--omc-mute); margin:0; }
+
+  [data-omc-root] [data-omc-stage="result"]:focus { outline:none; }
+  [data-omc-root] .omc-result-head { font-family:'Fraunces',serif; font-weight:600; font-size:21px; line-height:1.2; margin:0 0 8px; }
+  [data-omc-root] .omc-result-body { font-size:14px; line-height:1.55; color:#384055; margin:0 0 18px; }
+
+  [data-omc-root] .omc-cap-h { font-size:13.5px; font-weight:600; color:var(--omc-ink); margin:0 0 12px; }
+  [data-omc-root] .omc-field { margin-bottom:12px; }
+  [data-omc-root] .omc-field label { display:block; font-size:12.5px; font-weight:600; color:#384055; margin-bottom:6px; }
+  [data-omc-root] .omc-field input {
+    width:100%; padding:12px 13px; font-size:16px; font-family:'IBM Plex Sans',sans-serif; color:var(--omc-ink);
+    border:1px solid var(--omc-bone); border-radius:10px; background:#fff; transition:border-color .15s, box-shadow .15s;
+  }
+  [data-omc-root] .omc-field input:focus { outline:0; border-color:var(--omc-blue); box-shadow:0 0 0 3px rgba(24,69,214,.12); }
+  [data-omc-root] .omc-gotcha { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+  [data-omc-root] .omc-error { color:#b42318; font-size:13px; margin:2px 0 10px; }
+  [data-omc-root] .omc-submit {
+    width:100%; border:0; cursor:pointer; background:var(--omc-blue); color:#fff;
+    font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:15px; padding:14px; border-radius:10px; transition:background .15s;
+  }
+  [data-omc-root] .omc-submit:hover { background:#2a57e6; }
+  [data-omc-root] .omc-submit:disabled { opacity:.7; cursor:default; }
+  [data-omc-root] .omc-micro { font-size:11px; color:var(--omc-mute); text-align:center; margin:10px 0 0; }
+
+  [data-omc-root] [data-omc-stage="success"] { text-align:center; padding:12px 4px; }
+  [data-omc-root] [data-omc-stage="success"]:focus { outline:none; }
+  [data-omc-root] .omc-check {
+    display:inline-grid; place-items:center; width:52px; height:52px; border-radius:50%;
+    background:rgba(24,69,214,.1); color:var(--omc-blue); font-size:26px; margin-bottom:14px;
+  }
+  [data-omc-root] .omc-success-text { font-size:15px; line-height:1.5; color:#384055; margin:0 auto; max-width:38ch; }
+
+  /* ---- inline band wrapper ---- */
+  .omc-band {
+    background:var(--omc-paper); border:1px solid var(--omc-bone); border-radius:16px;
+    padding:26px; margin:32px auto; max-width:760px;
+    box-shadow:0 1px 0 var(--omc-bone), 0 18px 40px -32px rgba(10,14,26,.3);
+  }
+
+  /* ---- floating button ---- */
+  .omc-fab { position:fixed; right:24px; bottom:24px; z-index:8000; display:flex; align-items:center; }
+  .omc-fab[hidden] { display:none; }
+  .omc-fab__btn {
+    display:inline-flex; align-items:center; gap:9px; border:0; cursor:pointer;
+    background:linear-gradient(135deg,#1845D6,#3a63f0); color:#fff;
+    font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:14px;
+    padding:13px 18px; border-radius:999px;
+    box-shadow:0 12px 32px -8px rgba(10,14,26,.45), 0 0 0 1px rgba(255,255,255,.08);
+    opacity:0; transform:translateY(16px) scale(.9);
+    transition:opacity .35s cubic-bezier(.16,1,.3,1), transform .35s cubic-bezier(.16,1,.3,1), box-shadow .2s;
+  }
+  .omc-fab--visible .omc-fab__btn { opacity:1; transform:none; }
+  .omc-fab__btn:hover { box-shadow:0 16px 40px -8px rgba(10,14,26,.55), 0 0 0 1px rgba(255,255,255,.14); }
+  .omc-fab__spark { display:grid; place-items:center; }
+  .omc-fab__dismiss {
+    position:absolute; top:-8px; right:-6px; width:22px; height:22px; border-radius:50%;
+    border:1px solid var(--omc-bone); background:#fff; color:var(--omc-mute); cursor:pointer;
+    font-size:15px; line-height:1; display:grid; place-items:center; padding:0;
+    box-shadow:0 2px 6px rgba(10,14,26,.2); opacity:0; transition:opacity .35s;
+  }
+  .omc-fab--visible .omc-fab__dismiss { opacity:1; }
+  .omc-fab__dismiss:hover { color:var(--omc-ink); }
+  @media(max-width:440px){
+    .omc-fab { right:16px; bottom:16px; }
+    .omc-fab__btn { font-size:13px; padding:12px 16px; }
+  }
+
+  /* ---- modal ---- */
+  .omc-overlay {
+    position:fixed; inset:0; z-index:9999; display:none; align-items:center; justify-content:center;
+    padding:20px; background:rgba(10,14,26,.6); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+  }
+  .omc--open .omc-overlay { display:flex; }
+  .omc-dialog {
+    position:relative; width:100%; max-width:440px; max-height:92vh; overflow:auto;
+    background:var(--omc-paper); border-radius:18px; padding:28px 26px 26px;
+    box-shadow:0 30px 60px -20px rgba(10,14,26,.55); border:1px solid rgba(255,255,255,.6);
+    animation:omc-pop .18s ease-out;
+  }
+  @keyframes omc-pop { from{opacity:0; transform:translateY(8px) scale(.985);} to{opacity:1; transform:none;} }
+  .omc-x {
+    position:absolute; top:12px; right:14px; border:0; background:transparent; cursor:pointer;
+    font-size:26px; line-height:1; color:var(--omc-mute); padding:4px;
+  }
+  .omc-x:hover { color:var(--omc-ink); }
+
+  /* Respect reduced-motion: no entrance animation / slow the spinner. */
+  @media (prefers-reduced-motion: reduce) {
+    .omc-fab__btn, .omc-fab__dismiss { transition:none; }
+    .omc-fab--visible .omc-fab__btn { transform:none; }
+    .omc-dialog { animation:none; }
+    [data-omc-root] .omc-spinner { animation-duration:1.4s; }
+  }
+</style>
