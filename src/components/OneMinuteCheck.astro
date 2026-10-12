@@ -65,6 +65,12 @@ const flow = `
       <button type="button" class="omc-score" data-omc-score data-omc-tier="high" data-omc-label="580–679">580–679</button>
       <button type="button" class="omc-score" data-omc-score data-omc-tier="high" data-omc-label="680+">680+</button>
     </div>
+    <p class="omc-reassure">
+      <span class="omc-reassure__ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><path d="M12 2.5l7 2.5v5c0 4.6-3 8.3-7 9.5-4-1.2-7-4.9-7-9.5v-5l7-2.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M9 11.8l2 2 4-4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+      No hard credit pull — checking your chances won't affect your credit score.
+    </p>
   </div>
 
   <!-- STAGE 2 — checking -->
@@ -419,6 +425,13 @@ const flow = `
   [data-omc-root] .omc-sub { font-size:13.5px; line-height:1.5; color:var(--omc-mute); margin:0 0 18px; }
   [data-omc-root] .omc-scores { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
   @media(max-width:420px){ [data-omc-root] .omc-scores{ grid-template-columns:1fr; } }
+  [data-omc-root] .omc-reassure {
+    display:flex; align-items:center; justify-content:center; gap:7px;
+    margin:14px 0 0; padding:9px 12px; border-radius:10px;
+    background:rgba(24,69,214,.06); border:1px solid rgba(24,69,214,.12);
+    font-size:12px; line-height:1.4; color:#384055; text-align:center;
+  }
+  [data-omc-root] .omc-reassure__ico { flex:none; display:grid; place-items:center; color:var(--omc-blue); }
   [data-omc-root] .omc-score {
     border:1px solid var(--omc-bone); background:#fff; color:var(--omc-ink); cursor:pointer;
     font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:15px; padding:16px 10px; border-radius:12px;
