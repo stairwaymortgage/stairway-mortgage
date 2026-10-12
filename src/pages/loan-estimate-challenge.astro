@@ -960,6 +960,9 @@ import HomeReviews from '../components/HomeReviews.astro';
       source_url: location.href,
       loan_estimate_url: ''
     };
+    var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+    payload.landing_page=_la.landing_page||payload.source_url||''; payload.utm_source=_la.utm_source||''; payload.utm_medium=_la.utm_medium||'';
+    payload.utm_campaign=_la.utm_campaign||''; payload.utm_term=_la.utm_term||''; payload.utm_content=_la.utm_content||'';
 
     var UPLOAD_ENDPOINT='https://stairway-upload.jimb-3a9.workers.dev';
     var fileInput=document.getElementById('lec-file');
@@ -971,11 +974,13 @@ import HomeReviews from '../components/HomeReviews.astro';
       payload.loan_estimate_url=loanUrl||'';
       btn.textContent='Sending\u2026';
       fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-        .then(function(){
+        .then(function(r){
+          if(r&&r.ok){ if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:'',county:'',umtid:payload.umtid}); } } else { console.warn('[lead] '+payload.form_source+' submit failed:', r&&r.status); }
           document.getElementById('lec-form').style.display='none';
           document.getElementById('lec-success').style.display='block';
         })
-        .catch(function(){
+        .catch(function(e){
+          console.warn('[lead] '+payload.form_source+' submit error:', e);
           showErr('Something went wrong. Please try again or call us directly.');
         })
         .then(function(){

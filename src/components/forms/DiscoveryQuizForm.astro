@@ -595,6 +595,9 @@
 
       var result = computeResult();
       var payload = buildPayload(name, email, phone, result);
+      var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+      payload.landing_page=_la.landing_page||''; payload.utm_source=_la.utm_source||''; payload.utm_medium=_la.utm_medium||'';
+      payload.utm_campaign=_la.utm_campaign||''; payload.utm_term=_la.utm_term||''; payload.utm_content=_la.utm_content||'';
 
       if (honeypot && honeypot.trim() !== '') { renderResult(result, name); return; }
 
@@ -602,8 +605,8 @@
       btn.disabled = true; btn.textContent = 'Calculating…';
       fetch('https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/5ef42c22-f8cf-48a8-af4c-998abe55d20d', {
         method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)
-      }).then(function(){ renderResult(result, name); })
-        .catch(function(){ renderResult(result, name); }); // show result regardless; lead retry handled server-side
+      }).then(function(r){ if(r&&r.ok){ if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:'',county:'',umtid:payload.umtid}); } } else { console.warn('[lead] '+payload.form_source+' submit failed:', r&&r.status); } renderResult(result, name); })
+        .catch(function(e){ console.warn('[lead] '+payload.form_source+' submit error:', e); renderResult(result, name); }); // show result regardless; lead retry handled server-side
     }
 
     // ---------- SCORING ----------

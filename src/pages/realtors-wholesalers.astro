@@ -381,7 +381,11 @@ import Layout from '../layouts/Layout.astro';
       utm_content:_qs('utm_content')||_getCookie('utm_content')||'',
       source_url:_getCookie('first_touch_url')||location.href
     };
-    fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(){showThanks();}).catch(function(){showThanks();});
+    var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+    payload.landing_page=_la.landing_page||payload.source_url||'';
+    payload.utm_source=_la.utm_source||payload.utm_source||''; payload.utm_medium=_la.utm_medium||payload.utm_medium||''; payload.utm_campaign=_la.utm_campaign||payload.utm_campaign||'';
+    payload.utm_term=_la.utm_term||payload.utm_term||''; payload.utm_content=_la.utm_content||payload.utm_content||'';
+    fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){ if(r&&r.ok){ if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:'',county:'',umtid:payload.umtid}); } } else { console.warn('[lead] '+payload.form_source+' submit failed:', r&&r.status); } showThanks(); }).catch(function(e){ console.warn('[lead] '+payload.form_source+' submit error:', e); showThanks(); });
   }
   function showThanks(){form.style.display='none';thanks.style.display='block';}
 })();

@@ -490,7 +490,12 @@
       payload.utm_source=attr.utm_source; payload.utm_medium=attr.utm_medium; payload.utm_campaign=attr.utm_campaign;
       payload.utm_term=attr.utm_term; payload.utm_content=attr.utm_content; payload.source_url=attr.source_url;
 
-      try{ fetch(WEBHOOK_URL,{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), keepalive:true }).catch(function(){}); }catch(e){}
+      var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+      payload.landing_page=_la.landing_page||""; payload.utm_source=_la.utm_source||""; payload.utm_medium=_la.utm_medium||"";
+      payload.utm_campaign=_la.utm_campaign||""; payload.utm_term=_la.utm_term||""; payload.utm_content=_la.utm_content||"";
+      try{ fetch(WEBHOOK_URL,{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), keepalive:true })
+        .then(function(r){ if(r&&r.ok){ if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:"",county:state.loc_county||"",umtid:payload.umtid}); } } else { console.warn("[lead] "+FORM_SOURCE+" submit failed:", r&&r.status); } })
+        .catch(function(e){ console.warn("[lead] "+FORM_SOURCE+" submit error:", e); }); }catch(e){ console.warn("[lead] "+FORM_SOURCE+" submit threw:", e); }
       showThanks(first,last);
     }
 

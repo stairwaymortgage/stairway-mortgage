@@ -123,11 +123,14 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       loid: _resolveLoid(),
       source_url: location.href
     };
+    var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+    payload.landing_page=_la.landing_page||payload.source_url||''; payload.utm_source=_la.utm_source||''; payload.utm_medium=_la.utm_medium||'';
+    payload.utm_campaign=_la.utm_campaign||''; payload.utm_term=_la.utm_term||''; payload.utm_content=_la.utm_content||'';
 
     sending=true; btn.disabled=true; btn.textContent='Sending\u2026';
     fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(){document.getElementById('cu-form').style.display='none';document.getElementById('cu-success').style.display='block';})
-      .catch(function(){showErr('Something went wrong. Please try again or call us.');})
+      .then(function(r){ if(r&&r.ok){ if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:'',county:'',umtid:payload.umtid}); } } else { console.warn('[lead] '+payload.form_source+' submit failed:', r&&r.status); } document.getElementById('cu-form').style.display='none';document.getElementById('cu-success').style.display='block';})
+      .catch(function(e){ console.warn('[lead] '+payload.form_source+' submit error:', e); showErr('Something went wrong. Please try again or call us.');})
       .then(function(){sending=false;btn.disabled=false;btn.textContent='Send Message';});
   });
 })();

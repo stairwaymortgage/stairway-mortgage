@@ -1,6 +1,7 @@
 ---
 import Analytics from '../components/Analytics.astro';
 import LoAttribution from '../components/LoAttribution.astro';
+import leadAttributionSrc from '../lib/lead-attribution.js?raw';
 import '../styles/global.css';
 
 interface Props {
@@ -60,6 +61,8 @@ const ogImageUrl = ogImage || `${siteUrl}/social-card.png`;
 
   <Analytics />
   <LoAttribution />
+  <!-- Shared lead-attribution + GA4 generate_lead helper (single source of truth for all forms) -->
+  <script is:inline set:html={leadAttributionSrc}></script>
 </head>
 <body>
   <!-- Landing page top bar — logo + phone only, no nav -->

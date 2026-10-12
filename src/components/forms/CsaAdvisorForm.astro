@@ -307,6 +307,10 @@
         umtid: _resolveUmtid(), loid: _resolveLoid()
       });
 
+      var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+      payload.landing_page=_la.landing_page||''; payload.utm_source=_la.utm_source||''; payload.utm_medium=_la.utm_medium||'';
+      payload.utm_campaign=_la.utm_campaign||''; payload.utm_term=_la.utm_term||''; payload.utm_content=_la.utm_content||'';
+
       function done() {
         form.hidden = true; successEl.hidden = false;
         if (first) {
@@ -319,7 +323,8 @@
       submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
       fetch('https://services.leadconnectorhq.com/hooks/ipRIuBMrlyPNaFSXDz3q/webhook-trigger/2e91df07-1fac-4d49-9f72-30b8c6ca36d0', {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
-      }).then(done).catch(function () {
+      }).then(function(r){ if(r&&r.ok){ if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:(data.profession||data.professions||''),county:(data.county||''),umtid:payload.umtid}); } } else { console.warn('[lead] '+payload.form_source+' submit failed:', r&&r.status); } done(); }).catch(function (e) {
+        console.warn('[lead] '+payload.form_source+' submit error:', e);
         submitBtn.disabled = false; submitBtn.textContent = 'Submit Application';
         setErr('sms_consent', 'Something went wrong. Please try again or call (954) 993-1625.');
       });

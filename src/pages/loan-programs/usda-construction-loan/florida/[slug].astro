@@ -483,6 +483,7 @@ const pageDesc = eligible
         if(!phone){ log('! Please add your phone so we can send your options'); return; }
         const orig=btn.textContent;
         btn.dataset.sending='1'; btn.style.pointerEvents='none'; btn.style.opacity='.7'; btn.textContent='Sending…';
+        var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
         try{
           const r=await fetch('/api/usda-check',{
             method:'POST',
@@ -496,12 +497,17 @@ const pageDesc = eligible
               usda_prelim_result: state.status,
               county: county,
               source_url: window.location.href,
-              umtid: ''
+              landing_page: _la.landing_page||window.location.href,
+              utm_source: _la.utm_source||'', utm_medium: _la.utm_medium||'', utm_campaign: _la.utm_campaign||'',
+              utm_term: _la.utm_term||'', utm_content: _la.utm_content||'',
+              umtid: _la.umtid||'', loid: _la.loid||''
             })
           });
           if(!r.ok) throw new Error('HTTP '+r.status);
+          if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:'',county:county||'',umtid:_la.umtid||''}); }
           btn.textContent='✓ Sent — we\'ll be in touch shortly';   // keep disabled on success
         }catch(e){
+          console.warn('[lead] usda_construction_florida submit error:', e);
           btn.dataset.sending='0'; btn.style.pointerEvents=''; btn.style.opacity=''; btn.textContent=orig;
           log('! Could not send just now — please try again or call (954) 993-1625');
         }

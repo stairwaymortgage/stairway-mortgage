@@ -732,14 +732,20 @@ const cards = [
         loid: _resolveLoid(),
         source_url: location.href
       };
+      var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+      payload.landing_page=_la.landing_page||payload.source_url||''; payload.utm_source=_la.utm_source||''; payload.utm_medium=_la.utm_medium||'';
+      payload.utm_campaign=_la.utm_campaign||''; payload.utm_term=_la.utm_term||''; payload.utm_content=_la.utm_content||'';
 
       try {
         fetch(ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
+        }).then(function (r) {
+          if (r && r.ok) { if (window.STW_fireGenerateLead) { window.STW_fireGenerateLead({ profession:'', county:'', umtid: payload.umtid }); } }
+          else { console.warn('[lead] '+payload.form_source+' submit failed:', r && r.status); }
         }).catch(function (err) {
-          console.log('The Drawing — lead submit failed (non-blocking):', err);
+          console.warn('[lead] '+payload.form_source+' submit error (non-blocking):', err);
         });
       } catch (err) {
         console.log('The Drawing — lead submit threw (non-blocking):', err);

@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import LoAttribution from '../components/LoAttribution.astro';
+import leadAttributionSrc from '../lib/lead-attribution.js?raw';
 import '../styles/global.css';
 import seoData from '../data/seo.json';
 
@@ -80,6 +81,8 @@ const ogImageUrl = ogImage || `${siteUrl}/social-card.png`;
        Replaces the former inline GA4 snippet to avoid double-loading GA4. -->
   <Analytics />
   <LoAttribution />
+  <!-- Shared lead-attribution + GA4 generate_lead helper (single source of truth for all forms) -->
+  <script is:inline set:html={leadAttributionSrc}></script>
 
   <!-- Schema.org MortgageBroker (sitewide) — identity, geo, hours, rating for Map Pack + AI answers -->
   <script type="application/ld+json" set:html={JSON.stringify({

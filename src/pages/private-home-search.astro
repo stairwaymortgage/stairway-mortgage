@@ -1861,12 +1861,16 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       utm_content: _qs('utm_content')||_getCookie('utm_content')||'',
       source_url: _getCookie('first_touch_url')||location.href
     };
+    var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+    payload.landing_page=_la.landing_page||payload.source_url||'';
+    payload.utm_source=_la.utm_source||payload.utm_source||''; payload.utm_medium=_la.utm_medium||payload.utm_medium||''; payload.utm_campaign=_la.utm_campaign||payload.utm_campaign||'';
+    payload.utm_term=_la.utm_term||payload.utm_term||''; payload.utm_content=_la.utm_content||payload.utm_content||'';
 
     sending=true;
     if(btn){btn.disabled=true;btn.dataset.label=btn.textContent;btn.textContent='Sending\u2026';}
     fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(){showSuccess();})
-      .catch(function(){showErr('Something went wrong. Please try again or call us.');})
+      .then(function(r){ if(r&&r.ok){ if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:'',county:'',umtid:payload.umtid}); } } else { console.warn('[lead] '+payload.form_source+' submit failed:', r&&r.status); } showSuccess(); })
+      .catch(function(e){ console.warn('[lead] '+payload.form_source+' submit error:', e); showErr('Something went wrong. Please try again or call us.'); })
       .then(function(){sending=false;if(btn){btn.disabled=false;btn.textContent=btn.dataset.label||'Set Up My Search';}});
   }
 

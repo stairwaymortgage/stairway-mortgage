@@ -418,14 +418,18 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       };
       // Snapshot goes under the slug's dedicated GHL field key if mapped, else "notes".
       payload[FIELD_MAP[captured.slug] || 'notes'] = captured.notes;
+      var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+      payload.landing_page=_la.landing_page||''; payload.utm_source=_la.utm_source||''; payload.utm_medium=_la.utm_medium||'';
+      payload.utm_campaign=_la.utm_campaign||''; payload.utm_term=_la.utm_term||''; payload.utm_content=_la.utm_content||'';
 
       sending = true;
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending…';
 
       send(payload)
-        .then(function () { form.hidden = true; thanks.hidden = false; })
-        .catch(function () {
+        .then(function (r) { if(r&&r.ok){ if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:'',county:'',umtid:payload.umtid}); } } else { console.warn('[lead] '+payload.form_source+' submit failed:', r&&r.status); } form.hidden = true; thanks.hidden = false; })
+        .catch(function (err) {
+          console.warn('[lead] '+payload.form_source+' submit error:', err);
           // Network/CORS failure — surface so we don't fake success during testing.
           showError('Something went wrong. Please try again or call us.');
         })

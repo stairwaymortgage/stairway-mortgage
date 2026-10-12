@@ -363,11 +363,15 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
     payload.loan_officer_name=attr.loan_officer_name; payload.umtid=attr.umtid;
     payload.utm_source=attr.utm_source; payload.utm_medium=attr.utm_medium; payload.utm_campaign=attr.utm_campaign;
     payload.utm_term=attr.utm_term; payload.utm_content=attr.utm_content; payload.source_url=attr.source_url;
+    var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+    payload.landing_page=_la.landing_page||attr.source_url||'';
+    payload.utm_source=_la.utm_source||payload.utm_source||''; payload.utm_medium=_la.utm_medium||payload.utm_medium||''; payload.utm_campaign=_la.utm_campaign||payload.utm_campaign||'';
+    payload.utm_term=_la.utm_term||payload.utm_term||''; payload.utm_content=_la.utm_content||payload.utm_content||'';
 
     sending=true; nextBtn.disabled=true; nextBtn.textContent='Sending…';
     fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(){ showSuccess(); })
-      .catch(function(){ showErr('Something went wrong. Please try again, or call us at (954) 993-1625.'); })
+      .then(function(r){ if(r&&r.ok){ if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:'',county:'',umtid:payload.umtid}); } } else { console.warn('[lead] '+payload.form_source+' submit failed:', r&&r.status); } showSuccess(); })
+      .catch(function(e){ console.warn('[lead] '+payload.form_source+' submit error:', e); showErr('Something went wrong. Please try again, or call us at (954) 993-1625.'); })
       .then(function(){ sending=false; nextBtn.disabled=false; nextBtn.textContent='Submit Donation'; });
   }
 

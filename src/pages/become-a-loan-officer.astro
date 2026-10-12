@@ -156,6 +156,7 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
       return m ? m[1] : '';
     }
     if (ENDPOINT) {
+      var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
       fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -167,9 +168,15 @@ import { GHL_WEBHOOK_URL } from '../lib/ghl';
           nmls: nmls, loid: loid,
           umtid: _resolveUmtid(),
           attribution_loid: _resolveLoid(),
-          source_url: location.href
+          source_url: location.href,
+          landing_page: _la.landing_page||location.href,
+          utm_source: _la.utm_source||'', utm_medium: _la.utm_medium||'', utm_campaign: _la.utm_campaign||'',
+          utm_term: _la.utm_term||'', utm_content: _la.utm_content||''
         })
-      }).catch(function () { /* fire-and-forget */ });
+      }).then(function (r) {
+        if (r && r.ok) { if (window.STW_fireGenerateLead) { window.STW_fireGenerateLead({ profession:'', county:'', umtid: _resolveUmtid() }); } }
+        else { console.warn('[lead] lo_registration submit failed:', r && r.status); }
+      }).catch(function (e) { console.warn('[lead] lo_registration submit error:', e); });
     }
 
     form.hidden = true;

@@ -346,6 +346,10 @@
         source_url: location.href
       };
 
+      var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+      payload.landing_page=_la.landing_page||''; payload.utm_source=_la.utm_source||''; payload.utm_medium=_la.utm_medium||'';
+      payload.utm_campaign=_la.utm_campaign||''; payload.utm_term=_la.utm_term||''; payload.utm_content=_la.utm_content||'';
+
       var btn=document.getElementById('sw-to-wheel');
       // update wheel title with name
       document.getElementById('sw-wheel-title').textContent = 'Let it rip ' + first + '!';
@@ -353,8 +357,8 @@
       if (honeypot && honeypot.trim()!==''){ show(4); return; }
       btn.disabled=true; btn.textContent='Loading…';
       fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-        .then(function(){ btn.disabled=false; btn.textContent='Spin The Wheel!'; show(4); })
-        .catch(function(){ btn.disabled=false; btn.textContent='Spin The Wheel!'; show(4); });
+        .then(function(r){ if(r&&r.ok){ if(window.STW_fireGenerateLead){ window.STW_fireGenerateLead({profession:'',county:'',umtid:payload.umtid}); } } else { console.warn('[lead] '+payload.form_source+' submit failed:', r&&r.status); } btn.disabled=false; btn.textContent='Spin The Wheel!'; show(4); })
+        .catch(function(e){ console.warn('[lead] '+payload.form_source+' submit error:', e); btn.disabled=false; btn.textContent='Spin The Wheel!'; show(4); });
     }
 
     // spin (rigged to WIN_INDEX)
