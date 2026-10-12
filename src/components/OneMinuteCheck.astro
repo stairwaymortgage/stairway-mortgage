@@ -66,9 +66,9 @@ const flow = `
     <h2 class="omc-h" id="${titleId}">Check your approval chances in 1 minute. No credit pull.</h2>
     <p class="omc-sub">Pick your estimated credit score — we'll show you where you stand. Licensed loan officer, NMLS #1072866.</p>
     <div class="omc-scores">
-      <button type="button" class="omc-score" data-omc-score data-omc-tier="low"  data-omc-label="Below 580">Below 580</button>
-      <button type="button" class="omc-score" data-omc-score data-omc-tier="high" data-omc-label="580–679">580–679</button>
-      <button type="button" class="omc-score" data-omc-score data-omc-tier="high" data-omc-label="680+">680+</button>
+      <button type="button" class="omc-score" data-omc-score data-omc-tier="low"  data-omc-label="Below 580" data-omc-pct="45">Below 580</button>
+      <button type="button" class="omc-score" data-omc-score data-omc-tier="high" data-omc-label="580–679" data-omc-pct="75">580–679</button>
+      <button type="button" class="omc-score" data-omc-score data-omc-tier="high" data-omc-label="680+" data-omc-pct="90">680+</button>
     </div>
     <div class="omc-reassure-wrap">
       <span class="omc-reassure">
@@ -91,10 +91,24 @@ const flow = `
     <div data-omc-result="high" hidden>
       <h3 class="omc-result-head">Good news — your credit puts you in a strong position.</h3>
       <p class="omc-result-body">Based on the score you entered, your chances of approval are high across several of our lender programs. Share your details and a licensed loan officer will confirm your exact conditions.</p>
+      <div class="omc-chance">
+        <div class="omc-chance__head">
+          <span class="omc-chance__label">Estimated approval chance</span>
+          <span class="omc-chance__pct omc-chance__pct--high" data-omc-chance-pct>—</span>
+        </div>
+        <div class="omc-chance__track"><div class="omc-chance__fill omc-chance__fill--high" data-omc-chance-fill></div></div>
+      </div>
     </div>
     <div data-omc-result="low" hidden>
       <h3 class="omc-result-head">You've got a path — let's find it together.</h3>
       <p class="omc-result-body">Based on the score you entered, approval is tougher at most lenders, but our network has programs for lower scores. A licensed loan officer will review your full situation and map your options.</p>
+      <div class="omc-chance">
+        <div class="omc-chance__head">
+          <span class="omc-chance__label">Estimated approval chance</span>
+          <span class="omc-chance__pct omc-chance__pct--low" data-omc-chance-pct>—</span>
+        </div>
+        <div class="omc-chance__track"><div class="omc-chance__fill omc-chance__fill--low" data-omc-chance-fill></div></div>
+      </div>
     </div>
 
     <form data-omc-form novalidate>
@@ -193,7 +207,7 @@ const flow = `
     var addrConfirm = flow.querySelector('[data-omc-addr-confirm]');
     var successResult = flow.querySelector('[data-omc-success-result]');
 
-    var captured = { tier: '', label: '' };
+    var captured = { tier: '', label: '', pct: 0 };
     var address  = {}; // parsed Google Places components (if selected)
     var sending  = false;
     var checkTimer = null;
@@ -206,7 +220,7 @@ const flow = `
 
     function resetFlow() {
       if (checkTimer) { clearTimeout(checkTimer); checkTimer = null; }
-      captured = { tier: '', label: '' };
+      captured = { tier: '', label: '', pct: 0 };
       address = {};
       if (errorEl) errorEl.hidden = true;
       if (form) form.reset();
@@ -218,14 +232,26 @@ const flow = `
     }
 
     // ---------- score pick → checking → result ----------
-    function pick(tier, label) {
+    function pick(tier, label, pct) {
       captured.tier = tier;
       captured.label = label;
+      captured.pct = pct;
       showStage('checking');
       checkTimer = setTimeout(function () {
         checkTimer = null;
         if (resultHi) resultHi.hidden = (tier !== 'high');
         if (resultLo) resultLo.hidden = (tier !== 'low');
+        // Fill the approval-chance bar inside the shown result block.
+        var block = (tier === 'high') ? resultHi : resultLo;
+        if (block) {
+          var pctEl = block.querySelector('[data-omc-chance-pct]');
+          var fill  = block.querySelector('[data-omc-chance-fill]');
+          if (pctEl) pctEl.textContent = pct + '%';
+          if (fill) {
+            fill.style.width = '0%';
+            requestAnimationFrame(function () { setTimeout(function () { fill.style.width = pct + '%'; }, 80); });
+          }
+        }
         showStage('result');
         // Move focus to the result region for screen-reader + keyboard users.
         if (stages.result) { try { stages.result.focus(); } catch (e) {} }
@@ -233,7 +259,7 @@ const flow = `
     }
     for (var i = 0; i < scoreBtns.length; i++) {
       scoreBtns[i].addEventListener('click', function () {
-        pick(this.getAttribute('data-omc-tier'), this.getAttribute('data-omc-label'));
+        pick(this.getAttribute('data-omc-tier'), this.getAttribute('data-omc-label'), parseInt(this.getAttribute('data-omc-pct'), 10) || 0);
       });
     }
 
@@ -348,7 +374,7 @@ const flow = `
         var addrVal = (addrEl && addrEl.value || '').replace(/\s+/g, ' ').trim();
         var propertyAddress = address.formatted || addrVal;
 
-        var notes = 'Tier: ' + captured.label + ' (' + captured.tier + ')';
+        var notes = 'Tier: ' + captured.label + ' (' + captured.tier + ', ~' + captured.pct + '% est. approval chance)';
         if (profession)      notes += ' — Profession: ' + profession;
         if (county)          notes += ' — County: ' + county;
         if (propertyAddress) notes += ' — Property: ' + propertyAddress;
@@ -526,8 +552,19 @@ const flow = `
   [data-omc-root] .omc-eyebrow { font-family:'IBM Plex Sans',sans-serif; font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--omc-blue); margin:0 0 10px; }
   [data-omc-root] .omc-h { font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:22px; line-height:1.15; margin:0 0 6px; color:var(--omc-ink); }
   [data-omc-root] .omc-sub { font-size:13.5px; line-height:1.5; color:var(--omc-mute); margin:0 0 18px; }
-  [data-omc-root] .omc-scores { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  [data-omc-root] .omc-scores { display:grid; grid-template-columns:repeat(auto-fit,minmax(86px,1fr)); gap:10px; }
   @media(max-width:420px){ [data-omc-root] .omc-scores{ grid-template-columns:1fr; } }
+  /* ---- approval-chance bar ---- */
+  [data-omc-root] .omc-chance { margin:0 0 18px; }
+  [data-omc-root] .omc-chance__head { display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin:0 0 7px; }
+  [data-omc-root] .omc-chance__label { font-size:12px; font-weight:600; color:#384055; }
+  [data-omc-root] .omc-chance__pct { font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:22px; line-height:1; }
+  [data-omc-root] .omc-chance__pct--high { color:#15673A; }
+  [data-omc-root] .omc-chance__pct--low  { color:#B4231E; }
+  [data-omc-root] .omc-chance__track { height:10px; border-radius:999px; background:#EDEBE3; overflow:hidden; }
+  [data-omc-root] .omc-chance__fill { height:100%; width:0; border-radius:999px; transition:width 1s cubic-bezier(.16,1,.3,1); }
+  [data-omc-root] .omc-chance__fill--high { background:linear-gradient(90deg,#1E9E57,#34B86F); }
+  [data-omc-root] .omc-chance__fill--low  { background:linear-gradient(90deg,#D6453C,#F0695E); }
   [data-omc-root] .omc-reassure-wrap { display:flex; justify-content:center; margin:16px 0 0; }
   [data-omc-root] .omc-reassure {
     display:inline-flex; align-items:center; gap:9px;
@@ -672,5 +709,6 @@ const flow = `
     .omc-fab--visible .omc-fab__btn::after { animation:none; display:none; }
     .omc-dialog { animation:none; }
     [data-omc-root] .omc-spinner { animation-duration:1.4s; }
+    [data-omc-root] .omc-chance__fill { transition:none; }
   }
 </style>

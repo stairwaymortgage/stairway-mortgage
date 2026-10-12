@@ -10,6 +10,7 @@ import taxonomy from '../data/taxonomy.json';
 // passed to it via the form's data-ghl-endpoint attribute (same pattern as
 // CalcLeadForm.astro). Newsletter uses its own dedicated webhook (not the shared one).
 import { GHL_WEBHOOK_NEWSLETTER } from '../lib/ghl';
+import OneMinuteCheck from './OneMinuteCheck.astro';
 
 const categories = Object.entries(taxonomy.categories)
   // strip the leading "N. " ordering prefix for display, keep slug
@@ -40,6 +41,11 @@ const tags = Object.entries(taxonomy.tags)
       <input type="text" name="ps_news_hp" id="ps-news-hp" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore data-form-type="other" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;" />
     </form>
     <p class="ps-news__thanks" id="ps-news-thanks" hidden>Thanks — you're subscribed. Check your inbox for new posts and insights.</p>
+  </div>
+
+  <!-- 1-Minute Check — inline (value-add offer; nothing gated) -->
+  <div class="ps-check">
+    <OneMinuteCheck variant="inline" source="blog" />
   </div>
 
   <!-- Stairway Academy e-book promo -->
@@ -159,6 +165,8 @@ const tags = Object.entries(taxonomy.tags)
 
 <style>
   .post-sidebar { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 6rem; }
+  /* 1-Minute Check band: drop the band's standalone margins inside the sidebar column. */
+  .ps-check :global(.omc-band) { margin: 0; max-width: none; }
   .ps-block { border: 1px solid var(--color-bone); border-radius: 12px; padding: 1.25rem; background: var(--color-paper); }
 
   .ps-search { display: flex; gap: 0.5rem; }
