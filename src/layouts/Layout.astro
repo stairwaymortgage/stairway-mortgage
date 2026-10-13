@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import LoAttribution from '../components/LoAttribution.astro';
+import OneMinuteCheck from '../components/OneMinuteCheck.astro';
 import leadAttributionSrc from '../lib/lead-attribution.js?raw';
 import '../styles/global.css';
 import seoData from '../data/seo.json';
@@ -39,6 +40,10 @@ const description = (propDesc && propDesc !== defaultDesc ? propDesc : null)
 const siteUrl = 'https://www.stairwaymortgage.com';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
 const ogImageUrl = ogImage || `${siteUrl}/social-card.png`;
+
+// Suppress the floating 1-Minute Check on the dedicated inquiry pages
+// (standing instruction: do not change those conversion flows).
+const noFloatingCheck = /^\/(purchase-inquiry|refinance-or-heloc-inquiry|reverse-mortgage-inquiry)$/.test(pathname);
 ---
 
 <!DOCTYPE html>
@@ -204,5 +209,9 @@ const ogImageUrl = ogImage || `${siteUrl}/social-card.png`;
   </script>
 
   <!-- Header interaction is self-contained in Header.astro -->
+
+  <!-- 1-Minute Check — site-wide floating button + modal (value-add; nothing gated).
+       Hides when the chat or an inline Check is on screen; excluded on inquiry pages. -->
+  {!noFloatingCheck && <OneMinuteCheck variant="modal" source="floating" />}
 </body>
 </html>
