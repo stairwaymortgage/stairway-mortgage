@@ -508,19 +508,30 @@ const flow = `
       // [data-check-anchor] (inline Check / primary CTA) is in the viewport.
       var anchorsVisible = 0;
 
-      function chatOnScreen() {
-        // In-repo custom chat (homepage): launcher visible or panel open.
-        if (document.querySelector('.aicf--open')) return true;
-        var chatBtn = document.querySelector('.aicf-btn');
-        if (chatBtn && chatBtn.classList.contains('aicf-btn--visible')) return true;
-        return false;
+      // Homepage hero AI chat: hide the button while that chat is on screen,
+      // show it once the visitor scrolls past it.
+      function heroChatInView() {
+        var hero = document.querySelector('.aic');
+        if (!hero) return false;
+        var r = hero.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        return r.bottom > 40 && r.top < vh - 40;
+      }
+      function chatPanelOpen() { return !!document.querySelector('.aicf--open'); }
+      function chatBubbleVisible() {
+        var b = document.querySelector('.aicf-btn');
+        return !!(b && b.classList.contains('aicf-btn--visible'));
       }
 
       function updateFab() {
         if (!fab) return;
-        var hide = dismissed || isOpen || anchorsVisible > 0 || chatOnScreen();
+        // Hidden when dismissed, our modal is open, an inline Check / primary CTA
+        // is in view, the hero AI chat is on screen, or the chat panel is open.
+        var hide = dismissed || isOpen || anchorsVisible > 0 || heroChatInView() || chatPanelOpen();
         fab.hidden = hide;
         fab.classList.toggle('omc-fab--visible', !hide);
+        // Raise above the chat's collapsed bubble so the two never overlap.
+        fab.classList.toggle('omc-fab--raised', !hide && chatBubbleVisible());
       }
 
       if ('IntersectionObserver' in window) {
@@ -532,15 +543,16 @@ const flow = `
           updateFab();
         }, { threshold: 0.1 });
         document.querySelectorAll('[data-check-anchor]').forEach(function (a) { io.observe(a); });
+        // Watch the hero AI chat so the button appears the moment it's scrolled past.
+        var heroEl = document.querySelector('.aic');
+        if (heroEl) new IntersectionObserver(function () { updateFab(); }, { threshold: 0 }).observe(heroEl);
       }
 
-      // Watch the chat launcher's class changes (homepage) so we react when it
-      // shows/hides or the panel opens.
+      // React to the chat launcher/panel showing, hiding, or opening (homepage).
       var chatEl = document.querySelector('.aicf-btn');
       if (chatEl && 'MutationObserver' in window) {
         new MutationObserver(updateFab).observe(chatEl, { attributes: true, attributeFilter: ['class'] });
       }
-      // Belt-and-suspenders: if any chat launcher is clicked, re-evaluate.
       document.addEventListener('click', function (e) {
         if (e.target && e.target.closest && e.target.closest('.aicf-btn')) setTimeout(updateFab, 50);
       });
@@ -648,8 +660,11 @@ const flow = `
   }
 
   /* ---- floating button ---- */
-  .omc-fab { position:fixed; right:24px; bottom:24px; z-index:8000; display:flex; align-items:center; }
+  .omc-fab { position:fixed; right:24px; bottom:24px; z-index:8000; display:flex; align-items:center; transition:bottom .25s ease; }
   .omc-fab[hidden] { display:none; }
+  /* Raised clear of the homepage chat's collapsed bubble when both are shown. */
+  .omc-fab--raised { bottom:94px; }
+  @media(max-width:440px){ .omc-fab--raised { bottom:84px; } }
   .omc-fab__btn {
     position:relative; overflow:hidden;
     display:inline-flex; align-items:center; gap:10px; border:0; cursor:pointer;
