@@ -1197,10 +1197,11 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
   });
   if (chipsWrap && !chipsWrap.querySelector('[data-goal="check"]')) {
     const cc = document.createElement('button');
-    cc.className = 'aic__chip';
+    cc.className = 'aic__chip aic__chip--check';
     cc.setAttribute('data-q', '__check__');
     cc.setAttribute('data-goal', 'check');
-    cc.textContent = 'Check my approval chances (1 min)';
+    cc.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" style="flex:none"><path d="M12 2.5l7 2.5v5c0 4.6-3 8.3-7 9.5-4-1.2-7-4.9-7-9.5v-5l7-2.5z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"></path><path d="M9 11.8l2 2 4-4.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Check my approval chances <span style="opacity:.82;font-weight:600">(1 min · no credit pull)</span></span>';
+    cc.style.cssText = 'grid-column:1 / -1;flex:1 0 100%;width:100%;display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:8px;background:linear-gradient(120deg,#1C7246,#2FA866);color:#fff;border:none;font-weight:700;box-shadow:0 8px 22px -8px rgba(22,90,54,.55);';
     chipsWrap.insertBefore(cc, chipsWrap.firstChild);
   }
 
@@ -3550,10 +3551,11 @@ No spam. No sequences. One conversation, on your terms.
   });
   if (chipsWrap && !chipsWrap.querySelector('[data-goal="check"]')) {
     const cc = document.createElement('button');
-    cc.className = 'aicf__chip';
+    cc.className = 'aicf__chip aicf__chip--check';
     cc.setAttribute('data-q', '__check__');
     cc.setAttribute('data-goal', 'check');
-    cc.textContent = 'Check my approval chances (1 min)';
+    cc.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" style="flex:none"><path d="M12 2.5l7 2.5v5c0 4.6-3 8.3-7 9.5-4-1.2-7-4.9-7-9.5v-5l7-2.5z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"></path><path d="M9 11.8l2 2 4-4.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Check my approval chances <span style="opacity:.82">(1 min)</span></span>';
+    cc.style.cssText = 'flex:1 0 100%;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px;background:linear-gradient(120deg,#1C7246,#2FA866);color:#fff;border:none;font-weight:700;box-shadow:0 8px 20px -8px rgba(22,90,54,.55);';
     chipsWrap.insertBefore(cc, chipsWrap.firstChild);
   }
 
