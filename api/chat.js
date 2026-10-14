@@ -318,6 +318,52 @@ export default async function handler(req, res) {
     }
   }
 
+  // --- 1-Minute Check lead branch (chat Check) ---
+  // Reuses the same GHL chat webhook as the normal chat capture, tagged
+  // form_source=check_chat so these are distinguishable. No Claude extraction.
+  if (req.body && req.body.action === "check_lead") {
+    try {
+      const { contact = {}, attribution = {} } = req.body;
+      const tier = contact.tier || "";
+      const notes =
+        "Tier: " + tier + " — via AI chat" +
+        (contact.source_url ? " — " + contact.source_url : "");
+      const payload = {
+        form_source: "check_chat",
+        form_name: "1-Minute Check (AI Chat)",
+        full_name: contact.full_name || "",
+        email: contact.email || "",
+        phone: contact.phone || "",
+        source_url: contact.source_url || "",
+        page_url: contact.source_url || "",
+        notes: notes,
+        ai_chat_credit_tier: contact.level || "",
+        umtid: attribution.umtid || "",
+        loid: attribution.loid || "",
+        landing_page: attribution.landing_page || "",
+        utm_source: attribution.utm_source || "",
+        utm_medium: attribution.utm_medium || "",
+        utm_campaign: attribution.utm_campaign || "",
+        utm_term: attribution.utm_term || "",
+        utm_content: attribution.utm_content || "",
+        session_id: attribution.session_id || "",
+        city: attribution.city || "",
+        persona: attribution.persona || "",
+        submitted_at: new Date().toISOString(),
+      };
+      await fetch(GHL_CHAT_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      return res.status(200).json({ ok: true });
+    } catch (e) {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      return res.status(200).json({ ok: false });
+    }
+  }
+
   try {
     const { message, history = [] } = req.body || {};
     if (!message || typeof message !== "string") {
