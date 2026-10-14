@@ -132,6 +132,134 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
      <p class="hero-apply-caption">Full application · credit review (hard pull) · fastest path to approval</p>
    </div>
 
+   <!-- ─── 1-Minute Check: shared scripted-flow factory for both chat widgets ───
+        A self-contained scripted Check that runs INSIDE the chat (no RAG call),
+        reusing the chat's GHL capture via the check_lead server action. Defined
+        is:inline so it exists before the (deferred) widget modules run. -->
+   <script is:inline>
+   window.__STW_makeCheckFlow = function (opt) {
+     var S = { active: false, step: '', level: '', label: '', name: '', email: '', phone: '' };
+     function esc(s) { return opt.esc ? opt.esc(s) : String(s); }
+     function botMsg(text) { return opt.addMsg(opt.renderMsg ? opt.renderMsg(text) : esc(text), 'bot'); }
+     function userMsg(text) { return opt.addMsg(esc(text), 'user'); }
+     function scroll() { if (opt.scroll) opt.scroll(); }
+     function botThen(text, delay, cb) {
+       var t = opt.addTyping ? opt.addTyping() : null;
+       setTimeout(function () { if (t && t.remove) t.remove(); botMsg(text); scroll(); if (cb) cb(); }, delay || 650);
+     }
+     var RANGES = [
+       { v: 'low', label: 'Below 580' },
+       { v: 'medium', label: '580–679' },
+       { v: 'high', label: '680+' }
+     ];
+     function renderRangeButtons() {
+       var wrap = document.createElement('div');
+       wrap.className = 'stw-check-opts';
+       wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px';
+       RANGES.forEach(function (r) {
+         var b = document.createElement('button');
+         b.type = 'button';
+         b.textContent = r.label;
+         b.style.cssText = 'border:1px solid #d8d8d0;background:#fff;color:#0A0E1A;font-weight:600;font-size:14px;font-family:inherit;padding:11px 15px;border-radius:999px;cursor:pointer';
+         b.addEventListener('click', function () {
+           if (wrap.getAttribute('data-done')) return;
+           wrap.setAttribute('data-done', '1');
+           wrap.querySelectorAll('button').forEach(function (x) { x.style.opacity = '.45'; x.style.pointerEvents = 'none'; });
+           pickRange(r.v, r.label);
+         });
+         wrap.appendChild(b);
+       });
+       opt.convo.appendChild(wrap);
+       scroll();
+     }
+     function start() {
+       if (S.active) return;
+       S = { active: true, step: 'range', level: '', label: '', name: '', email: '', phone: '' };
+       if (opt.ensureConvo) opt.ensureConvo();
+       userMsg('Check my approval chances (1 min)');
+       botThen("Quick check — no credit pull, this won't affect your credit score.\nWhat's your estimated credit score?", 450, function () { renderRangeButtons(); });
+     }
+     function pickRange(level, label) {
+       S.level = level; S.label = label; S.step = 'name';
+       userMsg(label);
+       var high = (level !== 'low');
+       var msg = high
+         ? "Good news — based on the score you entered, your chances of approval are high across several of our lender programs. Let's get your details so a licensed loan officer can confirm your exact conditions."
+         : "You've got a path. Approval is tougher at most lenders, but our network has programs for lower scores. Let's get your details so a licensed loan officer can review your full situation and map your options.";
+       botThen(msg, 850, function () { botThen("What's your full name?", 450); });
+     }
+     function handleInput(text) {
+       text = (text || '').trim();
+       if (!text) return;
+       if (/^(cancel|stop|nevermind|never mind|exit|quit)$/i.test(text)) {
+         userMsg(text); S.active = false; S.step = '';
+         botMsg("No problem — ask me anything else.");
+         return;
+       }
+       userMsg(text);
+       var el = opt.getInput && opt.getInput(); if (el) el.value = '';
+       if (S.step === 'name') {
+         var parts = text.replace(/\s+/g, ' ').split(' ').filter(Boolean);
+         if (parts.length < 2) { botMsg("Please share your first and last name."); return; }
+         S.name = text.replace(/\s+/g, ' '); S.step = 'email';
+         botThen("What's the best email for your results?", 400);
+       } else if (S.step === 'email') {
+         if (!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(text) || /\.\./.test(text)) { botMsg("That email doesn't look right — mind re-entering it?"); return; }
+         S.email = text; S.step = 'phone';
+         botThen("And a phone number so a loan officer can reach you?", 400);
+       } else if (S.step === 'phone') {
+         if (text.replace(/\D/g, '').length !== 10) { botMsg("Please enter a 10-digit phone number."); return; }
+         S.phone = text; S.step = 'sending';
+         submit();
+       }
+     }
+     function submit() {
+       var t = opt.addTyping ? opt.addTyping() : null;
+       var attr = {};
+       try { if (window.STW_leadAttribution) attr = window.STW_leadAttribution() || {}; } catch (e) {}
+       var mem = {};
+       try { if (window.SWMemory && window.SWMemory.get) mem = window.SWMemory.get() || {}; } catch (e) {}
+       var levelLabel = S.level === 'low' ? 'Low' : (S.level === 'medium' ? 'Medium' : 'High');
+       var tier = S.level === 'low' ? 'low' : 'high';
+       var payload = {
+         action: 'check_lead',
+         contact: {
+           full_name: S.name, email: S.email, phone: S.phone,
+           source_url: location.href,
+           tier: S.label + ' (' + tier + ')',
+           level: levelLabel
+         },
+         attribution: {
+           umtid: attr.umtid || '', loid: attr.loid || '',
+           landing_page: attr.landing_page || '',
+           utm_source: attr.utm_source || mem.utm_source || '',
+           utm_medium: attr.utm_medium || mem.utm_medium || '',
+           utm_campaign: attr.utm_campaign || mem.utm_campaign || '',
+           utm_term: attr.utm_term || '', utm_content: attr.utm_content || '',
+           session_id: mem.session_id || '', city: mem.city || mem.region || '', persona: mem.persona || ''
+         }
+       };
+       fetch('/api/chat/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true })
+         .then(function (r) {
+           if (t && t.remove) t.remove();
+           if (r && r.ok) {
+             try { if (window.STW_fireGenerateLead) window.STW_fireGenerateLead({ profession: '', county: '', umtid: payload.attribution.umtid }); } catch (e) {}
+             botMsg("You're all set — a licensed loan officer will reach out shortly with your exact conditions. Anything else I can help with?");
+           } else {
+             botMsg("Something went wrong sending that — you can also reach our team at (954) 993-1625.");
+           }
+           S.active = false; S.step = 'done';
+         })
+         .catch(function () {
+           if (t && t.remove) t.remove();
+           botMsg("Something went wrong sending that — you can also reach our team at (954) 993-1625.");
+           S.active = false; S.step = 'done';
+         });
+     }
+     return { isActive: function () { return S.active; }, start: start, handleInput: handleInput };
+   };
+   </script>
+
    <script>
 (function() {
   const root = document.querySelector('[data-aic]');
@@ -936,6 +1064,8 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
   }
 
   async function send(text) {
+    // 1-Minute Check scripted flow owns the input while active (bypasses RAG).
+    if (checkFlow && checkFlow.isActive()) { checkFlow.handleInput(text); return; }
     if (!text.trim()) return;
     // ─── Number shortcut: "3" → pick option 3 from the latest options ───
     var numMatch = text.trim().match(/^(\d)$/);
@@ -1059,10 +1189,26 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
     send(input.value);
   });
 
+  // ─── 1-Minute Check: scripted flow + opening chip (hero) ───
+  const checkFlow = window.__STW_makeCheckFlow({
+    addMsg: addMsg, addTyping: addTyping, esc: esc, renderMsg: renderMsg,
+    convo: convo, getInput: function () { return input; },
+    ensureConvo: ensureConvoMode, scroll: function () { autoScroll(true); }
+  });
+  if (chipsWrap && !chipsWrap.querySelector('[data-goal="check"]')) {
+    const cc = document.createElement('button');
+    cc.className = 'aic__chip';
+    cc.setAttribute('data-q', '__check__');
+    cc.setAttribute('data-goal', 'check');
+    cc.textContent = 'Check my approval chances (1 min)';
+    chipsWrap.insertBefore(cc, chipsWrap.firstChild);
+  }
+
   chipsWrap.addEventListener('click', (e) => {
     const c = e.target.closest('.aic__chip');
     if (c && c.dataset.q) {
       ensureAudioCtx();
+      if (c.dataset.goal === 'check') { checkFlow.start(); return; }
       if (c.dataset.goal) window.__aicGoal = c.dataset.goal;
       send(c.dataset.q);
     }
@@ -3340,6 +3486,7 @@ No spam. No sequences. One conversation, on your terms.
   }
 
   async function send(text) {
+    if (checkFlowF && checkFlowF.isActive()) { checkFlowF.handleInput(text); return; }
     if (!text.trim()) return;
     ensureConvo();
     convo.querySelectorAll('.aicf-replies').forEach(r => r.remove());
@@ -3395,10 +3542,28 @@ No spam. No sequences. One conversation, on your terms.
     btn.classList.remove('aicf-btn--active');
   });
 
+  // ─── 1-Minute Check: scripted flow + opening chip (floating) ───
+  const checkFlowF = window.__STW_makeCheckFlow({
+    addMsg: addMsg, addTyping: addTyping, esc: esc, renderMsg: renderMsg,
+    convo: convo, getInput: function () { return input; },
+    ensureConvo: ensureConvo, scroll: function () { convo.scrollTop = convo.scrollHeight; }
+  });
+  if (chipsWrap && !chipsWrap.querySelector('[data-goal="check"]')) {
+    const cc = document.createElement('button');
+    cc.className = 'aicf__chip';
+    cc.setAttribute('data-q', '__check__');
+    cc.setAttribute('data-goal', 'check');
+    cc.textContent = 'Check my approval chances (1 min)';
+    chipsWrap.insertBefore(cc, chipsWrap.firstChild);
+  }
+
   form.addEventListener('submit', (e) => { e.preventDefault(); send(input.value); });
   chipsWrap.addEventListener('click', (e) => {
     const c = e.target.closest('.aicf__chip');
-    if (c && c.dataset.q) send(c.dataset.q);
+    if (c && c.dataset.q) {
+      if (c.dataset.goal === 'check') { checkFlowF.start(); return; }
+      send(c.dataset.q);
+    }
   });
   convo.addEventListener('click', (e) => {
     const r = e.target.closest('.aicf-reply');
