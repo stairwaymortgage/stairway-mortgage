@@ -319,24 +319,31 @@ export default async function handler(req, res) {
   }
 
   // --- 1-Minute Check lead branch (chat Check) ---
-  // Reuses the same GHL chat webhook as the normal chat capture, tagged
-  // form_source=check_chat so these are distinguishable. No Claude extraction.
+  // Posts to the same GHL chat webhook as the normal chat capture. Uses
+  // form_source=ai_chat so GHL recognizes it as an AI-chat lead and the
+  // internal notification shows the correct source; the Check is still
+  // distinguishable via ai_chat_check, form_name, the tier, and notes.
   if (req.body && req.body.action === "check_lead") {
     try {
       const { contact = {}, attribution = {} } = req.body;
       const tier = contact.tier || "";
       const notes =
-        "Tier: " + tier + " — via AI chat" +
+        "1-Minute Check (AI chat) — Tier: " + tier +
         (contact.source_url ? " — " + contact.source_url : "");
       const payload = {
-        form_source: "check_chat",
+        form_source: "ai_chat",
         form_name: "1-Minute Check (AI Chat)",
+        source: "AI Chat",
+        lead_source: "AI Chat",
+        ai_chat_check: "yes",
+        check_variant: "check_chat",
         full_name: contact.full_name || "",
         email: contact.email || "",
         phone: contact.phone || "",
         source_url: contact.source_url || "",
         page_url: contact.source_url || "",
         notes: notes,
+        ai_chat_notes: notes,
         ai_chat_credit_tier: contact.level || "",
         umtid: attribution.umtid || "",
         loid: attribution.loid || "",
