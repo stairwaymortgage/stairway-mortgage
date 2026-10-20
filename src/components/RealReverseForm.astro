@@ -140,7 +140,7 @@
   }
   .rm-input::placeholder{ color:#a6a6a0; }
   .rm-input:focus{ border-color:#0A0E1A; box-shadow:0 0 0 4px rgba(45,35,80,.12); }
-  .pac-container{ z-index:100000 !important; border-radius:12px; margin-top:6px; border:1.5px solid #d9d9d1; box-shadow:0 16px 40px rgba(10,14,26,.18); font-family:'IBM Plex Sans',sans-serif; overflow:hidden; }
+  .pac-container{ z-index:2147483000 !important; border-radius:12px; margin-top:6px; border:1.5px solid #d9d9d1; box-shadow:0 16px 40px rgba(10,14,26,.18); font-family:'IBM Plex Sans',sans-serif; overflow:hidden; }
   .pac-item{ padding:11px 16px; font-size:14.5px; color:#0A0E1A; cursor:pointer; border-top:1px solid #f0f0ea; }
   .pac-item:first-child{ border-top:0; }
   .pac-item:hover,.pac-item-selected{ background:#faf9f6; }
@@ -321,6 +321,15 @@
     }
 
     function fmtVal(s, v){ if(s.fmt==="k"){ return v>=1000 ? Math.round(v/1000)+"K" : String(v); } return String(v); }
+    function fmtPhone(v){
+      var d=String(v||"").replace(/\D/g,"");
+      if(d.length===11 && d.charAt(0)==="1"){ d=d.slice(1); } // pasted +1 country code
+      d=d.slice(0,10);
+      if(d.length>6) return "("+d.slice(0,3)+") "+d.slice(3,6)+"-"+d.slice(6);
+      if(d.length>3) return "("+d.slice(0,3)+") "+d.slice(3);
+      if(d.length>0) return "("+d;
+      return "";
+    }
     function esc(t){ var d=document.createElement("div"); d.textContent=(t==null?"":t); return d.innerHTML; }
     function el(tag, cls){ var n=document.createElement(tag); if(cls) n.className=cls; return n; }
 
@@ -405,7 +414,7 @@
           '<label class="rm-input-label">Email <span class="rm-req">*</span></label>'+
           '<input class="rm-input" id="rm-em" type="email" placeholder="you@email.com" value="'+esc(state.email)+'">'+
           '<label class="rm-input-label">Mobile Phone Number <span class="rm-req">*</span></label>'+
-          '<input class="rm-input" id="rm-ph" type="tel" placeholder="(555) 555-5555" value="'+esc(state.phone)+'">'+
+          '<input class="rm-input" id="rm-ph" type="tel" inputmode="numeric" autocomplete="tel" maxlength="14" placeholder="(555) 555-5555" value="'+esc(fmtPhone(state.phone))+'">'+
           '<div class="rm-consent">By clicking "Submit," I agree to Stairway Mortgage\'s '+
           '<a href="/terms/" target="_blank" rel="noopener">Terms of Use</a> and '+
           '<a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. '+
@@ -416,7 +425,8 @@
         var fn=c.querySelector("#rm-fn"), em=c.querySelector("#rm-em"), ph=c.querySelector("#rm-ph");
         fn.addEventListener("input", function(){ state.full_name=fn.value; });
         em.addEventListener("input", function(){ state.email=em.value; });
-        ph.addEventListener("input", function(){ state.phone=ph.value; });
+        // phone auto-format → (xxx) xxx-xxxx, capped at exactly 10 digits (same as the 1-Minute Check)
+        ph.addEventListener("input", function(){ ph.value=fmtPhone(ph.value); state.phone=ph.value; });
         [fn,em,ph].forEach(function(n){ n.addEventListener("keydown", enterGuard); });
       }
 
@@ -451,7 +461,7 @@
         var err=document.getElementById("rm-contact-err");
         if(!state.full_name.trim()){ if(err) err.textContent="Please enter your full name."; return false; }
         if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email.trim())){ if(err) err.textContent="Please enter a valid email."; return false; }
-        if(state.phone.replace(/\D/g,"").length<10){ if(err) err.textContent="Please enter a valid phone number."; return false; }
+        if(state.phone.replace(/\D/g,"").length!==10){ if(err) err.textContent="Please enter a valid 10-digit phone number."; return false; }
         if(err) err.textContent=""; return true;
       }
       return true;
@@ -488,7 +498,10 @@
       var attr = attributionFields();
       payload.lo_id=attr.lo_id; payload.lo_name=attr.lo_name; payload.lo_slug=attr.lo_slug; payload.umtid=attr.umtid;
       payload.utm_source=attr.utm_source; payload.utm_medium=attr.utm_medium; payload.utm_campaign=attr.utm_campaign;
-      payload.utm_term=attr.utm_term; payload.utm_content=attr.utm_content; payload.source_url=attr.source_url;
+      payload.utm_term=attr.utm_term; payload.utm_content=attr.utm_content;
+      // source_url = previous page the visitor came from (falls back to this page's URL);
+      // first-touch entry URL still goes to landing_page below.
+      payload.source_url=(window.STW_sourceUrl ? window.STW_sourceUrl() : (document.referrer || window.location.href));
 
       var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
       payload.landing_page=_la.landing_page||""; payload.utm_source=_la.utm_source||""; payload.utm_medium=_la.utm_medium||"";

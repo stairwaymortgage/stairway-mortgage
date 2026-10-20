@@ -82,7 +82,7 @@
   .hf-locwrap{ max-width:540px; margin:0 auto; }
   .hf-addr-conf{ margin:14px auto 0; max-width:540px; font-size:14px; color:#2E9E2E; font-family:'JetBrains Mono',ui-monospace,monospace; text-align:left; }
   /* Google Places dropdown — styled to match the Stairway popup */
-  .pac-container{ z-index:100000 !important; border-radius:12px; margin-top:6px; border:1.5px solid #d9d9d1;
+  .pac-container{ z-index:2147483000 !important; border-radius:12px; margin-top:6px; border:1.5px solid #d9d9d1;
     box-shadow:0 16px 40px rgba(10,14,26,.18); font-family:'IBM Plex Sans',sans-serif; overflow:hidden; }
   .pac-item{ padding:11px 16px; font-size:14.5px; color:#0A0E1A; cursor:pointer; border-top:1px solid #f0f0ea; }
   .pac-item:first-child{ border-top:0; }
@@ -220,6 +220,15 @@
       }
       return String(v);
     }
+    function fmtPhone(v){
+      var d=String(v||"").replace(/\D/g,"");
+      if(d.length===11 && d.charAt(0)==="1"){ d=d.slice(1); } // pasted +1 country code
+      d=d.slice(0,10);
+      if(d.length>6) return "("+d.slice(0,3)+") "+d.slice(3,6)+"-"+d.slice(6);
+      if(d.length>3) return "("+d.slice(0,3)+") "+d.slice(3);
+      if(d.length>0) return "("+d;
+      return "";
+    }
     function esc(t){ var d=document.createElement("div"); d.textContent=(t==null?"":t); return d.innerHTML; }
     function el(tag, cls){ var n=document.createElement(tag); if(cls) n.className=cls; return n; }
 
@@ -342,7 +351,7 @@
           '<label class="hf-input-label">Email <span class="hf-req">*</span></label>'+
           '<input class="hf-input" id="hf-em" type="email" placeholder="you@email.com" value="'+esc(state.email)+'">'+
           '<label class="hf-input-label">Mobile Phone Number <span class="hf-req">*</span></label>'+
-          '<input class="hf-input" id="hf-ph" type="tel" placeholder="(555) 555-5555" value="'+esc(state.phone)+'">'+
+          '<input class="hf-input" id="hf-ph" type="tel" inputmode="numeric" autocomplete="tel" maxlength="14" placeholder="(555) 555-5555" value="'+esc(fmtPhone(state.phone))+'">'+
           '<label class="hf-smsopt" style="display:flex; gap:8px; align-items:flex-start; max-width:540px; margin:24px auto 0; font-size:12.5px; line-height:1.6; color:#7a7a72; text-align:left; cursor:pointer;"><input type="checkbox" id="hf-smsopt"'+(state.sms_optin?' checked':'')+' style="margin-top:3px; flex:0 0 auto;"><span>By checking this box and providing my phone number, I agree to Stairway Mortgage\'s <a href="/terms/" target="_blank" rel="noopener">Terms of Use</a> and <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. I consent to receive calls, text messages, and/or pre-recorded voicemails from Stairway Mortgage via automated technology at the number provided regarding my inquiries and mortgage updates, even if I\'m on a Do Not Call list. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. SMS consent is not shared with third parties.</span></label>'+
           '<div class="hf-trust">Jim Blackburn · NMLS #1072866</div>'+
           '<div class="hf-err" id="hf-contact-err"></div>';
@@ -350,7 +359,8 @@
         var fn=c.querySelector("#hf-fn"), em=c.querySelector("#hf-em"), ph=c.querySelector("#hf-ph");
         fn.addEventListener("input", function(){ state.full_name=fn.value; });
         em.addEventListener("input", function(){ state.email=em.value; });
-        ph.addEventListener("input", function(){ state.phone=ph.value; });
+        // phone auto-format → (xxx) xxx-xxxx, capped at exactly 10 digits (same as the 1-Minute Check)
+        ph.addEventListener("input", function(){ ph.value=fmtPhone(ph.value); state.phone=ph.value; });
         [fn,em,ph].forEach(function(n){ n.addEventListener("keydown", enterGuard); });
         var _sms=c.querySelector("#hf-smsopt"); if(_sms){ _sms.addEventListener("change", function(){ state.sms_optin=_sms.checked?"yes":""; if(_sms.checked){ var _e=document.getElementById("hf-contact-err"); if(_e) _e.textContent=""; } }); }
       }
@@ -394,7 +404,7 @@
         var err=document.getElementById("hf-contact-err");
         if(!state.full_name.trim()){ if(err) err.textContent="Please enter your full name."; return false; }
         var _em=state.email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em)){ if(err) err.textContent="Please enter a valid email."; return false; }
-        var _pd=state.phone.replace(/\D/g,""); if(_pd.length<10||_pd.length>15){ if(err) err.textContent="Please enter a valid phone number."; return false; }
+        var _pd=state.phone.replace(/\D/g,""); if(_pd.length!==10){ if(err) err.textContent="Please enter a valid 10-digit phone number."; return false; }
         var _sms=document.getElementById("hf-smsopt"); if(_sms && !_sms.checked){ if(err) err.textContent="Please check the box to consent before continuing."; return false; }
         if(err) err.textContent=""; return true;
       }
@@ -432,7 +442,9 @@
         form_source:FORM_SOURCE, loan_purpose:LOAN_PURPOSE,
         first_name:first, last_name:last, full_name:(state.full_name||"").trim(),
         email:(state.email||"").trim(), phone:(state.phone||"").trim(),
-        page_url:window.location.origin+window.location.pathname
+        page_url:window.location.origin+window.location.pathname,
+        // previous page the visitor came from (falls back to this page's URL)
+        source_url:(window.STW_sourceUrl ? window.STW_sourceUrl() : (document.referrer || window.location.href))
       };
       var skip = {full_name:1,email:1,phone:1};
       for(var k in state){ if(state.hasOwnProperty(k) && !skip[k]){ var vv=state[k]; if(Array.isArray(vv)){ vv=vv.join(", "); } payload[k]=(vv==null?"":vv); } }

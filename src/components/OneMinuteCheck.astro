@@ -421,6 +421,7 @@ const flow = `
         })
           .then(function (r) {
             if (r && r.ok) {
+              try { if (window.STW_markOmcDone) window.STW_markOmcDone(); } catch (e) {}
               if (window.STW_fireGenerateLead) {
                 window.STW_fireGenerateLead({ profession: profession, county: county, umtid: payload.umtid });
               }
@@ -604,8 +605,16 @@ const flow = `
   [data-omc-root] .omc-opt { font-weight:400; color:var(--omc-mute); }
   [data-omc-root] .omc-addr-confirm { font-size:12px; color:#15673A; margin:6px 0 0; }
   [data-omc-root] .omc-success-result { margin:0 0 18px; }
-  /* Google Places dropdown must sit above the modal overlay (z-index 9999). */
-  .pac-container { z-index:10001 !important; }
+  /* Google Places dropdown must sit above EVERY modal on the site — this one (9999)
+     and the See My Options funnels (99999). It is appended to <body>, and this rule
+     is site-wide, so it must use the same top value as the funnels or it wins the
+     cascade and pushes the suggestions behind their overlay. */
+  .pac-container { z-index:2147483000 !important; }
+
+  /* Already completed the 1-Minute Check (flag set by lead-attribution.js on a
+     later page load) → hide every entry point to it. */
+  html.stw-omc-done .omc-fab-wrap,
+  html.stw-omc-done .omc-band { display:none !important; }
   [data-omc-root] .omc-score {
     border:1px solid var(--omc-bone); background:#fff; color:var(--omc-ink); cursor:pointer;
     font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:15px; padding:16px 10px; border-radius:12px;

@@ -88,4 +88,52 @@
 
   window.STW_leadAttribution = getLeadAttribution;
   window.STW_fireGenerateLead = fireGenerateLead;
+
+  // ---- source_url: the page the visitor was on BEFORE this one ------------------
+  // Resolved once at page load (this script runs in <head> on every page):
+  //   1) document.referrer (any page that linked here, other than this same URL)
+  //   2) the last page this browser viewed on the site (localStorage)
+  //   3) fallback in STW_sourceUrl(): the current page URL
+  // Then the current page is recorded so the NEXT page can read it.
+  var LAST_KEY = "stw_last_page";   // last page viewed on the site
+  var PREV_KEY = "stw_last_prev";   // the page before that one (survives a reload)
+  var here = "";
+  try { here = location.href.split("#")[0]; } catch (e) {}
+  var prev = "";
+  try {
+    var ref = document.referrer || "";
+    if (ref && ref.split("#")[0] !== here) prev = ref;
+  } catch (e) {}
+  if (!prev) {
+    try {
+      var last = localStorage.getItem(LAST_KEY) || "";
+      if (last && last !== here) prev = last;
+      else if (last === here) prev = localStorage.getItem(PREV_KEY) || ""; // reload
+    } catch (e) {}
+  }
+  try { localStorage.setItem(LAST_KEY, here); localStorage.setItem(PREV_KEY, prev); } catch (e) {}
+  window.__STW_PREV_URL = prev;
+  window.STW_sourceUrl = function () {
+    return window.__STW_PREV_URL || (typeof location !== "undefined" ? location.href : "");
+  };
+
+  // ---- 1-Minute Check: remember who already completed it --------------------------
+  // STW_markOmcDone() is called after a successful 1-Minute Check submit (site form or
+  // homepage AI chat). On every later page load the <html> element gets the
+  // `stw-omc-done` class, and CSS hides the floating button, inline bands and chat chips.
+  // The class is only applied at page load, so the success screen the visitor is
+  // looking at right after submitting is never hidden.
+  var OMC_KEY = "stw_omc_done";
+  function omcDone() {
+    try { if (localStorage.getItem(OMC_KEY)) return true; } catch (e) {}
+    return getCookie(OMC_KEY) === "1";
+  }
+  window.STW_markOmcDone = function () {
+    try { localStorage.setItem(OMC_KEY, String(Date.now())); } catch (e) {}
+    try { document.cookie = OMC_KEY + "=1; path=/; max-age=31536000; SameSite=Lax"; } catch (e) {}
+  };
+  window.STW_omcDone = omcDone;
+  if (omcDone()) {
+    try { document.documentElement.classList.add("stw-omc-done"); } catch (e) {}
+  }
 })();

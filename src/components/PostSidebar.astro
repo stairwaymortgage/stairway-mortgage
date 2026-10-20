@@ -167,6 +167,8 @@ const tags = Object.entries(taxonomy.tags)
   .post-sidebar { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 6rem; }
   /* 1-Minute Check band: drop the band's standalone margins inside the sidebar column. */
   .ps-check :global(.omc-band) { margin: 0; max-width: none; }
+  /* Visitor already completed the 1-Minute Check → drop the whole sidebar block. */
+  :global(html.stw-omc-done) .ps-check { display: none; }
   .ps-block { border: 1px solid var(--color-bone); border-radius: 12px; padding: 1.25rem; background: var(--color-paper); }
 
   .ps-search { display: flex; gap: 0.5rem; }

@@ -143,6 +143,8 @@
 
   .rm-locwrap{ max-width:540px; margin:0 auto; }
   .rm-addr-conf{ font-size:13px; color:#2E7D32; margin-top:8px; }
+  /* Google Places dropdown must sit above this modal (overlay z-index 99999). */
+  .pac-container{ z-index:2147483000 !important; }
 
   .rm-contact{ max-width:540px; margin:0 auto; text-align:left; }
   .rm-contact .rm-input{ margin:0; }
@@ -300,6 +302,15 @@
     }
 
     function fmtVal(s, v){ if(s.fmt==="k"){ return v>=1000 ? Math.round(v/1000)+"K" : String(v); } return String(v); }
+    function fmtPhone(v){
+      var d=String(v||"").replace(/\D/g,"");
+      if(d.length===11 && d.charAt(0)==="1"){ d=d.slice(1); } // pasted +1 country code
+      d=d.slice(0,10);
+      if(d.length>6) return "("+d.slice(0,3)+") "+d.slice(3,6)+"-"+d.slice(6);
+      if(d.length>3) return "("+d.slice(0,3)+") "+d.slice(3);
+      if(d.length>0) return "("+d;
+      return "";
+    }
     function esc(t){ var d=document.createElement("div"); d.textContent=(t==null?"":t); return d.innerHTML; }
     function el(tag, cls){ var n=document.createElement(tag); if(cls) n.className=cls; return n; }
 
@@ -402,7 +413,7 @@
           '<label class="rm-input-label">Email <span class="rm-req">*</span></label>'+
           '<input class="rm-input" id="rm-em" type="email" placeholder="you@email.com" value="'+esc(state.email)+'">'+
           '<label class="rm-input-label">Mobile Phone Number <span class="rm-req">*</span></label>'+
-          '<input class="rm-input" id="rm-ph" type="tel" placeholder="(555) 555-5555" value="'+esc(state.phone)+'">'+
+          '<input class="rm-input" id="rm-ph" type="tel" inputmode="numeric" autocomplete="tel" maxlength="14" placeholder="(555) 555-5555" value="'+esc(fmtPhone(state.phone))+'">'+
           '<label class="rm-smsopt" style="display:flex; gap:8px; align-items:flex-start; max-width:540px; margin:24px auto 0; font-size:12.5px; line-height:1.6; color:#7a7a72; text-align:left; cursor:pointer;"><input type="checkbox" id="rm-smsopt"'+(state.sms_optin?' checked':'')+' style="margin-top:3px; flex:0 0 auto;"><span>By checking this box and providing my phone number, I agree to Stairway Mortgage\'s <a href="/terms/" target="_blank" rel="noopener">Terms of Use</a> and <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a>. I consent to receive calls, text messages, and/or pre-recorded voicemails from Stairway Mortgage via automated technology at the number provided regarding my inquiries and mortgage updates, even if I\'m on a Do Not Call list. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. SMS consent is not shared with third parties.</span></label>'+
           '<div class="rm-trust" style="max-width:540px; margin:18px auto 0; font-size:12px; color:#9a9a93; font-family:\'JetBrains Mono\',ui-monospace,monospace; text-align:center;">Jim Blackburn · NMLS #1072866</div>'+
           '<div class="rm-err" id="rm-contact-err"></div>';
@@ -410,7 +421,8 @@
         var fn=c.querySelector("#rm-fn"), em=c.querySelector("#rm-em"), ph=c.querySelector("#rm-ph");
         fn.addEventListener("input", function(){ state.full_name=fn.value; });
         em.addEventListener("input", function(){ state.email=em.value; });
-        ph.addEventListener("input", function(){ state.phone=ph.value; });
+        // phone auto-format → (xxx) xxx-xxxx, capped at exactly 10 digits (same as the 1-Minute Check)
+        ph.addEventListener("input", function(){ ph.value=fmtPhone(ph.value); state.phone=ph.value; });
         [fn,em,ph].forEach(function(n){ n.addEventListener("keydown", enterGuard); });
         var _sms=c.querySelector("#rm-smsopt"); if(_sms){ _sms.addEventListener("change", function(){ state.sms_optin=_sms.checked?"yes":""; if(_sms.checked){ var _e=document.getElementById("rm-contact-err"); if(_e) _e.textContent=""; } }); }
       }
@@ -437,7 +449,7 @@
         var err=document.getElementById("rm-contact-err");
         if(!state.full_name.trim()){ if(err) err.textContent="Please enter your full name."; return false; }
         var _em=state.email.trim(); if(!/^[^\s@]{2,}@[^\s@]+\.[A-Za-z]{2,}$/.test(_em)||/\.\./.test(_em)){ if(err) err.textContent="Please enter a valid email."; return false; }
-        var _pd=state.phone.replace(/\D/g,""); if(_pd.length<10||_pd.length>15){ if(err) err.textContent="Please enter a valid phone number."; return false; }
+        var _pd=state.phone.replace(/\D/g,""); if(_pd.length!==10){ if(err) err.textContent="Please enter a valid 10-digit phone number."; return false; }
         var _sms=document.getElementById("rm-smsopt"); if(_sms && !_sms.checked){ if(err) err.textContent="Please check the box to consent before continuing."; return false; }
         if(err) err.textContent=""; return true;
       }
@@ -480,7 +492,8 @@
         anything_else:state.anything_else||"", sms_optin:state.sms_optin||"", page_url:window.location.origin+window.location.pathname,
         umtid: _resolveUmtid(),
         loid: _resolveLoid(),
-        source_url: location.href
+        // previous page the visitor came from (falls back to this page's URL)
+        source_url: (window.STW_sourceUrl ? window.STW_sourceUrl() : (document.referrer || window.location.href))
       };
       var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
       payload.landing_page=_la.landing_page||""; payload.utm_source=_la.utm_source||""; payload.utm_medium=_la.utm_medium||"";

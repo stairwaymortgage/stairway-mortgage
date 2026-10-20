@@ -168,6 +168,8 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
    @keyframes stwCheckFlow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
    @keyframes stwCheckShimmer { 0%{transform:translateX(-150%)} 55%{transform:translateX(270%)} 100%{transform:translateX(270%)} }
    @keyframes stwCheckGlow { 0%,100%{box-shadow:0 0 0 0 rgba(47,168,102,0)} 50%{box-shadow:0 0 0 3px rgba(47,168,102,.22)} }
+   /* Visitor already completed the 1-Minute Check → hide the chat chip. */
+   html.stw-omc-done .aic__chip.aic__chip--check, html.stw-omc-done .aicf__chip.aicf__chip--check { display: none !important; }
    @media (prefers-reduced-motion: reduce) {
      .aic__chip.aic__chip--check, .aicf__chip.aicf__chip--check { animation: none !important; background-position: 0 50% !important; }
      .aic__chip.aic__chip--check::after, .aicf__chip.aicf__chip--check::after { display: none; }
@@ -285,6 +287,7 @@ import LenderLogoMarquee from '../components/LenderLogoMarquee.astro';
          .then(function (r) {
            if (t && t.remove) t.remove();
            if (r && r.ok) {
+             try { if (window.STW_markOmcDone) window.STW_markOmcDone(); } catch (e) {}
              try { if (window.STW_fireGenerateLead) window.STW_fireGenerateLead({ profession: '', county: '', umtid: payload.attribution.umtid }); } catch (e) {}
              botMsg("You're all set — a licensed loan officer will reach out shortly with your exact conditions. Anything else I can help with?");
            } else {
