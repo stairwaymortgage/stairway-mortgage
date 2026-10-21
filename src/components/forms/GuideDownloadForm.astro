@@ -78,7 +78,7 @@
       <div class="gli-success" id="gdl-success" hidden>
         <div class="gli-success__mark">✓</div>
         <h3 class="gli-success__h" id="gdl-success-h">Thank you — it's on the way.</h3>
-        <p class="gli-success__p">We've received your request. Check your inbox shortly for your free guide, and keep an eye out for a quick note from our team.</p>
+        <p class="gli-success__p">We've received your request. Check your inbox for an email from Stairway Mortgage (look in Promotions or Spam too) and tap the link inside to get your free guide.</p>
         <p class="gli-success__closer" id="gdl-success-closer">We're here to help you take the next step.</p>
         <a class="gli-btn gli-btn--ghost" href="/">Back to home page</a>
       </div>
@@ -248,6 +248,11 @@
         page_url: window.location.href, submitted_at: new Date().toISOString(),
         umtid: _resolveUmtid(), loid: _resolveLoid()
       });
+
+      // Normalize the guide name (curly vs straight apostrophes differ across pages)
+      // and send a stable guide_key so GHL can route each guide to its Download workflow.
+      payload.guide_requested = String(payload.guide_requested || '').replace(/[\u2018\u2019]/g, "'").trim();
+      payload.guide_key = payload.guide_requested.toLowerCase().replace(/'/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
       var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
       payload.landing_page=_la.landing_page||''; payload.utm_source=_la.utm_source||''; payload.utm_medium=_la.utm_medium||'';
