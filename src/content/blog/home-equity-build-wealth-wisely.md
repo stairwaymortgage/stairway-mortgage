@@ -79,7 +79,7 @@ But stewardship also means protecting what you have built. It means not pulling 
 
 Our [step-by-step process](/the-8-steps/) is designed for homeowners who think this way — people who want to make mortgage decisions that compound over time, not ones they have to undo later. Whether you are considering your first home equity product or revisiting a refinance, grounding the decision in a clear process makes a real difference.
 
-You can also explore our [loan programs](/loan-programs/) to get a sense of what options may be available based on your situation, or use our [mortgage calculators](/calculators/) to run some basic numbers before you sit down for a full conversation.
+You can also explore our [loan programs](/loan-programs/) to get a sense of what options may be available based on your situation, or use our [mortgage calculators](/loan-calculators/) to run some basic numbers before you sit down for a full conversation.
 
 ---
 

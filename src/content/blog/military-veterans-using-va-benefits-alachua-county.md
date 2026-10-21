@@ -47,7 +47,7 @@ One area that confuses many veterans is entitlement — the amount the VA will b
 
 The funding fee is a one-time cost paid to the VA to keep the program running without taxpayer subsidies. The amount varies based on factors like whether it is your first use of the benefit and how much you put down. Importantly, veterans with a service-connected disability rating may be exempt from the funding fee entirely. If you receive VA disability compensation, make sure your lender knows before closing.
 
-If you want to map out numbers before you speak with anyone, our [mortgage calculators](/calculators/) can give you a rough starting point for monthly estimates.
+If you want to map out numbers before you speak with anyone, our [mortgage calculators](/loan-calculators/) can give you a rough starting point for monthly estimates.
 
 ---
 

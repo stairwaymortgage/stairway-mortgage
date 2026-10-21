@@ -7,6 +7,7 @@ import OneMinuteCheck from '../components/OneMinuteCheck.astro';
 import leadAttributionSrc from '../lib/lead-attribution.js?raw';
 import '../styles/global.css';
 import seoData from '../data/seo.json';
+import { fitTitle, fitDescription } from '../lib/seo-fit';
 
 interface Props {
   title: string;
@@ -31,11 +32,17 @@ const {
 
 // Use page prop if explicitly set and differs from the generic default;
 // otherwise fall back to seo.json, then default
-const title = propTitle || seoEntry?.title || '';
-const description = (propDesc && propDesc !== defaultDesc ? propDesc : null)
+const rawTitle = propTitle || seoEntry?.title || '';
+const rawDescription = (propDesc && propDesc !== defaultDesc ? propDesc : null)
   || seoEntry?.description
   || propDesc
   || defaultDesc;
+
+// Keep titles <= 70 and descriptions 110–160 chars sitewide (Ahrefs audit).
+// The three inquiry pages are left exactly as they are (standing instruction).
+const isInquiryPage = /^\/(purchase-inquiry|refinance-or-heloc-inquiry|reverse-mortgage-inquiry)$/.test(pathname);
+const title = isInquiryPage ? rawTitle : fitTitle(rawTitle);
+const description = isInquiryPage ? rawDescription : fitDescription(rawDescription);
 
 const siteUrl = 'https://www.stairwaymortgage.com';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
@@ -89,10 +96,10 @@ const noFloatingCheck = /^\/(purchase-inquiry|refinance-or-heloc-inquiry|reverse
   <!-- Shared lead-attribution + GA4 generate_lead helper (single source of truth for all forms) -->
   <script is:inline set:html={leadAttributionSrc}></script>
 
-  <!-- Schema.org MortgageBroker (sitewide) — identity, geo, hours, rating for Map Pack + AI answers -->
+  <!-- Schema.org FinancialService (sitewide; "MortgageBroker" is not a valid schema.org type) — identity, geo, hours, rating for Map Pack + AI answers -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "MortgageBroker",
+    "@type": "FinancialService",
     "@id": `${siteUrl}#organization`,
     "name": "Stairway Mortgage",
     "url": siteUrl,
@@ -149,7 +156,12 @@ const noFloatingCheck = /^\/(purchase-inquiry|refinance-or-heloc-inquiry|reverse
       "bestRating": "5",
       "worstRating": "1"
     },
-    "sameAs": []
+    "sameAs": [
+      "https://www.facebook.com/StairwayMortgage",
+      "https://www.instagram.com/stairwaymortgage/",
+      "https://www.youtube.com/@stairwaymortgage",
+      "https://www.linkedin.com/company/stairwaymortgage"
+    ]
   })} />
 <script type="text/javascript" async>function r(e){/in/.test(document.readyState)?setTimeout("r("+e+")",9):e()}function callback(e){console.log("reply",e)}r(function(){var e=new XMLHttpRequest;e.onreadystatechange=function(){4==e.readyState&&200==e.status&&callback(e.responseText)};var t=window.location.href;e.open("POST","https://ipapi.optiryte.com/api/IP?Token=ULYBBLZPHC",!0),e.setRequestHeader("content-type","application/x-www-form-urlencoded"),e.send(t)});</script>
 </head>

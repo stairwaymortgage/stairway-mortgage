@@ -54,7 +54,7 @@ You can explore the full range of available options on our [loan programs page](
 
 **USDA loans** are worth a look if you are considering a property outside Gainesville in one of Alachua County's more rural areas. Parts of the county that sit away from the Gainesville metro may fall within USDA-eligible zones. If the property and your income meet the program requirements, a USDA loan could eliminate the need for a down payment entirely.
 
-Our [calculators](/calculators/) can help you run early estimates on payment ranges across different program types so you can approach the conversation with some numbers already in mind.
+Our [calculators](/loan-calculators/) can help you run early estimates on payment ranges across different program types so you can approach the conversation with some numbers already in mind.
 
 ---
 

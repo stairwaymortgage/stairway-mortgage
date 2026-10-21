@@ -84,7 +84,7 @@ Buyer's agent compensation is increasingly negotiated directly between buyers an
 
 For your mortgage, commission paid to a buyer's agent is generally not part of your loan amount — it is a separate transaction cost you may need to factor into your overall budget. Planning for this alongside your down payment and closing costs is part of a thorough purchase strategy.
 
-Using our [mortgage calculators](/calculators/) can help you map out those numbers before you make an offer.
+Using our [mortgage calculators](/loan-calculators/) can help you map out those numbers before you make an offer.
 
 ---
 

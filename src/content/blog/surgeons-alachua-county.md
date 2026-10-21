@@ -81,7 +81,7 @@ If you are a surgeon preparing to purchase in Alachua County, a few practical mo
 
 **Think about property type.** Are you looking for a Gainesville neighborhood close to the hospital, or are you open to more land outside the city? That choice could affect which loan program makes the most sense.
 
-You can also use our [mortgage calculators](/calculators/) to start mapping out what a monthly payment might look like under different scenarios, keeping in mind that your actual terms will depend on your specific application.
+You can also use our [mortgage calculators](/loan-calculators/) to start mapping out what a monthly payment might look like under different scenarios, keeping in mind that your actual terms will depend on your specific application.
 
 For a guided overview of the full process, [our step-by-step process](/the-8-steps/) walks through what to expect from pre-approval to closing.
 

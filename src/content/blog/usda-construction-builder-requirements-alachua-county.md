@@ -51,7 +51,7 @@ Under standard USDA construction guidelines, you generally cannot serve as your 
 **Fixed-Price Contract**
 The builder must sign a fixed-price construction contract with you before the loan closes. This contract outlines the full scope of work and cost. It protects the lender from cost overruns and gives you a clear picture of what you are committing to.
 
-If you are exploring this path in Alachua County, [our USDA construction loan program page](/loan-programs/usda-construction/) walks through how the single-close structure works and what to expect at each stage.
+If you are exploring this path in Alachua County, [our USDA construction loan program page](/loan-programs/usda-construction-loan/) walks through how the single-close structure works and what to expect at each stage.
 
 ## Finding USDA-Eligible Land in Alachua County
 
@@ -70,7 +70,7 @@ The earlier you bring a loan originator into your planning, the smoother the bui
 - A rough project scope or preliminary plans, even if not finalized
 - The parcel address or GPS coordinates so eligibility can be checked
 
-With this information in hand, your loan team can begin the builder review process and flag any issues before you are deep into planning. You can also use our [mortgage calculators](/calculators/) to get a general sense of what a loan of this size might look like on a monthly basis.
+With this information in hand, your loan team can begin the builder review process and flag any issues before you are deep into planning. You can also use our [mortgage calculators](/loan-calculators/) to get a general sense of what a loan of this size might look like on a monthly basis.
 
 If you are still early in your research, reviewing [our loan programs](/loan-programs/) can help you understand how USDA construction compares to other paths like FHA or conventional construction options.
 

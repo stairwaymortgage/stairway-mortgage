@@ -50,7 +50,7 @@ Alachua County has a mix of property types and neighborhoods — from the denser
 
 **Conventional Loans** can also work well for EMTs and paramedics who have built up savings and have a solid credit history. Down payment requirements vary, and private mortgage insurance requirements depend on your specific situation.
 
-You can explore the full range of what is available through our [loan programs](/loan-programs/) page, or use our [mortgage calculators](/calculators/) to run some rough numbers before you sit down with anyone.
+You can explore the full range of what is available through our [loan programs](/loan-programs/) page, or use our [mortgage calculators](/loan-calculators/) to run some rough numbers before you sit down with anyone.
 
 ---
 

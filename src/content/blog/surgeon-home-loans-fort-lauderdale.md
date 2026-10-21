@@ -65,7 +65,7 @@ Fort Lauderdale attracts surgeons for good reasons. Broward Health, Cleveland Cl
 
 The housing market reflects that professional demand. Waterfront properties, planned communities in Weston and Parkland, and urban residences near the medical district all carry price points that reward buyers who come to the table prepared.
 
-Being prepared means understanding your financing options before you start touring homes, knowing what purchase price range aligns with your documented income, and having a pre-approval in hand when you make an offer in a competitive neighborhood. You can run preliminary numbers using our [mortgage calculators](/calculators/) to get a sense of how different purchase prices and down payment amounts interact.
+Being prepared means understanding your financing options before you start touring homes, knowing what purchase price range aligns with your documented income, and having a pre-approval in hand when you make an offer in a competitive neighborhood. You can run preliminary numbers using our [mortgage calculators](/loan-calculators/) to get a sense of how different purchase prices and down payment amounts interact.
 
 If you want to understand the full purchase process from initial consultation through closing, [our step-by-step process](/the-8-steps/) walks through each stage clearly.
 

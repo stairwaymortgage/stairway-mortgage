@@ -63,7 +63,7 @@ Here are the main program types that may apply:
 - **USDA loans** may allow zero down payment for eligible properties in qualifying rural areas of Alachua County.
 - **VA loans** are available for nurses and NPs who have qualifying military service — this is separate from any civilian nursing benefit.
 
-To run numbers on what each scenario looks like monthly, our [mortgage calculators](/calculators/) are a useful starting point before you sit down with a loan officer.
+To run numbers on what each scenario looks like monthly, our [mortgage calculators](/loan-calculators/) are a useful starting point before you sit down with a loan officer.
 
 ## How to Get Your File Ready
 

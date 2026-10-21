@@ -67,7 +67,7 @@ A USDA One-Time Close loan could allow an eligible borrower to begin building no
 
 It is worth noting that "zero down" does not mean zero costs. Closing costs, builder fees, and appraisal expenses are still part of the process. In some cases, those costs may be rolled into the loan or covered by seller concessions, but that depends on your specific transaction.
 
-You can use our [mortgage calculators](/calculators/) to start thinking through estimated loan amounts and what monthly payments might look like for your scenario.
+You can use our [mortgage calculators](/loan-calculators/) to start thinking through estimated loan amounts and what monthly payments might look like for your scenario.
 
 ---
 

@@ -57,7 +57,7 @@ Some markets across the country are showing signs of rental demand holding stead
 
 Timing a purchase is never simple, and no one can predict where any market is headed. What experienced investors tend to focus on instead is whether a specific property pencils out at current conditions — not whether the market is at some theoretical ideal point. If the property can generate consistent income and fits within your financial capacity, that conversation is worth having regardless of broader headlines.
 
-If you want to run some rough numbers before committing to anything, our [mortgage calculators](/calculators/) can give you a starting framework.
+If you want to run some rough numbers before committing to anything, our [mortgage calculators](/loan-calculators/) can give you a starting framework.
 
 ---
 

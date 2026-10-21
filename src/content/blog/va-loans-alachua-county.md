@@ -42,7 +42,7 @@ Here are some of the program's most recognized features:
 
 For veterans in Alachua County who may be balancing student loan debt, a growing family, or the costs of transitioning out of service, the ability to skip a large down payment could open doors that might otherwise stay closed for years.
 
-You can review the full overview of this program on our [VA loan program page](/loan-programs/va/).
+You can review the full overview of this program on our [VA loan program page](/loan-programs/va-loan/).
 
 ---
 
@@ -96,7 +96,7 @@ Stairway Mortgage is a Fort Lauderdale-based mortgage origination company that w
 
 The goal is not to push you toward any particular program — it is to help you see what you may qualify for, understand the realistic costs and process involved, and move forward with clarity.
 
-If you want to run some early numbers on your own, our [mortgage calculators](/calculators/) are available to help you think through scenarios before you sit down with a loan officer.
+If you want to run some early numbers on your own, our [mortgage calculators](/loan-calculators/) are available to help you think through scenarios before you sit down with a loan officer.
 
 When you are ready to talk through your specific situation — your service history, the type of property you are considering, and where you are in the homebuying process — the team is here.
 

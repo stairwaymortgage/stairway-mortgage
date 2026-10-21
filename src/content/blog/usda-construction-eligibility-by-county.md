@@ -40,7 +40,7 @@ The only way to confirm a specific address is to run it through the USDA's offic
 
 ## What the USDA Construction-to-Permanent Loan Actually Covers
 
-This is not a traditional purchase loan. The [USDA construction loan program](/loan-programs/usda-construction/) is designed to finance the building of a new primary residence on eligible rural land, combining the construction phase and the permanent mortgage into one loan with a single closing.
+This is not a traditional purchase loan. The [USDA construction loan program](/loan-programs/usda-construction-loan/) is designed to finance the building of a new primary residence on eligible rural land, combining the construction phase and the permanent mortgage into one loan with a single closing.
 
 That single-close structure matters. It means you go through underwriting once, lock your terms once, and avoid the cost and paperwork of a second closing when construction finishes. For a first-time buyer managing a build for the first time, that simplicity could reduce stress significantly.
 
@@ -79,7 +79,7 @@ Stairway Mortgage is based in Fort Lauderdale and serves buyers across Florida. 
 
 The first conversation is straightforward. You share a bit about your income, the county or parcel you are considering, and your timeline. From there, the eligibility check happens quickly, and you will know whether the USDA construction path makes sense for your situation or whether a different program might be worth exploring.
 
-You can also use the [mortgage calculators](/calculators/) on the site to get a rough sense of payment ranges before you call.
+You can also use the [mortgage calculators](/loan-calculators/) on the site to get a rough sense of payment ranges before you call.
 
 When you are ready to take the next step, reach out to the team directly at (954) 993-1625, or use the link below to start the conversation online.
 

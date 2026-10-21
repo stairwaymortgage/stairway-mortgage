@@ -4,7 +4,7 @@ description: "Build a home in Alachua County, FL with zero down using a USDA One
 pubDate: 2026-09-23
 cats: ["mortgage-guides"]
 tags: ["usda-loan", "construction", "zero-down"]
-heroImage: "https://media.stairwaymortgage.com/blog/2026-09-23-usda-construction-loan-alachua-county-alachua-county.png"
+heroImage: "https://media.stairwaymortgage.com/blog/2026-09-24-usda-construction-loans-alachua-county.png"
 heroAlt: "A couple standing on a rural wooded lot in North Central Florida, looking at building plans together in natural afternoon light, candid documentary style"
 author: "Jim Blackburn"
 nmls: "1072866"
@@ -36,7 +36,7 @@ A One-Time Close loan collapses that into a single transaction. You close once b
 
 For buyers in Alachua County who are building on rural or rural-adjacent land, pairing this structure with USDA financing adds another layer of simplicity: the zero down payment requirement. You could build a new home without the large upfront cash outlay that most construction scenarios demand.
 
-Explore the full details of this program on our [USDA One-Time Close Construction Loan page](/loan-programs/usda-construction/).
+Explore the full details of this program on our [USDA One-Time Close Construction Loan page](/loan-programs/usda-construction-loan/).
 
 ---
 
@@ -80,7 +80,7 @@ Zero down does not mean zero preparation. USDA One-Time Close loans have specifi
 
 **The lot:** If you already own land, that equity may factor into the transaction. If you are purchasing a lot as part of the build, that cost is typically rolled into the total loan amount.
 
-Use our [mortgage calculators](/calculators/) to get a rough sense of what your payment structure might look like once construction is complete.
+Use our [mortgage calculators](/loan-calculators/) to get a rough sense of what your payment structure might look like once construction is complete.
 
 ---
 

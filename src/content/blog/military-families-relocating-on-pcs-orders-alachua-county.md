@@ -54,7 +54,7 @@ There has been ongoing discussion at the federal level about military pay adjust
 
 BAH rates vary by duty station and dependency status, so the figure assigned for a previous post may not reflect what you will receive in Alachua County. It is worth pulling your updated BAH well before you apply, because that number factors directly into how much monthly payment you may be able to support.
 
-If your household income includes a spouse's earnings or other stable sources, those may be included in the loan application as well, depending on documentation. Use our [mortgage calculators](/calculators/) to get a rough sense of how different purchase prices interact with your income picture.
+If your household income includes a spouse's earnings or other stable sources, those may be included in the loan application as well, depending on documentation. Use our [mortgage calculators](/loan-calculators/) to get a rough sense of how different purchase prices interact with your income picture.
 
 ## Why Local Guidance Matters in This Market
 

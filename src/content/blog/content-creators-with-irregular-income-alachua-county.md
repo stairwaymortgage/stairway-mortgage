@@ -62,7 +62,7 @@ Before you start searching Alachua County listings seriously, a few habits now c
 
 **Understand your debt picture.** Student loans, car payments, and credit card balances all affect your debt-to-income ratio, which lenders use to assess what monthly mortgage payment your income can support.
 
-Our [calculators](/calculators/) can help you run some early numbers on your own before you talk to anyone.
+Our [calculators](/loan-calculators/) can help you run some early numbers on your own before you talk to anyone.
 
 ---
 

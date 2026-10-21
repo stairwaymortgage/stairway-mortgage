@@ -58,7 +58,7 @@ You may be a strong candidate if you:
 
 The income limits are tied to your area's median income and household size. They are designed to serve moderate-income households, not just very low-income borrowers. Many working families in Baker County may find they fall within the eligible range.
 
-To get a clearer sense of where you stand before you speak with anyone, the [mortgage calculators](/calculators/) on this site can help you think through your numbers.
+To get a clearer sense of where you stand before you speak with anyone, the [mortgage calculators](/loan-calculators/) on this site can help you think through your numbers.
 
 ## The Builder Piece: What You Need to Know
 
@@ -85,7 +85,7 @@ The sequence matters. Trying to work backward — lining up a builder before con
 
 To understand the full process in context of a mortgage application, [our loan programs overview](/loan-programs/) explains the range of options Stairway Mortgage works with, so you can see where USDA construction fits alongside other paths.
 
-For a closer look specifically at this program, the [USDA construction loan page](/loan-programs/usda-construction/) walks through the core requirements and what to expect at each stage.
+For a closer look specifically at this program, the [USDA construction loan page](/loan-programs/usda-construction-loan/) walks through the core requirements and what to expect at each stage.
 
 ## Start the Conversation While the Land Is Yours
 

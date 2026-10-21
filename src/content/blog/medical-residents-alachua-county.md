@@ -54,7 +54,7 @@ At the same time, Alachua County has a mix of urban, suburban, and rural pockets
 
 Not every resident will want a rural setting, of course. Many prefer to be close to UF Health, the VA medical center on Archer Road, or the clinical sites around downtown Gainesville. For those buyers, the physician loan pathway tends to be the most practical route.
 
-If you want to run some numbers before talking to anyone, [our mortgage calculators](/calculators/) can give you a rough sense of what different loan amounts and terms might look like on a monthly basis.
+If you want to run some numbers before talking to anyone, [our mortgage calculators](/loan-calculators/) can give you a rough sense of what different loan amounts and terms might look like on a monthly basis.
 
 ---
 

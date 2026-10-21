@@ -29,7 +29,7 @@ For eligible borrowers, this could mean no down payment is required — the prog
 
 Jim Blackburn, NMLS #1072866, has worked with buyers navigating this program and notes that the eligibility requirements — both for the property location and the borrower's income — are specific, but many people are surprised to find they meet them.
 
-You can explore the program details on our [USDA construction loan page](/loan-programs/usda-construction/) or browse the full range of programs we work with at [our loan programs overview](/loan-programs/).
+You can explore the program details on our [USDA construction loan page](/loan-programs/usda-construction-loan/) or browse the full range of programs we work with at [our loan programs overview](/loan-programs/).
 
 ## How Traditional Construction Loans Work
 
@@ -55,7 +55,7 @@ Income limits apply as well. The USDA program is intended for low-to-moderate in
 
 Traditional construction loans don't carry location or income restrictions, which gives them broader geographic applicability. If you're building inside a metro area or your household income sits above USDA thresholds, that path may open doors that the USDA program cannot.
 
-Use our [mortgage calculators](/calculators/) to start modeling how different loan structures might affect your overall costs during and after the build.
+Use our [mortgage calculators](/loan-calculators/) to start modeling how different loan structures might affect your overall costs during and after the build.
 
 ## The Builder Piece: What Both Programs Require
 

@@ -34,7 +34,7 @@ In most cases, a lender will average your overtime over a 24-month period using 
 
 This matters because your qualifying income directly affects how much you may be able to borrow. Getting clarity on this number early helps you shop in a realistic range and avoids surprises later in the process.
 
-You can also use our [mortgage calculators](/calculators/) to get a rough sense of monthly payment ranges before you sit down with anyone.
+You can also use our [mortgage calculators](/loan-calculators/) to get a rough sense of monthly payment ranges before you sit down with anyone.
 
 ## Loan Programs That May Work for Police Officers
 

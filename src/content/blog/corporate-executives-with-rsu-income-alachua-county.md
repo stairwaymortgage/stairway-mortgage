@@ -80,7 +80,7 @@ Second, if you're planning to use liquidated RSUs as part of your down payment �
 
 Third, if you're mid-cycle on a grant and a significant portion of your income story is still in unvested shares, your qualifying income may look lower than your actual earning trajectory suggests. That's a conversation worth having before you go under contract on a home in Gainesville or anywhere in Alachua County.
 
-Use our [mortgage calculators](/calculators/) to explore how different income scenarios might affect your purchasing picture — and then bring those numbers into a real conversation.
+Use our [mortgage calculators](/loan-calculators/) to explore how different income scenarios might affect your purchasing picture — and then bring those numbers into a real conversation.
 
 ---
 

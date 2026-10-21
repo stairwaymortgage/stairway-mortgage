@@ -513,6 +513,30 @@ const collectionSchema={"@context":"https://schema.org","@type":"CollectionPage"
         </a>
       </div>
       <p class="lp-empty mono" id="lpEmpty" hidden>No programs in this category.</p>
+      <nav class="lp-more" aria-label="More loan program guides">
+        <h2 class="lp-more__h">More loan program guides</h2>
+        <ul class="lp-more__list">
+          <li><a href="/loan-programs/arm-loans/">ARM Loans</a></li>
+          <li><a href="/loan-programs/build-to-rent-loans/">Build-to-Rent Loan</a></li>
+          <li><a href="/loan-programs/build-to-sell-loans/">Build-to-Sell Loan</a></li>
+          <li><a href="/loan-programs/business-line-of-credit/">Business Line of Credit</a></li>
+          <li><a href="/loan-programs/cash-out-refinance-loan/">Cash-Out Refinance Loan</a></li>
+          <li><a href="/loan-programs/commercial-real-estate-loans/">Commercial Real Estate Loan</a></li>
+          <li><a href="/loan-programs/conventional-97/">Conventional 97</a></li>
+          <li><a href="/loan-programs/conventional-cash-out-refinance/">Conventional Cash-Out Refinance</a></li>
+          <li><a href="/loan-programs/dscr-loan-refinance/">DSCR Loan Refinance</a></li>
+          <li><a href="/loan-programs/fha-cash-out-refinance/">FHA Cash-Out Refinance</a></li>
+          <li><a href="/loan-programs/first-time-home-buyer-programs/">First-Time Home Buyer Programs</a></li>
+          <li><a href="/loan-programs/first-time-homebuyer-loan/">First-Time Homebuyer Loan</a></li>
+          <li><a href="/loan-programs/itin-cash-out-refinance/">ITIN Cash-Out Refinance</a></li>
+          <li><a href="/loan-programs/itin-loan-refinance/">ITIN Refinance</a></li>
+          <li><a href="/loan-programs/one-time-close-construction-loan/">One-Time Close Construction Loan</a></li>
+          <li><a href="/loan-programs/p-and-l-cash-out-refinance/">P&amp;L Cash-Out Refinance</a></li>
+          <li><a href="/loan-programs/reverse-mortgage-income/">Reverse Mortgage Income</a></li>
+          <li><a href="/loan-programs/usda-loan-refinance/">USDA Refinance</a></li>
+          <li><a href="/loan-programs/va-loan-refinance/">VA Loan Refinance</a></li>
+        </ul>
+      </nav>
     </div>
   </section>
 
@@ -593,6 +617,11 @@ const collectionSchema={"@context":"https://schema.org","@type":"CollectionPage"
   .lp-q__opts button.is-sel { background: var(--color-blue); border-color: var(--color-blue); font-weight: 600; }
   .lp-finder__result { margin-top: 2rem; font-size: 13px; color: #9FE0A0; letter-spacing: 0.03em; }
 
+  .lp-more { margin-top: clamp(2rem,5vw,3rem); padding-top: 1.5rem; border-top: 1px solid var(--border, #E6E4DC); }
+  .lp-more__h { font-family: var(--serif, 'Fraunces', Georgia, serif); font-size: 1.25rem; font-weight: 600; margin-bottom: .9rem; }
+  .lp-more__list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .45rem 1.2rem; }
+  .lp-more__list a { font-size: 1rem; text-decoration: none; color: inherit; }
+  .lp-more__list a:hover { text-decoration: underline; }
   .lp-catalog { padding: clamp(2rem,5vw,3rem) 0 clamp(3rem,7vw,5rem); }
   .lp-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
   .lp-tab { font-family: var(--stw-mono, 'JetBrains Mono'), monospace; font-size: 12px; letter-spacing: 0.04em; padding: 0.55rem 0.95rem; border-radius: 999px; border: 1px solid var(--color-bone); background: var(--color-paper); color: var(--color-ink); cursor: pointer; transition: all .18s; }

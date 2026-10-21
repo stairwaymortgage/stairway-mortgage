@@ -60,7 +60,7 @@ One of the most common mistakes first-time investors make is calculating cash fl
 
 Real portfolios do not look like that. Vacancy exists. Appliances break. Property management, if you use it, costs money. Taxes, insurance, and HOA fees (where applicable) all pull from what looks like profit on paper.
 
-Before you make an offer on a property in Alachua County, run your numbers with realistic vacancy assumptions and a maintenance reserve built in. The [mortgage calculators on our site](/calculators/) can help you model a monthly payment so you know what your debt service will be, and from there you can layer in the other operating costs.
+Before you make an offer on a property in Alachua County, run your numbers with realistic vacancy assumptions and a maintenance reserve built in. The [mortgage calculators on our site](/loan-calculators/) can help you model a monthly payment so you know what your debt service will be, and from there you can layer in the other operating costs.
 
 If the numbers work at realistic occupancy — not perfect occupancy — that is a property worth looking at more closely.
 

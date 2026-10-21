@@ -90,6 +90,6 @@ You can reach our team at (954) 993-1625 or explore your options directly throug
 
 If you are a veterinarian in Alachua County thinking about purchasing a home, refinancing, or buying property with acreage, the right first move is a conversation — not an application. Understanding which programs may fit your income structure, your debt load, and the property type you want will save you time and frustration.
 
-Use our [mortgage calculators](/calculators/) to get a rough sense of numbers before we talk. Then, when you are ready to explore what is actually available to you, [Talk to Our Team](/see-my-options/) and we will walk through your situation together.
+Use our [mortgage calculators](/loan-calculators/) to get a rough sense of numbers before we talk. Then, when you are ready to explore what is actually available to you, [Talk to Our Team](/see-my-options/) and we will walk through your situation together.
 
 Your career is built around precision and care. Your mortgage process should feel the same way.

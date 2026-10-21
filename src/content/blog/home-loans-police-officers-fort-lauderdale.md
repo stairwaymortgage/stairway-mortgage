@@ -52,7 +52,7 @@ In Florida, certain state and local programs are specifically designed for first
 
 At Stairway Mortgage, our [loan programs page](/loan-programs/) walks through the major program categories available to buyers in South Florida. It's a useful starting point before your first conversation with a loan officer.
 
-If you're not sure where you stand financially, our [mortgage calculators](/calculators/) can give you a rough sense of what different purchase prices and down payment amounts might look like month to month.
+If you're not sure where you stand financially, our [mortgage calculators](/loan-calculators/) can give you a rough sense of what different purchase prices and down payment amounts might look like month to month.
 
 ---
 

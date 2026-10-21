@@ -4,7 +4,7 @@ description: "Own rural land in Alachua County, FL? Learn how a USDA constructio
 pubDate: 2026-09-25
 cats: ["smart-stewards"]
 tags: ["usda-loan", "construction", "build-wealth"]
-heroImage: "https://media.stairwaymortgage.com/blog/2026-09-25-usda-construction-alachua-county-florida-county.png"
+heroImage: "https://media.stairwaymortgage.com/blog/2026-09-24-usda-construction-loans-alachua-county.png"
 heroAlt: "A middle-aged man standing on a grassy rural property in North Central Florida, looking toward an open field, candid documentary style, natural afternoon light, no text or signage visible"
 author: "Jim Blackburn"
 nmls: "1072866"
@@ -32,7 +32,7 @@ Alachua County covers a wide footprint in North Central Florida. Gainesville anc
 
 The USDA defines eligible areas based on population thresholds, and a meaningful portion of Alachua County falls within those boundaries. That means if your land sits outside the denser suburban zones around Gainesville, there is a real possibility your parcel could qualify for USDA financing. This is one of the reasons the program is worth exploring early, rather than assuming your property does not fit.
 
-You can explore your program options in more detail on our [USDA construction loan program page](/loan-programs/usda-construction/).
+You can explore your program options in more detail on our [USDA construction loan program page](/loan-programs/usda-construction-loan/).
 
 ---
 
@@ -60,7 +60,7 @@ Building costs have shifted in ways that affect nearly every project right now. 
 
 The USDA construction program requires you to use an approved, licensed builder. That requirement, while sometimes seen as a hurdle, actually works in your favor here. USDA-approved builders tend to have documented processes, licensed contractors, and the paperwork infrastructure needed for a draw-based loan. In a construction environment where costs and timelines are less predictable than they once were, that structure matters.
 
-If you want to model different scenarios before you commit, our [mortgage calculators](/calculators/) can help you think through the numbers at your own pace.
+If you want to model different scenarios before you commit, our [mortgage calculators](/loan-calculators/) can help you think through the numbers at your own pace.
 
 ---
 

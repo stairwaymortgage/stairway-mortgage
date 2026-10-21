@@ -70,7 +70,7 @@ That means thinking about how each acquisition is structured, whether to hold in
 
 If you are working with real estate professionals in Alachua County — agents who specialize in investment property, property managers familiar with local tenant trends — those relationships matter too. Our [resources for real estate professionals](/real-estate-professionals/) speak directly to those working at the intersection of transactions and financing.
 
-You can also run rough numbers on potential acquisitions using our [mortgage calculators](/calculators/) before you get into a formal conversation.
+You can also run rough numbers on potential acquisitions using our [mortgage calculators](/loan-calculators/) before you get into a formal conversation.
 
 ---
 

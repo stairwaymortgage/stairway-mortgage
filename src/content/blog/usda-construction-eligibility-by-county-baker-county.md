@@ -30,7 +30,7 @@ Baker County sits in northeast Florida, just west of Jacksonville, and it carrie
 
 Because Baker County does not have the dense suburban development you find in Broward or Miami-Dade, many parcels here fall within USDA-eligible zones. That matters because USDA construction financing is tied to location. If your lot is not in a USDA-eligible area, the program is simply not available to you, regardless of your income or credit profile.
 
-Before you fall in love with a specific piece of land, checking USDA property eligibility should be one of your first steps. Our [USDA construction loan program page](/loan-programs/usda-construction/) walks through what to look for.
+Before you fall in love with a specific piece of land, checking USDA property eligibility should be one of your first steps. Our [USDA construction loan program page](/loan-programs/usda-construction-loan/) walks through what to look for.
 
 ## How a USDA Construction Loan Actually Works
 
@@ -85,7 +85,7 @@ If building in Baker County is genuinely on your radar, here are practical steps
 4. **Find a licensed builder.** Talk to local contractors about their experience with USDA construction projects.
 5. **Talk to a loan officer early.** The earlier you involve financing, the fewer surprises you face during the build.
 
-You can also run some preliminary numbers using our [mortgage calculators](/calculators/) to get a rough sense of what monthly payments might look like once the construction converts to a permanent loan.
+You can also run some preliminary numbers using our [mortgage calculators](/loan-calculators/) to get a rough sense of what monthly payments might look like once the construction converts to a permanent loan.
 
 ## Ready to Explore Your Options?
 

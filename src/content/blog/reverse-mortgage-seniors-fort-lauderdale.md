@@ -35,7 +35,7 @@ Instead of you making payments to a lender, the loan balance grows over time and
 
 You remain on the title. You keep ownership. The home is still yours.
 
-Want to see how the numbers might work for your situation? Our [mortgage calculators](/calculators/) can give you a starting point.
+Want to see how the numbers might work for your situation? Our [mortgage calculators](/loan-calculators/) can give you a starting point.
 
 ---
 

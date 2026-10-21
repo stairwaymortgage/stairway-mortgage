@@ -55,7 +55,7 @@ Second, veterans sometimes start the homebuying process without a preapproval le
 
 Third, the VA funding fee catches some buyers off guard at closing. If you have a service-connected disability, you may be exempt — but that exemption has to be verified and documented before your loan closes. Do not assume it will be applied automatically.
 
-You can use our [mortgage calculators](/calculators/) to run rough estimates on monthly payments and see how the funding fee might factor into your total loan amount.
+You can use our [mortgage calculators](/loan-calculators/) to run rough estimates on monthly payments and see how the funding fee might factor into your total loan amount.
 
 ## Working With a Loan Officer Who Understands Military Income
 

@@ -58,7 +58,7 @@ Credit scores matter in mortgage lending, but they are one part of a larger pict
 
 A score that feels too low to try is sometimes enough to open a door — especially with FHA or USDA products. And if your credit needs work before you apply, a good loan originator will tell you that honestly and give you a clear path forward rather than just turn you away.
 
-Jim Blackburn, NMLS #1072866, works with first-time buyers throughout Florida and takes time to walk through what your current profile means and what steps could put you in a position to move forward. You can use our [mortgage calculators](/calculators/) to start modeling how your income and debts might interact with a home purchase.
+Jim Blackburn, NMLS #1072866, works with first-time buyers throughout Florida and takes time to walk through what your current profile means and what steps could put you in a position to move forward. You can use our [mortgage calculators](/loan-calculators/) to start modeling how your income and debts might interact with a home purchase.
 
 ---
 

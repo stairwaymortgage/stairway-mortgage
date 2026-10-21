@@ -34,7 +34,7 @@ Alachua County is a diverse housing market. Gainesville — the county seat and 
 
 That diversity matters when you are choosing a loan program. FHA financing may be used for a range of property types, including single-family homes, FHA-approved condominiums, and certain manufactured homes on permanent foundations. This flexibility makes FHA a practical option whether you are eyeing a craftsman bungalow near the University Avenue corridor or a more modest home on the rural edges of the county.
 
-It is also worth knowing that parts of Alachua County outside Gainesville's urban boundary may fall within USDA-eligible rural zones, which means some buyers in those areas could have access to an additional zero-down-payment program. If you are unsure whether FHA or USDA aligns with your situation, our [FHA loan program page](/loan-programs/fha/) offers an overview, and speaking with a licensed originator can clarify which path makes the most sense for you.
+It is also worth knowing that parts of Alachua County outside Gainesville's urban boundary may fall within USDA-eligible rural zones, which means some buyers in those areas could have access to an additional zero-down-payment program. If you are unsure whether FHA or USDA aligns with your situation, our [FHA loan program page](/loan-programs/fha-loan/) offers an overview, and speaking with a licensed originator can clarify which path makes the most sense for you.
 
 ---
 
@@ -58,7 +58,7 @@ None of this means approval is automatic — every application is reviewed indiv
 
 One aspect of FHA loans that surprises some buyers is mortgage insurance. FHA loans require both an upfront mortgage insurance premium paid at closing (which can often be rolled into the loan) and an annual premium paid monthly.
 
-This insurance protects the lender, not the borrower, and it is part of what allows FHA to accept more flexible credit profiles. The cost is real and worth factoring into your monthly budget. Our [mortgage calculators](/calculators/) can help you model what an FHA payment might look like at different purchase prices.
+This insurance protects the lender, not the borrower, and it is part of what allows FHA to accept more flexible credit profiles. The cost is real and worth factoring into your monthly budget. Our [mortgage calculators](/loan-calculators/) can help you model what an FHA payment might look like at different purchase prices.
 
 Unlike some conventional loans, FHA mortgage insurance does not automatically drop off once you reach a certain equity threshold — whether it can be removed depends on your loan term and down payment amount. Jim Blackburn, NMLS #1072866, can walk you through how this works and help you weigh the trade-offs honestly.
 

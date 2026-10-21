@@ -5,7 +5,8 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.stairwaymortgage.com',
-  integrations: [sitemap()],
+  // /rating/ is a private, noindex review funnel — keep it out of the sitemap.
+  integrations: [sitemap({ filter: (page) => !page.endsWith('/rating/') })],
   vite: {
     plugins: [tailwindcss()],
   },
@@ -164,24 +165,5 @@ export default defineConfig({
     '/2025/11/11/market-cycles/': '/blog/market-cycles/',
     '/2025/11/16/nexa-mortgage-nexa-lending/': '/blog/nexa-mortgage-nexa-lending/',
     '/2025/11/07/self-employed-mortgage/': '/blog/self-employed-mortgage/',
-    '/loan-programs/profit-and-loss-loan/': '/loan-programs/p-and-l-loan/',
-    '/loan-programs/profit-and-loss-loans/': '/loan-programs/p-and-l-loan/',
-    '/loan-programs/profit-loss-loan/': '/loan-programs/p-and-l-loan/',
-    '/loan-programs/profit-loss-loans/': '/loan-programs/p-and-l-loan/',
-    '/loan-programs/profit-loss-mortgage/': '/loan-programs/p-and-l-loan/',
-    '/loan-programs/physician-loans/': '/loan-programs/physician-mortgage-loans/',
-    '/loan-programs/renovation-loan/': '/loan-programs/homestyle-renovation-loan/',
-    '/loan-programs/renovation-loans/': '/loan-programs/homestyle-renovation-loan/',
-    '/loan-programs/investment-property-loan/': '/loan-programs/dscr-loan/',
-    '/loan-programs/investment-property-loans/': '/loan-programs/dscr-loan/',
-    // Duplicate calculator pages (whole-page copies of another tool) → canonical original
-    '/loan-calculator/jumbo-construction-loan-acquisition/': '/loan-calculator/jumbo-construction-loan/',
-    '/loan-calculator/jumbo-construction-to-perm-loan/': '/loan-calculator/jumbo-construction-loan/',
-    '/loan-calculator/debt-consolidation-calculator/': '/loan-calculator/debt-ratio-calculator/',
-    '/loan-calculator/p-and-l-loan-refinance/': '/loan-calculator/p-and-l-loan/',
-    '/loan-calculator/p-and-l-loan-cash-out-refinance/': '/loan-calculator/p-and-l-loan/',
-    '/loan-calculator/va-loan-refinance/': '/loan-calculator/va-irrrl/',
-    // Orphaned thin (27-word) interactive page → the real reverse-mortgage funnel
-    '/reverse-mortgage/': '/reverse-mortgage-journey/',
   },
 });

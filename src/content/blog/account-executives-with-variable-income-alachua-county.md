@@ -64,7 +64,7 @@ For account executives whose income documentation is solid but who want to prese
 
 Conventional loans remain a strong path for many commission-earning buyers, particularly those with a two-year earnings history and a down payment ready. FHA loans offer flexibility on credit and down payment — typically starting around 3.5% down — and can work well when income documentation is straightforward even if it is variable.
 
-Jim Blackburn, NMLS #1072866, works with account executives across a range of compensation structures and can help you understand which program aligns with your documented income. You can also [use our mortgage calculators](/calculators/) to get a rough sense of how your income average might translate to purchasing power before you schedule a conversation.
+Jim Blackburn, NMLS #1072866, works with account executives across a range of compensation structures and can help you understand which program aligns with your documented income. You can also [use our mortgage calculators](/loan-calculators/) to get a rough sense of how your income average might translate to purchasing power before you schedule a conversation.
 
 ---
 

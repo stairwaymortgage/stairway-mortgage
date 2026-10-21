@@ -23,7 +23,7 @@ You fly international routes, hold a type rating on a wide-body jet, and earn we
 
 That disconnect is one of the most common frustrations airline pilots describe when trying to purchase or refinance a home. The problem is not your earnings — it is the way those earnings are structured, and whether the lender reviewing your file understands what they are looking at.
 
-At Stairway Mortgage in Fort Lauderdale, Jim Blackburn, NMLS #1072866, works specifically with aviation professionals to work through those documentation challenges. If you want to understand how the process applies to your situation, [our pilot-focused resource page](/aviation-professionals/pilots/) is a good place to start.
+At Stairway Mortgage in Fort Lauderdale, Jim Blackburn, NMLS #1072866, works specifically with aviation professionals to work through those documentation challenges. If you want to understand how the process applies to your situation, [our pilot-focused resource page](/aviation-professionals/pilot/) is a good place to start.
 
 ## Why Pilot Income Confuses Standard Underwriting
 
@@ -72,7 +72,7 @@ Fort Lauderdale and the surrounding Broward and Miami-Dade area are natural draw
 
 Property values in coastal South Florida have remained strong, which means many pilots are looking at loan amounts that push into jumbo territory. Jumbo loans — those that exceed the conforming loan limits set annually by federal housing agencies — have their own qualification standards, and income documentation requirements can be even more detailed.
 
-If you want to run some numbers before the conversation, our [mortgage calculators](/calculators/) can give you a rough sense of purchase price ranges and estimated monthly obligations based on different down payment scenarios.
+If you want to run some numbers before the conversation, our [mortgage calculators](/loan-calculators/) can give you a rough sense of purchase price ranges and estimated monthly obligations based on different down payment scenarios.
 
 ## A Career Sector Worth Paying Attention To
 

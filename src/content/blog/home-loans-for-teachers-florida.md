@@ -47,7 +47,7 @@ Several assistance programs exist specifically to help buyers in public service 
 
 Not every program is advertised loudly, and not every lender is familiar with all of them. Our team stays current on what is available in Broward County and the surrounding area so we can match you with options that genuinely apply to your situation.
 
-If you want to run some preliminary numbers, our [mortgage calculators](/calculators/) can help you explore what a monthly payment might look like at different purchase prices and down payment amounts.
+If you want to run some preliminary numbers, our [mortgage calculators](/loan-calculators/) can help you explore what a monthly payment might look like at different purchase prices and down payment amounts.
 
 ---
 

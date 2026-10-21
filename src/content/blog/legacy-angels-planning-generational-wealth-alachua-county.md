@@ -86,7 +86,7 @@ Every family's situation in Alachua County is different, but a generational weal
 
 **Clear documentation.** Inherited homes frequently get sold — not because the family wanted to sell, but because no one knew what the plan was. Written, shared plans reduce that risk.
 
-Our [mortgage calculators](/calculators/) can help you model different scenarios as you think through these decisions. Numbers on paper often clarify what feels abstract in conversation.
+Our [mortgage calculators](/loan-calculators/) can help you model different scenarios as you think through these decisions. Numbers on paper often clarify what feels abstract in conversation.
 
 Jim Blackburn, NMLS #1072866, is available to walk through how these pieces connect to your specific situation in Alachua County. His team can be reached at (954) 993-1625, and the [8-step planning process](/the-8-steps/) at Stairway Mortgage is designed to make these conversations structured and productive.
 

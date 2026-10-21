@@ -68,7 +68,7 @@ This mix matters when you are shopping for a home. Near the Gainesville urban co
 
 For a chiropractic practice owner, Alachua County offers some geographic flexibility. You could choose a home close to your Gainesville practice location or look at property with more land if that fits your lifestyle. Understanding the loan programs available in each zone — conventional, USDA, or others — helps you match your financing strategy to the area where you want to live.
 
-If you want to run some early numbers, our [mortgage calculators](/calculators/) can give you a rough sense of what different loan amounts and down payment scenarios might look like.
+If you want to run some early numbers, our [mortgage calculators](/loan-calculators/) can give you a rough sense of what different loan amounts and down payment scenarios might look like.
 
 ---
 

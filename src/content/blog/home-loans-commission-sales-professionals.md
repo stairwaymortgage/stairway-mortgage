@@ -65,7 +65,7 @@ Second, pull together your most recent pay stubs or 1099s, and any commission ag
 
 Third, review your bank statements. Lenders may ask for two to three months of statements at minimum. If you are applying for a bank statement loan, you will need 12 to 24 months.
 
-Finally, use the [mortgage calculators](/calculators/) to get a rough sense of what purchase price range aligns with your documented income. This can help you set realistic expectations before you start shopping for homes.
+Finally, use the [mortgage calculators](/loan-calculators/) to get a rough sense of what purchase price range aligns with your documented income. This can help you set realistic expectations before you start shopping for homes.
 
 ## Timing and the Two-Year Rule
 

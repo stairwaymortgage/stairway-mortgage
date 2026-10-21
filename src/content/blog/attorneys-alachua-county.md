@@ -84,7 +84,7 @@ Regardless of your compensation structure, there are steps you can take now to p
 
 **Think about timing.** If you recently made partner or changed firms, a short waiting period — or a lender with flexible seasoning requirements — could work in your favor.
 
-Running numbers before you start the formal process is always a practical move. Our [mortgage calculators](/calculators/) can help you estimate purchase power based on different income and down payment scenarios.
+Running numbers before you start the formal process is always a practical move. Our [mortgage calculators](/loan-calculators/) can help you estimate purchase power based on different income and down payment scenarios.
 
 When you are ready to understand the full sequence from application to closing, [our step-by-step process](/the-8-steps/) walks through each stage in plain language.
 

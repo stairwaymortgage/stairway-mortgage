@@ -51,7 +51,7 @@ BAH is tied to your duty station and dependent status, which means a PCS move of
 
 The good news is that VA-experienced loan officers know how to work with military pay structures. Jim Blackburn, NMLS #1072866, has helped military families in and around Fort Lauderdale understand how their full income picture, including allowances and special pays, factors into the home loan process. Getting that analysis done early, ideally before you have a purchase agreement in hand, helps you set a realistic and comfortable price range.
 
-You can use our [mortgage calculators](/calculators/) to run some initial numbers on your own, then follow up with our team for a more complete picture.
+You can use our [mortgage calculators](/loan-calculators/) to run some initial numbers on your own, then follow up with our team for a more complete picture.
 
 ---
 
@@ -67,7 +67,7 @@ Here is how military families tend to get through it successfully.
 
 **Know your entitlement status before you shop.** If you have used a VA loan before, your entitlement may be fully restored, partially available, or tied up in a current property. Understanding this before you start shopping prevents surprises.
 
-**Consider the full cost of ownership in the new location.** Property taxes, homeowners insurance, and HOA fees vary significantly by region. Our [mortgage calculators](/calculators/) can help you factor in these costs alongside your loan payment.
+**Consider the full cost of ownership in the new location.** Property taxes, homeowners insurance, and HOA fees vary significantly by region. Our [mortgage calculators](/loan-calculators/) can help you factor in these costs alongside your loan payment.
 
 For a clear view of what the process looks like from start to finish, [our step-by-step guide](/the-8-steps/) walks through each stage in plain language.
 

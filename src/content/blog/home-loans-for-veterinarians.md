@@ -80,7 +80,7 @@ The single most useful step you can take is getting an honest, detailed review o
 
 **What loan programs you may actually be eligible for.** There is a wide range, from conventional loans to physician-style professional programs to bank statement products for self-employed borrowers. Not every program is right for every veterinarian.
 
-You can start exploring your situation through our [mortgage calculators](/calculators/) to get a rough sense of numbers, then move toward a real conversation with a loan professional who understands your career profile.
+You can start exploring your situation through our [mortgage calculators](/loan-calculators/) to get a rough sense of numbers, then move toward a real conversation with a loan professional who understands your career profile.
 
 Our [resources for dental and wellness professionals](/dental-wellness-professionals/) also cover themes that overlap with the veterinary profession, particularly around self-employment and professional-level income documentation.
 

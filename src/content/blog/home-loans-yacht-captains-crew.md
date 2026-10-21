@@ -71,7 +71,7 @@ Even if you are not planning to buy for another year, there are steps you can ta
 
 **Build your employment paper trail.** Contracts, offer letters, crewing agency agreements, and even email confirmations of upcoming work can all serve as supporting documentation.
 
-If you want to run some preliminary numbers, the [mortgage calculators](/calculators/) on our site can help you think through purchase price ranges and down payment scenarios before you sit down with a loan officer.
+If you want to run some preliminary numbers, the [mortgage calculators](/loan-calculators/) on our site can help you think through purchase price ranges and down payment scenarios before you sit down with a loan officer.
 
 ## A Growing Profession With Real Housing Needs
 

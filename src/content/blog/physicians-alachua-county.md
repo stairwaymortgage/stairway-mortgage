@@ -70,7 +70,7 @@ One of the most frequently discussed features of physician-specific loan program
 
 For physicians who are early in their careers, preserving cash rather than committing a large sum to a down payment can make practical sense. Moving costs, setting up a practice or coverage area, and building an emergency fund are all real financial priorities in that first year of attending practice.
 
-That said, putting more down when you have the funds available is worth running through the numbers. Our [mortgage calculators](/calculators/) can help you model different down payment scenarios so you can see how the monthly figures compare before you commit to a direction.
+That said, putting more down when you have the funds available is worth running through the numbers. Our [mortgage calculators](/loan-calculators/) can help you model different down payment scenarios so you can see how the monthly figures compare before you commit to a direction.
 
 ---
 

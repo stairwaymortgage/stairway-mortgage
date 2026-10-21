@@ -47,7 +47,7 @@ Not all mortgage programs treat self-employment income the same way. Understandi
 
 **Professional loans and physician-adjacent programs** sometimes extend to healthcare professionals beyond physicians, including chiropractors. These programs may allow for reduced down payment requirements or more flexible debt-to-income calculations. Availability and terms vary, so it's worth asking.
 
-You can explore the full range of programs available through Stairway Mortgage on our [loan programs page](/loan-programs/) or use the [mortgage calculators](/calculators/) to get a rough sense of what different scenarios might look like for your budget.
+You can explore the full range of programs available through Stairway Mortgage on our [loan programs page](/loan-programs/) or use the [mortgage calculators](/loan-calculators/) to get a rough sense of what different scenarios might look like for your budget.
 
 ---
 

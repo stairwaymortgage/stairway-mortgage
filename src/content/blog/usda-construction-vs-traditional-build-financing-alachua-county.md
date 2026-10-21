@@ -32,7 +32,7 @@ The USDA Single Close Construction loan combines two things that traditional fin
 
 For eligible borrowers in Alachua County, one of the most notable features is the zero-down-payment option. Rural areas of the county — many of which sit outside the USDA-designated urban boundaries — may qualify for this program. That means someone building on a rural lot might be able to finance the full construction cost without a large cash down payment.
 
-USDA loans also carry government-backed underwriting guidelines that differ from conventional products. Income limits apply, and the property must be in an eligible rural or semi-rural location. [Our USDA construction loan program page](/loan-programs/usda-construction/) walks through the core requirements in plain language if you want a starting point.
+USDA loans also carry government-backed underwriting guidelines that differ from conventional products. Income limits apply, and the property must be in an eligible rural or semi-rural location. [Our USDA construction loan program page](/loan-programs/usda-construction-loan/) walks through the core requirements in plain language if you want a starting point.
 
 ---
 
@@ -64,7 +64,7 @@ Here is a plain comparison of how the two approaches differ for a borrower build
 
 **Timeline:** USDA construction loans may take longer to process initially due to additional government review steps. Traditional construction loans can sometimes move faster at the front end.
 
-Use our [mortgage calculators](/calculators/) to get a rough sense of what different loan structures might look like at various build costs before you commit to a path.
+Use our [mortgage calculators](/loan-calculators/) to get a rough sense of what different loan structures might look like at various build costs before you commit to a path.
 
 ---
 

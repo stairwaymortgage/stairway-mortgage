@@ -67,7 +67,7 @@ A few things to know:
 
 Gift funds from family members are allowed on most loan types, provided they are documented properly. Down payment assistance programs also exist at the state and county level in Florida, some of which are specifically available to first responders.
 
-Using [our mortgage calculators](/calculators/) can help you estimate what a down payment at different amounts would mean for your monthly payment structure, so you can set a realistic savings target.
+Using [our mortgage calculators](/loan-calculators/) can help you estimate what a down payment at different amounts would mean for your monthly payment structure, so you can set a realistic savings target.
 
 It is also worth noting that you do not always need 20% down. Depending on the program you use, you may be able to move forward with significantly less — though that choice comes with trade-offs that are worth understanding before you commit.
 

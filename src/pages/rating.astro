@@ -23,6 +23,7 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: GHL/n8n webhook for thumbs-down fe
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>How was your experience? — Stairway Mortgage</title>
+<meta name="description" content="Tell us how your loan experience with Stairway Mortgage went. Happy? Share a review. Not happy? Send private feedback straight to our team.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -43,7 +44,7 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: GHL/n8n webhook for thumbs-down fe
   .wrap{width:100%;max-width:480px;text-align:center;animation:rise .5s cubic-bezier(0.16,1,0.3,1);}
   @keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
   .brand{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:28px;}
-  h1{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,7vw,38px);line-height:1.12;letter-spacing:-0.01em;margin-bottom:14px;}
+  h1,h2.h1{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(28px,7vw,38px);line-height:1.12;letter-spacing:-0.01em;margin-bottom:14px;}
   .sub{color:var(--muted);font-size:16px;margin-bottom:40px;max-width:380px;margin-left:auto;margin-right:auto;}
   .choices{display:flex;gap:16px;justify-content:center;}
   .choice{flex:1;max-width:180px;background:var(--card);border:1.5px solid var(--line);border-radius:18px;
@@ -126,7 +127,7 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: GHL/n8n webhook for thumbs-down fe
       <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
       <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
     </div>
-    <h1>That's wonderful to hear.</h1>
+    <h2 class="h1">That's wonderful to hear.</h2>
     <p class="sub">Pick wherever's easiest — a few words means the world to us.</p>
     <div class="platforms">
       <a class="plat google" id="lnk-google" href="#" target="_blank" rel="noopener">
@@ -150,7 +151,7 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: GHL/n8n webhook for thumbs-down fe
 
   <!-- THUMBS DOWN → private feedback -->
   <div class="screen" id="s-down">
-    <h1>Thank you for your honesty.</h1>
+    <h2 class="h1">Thank you for your honesty.</h2>
     <p class="sub">We take this seriously. Tell us what fell short — it comes straight to our team, and we'll make it right.</p>
     <textarea id="fb-text" placeholder="What could we have done better?" aria-label="Your feedback"></textarea>
     <button class="form-btn" id="fb-submit">Send feedback</button>
@@ -159,7 +160,7 @@ const FEEDBACK_WEBHOOK_URL = ""; // optional: GHL/n8n webhook for thumbs-down fe
 
   <!-- FEEDBACK THANKS -->
   <div class="screen" id="s-thanks">
-    <h1>We hear you.</h1>
+    <h2 class="h1">We hear you.</h2>
     <p class="sub">Thank you for telling us. A member of our team will be in touch personally.</p>
   </div>
 

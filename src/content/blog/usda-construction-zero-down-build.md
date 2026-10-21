@@ -35,7 +35,7 @@ A USDA one-time-close construction loan combines both stages into a single loan.
 
 This structure reduces uncertainty. You know your loan terms before the first nail goes in, and you are not left hoping rates or your financial picture stay the same six or twelve months down the road.
 
-You can explore the full details of how this works on our [USDA construction loan program page](/loan-programs/usda-construction/).
+You can explore the full details of how this works on our [USDA construction loan program page](/loan-programs/usda-construction-loan/).
 
 ---
 
@@ -47,7 +47,7 @@ For a first-time buyer, that distinction matters enormously. Saving a down payme
 
 Zero down does not mean zero costs. You will still have closing costs, builder contracts, and potentially fees tied to permits and inspections. Some of those costs may be rolled into the loan or covered by seller concessions, depending on your situation. Jim Blackburn, NMLS #1072866, will help you understand exactly what to expect before you commit to anything.
 
-If you want to run early numbers, our [mortgage calculators](/calculators/) can give you a starting point.
+If you want to run early numbers, our [mortgage calculators](/loan-calculators/) can give you a starting point.
 
 ---
 

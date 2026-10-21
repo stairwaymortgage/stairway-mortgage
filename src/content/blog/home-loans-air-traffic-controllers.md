@@ -51,13 +51,13 @@ Federal employees are paid on a biweekly schedule. That rhythm is predictable, w
 
 Depending on the loan program, down payment requirements can vary. Some programs allow as little as 3% to 5% down for qualified borrowers, while others may require more. Reserves — meaning the funds left in your account after closing — are also evaluated by most lenders. Having two to three months of housing expenses set aside beyond the down payment could support your application.
 
-If you want to run some numbers before committing to a conversation, the [mortgage calculators](/calculators/) on this site can give you a rough picture of monthly payments based on different purchase prices and down payment amounts.
+If you want to run some numbers before committing to a conversation, the [mortgage calculators](/loan-calculators/) on this site can give you a rough picture of monthly payments based on different purchase prices and down payment amounts.
 
 ## VA Loans: A Separate Path for Controllers Who Served
 
 Not all air traffic controllers are civilians. A meaningful number worked in military aviation — Army, Navy, Air Force, or Marine Corps — before transitioning to FAA employment. If that describes you, and you meet VA loan eligibility requirements based on your service, that program deserves serious consideration.
 
-VA loans are available to eligible veterans and active-duty service members and come with distinct documentation and underwriting characteristics. If you are unsure whether your service record makes you eligible, the [air traffic controllers resource page](/aviation-professionals/air-traffic-controllers/) on this site outlines some of the key considerations.
+VA loans are available to eligible veterans and active-duty service members and come with distinct documentation and underwriting characteristics. If you are unsure whether your service record makes you eligible, the [air traffic controllers resource page](/aviation-professionals/air-traffic-controller/) on this site outlines some of the key considerations.
 
 For controllers who entered the FAA directly without prior military service, VA loans are not an available path — but there are several other programs worth reviewing.
 

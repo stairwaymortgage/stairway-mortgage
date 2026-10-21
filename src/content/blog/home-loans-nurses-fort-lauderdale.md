@@ -49,7 +49,7 @@ Recent data from within the nursing profession also reflects something many nurs
 
 Knowing that pressure exists is part of why Stairway Mortgage takes a whole-picture approach. Your student loan situation, your income documentation, your employment timeline — all of it gets reviewed in context, not in isolation.
 
-If you want to understand what your purchasing power might look like right now, our [mortgage calculators](/calculators/) can give you a starting point before you ever speak with anyone.
+If you want to understand what your purchasing power might look like right now, our [mortgage calculators](/loan-calculators/) can give you a starting point before you ever speak with anyone.
 
 ---
 

@@ -68,7 +68,7 @@ There is no single loan that works for every flight attendant, but several progr
 
 **Bank statement loans** exist for flight attendants whose income is harder to document through traditional means — particularly those with significant per-diem income or self-employed secondary income. These are specialty programs, but they are real options.
 
-If you want to compare how different loan structures might affect your monthly picture, our [mortgage calculators](/calculators/) can help you run the numbers at your own pace.
+If you want to compare how different loan structures might affect your monthly picture, our [mortgage calculators](/loan-calculators/) can help you run the numbers at your own pace.
 
 ---
 
@@ -86,7 +86,7 @@ Here is the general arc of what you can expect:
 
 For flight attendants, timing can be a real concern. You may be on a trip when a document deadline hits or unreachable during a key communication window. Stairway Mortgage is set up to work digitally and asynchronously, so your schedule does not have to derail your timeline.
 
-Learn more about what each stage involves by visiting our [resources for flight attendants and aviation professionals](/aviation-professionals/flight-attendants/).
+Learn more about what each stage involves by visiting our [resources for flight attendants and aviation professionals](/aviation-professionals/flight-attendant/).
 
 ---
 

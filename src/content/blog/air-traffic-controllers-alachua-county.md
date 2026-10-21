@@ -72,7 +72,7 @@ Depending on your service history and financial profile, several loan types may 
 
 **FHA loans** offer flexibility on credit history and down payment for borrowers who may be earlier in their savings journey.
 
-Our [aviation professionals page for air traffic controllers](/aviation-professionals/air-traffic-controllers/) outlines how we approach each of these options for controllers specifically.
+Our [aviation professionals page for air traffic controllers](/aviation-professionals/air-traffic-controller/) outlines how we approach each of these options for controllers specifically.
 
 ---
 
@@ -84,7 +84,7 @@ Start by pulling together two years of W-2s and federal pay stubs. If you have r
 
 Next, think about the type of property you want. A condo near the University of Florida, a single-family home in a Gainesville suburb, or a rural property with acreage each carry different financing considerations. Knowing your target property type helps a mortgage professional point you toward the right program early.
 
-Then use our [mortgage calculators](/calculators/) to get a general sense of what monthly payments might look like at different purchase prices. This is a planning tool, not a commitment, and it helps you enter conversations with a lender with realistic expectations.
+Then use our [mortgage calculators](/loan-calculators/) to get a general sense of what monthly payments might look like at different purchase prices. This is a planning tool, not a commitment, and it helps you enter conversations with a lender with realistic expectations.
 
 Finally, review [our step-by-step process](/the-8-steps/) so you understand what each phase of the mortgage journey involves and where your income documentation will matter most.
 

@@ -59,7 +59,7 @@ Even if you are months away from being ready to make an offer, there are steps y
 
 **Gather your documentation.** Residency programs issue standard W-2s and pay stubs. You will also want to have your student loan statements available, as well as any future employment contract if you have one. Knowing what you have on hand before you start the process reduces friction later.
 
-**Understand your price range.** Use a [mortgage calculator](/calculators/) to get a rough sense of what a monthly payment might look like at different purchase prices. This gives you a realistic frame before you start looking at properties.
+**Understand your price range.** Use a [mortgage calculator](/loan-calculators/) to get a rough sense of what a monthly payment might look like at different purchase prices. This gives you a realistic frame before you start looking at properties.
 
 **Talk to a loan officer who knows this niche.** Physician loan programs have specific guidelines that vary by lender. Working with someone who has experience placing residents and fellows into these programs means you are not learning the rules at the same time as your loan officer.
 

@@ -25,7 +25,7 @@ An FHA loan is a mortgage insured by the Federal Housing Administration. Because
 
 The two features that tend to matter most to first-time buyers are the down payment and the credit flexibility. FHA loans allow down payments as low as 3.5% in many cases — and unlike conventional loans, that down payment can often come from gift funds. On the credit side, FHA guidelines are generally more forgiving than conventional standards, which matters if you're still building your financial profile.
 
-You can explore the full details of [our FHA loan program](/loan-programs/fha/) to see how it stacks up for your situation.
+You can explore the full details of [our FHA loan program](/loan-programs/fha-loan/) to see how it stacks up for your situation.
 
 ## What You Need to Know About Down Payments Right Now
 
@@ -57,7 +57,7 @@ FHA loans come with mortgage insurance premiums — an upfront amount rolled int
 
 Mortgage insurance is not permanent for all loan types, but with FHA it typically stays for the life of the loan if your down payment is below 10%. That's a real cost to factor into your monthly budget. It doesn't make FHA the wrong choice — for many buyers it's the right one — but you should go in with clear eyes about what you're agreeing to.
 
-Using [our mortgage calculators](/calculators/) to model your monthly payment with and without mortgage insurance can help you see what the numbers actually look like before you commit to anything.
+Using [our mortgage calculators](/loan-calculators/) to model your monthly payment with and without mortgage insurance can help you see what the numbers actually look like before you commit to anything.
 
 ## Working With Jim Blackburn at Stairway Mortgage in Fort Lauderdale
 

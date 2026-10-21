@@ -23,7 +23,7 @@ You found a house in a neighborhood you love. The location is right, the lot is 
 
 This is one of the most common situations homebuyers and current homeowners face right now. With fewer move-in-ready listings available and home prices remaining elevated across South Florida, many people are taking a serious look at properties they might have passed on before. The question is how to finance not just the purchase, but the work that makes the house actually livable.
 
-That is exactly where renovation loans come in — and it is an area where [Stairway Mortgage's renovation loan programs](/loan-programs/renovation/) can open doors that a standard mortgage simply cannot.
+That is exactly where renovation loans come in — and it is an area where [Stairway Mortgage's renovation loan programs](/loan-programs/homestyle-renovation-loan/) can open doors that a standard mortgage simply cannot.
 
 ---
 
@@ -61,7 +61,7 @@ The **Fannie Mae HomeStyle** loan is a conventional option that tends to offer m
 
 Each program has its own requirements for contractor qualifications, timelines, and draw schedules. Understanding which one fits your project is part of what Jim Blackburn, NMLS #1072866, does when he works through the numbers with you.
 
-You can also use [our mortgage calculators](/calculators/) to get a rough sense of how renovation costs folded into a loan might affect your monthly picture before you ever sit down with a lender.
+You can also use [our mortgage calculators](/loan-calculators/) to get a rough sense of how renovation costs folded into a loan might affect your monthly picture before you ever sit down with a lender.
 
 ---
 

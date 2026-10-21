@@ -82,7 +82,7 @@ FHA loans offer a more accessible credit threshold for some borrowers, though th
 
 For properties in qualifying rural areas of Alachua County, USDA loans could be worth examining. The combination of no down payment and geography makes them a practical option for pilots who want acreage or a quieter setting between flights.
 
-Use our [mortgage calculators](/calculators/) to run rough numbers on different scenarios before committing to a direction.
+Use our [mortgage calculators](/loan-calculators/) to run rough numbers on different scenarios before committing to a direction.
 
 ---
 
@@ -90,7 +90,7 @@ Use our [mortgage calculators](/calculators/) to run rough numbers on different 
 
 Stairway Mortgage is based in Fort Lauderdale and works with borrowers across Florida, including those purchasing or refinancing in Alachua County. The team understands that airline pilots often manage real estate decisions between trips, across time zones, and on compressed timelines.
 
-The process is designed to work around your schedule — not the other way around. You can review your [options as an aviation professional](/aviation-professionals/pilots/) to understand how our approach is tailored to careers like yours.
+The process is designed to work around your schedule — not the other way around. You can review your [options as an aviation professional](/aviation-professionals/pilot/) to understand how our approach is tailored to careers like yours.
 
 If you are considering a home in Gainesville, a rural property on the county's outskirts, or anything in between, getting a clear picture of your financing options early saves time and removes uncertainty from the process.
 

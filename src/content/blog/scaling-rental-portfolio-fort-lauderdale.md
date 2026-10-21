@@ -37,7 +37,7 @@ Not every investor scales the same way, and not every loan program fits every in
 
 **Portfolio Loans:** Some lenders hold loans in-house rather than selling them to the secondary market. These products may offer more flexibility for investors with unusual situations, though terms vary widely.
 
-You can explore these options in more depth by visiting our [loan programs page](/loan-programs/) or by running some preliminary numbers with our [mortgage calculators](/calculators/).
+You can explore these options in more depth by visiting our [loan programs page](/loan-programs/) or by running some preliminary numbers with our [mortgage calculators](/loan-calculators/).
 
 ## What Sellers and Agents See When You Come to the Table
 

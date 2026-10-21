@@ -71,7 +71,7 @@ Before each draw is released, an independent inspection confirms that the work m
 
 Some builders new to USDA construction loans find the draw inspection process more structured than what they experience with private financing. Walking them through expectations early — ideally before you sign a construction contract — could prevent delays later.
 
-You can also use [our mortgage calculators](/calculators/) to get a rough sense of what the permanent loan portion might look like once construction wraps up.
+You can also use [our mortgage calculators](/loan-calculators/) to get a rough sense of what the permanent loan portion might look like once construction wraps up.
 
 ---
 
@@ -104,7 +104,7 @@ If you are still selecting a contractor, asking a few targeted questions early c
 
 A builder who has navigated USDA construction before will recognize these questions and answer them quickly. One who is new to the program is not automatically a problem — many excellent contractors work through the approval process for the first time without issue. What matters is their willingness to engage with the documentation requirements.
 
-You can learn more about the full loan process through [our loan programs overview](/loan-programs/) or explore the specific details of this program on the [USDA construction loan page](/loan-programs/usda-construction/).
+You can learn more about the full loan process through [our loan programs overview](/loan-programs/) or explore the specific details of this program on the [USDA construction loan page](/loan-programs/usda-construction-loan/).
 
 ---
 

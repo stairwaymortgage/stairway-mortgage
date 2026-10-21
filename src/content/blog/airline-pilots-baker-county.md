@@ -42,7 +42,7 @@ Lenders typically want to see consistent, predictable, ongoing income. Pilot pay
 
 The result is that a pilot earning a genuinely strong total compensation package may see a lower qualifying income on paper than their actual monthly deposits suggest. This is where documentation strategy and lender selection matter.
 
-Jim Blackburn, NMLS #1072866, has worked through income scenarios like these for aviation professionals. You can explore what documentation paths may apply to your situation through our [aviation professionals and pilots resource page](/aviation-professionals/pilots/).
+Jim Blackburn, NMLS #1072866, has worked through income scenarios like these for aviation professionals. You can explore what documentation paths may apply to your situation through our [aviation professionals and pilots resource page](/aviation-professionals/pilot/).
 
 ---
 
@@ -74,7 +74,7 @@ A few paths that pilots often explore:
 
 **Bank statement or non-QM loan options** — for pilots with contract income, self-employed periods, or irregular W-2 patterns, some non-traditional loan programs use bank statement deposits rather than tax return income to assess repayment ability.
 
-Use our [mortgage calculators](/calculators/) to get a preliminary sense of how different loan amounts and down payment scenarios might affect your monthly picture before you reach out.
+Use our [mortgage calculators](/loan-calculators/) to get a preliminary sense of how different loan amounts and down payment scenarios might affect your monthly picture before you reach out.
 
 ---
 

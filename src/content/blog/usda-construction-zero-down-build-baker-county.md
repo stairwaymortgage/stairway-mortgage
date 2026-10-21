@@ -30,7 +30,7 @@ A USDA construction-to-permanent loan is a single loan that covers both the cons
 
 The feature that draws the most attention is the down payment: eligible borrowers may be able to finance 100% of the appraised value of the completed home. That means zero down payment may be required. For a first-time buyer in Baker County who does not have tens of thousands of dollars sitting in savings, that changes the math considerably.
 
-This is not a niche product that barely exists. USDA lending programs have been expanding in rural communities across the country, and Baker County's largely rural character makes it a natural fit for this type of financing. Explore the full details on our [USDA construction loan program page](/loan-programs/usda-construction/).
+This is not a niche product that barely exists. USDA lending programs have been expanding in rural communities across the country, and Baker County's largely rural character makes it a natural fit for this type of financing. Explore the full details on our [USDA construction loan program page](/loan-programs/usda-construction-loan/).
 
 ## Why Baker County Is a Strong Fit
 
@@ -70,7 +70,7 @@ If you are considering a USDA construction loan in Baker County, here is a pract
 
 You do not need to have every item locked in before you reach out. Many borrowers start a conversation with just a general idea of where they want to build and what their budget looks like. That early conversation helps shape a realistic plan.
 
-You can also use our [mortgage calculators](/calculators/) to run rough numbers on loan amounts and monthly estimates before committing to a formal application.
+You can also use our [mortgage calculators](/loan-calculators/) to run rough numbers on loan amounts and monthly estimates before committing to a formal application.
 
 ## A Trend Worth Paying Attention To
 

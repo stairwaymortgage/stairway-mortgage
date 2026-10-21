@@ -82,7 +82,7 @@ Outside Gainesville, the county's rural character opens up land opportunities, o
 
 Property taxes and homestead exemptions also matter for budget planning. Florida's homestead exemption can meaningfully reduce your annual property tax bill once you establish a primary residence, which affects your overall monthly housing cost.
 
-Using our [mortgage calculators](/calculators/) can help you model how different purchase prices and down payment amounts translate into estimated monthly payments before you start making offers.
+Using our [mortgage calculators](/loan-calculators/) can help you model how different purchase prices and down payment amounts translate into estimated monthly payments before you start making offers.
 
 ---
 

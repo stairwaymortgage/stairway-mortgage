@@ -42,7 +42,7 @@ Alachua County has a mix of urban, suburban, and rural areas. Gainesville anchor
 
 **Conventional Loans:** For firefighters with strong credit and stable documented income, conventional loans may offer additional flexibility in property types and loan structures. Alachua County includes a range of property types — from single-family homes in Gainesville neighborhoods to larger parcels in the county's more rural stretches — and conventional financing can often accommodate that variety.
 
-Explore what might apply to your situation through our [loan programs overview](/loan-programs/) or use our [mortgage calculators](/calculators/) to start estimating monthly payment ranges on your own terms.
+Explore what might apply to your situation through our [loan programs overview](/loan-programs/) or use our [mortgage calculators](/loan-calculators/) to start estimating monthly payment ranges on your own terms.
 
 ## The Stairway Mortgage Approach for Public Safety Employees
 

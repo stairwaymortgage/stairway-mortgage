@@ -61,7 +61,7 @@ If you are planning to buy in the next one to two years, the decisions you make 
 
 **Document your income sources consistently.** Save payment confirmations, 1099s, and platform earnings statements. The more organized your records, the smoother the underwriting process tends to go.
 
-**Use a mortgage calculator to set realistic expectations.** Running numbers through a [mortgage calculator](/calculators/) before you apply can help you understand what purchase price range aligns with your documented income, so you are not surprised later in the process.
+**Use a mortgage calculator to set realistic expectations.** Running numbers through a [mortgage calculator](/loan-calculators/) before you apply can help you understand what purchase price range aligns with your documented income, so you are not surprised later in the process.
 
 You can also review [our step-by-step process](/the-8-steps/) to understand what happens from application through closing, so nothing catches you off guard.
 

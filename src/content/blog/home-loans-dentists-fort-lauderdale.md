@@ -81,7 +81,7 @@ South Florida remains one of the more active housing markets in the country, and
 
 Neighborhoods like Victoria Park, Harbor Beach, Las Olas Isles, and Coral Ridge appeal to buyers who want a mix of waterfront access, walkability, and long-term appreciation potential. Prices vary considerably depending on whether you are looking at a canal-front property, a single-family home inland, or a newer luxury condo.
 
-If you want to run some early numbers before committing to a price range, our [mortgage calculators](/calculators/) are a useful starting point.
+If you want to run some early numbers before committing to a price range, our [mortgage calculators](/loan-calculators/) are a useful starting point.
 
 Stairway Mortgage is based in Fort Lauderdale and works primarily with buyers and homeowners across Broward and Miami-Dade counties. That local familiarity means your loan officer understands the market you are buying into, not just the loan product you need.
 

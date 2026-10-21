@@ -68,7 +68,7 @@ Gainesville proper offers single-family homes, duplexes, and small multifamily b
 
 The surrounding towns — places like Newberry, Archer, and Hawthorne — offer a different dynamic. Properties are typically larger relative to purchase price, land is more available, and the pace of appreciation is less predictable. Some of these areas fall within USDA rural eligibility zones, which may matter if you are helping a primary-residence buyer in the area but does not directly affect your investment purchase.
 
-For cashflow-focused investors, a single-family home near the university campus and a small farm property near Newberry are entirely different investments requiring different loan tools. Running numbers through our [mortgage calculators](/calculators/) before you commit to either path can help you see the monthly picture clearly.
+For cashflow-focused investors, a single-family home near the university campus and a small farm property near Newberry are entirely different investments requiring different loan tools. Running numbers through our [mortgage calculators](/loan-calculators/) before you commit to either path can help you see the monthly picture clearly.
 
 ---
 

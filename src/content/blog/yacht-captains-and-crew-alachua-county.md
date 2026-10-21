@@ -73,7 +73,7 @@ Not every mortgage product fits every borrower, but several programs could be a 
 
 **FHA loans** offer flexibility on credit requirements and down payment, which can help crew members who have prioritized saving in cash or foreign accounts over traditional U.S. credit-building.
 
-You can explore how these options compare on our [loan programs page](/loan-programs/) or run some early numbers using our [mortgage calculators](/calculators/).
+You can explore how these options compare on our [loan programs page](/loan-programs/) or run some early numbers using our [mortgage calculators](/loan-calculators/).
 
 ---
 

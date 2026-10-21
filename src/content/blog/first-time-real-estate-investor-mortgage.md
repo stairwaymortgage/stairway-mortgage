@@ -50,7 +50,7 @@ First-time investors often assume there is only one path: a conventional loan wi
 
 **FHA loans for multi-unit properties** are an option some first-time investors overlook. If you plan to live in one unit of a two-, three-, or four-unit building, you may be able to use an FHA loan with a lower down payment while the other units generate rental income. This house-hacking approach could be a practical way to start building equity and cash flow at the same time.
 
-To explore which of these might fit your situation, take a look at our [available loan programs](/loan-programs/) or use our [mortgage calculators](/calculators/) to pressure-test the numbers on a deal you are considering.
+To explore which of these might fit your situation, take a look at our [available loan programs](/loan-programs/) or use our [mortgage calculators](/loan-calculators/) to pressure-test the numbers on a deal you are considering.
 
 ---
 

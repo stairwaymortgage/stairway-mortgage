@@ -42,7 +42,7 @@ FHA loans are another avenue. They tend to allow for a wider range of financial 
 
 For those looking in the outer reaches of Alachua County — think rural properties east of Gainesville or smaller communities like Micanopy — USDA loans may be worth checking. These programs are designed for buyers purchasing in eligible rural areas and can offer no-down-payment financing for those who meet income and property requirements. Self-employed buyers can access these programs, though documentation requirements still apply.
 
-You can explore what each of these paths looks like by visiting our [loan programs overview](/loan-programs/) or by using the [mortgage calculators](/calculators/) to get a feel for numbers before any formal conversation.
+You can explore what each of these paths looks like by visiting our [loan programs overview](/loan-programs/) or by using the [mortgage calculators](/loan-calculators/) to get a feel for numbers before any formal conversation.
 
 ## What Documentation You Should Start Gathering Now
 

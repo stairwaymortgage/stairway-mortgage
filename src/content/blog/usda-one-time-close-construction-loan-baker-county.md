@@ -101,7 +101,7 @@ Building a home is a longer process than buying an existing one. There are a few
 
 **Income limits apply.** USDA loans are designed for low-to-moderate income households. There are maximum income thresholds based on household size and location. These limits are adjusted periodically, and they apply to total household income — not just the borrower's income.
 
-If you want to run some early numbers before connecting with a loan officer, our [mortgage calculators](/calculators/) can give you a general sense of what to expect.
+If you want to run some early numbers before connecting with a loan officer, our [mortgage calculators](/loan-calculators/) can give you a general sense of what to expect.
 
 ---
 

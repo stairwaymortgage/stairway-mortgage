@@ -23,7 +23,7 @@ You bid for trips weeks out, pick up open time when it is offered, and sometimes
 
 You are not alone in this. Flight attendants across the country face documentation challenges that are almost entirely a product of how aviation compensation is structured, not a reflection of financial instability. Understanding the process before you walk into a lender's office makes the whole experience more manageable.
 
-Stairway Mortgage, based in Fort Lauderdale, works with aviation professionals who need a mortgage team that can read a crew pay statement without confusion. If you want to see what loan options may fit your situation, [explore programs built for aviation professionals](/aviation-professionals/flight-attendants/).
+Stairway Mortgage, based in Fort Lauderdale, works with aviation professionals who need a mortgage team that can read a crew pay statement without confusion. If you want to see what loan options may fit your situation, [explore programs built for aviation professionals](/aviation-professionals/flight-attendant/).
 
 ---
 
@@ -78,7 +78,7 @@ Every situation is different. [See loan program options](/loan-programs/) that m
 
 Fort Lauderdale and the surrounding Broward County area sit within commuting distance of Miami International and Fort Lauderdale-Hollywood International, which means this region is a natural home base for a lot of cabin crew. The housing market here has remained active, and purchasing sooner rather than later is often something buyers want to explore.
 
-Before you start shopping for homes, getting a pre-approval letter in hand is important. It tells sellers you are a serious buyer and helps you understand your price range. Use our [mortgage calculators](/calculators/) to get a rough sense of monthly payment ranges based on purchase price and down payment — keeping in mind that your actual costs will depend on the specific loan and terms you are offered.
+Before you start shopping for homes, getting a pre-approval letter in hand is important. It tells sellers you are a serious buyer and helps you understand your price range. Use our [mortgage calculators](/loan-calculators/) to get a rough sense of monthly payment ranges based on purchase price and down payment — keeping in mind that your actual costs will depend on the specific loan and terms you are offered.
 
 Working with a local mortgage originator who knows the South Florida market means you have someone available when listings move quickly, which they often do in this area.
 

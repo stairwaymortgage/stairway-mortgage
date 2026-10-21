@@ -81,7 +81,7 @@ There's a broader shift happening in how lenders and borrowers think about const
 
 Jim Blackburn, NMLS #1072866, has worked with buyers navigating exactly this process and understands the USDA landscape as it applies to North Central Florida. Stairway Mortgage is based in Fort Lauderdale but works with clients throughout Florida, including those building in Alachua County.
 
-You can also run some early numbers using [our mortgage calculators](/calculators/) to get a rough sense of what a construction loan might mean for your monthly picture.
+You can also run some early numbers using [our mortgage calculators](/loan-calculators/) to get a rough sense of what a construction loan might mean for your monthly picture.
 
 ---
 

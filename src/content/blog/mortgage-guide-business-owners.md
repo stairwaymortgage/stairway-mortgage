@@ -80,7 +80,7 @@ Jim Blackburn, NMLS #1072866, has worked with business owners and entrepreneurs 
 
 His approach involves reviewing your documentation before submission to identify potential issues, determine which loan program is the strongest fit, and help you understand what underwriters will be looking for. Business owners often find this upfront review prevents delays and avoids surprises.
 
-You can also use our [mortgage calculators](/calculators/) to get a preliminary sense of purchase price ranges and monthly payment estimates as you think through your options.
+You can also use our [mortgage calculators](/loan-calculators/) to get a preliminary sense of purchase price ranges and monthly payment estimates as you think through your options.
 
 ## Getting Started on Your Own Timeline
 

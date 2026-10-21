@@ -3,6 +3,7 @@ import Analytics from '../components/Analytics.astro';
 import LoAttribution from '../components/LoAttribution.astro';
 import leadAttributionSrc from '../lib/lead-attribution.js?raw';
 import '../styles/global.css';
+import { fitTitle, fitDescription } from '../lib/seo-fit';
 
 interface Props {
   title: string;
@@ -21,8 +22,9 @@ const {
   ogImage,
 } = Astro.props;
 
-const title = propTitle || '';
-const description = propDesc || defaultDesc;
+// Keep titles <= 70 and descriptions 110–160 chars (Ahrefs audit).
+const title = fitTitle(propTitle || '');
+const description = fitDescription(propDesc || defaultDesc);
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
 const ogImageUrl = ogImage || `${siteUrl}/social-card.png`;
 ---
@@ -96,7 +98,7 @@ const ogImageUrl = ogImage || `${siteUrl}/social-card.png`;
       </p>
       <div class="lp-footer__social">
         <a href="https://www.facebook.com/StairwayMortgage" aria-label="Facebook" target="_blank" rel="noopener">FB</a>
-        <a href="https://www.linkedin.com/company/stairway-mortgage" aria-label="LinkedIn" target="_blank" rel="noopener">LI</a>
+        <a href="https://www.linkedin.com/company/stairwaymortgage" aria-label="LinkedIn" target="_blank" rel="noopener">LI</a>
         <a href="https://www.instagram.com/stairwaymortgage/" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
         <a href="https://www.youtube.com/@stairwaymortgage" aria-label="YouTube" target="_blank" rel="noopener">YT</a>
       </div>

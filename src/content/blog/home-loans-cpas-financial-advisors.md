@@ -47,7 +47,7 @@ For a CPA or advisor with variable income, equity in a business, or assets struc
 
 The good news is that your professional profile — strong credit history, disciplined saving habits, and asset accumulation — is genuinely valued by lenders who understand how to read it. Working with someone who understands the nuances of high-income, non-W-2 borrowers could make a meaningful difference in how smoothly that process goes.
 
-If you want to get a realistic sense of numbers before you begin, our [mortgage calculators](/calculators/) can help you model loan amounts, monthly obligations, and down payment scenarios on your own time.
+If you want to get a realistic sense of numbers before you begin, our [mortgage calculators](/loan-calculators/) can help you model loan amounts, monthly obligations, and down payment scenarios on your own time.
 
 ---
 

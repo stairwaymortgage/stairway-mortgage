@@ -70,7 +70,7 @@ Physician loan programs, and in some cases self-employed mortgage structures, ca
 
 Understanding [our loan programs](/loan-programs/) and which ones align with practice ownership is an important part of the conversation before you begin shopping for a home.
 
-If you want to estimate what a monthly payment might look like based on different loan amounts, our [mortgage calculators](/calculators/) can give you a starting framework — though a full conversation with a loan professional will always give you a clearer picture of what your actual options may be.
+If you want to estimate what a monthly payment might look like based on different loan amounts, our [mortgage calculators](/loan-calculators/) can give you a starting framework — though a full conversation with a loan professional will always give you a clearer picture of what your actual options may be.
 
 ---
 

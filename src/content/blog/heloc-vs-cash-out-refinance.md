@@ -61,7 +61,7 @@ There's no universal answer, but there are some patterns worth knowing.
 - You're open to replacing your current mortgage
 - A structured repayment schedule appeals to you
 
-Use our [mortgage calculators](/calculators/) to get a rough sense of how different loan amounts and terms might affect your monthly picture. Running the numbers early helps you ask sharper questions when you're ready to talk.
+Use our [mortgage calculators](/loan-calculators/) to get a rough sense of how different loan amounts and terms might affect your monthly picture. Running the numbers early helps you ask sharper questions when you're ready to talk.
 
 ## What Lenders Look At
 

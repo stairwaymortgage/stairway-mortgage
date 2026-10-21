@@ -61,7 +61,7 @@ Not all of these income types are treated the same way in underwriting. BAH, for
 
 The key is working with a loan originator who knows how to present military income accurately and completely. Mistakes or omissions in how your income is documented can slow down the process or create unnecessary obstacles that could have been avoided from the start.
 
-You can also use our [mortgage calculators](/calculators/) to run scenarios based on your current income profile before you start the formal application process.
+You can also use our [mortgage calculators](/loan-calculators/) to run scenarios based on your current income profile before you start the formal application process.
 
 ---
 

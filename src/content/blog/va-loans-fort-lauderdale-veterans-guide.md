@@ -37,7 +37,7 @@ The VA loan program was created specifically to help eligible veterans, active-d
 
 **Flexible credit approach.** The VA does not set a minimum credit score, though individual lenders may have their own overlays. Borrowers with credit challenges may still find pathways forward through the VA program that might not exist elsewhere.
 
-You can learn more about how this program compares to others on our [VA loan program page](/loan-programs/va/).
+You can learn more about how this program compares to others on our [VA loan program page](/loan-programs/va-loan/).
 
 ---
 
@@ -87,7 +87,7 @@ The VA loan program is designed with some flexibility built in. While lenders do
 
 Yes, in many cases. VA loans may be used to purchase properties with up to four units, provided you occupy one of them as your primary residence. This can be a way for veterans to generate rental income while using a benefit they already earned.
 
-If you want to run some rough numbers before your first conversation with a loan officer, our [mortgage calculators](/calculators/) can give you a general sense of what a payment might look like at different price points.
+If you want to run some rough numbers before your first conversation with a loan officer, our [mortgage calculators](/loan-calculators/) can give you a general sense of what a payment might look like at different price points.
 
 ---
 

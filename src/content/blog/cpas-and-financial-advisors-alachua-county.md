@@ -62,7 +62,7 @@ Because you understand financial planning, you will appreciate that mortgage str
 
 **Down payment sourcing.** If your liquidity is invested — in client accounts you manage, in real estate you already own, or in retirement vehicles — documenting that it is accessible without triggering unnecessary tax consequences is a conversation worth having before you go under contract on a property.
 
-You can explore the full process through [our step-by-step guide](/the-8-steps/) or use [our mortgage calculators](/calculators/) to model scenarios before you sit down with a lender.
+You can explore the full process through [our step-by-step guide](/the-8-steps/) or use [our mortgage calculators](/loan-calculators/) to model scenarios before you sit down with a lender.
 
 ## How Stairway Mortgage Serves Professionals in Alachua County
 

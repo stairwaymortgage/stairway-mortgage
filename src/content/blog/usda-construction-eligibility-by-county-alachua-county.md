@@ -34,7 +34,7 @@ A USDA construction-to-permanent loan combines two things that are usually handl
 
 Instead of closing twice and paying two sets of costs, you close once. The loan covers construction draws as your builder hits agreed-upon milestones, and then it converts automatically to a standard mortgage when your certificate of occupancy is issued.
 
-For eligible borrowers, this structure could reduce the upfront financial burden significantly. You may also be able to roll in certain closing costs, depending on the appraised value. Explore [our USDA construction loan program page](/loan-programs/usda-construction/) to get a fuller picture of how the loan is structured.
+For eligible borrowers, this structure could reduce the upfront financial burden significantly. You may also be able to roll in certain closing costs, depending on the appraised value. Explore [our USDA construction loan program page](/loan-programs/usda-construction-loan/) to get a fuller picture of how the loan is structured.
 
 ---
 
@@ -68,7 +68,7 @@ USDA construction loans are designed for low-to-moderate income households, and 
 
 The income limits for Alachua County are set by the USDA and take household size into account. A single-person household has a different ceiling than a family of five. This is worth checking early, especially if multiple earners in your household contribute income.
 
-You can use our [mortgage calculators](/calculators/) to start thinking through what a monthly payment might look like for your target loan amount before you sit down with a loan originator.
+You can use our [mortgage calculators](/loan-calculators/) to start thinking through what a monthly payment might look like for your target loan amount before you sit down with a loan originator.
 
 ---
 

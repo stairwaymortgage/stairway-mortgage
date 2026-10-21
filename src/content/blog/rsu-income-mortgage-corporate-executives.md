@@ -76,7 +76,7 @@ If you're planning to purchase a home or refinance in the next six months, start
 
 For executives coordinating a purchase around a relocation, a job transition, or a planned liquidity event, early preparation could be the difference between a smooth closing and a stressful one.
 
-You can explore your options and see how RSU income factors into your specific situation by visiting our [corporate executives resource page](/corporate-executives/) or using our [mortgage calculators](/calculators/) to start thinking through purchase scenarios.
+You can explore your options and see how RSU income factors into your specific situation by visiting our [corporate executives resource page](/corporate-executives/) or using our [mortgage calculators](/loan-calculators/) to start thinking through purchase scenarios.
 
 ---
 

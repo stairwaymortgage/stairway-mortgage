@@ -52,7 +52,7 @@ The good news is that lenders familiar with military borrowers know how to read 
 
 In Alachua County, the housing market in Gainesville is influenced by the university, medical institutions, and a younger renter population — all of which affect supply and demand for the kinds of homes a service member might want to buy. Working with someone who understands both military income and the local market is worth your time.
 
-If you want to run some early numbers, our [mortgage calculators](/calculators/) can give you a starting point before any formal conversation.
+If you want to run some early numbers, our [mortgage calculators](/loan-calculators/) can give you a starting point before any formal conversation.
 
 ---
 

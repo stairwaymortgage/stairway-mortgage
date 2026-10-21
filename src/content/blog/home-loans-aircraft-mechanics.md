@@ -65,7 +65,7 @@ Not every loan program handles income documentation the same way, and not every 
 
 **VA loans** are available to veterans, active-duty service members, and eligible surviving spouses. If you served before your aviation career, you may be able to use your VA benefit to purchase a home with no down payment required.
 
-You can use our [mortgage calculators](/calculators/) to run rough numbers on purchase price ranges before you commit to a target budget. It is a useful first step before speaking with a loan officer.
+You can use our [mortgage calculators](/loan-calculators/) to run rough numbers on purchase price ranges before you commit to a target budget. It is a useful first step before speaking with a loan officer.
 
 ---
 

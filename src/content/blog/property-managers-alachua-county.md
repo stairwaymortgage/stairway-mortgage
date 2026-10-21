@@ -60,7 +60,7 @@ Some questions worth thinking through before your next acquisition:
 
 **Are you thinking in terms of units or cash flow?** A four-unit property in Gainesville, for instance, is still eligible for certain residential loan programs rather than commercial financing. That distinction affects your rate structure, down payment requirements, and qualification process.
 
-You can run numbers with our [mortgage calculators](/calculators/) to get a clearer sense of what different scenarios might look like before you sit down with a lender.
+You can run numbers with our [mortgage calculators](/loan-calculators/) to get a clearer sense of what different scenarios might look like before you sit down with a lender.
 
 ---
 

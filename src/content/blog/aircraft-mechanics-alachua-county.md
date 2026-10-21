@@ -34,7 +34,7 @@ Most aircraft mechanics are W-2 employees, which sounds straightforward. The com
 
 Overtime and shift-differential pay, for example, typically must be averaged over a two-year period before a lender will count it. If you recently moved to a higher-overtime role or changed employers, that two-year clock may need to restart — or there may be exceptions worth exploring.
 
-Per diem and expense reimbursements are usually excluded from qualifying income entirely. Tool allowances depend on how they appear on your pay stub and tax documents. Understanding which dollars count, and proving they are stable, is the core documentation task for [aircraft mechanics exploring home loan options](/aviation-professionals/aircraft-mechanics/).
+Per diem and expense reimbursements are usually excluded from qualifying income entirely. Tool allowances depend on how they appear on your pay stub and tax documents. Understanding which dollars count, and proving they are stable, is the core documentation task for [aircraft mechanics exploring home loan options](/aviation-professionals/aircraft-mechanic/).
 
 Jim Blackburn, NMLS #1072866, works through these details before submitting your file so there are fewer surprises once you are under contract on a home.
 
@@ -85,7 +85,7 @@ Alachua County's proximity to the University of Florida and Gainesville's growin
 
 ## Running Your Numbers Before You Make an Offer
 
-One of the most useful things you can do before contacting a real estate agent is to get a realistic sense of what your monthly payment might look like at different purchase prices. Our [mortgage calculators](/calculators/) let you experiment with different down payment amounts and loan types so you can walk into conversations with sellers already knowing your comfort zone.
+One of the most useful things you can do before contacting a real estate agent is to get a realistic sense of what your monthly payment might look like at different purchase prices. Our [mortgage calculators](/loan-calculators/) let you experiment with different down payment amounts and loan types so you can walk into conversations with sellers already knowing your comfort zone.
 
 Keep in mind that for aircraft mechanics in Alachua County, property taxes, homeowner's insurance, and — if applicable — flood insurance or HOA fees all affect your total monthly housing cost. Rural properties sometimes carry lower tax burdens but may require well and septic inspections that add to closing costs.
 

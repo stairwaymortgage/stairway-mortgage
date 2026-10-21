@@ -76,7 +76,7 @@ This is different from buying an existing home, and [our step-by-step process](/
 
 ## Planning Tools Before You Commit
 
-Before you lock in a builder or finalize a floor plan, it helps to understand how your projected loan amount relates to your monthly budget. Our [mortgage calculators](/calculators/) can give you a working estimate of what a constructed home at a given price might look like on a monthly basis. Numbers on a screen are not a commitment — they are a starting point for a real conversation.
+Before you lock in a builder or finalize a floor plan, it helps to understand how your projected loan amount relates to your monthly budget. Our [mortgage calculators](/loan-calculators/) can give you a working estimate of what a constructed home at a given price might look like on a monthly basis. Numbers on a screen are not a commitment — they are a starting point for a real conversation.
 
 Affordable housing and rural development programs have been receiving renewed attention across the country, and for good reason. Demand for rural property in Florida has grown, and more people are exploring what it would take to build rather than buy in competitive markets. The USDA construction program exists precisely to serve this group — people who are ready to invest in land, build on their own terms, and do it with financing that does not require enormous cash reserves upfront.
 
@@ -86,6 +86,6 @@ Affordable housing and rural development programs have been receiving renewed at
 
 If you own rural land and you have been waiting for a financing structure that actually fits your situation, the USDA Single Close Construction loan is worth a serious look. It is not the right fit for every project or every borrower, but for those it is designed for, it may open a path to building a home without the complexity of stacking multiple loans.
 
-Stairway Mortgage is based in Fort Lauderdale and works with rural property owners throughout Florida. You can reach the team directly at (954) 993-1625, or learn more about the [USDA construction loan program](/loan-programs/usda-construction/) and what it covers.
+Stairway Mortgage is based in Fort Lauderdale and works with rural property owners throughout Florida. You can reach the team directly at (954) 993-1625, or learn more about the [USDA construction loan program](/loan-programs/usda-construction-loan/) and what it covers.
 
 When you are ready to move forward, [Talk to Our Team](/see-my-options/) and we will help you understand exactly where you stand.

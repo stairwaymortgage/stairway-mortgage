@@ -45,7 +45,7 @@ Some lenders hold loans in-house rather than selling them on the secondary marke
 **Multifamily Financing**
 If you are looking at a two-to-four-unit property, you may have access to programs that treat the property differently than a single-family rental. Rental income from the other units could help offset the mortgage in qualification calculations.
 
-To explore which of these might fit your situation, take a look at [our loan programs](/loan-programs/) or use the [mortgage calculators](/calculators/) to run some rough numbers before your first conversation.
+To explore which of these might fit your situation, take a look at [our loan programs](/loan-programs/) or use the [mortgage calculators](/loan-calculators/) to run some rough numbers before your first conversation.
 
 ## What Lenders Look at for Passive Investors
 

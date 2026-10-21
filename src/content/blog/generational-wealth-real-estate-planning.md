@@ -61,7 +61,7 @@ One of the most valuable things you can do for the next generation is help them 
 
 This is something families can actively shape. Opening a secured credit card, co-signing thoughtfully, and discussing money openly are all steps that compound over time. When that young adult is ready to purchase, the path toward financing may be much smoother.
 
-Using our [mortgage calculators](/calculators/) together as a family — looking at what different down payment amounts mean for monthly obligations, for example — can be a practical way to make those conversations concrete rather than abstract.
+Using our [mortgage calculators](/loan-calculators/) together as a family — looking at what different down payment amounts mean for monthly obligations, for example — can be a practical way to make those conversations concrete rather than abstract.
 
 ## Keeping Communication at the Center
 

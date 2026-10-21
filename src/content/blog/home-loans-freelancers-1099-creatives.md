@@ -63,7 +63,7 @@ You do not need to wait until you are ready to make an offer to start preparing.
 
 **Keep your credit profile clean.** Pay down revolving balances, avoid opening new credit accounts in the months before applying, and dispute any errors on your report. A strong credit profile works in your favor regardless of how you earn.
 
-Using a [mortgage calculator](/calculators/) to run rough payment scenarios can also help you set realistic targets before you begin the formal process.
+Using a [mortgage calculator](/loan-calculators/) to run rough payment scenarios can also help you set realistic targets before you begin the formal process.
 
 ---
 

@@ -18,7 +18,7 @@ const displayName = cat.name.replace(/^\d+\.\s*/, '');
 // Build a slug→title map from taxonomy.json posts array
 const titleMap: Record<string, string> = {};
 for (const p of taxonomy.posts) {
-  // taxonomy slug looks like "/2025/07/29/house-hacking/" — extract last segment
+  // taxonomy slug looks like "/blog/house-hacking/" — extract last segment
   const seg = p.slug.replace(/\/$/, '').split('/').pop()!;
   titleMap[seg] = p.title;
 }

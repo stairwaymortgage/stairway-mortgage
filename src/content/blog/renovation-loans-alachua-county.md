@@ -38,7 +38,7 @@ There are a few common structures:
 - **Fannie Mae HomeStyle** — A conventional renovation loan that may allow a broader range of project types, including luxury upgrades, as long as they become a permanent part of the property.
 - **USDA Renovation Loans** — For properties in eligible rural zones, certain USDA programs may include renovation components. Parts of Alachua County qualify as USDA-eligible areas, which could make this relevant for homeowners outside the Gainesville urban core.
 
-Each program has its own eligibility criteria, loan limits, and contractor requirements. Exploring [our renovation loan program overview](/loan-programs/renovation/) is a good way to understand which structure fits your situation.
+Each program has its own eligibility criteria, loan limits, and contractor requirements. Exploring [our renovation loan program overview](/loan-programs/homestyle-renovation-loan/) is a good way to understand which structure fits your situation.
 
 ---
 
@@ -79,7 +79,7 @@ The FHA 203(k) Standard program may be structured to handle structural repairs, 
 **What if I am still paying off my current mortgage?**
 Renovation refinancing is designed for exactly this scenario. You refinance your existing loan and roll in the cost of improvements. The result is a single loan that addresses both your current balance and your planned project.
 
-If you want to run some numbers before talking to anyone, [our mortgage calculators](/calculators/) can give you a starting sense of what different loan amounts mean for a monthly payment.
+If you want to run some numbers before talking to anyone, [our mortgage calculators](/loan-calculators/) can give you a starting sense of what different loan amounts mean for a monthly payment.
 
 ---
 

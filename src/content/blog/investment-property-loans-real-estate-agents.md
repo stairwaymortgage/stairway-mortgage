@@ -59,7 +59,7 @@ Investment property loans carry different guidelines than primary residence loan
 
 **Income documentation.** As discussed above, this is where self-employed borrowers often spend the most time. Having your tax returns, profit and loss statements, and bank records organized before you apply can help streamline the process.
 
-[Use our mortgage calculators](/calculators/) to get an early sense of how a potential purchase might fit your financial picture.
+[Use our mortgage calculators](/loan-calculators/) to get an early sense of how a potential purchase might fit your financial picture.
 
 ## How Jim Blackburn Works With Real Estate Professionals
 

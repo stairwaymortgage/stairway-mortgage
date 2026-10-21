@@ -46,7 +46,7 @@ This approach is often favored by homeowners who want a single, predictable mont
 
 For Alachua County homeowners who purchased several years ago and have seen meaningful equity growth, this option may provide access to a substantial amount of funds while consolidating everything into one loan structure.
 
-[Use our mortgage calculators](/calculators/) to get a rough sense of how different loan amounts could affect your monthly picture.
+[Use our mortgage calculators](/loan-calculators/) to get a rough sense of how different loan amounts could affect your monthly picture.
 
 ---
 

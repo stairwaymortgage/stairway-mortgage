@@ -73,7 +73,7 @@ Getting organized before you start the formal application process can save you s
 
 **Think about your target area.** Fort Lauderdale and the broader Broward County market offer a range of neighborhoods and price points. Knowing roughly where you want to live helps narrow down which programs are available in that area.
 
-Our [mortgage calculators](/calculators/) can help you run some early numbers before you ever pick up the phone.
+Our [mortgage calculators](/loan-calculators/) can help you run some early numbers before you ever pick up the phone.
 
 ---
 

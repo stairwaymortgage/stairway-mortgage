@@ -77,7 +77,7 @@ A reverse mortgage is not a product you can apply for without some preparation, 
 
 **Your heirs have options.** When the loan becomes due, heirs can repay the loan balance and keep the home, sell the home and use the proceeds to settle the debt, or walk away if the balance exceeds the home's value — because HECMs are non-recourse loans, meaning no one owes more than the home is worth at sale.
 
-You can also use our [mortgage calculators](/calculators/) to run some preliminary numbers before sitting down with a loan officer.
+You can also use our [mortgage calculators](/loan-calculators/) to run some preliminary numbers before sitting down with a loan officer.
 
 ---
 

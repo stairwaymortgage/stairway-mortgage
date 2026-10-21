@@ -52,7 +52,7 @@ Jim Blackburn, NMLS #1072866, works with buyers across Alachua County to match l
 
 Once you own a home, there are deliberate steps you can take to build equity faster than a standard amortization schedule allows.
 
-**Make extra principal payments when you can.** Even modest additional payments applied directly to your principal can shorten your loan term meaningfully and reduce the total interest paid. Our [mortgage calculators](/calculators/) let you model exactly how much time and money extra payments might save you.
+**Make extra principal payments when you can.** Even modest additional payments applied directly to your principal can shorten your loan term meaningfully and reduce the total interest paid. Our [mortgage calculators](/loan-calculators/) let you model exactly how much time and money extra payments might save you.
 
 **Invest in improvements that add value.** Not every renovation pays off equally. Kitchen updates, bathroom improvements, and curb appeal projects have historically returned a solid portion of their cost in added home value. In Alachua County's mix of older Gainesville bungalows and newer suburban construction, the right update can make a real difference.
 

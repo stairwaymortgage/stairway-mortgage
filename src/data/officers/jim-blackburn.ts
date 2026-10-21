@@ -108,7 +108,7 @@ export const jimBlackburn = {
     youtube: 'https://www.youtube.com/channel/UChMNg_D8MEwLnFaRh3VSPkQ/',
   },
 
-  heroPhoto: '/wp-content/uploads/2025/08/New-Project-20-1.png',
+  heroPhoto: '/wp-content/uploads/2025/08/New-Project-20-1.webp',
 
   applyUrl: 'https://stairwaymortgage.my1003app.com/agent/jimblackburn1/register',
   bookingUrl: 'https://forms.stairwaymortgage.com/widget/bookings/jim-blackburn',

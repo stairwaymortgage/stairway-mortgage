@@ -43,7 +43,7 @@ Before you can apply for most assistance programs, you need to know what kind of
 
 Pre-approval is not just a formality. It tells you the range of homes you could realistically afford, which makes your search more focused. It also tells sellers that you are a serious buyer, which matters in competitive markets. In many cases, sellers will not even consider an offer that is not backed by a pre-approval letter.
 
-Jim Blackburn, NMLS #1072866, works with first-time buyers throughout the Fort Lauderdale area to get this groundwork in place before they start touring homes. The process is more straightforward than most buyers expect, especially when you know what documents to pull together in advance. You can use our [mortgage calculators](/calculators/) to start estimating what monthly costs might look like for different home prices.
+Jim Blackburn, NMLS #1072866, works with first-time buyers throughout the Fort Lauderdale area to get this groundwork in place before they start touring homes. The process is more straightforward than most buyers expect, especially when you know what documents to pull together in advance. You can use our [mortgage calculators](/loan-calculators/) to start estimating what monthly costs might look like for different home prices.
 
 ## Understanding the 8-Step Path to Homeownership
 

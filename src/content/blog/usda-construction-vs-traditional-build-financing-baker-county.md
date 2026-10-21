@@ -34,7 +34,7 @@ That matters because USDA construction financing carries distinct advantages for
 
 USDA and federal housing agencies have also been working more actively in recent years to streamline how rural affordable housing gets financed and approved — a direction that could make the process more accessible for buyers in counties like Baker. None of that removes the need to verify your specific parcel's eligibility, but the broader policy environment is moving toward more support for rural homebuilders, not less.
 
-You can explore [our USDA construction loan program details](/loan-programs/usda-construction/) to get a clearer picture of the structure before you make any decisions.
+You can explore [our USDA construction loan program details](/loan-programs/usda-construction-loan/) to get a clearer picture of the structure before you make any decisions.
 
 ---
 
@@ -86,7 +86,7 @@ Neither financing structure is universally the right choice. Here is a practical
 
 The honest answer is that your individual credit history, income documentation, land status, and build timeline all shape which option makes the most sense. That is why talking through the specifics with someone who knows both programs is worth doing early — before you have signed a contract with a builder.
 
-You can also work through [our mortgage calculators](/calculators/) to model out rough payment scenarios for each approach.
+You can also work through [our mortgage calculators](/loan-calculators/) to model out rough payment scenarios for each approach.
 
 ---
 

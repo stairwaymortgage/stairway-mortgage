@@ -51,7 +51,7 @@ For mortgage purposes, this evolution creates both opportunity and complexity. A
 
 If your compensation has recently changed — say, you moved from a fully salaried role to a commission-heavy structure — a lender will typically want to see that you have at least 12 to 24 months of earnings under the new structure before counting the full amount toward your qualifying income.
 
-Knowing where you stand before you begin shopping for a home is valuable. Use our [mortgage calculators](/calculators/) to get a rough sense of what purchase price might align with your income range.
+Knowing where you stand before you begin shopping for a home is valuable. Use our [mortgage calculators](/loan-calculators/) to get a rough sense of what purchase price might align with your income range.
 
 ---
 

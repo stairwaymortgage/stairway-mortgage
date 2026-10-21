@@ -70,7 +70,7 @@ The lender will review this package and either approve the builder, request addi
 
 Jim Blackburn, NMLS #1072866, works with borrowers in rural Florida counties to coordinate exactly this kind of groundwork. Knowing what the lender will need from your builder before you sit down with them makes the conversation far more productive.
 
-You can review the [USDA construction loan program overview](/loan-programs/usda-construction/) to understand how builder approval fits into the broader loan structure.
+You can review the [USDA construction loan program overview](/loan-programs/usda-construction-loan/) to understand how builder approval fits into the broader loan structure.
 
 ---
 
@@ -97,7 +97,7 @@ A few patterns tend to slow things down:
 - **Missing insurance gaps.** A builder whose workers' compensation lapsed for even a short period may need to resolve that before the lender will sign off.
 - **Choosing a builder without residential experience.** Commercial contractors sometimes expand into residential work, but USDA lenders typically want to see comparable residential project history.
 
-Using our [mortgage calculators](/calculators/) can also help you model out total loan amounts before you get deep into the builder selection process, so your budget expectations are grounded from the start.
+Using our [mortgage calculators](/loan-calculators/) can also help you model out total loan amounts before you get deep into the builder selection process, so your budget expectations are grounded from the start.
 
 ---
 

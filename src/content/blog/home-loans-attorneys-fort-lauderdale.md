@@ -35,7 +35,7 @@ Law school debt is among the highest in any professional field. That balance liv
 
 If you are on an income-driven repayment plan, some loan programs may use a calculated percentage of the outstanding balance rather than your actual monthly payment to determine your obligation. Others use the payment reported by your servicer. The difference can shift the loan amount you may be eligible for in a meaningful way.
 
-This is worth mapping out before you start house shopping. Our [mortgage calculators](/calculators/) can help you run a preliminary picture of how your existing debt loads might interact with various purchase prices.
+This is worth mapping out before you start house shopping. Our [mortgage calculators](/loan-calculators/) can help you run a preliminary picture of how your existing debt loads might interact with various purchase prices.
 
 ## Trends in Big Law Compensation — and Why They Matter for Your Loan
 
