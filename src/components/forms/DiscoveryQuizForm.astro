@@ -595,6 +595,7 @@
 
       var result = computeResult();
       var payload = buildPayload(name, email, phone, result);
+      payload.sms_optin = consent ? 'yes' : '';
       var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
       payload.landing_page=_la.landing_page||''; payload.utm_source=_la.utm_source||''; payload.utm_medium=_la.utm_medium||'';
       payload.utm_campaign=_la.utm_campaign||''; payload.utm_term=_la.utm_term||''; payload.utm_content=_la.utm_content||'';

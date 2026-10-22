@@ -343,7 +343,8 @@
         page_url: window.location.href, submitted_at: new Date().toISOString(),
         umtid: _resolveUmtid(),
         loid: _resolveLoid(),
-        source_url: location.href
+        source_url: location.href,
+        sms_optin: consent ? 'yes' : ''
       };
 
       var _la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};

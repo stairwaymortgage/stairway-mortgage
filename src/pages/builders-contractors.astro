@@ -369,7 +369,7 @@ import Layout from '../layouts/Layout.astro';
     if(!name||!email||!phone){if(!name)form.name.focus();else if(!email)form.email.focus();else form.phone.focus();return;}
     submitting=true;submitBtn.textContent='Sending\u2026';submitBtn.disabled=true;
     var payload={
-      name:name,company:form.company.value.trim(),email:email,phone:phone,
+      name:name,first_name:String(name).trim().split(/\s+/)[0]||'',last_name:String(name).trim().split(/\s+/).slice(1).join(' '),company:form.company.value.trim(),email:email,phone:phone,
       loan_purpose:'partner_introduction',partner_type:'builder_contractor',source_page:'builders-contractors',
       form_source:'builders_contractors',form_name:'Partner Introduction',
       page_url:window.location.href,submitted_at:new Date().toISOString(),
