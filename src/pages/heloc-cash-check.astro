@@ -1,0 +1,511 @@
+---
+/**
+ * /heloc-cash-check/ — headless HELOC ad landing page (Facebook/IG/TikTok/YouTube Shorts).
+ * No site header/nav on purpose. seemyheloc.com 301s here (Cloudflare page rule, utm_source=seemyheloc).
+ * Leads post to the shared GHL webhook with form_source "heloc_cash_check".
+ * Fields: first_name, last_name, full_name, email, phone, sms_consent, home_value,
+ * mortgage_balance, heloc_available_estimate + standard attribution (utm_*, umtid, loid, landing_page).
+ */
+import Analytics from '../components/Analytics.astro';
+import LoAttribution from '../components/LoAttribution.astro';
+import leadAttributionSrc from '../lib/lead-attribution.js?raw';
+import { GHL_WEBHOOK_URL } from '../lib/ghl';
+const canonical = 'https://www.stairwaymortgage.com/heloc-cash-check/';
+const title = 'HELOC Cash Check | Stairway Mortgage';
+const description = 'See how much cash your home equity could open up with a HELOC. Two numbers, instant estimate, no credit pull. Jim Blackburn, NMLS #1072866.';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/favicon-180.png" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="How much cash is sitting in your home?" />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content="https://www.stairwaymortgage.com/social-card.png" />
+  <meta property="og:site_name" content="Stairway Mortgage" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" />
+  <Analytics />
+  <LoAttribution />
+  <script is:inline set:html={leadAttributionSrc}></script>
+  <style is:global>
+html,body{margin:0}
+img,video{max-width:100%}
+
+/* Layout: headless single-column ad landing — logo strip, calculator hero, reasons, how-it-works, FAQ, real reviews, compliance footer. No nav. */
+:root{
+  --ink:#0A0E1A; --paper:#FAFAF7; --card:#FFFFFF; --line:#DCDDD6; --muted:#3F4556;
+  --blue:#1845D6; --blue-ink:#FFFFFF; --rust:#8B2C2C; --green:#2E9E2E; --green-bg:#E9F6E9;
+  --hero:#0A0E1A; --hero-fg:#FAFAF7; --hero-muted:#C9CDD9;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ink:#F2F2EC; --paper:#0B0F1C; --card:#141A2B; --line:#2A3247; --muted:#B9BFCE;
+  --blue:#5C82FF; --blue-ink:#0A0E1A; --rust:#E07A7A; --green:#5BD15B; --green-bg:#12301A;
+  --hero:#060912; --hero-fg:#FAFAF7; --hero-muted:#B9BFCE; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ink:#F2F2EC; --paper:#0B0F1C; --card:#141A2B; --line:#2A3247; --muted:#B9BFCE;
+  --blue:#5C82FF; --blue-ink:#0A0E1A; --rust:#E07A7A; --green:#5BD15B; --green-bg:#12301A;
+  --hero:#060912; --hero-fg:#FAFAF7; --hero-muted:#B9BFCE; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.12;margin:0}
+h2{font-size:clamp(28px,5vw,40px);font-weight:700}
+h3{font-size:22px;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.num{font-variant-numeric:tabular-nums}
+
+/* Hero */
+.hero{background:var(--hero);color:var(--hero-fg)}
+.hero .wrap{padding-block:20px 48px;display:grid;gap:28px}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand img{height:44px;width:auto;background:#FFFFFF;border-radius:8px;padding:6px 10px}
+.brand .nmls{font-family:var(--mono);font-size:13px;color:var(--hero-muted)}
+.hero-grid{display:grid;gap:28px;grid-template-columns:1fr}
+@media(min-width:900px){.hero-grid{grid-template-columns:1fr 1.05fr;align-items:center}}
+.hero h1{font-size:clamp(36px,7.4vw,60px);font-weight:800;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:#8FD18F}
+.lede{font-size:20px;color:var(--hero-muted);margin-top:16px;max-width:34ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.chip{border:1px solid #3A4260;border-radius:999px;padding:6px 14px;font-size:15px;font-weight:600;color:var(--hero-fg)}
+.formula{margin-top:22px;font-family:var(--mono);font-size:15px;color:var(--hero-muted);border-left:3px solid #8FD18F;padding-left:12px}
+
+/* Calculator */
+.calc{background:var(--card);color:var(--ink);border-radius:18px;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.35);min-width:0}
+.calc-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:14px}
+.calc-top .eyebrow{color:var(--blue)}
+.dots{display:flex;gap:6px}
+.dots i{width:22px;height:5px;border-radius:3px;background:var(--line)}
+.dots i.on{background:var(--blue)}
+.step label.q{display:block;font-family:var(--display);font-size:clamp(24px,4.6vw,30px);font-weight:700;line-height:1.2;margin-bottom:6px}
+.step .hint{color:var(--muted);font-size:16px;margin-bottom:14px}
+.field{display:flex;align-items:center;border:2px solid var(--line);border-radius:12px;background:var(--paper);transition:border-color .15s}
+.field:focus-within{border-color:var(--blue)}
+.field span{font-family:var(--mono);font-size:24px;font-weight:700;padding-left:16px;color:var(--muted)}
+.field input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font-family:var(--body);font-size:24px;font-weight:600;padding:16px 14px;outline:none}
+.two{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+@media(max-width:460px){.two{grid-template-columns:1fr}}
+.two .field input{font-size:20px}
+.taps{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tap{border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 14px;font:600 15px var(--body);cursor:pointer}
+.tap:hover,.tap:focus-visible{border-color:var(--blue);outline:none}
+.err{color:var(--rust);font-weight:600;font-size:15px;margin-top:10px;min-height:1.4em}
+.nav{display:flex;gap:10px;margin-top:8px}
+.btn{flex:1;border:0;border-radius:12px;background:var(--blue);color:var(--blue-ink);font:700 20px var(--body);padding:18px;cursor:pointer}
+.btn:focus-visible,.back:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.back{border:2px solid var(--line);border-radius:12px;background:transparent;color:var(--ink);font:600 17px var(--body);padding:0 18px;cursor:pointer}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--muted);margin-top:14px}
+.consent input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:var(--blue)}
+.fine{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.45}
+
+/* Result */
+.result{text-align:left}
+.result .eyebrow{color:var(--green)}
+.big{font-family:var(--display);font-weight:800;font-size:clamp(48px,11vw,72px);line-height:1;color:var(--green);margin:10px 0 6px}
+.math{margin-top:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.math div{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;font-size:17px}
+.math div+div{border-top:1px solid var(--line)}
+.math b{font-family:var(--mono)}
+.math .total{background:var(--green-bg);font-weight:700}
+.next{margin-top:16px;font-size:18px;font-weight:600}
+.callrow{margin-top:10px;font-size:16px;color:var(--muted)}
+.callrow strong{color:var(--ink);font-family:var(--mono);user-select:all}
+
+/* Sections */
+section.band .wrap{padding-block:56px}
+section.band+section.band{border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:10px;margin-bottom:28px;max-width:44rem}
+.sec-head .eyebrow{color:var(--blue)}
+.sec-head p{color:var(--muted)}
+.reasons{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.reason{border-top:3px solid var(--ink);padding-top:14px;display:grid;gap:6px;align-content:start}
+.reason p{color:var(--muted);font-size:17px}
+.stack{display:grid;gap:12px;grid-template-columns:1fr;max-width:46rem}
+.lien{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.lien .tag{font-family:var(--mono);font-weight:700;font-size:15px;width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line)}
+.lien.second .tag{background:var(--blue);color:var(--blue-ink);border-color:var(--blue)}
+.lien p{color:var(--muted);font-size:17px}
+.faq{max-width:46rem;display:grid;gap:0}
+.faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:19px;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--blue)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--muted);padding-bottom:16px}
+.reviews{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:12px;align-content:space-between}
+.rev blockquote{margin:0;font-size:17px;line-height:1.55}
+.rev .who{font-weight:700;font-size:15px}
+.rev .who span{display:block;font-weight:500;color:var(--muted)}
+.fast{background:var(--card)}
+.perks{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.perk{border:2px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:6px;align-content:start;background:var(--paper)}
+.perk .k{font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--green)}
+.perk p{color:var(--muted);font-size:16px}
+.flow{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:28px;counter-reset:f}
+.flow li{list-style:none;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.flow li::before{counter-increment:f;content:counter(f);font-family:var(--mono);font-weight:700;font-size:18px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:var(--blue-ink)}
+.flow b{display:block;font-size:19px}
+.flow span{color:var(--muted);font-size:16px}
+.flow{padding:0;margin-bottom:0}
+.foot-note{font-size:13px;color:var(--muted);margin-top:18px;max-width:52rem;line-height:1.5}
+.lo{display:flex;gap:14px;align-items:center;margin-top:24px}
+.lo img{width:120px;height:120px;border-radius:18px;object-fit:cover;object-position:50% 20%;background:#FFFFFF;flex:none}
+.lo b{display:block;font-size:18px;color:var(--hero-fg)}
+.lo span{font-size:15px;color:var(--hero-muted)}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
+.trio figure{margin:0;display:grid;gap:4px;text-align:center}
+.trio figcaption{font-weight:700;font-size:15px}
+.lo-r{flex-direction:column;align-items:stretch;flex-wrap:wrap;display:flex;gap:12px;align-items:center;margin-top:16px;padding:12px;border:1px solid var(--line);border-radius:12px}
+.lo-r .trio img{width:100%;aspect-ratio:1/1;height:auto;border-radius:14px;background:#FFFFFF;object-fit:cover;object-position:50% 25%;flex:none}
+.lo-r p{font-size:16px;font-weight:600}
+.meet{display:grid;gap:28px;grid-template-columns:1fr;align-items:center}
+@media(min-width:820px){.meet{grid-template-columns:.9fr 1.1fr}}
+.meet img{width:100%;max-width:100%;border-radius:18px;display:block;object-fit:cover;object-position:50% 25%;aspect-ratio:6/5;background:#0A0E1A}
+.meet .copy{display:grid;gap:14px;min-width:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.stats div{border-top:3px solid var(--blue);padding-top:8px}
+.stats b{display:block;font-family:var(--display);font-size:28px;font-weight:800;line-height:1.1}
+.stats span{font-size:14px;color:var(--muted);line-height:1.35;display:block}
+@media(max-width:420px){.stats b{font-size:23px}}
+.family{display:grid;gap:14px}
+section.band .wrap.family{padding-block:0 56px}
+.fam-grid{display:grid;gap:10px;grid-template-columns:1.15fr 1fr;align-items:stretch}
+.fam-grid .ph{margin:0;border-radius:14px;overflow:hidden;background:var(--paper);display:grid;place-items:center;color:var(--muted);font-size:15px;font-weight:600;text-align:center;padding:12px;min-height:0}
+.fam-grid .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.fam-grid .ph{padding:0}
+.fam-grid .a{aspect-ratio:4/5}
+.fam-grid .a img{object-position:50% 40%}
+.fam-grid .b{aspect-ratio:4/5}
+.fam-grid .b img{object-position:50% 20%}
+@media(max-width:520px){.fam-grid{grid-template-columns:1fr}.fam-grid .a{aspect-ratio:5/6}.fam-grid .b{aspect-ratio:1/1}}
+.drew{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:start;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.drew img{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:50% 25%}
+.drew b{font-size:19px;display:block}
+.drew .role{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
+.drew p{font-size:16px;color:var(--muted)}
+.duo{display:flex;flex:none}
+.duo img+img{margin-left:-14px;border:2px solid var(--card)}
+.fam-note{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(20px,3.6vw,24px);line-height:1.45;max-width:40rem}
+.fam-note span{display:block;font-family:var(--body);font-style:normal;font-size:15px;color:var(--muted);margin-top:6px}
+.team{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.mate{margin:0;display:grid;gap:10px;align-content:start}
+.mate img{width:100%;max-width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 20%;border-radius:20px;background:#FFFFFF;display:block;box-shadow:0 10px 30px rgba(10,14,26,.12)}
+.mate b{font-family:var(--display);font-size:24px;font-weight:700;line-height:1.2}
+.mate .role{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);font-weight:700}
+.mate p{color:var(--muted);font-size:17px}
+.mate .say{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink)}
+.vid{display:grid;gap:8px;justify-items:center}
+.vid video{width:100%;max-width:340px;aspect-ratio:9/16;border-radius:20px;background:#0A0E1A;display:block;box-shadow:0 18px 40px rgba(10,14,26,.25);object-fit:cover}
+.vid-cap{font-size:14px;color:var(--muted);font-weight:600}
+.laugh{display:grid;gap:24px;margin-top:40px;align-items:center;grid-template-columns:1fr}
+@media(min-width:820px){.laugh{grid-template-columns:auto 1fr}}
+.laugh-copy{display:grid;gap:10px;min-width:0;max-width:30rem}
+.cta2 .wrap{padding-block:48px;display:grid;gap:16px;justify-items:start}
+.cta2 .btn{flex:none;padding:18px 28px}
+footer{background:var(--hero);color:var(--hero-muted);font-size:14px;line-height:1.55}
+footer .wrap{padding-block:32px;display:grid;gap:10px}
+footer strong{color:var(--hero-fg)}
+footer a{color:var(--hero-fg)}
+@media(prefers-reduced-motion:no-preference){.step,.result{animation:in .25s ease-out}@keyframes in{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}}
+
+  </style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <img src="/heloc-cash-check/logo.png" alt="Stairway Mortgage">
+      <span class="nmls">Jim Blackburn · NMLS #1072866</span>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow" style="color:#8FD18F">HELOC Cash Check · No credit pull</p>
+        <h1>How much cash is sitting in <em>your home?</em></h1>
+        <p class="lede">Enter two numbers and see an instant estimate of the home equity line of credit you could open, while your first mortgage stays exactly where it is.</p>
+        <div class="chips"><span class="chip">Close in as few as 7 days*</span><span class="chip">No appraisal for most homes*</span><span class="chip">No tax returns or pay stubs</span><span class="chip">Soft credit check only</span></div>
+        <p class="formula">Home value × 90% − what you owe = estimated line</p>
+        <div class="lo"><img src="/heloc-cash-check/jim.webp" alt="Jim Blackburn, loan officer" onerror="this.hidden=true"><div><b>Jim Blackburn &amp; team</b><span>Your loan officer · NMLS #1072866<br>Drew and Alisha will help you get started.</span></div></div>
+      </div>
+
+      <form class="calc" id="helocForm" novalidate autocomplete="on">
+        <div class="calc-top"><span class="eyebrow" id="stepLabel">Step 1 of 4</span><div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i></div></div>
+
+        <div class="step" data-step="1">
+          <label class="q" for="homeValue">What is your home worth today?</label>
+          <p class="hint">Your best guess is fine. A recent online estimate works.</p>
+          <div class="field"><span>$</span><input id="homeValue" name="home_value" inputmode="numeric" placeholder="650,000" autocomplete="off"></div>
+          <div class="taps"><button type="button" class="tap" data-fill="homeValue" data-v="400000">$400k</button><button type="button" class="tap" data-fill="homeValue" data-v="650000">$650k</button><button type="button" class="tap" data-fill="homeValue" data-v="900000">$900k</button><button type="button" class="tap" data-fill="homeValue" data-v="1500000">$1.5M</button></div>
+        </div>
+
+        <div class="step" data-step="2" hidden>
+          <label class="q" for="balance">What do you still owe on your first mortgage?</label>
+          <p class="hint">The payoff balance, not the original loan amount.</p>
+          <div class="field"><span>$</span><input id="balance" name="mortgage_balance" inputmode="numeric" placeholder="310,000" autocomplete="off"></div>
+          <div class="taps"><button type="button" class="tap" data-fill="balance" data-v="0">I own it free and clear</button></div>
+        </div>
+
+        <div class="step" data-step="3" hidden>
+          <label class="q" for="firstName">Where should we send your number?</label>
+          <p class="hint">Your estimate appears on the next screen.</p>
+          <div class="two">
+            <div class="field"><input id="firstName" name="first_name" placeholder="First name" autocomplete="given-name"></div>
+            <div class="field"><input id="lastName" name="last_name" placeholder="Last name" autocomplete="family-name"></div>
+          </div>
+          <div class="field" style="margin-top:12px"><input id="email" name="email" type="email" inputmode="email" placeholder="Email" autocomplete="email"></div>
+        </div>
+
+        <div class="step" data-step="4" hidden>
+          <label class="q" for="phone">Best mobile number?</label>
+          <p class="hint">Drew, Alisha or Jim will call or text you as soon as possible.</p>
+          <div class="field"><input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(954) 555-0123" autocomplete="tel"></div>
+          <label class="consent" for="smsConsent"><input type="checkbox" id="smsConsent" name="sms_consent"><span>I agree to receive calls and text messages from Stairway Mortgage about my inquiry at the number above, including by automated means. Consent is not a condition of any purchase or loan. Message and data rates may apply. Reply STOP to opt out, HELP for help.</span></label>
+        </div>
+
+        <div class="result" id="result" hidden>
+          <p class="eyebrow">Your estimated HELOC line</p>
+          <p class="big num" id="bigNum">$0</p>
+          <p id="resultMsg" style="font-size:18px">Here is how we got there.</p>
+          <div class="math num">
+            <div><span>Home value</span><b id="rValue"></b></div>
+            <div><span>Up to 90% of value</span><b id="rNinety"></b></div>
+            <div><span>Minus first mortgage</span><b id="rBal"></b></div>
+            <div class="total"><span>Estimated available</span><b id="rAvail"></b></div>
+          </div>
+          <div class="lo-r"><div class="trio"><figure><img src="/heloc-cash-check/drew.webp" alt="Drew"><figcaption>Drew</figcaption></figure><figure><img src="/heloc-cash-check/alisha.webp" alt="Alisha"><figcaption>Alisha</figcaption></figure><figure><img src="/heloc-cash-check/jim.webp" alt="Jim Blackburn"><figcaption>Jim</figcaption></figure></div><p>Expect a call or text from <b>Drew</b> or <b>Alisha</b> on Jim's team as soon as possible. They'll confirm your details and set up your time with Jim.</p></div>
+          <p class="callrow">Prefer to talk now? Call our team at <strong>(954) 993-1625</strong>, Mon–Sat 9 AM–9 PM ET.</p>
+          <p class="fine">Estimate only, based on the numbers you entered. Not a loan offer or commitment to lend. Your final line amount depends on an appraisal, credit, income, occupancy, property type, state and lender guidelines, and some programs allow less than 90%. Jim Blackburn, NMLS #1072866.</p>
+        </div>
+
+        <p class="err" id="err" role="alert"></p>
+        <div class="nav" id="nav">
+          <button type="button" class="back" id="backBtn" hidden>Back</button>
+          <button type="submit" class="btn" id="nextBtn">Next</button>
+        </div>
+        <p class="fine" id="formFine">Checking costs nothing and does not pull your credit. Eligible homeowners can close in as few as 7 days.*</p>
+
+        
+      </form>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="band fast"><div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The fast-track HELOC</p>
+      <h2>From your number to cash in about a week</h2>
+      <p>No stack of paperwork and no waiting on an appraiser. You connect your bank, we run a soft credit check, and eligible homeowners can close in as few as 7 days.*</p>
+    </div>
+    <div class="perks">
+      <div class="perk"><span class="k num">7 days</span><h3>Close in about a week</h3><p>Eligible homeowners can close in as few as 7 days from application.*</p></div>
+      <div class="perk"><span class="k">0</span><h3>No appraisal for most homes</h3><p>An automated home valuation replaces the in-person appraisal on most properties.*</p></div>
+      <div class="perk"><span class="k">0</span><h3>No tax returns or pay stubs</h3><p>Income is confirmed from your connected bank statements instead of a pile of documents.</p></div>
+      <div class="perk"><span class="k">Soft</span><h3>Soft credit check</h3><p>Checking your options uses a soft pull that does not affect your credit score.</p></div>
+      <div class="perk"><span class="k">1 link</span><h3>Connect your bank securely</h3><p>Link your bank account electronically in a few minutes instead of scanning and emailing statements.</p></div>
+      <div class="perk"><span class="k">Simple</span><h3>Simple qualification</h3><p>A short online application, a licensed loan officer to guide you, and e-signing from your phone.</p></div>
+    </div>
+    <ol class="flow">
+      <li><div><b>Check your number</b><span>Two numbers above. About 60 seconds, no credit pull.</span></div></li>
+      <li><div><b>Connect and qualify</b><span>Link your bank statements electronically. Soft credit check only.</span></div></li>
+      <li><div><b>Close in about a week</b><span>Sign online and access your line, in as few as 7 days for eligible homeowners.*</span></div></li>
+    </ol>
+    <p class="foot-note">*Timing, appraisal waiver and documentation depend on program eligibility, property type, occupancy, title and state. Some homes and borrowers will need an appraisal or additional documents, and a hard credit inquiry may be required before closing. Jim Blackburn, NMLS #1072866.</p>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Why homeowners open a HELOC</p>
+      <h2>Your equity, ready when you need it</h2>
+      <p>A HELOC is a revolving line secured by your home. You draw what you need, when you need it, and pay interest only on what you use.</p>
+    </div>
+    <div class="reasons">
+      <div class="reason"><h3>Renovate or add on</h3><p>Kitchens, roofs, impact windows, a pool or an in-law suite. Draw in stages as contractors bill.</p></div>
+      <div class="reason"><h3>Clear credit card balances</h3><p>Roll scattered card and personal-loan balances into one line you control.</p></div>
+      <div class="reason"><h3>Keep your first mortgage</h3><p>A HELOC sits in second position, so the first mortgage you already have stays untouched.</p></div>
+      <div class="reason"><h3>Build a safety net</h3><p>An open line can cover a job change, medical bill or hurricane repair without selling investments.</p></div>
+      <div class="reason"><h3>Buy your next property</h3><p>Use equity toward a down payment on a rental, a second home or a lot to build on.</p></div>
+      <div class="reason"><h3>Tuition and big life moments</h3><p>College costs, a wedding, or funding a business idea, drawn only as each bill comes due.</p></div>
+    </div>
+    <div class="laugh">
+      <div class="vid"><video id="everywhereVideo" controls playsinline preload="metadata" poster="/heloc-cash-check/cover-this-poster.jpg"><source src="/heloc-cash-check/cover-this.mp4" type="video/mp4"></video><p class="vid-cap">Tap to play with sound · 13 seconds</p></div>
+      <div class="laugh-copy"><p class="eyebrow" style="color:var(--blue)">A quick laugh</p><h3 style="font-size:clamp(24px,4.4vw,32px)">Your house could cover this.</h3><p style="color:var(--muted)">The checkout line, the auto shop, even the hammock. Jim's team shows up wherever life gets expensive.</p></div>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Second lien strategy</p>
+      <h2>How a HELOC fits behind your first mortgage</h2>
+      <p>Lenders look at your combined loan-to-value: everything you owe against the home divided by its value. Many HELOC programs go up to about 90%.</p>
+    </div>
+    <div class="stack">
+      <div class="lien"><div class="tag">1st</div><div><h3>Your current mortgage</h3><p>Stays in place with its existing terms. Nothing about it changes.</p></div></div>
+      <div class="lien second"><div class="tag">2nd</div><div><h3>Your new HELOC</h3><p>A separate line in second position. Draw during the draw period, then repay over the repayment period.</p></div></div>
+      <div class="lien"><div class="tag num">90%</div><div><h3>The ceiling</h3><p>First mortgage plus HELOC can typically reach up to 90% of the home's value. The gap between what you owe and that 90% mark is your estimated line.</p></div></div>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Questions homeowners ask</p>
+      <h2>HELOC answers in plain English</h2>
+    </div>
+    <div class="faq">
+      <details><summary>How much can I borrow with a HELOC?</summary><p>A common starting point is 90% of your home's value minus your first mortgage balance. On a $650,000 home with $310,000 owed, that is $585,000 − $310,000 = $275,000. Your exact line depends on appraisal, credit, income and program guidelines.</p></details>
+      <details><summary>Does this HELOC check pull my credit?</summary><p>No. The estimate uses only the two numbers you type in. Credit is reviewed later, only if you decide to move forward with a loan officer.</p></details>
+      <details><summary>How fast can a HELOC close?</summary><p>On our fast-track HELOC, eligible homeowners can close in as few as 7 days. Most of the time savings comes from connecting your bank electronically and using an automated valuation instead of an appraisal. Title or property issues can add time.</p></details>
+      <details><summary>Do I need an appraisal or tax returns for this HELOC?</summary><p>Most homes qualify for an automated valuation, so no in-person appraisal. Income is verified from your connected bank statements, so most borrowers skip tax returns and pay stubs. If your file needs more, your loan officer will tell you up front.</p></details>
+      <details><summary>Will a HELOC change my first mortgage?</summary><p>No. A HELOC is a separate second lien. Your first mortgage keeps its balance, terms and servicer.</p></details>
+      <details><summary>What is the difference between a HELOC and a cash-out refinance?</summary><p>A cash-out refinance replaces your first mortgage with a new, larger loan. A HELOC leaves the first mortgage alone and adds a line you can draw from over time. A loan officer can lay out both side by side for your situation.</p></details>
+      <details><summary>What can I use HELOC money for?</summary><p>Home improvements, paying off other balances, emergencies, education, a down payment on another property, or business needs. Your home secures the line, so borrow with a plan for repayment.</p></details>
+      <details><summary>Who will contact me after I check?</summary><p>Usually Drew or Alisha on Jim Blackburn's team calls or texts first to confirm your details and set up a time. Your loan options are reviewed with Jim, a licensed loan officer (NMLS #1072866) at Stairway Mortgage. There is no obligation.</p></details>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap meet">
+    <div class="vid"><video id="jimVideo" controls playsinline preload="metadata" poster="/heloc-cash-check/jim-funny-poster.jpg"><source src="/heloc-cash-check/jim-funny.mp4" type="video/mp4"></video><p class="vid-cap">Tap to play with sound · 7 seconds</p></div>
+    <div class="copy">
+      <p class="eyebrow" style="color:var(--blue)">Meet your loan officer</p>
+      <h2>Jim Blackburn and the Stairway team</h2>
+      <p class="fam-note" style="font-size:20px">We meet you where you are. Even on your roof.</p>
+      <p style="color:var(--muted)">Jim founded Stairway Mortgage in Fort Lauderdale and leads a team that answers the phone, explains every option in plain English, and stays with you after closing. When you check your number here, a real person on his team follows up.</p>
+      <div class="stats num">
+        <div><b>$500M+</b><span>in loans closed</span></div>
+        <div><b>7×</b><span>Scotsman Guide Top Producer</span></div>
+        <div><b>300+</b><span>lenders to shop</span></div>
+      </div>
+      <p class="fine">Jim Blackburn, Originating Branch Manager, NMLS #1072866</p>
+    </div>
+  </div>
+  <div class="wrap family">
+    <div class="fam-grid">
+      <figure class="ph a" id="fam1"><img src="/heloc-cash-check/family-church.webp" alt="Jim, Olga and Olivia Blackburn volunteering at church" onerror="this.parentNode.hidden=true"></figure>
+      <figure class="ph b" id="fam2"><img src="/heloc-cash-check/jim-olga.webp" alt="Jim and Olga Blackburn" onerror="this.parentNode.hidden=true"></figure>
+    </div>
+    <p class="fam-note">This is my family. Olga and I got married one month after our third date, and 22 years later she is still my best decision. Our daughter Olivia is seven, and she keeps us both on our toes. When we're not working, you'll find us volunteering at our church.<span>— Jim Blackburn</span></p>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The people who will call you</p>
+      <h2>Say hi to the team</h2>
+      <p>After you see your number, one of us will reach out. Now you know the faces behind the phone call.</p>
+    </div>
+    <div class="team">
+      <figure class="mate"><img src="/heloc-cash-check/jim.webp" alt="Jim Blackburn" onerror="this.hidden=true"><figcaption style="display:grid;gap:6px"><span class="role">Loan officer · NMLS #1072866</span><b>Jim Blackburn</b><p>Jim reviews your numbers, lays out your HELOC options side by side, and stays with you through closing.</p></figcaption></figure>
+      <figure class="mate"><img src="/heloc-cash-check/drew.webp" alt="Drew Para" onerror="this.hidden=true"><figcaption style="display:grid;gap:6px"><span class="role">Sales assistant</span><b>Drew Para</b><p class="say">"Hi, I'm Drew from Jim Blackburn's team."</p><p>Often the first voice you'll hear. Drew follows up on your estimate and books your time with Jim.</p></figcaption></figure>
+      <figure class="mate"><img src="/heloc-cash-check/alisha.webp" alt="Alisha" onerror="this.hidden=true"><figcaption style="display:grid;gap:6px"><span class="role">Assistant</span><b>Alisha</b><p class="say">"Hi, this is Alisha with Jim's team."</p><p>Alisha may call or text to confirm your details and get your questions to Jim.</p></figcaption></figure>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">From real clients</p>
+      <h2>What homeowners say about Jim's team</h2>
+    </div>
+    <div class="reviews">
+      <figure class="rev" style="margin:0"><blockquote>The refinance process and options were explained properly which allowed me to save on my loan and take out cash. I recommend Jim Blackburn and his team to anyone in the market for a refinance or purchase of a new home.</blockquote><figcaption class="who">John Stygles<span>Illinois · Google review</span></figcaption></figure>
+      <figure class="rev" style="margin:0"><blockquote>I am very satisfied with Jim Blackburn and his team for all the work they put in to obtain approvals for my refinance inquiry. Jim and his team were very responsive and creative in addressing my refinance needs, including running three or four different loan scenarios before I settled on the best option. Highly recommended!</blockquote><figcaption class="who">Christopher Provost<span>Alaska · Google review</span></figcaption></figure>
+      <figure class="rev" style="margin:0"><blockquote>I was extremely hesitant to refinance my mortgage because of the ordeal I went through the first time. Jim and his team made the process smooth and hassle-free. I found the team to be courteous, professional, and efficient. They quickly responded to my questions and explained everything fully. I highly recommend Jim and company if you are looking for a mortgage or to refinance.</blockquote><figcaption class="who">Carl Dassbach<span>Michigan · Angi review</span></figcaption></figure>
+    </div>
+  </div></section>
+
+  <section class="band cta2"><div class="wrap">
+    <h2>See your number in about a minute</h2>
+    <p style="color:var(--muted);max-width:40ch">Two numbers, no credit pull. Then connect your bank, a soft credit check, and close in as few as 7 days.* Jim Blackburn, NMLS #1072866.</p>
+    <button type="button" class="btn" id="toTop">See My Options</button>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><strong>Stairway Mortgage</strong> · 912 SW 20th St, Fort Lauderdale, FL 33315 · (954) 993-1625</p>
+  <p>Jim Blackburn, NMLS #1072866 · <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/Individual/1072866" target="_blank" rel="noopener">NMLS Consumer Access</a></p>
+  <p>Stairway Mortgage is a division of NEXA Mortgage LLC, NMLS #1660690. Equal Housing Opportunity. This is not a commitment to lend. All loans subject to credit approval, property appraisal and underwriting guidelines. Programs, terms and availability vary by state and may change without notice. A HELOC is secured by your home.</p>
+  <p><a href="/privacy/">Privacy</a> · <a href="/state-licensing/">Licensing</a></p>
+</div></footer>
+
+<script is:inline define:vars={{ WEBHOOK: GHL_WEBHOOK_URL }}>
+(function(){
+  var form=document.getElementById('helocForm'), steps=[].slice.call(form.querySelectorAll('.step'));
+  var cur=1, total=4, err=document.getElementById('err');
+  var $=function(id){return document.getElementById(id)};
+  var digits=function(s){return Number(String(s||'').replace(/[^0-9.]/g,''))||0};
+  var money=function(n){return '$'+Math.round(n).toLocaleString('en-US')};
+  ['homeValue','balance'].forEach(function(id){
+    $(id).addEventListener('input',function(e){var n=String(e.target.value).replace(/[^0-9]/g,'');e.target.value=n?Number(n).toLocaleString('en-US'):''});
+  });
+  form.querySelectorAll('.tap').forEach(function(b){b.addEventListener('click',function(){
+    $(b.dataset.fill).value=Number(b.dataset.v).toLocaleString('en-US'); go(1);
+  })});
+  function show(n){
+    cur=n; steps.forEach(function(s){s.hidden=Number(s.dataset.step)!==n});
+    $('stepLabel').textContent='Step '+n+' of '+total;
+    [].forEach.call($('dots').children,function(d,i){d.className=i<n?'on':''});
+    $('backBtn').hidden=n===1; $('nextBtn').textContent=n===total?'See My Options':'Next'; err.textContent='';
+    var f=steps[n-1].querySelector('input:not([type=checkbox])'); if(f) try{f.focus({preventScroll:true})}catch(e){}
+  }
+  function check(n){
+    if(n===1){var v=digits($('homeValue').value); if(v<50000) return 'Enter your home value, for example 650,000.'}
+    if(n===2){var b=$('balance').value.trim(); if(b==='') return 'Enter what you owe, or tap "I own it free and clear".';
+      if(digits(b)>digits($('homeValue').value)*1.5) return 'That balance looks higher than the home value. Double-check both numbers.'}
+    if(n===3){if(!$('firstName').value.trim()||!$('lastName').value.trim()) return 'Add your first and last name.';
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($('email').value.trim())) return 'Enter a valid email address.'}
+    if(n===4){if(String($('phone').value).replace(/\D/g,'').length<10) return 'Enter a 10-digit mobile number.';
+      if(!$('smsConsent').checked) return 'Check the box so our team can text and call you about your estimate.'}
+    return '';
+  }
+  function go(dir){
+    if(dir>0){var m=check(cur); if(m){err.textContent=m;return}}
+    if(dir>0&&cur===total){finish();return}
+    show(Math.min(total,Math.max(1,cur+dir)));
+  }
+  // Enter key advances one step instead of submitting the whole form
+  form.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.tagName==='INPUT'&&e.target.type!=='checkbox'){e.preventDefault();go(1)}});
+  form.addEventListener('submit',function(e){e.preventDefault();go(1)});
+  $('backBtn').addEventListener('click',function(){go(-1)});
+  $('toTop').addEventListener('click',function(){form.scrollIntoView({behavior:'smooth',block:'start'});show(cur)});
+
+  var qs=new URLSearchParams(location.search);
+
+  function finish(){
+    var V=digits($('homeValue').value), B=digits($('balance').value), ninety=V*0.9, avail=Math.max(0,ninety-B);
+    $('rValue').textContent=money(V); $('rNinety').textContent=money(ninety); $('rBal').textContent='− '+money(B); $('rAvail').textContent=money(avail);
+    $('bigNum').textContent=money(avail);
+    $('resultMsg').textContent = avail>0 ? 'Here is how we got there.' : 'Based on these numbers there is little room under the 90% mark today. A loan officer can still review other options with you.';
+    steps.forEach(function(s){s.hidden=true}); $('result').hidden=false; $('nav').hidden=true; $('formFine').hidden=true;
+    $('stepLabel').textContent='Your estimate'; [].forEach.call($('dots').children,function(d){d.className='on'});
+    var la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
+    var payload={form_source:'heloc_cash_check',loan_purpose:'HELOC',
+      first_name:$('firstName').value.trim(),last_name:$('lastName').value.trim(),
+      full_name:($('firstName').value.trim()+' '+$('lastName').value.trim()).trim(),
+      email:$('email').value.trim(),phone:$('phone').value.trim(),sms_consent:'yes',
+      home_value:V,mortgage_balance:B,heloc_available_estimate:Math.round(avail),
+      page_url:location.origin+location.pathname,
+      source_url:(window.STW_sourceUrl?window.STW_sourceUrl():(document.referrer||location.href)),
+      landing_page:la.landing_page||'',utm_source:la.utm_source||qs.get('utm_source')||'',utm_medium:la.utm_medium||'',
+      utm_campaign:la.utm_campaign||'',utm_term:la.utm_term||'',utm_content:la.utm_content||'',
+      umtid:la.umtid||'',loid:la.loid||'',fbclid:qs.get('fbclid')||''};
+    try{fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true})
+      .then(function(r){if(r&&r.ok){if(window.STW_fireGenerateLead)window.STW_fireGenerateLead({profession:'',county:'',umtid:payload.umtid});}else{console.warn('[lead] heloc_cash_check submit failed:',r&&r.status);}})
+      .catch(function(e){console.warn('[lead] heloc_cash_check submit error:',e);});}catch(e){}
+    try{if(window.fbq)fbq('track','Lead',{content_name:'HELOC Cash Check'})}catch(e){}
+    form.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  show(1);
+})();
+</script>
+</body>
+</html>
