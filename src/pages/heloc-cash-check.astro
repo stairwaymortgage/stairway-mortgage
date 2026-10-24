@@ -186,11 +186,13 @@ section.band .wrap.family{padding-block:0 56px}
 .fam-grid .ph{margin:0;border-radius:14px;overflow:hidden;background:var(--paper);display:grid;place-items:center;color:var(--muted);font-size:15px;font-weight:600;text-align:center;padding:12px;min-height:0}
 .fam-grid .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
 .fam-grid .ph{padding:0}
+.fam-grid .w{grid-column:1 / -1;aspect-ratio:5/4}
+.fam-grid .w img{object-position:50% 45%}
 .fam-grid .a{aspect-ratio:4/5}
 .fam-grid .a img{object-position:50% 40%}
 .fam-grid .b{aspect-ratio:4/5}
 .fam-grid .b img{object-position:50% 20%}
-@media(max-width:520px){.fam-grid{grid-template-columns:1fr}.fam-grid .a{aspect-ratio:5/6}.fam-grid .b{aspect-ratio:1/1}}
+@media(max-width:520px){.fam-grid{grid-template-columns:1fr 1fr}.fam-grid .w{aspect-ratio:1/1}}
 .drew{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:start;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
 .drew img{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:50% 25%}
 .drew b{font-size:19px;display:block}
@@ -401,6 +403,7 @@ footer a{color:var(--hero-fg)}
   </div>
   <div class="wrap family">
     <div class="fam-grid">
+      <figure class="ph w" id="fam0"><img src="/heloc-cash-check/family-bench.webp" alt="Jim, Olga and Olivia Blackburn on a park bench" loading="lazy" onerror="this.parentNode.hidden=true"></figure>
       <figure class="ph a" id="fam1"><img src="/heloc-cash-check/family-church.webp" alt="Jim, Olga and Olivia Blackburn volunteering at church" onerror="this.parentNode.hidden=true"></figure>
       <figure class="ph b" id="fam2"><img src="/heloc-cash-check/jim-olga.webp" alt="Jim and Olga Blackburn" onerror="this.parentNode.hidden=true"></figure>
     </div>
