@@ -209,6 +209,7 @@ section.band .wrap.family{padding-block:0 56px}
 .mate .say{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink)}
 .vid{display:grid;gap:8px;justify-items:center}
 .vid video{width:100%;max-width:340px;aspect-ratio:9/16;border-radius:20px;background:#0A0E1A;display:block;box-shadow:0 18px 40px rgba(10,14,26,.25);object-fit:cover}
+.vid-wide video{max-width:100%;aspect-ratio:16/9;width:100%}
 .vid-cap{font-size:14px;color:var(--muted);font-weight:600}
 .laugh{display:grid;gap:24px;margin-top:40px;align-items:center;grid-template-columns:1fr}
 @media(min-width:820px){.laugh{grid-template-columns:auto 1fr}}
@@ -327,6 +328,10 @@ footer a{color:var(--hero-fg)}
       <li><div><b>Close in about a week</b><span>Sign online and access your line, in as few as 7 days for eligible homeowners.*</span></div></li>
     </ol>
     <p class="foot-note">*Timing, appraisal waiver and documentation depend on program eligibility, property type, occupancy, title and state. Some homes and borrowers will need an appraisal or additional documents, and a hard credit inquiry may be required before closing. Jim Blackburn, NMLS #1072866.</p>
+    <div class="laugh">
+      <div class="vid"><video id="jimVideo" controls playsinline preload="metadata" poster="/heloc-cash-check/jim-funny-poster.jpg"><source src="/heloc-cash-check/jim-funny.mp4" type="video/mp4"></video><p class="vid-cap">Tap to play with sound · 6 seconds</p></div>
+      <div class="laugh-copy"><p class="eyebrow" style="color:var(--blue)">A quick laugh</p><h3 style="font-size:clamp(24px,4.4vw,32px)">Your house has been holding out on you.</h3><p style="color:var(--muted)">Kitchen, roof, lemonade. We meet you where you are.</p></div>
+    </div>
   </div></section>
 
   <section class="band"><div class="wrap">
@@ -380,11 +385,11 @@ footer a{color:var(--hero-fg)}
   </div></section>
 
   <section class="band"><div class="wrap meet">
-    <div class="vid"><video id="jimVideo" controls playsinline preload="metadata" poster="/heloc-cash-check/jim-funny-poster.jpg"><source src="/heloc-cash-check/jim-funny.mp4" type="video/mp4"></video><p class="vid-cap">Tap to play with sound · 7 seconds</p></div>
+    <div class="vid vid-wide"><video id="jimIntro" controls playsinline preload="metadata" poster="/heloc-cash-check/jim-intro-poster.jpg"><source src="/heloc-cash-check/jim-intro.mp4" type="video/mp4"></video><p class="vid-cap">Meet Jim · 35 seconds · tap for sound</p></div>
     <div class="copy">
       <p class="eyebrow" style="color:var(--blue)">Meet your loan officer</p>
       <h2>Jim Blackburn and the Stairway team</h2>
-      <p class="fam-note" style="font-size:20px">We meet you where you are. Even on your roof.</p>
+      <p class="fam-note" style="font-size:20px">We meet you where you are.</p>
       <p style="color:var(--muted)">Jim founded Stairway Mortgage in Fort Lauderdale and leads a team that answers the phone, explains every option in plain English, and stays with you after closing. When you check your number here, a real person on his team follows up.</p>
       <div class="stats num">
         <div><b>$500M+</b><span>in loans closed</span></div>
