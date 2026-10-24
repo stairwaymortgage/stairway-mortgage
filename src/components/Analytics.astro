@@ -39,6 +39,7 @@ const GTM_ID  = 'GTM-TXQSMLW2';
     <script is:inline define:vars={{ GA4_ID }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag; // define:vars wraps this script in a function; expose gtag for lead-attribution.js
       // Opted out: keep analytics, deny Google ad storage/personalization (Consent Mode v2).
       if (!window.adConsentAllowed()) {
         gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
@@ -53,6 +54,7 @@ const GTM_ID  = 'GTM-TXQSMLW2';
   <script is:inline define:vars={{ GTM_ID }}>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
     if (!window.adConsentAllowed()) {
       gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
     }
