@@ -22,12 +22,27 @@ const GA4_ID  = 'G-JKZV58GRQK';
 const GTM_ID  = 'GTM-TXQSMLW2';
 ---
 
+<!-- Ad consent gate. Returns false when the browser sends Global Privacy Control
+     or the visitor opted out on /do-not-sell-or-share/ (cookie sw_ad_optout=1).
+     Every advertising / visitor-identification tag must check this before loading. -->
+<script is:inline>
+  window.adConsentAllowed = function() {
+    try { if (navigator.globalPrivacyControl === true) return false; } catch (e) {}
+    try { if (/(?:^|;\s*)sw_ad_optout=1(?:;|$)/.test(document.cookie)) return false; } catch (e) {}
+    return true;
+  };
+</script>
+
 {!USE_GTM && (
   <Fragment>
     <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
     <script is:inline define:vars={{ GA4_ID }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
+      // Opted out: keep analytics, deny Google ad storage/personalization (Consent Mode v2).
+      if (!window.adConsentAllowed()) {
+        gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+      }
       gtag('js', new Date());
       gtag('config', GA4_ID);
     </script>
@@ -36,6 +51,11 @@ const GTM_ID  = 'GTM-TXQSMLW2';
 
 {USE_GTM && (
   <script is:inline define:vars={{ GTM_ID }}>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    if (!window.adConsentAllowed()) {
+      gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    }
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
     var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
     j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;

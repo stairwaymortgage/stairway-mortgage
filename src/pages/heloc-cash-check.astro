@@ -450,7 +450,7 @@ footer a{color:var(--hero-fg)}
   <p><strong>Stairway Mortgage</strong> · 912 SW 20th St, Fort Lauderdale, FL 33315 · (954) 993-1625</p>
   <p>Jim Blackburn, NMLS #1072866 · <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/Individual/1072866" target="_blank" rel="noopener">NMLS Consumer Access</a></p>
   <p>Stairway Mortgage is a division of NEXA Mortgage LLC, NMLS #1660690. Equal Housing Opportunity. This is not a commitment to lend. All loans subject to credit approval, property appraisal and underwriting guidelines. Programs, terms and availability vary by state and may change without notice. A HELOC is secured by your home.</p>
-  <p><a href="/privacy/">Privacy</a> · <a href="/state-licensing/">Licensing</a></p>
+  <p><a href="/privacy/">Privacy Policy</a> · <a href="/do-not-sell-or-share/">Do Not Sell or Share My Personal Information</a> · <a href="/state-licensing/">Licensing</a></p>
 </div></footer>
 
 <script is:inline define:vars={{ WEBHOOK: GHL_WEBHOOK_URL }}>
@@ -526,7 +526,7 @@ footer a{color:var(--hero-fg)}
     try{fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true})
       .then(function(r){if(r&&r.ok){if(window.STW_fireGenerateLead)window.STW_fireGenerateLead({profession:'',county:'',umtid:payload.umtid});}else{console.warn('[lead] heloc_cash_check submit failed:',r&&r.status);}})
       .catch(function(e){console.warn('[lead] heloc_cash_check submit error:',e);});}catch(e){}
-    try{if(window.fbq)fbq('track','Lead',{content_name:'HELOC Cash Check'})}catch(e){}
+    try{if(window.fbq&&window.adConsentAllowed&&window.adConsentAllowed())fbq('track','Lead',{content_name:'HELOC Cash Check'})}catch(e){}
     form.scrollIntoView({behavior:'smooth',block:'start'});
   }
   show(1);

@@ -50,6 +50,10 @@ const breadcrumbSchema={"@context": "https://schema.org", "@type": "BreadcrumbLi
       } catch (e) {}
       if (optedOut()) {
         markDone();
+        // Apply to this page view too; future pages are gated by adConsentAllowed() in Analytics.astro.
+        try {
+          if (window.dataLayer) (function(){ window.dataLayer.push(arguments); })('consent', 'update', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+        } catch (e) {}
       } else {
         status.textContent = "We couldn’t save your choice in this browser (cookies may be blocked). Please email privacy@stairwaymortgage.com to opt out.";
       }
