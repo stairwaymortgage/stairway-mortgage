@@ -63,16 +63,16 @@ p{margin:0}
 
 /* Hero */
 .hero{background:linear-gradient(180deg,var(--sky) 0%,var(--paper) 100%);color:var(--ink)}
-.hero .wrap{padding-block:20px 48px;display:grid;gap:28px}
-.brand{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.brand img{height:40px;width:auto}
-.brand .nmls{font-family:var(--mono);font-size:12px;color:var(--soft)}
+.hero .wrap{padding-block:14px 40px;display:grid;gap:18px}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand img{height:30px;width:auto}
+.brand .nmls{font-family:var(--mono);font-size:11px;color:var(--soft);text-align:right}
 .hero-grid{display:grid;gap:28px;grid-template-columns:1fr}
 @media(min-width:900px){.hero-grid{grid-template-columns:1fr 1.05fr;align-items:center}}
-.hero h1{font-size:clamp(32px,6.6vw,52px);font-weight:700;letter-spacing:-.01em}
+.hero h1{font-size:clamp(30px,7.2vw,46px);font-weight:700;letter-spacing:-.01em}
 .hero h1 em{font-style:normal;color:var(--blue)}
-.lede{font-size:19px;color:var(--soft);margin-top:12px;max-width:34ch}
-.pick{margin-top:22px;display:grid;gap:10px;max-width:30rem}
+.lede{font-size:18px;color:var(--soft);margin-top:8px;max-width:34ch}
+.pick{margin-top:18px;display:grid;gap:10px;max-width:30rem}
 .pick-q{font-family:var(--display);font-weight:700;font-size:22px;line-height:1.25;margin:0}
 .pick-hint{font-size:15px;color:var(--soft);margin:-4px 0 2px}
 .opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:14px;padding:15px 16px;font:600 17px var(--body);cursor:pointer;transition:border-color .15s,transform .15s,background .15s}
@@ -228,22 +228,18 @@ footer a{color:var(--hero-fg)}
   <div class="wrap">
     <div class="brand">
       <img src="/heloc-cash-check/logo.png" alt="Stairway Mortgage">
-      <span class="nmls">Jim Blackburn · NMLS #1072866</span>
+      <span class="nmls">Jim Blackburn<br>NMLS #1072866</span>
     </div>
     <div class="hero-grid">
       <div>
-        <p class="eyebrow" style="color:var(--blue)">HELOC Cash Check · No credit pull</p>
-        <h1>How much cash is sitting in <em>your home?</em></h1>
-        <p class="lede">See your estimated home equity line in about a minute. Your first mortgage stays exactly where it is.</p>
-        <div class="pick" role="group" aria-labelledby="pickQ">
-          <p class="pick-q" id="pickQ">Which of these matters most to you?</p>
-          <p class="pick-hint">Tap one to start.</p>
+                <h1>How much cash is in <em>your home?</em></h1>
+        <p class="lede">Tap what matters most. No credit pull.</p>
+        <div class="pick" role="group" aria-label="Which of these matters most to you?">
           <button type="button" class="opt" data-pick="Closing in about a week">Closing in about a week*</button>
           <button type="button" class="opt" data-pick="No appraisal">No appraisal for most homes*</button>
           <button type="button" class="opt" data-pick="No tax returns or pay stubs">No tax returns or pay stubs</button>
           <button type="button" class="opt" data-pick="Soft credit check only">Soft credit check only</button>
         </div>
-        <p class="formula">Home value × 90% − what you owe = estimated line</p>
         <div class="lo"><img src="/heloc-cash-check/jim.webp" alt="Jim Blackburn, loan officer" onerror="this.hidden=true"><div><b>Jim Blackburn &amp; team</b><span>Your loan officer · NMLS #1072866<br>Drew and Alisha will help you get started.</span></div></div>
       </div>
 
