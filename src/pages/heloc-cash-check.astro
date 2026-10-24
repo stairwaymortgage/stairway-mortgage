@@ -45,19 +45,12 @@ img,video{max-width:100%}
 :root{
   --ink:#0A0E1A; --paper:#FAFAF7; --card:#FFFFFF; --line:#DCDDD6; --muted:#3F4556;
   --blue:#1845D6; --blue-ink:#FFFFFF; --rust:#8B2C2C; --green:#2E9E2E; --green-bg:#E9F6E9;
-  --hero:#0A0E1A; --hero-fg:#FAFAF7; --hero-muted:#C9CDD9;
+  --hero:#0A0E1A; --hero-fg:#FAFAF7; --hero-muted:#C9CDD9; --sky:#EEF3FF; --soft:#5A6072;
+  color-scheme:light;
   --display:"Fraunces",Georgia,"Times New Roman",serif;
   --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --ink:#F2F2EC; --paper:#0B0F1C; --card:#141A2B; --line:#2A3247; --muted:#B9BFCE;
-  --blue:#5C82FF; --blue-ink:#0A0E1A; --rust:#E07A7A; --green:#5BD15B; --green-bg:#12301A;
-  --hero:#060912; --hero-fg:#FAFAF7; --hero-muted:#B9BFCE; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --ink:#F2F2EC; --paper:#0B0F1C; --card:#141A2B; --line:#2A3247; --muted:#B9BFCE;
-  --blue:#5C82FF; --blue-ink:#0A0E1A; --rust:#E07A7A; --green:#5BD15B; --green-bg:#12301A;
-  --hero:#060912; --hero-fg:#FAFAF7; --hero-muted:#B9BFCE; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -69,22 +62,29 @@ p{margin:0}
 .num{font-variant-numeric:tabular-nums}
 
 /* Hero */
-.hero{background:var(--hero);color:var(--hero-fg)}
+.hero{background:linear-gradient(180deg,var(--sky) 0%,var(--paper) 100%);color:var(--ink)}
 .hero .wrap{padding-block:20px 48px;display:grid;gap:28px}
 .brand{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.brand img{height:44px;width:auto;background:#FFFFFF;border-radius:8px;padding:6px 10px}
-.brand .nmls{font-family:var(--mono);font-size:13px;color:var(--hero-muted)}
+.brand img{height:40px;width:auto}
+.brand .nmls{font-family:var(--mono);font-size:12px;color:var(--soft)}
 .hero-grid{display:grid;gap:28px;grid-template-columns:1fr}
 @media(min-width:900px){.hero-grid{grid-template-columns:1fr 1.05fr;align-items:center}}
-.hero h1{font-size:clamp(36px,7.4vw,60px);font-weight:800;letter-spacing:-.01em}
-.hero h1 em{font-style:normal;color:#8FD18F}
-.lede{font-size:20px;color:var(--hero-muted);margin-top:16px;max-width:34ch}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.chip{border:1px solid #3A4260;border-radius:999px;padding:6px 14px;font-size:15px;font-weight:600;color:var(--hero-fg)}
-.formula{margin-top:22px;font-family:var(--mono);font-size:15px;color:var(--hero-muted);border-left:3px solid #8FD18F;padding-left:12px}
+.hero h1{font-size:clamp(32px,6.6vw,52px);font-weight:700;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.lede{font-size:19px;color:var(--soft);margin-top:12px;max-width:34ch}
+.pick{margin-top:22px;display:grid;gap:10px;max-width:30rem}
+.pick-q{font-family:var(--display);font-weight:700;font-size:22px;line-height:1.25;margin:0}
+.pick-hint{font-size:15px;color:var(--soft);margin:-4px 0 2px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:14px;padding:15px 16px;font:600 17px var(--body);cursor:pointer;transition:border-color .15s,transform .15s,background .15s}
+.opt::after{content:"→";font-family:var(--mono);color:var(--blue);font-weight:700}
+.opt:hover,.opt:focus-visible{border-color:var(--blue);outline:none;transform:translateX(3px)}
+.opt.on{border-color:var(--blue);background:var(--sky)}
+.opt.on::after{content:"✓"}
+.picked{background:var(--sky);color:var(--blue);border-radius:10px;padding:8px 12px;font-weight:600;font-size:15px;margin:-4px 0 14px}
+.formula{margin-top:18px;font-family:var(--mono);font-size:13px;color:var(--soft);border-left:3px solid var(--blue);padding-left:12px}
 
 /* Calculator */
-.calc{background:var(--card);color:var(--ink);border-radius:18px;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.35);min-width:0}
+.calc{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 14px 40px rgba(24,69,214,.10);min-width:0;scroll-margin-top:16px}
 .calc-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:14px}
 .calc-top .eyebrow{color:var(--blue)}
 .dots{display:flex;gap:6px}
@@ -162,9 +162,9 @@ section.band+section.band{border-top:1px solid var(--line)}
 .flow{padding:0;margin-bottom:0}
 .foot-note{font-size:13px;color:var(--muted);margin-top:18px;max-width:52rem;line-height:1.5}
 .lo{display:flex;gap:14px;align-items:center;margin-top:24px}
-.lo img{width:120px;height:120px;border-radius:18px;object-fit:cover;object-position:50% 20%;background:#FFFFFF;flex:none}
-.lo b{display:block;font-size:18px;color:var(--hero-fg)}
-.lo span{font-size:15px;color:var(--hero-muted)}
+.lo img{width:96px;height:96px;border-radius:18px;object-fit:cover;object-position:50% 20%;background:#FFFFFF;flex:none}
+.lo b{display:block;font-size:18px;color:var(--ink)}
+.lo span{font-size:15px;color:var(--soft)}
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
 .trio figure{margin:0;display:grid;gap:4px;text-align:center}
 .trio figcaption{font-weight:700;font-size:15px}
@@ -232,15 +232,23 @@ footer a{color:var(--hero-fg)}
     </div>
     <div class="hero-grid">
       <div>
-        <p class="eyebrow" style="color:#8FD18F">HELOC Cash Check · No credit pull</p>
+        <p class="eyebrow" style="color:var(--blue)">HELOC Cash Check · No credit pull</p>
         <h1>How much cash is sitting in <em>your home?</em></h1>
-        <p class="lede">Enter two numbers and see an instant estimate of the home equity line of credit you could open, while your first mortgage stays exactly where it is.</p>
-        <div class="chips"><span class="chip">Close in as few as 7 days*</span><span class="chip">No appraisal for most homes*</span><span class="chip">No tax returns or pay stubs</span><span class="chip">Soft credit check only</span></div>
+        <p class="lede">See your estimated home equity line in about a minute. Your first mortgage stays exactly where it is.</p>
+        <div class="pick" role="group" aria-labelledby="pickQ">
+          <p class="pick-q" id="pickQ">Which of these matters most to you?</p>
+          <p class="pick-hint">Tap one to start.</p>
+          <button type="button" class="opt" data-pick="Closing in about a week">Closing in about a week*</button>
+          <button type="button" class="opt" data-pick="No appraisal">No appraisal for most homes*</button>
+          <button type="button" class="opt" data-pick="No tax returns or pay stubs">No tax returns or pay stubs</button>
+          <button type="button" class="opt" data-pick="Soft credit check only">Soft credit check only</button>
+        </div>
         <p class="formula">Home value × 90% − what you owe = estimated line</p>
         <div class="lo"><img src="/heloc-cash-check/jim.webp" alt="Jim Blackburn, loan officer" onerror="this.hidden=true"><div><b>Jim Blackburn &amp; team</b><span>Your loan officer · NMLS #1072866<br>Drew and Alisha will help you get started.</span></div></div>
       </div>
 
       <form class="calc" id="helocForm" novalidate autocomplete="on">
+        <p class="picked" id="picked" hidden></p>
         <div class="calc-top"><span class="eyebrow" id="stepLabel">Step 1 of 4</span><div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i></div></div>
 
         <div class="step" data-step="1">
@@ -479,6 +487,15 @@ footer a{color:var(--hero-fg)}
   $('toTop').addEventListener('click',function(){form.scrollIntoView({behavior:'smooth',block:'start'});show(cur)});
 
   var qs=new URLSearchParams(location.search);
+  var priority='';
+  [].forEach.call(document.querySelectorAll('.opt'),function(b){b.addEventListener('click',function(){
+    priority=b.getAttribute('data-pick');
+    [].forEach.call(document.querySelectorAll('.opt'),function(o){o.classList.toggle('on',o===b)});
+    var pk=$('picked'); pk.textContent='✓ Got it: '+priority.toLowerCase()+'. Now let\u2019s find your number.'; pk.hidden=false;
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    form.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    setTimeout(function(){try{$('homeValue').focus({preventScroll:true})}catch(e){}},reduce?0:450);
+  })});
 
   function finish(){
     var V=digits($('homeValue').value), B=digits($('balance').value), ninety=V*0.9, avail=Math.max(0,ninety-B);
@@ -488,7 +505,7 @@ footer a{color:var(--hero-fg)}
     steps.forEach(function(s){s.hidden=true}); $('result').hidden=false; $('nav').hidden=true; $('formFine').hidden=true;
     $('stepLabel').textContent='Your estimate'; [].forEach.call($('dots').children,function(d){d.className='on'});
     var la=(window.STW_leadAttribution&&window.STW_leadAttribution())||{};
-    var payload={form_source:'heloc_cash_check',loan_purpose:'HELOC',
+    var payload={form_source:'heloc_cash_check',loan_purpose:'HELOC',top_priority:priority,
       first_name:$('firstName').value.trim(),last_name:$('lastName').value.trim(),
       full_name:($('firstName').value.trim()+' '+$('lastName').value.trim()).trim(),
       email:$('email').value.trim(),phone:$('phone').value.trim(),sms_consent:'yes',
